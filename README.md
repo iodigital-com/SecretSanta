@@ -9,3 +9,6 @@ This project uses Vagrant / Puppet. Install [Vagrant](http://downloads.vagrantup
 
     $ vagrant up
 
+Add 55.55.55.10 www.secretsanta.dev to your etc/hosts file. You can SSH into the machine with:
+
+    $ vagrant ssh
