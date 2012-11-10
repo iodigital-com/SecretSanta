@@ -1,0 +1,47 @@
+<h1>Pool list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Listname</th>
+            <th>Message</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Sentdate</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('pool_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.listname }}</td>
+            <td>{{ entity.message }}</td>
+            <td>{{ entity.username }}</td>
+            <td>{{ entity.email }}</td>
+            <td>{{ entity.password }}</td>
+            <td>{{ entity.sentdate }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('pool_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('pool_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('pool_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
