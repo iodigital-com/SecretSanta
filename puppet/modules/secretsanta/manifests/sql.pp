@@ -1,5 +1,7 @@
 class secretsanta::sql {
-    include mysql
+    class { 'mysql' :
+        require => Class["secretsanta::setup"],
+    }
 
     exec { 'create-db':
         unless => "/usr/bin/mysql -u${params::dbuser} -p${params::dbpass} ${params::dbname}",

@@ -9,7 +9,9 @@ define apache2::vhost (
         require => Package['apache2'],
     }
 
-    exec { "a2dissite default" : }
+    exec { "a2dissite default" :
+        require => Package['apache2'],
+    }
 
     exec { "a2ensite ${name}.conf" :
         require => File["/etc/apache2/sites-available/${name}.conf"],

@@ -1,5 +1,7 @@
 class secretsanta::web {
-    include apache2
+    class { 'apache2' :
+        require => Class["secretsanta::sql"],
+    }
 
     $default_packages = [ "phpmyadmin", "php5-intl", "php5-apc" ]
     package { $default_packages :
