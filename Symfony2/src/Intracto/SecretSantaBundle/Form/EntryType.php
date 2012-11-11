@@ -13,10 +13,7 @@ class EntryType extends AbstractType
         $builder
             ->add('name')
             ->add('email')
-            ->add('viewdate')
-            ->add('secret')
             ->add('pool')
-            ->add('entry')
         ;
     }
 

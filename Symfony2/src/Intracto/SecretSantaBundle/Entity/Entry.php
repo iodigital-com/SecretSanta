@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Entity\Pool;
 
 /**
@@ -10,6 +11,7 @@ use Intracto\SecretSantaBundle\Entity\Pool;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Entry
 {
@@ -27,6 +29,8 @@ class Entry
      *
      * @ORM\ManyToOne(targetEntity="Pool")
      * @ORM\JoinColumn(name="poolId", referencedColumnName="id")
+     *
+     * @Assert\NotBlank()
      */
     private $pool;
 
@@ -34,6 +38,8 @@ class Entry
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -41,6 +47,8 @@ class Entry
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -48,14 +56,14 @@ class Entry
      * @var Entry $entry
      *
      * @ORM\OneToOne(targetEntity="Entry")
-     * @ORM\JoinColumn(name="entryId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true)
      */
     private $entry;
 
     /**
      * @var \DateTime $viewdate
      *
-     * @ORM\Column(name="viewdate", type="datetime")
+     * @ORM\Column(name="viewdate", type="datetime", nullable=true)
      */
     private $viewdate;
 
@@ -213,5 +221,13 @@ class Entry
     public function getSecret()
     {
         return $this->secret;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function generateSecret()
+    {
+        $this->secret = sha1($this->pool->getId() . $this->name . $this->email);
     }
 }

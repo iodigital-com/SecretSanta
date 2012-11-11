@@ -15,8 +15,6 @@ class PoolType extends AbstractType
             ->add('message')
             ->add('username')
             ->add('email')
-            ->add('password')
-            ->add('sentdate')
         ;
     }
 

@@ -3,12 +3,14 @@
 namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Pool
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Pool
 {
@@ -25,6 +27,8 @@ class Pool
      * @var string $listname
      *
      * @ORM\Column(name="listname", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $listname;
 
@@ -32,6 +36,8 @@ class Pool
      * @var string $message
      *
      * @ORM\Column(name="message", type="text")
+     *
+     * @Assert\NotBlank()
      */
     private $message;
 
@@ -39,6 +45,8 @@ class Pool
      * @var string $username
      *
      * @ORM\Column(name="username", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -46,6 +54,8 @@ class Pool
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -59,7 +69,7 @@ class Pool
     /**
      * @var string $sentdate
      *
-     * @ORM\Column(name="sentdate", type="string", length=255)
+     * @ORM\Column(name="sentdate", type="string", length=255, nullable=true)
      */
     private $sentdate;
 
@@ -210,5 +220,18 @@ class Pool
     public function getSentdate()
     {
         return $this->sentdate;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function generatePassword()
+    {
+        $this->password = 'secret'; // @todo: generate random password
+    }
+
+    public function __toString()
+    {
+        return $this->getListname();
     }
 }
