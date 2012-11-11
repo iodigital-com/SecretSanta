@@ -1,0 +1,95 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block javascripts %}
+    <script type="text/javascript">
+        // @todo: the javascript below needs reviewing (was almost a copy paste from the symfony docs)
+        //        http://symfony.com/doc/current/cookbook/form/form_collections.html
+        function addEntryForm(collectionHolder, $newLinkLi) {
+            // Get the data-prototype explained earlier
+            var prototype = collectionHolder.attr('data-prototype');
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on the current collection's length.
+            var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
+
+            // Display the form in the page in an li, before the "Add an entry" link li
+            var $newFormLi = $('<li></li>').append(newForm);
+            $newLinkLi.before($newFormLi);
+
+            addEntryFormDeleteLink($newFormLi);
+        }
+
+        function addEntryFormDeleteLink($entryFormLi) {
+            var $removeFormA = $('<a href="#">delete this entry</a>');
+            $entryFormLi.append($removeFormA);
+
+            $removeFormA.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // remove the li for the entry form
+                $entryFormLi.remove();
+            });
+        }
+
+        // Get the div that holds the collection of entries
+        var collectionHolder = $('ul.entries');
+
+        // setup an "add an entry" link
+        var $addEntryLink = $('<a href="#" class="add_entry_link">Add an entry</a>');
+        var $newLinkLi = $('<li></li>').append($addEntryLink);
+
+        jQuery(document).ready(function() {
+            // add a delete link to all of the existing tag form li elements
+            collectionHolder.find('li.entry').each(function() {
+                addEntryFormDeleteLink($(this));
+            });
+
+            // add the "add an entry" anchor and li to the entries ul
+            collectionHolder.append($newLinkLi);
+
+            $addEntryLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new entry form (see next code block)
+                addEntryForm(collectionHolder, $newLinkLi);
+            });
+        });
+    </script>
+{% endblock %}
+{% block body %}
+    <pre>(direct links (temporary): <a href="{{ path('pool') }}">Pool</a> / <a href="{{ path('entry') }}">Entry</a>)</pre>
+    <h1>Create a Secret Santa</h1>
+    {#{ form_errors(form) }#}
+    <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
+        {{ form_row(form.listname) }}
+        {{ form_row(form.message) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+
+        <h2>Entries</h2>
+        <ul class="entries" data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
+            {% set wrongEntry = false %}
+            {% for entry in form.entries %}
+                {% if ((form_errors(entry.name) or form_errors(entry.email)) and wrongEntry == false) %}
+                    Please fill in all the fields below
+                    {% set wrongEntry = true %}
+                {% endif %}
+                <li class="entry">
+                    <div class="form_row">
+                        {{ form_label(entry.name) }}
+                        {{ form_widget(entry.name) }}
+                    </div>
+                    <div class="form_row">
+                        {{ form_label(entry.email) }}
+                        {{ form_widget(entry.email) }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {{ form_rest(form) }}
+
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

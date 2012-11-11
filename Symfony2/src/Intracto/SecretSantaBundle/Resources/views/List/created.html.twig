@@ -1,0 +1,5 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block body %}
+    Hi "{{ pool.username }}", your list with name "{{ pool.listname }}" is created and awaiting confirmation.<br>
+    Instructions are mailed to "{{ pool.email }}".
+{% endblock %}

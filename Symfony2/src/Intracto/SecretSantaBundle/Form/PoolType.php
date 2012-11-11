@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Intracto\SecretSantaBundle\Form\EntryType;
 
 class PoolType extends AbstractType
 {
@@ -15,6 +16,12 @@ class PoolType extends AbstractType
             ->add('message')
             ->add('username')
             ->add('email')
+            ->add('entries', 'collection', array(
+                'type' => new EntryType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ))
         ;
     }
 

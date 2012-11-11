@@ -4,6 +4,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Intracto\SecretSantaBundle\Entity\Entry;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Pool
@@ -73,6 +74,23 @@ class Pool
      */
     private $sentdate;
 
+    /**
+     * @var ArrayCollection $entries
+     *
+     * @ORM\OneToMany(targetEntity="Entry", mappedBy="pool")
+     *
+     * @Assert\Valid
+     */
+    private $entries;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -220,6 +238,39 @@ class Pool
     public function getSentdate()
     {
         return $this->sentdate;
+    }
+
+    /**
+     * Add entry
+     *
+     * @param Entry $entry
+     * @return Pool
+     */
+    public function addEntry(Entry $entry)
+    {
+        $this->entries[] = $entry;
+
+        return $this;
+    }
+
+    /**
+     * Remove entry
+     *
+     * @param Entry $entry
+     */
+    public function removeEntry(Entry $entry)
+    {
+        $this->entries->removeElement($entry);
+    }
+
+    /**
+     * Get entries
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getEntries()
+    {
+        return $this->entries;
     }
 
     /**

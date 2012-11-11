@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Secret Santa{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <script src="{{ asset('bundles/intractosecretsanta/js/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

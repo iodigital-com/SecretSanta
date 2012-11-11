@@ -27,10 +27,8 @@ class Entry
     /**
      * @var Pool $pool
      *
-     * @ORM\ManyToOne(targetEntity="Pool")
+     * @ORM\ManyToOne(targetEntity="Pool", inversedBy="entries")
      * @ORM\JoinColumn(name="poolId", referencedColumnName="id")
-     *
-     * @Assert\NotBlank()
      */
     private $pool;
 
@@ -228,6 +226,7 @@ class Entry
      */
     public function generateSecret()
     {
-        $this->secret = sha1($this->pool->getId() . $this->name . $this->email);
+        //$this->secret = sha1($this->pool->getId() . $this->name . $this->email);
+        $this->secret = sha1($this->name . $this->email);
     }
 }
