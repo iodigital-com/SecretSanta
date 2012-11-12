@@ -1,16 +1,19 @@
-<h1>Pool creation</h1>
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block main %}
+	<h1>Pool creation</h1>
 
-<form action="{{ path('pool_create') }}" method="post" {{ form_enctype(form) }} novalidate>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
+	<form action="{{ path('pool_create') }}" method="post" {{ form_enctype(form) }} novalidate>
+	    {{ form_widget(form) }}
+	    <p>
+	        <button type="submit">Create</button>
+	    </p>
+	</form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('pool') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+	<ul class="record_actions">
+	    <li>
+	        <a href="{{ path('pool') }}">
+	            Back to the list
+	        </a>
+	    </li>
+	</ul>
+{% endblock %}

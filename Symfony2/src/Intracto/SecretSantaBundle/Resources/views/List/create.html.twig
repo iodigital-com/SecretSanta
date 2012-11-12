@@ -41,10 +41,9 @@
         });
     </script>
 {% endblock %}
-{% block body %}
-{% include "IntractoSecretSantaBundle:Helpers:navbar.html.twig" %}
-    <pre>(direct links (temporary): <a href="{{ path('pool') }}">Pool</a> / <a href="{{ path('entry') }}">Entry</a>)</pre>
-    <div class="container">
+{% block main %}
+
+    
         <h1>Create a Secret Santa</h1>
         {#{ form_errors(form) }#}
         <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>

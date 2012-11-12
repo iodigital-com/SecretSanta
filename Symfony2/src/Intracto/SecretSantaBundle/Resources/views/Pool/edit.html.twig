@@ -1,22 +1,26 @@
-<h1>Pool edit</h1>
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block main %}
 
-<form action="{{ path('pool_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} novalidate>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
-</form>
+    <h1>Pool edit</h1>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('pool') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('pool_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <form action="{{ path('pool_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} novalidate>
+        {{ form_widget(edit_form) }}
+        <p>
+            <button type="submit">Edit</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('pool') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('pool_delete', { 'id': entity.id }) }}" method="post">
+                {{ form_widget(delete_form) }}
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+{% endblock %}

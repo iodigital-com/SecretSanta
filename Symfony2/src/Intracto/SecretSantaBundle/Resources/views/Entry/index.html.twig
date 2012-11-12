@@ -1,43 +1,46 @@
-<h1>Entry list</h1>
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block main %}
+    <h1>Entry list</h1>
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Viewdate</th>
-            <th>Secret</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('entry_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.name }}</td>
-            <td>{{ entity.email }}</td>
-            <td>{% if entity.viewdate %}{{ entity.viewdate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{{ entity.secret }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('entry_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('entry_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Viewdate</th>
+                <th>Secret</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('entry_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{% if entity.viewdate %}{{ entity.viewdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.secret }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('entry_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('entry_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-<ul>
-    <li>
-        <a href="{{ path('entry_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+    <ul>
+        <li>
+            <a href="{{ path('entry_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}
