@@ -47,7 +47,6 @@
         <h1>Create a Secret Santa</h1>
         {#{ form_errors(form) }#}
         <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
-            {{ form_row(form.listname) }}
             {{ form_row(form.message) }}
             {{ form_row(form.username) }}
             {{ form_row(form.email) }}
@@ -63,7 +62,7 @@
                 {% endfor %}
             </ul>
 
-            <button type="submit">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
 {% endblock %}
