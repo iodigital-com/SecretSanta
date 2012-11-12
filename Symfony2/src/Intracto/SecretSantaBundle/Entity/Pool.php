@@ -11,7 +11,6 @@ use Intracto\SecretSantaBundle\Entity\Entry;
  *
  * @ORM\Table()
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  */
 class Pool
 {
@@ -63,7 +62,7 @@ class Pool
     /**
      * @var string $password
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255, nullable=true)
      */
     private $password;
 
@@ -77,9 +76,9 @@ class Pool
     /**
      * @var ArrayCollection $entries
      *
-     * @ORM\OneToMany(targetEntity="Entry", mappedBy="pool")
+     * @ORM\OneToMany(targetEntity="Entry", mappedBy="pool", cascade={"persist", "remove"})
      *
-     * @Assert\Valid
+     * @Assert\Valid()
      */
     private $entries;
 
@@ -266,19 +265,11 @@ class Pool
     /**
      * Get entries
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEntries()
     {
         return $this->entries;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function generatePassword()
-    {
-        $this->password = 'secret'; // @todo: generate random password
     }
 
     public function __toString()

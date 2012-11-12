@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Intracto\SecretSantaBundle\Entity\Pool;
-use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Form\PoolType;
 
 class ListController extends Controller
@@ -25,10 +24,11 @@ class ListController extends Controller
         if ('POST' === $request->getMethod()) {
             $form->bind($request);
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
                 foreach ($pool->getEntries() as $entry) {
-                    $em->persist($entry);
+                    $entry->setPool($pool);
                 }
+
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($pool);
                 $em->flush();
 

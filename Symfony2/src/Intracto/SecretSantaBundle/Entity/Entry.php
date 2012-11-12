@@ -11,7 +11,6 @@ use Intracto\SecretSantaBundle\Entity\Pool;
  *
  * @ORM\Table()
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  */
 class Entry
 {
@@ -68,7 +67,7 @@ class Entry
     /**
      * @var string $secret
      *
-     * @ORM\Column(name="secret", type="string", length=255)
+     * @ORM\Column(name="secret", type="string", length=255, nullable=true)
      */
     private $secret;
 
@@ -219,14 +218,5 @@ class Entry
     public function getSecret()
     {
         return $this->secret;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function generateSecret()
-    {
-        //$this->secret = sha1($this->pool->getId() . $this->name . $this->email);
-        $this->secret = sha1($this->name . $this->email);
     }
 }
