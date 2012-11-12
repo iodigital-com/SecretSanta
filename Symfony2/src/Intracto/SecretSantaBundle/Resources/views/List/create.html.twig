@@ -50,6 +50,7 @@
         {{ form_row(form.message) }}
         {{ form_row(form.username) }}
         {{ form_row(form.email) }}
+        {{ form_row(form._token) }}
 
         <h2>Entries</h2>
         <ul class="entries" data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
@@ -60,8 +61,6 @@
                 </li>
             {% endfor %}
         </ul>
-
-        {{ form_rest(form) }}
 
         <button type="submit">Save</button>
     </form>
