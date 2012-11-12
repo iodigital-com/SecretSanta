@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
-  config.vm.box = "ctors_20121023"
+  config.vm.box = "ctors"
   config.vm.box_url = "http://ctors.net/squeeze64_2012_10_23.box"
 
   # Use :gui for showing a display for easy debugging of vagrant
