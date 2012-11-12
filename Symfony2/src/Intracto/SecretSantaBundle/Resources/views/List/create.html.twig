@@ -42,26 +42,29 @@
     </script>
 {% endblock %}
 {% block body %}
+{% include "IntractoSecretSantaBundle:Helpers:navbar.html.twig" %}
     <pre>(direct links (temporary): <a href="{{ path('pool') }}">Pool</a> / <a href="{{ path('entry') }}">Entry</a>)</pre>
-    <h1>Create a Secret Santa</h1>
-    {#{ form_errors(form) }#}
-    <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
-        {{ form_row(form.listname) }}
-        {{ form_row(form.message) }}
-        {{ form_row(form.username) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form._token) }}
+    <div class="container">
+        <h1>Create a Secret Santa</h1>
+        {#{ form_errors(form) }#}
+        <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
+            {{ form_row(form.listname) }}
+            {{ form_row(form.message) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form._token) }}
 
-        <h2>Entries</h2>
-        <ul class="entries" data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
-            {% for entry in form.entries %}
-                <li class="entry">
-                    {{ form_row(entry.name) }}
-                    {{ form_row(entry.email) }}
-                </li>
-            {% endfor %}
-        </ul>
+            <h2>Entries</h2>
+            <ul class="entries" data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
+                {% for entry in form.entries %}
+                    <li class="entry">
+                        {{ form_row(entry.name) }}
+                        {{ form_row(entry.email) }}
+                    </li>
+                {% endfor %}
+            </ul>
 
-        <button type="submit">Save</button>
-    </form>
+            <button type="submit">Save</button>
+        </form>
+    </div>
 {% endblock %}
