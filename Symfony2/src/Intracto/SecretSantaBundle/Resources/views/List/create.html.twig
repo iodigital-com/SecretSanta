@@ -5,7 +5,7 @@
         function addEntryForm(collectionHolder, $newLinkLi) {
             var prototype = collectionHolder.attr('data-prototype');
 
-            var newForm = prototype.replace(/__name__/g, collectionHolder.children().length-1);
+            var newForm = prototype.replace(/__name__/g, collectionHolder.children().length - 1);
 
             var $newFormLi = $('<li></li>').append(newForm);
             $newLinkLi.before($newFormLi);
