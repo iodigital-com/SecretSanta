@@ -15,7 +15,7 @@ If you are a windows user, make sure to run the following commands before clonin
     $ git config --global core.autocrlf false
     $ git config --global core.safecrlf true
 
-Add 55.55.55.10 www.secretsanta.dev to your etc/hosts file. You can SSH into the machine with:
+Add 33.33.33.10 www.secretsanta.dev to your etc/hosts file. You can SSH into the machine with:
 
     $ vagrant ssh
 
