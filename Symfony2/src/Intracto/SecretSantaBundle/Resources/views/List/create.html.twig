@@ -2,100 +2,92 @@
 {% block javascripts %}
     <script type="text/javascript">
 
-        function addEntryForm(collectionHolder, $newLinkEntry) {
+    function addNewEntry(collectionHolder) {
+        // Get entry prototype as defined in attribute data-prototype
+        var prototype = collectionHolder.attr('data-prototype');
+        // Adjust entry prototype for correct naming
+        var number_of_entries = collectionHolder.children().length; // Note, owner is not counted as entry
+        var newForm = prototype.replace(/__name__/g, number_of_entries - 1).replace(/__entrycount__/g, number_of_entries + 1);
 
-            // Get prototype as defined in attribute data-prototype
-            var prototype = collectionHolder.attr('data-prototype');
 
-            // Adjust prototype for correct naming
-            var newForm = prototype.replace(/__name__/g, collectionHolder.children().length - 1);
+        // Add new entry to pool
+        collectionHolder.append(newForm);
+        // Create delete link for new entry
+        // addDeleteButtonForEntry($newFormEntry);
+    } 
 
-            var $newFormEntry = $('<tr></tr>').append(newForm);
-            $newLinkEntry.before($newFormEntry);
+    function addDeleteButton($entryFormEntry) {
+        var $removeFormA = $('<a href="#">delete this entry</a>');
+        $entryFormEntry.append($removeFormA);
 
-            addEntryFormDeleteLink($newFormEntry);
-        }
-
-        function addEntryFormDeleteLink($entryFormEntry) {
-            var $removeFormA = $('<a href="#">delete this entry</a>');
-            $entryFormEntry.append($removeFormA);
-
-            $removeFormA.on('click', function(e) {
-                e.preventDefault();
-                $entryFormEntry.remove();
-            });
-        }
-
-        /* 
-            Variables
-        */
-        var collectionHolder = $('table.entries tbody');
-        var $addEntryLink = $('<a href="#" class="add_entry_link">Add an entry</a>');
-        var $newLinkEntry = $('<tr></tr>').append($addEntryLink);
-
-        /*
-            Document Ready
-        */
-        jQuery(document).ready(function() {
-
-            // Add Delete buttons to all entries above 3
-            collectionHolder.find('tr.entry:gt(2)').each(function() {
-                addEntryFormDeleteLink($(this));
-            });
-
-            //Add Entry button
-            collectionHolder.append($newLinkEntry);
-
-            //Add eventlistener on Entry button
-            $addEntryLink.on('click', function(e) {
-                e.preventDefault();
-                addEntryForm(collectionHolder, $newLinkEntry);
-            });
-
+        $removeFormA.on('click', function(e) {
+            e.preventDefault();
+            $entryFormEntry.remove();
         });
+    }
+
+    /* Variables */
+    var collectionHolder = $('table.entries tbody');
+
+    /* Document Ready */
+    jQuery(document).ready(function() {
+
+        // Add Delete buttons to all entries above 3
+        collectionHolder.find('tr.entry:gt(2)').each(function() {
+            addDeleteButton($(this));
+        });
+
+        //Add eventlistener on add-new-entry button
+        $('#add-new-entry').on('click', function(e) {
+            e.preventDefault();
+            addNewEntry(collectionHolder);
+        });
+
+    });
     </script>
 {% endblock %}
 {% block main %}
 
-        <h1>Secret Santa</h1>
+<h1>Secret Santa</h1>
 
-        {#{ form_errors(form) }#}
+{#{ form_errors(form) }#}
 
-        <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
+<form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
 
-            {{ form_row(form._token) }}
+    {{ form_row(form._token) }}
 
-            <table class="entries table">
-                <thead>
-                    <tr>
-                        <th class="span1">#</th>
-                        <th class="span3">Name</th>
-                        <th class="span4">E-mail</th>
-                        <th class="span4"></th>
-                    </tr>
-                </thead>
-                <tbody data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
-                    <tr class="entry owner">
-                        <td>1</td>
-                        <td>{{ form_widget(form.owner_name) }}</td>
-                        <td>{{ form_widget(form.owner_email) }}</td>
-                        <td><small>NOTE: This user is also the administrator for this list.</small></td>
-                    </tr>
-                {% for entry in form.entries %}
-                    <tr class="entry not-owner">
-                        <td>.</td>
-                        <td>{{ form_widget(entry.name) }}</td>
-                        <td>{{ form_widget(entry.email) }}</td>
-                        <td></td>
-                    </tr>
-                {% endfor %}                    
-                </tbody>
-            </table>
+    <table class="entries table">
+        <thead>
+            <tr>
+                <th class="span1">#</th>
+                <th class="span3">Name</th>
+                <th class="span4">E-mail</th>
+                <th class="span4"></th>
+            </tr>
+        </thead>
+        <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
+            <tr class="entry owner">
+                <td>1</td>
+                <td>{{ form_widget(form.owner_name) }}</td>
+                <td>{{ form_widget(form.owner_email) }}</td>
+                <td><small>NOTE: This user is also the administrator for this list.</small></td>
+            </tr>
+            {% for entry in form.entries %}
+            <tr class="entry not-owner">
+                <td>{{ loop.index + 1 }}</td>
+                <td>{{ form_widget(entry.name) }}</td>
+                <td>{{ form_widget(entry.email) }}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>
+    <button type="button" class="btn btn-success" id="add-new-entry"><i class="icon-plus icon-white"></i>Add new entry</button>
+</p>
+    {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}
 
-            {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}
+    <button type="submit" class="btn btn-primary">Send Secret Santa to List</button>
 
-            <button type="submit" class="btn btn-primary">Send Secret Santa to List</button>
-
-        </form>
-    </div>
+</form>
 {% endblock %}
