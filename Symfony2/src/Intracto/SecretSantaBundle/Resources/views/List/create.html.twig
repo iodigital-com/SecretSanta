@@ -7,11 +7,13 @@
         var prototype = collectionHolder.attr('data-prototype');
         // Adjust entry prototype for correct naming
         var number_of_entries = collectionHolder.children().length; // Note, owner is not counted as entry
-        var newForm = prototype.replace(/__name__/g, number_of_entries - 1).replace(/__entrycount__/g, number_of_entries + 1);
+        var newFormHtml = prototype.replace(/__name__/g, number_of_entries - 1).replace(/__entrycount__/g, number_of_entries + 1);
 
 
-        // Add new entry to pool
+        // Add new entry to pool with animation
+        var newForm = $(newFormHtml);
         collectionHolder.append(newForm);
+        newForm.show(300);
         // Create delete link for new entry
         // addDeleteButtonForEntry($newFormEntry);
     } 
@@ -55,38 +57,39 @@
 <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
 
     {{ form_row(form._token) }}
-
-    <table class="entries table">
-        <thead>
-            <tr>
-                <th class="span1">#</th>
-                <th class="span3">Name</th>
-                <th class="span4">E-mail</th>
-                <th class="span4"></th>
-            </tr>
-        </thead>
-        <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
-            <tr class="entry owner">
-                <td>1</td>
-                <td>{{ form_widget(form.owner_name) }}</td>
-                <td>{{ form_widget(form.owner_email) }}</td>
-                <td><small>NOTE: This user is also the administrator for this list.</small></td>
-            </tr>
-            {% for entry in form.entries %}
-            <tr class="entry not-owner">
-                <td>{{ loop.index + 1 }}</td>
-                <td>{{ form_widget(entry.name) }}</td>
-                <td>{{ form_widget(entry.email) }}</td>
-                <td></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
     <p>
-    <button type="button" class="btn btn-success" id="add-new-entry"><i class="icon-plus icon-white"></i>Add new entry</button>
-</p>
-    {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}
+        <table class="entries table table-striped">
+            <thead>
+                <tr>
+                    <th class="span1">#</th>
+                    <th class="span3">Name</th>
+                    <th class="span4">E-mail</th>
+                    <th style="text-align: right;" class="span4"><button type="button" class="btn btn-mini btn-success" id="add-new-entry"><i class="icon-plus icon-white"></i> Add person</button></th>
+                </tr>
+            </thead>
+            <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
+                <tr class="entry owner info">
+                    <td>1</td>
+                    <td>{{ form_widget(form.owner_name) }}</td>
+                    <td>{{ form_widget(form.owner_email) }}</td>
+                    <td><small>NOTE: This user is also the administrator for this list.</small></td>
+                </tr>
+                {% for entry in form.entries %}
+                <tr class="entry not-owner">
+                    <td>{{ loop.index + 1 }}</td>
+                    <td>{{ form_widget(entry.name) }}</td>
+                    <td>{{ form_widget(entry.email) }}</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
+        
+    </p>
+    <p>
+        {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}
+    </p>
     <button type="submit" class="btn btn-primary">Send Secret Santa to List</button>
 
 </form>
