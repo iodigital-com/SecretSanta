@@ -3,8 +3,11 @@
     <script type="text/javascript">
 
         function addEntryForm(collectionHolder, $newLinkEntry) {
+
+            // Get prototype as defined in attribute data-prototype
             var prototype = collectionHolder.attr('data-prototype');
 
+            // Adjust prototype for correct naming
             var newForm = prototype.replace(/__name__/g, collectionHolder.children().length - 1);
 
             var $newFormEntry = $('<tr></tr>').append(newForm);
@@ -23,21 +26,32 @@
             });
         }
 
+        /* 
+            Variables
+        */
         var collectionHolder = $('table.entries tbody');
         var $addEntryLink = $('<a href="#" class="add_entry_link">Add an entry</a>');
         var $newLinkEntry = $('<tr></tr>').append($addEntryLink);
 
+        /*
+            Document Ready
+        */
         jQuery(document).ready(function() {
-            collectionHolder.find('tr.entry').each(function() {
+
+            // Add Delete buttons to all entries above 3
+            collectionHolder.find('tr.entry:gt(2)').each(function() {
                 addEntryFormDeleteLink($(this));
             });
 
+            //Add Entry button
             collectionHolder.append($newLinkEntry);
 
+            //Add eventlistener on Entry button
             $addEntryLink.on('click', function(e) {
                 e.preventDefault();
                 addEntryForm(collectionHolder, $newLinkEntry);
             });
+
         });
     </script>
 {% endblock %}
@@ -51,36 +65,37 @@
 
             {{ form_row(form._token) }}
 
-            <table class="entries table" data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
+            <table class="entries table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>E-mail</th>
-                        <th></th>
+                        <th class="span2">#</th>
+                        <th class="span4">Name</th>
+                        <th class="span4">E-mail</th>
+                        <th class="span2"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
                     <tr class="entry owner">
                         <td>1</td>
-                        <td>{{ form_widget(form.owner_name, { 'attr': {'class': 'foo'} }) }}</td>
-                        <td>{{ form_widget(form.owner_email, { 'attr': {'class': 'foo'} }) }}</td>
-                        <td>Delete button hier</td>
+                        <td>{{ form_widget(form.owner_name) }}</td>
+                        <td>{{ form_widget(form.owner_email) }}</td>
+                        <td></td>
                     </tr>
                 {% for entry in form.entries %}
-                    <tr class="entry">
+                    <tr class="entry not-owner">
                         <td>.</td>
-                        <td>{{ form_row(entry.name) }}</td>
-                        <td>{{ form_row(entry.email) }}</td>
+                        <td>{{ form_widget(entry.name) }}</td>
+                        <td>{{ form_widget(entry.email) }}</td>
+                        <td></td>
                     </tr>
                 {% endfor %}                    
                 </tbody>
             </table>
 
-            {{ form_row(form.message) }}
+            {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}
 
             <button type="submit" class="btn btn-primary">Send Secret Santa to List</button>
-            
+
         </form>
     </div>
 {% endblock %}

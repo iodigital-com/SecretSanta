@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Form\PoolType;
+use Intracto\SecretSantaBundle\Entity\Entry;
 
 class ListController extends Controller
 {
@@ -19,6 +20,12 @@ class ListController extends Controller
     public function createAction(Request $request)
     {
         $pool = new Pool();
+
+        // Every pool needs at least 3 members: 1 owner + 2 entries
+        $entry1 = new Entry();
+        $entry2 = new Entry();
+        $pool->addEntry($entry1);
+        $pool->addEntry($entry2);
         $form = $this->createForm(new PoolType(), $pool);
 
         if ('POST' === $request->getMethod()) {
