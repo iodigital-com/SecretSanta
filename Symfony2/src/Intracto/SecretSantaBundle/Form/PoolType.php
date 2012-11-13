@@ -13,8 +13,8 @@ class PoolType extends AbstractType
     {
         $builder
             ->add('message')
-            ->add('username')
-            ->add('email')
+            ->add('owner_name')
+            ->add('owner_email')
             ->add('entries', 'collection', array(
                 'type' => new EntryType(),
                 'allow_add' => true,

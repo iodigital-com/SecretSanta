@@ -42,29 +42,22 @@ class Pool
     private $message;
 
     /**
-     * @var string $username
+     * @var string $owner_name
      *
-     * @ORM\Column(name="username", type="string", length=255)
-     *
-     * @Assert\NotBlank()
-     */
-    private $username;
-
-    /**
-     * @var string $email
-     *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="owner_name", type="string", length=255)
      *
      * @Assert\NotBlank()
      */
-    private $email;
+    private $owner_name;
 
     /**
-     * @var string $password
+     * @var string $owner_email
      *
-     * @ORM\Column(name="password", type="string", length=255, nullable=true)
+     * @ORM\Column(name="owner_email", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
-    private $password;
+    private $owner_email;
 
     /**
      * @var string $sentdate
@@ -148,72 +141,49 @@ class Pool
     }
 
     /**
-     * Set username
+     * Set owner_name
      *
-     * @param string $username
+     * @param string $owner_name
      * @return Pool
      */
-    public function setUsername($username)
+    public function setOwnerName($owner_name)
     {
-        $this->username = $username;
+        $this->owner_name = $owner_name;
     
         return $this;
     }
 
     /**
-     * Get username
+     * Get owner_name
      *
      * @return string 
      */
-    public function getUsername()
+    public function getOwnerName()
     {
-        return $this->username;
+        return $this->owner_name;
     }
 
     /**
-     * Set email
+     * Set owner_email
      *
-     * @param string $email
+     * @param string $owner_email
      * @return Pool
      */
-    public function setEmail($email)
+    public function setOwnerEmail($owner_email)
     {
-        $this->email = $email;
+        $this->owner_email = $owner_email;
     
         return $this;
     }
 
     /**
-     * Get email
+     * Get owner_email
      *
      * @return string 
      */
-    public function getEmail()
+    public function getOwnerEmail()
     {
-        return $this->email;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Pool
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
+        return $this->owner_email;
     }
 
     /**

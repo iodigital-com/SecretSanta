@@ -2,67 +2,85 @@
 {% block javascripts %}
     <script type="text/javascript">
 
-        function addEntryForm(collectionHolder, $newLinkLi) {
+        function addEntryForm(collectionHolder, $newLinkEntry) {
             var prototype = collectionHolder.attr('data-prototype');
 
             var newForm = prototype.replace(/__name__/g, collectionHolder.children().length - 1);
 
-            var $newFormLi = $('<li></li>').append(newForm);
-            $newLinkLi.before($newFormLi);
+            var $newFormEntry = $('<tr></tr>').append(newForm);
+            $newLinkEntry.before($newFormEntry);
 
-            addEntryFormDeleteLink($newFormLi);
+            addEntryFormDeleteLink($newFormEntry);
         }
 
-        function addEntryFormDeleteLink($entryFormLi) {
+        function addEntryFormDeleteLink($entryFormEntry) {
             var $removeFormA = $('<a href="#">delete this entry</a>');
-            $entryFormLi.append($removeFormA);
+            $entryFormEntry.append($removeFormA);
 
             $removeFormA.on('click', function(e) {
                 e.preventDefault();
-                $entryFormLi.remove();
+                $entryFormEntry.remove();
             });
         }
 
-        var collectionHolder = $('ul.entries');
+        var collectionHolder = $('table.entries tbody');
         var $addEntryLink = $('<a href="#" class="add_entry_link">Add an entry</a>');
-        var $newLinkLi = $('<li></li>').append($addEntryLink);
+        var $newLinkEntry = $('<tr></tr>').append($addEntryLink);
 
         jQuery(document).ready(function() {
-            collectionHolder.find('li.entry').each(function() {
+            collectionHolder.find('tr.entry').each(function() {
                 addEntryFormDeleteLink($(this));
             });
 
-            collectionHolder.append($newLinkLi);
+            collectionHolder.append($newLinkEntry);
 
             $addEntryLink.on('click', function(e) {
                 e.preventDefault();
-                addEntryForm(collectionHolder, $newLinkLi);
+                addEntryForm(collectionHolder, $newLinkEntry);
             });
         });
     </script>
 {% endblock %}
 {% block main %}
 
-    
-        <h1>Create a Secret Santa</h1>
+        <h1>Secret Santa</h1>
+
         {#{ form_errors(form) }#}
+
         <form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
-            {{ form_row(form.message) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.email) }}
+
             {{ form_row(form._token) }}
 
-            <h2>Entries</h2>
-            <ul class="entries" data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
+            <table class="entries table" data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="entry owner">
+                        <td>1</td>
+                        <td>{{ form_widget(form.owner_name, { 'attr': {'class': 'foo'} }) }}</td>
+                        <td>{{ form_widget(form.owner_email, { 'attr': {'class': 'foo'} }) }}</td>
+                        <td>Delete button hier</td>
+                    </tr>
                 {% for entry in form.entries %}
-                    <li class="entry">
-                        {{ form_row(entry.name) }}
-                        {{ form_row(entry.email) }}
-                    </li>
-                {% endfor %}
-            </ul>
+                    <tr class="entry">
+                        <td>.</td>
+                        <td>{{ form_row(entry.name) }}</td>
+                        <td>{{ form_row(entry.email) }}</td>
+                    </tr>
+                {% endfor %}                    
+                </tbody>
+            </table>
 
-            <button type="submit" class="btn btn-primary">Save</button>
+            {{ form_row(form.message) }}
+
+            <button type="submit" class="btn btn-primary">Send Secret Santa to List</button>
+            
         </form>
     </div>
 {% endblock %}
