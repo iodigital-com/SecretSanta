@@ -68,10 +68,10 @@
             <table class="entries table">
                 <thead>
                     <tr>
-                        <th class="span2">#</th>
-                        <th class="span4">Name</th>
+                        <th class="span1">#</th>
+                        <th class="span3">Name</th>
                         <th class="span4">E-mail</th>
-                        <th class="span2"></th>
+                        <th class="span4"></th>
                     </tr>
                 </thead>
                 <tbody data-prototype="{{ form_widget(form.entries.vars.prototype)|e }}">
@@ -79,7 +79,7 @@
                         <td>1</td>
                         <td>{{ form_widget(form.owner_name) }}</td>
                         <td>{{ form_widget(form.owner_email) }}</td>
-                        <td></td>
+                        <td><small>NOTE: This user is also the administrator for this list.</small></td>
                     </tr>
                 {% for entry in form.entries %}
                     <tr class="entry not-owner">
