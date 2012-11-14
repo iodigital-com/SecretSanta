@@ -31,11 +31,26 @@
 
             // Bind event
             $(this).click(function(e) {
+
                 e.preventDefault();
 
-                // Todo: Event logic
-                $('tr.entry.not-owner:eq(' + i + ')').remove();
-                alert('Todo: remove person logic, respecting incremental classnames etc.');
+                $('table tr.entry.not-owner:gt(' + i + ')').each(function(j){
+                    // Move values from next row to current row
+                    var next_row_name = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-name').val(); 
+                    var next_row_mail = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-mail').val();   
+                    $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-name').val(next_row_name);
+                    $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-mail').val(next_row_mail);   
+                });
+
+                // Delete last row
+                $('table tr.entry.not-owner:last').remove();
+
+                // Remove delete events when deletable entries < 2
+                if($('table tr.entry.not-owner').length < 3){
+                    $('table tr.entry.not-owner button.remove-entry').addClass('disabled');
+                    $('table tr.entry.not-owner button.remove-entry').off('click');
+
+                }
 
             });
         });
@@ -86,8 +101,8 @@
                 {% for entry in form.entries %}
                 <tr class="entry not-owner">
                     <td>{{ loop.index + 1 }}</td>
-                    <td>{{ form_widget(entry.name) }}</td>
-                    <td>{{ form_widget(entry.email) }}</td>
+                    <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
+                    <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
                     <td style="text-align: right;"><button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i class="icon-minus-sign icon-white"></i> Remove this person</button></td>
                 </tr>
                 {% endfor %}
