@@ -92,7 +92,7 @@
                 </tr>
             </thead>
             <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
-                <tr class="entry owner success">
+                <tr class="entry owner">
                     <td>1</td>
                     <td>{{ form_widget(form.owner_name) }}</td>
                     <td>{{ form_widget(form.owner_email) }}</td>
