@@ -11,10 +11,10 @@ use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Entry;
 
-class ListController extends Controller
+class PoolController extends Controller
 {
     /**
-     * @Route("/", name="list_create")
+     * @Route("/", name="pool_create")
      * @Template()
      */
     public function createAction(Request $request)
@@ -40,7 +40,7 @@ class ListController extends Controller
                 $em->flush();
 
                 return new Response(
-                    $this->renderView('IntractoSecretSantaBundle:List:created.html.twig', array('pool' => $pool))
+                    $this->renderView('IntractoSecretSantaBundle:Pool:created.html.twig', array('pool' => $pool))
                 );
             }
         }

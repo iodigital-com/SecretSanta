@@ -78,7 +78,7 @@
 
 {#{ form_errors(form) }#}
 
-<form action="{{ path('list_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
+<form action="{{ path('pool_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
 
     {{ form_row(form._token) }}
     <p>
