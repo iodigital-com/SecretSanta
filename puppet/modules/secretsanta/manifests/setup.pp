@@ -12,12 +12,12 @@ class secretsanta::setup {
 
     exec { "add dotdeb" :
         unless => "/bin/grep -c dotdeb /etc/apt/sources.list",
-        command => "/bin/cat << EOF >> /etc/apt/sources.list
-deb http://packages.dotdeb.org squeeze all
-deb-src http://packages.dotdeb.org squeeze all
-deb http://packages.dotdeb.org squeeze-php54 all
-deb-src http://packages.dotdeb.org squeeze-php54 all
-EOF",
+        command => "/bin/cat <<-EOF >> /etc/apt/sources.list
+			deb http://packages.dotdeb.org squeeze all
+			deb-src http://packages.dotdeb.org squeeze all
+			deb http://packages.dotdeb.org squeeze-php54 all
+			deb-src http://packages.dotdeb.org squeeze-php54 all
+			EOF",
         require => Exec["dotdeb key"],
     }
 
