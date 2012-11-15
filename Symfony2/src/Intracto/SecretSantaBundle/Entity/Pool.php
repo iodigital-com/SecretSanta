@@ -11,6 +11,7 @@ use Intracto\SecretSantaBundle\Entity\Entry;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Pool
 {
@@ -27,8 +28,6 @@ class Pool
      * @var string $listname
      *
      * @ORM\Column(name="listname", type="string", length=255)
-     *
-     * @Assert\NotBlank()
      */
     private $listname;
 
@@ -40,24 +39,6 @@ class Pool
      * @Assert\NotBlank()
      */
     private $message;
-
-    /**
-     * @var string $owner_name
-     *
-     * @ORM\Column(name="owner_name", type="string", length=255)
-     *
-     * @Assert\NotBlank()
-     */
-    private $owner_name;
-
-    /**
-     * @var string $owner_email
-     *
-     * @ORM\Column(name="owner_email", type="string", length=255)
-     *
-     * @Assert\NotBlank()
-     */
-    private $owner_email;
 
     /**
      * @var string $sentdate
@@ -141,39 +122,13 @@ class Pool
     }
 
     /**
-     * Set owner_name
-     *
-     * @param string $owner_name
-     * @return Pool
-     */
-    public function setOwnerName($owner_name)
-    {
-        $this->owner_name = $owner_name;
-    
-        return $this;
-    }
-
-    /**
      * Get owner_name
      *
      * @return string 
      */
     public function getOwnerName()
     {
-        return $this->owner_name;
-    }
-
-    /**
-     * Set owner_email
-     *
-     * @param string $owner_email
-     * @return Pool
-     */
-    public function setOwnerEmail($owner_email)
-    {
-        $this->owner_email = $owner_email;
-    
-        return $this;
+        return $this->entries->first()->getName();
     }
 
     /**
@@ -183,7 +138,7 @@ class Pool
      */
     public function getOwnerEmail()
     {
-        return $this->owner_email;
+        return $this->entries->first()->getEmail();
     }
 
     /**
@@ -245,5 +200,13 @@ class Pool
     public function __toString()
     {
         return $this->getListname();
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function generateListname()
+    {
+        $this->listname = mktime() . $this->entries->count() . $this->getOwnerName();
     }
 }
