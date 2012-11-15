@@ -3,3 +3,4 @@
 .settings
 nbproject
 .vagrant
+.rsync_cache

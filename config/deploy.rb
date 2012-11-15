@@ -3,8 +3,8 @@ require 'railsless-deploy'
 set :application, "SecretSanta"
 set :repository,  "git://github.com/tvlooy/SecretSanta.git"
 set :deploy_to, "/var/www/secretsanta.ctors.net/"
-set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :scm, :git
+set :deploy_via, :rsync_with_remote_cache
 
 set :keep_releases, 3
 after "deploy", "deploy:cleanup"
