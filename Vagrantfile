@@ -3,7 +3,7 @@
 
 Vagrant::Config.run do |config|
   config.vm.box = "ctors"
-  config.vm.box_url = "http://ctors.net/squeeze64_2012_10_23.box"
+  config.vm.box_url = "http://ctors.net/squeeze64_2012_11_15.box"
 
   # Use :gui for showing a display for easy debugging of vagrant
   config.vm.boot_mode = :gui
