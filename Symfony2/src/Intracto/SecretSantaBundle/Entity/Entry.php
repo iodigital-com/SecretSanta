@@ -75,7 +75,7 @@ class Entry
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -91,7 +91,7 @@ class Entry
     public function setPool($pool)
     {
         $this->pool = $pool;
-    
+
         return $this;
     }
 
@@ -114,14 +114,14 @@ class Entry
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -137,14 +137,14 @@ class Entry
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -160,7 +160,7 @@ class Entry
     public function setEntry($entry)
     {
         $this->entry = $entry;
-    
+
         return $this;
     }
 
@@ -183,14 +183,14 @@ class Entry
     public function setViewdate($viewdate)
     {
         $this->viewdate = $viewdate;
-    
+
         return $this;
     }
 
     /**
      * Get viewdate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getViewdate()
     {
@@ -206,14 +206,14 @@ class Entry
     public function setSecret($secret)
     {
         $this->secret = $secret;
-    
+
         return $this;
     }
 
     /**
      * Get secret
      *
-     * @return string 
+     * @return string
      */
     public function getSecret()
     {

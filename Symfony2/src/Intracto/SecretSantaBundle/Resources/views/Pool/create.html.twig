@@ -74,7 +74,7 @@
 {% endblock %}
 {% block main %}
 
-<h1>Secret Santa {{ form_errors(form) }}</h1>
+<h1>Secret Santa</h1>
 
 
 
@@ -93,7 +93,7 @@
             </thead>
             <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
                 {% for entry in form.entries %}
-                <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
+                <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                     <td>{{ loop.index }}</td>
                     <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
                     <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
