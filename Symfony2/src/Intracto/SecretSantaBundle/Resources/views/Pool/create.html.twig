@@ -92,18 +92,18 @@
                 </tr>
             </thead>
             <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
-                <tr class="entry owner">
-                    <td>1</td>
-                    <td>{{ form_widget(form.owner_name) }}</td>
-                    <td>{{ form_widget(form.owner_email) }}</td>
-                    <td style="text-align: right;"><small>This person is also your list administrator.</small></td>
-                </tr>
                 {% for entry in form.entries %}
-                <tr class="entry not-owner">
-                    <td>{{ loop.index + 1 }}</td>
+                <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
+                    <td>{{ loop.index }}</td>
                     <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
                     <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
-                    <td style="text-align: right;"><button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i class="icon-minus-sign icon-white"></i> Remove this person</button></td>
+                    <td style="text-align: right;">
+                        {% if loop.index == 1 %}
+                            <small>This person is also your list administrator.</small>
+                        {% else %}
+                            <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i class="icon-minus-sign icon-white"></i> Remove this person</button>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

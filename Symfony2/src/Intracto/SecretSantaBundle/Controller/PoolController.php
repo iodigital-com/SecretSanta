@@ -24,8 +24,10 @@ class PoolController extends Controller
         // Every pool needs at least 3 members: 1 owner + 2 entries
         $entry1 = new Entry();
         $entry2 = new Entry();
+        $entry3 = new Entry();
         $pool->addEntry($entry1);
         $pool->addEntry($entry2);
+        $pool->addEntry($entry3);
         $form = $this->createForm(new PoolType(), $pool);
 
         if ('POST' === $request->getMethod()) {
