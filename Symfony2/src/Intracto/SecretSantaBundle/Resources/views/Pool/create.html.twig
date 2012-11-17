@@ -16,7 +16,7 @@
 
         // Handle delete button events
         bindDeleteButtonEvents();
-    } 
+    }
 
     function bindDeleteButtonEvents() {
 
@@ -36,10 +36,10 @@
 
                 $('table tr.entry.not-owner:gt(' + i + ')').each(function(j){
                     // Move values from next row to current row
-                    var next_row_name = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-name').val(); 
-                    var next_row_mail = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-mail').val();   
+                    var next_row_name = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-name').val();
+                    var next_row_mail = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-mail').val();
                     $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-name').val(next_row_name);
-                    $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-mail').val(next_row_mail);   
+                    $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-mail').val(next_row_mail);
                 });
 
                 // Delete last row
@@ -74,9 +74,9 @@
 {% endblock %}
 {% block main %}
 
-<h1>Secret Santa</h1>
+<h1>Secret Santa {{ form_errors(form) }}</h1>
 
-{#{ form_errors(form) }#}
+
 
 <form action="{{ path('pool_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
 
@@ -109,7 +109,7 @@
             </tbody>
         </table>
 
-        
+
     </p>
     <p>
         {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}

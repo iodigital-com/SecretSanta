@@ -63,12 +63,20 @@ class Pool
     public function __construct()
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
+        // Create default minimum entries
+        $default_number_of_entries = 3;
+        $i = 0;
+        while ($i < $default_number_of_entries) {
+            $entry = new Entry();
+            $this->addEntry($entry);
+            $i++;
+        }
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,14 +92,14 @@ class Pool
     public function setListname($listname)
     {
         $this->listname = $listname;
-    
+
         return $this;
     }
 
     /**
      * Get listname
      *
-     * @return string 
+     * @return string
      */
     public function getListname()
     {
@@ -107,14 +115,14 @@ class Pool
     public function setMessage($message)
     {
         $this->message = $message;
-    
+
         return $this;
     }
 
     /**
      * Get message
      *
-     * @return string 
+     * @return string
      */
     public function getMessage()
     {
@@ -124,7 +132,7 @@ class Pool
     /**
      * Get owner_name
      *
-     * @return string 
+     * @return string
      */
     public function getOwnerName()
     {
@@ -134,7 +142,7 @@ class Pool
     /**
      * Get owner_email
      *
-     * @return string 
+     * @return string
      */
     public function getOwnerEmail()
     {
@@ -150,14 +158,14 @@ class Pool
     public function setSentdate($sentdate)
     {
         $this->sentdate = $sentdate;
-    
+
         return $this;
     }
 
     /**
      * Get sentdate
      *
-     * @return string 
+     * @return string
      */
     public function getSentdate()
     {
@@ -207,6 +215,6 @@ class Pool
      */
     public function generateListname()
     {
-        $this->listname = mktime() . $this->entries->count() . $this->getOwnerName();
+        $this->listname = time() . $this->entries->count() . $this->getOwnerName();
     }
 }
