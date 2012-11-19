@@ -16,13 +16,12 @@
 
         // Handle delete button events
         bindDeleteButtonEvents();
-    }
-
-    function bindDeleteButtonEvents() {
 
         // Remove disabled state on delete-buttons
         $('.remove-entry').removeClass('disabled');
+    }
 
+    function bindDeleteButtonEvents() {
 
         // Loop over all delete buttons
         $('button.remove-entry').each(function(i){
@@ -68,6 +67,12 @@
             e.preventDefault();
             addNewEntry(collectionHolder);
         });
+
+        // If form has more then 3 entries, provide delete functionality
+        if($('table tr.entry').length > 3){
+            bindDeleteButtonEvents();
+            $('.remove-entry').removeClass('disabled');
+        }
 
     });
     </script>
