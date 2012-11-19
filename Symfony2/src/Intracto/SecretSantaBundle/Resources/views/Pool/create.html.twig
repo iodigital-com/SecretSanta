@@ -7,7 +7,7 @@
         var prototype = collectionHolder.attr('data-prototype');
         // Adjust entry prototype for correct naming
         var number_of_entries = collectionHolder.children().length; // Note, owner is not counted as entry
-        var newFormHtml = prototype.replace(/__name__/g, number_of_entries - 1).replace(/__entrycount__/g, number_of_entries + 1);
+        var newFormHtml = prototype.replace(/__name__/g, number_of_entries).replace(/__entrycount__/g, number_of_entries + 1);
 
         // Add new entry to pool with animation
         var newForm = $(newFormHtml);
