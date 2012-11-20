@@ -1,4 +1,4 @@
-class secretsanta::setup {
+class lamp::setup {
 
     # Install some default packages
     $default_packages = [ "htop", "strace", "sysstat", "git" ]

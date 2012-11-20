@@ -1,6 +1,6 @@
-class secretsanta::sql {
+class lamp::sql {
     class { 'mysql' :
-        require => Class["secretsanta::setup"],
+        require => Class["lamp::setup"],
     }
 
     exec { 'create-db':

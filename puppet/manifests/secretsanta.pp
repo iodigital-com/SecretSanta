@@ -4,6 +4,7 @@ Exec {
 }
 
 node default {
-    include params
-    include secretsanta
+    class { 'params' : }
+    class { 'lamp' : }
+    class { 'symfony2' : }
 }

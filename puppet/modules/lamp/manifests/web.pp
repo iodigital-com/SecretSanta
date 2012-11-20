@@ -1,6 +1,6 @@
-class secretsanta::web {
+class lamp::web {
     class { 'apache2' :
-        require => Class["secretsanta::sql"],
+        require => Class["lamp::sql"],
     }
 
     $default_packages = [ "phpmyadmin", "php5-intl", "php5-apc" ]
@@ -19,6 +19,6 @@ class secretsanta::web {
 
     # Configure apache virtual host
     apache2::vhost { $params::host :
-        documentroot => "/vagrant/htdocs/web",
+        documentroot => $params::documentroot,
     }
 }

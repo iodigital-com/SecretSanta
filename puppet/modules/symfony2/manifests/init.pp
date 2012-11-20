@@ -1,8 +1,8 @@
-class secretsanta::symfony2 {
+class symfony2 {
     exec { "composer install" :
         cwd => "/usr/local/bin",
         command => "curl -s https://getcomposer.org/installer | php",
-        require => Class["secretsanta::web"],
+        require => Class["lamp::web"],
     }
 
     # Install the vendors
