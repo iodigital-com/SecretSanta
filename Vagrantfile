@@ -6,7 +6,7 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://ctors.net/squeeze64_2012_11_15.box"
 
   # Use :gui for showing a display for easy debugging of vagrant
-  config.vm.boot_mode = :gui
+  # config.vm.boot_mode = :gui
 
   # Some VirtualBoxes seem to need this
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
