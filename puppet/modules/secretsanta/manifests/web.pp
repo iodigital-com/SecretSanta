@@ -19,6 +19,6 @@ class secretsanta::web {
 
     # Configure apache virtual host
     apache2::vhost { $params::host :
-        documentroot => "/vagrant/Symfony2/web",
+        documentroot => "/vagrant/htdocs/web",
     }
 }
