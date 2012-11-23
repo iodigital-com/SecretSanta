@@ -207,7 +207,7 @@ class Pool
 
     public function __toString()
     {
-        return $this->id . $this->entries->count() . $this->getOwnerName();
+        return "Id: " . $this->id . " - Entries: " . $this->entries->count() . " - Owner: " . $this->getOwnerName();
     }
 
     /**
