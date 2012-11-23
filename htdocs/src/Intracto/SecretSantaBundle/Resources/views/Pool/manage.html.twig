@@ -3,6 +3,28 @@
 
     <h1>Your Secret Santa</h1>
 
-	<p>TODO</p>    
-	{{ pool }}
+	 <p>
+            <table class="entries table table-striped">
+                <thead>
+                    <tr>
+                        <th class="span1">#</th>
+                        <th class="span3">Name</th>
+                        <th class="span4">E-mail</th>
+                        <th class="span4">Confirmed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in pool.entries %}
+                    <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
+                        <td>{{ loop.index }}</td>
+                        <td>{{ entry.name }}</td>
+                        <td>{{ entry.email }}</td>
+                        <td>TODO</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </p>
+
+	
 {% endblock %}
