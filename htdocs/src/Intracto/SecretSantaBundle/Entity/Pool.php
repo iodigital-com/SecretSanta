@@ -215,6 +215,6 @@ class Pool
      */
     public function generateListname()
     {
-        $this->listurl = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 30);
+        $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 }
