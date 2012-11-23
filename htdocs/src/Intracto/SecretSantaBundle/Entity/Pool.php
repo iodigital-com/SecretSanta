@@ -25,11 +25,11 @@ class Pool
     private $id;
 
     /**
-     * @var string $listname
+     * @var string $listurl
      *
-     * @ORM\Column(name="listname", type="string", length=255)
+     * @ORM\Column(name="listurl", type="string", length=255)
      */
-    private $listname;
+    private $listurl;
 
     /**
      * @var string $message
@@ -84,26 +84,26 @@ class Pool
     }
 
     /**
-     * Set listname
+     * Set listurl
      *
-     * @param string $listname
+     * @param string $listurl
      * @return Pool
      */
-    public function setListname($listname)
+    public function setListurl($listurl)
     {
-        $this->listname = $listname;
+        $this->listurl = $listurl;
 
         return $this;
     }
 
     /**
-     * Get listname
+     * Get listurl
      *
      * @return string
      */
-    public function getListname()
+    public function getListurl()
     {
-        return $this->listname;
+        return $this->listurl;
     }
 
     /**
@@ -207,7 +207,7 @@ class Pool
 
     public function __toString()
     {
-        return $this->getListname();
+        return $this->id . $this->entries->count() . $this->getOwnerName();
     }
 
     /**
@@ -215,6 +215,6 @@ class Pool
      */
     public function generateListname()
     {
-        $this->listname = time() . $this->entries->count() . $this->getOwnerName();
+        $this->listurl = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 30);
     }
 }
