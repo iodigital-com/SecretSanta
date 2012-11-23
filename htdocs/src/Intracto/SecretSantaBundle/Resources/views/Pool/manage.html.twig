@@ -19,7 +19,7 @@
                     <td>{{ loop.index }}</td>
                     <td>{{ entry.name }}</td>
                     <td>{{ entry.email }}</td>
-                    <td>TODO</td>
+                    <td>{% if entry.viewdate %}Yes{% else %}Not yet{% endif %}</td>
                 </tr>
                 {% endfor %}
             </tbody>
