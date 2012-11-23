@@ -53,6 +53,11 @@ class PoolController extends Controller
     {
         $this->getPool($listurl);
 
+        if($this->pool->getSentdate() === NULL){
+            $this->pool->shuffleEntries();
+            $this->pool->sendSecretSantaMails();
+        }
+
         return array('pool' => $this->pool);
     }
 

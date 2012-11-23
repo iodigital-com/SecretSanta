@@ -217,4 +217,20 @@ class Pool
     {
         $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
+
+    /**
+    * Shuffles all entries for pool and saves result to each entry
+    */
+    public function shuffleEntries()
+    {
+        // Todo: shuffle and save
+    }
+
+    /**
+    * Send Secret Santa mail to all entries
+    */
+    public function sendSecretSantaMails()
+    {
+        // Todo: send mails to all entries
+    }
 }
