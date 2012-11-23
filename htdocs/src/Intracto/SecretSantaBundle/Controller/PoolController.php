@@ -45,4 +45,30 @@ class PoolController extends Controller
             'form' => $form->createView(),
         );
     }
+    /**
+     * @Route("/manage/{listurl}", name="pool_manage")
+     * @Template()
+     */
+    public function manageAction($listurl)
+    {
+        $this->getPool($listurl);
+
+        return array('pool' => $this->pool);
+    }
+
+    /*
+    * Retrieve pool by url
+    * @param string $url
+    * @return boolean
+    */
+
+    protected function getPool($listurl)
+    {
+        $this->pool = $this->getDoctrine()->getRepository('IntractoSecretSantaBundle:Pool')->findOneByListurl($listurl);
+        if (!is_object($this->pool)) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+        }
+
+        return true;
+    }
 }
