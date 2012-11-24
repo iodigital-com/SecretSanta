@@ -27,3 +27,27 @@ To stop the machine use:
 This just stops the VM. If you want to remove it use:
 
     $ vagrant destroy
+
+###Mailing
+
+The mailserver of the box is not set up yet (with puppet). So, how to work with the mailing?
+Obviously we don't want to deliver mail during development. We just want to see it in our mailqueue.
+
+First SSH into your box (vagrant ssh), then become root (sudo -i). As root run the command:
+
+    $ dpkg-reconfigure postfix
+
+Choose "internet domain" and accept all the defaults. Then put the queue's on hold and restart postfix:
+
+    $ postconf -e 'smtpd_sender_restrictions = static:HOLD'
+    $ /etc/init.d/postfix restart
+
+You can now try to mail with the application. To see the queue, run:
+
+    $ postqueue -p
+
+If you want to see the content of a mail use the command:
+
+    $ postcat -q AC47A245C1
+
+Where AC47A245C1 is the queue ID of your mail (without the ending ! character, which just means "on hold").
