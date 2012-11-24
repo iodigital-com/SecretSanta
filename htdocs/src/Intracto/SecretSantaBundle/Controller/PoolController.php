@@ -21,7 +21,6 @@ class PoolController extends Controller
     {
         $pool = new Pool();
 
-
         $form = $this->createForm(new PoolType(), $pool);
 
         if ('POST' === $request->getMethod()) {
@@ -55,15 +54,13 @@ class PoolController extends Controller
 
         if($this->pool->getSentdate() === NULL){
             
-            // Get repository
-            $em = $this->getDoctrine()->getEntityManager();
-            $repository = $em->getRepository('IntractoSecretSantaBundle:Entry');
+            $entryService = $this->get('intracto_secret_santa.entry_service');
 
             // Shuffle
-            $repository->shuffleEntries($this->pool);
+            $entryService->shuffleEntries($this->pool);
 
             // Send mails
-            $repository->sendSecretSantaMailsForPool($this->pool);
+            $entryService->sendSecretSantaMailsForPool($this->pool);
         }
 
         return array('pool' => $this->pool);

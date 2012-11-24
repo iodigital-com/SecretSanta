@@ -10,8 +10,7 @@ use Intracto\SecretSantaBundle\Entity\Pool;
  * Intracto\SecretSantaBundle\Entity\Entry
  *
  * @ORM\Table()
- * @ORM\Entity
- * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\EntryRepository")
+ * @ORM\Entity()
  */
 class Entry
 {
@@ -235,11 +234,12 @@ class Entry
     }
 
     /**
-    * Send mail with link to entry_view page and pool message
-    */
-    public function sendSecretSantaMail()
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
     {
-        //TODO
-        print_r('Mailing todo');
+        return $this->url;
     }
 }

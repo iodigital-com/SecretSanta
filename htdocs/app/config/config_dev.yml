@@ -24,3 +24,9 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: [IntractoSecretSantaBundle]
+        directories: ["%kernel.root_dir%/../src/Intracto/SecretSantaBundle/Entity"]
