@@ -41,9 +41,9 @@ class Pool
     private $message;
 
     /**
-     * @var string $sentdate
+     * @var datetime $sentdate
      *
-     * @ORM\Column(name="sentdate", type="string", length=255, nullable=true)
+     * @ORM\Column(name="sentdate", type="datetime", length=255, nullable=true)
      */
     private $sentdate;
 
@@ -152,7 +152,7 @@ class Pool
     /**
      * Set sentdate
      *
-     * @param string $sentdate
+     * @param datetime $sentdate
      * @return Pool
      */
     public function setSentdate($sentdate)
@@ -165,7 +165,7 @@ class Pool
     /**
      * Get sentdate
      *
-     * @return string
+     * @return datetime
      */
     public function getSentdate()
     {

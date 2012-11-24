@@ -55,13 +55,15 @@ class PoolController extends Controller
 
         if($this->pool->getSentdate() === NULL){
             
-
+            // Get repository
             $em = $this->getDoctrine()->getEntityManager();
             $repository = $em->getRepository('IntractoSecretSantaBundle:Entry');
+
+            // Shuffle
             $repository->shuffleEntries($this->pool);
 
-
-            $this->pool->sendSecretSantaMails();
+            // Send mails
+            $repository->sendSecretSantaMailsForPool($this->pool);
         }
 
         return array('pool' => $this->pool);

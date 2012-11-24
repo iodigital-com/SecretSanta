@@ -220,4 +220,13 @@ class Entry
     {
         return $this->secret;
     }
+
+    /**
+    * Send mail with link to entry_view page and pool message
+    */
+    public function sendSecretSantaMail()
+    {
+        //TODO
+        print_r('Mailing todo');
+    }
 }

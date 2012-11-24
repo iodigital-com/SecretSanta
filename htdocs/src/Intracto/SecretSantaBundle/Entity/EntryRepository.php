@@ -17,8 +17,8 @@ class EntryRepository extends EntityRepository
     * @param object $pool
     * @return boolean
     */
-    public function shuffleEntries($pool)
-    {
+    public function shuffleEntries($pool){
+
         // Get all entries for this pool
         $entries = $pool->getEntries();
 
@@ -57,6 +57,26 @@ class EntryRepository extends EntityRepository
                 ->getQuery();
             $p = $q->execute();
         }
+    }
+
+    /**
+    * Sends out all mails for a Pool
+    *
+    * @param object $pool
+    * @return boolean
+    */
+    public function sendSecretSantaMailsForPool($pool){
+
+        $pool->setSentdate(new \DateTime("now"));
+
+        $em = $this->getEntityManager();
+        $em->persist($pool);
+        $em->flush();
+
+        foreach($pool->getEntries() as $entry){
+            $entry->sendSecretSantaMail();
+        }
+
     }
 
 
