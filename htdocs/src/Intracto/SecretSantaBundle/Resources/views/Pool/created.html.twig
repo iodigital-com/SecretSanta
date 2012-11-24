@@ -10,5 +10,11 @@
 	<p>
 		In the confirmation email the list administrator will also find a link to keep track of all users in this list who've already found out which person they'll be in charge off, making sure every Secret Santa knows his duty.
 	</p>
-	<p>
+	<p>{% if app.debug %}
+		<h4>Debug mode:</h4>
+		<p>
+			<a href="{{ path('pool_manage', { 'listurl': pool.listurl }) }}">Manage pool page (url: {{ pool.listurl }})</a>
+		</p>
+
+		{% endif %}
 {% endblock %}
