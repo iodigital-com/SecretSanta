@@ -62,8 +62,7 @@ class EntryService
     {
         $pool->setSentdate(new \DateTime("now"));
 
-        $this->em->persist($pool);
-        $this->em->flush();
+        $this->em->flush($pool);
 
         foreach ($pool->getEntries() as $entry) {
         	$message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
