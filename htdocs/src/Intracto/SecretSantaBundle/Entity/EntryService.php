@@ -10,15 +10,15 @@ use Intracto\SecretSantaBundle\Entity\Pool;
  */
 class EntryService
 {
-	/**
-	 * @DI\Inject("mailer")
-	 */
-	public $mailer;
+    /**
+     * @DI\Inject("mailer")
+     */
+    public $mailer;
 
-	/**
-	 * @DI\Inject("doctrine.orm.entity_manager")
-	 */
-	public $em;
+    /**
+     * @DI\Inject("doctrine.orm.entity_manager")
+     */
+    public $em;
 
     /**
      * Shuffles all entries for pool and save result to each entry
@@ -65,15 +65,15 @@ class EntryService
         $this->em->flush($pool);
 
         foreach ($pool->getEntries() as $entry) {
-        	$message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
-        	$message = str_replace('(HERE)', 'http://' . $entry->getUrl(), $message);
+            $message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
+            $message = str_replace('(HERE)', 'http://' . $entry->getUrl(), $message);
 
-	        $mail = \Swift_Message::newInstance()
-	            ->setSubject('Your SecretSanta')
-	            ->setFrom('santa@secretsanta.dev', 'Santa')
-	            ->setTo($entry->getEmail(), $entry->getName())
-	            ->setBody($message);
-	        $this->mailer->send($mail);
+            $mail = \Swift_Message::newInstance()
+                ->setSubject('Your SecretSanta')
+                ->setFrom('santa@secretsanta.dev', 'Santa')
+                ->setTo($entry->getEmail(), $entry->getName())
+                ->setBody($message);
+            $this->mailer->send($mail);
         }
     }
 }
