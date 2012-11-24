@@ -11,6 +11,7 @@ use Intracto\SecretSantaBundle\Entity\Pool;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\EntryRepository")
  */
 class Entry
 {

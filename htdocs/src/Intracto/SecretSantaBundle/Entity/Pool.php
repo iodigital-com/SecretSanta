@@ -219,14 +219,6 @@ class Pool
     }
 
     /**
-    * Shuffles all entries for pool and saves result to each entry
-    */
-    public function shuffleEntries()
-    {
-        // Todo: shuffle and save
-    }
-
-    /**
     * Send Secret Santa mail to all entries
     */
     public function sendSecretSantaMails()
