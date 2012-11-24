@@ -31,20 +31,21 @@ class EntryRepository extends EntityRepository
         // Shuffle array
         shuffle($entry_ids);
         
-        // Safe result to each entry
         foreach($entry_ids as $key => $entry_id){
 
+            // Define secret santa id
             if($key != 0){
                 // Get previous entry
-            $secret_santa_entry_id = $entry_ids[$key - 1];    
+                $secret_santa_entry_id = $entry_ids[$key - 1];    
             }else{
                 // Get last entry
                 $secret_santa_entry_id = $entry_ids[count($entry_ids) - 1];
             }
 
-            // Generate url
+            // Generate url here (Since we're doing an update query anyway)
             $url = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
 
+            // Update entry
             $qb = $this->getEntityManager()->createQueryBuilder();
             $q = $qb->update('\Intracto\SecretSantaBundle\Entity\Entry', 'e')
                 ->set('e.entry', '?1')
