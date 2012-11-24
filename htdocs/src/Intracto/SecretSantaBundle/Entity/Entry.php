@@ -222,6 +222,19 @@ class Entry
     }
 
     /**
+     * Set url
+     *
+     * @param string $url
+     * @return Entry
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
     * Send mail with link to entry_view page and pool message
     */
     public function sendSecretSantaMail()
