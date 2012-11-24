@@ -44,6 +44,7 @@ class PoolController extends Controller
             'form' => $form->createView(),
         );
     }
+
     /**
      * @Route("/manage/{listurl}", name="pool_manage")
      * @Template()
@@ -52,8 +53,7 @@ class PoolController extends Controller
     {
         $this->getPool($listurl);
 
-        if($this->pool->getSentdate() === NULL){
-            
+        if ($this->pool->getSentdate() === null) {
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
             // Shuffle
@@ -66,15 +66,17 @@ class PoolController extends Controller
         return array('pool' => $this->pool);
     }
 
-    /*
-    * Retrieve pool by url
-    * @param string $url
-    * @return boolean
-    */
-
+    /**
+     * Retrieve pool by url
+     *
+     * @param string $url
+     *
+     * @return boolean
+     */
     protected function getPool($listurl)
     {
         $this->pool = $this->getDoctrine()->getRepository('IntractoSecretSantaBundle:Pool')->findOneByListurl($listurl);
+
         if (!is_object($this->pool)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
