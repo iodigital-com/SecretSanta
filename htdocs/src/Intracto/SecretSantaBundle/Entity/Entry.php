@@ -66,11 +66,11 @@ class Entry
     private $viewdate;
 
     /**
-     * @var string $secret
+     * @var string $url
      *
-     * @ORM\Column(name="secret", type="string", length=255, nullable=true)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
-    private $secret;
+    private $url;
 
 
     /**

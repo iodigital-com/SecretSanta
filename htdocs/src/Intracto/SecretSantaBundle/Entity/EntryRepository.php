@@ -42,12 +42,17 @@ class EntryRepository extends EntityRepository
                 $secret_santa_entry_id = $entry_ids[count($entry_ids) - 1];
             }
 
+            // Generate url
+            $url = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+
             $qb = $this->getEntityManager()->createQueryBuilder();
             $q = $qb->update('\Intracto\SecretSantaBundle\Entity\Entry', 'e')
                 ->set('e.entry', '?1')
+                ->set('e.url', '?3')
                 ->where('e.id = ?2')
                 ->setParameter(1, $secret_santa_entry_id)
                 ->setParameter(2, $entry_id)
+                ->setParameter(3, $url)
                 ->getQuery();
             $p = $q->execute();
         }
