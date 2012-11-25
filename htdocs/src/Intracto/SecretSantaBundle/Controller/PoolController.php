@@ -63,6 +63,7 @@ class PoolController extends Controller
         $this->getPool($listurl);
 
         if ($this->pool->getSentdate() === null) {
+            $first_time = true;
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
             // Shuffle
@@ -70,9 +71,11 @@ class PoolController extends Controller
 
             // Send mails
             $entryService->sendSecretSantaMailsForPool($this->pool);
+        }else{
+            $first_time = false;
         }
 
-        return array('pool' => $this->pool);
+        return array('pool' => $this->pool, 'first_time' => $first_time);
     }
 
     /**
