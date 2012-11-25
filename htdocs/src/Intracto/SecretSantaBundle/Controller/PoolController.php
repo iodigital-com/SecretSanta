@@ -34,6 +34,15 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
+                // Send pending confirmation mail
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Hello Email')
+                    ->setFrom('send@example.com')
+                    ->setTo('recipient@example.com')
+                    ->setBody($this->renderView('IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig', array('pool' => $pool)))
+                ;
+                $this->get('mailer')->send($message);
+
                 return new Response(
                     $this->renderView('IntractoSecretSantaBundle:Pool:created.html.twig', array('pool' => $pool))
                 );
