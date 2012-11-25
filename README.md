@@ -33,11 +33,13 @@ This just stops the VM. If you want to remove it use:
 The mailserver of the box is not set up yet (with puppet). So, how to work with the mailing?
 Obviously we don't want to deliver mail during development. We just want to see it in our mailqueue.
 
-First SSH into your box (vagrant ssh), then become root (sudo -i). As root run the command:
+First SSH into your box (vagrant ssh)
+Become root and run the command to configure postfix
 
+    $ sudo -i
     $ dpkg-reconfigure postfix
 
-Choose "internet Site" and accept all the defaults. Then put the queue's on hold and restart postfix:
+Choose "Internet Site" and accept all the defaults. Then put the queue's on hold and restart postfix:
 
     $ postconf -e 'smtpd_sender_restrictions = static:HOLD'
     $ /etc/init.d/postfix restart
