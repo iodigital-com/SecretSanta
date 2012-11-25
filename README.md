@@ -53,3 +53,7 @@ If you want to see the content of a mail use the command:
     $ postcat -q AC47A245C1
 
 Where AC47A245C1 is the queue ID of your mail (without the ending ! character, which just means "on hold").
+
+If you want to delete all mails in queue use the command:
+
+    $ postsuper -d ALL
