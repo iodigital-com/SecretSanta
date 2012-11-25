@@ -19,6 +19,8 @@ class EntryController extends Controller
     {
         $this->getEntry($url);
 
+        // TODO: log visit on first access
+
         return array(
             'entry' => $this->entry,
         );
