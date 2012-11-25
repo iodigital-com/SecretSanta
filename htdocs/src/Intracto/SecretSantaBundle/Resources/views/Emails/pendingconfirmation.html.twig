@@ -6,7 +6,7 @@
 	You will also be able to keep track of all your users consulting their secret santa target.
 </p>
 <p>
-	<a href="{{ pool.listurl }}">{{ pool.listurl }}</a>
+	<a href="{{ url('pool_manage', { 'listurl': pool.listurl }) }}">{{ path('pool_manage', { 'listurl': pool.listurl }) }}</a>
 </p>
 
 <p>Created by <a href="http://www.intracto.be">Intracto</a></p>
