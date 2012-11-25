@@ -21,6 +21,11 @@ class EntryService
     public $em;
 
     /**
+     * @DI\Inject("templating")
+     */
+    public $templating;
+
+    /**
      * Shuffles all entries for pool and save result to each entry
      *
      * @param Pool $pool
@@ -61,18 +66,19 @@ class EntryService
     public function sendSecretSantaMailsForPool(Pool $pool)
     {
         $pool->setSentdate(new \DateTime("now"));
-
         $this->em->flush($pool);
+
+
 
         foreach ($pool->getEntries() as $entry) {
             $message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
-            $message = str_replace('(HERE)', 'http://' . $entry->getUrl(), $message);
+            $body = $this->templating->render('IntractoSecretSantaBundle:Emails:secretsanta.html.twig', array('message' => $message, 'entry' => $entry));
 
             $mail = \Swift_Message::newInstance()
                 ->setSubject('Your SecretSanta')
                 ->setFrom('santa@secretsanta.dev', 'Santa')
                 ->setTo($entry->getEmail(), $entry->getName())
-                ->setBody($this->renderView('SecretSantaBundle:Emails:secretsanta.html.twig', array('message' => $message)));
+                ->setBody($body);
             $this->mailer->send($mail);
         }
     }
