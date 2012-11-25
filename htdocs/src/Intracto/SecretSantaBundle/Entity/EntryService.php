@@ -72,7 +72,7 @@ class EntryService
                 ->setSubject('Your SecretSanta')
                 ->setFrom('santa@secretsanta.dev', 'Santa')
                 ->setTo($entry->getEmail(), $entry->getName())
-                ->setBody($message);
+                ->setBody($this->renderView('SecretSantaBundle:Emails:secretsanta.html.twig', array('message' => $message)));
             $this->mailer->send($mail);
         }
     }
