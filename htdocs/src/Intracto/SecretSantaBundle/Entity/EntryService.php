@@ -35,7 +35,7 @@ class EntryService
     public function shuffleEntries(Pool $pool)
     {
         $entries = $pool->getEntries()->getValues();
-        
+
         shuffle($entries);
 
         foreach ($entries as $index => $entry) {
