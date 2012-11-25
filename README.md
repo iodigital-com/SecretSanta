@@ -37,7 +37,7 @@ First SSH into your box (vagrant ssh), then become root (sudo -i). As root run t
 
     $ dpkg-reconfigure postfix
 
-Choose "internet domain" and accept all the defaults. Then put the queue's on hold and restart postfix:
+Choose "internet Site" and accept all the defaults. Then put the queue's on hold and restart postfix:
 
     $ postconf -e 'smtpd_sender_restrictions = static:HOLD'
     $ /etc/init.d/postfix restart
