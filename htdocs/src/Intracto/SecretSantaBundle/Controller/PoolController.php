@@ -36,9 +36,9 @@ class PoolController extends Controller
 
                 // Send pending confirmation mail
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Hello Email')
-                    ->setFrom('send@example.com')
-                    ->setTo('recipient@example.com')
+                    ->setSubject('Secret Santa Confirmation')
+                    ->setFrom('santa@secretsanta.dev')
+                    ->setTo($pool->getOwnerEmail())
                     ->setBody($this->renderView('IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig', array('pool' => $pool)))
                 ;
                 $this->get('mailer')->send($message);
