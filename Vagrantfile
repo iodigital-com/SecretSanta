@@ -28,7 +28,7 @@ Vagrant::Config.run do |config|
       puppet.manifest_file = "secretsanta.pp"
       puppet.options = [
         '--verbose',
-        '--debug',
+        # '--debug',
       ]
     end
   end
