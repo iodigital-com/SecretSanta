@@ -1,3 +1,5 @@
+# sudo gem install capistrano capistrano-ext railsless-deploy capistrano_rsync_with_remote_cache capifony
+
 require 'railsless-deploy'
 
 set :application, "SecretSanta"
