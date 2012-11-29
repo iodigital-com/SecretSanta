@@ -39,7 +39,19 @@ class PoolController extends Controller
                     ->setSubject('Secret Santa Confirmation')
                     ->setFrom('santa@secretsanta.dev')
                     ->setTo($pool->getOwnerEmail())
-                    ->setBody($this->renderView('IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig', array('pool' => $pool)))
+                    ->setBody(
+                        $this->renderView(
+                            'IntractoSecretSantaBundle:Emails:pendingconfirmation.txt.twig',
+                            array('pool' => $pool)
+                        )
+                    )
+                    ->addPart(
+                        $this->renderView(
+                            'IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig',
+                            array('pool' => $pool)
+                        ),
+                        'text/html'
+                    )
                 ;
                 $this->get('mailer')->send($message);
 
