@@ -72,13 +72,21 @@ class EntryService
 
         foreach ($pool->getEntries() as $entry) {
             $message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
-            $body = $this->templating->render('IntractoSecretSantaBundle:Emails:secretsanta.html.twig', array('message' => $message, 'entry' => $entry));
+            $txtBody = $this->templating->render(
+                'IntractoSecretSantaBundle:Emails:secretsanta.txt.twig',
+                array('message' => $message, 'entry' => $entry)
+            );
+            $htmlBody = $this->templating->render(
+                'IntractoSecretSantaBundle:Emails:secretsanta.html.twig',
+                array('message' => $message, 'entry' => $entry)
+            );
 
             $mail = \Swift_Message::newInstance()
                 ->setSubject('Your SecretSanta')
                 ->setFrom('santa@secretsanta.dev', 'Santa')
                 ->setTo($entry->getEmail(), $entry->getName())
-                ->setBody($body);
+                ->setBody($txtBody)
+                ->addPart($htmlBody, 'text/html');
             $this->mailer->send($mail);
         }
     }
