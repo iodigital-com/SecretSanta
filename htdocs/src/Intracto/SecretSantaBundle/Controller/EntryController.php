@@ -17,9 +17,14 @@ class EntryController extends Controller
      */
     public function indexAction($url)
     {
+        $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
-        // TODO: log visit on first access
+        // Log visit on first access
+        if ($this->entry->getViewdate() === null) {
+            $this->entry->setViewdate(new \DateTime());
+            $em->flush($this->entry);
+        }
 
         return array(
             'entry' => $this->entry,
