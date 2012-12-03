@@ -31,34 +31,32 @@
 
             <form action="{{ path('pool_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
-                <p id="mysanta">
-                    <table class="entries table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="span1">#</th>
-                                <th class="span3">Name</th>
-                                <th class="span4">E-mail</th>
-                                <th style="text-align: right;" class="span4"><button type="button" class="btn btn-mini btn-success add-new-entry"><i class="icon-plus-sign icon-white"></i> Add person</button></th>
-                            </tr>
-                        </thead>
-                        <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
-                            {% for entry in form.entries %}
-                            <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
-                                <td>{{ loop.index }}</td>
-                                <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
-                                <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
-                                <td style="text-align: right;">
-                                    {% if loop.index == 1 %}
-                                    <small>This person is also your list administrator.</small>
-                                    {% else %}
-                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i class="icon-minus-sign icon-white"></i> Remove this person</button>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </p>
+                <table class="entries table table-striped" id="mysanta">
+                    <thead>
+                        <tr>
+                            <th class="span1">#</th>
+                            <th class="span3">Name</th>
+                            <th class="span4">E-mail</th>
+                            <th style="text-align: right;" class="span4"><button type="button" class="btn btn-mini btn-success add-new-entry"><i class="icon-plus-sign icon-white"></i> Add person</button></th>
+                        </tr>
+                    </thead>
+                    <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
+                        {% for entry in form.entries %}
+                        <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
+                            <td>{{ loop.index }}</td>
+                            <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
+                            <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
+                            <td style="text-align: right;">
+                                {% if loop.index == 1 %}
+                                <small>This person is also your list administrator.</small>
+                                {% else %}
+                                <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i class="icon-minus-sign icon-white"></i> Remove this person</button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
                 <p>
                     {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}
                 </p>
