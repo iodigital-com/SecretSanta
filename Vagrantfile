@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
-  config.vm.box = "ctors_squeeze64_2012-11-15"
-  config.vm.box_url = "http://ctors.net/squeeze64_2012_11_15.box"
+  config.vm.box = "ctors_squeeze64_2012-12-03"
+  config.vm.box_url = "http://ctors.net/squeeze64_2012_12_03.box"
 
   # Use :gui for showing a display for easy debugging of vagrant
   # config.vm.boot_mode = :gui
