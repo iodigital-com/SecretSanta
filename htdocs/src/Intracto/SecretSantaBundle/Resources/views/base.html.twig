@@ -23,7 +23,15 @@
             </header>
             {#% include "IntractoSecretSantaBundle:Helpers:navbar.html.twig" %#}
             {% block main %}{% endblock %}
-
+            {% block footer %}
+                <div id="footer-santa" class="clearfix">
+                    <div class="copyright">&copy;2012 <a href="http://www.intracto.com" target="_blank">Intracto</a></div>
+                    <div class="footer-links">
+                        <a href="http://www.intracto.com" target="_blank">Privacy policy</a>
+                    </div>
+                    Have fun organizing Secret Santa!  Created by Intracto
+                </div>
+            {% endblock %}
         </div>
     </div>
     <script src="{{ asset('/bundles/intractosecretsanta/js/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
