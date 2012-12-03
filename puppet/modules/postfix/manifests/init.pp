@@ -24,4 +24,26 @@ class postfix {
         command => "sudo sh /tmp/mailcollect.sh",
         unless => "/usr/bin/file /etc/postfix/virtual_forwardings.pcre",
     }
+
+    $webmail = [ "roundcube-core", "dovecot-imapd" ]
+    package { $webmail :
+        ensure => present,
+        require => Package["postfix"],
+    }
+
+    file { "webmail.sh" :
+        path => "/tmp/webmail.sh",
+        source => "puppet:///modules/postfix/webmail.sh",
+        ensure => file,
+        mode => 0644,
+        owner => vagrant,
+        group => vagrant,
+        require => Package[$webmail],
+    }
+    exec { "configure webmail" :
+        require => File["webmail.sh"],
+        path => "/bin:/usr/bin",
+        command => "sudo sh /tmp/webmail.sh",
+    }
+
 }
