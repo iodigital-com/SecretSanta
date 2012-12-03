@@ -9,7 +9,7 @@
             <li><span class="icon-steps">3</span> Done!</li>
         </ul>
         <div class="text-center">
-            <a href="#" class="btn-started">Get Started!</a>
+            <a href="#mysanta" class="btn-started">Get Started!</a>
         </div>
     </div>
 {% endblock %}  
@@ -35,7 +35,7 @@
                     <table class="entries table table-striped">
                         <thead>
                             <tr>
-                                <th class="span1">#</th>
+                                <th class="span1"><a id="mysanta">#</a></th>
                                 <th class="span3">Name</th>
                                 <th class="span4">E-mail</th>
                                 <th style="text-align: right;" class="span4"><button type="button" class="btn btn-mini btn-success add-new-entry"><i class="icon-plus-sign icon-white"></i> Add person</button></th>
@@ -79,6 +79,7 @@
 
 
 {% block javascripts %}
+<script src="{{ asset('/js/jquery.smooth-scroll.min.js') }}"></script>
 <script type="text/javascript">
 
 function addNewEntry(collectionHolder) {
@@ -152,6 +153,14 @@ jQuery(document).ready(function() {
             bindDeleteButtonEvents();
             $('.remove-entry').removeClass('disabled');
         }
+
+        // Add smooth scroll
+        $('a.btn-started').click(function() {
+            $.smoothScroll({
+                scrollTarget: '#mysanta'
+            });
+            return false;
+        });
 
     });
 </script>
