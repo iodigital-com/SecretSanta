@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('../fonts/OpenSans-Bold-webfont.eot');
+    src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Bold-webfont.svg#OpenSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'straitregular';
+    src: url('../fonts/strait-regular-webfont.eot');
+    src: url('../fonts/strait-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/strait-regular-webfont.woff') format('woff'),
+         url('../fonts/strait-regular-webfont.ttf') format('truetype'),
+         url('../fonts/strait-regular-webfont.svg#straitregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/** liststyle **/
+ul.liststyle1 {
+	margin: 0px 0px 16px 0px;
+	padding: 0px;
+	border-bottom: 1px solid #e8e8e8;
+}
+	ul.liststyle1 li {
+		margin: 0px 0px 12px 0px;
+		padding: 0px;
+		list-style: none;
+		line-height: 29px;
+	}
+		ul.liststyle1 li .icon-steps {
+			display: inline-block;
+			height: 29px;
+			line-height: 29px;
+			width: 29px;
+			text-align: center;
+			margin-right: 10px;
+			float: left;
+			color: #ffffff;
+			background: url(../images/bulletstyle1.png) no-repeat left top;
+		}
+		
+
+/** **/
+
+html {
+	font-size: 62.5%;
+}
+body {
+	background: url(../images/body-bg.jpg) repeat-x left top;
+	font-family: 'OpenSansRegular';
+	font-size: 100%;
+	font-size: 1.4em;
+	color: #333333;
+}
+	.text-center {
+		text-align: center;
+	}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'straitregular';
+}
+	h1 {
+		font-size: 2.3em;
+		font-weight: normal;
+	}
+	h2 {
+		font-size: 2.3em;
+		line-height: 25px;
+		font-weight: normal;
+		margin: 0px 0px 28px 0px;
+	}
+		#header h2 {
+			font-size: 1.7em;
+			margin: 0px 0px 20px 0px;
+		}
+	p {
+		margin: 0px 0px 14px 0px;
+	}
+		.accent {
+			color: #659d98;
+		}
+	a {
+		color: #b3141c;
+		text-decoration: underline;
+	}
+	a.btn-started {
+		display: inline-block;
+		width: 213px;
+		height: 44px;
+		line-height: 44px;
+		color: #ffffff;
+		background: url(../images/btn-started.png) no-repeat left top;
+		text-shadow: 1px 1px 1px #6e070c;
+		text-align: center;
+		font-size: 1.2em;
+		font-family: 'OpenSansBold';
+		text-decoration: none;
+	}
+	.btn-success {
+		font-size: 0.9em;
+		padding: 5px 13px;
+		font-family: 'OpenSansBold';
+	}
+		.btn-success [class^="icon-"] {
+			margin-top: 1px;
+		}
+		table.entries input {
+			height: 28px;
+			line-height: 28px;
+		}
+	.wrapper .btn-primary, .wrapper .btn-primary:active, .wrapper .btn-primary:visited, .wrapper .btn-primary.active {
+	    background-color: #A9181F;
+	    background-image: linear-gradient(to bottom, #BE1018, #AA181F);
+	    background-image: moz linear-gradient(top, #BE1018, #AA181F);
+	    background-image: -webkit-gradient(linear,0 0,0 100%,from(#BE1018),to(#AA181F));
+	    background-repeat: repeat-x;
+	    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	    color: #FFFFFF;
+	    text-shadow: 0 -1px 0 #6f070c;
+	}
+	#wrapper .btn-primary:hover {
+		background: #A9181F;
+	}
+	textarea {
+		color: #333333;
+	}
+	input.span12, textarea.span12, .uneditable-input.span12 {
+		width: 100%;
+	}
+	.table {
+		margin-bottom: 65px;
+	}
+		
+/**  **/		
+
+	.wrapper {
+		background: url(../images/header-bg.jpg) no-repeat center top;
+	}
+	.container {
+		max-width: 940px;
+		padding: 0px 30px;
+		width: auto;
+		position: relative;
+	}
+		#header {
+			 height: 372px;
+		}
+			.steps {
+				background: url(../images/steps.png) no-repeat left top;
+				padding: 12px 20px 0px 20px;
+				width: 289px;
+				height: 266px;
+				position: absolute;
+				right: 0px;
+				top: 10px;
+			}
+		.content-container {
+			background: url(../images/content-container.png) no-repeat center top;
+			padding: 130px 0px 0px 0px;
+		}
+			.box {
+				margin: 0px 0px 20px 0px;
+			}
+	#footer-santa {
+		background: url(../images/footer-bg.png) no-repeat right top;
+		padding: 65px 0px 35px 0px;
+		text-align: center;
+		font-size: 0.8em;
+	}
+		.copyright {
+			float: left;
+		}
+		.footer-links {
+			float: right;
+			padding-right: 175px;
+		}
