@@ -197,3 +197,19 @@ h1, h2, h3, h4, h5, h6 {
 			 margin-bottom: 3px;
 			 color: #6E6E6E;
 		}
+
+.yoursecretsant {
+    color: #6E7070;
+    margin: 5px 0 15px;
+}
+.yourgift {
+    background: url("../images/yourgift.png") no-repeat scroll left top transparent;
+    color: #C51426;
+    display: inline-block;
+    font-family: 'OpenSansBold';
+    font-size: 1.1em;
+    line-height: 41px;
+    margin: 0 15px 0 0;
+    padding: 22px 0 10px 87px;
+    width: 197px;
+}

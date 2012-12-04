@@ -1,11 +1,16 @@
 
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
+<div class="box">
 	<h1>Your Secret Santa</h1>
-	<p>
-		Hi {{ entry.name }}
-	</p>
-	<p>
-		Your randomly assigned person to give a gift to is "{{ entry.entry.name }}".
-	</p>
+  <p>
+    Hi {{ entry.name }}
+  </p>
+  <p>
+    Your randomly assigned person to give a gift to is:
+  </p>
+  <div class="yoursecretsant">
+    <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
+  </div>
+</div>
 {% endblock %}
