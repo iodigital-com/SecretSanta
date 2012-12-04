@@ -86,4 +86,7 @@
 			.copyright {
 				width: 49%;
 			}
+			#mysanta .entry-number, #mysanta .entry-number-header {
+				display: none;
+			}
 }

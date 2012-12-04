@@ -27,12 +27,12 @@
 
             <h1>Secret Santa</h1>
 
-            <form action="{{ path('pool_create') }}" method="POST" {{ form_enctype(form) }} novalidate>
+            <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <table class="entries table table-striped" id="mysanta">
                     <thead>
                         <tr>
-                            <th class="span1">#</th>
+                            <th class="span1 entry-number-header">#</th>
                             <th class="span3">Name</th>
                             <th class="span4">E-mail</th>
                             <th style="text-align: right;" class="span4"><button type="button" class="btn btn-mini btn-success add-new-entry"><i class="icon-plus-sign icon-white"></i> Add person</button></th>
@@ -41,7 +41,7 @@
                     <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
                         {% for entry in form.entries %}
                         <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
-                            <td>{{ loop.index }}</td>
+                            <td class="entry-number">{{ loop.index }}</td>
                             <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
                             <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
                             <td style="text-align: right;">
