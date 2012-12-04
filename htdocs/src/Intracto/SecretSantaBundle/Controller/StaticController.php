@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 class StaticController extends Controller
 {
     /**
-     * @Route("/disclaimer", name="disclaimer")
+     * @Route("/privacy-policy", name="privacypolicy")
      * @Template()
      */
-    public function disclaimerAction()
+    public function privacypolicyAction()
     {
         return array();
     }

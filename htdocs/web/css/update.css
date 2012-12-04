@@ -111,6 +111,9 @@ h1, h2, h3, h4, h5, h6 {
 		font-family: 'OpenSansBold';
 		text-decoration: none;
 	}
+	a.btn {
+		text-decoration: none;
+	}
 	.btn-success {
 		font-size: 0.9em;
 		padding: 5px 13px;
