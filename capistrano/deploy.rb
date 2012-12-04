@@ -4,18 +4,27 @@ require 'railsless-deploy'
 
 set :application, "SecretSanta"
 set :repository,  "git://github.com/tvlooy/SecretSanta.git"
-set :deploy_to, "/var/www/secretsanta/"
 set :scm, :git
 set :deploy_via, :rsync_with_remote_cache
 
 set :keep_releases, 2
 after "deploy", "deploy:cleanup"
 
-set :user, "secretsanta"
 set :use_sudo, false
-server "192.168.1.216", :web, :app, :db, :primary => true # labs server
 
-# Usage (yes, this is todo):
+task :staging do
+    set :deploy_to, "/var/www/secretsanta/"
+    set :user, "secretsanta"
+    server "labs", :web, :app, :db, :primary => true
+end
+
+task :production do
+    set :deploy_to, "/site/www/"
+    set :user, "secretsantaplannercom"
+    server "ssh012.webhosting.be", :web, :app, :db, :primary => true
+end
+
+# Usage on staging (yes, this is todo):
 # 1) chown -R secretsanta:www-data * 
 # 2) cap deploy
 # 3) cp -R shared/vendor/ current/htdocs/
