@@ -182,6 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 		padding: 65px 0px 35px 0px;
 		text-align: center;
 		font-size: 0.8em;
+		color: #6E6E6E;
 	}
 		.copyright {
 			float: left;
@@ -189,4 +190,10 @@ h1, h2, h3, h4, h5, h6 {
 		.footer-links {
 			float: right;
 			padding-right: 175px;
+		}
+		.description {
+			 font-size: 0.8em;
+			 margin-left: 13px;
+			 margin-bottom: 3px;
+			 color: #6E6E6E;
 		}

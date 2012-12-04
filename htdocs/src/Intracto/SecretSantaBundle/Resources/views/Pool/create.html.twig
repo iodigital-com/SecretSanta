@@ -12,7 +12,7 @@
             <a href="#mysanta" class="btn-started">Get Started!</a>
         </div>
     </div>
-{% endblock %}  
+{% endblock %}
 
 {% block main %}
 
@@ -21,8 +21,6 @@
         <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer</strong>! Organize a Secret Santa party with friends, family or even co-workers.</p>
         <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br />
             To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a present to one another.</p>
-            <p>We call it Secret Santa, because you should keep the name of the person you blindly picked a secret. In the days before the internet you literally picked a name on a piece of paper, risking to even pull your own! Not anymore though with this online Secret Santa organizer.</p>
-
     </div>
     <div class="content-container">
         <div class="santa-content">
@@ -58,10 +56,12 @@
                     </tbody>
                 </table>
                 <p>
-                    {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}
+                    <div class="description">This is the email message the participants will receive. Adjust the copy to your liking.</div>
+                    {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}<br />
+                    <div class="description">The (NAME) tag will be changed to the person receiving this message.  You can copy the tag (with parentheses) to other parts of the message.</div>
                 </p>
                 <p>
-                    <button type="submit" class="btn btn-large btn-primary">Send Secret Santa to List</button>
+                    <button type="submit" class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Create your event!</button>
                 </p>
             </form>
         </div>
