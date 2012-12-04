@@ -15,7 +15,7 @@
         <table class="entries table table-striped">
             <thead>
                 <tr>
-                    <th class="span1">#</th>
+                    <th class="span1 entry-number-header">#</th>
                     <th class="span3">Name</th>
                     <th class="span4">E-mail</th>
                     <th class="span4">Confirmed</th>
@@ -24,7 +24,7 @@
             <tbody>
                 {% for entry in pool.entries %}
                 <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
-                    <td>{{ loop.index }}</td>
+                    <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.name }}</td>
                     <td>{{ entry.email }}</td>
                     <td>{% if entry.viewdate %}Yes{% else %}Not yet{% endif %}</td>
