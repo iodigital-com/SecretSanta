@@ -1,5 +1,6 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
+<div class="box">
 	<h1>Only 1 step to go</h1>
 	<p>
 		To prevent abuse, we need the list administrator ({{ pool.ownername }}) to confirm his email. We've sent a mail to {{ pool.owneremail }} with further instructions.
@@ -15,6 +16,7 @@
 		<p>
 			<a href="{{ path('pool_manage', { 'listurl': pool.listurl }) }}">Manage pool page (url: {{ pool.listurl }})</a>
 		</p>
+	</div>
 
 		{% endif %}
 {% endblock %}

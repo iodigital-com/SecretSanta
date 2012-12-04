@@ -54,7 +54,7 @@ ul.liststyle1 {
 			color: #ffffff;
 			background: url(../images/bulletstyle1.png) no-repeat left top;
 		}
-		
+
 
 /** **/
 
@@ -122,6 +122,7 @@ h1, h2, h3, h4, h5, h6 {
 		table.entries input {
 			height: 28px;
 			line-height: 28px;
+			padding: 0;
 		}
 	.wrapper .btn-primary, .wrapper .btn-primary:active, .wrapper .btn-primary:visited, .wrapper .btn-primary.active {
 	    background-color: #A9181F;
@@ -145,8 +146,8 @@ h1, h2, h3, h4, h5, h6 {
 	.table {
 		margin-bottom: 65px;
 	}
-		
-/**  **/		
+
+/**  **/
 
 	.wrapper {
 		background: url(../images/header-bg.jpg) no-repeat center top;

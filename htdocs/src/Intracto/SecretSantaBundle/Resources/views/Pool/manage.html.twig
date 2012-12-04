@@ -1,39 +1,40 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
+    <div class="box">
+        <h1>Your Secret Santa List</h1>
 
-    <h1>Your Secret Santa List</h1>
-
-    {% if first_time %}
+        {% if first_time %}
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>Perfect!</strong><br/>
             Your email is now validated.<br/>
             Our gnomes are now travelling on the internet delivering all your soon-to-be-secret-santas their target person.<br/>
         </div>
-    {% endif %}
+        {% endif %}
 
-    <table class="entries table table-striped">
-        <thead>
-            <tr>
-                <th class="span1">#</th>
-                <th class="span3">Name</th>
-                <th class="span4">E-mail</th>
-                <th class="span4">Confirmed</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for entry in pool.entries %}
-            <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
-                <td>{{ loop.index }}</td>
-                <td>{{ entry.name }}</td>
-                <td>{{ entry.email }}</td>
-                <td>{% if entry.viewdate %}Yes{% else %}Not yet{% endif %}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-	<div class="alert alert-info">
-        <strong>Tip</strong>  You can always come back to this page to make sure everybody has checked his mailbox.
+        <table class="entries table table-striped">
+            <thead>
+                <tr>
+                    <th class="span1">#</th>
+                    <th class="span3">Name</th>
+                    <th class="span4">E-mail</th>
+                    <th class="span4">Confirmed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in pool.entries %}
+                <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
+                    <td>{{ loop.index }}</td>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.email }}</td>
+                    <td>{% if entry.viewdate %}Yes{% else %}Not yet{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="alert alert-info">
+            <strong>Tip</strong>  You can always come back to this page and confirm if everybody has checked his mailbox.
+        </div>
     </div>
 {% endblock %}
