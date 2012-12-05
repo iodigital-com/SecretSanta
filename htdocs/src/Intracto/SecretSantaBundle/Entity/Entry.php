@@ -49,7 +49,7 @@ class Entry
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
-     * )     
+     * )    
      */
     private $email;
 
@@ -75,7 +75,6 @@ class Entry
      */
     private $url;
 
-
     /**
      * Get id
      *
@@ -90,6 +89,7 @@ class Entry
      * Set pool
      *
      * @param Pool $pool
+     *
      * @return Entry
      */
     public function setPool($pool)
@@ -113,6 +113,7 @@ class Entry
      * Set name
      *
      * @param string $name
+     *
      * @return Entry
      */
     public function setName($name)
@@ -136,6 +137,7 @@ class Entry
      * Set email
      *
      * @param string $email
+     *
      * @return Entry
      */
     public function setEmail($email)
@@ -159,6 +161,7 @@ class Entry
      * Set entry
      *
      * @param Entry $entry
+     *
      * @return Entry
      */
     public function setEntry($entry)
@@ -182,6 +185,7 @@ class Entry
      * Set viewdate
      *
      * @param \DateTime $viewdate
+     *
      * @return Entry
      */
     public function setViewdate($viewdate)
@@ -205,6 +209,7 @@ class Entry
      * Set secret
      *
      * @param string $secret
+     *
      * @return Entry
      */
     public function setSecret($secret)
@@ -228,6 +233,7 @@ class Entry
      * Set url
      *
      * @param string $url
+     *
      * @return Entry
      */
     public function setUrl($url)

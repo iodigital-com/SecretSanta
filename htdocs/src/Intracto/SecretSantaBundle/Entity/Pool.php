@@ -56,13 +56,13 @@ class Pool
      */
     private $entries;
 
-
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
+
         // Create default minimum entries
         $default_number_of_entries = 3;
         $i = 0;
@@ -87,6 +87,7 @@ class Pool
      * Set listurl
      *
      * @param string $listurl
+     *
      * @return Pool
      */
     public function setListurl($listurl)
@@ -110,6 +111,7 @@ class Pool
      * Set message
      *
      * @param string $message
+     *
      * @return Pool
      */
     public function setMessage($message)
@@ -153,6 +155,7 @@ class Pool
      * Set sentdate
      *
      * @param datetime $sentdate
+     *
      * @return Pool
      */
     public function setSentdate($sentdate)
@@ -176,6 +179,7 @@ class Pool
      * Add entry
      *
      * @param Entry $entry
+     *
      * @return Pool
      */
     public function addEntry(Entry $entry)

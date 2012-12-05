@@ -11,12 +11,4 @@
 	<p>
 		In the confirmation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his duty.
 	</p>
-	<p>{% if app.debug %}
-		<h4>Debug mode:</h4>
-		<p>
-			<a href="{{ path('pool_manage', { 'listurl': pool.listurl }) }}">Manage pool page (url: {{ pool.listurl }})</a>
-		</p>
-	</div>
-
-		{% endif %}
 {% endblock %}

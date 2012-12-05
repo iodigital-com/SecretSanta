@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Form\PoolType;
-use Intracto\SecretSantaBundle\Entity\Entry;
 
 class PoolController extends Controller
 {
@@ -84,12 +83,9 @@ class PoolController extends Controller
             $first_time = true;
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
-            // Shuffle
             $entryService->shuffleEntries($this->pool);
-
-            // Send mails
             $entryService->sendSecretSantaMailsForPool($this->pool);
-        }else{
+        } else {
             $first_time = false;
         }
 

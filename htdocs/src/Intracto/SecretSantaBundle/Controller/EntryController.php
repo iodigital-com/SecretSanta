@@ -5,9 +5,6 @@ namespace Intracto\SecretSantaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Intracto\SecretSantaBundle\Entity\Entry;
 
 class EntryController extends Controller
 {
