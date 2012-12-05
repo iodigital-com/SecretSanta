@@ -12,6 +12,14 @@
         </div>
         {% endif %}
 
+        {% if resentEntry is defined %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Resent!</strong><br/>
+            The e-mail to {{ resentEntry.name }} has been resent.<br/>
+        </div>
+        {% endif %}
+
         <table class="entries table table-striped" id="mysanta">
             <thead>
                 <tr>
@@ -19,6 +27,7 @@
                     <th class="span3">Name</th>
                     <th class="span4">E-mail</th>
                     <th class="span4">Confirmed</th>
+                    <th class="span1">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +36,12 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.name }}</td>
                     <td>{{ entry.email }}</td>
-                    <td class="{% if entry.viewdate %}viewed">Yes{% else %}notviewed">Not yet{% endif %}</td>
+                    <td class="{% if entry.viewdate %}viewed">Yes{% else %}not_viewed">Not yet{% endif %}</td>
+                    <td style="text-align: right;">
+                        <a href="{{ path('pool_resend', { 'poolUrl': pool.listUrl, 'entryId': entry.id }) }}">
+                            <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip" title="resend">
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

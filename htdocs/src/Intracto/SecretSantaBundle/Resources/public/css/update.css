@@ -222,6 +222,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #090;
 }
 
-.entry .notviewed {
-    color: #f00;
+.entry .not_viewed {
+    color: #900;
 }
