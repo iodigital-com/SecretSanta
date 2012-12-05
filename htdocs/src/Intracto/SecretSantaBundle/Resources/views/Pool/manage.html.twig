@@ -27,7 +27,7 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.name }}</td>
                     <td>{{ entry.email }}</td>
-                    <td>{% if entry.viewdate %}Yes{% else %}Not yet{% endif %}</td>
+                    <td class="{% if entry.viewdate %}viewed">Yes{% else %}notviewed">Not yet{% endif %}</td>
                 </tr>
                 {% endfor %}
             </tbody>

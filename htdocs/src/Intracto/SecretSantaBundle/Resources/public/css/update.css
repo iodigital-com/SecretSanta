@@ -217,3 +217,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 22px 0 10px 87px;
     width: 197px;
 }
+
+.entry .viewed {
+    color: #090;
+}
+
+.entry .notviewed {
+    color: #f00;
+}
