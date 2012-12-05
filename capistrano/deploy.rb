@@ -66,8 +66,8 @@ namespace :prdConfigSymfony do
     run "cd #{release_path}/htdocs/; app/console cache:clear -env=prod"
     run "chmod -R 777 #{release_path}/htdocs/app/cache/ #{release_path}/htdocs/app/logs/"
 
-    # WWW server and SSH server have different document root
-    run "cd #{release_path}/htdocs/app/cache; for i in *.php; do sed -i 's:/site/www:/data/sites/web/secretsantaplannercom/www:g' $i; done"
+    # www server and ssh server have different document root
+    run "cd #{release_path}/htdocs/app/cache; find . -name *.php -exec sed -i 's:/site/www:/data/sites/web/secretsantaplannercom/www:g' {} \\;"
   end
 end
 
