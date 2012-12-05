@@ -19,11 +19,6 @@ Vagrant::Config.run do |config|
 
     secretsanta_config.vm.network :hostonly, "33.33.33.10"
 
-    # Pass custom arguments to VBoxManage before booting VM
-    #secretsanta_config.vm.customize [
-    #  'modifyvm', :id, '--chipset', 'ich9', # solves kernel panic issue on some host machines
-    #]
-
     # Pass installation procedure over to Puppet (see `puppet/manifests/secretsanta.pp`)
     secretsanta_config.vm.provision :puppet do |puppet|
       puppet.manifests_path = "puppet/manifests"
