@@ -1,7 +1,7 @@
 Welcome to Secret Santa
 =======================
 
-Welcome to the repository for SecretSanta.
+Welcome to the repository for SecretSanta. See [LICENSE](https://github.com/tvlooy/SecretSanta/blob/master/htdocs/src/Intracto/SecretSantaBundle/Resources/meta/LICENSE) for usage terms.
 
 ###Installation
 

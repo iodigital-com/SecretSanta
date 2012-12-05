@@ -52,7 +52,7 @@ ul.liststyle1 {
 			margin-right: 10px;
 			float: left;
 			color: #ffffff;
-			background: url(../images/bulletstyle1.png) no-repeat left top;
+			background: url(../img/bulletstyle1.png) no-repeat left top;
 		}
 
 
@@ -62,7 +62,7 @@ html {
 	font-size: 62.5%;
 }
 body {
-	background: url(../images/body-bg.jpg) repeat-x left top;
+	background: url(../img/body-bg.jpg) repeat-x left top;
 	font-family: 'OpenSansRegular';
 	font-size: 100%;
 	font-size: 1.4em;
@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 		height: 44px;
 		line-height: 44px;
 		color: #ffffff;
-		background: url(../images/btn-started.png) no-repeat left top;
+		background: url(../img/btn-started.png) no-repeat left top;
 		text-shadow: 1px 1px 1px #6e070c;
 		text-align: center;
 		font-size: 1.2em;
@@ -154,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {
 /**  **/
 
 	.wrapper {
-		background: url(../images/header-bg.jpg) no-repeat center top;
+		background: url(../img/header-bg.jpg) no-repeat center top;
 	}
 	.container {
 		max-width: 940px;
@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
 			 height: 372px;
 		}
 			.steps {
-				background: url(../images/steps.png) no-repeat left top;
+				background: url(../img/steps.png) no-repeat left top;
 				padding: 12px 20px 0px 20px;
 				width: 289px;
 				height: 266px;
@@ -175,14 +175,14 @@ h1, h2, h3, h4, h5, h6 {
 				top: 10px;
 			}
 		.content-container {
-			background: url(../images/content-container.png) no-repeat center top;
+			background: url(../img/content-container.png) no-repeat center top;
 			padding: 130px 0px 0px 0px;
 		}
 			.box {
 				margin: 0px 0px 20px 0px;
 			}
 	#footer-santa {
-		background: url(../images/footer-bg.png) no-repeat right top;
+		background: url(../img/footer-bg.png) no-repeat right top;
 		padding: 65px 0px 35px 0px;
 		text-align: center;
 		font-size: 0.8em;
@@ -207,7 +207,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 5px 0 15px;
 }
 .yourgift {
-    background: url("../images/yourgift.png") no-repeat scroll left top transparent;
+    background: url("../img/yourgift.png") no-repeat scroll left top transparent;
     color: #C51426;
     display: inline-block;
     font-family: 'OpenSansBold';

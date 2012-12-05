@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>{% block title %}Secret Santa{% endblock %}</title>
-    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('/css/update.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('/css/mediaqueries.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('/bundles/intractosecretsanta/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('/bundles/intractosecretsanta/css/update.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('/bundles/intractosecretsanta/css/mediaqueries.css') }}" rel="stylesheet" media="screen">
     {% block stylesheets %}{% endblock %}
     <style>
     table.entries input {
@@ -47,7 +47,7 @@
         </div>
     </div>
     <script src="{{ asset('/bundles/intractosecretsanta/js/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/bundles/intractosecretsanta/js/bootstrap.min.js') }}"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>

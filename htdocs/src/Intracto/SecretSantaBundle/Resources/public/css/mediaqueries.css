@@ -4,7 +4,7 @@
 		font-size: 1.3em;
 	}
 	.wrapper {
-		background: url(../images/header-bgipad.jpg) repeat-x left top;
+		background: url(../img/header-bgipad.jpg) repeat-x left top;
 		background-size: 100%;
 		padding: 235px 0px 0px 0px;
 	}
@@ -15,7 +15,7 @@
 			display: none;
 		}
 			.content-container {
-				background: url(../images/content-container-ipad.jpg) no-repeat center top;
+				background: url(../img/content-container-ipad.jpg) no-repeat center top;
 				padding: 97px 0px 0px 0px;
 			}
 		input, textarea, .uneditable-input {
@@ -29,7 +29,7 @@
 		}
 		#footer-santa {
 			font-size: 0.9em;
-			background: url(../images/footer-bgipad.jpg) no-repeat right top;
+			background: url(../img/footer-bgipad.jpg) no-repeat right top;
 			padding: 97px 30px 35px 30px;
 		}
 			.footer-links {
@@ -43,7 +43,7 @@
 		font-size: 1.3em;
 	}
 	.wrapper {
-		background: url(../images/header-bgiphone.jpg) repeat-x left top;
+		background: url(../img/header-bgiphone.jpg) repeat-x left top;
 		background-size: 100%;
 		padding: 150px 0px 0px 0px;
 	}
@@ -54,7 +54,7 @@
 			display: none;
 		}
 			.content-container {
-				background: url(../images/content-containeriphone.jpg) no-repeat center top;
+				background: url(../img/content-containeriphone.jpg) no-repeat center top;
 				padding: 97px 0px 0px 0px;
 			}
 			small {
@@ -74,7 +74,7 @@
 		}
 		#footer-santa {
 			font-size: 0.9em;
-			background: url(../images/footer-bgipad.jpg) no-repeat right top;
+			background: url(../img/footer-bgipad.jpg) no-repeat right top;
 			padding: 97px 30px 35px 30px;
 			text-align: left;
 		}
