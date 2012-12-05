@@ -83,7 +83,7 @@ class EntryService
 
             $mail = \Swift_Message::newInstance()
                 ->setSubject('Your SecretSanta')
-                ->setFrom('santa@secretsanta.dev', 'Santa')
+                ->setFrom('santa@secretsantaplanner.com', 'Santa')
                 ->setTo($entry->getEmail(), $entry->getName())
                 ->setBody($txtBody)
                 ->addPart($htmlBody, 'text/html');
