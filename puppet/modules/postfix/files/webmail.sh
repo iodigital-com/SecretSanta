@@ -10,7 +10,9 @@ sed -i "s/'show_images'] = 0/'show_images'] = 2/" /etc/roundcube/main.inc.php
 sed -i "s/'create_default_folders'] = FALSE/'create_default_folders'] = TRUE/" /etc/roundcube/main.inc.php
 
 # create empty mailbox
-mkdir -p /home/vagrant/Maildir/{cur,new,tmp}
+mkdir -p /home/vagrant/Maildir/cur
+mkdir -p /home/vagrant/Maildir/new
+mkdir -p /home/vagrant/Maildir/tmp
 
 # webserver runs as vagrant instead of www-data
 chgrp vagrant /etc/roundcube/main.inc.php 
