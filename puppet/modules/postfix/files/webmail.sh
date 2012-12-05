@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # enable /roundcube URL
 sed -i 's/#    Alias \/roundcube/Alias \/roundcube/' /etc/apache2/conf.d/roundcube
@@ -10,9 +10,8 @@ sed -i "s/'show_images'] = 0/'show_images'] = 2/" /etc/roundcube/main.inc.php
 sed -i "s/'create_default_folders'] = FALSE/'create_default_folders'] = TRUE/" /etc/roundcube/main.inc.php
 
 # create empty mailbox
-mkdir -p /home/vagrant/Maildir/cur
-mkdir -p /home/vagrant/Maildir/new
-mkdir -p /home/vagrant/Maildir/tmp
+mkdir -p /home/vagrant/Maildir/{cur,new,tmp}
+chown -R vagrant:vagrant /home/vagrant/Maildir
 
 # webserver runs as vagrant instead of www-data
 chgrp vagrant /etc/roundcube/main.inc.php 
