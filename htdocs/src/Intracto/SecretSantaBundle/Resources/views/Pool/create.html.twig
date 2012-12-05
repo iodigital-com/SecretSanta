@@ -22,14 +22,14 @@
         <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br />
             To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a present to one another.</p>
     </div>
-    <div class="content-container">
+    <div class="content-container" id="mysanta">
         <div class="santa-content">
 
             <h1>Secret Santa</h1>
 
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
-                <table class="entries table table-striped" id="mysanta">
+                <table class="entries table table-striped" class="mysanta">
                     <thead>
                         <tr>
                             <th class="span1 entry-number-header">#</th>
