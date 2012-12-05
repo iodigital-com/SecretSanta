@@ -7,12 +7,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Entry;
 
 class PoolController extends Controller
 {
+    /**
+     * @DI\Inject("%admin_email%")
+     */
+    public $adminEmail;
+
     /**
      * @Route("/", name="pool_create")
      * @Template()
@@ -37,7 +43,7 @@ class PoolController extends Controller
                 // Send pending confirmation mail
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Secret Santa Confirmation')
-                    ->setFrom('santa@secretsantaplanner.com')
+                    ->setFrom($this->adminEmail)
                     ->setTo($pool->getOwnerEmail())
                     ->setBody(
                         $this->renderView(

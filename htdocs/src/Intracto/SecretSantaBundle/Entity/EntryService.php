@@ -26,6 +26,11 @@ class EntryService
     public $templating;
 
     /**
+     * @DI\Inject("%admin_email%")
+     */
+    public $adminEmail;
+
+    /**
      * Shuffles all entries for pool and save result to each entry
      *
      * @param Pool $pool
@@ -68,8 +73,6 @@ class EntryService
         $pool->setSentdate(new \DateTime("now"));
         $this->em->flush($pool);
 
-
-
         foreach ($pool->getEntries() as $entry) {
             $message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
             $txtBody = $this->templating->render(
@@ -83,7 +86,7 @@ class EntryService
 
             $mail = \Swift_Message::newInstance()
                 ->setSubject('Your SecretSanta')
-                ->setFrom('santa@secretsantaplanner.com', 'Santa')
+                ->setFrom($this->adminEmail, 'Santa')
                 ->setTo($entry->getEmail(), $entry->getName())
                 ->setBody($txtBody)
                 ->addPart($htmlBody, 'text/html');
