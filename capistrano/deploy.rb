@@ -25,6 +25,8 @@ task :production do
     server "ssh012.webhosting.be", :web, :app, :db, :primary => true
 
     set :use_sudo, false
+
+    after "deploy", :prdConfigSymfony
 end
 
 namespace :stgOwnerships do
@@ -37,9 +39,35 @@ namespace :stgConfigSymfony do
   task :default do
     run "cp -R #{shared_path}/vendor/ #{release_path}/htdocs/"
     run "cp #{shared_path}/parameters.yml #{release_path}/htdocs/app/config/"
-    run "cd #{release_path}/htdocs/; #{shared_path}/composer.phar update"
+    run "cp #{shared_path}/bootstrap.php.cache #{release_path}/htdocs/app/"
+    run "mkdir #{release_path}/htdocs/app/cache/; mkdir #{release_path}/htdocs/app/logs/"
+    run "cd #{release_path}/htdocs/; app/console assets:install web"
+
     run "cd #{release_path}/htdocs/; app/console cache:clear -env=prod"
     run "chown -R secretsanta:www-data #{release_path}"
     run "chmod -R 777 #{release_path}/htdocs/app/cache/ #{release_path}/htdocs/app/logs/"
   end
 end
+
+namespace :prdConfigSymfony do
+  task :default do
+    # hosting doesn't work with absolute links
+    run "ln -sfn `echo #{release_path} | sed 's:/site/www/::'` #{current_path}"
+
+    run "cp -R #{shared_path}/vendor/ #{release_path}/htdocs/"
+    run "cp #{shared_path}/parameters.yml #{release_path}/htdocs/app/config/"
+    run "cp #{shared_path}/bootstrap.php.cache #{release_path}/htdocs/app/"
+    run "mkdir #{release_path}/htdocs/app/cache/; mkdir #{release_path}/htdocs/app/logs/"
+    run "cd #{release_path}/htdocs/; app/console assets:install web"
+
+    # update entire symfony2
+    #run "cd #{release_path}/htdocs/; #{shared_path}/composer.phar update"
+
+    run "cd #{release_path}/htdocs/; app/console cache:clear -env=prod"
+    run "chmod -R 777 #{release_path}/htdocs/app/cache/ #{release_path}/htdocs/app/logs/"
+
+    # WWW server and SSH server have different document root
+    run "cd #{release_path}/htdocs/app/cache; for i in *.php; do sed -i 's:/site/www:/data/sites/web/secretsantaplannercom/www:g' $i; done"
+  end
+end
+
