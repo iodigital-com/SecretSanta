@@ -11,6 +11,9 @@ Vagrant::Config.run do |config|
   # Some VirtualBoxes seem to need this
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
+  # whithout this symlinks can't be created on the shared folder
+  config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+
   config.vm.define :secretsanta do |secretsanta_config|
     secretsanta_config.vm.host_name = "www.secretsanta.dev"
 
