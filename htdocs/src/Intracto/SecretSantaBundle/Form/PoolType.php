@@ -11,7 +11,7 @@ class PoolType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $initial_message = "Hi there (NAME).\n\nClick on the link below to find out your secret santa for our party.\n\nThe maximimum amount of money to spend is 15 EUR, but ofcourse creating your own present is allowed, if not encouraged!\n\n\nSee ya!";
+        $initial_message = "Hi there (NAME),\n\nJoin the Secret Santa fun and find out who your gift buddy is by clicking the button below.\n\nYou can spend up to 15 EUR for your gift. But of course creating your own present is allowed. Even encouraged!\nThe Secret Santa party is planned January 8th. Be sure to bring your gift!\n\n\nMerry Christmas!";
         $builder
             ->add('message', 'textarea', array('data' => $initial_message))
             ->add('entries', 'collection', array(

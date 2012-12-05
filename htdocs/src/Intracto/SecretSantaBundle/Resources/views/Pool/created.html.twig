@@ -1,15 +1,15 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
 <div class="box">
-	<h1>Only 1 step to go</h1>
+	<h1>Only 1 step to go!</h1>
 	<p>
-		To prevent abuse, we need the list administrator ({{ pool.ownername }}) to confirm his email. We've sent a mail to {{ pool.owneremail }} with further instructions.
+		To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer {{ pool.ownername }} to confirm his or her participation. We've sent a mail to {{ pool.owneremail }} with further instructions.
 	</p>
 	<p>
-		Once confirmed your Secret Santa list will be scrambled and all users will receive your message along with the person they're in charge off buying a present.
+		Once confirmed, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
 	</p>
 	<p>
-		In the confirmation email the list administrator will also find a link to keep track of all users in this list who've already found out which person they'll be in charge off, making sure every Secret Santa knows his duty.
+		In the confirmation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his duty.
 	</p>
 	<p>{% if app.debug %}
 		<h4>Debug mode:</h4>

@@ -74,11 +74,11 @@ class EntryService
             $message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
             $txtBody = $this->templating->render(
                 'IntractoSecretSantaBundle:Emails:secretsanta.txt.twig',
-                array('message' => $message, 'entry' => $entry)
+                array('pool' => $pool, 'entry' => $entry)
             );
             $htmlBody = $this->templating->render(
                 'IntractoSecretSantaBundle:Emails:secretsanta.html.twig',
-                array('message' => $message, 'entry' => $entry)
+                array('pool' => $pool, 'entry' => $entry)
             );
 
             $mail = \Swift_Message::newInstance()
