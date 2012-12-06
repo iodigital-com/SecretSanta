@@ -67,7 +67,8 @@ namespace :prdConfigSymfony do
     run "chmod -R 777 #{release_path}/htdocs/app/cache/ #{release_path}/htdocs/app/logs/"
 
     # www server and ssh server have different document root
-    run "cd #{release_path}/htdocs/app/cache; find . -name *.php -exec sed -i 's:/site/www:/data/sites/web/secretsantaplannercom/www:g' {} \\;"
+    run "find #{release_path}/htdocs/app/cache/prod ! -name doctrine -delete"
+    run "cd #{release_path}/htdocs/app/cache/prod; find . -name *.php -exec sed -i 's:/site/www:/data/sites/web/secretsantaplannercom/www:g' {} \\;"
   end
 end
 
