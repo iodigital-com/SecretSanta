@@ -72,12 +72,12 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/manage/{poolUrl}", name="pool_manage")
+     * @Route("/manage/{listUrl}", name="pool_manage")
      * @Template()
      */
-    public function manageAction($poolUrl)
+    public function manageAction($listUrl)
     {
-        $this->getPool($poolUrl);
+        $this->getPool($listUrl);
 
         if ($this->pool->getSentdate() === null) {
             $first_time = true;
@@ -93,10 +93,10 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/resend/{poolUrl}/{entryId}", name="pool_resend")
+     * @Route("/resend/{listUrl}/{entryId}", name="pool_resend")
      * @Template("IntractoSecretSantaBundle:Pool:manage.html.twig")
      */
-    public function resendAction($poolUrl, $entryId)
+    public function resendAction($listUrl, $entryId)
     {
         $entry = $this->getDoctrine()->getRepository('IntractoSecretSantaBundle:Entry')->find($entryId);
 
@@ -104,11 +104,11 @@ class PoolController extends Controller
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
 
-        if ($entry->getPool()->getListUrl() !== $poolUrl) {
+        if ($entry->getPool()->getListUrl() !== $listUrl) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
 
-//            $entryService->sendSecretSantaMailsForPool($this->pool);
+        //$entryService->sendSecretSantaMailsForPool($this->pool);
 
         return array('pool' => $entry->getPool(), 'first_time' => false, 'resentEntry' => $entry);
     }

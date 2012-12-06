@@ -38,7 +38,7 @@
                     <td>{{ entry.email }}</td>
                     <td class="{% if entry.viewdate %}viewed">Yes{% else %}not_viewed">Not yet{% endif %}</td>
                     <td style="text-align: right;">
-                        <a href="{{ path('pool_resend', { 'poolUrl': pool.listUrl, 'entryId': entry.id }) }}">
+                        <a href="{{ path('pool_resend', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
                             <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip" title="Resend e-mail">
                         </a>
                     </td>
