@@ -4,6 +4,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
+use Intracto\SecretSantaBundle\Entity\Entry;
 
 /**
  * @DI\Service("intracto_secret_santa.entry_service")
@@ -65,8 +66,6 @@ class EntryService
      * Sends out all mails for a Pool
      *
      * @param Pool $pool
-     *
-     * @return boolean
      */
     public function sendSecretSantaMailsForPool(Pool $pool)
     {
@@ -74,23 +73,33 @@ class EntryService
         $this->em->flush($pool);
 
         foreach ($pool->getEntries() as $entry) {
-            $message = str_replace('(NAME)', $entry->getName(), $pool->getMessage());
-            $txtBody = $this->templating->render(
-                'IntractoSecretSantaBundle:Emails:secretsanta.txt.twig',
-                array('message' => $message, 'entry' => $entry)
-            );
-            $htmlBody = $this->templating->render(
-                'IntractoSecretSantaBundle:Emails:secretsanta.html.twig',
-                array('message' => $message, 'entry' => $entry)
-            );
-
-            $mail = \Swift_Message::newInstance()
-                ->setSubject('Your SecretSanta')
-                ->setFrom($this->adminEmail, 'Santa')
-                ->setTo($entry->getEmail(), $entry->getName())
-                ->setBody($txtBody)
-                ->addPart($htmlBody, 'text/html');
-            $this->mailer->send($mail);
+            $this->sendSecretSantaMailForEntry($entry);
         }
+    }
+
+    /**
+     * Sends out mail for a Entry
+     *
+     * @param Entry $entry
+     */
+    public function sendSecretSantaMailForEntry(Entry $entry)
+    {
+        $message = str_replace('(NAME)', $entry->getName(), $entry->getPool()->getMessage());
+        $txtBody = $this->templating->render(
+            'IntractoSecretSantaBundle:Emails:secretsanta.txt.twig',
+            array('message' => $message, 'entry' => $entry)
+        );
+        $htmlBody = $this->templating->render(
+            'IntractoSecretSantaBundle:Emails:secretsanta.html.twig',
+            array('message' => $message, 'entry' => $entry)
+        );
+
+        $mail = \Swift_Message::newInstance()
+            ->setSubject('Your SecretSanta')
+            ->setFrom($this->adminEmail, 'Santa Claus')
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody($txtBody)
+            ->addPart($htmlBody, 'text/html');
+        $this->mailer->send($mail);
     }
 }

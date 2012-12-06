@@ -42,7 +42,7 @@ class PoolController extends Controller
                 // Send pending confirmation mail
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Secret Santa Confirmation')
-                    ->setFrom($this->adminEmail)
+                    ->setFrom($this->adminEmail, 'Santa Claus')
                     ->setTo($pool->getOwnerEmail())
                     ->setBody(
                         $this->renderView(
@@ -108,7 +108,8 @@ class PoolController extends Controller
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
 
-        //$entryService->sendSecretSantaMailsForPool($this->pool);
+        $entryService = $this->get('intracto_secret_santa.entry_service');
+        $entryService->sendSecretSantaMailForEntry($entry);
 
         return array('pool' => $entry->getPool(), 'first_time' => false, 'resentEntry' => $entry);
     }
