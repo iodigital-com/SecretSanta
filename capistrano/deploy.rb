@@ -11,18 +11,20 @@ set :keep_releases, 2
 after "deploy", "deploy:cleanup"
 
 task :staging do
-    set :deploy_to, "/var/www/secretsanta/"
     set :user, "secretsanta"
     server "labs.intracto.local", :web, :app, :db, :primary => true
+    set :deploy_to, "/var/www/secretsanta/"
 
     before "deploy:setup", :stgOwnerships
     after "deploy", :stgConfigSymfony
 end
 
 task :production do
-    set :deploy_to, "/site/www/"
+    load 'password.rb'
     set :user, "secretsantaplannercom"
+    set :password, $password
     server "ssh012.webhosting.be", :web, :app, :db, :primary => true
+    set :deploy_to, "/site/www/"
 
     set :use_sudo, false
 
