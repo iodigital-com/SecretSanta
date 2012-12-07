@@ -3,7 +3,7 @@
 require 'railsless-deploy'
 
 set :application, "SecretSanta"
-set :repository,  "git://github.com/tvlooy/SecretSanta.git"
+set :repository,  "git://github.com/Intracto/SecretSanta.git"
 set :scm, :git
 set :deploy_via, :rsync_with_remote_cache
 

@@ -1,7 +1,7 @@
 Welcome to Secret Santa
 =======================
 
-Welcome to the repository for SecretSanta. See [LICENSE](https://github.com/tvlooy/SecretSanta/blob/master/htdocs/src/Intracto/SecretSantaBundle/Resources/meta/LICENSE) for usage terms.
+Welcome to the repository for SecretSanta. See [LICENSE](https://github.com/Intracto/SecretSanta/blob/master/htdocs/src/Intracto/SecretSantaBundle/Resources/meta/LICENSE) for usage terms.
 
 ###Installation
 
@@ -11,7 +11,7 @@ on your machine. First, clone this repository. Then, navigate to the SecretSanta
     $ vagrant up
 
 The first time, this will take some time. It has to download a Debian image, install a full LAMP stack and download Symfony's vendors.
-If you are a windows user, make sure to run the following commands before cloning (we actually think this is a bug, see [#3](https://github.com/tvlooy/SecretSanta/issues/3)):
+If you are a windows user, make sure to run the following commands before cloning (we actually think this is a bug, see [#3](https://github.com/Intracto/SecretSanta/issues/3)):
 
     $ git config --global core.autocrlf false
     $ git config --global core.safecrlf true
@@ -28,7 +28,7 @@ This just stops the VM. If you want to remove it use:
 
     $ vagrant destroy
 
-Note that it is sometimes necessary to manually restart apache (so it picks up it's new configs). This is a bug see [#5](https://github.com/tvlooy/SecretSanta/issues/5):
+Note that it is sometimes necessary to manually restart apache (so it picks up it's new configs). This is a bug see [#5](https://github.com/Intracto/SecretSanta/issues/5):
 
     $ sudo /etc/init.d/apache2 restart
 
