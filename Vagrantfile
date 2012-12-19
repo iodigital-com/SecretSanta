@@ -14,10 +14,13 @@ Vagrant::Config.run do |config|
   # whithout this symlinks can't be created on the shared folder
   config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
 
+  # allow external connections to the machine
+  config.vm.forward_port 80, 8080
+
   config.vm.define :secretsanta do |secretsanta_config|
     secretsanta_config.vm.host_name = "www.secretsanta.dev"
 
-    secretsanta_config.vm.network :hostonly, "33.33.33.10"
+    secretsanta_config.vm.network :hostonly, "192.186.33.10"
 
     # Pass installation procedure over to Puppet (see `puppet/manifests/secretsanta.pp`)
     secretsanta_config.vm.provision :puppet do |puppet|

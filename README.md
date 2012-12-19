@@ -16,7 +16,7 @@ If you are a windows user, make sure to run the following commands before clonin
     $ git config --global core.autocrlf false
     $ git config --global core.safecrlf true
 
-Add 33.33.33.10 www.secretsanta.dev to your etc/hosts file (or just browse to the IP). You can SSH into the machine with:
+Add 192.168.33.10 www.secretsanta.dev to your etc/hosts file (or just browse to the IP). You can SSH into the machine with:
 
     $ vagrant ssh
 
@@ -34,4 +34,4 @@ Note that it is sometimes necessary to manually restart apache (so it picks up i
 
 ###Mailing
 
-All mail that is sent on the system, from any address to any address is delivered to the vagrant user. You can read this user's mailbox with the webmail that is configured on http://33.33.33.10/roundcube (user: vagrant, pass: vagrant)
+All mail that is sent on the system, from any address to any address is delivered to the vagrant user. You can read this user's mailbox with the webmail that is configured on http://192.168.33.10/roundcube (user: vagrant, pass: vagrant)
