@@ -20,11 +20,9 @@ task :staging do
 end
 
 task :production do
-    load 'password.rb'
     set :user, "secretsantaplannercom"
-    set :password, $password
     server "ssh012.webhosting.be", :web, :app, :db, :primary => true
-    set :deploy_to, "/site/www/"
+    set :deploy_to, "/data/sites/web/secretsantaplannercom/www"
 
     set :use_sudo, false
 
@@ -54,7 +52,7 @@ end
 namespace :prdConfigSymfony do
   task :default do
     # hosting doesn't work with absolute links
-    run "ln -sfn `echo #{release_path} | sed 's:/site/www/::'` #{current_path}"
+    run "ln -sfn `echo #{release_path} | sed 's:/data/sites/web/secretsantaplannercom/www/::'` #{current_path}"
 
     run "cp -R #{shared_path}/vendor/ #{release_path}/htdocs/"
     run "cp #{shared_path}/parameters.yml #{release_path}/htdocs/app/config/"
@@ -69,8 +67,8 @@ namespace :prdConfigSymfony do
     run "chmod -R 777 #{release_path}/htdocs/app/cache/ #{release_path}/htdocs/app/logs/"
 
     # www server and ssh server have different document root
-    run "find #{release_path}/htdocs/app/cache/prod -maxdepth 1 -mindepth 1 ! -name doctrine -exec rm -rf {} \\;"
-    run "cd #{release_path}/htdocs/app/cache/prod; find . -name *.php -exec sed -i 's:/site/www:/data/sites/web/secretsantaplannercom/www:g' {} \\;"
+    #run "find #{release_path}/htdocs/app/cache/prod -maxdepth 1 -mindepth 1 ! -name doctrine -exec rm -rf {} \\;"
+    #run "cd #{release_path}/htdocs/app/cache/prod; find . -name *.php -exec sed -i 's:/site/www:/data/sites/web/secretsantaplannercom/www:g' {} \\;"
   end
 end
 
