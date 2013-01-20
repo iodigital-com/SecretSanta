@@ -6,7 +6,13 @@ Welcome to the repository for SecretSanta. See [LICENSE](https://github.com/Intr
 ###Installation
 
 This project uses Vagrant / Puppet. Install [Vagrant](http://downloads.vagrantup.com/) and [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-on your machine. First, clone this repository. Then, navigate to the SecretSanta root directory and run the following command:
+on your machine. 
+
+Clone this repository including all submodules:
+
+    $ git clone --recursive https://github.com/Intracto/SecretSanta.git
+
+Navigate to the SecretSanta root directory and run the following command:
 
     $ vagrant up
 
