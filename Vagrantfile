@@ -20,7 +20,7 @@ Vagrant::Config.run do |config|
   config.vm.define :secretsanta do |secretsanta_config|
     secretsanta_config.vm.host_name = "www.secretsanta.dev"
 
-    secretsanta_config.vm.network :hostonly, "192.186.33.10"
+    secretsanta_config.vm.network :hostonly, "192.168.33.10"
 
     # Pass installation procedure over to Puppet (see `puppet/manifests/secretsanta.pp`)
     secretsanta_config.vm.provision :puppet do |puppet|
