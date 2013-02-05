@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -47,6 +47,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -63,3 +65,33 @@ swiftmailer:
 jms_di_extra:
     locations:
         all_bundles: true
+
+# app/config/config.yml
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+
+sonata_admin:
+    title:      Admin Panel
+    templates:
+        ## default global templates
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        ## default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Application\Sonata\UserBundle\Entity\User
+
+
+

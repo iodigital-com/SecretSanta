@@ -18,7 +18,19 @@
         "sensio/generator-bundle": "2.1.*",
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
-        "kriswallsmith/assetic": "1.1.*@dev"
+        "kriswallsmith/assetic": "1.1.*@dev",
+        "sonata-project/easy-extends-bundle" : "dev-master",
+        "sonata-project/cache-bundle": "dev-master",
+        "sonata-project/jquery-bundle": "dev-master",
+        "sonata-project/doctrine-extensions": "dev-master",
+        "sonata-project/google-authenticator": "dev-master",
+        "sonata-project/exporter": "dev-master",
+        "sonata-project/block-bundle": "dev-master",
+        "sonata-project/user-bundle": "dev-master",
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "friendsofsymfony/user-bundle" : "dev-master",
+        "knplabs/knp-menu-bundle": "1.1.*"
     },
     "scripts": {
         "post-install-cmd": [
