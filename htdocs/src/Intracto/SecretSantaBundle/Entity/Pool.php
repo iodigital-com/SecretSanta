@@ -64,12 +64,8 @@ class Pool
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
 
         // Create default minimum entries
-        $default_number_of_entries = 3;
-        $i = 0;
-        while ($i < $default_number_of_entries) {
-            $entry = new Entry();
-            $this->addEntry($entry);
-            $i++;
+        for ($i = 0; $i < 3; $i++) {
+            $this->addEntry(new Entry());
         }
     }
 
