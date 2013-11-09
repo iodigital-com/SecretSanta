@@ -2,9 +2,11 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
+use Intracto\SecretSantaBundle\Form\WishlistType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class EntryController extends Controller
 {
@@ -12,10 +14,12 @@ class EntryController extends Controller
      * @Route("/entry/{url}", name="entry_view")
      * @Template()
      */
-    public function indexAction($url)
+    public function indexAction(Request $request, $url)
     {
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
+
+        $form = $this->createForm(new WishlistType(), $this->entry);
 
         // Log visit on first access
         if ($this->entry->getViewdate() === null) {
@@ -23,8 +27,17 @@ class EntryController extends Controller
             $em->flush($this->entry);
         }
 
+        if ('POST' === $request->getMethod()) {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->flush($this->entry);
+            }
+        }
+
         return array(
             'entry' => $this->entry,
+            'form' => $form->createView(),
+
         );
     }
 
