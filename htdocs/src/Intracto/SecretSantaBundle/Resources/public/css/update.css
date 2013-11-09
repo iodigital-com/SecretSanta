@@ -146,9 +146,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	input.span12, textarea.span12, .uneditable-input.span12 {
 		width: 100%;
+        height: 200px;
 	}
 	.table {
-		margin-bottom: 65px;
+		margin-bottom: 35px;
 	}
 
 /**  **/
@@ -176,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 			}
 		.content-container {
 			background: url(../img/content-container.png) no-repeat center top;
-			padding: 130px 0px 0px 0px;
+			padding: 200px 0px 0px 0px;
 		}
 			.box {
 				margin: 0px 0px 20px 0px;
