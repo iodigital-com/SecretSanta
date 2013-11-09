@@ -29,7 +29,7 @@
     <div class="content-container" id="mysanta">
         <div class="santa-content">
 
-            <h1>Secret Santa</h1>
+            <h1>Add your participants</h1>
 
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
@@ -65,6 +65,8 @@
                     {% endfor %}
                     </tbody>
                 </table>
+
+                <h1>Customize your email</h1>
 
                 <div class="description">This is the email message the participants will receive. Adjust the copy to
                     your liking.
