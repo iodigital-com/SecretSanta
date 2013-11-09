@@ -19,6 +19,8 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
+        $wishlist_updated = false;
+
         $form = $this->createForm(new WishlistType(), $this->entry);
 
         // Log visit on first access
@@ -31,12 +33,14 @@ class EntryController extends Controller
             $form->bind($request);
             if ($form->isValid()) {
                 $em->flush($this->entry);
+                $wishlist_updated = true;
             }
         }
 
         return array(
             'entry' => $this->entry,
             'form' => $form->createView(),
+            'wishlist_updated' => $wishlist_updated,
 
         );
     }
