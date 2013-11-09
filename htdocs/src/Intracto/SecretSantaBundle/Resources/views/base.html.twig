@@ -37,6 +37,7 @@
     {% endif %}
 </head>
 <body>
+    <a href="https://github.com/Intracto/SecretSanta"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <div class="wrapper">
         <div class="container">
             <div id="header">
@@ -45,7 +46,7 @@
             {% block main %}{% endblock %}
             {% block footer %}
                 <div id="footer-santa" class="clearfix">
-                    <div class="copyright">&copy;2012 <a href="http://www.intracto.com" target="_blank">Intracto</a></div>
+                    <div class="copyright">&copy;{{ "now"|date("Y") }} <a href="http://www.intracto.com" target="_blank">Intracto</a></div>
                     <div class="footer-links">
                         <a href="{{ url('privacypolicy') }}">Privacy policy</a>
                     </div>
