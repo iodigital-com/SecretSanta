@@ -18,7 +18,7 @@
         <div class="well bottom-spacer">
             <h4>Wishlist from {{ entry.entry.name }}</h4>
             {% if(secret_santa.getwishlist) %}
-                {{ secret_santa.getwishlist }}
+                {{ secret_santa.getwishlist|linkify|raw }}
             {% else %}
                 {{ entry.entry.name }} has not yet provided a wishlist.
             {% endif %}
