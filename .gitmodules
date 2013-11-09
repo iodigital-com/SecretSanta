@@ -1,3 +1,0 @@
-[submodule "puppet/modules"]
-	path = puppet/modules
-	url = git://github.com/Intracto/Puppet.git
