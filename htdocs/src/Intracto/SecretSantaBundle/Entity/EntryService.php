@@ -84,7 +84,9 @@ class EntryService
      */
     public function sendSecretSantaMailForEntry(Entry $entry)
     {
-        $message = str_replace('(NAME)', $entry->getName(), $entry->getPool()->getMessage());
+        $message = $entry->getPool()->getMessage();
+        $message = str_replace('(NAME)', $entry->getName(), $message);
+        $message = str_replace('(ADMINISTRATOR)', $entry->getPool()->getOwnerName(), $message);
         $txtBody = $this->templating->render(
             'IntractoSecretSantaBundle:Emails:secretsanta.txt.twig',
             array('message' => $message, 'entry' => $entry)

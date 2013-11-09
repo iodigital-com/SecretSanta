@@ -2,27 +2,6 @@
 {% block main %}
     <div class="box">
         <h1>Your Secret Santa List</h1>
-
-        {% if first_time %}
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Perfect!</strong><br/>
-            Your email is now validated.<br/>
-            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
-        </div>
-        {% endif %}
-
-        {% for flashMessageType in app.session.flashbag.keys %}
-            {% if app.session.flashbag.has(flashMessageType) %}
-                <div class="alert alert-{{ flashMessageType }}">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {% for flashMessage in app.session.flashbag.get(flashMessageType) %}
-                        <div>{{ flashMessage|raw }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endfor %}
-
         <table class="entries table table-striped" id="mysanta">
             <thead>
                 <tr>

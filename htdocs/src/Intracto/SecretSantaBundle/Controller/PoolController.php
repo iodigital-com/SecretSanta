@@ -36,6 +36,10 @@ class PoolController extends Controller
                 }
 
                 $em = $this->getDoctrine()->getManager();
+                $message = "Hi there (NAME),\n\n";
+                $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
+                $message .= $pool->getMessage();
+                $pool->setMessage($message);
                 $em->persist($pool);
                 $em->flush();
 
@@ -79,17 +83,16 @@ class PoolController extends Controller
         $this->getPool($listUrl);
 
         if ($this->pool->getSentdate() === null) {
-            $first_time = true;
+          $this->get('session')->getFlashBag()->add('success','<strong>Perfect!</strong><br/>Your email is now validated.<br/>
+            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>');
           /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
             $entryService->shuffleEntries($this->pool);
             $entryService->sendSecretSantaMailsForPool($this->pool);
-        } else {
-            $first_time = false;
         }
 
-        return array('pool' => $this->pool, 'first_time' => $first_time);
+        return array('pool' => $this->pool);
     }
 
     /**

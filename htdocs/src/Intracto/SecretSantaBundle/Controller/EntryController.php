@@ -19,7 +19,6 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
-        $wishlist_updated = false;
 
         $form = $this->createForm(new WishlistType(), $this->entry);
 
@@ -33,15 +32,13 @@ class EntryController extends Controller
             $form->bind($request);
             if ($form->isValid()) {
                 $em->flush($this->entry);
-                $wishlist_updated = true;
+              $this->get('session')->getFlashBag()->add('success', '<h4>Wishlist updated</h4>We\'ve sent out our gnomes to notify your Secret Santa about your wishes!');
             }
         }
 
         return array(
             'entry' => $this->entry,
             'form' => $form->createView(),
-            'wishlist_updated' => $wishlist_updated,
-
         );
     }
 
