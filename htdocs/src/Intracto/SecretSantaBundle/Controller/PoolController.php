@@ -29,7 +29,7 @@ class PoolController extends Controller
         $form = $this->createForm(new PoolType(), $pool);
 
         if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 foreach ($pool->getEntries() as $entry) {
                     $entry->setPool($pool);
@@ -56,8 +56,7 @@ class PoolController extends Controller
                             array('pool' => $pool)
                         ),
                         'text/html'
-                    )
-                ;
+                    );
                 $this->get('mailer')->send($message);
 
                 return new Response(
@@ -120,7 +119,9 @@ class PoolController extends Controller
     /**
      * Retrieve pool by url
      *
-     * @param string $url
+     * @param $listurl
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @internal param string $url
      *
      * @return boolean
      */

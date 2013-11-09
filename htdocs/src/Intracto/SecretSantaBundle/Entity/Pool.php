@@ -218,4 +218,27 @@ class Pool
         $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
+
+    /**
+     * Add entries
+     *
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
+     * @return Pool
+     */
+    public function addEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
+    {
+        $this->entries[] = $entries;
+    
+        return $this;
+    }
+
+    /**
+     * Remove entries
+     *
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
+     */
+    public function removeEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
+    {
+        $this->entries->removeElement($entries);
+    }
 }
