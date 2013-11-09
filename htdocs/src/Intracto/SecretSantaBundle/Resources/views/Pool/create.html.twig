@@ -33,6 +33,9 @@
 
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
+                {{ form_row(form.date) }}
+                {{ form_row(form.amount) }}
+
                 <table class="entries table table-striped mysanta">
                     <thead>
                     <tr>
@@ -65,16 +68,16 @@
                     {% endfor %}
                     </tbody>
                 </table>
-
-                <h1>Customize your email</h1>
-
+              {#  <h1>Customize your email</h1>
 
                 {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
+
                 <div class="description">This is the email message the participants will receive. Adjust the copy to
                     your liking.
-                </div>
+                </div>#}
                 <p>
-                    <button type="submit" class="btn btn-large btn-primary btn-create-event"><i class="icon-ok icon-white"></i> Create
+                    <button type="submit" class="btn btn-large btn-primary btn-create-event"><i
+                                class="icon-ok icon-white"></i> Create
                         your event!
                     </button>
                 </p>

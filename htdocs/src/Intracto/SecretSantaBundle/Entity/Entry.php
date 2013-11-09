@@ -91,7 +91,7 @@ class Entry
      *
      * @ORM\Column(name="wishlist_updated", type="boolean")
      */
-    private $wishlist_updated;
+    private $wishlist_updated=false;
 
 
     /**

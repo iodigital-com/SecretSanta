@@ -48,6 +48,21 @@ class Pool
     private $sentdate;
 
     /**
+     * @var datetime $date
+     *
+     * @ORM\Column(name="date", type="datetime", length=255, nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string $amount
+     *
+     * @ORM\Column(name="amount", type="string", length=255, nullable=true)
+     */
+    private $amount="15 EUR";
+
+
+    /**
      * @var ArrayCollection $entries
      *
      * @ORM\OneToMany(targetEntity="Entry", mappedBy="pool", cascade={"persist", "remove"})
@@ -228,7 +243,7 @@ class Pool
     public function addEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
     {
         $this->entries[] = $entries;
-    
+
         return $this;
     }
 
@@ -240,5 +255,51 @@ class Pool
     public function removeEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
     {
         $this->entries->removeElement($entries);
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Pool
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param string $amount
+     * @return Pool
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return string 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }

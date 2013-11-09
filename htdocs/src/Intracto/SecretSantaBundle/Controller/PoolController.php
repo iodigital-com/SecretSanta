@@ -38,7 +38,13 @@ class PoolController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $message = "Hi there (NAME),\n\n";
                 $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
-                $message .= $pool->getMessage();
+                $message .= "Join the Secret Santa fun and find out who your gift buddy is by clicking the button below.\n\n";
+                $message .= "You can spend up to " . $pool->getAmount(
+                    ) . " for your gift. But of course creating your own present is allowed. Even encouraged!\n\n";
+                $message .= "The Secret Santa party is planned " .
+                    $pool->getDate()->format("F jS") .
+                    ". Be sure to bring your gift!\n\n";
+                $message .= "\n\nMerry Christmas!";
                 $pool->setMessage($message);
                 $em->persist($pool);
                 $em->flush();
@@ -83,9 +89,12 @@ class PoolController extends Controller
         $this->getPool($listUrl);
 
         if ($this->pool->getSentdate() === null) {
-          $this->get('session')->getFlashBag()->add('success','<strong>Perfect!</strong><br/>Your email is now validated.<br/>
-            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>');
-          /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                '<strong>Perfect!</strong><br/>Your email is now validated.<br/>
+                            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>'
+            );
+            /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
             $entryService->shuffleEntries($this->pool);
@@ -114,9 +123,12 @@ class PoolController extends Controller
         $entryService = $this->get('intracto_secret_santa.entry_service');
         $entryService->sendSecretSantaMailForEntry($entry);
 
-        $this->get('session')->getFlashBag()->add('success', '<strong>Resent!</strong><br/>The e-mail to ' . $entry->getName() . ' has been resent.<br/>');
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            '<strong>Resent!</strong><br/>The e-mail to ' . $entry->getName() . ' has been resent.<br/>'
+        );
 
-        return $this->redirect($this->generateUrl('pool_manage',array('listUrl' => $listUrl)));
+        return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
     }
 
     /**

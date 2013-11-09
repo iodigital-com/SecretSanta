@@ -14,10 +14,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 class MailqueueCommand extends ContainerAwareCommand
 {
 
-    /**
-     * @DI\Inject("%admin_email%")
-     */
-    public $adminEmail = 'test@example.com';
+    private $adminemail;
 
     /**
      * Configure the command options
@@ -45,6 +42,7 @@ class MailqueueCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
 
         $em = $this->getContainer()->get('doctrine')->getManager();
         /**

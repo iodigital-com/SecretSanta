@@ -50,6 +50,7 @@ class EntryController extends Controller
      *
      * @param string $url
      *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * @return boolean
      */
     protected function getEntry($url)

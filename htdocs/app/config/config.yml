@@ -67,6 +67,7 @@ genemu_form:
     tinymce:
         enabled: true
         theme:   advanced
+    date: ~
 
 services:
     intracto.twig.linkify_extension:
