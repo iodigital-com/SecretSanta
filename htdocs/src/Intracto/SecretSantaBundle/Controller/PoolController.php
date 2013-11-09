@@ -112,7 +112,9 @@ class PoolController extends Controller
         $entryService = $this->get('intracto_secret_santa.entry_service');
         $entryService->sendSecretSantaMailForEntry($entry);
 
-        return array('pool' => $entry->getPool(), 'first_time' => false, 'resentEntry' => $entry);
+        $this->get('session')->getFlashBag()->add('success', '<strong>Resent!</strong><br/>The e-mail to ' . $entry->getName() . ' has been resent.<br/>');
+
+        return $this->redirect($this->generateUrl('pool_manage',array('listUrl' => $listUrl)));
     }
 
     /**

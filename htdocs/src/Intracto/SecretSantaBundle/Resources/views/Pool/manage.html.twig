@@ -12,13 +12,16 @@
         </div>
         {% endif %}
 
-        {% if resentEntry is defined %}
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Resent!</strong><br/>
-            The e-mail to {{ resentEntry.name }} has been resent.<br/>
-        </div>
-        {% endif %}
+        {% for flashMessageType in app.session.flashbag.keys %}
+            {% if app.session.flashbag.has(flashMessageType) %}
+                <div class="alert alert-{{ flashMessageType }}">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {% for flashMessage in app.session.flashbag.get(flashMessageType) %}
+                        <div>{{ flashMessage|raw }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
 
         <table class="entries table table-striped" id="mysanta">
             <thead>
