@@ -42,7 +42,7 @@ class PoolController extends Controller
                 // Send pending confirmation mail
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Secret Santa Confirmation')
-                    ->setFrom($this->adminEmail, 'Santa Claus')
+                    ->setFrom($this->adminEmail, $pool->getOwnerName())
                     ->setTo($pool->getOwnerEmail())
                     ->setBody(
                         $this->renderView(
