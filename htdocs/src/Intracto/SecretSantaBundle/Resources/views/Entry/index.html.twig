@@ -1,15 +1,41 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
-<div class="box">
-	<h1>Your Secret Santa</h1>
-  <p>
-    Hi {{ entry.name }},
-  </p>
-  <p>
-    Your randomly assigned Secret Santa gift buddy to give a present to is:
-  </p>
-  <div class="yoursecretsant">
-    <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
-  </div>
-</div>
+    <div class="box">
+        {% if wishlist_updated %}
+            <div class="alert alert-block alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4>Congrats!</h4>
+                Your wishlist has been updated.  We'll take care of notifying your Secret Santa updates!
+            </div>
+        {% endif %}
+        <h1>Your assigned buddy</h1>
+
+        <p>
+            Hi {{ entry.name }},
+        </p>
+
+        <p>
+            You are assigned as Secret Santa to give a present to:
+        </p>
+
+        <div class="yoursecretsant">
+            <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
+        </div>
+
+        <h1>Inspiration for your Secret Santa</h1>
+
+        <p>
+            To help your Secret Santa, you can provide a wishlist or tips. We'll take care of communicating this to your
+            Secret Santa.
+            {{ form_start(form) }}
+            {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
+
+        <p>
+            <button type="submit" class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Update your
+                wishlist
+            </button>
+        </p>
+        {{ form_end(form) }}
+        </p>
+    </div>
 {% endblock %}
