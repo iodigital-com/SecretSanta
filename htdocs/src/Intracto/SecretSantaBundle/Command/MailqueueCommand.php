@@ -15,25 +15,19 @@ class MailqueueCommand extends ContainerAwareCommand
 {
 
     /**
-     * @DI\Inject("%admin_email%")
-     */
-    public $adminEmail = 'test@example.com';
-
-    /**
      * Configure the command options
      */
     protected function configure()
     {
         $this
-            ->setName('intracto:sendmails')
-            ->setDescription('Process the MailQueue')
-            ->addArgument(
-                'force',
-                null,
-                'If not set, a trial run will execute. No mails will be actually sent',
-                false
-            );
-
+          ->setName('intracto:sendmails')
+          ->setDescription('Process the MailQueue')
+          ->addArgument(
+              'force',
+              null,
+              'If not set, a trial run will execute. No mails will be actually sent',
+              false
+          );
     }
 
     /**
@@ -47,40 +41,60 @@ class MailqueueCommand extends ContainerAwareCommand
     {
 
         $em = $this->getContainer()->get('doctrine')->getManager();
+        $context = $this->getContainer()->get('router')->getContext();
+        $context->setHost($this->getContainer()->getParameter("base_url"));
+//        $context->setScheme('http');
         /**
          * @var $qb QueryBuilder
          */
         $qb = $em->getRepository("IntractoSecretSantaBundle:Entry")
-            ->createQueryBuilder('IntractoSecretSantaBundle:Entry');
-        $entries = $qb->select('e', 'ss.email')
-            ->from('IntractoSecretSantaBundle:Entry', 'e')->innerJoin("e.entry", 'ss')
-            ->where($qb->expr()->eq("e.wishlist_updated", '1'))
-            ->groupBy('e.id')
-            ->getQuery()->getResult();
+          ->createQueryBuilder('IntractoSecretSantaBundle:Entry');
+        $secret_santas = $qb->select('secret_santa')
+          ->from('IntractoSecretSantaBundle:Entry', 'secret_santa')->innerJoin("secret_santa.entry", 'receiver')
+          ->where($qb->expr()->eq("receiver.wishlist_updated", '1'))
+          ->getQuery()->getResult();
 
-        foreach ($entries as $entryline) {
-            $entryEntity = $entryline[0];
-            $ss_email = $entryline['email'];
+        foreach ($secret_santas as $secret_santa) {
+
+            $receiver =  $secret_santa->getEntry();
             $message = \Swift_Message::newInstance()
-                ->setSubject('Secret Santa Confirmation')
-                ->setFrom($this->adminEmail, "Santa Claus")
-                ->setTo($ss_email)
-                ->setBody(
-                    $this->getContainer()->get('templating')->render(
-                        'IntractoSecretSantaBundle:Emails:wishlist_changed.html.twig',
-                        array(
-                            'entry' => $entryEntity,
-                            'ss_email' => $ss_email,
-                        )
-                    )
-                );
+              ->setSubject('Wishlist updated')
+              ->setFrom($this->getContainer()->getParameter("admin_email"), "Santa Claus")
+              ->setTo($secret_santa->getEmail())
+              ->setBody(
+                  $this->getContainer()->get('templating')->render(
+                      'IntractoSecretSantaBundle:Emails:wishlistchanged.txt.twig',
+                      array(
+                          'entry' => $receiver,
+                          'secret_santa' => $secret_santa,
+                      )
+                  )
+              )
+              ->addPart(
+                  $this->getContainer()->get('templating')->render(
+                      'IntractoSecretSantaBundle:Emails:wishlistchanged.html.twig',
+                      array(
+                          'entry' => $receiver,
+                          'secret_santa' => $secret_santa,
+                      )
+                  ),
+                  'text/html'
+              );
+
             if ($input->getArgument('force')) {
+
+
                 $this->getContainer()->get('mailer')->send($message);
-                $entryEntity->setWishlistUpdated(false);
-                $em->flush($entryEntity);
+                $receiver->setWishlistUpdated(false);
+                $em->flush($receiver);
 
 
             }
         }
+        $container = $this->getContainer();
+        $mailer = $container->get('mailer');
+        $spool = $mailer->getTransport()->getSpool();
+        $transport = $container->get('swiftmailer.transport.real');
+        $spool->flushQueue($transport);
     }
 }

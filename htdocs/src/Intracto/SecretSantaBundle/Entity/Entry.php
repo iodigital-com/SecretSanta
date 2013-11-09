@@ -89,9 +89,9 @@ class Entry
     /**
      * @var boolean $wishlist_updated
      *
-     * @ORM\Column(name="wishlist_updated", type="boolean")
+     * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
-    private $wishlist_updated;
+    private $wishlist_updated = false;
 
 
     /**
