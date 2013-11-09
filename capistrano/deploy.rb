@@ -28,6 +28,8 @@ namespace :install_symfony do
     run "cd #{release_path}/htdocs/; app/console assets:install web"
     run "cd #{release_path}/htdocs/; app/console assetic:dump -env=prod"
 
+    #run "app/console doctrine:schema:update --force"
+
     #run "cd #{release_path}/htdocs/; app/console cache:clear -env=prod"
     run "chown -R #{user}:#{group} #{release_path}"
     run "chmod -R 777 #{release_path}/htdocs/app/cache/ #{release_path}/htdocs/app/logs/"
