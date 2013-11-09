@@ -64,7 +64,7 @@ class Entry
     /**
     * @var string $wishlist
     *
-    * @ORM\Column(name="wishlist", type="text")
+    * @ORM\Column(name="wishlist", type="text", nullable=true)
     */
     private $wishlist;
 
