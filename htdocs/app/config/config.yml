@@ -62,3 +62,8 @@ swiftmailer:
 jms_di_extra:
     locations:
         all_bundles: true
+
+genemu_form:
+    tinymce:
+        enabled: true
+        theme:   simple
