@@ -42,7 +42,7 @@ class PoolController extends Controller
                 // Send pending confirmation mail
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Secret Santa Confirmation')
-                    ->setFrom($this->adminEmail, $pool->getOwnerName())
+                    ->setFrom($this->adminEmail, "Santa Claus")
                     ->setTo($pool->getOwnerEmail())
                     ->setBody(
                         $this->renderView(
@@ -81,6 +81,7 @@ class PoolController extends Controller
 
         if ($this->pool->getSentdate() === null) {
             $first_time = true;
+          /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
             $entryService->shuffleEntries($this->pool);
