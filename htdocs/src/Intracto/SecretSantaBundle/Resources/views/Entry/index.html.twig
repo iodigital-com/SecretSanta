@@ -4,8 +4,8 @@
         {% if wishlist_updated %}
             <div class="alert alert-block alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <h4>Congrats!</h4>
-                Your wishlist has been updated.  We'll take care of notifying your Secret Santa updates!
+                <h4>Wishlist updated</h4>
+                We've sent out our gnomes to notify your Secret Santa about your wishes!
             </div>
         {% endif %}
         <h1>Your assigned buddy</h1>
@@ -26,11 +26,12 @@
 
         <p>
 
-        <div class="description">To help your Secret Santa, you can provide a wishlist or tips. We'll take care of communicating this to your
-            Secret Santa.</div>
+        <div class="description">To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of
+            communicating this to your Secret Santa.
+        </div>
 
         {{ form_start(form) }}
-            {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
+        {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
 
         <p>
             <button type="submit" class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Update your
