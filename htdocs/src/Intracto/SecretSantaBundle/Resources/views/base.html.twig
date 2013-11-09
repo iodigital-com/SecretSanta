@@ -8,10 +8,17 @@
     <meta property="og:site_name" content="Secret Santa"/>
     <meta property="og:description" content="A free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers.  Each year around Christmas time people all over the world exchange gifts.  To keep things interesting though, you can randomly assign persons to each other to give a present to one another."/>
     <title>{% block title %}Secret Santa{% endblock %}</title>
-    <link href="{{ asset('/bundles/intractosecretsanta/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('/bundles/intractosecretsanta/css/update.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('/bundles/intractosecretsanta/css/mediaqueries.css') }}" rel="stylesheet" media="screen">
+    {#<link href="{{ asset('/bundles/intractosecretsanta/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">#}
+    {#<link href="{{ asset('/bundles/intractosecretsanta/css/update.css') }}" rel="stylesheet" media="screen">#}
+    {#<link href="{{ asset('/bundles/intractosecretsanta/css/mediaqueries.css') }}" rel="stylesheet" media="screen">#}
     {% block stylesheets %}{% endblock %}
+         {% stylesheets
+         'bundles/intractosecretsanta/css/bootstrap.min.css'
+         'bundles/intractosecretsanta/css/update.css'
+         'bundles/intractosecretsanta/css/mediaqueries.css'
+         filter='cssrewrite' %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
     <style>
     table.entries input {
         margin-bottom: 0;
@@ -57,8 +64,12 @@
             {% endblock %}
         </div>
     </div>
-    <script src="{{ asset('/bundles/intractosecretsanta/js/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/bundles/intractosecretsanta/js/bootstrap.min.js') }}"></script>
+    {% javascripts
+    '@IntractoSecretSantaBundle/Resources/public/js/jquery-1.8.2.min.js'
+    '@IntractoSecretSantaBundle/Resources/public/js/bootstrap.min.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     {% block javascripts %}{% endblock %}
 </body>
 </html>
