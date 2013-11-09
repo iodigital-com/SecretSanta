@@ -52,6 +52,16 @@
             <div id="header">
                 {% block header %}{% endblock %}
             </div>
+            {% for flashMessageType in app.session.flashbag.keys %}
+                {% if app.session.flashbag.has(flashMessageType) %}
+                    <div class="alert alert-{{ flashMessageType }}">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {% for flashMessage in app.session.flashbag.get(flashMessageType) %}
+                            <div>{{ flashMessage|raw }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
             {% block main %}{% endblock %}
             {% block footer %}
                 <div id="footer-santa" class="clearfix">
