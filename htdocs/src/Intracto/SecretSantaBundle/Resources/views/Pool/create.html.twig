@@ -2,7 +2,7 @@
 
 {% block header %}
     <div class="steps">
-        <h2>Your gift exchange event <br />in <span class="accent">3 easy steps</span></h2>
+        <h2>Your gift exchange event <br/>in <span class="accent">3 easy steps</span></h2>
         <ul class="liststyle1">
             <li><span class="icon-steps">1</span> List your participants</li>
             <li><span class="icon-steps">2</span> Click the send button</li>
@@ -18,9 +18,13 @@
 
     <div class="box">
         <h2>What is Secret Santa?</h2>
-        <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer</strong>! Organize a Secret Santa party with friends, family or even co-workers.</p>
-        <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br />
-            To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a present to one another.</p>
+
+        <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer</strong>! Organize a Secret
+            Santa party with friends, family or even co-workers.</p>
+
+        <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/>
+            To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
+            present to one another.</p>
     </div>
     <div class="content-container" id="mysanta">
         <div class="santa-content">
@@ -31,126 +35,60 @@
                 {{ form_row(form._token) }}
                 <table class="entries table table-striped mysanta">
                     <thead>
-                        <tr>
-                            <th class="span1 entry-number-header">#</th>
-                            <th class="span3">Name</th>
-                            <th class="span4">E-mail</th>
-                            <th style="text-align: right;" class="span4"><button type="button" class="btn btn-mini btn-success add-new-entry"><i class="icon-plus-sign icon-white"></i> Add person</button></th>
-                        </tr>
+                    <tr>
+                        <th class="span1 entry-number-header">#</th>
+                        <th class="span3">Name</th>
+                        <th class="span4">E-mail</th>
+                        <th style="text-align: right;" class="span4">
+                            <button type="button" class="btn btn-mini btn-success add-new-entry"><i
+                                        class="icon-plus-sign icon-white"></i> Add person
+                            </button>
+                        </th>
+                    </tr>
                     </thead>
                     <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.vars['prototype']} %}{% endfilter %}">
-                        {% for entry in form.entries %}
+                    {% for entry in form.entries %}
                         <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
-                            <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
-                            <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
+                            <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
+                            <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
                             <td style="text-align: right;">
                                 {% if loop.index == 1 %}
                                     <small>This person is also your list administrator.</small>
                                 {% else %}
-                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i class="icon-minus-sign icon-white"></i> Remove this person</button>
+                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i
+                                                class="icon-minus-sign icon-white"></i> Remove this person
+                                    </button>
                                 {% endif %}
                             </td>
                         </tr>
-                        {% endfor %}
+                    {% endfor %}
                     </tbody>
                 </table>
 
-                <div class="description">This is the email message the participants will receive. Adjust the copy to your liking.</div>
-                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} })  }}<br />
-                <div class="description">The (NAME) tag will be changed to the person receiving this message.  You can copy the tag (with parentheses) to other parts of the message.</div>
+                <div class="description">This is the email message the participants will receive. Adjust the copy to
+                    your liking.
+                </div>
+                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
+
+                <div class="description">The (NAME) tag will be changed to the person receiving this message. You can
+                    copy the tag (with parentheses) to other parts of the message.
+                </div>
 
                 <p>
-                    <button type="submit" class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Create your event!</button>
+                    <button type="submit" class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Create
+                        your event!
+                    </button>
                 </p>
             </form>
         </div>
     </div>
 {% endblock %}
 
-
-{% block javascripts %}
-<script src="{{ asset('/bundles/intractosecretsanta/js/jquery.smooth-scroll.min.js') }}"></script>
-<script type="text/javascript">
-
-    function addNewEntry(collectionHolder) {
-        // Get entry prototype as defined in attribute data-prototype
-        var prototype = collectionHolder.attr('data-prototype');
-        // Adjust entry prototype for correct naming
-        var number_of_entries = collectionHolder.children().length; // Note, owner is not counted as entry
-        var newFormHtml = prototype.replace(/__name__/g, number_of_entries).replace(/__entrycount__/g, number_of_entries + 1);
-
-        // Add new entry to pool with animation
-        var newForm = $(newFormHtml);
-        collectionHolder.append(newForm);
-        newForm.show(300);
-
-        // Handle delete button events
-        bindDeleteButtonEvents();
-
-        // Remove disabled state on delete-buttons
-        $('.remove-entry').removeClass('disabled');
-    }
-
-    function bindDeleteButtonEvents() {
-        // Loop over all delete buttons
-        $('button.remove-entry').each(function(i) {
-            // Remove any previously binded event
-            $(this).off('click');
-
-            // Bind event
-            $(this).click(function(e) {
-
-                e.preventDefault();
-
-                $('table tr.entry.not-owner:gt(' + i + ')').each(function(j) {
-                    // Move values from next row to current row
-                    var next_row_name = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-name').val();
-                    var next_row_mail = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-mail').val();
-                    $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-name').val(next_row_name);
-                    $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-mail').val(next_row_mail);
-                });
-
-                // Delete last row
-                $('table tr.entry.not-owner:last').remove();
-
-                // Remove delete events when deletable entries < 3
-                if ($('table tr.entry.not-owner').length < 3) {
-                    $('table tr.entry.not-owner button.remove-entry').addClass('disabled');
-                    $('table tr.entry.not-owner button.remove-entry').off('click');
-
-                }
-            });
-
-        });
-    }
-
-    /* Variables */
-    var collectionHolder = $('table.entries tbody');
-
-    /* Document Ready */
-    jQuery(document).ready(function() {
-
-        //Add eventlistener on add-new-entry button
-        $('.add-new-entry').click(function(e) {
-            e.preventDefault();
-            addNewEntry(collectionHolder);
-        });
-
-        // If form has more then 3 entries, provide delete functionality
-        if($('table tr.entry').length > 3){
-            bindDeleteButtonEvents();
-            $('.remove-entry').removeClass('disabled');
-        }
-
-        // Add smooth scroll
-        $('a.btn-started').click(function() {
-            $.smoothScroll({
-                scrollTarget: '#mysanta'
-            });
-            return false;
-        });
-
-    });
-</script>
-{% endblock %}
+ {% block javascripts %}
+     {% javascripts
+     '@IntractoSecretSantaBundle/Resources/public/js/jquery.smooth-scroll.min.js'
+     '@IntractoSecretSantaBundle/Resources/public/js/pool.create.js' %}
+     <script type="text/javascript" src="{{ asset_url }}"></script>
+     {% endjavascripts %}
+ {% endblock %}
