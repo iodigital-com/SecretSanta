@@ -12,7 +12,11 @@ class LinkifyExtension extends \Twig_Extension
 
     public function linkifyFilter($html)
     {
-        return ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $html);
+        return preg_replace(
+            '@(https?://([-\w\.]+)+(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)?)@',
+            '<a href="$1" target="_blank">$1</a>',
+            $html
+        );
     }
 
     public function getName()
