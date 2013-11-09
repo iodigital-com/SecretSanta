@@ -24,7 +24,7 @@ namespace :install_symfony do
     run "cp #{shared_path}/bootstrap.php.cache #{release_path}/htdocs/app/"
 
     run "mkdir #{release_path}/htdocs/app/cache/; mkdir #{release_path}/htdocs/app/logs/"
-    run "#{release_path}/composer.phar update"
+    run "cd #{release_path}/htdocs/; .. /composer.phar update"
     run "cd #{release_path}/htdocs/; app/console assets:install web"
 
     #run "cd #{release_path}/htdocs/; app/console cache:clear -env=prod"
