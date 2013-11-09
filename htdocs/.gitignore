@@ -3,8 +3,8 @@ app/bootstrap.php.cache
 app/config/parameters.yml
 app/cache/*
 app/logs/*
-web/compiled/
-web/js/
-web/css/
+web/compiled/*
+web/js/*
+web/css/*
 vendor
 composer.phar
