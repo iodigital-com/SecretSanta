@@ -235,6 +235,13 @@ h1, h2, h3, h4, h5, h6 {
 .entry .not_viewed {
     color: #900;
 }
+
+@media screen and (max-width: 1024px) {
+    a.github {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 801px) {
 	body {
 		background: none;
