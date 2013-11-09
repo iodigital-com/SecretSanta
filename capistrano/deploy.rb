@@ -26,6 +26,7 @@ namespace :install_symfony do
     run "mkdir #{release_path}/htdocs/app/cache/; mkdir #{release_path}/htdocs/app/logs/"
     run "cd #{release_path}/htdocs/; ../composer.phar update"
     run "cd #{release_path}/htdocs/; app/console assets:install web"
+    run "cd #{release_path}/htdocs/; app/console assetic:dump -env=prod"
 
     #run "cd #{release_path}/htdocs/; app/console cache:clear -env=prod"
     run "chown -R #{user}:#{group} #{release_path}"
