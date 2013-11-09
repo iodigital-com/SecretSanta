@@ -62,3 +62,14 @@ swiftmailer:
 jms_di_extra:
     locations:
         all_bundles: true
+
+genemu_form:
+    tinymce:
+        enabled: true
+        theme:   advanced
+
+services:
+    intracto.twig.linkify_extension:
+        class: Intracto\SecretSantaBundle\Twig\LinkifyExtension
+        tags:
+            - { name: twig.extension }

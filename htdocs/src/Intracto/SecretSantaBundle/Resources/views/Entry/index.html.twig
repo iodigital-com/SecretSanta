@@ -18,7 +18,7 @@
         <div class="well bottom-spacer">
             <h4>Wishlist from {{ entry.entry.name }}</h4>
             {% if(secret_santa.getwishlist) %}
-                {{ secret_santa.getwishlist }}
+                {{ secret_santa.getwishlist|linkify|raw }}
             {% else %}
                 {{ entry.entry.name }} has not yet provided a wishlist.
             {% endif %}
@@ -27,20 +27,25 @@
         <h1>Your wishlist</h1>
 
         <p>
+            <div class="description">To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of
+                communicating this to your Secret Santa.
+            </div>
 
-        <div class="description">To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of
-            communicating this to your Secret Santa.
-        </div>
+            {{ form_start(form) }}
+            {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
 
-        {{ form_start(form) }}
-        {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
-
-        <p>
-            <button type="submit" class="btn btn-large btn-primary"><i class="icon-ok icon-white"></i> Update your
-                wishlist
-            </button>
-        </p>
-        {{ form_end(form) }}
+            <p>
+                <button type="submit" class="btn btn-large btn-primary">
+                    <i class="icon-ok icon-white"></i> Update your wishlist
+                </button>
+            </p>
+            {{ form_end(form) }}
         </p>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/tinymce/tiny_mce.js') }}"></script>
+    <script src="{{ asset('/tinymce/jquery.tinymce.js') }}"></script>
+    {{ form_javascript(form) }}
 {% endblock %}

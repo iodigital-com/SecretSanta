@@ -20,7 +20,8 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/security-extra-bundle": "1.5.*",
-        "jms/di-extra-bundle": "1.4.*"
+        "jms/di-extra-bundle": "1.4.*",
+        "genemu/form-bundle": "2.2.*"
         },
     "scripts": {
         "post-install-cmd": [
