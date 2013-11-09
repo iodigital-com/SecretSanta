@@ -62,6 +62,13 @@ class Entry
     private $entry;
 
     /**
+    * @var string $wishlist
+    *
+    * @ORM\Column(name="wishlist", type="text")
+    */
+    private $wishlist;
+
+    /**
      * @var \DateTime $viewdate
      *
      * @ORM\Column(name="viewdate", type="datetime", nullable=true)
@@ -155,6 +162,30 @@ class Entry
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set wishlist
+     *
+     * @param string $wishlist
+     *
+     * @return Entry
+     */
+    public function setWishlist($wishlist)
+    {
+        $this->wishlist = $wishlist;
+
+        return $this;
+    }
+
+    /**
+     * Get wishlist
+     *
+     * @return string
+     */
+    public function getWishlist()
+    {
+        return $this->wishlist;
     }
 
     /**
