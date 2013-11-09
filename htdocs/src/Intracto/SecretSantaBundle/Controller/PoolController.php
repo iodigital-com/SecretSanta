@@ -36,6 +36,10 @@ class PoolController extends Controller
                 }
 
                 $em = $this->getDoctrine()->getManager();
+                $message = "Hi there (NAME),\n\n";
+                $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
+                $message .= $pool->getMessage();
+                $pool->setMessage($message);
                 $em->persist($pool);
                 $em->flush();
 
