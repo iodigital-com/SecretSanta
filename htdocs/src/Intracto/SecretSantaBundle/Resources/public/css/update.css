@@ -146,6 +146,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	input.span12, textarea.span12, .uneditable-input.span12 {
 		width: 100%;
+        height: 200px;
 	}
 	.table {
 		margin-bottom: 65px;
