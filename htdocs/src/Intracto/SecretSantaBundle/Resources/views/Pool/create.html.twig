@@ -38,7 +38,7 @@
                             <th style="text-align: right;" class="span4"><button type="button" class="btn btn-mini btn-success add-new-entry"><i class="icon-plus-sign icon-white"></i> Add person</button></th>
                         </tr>
                     </thead>
-                    <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.get('prototype')} %}{% endfilter %}">
+                    <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.vars['prototype']} %}{% endfilter %}">
                         {% for entry in form.entries %}
                         <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
