@@ -25,9 +25,11 @@
         <h1>Inspiration for your Secret Santa</h1>
 
         <p>
-            To help your Secret Santa, you can provide a wishlist or tips. We'll take care of communicating this to your
-            Secret Santa.
-            {{ form_start(form) }}
+
+        <div class="description">To help your Secret Santa, you can provide a wishlist or tips. We'll take care of communicating this to your
+            Secret Santa.</div>
+
+        {{ form_start(form) }}
             {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
 
         <p>
