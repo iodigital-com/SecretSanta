@@ -29,13 +29,17 @@ class PoolController extends Controller
         $form = $this->createForm(new PoolType(), $pool);
 
         if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 foreach ($pool->getEntries() as $entry) {
                     $entry->setPool($pool);
                 }
 
                 $em = $this->getDoctrine()->getManager();
+                $message = "Hi there (NAME),\n\n";
+                $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
+                $message .= $pool->getMessage();
+                $pool->setMessage($message);
                 $em->persist($pool);
                 $em->flush();
 
@@ -56,8 +60,7 @@ class PoolController extends Controller
                             array('pool' => $pool)
                         ),
                         'text/html'
-                    )
-                ;
+                    );
                 $this->get('mailer')->send($message);
 
                 return new Response(
@@ -119,7 +122,9 @@ class PoolController extends Controller
     /**
      * Retrieve pool by url
      *
-     * @param string $url
+     * @param $listurl
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @internal param string $url
      *
      * @return boolean
      */

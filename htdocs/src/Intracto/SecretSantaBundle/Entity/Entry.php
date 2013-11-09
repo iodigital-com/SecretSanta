@@ -2,15 +2,19 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Debug\Debug;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Entity\Pool;
+use Doctrine\ORM\Mapping\PreUpdate;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Entry
  *
  * @ORM\Table()
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Entry
 {
@@ -49,7 +53,7 @@ class Entry
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
-     * )    
+     * )
      */
     private $email;
 
@@ -62,10 +66,10 @@ class Entry
     private $entry;
 
     /**
-    * @var string $wishlist
-    *
-    * @ORM\Column(name="wishlist", type="text", nullable=true)
-    */
+     * @var string $wishlist
+     *
+     * @ORM\Column(name="wishlist", type="text", nullable=true)
+     */
     private $wishlist;
 
     /**
@@ -81,6 +85,14 @@ class Entry
      * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
+
+    /**
+     * @var boolean $wishlist_updated
+     *
+     * @ORM\Column(name="wishlist_updated", type="boolean")
+     */
+    private $wishlist_updated;
+
 
     /**
      * Get id
@@ -173,6 +185,11 @@ class Entry
      */
     public function setWishlist($wishlist)
     {
+
+        if ($this->wishlist !== $wishlist) {
+            $this->wishlist_updated = true;
+        }
+
         $this->wishlist = $wishlist;
 
         return $this;
@@ -282,5 +299,74 @@ class Entry
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set send
+     *
+     * @param boolean $send
+     * @return Entry
+     */
+    public function setSend($send)
+    {
+        $this->send = $send;
+
+        return $this;
+    }
+
+    /**
+     * Get send
+     *
+     * @return boolean
+     */
+    public function getSend()
+    {
+        return $this->send;
+    }
+
+    /**
+     * Set ready_to_send
+     *
+     * @param boolean $readyToSend
+     * @return Entry
+     */
+    public function setReadyToSend($readyToSend)
+    {
+        $this->ready_to_send = $readyToSend;
+
+        return $this;
+    }
+
+    /**
+     * Get ready_to_send
+     *
+     * @return boolean
+     */
+    public function getReadyToSend()
+    {
+        return $this->ready_to_send;
+    }
+
+    /**
+     * Set wishlist_updated
+     *
+     * @param boolean $wishlistUpdated
+     * @return Entry
+     */
+    public function setWishlistUpdated($wishlistUpdated)
+    {
+        $this->wishlist_updated = $wishlistUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get wishlist_updated
+     *
+     * @return boolean
+     */
+    public function getWishlistUpdated()
+    {
+        return $this->wishlist_updated;
     }
 }
