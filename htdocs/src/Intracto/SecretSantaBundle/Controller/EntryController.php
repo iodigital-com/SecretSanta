@@ -36,9 +36,12 @@ class EntryController extends Controller
             }
         }
 
+        $secret_santa =  $this->entry->getEntry();
+
         return array(
             'entry' => $this->entry,
             'form' => $form->createView(),
+            'secret_santa' => $secret_santa,
         );
     }
 

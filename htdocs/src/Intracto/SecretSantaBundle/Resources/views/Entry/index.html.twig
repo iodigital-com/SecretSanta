@@ -15,7 +15,16 @@
             <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
         </div>
 
-        <h1>Inspiration for your Secret Santa</h1>
+        <div class="well bottom-spacer">
+            <h4>Wishlist from {{ entry.entry.name }}</h4>
+            {% if(secret_santa.getwishlist) %}
+                {{ secret_santa.getwishlist }}
+            {% else %}
+                {{ entry.entry.name }} has not yet provided a wishlist.
+            {% endif %}
+        </div>
+
+        <h1>Your wishlist</h1>
 
         <p>
 
