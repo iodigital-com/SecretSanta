@@ -13,12 +13,6 @@ use JMS\DiExtraBundle\Annotation as DI;
 
 class MailqueueCommand extends ContainerAwareCommand
 {
-
-<<<<<<< HEAD
-    private $adminemail;
-
-=======
->>>>>>> 67716f96014c5c76d43a196407b8eea5ca79cee5
     /**
      * Configure the command options
      */
