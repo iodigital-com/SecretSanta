@@ -15,3 +15,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     ga_tracking:       UA-00000000-0
     admin_email:       santa@secretsanta.dev
+    base_url:          http://secretsanta.dev
