@@ -50,7 +50,7 @@ class Pool
     /**
      * @var datetime $date
      *
-     * @ORM\Column(name="date", type="datetime", length=255, nullable=true)
+     * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
      */
     private $date;
 
