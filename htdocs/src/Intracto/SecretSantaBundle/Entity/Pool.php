@@ -35,8 +35,6 @@ class Pool
      * @var string $message
      *
      * @ORM\Column(name="message", type="text")
-     *
-     * @Assert\NotBlank()
      */
     private $message;
 

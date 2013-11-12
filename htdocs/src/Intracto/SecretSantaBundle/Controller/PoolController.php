@@ -43,7 +43,8 @@ class PoolController extends Controller
                     " for your gift. But of course creating your own present is allowed. Even encouraged!\n\n";
                 $message .= "The Secret Santa party is planned " .
                     $pool->getDate()->format("F jS") .
-                    ". Be sure to bring your gift!\n\n";
+                    ". Be sure to bring your gift!\n";
+                $message .= $pool->getMessage() . "\n";
                 $message .= "\n\nMerry Christmas!";
                 $pool->setMessage($message);
                 $em->persist($pool);

@@ -68,17 +68,16 @@
                     {% endfor %}
                     </tbody>
                 </table>
-              {#  <h1>Customize your email</h1>
+                <h1>Customize your email</h1>
 
                 {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
 
-                <div class="description">This is the email message the participants will receive. Adjust the copy to
-                    your liking.
-                </div>#}
+                <div class="description">
+                    Add a personal message for the participants.
+                </div>
                 <p>
-                    <button type="submit" class="btn btn-large btn-primary btn-create-event"><i
-                                class="icon-ok icon-white"></i> Create
-                        your event!
+                    <button type="submit" class="btn btn-large btn-primary btn-create-event">
+                        <i class="icon-ok icon-white"></i> Create your event!
                     </button>
                 </p>
             </form>
