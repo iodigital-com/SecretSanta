@@ -39,8 +39,8 @@ class PoolController extends Controller
                 $message = "Hi there (NAME),\n\n";
                 $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
                 $message .= "Join the Secret Santa fun and find out who your gift buddy is by clicking the button below.\n\n";
-                $message .= "You can spend up to " . $pool->getAmount(
-                    ) . " for your gift. But of course creating your own present is allowed. Even encouraged!\n\n";
+                $message .= "You can spend up to " . $pool->getAmount() .
+                    " for your gift. But of course creating your own present is allowed. Even encouraged!\n\n";
                 $message .= "The Secret Santa party is planned " .
                     $pool->getDate()->format("F jS") .
                     ". Be sure to bring your gift!\n\n";

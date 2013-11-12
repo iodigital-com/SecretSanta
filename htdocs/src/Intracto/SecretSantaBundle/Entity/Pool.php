@@ -61,7 +61,6 @@ class Pool
      */
     private $amount="15 EUR";
 
-
     /**
      * @var ArrayCollection $entries
      *
@@ -233,11 +232,10 @@ class Pool
         $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
-
     /**
      * Add entries
      *
-     * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
+     * @param  \Intracto\SecretSantaBundle\Entity\Entry $entries
      * @return Pool
      */
     public function addEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
@@ -260,20 +258,20 @@ class Pool
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param  \DateTime $date
      * @return Pool
      */
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -283,20 +281,20 @@ class Pool
     /**
      * Set amount
      *
-     * @param string $amount
+     * @param  string $amount
      * @return Pool
      */
     public function setAmount($amount)
     {
         $this->amount = $amount;
-    
+
         return $this;
     }
 
     /**
      * Get amount
      *
-     * @return string 
+     * @return string
      */
     public function getAmount()
     {

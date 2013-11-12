@@ -2,12 +2,9 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Debug\Debug;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Entity\Pool;
-use Doctrine\ORM\Mapping\PreUpdate;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Entry
@@ -92,7 +89,6 @@ class Entry
      * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
     private $wishlist_updated = false;
-
 
     /**
      * Get id
@@ -304,7 +300,7 @@ class Entry
     /**
      * Set send
      *
-     * @param boolean $send
+     * @param  boolean $send
      * @return Entry
      */
     public function setSend($send)
@@ -327,7 +323,7 @@ class Entry
     /**
      * Set ready_to_send
      *
-     * @param boolean $readyToSend
+     * @param  boolean $readyToSend
      * @return Entry
      */
     public function setReadyToSend($readyToSend)
@@ -350,7 +346,7 @@ class Entry
     /**
      * Set wishlist_updated
      *
-     * @param boolean $wishlistUpdated
+     * @param  boolean $wishlistUpdated
      * @return Entry
      */
     public function setWishlistUpdated($wishlistUpdated)

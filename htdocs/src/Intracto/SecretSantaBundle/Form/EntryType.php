@@ -12,8 +12,7 @@ class EntryType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('email')
-        ;
+            ->add('email');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

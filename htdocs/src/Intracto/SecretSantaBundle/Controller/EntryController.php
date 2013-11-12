@@ -19,7 +19,6 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
-
         $form = $this->createForm(new WishlistType(), $this->entry);
 
         // Log visit on first access
@@ -32,11 +31,14 @@ class EntryController extends Controller
             $form->bind($request);
             if ($form->isValid()) {
                 $em->flush($this->entry);
-              $this->get('session')->getFlashBag()->add('success', '<h4>Wishlist updated</h4>We\'ve sent out our gnomes to notify your Secret Santa about your wishes!');
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    '<h4>Wishlist updated</h4>We\'ve sent out our gnomes to notify your Secret Santa about your wishes!'
+                );
             }
         }
 
-        $secret_santa =  $this->entry->getEntry();
+        $secret_santa = $this->entry->getEntry();
 
         return array(
             'entry' => $this->entry,

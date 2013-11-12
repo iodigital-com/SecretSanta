@@ -11,7 +11,7 @@ class WishlistType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-          ->add('wishlist', 'genemu_tinymce');
+            ->add('wishlist', 'genemu_tinymce');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
