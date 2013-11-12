@@ -26,9 +26,7 @@ class PoolType extends AbstractType
                 'date',
                 'genemu_jquerydate',
                 array(
-
                     'widget' => 'single_text'
-
                 )
             )
             ->add('amount', 'text', array("attr" => array("placeholder" => "15 EUR")));
