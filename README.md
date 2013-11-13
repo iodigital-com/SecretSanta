@@ -23,6 +23,11 @@ is allowed to create databases. And choose a `database_name` that doesn't exist 
     app/console doctrine:database:create
     app/console doctrine:schema:create
 
+Install the assets:
+
+    app/console assets:install web
+    app/console assetic:dump -env=prod
+
 Now you are ready to use the project:
 
     php -S localhost:8080 -t web
