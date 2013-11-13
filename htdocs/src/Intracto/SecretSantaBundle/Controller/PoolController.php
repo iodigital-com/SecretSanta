@@ -52,7 +52,7 @@ class PoolController extends Controller
 
                 // Send pending confirmation mail
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Secret Santa Confirmation')
+                    ->setSubject('Secret Santa Validation')
                     ->setFrom($this->adminEmail, "Santa Claus")
                     ->setTo($pool->getOwnerEmail())
                     ->setBody(
@@ -92,8 +92,10 @@ class PoolController extends Controller
         if ($this->pool->getSentdate() === null) {
             $this->get('session')->getFlashBag()->add(
                 'success',
-                '<strong>Perfect!</strong><br/>Your email is now validated.<br/>
-                            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>'
+                "<strong>Perfect!</strong><br/>Your email is now validated.<br/>
+                            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
+                            <br />
+                            Don't forget to confirm your own participation. We've sent you another email. Go check it out!"
             );
             /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
