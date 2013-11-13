@@ -12,25 +12,33 @@ class PoolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('message')
-            ->add(
-                'entries',
-                'collection',
-                array(
-                    'type' => new EntryType(),
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'by_reference' => false,
-                )
-            )
-            ->add(
-                'date',
-                'genemu_jquerydate',
-                array(
-                    'widget' => 'single_text'
-                )
-            )
-            ->add('amount', 'text', array("attr" => array("placeholder" => "15 EUR")));
+          ->add('message')
+          ->add(
+              'entries',
+              'collection',
+              array(
+                  'type' => new EntryType(),
+                  'allow_add' => true,
+                  'allow_delete' => true,
+                  'by_reference' => false,
+              )
+          )
+          ->add(
+              'date',
+              'genemu_jquerydate',
+              array(
+                  'widget' => 'single_text',
+                  'label' => 'Date of your Secret Santa party',
+              )
+          )
+          ->add(
+              'amount',
+              'text',
+              array(
+                  'attr' => array('placeholder' => '15 EUR',),
+                  'label' => 'Amount to spend',
+              )
+          );
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
