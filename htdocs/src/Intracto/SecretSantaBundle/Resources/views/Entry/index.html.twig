@@ -1,4 +1,15 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block header %}
+    <div class="steps">
+        <h2>Your <span class="accent">Secret Santa party</span> details</h2>
+        <ul class="liststyle1">
+            <li><strong>Date </strong> {{ entry.pool.date|date('j F Y') }}</li>
+            <li><strong>Amount </strong> {{ entry.pool.amount }}</li>
+            <li><strong>Number of people </strong> {{ entry.pool.entries|length }}</li>
+            <li><strong>Person who created this list </strong> {{ entry.pool.entries|first.email }}</li>
+        </ul>
+    </div>
+{% endblock %}
 {% block main %}
     <div class="box">
         <h1>Your assigned buddy</h1>
