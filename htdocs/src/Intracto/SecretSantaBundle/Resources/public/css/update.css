@@ -242,3 +242,10 @@ h1, h2, h3, h4, h5, h6 {
 .bottom-spacer {
     margin-bottom: 45px;
 }
+
+#header {
+    cursor: pointer;
+}
+#homelink {
+    display: none;
+}

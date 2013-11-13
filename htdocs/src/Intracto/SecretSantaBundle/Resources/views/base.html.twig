@@ -51,6 +51,7 @@
     <div class="wrapper">
         <div class="container">
             <div id="header">
+                <a id="homelink" href="{{ url('pool_create') }}">Home</a>
                 {% block header %}{% endblock %}
             </div>
             {% for flashMessageType in app.session.flashbag.keys %}
@@ -79,6 +80,7 @@
     '@IntractoSecretSantaBundle/Resources/public/js/jquery-1.8.2.min.js'
     '@IntractoSecretSantaBundle/Resources/public/js/jquery-ui-1.9.0.js'
     '@IntractoSecretSantaBundle/Resources/public/js/bootstrap.min.js'
+    '@IntractoSecretSantaBundle/Resources/public/js/secretsanta.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
