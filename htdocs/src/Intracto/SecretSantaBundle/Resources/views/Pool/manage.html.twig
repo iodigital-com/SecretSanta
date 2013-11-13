@@ -1,40 +1,36 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
-
-    <h1>Your Secret Santa List</h1>
-
-    {% if first_time %}
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Perfect!</strong><br/>
-            Your email is now validated.<br/>
-            Our gnomes are now travelling on the internet delivering all your soon-to-be-secret-santas their target person.<br/>
-        </div>
-    {% endif %}
-
-	 <p>
-        <table class="entries table table-striped">
+    <div class="box">
+        <h1>Your Secret Santa List</h1>
+        <table class="entries table table-striped" id="mysanta">
             <thead>
                 <tr>
-                    <th class="span1">#</th>
+                    <th class="span1 entry-number-header">#</th>
                     <th class="span3">Name</th>
                     <th class="span4">E-mail</th>
                     <th class="span4">Confirmed</th>
+                    <th class="span1">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for entry in pool.entries %}
                 <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
-                    <td>{{ loop.index }}</td>
+                    <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.name }}</td>
                     <td>{{ entry.email }}</td>
-                    <td>{% if entry.viewdate %}Yes{% else %}Not yet{% endif %}</td>
+                    <td class="{% if entry.viewdate %}viewed">Yes{% else %}not_viewed">Not yet{% endif %}</td>
+                    <td style="text-align: right;">
+                        <a href="{{ path('pool_resend', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
+                            <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip" title="Resend e-mail" alt="Resend e-mail">
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </p>
-	<div class="alert alert-info">
-        <strong>Tip</strong>  You can always come back to this page to make sure everybody has checked his mailbox.
+
+        <div class="alert alert-info">
+            <strong>Tip</strong>  You can always come back to this page to make sure everybody has checked his or her mailbox.
+        </div>
     </div>
 {% endblock %}

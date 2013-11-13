@@ -1,0 +1,251 @@
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('../fonts/OpenSans-Bold-webfont.eot');
+    src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Bold-webfont.svg#OpenSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'straitregular';
+    src: url('../fonts/strait-regular-webfont.eot');
+    src: url('../fonts/strait-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/strait-regular-webfont.woff') format('woff'),
+         url('../fonts/strait-regular-webfont.ttf') format('truetype'),
+         url('../fonts/strait-regular-webfont.svg#straitregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/** liststyle **/
+ul.liststyle1 {
+	margin: 0px 0px 16px 0px;
+	padding: 0px;
+	border-bottom: 1px solid #e8e8e8;
+}
+	ul.liststyle1 li {
+		margin: 0px 0px 12px 0px;
+		padding: 0px;
+		list-style: none;
+		line-height: 29px;
+	}
+		ul.liststyle1 li .icon-steps {
+			display: inline-block;
+			height: 29px;
+			line-height: 29px;
+			width: 29px;
+			text-align: center;
+			margin-right: 10px;
+			float: left;
+			color: #ffffff;
+			background: url(../img/bulletstyle1.png) no-repeat left top;
+		}
+
+
+/** **/
+
+html {
+	font-size: 62.5%;
+}
+body {
+	background: url(../img/body-bg.jpg) repeat-x left top;
+	font-family: 'OpenSansRegular';
+	font-size: 100%;
+	font-size: 1.4em;
+	color: #333333;
+}
+	.text-center {
+		text-align: center;
+	}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'straitregular';
+}
+	h1 {
+		font-size: 2.3em;
+		font-weight: normal;
+	}
+	h2 {
+		font-size: 2.3em;
+		line-height: 25px;
+		font-weight: normal;
+		margin: 45px 0px 20px 0px;
+
+	}
+		#header h2 {
+			font-size: 1.7em;
+			margin: 0px 0px 20px 0px;
+		}
+	p {
+		margin: 0px 0px 14px 0px;
+	}
+		.accent {
+			color: #659d98;
+		}
+	a {
+		color: #b3141c;
+		text-decoration: underline;
+	}
+	a.btn-started {
+		display: inline-block;
+		width: 213px;
+		height: 44px;
+		line-height: 44px;
+		color: #ffffff;
+		background: url(../img/btn-started.png) no-repeat left top;
+		text-shadow: 1px 1px 1px #6e070c;
+		text-align: center;
+		font-size: 1.2em;
+		font-family: 'OpenSansBold';
+		text-decoration: none;
+	}
+	a.btn {
+		text-decoration: none;
+	}
+	.btn-success {
+		font-size: 0.9em;
+		padding: 5px 13px;
+		font-family: 'OpenSansBold';
+	}
+		.btn-success [class^="icon-"] {
+			margin-top: 1px;
+		}
+		table.entries input {
+			height: 28px;
+			line-height: 28px;
+			padding: 0;
+		}
+	.wrapper .btn-primary, .wrapper .btn-primary:active, .wrapper .btn-primary:visited, .wrapper .btn-primary.active {
+	    background-color: #A9181F;
+	    background-image: linear-gradient(to bottom, #BE1018, #AA181F);
+	    background-image: moz linear-gradient(top, #BE1018, #AA181F);
+	    background-image: -webkit-gradient(linear,0 0,0 100%,from(#BE1018),to(#AA181F));
+	    background-repeat: repeat-x;
+	    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	    color: #FFFFFF;
+	    text-shadow: 0 -1px 0 #6f070c;
+	}
+	#wrapper .btn-primary:hover {
+		background: #A9181F;
+	}
+	textarea {
+		color: #333333;
+	}
+	input.span12, textarea.span12, .uneditable-input.span12 {
+		width: 100%;
+        height: 200px;
+        margin-bottom: 5px;
+	}
+	.table {
+		margin-bottom: 35px;
+	}
+
+/**  **/
+
+	.wrapper {
+		background: url(../img/header-bg.jpg) no-repeat center top;
+	}
+	.container {
+		max-width: 940px;
+		padding: 0px 30px;
+		width: auto;
+		position: relative;
+	}
+		#header {
+			 height: 372px;
+		}
+			.steps {
+				background: url(../img/steps.png) no-repeat left top;
+				padding: 12px 20px 0px 20px;
+				width: 289px;
+				height: 266px;
+				position: absolute;
+				right: 0px;
+				top: 10px;
+			}
+		.content-container {
+			background: url(../img/content-container.png) no-repeat center top;
+			padding: 200px 0px 0px 0px;
+		}
+			.box {
+				margin: 0px 0px 20px 0px;
+			}
+	#footer-santa {
+		background: url(../img/footer-bg.png) no-repeat right top;
+		padding: 65px 0px 35px 0px;
+		text-align: center;
+		font-size: 0.8em;
+		color: #6E6E6E;
+	}
+		.copyright {
+			float: left;
+		}
+		.footer-links {
+			float: right;
+			padding-right: 175px;
+		}
+		.description {
+			 font-size: 0.8em;
+			 margin-left: 13px;
+			 margin-bottom: 3px;
+			 color: #6E6E6E;
+		}
+
+.yoursecretsant {
+    color: #6E7070;
+    margin: 5px 0 15px;
+}
+.yourgift {
+    background: url("../img/yourgift.png") no-repeat scroll left top transparent;
+    color: #C51426;
+    display: inline-block;
+    font-family: 'OpenSansBold';
+    font-size: 1.1em;
+    line-height: 41px;
+    margin: 0 15px 0 0;
+    padding: 22px 0 10px 87px;
+    width: 197px;
+}
+
+.entry .viewed {
+    color: #090;
+}
+
+.entry .not_viewed {
+    color: #900;
+}
+
+@media screen and (max-width: 1024px) {
+    a.github {
+        display: none;
+    }
+}
+
+
+.btn-create-event {
+    margin-top: 30px;
+}
+
+.bottom-spacer {
+    margin-bottom: 45px;
+}
+
+#header {
+    cursor: pointer;
+}
+#homelink {
+    display: none;
+}

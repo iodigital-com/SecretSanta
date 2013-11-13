@@ -11,23 +11,43 @@ class PoolType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $initial_message = "Hi there (NAME).\n\nClick on the link below to find out your secret santa for our party.\n\nThe maximimum amount of money to spend is 15 EUR, but ofcourse creating your own present is allowed, if not encouraged!\n\n\nSee ya!";
         $builder
-            ->add('message', 'textarea', array('data' => $initial_message))
-            ->add('entries', 'collection', array(
-                'type' => new EntryType(),
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-            ))
-        ;
+          ->add('message')
+          ->add(
+              'entries',
+              'collection',
+              array(
+                  'type' => new EntryType(),
+                  'allow_add' => true,
+                  'allow_delete' => true,
+                  'by_reference' => false,
+              )
+          )
+          ->add(
+              'date',
+              'genemu_jquerydate',
+              array(
+                  'widget' => 'single_text',
+                  'label' => 'Date of your Secret Santa party',
+              )
+          )
+          ->add(
+              'amount',
+              'text',
+              array(
+                  'attr' => array('placeholder' => '15 EUR',),
+                  'label' => 'Amount to spend',
+              )
+          );
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool'
+            )
+        );
     }
 
     public function getName()

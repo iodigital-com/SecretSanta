@@ -1,0 +1,92 @@
+@media only screen and (max-width: 801px) {
+	body {
+		background: none;
+		font-size: 1.3em;
+	}
+	.wrapper {
+		background: url(../img/header-bgipad.jpg) repeat-x left top;
+		background-size: 100%;
+		padding: 235px 0px 0px 0px;
+	}
+	.container {
+		padding: 0px;
+	}
+		#header {
+			display: none;
+		}
+			.content-container {
+				background: url(../img/content-container-ipad.jpg) no-repeat center top;
+				padding: 97px 0px 0px 0px;
+			}
+		input, textarea, .uneditable-input {
+		    width: 100%;
+		}
+		.box, .santa-content {
+			padding: 0px 30px;
+		}
+		select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+			font-size: 1em;
+		}
+		#footer-santa {
+			font-size: 0.9em;
+			background: url(../img/footer-bgipad.jpg) no-repeat right top;
+			padding: 97px 30px 35px 30px;
+		}
+			.footer-links {
+				padding: 0px;
+			}
+}
+
+@media only screen and (max-width: 480px) {
+	body {
+		background: none;
+		font-size: 1.3em;
+	}
+	.wrapper {
+		background: url(../img/header-bgiphone.jpg) repeat-x left top;
+		background-size: 100%;
+		padding: 150px 0px 0px 0px;
+	}
+	.container {
+		padding: 0px;
+	}
+		#header {
+			display: none;
+		}
+			.content-container {
+				background: url(../img/content-containeriphone.jpg) no-repeat center top;
+				padding: 97px 0px 0px 0px;
+			}
+			small {
+				font-size: 75%;
+			}
+		input, textarea, .uneditable-input {
+		    width: 100%;
+		}
+		.box, .santa-content {
+			padding: 0px 15px;
+		}
+		select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+			font-size: 1em;
+		}
+		.table th, .table td {
+			padding: 8px 2px;
+		}
+		#footer-santa {
+			font-size: 0.9em;
+			background: url(../img/footer-bgipad.jpg) no-repeat right top;
+			padding: 97px 30px 35px 30px;
+			text-align: left;
+		}
+			.footer-links {
+				padding: 0px;
+				width: 49%;
+				text-align: right;
+			}
+			.copyright {
+				width: 49%;
+			}
+			.mysanta .entry-number, .mysanta .entry-number-header {
+				display: none;
+			}
+}

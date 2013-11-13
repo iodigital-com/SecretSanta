@@ -11,6 +11,7 @@ use Intracto\SecretSantaBundle\Entity\Pool;
  *
  * @ORM\Table()
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Entry
 {
@@ -49,7 +50,7 @@ class Entry
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
-     * )     
+     * )
      */
     private $email;
 
@@ -60,6 +61,13 @@ class Entry
      * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true)
      */
     private $entry;
+
+    /**
+     * @var string $wishlist
+     *
+     * @ORM\Column(name="wishlist", type="text", nullable=true)
+     */
+    private $wishlist;
 
     /**
      * @var \DateTime $viewdate
@@ -75,6 +83,12 @@ class Entry
      */
     private $url;
 
+    /**
+     * @var boolean $wishlist_updated
+     *
+     * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
+     */
+    private $wishlist_updated = false;
 
     /**
      * Get id
@@ -90,6 +104,7 @@ class Entry
      * Set pool
      *
      * @param Pool $pool
+     *
      * @return Entry
      */
     public function setPool($pool)
@@ -113,6 +128,7 @@ class Entry
      * Set name
      *
      * @param string $name
+     *
      * @return Entry
      */
     public function setName($name)
@@ -136,6 +152,7 @@ class Entry
      * Set email
      *
      * @param string $email
+     *
      * @return Entry
      */
     public function setEmail($email)
@@ -156,9 +173,39 @@ class Entry
     }
 
     /**
+     * Set wishlist
+     *
+     * @param string $wishlist
+     *
+     * @return Entry
+     */
+    public function setWishlist($wishlist)
+    {
+
+        if ($this->wishlist !== $wishlist) {
+            $this->wishlist_updated = true;
+        }
+
+        $this->wishlist = $wishlist;
+
+        return $this;
+    }
+
+    /**
+     * Get wishlist
+     *
+     * @return string
+     */
+    public function getWishlist()
+    {
+        return $this->wishlist;
+    }
+
+    /**
      * Set entry
      *
      * @param Entry $entry
+     *
      * @return Entry
      */
     public function setEntry($entry)
@@ -182,6 +229,7 @@ class Entry
      * Set viewdate
      *
      * @param \DateTime $viewdate
+     *
      * @return Entry
      */
     public function setViewdate($viewdate)
@@ -205,6 +253,7 @@ class Entry
      * Set secret
      *
      * @param string $secret
+     *
      * @return Entry
      */
     public function setSecret($secret)
@@ -228,6 +277,7 @@ class Entry
      * Set url
      *
      * @param string $url
+     *
      * @return Entry
      */
     public function setUrl($url)
@@ -245,5 +295,74 @@ class Entry
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set send
+     *
+     * @param  boolean $send
+     * @return Entry
+     */
+    public function setSend($send)
+    {
+        $this->send = $send;
+
+        return $this;
+    }
+
+    /**
+     * Get send
+     *
+     * @return boolean
+     */
+    public function getSend()
+    {
+        return $this->send;
+    }
+
+    /**
+     * Set ready_to_send
+     *
+     * @param  boolean $readyToSend
+     * @return Entry
+     */
+    public function setReadyToSend($readyToSend)
+    {
+        $this->ready_to_send = $readyToSend;
+
+        return $this;
+    }
+
+    /**
+     * Get ready_to_send
+     *
+     * @return boolean
+     */
+    public function getReadyToSend()
+    {
+        return $this->ready_to_send;
+    }
+
+    /**
+     * Set wishlist_updated
+     *
+     * @param  boolean $wishlistUpdated
+     * @return Entry
+     */
+    public function setWishlistUpdated($wishlistUpdated)
+    {
+        $this->wishlist_updated = $wishlistUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get wishlist_updated
+     *
+     * @return boolean
+     */
+    public function getWishlistUpdated()
+    {
+        return $this->wishlist_updated;
     }
 }

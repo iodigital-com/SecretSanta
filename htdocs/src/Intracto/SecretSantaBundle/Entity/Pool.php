@@ -35,8 +35,6 @@ class Pool
      * @var string $message
      *
      * @ORM\Column(name="message", type="text")
-     *
-     * @Assert\NotBlank()
      */
     private $message;
 
@@ -48,6 +46,20 @@ class Pool
     private $sentdate;
 
     /**
+     * @var datetime $date
+     *
+     * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string $amount
+     *
+     * @ORM\Column(name="amount", type="string", length=255, nullable=true)
+     */
+    private $amount="15 EUR";
+
+    /**
      * @var ArrayCollection $entries
      *
      * @ORM\OneToMany(targetEntity="Entry", mappedBy="pool", cascade={"persist", "remove"})
@@ -56,20 +68,16 @@ class Pool
      */
     private $entries;
 
-
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
+
         // Create default minimum entries
-        $default_number_of_entries = 3;
-        $i = 0;
-        while ($i < $default_number_of_entries) {
-            $entry = new Entry();
-            $this->addEntry($entry);
-            $i++;
+        for ($i = 0; $i < 3; $i++) {
+            $this->addEntry(new Entry());
         }
     }
 
@@ -87,6 +95,7 @@ class Pool
      * Set listurl
      *
      * @param string $listurl
+     *
      * @return Pool
      */
     public function setListurl($listurl)
@@ -110,6 +119,7 @@ class Pool
      * Set message
      *
      * @param string $message
+     *
      * @return Pool
      */
     public function setMessage($message)
@@ -153,6 +163,7 @@ class Pool
      * Set sentdate
      *
      * @param datetime $sentdate
+     *
      * @return Pool
      */
     public function setSentdate($sentdate)
@@ -176,6 +187,7 @@ class Pool
      * Add entry
      *
      * @param Entry $entry
+     *
      * @return Pool
      */
     public function addEntry(Entry $entry)
@@ -218,4 +230,72 @@ class Pool
         $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
+    /**
+     * Add entries
+     *
+     * @param  \Intracto\SecretSantaBundle\Entity\Entry $entries
+     * @return Pool
+     */
+    public function addEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
+    {
+        $this->entries[] = $entries;
+
+        return $this;
+    }
+
+    /**
+     * Remove entries
+     *
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
+     */
+    public function removeEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
+    {
+        $this->entries->removeElement($entries);
+    }
+
+    /**
+     * Set date
+     *
+     * @param  \DateTime $date
+     * @return Pool
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param  string $amount
+     * @return Pool
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return string
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
 }

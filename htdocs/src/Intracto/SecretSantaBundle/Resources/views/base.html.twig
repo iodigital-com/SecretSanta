@@ -1,25 +1,89 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Secret Santa{% endblock %}</title>
-        <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta property="og:title" content="Secret Santa"/>
+    <meta property="og:image" content="http://secretsantaorganiser.com/bundles/intractosecretsanta/img/ico/social.jpg"/>
+    <meta property="og:site_name" content="Secret Santa"/>
+    <meta property="og:description" content="A free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers.  Each year around Christmas time people all over the world exchange gifts.  To keep things interesting though, you can randomly assign persons to each other to give a present to one another."/>
+    <title>{% block title %}Secret Santa{% endblock %}</title>
+    {#<link href="{{ asset('/bundles/intractosecretsanta/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">#}
+    {#<link href="{{ asset('/bundles/intractosecretsanta/css/update.css') }}" rel="stylesheet" media="screen">#}
+    {#<link href="{{ asset('/bundles/intractosecretsanta/css/mediaqueries.css') }}" rel="stylesheet" media="screen">#}
+    {% block stylesheets %}{% endblock %}
+         {% stylesheets
+         'bundles/intractosecretsanta/css/bootstrap.min.css'
+         'bundles/intractosecretsanta/css/update.css'
+         'bundles/intractosecretsanta/css/mediaqueries.css'
+         'bundles/intractosecretsanta/css/jquery-ui.css'
+         filter='cssrewrite' %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
     <style>
-      table.entries input {
+    table.entries input {
         margin-bottom: 0;
-      }
+    }
     </style>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {#% include "IntractoSecretSantaBundle:Helpers:navbar.html.twig" %#}
+    <link rel="shortcut icon" href="{{ asset('/bundles/intractosecretsanta/img/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('/bundles/intractosecretsanta/img/ico/apple-touch-icon-144-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('/bundles/intractosecretsanta/img/ico/apple-touch-icon-114-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('/bundles/intractosecretsanta/img/ico/apple-touch-icon-72-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('/bundles/intractosecretsanta/img/ico/apple-touch-icon-57-precomposed.png') }}">
+    {% if app.environment == 'prod' %}
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '{{ ga_tracking }}']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    {% endif %}
+</head>
+<body>
+    <a class="github" href="https://github.com/Intracto/SecretSanta" target="_blank">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+    </a>
+    <div class="wrapper">
         <div class="container">
+            <div id="header">
+                <a id="homelink" href="{{ url('pool_create') }}">Home</a>
+                {% block header %}{% endblock %}
+            </div>
+            {% for flashMessageType in app.session.flashbag.keys %}
+                {% if app.session.flashbag.has(flashMessageType) %}
+                    <div class="alert alert-{{ flashMessageType }}">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {% for flashMessage in app.session.flashbag.get(flashMessageType) %}
+                            <div>{{ flashMessage|raw }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
             {% block main %}{% endblock %}
+            {% block footer %}
+                <div id="footer-santa" class="clearfix">
+                    <div class="copyright">&copy;{{ "now"|date("Y") }} <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a></div>
+                    <div class="footer-links">
+                        <a href="{{ url('privacypolicy') }}">Privacy policy</a>
+                    </div>
+                    Have fun organizing your Secret Santa!
+                </div>
+            {% endblock %}
         </div>
-        <script src="{{ asset('bundles/intractosecretsanta/js/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+    {% javascripts
+    '@IntractoSecretSantaBundle/Resources/public/js/jquery-1.8.2.min.js'
+    '@IntractoSecretSantaBundle/Resources/public/js/jquery-ui-1.9.0.js'
+    '@IntractoSecretSantaBundle/Resources/public/js/bootstrap.min.js'
+    '@IntractoSecretSantaBundle/Resources/public/js/secretsanta.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% block javascripts %}{% endblock %}
+</body>
 </html>

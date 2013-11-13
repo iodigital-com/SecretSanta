@@ -1,27 +1,37 @@
-# sudo gem install capistrano capistrano-ext railsless-deploy capistrano_rsync_with_remote_cache capifony
+# sudo gem install capistrano capistrano-ext railsless-deploy capistrano_rsync_with_remote_cache
 
 require 'railsless-deploy'
 
 set :application, "SecretSanta"
-set :repository,  "git://github.com/tvlooy/SecretSanta.git"
-set :deploy_to, "/var/www/secretsanta/"
+set :repository,  "git://github.com/Intracto/SecretSanta.git"
 set :scm, :git
 set :deploy_via, :rsync_with_remote_cache
 
 set :keep_releases, 2
 after "deploy", "deploy:cleanup"
 
-set :user, "secretsanta"
-set :use_sudo, false
-server "192.168.1.216", :web, :app, :db, :primary => true # labs server
+set :stages,        %w(production staging)
+set :default_stage, "staging"
+set :stage_dir,     "capistrano"
+require 'capistrano/ext/multistage'
 
-# Usage (yes, this is todo):
-# 1) chown -R secretsanta:www-data * 
-# 2) cap deploy
-# 3) cp -R shared/vendor/ current/htdocs/
-#    cp shared/parameters.yml current/htdocs/app/config/
-#    cd current/htdocs/
-#    /var/www/secretsanta/shared/composer.phar update
-#    app/console cache:clear -env=prod
-#    chown -R secretsanta:www-data *
-#    chmod -R 777 app/cache/ app/logs/
+after "deploy:finalize_update", :install_symfony
+
+namespace :install_symfony do
+  task :default do
+    run "cp -R #{shared_path}/vendor/ #{release_path}/htdocs/"
+    run "cp #{shared_path}/parameters.yml #{release_path}/htdocs/app/config/"
+    run "cp #{shared_path}/bootstrap.php.cache #{release_path}/htdocs/app/"
+
+    run "mkdir #{release_path}/htdocs/app/cache/; mkdir #{release_path}/htdocs/app/logs/"
+    run "cd #{release_path}/htdocs/; ../composer.phar update"
+    run "cd #{release_path}/htdocs/; app/console assets:install web"
+    run "cd #{release_path}/htdocs/; app/console assetic:dump -env=prod"
+
+    #run "app/console doctrine:schema:update --force"
+
+    #run "cd #{release_path}/htdocs/; app/console cache:clear -env=prod"
+    run "chown -R #{user}:#{group} #{release_path}"
+    run "chmod -R 777 #{release_path}/htdocs/app/cache/ #{release_path}/htdocs/app/logs/"
+  end
+end

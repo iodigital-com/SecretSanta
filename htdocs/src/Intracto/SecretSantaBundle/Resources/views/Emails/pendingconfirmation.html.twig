@@ -1,12 +1,80 @@
-<p>
-	Hi {{ pool.getOwnerName }}
-</p>
-<p>
-	Please click on the link below to confirm your Secret Santa mailing list.<br />
-	You will also be able to keep track of all your users consulting their secret santa target.
-</p>
-<p>
-	<a href="{{ url('pool_manage', { 'listurl': pool.listurl }) }}">{{ path('pool_manage', { 'listurl': pool.listurl }) }}</a>
-</p>
+{% extends "IntractoSecretSantaBundle:Emails:basemail.html.twig" %}
+{% block main %}
+	<table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
+		<tr>
+			<td width="37" align="left">
+				<img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
+			</td>
+			<td width="566">
+				<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
+					Hi {{ pool.getOwnerName }}, <br /><br/>
+					Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
 
-<p>Created by <a href="http://www.intracto.be">Intracto</a></p>
+				</span>
+				<br /> <br />
+				<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
+					On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
+				</span>
+				<br /> <br />
+                	<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
+					And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
+				</span>
+                <br /> <br />
+                <br />
+			</td>
+			<td width="37" align="right">
+				<img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
+			</td>
+		</tr>
+		<tr>
+			<td width="640" colspan="3">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="52" height="45" valign="top">
+							<img src="http://www.eproof.be/assets/intracto/secret-santa/left-btn.jpg" width="52" height="45" style="display:block;" border="0" />
+						</td>
+						<td height="45" valign="top">
+							<table border="0" cellpadding="0" cellspacing="0" height="45">
+								<tr>
+									<td height="1" style="line-height: 1px;background-color: #ffffff" valign="top">
+										<img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
+									</td>
+								</tr>
+								<tr>
+									<td height="1" style="line-height: 1px;background-color: #a9181b" valign="top">
+										<img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
+									</td>
+								</tr>
+								<tr>
+									<td height="1" style="line-height: 1px;background-color: #ea1e35" valign="top">
+										<img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
+									</td>
+								</tr>
+								<tr>
+									<td height="40" valign="middle" style="background-color:#bd1019;">
+										<a href="{{ url('pool_manage', { 'listUrl': pool.listurl }) }}" target="_blank" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
+											Validate my event
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td height="1" style="line-height: 1px;background-color: #d31927" valign="top">
+										<img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
+									</td>
+								</tr>
+								<tr>
+									<td height="1" style="line-height: 1px;background-color: #a91721" valign="top">
+										<img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="59" height="45" valign="top">
+							<img src="http://www.eproof.be/assets/intracto/secret-santa/right-btn.jpg" width="59" height="45" style="display:block;" border="0" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+{% endblock %}

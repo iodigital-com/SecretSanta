@@ -1,20 +1,19 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
-	<h1>Only 1 step to go</h1>
+<div class="box">
+	<h1>Only 1 step to go! - Validate your participation</h1>
 	<p>
-		To prevent abuse, we need the list administrator ({{ pool.ownername }}) to confirm his email. We've sent a mail to {{ pool.owneremail }} with further instructions.
+		To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>{{ pool.ownername }}</b> to validate his or her participation. We've sent a mail to <b>{{ pool.owneremail }}</b> with further instructions.
 	</p>
 	<p>
-		Once confirmed your Secret Santa list will be scrambled and all users will receive your message along with the person they're in charge off buying a present.
+		Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
 	</p>
 	<p>
-		In the confirmation email the list administrator will also find a link to keep track of all users in this list who've already found out which person they'll be in charge off, making sure every Secret Santa knows his duty.
+		In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his duty.
 	</p>
-	<p>{% if app.debug %}
-		<h4>Debug mode:</h4>
-		<p>
-			<a href="{{ path('pool_manage', { 'listurl': pool.listurl }) }}">Manage pool page (url: {{ pool.listurl }})</a>
-		</p>
 
-		{% endif %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+            <div><strong>Warning!</strong> Don't forget to check your spam folder!</div>
+    </div>
 {% endblock %}
