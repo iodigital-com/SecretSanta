@@ -625,7 +625,7 @@
 				ed.settings.aria_label = s.aria_label + ed.getLang('advanced.help_shortcut');
 			}
 
-			// TODO: ACC Should have an aria-describedby attribute which is user-configurable to describe what this field is actually for.
+			// ACC Should have an aria-describedby attribute which is user-configurable to describe what this field is actually for.
 			// Maybe actually inherit it from the original textara?
 			n = p = DOM.create('span', {role : 'application', 'aria-labelledby' : ed.id + '_voice', id : ed.id + '_parent', 'class' : 'mceEditor ' + ed.settings.skin + 'Skin' + (s.skin_variant ? ' ' + ed.settings.skin + 'Skin' + t._ufirst(s.skin_variant) : '') + (ed.settings.directionality == "rtl" ? ' mceRtl' : '')});
 			DOM.add(n, 'span', {'class': 'mceVoiceLabel', 'style': 'display:none;', id: ed.id + '_voice'}, s.aria_label);
