@@ -37,3 +37,9 @@ Next, you can visit http://localhost:8080/app_dev.php to see the project homepag
 
 The tool sends out e-mail. By default it passes mail to localhost for delivery. It's up to you what you do with that.
 You can configure a relay in app/config/parameters.yml if you want.
+
+Run the tests with:
+
+    cd htdocs
+    phpunit -c app
+

@@ -13,7 +13,7 @@ class LinkifyExtension extends \Twig_Extension
     public function linkifyFilter($html)
     {
         return preg_replace(
-            '@(https?://([-\w\.]+)+(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)?)@',
+            '@(https?://([\S\.]+)+(:\d+)?(/([\w/_\.]*(\?\S+)?)?)?)@',
             '<a href="$1" target="_blank">$1</a>',
             $html
         );
