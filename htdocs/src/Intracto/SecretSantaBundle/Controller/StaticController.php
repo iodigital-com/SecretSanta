@@ -16,4 +16,21 @@ class StaticController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/report", name="report")
+     * @Template()
+     */
+    public function reportAction()
+    {
+        $dbal = $this->getDoctrine()->getConnection();
+        $pools = $dbal->fetchAll('
+            SELECT count(*) created, date(sentdate) sentdate
+            FROM Pool
+            GROUP BY date(sentdate)
+            ORDER BY date(sentdate)
+        ');
+
+        return array('pools' => $pools);
+    }
 }
