@@ -48,6 +48,7 @@ class Pool
     /**
      * @var datetime $date
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
      */
     private $date;
@@ -55,9 +56,10 @@ class Pool
     /**
      * @var string $amount
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="amount", type="string", length=255, nullable=true)
      */
-    private $amount="15 EUR";
+    private $amount;
 
     /**
      * @var ArrayCollection $entries

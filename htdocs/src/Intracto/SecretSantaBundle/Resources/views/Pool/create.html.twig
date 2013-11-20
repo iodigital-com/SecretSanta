@@ -33,8 +33,12 @@
 
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
-                {{ form_row(form.date) }}
-                {{ form_row(form.amount) }}
+                <div class="row toplabels">
+                    <div class="span3{% if form_errors(form.date) %} error{% endif %}">{{ form_label(form.date) }}{{ form_widget(form.date) }}</div>
+                    <div class="span3{% if form_errors(form.amount) %} error{% endif %}">{{ form_label(form.amount) }}{{ form_widget(form.amount) }}</div>
+                </div>
+
+
 
                 <table class="entries table table-striped mysanta">
                     <thead>
