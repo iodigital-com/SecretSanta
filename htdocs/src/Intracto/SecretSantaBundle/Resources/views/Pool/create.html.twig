@@ -89,21 +89,21 @@
     </div>
 {% endblock %}
 
- {% block javascripts %}
-     {% javascripts
-     '@IntractoSecretSantaBundle/Resources/public/js/jquery.smooth-scroll.min.js'
-     '@IntractoSecretSantaBundle/Resources/public/js/pool.create.js'
-     '@IntractoSecretSantaBundle/Resources/public/js/modernizr.custom.js' %}
-     <script type="text/javascript" src="{{ asset_url }}"></script>
-     {% endjavascripts %}
-     {{ form_javascript(form) }}
+{% block javascripts %}
+    {% javascripts
+        '@IntractoSecretSantaBundle/Resources/public/js/jquery.smooth-scroll.min.js'
+        '@IntractoSecretSantaBundle/Resources/public/js/pool.create.js'
+        '@IntractoSecretSantaBundle/Resources/public/js/modernizr.custom.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ form_javascript(form) }}
 
-     <script type="text/javascript">
-         if (Modernizr.inputtypes.date == true) {
-             // support for date input type, remove datepicker
-             $(document).ready(function() {
-                         $("#intracto_secretsantabundle_pooltype_date").datepicker("destroy");
-             });
-         }
-     </script>
- {% endblock %}
+    <script type="text/javascript">
+        if (Modernizr.inputtypes.date == true) {
+            // support for date input type, remove datepicker
+            $(document).ready(function() {
+                $("#intracto_secretsantabundle_pooltype_date").datepicker("destroy");
+            });
+        }
+    </script>
+{% endblock %}
