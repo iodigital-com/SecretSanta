@@ -30,7 +30,7 @@ class EntryController extends Controller
         }
 
         if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+            $form->submit($request);
             if ($form->isValid()) {
                 $em->flush($this->entry);
                 $this->get('session')->getFlashBag()->add(
