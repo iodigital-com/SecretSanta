@@ -14,5 +14,8 @@ parameters:
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
     ga_tracking:       UA-00000000-0
+    ga_email:          you@domain.tld
+    ga_password:       secret
+    ga_profile_id:     00000000
     admin_email:       santa@secretsanta.dev
     base_url:          secretsanta.dev

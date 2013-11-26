@@ -74,3 +74,5 @@ services:
         class: Intracto\SecretSantaBundle\Twig\LinkifyExtension
         tags:
             - { name: twig.extension }
+    cache:
+        class: Doctrine\Common\Cache\ApcCache
