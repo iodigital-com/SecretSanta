@@ -17,9 +17,12 @@
                 <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.name }}</td>
-                    <td>{{ entry.email }}</td>
+                    <td id="email_{{ entry.id }}">{{ entry.email }}</td>
                     <td class="{% if entry.viewdate %}viewed">Yes{% else %}not_viewed">Not yet{% endif %}</td>
                     <td style="text-align: right;">
+                        <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
+                             onclick="editableEmail('{{ pool.listUrl }}', {{ entry.id }});"
+                             rel="tooltip" title="Edit e-mail" alt="Edit e-mail" style="cursor: pointer;">
                         <a href="{{ path('pool_resend', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
                             <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip" title="Resend e-mail" alt="Resend e-mail">
                         </a>
@@ -33,4 +36,22 @@
             <strong>Tip</strong>  You can always come back to this page to make sure everybody has checked his or her mailbox.
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        function editableEmail(listUrl, entryId) {
+            var email = $('#email_' + entryId).html();
+            var url = '{{ path("entry_email_edit", { 'listUrl': 'listUrl', 'entryId': 'entryId' }) }}';
+            url = url.replace("listUrl", listUrl);
+            url = url.replace("entryId", entryId);
+            $('#email_' + entryId).html(
+                '<form action="' + url + '" method="post">' +
+                    '<input type="text" name="email" value="' + email + '">&nbsp;' +
+                    '<button class="btn btn-small btn-primary" type="submit"><i class="icon-ok icon-white"></i> Save</button>' +
+                '</form>'
+            );
+        }
+    </script>
 {% endblock %}
