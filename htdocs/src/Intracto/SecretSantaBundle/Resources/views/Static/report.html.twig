@@ -32,6 +32,7 @@
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
+                ['countries', 'visits'],
                 {% for country, visits in gaCountries.countries %}
                     ['{{ country }}', {{ visits }}],
                 {% endfor %}
