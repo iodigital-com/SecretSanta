@@ -19,6 +19,11 @@ class PoolController extends Controller
     public $adminEmail;
 
     /**
+     * @var Pool
+     */
+    private $pool;
+
+    /**
      * @Route("/", name="pool_create")
      * @Template()
      */
@@ -104,7 +109,38 @@ class PoolController extends Controller
             $entryService->sendSecretSantaMailsForPool($this->pool);
         }
 
-        return array('pool' => $this->pool);
+        return array(
+            'pool' => $this->pool,
+            'delete_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('delete_pool')
+        );
+    }
+
+    /**
+     * @Route("/delete/{listUrl}", name="pool_delete")
+     * @Template()
+     */
+    public function deleteAction($listUrl)
+    {
+        $correctCsrfToken = $this->get('form.csrf_provider')->isCsrfTokenValid(
+            'delete_pool',
+            $this->getRequest()->get('csrf_token')
+        );
+        $correctConfirmation = ($this->getRequest()->get('confirmation') === 'delete everything');
+
+        if ($correctConfirmation === false || $correctCsrfToken === false) {
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                '<h4>Not deleted</h4> The confirmation was incorrect.'
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $this->getPool($listUrl);
+
+        $em->remove($this->pool);
+        $em->flush();
     }
 
     /**

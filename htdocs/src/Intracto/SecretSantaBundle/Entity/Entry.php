@@ -28,7 +28,7 @@ class Entry
      * @var Pool $pool
      *
      * @ORM\ManyToOne(targetEntity="Pool", inversedBy="entries")
-     * @ORM\JoinColumn(name="poolId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="poolId", referencedColumnName="id", onDelete="CASCADE")
      */
     private $pool;
 
@@ -58,7 +58,7 @@ class Entry
      * @var Entry $entry
      *
      * @ORM\OneToOne(targetEntity="Entry")
-     * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     private $entry;
 
