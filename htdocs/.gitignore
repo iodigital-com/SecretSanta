@@ -6,5 +6,6 @@ app/logs/*
 web/compiled/*
 web/js/*
 web/css/*
+bin/*
 vendor
 composer.phar
