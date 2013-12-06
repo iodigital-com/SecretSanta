@@ -16,4 +16,7 @@
         <button type="button" class="close" data-dismiss="alert">×</button>
             <div><strong>Warning!</strong> Don't forget to check your spam folder!</div>
     </div>
+
+    {% if app.environment == 'dev' %}<a href="{{ path('pool_manage', { 'listUrl': pool.listUrl }) }}">{{ path('pool_manage', { 'listUrl': pool.listUrl }) }}</a>{% endif %}
+</div>
 {% endblock %}

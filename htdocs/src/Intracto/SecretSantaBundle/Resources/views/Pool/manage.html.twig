@@ -23,9 +23,17 @@
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
                              onclick="editableEmail('{{ pool.listUrl }}', {{ entry.id }});"
                              rel="tooltip" title="Edit e-mail" alt="Edit e-mail" style="cursor: pointer;">
-                        <a href="{{ path('pool_resend', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
-                            <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip" title="Resend e-mail" alt="Resend e-mail">
-                        </a>
+                        {% spaceless %}
+                            <a href="{{ path('pool_resend', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
+                                <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip" title="Resend e-mail" alt="Resend e-mail">
+                            </a>
+                        {% endspaceless %}
+                        {% if app.environment == 'dev' %}
+                            <a href="{{ path('entry_view', { 'url': entry.url }) }}">
+                                <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
+                                     title="{{ entry.entry.name }} <{{ entry.entry.email }}>" alt="View entry">
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
