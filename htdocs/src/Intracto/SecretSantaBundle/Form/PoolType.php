@@ -36,7 +36,6 @@ class PoolType extends AbstractType
               'amount',
               'text',
               array(
-                  'attr' => array('placeholder' => '15 EUR'),
                   'label' => 'Amount to spend',
               )
           );
