@@ -57,8 +57,8 @@
                     {% for entry in form.entries %}
                         <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
-                            <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
-                            <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
+                            <td {% if form_errors(entry.name) %}class="error"{% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
+                            <td {% if form_errors(entry.email) %}class="error"{% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
                             <td style="text-align: right;">
                                 {% if loop.index == 1 %}
                                     <small>This person is also your list administrator.</small>

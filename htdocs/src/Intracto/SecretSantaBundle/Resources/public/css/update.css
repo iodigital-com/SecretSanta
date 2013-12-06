@@ -253,3 +253,7 @@ h1, h2, h3, h4, h5, h6 {
 .toplabels .error {
     color: #CF706C;
 }
+
+    .toplabels .error input, .error td.error input {
+        background: url('../img/error.png') no-repeat scroll right center #fff;
+    }
