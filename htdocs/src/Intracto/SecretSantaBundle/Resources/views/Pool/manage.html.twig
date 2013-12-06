@@ -35,6 +35,29 @@
         <div class="alert alert-info">
             <strong>Tip</strong>  You can always come back to this page to make sure everybody has checked his or her mailbox.
         </div>
+
+        <button onclick="$('#delete_pool').show(); $(this).hide(); $('#confirmation').focus();" class="btn btn-primary">Delete this pool</button>
+        <div id="delete_pool" class="alert alert-error" style="display: none;">
+            <h3>Delete this pool</h3>
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                <b>Unexpected bad things will happen if you don't read this!</b><br>
+                <br>
+                Once you delete a pool, there is no going back. This action CANNOT be undone.<br>
+                This will delete the pool, it's participants and their wishlists permanently.<br>
+                <br>
+                Please type "<b>delete everything</b>" below to confirm.<br>
+            </p>
+            <form action="{{ path('pool_delete', { 'listUrl': pool.listUrl }) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_pool_csrf_token }}">
+                <input type="text" name="confirmation" id="confirmation" autocomplete="off"
+                       onkeyup="if ($(this).val() == 'delete everything') $('#btn_confirmation').removeAttr('disabled');"><br>
+                <button class="btn btn-primary" type="submit" id="btn_confirmation" disabled>
+                    I understand the consequences, delete this pool
+                </button>
+            </form>
+        </div>
     </div>
 {% endblock %}
 

@@ -1,0 +1,11 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block main %}
+<div class="box">
+	<h1>Your pool was deleted!</h1>
+	<p>
+	    Thank you for using our Secret Santa. And, we hope to see you again next year!
+	</p>
+    <div>
+        <a class="btn-started" href="{{ path('pool_create') }}#mysanta">Create a new pool</a>
+    </div>
+{% endblock %}
