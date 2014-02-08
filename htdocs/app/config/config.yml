@@ -74,5 +74,20 @@ services:
         class: Intracto\SecretSantaBundle\Twig\LinkifyExtension
         tags:
             - { name: twig.extension }
+
     cache:
         class: Doctrine\Common\Cache\ApcCache
+
+    pool_repository:
+        class: Intracto\SecretSantaBundle\Repository\Pool
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - IntractoSecretSantaBundle:Pool
+
+    entry_repository:
+        class: Intracto\SecretSantaBundle\Repository\Entry
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - IntractoSecretSantaBundle:Entry
