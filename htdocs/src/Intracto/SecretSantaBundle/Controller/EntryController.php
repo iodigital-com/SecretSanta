@@ -13,6 +13,12 @@ use Intracto\SecretSantaBundle\Entity\EmailAddress;
 class EntryController extends Controller
 {
     /**
+     * @DI\Inject("entry_repository")
+     * @var \Intracto\SecretSantaBundle\Repository\Doctrine\EntryRepository
+     */
+    public $entryRepository;
+
+    /**
      * @Route("/entry/{url}", name="entry_view")
      * @Template()
      */
@@ -98,7 +104,7 @@ class EntryController extends Controller
      */
     protected function getEntry($url)
     {
-        $this->entry = $this->getDoctrine()->getRepository('IntractoSecretSantaBundle:Entry')->findOneByUrl($url);
+        $this->entry = $this->entryRepository->findOneByUrl($url);
 
         if (!is_object($this->entry)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
