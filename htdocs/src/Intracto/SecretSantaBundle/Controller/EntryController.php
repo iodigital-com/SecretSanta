@@ -13,6 +13,12 @@ use Intracto\SecretSantaBundle\Entity\EmailAddress;
 class EntryController extends Controller
 {
     /**
+     * @DI\Inject("entry_repository")
+     * @var \Intracto\SecretSantaBundle\Repository\Doctrine\EntryRepository
+     */
+    public $entryRepository;
+
+    /**
      * @Route("/entry/{url}", name="entry_view")
      * @Template()
      */
@@ -55,9 +61,8 @@ class EntryController extends Controller
      */
     public function editEmailAction($listUrl, $entryId)
     {
-        $em = $this->getDoctrine()->getManager();
         /** @var Entry $entry */
-        $entry = $em->getRepository('IntractoSecretSantaBundle:Entry')->find($entryId);
+        $entry = $this->entryRepository->find($entryId);
 
         if ($entry->getPool()->getListurl() === $listUrl) {
             /** @var \Symfony\Component\Validator\Validator $validatorService */
@@ -72,6 +77,7 @@ class EntryController extends Controller
                     '<h4>Not saved</h4> There is an error in the email address.'
                 );
             } else {
+                $em = $this->getDoctrine()->getManager();
                 $entry->setEmail((string) $emailAddress);
                 $em->flush($entry);
 
@@ -98,7 +104,7 @@ class EntryController extends Controller
      */
     protected function getEntry($url)
     {
-        $this->entry = $this->getDoctrine()->getRepository('IntractoSecretSantaBundle:Entry')->findOneByUrl($url);
+        $this->entry = $this->entryRepository->findOneByUrl($url);
 
         if (!is_object($this->entry)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();

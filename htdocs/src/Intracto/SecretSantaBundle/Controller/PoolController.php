@@ -19,6 +19,18 @@ class PoolController extends Controller
     public $adminEmail;
 
     /**
+     * @DI\Inject("pool_repository")
+     * @var \Intracto\SecretSantaBundle\Repository\Doctrine\PoolRepository
+     */
+    public $poolRepository;
+
+    /**
+     * @DI\Inject("entry_repository")
+     * @var \Intracto\SecretSantaBundle\Repository\Doctrine\EntryRepository
+     */
+    public $entryRepository;
+
+    /**
      * @var Pool
      */
     private $pool;
@@ -149,7 +161,7 @@ class PoolController extends Controller
      */
     public function resendAction($listUrl, $entryId)
     {
-        $entry = $this->getDoctrine()->getRepository('IntractoSecretSantaBundle:Entry')->find($entryId);
+        $entry = $this->entryRepository->find($entryId);
 
         if (!is_object($entry)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
@@ -181,7 +193,7 @@ class PoolController extends Controller
      */
     protected function getPool($listurl)
     {
-        $this->pool = $this->getDoctrine()->getRepository('IntractoSecretSantaBundle:Pool')->findOneByListurl($listurl);
+        $this->pool = $this->poolRepository->findOneByListurl($listurl);
 
         if (!is_object($this->pool)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
