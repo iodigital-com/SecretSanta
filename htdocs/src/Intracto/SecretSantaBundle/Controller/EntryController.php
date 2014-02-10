@@ -6,6 +6,7 @@ use Intracto\SecretSantaBundle\Form\WishlistType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\HttpFoundation\Request;
 use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Entity\EmailAddress;
@@ -14,7 +15,7 @@ class EntryController extends Controller
 {
     /**
      * @DI\Inject("entry_repository")
-     * @var \Intracto\SecretSantaBundle\Repository\Doctrine\EntryRepository
+     * @var \Doctrine\ORM\EntityRepository
      */
     public $entryRepository;
 

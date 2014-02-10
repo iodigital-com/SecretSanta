@@ -20,13 +20,13 @@ class PoolController extends Controller
 
     /**
      * @DI\Inject("pool_repository")
-     * @var \Intracto\SecretSantaBundle\Repository\Doctrine\PoolRepository
+     * @var \Doctrine\ORM\EntityRepository
      */
     public $poolRepository;
 
     /**
      * @DI\Inject("entry_repository")
-     * @var \Intracto\SecretSantaBundle\Repository\Doctrine\EntryRepository
+     * @var \Doctrine\ORM\EntityRepository
      */
     public $entryRepository;
 
