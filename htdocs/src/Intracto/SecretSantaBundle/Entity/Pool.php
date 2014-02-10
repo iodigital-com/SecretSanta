@@ -10,7 +10,7 @@ use Intracto\SecretSantaBundle\Entity\Entry;
  * Intracto\SecretSantaBundle\Entity\Pool
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Repository\Doctrine\PoolRepository")
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
 class Pool

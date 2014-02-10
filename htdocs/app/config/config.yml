@@ -79,14 +79,14 @@ services:
         class: Doctrine\Common\Cache\ApcCache
 
     pool_repository:
-        class: Intracto\SecretSantaBundle\Repository\Pool
+        class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
             - IntractoSecretSantaBundle:Pool
 
     entry_repository:
-        class: Intracto\SecretSantaBundle\Repository\Entry
+        class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
