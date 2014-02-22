@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Form\PoolType;
@@ -164,11 +165,11 @@ class PoolController extends Controller
         $entry = $this->entryRepository->find($entryId);
 
         if (!is_object($entry)) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
 
         if ($entry->getPool()->getListUrl() !== $listUrl) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
 
         $entryService = $this->get('intracto_secret_santa.entry_service');
@@ -186,7 +187,7 @@ class PoolController extends Controller
      * Retrieve pool by url
      *
      * @param $listurl
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @throws NotFoundHttpException
      * @internal param string $url
      *
      * @return boolean
@@ -196,7 +197,7 @@ class PoolController extends Controller
         $this->pool = $this->poolRepository->findOneByListurl($listurl);
 
         if (!is_object($this->pool)) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
 
         return true;

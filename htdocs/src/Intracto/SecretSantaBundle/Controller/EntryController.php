@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Entity\EmailAddress;
 
@@ -100,7 +101,7 @@ class EntryController extends Controller
      *
      * @param string $url
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @throws NotFoundHttpException
      * @return boolean
      */
     protected function getEntry($url)
@@ -108,7 +109,7 @@ class EntryController extends Controller
         $this->entry = $this->entryRepository->findOneByUrl($url);
 
         if (!is_object($this->entry)) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
 
         return true;
