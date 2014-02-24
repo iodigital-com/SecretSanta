@@ -91,3 +91,12 @@ services:
         factory_method: getRepository
         arguments:
             - IntractoSecretSantaBundle:Entry
+
+    intracto_secretsanta.send_pending_confirmation_mail_listener:
+        class: Intracto\SecretSantaBundle\EventListener\SendPendingConfirmationMailListener
+        arguments:
+            - @templating
+            - @mailer
+            - "%admin_email%"
+        tags:
+            - { name: kernel.event_subscriber }

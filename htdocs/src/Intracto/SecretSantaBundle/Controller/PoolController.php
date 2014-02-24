@@ -2,12 +2,16 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
+use Intracto\SecretSantaBundle\Event\PoolEvent;
+use Intracto\SecretSantaBundle\Event\PoolEvents;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Doctrine\ORM\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Form\PoolType;
@@ -21,15 +25,21 @@ class PoolController extends Controller
 
     /**
      * @DI\Inject("pool_repository")
-     * @var \Doctrine\ORM\EntityRepository
+     * @var EntityRepository
      */
     public $poolRepository;
 
     /**
      * @DI\Inject("entry_repository")
-     * @var \Doctrine\ORM\EntityRepository
+     * @var EntityRepository
      */
     public $entryRepository;
+
+    /**
+     * @DI\Inject("event_dispatcher")
+     * @var EventDispatcherInterface
+     */
+    public $eventDispatcher;
 
     /**
      * @var Pool
@@ -68,25 +78,10 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
-                // Send pending confirmation mail
-                $message = \Swift_Message::newInstance()
-                    ->setSubject('Secret Santa Validation')
-                    ->setFrom($this->adminEmail, "Santa Claus")
-                    ->setTo($pool->getOwnerEmail())
-                    ->setBody(
-                        $this->renderView(
-                            'IntractoSecretSantaBundle:Emails:pendingconfirmation.txt.twig',
-                            array('pool' => $pool)
-                        )
-                    )
-                    ->addPart(
-                        $this->renderView(
-                            'IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig',
-                            array('pool' => $pool)
-                        ),
-                        'text/html'
-                    );
-                $this->get('mailer')->send($message);
+                $this->eventDispatcher->dispatch(
+                    PoolEvents::NEW_POOL_CREATED,
+                    new PoolEvent($pool)
+                );
 
                 return new Response(
                     $this->renderView('IntractoSecretSantaBundle:Pool:created.html.twig', array('pool' => $pool))
@@ -111,10 +106,11 @@ class PoolController extends Controller
             $this->get('session')->getFlashBag()->add(
                 'success',
                 "<strong>Perfect!</strong><br/>Your email is now validated.<br/>
-                            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
-                            <br />
-                            Don't forget to confirm your own participation. We've sent you another email. Go check it out!"
+                    Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
+                    <br />
+                    Don't forget to confirm your own participation. We've sent you another email. Go check it out!"
             );
+
             /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
