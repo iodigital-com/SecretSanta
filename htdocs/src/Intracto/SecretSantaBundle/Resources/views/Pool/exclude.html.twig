@@ -17,7 +17,9 @@
                 <tr class="entry">
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_entries.vars.label }}</td>
-                    <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>{{ form_widget(entry.excluded_entries) }}</td>
+                    <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>{{ form_widget(entry.excluded_entries,
+                        {'attr': {'placeholder': 'Click en choose the participants you want to exclude'} } ) }}
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -29,4 +31,19 @@
         </p>
         {{ form_end(form) }}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('/select2/select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('select[name^="intracto_secretsantabundle_poolexcludeentrytype[entries]"]').select2();
+        })
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('/select2/select2.css') }}" rel="stylesheet" media="screen">
+    {{ parent() }}
 {% endblock %}

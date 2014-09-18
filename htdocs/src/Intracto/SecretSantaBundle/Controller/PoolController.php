@@ -79,13 +79,7 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
-                /*
-                $this->eventDispatcher->dispatch(
-                    PoolEvents::NEW_POOL_CREATED,
-                    new PoolEvent($pool)
-                );
-                */
-                return new RedirectResponse($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
+                return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
             }
         }
 
@@ -112,12 +106,12 @@ class PoolController extends Controller
                 $em->persist($this->pool);
                 $em->flush();
 
-                /*
                 $this->eventDispatcher->dispatch(
                     PoolEvents::NEW_POOL_CREATED,
-                    new PoolEvent($pool)
+                    new PoolEvent($this->pool)
                 );
-                */
+
+                return new Response($this->renderView('IntractoSecretSantaBundle:Pool:created.html.twig', array('pool' => $this->pool)));
             }
         }
         return array(
@@ -230,7 +224,8 @@ class PoolController extends Controller
         return true;
     }
 
-    private function redirectIfNotAllowed(){
+    private function redirectIfNotAllowed()
+    {
         $request = $this->container->get('request');
         $routeName = $request->get('_route');
         /*
