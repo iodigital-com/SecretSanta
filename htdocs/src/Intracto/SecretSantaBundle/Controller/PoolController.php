@@ -4,10 +4,12 @@ namespace Intracto\SecretSantaBundle\Controller;
 
 use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
+use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -62,7 +64,6 @@ class PoolController extends Controller
                 foreach ($pool->getEntries() as $entry) {
                     $entry->setPool($pool);
                 }
-
                 $em = $this->getDoctrine()->getManager();
                 $message = "Hi there (NAME),\n\n";
                 $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
@@ -78,17 +79,47 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
+                /*
                 $this->eventDispatcher->dispatch(
                     PoolEvents::NEW_POOL_CREATED,
                     new PoolEvent($pool)
                 );
-
-                return new Response(
-                    $this->renderView('IntractoSecretSantaBundle:Pool:created.html.twig', array('pool' => $pool))
-                );
+                */
+                return new RedirectResponse($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
             }
         }
 
+        return array(
+            'form' => $form->createView(),
+        );
+    }
+
+    /**
+     * @Route("/exclude/{listUrl}", name="pool_exclude")
+     * @Template()
+     */
+    public function excludeAction(Request $request, $listUrl)
+    {
+        $this->getPool($listUrl);
+        $this->redirectIfNotAllowed();
+
+        $form = $this->createForm(new PoolExcludeEntryType(), $this->pool);
+        if ('POST' === $request->getMethod()) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($this->pool);
+                $em->flush();
+
+                /*
+                $this->eventDispatcher->dispatch(
+                    PoolEvents::NEW_POOL_CREATED,
+                    new PoolEvent($pool)
+                );
+                */
+            }
+        }
         return array(
             'form' => $form->createView(),
         );
@@ -195,6 +226,19 @@ class PoolController extends Controller
         if (!is_object($this->pool)) {
             throw new NotFoundHttpException();
         }
+
+        return true;
+    }
+
+    private function redirectIfNotAllowed(){
+        $request = $this->container->get('request');
+        $routeName = $request->get('_route');
+        /*
+        if($route$this->pool->getConfirmed() && $this->pool->getSentdate() === null){
+
+        }
+        if($route)
+        */
 
         return true;
     }

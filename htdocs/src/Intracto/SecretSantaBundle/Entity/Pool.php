@@ -71,6 +71,14 @@ class Pool
     private $entries;
 
     /**
+     * @var boolean $confirmed
+     *
+     * @ORM\Column(name="confirmed", type="boolean")
+     *
+     */
+    private $confirmed = 0;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -299,5 +307,28 @@ class Pool
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     * Set confirmed
+     *
+     * @param boolean $confirmed
+     * @return Pool
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
+    
+        return $this;
+    }
+
+    /**
+     * Get confirmed
+     *
+     * @return boolean
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
     }
 }

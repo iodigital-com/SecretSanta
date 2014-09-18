@@ -1,0 +1,32 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block main %}
+    <div class="box">
+        <h1>Exclude</h1>
+
+        {{ form_start(form) }}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="span1">#</th>
+                <th class="span3">Name</th>
+                <th>Exclude</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entry in form.entries %}
+                <tr class="entry">
+                    <td class="entry-number">{{ loop.index }}</td>
+                    <td>{{ entry.excluded_entries.vars.label }}</td>
+                    <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>{{ form_widget(entry.excluded_entries) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p>
+            <button type="submit" class="btn btn-large btn-primary btn-create-event">
+                <i class="icon-ok icon-white"></i> Create your event!
+            </button>
+        </p>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

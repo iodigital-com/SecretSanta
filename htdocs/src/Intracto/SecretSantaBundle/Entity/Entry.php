@@ -77,7 +77,7 @@ class Entry
      *      inverseJoinColumns={@ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id")}
      *      )
      **/
-    private $excludedEntries;
+    private $excluded_entries;
 
 
     /**
@@ -113,7 +113,7 @@ class Entry
      */
     public function __construct()
     {
-        $this->excludedEntries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->excluded_entries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -400,7 +400,7 @@ class Entry
      */
     public function addExcludedEntry(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
     {
-        $this->excludedEntries[] = $excludedEntry;
+        $this->excluded_entries[] = $excludedEntry;
     
         return $this;
     }
@@ -412,7 +412,7 @@ class Entry
      */
     public function removeExcludedEntrie(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
     {
-        $this->excludedEntries->removeElement($excludedEntry);
+        $this->excluded_entries->removeElement($excludedEntry);
     }
 
     /**
@@ -422,6 +422,6 @@ class Entry
      */
     public function getExcludedEntries()
     {
-        return $this->excludedEntries;
+        return $this->excluded_entries;
     }
 }
