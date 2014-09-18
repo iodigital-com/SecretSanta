@@ -63,6 +63,24 @@ class Entry
     private $entry;
 
     /**
+     * @var ArrayCollection $excludedEntries
+     *
+     * @ORM\OneToMany(targetEntity="Entry", referencedBy="excludedMeEntries")
+     * @ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id", onDelete="CASCADE")
+     */
+    /**
+     * @var ArrayCollection $excludedEntries
+     *
+     * @ORM\ManyToMany(targetEntity="Entry")
+     * @ORM\JoinTable(name="exclude",
+     *      joinColumns={@ORM\JoinColumn(name="entryId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id")}
+     *      )
+     **/
+    private $excludedEntries;
+
+
+    /**
      * @var string $wishlist
      *
      * @ORM\Column(name="wishlist", type="text", nullable=true)
@@ -89,6 +107,14 @@ class Entry
      * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
     private $wishlist_updated = false;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->excludedEntries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -364,5 +390,38 @@ class Entry
     public function getWishlistUpdated()
     {
         return $this->wishlist_updated;
+    }
+    
+    /**
+     * Add excludedEntry
+     *
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
+     * @return Entry
+     */
+    public function addExcludedEntry(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
+    {
+        $this->excludedEntries[] = $excludedEntry;
+    
+        return $this;
+    }
+
+    /**
+     * Remove excludedEntry
+     *
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
+     */
+    public function removeExcludedEntrie(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
+    {
+        $this->excludedEntries->removeElement($excludedEntry);
+    }
+
+    /**
+     * Get excludedEntries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExcludedEntries()
+    {
+        return $this->excludedEntries;
     }
 }
