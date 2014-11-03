@@ -116,7 +116,24 @@ class PoolController extends Controller
         }
         return array(
             'form' => $form->createView(),
+            'pool' => $this->pool,
         );
+    }
+
+
+    /**
+     * @Route("/validate-exclude/{listUrl}", name="pool_validate_exclude")
+     * @Template()
+     */
+    public function validateExcludeAction(Request $request, $listUrl)
+    {
+        $this->getPool($listUrl);
+        $this->redirectIfNotAllowed();
+        if ('POST' !== $request->getMethod()) {
+            throw new NotFoundHttpException();
+        }
+        //@Todo: validate ajax
+        return new Response('');
     }
 
     /**

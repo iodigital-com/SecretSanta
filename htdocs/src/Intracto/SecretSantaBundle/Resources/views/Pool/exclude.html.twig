@@ -18,7 +18,7 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_entries.vars.label }}</td>
                     <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>{{ form_widget(entry.excluded_entries,
-                        {'attr': {'placeholder': 'Click en choose the participants you want to exclude'} } ) }}
+                        {'attr': {'placeholder': 'Click and choose the participants you want to exclude'} } ) }}
                     </td>
                 </tr>
             {% endfor %}
@@ -39,6 +39,20 @@
     <script>
         $(document).ready(function () {
             $('select[name^="intracto_secretsantabundle_poolexcludeentrytype[entries]"]').select2();
+
+            $('select[name^="intracto_secretsantabundle_poolexcludeentrytype[entries]"]').on('change', function () {
+
+
+                postFields = {
+                    entry: $(this).attr('data-entry')
+                }
+
+                $.post('{{ path('pool_validate_exclude', {'listUrl': pool.listUrl}) }}', $(postFields).serialize(), function (data) {
+                    jsonData = JSON.parse(data);
+
+                    console.log(jsonData);
+                })
+            })
         })
     </script>
 {% endblock %}

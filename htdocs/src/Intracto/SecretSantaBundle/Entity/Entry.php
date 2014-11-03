@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Entity\Pool;
+use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Entry
@@ -423,5 +424,14 @@ class Entry
     public function getExcludedEntries()
     {
         return $this->excluded_entries;
+    }
+
+    public function validateExcludes(ExecutionContextInterface $context){
+        $context->addViolationAt(
+            'excluded_entries',
+            'This name sounds totally fake!',
+            array(),
+            null
+        );
     }
 }

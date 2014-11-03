@@ -23,6 +23,7 @@ class ExcludeEntryType extends AbstractType
                 'expanded' => false,
                 'property' => 'name',
                 'label' =>  $me->getName(),
+                'attr' => array('data-entry' => $me->getId()),
                 'query_builder' => function (EntityRepository $er) use ($me) {
                         return $er->createQueryBuilder('e')
                             ->where('e.pool = :pool')
