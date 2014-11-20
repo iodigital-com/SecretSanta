@@ -1,1 +1,11 @@
-.rsync_cache
+web/bundles/
+app/bootstrap.php.cache
+app/config/parameters.yml
+app/cache/*
+app/logs/*
+web/compiled/*
+web/js/*
+web/css/*
+bin/*
+vendor
+composer.phar
