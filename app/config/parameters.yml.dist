@@ -3,8 +3,8 @@ parameters:
     database_host:     localhost
     database_port:     ~
     database_name:     secretsanta
-    database_user:     santa
-    database_password: hohoho
+    database_user:     vagrant
+    database_password: vagrant
 
     mailer_transport:  smtp
     mailer_host:       localhost
@@ -17,5 +17,5 @@ parameters:
     ga_email:          you@domain.tld
     ga_password:       secret
     ga_profile_id:     00000000
-    admin_email:       santa@secretsanta.dev
-    base_url:          secretsanta.dev
+    admin_email:       santa@dev.secretsantaorganizer.com
+    base_url:          dev.secretsantaorganizer.com
