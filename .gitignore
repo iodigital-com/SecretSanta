@@ -9,3 +9,4 @@ web/css/*
 bin/*
 vendor
 composer.phar
+dumps
