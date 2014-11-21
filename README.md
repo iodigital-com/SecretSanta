@@ -1,4 +1,4 @@
-# Welcome to Secret Santa
+# Welcome to Secret Santa Online gift exchange organizer!
 
 Welcome to the repository for SecretSanta. See
 [LICENSE](https://github.com/Intracto/SecretSanta/blob/master/LICENSE)
