@@ -1,8 +1,9 @@
-# Welcome to Secret Santa
+# Welcome to Secret Santa Online gift exchange organizer!
 
-Welcome to the repository for SecretSanta. See
-[LICENSE](https://github.com/Intracto/SecretSanta/blob/master/LICENSE)
-for usage terms.
+Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends,
+family or even co-workers and add your wishlist.
+
+See [LICENSE](https://github.com/Intracto/SecretSanta/blob/master/LICENSE) for usage terms.
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5e845a60-cf8f-4e83-97d3-ecacb19cd091/big.png)]
 (https://insight.sensiolabs.com/projects/5e845a60-cf8f-4e83-97d3-ecacb19cd091)
