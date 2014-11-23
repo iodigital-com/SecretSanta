@@ -22,6 +22,9 @@ composer.phar install
 # Install assets
 app/console assets:install web
 app/console assetic:dump -env=prod
+
+# Cleanup
+rm -rf .git .gitignore Vagrantfile shell_provisioner
 rm -rf web/app_dev.php web/config.php
 
 # Reset permissions
