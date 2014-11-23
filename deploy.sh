@@ -35,6 +35,7 @@ cd ../..
 
 # Activate latest
 ln -sfn releases/$VERSION current
+sudo service apache2 restart
 
 # Cleanup old deployment, keep last 2
 cd releases
