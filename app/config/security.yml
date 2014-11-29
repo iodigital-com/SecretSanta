@@ -9,8 +9,10 @@ security:
                     adwords:  { password: %adwords_password%, roles: [ 'ROLE_ADWORDS' ] }
 
     firewalls:
-        your_firewall_name:
+        secured_area:
+            pattern: ^/
             http_basic: ~
+            anonymous: ~
 
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
