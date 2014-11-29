@@ -1,0 +1,22 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     ~
+    database_name:     secretsanta
+    database_user:     vagrant
+    database_password: vagrant
+
+    mailer_transport:  smtp
+    mailer_host:       localhost
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    ad_client:         ca-pub-8492783089085834
+    ga_tracking:       UA-00000000-0
+    ga_email:          you@domain.tld
+    ga_password:       secret
+    ga_profile_id:     00000000
+    admin_email:       santa@dev.secretsantaorganizer.com
+    base_url:          dev.secretsantaorganizer.com

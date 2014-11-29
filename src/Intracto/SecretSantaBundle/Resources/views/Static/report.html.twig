@@ -1,0 +1,52 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block main %}
+    <div class="box">
+        <h1>Report</h1>
+        <div id="visualization" style="width: 900px; height: 400px;"></div>
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+        <p style="text-align: center;">Total visits last month <b>{{ gaCountries.totals }}</b>.</p>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+        function drawVisualization() {
+            var data = google.visualization.arrayToDataTable([
+                ['d', 'Pools'],
+                {%  set totalpools = 0 %}
+                ['2012-12-01', {{ totalpools }}],
+                {% for pool in pools %}
+                    {% set totalpools = totalpools + pool.created %}
+                    ['{{ pool.sentdate }}', {{ totalpools }}],
+                {% endfor %}
+            ]);
+
+            new google.visualization.LineChart(document.getElementById('visualization')).
+                    draw(data, {curveType: "function",
+                        width: 900, height: 400, colors: ['red']}
+            );
+        }
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['countries', 'visits'],
+                {% for country, visits in gaCountries.countries %}
+                    ['{{ country }}', {{ visits }}],
+                {% endfor %}
+            ]);
+
+            var options = {
+                title: 'Last month top visiting countries'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+        google.setOnLoadCallback(drawChart);
+        google.setOnLoadCallback(drawVisualization);
+    </script>
+{% endblock %}

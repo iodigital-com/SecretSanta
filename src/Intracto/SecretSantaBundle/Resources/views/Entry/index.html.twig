@@ -1,0 +1,81 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block header %}
+    <div class="steps">
+        <h2>Your <span class="accent">Secret Santa party</span> details</h2>
+        <ul class="liststyle1">
+            <li><strong>Date </strong> {{ entry.pool.date|date('j F Y') }}</li>
+            <li><strong>Amount </strong> {{ entry.pool.amount }}</li>
+            <li><strong>Number of people </strong> {{ entry.pool.entries|length }}</li>
+            <li><strong>Person who created this list </strong> {{ entry.pool.entries|first.email }}</li>
+        </ul>
+    </div>
+{% endblock %}
+{% block main %}
+    <div class="box">
+        <div class="row">
+            <div class="span8">
+                <h1>Your assigned buddy</h1>
+
+                <p>Hi {{ entry.name }},</p>
+
+                <p>You are assigned as Secret Santa to give a present to:</p>
+
+                <div class="yoursecretsant">
+                    <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
+                </div>
+            </div>
+            <div class="span4">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="5966835305"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <div class="well bottom-spacer">
+            <h4>Wishlist from {{ entry.entry.name }}</h4>
+            {% if(secret_santa.getwishlist) %}
+                {{ secret_santa.getwishlist|linkify|raw }}
+            {% else %}
+                {{ entry.entry.name }} has not yet provided a wishlist.
+            {% endif %}
+        </div>
+
+        <h1>Your wishlist</h1>
+
+        <p>
+            <div class="description">To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of
+                communicating this to your Secret Santa.
+            </div>
+
+            {{ form_start(form) }}
+            {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
+
+            <p>
+                <br><button type="submit" class="btn btn-large btn-primary">
+                    <i class="icon-ok icon-white"></i> Update your wishlist
+                </button>
+            </p>
+            {{ form_end(form) }}
+        </p>
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block;width:320px;height:100px;margin:0 auto;"
+             data-ad-client="ca-pub-8492783089085834"
+             data-ad-slot="3013368909"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/tinymce/tiny_mce.js') }}"></script>
+    <script src="{{ asset('/tinymce/jquery.tinymce.js') }}"></script>
+    {{ form_javascript(form) }}
+{% endblock %}
