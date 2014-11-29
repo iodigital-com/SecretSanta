@@ -12,18 +12,28 @@
 {% endblock %}
 {% block main %}
     <div class="box">
-        <h1>Your assigned buddy</h1>
+        <div class="row">
+            <div class="span6">
+                <h1>Your assigned buddy</h1>
 
-        <p>
-            Hi {{ entry.name }},
-        </p>
+                <p>Hi {{ entry.name }},</p>
 
-        <p>
-            You are assigned as Secret Santa to give a present to:
-        </p>
+                <p>You are assigned as Secret Santa to give a present to:</p>
 
-        <div class="yoursecretsant">
-            <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
+                <div class="yoursecretsant">
+                    <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
+                </div>
+            </div>
+            <div class="span6">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="5966835305"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </div>
 
         <div class="well bottom-spacer">
@@ -46,12 +56,21 @@
             {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
 
             <p>
-                <button type="submit" class="btn btn-large btn-primary">
+                <br><button type="submit" class="btn btn-large btn-primary">
                     <i class="icon-ok icon-white"></i> Update your wishlist
                 </button>
             </p>
             {{ form_end(form) }}
         </p>
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:100px"
+             data-ad-client="ca-pub-8492783089085834"
+             data-ad-slot="3013368909"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
 {% endblock %}
 

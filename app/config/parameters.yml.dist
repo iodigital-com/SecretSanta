@@ -13,6 +13,7 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+    ad_client:         ca-pub-8492783089085834
     ga_tracking:       UA-00000000-0
     ga_email:          you@domain.tld
     ga_password:       secret
