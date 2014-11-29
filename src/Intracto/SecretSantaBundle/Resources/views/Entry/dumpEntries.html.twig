@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dump entries</title>
+</head>
+<body>
+<ul>
+    {% for entry in entries %}
+        <li><a href="{{ url('entry_view', { 'url': entry.url }) }}">{{ url('entry_view', { 'url': entry.url }) }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
