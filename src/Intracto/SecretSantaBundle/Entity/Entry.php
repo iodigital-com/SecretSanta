@@ -58,7 +58,7 @@ class Entry
      * @var Entry $entry
      *
      * @ORM\OneToOne(targetEntity="Entry")
-     * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true, onDelete="CASCADE")
+     * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $entry;
 
