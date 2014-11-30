@@ -17,7 +17,7 @@ cd releases/$VERSION
 
 cp ../../shared/parameters.yml app/config
 composer.phar install
-# app/console doctrine:migrations:migrate --no-interaction # see https://github.com/Intracto/SecretSanta/issues/42
+app/console doctrine:migrations:migrate --no-interaction
 
 # Install assets
 app/console assets:install web
