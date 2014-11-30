@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Entity\Entry;
@@ -129,6 +130,19 @@ class EntryController extends Controller
         }
 
         return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
+    }
+
+    /**
+     * @Route("/dump-entries", name="dump_entries")
+     * @Template()
+     * @Secure(roles="ROLE_ADWORDS")
+     */
+    public function dumpEntriesAction()
+    {
+        $startCrawling = new \DateTime();
+        $startCrawling->sub(new \DateInterval('P4M'));
+
+        return ['entries' => $this->entryRepository->findAfter($startCrawling)];
     }
 
     /**

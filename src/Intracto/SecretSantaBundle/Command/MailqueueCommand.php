@@ -37,13 +37,14 @@ class MailqueueCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $context = $this->getContainer()->get('router')->getContext();
         $context->setHost($this->getContainer()->getParameter("base_url"));
-        /** @var $qb QueryBuilder */
-        $qb = $em->getRepository("IntractoSecretSantaBundle:Entry")
-            ->createQueryBuilder('IntractoSecretSantaBundle:Entry');
-        $secret_santas = $qb->select('secret_santa')
-            ->from('IntractoSecretSantaBundle:Entry', 'secret_santa')->innerJoin("secret_santa.entry", 'receiver')
-            ->where($qb->expr()->eq("receiver.wishlist_updated", '1'))
-            ->getQuery()->getResult();
+
+        $entryRepository = $em->getRepository("IntractoSecretSantaBundle:Entry");
+        $secret_santas = $entryRepository->findAllForWishlistNofifcication();
+
+        $container = $this->getContainer();
+        $mailer = $container->get('mailer');
+        $spool = $mailer->getTransport()->getSpool();
+        $transport = $container->get('swiftmailer.transport.real');
 
         foreach ($secret_santas as $secret_santa) {
             $receiver = $secret_santa->getEntry();
@@ -72,15 +73,14 @@ class MailqueueCommand extends ContainerAwareCommand
                 );
 
             if ($input->getArgument('force')) {
-                $this->getContainer()->get('mailer')->send($message);
+                $mailer->send($message);
+                $spool->flushQueue($transport);
+
                 $receiver->setWishlistUpdated(false);
                 $em->flush($receiver);
             }
+            echo '.';
         }
-        $container = $this->getContainer();
-        $mailer = $container->get('mailer');
-        $spool = $mailer->getTransport()->getSpool();
-        $transport = $container->get('swiftmailer.transport.real');
-        $spool->flushQueue($transport);
+
     }
 }

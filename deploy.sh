@@ -29,6 +29,7 @@ rm -rf web/app_dev.php web/config.php
 
 # Reset permissions
 sudo chown -R www-data:www-data ../$VERSION
+sudo chmod -R ug=rwX,o= ../$VERSION
 sudo chmod -R a+rwX app/logs app/cache
 
 cd ../..

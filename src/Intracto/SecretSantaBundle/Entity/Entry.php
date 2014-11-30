@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Intracto\SecretSantaBundle\Entity\Entry
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\EntryRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Entry
