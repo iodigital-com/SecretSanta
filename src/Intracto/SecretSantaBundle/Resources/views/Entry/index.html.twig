@@ -52,15 +52,40 @@
                 communicating this to your Secret Santa.
             </div>
 
+        <p>
             {{ form_start(form) }}
-            {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
+            {{ form_row(form._token) }}
+            <table class="entries table table-striped">
+                <thead>
+                <tr>
+                    <th class="span1 entry-number-header">#</th>
+                    <th class="span7">Description</th>
+                    <th style="text-align: right;" class="span4">
+                        <button type="button" class="btn btn-mini btn-success add-new-entry"><i
+                                    class="icon-plus-sign icon-white"></i> Add item to wishlist
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
+                {% for item in form.wishlistItems %}
+                    <tr class="wishlistitem">
+                        <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
+                        <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
+                        <td style="text-align: right;">
+                            <button type="button" class="btn btn-mini btn-danger remove-entry"><i class="icon-minus-sign icon-white"></i> Remove this item</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
             <p>
                 <br><button type="submit" class="btn btn-large btn-primary">
                     <i class="icon-ok icon-white"></i> Update your wishlist
                 </button>
             </p>
-            {{ form_end(form) }}
+            {{ form_end(form, {'render_rest': false}) }}
         </p>
 
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -77,5 +102,8 @@
 {% block javascripts %}
     <script src="{{ asset('/tinymce/tiny_mce.js') }}"></script>
     <script src="{{ asset('/tinymce/jquery.tinymce.js') }}"></script>
-    {{ form_javascript(form) }}
+    {% javascripts
+    '@IntractoSecretSantaBundle/Resources/public/js/wishlist.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

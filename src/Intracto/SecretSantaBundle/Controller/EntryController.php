@@ -2,6 +2,8 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -37,17 +39,41 @@ class EntryController extends Controller
             $em->flush($this->entry);
         }
 
+        $logger = $this->get('logger');
         if ('POST' === $request->getMethod()) {
+
+            // get current items to compare against items later on
+            $wishlistItems = new ArrayCollection();
+            foreach ($this->entry->getWishlistItems() as $item) {
+                $wishlistItems->add($item);
+            }
             $form->submit($request);
             if ($form->isValid()) {
+
+                // save entries passed
+                foreach ($this->entry->getWishlistItems() as $item) {
+                    $item->setEntry($this->entry);
+                    $em->persist($item);
+                }
+
+                // remove entries not passed
+                foreach ($wishlistItems as $item) {
+                    if (!$this->entry->getWishlistItems()->contains($item)) {
+                        $em->remove($item);
+                    }
+                }
+
+                $em->persist($this->entry);
                 $em->flush($this->entry);
                 $this->get('session')->getFlashBag()->add(
                     'success',
                     '<h4>Wishlist updated</h4>We\'ve sent out our gnomes to notify your Secret Santa about your wishes!'
                 );
+            } else {
+                // get form error
+                $logger->info("TOM error: " . print_r($form->getErrors(), true));
             }
         }
-
         $secret_santa = $this->entry->getEntry();
 
         return array(
