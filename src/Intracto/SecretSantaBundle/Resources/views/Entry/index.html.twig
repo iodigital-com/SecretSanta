@@ -38,10 +38,19 @@
 
         <div class="well bottom-spacer">
             <h4>Wishlist from {{ entry.entry.name }}</h4>
-            {% if(secret_santa.getwishlist) %}
-                {{ secret_santa.getwishlist|linkify|raw }}
+            {% if(secret_santa.wishlistitems|length == 0) %}
+                {# check for legacy wishlist #}
+                {% if(secret_santa.getwishlist) %}
+                    {{ secret_santa.getwishlist|linkify|raw }}
+                {% else %}
+                    {{ entry.entry.name }} has not yet provided a wishlist.
+                {% endif %}
             {% else %}
-                {{ entry.entry.name }} has not yet provided a wishlist.
+                <ul class="wishlist">
+                    {% for item in secret_santa.wishlistitems %}
+                        <li class="wishlistitem">{{ item.description|escape|linkify|raw }}</li>
+                    {% endfor %}
+                </ul>
             {% endif %}
         </div>
 
