@@ -50,10 +50,15 @@ class EntryController extends Controller
             $form->submit($request);
             if ($form->isValid()) {
 
-                // save entries passed
+                // save entries passed and check rank
+                $inOrder = true;
+                $lastRank = 0;
                 foreach ($this->entry->getWishlistItems() as $item) {
                     $item->setEntry($this->entry);
                     $em->persist($item);
+                    // keep track of rank
+                    if ($item->getRank() < $lastRank) $inOrder = false;
+                    $lastRank = $item->getRank();
                 }
 
                 // remove entries not passed
@@ -64,14 +69,18 @@ class EntryController extends Controller
                 }
 
                 $em->persist($this->entry);
-                $em->flush($this->entry);
+                $em->flush();
+
                 $this->get('session')->getFlashBag()->add(
                     'success',
                     '<h4>Wishlist updated</h4>We\'ve sent out our gnomes to notify your Secret Santa about your wishes!'
                 );
-            } else {
-                // get form error
-                $logger->info("TOM error: " . print_r($form->getErrors(), true));
+
+                if (!$inOrder) {
+                    // redirect to force refresh of form and entity
+                    return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
+                }
+
             }
         }
         $secret_santa = $this->entry->getEntry();

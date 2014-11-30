@@ -87,6 +87,7 @@ class Entry
      * @var ArrayCollection $wishlistItems
      *
      * @ORM\OneToMany(targetEntity="WishlistItem", mappedBy="entry", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"rank" = "asc"})
      */
     private $wishlistItems;
 
