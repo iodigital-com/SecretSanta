@@ -17,7 +17,7 @@ cd releases/$VERSION
 
 cp ../../shared/parameters.yml app/config
 composer.phar install
-app/console doctrine:migrations:migrate --no-interaction
+app/console doctrine:schema:update --force
 
 # Install assets
 app/console assets:install web
