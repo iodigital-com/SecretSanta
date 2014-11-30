@@ -12,9 +12,14 @@ class LinkifyExtension extends \Twig_Extension
 
     public function linkifyFilter($html)
     {
+        // if it contains html links, the user entered HTML. Don't touch it
+        if (strpos($html, '<a href="')) {
+            return $html;
+        }
+
         return preg_replace(
-            '@(https?://([\S\.]+)+(:\d+)?(/([\w/_\.]*(\?\S+)?)?)?)@',
-            '<a href="$1" target="_blank">$1</a>',
+            "~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~",
+            "<a href=\"\\0\" target=\"_blank\">\\0</a>",
             $html
         );
     }
