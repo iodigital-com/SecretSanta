@@ -38,14 +38,14 @@ class WishlistItem
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="rank", type="integer")
+     * @ORM\Column(name="rank", type="integer", nullable=true)
      */
     private $rank;
 

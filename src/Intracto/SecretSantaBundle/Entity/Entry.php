@@ -4,9 +4,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Intracto\SecretSantaBundle\Form\WishlistType;
 use Symfony\Component\Validator\Constraints as Assert;
-use Intracto\SecretSantaBundle\Entity\Pool;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Entry
@@ -380,6 +378,10 @@ class Entry
         return $this->wishlist_updated;
     }
 
+    public function __construct() {
+        $this->PostLoad();
+    }
+
     /**
      * @ORM\PostLoad
      */
@@ -403,14 +405,14 @@ class Entry
         $this->wishlistItems = $wishlistItems;
     }
 
-    public function addWishlistItem(WishlistType $item) {
+    public function addWishlistItem(WishlistItem $item) {
         $this->removedWishlistItems->removeElement($item);
         $item->setEntry($this);
         $this->wishlistItems->add($item);
         $this->wishlist_updated = true;
     }
 
-    public function removeWishlistItem(WishlistType $item) {
+    public function removeWishlistItem(WishlistItem $item) {
         $this->removedWishlistItems->add($item);
         $item->setEntry(null);
         $this->wishlistItems->removeElement($item);
