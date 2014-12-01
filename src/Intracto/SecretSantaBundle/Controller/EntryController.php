@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
+use Intracto\SecretSantaBundle\Form\WishlistNewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -32,7 +33,11 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
-        $form = $this->createForm(new WishlistType(), $this->entry);
+        if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != "") {
+            $form = $this->createForm(new WishlistType(), $this->entry);
+        } else {
+            $form = $this->createForm(new WishlistNewType(), $this->entry);
+        }
 
         // Log visit on first access
         if ($this->entry->getViewdate() === null) {

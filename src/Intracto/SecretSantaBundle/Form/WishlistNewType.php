@@ -6,12 +6,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class WishlistType extends AbstractType
+class WishlistNewType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('wishlist', 'genemu_tinymce');
+        $builder->add('wishlistItems', 'collection',
+            array(
+                'type' => new WishlistItemType(),
+                'allow_add' => true,
+                'allow_delete' => true
+            ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -25,6 +29,6 @@ class WishlistType extends AbstractType
 
     public function getName()
     {
-        return 'intracto_secretsantabundle_wishlisttype';
+        return 'intracto_secretsantabundle_wishlistnewtype';
     }
 }

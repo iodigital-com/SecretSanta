@@ -1,4 +1,8 @@
 function addNewEntry(collectionHolder) {
+
+    // remove .noitems if present
+    $('.noitems').remove();
+
     // Get entry prototype as defined in attribute data-prototype
     var prototype = collectionHolder.attr('data-prototype');
     // Adjust entry prototype for correct naming
