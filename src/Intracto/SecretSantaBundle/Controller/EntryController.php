@@ -33,10 +33,12 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
+        $legacyWishlist = true;
         if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != "") {
             $form = $this->createForm(new WishlistType(), $this->entry);
         } else {
             $form = $this->createForm(new WishlistNewType(), $this->entry);
+            $legacyWishlist = false;
         }
 
         // Log visit on first access
@@ -84,6 +86,11 @@ class EntryController extends Controller
 
                 if (!$inOrder) {
                     // redirect to force refresh of form and entity
+                    return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
+                }
+
+                if ($legacyWishlist && ($this->entry->getWishlist() == null || $this->entry->getWishlist() == "")) {
+                    // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
                     return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
                 }
 
