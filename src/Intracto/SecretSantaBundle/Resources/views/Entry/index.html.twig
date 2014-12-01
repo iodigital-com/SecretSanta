@@ -38,10 +38,19 @@
 
         <div class="well bottom-spacer">
             <h4>Wishlist from {{ entry.entry.name }}</h4>
-            {% if(secret_santa.getwishlist) %}
-                {{ secret_santa.getwishlist|linkify|raw }}
+            {% if(secret_santa.wishlistitems|length == 0) %}
+                {# check for legacy wishlist #}
+                {% if(secret_santa.getwishlist) %}
+                    {{ secret_santa.getwishlist|linkify|raw }}
+                {% else %}
+                    {{ entry.entry.name }} has not yet provided a wishlist.
+                {% endif %}
             {% else %}
-                {{ entry.entry.name }} has not yet provided a wishlist.
+                <ul class="wishlist">
+                    {% for item in secret_santa.wishlistitems %}
+                        <li class="wishlistitem">{{ item.description|escape|linkify|raw }}</li>
+                    {% endfor %}
+                </ul>
             {% endif %}
         </div>
 
@@ -49,18 +58,59 @@
 
         <p>
             <div class="description">To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of
-                communicating this to your Secret Santa.
+                communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
             </div>
 
+        <p>
             {{ form_start(form) }}
-            {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
+            {{ form_row(form._token) }}
+            {% if entry.wishlist != "" %}
+
+                {# legacy wishlist #}
+                {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
+
+            {% else %}
+
+                {# item-based wishlist #}
+                <table class="entries table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="span1 entry-number-header">#</th>
+                        <th class="span7">Description</th>
+                        <th style="text-align: right;" class="span4">
+                            <button type="button" class="btn btn-mini btn-success add-new-entry"><i
+                                        class="icon-plus-sign icon-white"></i> Add item to wishlist
+                            </button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
+                    {% if form.wishlistItems |length == 0 %}
+                        <tr class="noitems">
+                            <td colspan="3">Your wishlist is empty. Add something!</td>
+                        </tr>
+                    {% else %}
+                        {% for item in form.wishlistItems %}
+                            <tr class="wishlistitem">
+                                <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
+                                <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
+                                <td style="text-align: right;">
+                                    <button type="button" class="btn btn-mini btn-danger remove-entry"><i class="icon-minus-sign icon-white"></i> Remove this item</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+
+            {% endif %}
 
             <p>
                 <br><button type="submit" class="btn btn-large btn-primary">
                     <i class="icon-ok icon-white"></i> Update your wishlist
                 </button>
             </p>
-            {{ form_end(form) }}
+            {{ form_end(form, {'render_rest': false}) }}
         </p>
 
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -77,5 +127,8 @@
 {% block javascripts %}
     <script src="{{ asset('/tinymce/tiny_mce.js') }}"></script>
     <script src="{{ asset('/tinymce/jquery.tinymce.js') }}"></script>
-    {{ form_javascript(form) }}
+    {% javascripts
+    '@IntractoSecretSantaBundle/Resources/public/js/wishlist.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

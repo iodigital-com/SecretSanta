@@ -2,7 +2,10 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
+use Intracto\SecretSantaBundle\Form\WishlistNewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -30,7 +33,13 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
-        $form = $this->createForm(new WishlistType(), $this->entry);
+        $legacyWishlist = true;
+        if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != "") {
+            $form = $this->createForm(new WishlistType(), $this->entry);
+        } else {
+            $form = $this->createForm(new WishlistNewType(), $this->entry);
+            $legacyWishlist = false;
+        }
 
         // Log visit on first access
         if ($this->entry->getViewdate() === null) {
@@ -38,17 +47,55 @@ class EntryController extends Controller
             $em->flush($this->entry);
         }
 
+        $logger = $this->get('logger');
         if ('POST' === $request->getMethod()) {
+
+            // get current items to compare against items later on
+            $wishlistItems = new ArrayCollection();
+            foreach ($this->entry->getWishlistItems() as $item) {
+                $wishlistItems->add($item);
+            }
             $form->submit($request);
             if ($form->isValid()) {
-                $em->flush($this->entry);
+
+                // save entries passed and check rank
+                $inOrder = true;
+                $lastRank = 0;
+                foreach ($this->entry->getWishlistItems() as $item) {
+                    $item->setEntry($this->entry);
+                    $em->persist($item);
+                    // keep track of rank
+                    if ($item->getRank() < $lastRank) $inOrder = false;
+                    $lastRank = $item->getRank();
+                }
+
+                // remove entries not passed
+                foreach ($wishlistItems as $item) {
+                    if (!$this->entry->getWishlistItems()->contains($item)) {
+                        $em->remove($item);
+                    }
+                }
+
+                $em->persist($this->entry);
+                $em->flush();
+
                 $this->get('session')->getFlashBag()->add(
                     'success',
                     '<h4>Wishlist updated</h4>We\'ve sent out our gnomes to notify your Secret Santa about your wishes!'
                 );
+
+                if (!$inOrder) {
+                    // redirect to force refresh of form and entity
+                    return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
+                }
+
+                if ($legacyWishlist && ($this->entry->getWishlist() == null || $this->entry->getWishlist() == "")) {
+                    // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
+                    return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
+                }
+
             }
         }
-
         $secret_santa = $this->entry->getEntry();
 
         return array(

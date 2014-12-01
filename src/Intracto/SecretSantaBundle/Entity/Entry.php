@@ -2,9 +2,9 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Intracto\SecretSantaBundle\Entity\Pool;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Entry
@@ -82,6 +82,19 @@ class Entry
      * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
+
+    /**
+     * @var ArrayCollection $wishlistItems
+     *
+     * @ORM\OneToMany(targetEntity="WishlistItem", mappedBy="entry", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"rank" = "asc"})
+     */
+    private $wishlistItems;
+
+    /**
+     * @var WishlistItem $removedWishlistItems
+     */
+    private $removedWishlistItems;
 
     /**
      * @var boolean $wishlist_updated
@@ -365,4 +378,62 @@ class Entry
     {
         return $this->wishlist_updated;
     }
+
+    public function __construct() {
+        $this->PostLoad();
+    }
+
+    /**
+     * @ORM\PostLoad
+     */
+    public function PostLoad() {
+        $this->removedWishlistItems = new ArrayCollection();
+    }
+
+    /**
+     * @return WishlistItem
+     */
+    public function getWishlistItems()
+    {
+        return $this->wishlistItems;
+    }
+
+    /**
+     * @param WishlistItem $wishlistItems
+     */
+    public function setWishlistItems($wishlistItems)
+    {
+        $this->wishlistItems = $wishlistItems;
+    }
+
+    public function addWishlistItem(WishlistItem $item) {
+        $this->removedWishlistItems->removeElement($item);
+        $item->setEntry($this);
+        $this->wishlistItems->add($item);
+        $this->wishlist_updated = true;
+    }
+
+    public function removeWishlistItem(WishlistItem $item) {
+        $this->removedWishlistItems->add($item);
+        $item->setEntry(null);
+        $this->wishlistItems->removeElement($item);
+        $this->wishlist_updated = true;
+    }
+
+    /**
+     * @return WishlistItem
+     */
+    public function getRemovedWishlistItems()
+    {
+        return $this->removedWishlistItems;
+    }
+
+    /**
+     * @param WishlistItem $removedWishlistItems
+     */
+    public function setRemovedWishlistItems($removedWishlistItems)
+    {
+        $this->removedWishlistItems = $removedWishlistItems;
+    }
+
 }

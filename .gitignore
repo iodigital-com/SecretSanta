@@ -10,3 +10,5 @@ bin/*
 vendor
 composer.phar
 dumps
+.idea
+.vagrant
