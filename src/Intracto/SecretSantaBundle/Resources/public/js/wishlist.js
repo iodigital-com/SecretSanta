@@ -70,4 +70,8 @@ jQuery(document).ready(function() {
         }
     }).disableSelection();
 
+	$('table.entries tbody').bind('click.sortable mousedown.sortable',function(ev){
+		ev.target.focus();
+	});
+		
 });
