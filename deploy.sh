@@ -22,6 +22,7 @@ app/console doctrine:schema:update --force
 # Install assets
 app/console assets:install web
 app/console assetic:dump -env=prod
+cp ../../shared/yandex_* web
 
 # Cleanup
 rm -rf .git .gitignore Vagrantfile shell_provisioner
