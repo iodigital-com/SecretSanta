@@ -73,7 +73,7 @@ class PoolController extends Controller
                     $pool->getDate()->format("F jS") .
                     ". Be sure to bring your gift!\n\n";
                 $message .= $pool->getMessage() . "\n";
-                $message .= "\n\nMerry Christmas!";
+                $message .= "\n\nHappy Holidays!";
                 $pool->setMessage($message);
                 $em->persist($pool);
                 $em->flush();
