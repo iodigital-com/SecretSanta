@@ -24,6 +24,9 @@ class EntryController extends Controller
      */
     public $entryRepository;
 
+    /** @var Entry */
+    public $entry;
+
     /**
      * @Route("/entry/{url}", name="entry_view")
      * @Template()
@@ -47,9 +50,7 @@ class EntryController extends Controller
             $em->flush($this->entry);
         }
 
-        $logger = $this->get('logger');
         if ('POST' === $request->getMethod()) {
-
             // get current items to compare against items later on
             $wishlistItems = new ArrayCollection();
             foreach ($this->entry->getWishlistItems() as $item) {
@@ -57,15 +58,17 @@ class EntryController extends Controller
             }
             $form->submit($request);
             if ($form->isValid()) {
-
                 // save entries passed and check rank
                 $inOrder = true;
                 $lastRank = 0;
+
                 foreach ($this->entry->getWishlistItems() as $item) {
                     $item->setEntry($this->entry);
                     $em->persist($item);
                     // keep track of rank
-                    if ($item->getRank() < $lastRank) $inOrder = false;
+                    if ($item->getRank() < $lastRank) {
+                        $inOrder = false;
+                    }
                     $lastRank = $item->getRank();
                 }
 
