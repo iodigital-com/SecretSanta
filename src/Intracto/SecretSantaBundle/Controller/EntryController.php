@@ -36,12 +36,12 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
-        $legacyWishlist = true;
         if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != "") {
+            $legacyWishlist = true;
             $form = $this->createForm(new WishlistType(), $this->entry);
         } else {
-            $form = $this->createForm(new WishlistNewType(), $this->entry);
             $legacyWishlist = false;
+            $form = $this->createForm(new WishlistNewType(), $this->entry);
         }
 
         // Log visit on first access
@@ -52,17 +52,18 @@ class EntryController extends Controller
 
         if ('POST' === $request->getMethod()) {
             // get current items to compare against items later on
-            $wishlistItems = new ArrayCollection();
+            $currentWishlistItems = new ArrayCollection();
             foreach ($this->entry->getWishlistItems() as $item) {
-                $wishlistItems->add($item);
+                $currentWishlistItems->add($item);
             }
             $form->submit($request);
             if ($form->isValid()) {
                 // save entries passed and check rank
                 $inOrder = true;
                 $lastRank = 0;
+                $newWishlistItems = $this->entry->getWishlistItems();
 
-                foreach ($this->entry->getWishlistItems() as $item) {
+                foreach ($newWishlistItems as $item) {
                     $item->setEntry($this->entry);
                     $em->persist($item);
                     // keep track of rank
@@ -73,11 +74,14 @@ class EntryController extends Controller
                 }
 
                 // remove entries not passed
-                foreach ($wishlistItems as $item) {
-                    if (!$this->entry->getWishlistItems()->contains($item)) {
+                foreach ($currentWishlistItems as $item) {
+                    if (!$newWishlistItems->contains($item)) {
                         $em->remove($item);
                     }
                 }
+
+                // For now assume that a save of entry means the list has changed
+                $this->entry->setWishlistUpdated(true);
 
                 $em->persist($this->entry);
                 $em->flush();
