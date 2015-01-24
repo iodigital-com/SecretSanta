@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Pool
@@ -12,6 +13,8 @@ use Intracto\SecretSantaBundle\Entity\Entry;
  * @ORM\Table()
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
+ *
+ * @PoolHasValidExcludes(groups={"exclude_entries"})
  */
 class Pool
 {
@@ -71,12 +74,12 @@ class Pool
     private $entries;
 
     /**
-     * @var boolean $confirmed
+     * @var boolean $created
      *
-     * @ORM\Column(name="confirmed", type="boolean")
+     * @ORM\Column(name="created", type="boolean")
      *
      */
-    private $confirmed = 0;
+    private $created = false;
 
     /**
      * Constructor
@@ -310,25 +313,25 @@ class Pool
     }
 
     /**
-     * Set confirmed
+     * Set created
      *
-     * @param boolean $confirmed
+     * @param boolean $created
      * @return Pool
      */
-    public function setConfirmed($confirmed)
+    public function setCreated($created)
     {
-        $this->confirmed = $confirmed;
+        $this->created = $created;
     
         return $this;
     }
 
     /**
-     * Get confirmed
+     * Get created
      *
      * @return boolean
      */
-    public function getConfirmed()
+    public function getCreated()
     {
-        return $this->confirmed;
+        return $this->created;
     }
 }

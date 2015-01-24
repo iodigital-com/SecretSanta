@@ -4,6 +4,8 @@
         <h1>Exclude</h1>
 
         {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {# todo: proper form error rendering #}
         <table class="table table-striped">
             <thead>
             <tr>
@@ -14,11 +16,12 @@
             </thead>
             <tbody>
             {% for entry in form.entries %}
-                <tr class="entry">
+                <tr class="entry {% if form_errors(entry) %} error{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_entries.vars.label }}</td>
-                    <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>{{ form_widget(entry.excluded_entries,
-                        {'attr': {'placeholder': 'Click and choose the participants you want to exclude'} } ) }}
+                    <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>
+                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'Click and choose the participants you want to exclude'} } ) }}
+                   {{ form_errors(entry) }}
                     </td>
                 </tr>
             {% endfor %}
@@ -39,20 +42,6 @@
     <script>
         $(document).ready(function () {
             $('select[name^="intracto_secretsantabundle_poolexcludeentrytype[entries]"]').select2();
-
-            $('select[name^="intracto_secretsantabundle_poolexcludeentrytype[entries]"]').on('change', function () {
-
-
-                postFields = {
-                    entry: $(this).attr('data-entry')
-                }
-
-                $.post('{{ path('pool_validate_exclude', {'listUrl': pool.listUrl}) }}', $(postFields).serialize(), function (data) {
-                    jsonData = JSON.parse(data);
-
-                    console.log(jsonData);
-                })
-            })
         })
     </script>
 {% endblock %}

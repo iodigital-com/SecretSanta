@@ -100,3 +100,17 @@ services:
             - "%admin_email%"
         tags:
             - { name: kernel.event_subscriber }
+
+    intracto.validator.entry_has_valid_excludes:
+        class: Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator
+        tags:
+            - { name: validator.constraint_validator, alias: intracto.validator.entry_has_valid_excludes }
+    intracto.validator.pool_has_valid_excludes:
+        class: Intracto\SecretSantaBundle\Validator\PoolHasValidExcludesValidator
+        arguments:
+            - @intracto_secret_santa.entry_shuffler
+        tags:
+            - { name: validator.constraint_validator, alias: intracto.validator.pool_has_valid_excludes }
+
+    intracto_secret_santa.entry_shuffler:
+        class: Intracto\SecretSantaBundle\Entity\EntryShuffler

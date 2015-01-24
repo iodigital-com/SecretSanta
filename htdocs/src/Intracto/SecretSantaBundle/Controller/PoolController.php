@@ -95,14 +95,20 @@ class PoolController extends Controller
     public function excludeAction(Request $request, $listUrl)
     {
         $this->getPool($listUrl);
-        $this->redirectIfNotAllowed();
+
+        if ($this->pool->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_created', array('listUrl' => $this->pool->getListurl())));
+        }
 
         $form = $this->createForm(new PoolExcludeEntryType(), $this->pool);
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
             if ($form->isValid()) {
+
+
                 $em = $this->getDoctrine()->getManager();
 
+                $this->pool->setCreated(true);
                 $em->persist($this->pool);
                 $em->flush();
 
@@ -111,29 +117,28 @@ class PoolController extends Controller
                     new PoolEvent($this->pool)
                 );
 
-                return new Response($this->renderView('IntractoSecretSantaBundle:Pool:created.html.twig', array('pool' => $this->pool)));
+                return $this->redirect($this->generateUrl('pool_created', array('listUrl' => $this->pool->getListurl())));
             }
         }
+
         return array(
             'form' => $form->createView(),
             'pool' => $this->pool,
         );
     }
 
-
     /**
-     * @Route("/validate-exclude/{listUrl}", name="pool_validate_exclude")
+     * @Route("/created/{listUrl}", name="pool_created")
      * @Template()
      */
-    public function validateExcludeAction(Request $request, $listUrl)
+    public function createdAction($listUrl)
     {
         $this->getPool($listUrl);
-        $this->redirectIfNotAllowed();
-        if ('POST' !== $request->getMethod()) {
-            throw new NotFoundHttpException();
+        if (!$this->pool->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $this->pool->getListurl())));
         }
-        //@Todo: validate ajax
-        return new Response('');
+
+        return array('pool' => $this->pool);
     }
 
     /**
@@ -143,6 +148,9 @@ class PoolController extends Controller
     public function manageAction($listUrl)
     {
         $this->getPool($listUrl);
+        if (!$this->pool->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $this->pool->getListurl())));
+        }
 
         if ($this->pool->getSentdate() === null) {
             $this->get('session')->getFlashBag()->add(
@@ -237,20 +245,6 @@ class PoolController extends Controller
         if (!is_object($this->pool)) {
             throw new NotFoundHttpException();
         }
-
-        return true;
-    }
-
-    private function redirectIfNotAllowed()
-    {
-        $request = $this->container->get('request');
-        $routeName = $request->get('_route');
-        /*
-        if($route$this->pool->getConfirmed() && $this->pool->getSentdate() === null){
-
-        }
-        if($route)
-        */
 
         return true;
     }

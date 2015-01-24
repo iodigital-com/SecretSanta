@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Symfony\Component\Validator\ExecutionContextInterface;
+use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Entry
@@ -13,6 +14,8 @@ use Symfony\Component\Validator\ExecutionContextInterface;
  * @ORM\Table()
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
+ *
+ * @EntryHasValidExcludes(groups={"exclude_entries"})
  */
 class Entry
 {
