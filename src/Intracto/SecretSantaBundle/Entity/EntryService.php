@@ -46,7 +46,7 @@ class EntryService
      */
     public function shuffleEntries(Pool $pool)
     {
-        if (!$shuffled = $this->entryShuffler->shuffleEntries($pool)){
+        if (!$shuffled = $this->entryShuffler->shuffleEntries($pool)) {
             //Todo: Trow some kind of exception
             return false;
         }

@@ -7,7 +7,6 @@ use JMS\DiExtraBundle\Annotation as DI;
 /**
  * Class EntryShuffler
  */
-
 class EntryShuffler
 {
 

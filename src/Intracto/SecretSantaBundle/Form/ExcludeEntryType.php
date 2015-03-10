@@ -22,17 +22,17 @@ class ExcludeEntryType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'property' => 'name',
-                'label' =>  $me->getName(),
+                'label' => $me->getName(),
                 'attr' => array('data-entry' => $me->getId()),
                 'query_builder' => function (EntityRepository $er) use ($me) {
-                        return $er->createQueryBuilder('e')
-                            ->where('e.pool = :pool')
-                            ->andWhere('e != :me')
-                            ->setParameters(array(
-                                'pool' => $me->getPool(),
-                                'me' => $me
-                            ));
-                    },
+                    return $er->createQueryBuilder('e')
+                        ->where('e.pool = :pool')
+                        ->andWhere('e != :me')
+                        ->setParameters(array(
+                            'pool' => $me->getPool(),
+                            'me' => $me
+                        ));
+                },
             ));
         });
     }

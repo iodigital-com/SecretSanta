@@ -132,6 +132,7 @@ class Entry
     public function __construct()
     {
         $this->excluded_entries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->PostLoad();
     }
 
     /**
@@ -474,7 +475,7 @@ class Entry
     public function addExcludedEntry(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
     {
         $this->excluded_entries[] = $excludedEntry;
-    
+
         return $this;
     }
 
@@ -491,14 +492,15 @@ class Entry
     /**
      * Get excludedEntries
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getExcludedEntries()
     {
         return $this->excluded_entries;
     }
 
-    public function validateExcludes(ExecutionContextInterface $context){
+    public function validateExcludes(ExecutionContextInterface $context)
+    {
         $context->addViolationAt(
             'excluded_entries',
             'This name sounds totally fake!',

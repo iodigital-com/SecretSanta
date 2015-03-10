@@ -1,6 +1,6 @@
 /**
  * Select2 Galician translation
- * 
+ *
  * Author: Leandro Regueiro <leandro.regueiro@gmail.com>
  */
 (function ($) {
@@ -27,7 +27,7 @@
             }
         },
         formatSelectionTooBig: function (limit) {
-            if (limit === 1 ) {
+            if (limit === 1) {
                 return "Só pode seleccionar un elemento";
             } else {
                 return "Só pode seleccionar " + limit + " elementos";

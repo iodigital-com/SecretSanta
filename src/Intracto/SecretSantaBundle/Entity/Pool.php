@@ -321,7 +321,7 @@ class Pool
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 

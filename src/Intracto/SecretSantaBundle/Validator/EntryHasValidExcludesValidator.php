@@ -22,7 +22,7 @@ class EntryHasValidExcludesValidator extends ConstraintValidator
             );
         }
         //Should not be necessary but you never know eyy..
-        if($entry->getExcludedEntries()->contains($entry)){
+        if ($entry->getExcludedEntries()->contains($entry)) {
             $this->context->addViolation(
                 '%name% can not exclude itself',
                 array('%name%' => $entry->getName())

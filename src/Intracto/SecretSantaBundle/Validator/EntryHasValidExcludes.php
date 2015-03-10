@@ -16,6 +16,7 @@ class EntryHasValidExcludes extends Constraint
     {
         return 'intracto.validator.entry_has_valid_excludes';
     }
+
     public function getTargets()
     {
         return self::CLASS_CONSTRAINT;

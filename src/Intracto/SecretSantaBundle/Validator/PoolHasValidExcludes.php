@@ -16,6 +16,7 @@ class PoolHasValidExcludes extends Constraint
     {
         return 'intracto.validator.pool_has_valid_excludes';
     }
+
     public function getTargets()
     {
         return self::CLASS_CONSTRAINT;

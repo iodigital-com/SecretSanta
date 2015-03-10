@@ -21,7 +21,7 @@
                     <td>{{ entry.excluded_entries.vars.label }}</td>
                     <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>
                         {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'Click and choose the participants you want to exclude'} } ) }}
-                   {{ form_errors(entry) }}
+                        {{ form_errors(entry) }}
                     </td>
                 </tr>
             {% endfor %}
