@@ -4,10 +4,12 @@ namespace Intracto\SecretSantaBundle\Controller;
 
 use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
+use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -62,7 +64,6 @@ class PoolController extends Controller
                 foreach ($pool->getEntries() as $entry) {
                     $entry->setPool($pool);
                 }
-
                 $em = $this->getDoctrine()->getManager();
                 $message = "Hi there (NAME),\n\n";
                 $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
@@ -78,14 +79,7 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
-                $this->eventDispatcher->dispatch(
-                    PoolEvents::NEW_POOL_CREATED,
-                    new PoolEvent($pool)
-                );
-
-                return new Response(
-                    $this->renderView('IntractoSecretSantaBundle:Pool:created.html.twig', array('pool' => $pool))
-                );
+                return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
             }
         }
 
@@ -95,12 +89,68 @@ class PoolController extends Controller
     }
 
     /**
+     * @Route("/exclude/{listUrl}", name="pool_exclude")
+     * @Template()
+     */
+    public function excludeAction(Request $request, $listUrl)
+    {
+        $this->getPool($listUrl);
+
+        if ($this->pool->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_created', array('listUrl' => $this->pool->getListurl())));
+        }
+
+        $form = $this->createForm(new PoolExcludeEntryType(), $this->pool);
+        if ('POST' === $request->getMethod()) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+
+
+                $em = $this->getDoctrine()->getManager();
+
+                $this->pool->setCreated(true);
+                $em->persist($this->pool);
+                $em->flush();
+
+                $this->eventDispatcher->dispatch(
+                    PoolEvents::NEW_POOL_CREATED,
+                    new PoolEvent($this->pool)
+                );
+
+                return $this->redirect($this->generateUrl('pool_created', array('listUrl' => $this->pool->getListurl())));
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'pool' => $this->pool,
+        );
+    }
+
+    /**
+     * @Route("/created/{listUrl}", name="pool_created")
+     * @Template()
+     */
+    public function createdAction($listUrl)
+    {
+        $this->getPool($listUrl);
+        if (!$this->pool->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $this->pool->getListurl())));
+        }
+
+        return array('pool' => $this->pool);
+    }
+
+    /**
      * @Route("/manage/{listUrl}", name="pool_manage")
      * @Template()
      */
     public function manageAction($listUrl)
     {
         $this->getPool($listUrl);
+        if (!$this->pool->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $this->pool->getListurl())));
+        }
 
         if ($this->pool->getSentdate() === null) {
             $this->get('session')->getFlashBag()->add(

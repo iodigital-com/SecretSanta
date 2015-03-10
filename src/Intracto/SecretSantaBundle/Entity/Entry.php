@@ -5,6 +5,9 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Intracto\SecretSantaBundle\Entity\Pool;
+use Symfony\Component\Validator\ExecutionContextInterface;
+use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
 
 /**
  * Intracto\SecretSantaBundle\Entity\Entry
@@ -12,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\EntryRepository")
  * @ORM\HasLifecycleCallbacks()
+ *
+ * @EntryHasValidExcludes(groups={"exclude_entries"})
  */
 class Entry
 {
@@ -63,6 +68,24 @@ class Entry
     private $entry;
 
     /**
+     * @var ArrayCollection $excludedEntries
+     *
+     * @ORM\OneToMany(targetEntity="Entry", referencedBy="excludedMeEntries")
+     * @ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id", onDelete="CASCADE")
+     */
+    /**
+     * @var ArrayCollection $excludedEntries
+     *
+     * @ORM\ManyToMany(targetEntity="Entry")
+     * @ORM\JoinTable(name="exclude",
+     *      joinColumns={@ORM\JoinColumn(name="entryId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id")}
+     *      )
+     **/
+    private $excluded_entries;
+
+
+    /**
      * @var string $wishlist
      *
      * @ORM\Column(name="wishlist", type="text", nullable=true)
@@ -102,6 +125,14 @@ class Entry
      * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
     private $wishlist_updated = false;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->excluded_entries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -379,9 +410,7 @@ class Entry
         return $this->wishlist_updated;
     }
 
-    public function __construct() {
-        $this->PostLoad();
-    }
+
 
     /**
      * @ORM\PostLoad
@@ -436,4 +465,45 @@ class Entry
         $this->removedWishlistItems = $removedWishlistItems;
     }
 
+    /**
+     * Add excludedEntry
+     *
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
+     * @return Entry
+     */
+    public function addExcludedEntry(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
+    {
+        $this->excluded_entries[] = $excludedEntry;
+    
+        return $this;
+    }
+
+    /**
+     * Remove excludedEntry
+     *
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
+     */
+    public function removeExcludedEntrie(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
+    {
+        $this->excluded_entries->removeElement($excludedEntry);
+    }
+
+    /**
+     * Get excludedEntries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExcludedEntries()
+    {
+        return $this->excluded_entries;
+    }
+
+    public function validateExcludes(ExecutionContextInterface $context){
+        $context->addViolationAt(
+            'excluded_entries',
+            'This name sounds totally fake!',
+            array(),
+            null
+        );
+    }
 }

@@ -22,6 +22,12 @@ class EntryService
     public $em;
 
     /**
+     * @DI\Inject("intracto_secret_santa.entry_shuffler")
+     * @var EntryShuffler $entryShuffler
+     */
+    public $entryShuffler;
+
+    /**
      * @DI\Inject("templating")
      */
     public $templating;
@@ -40,21 +46,15 @@ class EntryService
      */
     public function shuffleEntries(Pool $pool)
     {
-        $entries = $pool->getEntries()->getValues();
+        if (!$shuffled = $this->entryShuffler->shuffleEntries($pool)){
+            //Todo: Trow some kind of exception
+            return false;
+        }
 
-        shuffle($entries);
-
-        foreach ($entries as $index => $entry) {
-            if ($index === count($entries) - 1) {
-                $peer = $entries[0];
-            } else {
-                $peer = $entries[$index + 1];
-            }
-
-            $entry
-                ->setEntry($peer)
-                ->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36))
-            ;
+        foreach ($pool->getEntries() as $key => $entry) {
+            $match = $shuffled[$key];
+            $entry->setEntry($match)
+                ->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
 
             $this->em->persist($entry);
         }
