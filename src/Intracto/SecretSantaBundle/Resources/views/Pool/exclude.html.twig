@@ -1,11 +1,26 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
+
+{% form_theme form _self %}
+
+{% block form_errors -%}
+    {% if errors|length > 0 -%}
+        <ul class="form-errors">
+            {%- for error in errors -%}
+                <li>{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif %}
+{%- endblock form_errors %}
+
 {% block main %}
     <div class="box">
         <h1>Exclude</h1>
 
         {{ form_start(form) }}
-        {{ form_errors(form) }}
-        {# todo: proper form error rendering #}
+        {# Only show general validation error if there are no subform errors #}
+        {% if form.entries.vars.valid %}
+            {{ form_errors(form) }}
+        {% endif %}
         <table class="table table-striped">
             <thead>
             <tr>
@@ -16,12 +31,12 @@
             </thead>
             <tbody>
             {% for entry in form.entries %}
-                <tr class="entry {% if form_errors(entry) %} error{% endif %}">
+                <tr class="entry {% if form_errors(entry) or form_errors(entry.excluded_entries) %} error{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_entries.vars.label }}</td>
-                    <td {% if form_errors(entry.excluded_entries) %}class="error"{% endif %}>
+                    <td>
                         {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'Click and choose the participants you want to exclude'} } ) }}
-                        {{ form_errors(entry) }}
+                        {{ form_errors(entry.excluded_entries) }}
                     </td>
                 </tr>
             {% endfor %}

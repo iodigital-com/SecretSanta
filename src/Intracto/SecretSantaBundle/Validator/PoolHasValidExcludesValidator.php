@@ -25,7 +25,8 @@ class PoolHasValidExcludesValidator extends ConstraintValidator
          */
 
         if (!$this->entryShuffler->shuffleEntries($pool)) {
-            $this->context->addViolation(
+            $this->context->addViolationAt(
+                'entries',
                 $constraint->message
             );
         }

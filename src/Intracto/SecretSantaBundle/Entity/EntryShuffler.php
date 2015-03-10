@@ -10,11 +10,19 @@ use JMS\DiExtraBundle\Annotation as DI;
 class EntryShuffler
 {
 
+    /**
+     * @param Pool $pool
+     * @return array|bool
+     */
     public function shuffleEntries(Pool $pool)
     {
         return $this->permutateTillMatch($pool);
     }
 
+    /**
+     * @param Pool $pool
+     * @return array|bool
+     */
     private function permutateTillMatch(Pool $pool)
     {
         $entries = $pool->getEntries()->getValues();
@@ -35,6 +43,11 @@ class EntryShuffler
         return false;
     }
 
+    /**
+     * @param $entries
+     * @param $shuffled
+     * @return bool
+     */
     private function checkValidMatch($entries, $shuffled)
     {
         foreach ($entries as $key => $entry) {
@@ -47,7 +60,10 @@ class EntryShuffler
         return true;
     }
 
-
+    /**
+     * @param $list
+     * @return mixed
+     */
     private function shuffleArray($list)
     {
         shuffle($list);
@@ -55,6 +71,13 @@ class EntryShuffler
         return $list;
     }
 
+    /**
+     * Credits to: http://docstore.mik.ua/orelly/webprog/pcook/ch04_26.htm
+     *
+     * @param $p
+     * @param $size
+     * @return bool
+     */
     private function nextPermutation($p, $size)
     {
         // slide down the array looking for where we're smaller than the next guy

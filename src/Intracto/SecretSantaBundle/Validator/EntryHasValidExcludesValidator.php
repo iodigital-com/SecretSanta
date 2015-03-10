@@ -16,14 +16,16 @@ class EntryHasValidExcludesValidator extends ConstraintValidator
         $pool = $entry->getPool();
         //should be at least 2 possible entries remaining to choose from, -1 for itself
         if ($pool->getEntries()->count() < $entry->getExcludedEntries()->count() + 3) {
-            $this->context->addViolation(
+            $this->context->addViolationAt(
+                'excluded_entries',
                 $constraint->messageNoUniqueMatch,
                 array('%name%' => $entry->getName())
             );
         }
         //Should not be necessary but you never know eyy..
         if ($entry->getExcludedEntries()->contains($entry)) {
-            $this->context->addViolation(
+            $this->context->addViolationAt(
+                'excluded_entries',
                 '%name% can not exclude itself',
                 array('%name%' => $entry->getName())
             );

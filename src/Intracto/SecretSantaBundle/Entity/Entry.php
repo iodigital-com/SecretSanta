@@ -498,14 +498,4 @@ class Entry
     {
         return $this->excluded_entries;
     }
-
-    public function validateExcludes(ExecutionContextInterface $context)
-    {
-        $context->addViolationAt(
-            'excluded_entries',
-            'This name sounds totally fake!',
-            array(),
-            null
-        );
-    }
 }

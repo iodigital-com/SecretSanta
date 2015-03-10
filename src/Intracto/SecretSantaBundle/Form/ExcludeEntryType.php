@@ -33,6 +33,7 @@ class ExcludeEntryType extends AbstractType
                             'me' => $me
                         ));
                 },
+                'required' => false,
             ));
         });
     }
