@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Intracto\SecretSantaBundle\Validator;
 
 use Symfony\Component\Validator\Constraint;
@@ -23,4 +22,3 @@ class EntryHasValidExcludes extends Constraint
     }
 }
 
-?>

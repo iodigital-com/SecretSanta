@@ -34,4 +34,3 @@ class PoolHasValidExcludesValidator extends ConstraintValidator
     }
 }
 
-?>

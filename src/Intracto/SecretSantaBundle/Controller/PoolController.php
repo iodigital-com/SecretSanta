@@ -104,8 +104,6 @@ class PoolController extends Controller
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-
-
                 $em = $this->getDoctrine()->getManager();
 
                 $this->pool->setCreated(true);
