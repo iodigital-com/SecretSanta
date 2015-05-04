@@ -1,12 +1,13 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block header %}
     <div class="steps">
-        <h2>Your <span class="accent">Secret Santa party</span> details</h2>
+        <h2>{{ 'entry.headers.title'|trans|raw }}</h2>
         <ul class="liststyle1">
-            <li><strong>Date </strong> {{ entry.pool.date|date('j F Y') }}</li>
-            <li><strong>Amount </strong> {{ entry.pool.amount }}</li>
-            <li><strong>Number of people </strong> {{ entry.pool.entries|length }}</li>
-            <li><strong>Person who created this list </strong> {{ entry.pool.entries|first.email }}</li>
+            <li><strong>{{ 'entry.headers.date'|trans }} </strong> {{ entry.pool.date|date('j F Y') }}</li>
+            <li><strong>{{ 'entry.headers.amount'|trans }} </strong> {{ entry.pool.amount }}</li>
+            <li><strong>{{ 'entry.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
+            <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> {{ entry.pool.entries|first.email }}
+            </li>
         </ul>
     </div>
 {% endblock %}
@@ -14,11 +15,9 @@
     <div class="box">
         <div class="row">
             <div class="span8">
-                <h1>Your assigned buddy</h1>
+                <h1>{{ 'entry.title'|trans }}</h1>
 
-                <p>Hi {{ entry.name }},</p>
-
-                <p>You are assigned as Secret Santa to give a present to:</p>
+                {{ 'entry.body'|trans({'%name%': entry.name})|raw }}
 
                 <div class="yoursecretsant">
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
@@ -37,13 +36,13 @@
         </div>
 
         <div class="well bottom-spacer">
-            <h4>Wishlist from {{ entry.entry.name }}</h4>
+            <h4>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
             {% if(secret_santa.wishlistitems|length == 0) %}
                 {# check for legacy wishlist #}
                 {% if(secret_santa.getwishlist) %}
                     {{ secret_santa.getwishlist|linkify|raw }}
                 {% else %}
-                    {{ entry.entry.name }} has not yet provided a wishlist.
+                    {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.name}) }}.
                 {% endif %}
             {% else %}
                 <ul class="wishlist">
@@ -57,10 +56,8 @@
         <h1>Your wishlist</h1>
 
         <p>
-            <div class="description">To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of
-                communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
-            </div>
 
+        <div class="description">{{ 'entry.wishlist.description'|trans|raw }}</div>
         <p>
             {{ form_start(form) }}
             {{ form_row(form._token) }}
@@ -76,10 +73,10 @@
                     <thead>
                     <tr>
                         <th class="span1 entry-number-header">#</th>
-                        <th class="span7">Description</th>
+                        <th class="span7">{{ 'label.description'|trans }}</th>
                         <th style="text-align: right;" class="span4">
                             <button type="button" class="btn btn-mini btn-success add-new-entry"><i
-                                        class="icon-plus-sign icon-white"></i> Add item to wishlist
+                                        class="icon-plus-sign icon-white"></i> {{ 'btn.add_wishlist'|trans }}
                             </button>
                         </th>
                     </tr>
@@ -87,7 +84,7 @@
                     <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
                     {% if form.wishlistItems |length == 0 %}
                         <tr class="noitems">
-                            <td colspan="3">Your wishlist is empty. Add something!</td>
+                            <td colspan="3">{{ 'entry.wishlist_empty'|trans }}</td>
                         </tr>
                     {% else %}
                         {% for item in form.wishlistItems %}
@@ -95,7 +92,9 @@
                                 <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
                                 <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
                                 <td style="text-align: right;">
-                                    <button type="button" class="btn btn-mini btn-danger remove-entry"><i class="icon-minus-sign icon-white"></i> Remove this item</button>
+                                    <button type="button" class="btn btn-mini btn-danger remove-entry"><i
+                                                class="icon-minus-sign icon-white"></i> {{ 'btn.remove_item'|trans }}
+                                    </button>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -107,7 +106,7 @@
 
             <p>
                 <br><button type="submit" class="btn btn-large btn-primary">
-                    <i class="icon-ok icon-white"></i> Update your wishlist
+                    <i class="icon-ok icon-white"></i> {{ 'btn.update_wishlist'|trans }}
                 </button>
             </p>
             {{ form_end(form, {'render_rest': false}) }}

@@ -1,11 +1,9 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 {% block main %}
 <div class="box">
-	<h1>Your Secret Santa list was deleted!</h1>
-	<p>
-	    Thank you for using Secret Santa Organizer. And, we hope to see you again next year!
-	</p>
+    <h1>{{ 'delete.title'|trans }}</h1>
+    {{ 'deleted.body'|trans|raw }}
     <div>
-        <a class="btn btn-primary" href="{{ path('pool_create') }}#mysanta">Create a new Secret Santa list</a>
+        <a class="btn btn-primary" href="{{ path('pool_create') }}#mysanta">{{ 'btn.create_new_list'|trans }}</a>
     </div>
 {% endblock %}

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class EntryHasValidExcludes extends Constraint
 {
-    public $messageNoUniqueMatch = 'No unique match found for "%name%"';
+    public $messageNoUniqueMatch = 'entry.non_unique"';
 
     public function validatedBy()
     {

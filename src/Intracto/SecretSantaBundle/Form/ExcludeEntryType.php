@@ -22,6 +22,8 @@ class ExcludeEntryType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'property' => 'name',
+
+                /** @Ignore */
                 'label' => $me->getName(),
                 'attr' => array('data-entry' => $me->getId()),
                 'query_builder' => function (EntityRepository $er) use ($me) {
@@ -35,6 +37,7 @@ class ExcludeEntryType extends AbstractType
                 },
                 'required' => false,
             ));
+
         });
     }
 

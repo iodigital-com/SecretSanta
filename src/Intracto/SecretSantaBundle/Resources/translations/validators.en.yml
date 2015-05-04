@@ -1,0 +1,4 @@
+pool:
+    non_unique: Not all entries have an unique match.
+entry:
+    non_unique: No unique match found for "%name%

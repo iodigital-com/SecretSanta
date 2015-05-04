@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class PoolHasValidExcludes extends Constraint
 {
-    public $message = 'Not all entries have an unique match.';
+    public $message = 'pool.non_unique';
 
     public function validatedBy()
     {

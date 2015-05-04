@@ -2,5 +2,8 @@
     <td class="entry-number">__entrycount__</td>
     <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
     <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
-    <td style="text-align: right;"><button type="button" class="btn btn-mini btn-danger remove-entry"><i class="icon-minus-sign icon-white"></i> Remove this person</button></td>
+    <td style="text-align: right;">
+        <button type="button" class="btn btn-mini btn-danger remove-entry"><i
+                    class="icon-minus-sign icon-white"></i> {{ 'btn.remove_person'|trans }}</button>
+    </td>
 </tr>

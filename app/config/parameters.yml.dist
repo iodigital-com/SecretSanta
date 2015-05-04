@@ -12,6 +12,9 @@ parameters:
     mailer_password:   ~
 
     locale:            en
+    supported_locales: [en, nl]
+    locale_to_currency: [en => "$", nl => "€"]
+
     secret:            ThisTokenIsNotSoSecretChangeIt
     ad_client:         ca-pub-8492783089085834
     adwords_password:  secret
