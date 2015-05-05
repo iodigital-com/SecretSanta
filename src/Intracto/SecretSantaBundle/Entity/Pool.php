@@ -82,6 +82,14 @@ class Pool
     private $created = false;
 
     /**
+     * @var string $locale
+     *
+     * @ORM\Column(name="locale", type="string", length=5)
+     *
+     */
+    private $locale = 'en';
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -333,5 +341,28 @@ class Pool
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return Pool
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

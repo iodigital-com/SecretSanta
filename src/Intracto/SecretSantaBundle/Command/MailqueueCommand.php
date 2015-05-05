@@ -2,10 +2,14 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
+use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\EntryRepository;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Translation\Translator;
 
 class MailqueueCommand extends ContainerAwareCommand
 {
@@ -34,10 +38,20 @@ class MailqueueCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        /**
+         * @var Translator $translator
+         */
+        $translator = $this->getContainer()->get('translator');
+        /**
+         * @var EntityManager $em
+         */
         $em = $this->getContainer()->get('doctrine')->getManager();
         $context = $this->getContainer()->get('router')->getContext();
         $context->setHost($this->getContainer()->getParameter("base_url"));
 
+        /**
+         * @var EntryRepository $entryRepository
+         */
         $entryRepository = $em->getRepository("IntractoSecretSantaBundle:Entry");
         $secret_santas = $entryRepository->findAllForWishlistNofifcication();
 
@@ -47,10 +61,15 @@ class MailqueueCommand extends ContainerAwareCommand
         $transport = $container->get('swiftmailer.transport.real');
 
         foreach ($secret_santas as $secret_santa) {
+            /**
+             * @var Entry $secret_santa
+             */
             $receiver = $secret_santa->getEntry();
+            $translator->setLocale($receiver->getPool()->getLocale());
+
             $message = \Swift_Message::newInstance()
                 ->setSubject('Wishlist updated')
-                ->setFrom($this->getContainer()->getParameter("admin_email"), "Santa Claus")
+                ->setFrom($this->getContainer()->getParameter("admin_email"), $translator->trans('emails.sender'))
                 ->setTo($secret_santa->getEmail())
                 ->setBody(
                     $this->getContainer()->get('templating')->render(

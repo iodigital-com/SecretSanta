@@ -119,6 +119,7 @@ services:
             - @templating
             - @mailer
             - "%admin_email%"
+            - @translator
         tags:
             - { name: kernel.event_subscriber }
 

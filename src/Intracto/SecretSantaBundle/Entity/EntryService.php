@@ -2,9 +2,12 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
+use Doctrine\ORM\EntityManager;
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
+use Symfony\Component\Translation\Translator;
+use Symfony\Component\Templating\EngineInterface;
 
 /**
  * @DI\Service("intracto_secret_santa.entry_service")
@@ -13,11 +16,13 @@ class EntryService
 {
     /**
      * @DI\Inject("mailer")
+     * @var \Swift_Mailer
      */
     public $mailer;
 
     /**
      * @DI\Inject("doctrine.orm.entity_manager")
+     * @var EntityManager
      */
     public $em;
 
@@ -29,6 +34,7 @@ class EntryService
 
     /**
      * @DI\Inject("templating")
+     * @var EngineInterface
      */
     public $templating;
 
@@ -36,6 +42,12 @@ class EntryService
      * @DI\Inject("%admin_email%")
      */
     public $adminEmail;
+
+    /**
+     * @DI\Inject("translator")
+     * @var Translator
+     */
+    public $translator;
 
     /**
      * Shuffles all entries for pool and save result to each entry
@@ -84,6 +96,8 @@ class EntryService
      */
     public function sendSecretSantaMailForEntry(Entry $entry)
     {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+
         $message = $entry->getPool()->getMessage();
         $message = str_replace('(NAME)', $entry->getName(), $message);
         $message = str_replace('(ADMINISTRATOR)', $entry->getPool()->getOwnerName(), $message);
@@ -97,7 +111,7 @@ class EntryService
         );
 
         $mail = \Swift_Message::newInstance()
-            ->setSubject('Your SecretSanta')
+            ->setSubject($this->translator->trans('emails.secretsanta.subject'))
             ->setFrom($this->adminEmail, $entry->getPool()->getOwnerName())
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody($txtBody)

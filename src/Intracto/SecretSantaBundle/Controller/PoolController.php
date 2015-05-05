@@ -74,6 +74,7 @@ class PoolController extends Controller
                 ));
 
                 $pool->setMessage($message);
+                $pool->setLocale($request->getLocale());
                 $em->persist($pool);
                 $em->flush();
 

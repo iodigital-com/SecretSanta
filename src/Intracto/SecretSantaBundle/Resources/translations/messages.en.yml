@@ -174,11 +174,13 @@ btn:
     update_wishlist: Update your wishlist
 
 emails:
+    sender: Santa Claus
     base:
         title: Secret Santa by Intracto
         footer: Have fun organizing Secret Santa!
         created_by: Created by
     pendingconfirmation:
+        subject: Secret Santa Validation
         salutation: Hi %name%
         click_button: Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
         overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
@@ -186,6 +188,7 @@ emails:
         btn_validate: Validate my event
         click_link: Please click on the link below to validate your Secret Santa mailing list.
     secretsanta:
+        subject: Your SecretSanta
         btn_find_out: Find out your person
         link_find_out: Find out your randomly assigned person to give a gift to, on this url
     wishlistchanged:
