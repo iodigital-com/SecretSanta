@@ -7,17 +7,17 @@
 			</td>
 			<td width="566">
 				<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-					Hi {{ pool.getOwnerName }}, <br /><br/>
-					Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
+					{{ 'email.pendingconfirmation.salutation'|trans({'%name%': pool.getOwnerName}) }}, <br/><br/>
+                    {{ 'email.pendingconfirmation.click_button'|trans }}
 
 				</span>
 				<br /> <br />
 				<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
-					On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
+					{{ 'emails.pendingconfirmation.overview_page'|trans }}
 				</span>
 				<br /> <br />
                 	<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
-					And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
+					{{ 'emails.pendingconfirmation.lastly'|trans }}
 				</span>
                 <br /> <br />
                 <br />
@@ -53,7 +53,7 @@
 								<tr>
 									<td height="40" valign="middle" style="background-color:#bd1019;">
 										<a href="{{ url('pool_manage', { 'listUrl': pool.listurl }) }}" target="_blank" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-											Validate my event
+                                            {{ 'emails.pendingconfirmation.btn_validate'|trans }}
 										</a>
 									</td>
 								</tr>

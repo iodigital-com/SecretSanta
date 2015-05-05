@@ -1,12 +1,13 @@
-Hi {{ pool.getOwnerName }}
+{{ 'emails.pendingconfirmation.salutation'|trans({'%name%': pool.getOwnerName}) }},
 
-Please click on the link below to validate your Secret Santa mailing list.
-On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
 
-And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
+{{ 'emails.pendingconfirmation.click_link'|trans() }}
+{{ 'emails.pendingconfirmation.overview_page'|trans }}
+
+{{ 'emails.pendingconfirmation.lastly'|trans }}
 
 {{ url('pool_manage', { 'listUrl': pool.listurl }) }}
 
-Have fun organizing Secret Santa!
+{{ 'emails.base.footer'|trans }}
 
-Created by http://www.intracto.com
+{{ 'emails.base.created_by'|trans }} http://www.intracto.com

@@ -7,9 +7,9 @@
             </td>
             <td width="566">
 				<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-					Hi {{ secret_santa.name }}<br /><br />
-                    Your buddy has updated his wishlist.<br/>
-                    Click on the button below to check out his suggestions.
+					{{ 'emails.wishlistchanged.salutation'|trans({'%name%': secret_santa.name}) }},<br/><br/>
+                    {{ 'emails.wishlistchanged.buddy_updated_wishlist'|trans }}<br/>
+                    {{ 'emails.wishlistchanged.click_button'|trans }}
 				</span>
                 <br /> <br /><br />
             </td>
@@ -44,7 +44,7 @@
                                 <tr>
                                     <td height="40" valign="middle" style="background-color:#bd1019;">
                                         <a href="{{ url('entry_view', { 'url': secret_santa.url }) }}" target="_blank" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            Check wishlist
+                                            {{ 'emails.wishlistchanged.btn_check_wishlist'|trans }}
                                         </a>
                                     </td>
                                 </tr>
