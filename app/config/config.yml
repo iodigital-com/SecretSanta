@@ -24,6 +24,7 @@ twig:
     globals:
         ad_client:  %ad_client%
         ga_tracking:  %ga_tracking%
+        supported_locales:  %supported_locales%
 
 # Assetic Configuration
 assetic:
@@ -68,7 +69,6 @@ jms_i18n_routing:
     default_locale: "%locale%"
     locales: %supported_locales%
     strategy: prefix_except_default
-
 
 jms_translation:
     configs:
@@ -120,6 +120,12 @@ services:
             - @mailer
             - "%admin_email%"
             - @translator
+        tags:
+            - { name: kernel.event_subscriber }
+
+    intracto.locale_listener:
+        class: Intracto\SecretSantaBundle\EventListener\LocaleListener
+        arguments: ["%supported_locales%", @jms_i18n_routing.router]
         tags:
             - { name: kernel.event_subscriber }
 
