@@ -9,6 +9,11 @@
     <meta property="og:site_name" content="{{ 'base.meta.og.site_name'|trans }}"/>
     <meta property="og:description" content="{{ 'base.meta.og.description'|trans }}"/>
     <title>{% block title %}{{ 'base.meta.title'|trans }}{% endblock %}</title>
+
+    {% for supported_locale in supported_locales if supported_locale != app.request.get('_locale') %}
+        <link rel="alternate" hreflang="{{ supported_locale }}"
+              href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"/>
+    {% endfor %}
     {#<link href="{{ asset('/bundles/intractosecretsanta/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">#}
     {#<link href="{{ asset('/bundles/intractosecretsanta/css/update.css') }}" rel="stylesheet" media="screen">#}
     {#<link href="{{ asset('/bundles/intractosecretsanta/css/mediaqueries.css') }}" rel="stylesheet" media="screen">#}
