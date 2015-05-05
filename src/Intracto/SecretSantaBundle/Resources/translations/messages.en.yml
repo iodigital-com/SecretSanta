@@ -3,6 +3,7 @@ base:
         description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
         title: Secret Santa Online gift exchange organizer!
         og:
+            title: Secret Santa
             site_name: Secret Santa
             description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
     nav:
@@ -80,9 +81,9 @@ delete:
             Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
             This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
             <br>
-            Please type "<b>%pharse_to_type%</b>" below to confirm.<br>
+            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
-    pharse_to_type: delete everything
+    phrase_to_type: delete everything
 entry:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details
@@ -192,6 +193,7 @@ emails:
         btn_find_out: Find out your person
         link_find_out: Find out your randomly assigned person to give a gift to, on this url
     wishlistchanged:
+        subject: Wishlist updated
         salutation: Hi %name%
         buddy_updated_wishlist: Your buddy has updated his wishlist.
         click_button: Click on the button below to check out his suggestions.

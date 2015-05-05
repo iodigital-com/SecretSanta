@@ -68,7 +68,7 @@ class MailqueueCommand extends ContainerAwareCommand
             $translator->setLocale($receiver->getPool()->getLocale());
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Wishlist updated')
+                ->setSubject($translator->trans('emails.wishlistchanged.subject'))
                 ->setFrom($this->getContainer()->getParameter("admin_email"), $translator->trans('emails.sender'))
                 ->setTo($secret_santa->getEmail())
                 ->setBody(

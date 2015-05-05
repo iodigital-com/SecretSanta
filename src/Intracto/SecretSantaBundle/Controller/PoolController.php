@@ -178,7 +178,8 @@ class PoolController extends Controller
             'delete_pool',
             $this->getRequest()->get('csrf_token')
         );
-        $correctConfirmation = ($this->getRequest()->get('confirmation') === 'delete everything');
+        $translator = $this->get('translator');
+        $correctConfirmation = ($this->getRequest()->get('confirmation') === $translator->trans('delete.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $translator = $this->get('translator');
