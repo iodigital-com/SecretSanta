@@ -30,13 +30,23 @@ class LocaleListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         $route = $request->get('_route');
+        $locale = $request->get('_locale');
+        $route_params = $request->attributes->get('_route_params');
+
+        //menu locale switcher used?
+        if ($request->query->has('force-locale-switch')) {
+            $request->cookies->set('hl', $locale);
+            $url = $this->router->generate($route, ['_locale' => $locale] + $route_params);
+            $event->setResponse(new RedirectResponse($url));
+            return;
+        }
         //first request the cookie is empty. Gets auto set by I18nRouter
         if ($request->cookies->get('hl')) {
             return;
         }
         $preferredLocale = $request->getPreferredLanguage($this->availableLocals);
         if ($preferredLocale && $request->attributes->get('_locale') != $preferredLocale) {
-            $url = $this->router->generate($route, ['_locale' => $preferredLocale] + $request->attributes->get('_route_params'));
+            $url = $this->router->generate($route, ['_locale' => $preferredLocale] + $route_params);
             $event->setResponse(new RedirectResponse($url));
         }
 
@@ -47,7 +57,7 @@ class LocaleListener implements EventSubscriberInterface
     {
         return array(
             // must be registered before the default Locale listener
-            KernelEvents::REQUEST => array(array('onKernelRequest', 17)),
+            KernelEvents::REQUEST => array(array('onKernelRequest', 1)),
         );
     }
 }

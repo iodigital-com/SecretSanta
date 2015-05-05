@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.get('_locale') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -65,6 +65,15 @@
 
 <div class="wrapper">
     <div class="container">
+        <ul id="locale-menu">
+            {% for supported_locale in supported_locales if supported_locale != app.request.get('_locale') %}
+                <li>
+                    <a href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale, 'force-locale-switch': true})) }}">
+                        {{ supported_locale }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
         <div id="header">
             <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
             {% block header %}{% endblock %}
