@@ -85,11 +85,14 @@ genemu_form:
     date: ~
 
 services:
-
     twig.text_extension:
         class: Twig_Extensions_Extension_Text
         tags:
             - name: twig.extension
+    twig.intl_extension:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
 
     intracto.twig.linkify_extension:
         class: Intracto\SecretSantaBundle\Twig\LinkifyExtension
