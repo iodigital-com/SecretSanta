@@ -1,0 +1,209 @@
+base:
+    meta:
+        description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
+        title: Secret Santa Organizer - Echange de cadeaux en ligne!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
+    nav:
+        home: Accueil
+    privacy_policy: Protection vie privée
+    have_fun: Amusez-vous en créant votre Secret Santa!
+pool:
+    header:
+        steps:
+            title: Votre événement d'échange de cadeaux en <span class="accent">3 étapes</span>
+            list:
+                one: Inscrivez vos particpants
+                two: Ajoutez un message personnel
+                three: Envoyez!
+            get_started: Commencer!
+
+create:
+    what_is:
+        title: Qu'est-ce que Secret Santa?
+        intro: >
+            <p>Secret Santa Organizer est un organiseur en ligne <strong>gratuit d'échange de cadeaux</strong>  ! Organisez une Secret Santa party avec vos amis, votre famille ou vos collègues. Après avoir reçu l'e-mail de Secret Santa, vous pourrez ajouter votre propre <strong>liste de souhaits</strong>, qui sera ensuite délivrée à votre Père-Noël secret</p>
+
+            <p>Chaque année, autour de la période de <strong>Noël</strong>, les gens du monde entier s'échangent des cadeaux.<br/>Afin de garder les choses intéressantes, vous pouvez assigner au hasard une personne à une autre afin qu'elles offrent un présent aux autres.</p>
+
+    add_participants: Ajoutez les participants
+    list_adminstrator: Cette personne est également l'administrateur.
+    add_personal_message:
+        title: Ajoutez un message personnel
+        description: Ajoutez un message personnel pour les participant.
+exclude:
+   title: Exclure
+created:
+    title: Plus qu'une étape ! - Validez votre participation
+    body: >
+            <p>
+               Afin de se prémunir des robots ou des trolls qui pourraient gâcher le secret, nous avons besoin que l'organisateur <b>%ownername%</b> confirme sa participation. Nous venons d'envoyer un e-mail à <b>%owneremail%</b> avec les instructions nécessaires.
+            </p>
+            <p>
+                Une fois validée, votre liste Secret Santa sera brouillée et chaque partipant recevra votre message avec le nom de la personne à qui offrir un cadeau.
+            </p>
+            <p>
+                Dans l'e-mail de confirmation, l'organisateur trouvera également un lien qui lui permettra de savoir qui a déjà trouvé son ami cadeau. Assurez-vous que chaque Père-Noël secret soit au courant.
+            </p>
+    warning: Attention !
+    check_spam: N'oubliez pas de vérifier votre dossier Spam !
+
+deleted:
+    title: Votre liste Secret Santa a été supprimée !
+    body: >
+        <p>Merci d'avoir utilisé Secret Santa Organize. Et nous espérons vous revoir l'année prochaine !</p>
+
+manage:
+    title: Votre liste Secret Santa
+    yes: Oui
+    not_yet: Pas encore
+    edit_email: Modifier l'e-mail
+    resend_email: Renvoyer l'e-mail
+    view_entry: Voir l'entrée
+    tip: Astuce
+    come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
+    save: Enregistrer
+
+delete:
+    title: Supprimer ma liste Secret Santa
+    body: >
+        <p>
+        Etes-vous vraiment certain?<br>
+        <br>
+        <b>Quelque chose d'inattendu se produira si vous ne lisez pas ceci !</b><br>
+        <br>
+        Une fois que votre liste Secret Santa sera supprimée, il n'y a aucun retour en arrière possible. Cette action NE POURRA PAS être annulée.<br>
+        Cela effacera la liste Secret Santa, tous ses participants ainsi que leur liste de souhaits de façon permanente.<br>
+        <br>
+        Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
+    phrase_to_type: Supprimer tout
+entry:
+    headers:
+        title: Détails de votre <span class="accent">Secret Santa party</span>
+        date: Date
+        amount: Montant
+        num_people: Nombre de personnes
+        person_created_list: Créateur de la liste
+    title: Personne désignée
+    body: >
+        <p>Bonjour %name%,</p>
+        <p>En tant que Père-Noël Secret, vous devez distribuer un cadeau à:</p>
+    wishlist_from: Liste de souhaits de %name%
+    wishlist_not_provided: %name% n'a pas encore publié de liste de souhaits
+    wishlist:
+        title: Votre liste de souhaits
+        description: Afin d'aider votre Père-Noël Secret, vous pouvez laisser une liste de souhaits ici. Nos gnomes prendront soin de la communiquer à votre Père-Noël Secret. Vous pouvez réorganiser la liste en faisant glisser les éléments.
+    wishlist_empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
+
+static:
+    privacy_policy:
+        title: Protection vie privée
+        body: >
+            <p>Merci de visiter secretsantaorganizer.com créé par Intracto group NV. Cette politique de confidentialité vous informe sur la manière dont nous utilisons les données personnelles collectées sur ce site. Merci de bien vouloir lire notre politique de confidentialité avant d'utiliser ce site ou d'envoyer toute information personnelle. En utilisant ce site, vous acceptez les conditions décrites dans ce document. Ces conditions peuvent être modifiées, mais chaque modification sera affichée et les changements concerneront seulement l'activité et des informations sur un changement futur, et non de manière rétroactive. Nous vous encourageons à vérifier notre politique de confidentialité lors de chaque visite sur le site afin de comprendre exactement comment sont utilisées les données personnelles que vous fournissez.</p>
+
+            <p>Note: La politique de confidentialité décrite ci-dessous concerne uniquement ce site Internet. Si vous accédez à un autre site Internet, merci de bien vouloir consulter la politique de confidentialité présente sur ces sites.</p>
+
+            <h2>Collecte d'information</h2>
+
+            <p>Nous collectons des données personnelles identifiables, comme les noms ou adresses e-mails lorsqu'elles sont soumisent volontairement par nos visiteurs. Les informations fournies sont utilisées dans le but de répondre à une demande spécifique de votre part.</p>
+
+            <h2>Cookies/Suivi</h2>
+
+            <p>Ce site utilise des cookies afin de fournir des informations à Google Analytics de manière anonyme. Ces informations peuvent être: le type de navigateur utilisé, le système d'exploitation, le nombre de visiteurs et la façon dont l'internaute utilise le site.</p>
+
+            <p>Vous pouvez désactiver l'utilisation des cookies dans les paramètres de votre navigateur</p>
+
+            <h2>Partage de l'information</h2>
+
+            <p>Nous pouvons partager les informations avec des agences gouvernementales ou d'autres sociétés nous aidant à luter contre la fraude ou menant une enquête. Nous le faisons lorsque: (1)c'est permis ou requis par la loi; ou, (2)il y a suspicion de fraude réelle ou potentionelle, ou des transactions non autorisées, ou (3)une enquête est ouverte concernant une fraude. Ces données ne sont pas fournies à ces sociétés à des fins de marketing.</p>
+
+            <h2>Sécurité des données</h2>
+
+            <p>Vos données personnelles sont maintenues en sécurité. Seuls les employés, agents et sous-traitants (qui ont accepté de garder les données confidentielles et de manière sécurisée) ont accès à ces informations. Tous les e-mails envoyés depuis ce site répondent à une demande spécifique de votre part. Aucun e-mail non sollicité ou newsletter ne sera envoyé vers ces adresses.</p>
+
+            <h2>Confidentialité de vos coordonnées</h2>
+
+            <p>Pour toute question, ou commententaire concernant notre politique de confidentialité, vous pouvez nous contacter via:<br/> e-mail: info@secretsantaorganizer.com</p>
+
+            <p>Nous nous réservons le droit d'apporter des changements à notre politique de confidentialités. Tout changement sera notifié</p>
+
+label:
+    name: Nom
+    email: E-mail
+    date_party: Date de votre Secret Santa party
+    amount_to_spend: Montant à dépenser
+    exclude: Exclure
+    confirmed: Confirmés
+    actions: Actions
+    description: Déscription
+placeholder:
+    exclude: Cliquez et sélectionnez les partipants que vous désirez exclure
+btn:
+    add_person: Ajouter une personne
+    remove_person: Supprimer cette personnel
+    create_event: Créer votre événement
+    create_new_list: Créer une nouvelle liste Secret Santa !
+    delete_list: Supprimer ma liste Secret Santa
+    delete_confirm: J'ai compris les conséquences, supprimer ma liste Secret Santa maintenant
+    add_wishlist: Ajouter un objet à ma liste de souhaits
+    remove_item: Supprimer cet objet
+    update_wishlist: Mettre à jour votre liste de souhaits
+
+emails:
+    sender: Santa Claus
+    base:
+        title: Secret Santa par Intracto
+        footer: Have fun organizing Secret Santa!
+        created_by: Créé par
+    pendingconfirmation:
+        subject: Confirmation Secret Santa
+        salutation: Bonjour %name%
+        click_button: Merci de bien vouloir cliquer sur le bouton ci-dessous afin de valider votre liste de diffusion Secret Santa. Cela réveillera nos gnomes afin qu'ils envoient le message personnel que vous avez créé précédemment à tous les participants.
+        overview_page: Sur la page de présentation nouvellement créée, vous serez en mesure de garder une trace de tous les utilisateurs découvrant leur ami cadeau Secret Santa. Mais aussi d'être informé lorsque la liste est complète.
+        lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
+        btn_validate: Valider mon événement
+        click_link: Merci de bien vouloir cliquer sur le lien ci-dessous afin de valider votre liste de diffusion Secret Santa
+    secretsanta:
+        subject: Votre Secret Santa
+        btn_find_out: Découvrez votre personne
+        link_find_out: Découvrez la personne qui vous a été attribuée au hasard et à qui vous devez offrir un cadeau, à cette adresse
+    wishlistchanged:
+        subject: Liste de souhaits mise à jour
+        salutation: Bonjour %name%
+        buddy_updated_wishlist: Votre ami a mis à jour sa liste de souhaits.
+        click_button: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
+        btn_check_wishlist: Découvrir la liste de souhaits
+        click_link: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
+    created:
+        message: |
+            Bonjour (NAME),
+
+            (ADMINISTRATOR) a créé un événement Secret Santa et vous a ajouté comme participant.
+
+            Rejoignez le jeu Secret Santa et découvrez la personne a qui vous devrez offrir un cadeau en cliquant sur le bouton ci-dessous
+
+            Pouvez dépenser jusqu'à %amount% pour votre cadeau. Mais bien sûr, créer votre cadeau est permis. C'est même vivement recommandé !
+
+            La Secret Santa party est prévue le %date%. Assurez-vous d'amener votre cadeau.
+
+            %message%
+
+
+            Bonnes vacances !
+flashes:
+    manage:
+        email_validated: >
+         <strong>Parfait !</strong><br/>Votre e-mail est maintenant validé<br/>
+         En ce moment, nos gnomes voyagent à travers l'Internet, afin de communiquer aux Pères-Noël secrets leur ami cadeau.<br/>
+         <br />
+         N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
+    delete:
+        not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
+    resend:
+        resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
+    entry:
+        wishlist_updated: <h4>Liste de souhaits mise à jour</h4>Nous avons envoyé nos gnomes afin qu'ils avertissent votre Père-Noël secret de vos souhaits !
+        edit_email: <h4>Non enregistrée</h4> Il y a une erreur dans l'adresse e-mail.
+        saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.

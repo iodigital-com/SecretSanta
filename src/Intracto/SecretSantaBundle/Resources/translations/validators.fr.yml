@@ -1,0 +1,4 @@
+pool:
+    non_unique: Chaque entrée ne dispose pas d'une correspondance unique
+entry:
+    non_unique: Aucune correspondance unique trouv&eacute;e pour "%name%"
