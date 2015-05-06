@@ -13,7 +13,7 @@ base:
 pool:
     header:
         steps:
-            title: Jouw geschenkuitwisselings- <br>evenement in <span class="accent">3 eenvoudige stappen</span>
+            title: Jouw geschenkuitwisselings- <br>evenement <small>in <span class="accent">3 eenvoudige stappen</span></small>
             list:
                 one: Stel je deelnemerslijst samen
                 two: Voeg een persoonlijke boodschap toe
