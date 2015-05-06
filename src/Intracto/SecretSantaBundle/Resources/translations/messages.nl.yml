@@ -1,0 +1,215 @@
+base:
+    meta:
+        description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijstje naar vrienden, familie,..
+        title: Secret Santa Online geschenkuitwisselings organizer!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
+    nav:
+        home: Home
+    privacy_policy: Privacy policy
+    have_fun: Organiseer je eigen Secret Santa en amuseer je rot!
+pool:
+    header:
+        steps:
+            title: Jouw geschenkuitwisselings- <br>evenement in <span class="accent">3 eenvoudige stappen</span>
+            list:
+                one: Stel je deelnemerslijst samen
+                two: Voeg een persoonlijke boodschap toe
+                three: Verstuur!
+            get_started: Vlieg er meteen in!
+
+create:
+    what_is:
+        title: Wat is Secret Santa?
+        intro: >
+                <p>Het is een <strong>gratis</strong> online Secret Santa <strong>geschenkuitwisselings organizer</strong>! Organiseer een Secret
+                Santa party met vrienden, familie of zelfs collega''s. Nadat je een mailtje hebt ontvangen van Secret Santa Organizer,
+                kan je je eigen <strong>verlanglijst</strong> toevoegen, die sturen wij dan door naar jouw Secret Santa.</p>
+
+                <p>Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.<br/> Om het voor iedereen wat spannender te maken, kan je mensen <strong>willekeurig toewijzen</strong> om voor elkaar geschenkjes te kopen.</p>
+
+    add_participants: Voeg je deelnemers toe
+    list_adminstrator: Deze persoon is ook jouw lijstbeheerder
+    add_personal_message:
+        title: Voeg een persoonlijke boodschap toe
+        description: Voeg een persoonlijke boodschap voor de deelnemers toe
+exclude:
+   title: Uitsluiten
+created:
+    title: Nog 1 stapje te gaan! - Valideer je deelname
+    body: >
+            <p>
+                Om te voorkomen dat ongewenste gasten je Secret Santa party verknallen, moet lijstbeheerder <b>%ownername%</b> iedere deelname valideren. We hebben <b>%owneremail%</b> een mailtje gestuurd met verdere instructies.
+            </p>
+            <p>Eens de deelnemerslijst is goedgekeurd, wordt hij door elkaar gegooid en krijgen alle gebruikers jouw boodschap en de naam van de persoon voor wie ze een geschenk moeten kopen.
+            </p>
+            <p>
+                In de validatiemail vindt de lijstbeheerder ook een link om iedereen die al weet voor wie hij of zij iets moet kopen op te volgen. Zo weet de organisator zeker dat iedere Secret Santa zich van zijn zware taak bewust is.</p>
+    warning: Let op!
+    check_spam: Vergeet je spamfolder niet te checken!
+
+deleted:
+    title: Je Secret Santa lijst werd verwijderd!
+    body: >
+        <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar! </p>
+
+manage:
+    title: Jouw Secret Santa lijst
+    yes: Ja
+    not_yet: Nog niet
+    edit_email: E-mail aanpassen
+    resend_email: E-mail nogmaals verzenden
+    view_entry: Deelnemer bekijken
+    tip: Tip
+    come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
+    save: Bewaar
+
+delete:
+    title: Verwijder mijn Secret Santa lijst
+    body: >
+        <p>
+        Ben je HELEMAAL zeker?<br>
+        <br>
+        <b>De zeven plagen hangen in de lucht als je dit niet leest!</b><br>
+        <br>
+        Eens je jouw Secret Santa lijst verwijderd hebt, mag je er een kruis over maken. Je KAN DEZE ACTIE NIET ongedaan maken. <br>
+
+        Je Secret Santa lijst wordt permanent verwijderd, samen met alle deelnemers en hun droomgeschenken.<br>
+
+        <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+        </p>
+    phrase_to_type: alles verwijderen
+entry:
+    headers:
+        title: Jouw <span class="accent">Secret Santa party</span> details
+        date: Datum
+        amount: Bedrag
+        num_people: Aantal mensen
+        person_created_list: Persoon die deze lijst samenstelde
+    title: Jouw toegewezen maatje
+    body: >
+        <p>Hey %name%,</p>
+        <p>Je bent toegewezen als Secret Santa aan:</p>
+    wishlist_from: Verlanglijst van %name%
+    wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
+    wishlist:
+        title: Jouw verlanglijstje
+        description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
+    wishlist_empty: Je verlanglijst is leeg. Voeg iets toe!
+
+static:
+    privacy_policy:
+        title: Privacybeleid
+        body: >
+            <p>Bedankt voor je bezoek aan secretsantaorganizer.com, gerealiseerd door Intracto group NV. Dit privacybeleid beschrijft hoe we op deze website persoonlijke informatie verzamelen. Lees dit privacybeleid zorgvuldig vooraleer je de website gebruikt of persoonlijke informatie achterlaat. Door deze website te gebruiken, accepteer je de regels die in dit privacybeleid beschreven staan.
+            Deze regels zijn onderhevig aan veranderingen, maar deze veranderingen worden gepubliceerd en zijn enkel van toepassing op toekomstig activiteiten en informatie en zijn dus niet met terugwerkende kracht. We moedigen aan het privacybeleid bij ieder bezoek aan de website te herlezen om je ervan te verzekeren dat je gebruikt hoe door jou ingegeven persoonlijke informatie wordt gebruikt.<p>
+
+            <p>Toelichting: De privacyregels die in dit privacybeleid beschreven staan zijn enkel van toepassing op deze website. Link je naar andere websites, lees dan het privacybeleid van de respectievelijke websites.<p>
+
+            <h2>Verzameling van informatie</h2>
+
+            <p>We verzamelen persoonlijk identificeerbare informatie als namen en e-mailadressen, wanneer vrijwillig ingegeven door onze bezoekers. De informatie die je verstrekt wordt gebruikt om je eigen specifieke aanvraag uit te voeren. 
+            </p>
+
+            <h2>Cookie/Tracking Technologie</h2>
+
+            <p>Deze website gebruikt cookies aanwezig in Google Analytics voor het verzamelen van anonieme informatie zoals je type browser en besturingssysteem, het tracken van bezoekersaantallen op de website en het begrijpen van gebruikersgedrag. Persoonlijke informatie kan niet via cookies en andere trackingtechnology verzameld worden.</p>
+
+            <p>Je kan het gebruik van cookies uitschakelen in de instellingen van je browser.</p>
+
+            <h2>Informatieverspreiding</h2>
+
+            <p>Mogelijk delen we informatie met overheidsagentschappen of andere bedrijven die ons bijstaan in onderzoek naar of preventie van fraude. 
+            Dit kunnen we doen wanneer: (1) toegestaan of verplicht bij wet; of, (2) we jou en onszelf proberen te beschermen tegen feitelijke of potenti�le fraude of ongeautoriseerde transacties; of, (3) we fraude die al heeft plaatsgevonden onderzoeken. De informatie wordt niet voor commerci�le doeleinden aan deze bedrijven doorgegeven.</p>
+
+            <h2>Inspanningen voor gegevensbescherming</h2>
+
+            <p>Jouw persoonlijk identificeerbare informatie wordt veilig bewaard. Enkel bevoegde werknemers, vertegenwoordigers en uitvoerders (die zich akkoord hebben verklaard informatie veilig en vertrouwelijk te houden) hebben toegang tot deze informatie. Alle e-mails van deze website zijn komen louter tegemoet aan jouw specifieke aanvraag. Er worden geen terugkerende e-mails of nieuwsbrieven naar de verstrekte e-mailadressen verstuurd.</p>
+
+            <h2>Privacy contactinformatie</h2>
+
+            <p>Heb je vragen, bezorgdheden of opmerkingen over ons privacybeleid, contacteer ons dan aan de hand van onderstaande informatie:<br/>
+            Via e-mail: info@secretsantaorganizer.com</p>
+
+            <p>We behouden het recht om dit beleid te wijzigen. Alle wijzigingen aan dit beleid worden gepubliceerd.</p>
+
+label:
+    name: Naam
+    email: E-mail
+    date_party: Datum van jouw Secret Santa party
+    amount_to_spend: Te spenderen bedrag
+    exclude: Uitsluiten
+    confirmed: Bevestigd
+    actions: Acties
+    description: Beschrijving
+placeholder:
+    exclude: Klik en kies de deelnemers die je wilt uitsluiten
+btn:
+    add_person: Persoon toevoegen
+    remove_person: Deze persoon verwijderen
+    create_event: Maak je evenement aan!
+    create_new_list: Stel een nieuwe Secret Santa lijst op!
+    delete_list: Verwijder mijn Secret Santa lijst
+    delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
+    add_wishlist: Voeg item toe aan verlanglijst
+    remove_item: Verwijder dit item
+    update_wishlist: Update je verlanglijst
+
+emails:
+    sender: Kerstman
+    base:
+        title: Secret Santa door Intracto
+        footer: Veel plezier met het organiseren van Secret Santa! 
+        created_by: Aangemaakt door
+    pendingconfirmation:
+        subject: Secret Santa Validatie
+        salutation: Hey %name%
+        click_button: Klik op onderstaande knop om je Secret Santa mailinglijst te valideren. Dan krijgen onze kaboutertjes automatisch een emmer water in hun gezicht gegooid. Als ze wakker zijn brengen ze jouw eerder opgestelde persoonlijke boodschap tot bij alle deelnemers.
+        overview_page: Op de net aangemaakte overzichtspagina kan je dan op de hoogte blijven van welke gebruikers al te weten zijn gekomen voor wie ze Secret Santa mogen spelen. Zo weet je wanneer je lijst volledig is.
+        lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
+        btn_validate: Valideer mijn evenement
+        click_link: Klik op onderstaande link om je Secret Santa mailinglijst te bevestigen.
+    secretsanta:
+        subject: Jouw SecretSanta
+        btn_find_out: Ontdek wiens Secret Santa je bent
+        link_find_out: Ontdek je willekeurig geselecteerde persoon aan wie je een cadeau geeft via deze url
+    wishlistchanged:
+        subject: Verlanglijst geüpdatet
+        salutation: Hey %name%
+        buddy_updated_wishlist: Je persoon heeft zijn of haar verlanglijst geüpdatet.
+        click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken. 
+        btn_check_wishlist: Bekijk verlanglijst
+        click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken. 
+    created:
+        message: |
+            Hey (NAME),
+
+            (ADMINISTRATOR) heeft een Secret Santa evenement gecreëerd en heeft jou als deelnemer opgegeven.
+
+            Amuseer je te pletter met Secret Santa en ontdek wiens Secret Santa je bent door op onderstaande knop te klikken.
+
+            Je mag tot %amount% aan je cadeau spenderen. Maar wees niet bevreesd cheapo's, eigen geschenken maken is toegestaan. We moedigen het zelfs aan!
+
+            Het Secret Santa feestje vindt plaats op %date%. Vergeet je cadeau niet!
+
+            %message%
+
+
+            Geniet van de feestdagen!
+flashes:
+    manage:
+        email_validated: >
+         <strong>Perfect!</strong><br/>Je e-mail is nu gevalideerd.<br/>
+         Onze kaboutertjes wurmen zich op dit eigenste moment doorheen het netwerk om al je toekomstige Secret Santa?s een persoon te bezorgen.<br/>
+         <br />
+         Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
+    delete:
+        not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
+    resend:
+        resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
+    entry:
+        wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
+        edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres. 
+        saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
