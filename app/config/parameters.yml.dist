@@ -12,6 +12,8 @@ parameters:
     mailer_password:   ~
 
     locale:            en
+    supported_locales: [en, nl, fr]
+
     secret:            ThisTokenIsNotSoSecretChangeIt
     ad_client:         ca-pub-8492783089085834
     adwords_password:  secret

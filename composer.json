@@ -21,7 +21,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/security-extra-bundle": "1.5.*",
         "jms/di-extra-bundle": "1.4.*",
-        "genemu/form-bundle": "2.2.*"
+      "genemu/form-bundle": "2.2.*",
+      "jms/i18n-routing-bundle": "^1.1",
+      "jms/translation-bundle": "^1.1"
         },
     "scripts": {
         "post-install-cmd": [

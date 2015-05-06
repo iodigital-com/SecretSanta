@@ -2,6 +2,7 @@
     <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
     <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
     <td style="text-align: right;">
-        <button type="button" class="btn btn-mini btn-danger remove-entry"><i class="icon-minus-sign icon-white"></i> Remove this item</button>
+        <button type="button" class="btn btn-mini btn-danger remove-entry"><i
+                    class="icon-minus-sign icon-white"></i> {{ 'btn.remove_item'|trans }}</button>
     </td>
 </tr>

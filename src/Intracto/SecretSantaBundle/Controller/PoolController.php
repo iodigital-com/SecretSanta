@@ -65,17 +65,18 @@ class PoolController extends Controller
                     $entry->setPool($pool);
                 }
                 $em = $this->getDoctrine()->getManager();
-                $message = "Hi there (NAME),\n\n";
-                $message .= "(ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.\n\n";
-                $message .= "Join the Secret Santa fun and find out who your gift buddy is by clicking the button below.\n\n";
-                $message .= "You can spend up to " . $pool->getAmount() .
-                    " for your gift. But of course creating your own present is allowed. Even encouraged!\n\n";
-                $message .= "The Secret Santa party is planned " .
-                    $pool->getDate()->format("F jS") .
-                    ". Be sure to bring your gift!\n\n";
-                $message .= $pool->getMessage() . "\n";
-                $message .= "\n\nHappy Holidays!";
+
+                $dateFormatter = \IntlDateFormatter::create($request->getLocale(), \IntlDateFormatter::MEDIUM, \IntlDateFormatter::NONE);
+
+                $translator = $this->get('translator');
+                $message = $translator->trans('emails.created.message', array(
+                    '%amount%' => $pool->getAmount(),
+                    '%date%' => $dateFormatter->format($pool->getDate()->getTimestamp()),
+                    '%message%' => $pool->getMessage(),
+                ));
+
                 $pool->setMessage($message);
+                $pool->setLocale($request->getLocale());
                 $em->persist($pool);
                 $em->flush();
 
@@ -151,14 +152,11 @@ class PoolController extends Controller
         }
 
         if ($this->pool->getSentdate() === null) {
+            $translator = $this->get('translator');
             $this->get('session')->getFlashBag()->add(
                 'success',
-                "<strong>Perfect!</strong><br/>Your email is now validated.<br/>
-                    Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
-                    <br />
-                    Don't forget to confirm your own participation. We've sent you another email. Go check it out!"
+                $translator->trans('flashes.manage.email_validated')
             );
-
             /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
@@ -182,14 +180,15 @@ class PoolController extends Controller
             'delete_pool',
             $this->getRequest()->get('csrf_token')
         );
-        $correctConfirmation = ($this->getRequest()->get('confirmation') === 'delete everything');
+        $translator = $this->get('translator');
+        $correctConfirmation = ($this->getRequest()->get('confirmation') === $translator->trans('delete.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
+            $translator = $this->get('translator');
             $this->get('session')->getFlashBag()->add(
                 'error',
-                '<h4>Not deleted</h4> The confirmation was incorrect.'
+                $translator->trans('flashes.delete.not_deleted')
             );
-
             return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
         }
 
@@ -219,9 +218,10 @@ class PoolController extends Controller
         $entryService = $this->get('intracto_secret_santa.entry_service');
         $entryService->sendSecretSantaMailForEntry($entry);
 
+        $translator = $this->get('translator');
         $this->get('session')->getFlashBag()->add(
             'success',
-            '<strong>Resent!</strong><br/>The e-mail to ' . $entry->getName() . ' has been resent.<br/>'
+            $translator->trans('flashes.resend.resent', array('%email%' => $entry->getName()))
         );
 
         return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));

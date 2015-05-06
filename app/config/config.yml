@@ -24,6 +24,7 @@ twig:
     globals:
         ad_client:  %ad_client%
         ga_tracking:  %ga_tracking%
+        supported_locales:  %supported_locales%
 
 # Assetic Configuration
 assetic:
@@ -64,6 +65,19 @@ jms_di_extra:
     locations:
         all_bundles: true
 
+jms_i18n_routing:
+    default_locale: "%locale%"
+    locales: %supported_locales%
+    strategy: prefix_except_default
+
+jms_translation:
+    configs:
+        app:
+            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
+            output_dir: %kernel.root_dir%/Resources/translations
+            ignored_domains: [routes]
+            excluded_names: ["*TestCase.php", "*Test.php"]
+            excluded_dirs: [cache, data, logs]
 genemu_form:
     tinymce:
         enabled: true
@@ -71,6 +85,15 @@ genemu_form:
     date: ~
 
 services:
+    twig.text_extension:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - name: twig.extension
+    twig.intl_extension:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
     intracto.twig.linkify_extension:
         class: Intracto\SecretSantaBundle\Twig\LinkifyExtension
         tags:
@@ -99,6 +122,13 @@ services:
             - @templating
             - @mailer
             - "%admin_email%"
+            - @translator
+        tags:
+            - { name: kernel.event_subscriber }
+
+    intracto.locale_listener:
+        class: Intracto\SecretSantaBundle\EventListener\LocaleListener
+        arguments: ["%supported_locales%", @jms_i18n_routing.router]
         tags:
             - { name: kernel.event_subscriber }
 

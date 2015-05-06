@@ -28,14 +28,14 @@ class PoolType extends AbstractType
               'genemu_jquerydate',
               array(
                   'widget' => 'single_text',
-                  'label' => 'Date of your Secret Santa party',
+                  'label' => 'label.date_party',
               )
           )
           ->add(
               'amount',
               'text',
               array(
-                  'label' => 'Amount to spend',
+                  'label' => 'label.amount_to_spend',
               )
           );
     }

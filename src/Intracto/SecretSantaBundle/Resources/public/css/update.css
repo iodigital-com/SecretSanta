@@ -316,3 +316,17 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 ul.form-errors {
     color: #A12C2C;
 }
+
+#locale-menu {
+    position: absolute;
+    list-style: none;
+    top: 0;
+    right: 365px;
+    padding: 0;
+    margin: 0;
+}
+
+#locale-menu li {
+    float: left;
+    padding: 2px 5px;
+}

@@ -14,7 +14,7 @@
 
 {% block main %}
     <div class="box">
-        <h1>Exclude</h1>
+        <h1>{{ 'exclude.title'|trans }}</h1>
 
         {{ form_start(form) }}
         {# Only show general validation error if there are no subform errors #}
@@ -25,8 +25,8 @@
             <thead>
             <tr>
                 <th class="span1">#</th>
-                <th class="span3">Name</th>
-                <th>Exclude</th>
+                <th class="span3">{{ 'label.name'|trans }}</th>
+                <th>{{ 'label.exclude'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_entries.vars.label }}</td>
                     <td>
-                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'Click and choose the participants you want to exclude'} } ) }}
+                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'placeholder.exclude'|trans} } ) }}
                         {{ form_errors(entry.excluded_entries) }}
                     </td>
                 </tr>
@@ -44,7 +44,7 @@
         </table>
         <p>
             <button type="submit" class="btn btn-large btn-primary btn-create-event">
-                <i class="icon-ok icon-white"></i> Create your event!
+                <i class="icon-ok icon-white"></i> {{ 'btn.create_event'|trans }}
             </button>
         </p>
         {{ form_end(form) }}

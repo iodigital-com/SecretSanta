@@ -86,9 +86,10 @@ class EntryController extends Controller
                 $em->persist($this->entry);
                 $em->flush();
 
+                $translator = $this->get('translator');
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    '<h4>Wishlist updated</h4>We\'ve sent out our gnomes to notify your Secret Santa about your wishes!'
+                    $translator->trans('flashes.entry.wishlist_updated')
                 );
 
                 if (!$inOrder) {
@@ -129,9 +130,10 @@ class EntryController extends Controller
             $emailAddressErrors = $validatorService->validate($emailAddress);
 
             if (count($emailAddressErrors) > 0) {
+                $translator = $this->get('translator');
                 $this->get('session')->getFlashBag()->add(
                     'error',
-                    '<h4>Not saved</h4> There is an error in the email address.'
+                    $translator->trans('flashes.entry.edit_email')
                 );
             } else {
                 $em = $this->getDoctrine()->getManager();
@@ -141,9 +143,10 @@ class EntryController extends Controller
                 $entryService = $this->get('intracto_secret_santa.entry_service');
                 $entryService->sendSecretSantaMailForEntry($entry);
 
+                $translator = $this->get('translator');
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    '<h4>Saved</h4> The new email address was saved. We also resent the e-mail.'
+                    $translator->trans('flashes.entry.saved_email')
                 );
             }
         }

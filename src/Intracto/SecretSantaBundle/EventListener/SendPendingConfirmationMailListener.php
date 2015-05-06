@@ -7,12 +7,26 @@ use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Templating\EngineInterface;
+use Symfony\Component\Translation\Translator;
 
 class SendPendingConfirmationMailListener implements EventSubscriberInterface
 {
+    /**
+     * @var EngineInterface
+     */
     private $templating;
+    /**
+     * @var \Swift_Mailer
+     */
     private $mailer;
+    /**
+     * @var string
+     */
     private $adminEmail;
+    /**
+     * @var Translator
+     */
+    private $translator;
 
     public static function getSubscribedEvents()
     {
@@ -21,11 +35,13 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
         );
     }
 
-    public function __construct(EngineInterface $templating, \Swift_Mailer $mailer, $adminEmail)
+    public function __construct(EngineInterface $templating, \Swift_Mailer $mailer, $adminEmail, Translator $translator)
     {
         $this->templating = $templating;
         $this->mailer = $mailer;
         $this->adminEmail = $adminEmail;
+        $this->translator = $translator;
+
     }
 
     public function onNewPool(PoolEvent $event)
@@ -35,9 +51,11 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
 
     private function sendPendingConfirmationMail(Pool $pool)
     {
+        $this->translator->setLocale($pool->getLocale());
+
         $message = \Swift_Message::newInstance()
-            ->setSubject('Secret Santa Validation')
-            ->setFrom($this->adminEmail, "Santa Claus")
+            ->setSubject($this->translator->trans('emails.pendingconfirmation.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
             ->setTo($pool->getOwnerEmail())
             ->setBody(
                 $this->templating->render(

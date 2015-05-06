@@ -2,14 +2,14 @@
 
 {% block header %}
     <div class="steps">
-        <h2>Your gift exchange event <br/>in <span class="accent">3 easy steps</span></h2>
+        <h2>{{ 'pool.header.steps.title'|trans|raw }}</h2>
         <ul class="liststyle1">
-            <li><span class="icon-steps">1</span> List your participants</li>
-            <li><span class="icon-steps">2</span> Add a personal message</li>
-            <li><span class="icon-steps">3</span> Send!</li>
+            <li><span class="icon-steps">1</span> {{ 'pool.header.steps.list.one'|trans }}</li>
+            <li><span class="icon-steps">2</span> {{ 'pool.header.steps.list.two'|trans }}</li>
+            <li><span class="icon-steps">3</span> {{ 'pool.header.steps.list.three'|trans }}</li>
         </ul>
         <div class="text-center">
-            <a href="#mysanta" class="btn-started">Get Started!</a>
+            <a href="#mysanta" class="btn-started">{{ 'pool.header.steps.get_started'|trans }}</a>
         </div>
     </div>
 {% endblock %}
@@ -17,25 +17,18 @@
 {% block main %}
 
     <div class="box">
-        <h2>What is Secret Santa?</h2>
+        <h2>{{ 'create.what_is.title'|trans }}</h2>
 
-        <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer</strong>! Organize a Secret
-            Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your
-            own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
-
-        <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/>
-            To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
-            present to one another.</p>
+        {{ 'create.what_is.intro'|trans|raw }}
     </div>
     <div class="content-container" id="mysanta">
         <div class="santa-content">
-
-            <h1>Add your participants</h1>
+            <h1>{{ 'create.add_participants'|trans }}</h1>
 
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <div class="row toplabels">
-                    <div class="span3{% if form_errors(form.date) %} error{% endif %}">{{ form_label(form.date) }}{{ form_widget(form.date) }}</div>
+                    <div class="span4{% if form_errors(form.date) %} error{% endif %}">{{ form_label(form.date) }}{{ form_widget(form.date) }}</div>
                     <div class="span3{% if form_errors(form.amount) %} error{% endif %}">{{ form_label(form.amount) }}{{ form_widget(form.amount) }}</div>
                 </div>
 
@@ -45,11 +38,11 @@
                     <thead>
                     <tr>
                         <th class="span1 entry-number-header">#</th>
-                        <th class="span3">Name</th>
-                        <th class="span4">E-mail</th>
+                        <th class="span3">{{ 'label.name'|trans }}</th>
+                        <th class="span4">{{ 'label.email'|trans }}</th>
                         <th style="text-align: right;" class="span4">
                             <button type="button" class="btn btn-mini btn-success add-new-entry"><i
-                                        class="icon-plus-sign icon-white"></i> Add person
+                                        class="icon-plus-sign icon-white"></i> {{ 'btn.add_person'|trans }}
                             </button>
                         </th>
                     </tr>
@@ -62,10 +55,10 @@
                             <td {% if form_errors(entry.email) %}class="error"{% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
                             <td style="text-align: right;">
                                 {% if loop.index == 1 %}
-                                    <small>This person is also your list administrator.</small>
+                                    <small>{{ 'create.list_adminstrator'|trans }}</small>
                                 {% else %}
                                     <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i
-                                                class="icon-minus-sign icon-white"></i> Remove this person
+                                                class="icon-minus-sign icon-white"></i> {{ 'btn.remove_person'|trans }}
                                     </button>
                                 {% endif %}
                             </td>
@@ -73,16 +66,16 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                <h1>Add a personal message</h1>
+                <h1>{{ 'create.add_personal_message.title'|trans }}</h1>
 
                 {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
 
                 <div class="description">
-                    Add a personal message for the participants.
+                    {{ 'create.add_personal_message.description'|trans }}
                 </div>
                 <p>
                     <button type="submit" class="btn btn-large btn-primary btn-create-event">
-                        <i class="icon-ok icon-white"></i> Create your event!
+                        <i class="icon-ok icon-white"></i> {{ 'btn.create_event'|trans }}
                     </button>
                 </p>
             </form>

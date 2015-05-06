@@ -35,6 +35,10 @@
 			.footer-links {
 				padding: 0px;
 			}
+
+    #locale-menu {
+        right: 25px;
+    }
 }
 
 @media only screen and (max-width: 480px) {
