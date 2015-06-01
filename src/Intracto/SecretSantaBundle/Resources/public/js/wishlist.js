@@ -68,6 +68,6 @@ jQuery(document).ready(function() {
         stop: function () {
             resetRanks();
         }
-    }).disableSelection();
+    });
 
 });
