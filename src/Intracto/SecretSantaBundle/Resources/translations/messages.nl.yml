@@ -152,6 +152,12 @@ static:
             Via e-mail: info@secretsantaorganizer.com</p>
 
             <p>We behouden het recht om dit beleid te wijzigen. Alle wijzigingen aan dit beleid worden gepubliceerd.</p>
+    report:
+        max_results: Max resultaten
+        from: Van
+        to: Tot
+        total_visits: Totaal visits
+        submit: Verzend
 
 label:
     name: Naam
