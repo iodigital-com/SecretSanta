@@ -4,7 +4,7 @@ namespace Intracto\SecretSantaBundle\Mailer\Mail;
 
 use Doctrine\ORM\EntityManager;
 use Intracto\SecretSantaBundle\Entity\Entry;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\DataCollectorTranslator;
 
 /**
  * Mail sent to people who haven't added anything to their wish list yet.
@@ -38,7 +38,7 @@ class BatchEmptyWishlistReminder implements BatchEntryMail
     /**
      * {@inheritdoc}
      */
-    public function getSubject(Entry $receiver, Translator $translator)
+    public function getSubject(Entry $receiver, DataCollectorTranslator $translator)
     {
         $translator->setLocale($receiver->getPool()->getLocale());
 
@@ -48,7 +48,7 @@ class BatchEmptyWishlistReminder implements BatchEntryMail
     /**
      * {@inheritdoc}
      */
-    public function getFrom(Entry $receiver, Translator $translator)
+    public function getFrom(Entry $receiver, DataCollectorTranslator $translator)
     {
         $translator->setLocale($receiver->getPool()->getLocale());
 
