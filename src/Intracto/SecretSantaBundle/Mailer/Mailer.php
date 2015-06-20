@@ -5,7 +5,7 @@ namespace Intracto\SecretSantaBundle\Mailer;
 use Doctrine\ORM\EntityManager;
 use Intracto\SecretSantaBundle\Mailer\Mail\BatchEntryMail;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\DataCollectorTranslator;
 
 /**
  * Responsible for sending all emails.
@@ -29,7 +29,7 @@ class Mailer
     private $em;
 
     /**
-     * @var Translator
+     * @var DataCollectorTranslator
      */
     private $translator;
 
@@ -47,10 +47,10 @@ class Mailer
      * @param \Swift_Mailer $mailer
      * @param \Swift_Transport $transport
      * @param EntityManager $em
-     * @param Translator $translator
+     * @param DataCollectorTranslator $translator
      * @param \Twig_Environment $twig
      */
-    public function __construct(\Swift_Mailer $mailer, \Swift_Transport $transport, EntityManager $em, Translator $translator, \Twig_Environment $twig)
+    public function __construct(\Swift_Mailer $mailer, \Swift_Transport $transport, EntityManager $em, DataCollectorTranslator $translator, \Twig_Environment $twig)
     {
         $this->mailer = $mailer;
         $this->transport = $transport;
