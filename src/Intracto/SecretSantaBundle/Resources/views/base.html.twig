@@ -67,7 +67,7 @@
     <div class="container">
         <div class="lang__selection">
             <select>
-            {% for supported_locale in supported_locales  %}
+            {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
                 <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale, 'force-locale-switch': true})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
                     {{ locale_names[supported_locale] }}
                 </option>
