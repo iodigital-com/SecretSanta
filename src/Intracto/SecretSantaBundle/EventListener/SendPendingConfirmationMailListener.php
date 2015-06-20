@@ -7,7 +7,7 @@ use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Templating\EngineInterface;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\DataCollectorTranslator;
 
 class SendPendingConfirmationMailListener implements EventSubscriberInterface
 {
@@ -24,7 +24,7 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
      */
     private $adminEmail;
     /**
-     * @var Translator
+     * @var DataCollectorTranslator
      */
     private $translator;
 
@@ -35,7 +35,7 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
         );
     }
 
-    public function __construct(EngineInterface $templating, \Swift_Mailer $mailer, $adminEmail, Translator $translator)
+    public function __construct(EngineInterface $templating, \Swift_Mailer $mailer, $adminEmail, DataCollectorTranslator $translator)
     {
         $this->templating = $templating;
         $this->mailer = $mailer;
