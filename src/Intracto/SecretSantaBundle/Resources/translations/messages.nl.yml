@@ -152,6 +152,12 @@ static:
             Via e-mail: info@secretsantaorganizer.com</p>
 
             <p>We behouden het recht om dit beleid te wijzigen. Alle wijzigingen aan dit beleid worden gepubliceerd.</p>
+    report:
+        max_results: Max resultaten
+        from: Van
+        to: Tot
+        total_visits: Totaal visits
+        submit: Verzend
 
 label:
     name: Naam
@@ -202,7 +208,13 @@ emails:
         buddy_updated_wishlist: Je persoon heeft zijn of haar verlanglijst geüpdatet.
         click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken. 
         btn_check_wishlist: Bekijk verlanglijst
-        click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken. 
+        click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
+    emptywishlistreminder:
+        subject: Je verlanglijst is nog leeg
+        updateyourlist: Jou Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
+    viewentryreminder:
+        subject: Ontdek wiens Secret Santa je bent
+        didyouforget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
     created:
         message: |
             Hey (NAME),

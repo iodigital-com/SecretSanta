@@ -169,6 +169,12 @@ static:
                 By e-mail: info@secretsantaorganizer.com</p>
 
             <p>We reserve the right to make changes to this policy. Any changes to this policy will be posted.</p>
+    report:
+        max_results: Max results
+        from: From
+        to: To
+        total_visits: Total visits
+        submit: Submit
 
 label:
     name: Name
@@ -220,6 +226,12 @@ emails:
         click_button: Click on the button below to check out his suggestions.
         btn_check_wishlist: Check wishlist
         click_link: Click on the link below to check out his suggestions.
+    emptywishlistreminder:
+        subject: Your wishlist is still empty
+        updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
+    viewentryreminder:
+        subject: Find out who your gift buddy is
+        didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
     created:
         message: |
             Hi there (NAME),
@@ -256,3 +268,5 @@ flashes:
         wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
         saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
+    analytics:
+        invalid_data: <h4>Oops</h4> An error occured while requesting analytics data. Please try again.

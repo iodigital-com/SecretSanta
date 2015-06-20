@@ -146,7 +146,13 @@ static:
             <p>Pour toute question, ou commententaire concernant notre politique de confidentialité, vous pouvez nous contacter via:<br/> e-mail: info@secretsantaorganizer.com</p>
 
             <p>Nous nous réservons le droit d'apporter des changements à notre politique de confidentialités. Tout changement sera notifié</p>
-
+    report:
+        max_results: Max results
+        from: From
+        to: To
+        total_visits: Total visits
+        submit: Submit
+        
 label:
     name: Nom
     email: E-mail
@@ -197,6 +203,12 @@ emails:
         click_button: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
         btn_check_wishlist: Découvrir la liste de souhaits
         click_link: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
+    emptywishlistreminder:
+        subject: Your wishlist is still empty
+        updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
+    viewentryreminder:
+        subject: Find out who your gift buddy is
+        didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
     created:
         message: |
             Bonjour (NAME),
