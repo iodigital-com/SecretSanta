@@ -230,3 +230,5 @@ flashes:
         wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
         saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
+    analytics:
+        invalid_data: <h4>Oops</h4> An error occured while requesting analytics data. Please try again.

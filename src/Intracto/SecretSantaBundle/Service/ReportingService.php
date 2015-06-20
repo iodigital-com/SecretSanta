@@ -73,8 +73,8 @@ class ReportingService
             'totals' => $ga->getVisits(),
         );
 
-        foreach ($ga->getResults() as $country) {
-            $results['countries'][(string) $country] = $country->getVisits();
+        foreach ($ga->getResults() as $item) {
+            $results[$options->getDimension()][(string) $item] = $item->getVisits();
         }
 
         $this->cache->save($cachingId, serialize($results), 3600);
