@@ -4,7 +4,7 @@
         <h1>Report</h1>
         <div id="visualization" style="width: 900px; height: 400px;"></div>
         <div id="piechart" style="width: 900px; height: 500px;"></div>
-        <p style="text-align: center;">Total visits last month <b>{{ gaCountries.totals }}</b>.</p>
+        <p style="text-align: center;">Total visits last month <b>{{ analytics.totals }}</b>.</p>
     </div>
 {% endblock %}
 {% block javascripts %}
@@ -33,7 +33,7 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['countries', 'visits'],
-                {% for country, visits in gaCountries.countries %}
+                {% for country, visits in analytics.countries %}
                     ['{{ country }}', {{ visits }}],
                 {% endfor %}
             ]);
