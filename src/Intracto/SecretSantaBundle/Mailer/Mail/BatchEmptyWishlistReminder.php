@@ -84,7 +84,10 @@ class BatchEmptyWishlistReminder implements BatchEntryMail
      */
     public function handleMailSent(Entry $receiver, EntityManager $em)
     {
-        // TODO: Set reminder sent timestamp
+        $receiver->setUpdateWishlistReminderSentTime(new \DateTime());
+
+        $em->persist($receiver);
+        $em->flush();
     }
 
 }

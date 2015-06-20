@@ -84,7 +84,10 @@ class BatchViewEntryReminder implements BatchEntryMail
      */
     public function handleMailSent(Entry $receiver, EntityManager $em)
     {
-        // TODO: Set reminder sent timestamp
+        $receiver->setViewReminderSentTime(new \DateTime());
+
+        $em->persist($receiver);
+        $em->flush();
     }
 
 }
