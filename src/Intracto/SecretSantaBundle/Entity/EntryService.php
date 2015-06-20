@@ -50,6 +50,12 @@ class EntryService
     public $translator;
 
     /**
+     * @DI\Inject("%admin_email%")
+     * @var string $secretSantaEmail
+     */
+    public $secretSantaEmail;
+
+    /**
      * Shuffles all entries for pool and save result to each entry
      *
      * @param Pool $pool
@@ -117,5 +123,21 @@ class EntryService
             ->setBody($txtBody)
             ->addPart($htmlBody, 'text/html');
         $this->mailer->send($mail);
+    }
+
+    /**
+     * @param Pool $pool
+     * @return void
+     */
+    public function sendPoolMatchesToAdmin(Pool $pool)
+    {
+        $this->translator->setLocale($pool->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.admin_matches.subject'))
+            ->setFrom($this->secretSantaEmail, $this->translator->trans('emails.sender'))
+            ->setTo($this->adminEmail, $pool->getOwnerName())
+            ->setBody($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.html.twig", array('pool' => $pool)), 'text/html')
+            ->addPart($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.txt.twig", array('pool' => $pool)), 'text/plain')
+        );
     }
 }

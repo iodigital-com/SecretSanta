@@ -166,7 +166,8 @@ class PoolController extends Controller
 
         return array(
             'pool' => $this->pool,
-            'delete_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('delete_pool')
+            'delete_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('delete_pool'),
+            'expose_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('expose_pool'),
         );
     }
 
@@ -197,6 +198,48 @@ class PoolController extends Controller
 
         $em->remove($this->pool);
         $em->flush();
+    }
+
+    /**
+     * @Route("/expose/{listUrl}", name="pool_expose")
+     * @Template()
+     */
+    public function exposeAction($listUrl)
+    {
+        $correctCsrfToken = $this->get('form.csrf_provider')->isCsrfTokenValid(
+            'expose_pool',
+            $this->getRequest()->get('csrf_token')
+        );
+
+        $translator = $this->get('translator');
+        $correctConfirmation = ($this->getRequest()->get('confirmation') === $translator->trans('expose.phrase_to_type'));
+
+        if ($correctConfirmation === false || $correctCsrfToken === false) {
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                $translator->trans('flashes.expose.not_exposed')
+            );
+        } else {
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                $translator->trans('flashes.expose.exposed')
+            );
+        }
+
+        /* Tell db pool has been exposed */
+        $this->getPool($listUrl);
+        $this->pool->expose();
+
+        /* Save db changes */
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        /* Mail pool owner the pool matches */
+        /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
+        $entryService = $this->get('intracto_secret_santa.entry_service');
+        $entryService->sendPoolMatchesToAdmin($this->pool);
+
+        return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
     }
 
     /**

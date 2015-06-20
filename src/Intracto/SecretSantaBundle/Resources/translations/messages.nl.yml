@@ -10,6 +10,7 @@ base:
         home: Home
     privacy_policy: Privacy policy
     have_fun: Organiseer je eigen Secret Santa en amuseer je rot!
+    need_help: Hulp nodig?
 pool:
     header:
         steps:
@@ -37,6 +38,7 @@ create:
         description: Voeg een persoonlijke boodschap voor de deelnemers toe
 exclude:
    title: Uitsluiten
+   description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
 created:
     title: Nog 1 stapje te gaan! - Valideer je deelname
     body: >
@@ -81,6 +83,20 @@ delete:
         <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
         </p>
     phrase_to_type: alles verwijderen
+expose:
+    title: Toon alle gekoppelde leden in deze pool
+    body: >
+        <p>
+            Weet je het ECHT zeker?<br>
+            <br>
+            Er word een mail naar u verzonden, waarin alle leden van deze pool inclusief koppelingen vermeld zullen staan.<br>
+            <br>
+            <b>Pas op:</b><br>
+            Alle leden van deze pool zullen hiervan op de hoogte worden gebracht!<br>
+            <br>
+            <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+        </p>
+    phrase_to_type: toon me alles
 entry:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
@@ -88,6 +104,8 @@ entry:
         amount: Bedrag
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
+        exposed: Lijst maker kent alle koppelingen
+        not_exposed: Lijst maker kent de koppelingen niet
     title: Jouw toegewezen maatje
     body: >
         <p>Hey %name%,</p>
@@ -134,6 +152,12 @@ static:
             Via e-mail: info@secretsantaorganizer.com</p>
 
             <p>We behouden het recht om dit beleid te wijzigen. Alle wijzigingen aan dit beleid worden gepubliceerd.</p>
+    report:
+        max_results: Max resultaten
+        from: Van
+        to: Tot
+        total_visits: Totaal visits
+        submit: Verzend
 
 label:
     name: Naam
@@ -156,6 +180,9 @@ btn:
     add_wishlist: Voeg item toe aan verlanglijst
     remove_item: Verwijder dit item
     update_wishlist: Update je verlanglijst
+    expose: Stuur me alle koppelingen
+    expose_confirm: Ik begrijp de gevolgen, stuur mij nu alle koppelingen
+    cancel: Annuleren
 
 emails:
     sender: Kerstman
@@ -204,6 +231,8 @@ emails:
 
 
             Geniet van de feestdagen!
+    admin_matches:
+        subject: Secret Santa Pool Koppelingen
 flashes:
     manage:
         email_validated: >
@@ -213,6 +242,9 @@ flashes:
          Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
     delete:
         not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
+    expose:
+        not_exposed: <h4>Pool niet gestuurd</h4> De bevestiging verliep foutief.
+        exposed: <h4>Pool gestuurd</h4> All gebruikers worden op de hoogte gebracht wanneer zij hun wenslijst bekijken.
     resend:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
     entry:
