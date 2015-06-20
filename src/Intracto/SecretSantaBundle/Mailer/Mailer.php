@@ -82,6 +82,8 @@ class Mailer
 
         $this->writeOutput('Sending "' . $batchMail->getName() . '" mail to ' . count($receivers) . ' people from ' . $fromEmail);
 
+        $spool = $this->mailer->getTransport()->getSpool();
+
         foreach ($receivers as $receiver) {
             $this->writeOutput(' -> ' . $receiver->getEmail());
 
@@ -98,12 +100,12 @@ class Mailer
                 ->setSubject($batchMail->getSubject($receiver, $this->translator))
                 ->setFrom($fromEmail, $batchMail->getFrom($receiver, $this->translator))
                 ->setTo($receiver->getEmail())
-                ->setBody($htmlBody)
-                ->addPart($plainTextBody);
+                ->setBody($plainTextBody)
+                ->addPart($htmlBody, 'text/html');
 
             if ($doSend) {
                 $this->mailer->send($message);
-                $this->transport->getSpool()->flushQueue($this->transport);
+                $spool->flushQueue($this->transport);
 
                 $batchMail->handleMailSent($receiver, $this->em);
             }

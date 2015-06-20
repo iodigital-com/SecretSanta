@@ -34,10 +34,14 @@ class SendBatchMailsCommand extends ContainerAwareCommand
      *
      * @param  InputInterface  $input
      * @param  OutputInterface $output
-     * @return int|null|voidSp
+     * @return int|null
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // Set context for URL generation
+        $context = $this->getContainer()->get('router')->getContext();
+        $context->setHost($this->getContainer()->getParameter("base_url"));
+
         /** @var Mailer $mailer */
         $mailer = $this->getContainer()->get('intracto_secret_santa.mailer');
 

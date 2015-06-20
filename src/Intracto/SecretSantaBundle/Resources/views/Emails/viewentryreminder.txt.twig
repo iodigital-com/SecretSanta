@@ -1,1 +1,6 @@
-Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
+{{ 'emails.viewentryreminder.didyouforget'|trans }}
+
+{{ 'emails.secretsanta.link_find_out'|trans }}:
+{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}
+
+{{ 'emails.base.created_by'|trans }} http://www.intracto.com

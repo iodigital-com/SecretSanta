@@ -201,8 +201,10 @@ emails:
         click_link: Click on the link below to check out his suggestions.
     emptywishlistreminder:
         subject: Your wishlist is still empty
+        updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
     viewentryreminder:
         subject: Find out who your gift buddy is
+        didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
     created:
         message: |
             Hi there (NAME),

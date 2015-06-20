@@ -76,7 +76,7 @@ class BatchViewEntryReminder implements BatchEntryMail
      */
     public function getTemplateData(Entry $receiver, EntityManager $entityManager)
     {
-        return [];
+        return ['entry' => $receiver];
     }
 
     /**

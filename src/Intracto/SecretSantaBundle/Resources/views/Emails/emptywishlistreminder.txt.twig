@@ -1,1 +1,6 @@
-Your Secret Santa party is near and your wishlist is still empty, you might want to go add some stuff you'd like!
+{{ 'emails.emptywishlistreminder.updateyourlist'|trans }}
+
+{{ 'btn.update_wishlist'|trans }}:
+{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}
+
+{{ 'emails.base.created_by'|trans }} http://www.intracto.com
