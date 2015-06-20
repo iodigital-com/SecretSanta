@@ -6,8 +6,7 @@
         <div id="visualization" style="width: 900px; height: 400px;"></div>
 
         <form method="get">
-            <label for="dimension">Type</label>
-
+            <label for="maxresults">{{ 'static.report.max_results'|trans }}</label>
             <select name="max_results" id="maxresults">
                 <option value="3" {% if options.maxResults == 3 %}selected{% endif %}>3</option>
                 <option value="5" {% if options.maxResults == 5 %}selected{% endif %}>5</option>
@@ -16,13 +15,12 @@
                 {% endfor %}
             </select>
 
-            <h2>Select results from date</h2>
-            <label for="from">From</label>
+            <label for="from">{{ 'static.report.from'|trans }}</label>
             <input type="text" id="from" name="start_date" value="{{ options.startDate }}">
-            <label for="to">to</label>
+            <label for="to">{{ 'static.report.to'|trans }}</label>
             <input type="text" id="to" name="end_date" value="{{ options.endDate }}">
 
-            <button>Submit</button>
+            <button>{{ 'static.report.submit'|trans }}</button>
         </form>
 
         {%  if analytics is defined %}
@@ -30,7 +28,7 @@
             {% if options.dimension == 'country' %}
                 <div id="regions" style="width: 900px; height: 500px;"></div>
             {% endif %}
-            <p style="text-align: center;">Total visits <b>{{ analytics.totals }}</b>.</p>
+            <p style="text-align: center;">{{ 'static.report.total_visits'|trans }} <b>{{ analytics.totals }}</b>.</p>
         {% endif %}
     </div>
 
