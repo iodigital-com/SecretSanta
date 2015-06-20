@@ -51,6 +51,7 @@ class EntryRepository extends EntityRepository
             FROM IntractoSecretSantaBundle:Entry entry
               JOIN entry.pool pool
             WHERE entry.viewdate IS NULL
+              AND pool.created = 1
               AND pool.date > :today
               AND pool.date < :sixWeeksFromNow
               AND pool.sentdate < :twoWeeksAgo
@@ -81,6 +82,7 @@ class EntryRepository extends EntityRepository
             FROM IntractoSecretSantaBundle:Entry entry
               JOIN entry.pool pool
             WHERE entry.wishlist_updated = 0
+              AND pool.created = 1
               AND pool.date > :today
               AND pool.date < :sixWeeksFromNow
               AND pool.sentdate < :twoWeeksAgo
