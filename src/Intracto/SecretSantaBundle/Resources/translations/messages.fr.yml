@@ -10,6 +10,7 @@ base:
         home: Accueil
     privacy_policy: Protection vie privée
     have_fun: Amusez-vous en créant votre Secret Santa!
+    need_help: Besoin d'aide?
 pool:
     header:
         steps:
@@ -35,6 +36,7 @@ create:
         description: Ajoutez un message personnel pour les participant.
 exclude:
    title: Exclure
+   description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
 created:
     title: Plus qu'une étape ! - Validez votre participation
     body: >
@@ -79,6 +81,20 @@ delete:
         <br>
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
+expose:
+    title: Send me all matches in this pool
+    body: >
+        <p>
+            Are you ABSOLUTELY sure?<br>
+            <br>
+            A mail will be send to you, containing the entire pool with the matches.<br>
+            <br>
+            <b>Be aware:</b><br>
+            All pool members will be notified!<br>
+            <br>
+            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
+        </p>
+    phrase_to_type: show me everything
 entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
@@ -86,6 +102,8 @@ entry:
         amount: Montant
         num_people: Nombre de personnes
         person_created_list: Créateur de la liste
+        exposed: Pool creator knows all matches
+        not_exposed: Pool creator does not know all matches
     title: Personne désignée
     body: >
         <p>Bonjour %name%,</p>
@@ -156,6 +174,9 @@ btn:
     add_wishlist: Ajouter un objet à ma liste de souhaits
     remove_item: Supprimer cet objet
     update_wishlist: Mettre à jour votre liste de souhaits
+    expose: Send me all the matches
+    expose_confirm: I understand the consequences, send my Secret Santa pool now
+    cancel: Cancel
 
 emails:
     sender: Santa Claus
@@ -198,6 +219,8 @@ emails:
 
 
             Bonnes vacances !
+    admin_matches:
+        subject: Secret Santa Pool Matches
 flashes:
     manage:
         email_validated: >
@@ -207,6 +230,9 @@ flashes:
          N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
     delete:
         not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
+    expose:
+        not_exposed: <h4>Pool not send</h4> The confirmation was incorrect.
+        exposed: <h4>Pool send</h4> All users will be notified when they check their wishlist.
     resend:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
     entry:

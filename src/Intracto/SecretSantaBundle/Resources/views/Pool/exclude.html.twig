@@ -16,6 +16,7 @@
     <div class="box">
         <h1>{{ 'exclude.title'|trans }}</h1>
 
+        <p>{{ 'exclude.description'|trans }}</p>
         {{ form_start(form) }}
         {# Only show general validation error if there are no subform errors #}
         {% if form.entries.vars.valid %}

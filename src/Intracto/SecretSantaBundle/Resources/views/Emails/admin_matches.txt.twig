@@ -1,0 +1,7 @@
+{% for entry in pool.entries %}
+    {{ entry.name }} ({{ entry.email }}) - {{ entry.entry.name }} ({{ entry.entry.email }})
+{% endfor %}
+
+{{ 'emails.secretsanta.link_find_out'|trans }}:
+
+{{ 'emails.base.created_by'|trans }} http://www.intracto.com

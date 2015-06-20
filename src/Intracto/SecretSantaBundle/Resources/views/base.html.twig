@@ -10,7 +10,7 @@
     <meta property="og:description" content="{{ 'base.meta.og.description'|trans }}"/>
     <title>{% block title %}{{ 'base.meta.title'|trans }}{% endblock %}</title>
 
-    {% for supported_locale in supported_locales if app.request.get('_route_params') is not null and supported_locale != app.request.get('_locale') %}
+    {% for supported_locale in supported_locales if supported_locale != app.request.get('_locale') %}
         <link rel="alternate" hreflang="{{ supported_locale }}"
               href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"/>
     {% endfor %}
@@ -66,15 +66,15 @@
 
 <div class="wrapper">
     <div class="container">
-        <ul id="locale-menu">
-            {% for supported_locale in supported_locales if app.request.get('_route_params') is not null and supported_locale != app.request.get('_locale') %}
-                <li>
-                    <a href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale, 'force-locale-switch': true})) }}">
-                        {{ supported_locale }}
-                    </a>
-                </li>
+        <div class="lang__selection">
+            <select>
+            {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
+                <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale, 'force-locale-switch': true})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
+                    {{ locale_names[supported_locale] }}
+                </option>
             {% endfor %}
-        </ul>
+            </select>
+        </div>
         <div id="header">
             <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
             {% block header %}{% endblock %}
@@ -95,6 +95,7 @@
                 <div class="copyright">&copy;{{ "now"|date("Y") }} <a href="http://www.intracto.com" target="_blank">Intracto
                         digital agency</a></div>
                 <div class="footer-links">
+                    <a href="mailto:info@secretsantaorganizer.com">{{ 'base.need_help'|trans }}</a>
                     <a href="{{ url('privacypolicy') }}">{{ 'base.privacy_policy'|trans }}</a>
                 </div>
                 {{ 'base.have_fun'|trans }}
