@@ -90,6 +90,14 @@ class Pool
     private $locale = 'en';
 
     /**
+     * @var boolean $exposed
+     *
+     * @ORM\Column(name="exposed", type="boolean")
+     *
+     */
+    private $exposed = false;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -364,5 +372,22 @@ class Pool
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * @return Pool
+     */
+    public function expose()
+    {
+        $this->exposed = true;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getExposed()
+    {
+        return $this->exposed;
     }
 }
