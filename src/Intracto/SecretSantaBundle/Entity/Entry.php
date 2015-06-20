@@ -70,12 +70,6 @@ class Entry
     /**
      * @var ArrayCollection $excludedEntries
      *
-     * @ORM\OneToMany(targetEntity="Entry", referencedBy="excludedMeEntries")
-     * @ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id", onDelete="CASCADE")
-     */
-    /**
-     * @var ArrayCollection $excludedEntries
-     *
      * @ORM\ManyToMany(targetEntity="Entry")
      * @ORM\JoinTable(name="exclude",
      *      joinColumns={@ORM\JoinColumn(name="entryId", referencedColumnName="id")},
