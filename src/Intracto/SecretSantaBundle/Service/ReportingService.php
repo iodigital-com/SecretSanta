@@ -4,6 +4,7 @@ namespace Intracto\SecretSantaBundle\Service;
 
 use Doctrine\Common\Cache\CacheProvider;
 use Intracto\SecretSantaBundle\Model\AnalyticsOptions;
+use Intracto\SecretSantaBundle\Service\Analytics\GApi;
 
 class ReportingService
 {
@@ -50,9 +51,7 @@ class ReportingService
             return unserialize($this->cache->fetch($cachingId));
         }
 
-        require __DIR__.'/../../../../lib/gapi.class.php';
-
-        $ga = new \gapi(
+        $ga = new GApi(
             $this->ga_email,
             $this->ga_password
         );
