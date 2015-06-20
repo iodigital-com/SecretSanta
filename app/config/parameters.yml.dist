@@ -13,6 +13,10 @@ parameters:
 
     locale:            en
     supported_locales: [en, nl, fr]
+    locale_names:
+        en: English
+        nl: Nederlands
+        fr: Francais
 
     secret:            ThisTokenIsNotSoSecretChangeIt
     ad_client:         ca-pub-8492783089085834
