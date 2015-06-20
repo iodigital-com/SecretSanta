@@ -2,12 +2,32 @@
 {% block main %}
     <div class="box">
         <h1>Report</h1>
+
+        <form method="get">
+            <label for="maxresults">Max results</label>
+            <select name="max_results" id="maxresults">
+                <option value="3">3</option>
+                <option value="5">5</option>
+                {% for i in 1..10 %}
+                    <option value="{{ i }}0" {% if i==10 %}selected{% endif %}>{{ i }}0</option>
+                {% endfor %}
+            </select>
+
+            <h2>Select results from date</h2>
+            <label for="from">From</label>
+            <input type="text" id="from" name="start_date">
+            <label for="to">to</label>
+            <input type="text" id="to" name="end_date">
+
+            <button>Submit</button>
+        </form>
+
         <div id="visualization" style="width: 900px; height: 400px;"></div>
         <div id="piechart" style="width: 900px; height: 500px;"></div>
         <div id="regions" style="width: 900px; height: 500px;"></div>
-        <p style="text-align: center;">Total visits last month <b>{{ gaCountries.totals }}</b>.</p>
+        <p style="text-align: center;">Total visits last month <b>{{ analytics.totals }}</b>.</p>
     </div>
-    {{ dump(gaCountries) }}
+
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
@@ -15,6 +35,28 @@
         google.load('visualization', '1.0', {packages: ['corechart','geochart']});
     </script>
     <script type="text/javascript">
+        $(function() {
+            $( "#from" ).datepicker({
+                defaultDate: "-6m",
+                changeMonth: true,
+                numberOfMonths: 3,
+                dateFormat: "yy-mm-dd",
+                maxDate: "-1d",
+                onClose: function( selectedDate ) {
+                    $( "#to" ).datepicker( "option", "minDate", selectedDate );
+                }
+            });
+            $( "#to" ).datepicker({
+                defaultDate: "-1d",
+                changeMonth: true,
+                numberOfMonths: 3,
+                dateFormat: "yy-mm-dd",
+                maxDate: "-1d",
+                onClose: function( selectedDate ) {
+                    $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+                }
+            });
+        });
         function drawVisualization() {
             var data = google.visualization.arrayToDataTable([
                 ['d', 'Pools'],
@@ -35,7 +77,7 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['countries', 'visits'],
-                {% for country, visits in gaCountries.countries %}
+                {% for country, visits in analytics.countries %}
                     ['{{ country }}', {{ visits }}],
                 {% endfor %}
             ]);
@@ -52,13 +94,17 @@
 
             var data = google.visualization.arrayToDataTable([
                 ['countries', 'visits'],
-                {% for country, visits in gaCountries.countries %}
+                {% for country, visits in analytics.countries %}
                 ['{{ country }}', {{ visits }}],
                 {% endfor %}
             ]);
 
             var options = {
-                'title': 'Visits per country'
+                region: 'world',
+                colorAxis: {colors: ['#D8D4D4', '#B3131B']},
+                backgroundColor: '#fff',
+                datalessRegionColor: '#eee',
+                defaultColor: '#B3131B'
             };
 
             var chart = new google.visualization.GeoChart(document.getElementById('regions'));

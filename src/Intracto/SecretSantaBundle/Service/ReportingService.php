@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Service;
 
 use Doctrine\Common\Cache\CacheProvider;
+use Intracto\SecretSantaBundle\Model\AnalyticsOptions;
 
 class ReportingService
 {
@@ -42,10 +43,11 @@ class ReportingService
         return $pools;
     }
 
-    public function getGaCountries()
+    public function getAnalytics(AnalyticsOptions $options)
     {
-        if ($this->cache->contains('ga_countries')) {
-            return unserialize($this->cache->fetch('ga_countries'));
+        $cachingId = $options->uniqueCachingString();
+        if ($this->cache->contains($cachingId)) {
+            return unserialize($this->cache->fetch($cachingId));
         }
 
         require __DIR__.'/../../../../lib/gapi.class.php';
@@ -57,14 +59,14 @@ class ReportingService
 
         $ga->requestReportData(
             $this->ga_profile_id,
-            array('country'),
-            array('visits'),
-            '-visits',
-            null,
-            date('Y-m-d', strtotime('-1 month')),
-            date('Y-m-d'),
-            1,
-            100
+            $options->getDimensions(),
+            $options->getMetrics(),
+            $options->getSortMetric(),
+            $options->getFilter(),
+            $options->getStartDate(),
+            $options->getEndDate(),
+            $options->getStartIndex(),
+            $options->getMaxResults()
         );
 
         $results = array(
@@ -75,7 +77,7 @@ class ReportingService
             $results['countries'][(string) $country] = $country->getVisits();
         }
 
-        $this->cache->save('ga_countries', serialize($results), 3600);
+        $this->cache->save($cachingId, serialize($results), 3600);
 
         return $results;
     }
