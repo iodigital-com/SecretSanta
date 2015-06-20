@@ -47,7 +47,7 @@
                 {% if(secret_santa.getwishlist) %}
                     {{ secret_santa.getwishlist|linkify|raw }}
                 {% else %}
-                    {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.name}) }}.
+                    {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
                 {% endif %}
             {% else %}
                 <ul class="wishlist">
