@@ -70,12 +70,6 @@ class Entry
     /**
      * @var ArrayCollection $excludedEntries
      *
-     * @ORM\OneToMany(targetEntity="Entry", referencedBy="excludedMeEntries")
-     * @ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id", onDelete="CASCADE")
-     */
-    /**
-     * @var ArrayCollection $excludedEntries
-     *
      * @ORM\ManyToMany(targetEntity="Entry")
      * @ORM\JoinTable(name="exclude",
      *      joinColumns={@ORM\JoinColumn(name="entryId", referencedColumnName="id")},
@@ -98,6 +92,13 @@ class Entry
      * @ORM\Column(name="viewdate", type="datetime", nullable=true)
      */
     private $viewdate;
+
+    /**
+     * @var \DateTime $viewReminderSentTime
+     *
+     * @ORM\Column(name="viewreminder_sent", type="datetime", nullable=true)
+     */
+    private $viewReminderSentTime;
 
     /**
      * @var string $url
@@ -125,6 +126,13 @@ class Entry
      * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
     private $wishlist_updated = false;
+
+    /**
+     * @var \DateTime $updateWishlistReminderSentTime
+     *
+     * @ORM\Column(name="updatewishlistreminder_sent", type="datetime", nullable=true)
+     */
+    private $updateWishlistReminderSentTime;
 
     /**
      * Constructor
@@ -411,7 +419,37 @@ class Entry
         return $this->wishlist_updated;
     }
 
+    /**
+     * @param \DateTime $updateWishlistReminderSentTime
+     */
+    public function setUpdateWishlistReminderSentTime($updateWishlistReminderSentTime)
+    {
+        $this->updateWishlistReminderSentTime = $updateWishlistReminderSentTime;
+    }
 
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateWishlistReminderSentTime()
+    {
+        return $this->updateWishlistReminderSentTime;
+    }
+
+    /**
+     * @param \DateTime $viewReminderSentTime
+     */
+    public function setViewReminderSentTime($viewReminderSentTime)
+    {
+        $this->viewReminderSentTime = $viewReminderSentTime;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getViewReminderSentTime()
+    {
+        return $this->viewReminderSentTime;
+    }
 
     /**
      * @ORM\PostLoad
