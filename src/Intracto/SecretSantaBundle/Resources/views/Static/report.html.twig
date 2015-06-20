@@ -6,21 +6,32 @@
         <div id="visualization" style="width: 900px; height: 400px;"></div>
 
         <form method="get">
-            <label for="maxresults">{{ 'static.report.max_results'|trans }}</label>
-            <select name="max_results" id="maxresults">
-                <option value="3" {% if options.maxResults == 3 %}selected{% endif %}>3</option>
-                <option value="5" {% if options.maxResults == 5 %}selected{% endif %}>5</option>
-                {% for i in 1..10 %}
-                    <option value="{{ i }}0" {% if options.maxResults == i~'0' %}selected{% endif %}>{{ i }}0</option>
-                {% endfor %}
-            </select>
-
-            <label for="from">{{ 'static.report.from'|trans }}</label>
-            <input type="text" id="from" name="start_date" value="{{ options.startDate }}">
-            <label for="to">{{ 'static.report.to'|trans }}</label>
-            <input type="text" id="to" name="end_date" value="{{ options.endDate }}">
-
-            <button>{{ 'static.report.submit'|trans }}</button>
+            <div class="row">
+                <div class="span3">
+                    <label for="maxresults">{{ 'static.report.max_results'|trans }}</label>
+                    <select name="max_results" id="maxresults">
+                        <option value="3" {% if options.maxResults == 3 %}selected{% endif %}>3</option>
+                        <option value="5" {% if options.maxResults == 5 %}selected{% endif %}>5</option>
+                        {% for i in 1..5 %}
+                            <option value="{{ i }}0" {% if options.maxResults == i~'0' %}selected{% endif %}>{{ i }}0
+                            </option>
+                        {% endfor %}
+                        <option value="100" {% if options.maxResults == 100 %}selected{% endif %}>100</option>
+                    </select>
+                </div>
+                <div class="span3">
+                    <label for="to">{{ 'static.report.to'|trans }}</label>
+                    <input type="text" id="to" name="end_date" value="{{ options.endDate }}">
+                </div>
+                <div class="span3">
+                    <label for="from">{{ 'static.report.from'|trans }}</label>
+                    <input type="text" id="from" name="start_date" value="{{ options.startDate }}">
+                </div>
+                <div class="span3">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-primary">{{ 'static.report.submit'|trans }}</button>
+                </div>
+            </div>
         </form>
 
         {%  if analytics is defined %}
@@ -89,7 +100,8 @@
 
 
                 var options = {
-                    title: '{{ options.readableRequest() }}'
+                    title: '{{ options.readableRequest() }}',
+                    is3D: true
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
