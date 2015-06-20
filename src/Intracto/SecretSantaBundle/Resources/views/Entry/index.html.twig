@@ -3,11 +3,15 @@
     <div class="steps">
         <h2>{{ 'entry.headers.title'|trans|raw }}</h2>
         <ul class="liststyle1">
-            <li><strong>{{ 'entry.headers.date'|trans }} </strong> {{ entry.pool.date|localizeddate('medium', 'none') }}
-            </li>
+            <li><strong>{{ 'entry.headers.date'|trans }} </strong> {{ entry.pool.date|localizeddate('medium', 'none') }}</li>
             <li><strong>{{ 'entry.headers.amount'|trans }} </strong> {{ entry.pool.amount }}</li>
             <li><strong>{{ 'entry.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
             <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> {{ entry.pool.entries|first.email }}
+                {% if entry.pool.exposed %}
+                    <i class="icon-eye-open" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.exposed'|trans }}"></i>
+                {% else %}
+                    <i class="icon-eye-close" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.not_exposed'|trans }}"></i>
+                {% endif %}
             </li>
         </ul>
     </div>

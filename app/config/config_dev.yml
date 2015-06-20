@@ -9,6 +9,10 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
+framework:
+    session:
+        save_path: null
+
 monolog:
     handlers:
         main:
@@ -23,7 +27,6 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
-
 
 jms_di_extra:
     locations:
