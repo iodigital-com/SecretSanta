@@ -17,12 +17,5 @@ echo "PS1='[\u@\h-\[\033[00;34m\]dev\[\033[00m\] \w]\n\\$ '" >> /home/vagrant/.b
 sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="be"/' /etc/default/keyboard
 setupcon --force
 
-# dotdeb
-cat << EOF >/etc/apt/sources.list.d/dotdeb.list
-deb http://packages.dotdeb.org wheezy-php55 all
-deb-src http://packages.dotdeb.org wheezy-php55 all
-EOF
-wget -qO - http://www.dotdeb.org/dotdeb.gpg | sudo apt-key add -
-
 # Sync package index files
 apt-get update

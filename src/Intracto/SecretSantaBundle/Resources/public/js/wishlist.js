@@ -68,7 +68,7 @@ jQuery(document).ready(function() {
         stop: function () {
             resetRanks();
         }
-    }).disableSelection();
+    });
 
 	$('table.entries tbody').bind('click.sortable mousedown.sortable',function(ev){
 		ev.target.focus();
