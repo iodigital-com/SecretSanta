@@ -10,8 +10,8 @@ class AnalyticsOptions
     private $metric;
     private $sort_metric = null;
     private $filter = null;
-    private $start_date = null;
-    private $end_date = null;
+    private $start_date;
+    private $end_date;
     private $start_index = 1;
     private $max_results = 30;
 
@@ -24,14 +24,19 @@ class AnalyticsOptions
         $this->start_date = date('Y-m-d', strtotime('-1 month'));
         $this->end_date = date('Y-m-d');
         $this->start_index = 1;
-        $this->max_results = 100;
+        $this->max_results = 10;
+    }
+
+    public function readableRequest()
+    {
+        return ucfirst($this->metric).'/'.ucfirst($this->dimension). ' from '.$this->start_date.' to '.$this->end_date;
     }
 
     public function loadFromRequest(Request $request)
     {
-        $this->start_date = $request->get('start_date');
-        $this->end_date = $request->get('end_date');
-        $this->max_results = $request->get('max_results');
+        $this->start_date = $request->get('start_date', date('Y-m-d', strtotime('-1 month')));
+        $this->end_date = $request->get('end_date', date('Y-m-d'));
+        $this->max_results = $request->get('max_results', 10);
     }
 
     public function uniqueCachingString()
