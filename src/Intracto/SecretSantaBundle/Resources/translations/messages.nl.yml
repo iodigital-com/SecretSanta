@@ -10,6 +10,7 @@ base:
         home: Home
     privacy_policy: Privacy policy
     have_fun: Organiseer je eigen Secret Santa en amuseer je rot!
+    need_help: Hulp nodig?
 pool:
     header:
         steps:

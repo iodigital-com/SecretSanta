@@ -10,6 +10,7 @@ base:
         home: Accueil
     privacy_policy: Protection vie privée
     have_fun: Amusez-vous en créant votre Secret Santa!
+    need_help: Besoin d'aide?
 pool:
     header:
         steps:

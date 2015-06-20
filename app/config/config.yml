@@ -25,6 +25,7 @@ twig:
         ad_client:  %ad_client%
         ga_tracking:  %ga_tracking%
         supported_locales:  %supported_locales%
+        locale_names:  %locale_names%
 
 # Assetic Configuration
 assetic:
