@@ -32,4 +32,27 @@ class EntryRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Find all entries that haven't been watched yet in Pools which were sent
+     * out more than two weeks ago and the party date is still in the future.
+     *
+     * @return Entry[]
+     */
+    public function findAllToRemindToViewEntry()
+    {
+        return [];
+    }
+
+    /**
+     * Find all entries that havean empty wishlit in Pools which were sent
+     * out more than two weeks ago and the party date is still in the future.
+     *
+     * @return Entry[]
+     */
+    public function findAllToRemindOfEmptyWishlist()
+    {
+        return [];
+    }
+
 }

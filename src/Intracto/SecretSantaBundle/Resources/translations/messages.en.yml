@@ -199,6 +199,10 @@ emails:
         click_button: Click on the button below to check out his suggestions.
         btn_check_wishlist: Check wishlist
         click_link: Click on the link below to check out his suggestions.
+    emptywishlistreminder:
+        subject: Your wishlist is still empty
+    viewentryreminder:
+        subject: Find out who your gift buddy is
     created:
         message: |
             Hi there (NAME),

@@ -145,3 +145,12 @@ services:
 
     intracto_secret_santa.entry_shuffler:
         class: Intracto\SecretSantaBundle\Entity\EntryShuffler
+
+    intracto_secret_santa.mailer:
+        class: Intracto\SecretSantaBundle\Mailer\Mailer
+        arguments:
+            - @mailer
+            - @swiftmailer.transport.real
+            - @doctrine.orm.entity_manager
+            - @translator
+            - @twig
