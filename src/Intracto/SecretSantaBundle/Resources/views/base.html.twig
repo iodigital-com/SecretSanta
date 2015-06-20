@@ -68,7 +68,7 @@
         <ul id="locale-menu">
             {% for supported_locale in supported_locales if app.request.get('_route_params') is not null and supported_locale != app.request.get('_locale') %}
                 <li>
-                    <a href="{{ url(app.request.get('_route'), {}|merge({'_locale': supported_locale, 'force-locale-switch': true})) }}">
+                    <a href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale, 'force-locale-switch': true})) }}">
                         {{ supported_locale }}
                     </a>
                 </li>
