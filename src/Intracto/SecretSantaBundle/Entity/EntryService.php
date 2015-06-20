@@ -118,4 +118,18 @@ class EntryService
             ->addPart($htmlBody, 'text/html');
         $this->mailer->send($mail);
     }
+
+    /**
+     * @return \Doctrine\ORM\Internal\Hydration\IterableResult
+     */
+    public function getAllUniqueEmailsIterator()
+    {
+        $repo = $this->em->getRepository('IntractoSecretSantaBundle:Entry');
+
+        $queryBuilder = $repo->createQueryBuilder('e');
+        $queryBuilder->select('e.email, e.name')
+            ->groupBy('e.email');
+
+        return $queryBuilder->getQuery()->iterate();
+    }
 }
