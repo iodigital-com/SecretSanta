@@ -148,6 +148,9 @@ services:
     intracto_secret_santa.entry_shuffler:
         class: Intracto\SecretSantaBundle\Entity\EntryShuffler
 
+    intracto_secret_santa.service.export:
+        class: Intracto\SecretSantaBundle\Service\ExportService
+
     intracto_secret_santa.mailer:
         class: Intracto\SecretSantaBundle\Mailer\Mailer
         arguments:

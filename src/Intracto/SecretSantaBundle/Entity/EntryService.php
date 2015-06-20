@@ -65,6 +65,7 @@ class EntryService
     public function shuffleEntries(Pool $pool)
     {
         if (!$shuffled = $this->entryShuffler->shuffleEntries($pool)) {
+            //Todo: Trow some kind of exception
             return false;
         }
 
@@ -138,5 +139,19 @@ class EntryService
             ->setBody($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.html.twig", array('pool' => $pool)), 'text/html')
             ->addPart($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.txt.twig", array('pool' => $pool)), 'text/plain')
         );
+    }
+
+    /**
+     * @return \Doctrine\ORM\Internal\Hydration\IterableResult
+     */
+    public function getAllUniqueEmailsIterator()
+    {
+        $repo = $this->em->getRepository('IntractoSecretSantaBundle:Entry');
+
+        $queryBuilder = $repo->createQueryBuilder('e');
+        $queryBuilder->select('e.email, e.name')
+            ->groupBy('e.email');
+
+        return $queryBuilder->getQuery()->iterate();
     }
 }
