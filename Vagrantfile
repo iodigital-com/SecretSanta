@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define :secretsanta do |secretsanta_config|
         secretsanta_config.vm.box = "Debian75"
-	secretsanta_config.vm.box_url = "http://ctors.net/vagrant/Debian75.box"
+        secretsanta_config.vm.box_url = "http://ctors.net/vagrant/Debian75.box"
         secretsanta_config.vm.provider "virtualbox" do |v|
             # show a display for easy debugging
             v.gui = false
