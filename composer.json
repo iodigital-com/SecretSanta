@@ -7,8 +7,8 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.3.3",
-        "symfony/symfony": "2.3.*",
+        "php": ">=5.4",
+        "symfony/symfony": "2.7.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
         "twig/extensions": "1.0.*",
@@ -21,10 +21,10 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/security-extra-bundle": "1.5.*",
         "jms/di-extra-bundle": "1.4.*",
-      "genemu/form-bundle": "2.2.*",
-      "jms/i18n-routing-bundle": "^1.1",
-      "jms/translation-bundle": "^1.1"
-        },
+        "genemu/form-bundle": "2.2.*",
+        "jms/i18n-routing-bundle": "^1.1",
+        "jms/translation-bundle": "^1.1"
+    },
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
