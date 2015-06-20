@@ -36,6 +36,7 @@ create:
         description: Ajoutez un message personnel pour les participant.
 exclude:
    title: Exclure
+   description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
 created:
     title: Plus qu'une étape ! - Validez votre participation
     body: >

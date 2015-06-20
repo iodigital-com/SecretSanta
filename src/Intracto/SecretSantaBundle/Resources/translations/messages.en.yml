@@ -40,6 +40,7 @@ create:
         description: Add a personal message for the participants.
 exclude:
    title: Exclude
+   description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
 created:
     title: Only 1 step to go! - Validate your participation
     body: >

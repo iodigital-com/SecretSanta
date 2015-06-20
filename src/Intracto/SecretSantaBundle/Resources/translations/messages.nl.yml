@@ -38,6 +38,7 @@ create:
         description: Voeg een persoonlijke boodschap voor de deelnemers toe
 exclude:
    title: Uitsluiten
+   description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
 created:
     title: Nog 1 stapje te gaan! - Valideer je deelname
     body: >
