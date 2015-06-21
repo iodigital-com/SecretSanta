@@ -178,7 +178,7 @@ static:
             <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
             To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
 
-            <a name="how"></a><h2>How does it work</h2>
+            <a name="how"></a><h2>How does it work?</h2>
             <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank">on the homepage</a>. You need at least 3 participants, <b>the first participant is the list administrator.</b>
             The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
             We demand a confirmation to prevent bots or trolls to ruin your Secret Santa party. <b>In the validation e-mail you will also find a link to manage your Secret Santa event</b>.</p>
@@ -223,7 +223,7 @@ static:
 
             <a name="privacy"></a><h2>How do you handle my data?</h2>
             <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank">privacy policy</a> for an extended answer.
-            Also, at any point in time, you can just delete your Secret Santa from the admin page and all your data will be permanently removed from our systems.</p>
+            Also, at any point in time, you can just delete your Secret Santa from the admin page and all your data will be permanently removed from our system.</p>
 
             <a name="features"></a><h2>Can you add feature X?</h2>
             <p>You have this awesome idea for a feature and you just want to have it? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants this stuff too.
@@ -239,7 +239,7 @@ static:
             <a name="ads"></a><h2>What about the ads?</h2>
             <p>We have Google ads here and there to cover some of our costs. Things like hosting, domain names etc. cost money. We basically do everything for free ourself and all money we collect goes to the project.
             Could be that we buy pizza and drinks on one of our hackdays. Could be that we pay professional translators to add more languages. Could be something else.
-            By the way, we are still looking for Russian, Indian, Japanese, ... if you can help us with this (for free), please contact us.</p>
+            By the way, we are still looking for Russian, Indian, Japanese, ... translations. if you can help us with this (for free), please contact us.</p>
 
             <a href="questions"></a><h2>Other questions</h2>
             <p>If you have any other questions, concerns, or comments you may contact us using the
