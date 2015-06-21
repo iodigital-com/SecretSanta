@@ -155,20 +155,20 @@ static:
     faq:
         title: Vaak gestelde vragen
         body: >
-            <p>Dit is een lijst met vaak gestelde vragen (Frequently Asked Questions / FAQ) dat je kan helpen om deze Secret Santa beter te begrijpen.</p>
+            <p>Dit is een lijst met vaak gestelde vragen (Frequently Asked Questions / FAQ) die je kunnen helpen om deze Secret Santa beter te begrijpen.</p>
 
             <a href="what"></a><h2>Wat is Secret Santa?</h2>
             <p>Het is een gratis online Secret Santa geschenkuitwisselings organizer! Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.
             Om het voor iedereen wat spannender te maken, kan je mensen willekeurig toewijzen om voor elkaar geschenkjes te kopen.</p>
 
             <a name="how"></a><h2>Hoe werkt het?</h2>
-            <p>Maak een evenement aan op de <a href="http://www.secretsantaorganizer.com" target="_blank">start pagin</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijst beheerder.</b>
-            De lijst beheerder zal een bevestigings e-mail aankrijgen. Als de deelname is bevestigd, wordt de Secret Santa lijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
-            We vereisen een bevestiging zodat een bot of "grapjas" je Secret Santa feestje niet kan vergallen. <b>In de bevestiging e-mail you staat ook een link om je Secret Santa evenement te beheren</b>.</p>
+            <p>Maak een evenement aan op de <a href="http://www.secretsantaorganizer.com" target="_blank">start pagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijst beheerder.</b>
+            De lijst beheerder zal een bevestiging e-mail aankrijgen. Als de deelname is bevestigd, wordt de Secret Santa lijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
+            We vereisen een bevestiging zodat een bot of "grapjas" je Secret Santa feestje niet kan vergallen. <b>In de bevestiging e-mail staat ook een link om je Secret Santa evenement te beheren</b>.</p>
 
             <a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
             <p>Als je een evenement aanmaakt, nadat je alle deelnemers hebt ingegeven, kan je optioneel een aantal combinaties uitsluiten. Bijvoorbeeld, als je niet wil dat deelnemers van het zelfde gezin voor elkaar geschenken moeten kopen.<br><br>
-            Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses.</p>
+            Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p>
 
             <a name="wishlist"></a><h2>Kan ik een verlanglijst maken?</h2>
             <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst aanleggen en ook de verlanglijst van hun geheime persoon zien.</p>
@@ -178,10 +178,10 @@ static:
             <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank">Dit is een feature verzoek</a>, reageer op dat issue als je dit ook wenst (we prefereren een PR).</p>
 
             <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
-            <p>De bevestigings e-mail die naar de lijst beheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
+            <p>De bevestiging e-mail die naar de lijst beheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
 
-            <a href="lost"></a><h2>Ik ben mijn bevestigingsmail kwijt.</h2>
-            <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst), neem dan contact op met ons vanaf het email adres van de lijst beheerder en we zullen zo vriendelijk zijn u de link toe te sturen.
+            <a href="lost"></a><h2>Ik ben mijn bevestiging e-mail kwijt.</h2>
+            <p>Als je de bevestiging e-mail kwijt bent (deze bevat de link naar de beheerpagina van de lijst), neem dan contact op met ons vanaf het email adres van de lijst beheerder. We zullen zo vriendelijk zijn je de link toe te sturen.
             <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">Er is een feature verzoek</a> om dit te automatiseren.</p>
 
             <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
@@ -189,24 +189,24 @@ static:
             Gebruik de beheerpagina van de lijst en probeer op een creatieve manier je probleem op te lossen.</p>
 
             <a href="email"></a><h2>Kan ik een e-mail opnieuw versturen?</h2>
-            <p>Als een deelnemer geen e-mail heeft ontvangen kan de lijst beheerder de e-mail opnieuw versturen vanaf de beheerpagina. Je kan ook een e-mail adres wijzigen vanaf de zelfde pagina en de mail opnieuw versturen.<br><br>
-            Als je geen bevestigingsmail hebt ontvangen, controleer dan je spam folder. Je zou binnen enkele minuten de e-mail moeten ontvangen. Als je nog steeds geen bevestigingsmail hebt ontvangen zal je opnieuw moeten beginnen met het maken van een lijst.</p>
+            <p>Als een deelnemer geen e-mail heeft ontvangen kan de lijst beheerder de e-mail opnieuw versturen vanaf de beheerpagina. Je kan ook het e-mail adres van een deelnemer wijzigen vanaf de zelfde pagina en de mail opnieuw versturen.<br><br>
+            Als je geen bevestigingsmail hebt ontvangen, controleer dan je spam folder. Je zou de e-mail binnen enkele minuten moeten ontvangen. Als je nog steeds geen bevestigingsmail hebt ontvangen zal je opnieuw moeten beginnen met het maken van een nieuwe lijst.</p>
 
             <a href="combinations"></a><h2>Kan ik alle combinaties opvragen?</h2>
             <p>Je kan de combinaties opvragen vanaf de beheerpagina. Maar dit verpest het "secret" deel in onze Secret Santa. Daarom is er een indicatie toegevoegd, op de pagina van alle deelnemers, of de beheerder al dan niet de combinaties heeft bekeken :-)</p>
 
             <a href="delete"></a><h2>Kan ik mijn lijst verwijderen?</h2>
-            <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijder optie. Als uw data zal van ons systeem verwijderd worden.</p>
+            <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijder optie. Al de gegevens met betrekking tot deze lijst zullen permanent van ons systeem verwijderd worden.</p>
 
             <a name="who"></a><h2>Wie zijn jullie?</h2>
             <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">developers</a>,
             designers, frontenders, SEO en marketing mensen.
-            Secret Santa is een hobby project. We worden gesponsored door onze werkgever <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>.
+            Secret Santa is een hobby project. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>.
             Ons doel is een eenvoudige maar zeer nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
 
             <a name="privacy"></a><h2>Wat doen jullie met mijn gegevens?</h2>
-            <p>Kort antwoord, wij hebben absoluut geen interesse in uw persoonlijke gegevens. We gebruiken deze nergens voor. Lees ons <a href="http://www.secretsantaorganizer.com/nl/privacy-policy" target="_blank">privacy beleid</a> voor een uitgebreid antwoord.
-            Let op dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheer pagina, dit zal al je gegevens permanent van ons systeem verwijderen.</p>
+            <p>Kort antwoord, wij hebben absoluut geen interesse in je persoonlijke gegevens. We gebruiken deze nergens voor. Lees ons <a href="http://www.secretsantaorganizer.com/nl/privacy-policy" target="_blank">privacy beleid</a> voor een uitgebreid antwoord.
+            Let op dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheer pagina.</p>
 
             <a name="features"></a><h2>Kan je feature X toevoegen?</h2>
             <p>Je hebt een geweldig idee of feature verzoek en wil je dit echt hebben? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die wel kan coderen de zelfde functionaliteit wil hebben.
@@ -221,7 +221,7 @@ static:
 
             <a name="ads"></a><h2>Hoe zit het met die advertenties?</h2>
             <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domainnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project.
-            We kunnen zo bijvoorbeeld pizza en drankjes kopen op onze hackdays. We zouden professionele vertalers kunnen inschakelen om meer talen toe te voegen. Het kan vanalles zijn.
+            We zouden zo bijvoorbeeld pizza en drankjes kunnen kopen op onze hackdays. We zouden professionele vertalers kunnen inschakelen om meer talen toe te voegen. Noem maar op.
             We zoeken trouwens nog Russische, Indische, Japanese, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
 
             <a href="questions"></a><h2>Andere vragen</h2>

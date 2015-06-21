@@ -190,7 +190,7 @@ static:
             <p>You can request the combinations from the list management page. But it sort of spoils the "secret" part of our Secret Santa. So, we add an indicator to all participant's buddy pages that all combinations were exposed to the list admin when you actually performed the request :-)</p>
 
             <a href="delete"></a><h2>Can I delete my list?</h2>
-            <p>Sure you can, go to your list management page and use the delete option. All your data will be removed from our system.</p>
+            <p>Sure you can, go to your list management page and use the delete option. All the data with regard to this list will be permanently removed from our system.</p>
 
             <a name="who"></a><h2>Who are you?</h2>
             <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">developers</a>,
@@ -200,7 +200,7 @@ static:
 
             <a name="privacy"></a><h2>How do you handle my data?</h2>
             <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank">privacy policy</a> for an extended answer.
-            Also, at any point in time, you can just delete your Secret Santa from the admin page and all your data will be permanently removed from our system.</p>
+            Also, at any point in time, you can just delete your Secret Santa from the admin page.</p>
 
             <a name="features"></a><h2>Can you add feature X?</h2>
             <p>You have this awesome idea for a feature and you just want to have it? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants this stuff too.
