@@ -8,7 +8,7 @@ use Intracto\SecretSantaBundle\Entity\EntryRepository;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\DataCollectorTranslator;
 
 class MailqueueCommand extends ContainerAwareCommand
 {
@@ -38,7 +38,7 @@ class MailqueueCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /**
-         * @var Translator $translator
+         * @var DataCollectorTranslator $translator
          */
         $translator = $this->getContainer()->get('translator');
         /**
