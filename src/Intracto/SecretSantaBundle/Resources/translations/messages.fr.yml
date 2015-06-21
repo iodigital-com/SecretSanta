@@ -10,7 +10,7 @@ base:
         home: Accueil
     privacy_policy: Protection vie privée
     have_fun: Amusez-vous en créant votre Secret Santa!
-    need_help: Besoin d'aide?
+    need_help: <a href="%FAQ%" target="_blank">Besoin d'aide? Des questions? Consultez le FAQ!</a>
 pool:
     header:
         steps:
@@ -146,6 +146,81 @@ static:
             <p>Pour toute question, ou commententaire concernant notre politique de confidentialité, vous pouvez nous contacter via:<br/> e-mail: info@secretsantaorganizer.com</p>
 
             <p>Nous nous réservons le droit d'apporter des changements à notre politique de confidentialités. Tout changement sera notifié</p>
+    faq:
+        title: Frequently Asked Questions
+        body: >
+            <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
+
+            <a href="what"></a><h2>What is Secret Santa?</h2>
+            <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
+            To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
+
+            <a name="how"></a><h2>How does it work</h2>
+            <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank">on the homepage</a>. You need at least 3 participants, <b>the first participant is the list administrator.</b>
+            The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+            We demand a confirmation to prevent bots or trolls to ruin your Secret Santa party. <b>In the validation e-mail you will also find a link to manage your Secret Santa event</b>.</p>
+
+            <a name="exclude"></a><h2>Can I exclude combinations?</h2>
+            <p>When you create an event, after you provide all participants, you can optionally prevent some participant combinations. For example to prevent members of the same family have to buy gifts for each other.<br><br>
+            It is not possible to automatically reuse last-year's Secret Santa and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
+
+            <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
+            <p>Participants receive a link to a webpage to see their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
+
+            <a name="reuse"></a><h2>Can I reuse a list?</h2>
+            <p>You can't automatically reuse last year's list to create a new list this year.
+            <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank">This is a feature request</a>, comment on that issue if you want this (we prefer a PR).</p>
+
+            <a name="manage"></a><h2>How to I manage my party / participants?</h2>
+            <p>The confirmation e-mail that was sent to the list administrator contains a link to the list's management page.</p>
+
+            <a href="lost"></a><h2>I lost my activation mail.</h2>
+            <p>If you lost your activation e-mail (which contains the link to the admin page), contact us from the e-mail address that you used for the list administrator and we will be so kind to send you the link.
+            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">There is a feature request</a> to automate this.</p>
+
+            <a name="changes"></a><h2>Can I add or remove people?</h2>
+            <p>When the event is created, all persons are assigned to each other so we can't just add or remove someone. Well, we could but it would involve changing the current pairs and possibly confusing people in the process.
+            You have to use the admin page and be a little bit creative to solve your problem manually.</p>
+
+            <a href="email"></a><h2>Can I resend an email?</h2>
+            <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and re-send the e-mail.<br><br>
+            If you didn't receive the activation e-mail, check your spam folder. You should get this email in a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
+
+            <a href="combinations"></a><h2>Can I get all combinations?</h2>
+            <p>You can request the combinations from the list management page. But it sort of spoils the "secret" part of our Secret Santa. So, we add an indicator to all participant's buddy pages that all combinations were exposed to the list admin when you actually performed the request :-)</p>
+
+            <a href="delete"></a><h2>Can I delete my list?</h2>
+            <p>Sure you can, go to your list management page and use the delete option. All your data will be removed from our system.</p>
+
+            <a name="who"></a><h2>Who are you?</h2>
+            <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">developers</a>,
+            designers, frontenders, SEO and marketing people.
+            Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>.
+            Our goal is to build a simple, yet very useful Secret Santa organiser. We can also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
+
+            <a name="privacy"></a><h2>How do you handle my data?</h2>
+            <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank">privacy policy</a> for an extended answer.
+            Also, at any point in time, you can just delete your Secret Santa from the admin page and all your data will be permanently removed from our systems.</p>
+
+            <a name="features"></a><h2>Can you add feature X?</h2>
+            <p>You have this awesome idea for a feature and you just want to have it? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants this stuff too.
+            Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank">create an issue on GitHub</a> that describes your feature or change.
+            For those who can code, we prefer transpiration over inspiration. In other words, we accept your PR's.</p>
+
+            <a name="opensource"></a><h2>Open source</h2>
+            <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank">GitHub</a>.
+            The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC license</a>.
+            You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
+            If you want a change or a whole new feature, just add it.</p>
+
+            <a name="ads"></a><h2>What about the ads?</h2>
+            <p>We have Google ads here and there to cover some of our costs. Things like hosting, domain names etc. cost money. We basically do everything for free ourself and all money we collect goes to the project.
+            Could be that we buy pizza and drinks on one of our hackdays. Could be that we pay professional translators to add more languages. Could be something else.
+            By the way, we are still looking for Russian, Indian, Japanese, ... if you can help us with this (for free), please contact us.</p>
+
+            <a href="questions"></a><h2>Other questions</h2>
+            <p>If you have any other questions, concerns, or comments you may contact us using the
+               information below:<br/>By e-mail: info@secretsantaorganizer.com</p>
     report:
         max_results: Max results
         from: From

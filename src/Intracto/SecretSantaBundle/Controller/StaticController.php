@@ -13,9 +13,9 @@ class StaticController extends Controller
      * @Route("/privacy-policy", name="privacypolicy")
      * @Template()
      */
-    public function privacypolicyAction()
+    public function privacyPolicyAction()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -46,5 +46,14 @@ class StaticController extends Controller
 
 
         return $data;
+    }
+
+    /**
+     * @Route("/faq", name="faq")
+     * @Template()
+     */
+    public function faqAction()
+    {
+        return [];
     }
 }
