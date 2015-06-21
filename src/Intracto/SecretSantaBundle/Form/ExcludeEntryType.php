@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\TranslationBundle\Annotation\Ignore;
 
 class ExcludeEntryType extends AbstractType
 {

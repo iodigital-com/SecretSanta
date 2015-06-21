@@ -3,7 +3,6 @@
 namespace Intracto\SecretSantaBundle\Command;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\QueryBuilder;
 use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Entity\EntryRepository;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
