@@ -453,7 +453,8 @@ class Entry
     /**
      * @ORM\PostLoad
      */
-    public function PostLoad() {
+    public function PostLoad()
+    {
         $this->removedWishlistItems = new ArrayCollection();
     }
 
