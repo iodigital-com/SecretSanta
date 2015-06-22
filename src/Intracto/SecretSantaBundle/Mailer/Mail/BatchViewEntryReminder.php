@@ -4,7 +4,7 @@ namespace Intracto\SecretSantaBundle\Mailer\Mail;
 
 use Doctrine\ORM\EntityManager;
 use Intracto\SecretSantaBundle\Entity\Entry;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Mail sent to people who haven't seen their gift buddy yet.
@@ -38,7 +38,7 @@ class BatchViewEntryReminder implements BatchEntryMail
     /**
      * {@inheritdoc}
      */
-    public function getSubject(Entry $receiver, DataCollectorTranslator $translator)
+    public function getSubject(Entry $receiver, TranslatorInterface $translator)
     {
         $translator->setLocale($receiver->getPool()->getLocale());
 
@@ -48,7 +48,7 @@ class BatchViewEntryReminder implements BatchEntryMail
     /**
      * {@inheritdoc}
      */
-    public function getFrom(Entry $receiver, DataCollectorTranslator $translator)
+    public function getFrom(Entry $receiver, TranslatorInterface $translator)
     {
         $translator->setLocale($receiver->getPool()->getLocale());
 

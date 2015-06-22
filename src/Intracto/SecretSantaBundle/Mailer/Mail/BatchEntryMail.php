@@ -4,7 +4,7 @@ namespace Intracto\SecretSantaBundle\Mailer\Mail;
 
 use Doctrine\ORM\EntityManager;
 use Intracto\SecretSantaBundle\Entity\Entry;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Interface for emails sent in batch to Pool Entries.
@@ -30,19 +30,19 @@ interface BatchEntryMail
      * Returns a translatable string that will be used as the email subject.
      *
      * @param Entry $receiver
-     * @param DataCollectorTranslator $translator
+     * @param TranslatorInterface $translator
      *
      * @return string
      */
-    public function getSubject(Entry $receiver, DataCollectorTranslator $translator);
+    public function getSubject(Entry $receiver, TranslatorInterface $translator);
 
     /**
      * @param Entry $receiver
-     * @param DataCollectorTranslator $translator
+     * @param TranslatorInterface $translator
      *
      * @return string
      */
-    public function getFrom(Entry $receiver, DataCollectorTranslator $translator);
+    public function getFrom(Entry $receiver, TranslatorInterface $translator);
 
     /**
      * @param Entry $receiver

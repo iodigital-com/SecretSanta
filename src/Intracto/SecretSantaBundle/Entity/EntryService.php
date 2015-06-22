@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Templating\EngineInterface;
 
 /**
@@ -45,7 +45,7 @@ class EntryService
 
     /**
      * @DI\Inject("translator")
-     * @var DataCollectorTranslator;
+     * @var TranslatorInterface;
      */
     public $translator;
 
