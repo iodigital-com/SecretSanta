@@ -4,31 +4,27 @@ namespace Intracto\SecretSantaBundle\Service;
 
 use Doctrine\ORM\Internal\Hydration\IterableResult;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\VarDumper\VarDumper;
 
 class ExportService
 {
     /**
-     * @param IterableResult $data
+     * @param array $data
      * @param string $seperator
      * @param string $enclosure
      * @return StreamedResponse
      */
-    public function exportCSV(IterableResult $data, $filename = 'export.csv', $seperator = ';', $enclosure = ';')
+    public function exportCSV($data, $filename = 'export.csv', $seperator = ';', $enclosure = ';')
     {
+
         $response = new StreamedResponse(function () use ($data, $seperator, $enclosure) {
             $handle = fopen('php://output', 'r+');
 
-            $i = 0;
-            while (false !== ($row = $data->next())) {
+            //Write header
+            fputcsv($handle, array_keys($data[0]), $seperator, $enclosure);
 
-                $row = $row[0];
-                //Write header
-                if ($i == 0) {
-                    fputcsv($handle, array_keys($row), $seperator, $enclosure);
-                }
+            foreach ($data as $i => $row) {
                 fputcsv($handle, $row, $seperator, $enclosure);
-
-                $i++;
             }
 
             fclose($handle);
@@ -36,6 +32,7 @@ class ExportService
 
         $response->headers->set('Content-Type', 'application/force-download');
         $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', $filename));
+
 
         return $response;
 

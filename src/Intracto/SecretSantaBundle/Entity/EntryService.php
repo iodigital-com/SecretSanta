@@ -140,17 +140,27 @@ class EntryService
         );
     }
 
+
     /**
-     * @return \Doctrine\ORM\Internal\Hydration\IterableResult
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
      */
-    public function getAllUniqueEmailsIterator()
+    public function getAllUniqueEmails()
     {
-        $repo = $this->em->getRepository('IntractoSecretSantaBundle:Entry');
+        $query = '  SELECT name, email, MAX( admin ) AS admin
+                    FROM (
+                        SELECT e.email, e.name, IF( MIN( e2.id ) = e.id, 1, 0 ) AS admin
+                        FROM Entry e
+                        LEFT JOIN Entry e2 ON e.poolId = e2.poolId
+                        GROUP BY e.id
+                    )x
+                    GROUP BY email';
 
-        $queryBuilder = $repo->createQueryBuilder('e');
-        $queryBuilder->select('e.email, e.name')
-            ->groupBy('e.email');
+        $connection = $this->em->getConnection();
+        $statement = $connection->prepare($query);
+        $statement->execute();
 
-        return $queryBuilder->getQuery()->iterate();
+        return $statement->fetchAll();
+
     }
 }
