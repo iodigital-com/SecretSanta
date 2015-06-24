@@ -14,7 +14,7 @@ class ExportService
      * @param string $enclosure
      * @return StreamedResponse
      */
-    public function exportCSV($data, $filename = 'export.csv', $seperator = ';', $enclosure = ';')
+    public function exportCSV($data, $filename = 'export.csv', $seperator = ';', $enclosure = '"')
     {
 
         $response = new StreamedResponse(function () use ($data, $seperator, $enclosure) {
