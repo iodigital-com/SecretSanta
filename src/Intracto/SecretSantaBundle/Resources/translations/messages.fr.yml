@@ -80,15 +80,15 @@ delete:
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
 expose:
-    title: Send me all matches in this pool
+    title: Send me all matches in this mailing list
     body: >
         <p>
             Are you ABSOLUTELY sure?<br>
             <br>
-            A mail will be send to you, containing the entire pool with the matches.<br>
+            A mail will be send to you, containing the entire mailing list with the matches.<br>
             <br>
             <b>Be aware:</b><br>
-            All pool members will be notified!<br>
+            All mailing list members will be notified!<br>
             <br>
             Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
@@ -100,8 +100,8 @@ entry:
         amount: Montant
         num_people: Nombre de personnes
         person_created_list: Créateur de la liste
-        exposed: Pool creator knows all matches
-        not_exposed: Pool creator does not know all matches
+        exposed: Mailing list creator knows all matches
+        not_exposed: Mailing list creator does not know all matches
     title: Personne désignée
     body: >
         <p>Bonjour %name%,</p>
@@ -167,7 +167,7 @@ btn:
     remove_item: Supprimer cet objet
     update_wishlist: Mettre à jour votre liste de souhaits
     expose: Send me all the matches
-    expose_confirm: I understand the consequences, send my Secret Santa pool now
+    expose_confirm: I understand the consequences, send my Secret Santa mailing list now
     cancel: Cancel
 
 emails:
@@ -212,7 +212,7 @@ emails:
 
             Bonnes vacances !
     admin_matches:
-        subject: Secret Santa Pool Matches
+        subject: Secret Santa Mailing List Matches
 flashes:
     manage:
         email_validated: >
@@ -223,8 +223,8 @@ flashes:
     delete:
         not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
     expose:
-        not_exposed: <h4>Pool not send</h4> The confirmation was incorrect.
-        exposed: <h4>Pool send</h4> All users will be notified when they check their wishlist.
+        not_exposed: <h4>Mailing list not send</h4> The confirmation was incorrect.
+        exposed: <h4>Mailing list send</h4> All users will be notified when they check their wishlist.
     resend:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
     entry:
