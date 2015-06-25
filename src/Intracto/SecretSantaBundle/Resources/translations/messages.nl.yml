@@ -219,6 +219,21 @@ emails:
             Geniet van de feestdagen!
     admin_matches:
         subject: Secret Santa Mailinglijst Koppelingen
+        message:
+            giving: Dit lid geeft ...
+            receiving: ... een cadeau aan dit lid
+            html: >
+                Beste %owner%,<br/>
+                <br/>
+                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.<br/>
+                <br/>
+                Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.<br/>
+            txt: >
+                Beste %owner%,
+
+                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.
+
+                Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.
 flashes:
     manage:
         email_validated: >

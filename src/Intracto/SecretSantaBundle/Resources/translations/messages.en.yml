@@ -236,6 +236,21 @@ emails:
             Happy Holidays!
     admin_matches:
         subject: Secret Santa Mailing List Matches
+        message:
+            giving: This member is giving ...
+            receiving: ... a gift to this member
+            html: >
+                Dear %owner%,<br/>
+                <br/>
+                You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.<br/>
+                <br/>
+                Following is an overview of which members are supposed to get gifts for which users.<br/>
+            txt: >
+                Dear %owner%,
+
+                You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
+
+                Following is an overview of which members are supposed to get gifts for which users.
 flashes:
     manage:
         email_validated: >
