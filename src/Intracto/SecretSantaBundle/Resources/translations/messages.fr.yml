@@ -278,11 +278,11 @@ emails:
         btn_check_wishlist: Découvrir la liste de souhaits
         click_link: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
     emptywishlistreminder:
-        subject: Your wishlist is still empty
-        updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
+        subject: Votre liste de souhaits est toujours vide
+        updateyourlist: Votre Secret Santa party arrive bientôt et vous n'avez pas encore mis à jour votre liste de souhaits! Vous pouvez ajouter des choses que vous souhaiteriez.
     viewentryreminder:
-        subject: Find out who your gift buddy is
-        didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
+        subject: Découvrez qui est votre copain cadeau
+        didyouforget: Auriez-vous oublié votre Secret Santa party? Vous n'avez pas encore découvert qui était votre copain cadeau!
     created:
         message: |
             Bonjour (NAME),
