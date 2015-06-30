@@ -36,7 +36,7 @@ create:
         description: Ajoutez un message personnel pour les participant.
 exclude:
    title: Exclure
-   description Avec cette liste, vous pouvez éventuellement éviter certaines combinaisons entre les membres. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.
+   description: Avec cette liste, vous pouvez éventuellement éviter certaines combinaisons entre les membres. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.
 created:
     title: Plus qu'une étape ! - Validez votre participation
     body: >
