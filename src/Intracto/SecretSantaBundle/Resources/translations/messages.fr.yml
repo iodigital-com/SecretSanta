@@ -147,12 +147,12 @@ static:
 
             <p>Nous nous réservons le droit d'apporter des changements à notre politique de confidentialités. Tout changement sera notifié</p>
     report:
-        max_results: Max results
-        from: From
-        to: To
-        total_visits: Total visits
-        submit: Submit
-        
+        max_results: Résultats maximums
+        from: De
+        to: A
+        total_visits: Total des visites
+        submit: Envoyer
+
 label:
     name: Nom
     email: E-mail
