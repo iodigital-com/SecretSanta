@@ -3,7 +3,6 @@
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
 use Intracto\SecretSantaBundle\Form\WishlistNewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -97,7 +96,7 @@ class EntryController extends Controller
                     return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
                 }
 
-                if ($legacyWishlist && ($this->entry->getWishlist() == null || $this->entry->getWishlist() == "")) {
+                if ($legacyWishlist && ($this->entry->getWishlist() === null || $this->entry->getWishlist() === "")) {
                     // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
                     return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
                 }

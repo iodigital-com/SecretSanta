@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Entity\Pool;
-use Symfony\Component\Validator\ExecutionContextInterface;
 use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
 
 /**
@@ -140,7 +139,7 @@ class Entry
     public function __construct()
     {
         $this->excluded_entries = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->PostLoad();
+        $this->postLoad();
     }
 
     /**
@@ -454,7 +453,8 @@ class Entry
     /**
      * @ORM\PostLoad
      */
-    public function PostLoad() {
+    public function postLoad()
+    {
         $this->removedWishlistItems = new ArrayCollection();
     }
 
