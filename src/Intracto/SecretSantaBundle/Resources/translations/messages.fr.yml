@@ -82,19 +82,19 @@ delete:
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
 expose:
-    title: Send me all matches in this pool
+    title: Envoyez-moi toutes les attributions par e-mail
     body: >
         <p>
-            Are you ABSOLUTELY sure?<br>
+            Etes-vous ABSOLUMENT certain ?<br>
             <br>
-            A mail will be send to you, containing the entire pool with the matches.<br>
+            Un e-mail va vous &ecirc;tre envoy&eacute;, contenant la liste enti&egrave;re des attributions<br>
             <br>
-            <b>Be aware:</b><br>
-            All pool members will be notified!<br>
+            <b>Avertissement:</b><br>
+            Tous les membres seront notifi&eacute;s<br>
             <br>
-            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br>
         </p>
-    phrase_to_type: show me everything
+    phrase_to_type: Montrez-moi tout
 entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
@@ -102,8 +102,8 @@ entry:
         amount: Montant
         num_people: Nombre de personnes
         person_created_list: Créateur de la liste
-        exposed: Pool creator knows all matches
-        not_exposed: Pool creator does not know all matches
+        exposed: Le cr&eacute;ateur de la liste conna&icirc;t toutes les attributions
+        not_exposed: Le cr&eacute;ateur de la liste ne conna&icirc;t pas les attributions
     title: Personne désignée
     body: >
         <p>Bonjour %name%,</p>
@@ -232,9 +232,9 @@ btn:
     add_wishlist: Ajouter un objet à ma liste de souhaits
     remove_item: Supprimer cet objet
     update_wishlist: Mettre à jour votre liste de souhaits
-    expose: Send me all the matches
-    expose_confirm: I understand the consequences, send my Secret Santa pool now
-    cancel: Cancel
+    expose: Envoyez-moi toutes les attributions
+    expose_confirm: J'ai compris les cons&eacute;quences, envoyez-moi la liste Secret Santa maintenant
+    cancel: Annuler
 
 emails:
     sender: Santa Claus
@@ -284,7 +284,22 @@ emails:
 
             Bonnes vacances !
     admin_matches:
-        subject: Secret Santa Pool Matches
+        subject: Liste des attributions Secret Santa
+        message:
+            giving: Ce membre donne ...
+            receiving: ... un cadeau à ce membre
+            html: >
+                Cher(e) %owner%,<br/>
+                <br/>
+                Vous avez demand&eacute; à conna&icirc;tre toutes les attributions de votre liste. Sachez que chaque membre en sera inform&eacute; sur sa liste de souhaits.<br/>
+                <br/>
+                Ci-dessous, la liste des membres et leurs copains cadeaux.<br/>
+            txt: >
+                Cher(e) %owner%,
+
+                Vous avez demand&eacute; à conna&icirc;tre toutes les attributions de votre liste. Sachez que chaque membre en sera inform&eacute; sur sa liste de souhaits.
+
+                Ci-dessous, la liste des membres et leurs copains cadeaux.
 flashes:
     manage:
         email_validated: >
@@ -295,8 +310,8 @@ flashes:
     delete:
         not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
     expose:
-        not_exposed: <h4>Pool not send</h4> The confirmation was incorrect.
-        exposed: <h4>Pool send</h4> All users will be notified when they check their wishlist.
+        not_exposed: <h4>Liste non envoy&eacute;e</h4> La phrase de confirmation est incorrecte.
+        exposed: <h4>Liste envoy&eacute;e</h4> Chaque membre en sera inform&eacute; lorsqu'ils consulteront leur liste de souhaits.
     resend:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
     entry:

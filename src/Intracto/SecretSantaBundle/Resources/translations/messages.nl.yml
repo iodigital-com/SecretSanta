@@ -84,15 +84,15 @@ delete:
         </p>
     phrase_to_type: alles verwijderen
 expose:
-    title: Toon alle gekoppelde leden in deze pool
+    title: Toon alle gekoppelde leden in deze mailinglijst
     body: >
         <p>
             Weet je het ECHT zeker?<br>
             <br>
-            Er word een mail naar u verzonden, waarin alle leden van deze pool inclusief koppelingen vermeld zullen staan.<br>
+            Er word een mail naar u verzonden, waarin alle leden van deze mailinglijst inclusief koppelingen vermeld zullen staan.<br>
             <br>
             <b>Pas op:</b><br>
-            Alle leden van deze pool zullen hiervan op de hoogte worden gebracht!<br>
+            Alle leden van deze mailinglijst zullen hiervan op de hoogte worden gebracht!<br>
             <br>
             <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
         </p>
@@ -304,7 +304,22 @@ emails:
 
             Geniet van de feestdagen!
     admin_matches:
-        subject: Secret Santa Pool Koppelingen
+        subject: Secret Santa Mailinglijst Koppelingen
+        message:
+            giving: Dit lid geeft ...
+            receiving: ... een cadeau aan dit lid
+            html: >
+                Beste %owner%,<br/>
+                <br/>
+                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.<br/>
+                <br/>
+                Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.<br/>
+            txt: >
+                Beste %owner%,
+
+                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.
+
+                Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.
 flashes:
     manage:
         email_validated: >
@@ -315,8 +330,8 @@ flashes:
     delete:
         not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
     expose:
-        not_exposed: <h4>Pool niet gestuurd</h4> De bevestiging verliep foutief.
-        exposed: <h4>Pool gestuurd</h4> All gebruikers worden op de hoogte gebracht wanneer zij hun wenslijst bekijken.
+        not_exposed: <h4>Mailinglijst niet gestuurd</h4> De bevestiging verliep foutief.
+        exposed: <h4>Mailinglijst gestuurd</h4> All gebruikers worden op de hoogte gebracht wanneer zij hun wenslijst bekijken.
     resend:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
     entry:
