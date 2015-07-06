@@ -16,6 +16,7 @@ framework:
     default_locale:  "%locale%"
     trusted_proxies: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:
+        name: secretsanta
         save_path:  null
 
 # Twig Configuration
@@ -147,3 +148,15 @@ services:
 
     intracto_secret_santa.entry_shuffler:
         class: Intracto\SecretSantaBundle\Entity\EntryShuffler
+
+    intracto_secret_santa.service.export:
+        class: Intracto\SecretSantaBundle\Service\ExportService
+
+    intracto_secret_santa.mailer:
+        class: Intracto\SecretSantaBundle\Mailer\Mailer
+        arguments:
+            - @mailer
+            - @swiftmailer.transport.real
+            - @doctrine.orm.entity_manager
+            - @translator
+            - @twig

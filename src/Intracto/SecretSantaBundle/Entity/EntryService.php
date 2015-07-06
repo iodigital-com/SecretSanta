@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Templating\EngineInterface;
 
 /**
@@ -45,7 +45,7 @@ class EntryService
 
     /**
      * @DI\Inject("translator")
-     * @var Translator
+     * @var TranslatorInterface;
      */
     public $translator;
 
@@ -65,7 +65,6 @@ class EntryService
     public function shuffleEntries(Pool $pool)
     {
         if (!$shuffled = $this->entryShuffler->shuffleEntries($pool)) {
-            //Todo: Trow some kind of exception
             return false;
         }
 
@@ -139,5 +138,29 @@ class EntryService
             ->setBody($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.html.twig", array('pool' => $pool)), 'text/html')
             ->addPart($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.txt.twig", array('pool' => $pool)), 'text/plain')
         );
+    }
+
+
+    /**
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function getAllUniqueEmails()
+    {
+        $query = '  SELECT name, email, MAX( admin ) AS admin
+                    FROM (
+                        SELECT e.email, e.name, IF( MIN( e2.id ) = e.id, 1, 0 ) AS admin
+                        FROM Entry e
+                        LEFT JOIN Entry e2 ON e.poolId = e2.poolId
+                        GROUP BY e.id
+                    )x
+                    GROUP BY email';
+
+        $connection = $this->em->getConnection();
+        $statement = $connection->prepare($query);
+        $statement->execute();
+
+        return $statement->fetchAll();
+
     }
 }

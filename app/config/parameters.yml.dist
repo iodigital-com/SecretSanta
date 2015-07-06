@@ -27,3 +27,5 @@ parameters:
     ga_profile_id:     00000000
     admin_email:       santa@dev.secretsantaorganizer.com
     base_url:          dev.secretsantaorganizer.com
+    export_user:       export
+    export_password:   export

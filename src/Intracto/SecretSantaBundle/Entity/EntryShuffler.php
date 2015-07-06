@@ -2,8 +2,6 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use JMS\DiExtraBundle\Annotation as DI;
-
 /**
  * Class EntryShuffler
  */

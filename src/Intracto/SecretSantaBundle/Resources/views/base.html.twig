@@ -10,7 +10,7 @@
     <meta property="og:description" content="{{ 'base.meta.og.description'|trans }}"/>
     <title>{% block title %}{{ 'base.meta.title'|trans }}{% endblock %}</title>
 
-    {% for supported_locale in supported_locales if supported_locale != app.request.get('_locale') %}
+    {% for supported_locale in supported_locales if app.request.get('_route_params') is not null and supported_locale != app.request.get('_locale') %}
         <link rel="alternate" hreflang="{{ supported_locale }}"
               href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"/>
     {% endfor %}
@@ -23,6 +23,7 @@
     'bundles/intractosecretsanta/css/update.css'
     'bundles/intractosecretsanta/css/mediaqueries.css'
     'bundles/intractosecretsanta/css/jquery-ui.css'
+    'bundles/intractosecretsanta/css/jquery-ui.theme.css'
     filter='cssrewrite' %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen"/>
     {% endstylesheets %}
@@ -58,10 +59,10 @@
     {% endif %}
 </head>
 <body>
-<a class="github" href="https://github.com/Intracto/SecretSanta" target="_blank">
+<!--a class="github" href="https://github.com/Intracto/SecretSanta" target="_blank">
     <img style="position: absolute; top: 0; right: 0; border: 0;"
          src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
-</a>
+</a-->
 
 <div class="wrapper">
     <div class="container">
@@ -91,12 +92,7 @@
         {% block main %}{% endblock %}
         {% block footer %}
             <div id="footer-santa" class="clearfix">
-                <div class="copyright">&copy;{{ "now"|date("Y") }} <a href="http://www.intracto.com" target="_blank">Intracto
-                        digital agency</a></div>
-                <div class="footer-links">
-                    <a href="{{ url('privacypolicy') }}">{{ 'base.privacy_policy'|trans }}</a>
-                </div>
-                {{ 'base.have_fun'|trans }}
+                {{ 'base.need_help'|trans({'%FAQ%': path('faq')})|raw }}
             </div>
         {% endblock %}
     </div>
