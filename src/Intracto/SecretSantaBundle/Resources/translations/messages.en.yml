@@ -10,6 +10,7 @@ base:
         home: Home
     privacy_policy: Privacy policy
     have_fun: Have fun organizing your Secret Santa!
+    need_help: <a href="%FAQ%" target="_blank">Need help? Got questions? Read the FAQ!</a>
 pool:
     header:
         steps:
@@ -39,17 +40,18 @@ create:
         description: Add a personal message for the participants.
 exclude:
    title: Exclude
+   description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
 created:
     title: Only 1 step to go! - Validate your participation
     body: >
             <p>
-                To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We''ve sent a mail to <b>%owneremail%</b> with further instructions.
+                To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
             </p>
             <p>
                 Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
             </p>
             <p>
-                In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who''ve already found out their gift buddy. Making sure every Secret Santa knows his duty.
+                In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his duty.
             </p>
     warning: Warning!
     check_spam: Don't forget to check your spam folder!
@@ -167,6 +169,86 @@ static:
                 By e-mail: info@secretsantaorganizer.com</p>
 
             <p>We reserve the right to make changes to this policy. Any changes to this policy will be posted.</p>
+    faq:
+        title: Frequently Asked Questions
+        body: >
+            <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
+
+            <a href="what"></a><h2>What is Secret Santa?</h2>
+            <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
+            To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
+
+            <a name="how"></a><h2>How does it work?</h2>
+            <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
+            The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+            We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
+
+            <a name="exclude"></a><h2>Can I exclude combinations?</h2>
+            <p>After providing all participants, you can optionally prevent some participant combinations. For example to prevent members of the same family having to buy gifts for each other.<br><br>
+            It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
+
+            <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
+            <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
+
+            <a name="reuse"></a><h2>Can I reuse a list?</h2>
+            <p>You can't automatically reuse last year's list to create a new list this year.
+            <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank">This is a feature request</a>, comment on that issue if you want this (we prefer a PR).</p>
+
+            <a name="manage"></a><h2>How do I manage my party / participants?</h2>
+            <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
+
+            <a href="lost"></a><h2>I lost my activation mail.</h2>
+            <p>If you lost your activation e-mail (which contains the link to the admin page), contact us from the list administrator e-mail address and we will send you the link again.
+            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">There is a feature request</a> to automate this.</p>
+
+            <a name="changes"></a><h2>Can I add or remove people?</h2>
+            <p>When creating an event, all participants are assigned to each other so we can't just add or remove someone. Well, we could but it would involve changing the current pairs and possibly confusing people in the process.
+            Use the admin page and be a little bit creative to solve your problem manually.</p>
+
+            <a href="email"></a><h2>Can I resend an email?</h2>
+            <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
+            If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
+
+            <a href="combinations"></a><h2>Can I look into all combinations?</h2>
+            <p>You can request the combinations from the list management page. But it sort of spoils the "secret" part of our Secret Santa. That's why we added an indicator to all participants' buddy pages that all combinations were exposed to the list admin when you actually performed the request :-)</p>
+
+            <a href="delete"></a><h2>Can I delete my list?</h2>
+            <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
+
+            <a name="who"></a><h2>Who are you?</h2>
+            <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">developers</a>,
+            designers, frontenders, SEO's and marketing people.
+            Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>.
+            Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
+
+            <a name="privacy"></a><h2>How do you handle my data?</h2>
+            <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank">privacy policy</a> for an extended answer.
+            Also, at any point in time, you can just delete your Secret Santa from the admin page.</p>
+
+            <a name="features"></a><h2>Can you add feature X?</h2>
+            <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
+            Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank">create an issue on GitHub</a> that describes your feature or change.
+            For those who can code, we prefer transpiration to inspiration. In other words, we accept your PR's.</p>
+
+            <a name="opensource"></a><h2>Open source</h2>
+            <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank">GitHub</a>.
+            The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC license</a>.
+            You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
+            If you want a change or a whole new feature, just add it.</p>
+
+            <a name="ads"></a><h2>What about the ads?</h2>
+            <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project.
+            We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else.
+            By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
+
+            <a href="questions"></a><h2>Other questions</h2>
+            <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
+    report:
+        max_results: Max results
+        from: From
+        to: To
+        total_visits: Total visits
+        submit: Submit
 
 label:
     name: Name
@@ -208,7 +290,7 @@ emails:
         btn_validate: Validate my event
         click_link: Please click on the link below to validate your Secret Santa mailing list.
     secretsanta:
-        subject: Your SecretSanta
+        subject: Your Secret Santa
         btn_find_out: Find out your person
         link_find_out: Find out your randomly assigned person to give a gift to, on this url
     wishlistchanged:
@@ -218,6 +300,12 @@ emails:
         click_button: Click on the button below to check out his suggestions.
         btn_check_wishlist: Check wishlist
         click_link: Click on the link below to check out his suggestions.
+    emptywishlistreminder:
+        subject: Your wishlist is still empty
+        updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
+    viewentryreminder:
+        subject: Find out who your gift buddy is
+        didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
     created:
         message: |
             Hi there (NAME),
@@ -254,3 +342,5 @@ flashes:
         wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
         saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
+    analytics:
+        invalid_data: <h4>Oops</h4> An error occured while requesting analytics data. Please try again.

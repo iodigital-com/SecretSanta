@@ -70,8 +70,8 @@ jQuery(document).ready(function() {
         }
     });
 
-	$('table.entries tbody').bind('click.sortable mousedown.sortable',function(ev){
-		ev.target.focus();
-	});
-		
+    $('table.entries tbody').bind('click.sortable mousedown.sortable',function(ev){
+        ev.target.focus();
+    });
+        
 });
