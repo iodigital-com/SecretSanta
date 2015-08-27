@@ -58,6 +58,25 @@ class EntryService
      */
     public function shuffleEntries(Pool $pool)
     {
+        //-----------------------
+        $entries = $pool->getEntries()->getValues();
+        shuffle($entries);
+        foreach ($entries as $index => $entry) {
+            if ($index === count($entries) - 1) {
+                $peer = $entries[0];
+            } else {
+                $peer = $entries[$index + 1];
+            }
+            $entry
+                ->setEntry($peer)
+                ->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
+            $this->em->persist($entry);
+        }
+        $this->em->flush();
+
+
+        //-----------------------
+        /*
         if (!$shuffled = $this->entryShuffler->shuffleEntries($pool)) {
             return false;
         }
@@ -70,7 +89,7 @@ class EntryService
             $this->em->persist($entry);
         }
 
-        $this->em->flush();
+        $this->em->flush();*/
     }
 
     /**
