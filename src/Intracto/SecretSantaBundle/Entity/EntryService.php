@@ -131,6 +131,7 @@ class EntryService
         $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.secretsanta.subject'))
             ->setFrom($this->adminEmail, $entry->getPool()->getOwnerName())
+            ->setReplyTo([$entry->getPool()->getOwnerEmail() => $entry->getPool()->getOwnerName()])
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody($txtBody)
             ->addPart($htmlBody, 'text/html');
