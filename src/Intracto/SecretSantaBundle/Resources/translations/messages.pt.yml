@@ -1,0 +1,326 @@
+base:
+    meta:
+        description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
+        title: Secret Santa Online organizador de Amigo Secreto!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
+    nav:
+        home: Home
+    privacy_policy: Declaração de privacidade
+    have_fun: Organize o seu próprio Amigo Secreto. Show de bola!
+    need_help: <a href="%FAQ%" target="_blank">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
+pool:
+    header:
+        steps:
+            title: Seu Amigo Secreto <br/>em <span class="accent">3 etapas simples</span>
+            list:
+                one: Lista de participantes
+                two: Adicione uma mensagem pessoal
+                three: Mandar!
+            get_started: Começar agora!
+
+create:
+    what_is:
+        title: O que é Secret Santa?
+        intro: >
+            <p>É um <strong>organizador de troca de presentes</strong> online <strong>gratuito</strong>! Organize uma festa com Amigo Oculto com seus amigos, sua família ou até com seus colegas. Após ter recebido um e-mail do Secret Santa Organizer, você pode adicionar sua própria <strong>lista de desejos</strong>, que será encaminhada para o seu Secret Santa.</p>
+            <p>Todos os anos, pessoas no mundo inteiro trocam presentes durante o período de Natal.<br/> Para deixar esse momento ainda mais memorável, você pode fazer com que <strong>pessoas escolhidas arbitrariamente</strong> comprem presentes umas para as outras.</p>
+
+    add_participants: Adicione os participantes
+    list_adminstrator: Esta pessoa também é um operador da lista.
+    add_personal_message:
+        title: Adicione uma mensagem pessoal
+        description: Adicione uma mensagem pessoal para os participantes.
+exclude:
+   title: Excluir
+   description: Com essa lista, você tem a opção de prevenir algumas combinações indesejadas. Por exemplo, para evitar que os membros de uma mesma família troque presentes apenas entre si.
+created:
+    title: Só mais 1 etapa! - Validar a sua participação
+    body: >
+        <p>
+        Para evitar que hóspedes indesejáveis estraguem a sua festa de Amigo Secreto, o operador da lista <b>%ownername%</b> precisa validar cada participação. Nós já mandamos um e-mail para <b>%owneremail%</b> dando mais instruções. 
+        </p>
+        <p>
+        Após a aprovação da lista de participantes, o aplicativo faz o sorteio e todos os participantes recebem a sua mensagem e o nome da pessoa para quem eles precisam comprar um presente.
+        </p>
+        <p>
+        Dentro do e-mail de validação, o operador de lista também encontra um link para verificar se os participantes já sabem quem ele ou ela tirou de Amigo Secreto. Assim o operador tem certeza que cada Amigo Secreto esteja consciente da sua tarefa.
+        </p>
+    warning: Cuidado!
+    check_spam: Não esqueça de verificar sua pasta de Lixo ou Spam!
+
+deleted:
+    title: A sua lista do Secret Santa foi eliminada!
+    body: >
+        <p>Obrigado por ter utilizado o Secret Santa Organizer. Até o próximo ano!</p>
+
+manage:
+    title: Sua lista Secret Santa
+    yes: Sim
+    not_yet: Ainda não 
+    edit_email: Modificar e-mail
+    resend_email: Reenviar o e-mail
+    view_entry: Ver perfil do participante
+    tip: Dica
+    come_back: Você sempre pode voltar para esta página para verificar se todo mundo verificou a sua caixa de entrada. 
+    save: Salvar
+
+delete:
+    title: Deletar a minha lista do Secret Santa
+    body: >
+        <p>
+            Tem MESMO certeza?<br> 
+            <br>
+            <b>Não é hora de brincar, leia isso primeiro!</b><br>
+            <br>
+        Após ter eliminado a sua lista do Secret Santa, não há como voltar atrás. NÃO É POSSÍVEL CANCELAR esta ação. <br>
+        A sua lista do Secret Santa será eliminada permanentemente, junto a todos os participantes e suas respectivas listas de desejos.<br>
+            <br>
+            Digite "<b>%phrase_to_type%</b>" abaixo para confirmar.<br>
+        </p>
+    phrase_to_type: eliminar tudo
+expose:
+    title: Mande-me a lista com todas as combinações
+    body: >
+        <p>
+            Você tem CERTEZA de que quer ver as combinações?<br>
+            <br>
+            Um e-mail será enviado a você contendo todas as combinações feitas neste evento.<br>
+            <br>
+            <b>Importante saber:</b><br>
+            Todos os participantes serão informados de que você sabe as combinações!<br>
+            <br>
+            Digite "<b>%phrase_to_type%</b>" abaixo para confirmar.<br>
+        </p>
+    phrase_to_type: mostre-me tudo
+entry:
+    headers:
+        title: Detalhes da sua <span class="accent">festa Secret Santa</span>
+        date: Data
+        amount: Valor
+        num_people: Número de participantes
+        person_created_list: Proprietário desta lista
+        exposed: O proprietário sabe de todas as combinações
+        not_exposed: O proprietário não sabe as combinações
+    title: Seu Amigo Secreto
+    body: >
+        <p>Olá %name%,</p>
+        <p>Seu Amigo Secreto é:</p>
+    wishlist_from: Lista de desejos de %name%
+    wishlist_not_provided: %name% ainda não montou uma lista de desejos
+    wishlist:
+        title: Sua lista de desejos
+        description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
+    wishlist_empty: A sua lista de desejos está vazia. Adicione algo!
+
+static:
+    privacy_policy:
+        title: Declaração de privacidade
+        body: >
+            <p>Obrigado pela visita ao secretsantaorganizer.com, realizado por Intracto Group NV. Esta declaração de privacidade descreve como recolhemos informação pessoal neste site. Leia esta declaração de privacidade com atenção antes de utilizar o site ou deixar suas informações pessoais. Utilizando este site, você aceita as regras descritas nesta declaração de privacidade. Essas regras estão sujeitas a variações, mas essas variações serão sempre publicadas e se aplicam somente as atividades e informações futuras e assim não são retroativas. Nós o aconselhamos a ler a declaração de privacidade novamente a cada visita para assegurar como a informação - inserido por você mesmo - é utilizada.</p>
+
+            <p>Nota: As regras de privacidade descritas nesta declaração de privacidade aplicam somente a este website. Se você for fazer ligações com outros sites, leia a declaração de privacidade dos sites respectivos.<p>
+
+            <h2>Recolhimento de informação</h2>
+
+            <p>Nós recolhemos pessoalmente toda informação  identificável como nomes e endereços de e-mail, quando voluntariamente inseridos pelos nossos visitantes. A informação fornecida por você é utilizada somente para responder ao seu próprio pedido específico.</p>
+
+            <h2>Tecnologia de cookies/seguimento</h2> 
+
+            <p>Este site utiliza cookies presentes no Google Analytics para o recolhimento  de informação anônima como o tipo de navegador e sistema de comando, o seguimento do número de visitantes no site e a compreensão do comportamento dos utilizadores. Informações pessoais não podem ser recolhidas utilizando-se de cookies e tecnologia de seguimento.
+
+            <p>É possível desativar a utilização de cookies nas configurações do seu navegador.</p> 
+
+            <h2>Distribuição de informação</h2> 
+
+            <p>Possivelmente nós compartilhamos informações com agências estatais ou outras empresas que prestam assistência a investigação ou prevenção de fraude. Isso pode acontecer quando: (1) permitido ou obrigado por lei; ou, (2) tentamos proteger você e a nós contra fraude fatual ou potencial ou transações não autorizadas; ou, (3) investigamos fraude que já ocorreu. As informações não serão utilizadas por essas empresas para fins comerciais. 
+
+            <h2>Compromisso com a protecção de dados</h2> 
+            <p>A sua informação pessoal identificável é conservada seguramente. Somente trabalhadores autorizados, representantes e executantes (que concordaram de manter toda a informação segura e confidencial) tem acesso a essa informação. Todos os e-mails vindos deste site são somente utilizados para responder ao seu próprio pedido específico. Nós não enviamos e-mails recorrentes ou boletins aos endereços fornecidos.
+            </p>
+
+            <h2>Informações de contato legados à privacidade</h2> 
+            <p>Se você tem perguntas, preocupações ou comentários sobre a nossa declaração de privacidade, por favor, entre em contato pelos meios abaixo assinalados:
+            <br/>
+            Por e-mail: info@secretsantaorganizer.com</p>
+            <p>Nós reservamo-nos no direito de alterar esta declaração. Todas as alterações desta declaração serão publicadas.</p>
+    faq:
+        title: Perguntas Frequentes
+        body: >
+            <p>Essa é a lista de Perguntas Frequentes (FAQ) e vai te ajudar a entender como o Secret Santa, ou Amigo Secreto, funciona.</p>
+
+            <a href="what"></a><h2>O que é Secret Santa?</h2> 
+            <p>É um <strong>organizador de troca de presentes</strong> online <strong>gratuito</strong>! Organize uma festa com Amigo Oculto com seus amigos, sua família ou até com seus colegas. Após ter recebido um e-mail do Secret Santa Organizer, você pode adicionar sua própria <strong>lista de desejos</strong>, que será encaminhada para o seu Secret Santa.</p>
+            <p>Todos os anos, pessoas no mundo inteiro trocam presentes durante o período de Natal.<br/> Para deixar esse momento ainda mais memorável, você pode fazer com que <strong>pessoas escolhidas arbitrariamente</strong> comprem presentes umas para as outras.</p>
+
+            <a name="how"></a><h2>Como funciona?</h2>
+            <p>Basta criar um evento <a href="http://www.secretsantaorganizer.com" target="_blank">na página inicial</a>. Você precisa de, no mínimo, 3 participantes, <b>sendo o primeiro participante também o proprietário e operador do evento e lista.</b> O operador da lista irá receber o link de confirmação por e-mail, no qual ele precisará clicar para validar o evento. Uma vez validado, os nomes que estão na lista do seu Secret Santa será sorteado e todos os participantes receberão a mensagem que você escreveu para eles junto com o nome do amigo para o qual eles deves comprar um presente, ou seja, seu Amigo Secreto. Essa confirmação é necessária para evitar que hóspedes indesejáveis ou trols estraguem a brincadeira do Secret Santa. <b>O e-mail de validação irá gerar um link para o proprietário do evento.</b>.</p>
+
+            <a name="exclude"></a><h2>Posso excluir combinações?</h2>
+            <p>Depois de dar os nomes de todos os participantes, você tem a opção de prevenir algumas combinações. Por exemplo, para evitar que membros de uma mesma família comprem presentes um para o outro.<br><br>Não é possível reutilizar automaticamente uma lista de combinações do Secret Santa de anos anteriores. Nós não conseguimos encontrar um meio de salvar essas listas sem criar uma grande confusão nas pessoas, e pedimos desculpas por isso.</p>
+
+            <a name="wishlist"></a><h2>Posso ter uma lista de desejos?</h2>
+            <p>Todo participante recebe um link para uma página na web onde ele irá descobrir quem é seu Amigo Secreto. Ele poderá adicionar sua própria lista de desejos e também poderá ver a lista de desejos do seu Amigo Secreto.</p>
+
+            <a name="reuse"></a><h2>Posso reutilizar uma lista?</h2>
+            <p>Não é possível reutilizar automaticamente uma lista feita nos anos anteriores. 
+            <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank"> Esta é uma solicitação de recurso</a>, deixe um comentário se você quer que esta opção esteja disponível nas próximas atualizações (de preferência um PR).</p>
+
+            <a name="manage"></a><h2>Como posso gerenciar meu evento ou participantes?</h2>
+            <p>O e-mail de confirmação mandado ao operador da lista contém um link para a página de Gerenciamento da Lista.</p>
+
+            <a href="lost"></a><h2>Eu perdi meu e-mail de ativação.</h2>
+            <p>Se você perdeu seu e-mail de ativação (que contém o link para gerenciar sua lista), entre em contato conosco pelo e-mail do proprietário da lista e nós lhe reenviaremos o link. 
+            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">Lá você encontra uma solicitação de recurso</a> para automatizar este recurso.</p>
+
+            <a name="changes"></a><h2>Posso adicionar ou remover pessoas?</h2>
+            <p>Ao criar um evento, todos os participantes são automaticamente sorteados e atribuídos uns aos outros. Dessa forma, é difícil reverter o processo adicionando ou removendo pessoas depois de tê-las sorteado. Isso envolveria mudar todos os pares, causando transtornos e confusões indesejáveis. 
+            Sugerimos que use a página de gerenciamento da sua lista para que você resolva seus problemas manualmente.</p>
+
+            <a href="email"></a><h2>Posso reenviar um email?</h2>
+            <p>Se um dos participantes não recebeu o e-mail contendo seu Amigo Secreto, o proprietário da lista poderá reenviar o e-mail para este participante pela sua página de gerenciamento. Você também pode mudar o endereço de e-mail de alguém e reenviá-lo por essa mesma página.<br><br>
+            Se você não recebeu seu e-mail de ativação ou validação, verifique sua Pasta de Spams ou Lixo. Este email deve ser recebido dentro de alguns minutos depois de um novo evento ser criado. Se, depois de muitos minutos, você ainda não recebeu o e-mail de ativação ou validação e ele também não estiver nas pastas de Spam ou Lixo, isso é sinal de que a criação do novo evento falhou e você deverá tentar criar um novo evento novamente.</p>
+
+            <a href="combinations"></a><h2>Posso ver todas as combinações?</h2>
+            <p>Você pode pedir por sua lista de combinações pela sua página de Gerenciamento. Tenha em mente, contudo, que isso estraga a parte "secreta” da brincadeira do Amigo Secreto. Pensando nisso, nós adicionamos um indicador nas páginas de todos os participantes da sua lista. Esse indicador mostra quando o proprietário viu as combinações :-)</p>
+
+            <a href="delete"></a><h2>Posso deletar minha lista?</h2>
+            <p>É claro que pode! Na sua página de gerenciamento de listas você encontra a opção "deletar minha lista do Secret Santa". Toda a sua lista será removida permanentemente do nosso sistema.</p>
+
+            <a name="who"></a><h2>Quem são vocês?</h2>
+            <p>Nós somos um bando de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">desenvolvedores</a>,
+            designers, frontenders, SEO's e pessoal de marketing.
+            Secret Santa é um dos nossos projetos extras. Somos patrocinados pelo nosso empregador <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>. Nossa meta é montar um organizador de Amigo Secreto que seja simples, mas funcional. Nós também nos utilizamos desse programa para nos aperfeiçoar. Mas o objetivo principal do Secret Santa Organizer é fazer com que mais e mais pessoas o utilizem e se divirtam! ;-)</p>
+
+            <a name="privacy"></a><h2>Como vocês utilizam meus dados?</h2>
+            <p>Deixemos claro: nós não temos qualquer interesse nos vossos dados pessoais. Nós não os utilizamos para absolutamente nada. Leia nossa <a href="http://www.secretsantaorganizer.com/pt/privacy-policy" target="_blank">Política de Privacidade</a> para ter uma resposta mais completa sobre essa questão. Além disso, você pode deletar este programa na sua página de Gerenciamento sempre e a qualquer momento que quiser.</p>
+
+            <a name="features"></a><h2>Vocês podem adicionar X para melhorar o programa?</h2>
+            <p>Você tem alguma ideia genial para melhorar o Secret Santa Organizer? Por sermos todos voluntários neste projeto, pedimos para que você mesmo adicione suas melhorias de forma técnica ou terá de esperar alguém com mais conhecimento técnico e que queira as mesmas melhorias para fazer isso. Por favor, <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank">crie um assunto aqui GitHub</a> que descreva suas ideias ou melhorias. Para aqueles que sabem codificar, nós gostamos mais de transpiração do que inspiração. Em outras palavras, aceitamos de coração aberto seus PR's.</p>
+
+            <a name="opensource"></a><h2>Código aberto</h2>
+            <p>Cada milésimo codificado deste website está descrito aqui <a href="https://github.com/Intracto/SecretSanta" target="_blank">GitHub</a>. O projeto está disponível sob uma <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC licença bastante tolerante</a>. Você é bem-vindo para fuçar neste projeto e, por exemplo, criar o seu próprio  "Secret Panda - troca de presentes” . Ou pode também contribuir com o projeto enviando suas melhorias (PR's). Se quiser alterar este ou criar um programa totalmente novo a partir deste, vá em frente.</p>
+
+            <a name="ads"></a><h2>E quanto as propagandas?</h2>
+            <p>Nós nos utilizamos de propagandas do Google aqui e ali para cobrir nossas despesas. Coisas como hospedagem, nomes de domínio, etc. custa dinheiro. Nós mesmos trabalhamos basicamente de forma voluntária e todo o dinheiro arrecadado com este projeto para para ele.
+            Talvez tenhamos comprado umas pizzas e bebidas quando precisávamos fazer hora extra tentando arrumar algo no projeto. É possível que tenhamos desembolsado uma pequena quantia pagando tradutores para adicionar Secret Santa Organizer em outras línguas. 
+            Aliás, ainda estamos buscando tradutores voluntários para termos Secret Santas em Russo, Indiano, Japonês... Se você quiser nos ajudar (de graça) ou conhece alguém que pode, por favor, entre em contato.</p>
+
+            <a href="questions"></a><h2>Outras perguntas</h2>
+            <p>Se você tiver qualquer outra pergunta, sugestão ou reclamações, apenas entre em contato conosco por e-mail:<br/>info@secretsantaorganizer.com</p>
+    report:
+        max_results: Resultados Max
+        from: De
+        to: Para
+        total_visits: Total de visitantes
+        submit: Enviar
+
+label:
+    name: Nome
+    email: E-mail
+    date_party: Data da sua festa de Amigo Secreto
+    amount_to_spend: Valor máximo a gastar
+    exclude: Excluir
+    confirmed: Confirmado
+    actions: Ações
+    description: Descrição
+placeholder:
+    exclude: Clique e escolha os participantes a excluir
+btn:
+    add_person: Adicionar pessoa
+    remove_person: Eliminar esta pessoa
+    create_event: Criar um evento!
+    create_new_list: Montar uma nova lista do Secret Santa!
+    delete_list: Eliminar minha lista do Secret Santa
+    delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa
+    add_wishlist: Adicione um item a lista do Secret Santa
+    remove_item: Eliminar este item
+    update_wishlist: Atualizar a sua lista de desejos
+    expose: Mande-me todas as combinações
+    expose_confirm: Eu entendo e aceito as consequências. Mande-me a lista de combinações agora.
+    cancel: Cancelar
+
+emails:
+    sender: Papai Noel
+    base:
+        title: Secret Santa por Intracto
+        footer: Divirta-se organizando seu Amigo Secreto!
+        created_by: Criado por
+    pendingconfirmation:
+        subject: Validação Secret Santa
+        salutation: Olá %name%
+        click_button: Clique abaixo para validar a sua lista de correspondência do Secret Santa. Isso irá acordar os nossos elfos mágicos jogando um balde de água nas carinhas inocentes deles. Assim que acordarem, eles irão levar a sua mensagem pessoal para todos os participantes.
+        overview_page: Na (recentemente montada) página de visão geral há sempre um resumo de quem já sabe quem é seu Amigo Secreto. Assim, você fica sabendo quando a lista estiver completa.
+        lastly: E por último, não se esqueça de sua própria participação! Seria um pouco tonto, né? Nós mandaremos um novo e-mail após você ter clicado no botão de confirmação abaixo.
+        btn_validate: Validar meu evento
+        click_link: Clique no link abaixo para confirmar a sua lista do Secret Santa.
+    secretsanta:
+        subject: Seu Amigo Secreto
+        btn_find_out: Descubra quem é seu Amigo Secreto
+        link_find_out: Descubra quem foi escolhido ao acaso para ganhar um presente seu clicando neste link.
+    wishlistchanged:
+        subject: Lista de desejos atualizada
+        salutation: Olá %name%
+        buddy_updated_wishlist: Seu Amigo Secreto atualizou sua lista de desejos
+        click_button: Clique no botão abaixo para ver as sugestões dele.
+        btn_check_wishlist: Ver a lista de desejos
+        click_link: Clique no link abaixo para ver as sugestões dele.
+    emptywishlistreminder:
+        subject: Sua lista de desejos ainda está vazia!
+        updateyourlist: A revelação do seu Amigo Secreto está chegando e você ainda não atualizou sua lista de desejos! Facilite a vida de quem te tirou de amigo secreto e arraste algumas das coisas que você gostaria de ganhar para a sua lista!
+    viewentryreminder:
+        subject: Descubra quem é seu Amigo Secreto
+        didyouforget: Você, por acaso, se esqueceu da nossa brincadeira? Você ainda não foi ver quem é seu Amigo Secreto!
+    created:
+        message: |
+            Olá (NAME),
+
+            (ADMINISTRATOR) criou um evento do Secret Santa (Amigo Secreto) e declarou você participante!
+
+            Divirta-se brincando de Amigo Secreto e descubra quem será o seu amigo secreto clicando no botão abaixo.
+
+            É permitido gastar até %amount% no presente. Não tenha medo, seu avarento: você também pode criar um presente personalizado e artesanal. A gente até te encoraja a fazê-lo!
+            A festa do Amigo Secreto será dia %date%. Não esqueça o seu presente!
+
+            %message%
+
+            Boas Festas!
+    admin_matches:
+        subject: Combinações do Amigo Secreto
+        message:
+            giving: Este participante é o Papai Noel de ...
+            receiving: ...
+            html: >
+                Caro %owner%,<br/>
+                <br/>
+                Você pediu pelas combinações do seu Secret Santa. Por favor, note que todos os participantes do seu Amigo Secreto serão avisados de que você sabe das combinações.<br/>
+                <br/>
+                A seguir, a lista de quem ganha presente de quem neste Secret Santa.<br/>
+            txt: >
+                Caro %owner%,
+
+                Você pediu pelas combinações do seu Secret Santa. Por favor, note que todos os participantes do seu Amigo Secreto serão avisados de que você sabe das combinações.
+
+                A seguir, a lista de quem ganha presente de quem neste Secret Santa.
+flashes:
+    manage:
+        email_validated: >
+         <strong>Beleza!</strong><br/>O seu e-mail foi validado.<br/>
+         Neste exato momento, os nossos elfos mágicos estão a caminho para entregar um Amigo Secreto a cada um dos seus participantes!<br/>
+         <br />
+         Não se esqueça de confirmar sua própria participação. Te mandamos mais um e-mail. Leia-o agora!
+    delete:
+        not_deleted: <h4>Não eliminado</h4> A confirmação não deu certo.
+    expose:
+        not_exposed: <h4>Lista não enviada</h4> A confirmação não deu certo.
+        exposed: <h4>Lista enviada</h4> Todos os participantes receberão uma notificação ao checarem suas páginas de Lista de Desejo.
+    resend:
+        resent: <strong>Enviado novamente!</strong><br/>O e-mail destinado a %email% foi enviado novamente.<br/>
+    entry:
+        wishlist_updated: <h4>Lista de desejos atualizada</h4> Mandamos os nossos elfos mágicos ir avisar quem te tirou de Amigo Secreto quais são os presentes super bacanas que você está esperando receber!
+        edit_email: <h4>Não salvo</h4> Tem algo errado com o endereço e-mail.
+        saved_email: <h4>Salvo</h4> O novo endereço de e-mail foi salvo. Nós também enviamos o e-mail novamente.
+    analytics:
+        invalid_data: <h4>Oops</h4> Ocorreu um erro durante a solicitação de dados de análise. Por favor, tente novamente.

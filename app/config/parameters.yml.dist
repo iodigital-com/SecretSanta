@@ -12,11 +12,12 @@ parameters:
     mailer_password:   ~
 
     locale:            en
-    supported_locales: [en, nl, fr]
+    supported_locales: [en, nl, fr, pt]
     locale_names:
         en: English
         nl: Nederlands
         fr: Francais
+        pt: Português
 
     secret:            ThisTokenIsNotSoSecretChangeIt
     ad_client:         ca-pub-8492783089085834
