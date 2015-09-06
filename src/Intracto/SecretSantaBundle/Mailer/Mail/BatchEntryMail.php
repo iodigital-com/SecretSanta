@@ -11,7 +11,6 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 interface BatchEntryMail
 {
-
     /**
      * @return string
      */
@@ -29,7 +28,7 @@ interface BatchEntryMail
     /**
      * Returns a translatable string that will be used as the email subject.
      *
-     * @param Entry $receiver
+     * @param Entry               $receiver
      * @param TranslatorInterface $translator
      *
      * @return string
@@ -37,7 +36,7 @@ interface BatchEntryMail
     public function getSubject(Entry $receiver, TranslatorInterface $translator);
 
     /**
-     * @param Entry $receiver
+     * @param Entry               $receiver
      * @param TranslatorInterface $translator
      *
      * @return string
@@ -59,7 +58,7 @@ interface BatchEntryMail
     public function getHtmlTemplate(Entry $receiver);
 
     /**
-     * @param Entry $receiver
+     * @param Entry         $receiver
      * @param EntityManager $entityManager
      *
      * @return array
@@ -69,11 +68,8 @@ interface BatchEntryMail
     /**
      * Called when an email has been sent.
      *
-     * @param Entry $receiver
+     * @param Entry         $receiver
      * @param EntityManager $em
-     *
-     * @return void
      */
     public function handleMailSent(Entry $receiver, EntityManager $em);
-
 }

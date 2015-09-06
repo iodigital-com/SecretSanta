@@ -2,12 +2,11 @@
 
 namespace Intracto\SecretSantaBundle\Service\Analytics;
 
-    /**
-     * Class GApiAccountEntry
-     *
-     * Storage for individual gapi account entries
-     *
-     */
+/**
+ * Class GApiAccountEntry
+ *
+ * Storage for individual gapi account entries
+ */
 class GApiAccountEntry
 {
     private $properties = array();
@@ -24,12 +23,9 @@ class GApiAccountEntry
      */
     public function __toString()
     {
-        if(isset($this->properties['title']))
-        {
+        if (isset($this->properties['title'])) {
             return $this->properties['title'];
-        }
-        else
-        {
+        } else {
             return;
         }
     }
@@ -49,22 +45,22 @@ class GApiAccountEntry
      * Call method to find a matching parameter to return
      *
      * @param $name String name of function called
+     *
      * @return String
+     *
      * @throws \Exception if not a valid parameter, or not a 'get' function
      */
-    public function __call($name,$parameters)
+    public function __call($name, $parameters)
     {
-        if(!preg_match('/^get/',$name))
-        {
+        if (!preg_match('/^get/', $name)) {
             throw new \Exception('No such function "' . $name . '"');
         }
 
-        $name = preg_replace('/^get/','',$name);
+        $name = preg_replace('/^get/', '', $name);
 
-        $property_key = GApi::array_key_exists_nc($name,$this->properties);
+        $property_key = GApi::array_key_exists_nc($name, $this->properties);
 
-        if($property_key)
-        {
+        if ($property_key) {
             return $this->properties[$property_key];
         }
 

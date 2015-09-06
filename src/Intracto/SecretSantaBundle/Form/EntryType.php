@@ -18,7 +18,7 @@ class EntryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry'
+            'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
         ));
     }
 

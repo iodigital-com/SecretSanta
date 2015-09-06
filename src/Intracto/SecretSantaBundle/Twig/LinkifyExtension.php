@@ -1,4 +1,5 @@
 <?php
+
 namespace Intracto\SecretSantaBundle\Twig;
 
 class LinkifyExtension extends \Twig_Extension
@@ -18,8 +19,8 @@ class LinkifyExtension extends \Twig_Extension
         }
 
         return preg_replace(
-            "~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~",
-            "<a href=\"\\0\" target=\"_blank\">\\0</a>",
+            '~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~',
+            '<a href="\\0" target="_blank">\\0</a>',
             $html
         );
     }

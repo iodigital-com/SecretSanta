@@ -88,9 +88,6 @@ class AnalyticsOptions
         $this->metric = $metric;
     }
 
-    /**
-     * @return null
-     */
     public function getSortMetric()
     {
         return $this->sort_metric;
@@ -104,9 +101,6 @@ class AnalyticsOptions
         $this->sort_metric = $sort_metric;
     }
 
-    /**
-     * @return null
-     */
     public function getFilter()
     {
         return $this->filter;
@@ -120,9 +114,6 @@ class AnalyticsOptions
         $this->filter = $filter;
     }
 
-    /**
-     * @return null
-     */
     public function getStartDate()
     {
         return $this->start_date;
@@ -136,9 +127,6 @@ class AnalyticsOptions
         $this->start_date = $start_date;
     }
 
-    /**
-     * @return null
-     */
     public function getEndDate()
     {
         return $this->end_date;

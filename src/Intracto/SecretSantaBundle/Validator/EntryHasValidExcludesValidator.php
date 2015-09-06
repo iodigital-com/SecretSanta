@@ -10,7 +10,7 @@ class EntryHasValidExcludesValidator extends ConstraintValidator
 {
     public function validate($entry, Constraint $constraint)
     {
-        /**
+        /*
          * @var Entry $entry
          */
         $pool = $entry->getPool();
@@ -30,7 +30,5 @@ class EntryHasValidExcludesValidator extends ConstraintValidator
                 array('%name%' => $entry->getName())
             );
         }
-
     }
 }
-

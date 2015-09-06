@@ -29,21 +29,20 @@ class StaticController extends Controller
         $options = new AnalyticsOptions();
         $options->loadFromRequest($this->getRequest());
 
-        $data =  array(
+        $data = array(
             'pools' => $pools,
             'options' => $options,
         );
 
         try {
             $data['analytics'] = $reportingService->getAnalytics($options);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $translator = $this->get('translator');
             $this->addFlash(
                 'error',
                 $translator->trans('flashes.analytics.invalid_data')
             );
         }
-
 
         return $data;
     }

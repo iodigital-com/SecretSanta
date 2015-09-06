@@ -33,7 +33,7 @@ class ExcludeEntryType extends AbstractType
                         ->andWhere('e != :me')
                         ->setParameters(array(
                             'pool' => $me->getPool(),
-                            'me' => $me
+                            'me' => $me,
                         ));
                 },
                 'required' => false,
@@ -45,7 +45,7 @@ class ExcludeEntryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry'
+            'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
         ));
     }
 

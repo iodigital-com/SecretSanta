@@ -12,7 +12,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SendBatchMailsCommand extends ContainerAwareCommand
 {
-
     /**
      * Configure the command options
      */
@@ -32,15 +31,16 @@ class SendBatchMailsCommand extends ContainerAwareCommand
     /**
      * Execute the command
      *
-     * @param  InputInterface  $input
-     * @param  OutputInterface $output
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     *
      * @return int|null
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // Set context for URL generation
         $context = $this->getContainer()->get('router')->getContext();
-        $context->setHost($this->getContainer()->getParameter("base_url"));
+        $context->setHost($this->getContainer()->getParameter('base_url'));
 
         /** @var Mailer $mailer */
         $mailer = $this->getContainer()->get('intracto_secret_santa.mailer');
@@ -48,13 +48,12 @@ class SendBatchMailsCommand extends ContainerAwareCommand
         $mailer->setOutput($output);
 
         $mailer->sendBatchMails(
-            $this->getContainer()->getParameter("admin_email"),
+            $this->getContainer()->getParameter('admin_email'),
             [
                 new BatchViewEntryReminder(),
-                new BatchEmptyWishlistReminder()
+                new BatchEmptyWishlistReminder(),
             ],
             $input->getOption('force')
         );
     }
-
 }
