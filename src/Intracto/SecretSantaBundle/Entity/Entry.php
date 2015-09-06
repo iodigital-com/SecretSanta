@@ -5,7 +5,6 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
 
 /**
@@ -20,7 +19,7 @@ use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
 class Entry
 {
     /**
-     * @var integer $id
+     * @var int $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -77,7 +76,6 @@ class Entry
      **/
     private $excluded_entries;
 
-
     /**
      * @var string $wishlist
      *
@@ -120,7 +118,7 @@ class Entry
     private $removedWishlistItems;
 
     /**
-     * @var boolean $wishlist_updated
+     * @var bool $wishlist_updated
      *
      * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
@@ -145,7 +143,7 @@ class Entry
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -351,7 +349,8 @@ class Entry
     /**
      * Set send
      *
-     * @param  boolean $send
+     * @param bool $send
+     *
      * @return Entry
      */
     public function setSend($send)
@@ -364,7 +363,7 @@ class Entry
     /**
      * Get send
      *
-     * @return boolean
+     * @return bool
      */
     public function getSend()
     {
@@ -374,7 +373,8 @@ class Entry
     /**
      * Set ready_to_send
      *
-     * @param  boolean $readyToSend
+     * @param bool $readyToSend
+     *
      * @return Entry
      */
     public function setReadyToSend($readyToSend)
@@ -387,7 +387,7 @@ class Entry
     /**
      * Get ready_to_send
      *
-     * @return boolean
+     * @return bool
      */
     public function getReadyToSend()
     {
@@ -397,7 +397,8 @@ class Entry
     /**
      * Set wishlist_updated
      *
-     * @param  boolean $wishlistUpdated
+     * @param bool $wishlistUpdated
+     *
      * @return Entry
      */
     public function setWishlistUpdated($wishlistUpdated)
@@ -410,7 +411,7 @@ class Entry
     /**
      * Get wishlist_updated
      *
-     * @return boolean
+     * @return bool
      */
     public function getWishlistUpdated()
     {
@@ -509,6 +510,7 @@ class Entry
      * Add excludedEntry
      *
      * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
+     *
      * @return Entry
      */
     public function addExcludedEntry(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)

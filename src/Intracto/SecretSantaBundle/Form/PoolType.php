@@ -5,7 +5,6 @@ namespace Intracto\SecretSantaBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Intracto\SecretSantaBundle\Form\EntryType;
 
 class PoolType extends AbstractType
 {
@@ -44,7 +43,7 @@ class PoolType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool'
+                'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool',
             )
         );
     }

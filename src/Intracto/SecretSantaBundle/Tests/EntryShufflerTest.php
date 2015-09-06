@@ -31,13 +31,10 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $entry4->setName('Entry 4');
         $pool->addEntrie($entry4);
 
-
-
         $entry1->addExcludedEntry($entry2);
         $entry2->addExcludedEntry($entry3);
         $entry4->addExcludedEntry($entry1);
         $entry4->addExcludedEntry($entry2);
-
 
         $entryShuffler = new EntryShuffler();
         for ($i = 0; $i < 1000; $i++) {

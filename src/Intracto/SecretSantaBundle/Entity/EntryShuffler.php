@@ -9,6 +9,7 @@ class EntryShuffler
 {
     /**
      * @param Pool $pool
+     *
      * @return array|bool
      */
     public function shuffleEntries(Pool $pool)
@@ -18,6 +19,7 @@ class EntryShuffler
 
     /**
      * @param Pool $pool
+     *
      * @return array|bool
      */
     private function permutateTillMatch(Pool $pool)
@@ -43,6 +45,7 @@ class EntryShuffler
     /**
      * @param $entries
      * @param $shuffled
+     *
      * @return bool
      */
     private function checkValidMatch($entries, $shuffled)
@@ -59,6 +62,7 @@ class EntryShuffler
 
     /**
      * @param $list
+     *
      * @return mixed
      */
     private function shuffleArray($list)
@@ -73,6 +77,7 @@ class EntryShuffler
      *
      * @param $p
      * @param $size
+     *
      * @return bool
      */
     private function nextPermutation($p, $size)

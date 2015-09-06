@@ -3,11 +3,10 @@
 namespace Intracto\SecretSantaBundle\Service\Analytics;
 
 /**
-     * Class GApiAccountEntry
-     *
-     * Storage for individual gapi account entries
-     *
-     */
+ * Class GApiAccountEntry
+ *
+ * Storage for individual gapi account entries
+ */
 class GApiAccountEntry
 {
     private $properties = array();
@@ -46,7 +45,9 @@ class GApiAccountEntry
      * Call method to find a matching parameter to return
      *
      * @param $name String name of function called
+     *
      * @return String
+     *
      * @throws \Exception if not a valid parameter, or not a 'get' function
      */
     public function __call($name, $parameters)

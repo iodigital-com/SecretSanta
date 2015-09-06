@@ -19,6 +19,7 @@ class EntryController extends Controller
 {
     /**
      * @DI\Inject("entry_repository")
+     *
      * @var \Doctrine\ORM\EntityRepository
      */
     public $entryRepository;
@@ -35,7 +36,7 @@ class EntryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
-        if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != "") {
+        if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != '') {
             $legacyWishlist = true;
             $form = $this->createForm(new WishlistType(), $this->entry);
         } else {
@@ -96,7 +97,7 @@ class EntryController extends Controller
                     return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
                 }
 
-                if ($legacyWishlist && ($this->entry->getWishlist() === null || $this->entry->getWishlist() === "")) {
+                if ($legacyWishlist && ($this->entry->getWishlist() === null || $this->entry->getWishlist() === '')) {
                     // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
                     return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
                 }
@@ -171,7 +172,8 @@ class EntryController extends Controller
      * @param string $url
      *
      * @throws NotFoundHttpException
-     * @return boolean
+     *
+     * @return bool
      */
     protected function getEntry($url)
     {

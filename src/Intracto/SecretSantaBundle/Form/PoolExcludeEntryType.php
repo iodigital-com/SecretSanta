@@ -15,7 +15,7 @@ class PoolExcludeEntryType extends AbstractType
                 'entries',
                 'collection',
                 array(
-                    'type' => new ExcludeEntryType()
+                    'type' => new ExcludeEntryType(),
                 )
             );
     }

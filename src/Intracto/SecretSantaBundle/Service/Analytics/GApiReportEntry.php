@@ -6,7 +6,6 @@ namespace Intracto\SecretSantaBundle\Service\Analytics;
  * Class GApiReportEntry
  *
  * Storage for individual GApi report entries
- *
  */
 class GApiReportEntry
 {
@@ -63,7 +62,9 @@ class GApiReportEntry
      * Call method to find a matching metric or dimension to return
      *
      * @param $name String name of function called
+     *
      * @return String
+     *
      * @throws \Exception if not a valid metric or dimensions, or not a 'get' function
      */
     public function __call($name, $parameters)

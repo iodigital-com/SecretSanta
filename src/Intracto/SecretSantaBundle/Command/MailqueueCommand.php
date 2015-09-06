@@ -31,8 +31,9 @@ class MailqueueCommand extends ContainerAwareCommand
     /**
      * Execute the command
      *
-     * @param  InputInterface  $input
-     * @param  OutputInterface $output
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     *
      * @return int|null|voidSp
      */
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -46,12 +47,12 @@ class MailqueueCommand extends ContainerAwareCommand
          */
         $em = $this->getContainer()->get('doctrine')->getManager();
         $context = $this->getContainer()->get('router')->getContext();
-        $context->setHost($this->getContainer()->getParameter("base_url"));
+        $context->setHost($this->getContainer()->getParameter('base_url'));
 
         /**
          * @var EntryRepository $entryRepository
          */
-        $entryRepository = $em->getRepository("IntractoSecretSantaBundle:Entry");
+        $entryRepository = $em->getRepository('IntractoSecretSantaBundle:Entry');
         $secret_santas = $entryRepository->findAllForWishlistNofifcication();
 
         $container = $this->getContainer();
@@ -60,7 +61,7 @@ class MailqueueCommand extends ContainerAwareCommand
         $transport = $container->get('swiftmailer.transport.real');
 
         foreach ($secret_santas as $secret_santa) {
-            /**
+            /*
              * @var Entry $secret_santa
              */
             $receiver = $secret_santa->getEntry();
@@ -68,7 +69,7 @@ class MailqueueCommand extends ContainerAwareCommand
 
             $message = \Swift_Message::newInstance()
                 ->setSubject($translator->trans('emails.wishlistchanged.subject'))
-                ->setFrom($this->getContainer()->getParameter("admin_email"), $translator->trans('emails.sender'))
+                ->setFrom($this->getContainer()->getParameter('admin_email'), $translator->trans('emails.sender'))
                 ->setTo($secret_santa->getEmail())
                 ->setBody(
                     $this->getContainer()->get('templating')->render(

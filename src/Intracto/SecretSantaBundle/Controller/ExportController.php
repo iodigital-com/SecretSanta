@@ -4,7 +4,6 @@ namespace Intracto\SecretSantaBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * @Route("/export")
@@ -21,6 +20,7 @@ class ExportController extends Controller
 
         $data = $entryService->getAllUniqueEmails();
         $response = $exportService->exportCSV($data);
+
         return $response;
     }
 }

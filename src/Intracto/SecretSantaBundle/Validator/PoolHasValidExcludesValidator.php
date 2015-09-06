@@ -2,7 +2,6 @@
 
 namespace Intracto\SecretSantaBundle\Validator;
 
-use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Entity\EntryShuffler;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Symfony\Component\Validator\Constraint;
@@ -23,7 +22,6 @@ class PoolHasValidExcludesValidator extends ConstraintValidator
         /**
          * @var Pool $pool
          */
-
         if (!$this->entryShuffler->shuffleEntries($pool)) {
             $this->context->addViolationAt(
                 'entries',

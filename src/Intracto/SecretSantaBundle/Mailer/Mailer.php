@@ -43,11 +43,11 @@ class Mailer
     private $output;
 
     /**
-     * @param \Swift_Mailer $mailer
-     * @param \Swift_Transport $transport
-     * @param EntityManager $em
+     * @param \Swift_Mailer       $mailer
+     * @param \Swift_Transport    $transport
+     * @param EntityManager       $em
      * @param TranslatorInterface $translator
-     * @param \Twig_Environment $twig
+     * @param \Twig_Environment   $twig
      */
     public function __construct(\Swift_Mailer $mailer, \Swift_Transport $transport, EntityManager $em, TranslatorInterface $translator, \Twig_Environment $twig)
     {
@@ -61,7 +61,7 @@ class Mailer
     /**
      * @param $fromEmail
      * @param BatchEntryMail[] $batchMails
-     * @param bool $doSend : if false, nothing is sent
+     * @param bool             $doSend     if false, nothing is sent
      */
     public function sendBatchMails($fromEmail, $batchMails, $doSend = true)
     {

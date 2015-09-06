@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class WishlistItem
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -43,17 +43,16 @@ class WishlistItem
     private $image;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="rank", type="integer", nullable=true)
      */
     private $rank;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -64,19 +63,20 @@ class WishlistItem
      * Set description
      *
      * @param string $description
+     *
      * @return WishlistItem
      */
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -87,19 +87,20 @@ class WishlistItem
      * Set image
      *
      * @param string $image
+     *
      * @return WishlistItem
      */
     public function setImage($image)
     {
         $this->image = $image;
-    
+
         return $this;
     }
 
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -109,20 +110,21 @@ class WishlistItem
     /**
      * Set rank
      *
-     * @param integer $rank
+     * @param int $rank
+     *
      * @return WishlistItem
      */
     public function setRank($rank)
     {
         $this->rank = $rank;
-    
+
         return $this;
     }
 
     /**
      * Get rank
      *
-     * @return integer 
+     * @return int
      */
     public function getRank()
     {

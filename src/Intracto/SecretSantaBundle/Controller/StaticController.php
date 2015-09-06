@@ -29,7 +29,7 @@ class StaticController extends Controller
         $options = new AnalyticsOptions();
         $options->loadFromRequest($this->getRequest());
 
-        $data =  array(
+        $data = array(
             'pools' => $pools,
             'options' => $options,
         );
@@ -43,7 +43,6 @@ class StaticController extends Controller
                 $translator->trans('flashes.analytics.invalid_data')
             );
         }
-
 
         return $data;
     }
