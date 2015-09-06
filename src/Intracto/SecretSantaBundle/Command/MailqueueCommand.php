@@ -99,6 +99,5 @@ class MailqueueCommand extends ContainerAwareCommand
             }
             echo '.';
         }
-
     }
 }

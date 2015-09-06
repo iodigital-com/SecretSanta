@@ -95,5 +95,4 @@ class EntryRepository extends EntityRepository
 
         return $query->getResult();
     }
-
 }

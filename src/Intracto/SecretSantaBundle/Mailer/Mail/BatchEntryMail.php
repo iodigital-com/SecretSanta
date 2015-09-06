@@ -11,7 +11,6 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 interface BatchEntryMail
 {
-
     /**
      * @return string
      */
@@ -75,5 +74,4 @@ interface BatchEntryMail
      * @return void
      */
     public function handleMailSent(Entry $receiver, EntityManager $em);
-
 }

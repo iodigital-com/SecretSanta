@@ -41,7 +41,6 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
         $this->mailer = $mailer;
         $this->adminEmail = $adminEmail;
         $this->translator = $translator;
-
     }
 
     public function onNewPool(PoolEvent $event)

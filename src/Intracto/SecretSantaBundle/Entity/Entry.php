@@ -233,7 +233,6 @@ class Entry
      */
     public function setWishlist($wishlist)
     {
-
         if ($this->wishlist !== $wishlist) {
             $this->wishlist_updated = true;
         }
@@ -474,14 +473,16 @@ class Entry
         $this->wishlistItems = $wishlistItems;
     }
 
-    public function addWishlistItem(WishlistItem $item) {
+    public function addWishlistItem(WishlistItem $item)
+    {
         $this->removedWishlistItems->removeElement($item);
         $item->setEntry($this);
         $this->wishlistItems->add($item);
         $this->wishlist_updated = true;
     }
 
-    public function removeWishlistItem(WishlistItem $item) {
+    public function removeWishlistItem(WishlistItem $item)
+    {
         $this->removedWishlistItems->add($item);
         $item->setEntry(null);
         $this->wishlistItems->removeElement($item);

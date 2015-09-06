@@ -8,11 +8,10 @@ use Intracto\SecretSantaBundle\Entity\Pool;
 
 class EntryShufflerTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testEntryShuffler()
     {
         $pool = new Pool();
-        foreach($pool->getEntries() as $defaultEntry){
+        foreach ($pool->getEntries() as $defaultEntry) {
             $pool->removeEntry($defaultEntry);
         }
 

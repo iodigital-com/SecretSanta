@@ -30,7 +30,5 @@ class EntryHasValidExcludesValidator extends ConstraintValidator
                 array('%name%' => $entry->getName())
             );
         }
-
     }
 }
-

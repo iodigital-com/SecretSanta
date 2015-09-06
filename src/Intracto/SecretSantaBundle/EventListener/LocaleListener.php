@@ -49,8 +49,6 @@ class LocaleListener implements EventSubscriberInterface
             $url = $this->router->generate($route, ['_locale' => $preferredLocale] + $route_params);
             $event->setResponse(new RedirectResponse($url));
         }
-
-
     }
 
     public static function getSubscribedEvents()

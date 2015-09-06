@@ -14,7 +14,7 @@ class ExportController extends Controller
     /**
      * @Route("/entries", name="export_entries")
      */
-    function entriesAction()
+    public function entriesAction()
     {
         $entryService = $this->get('intracto_secret_santa.entry_service');
         $exportService = $this->get('intracto_secret_santa.service.export');

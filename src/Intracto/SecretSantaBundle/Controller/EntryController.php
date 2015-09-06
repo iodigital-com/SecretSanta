@@ -100,7 +100,6 @@ class EntryController extends Controller
                     // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
                     return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
                 }
-
             }
         }
         $secret_santa = $this->entry->getEntry();

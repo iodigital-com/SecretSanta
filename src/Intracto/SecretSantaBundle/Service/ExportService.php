@@ -16,7 +16,6 @@ class ExportService
      */
     public function exportCSV($data, $filename = 'export.csv', $seperator = ';', $enclosure = '"')
     {
-
         $response = new StreamedResponse(function () use ($data, $seperator, $enclosure) {
             $handle = fopen('php://output', 'r+');
 
@@ -35,6 +34,5 @@ class ExportService
 
 
         return $response;
-
     }
 }

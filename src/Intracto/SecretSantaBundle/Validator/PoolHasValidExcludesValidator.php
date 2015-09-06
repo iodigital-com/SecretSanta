@@ -13,7 +13,7 @@ class PoolHasValidExcludesValidator extends ConstraintValidator
     private $entryShuffler;
 
     // Todo: find a way to activate this validator only if EntryHasValidExcludes passes validation.
-    function __construct(EntryShuffler $entryShuffler)
+    public function __construct(EntryShuffler $entryShuffler)
     {
         $this->entryShuffler = $entryShuffler;
     }
@@ -30,7 +30,5 @@ class PoolHasValidExcludesValidator extends ConstraintValidator
                 $constraint->message
             );
         }
-
     }
 }
-

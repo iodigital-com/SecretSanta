@@ -12,7 +12,6 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class Mailer
 {
-
     /**
      * @var \Swift_Mailer
      */
@@ -129,5 +128,4 @@ class Mailer
             $this->output->writeln($message);
         }
     }
-
 }

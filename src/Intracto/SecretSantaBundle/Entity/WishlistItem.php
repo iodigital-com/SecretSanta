@@ -144,6 +144,4 @@ class WishlistItem
     {
         $this->entry = $entry;
     }
-
-
 }

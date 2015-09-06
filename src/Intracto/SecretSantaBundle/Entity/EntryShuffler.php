@@ -7,7 +7,6 @@ namespace Intracto\SecretSantaBundle\Entity;
  */
 class EntryShuffler
 {
-
     /**
      * @param Pool $pool
      * @return array|bool
@@ -79,7 +78,8 @@ class EntryShuffler
     private function nextPermutation($p, $size)
     {
         // slide down the array looking for where we're smaller than the next guy
-        for ($i = $size - 1; array_key_exists($i, $p) && $p[$i] >= $p[$i + 1]; --$i) {}
+        for ($i = $size - 1; array_key_exists($i, $p) && $p[$i] >= $p[$i + 1]; --$i) {
+        }
 
         // if this doesn't occur, we've finished our permutations
         // the array is reversed: (1, 2, 3, 4) => (4, 3, 2, 1)
@@ -88,7 +88,8 @@ class EntryShuffler
         }
 
         // slide down the array looking for a bigger number than what we found before
-        for ($j = $size; $p[$j] <= $p[$i]; --$j) {}
+        for ($j = $size; $p[$j] <= $p[$i]; --$j) {
+        }
 
         // swap them
         $tmp = $p[$i];
@@ -104,5 +105,4 @@ class EntryShuffler
 
         return $p;
     }
-
 }

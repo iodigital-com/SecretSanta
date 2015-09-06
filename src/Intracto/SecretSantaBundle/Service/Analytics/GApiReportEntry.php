@@ -13,7 +13,7 @@ class GApiReportEntry
     private $metrics = array();
     private $dimensions = array();
 
-    public function __construct($metrics,$dimesions)
+    public function __construct($metrics, $dimesions)
     {
         $this->metrics = $metrics;
         $this->dimensions = $dimesions;
@@ -30,12 +30,9 @@ class GApiReportEntry
      */
     public function __toString()
     {
-        if(is_array($this->dimensions))
-        {
-            return implode(' ',$this->dimensions);
-        }
-        else
-        {
+        if (is_array($this->dimensions)) {
+            return implode(' ', $this->dimensions);
+        } else {
             return '';
         }
     }
@@ -69,26 +66,23 @@ class GApiReportEntry
      * @return String
      * @throws \Exception if not a valid metric or dimensions, or not a 'get' function
      */
-    public function __call($name,$parameters)
+    public function __call($name, $parameters)
     {
-        if(!preg_match('/^get/',$name))
-        {
+        if (!preg_match('/^get/', $name)) {
             throw new \Exception('No such function "' . $name . '"');
         }
 
-        $name = preg_replace('/^get/','',$name);
+        $name = preg_replace('/^get/', '', $name);
 
-        $metric_key = GApi::array_key_exists_nc($name,$this->metrics);
+        $metric_key = GApi::array_key_exists_nc($name, $this->metrics);
 
-        if($metric_key)
-        {
+        if ($metric_key) {
             return $this->metrics[$metric_key];
         }
 
-        $dimension_key = GApi::array_key_exists_nc($name,$this->dimensions);
+        $dimension_key = GApi::array_key_exists_nc($name, $this->dimensions);
 
-        if($dimension_key)
-        {
+        if ($dimension_key) {
             return $this->dimensions[$dimension_key];
         }
 

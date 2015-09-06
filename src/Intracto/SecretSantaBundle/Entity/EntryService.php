@@ -175,6 +175,5 @@ class EntryService
         $statement->execute();
 
         return $statement->fetchAll();
-
     }
 }

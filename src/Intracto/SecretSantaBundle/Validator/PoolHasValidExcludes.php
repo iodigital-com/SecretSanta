@@ -21,4 +21,3 @@ class PoolHasValidExcludes extends Constraint
         return self::CLASS_CONSTRAINT;
     }
 }
-

@@ -12,7 +12,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SendBatchMailsCommand extends ContainerAwareCommand
 {
-
     /**
      * Configure the command options
      */
@@ -56,5 +55,4 @@ class SendBatchMailsCommand extends ContainerAwareCommand
             $input->getOption('force')
         );
     }
-
 }
