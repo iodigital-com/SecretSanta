@@ -18,7 +18,7 @@ class WishlistType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry'
+                'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
             )
         );
     }

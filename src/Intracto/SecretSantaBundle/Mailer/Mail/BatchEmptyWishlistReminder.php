@@ -13,7 +13,6 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class BatchEmptyWishlistReminder implements BatchEntryMail
 {
-
     /**
      * {@inheritdoc}
      */
@@ -89,5 +88,4 @@ class BatchEmptyWishlistReminder implements BatchEntryMail
         $em->persist($receiver);
         $em->flush();
     }
-
 }

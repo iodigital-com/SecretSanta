@@ -4,8 +4,6 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
 use JMS\DiExtraBundle\Annotation as DI;
-use Intracto\SecretSantaBundle\Entity\Pool;
-use Intracto\SecretSantaBundle\Entity\Entry;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -16,24 +14,28 @@ class EntryService
 {
     /**
      * @DI\Inject("mailer")
+     *
      * @var \Swift_Mailer
      */
     public $mailer;
 
     /**
      * @DI\Inject("doctrine.orm.entity_manager")
+     *
      * @var EntityManager
      */
     public $em;
 
     /**
      * @DI\Inject("intracto_secret_santa.entry_shuffler")
+     *
      * @var EntryShuffler $entryShuffler
      */
     public $entryShuffler;
 
     /**
      * @DI\Inject("templating")
+     *
      * @var EngineInterface
      */
     public $templating;
@@ -45,6 +47,7 @@ class EntryService
 
     /**
      * @DI\Inject("translator")
+     *
      * @var TranslatorInterface;
      */
     public $translator;
@@ -54,7 +57,7 @@ class EntryService
      *
      * @param Pool $pool
      *
-     * @return boolean
+     * @return bool
      */
     public function shuffleEntries(Pool $pool)
     {
@@ -73,7 +76,6 @@ class EntryService
             $this->em->persist($entry);
         }
         $this->em->flush();
-
 
         //-----------------------
         /*
@@ -99,7 +101,7 @@ class EntryService
      */
     public function sendSecretSantaMailsForPool(Pool $pool)
     {
-        $pool->setSentdate(new \DateTime("now"));
+        $pool->setSentdate(new \DateTime('now'));
         $this->em->flush($pool);
 
         foreach ($pool->getEntries() as $entry) {
@@ -140,7 +142,6 @@ class EntryService
 
     /**
      * @param Pool $pool
-     * @return void
      */
     public function sendPoolMatchesToAdmin(Pool $pool)
     {
@@ -149,14 +150,14 @@ class EntryService
             ->setSubject($this->translator->trans('emails.admin_matches.subject'))
             ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
             ->setTo($pool->getOwnerEmail(), $pool->getOwnerName())
-            ->setBody($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.html.twig", array('pool' => $pool)), 'text/html')
-            ->addPart($this->templating->render("IntractoSecretSantaBundle:Emails:admin_matches.txt.twig", array('pool' => $pool)), 'text/plain')
+            ->setBody($this->templating->render('IntractoSecretSantaBundle:Emails:admin_matches.html.twig', array('pool' => $pool)), 'text/html')
+            ->addPart($this->templating->render('IntractoSecretSantaBundle:Emails:admin_matches.txt.twig', array('pool' => $pool)), 'text/plain')
         );
     }
 
-
     /**
      * @return array
+     *
      * @throws \Doctrine\DBAL\DBALException
      */
     public function getAllUniqueEmails()
@@ -175,6 +176,5 @@ class EntryService
         $statement->execute();
 
         return $statement->fetchAll();
-
     }
 }

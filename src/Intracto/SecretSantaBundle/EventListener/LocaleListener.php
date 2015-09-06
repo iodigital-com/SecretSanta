@@ -38,6 +38,7 @@ class LocaleListener implements EventSubscriberInterface
             $request->cookies->set('hl', $locale);
             $url = $this->router->generate($route, ['_locale' => $locale] + $route_params);
             $event->setResponse(new RedirectResponse($url));
+
             return;
         }
         //first request the cookie is empty. Gets auto set by I18nRouter
@@ -49,8 +50,6 @@ class LocaleListener implements EventSubscriberInterface
             $url = $this->router->generate($route, ['_locale' => $preferredLocale] + $route_params);
             $event->setResponse(new RedirectResponse($url));
         }
-
-
     }
 
     public static function getSubscribedEvents()

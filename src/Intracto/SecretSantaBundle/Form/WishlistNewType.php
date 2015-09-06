@@ -14,7 +14,7 @@ class WishlistNewType extends AbstractType
             array(
                 'type' => new WishlistItemType(),
                 'allow_add' => true,
-                'allow_delete' => true
+                'allow_delete' => true,
             ));
     }
 
@@ -22,7 +22,7 @@ class WishlistNewType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry'
+                'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
             )
         );
     }

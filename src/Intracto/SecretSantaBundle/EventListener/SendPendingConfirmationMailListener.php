@@ -31,7 +31,7 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            PoolEvents::NEW_POOL_CREATED => 'onNewPool'
+            PoolEvents::NEW_POOL_CREATED => 'onNewPool',
         );
     }
 
@@ -41,7 +41,6 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
         $this->mailer = $mailer;
         $this->adminEmail = $adminEmail;
         $this->translator = $translator;
-
     }
 
     public function onNewPool(PoolEvent $event)

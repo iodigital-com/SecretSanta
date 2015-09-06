@@ -23,7 +23,6 @@ class ReportingService
         $this->ga_profile_id = $ga_profile_id;
     }
 
-
     public function getPools()
     {
         if ($this->cache->contains('report_pools')) {

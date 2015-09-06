@@ -7,9 +7,9 @@ namespace Intracto\SecretSantaBundle\Entity;
  */
 class EntryShuffler
 {
-
     /**
      * @param Pool $pool
+     *
      * @return array|bool
      */
     public function shuffleEntries(Pool $pool)
@@ -19,6 +19,7 @@ class EntryShuffler
 
     /**
      * @param Pool $pool
+     *
      * @return array|bool
      */
     private function permutateTillMatch(Pool $pool)
@@ -44,6 +45,7 @@ class EntryShuffler
     /**
      * @param $entries
      * @param $shuffled
+     *
      * @return bool
      */
     private function checkValidMatch($entries, $shuffled)
@@ -60,6 +62,7 @@ class EntryShuffler
 
     /**
      * @param $list
+     *
      * @return mixed
      */
     private function shuffleArray($list)
@@ -74,12 +77,14 @@ class EntryShuffler
      *
      * @param $p
      * @param $size
+     *
      * @return bool
      */
     private function nextPermutation($p, $size)
     {
         // slide down the array looking for where we're smaller than the next guy
-        for ($i = $size - 1; array_key_exists($i, $p) && $p[$i] >= $p[$i + 1]; --$i) {}
+        for ($i = $size - 1; array_key_exists($i, $p) && $p[$i] >= $p[$i + 1]; --$i) {
+        }
 
         // if this doesn't occur, we've finished our permutations
         // the array is reversed: (1, 2, 3, 4) => (4, 3, 2, 1)
@@ -88,7 +93,8 @@ class EntryShuffler
         }
 
         // slide down the array looking for a bigger number than what we found before
-        for ($j = $size; $p[$j] <= $p[$i]; --$j) {}
+        for ($j = $size; $p[$j] <= $p[$i]; --$j) {
+        }
 
         // swap them
         $tmp = $p[$i];
@@ -104,5 +110,4 @@ class EntryShuffler
 
         return $p;
     }
-
 }

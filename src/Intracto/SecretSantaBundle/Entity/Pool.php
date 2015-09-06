@@ -4,7 +4,6 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
 
 /**
@@ -19,7 +18,7 @@ use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
 class Pool
 {
     /**
-     * @var integer $id
+     * @var int $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -74,10 +73,9 @@ class Pool
     private $entries;
 
     /**
-     * @var boolean $created
+     * @var bool $created
      *
      * @ORM\Column(name="created", type="boolean")
-     *
      */
     private $created = false;
 
@@ -85,15 +83,13 @@ class Pool
      * @var string $locale
      *
      * @ORM\Column(name="locale", type="string", length=5)
-     *
      */
     private $locale = 'en';
 
     /**
-     * @var boolean $exposed
+     * @var bool $exposed
      *
      * @ORM\Column(name="exposed", type="boolean")
-     *
      */
     private $exposed = false;
 
@@ -113,7 +109,7 @@ class Pool
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -248,7 +244,7 @@ class Pool
 
     public function __toString()
     {
-        return "Id: " . $this->id . " - Entries: " . $this->entries->count() . " - Owner: " . $this->getOwnerName();
+        return 'Id: ' . $this->id . ' - Entries: ' . $this->entries->count() . ' - Owner: ' . $this->getOwnerName();
     }
 
     /**
@@ -262,7 +258,8 @@ class Pool
     /**
      * Add entries
      *
-     * @param  \Intracto\SecretSantaBundle\Entity\Entry $entries
+     * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
+     *
      * @return Pool
      */
     public function addEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
@@ -285,7 +282,8 @@ class Pool
     /**
      * Set date
      *
-     * @param  \DateTime $date
+     * @param \DateTime $date
+     *
      * @return Pool
      */
     public function setDate($date)
@@ -308,7 +306,8 @@ class Pool
     /**
      * Set amount
      *
-     * @param  string $amount
+     * @param string $amount
+     *
      * @return Pool
      */
     public function setAmount($amount)
@@ -331,7 +330,8 @@ class Pool
     /**
      * Set created
      *
-     * @param boolean $created
+     * @param bool $created
+     *
      * @return Pool
      */
     public function setCreated($created)
@@ -344,7 +344,7 @@ class Pool
     /**
      * Get created
      *
-     * @return boolean
+     * @return bool
      */
     public function getCreated()
     {
@@ -355,6 +355,7 @@ class Pool
      * Set locale
      *
      * @param string $locale
+     *
      * @return Pool
      */
     public function setLocale($locale)
@@ -380,6 +381,7 @@ class Pool
     public function expose()
     {
         $this->exposed = true;
+
         return $this;
     }
 

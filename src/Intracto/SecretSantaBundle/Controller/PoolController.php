@@ -25,18 +25,21 @@ class PoolController extends Controller
 
     /**
      * @DI\Inject("pool_repository")
+     *
      * @var EntityRepository
      */
     public $poolRepository;
 
     /**
      * @DI\Inject("entry_repository")
+     *
      * @var EntityRepository
      */
     public $entryRepository;
 
     /**
      * @DI\Inject("event_dispatcher")
+     *
      * @var EventDispatcherInterface
      */
     public $eventDispatcher;
@@ -78,7 +81,6 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
-
                 //------- Remove between these lines if a fix has been find for max_execution_time error when shuffling
 
 
@@ -92,7 +94,6 @@ class PoolController extends Controller
                 );
 
                 return $this->redirect($this->generateUrl('pool_created', array('listUrl' => $pool->getListurl())));
-
 
                 //-------
 
@@ -206,6 +207,7 @@ class PoolController extends Controller
                 'error',
                 $translator->trans('flashes.delete.not_deleted')
             );
+
             return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
         }
 
@@ -290,10 +292,12 @@ class PoolController extends Controller
      * Retrieve pool by url
      *
      * @param $listurl
+     *
      * @throws NotFoundHttpException
+     *
      * @internal param string $url
      *
-     * @return boolean
+     * @return bool
      */
     protected function getPool($listurl)
     {
