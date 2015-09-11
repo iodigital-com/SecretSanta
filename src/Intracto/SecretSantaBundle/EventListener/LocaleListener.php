@@ -37,7 +37,7 @@ class LocaleListener implements EventSubscriberInterface
         if ($request->query->has('force-locale-switch')) {
             $request->cookies->set('hl', $locale);
             $url = $this->router->generate($route, ['_locale' => $locale] + $route_params);
-            $event->setResponse(new RedirectResponse($url));
+            $event->setResponse(new RedirectResponse($url, 301));
 
             return;
         }
@@ -48,7 +48,7 @@ class LocaleListener implements EventSubscriberInterface
         $preferredLocale = $request->getPreferredLanguage($this->availableLocals);
         if ($preferredLocale && $request->attributes->get('_locale') != $preferredLocale) {
             $url = $this->router->generate($route, ['_locale' => $preferredLocale] + $route_params);
-            $event->setResponse(new RedirectResponse($url));
+            $event->setResponse(new RedirectResponse($url, 301));
         }
     }
 
