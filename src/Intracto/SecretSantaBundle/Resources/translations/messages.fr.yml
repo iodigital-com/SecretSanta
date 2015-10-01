@@ -158,9 +158,9 @@ static:
             <a name="how"></a><h2>Comment ça fonctionne?</h2>
             <p>Créez un <a href="http://www.secretsantaorganizer.com" target="_blank">évènement sur la page d'accueil</a>. Vous avez besoin d'aux minimum 3 participants. Le premier participant deviendra l'administrateur de la liste. L'administrateur recevra un lien de confirmation par e-mail. Une fois votre inscription validée, votre liste Secret Santa sera brouillée et tous les participants recevront un message contenant le nom de leur copain cadeau Secret Santa. Nous demandons une confirmation afin d'empêcher les robots et trolls de gâcher votre Secret Santa party. <b>L'e-mail de validation vous fournira un lien vers le gestionnaire de l'évènement Secret Santa.</b></p>
 
-            <a name="exclude"></a><h2>Puis-je exclure des combinaisons?</h2>
+            <!--a name="exclude"></a><h2>Puis-je exclure des combinaisons?</h2>
             <p>Après avoir fourni la liste de tous les participants, vous pouvez éventuellement empêcher certaines combinaisons. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.<br><br>
-            Il est impossible de réutiliser la liste Secret Santa de l'année passée et d'empêcher ces combinaisons, car nous ne voyons pas un moyen d'ajouter cette fonction sans que cela ne soit confus pour les gens. Désolé.</p>
+            Il est impossible de réutiliser la liste Secret Santa de l'année passée et d'empêcher ces combinaisons, car nous ne voyons pas un moyen d'ajouter cette fonction sans que cela ne soit confus pour les gens. Désolé.</p-->
 
             <a name="wishlist"></a><h2>Puis-je fournir une liste de souhaits?</h2>
             <p>Les participants reçoivent un lien vers une page où ils peuvent découvrir leur copain secret. Ils peuvent également ajouter leur propre liste de souhaits et voir celle de leur ami.</p>

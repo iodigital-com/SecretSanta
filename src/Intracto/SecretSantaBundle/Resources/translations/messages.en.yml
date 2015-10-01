@@ -183,9 +183,9 @@ static:
             The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
             We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
 
-            <a name="exclude"></a><h2>Can I exclude combinations?</h2>
+            <!--a name="exclude"></a><h2>Can I exclude combinations?</h2>
             <p>After providing all participants, you can optionally prevent some participant combinations. For example to prevent members of the same family having to buy gifts for each other.<br><br>
-            It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
+            It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p-->
 
             <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
             <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
