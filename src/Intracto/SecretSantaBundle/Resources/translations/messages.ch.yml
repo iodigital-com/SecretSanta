@@ -1,0 +1,276 @@
+base:
+    meta:
+        description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
+        title: 秘密圣诞老人在线礼物交换组织机构
+        og:
+            title: 秘密圣诞老人
+            site_name: 秘密圣诞老人
+            description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
+    nav:
+        home: 首页
+    privacy_policy: 私隐政策
+    have_fun: 好好享受策划你的秘密圣诞老人吧
+pool:
+    header:
+        steps:
+            title: 简单<span class="accent">三步</span>完成你的礼物交换活动
+            list:
+                one: 列出你的参与人员
+                two: 添加个人的信息
+                three: 发送！
+            get_started: 开始！
+
+create:
+    what_is:
+        title: 什么是秘密圣诞老人
+        intro: >
+                <p>这是一个<strong>免费</strong>的在线秘密圣诞老人<strong>礼物交换组织机构</strong>！和朋友们，家人甚至同事们一起组织一个秘密圣诞老人派对。收到秘密圣诞老人的邮件后你可以加入你自己的</strong>愿望清单</strong>那将会传送到你的秘密圣诞老人。</p>
+
+                <p>每一年到了圣诞期间，全世界各地的人都在交换礼物。为了保持事情的有趣性，你可以随机分配人员对人员之间</strong>交换礼物</p>
+
+    add_participants: 添加你的参与人员
+    list_adminstrator: 此人也是你的名单管理者。
+    add_personal_message:
+        title: 添加个人信息
+        description: 为你的参与人员添加个人信息。
+exclude:
+   title: 排除
+   description: 在这名单里你可以随意防止一些参与人员的组合配对。例如防止同一家庭成员之间不得不买礼物给对方。
+created:
+    title: 仅此一步！确认你的参与人员
+    body: >
+            <p>
+              为了阻止机器人和网络谩骂者破坏秘密圣诞老人派对，我们需要名单的组织者<b>%ownername%</b>确认他/她的参与人员。我们已经发送了一个<b>%owneremail%</b> 进一步说明。
+            </p>
+            <p>
+              一旦确认，你的秘密圣诞老人名单将被打乱，紧接着所有用户将各自收到自己的秘密圣诞老人礼物密友的名字。
+            </p>
+            <p>
+                在确认电子邮件中，名单的组织者也将会有一个了解所有用户中哪些用户已知道自己的礼物密友的一个链接。以此来确认每个秘密圣诞老人知道他的任务。
+            </p>
+    warning: 提示
+    check_spam: 不要忘记检查你的垃圾邮件文件夹！
+
+deleted:
+    title: 不要忘记检查你的垃圾邮件文件夹！
+    body: >
+        <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
+
+manage:
+    title: 你的秘密圣诞老人名单
+    yes: 是
+    not_yet: 尚未
+    edit_email: 编辑电子邮件
+    resend_email: 再次发送电子邮件
+    view_entry: 查看词条
+    tip: 贴士
+    come_back: 你可以经常回到这个页面来确认所有人已经看过他/她的邮箱。
+    save: 保存
+
+delete:
+    title: 删除我的秘密圣诞老人名单
+    body: >
+        <p>
+            你绝对确定吗？<br>
+            <br>
+            <b>如果你不阅读这个，不确保坏事不会发生！</b><br>
+            <br>
+            一旦你删除了你的秘密圣诞老人名单，这将不能恢复。这个行为将不能被复原。<br>
+            这将永久删除这个秘密圣诞老人名单，包括所有里面的所有参与人员和他们的愿望清单。<br>
+            <br>
+            请输入"<b>%phrase_to_type%</b>" 以下确认
+        </p>
+    phrase_to_type: 删除一切
+expose:
+    title: 发送给我这个邮件名单的所有配对
+    body: >
+        <p>
+            你绝对确定吗？<br>
+            <br>
+            将有一封邮件发送给你，里面包含整个邮件名单的所有配对。<br>
+            <br>
+            <b>注意：</b><br>
+            所有邮件名单的成员将被通知！<br>
+            <br>
+            请输入"<b>%phrase_to_type%</b>" 以下确认。<br>
+        </p>
+    phrase_to_type: show me everything
+entry:
+    headers:
+        title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
+        date: 日期
+        amount: 数量
+        num_people: 人员数目
+        person_created_list: 名单创建者
+        exposed: 邮件名单创建者知道所有配对
+        not_exposed: 邮件名单创建者不知道所有配对
+    title: 你的分配密友
+    body: >
+        <p>%name%你好,</p>
+        <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
+    wishlist_from: 愿望清单来自 %name%
+    wishlist_not_provided: %name%尚未提供愿望清单
+    wishlist:
+        title: 你的愿望清单
+        description: 你可以在这留下一个愿望清单，以帮助你的秘密圣诞老人。我们的小矮人将会把这个传达到你的秘密圣诞老人那。你可以拖动项目条对物品进行重新排序。
+    wishlist_empty: 你的愿望清单是空的。请添加东西！
+
+static:
+    privacy_policy:
+        title: Privacy Policy
+        body: >
+            <p>Thank you for visiting secretsantaorganizer.com created by Intracto group NV. This privacy policy tells you
+                how we use personal information collected at this site. Please read this privacy policy before using the
+                site or submitting any personal information. By using the site, you are accepting the practices described in
+                this privacy policy. These practices may be changed, but any changes will be posted and changes will only
+                apply to activities and information on a going forward, not retroactive basis. You are encouraged to review
+                the privacy policy whenever you visit the site to make sure that you understand how any personal information
+                you provide will be used.</p>
+
+            <p>Note: the privacy practices set forth in this privacy policy are for this web site only. If you link to other
+                web sites, please review the privacy policies posted at those sites.</p>
+
+            <h2>Collection of Information</h2>
+
+            <p>We collect personally identifiable information, like names and email addresses, when voluntarily submitted by
+                our visitors. The information you provide is used to fulfill your specific request.</p>
+
+            <h2>Cookie/Tracking Technology</h2>
+
+            <p>This site uses cookies present in Google Analytics for gathering anonymous information such as browser type
+                and operating system, tracking the number of visitors to the site, and understanding how visitors use the
+                site. Personal information cannot be collected via cookies and other tracking technology.</p>
+
+            <p>You can turn off the use of cookies in the settings of your browser.</p>
+
+            <h2>Distribution of Information</h2>
+
+            <p>We may share information with governmental agencies or other companies assisting us in fraud prevention or
+                investigation. We may do so when: (1) permitted or required by law; or, (2) trying to protect against or
+                prevent actual or potential fraud or unauthorized transactions; or, (3) investigating fraud which has
+                already taken place. The information is not provided to these companies for marketing purposes.</p>
+
+            <h2>Commitment to Data Security</h2>
+
+            <p>Your personally identifiable information is kept secure. Only authorized employees, agents and contractors
+                (who have agreed to keep information secure and confidential) have access to this information. All emails
+                from this site are unique to your specific request. No recurring emails or newsletters will be sent to the
+                email addresses provided.</p>
+
+            <h2>Privacy Contact Information</h2>
+
+            <p>If you have any questions, concerns, or comments about our privacy policy you may contact us using the
+                information below:<br/>
+                By e-mail: info@secretsantaorganizer.com</p>
+
+            <p>We reserve the right to make changes to this policy. Any changes to this policy will be posted.</p>
+
+label:
+    name: 名字
+    email: 电子邮箱
+    date_party: 你的秘密圣诞老人派对日期
+    amount_to_spend: 消费金额
+    exclude: 排除
+    confirmed: 确认
+    actions: 作用
+    description: 描述
+placeholder:
+    exclude: 点击选择你想要排除的参与人员
+btn:
+    add_person: 添加人员
+    remove_person: 删除此人员
+    create_event: 创建你的礼物交换活动！
+    create_new_list: 创建一个新的秘密圣诞老人名单！
+    delete_list: 删除我的秘密圣诞老人名单
+    delete_confirm: 我知道后果，现在删除我的秘密圣诞老人名单
+    add_wishlist: 添加物品到愿望清单
+    remove_item: 删除这个物品
+    update_wishlist: 更新你的愿望清单
+    update_wishlist: 更新你的愿望清单
+    expose: 把所有配对发送给我
+    expose_confirm: 我知道后果，现在发送我的秘密圣诞老人名单
+    cancel: 取消
+
+emails:
+    sender: 圣诞老人
+    base:
+        title: 秘密圣诞老人由Intracto所有
+        footer: 好好享受规划你的秘密圣诞老人吧！
+        created_by: 创建者为
+    pendingconfirmation:
+        subject: 秘密圣诞老人确认
+        salutation: Hi %name%
+        click_button: 请点击以下按键确认你的秘密圣诞老人邮件名单。这将使我们的小矮人提早将你创建的私人信息发送到你所有参与人员手上。
+        overview_page: 在最新创建的总结情况页面中，你将可以持续跟踪你所有参与人员查看自己的秘密圣诞老人礼物密友情况。从而知道什么时候所有参与人员已全部查看。
+        lastly: 最后，别忘记你自己也参与其中！在你点击以下确认按键后，我们也将发送一封新的电子邮件给你。
+        btn_validate: 确认我的活动
+        click_link: 请点击以下链接确认你的秘密圣诞老人邮件名单。
+    secretsanta:
+        subject: 你的秘密圣诞老人
+        btn_find_out: 查看你的人员
+        link_find_out: 在这个网址中查看你被随机安排送礼物的人员
+    wishlistchanged:
+        subject: 愿望清单已更新
+        salutation: 你好%name%
+        buddy_updated_wishlist: 你密友的愿望清单已更新。
+        click_button: 点击以下按键查看他的建议。
+        btn_check_wishlist: 查看愿望清单
+        click_link: 点击以下链接查看他的建议。
+    emptywishlistreminder:
+        subject: 你的愿望清单仍然为空
+        updateyourlist: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
+    viewentryreminder:
+        subject: 查看谁是你的礼物密友
+        didyouforget: 你忘记秘密圣诞老人派对了吗？你还没查看谁是你的礼物密友呢！
+
+    created:
+        message: |
+            你好(NAME),
+
+            (ADMINISTRATOR)创建了一个秘密圣诞老人活动同时也把你列入参与人员当中。
+
+            点击以下按键加入秘密圣诞老人狂欢，同时找出谁是你的礼物密友。
+
+            你最多能花费到%amount%在你的礼物上。当然，制作你自己的礼物也是可以的。甚至鼓励的话语也可以！
+
+            秘密圣诞老人派对计划在 %date%。确保带上你的礼物哟！
+
+            %message%
+
+
+            节日快乐！
+    admin_matches:
+        subject: 秘密圣诞老人邮件名单配对
+        message:
+            giving: 这个参与人员将给…
+            receiving: …一个礼物给这个参与人员
+            html: >
+                亲爱的%owner%,<br/>
+                <br/>
+                你已经邀请了在邮件名单中的所有配对人员。你要知道所有参与人员将能在他们的愿望清单页面上看到这个。<br/>
+                <br/>
+                接下来是一个对所有参与人员和与他们配对将得到礼物的人的总结情况。<br/>
+            txt: >
+                亲爱的%owner%,
+                你已经邀请了在邮件名单中的所有配对人员。你要知道所有参与人员将能在他们的愿望清单页面上看到这个。
+                接下来是一个对所有参与人员和与他们配对将得到礼物的人的总结情况。
+flashes:
+    manage:
+        email_validated: >
+         <strong>完美！</strong><br/>你的电子邮件已确认。<br/>
+         我们的小矮人已听从我们的号令，正漫游在网上，把礼物密友们的名字传达给所有准秘密圣诞老人们耳中。<br/>
+         <br />
+         不要忘记你自己也参与其中。我们已经发送另外一封邮件给你了。去查查看吧！
+    delete:
+        not_deleted: <h4>未能删除</h4>这个确认不正确。
+    expose:
+        not_exposed: <h4>邮件名单未发送</h4> 这个确认不正确。
+        exposed: <h4>邮件名单已发送</h4> 当所有用户查看他们的愿望清单时，他们将会被通知到。
+    resend:
+        resent: <strong>已重新发送！</strong><br/>已重新发送至 %email%电子邮箱中。<br/>
+    entry:
+        wishlist_updated: <h4>愿望清单已更新</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
+        edit_email: <h4>未保存</h4> 电子邮箱地址出错。
+        saved_email: <h4>已保存</h4> 已保存。新的电子邮箱地址已保存。我们也已重新发送电子邮件了。
+    analytics:
+        invalid_data: <h4>哎呀</h4>分析数据时出错。请再试一次。
