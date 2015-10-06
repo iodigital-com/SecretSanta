@@ -106,7 +106,7 @@ entry:
         not_exposed: 邮件名单创建者不知道所有配对
     title: 你的分配密友
     body: >
-        <p>%name%你好,</p>
+        <p>你好%name%,</p>
         <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
     wishlist_from: 愿望清单来自 %name%
     wishlist_not_provided: %name%尚未提供愿望清单
@@ -199,7 +199,7 @@ emails:
         created_by: 创建者为
     pendingconfirmation:
         subject: 秘密圣诞老人确认
-        salutation: Hi %name%
+        salutation: 你好%name%
         click_button: 请点击以下按键确认你的秘密圣诞老人邮件名单。这将使我们的小矮人提早将你创建的私人信息发送到你所有参与人员手上。
         overview_page: 在最新创建的总结情况页面中，你将可以持续跟踪你所有参与人员查看自己的秘密圣诞老人礼物密友情况。从而知道什么时候所有参与人员已全部查看。
         lastly: 最后，别忘记你自己也参与其中！在你点击以下确认按键后，我们也将发送一封新的电子邮件给你。
