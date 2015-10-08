@@ -129,12 +129,6 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    intracto.locale_listener:
-        class: Intracto\SecretSantaBundle\EventListener\LocaleListener
-        arguments: ["%supported_locales%", @jms_i18n_routing.router]
-        tags:
-            - { name: kernel.event_subscriber }
-
     intracto.validator.entry_has_valid_excludes:
         class: Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator
         tags:
