@@ -27,6 +27,24 @@
                 <div class="yoursecretsant">
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
                 </div>
+
+                <div class="well bottom-spacer">
+                    <h4>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
+                    {% if(secret_santa.wishlistitems|length == 0) %}
+                        {# check for legacy wishlist #}
+                        {% if(secret_santa.getwishlist) %}
+                            {{ secret_santa.getwishlist|linkify|raw }}
+                        {% else %}
+                            {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
+                        {% endif %}
+                    {% else %}
+                        <ul class="wishlist">
+                            {% for item in secret_santa.wishlistitems %}
+                                <li class="wishlistitem">{{ item.description|escape|linkify|raw }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
             </div>
             <div class="span4">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -39,23 +57,7 @@
             </div>
         </div>
 
-        <div class="well bottom-spacer">
-            <h4>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
-            {% if(secret_santa.wishlistitems|length == 0) %}
-                {# check for legacy wishlist #}
-                {% if(secret_santa.getwishlist) %}
-                    {{ secret_santa.getwishlist|linkify|raw }}
-                {% else %}
-                    {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
-                {% endif %}
-            {% else %}
-                <ul class="wishlist">
-                    {% for item in secret_santa.wishlistitems %}
-                        <li class="wishlistitem">{{ item.description|escape|linkify|raw }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
+
 
         <h1>{{ 'entry.wishlist.title'|trans }}</h1>
 
