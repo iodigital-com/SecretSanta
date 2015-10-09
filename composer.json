@@ -23,7 +23,8 @@
         "jms/di-extra-bundle": "1.4.*",
         "genemu/form-bundle": "2.2.*",
         "jms/i18n-routing-bundle": "^1.1",
-        "jms/translation-bundle": "^1.1"
+        "jms/translation-bundle": "^1.1",
+        "egulias/email-validator": "~1.2"
     },
     "scripts": {
         "post-install-cmd": [
