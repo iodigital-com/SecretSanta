@@ -12,13 +12,13 @@ parameters:
     mailer_password:   ~
 
     locale:            en
-    supported_locales: [en, nl, fr, pt, ch]
+    supported_locales: [en, nl, fr, pt, zh-Hans]
     locale_names:
         en: English
         nl: Nederlands
         fr: Francais
         pt: Português
-        ch: 正体字/繁体字
+        zh-Hans: 简体中文
 
     secret:            ThisTokenIsNotSoSecretChangeIt
     ad_client:         ca-pub-8492783089085834
