@@ -225,11 +225,11 @@ static:
             <a href="questions"></a><h2>Andere vragen</h2>
             <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via e-mail:<br/>info@secretsantaorganizer.com</p>
     report:
-        max_results: Max resultaten
+        max_results: Aantal resultaten
         from: Van
         to: Tot
         total_visits: Totaal visits
-        submit: Verzend
+        submit: Weergeven
 
 label:
     name: Naam
