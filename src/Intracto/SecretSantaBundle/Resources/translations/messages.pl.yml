@@ -1,0 +1,184 @@
+base:
+  meta:
+    description: Tajny Pomocnik Świętego Mikołaja za darmo pomaga wymieniać się prezentami. Zorganizuj tajną wymianę z przyjaciółmi, rodziną lub współpracownikami i twórz listy życzeń.
+    title: 'Tajny Pomocnik Świętego Mikołaja - pomaga w wymianie prezentów!'
+    og:
+      title: Tajny Pomocnik Świętego Mikołaja
+      site_name: Tajny Pomocnik Świętego Mikołaja
+      description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
+  nav:
+    home: Strona główna
+  privacy_policy: Polityka prywatności
+  have_fun: Have fun organizing your Secret Santa!
+  need_help: '<a href="%FAQ%" target="_blank">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>'
+pool:
+  header:
+    steps:
+      title: 'Twoja wymiana prezentów <br/>w <span class="accent">trzech prostych krokach</span>'
+      list:
+        one: Wybierz uczestników
+        two: Dodaj wiadomość
+        three: Wyślij!
+      get_started: Zaczynamy!
+create:
+  what_is:
+    title: Kim jest Tajny Pomocnik Świętego Mikołaja?
+    intro: |
+      <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer</strong>! Organize a Secret Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
+      <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/> To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a present to one another.</p>
+  add_participants: Dodaj uczestników
+  list_adminstrator: Ta osoba jest także administratorem Twojej listy.
+  add_personal_message:
+    title: Dodaj wiadomość
+    description: Dodaj wiadomość dla uczestników.
+exclude:
+  title: Wyłącz
+  description: Ta lista może potencjalnie wykluczyć pewne kombinacje uczestników. Na przykład uniemożliwić członkom tej samej rodziny wymianę prezentów między sobą.
+created:
+  title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
+  body: "<p> To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions. </p> <p> Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. </p> <p> In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his duty. </p>"
+  warning: Uwaga!
+  check_spam: Nie zapomnij sprawdzić swój folder spam!
+deleted:
+  title: Lista Tajnego Pomocnika Świętego Mikołaja została usunięta!
+  body: '<p>Dziękujemy za skorzystanie z Tajnego Pomocnika Świętego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>'
+manage:
+  title: Twoja lista
+  "yes": true
+  not_yet: Jeszcze nie
+  edit_email: Edytuj e-mail
+  resend_email: Wyślij ponownie e-mail
+  view_entry: Zobacz wpis
+  tip: Wskazówka
+  come_back: Możesz zawsze wrócić na tę stronę aby upewnić się, że wszyscy przeczytali wiadomość.
+  save: Zapisz
+delete:
+  title: Usuń moją listę
+  body: |-
+    <p> Are you ABSOLUTELY sure?<br> <br> <b>Unexpected bad things will happen if you don't read this!</b><br> <br> Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br> This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br> <br> Please type "<b>%phrase_to_type%</b>" below to confirm.<br> </p>
+  phrase_to_type: usuń wszystko
+expose:
+  title: Send me all matches in this mailing list
+  body: '<p> Are you ABSOLUTELY sure?<br> <br> A mail will be send to you, containing the entire mailing list with the matches.<br> <br> <b>Be aware:</b><br> All mailing list members will be notified!<br> <br> Please type "<b>%phrase_to_type%</b>" below to confirm.<br> </p>'
+  phrase_to_type: pokaż mi wszystko
+entry:
+  headers:
+    title: 'Your <span class="accent">Secret Santa party</span> details'
+    date: Data
+    amount: Ilość
+    num_people: Liczba osób
+    person_created_list: Osoba która utworzyła tę listę
+    exposed: Twórca listy mailingowej zna wszystkie kombinacje
+    not_exposed: Twórca listy mailingowej nie zna wszystkich kombinacji
+  title: Your assigned buddy
+  body: '<p>Hi %name%,</p> <p>You are assigned as Secret Santa to give a present to:</p>'
+  wishlist_from: 'Wishlist from %name%'
+  wishlist_not_provided: '%name% has not yet provided a wishlist'
+  wishlist:
+    title: Your wishlist
+    description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
+  wishlist_empty: Your wishlist is empty. Add something!
+static:
+  report:
+    max_results: Max results
+    from: From
+    to: To
+    total_visits: Total visits
+    submit: Submit
+label:
+  name: Name
+  email: E-mail
+  date_party: Date of your Secret Santa party
+  amount_to_spend: Amount to spend
+  exclude: Exclude
+  confirmed: Confirmed
+  actions: Actions
+  description: Description
+placeholder:
+  exclude: Click and choose the participants you want to exclude
+btn:
+  add_person: Add person
+  remove_person: Remove this person
+  create_event: Create your event!
+  create_new_list: Create a new Secret Santa list!
+  delete_list: Delete my Secret Santa list
+  delete_confirm: I understand the consequences, delete my Secret Santa list now
+  add_wishlist: Add item to wishlist
+  remove_item: Remove this item
+  update_wishlist: Update your wishlist
+  expose: Send me all the matches
+  expose_confirm: I understand the consequences, send my Secret Santa mailing list now
+  cancel: Cancel
+emails:
+  sender: Santa Claus
+  base:
+    title: Secret Santa by Intracto
+    footer: Have fun organizing Secret Santa!
+    created_by: Created by
+  pendingconfirmation:
+    subject: Secret Santa Validation
+    salutation: 'Hi %name%'
+    click_button: 'Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.'
+    overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
+    lastly: "And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below."
+    btn_validate: Validate my event
+    click_link: Please click on the link below to validate your Secret Santa mailing list.
+  secretsanta:
+    subject: Your Secret Santa
+    btn_find_out: Find out your person
+    link_find_out: Find out your randomly assigned person to give a gift to, on this url
+  wishlistchanged:
+    subject: Wishlist updated
+    salutation: 'Hi %name%'
+    buddy_updated_wishlist: Your buddy has updated his wishlist.
+    click_button: Click on the button below to check out his suggestions.
+    btn_check_wishlist: Check wishlist
+    click_link: Click on the link below to check out his suggestions.
+  emptywishlistreminder:
+    subject: Your wishlist is still empty
+    updateyourlist: "Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like."
+  viewentryreminder:
+    subject: Find out who your gift buddy is
+    didyouforget: "Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!"
+  created:
+    message: |
+      Hi there (NAME),
+      
+      (ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.
+      
+      Join the Secret Santa fun and find out who your gift buddy is by clicking the button below.
+      
+      You can spend up to %amount% for your gift. But of course creating your own present is allowed. Even encouraged!
+      
+      The Secret Santa party is planned %date%. Be sure to bring your gift!
+      
+      %message%
+      
+      
+      Happy Holidays!
+  admin_matches:
+    subject: Secret Santa Mailing List Matches
+    message:
+      giving: This member is giving ...
+      receiving: ... a gift to this member
+      html: 'Dear %owner%,<br/> <br/> You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.<br/> <br/> Following is an overview of which members are supposed to get gifts for which users.<br/>'
+      txt: |
+        Dear %owner%,
+        You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
+        Following is an overview of which members are supposed to get gifts for which users.
+flashes:
+  manage:
+    email_validated: "<strong>Perfect!</strong><br/>Your email is now validated.<br/> Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/> <br /> Don't forget to confirm your own participation. We've sent you another email. Go check it out!"
+  delete:
+    not_deleted: '<h4>Not deleted</h4> The confirmation was incorrect.'
+  expose:
+    not_exposed: '<h4>Mailing list not send</h4> The confirmation was incorrect.'
+    exposed: '<h4>Mailing list send</h4> All users will be notified when they check their wishlist.'
+  resend:
+    resent: '<strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>'
+  entry:
+    wishlist_updated: "<h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!"
+    edit_email: '<h4>Not saved</h4> There is an error in the email address.'
+    saved_email: '<h4>Saved</h4> The new email address was saved. We also resent the e-mail.'
+  analytics:
+    invalid_data: '<h4>Oops</h4> An error occured while requesting analytics data. Please try again.'
