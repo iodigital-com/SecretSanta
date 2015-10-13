@@ -1,0 +1,15 @@
+/**
+ * @_messages.scss
+ * Define custom formatting for messages instead of Drupal default.
+ */
+.messages {
+  padding: $half-spacing-unit $base-spacing-unit $half-spacing-unit $double-spacing-unit;
+  background-position: $half-spacing-unit center;
+  background-repeat: no-repeat;
+  &.status {
+
+  }
+  &.error {
+
+  }
+}

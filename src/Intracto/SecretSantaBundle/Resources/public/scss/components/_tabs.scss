@@ -1,0 +1,23 @@
+.tabs {
+  @extend .clearfix;
+  border-bottom: 1px solid $border-color;
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+  li {
+    display: inline-block;
+  }
+  a {
+    border-bottom: 2px solid transparent;
+    display: block;
+    padding: 12px 24px;
+    text-decoration: none;
+    &.active {
+      border-color: $border-color;
+    }
+    &:hover {
+      border-color: $link;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+/**
+* @_responsive-drupal-debug.scss
+* Hides drupal ui for responsive debugging once $debug is set to true
+*/
+$debug: true;
+@if $debug == true {
+  @media (max-width: 1000px) {
+    html.js body.admin-menu {
+      margin-top: 0 !important;
+    }
+    #admin-menu, #admin-toolbar, .contextual-links-wrapper, .admin-tabs {
+      display: none !important;
+    }
+  }
+}

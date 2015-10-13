@@ -1,0 +1,101 @@
+/**
+ * @_formelements.scss
+ * Basic form formatting
+ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+input[type="url"],
+input[type="color"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="range"],
+input[type="time"],
+select,
+textarea {
+  background-color: #fff;
+  border: 1px solid $border-color;
+  border-radius: 0;
+  color: $input-color;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $normal;
+  outline: none;
+  padding: em($half-spacing-unit);
+
+  &.error {
+    border-color: $error;
+  }
+}
+
+input[type=submit] {
+  background: $link;
+  border: none;
+  color: $white;
+  padding: $half-spacing-unit $base-spacing-unit;
+  &:hover {
+    background-color: $link-hover;
+  }
+  + a {
+    margin-left: $base-spacing-unit;
+  }
+}
+
+fieldset {
+  font-size: $base-font-size;
+  margin: 0 0 $base-spacing-unit;
+  padding: $half-spacing-unit $base-spacing-unit 0;
+}
+
+legend {
+  margin-left: - $half-spacing-unit/2;
+  padding: $half-spacing-unit/2;
+}
+
+label {
+  cursor: pointer;
+  @extend %above-label;
+
+  .form-type-radio > & {
+    @extend %inline-label;
+  }
+}
+
+.webform-component {
+  margin-bottom: $base-spacing-unit;
+}
+
+.webform-container-inline {
+  display: inline-block;
+  label {
+    @extend %inline-label;
+  }
+}
+
+.form-radios {
+  > .form-item {
+    margin-bottom: $half-spacing-unit/2;
+  }
+}
+
+.form-select {
+  height: 44px;
+  padding: em($half-spacing-unit);
+}
+
+%inline-label {
+  display: inline-block;
+  margin-right: $half-spacing-unit;
+}
+
+%above-label {
+  clear: left;
+  display: block;
+  margin-bottom: $half-spacing-unit;
+  margin-right: 0;
+}
