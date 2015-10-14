@@ -1,15 +1,15 @@
 base:
   meta:
-    description: Tajny Pomocnik Świętego Mikołaja za darmo pomaga wymieniać się prezentami. Zorganizuj tajną wymianę z przyjaciółmi, rodziną lub współpracownikami i twórz listy życzeń.
-    title: 'Tajny Pomocnik Świętego Mikołaja - pomaga w wymianie prezentów!'
+    description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów! Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
+    title: 'Tajny Mikołaj - pomaga w wymianie prezentów!'
     og:
-      title: Tajny Pomocnik Świętego Mikołaja
-      site_name: Tajny Pomocnik Świętego Mikołaja
-      description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
+      title: Tajny Mikołaj
+      site_name: Tajny Mikołaj
+      description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
   nav:
     home: Strona główna
   privacy_policy: Polityka prywatności
-  have_fun: Have fun organizing your Secret Santa!
+  have_fun: Życzymy udanego Tajnego Mikołaja!
   need_help: '<a href="%FAQ%" target="_blank">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>'
 pool:
   header:
@@ -22,10 +22,10 @@ pool:
       get_started: Zaczynamy!
 create:
   what_is:
-    title: Kim jest Tajny Pomocnik Świętego Mikołaja?
+    title: Kim jest Tajny Mikołaj?
     intro: |
-      <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer</strong>! Organize a Secret Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
-      <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/> To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a present to one another.</p>
+      <p>Organizator Tajnego Mikołaja jest <strong>darmowym</strong> narzędziem służącym do <strong>organizacji wymiany prezentów</strong>! Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami. Kiedy otrzymasz list od Tajnego Mikołaja możesz dodać swoją własną <strong>listę życzeń</strong>, która zostanie dostarczona Tajnemu Mikołajowi.</p>
+      <p>Każdego roku w okolicach <strong>Świąt Bożego Narodzenia</strong> ludzie na całym świecie obdarowują się prezentami.<br/> Aby uczynić to jeszcze ciekawszym możesz <strong>losowo przypisać uczestników wymiany</strong> tak aby przygotowali prezenty dla siebie nawzajem.</p>
   add_participants: Dodaj uczestników
   list_adminstrator: Ta osoba jest także administratorem Twojej listy.
   add_personal_message:
@@ -36,14 +36,14 @@ exclude:
   description: Ta lista może potencjalnie wykluczyć pewne kombinacje uczestników. Na przykład uniemożliwić członkom tej samej rodziny wymianę prezentów między sobą.
 created:
   title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
-  body: "<p> To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions. </p> <p> Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. </p> <p> In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his duty. </p>"
+  body: '<p>Aby powstrzymać trolle przed zrujnowaniem Twojego Przyjęcia Tajnego Mikołaja potrzebujemy znać <b>%ownername%</b> organizatora listy aby zweryfikować jego uczestnictwo. Wysłaliśmy mail do <b>%owneremail%</b> z kolejnymi informacjami.</p><p>Po weryfikacji Twoja lista Tajnego Mikołaja zostanie wymieszana i uczestnicy otrzymają Twoją wiadomość wraz z imieniem osoby do obdarowania.</p><p>W wiadomości weryfikacyjnej organizator listy znajdzie link, który umożliwi mu śledzenie aktywności pozostałych uczestników, którzy mają już przypisane osoby do obdarowania. To daje pewność, że każdy Tajny Mikołaj wie co ma robić.</p>'
   warning: Uwaga!
-  check_spam: Nie zapomnij sprawdzić swój folder spam!
+  check_spam: Nie zapomnij sprawdzić folderu spam!
 deleted:
-  title: Lista Tajnego Pomocnika Świętego Mikołaja została usunięta!
-  body: '<p>Dziękujemy za skorzystanie z Tajnego Pomocnika Świętego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>'
+  title: Lista Tajnego Mikołaja została usunięta!
+  body: '<p>Dziękujemy za skorzystanie z Tajnego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>'
 manage:
-  title: Twoja lista
+  title: Twoja lista Tajnego Mikołaja
   "yes": true
   not_yet: Jeszcze nie
   edit_email: Edytuj e-mail
@@ -53,132 +53,129 @@ manage:
   come_back: Możesz zawsze wrócić na tę stronę aby upewnić się, że wszyscy przeczytali wiadomość.
   save: Zapisz
 delete:
-  title: Usuń moją listę
-  body: |-
-    <p> Are you ABSOLUTELY sure?<br> <br> <b>Unexpected bad things will happen if you don't read this!</b><br> <br> Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br> This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br> <br> Please type "<b>%phrase_to_type%</b>" below to confirm.<br> </p>
+  title: Usuń moją listę Tajnego Mikołaja
+  body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br><b>Jeśli tego nie przeczytasz mogą wydarzyć się złe rzeczy!</b><br><br>Kiedy skasujesz listę Tajnego Mikołaja, nie ma już powrotu. NIE DA SIĘ już tego cofnąć.<br> Zostanie usunięta lista Tajnego Mikołaja, wszyscy jej uczestnicy i ich listy życzeń.<br><br> Wpisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
   phrase_to_type: usuń wszystko
 expose:
-  title: Send me all matches in this mailing list
-  body: '<p> Are you ABSOLUTELY sure?<br> <br> A mail will be send to you, containing the entire mailing list with the matches.<br> <br> <b>Be aware:</b><br> All mailing list members will be notified!<br> <br> Please type "<b>%phrase_to_type%</b>" below to confirm.<br> </p>'
+  title: Wyślij mi wszystkie dopasowania na tej liście
+  body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br> Wyślemy Ci mail, zawierający listę wszystkich dopasowań pomiędzy użytkownikami.<br><br><b>Pamiętaj:</b><br> Wszyscy uczestnicy zostaną powiadomieni!<br><br> Proszę napisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
   phrase_to_type: pokaż mi wszystko
 entry:
   headers:
-    title: 'Your <span class="accent">Secret Santa party</span> details'
+    title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
     date: Data
     amount: Ilość
     num_people: Liczba osób
     person_created_list: Osoba która utworzyła tę listę
-    exposed: Twórca listy mailingowej zna wszystkie kombinacje
-    not_exposed: Twórca listy mailingowej nie zna wszystkich kombinacji
-  title: Your assigned buddy
-  body: '<p>Hi %name%,</p> <p>You are assigned as Secret Santa to give a present to:</p>'
-  wishlist_from: 'Wishlist from %name%'
-  wishlist_not_provided: '%name% has not yet provided a wishlist'
+    exposed: Twórca listy mailingowej wie wszystko o tym kto komu daje prezent
+    not_exposed: Twórca listy mailingowej nie wie kto komu daje prezent
+  title: Osoba, którą masz obdarować
+  body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
+  wishlist_from: 'Lista życzeń %name%'
+  wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
   wishlist:
-    title: Your wishlist
-    description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
-  wishlist_empty: Your wishlist is empty. Add something!
+    title: Twoja lista życzeń
+    description: Aby pomóc Tajnemu Mikołajowi możesz zostawić tu listę życzeń. Nasze skrzaty przekażą wszystko Tajnemu Mikołajowi. Możesz zmienić kolejność rzeczy na liście przenosząc je z miejsca na miejsce.
+  wishlist_empty: Twoja lista życzeń jest pusta. Dodaj coś!
 static:
   report:
-    max_results: Max results
-    from: From
-    to: To
-    total_visits: Total visits
-    submit: Submit
+    max_results: Maksymalnie wyników
+    from: Od
+    to: Do
+    total_visits: Razem wizyt
+    submit: Wyślij
 label:
-  name: Name
+  name: Imię
   email: E-mail
-  date_party: Date of your Secret Santa party
-  amount_to_spend: Amount to spend
-  exclude: Exclude
-  confirmed: Confirmed
-  actions: Actions
-  description: Description
+  date_party: Data Twojego Przyjęcia Tajnego Mikołaja
+  amount_to_spend: Suma do wydania
+  exclude: Wyłącz
+  confirmed: Potwierdzony
+  actions: Akcje
+  description: Opis
 placeholder:
-  exclude: Click and choose the participants you want to exclude
+  exclude: Kliknij i wybierz uczestników, których chcesz wykluczyć
 btn:
-  add_person: Add person
-  remove_person: Remove this person
-  create_event: Create your event!
-  create_new_list: Create a new Secret Santa list!
-  delete_list: Delete my Secret Santa list
-  delete_confirm: I understand the consequences, delete my Secret Santa list now
-  add_wishlist: Add item to wishlist
-  remove_item: Remove this item
-  update_wishlist: Update your wishlist
-  expose: Send me all the matches
-  expose_confirm: I understand the consequences, send my Secret Santa mailing list now
-  cancel: Cancel
+  add_person: Dodaj osobę
+  remove_person: Usuń osobę
+  create_event: Utwórz wydarzenie!
+  create_new_list: Stwórz nową listę Tajnego Mikołaja!
+  delete_list: Usuń moją listę Tajnego Mikołaja
+  delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja
+  add_wishlist: Dodaj do listy życzeń
+  remove_item: Usuń pozycję
+  update_wishlist: Zapisz listę życzeń
+  expose: Wyślij mi wszystkie pary uczestników
+  expose_confirm: Rozumiem konsekwencje, roześlij moją listę Tajnego Mikołaja
+  cancel: Anuluj
 emails:
-  sender: Santa Claus
+  sender: Tajny Mikołaj
   base:
-    title: Secret Santa by Intracto
-    footer: Have fun organizing Secret Santa!
-    created_by: Created by
+    title: Tajny Mikołaj stworzony przez Intracto
+    footer: Życzymy udanego Przyjęcia Tajnego Mikołaja!
+    created_by: Utworzona przez
   pendingconfirmation:
-    subject: Secret Santa Validation
-    salutation: 'Hi %name%'
-    click_button: 'Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.'
-    overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
-    lastly: "And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below."
-    btn_validate: Validate my event
-    click_link: Please click on the link below to validate your Secret Santa mailing list.
+    subject: Weryfikacja Tajnego Mikołaja
+    salutation: 'Cześć %name%'
+    click_button: Kliknij w przycisk poniżej aby zweryfikować Twoją listę mailingową Tajnego Mikołaja. To spowoduje, że nasze skrzaty roześlą wiadomość którą wcześniej napisałeś do wszystkich uczestników.
+    overview_page: Wkrótce zobaczysz stronę, gdzie będziesz mógł śledzić wszystkich Twoich uczestników odkrywających osoby, które mają obdarować. Dowiesz się z niej kiedy lista będzie kompletna.
+    lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
+    btn_validate: Zweryfikuj wydarzenie
+    click_link: Kliknij w link poniżej aby zweryfikować Twoją Listę Tajnego Mikołaja.
   secretsanta:
-    subject: Your Secret Santa
-    btn_find_out: Find out your person
-    link_find_out: Find out your randomly assigned person to give a gift to, on this url
+    subject: Twój Tajny Mikołaj
+    btn_find_out: Dowiedz się kim jest Twoja osoba
+    link_find_out: Dowiedz się, kim jest losowo wybrana osoba do obdarowania, pod tym adresem
   wishlistchanged:
-    subject: Wishlist updated
-    salutation: 'Hi %name%'
-    buddy_updated_wishlist: Your buddy has updated his wishlist.
-    click_button: Click on the button below to check out his suggestions.
-    btn_check_wishlist: Check wishlist
-    click_link: Click on the link below to check out his suggestions.
+    subject: Lista życzeń została zaktualizowana
+    salutation: 'Cześć %name%'
+    buddy_updated_wishlist: Osoba, którą masz obdarować, zaktualizowała swoją listę życzeń.
+    click_button: Kliknij na przycisk poniżej aby uzyskać podpowiedzi.
+    btn_check_wishlist: Sprawdź listę życzeń
+    click_link: Kliknij na link poniżej aby zobaczyć podpowiedzi.
   emptywishlistreminder:
-    subject: Your wishlist is still empty
-    updateyourlist: "Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like."
+    subject: Twoja lista życzeń jest nadal pusta
+    updateyourlist: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
   viewentryreminder:
-    subject: Find out who your gift buddy is
-    didyouforget: "Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!"
+    subject: Dowiedz się, kim jest osoba, którą masz obdarować
+    didyouforget: Zapomniałeś o naszym Przyjęciu Tajnego Mikołaja? Nie sprawdziłeś(aś) kim jest osoba, którą masz obdarować!
   created:
     message: |
-      Hi there (NAME),
+      Witaj (NAME),
       
-      (ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.
+      (ADMINISTRATOR) utworzył nowe wydarzenie Tajnego Mikołaja wskazał Cię jako jednego z uczestników.
       
-      Join the Secret Santa fun and find out who your gift buddy is by clicking the button below.
+      Przyłącz się do zabawy w Tajnego Mikołaja i dowiedz się, kim jest osoba, którą masz obdarować, klikając na link poniżej.
       
-      You can spend up to %amount% for your gift. But of course creating your own present is allowed. Even encouraged!
+      Możesz wydać nie więcej niż %amount% na swój prezent. Oczywiście samodzielne stworzenie swojego prezentu jest dozwolone, a nawet wskazane!
       
-      The Secret Santa party is planned %date%. Be sure to bring your gift!
+      Przyjęcie Tajnego Mikołaja jest planowane na %date%. Pamiętaj zabrać na nie swój prezent!
       
       %message%
       
-      
-      Happy Holidays!
+      Wesołych Świąt!
   admin_matches:
-    subject: Secret Santa Mailing List Matches
+    subject: Dopasowania na liście Tajnych Mikołajów
     message:
-      giving: This member is giving ...
-      receiving: ... a gift to this member
-      html: 'Dear %owner%,<br/> <br/> You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.<br/> <br/> Following is an overview of which members are supposed to get gifts for which users.<br/>'
+      giving: Ten uczestnik podaruje...
+      receiving: ... prezent dla tego uczestnika
+      html: 'Drogi(a) %owner%,<br/><br/>Poprosiłeś(aś) o wysłanie wszystkich dopasowań na Twojej liście Tajnych Mikołajów. Pamiętaj, że wszyscy uczestnicy dowiedzą się o tym, kiedy zajrzą na swoje listy życzeń.<br/><br/>Poniżej znajdziesz informacje, kto kogo powinien obdarować.<br/>'
       txt: |
-        Dear %owner%,
-        You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
-        Following is an overview of which members are supposed to get gifts for which users.
+        Drogi(a) %owner%,
+        Poprosiłeś(aś) o wysłanie wszystkich dopasowań na Twojej liście Tajnych Mikołajów. Pamiętaj, że wszyscy uczestnicy dowiedzą się o tym, kiedy zajrzą na swoje listy życzeń. Poniżej znajdziesz informacje, kto kogo powinien obdarować.
 flashes:
   manage:
-    email_validated: "<strong>Perfect!</strong><br/>Your email is now validated.<br/> Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/> <br /> Don't forget to confirm your own participation. We've sent you another email. Go check it out!"
+    email_validated: '<strong>Świetnie!</strong><br/>Twój email został zweryfikowany.<br/> Nasze skrzaty wyruszyły w internetową podróż, żeby dostarczyć wszystkie wiadomości dla przyszłych Tajnych Mikołajów.<br/><br/> Nie zapomnij potwierdzić swojego uczestnictwa. Wyślemy Ci kolejny email. Sprawdź swoją skrzynkę pocztową!'
   delete:
-    not_deleted: '<h4>Not deleted</h4> The confirmation was incorrect.'
+    not_deleted: '<h4>Nie usunięto</h4> Nie odnotowano prawidłowego potwierdzenia.'
   expose:
-    not_exposed: '<h4>Mailing list not send</h4> The confirmation was incorrect.'
-    exposed: '<h4>Mailing list send</h4> All users will be notified when they check their wishlist.'
+    not_exposed: '<h4>Nie rozesłano listów</h4> Nie odnotowano prawidłowego potwierdzenia.'
+    exposed: '<h4>Listy zostały rozesłane</h4> Wszyscy użytkownicy zostaną powiadomieni, kiedy sprawdzą swoje listy życzeń.'
   resend:
-    resent: '<strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>'
+    resent: '<strong>Wysłano ponownie!</strong><br/>E-mail do %email% został ponownie wysłany.<br/>'
   entry:
-    wishlist_updated: "<h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!"
-    edit_email: '<h4>Not saved</h4> There is an error in the email address.'
-    saved_email: '<h4>Saved</h4> The new email address was saved. We also resent the e-mail.'
+    wishlist_updated: '<h4>Lista życzeń zaktualizowana</h4> Wysłaliśmy nasze skrzaty aby poinformowały Tajnego Mikołaja o twoich życzeniach!'
+    edit_email: '<h4>Nie zapisano</h4> Występuje błąd w adresie email.'
+    saved_email: '<h4>Zapisano</h4> Nowy adres email został zapisany. Ponownie wysłaliśmy e-mail.'
   analytics:
-    invalid_data: '<h4>Oops</h4> An error occured while requesting analytics data. Please try again.'
+    invalid_data: '<h4>Ojej</h4> Wystąpił błąd podczas pobierania danych. Spróbuj ponownie.'
