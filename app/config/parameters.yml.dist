@@ -12,7 +12,15 @@ parameters:
     mailer_password:   ~
 
     locale:            en
-    supported_locales: [en, nl, fr, pt, zh-Hans, pl, ru, es]
+    supported_locales:
+        - en
+        - es
+        - fr
+        - nl
+        - pl
+        - pt
+        - ru
+        - zh-Hans
     locale_names:
         en: English
         nl: Nederlands
