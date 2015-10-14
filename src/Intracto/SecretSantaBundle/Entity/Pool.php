@@ -10,7 +10,7 @@ use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
  * Intracto\SecretSantaBundle\Entity\Pool
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PoolRepository")
  * @ORM\HasLifecycleCallbacks
  *
  * @PoolHasValidExcludes(groups={"exclude_entries"})
@@ -102,7 +102,11 @@ class Pool
 
         // Create default minimum entries
         for ($i = 0; $i < 3; $i++) {
-            $this->addEntry(new Entry());
+            $entry = new Entry();
+            if ($i == 0) {
+                $entry->setPoolAdmin(true);
+            }
+            $this->addEntry($entry);
         }
     }
 
