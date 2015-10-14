@@ -1,0 +1,236 @@
+base:
+    meta:
+        description: ¡Secret Santa Organizer es un organizador de intercambio de regalos gratuito en línea! Organiza una fiesta Secret Santa con amigos, familia o incluso compañeros y añade tu lista de deseos.
+        title: Organizador de intercambio de regalos en línea Secret Santa!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: ¡Secret Santa Organizer es un organizador de intercambio de regalos gratis en línea! Organiza una fiesta Secret Santa con amigos, familia o incluso compañeros y añade tu lista de deseos.
+    nav:
+        home: Página de inicio
+    privacy_policy: Política de privacidad
+    have_fun: ¡Diviértete organizando tu Secret Santa!
+    need_help: <a href="%FAQ%" target="_blank">¿Necesitas ayuda? ¿Tienes preguntas? ¡Lee las Preguntas Frecuentes!</a>
+pool:
+    header:
+        steps:
+            title: Tu evento de intercambio de regalos <br/>en <span class="accent">3 sencillos pasos </span>
+            list:
+                one: Haz una lista de tus participantes
+                two: Añade un mensaje personal
+                three: ¡Envía!
+            get_started: ¡Prepárate!
+
+create:
+    what_is:
+        title: ¿Qué es Secret Santa?
+        intro: >
+                <p>Es un <strong>organizador de intercambio de regalos gratuito</strong> en línea Secret Santa. Organiza una fiesta Secret Santa con tus amigos, familia o incluso compañeros de trabajo. Después de recibir el correo de Secret Santa puedes añadir tu propia <strong>lista de deseos</strong>, que será entregada a tu Secret Santa.</p>
+
+                <p>Cada año cerca de la época de <strong> Navidad</strong> la gente de todo el mundo intercambia regalos.<br/>
+                Para hacer que las cosas sigan siendo interesantes, podéis <strong>asignar aleatoriamente personas</strong> para entregaros el regalo unos a otros.</p>
+
+    add_participants: Añade tus participantes
+    list_adminstrator: Esta persona también es el administrador de tu lista.
+    add_personal_message:
+        title: Añade un mensaje personal
+        description: Añade un mensaje personal para los participantes.
+exclude:
+   title: Excluye
+   description: Con esta lista puedes evitar, opcionalmente, algunas combinaciones de participantes. Por ejemplo, evitar que miembros de la misma familia tengan que comprar regalos los unos para los otros.
+created:
+    title: ¡Sólo 1 paso para terminar! – Valida tu participación
+    body: >
+            <p>
+                Para evitar que robots o trols echen por tierra tu fiesta Secret Santa, necesitamos que el organizador de la lista <b>%ownername%</b> valide su participación. Hemos enviado un correo electrónico a <b>%owneremail%</b> con más instrucciones.
+            </p>
+            <p>
+                Una vez validada, tu lista Secret Santa será mezclada y todos los usuarios recibirán tu mensaje junto con el nombre de su amigo del regalo Secret Santa.
+            </p>
+            <p>
+                En el correo electrónico de validación el organizador de la lista también encontrará un enlace para seguir a todos los usuarios en su lista Secret Santa que ya hayan descubierto a su amigo del regalo. Asegúrate de que cada Secret Santa sepa su cometido.
+            </p>
+    warning: ¡Advertencia!
+    check_spam: ¡No olvides comprobar tu carpeta de correo no deseado!
+
+deleted:
+    title: ¡Tu lista Secret Santa fue borrada!
+    body: >
+        <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
+
+manage:
+    title: Tu lista Secret Santa
+    yes: Sí
+    not_yet: Aún no
+    edit_email: Editar correo electrónico
+    resend_email: Volver a enviar correo electrónico
+    view_entry: Ver entrada
+    tip: Consejo
+    come_back: Siempre puedes volver a esta página para asegurarte de que todo el mundo ha comprobado su buzón de correo electrónico.
+    save: Guardar
+
+delete:
+    title: Borrar mi lista Secret Santa
+    body: >
+        <p>
+            ¿Estás COMPLETAMENTE seguro?<br>
+            <br>
+            <b>¡Cosas malas inesperadas sucederán si no lees esto!</b><br>
+            <br>
+            Una vez hayas borrada tu lista Secret Santa, no hay vuelta atrás. Esta acción NO puede deshacerse.<br>
+            Esto borrará esta lista Secret Santa, todos sus participantes y sus listas de deseos permanentemente.<br>
+            <br>
+            Por favor escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
+        </p>
+    phrase_to_type: borrar todo
+expose:
+    title: Enviarme todas las atribuciones en esta lista de correos
+    body: >
+        <p>
+            ¿Estás COMPLETAMENTE seguro?<br>
+            <br>
+            Se te enviará un correo electrónico, con toda la lista de correos con todas las atribuciones.<br>
+            <br>
+            <b>Atención:</b><br>
+            ¡Se notificará a todos los miembros de la lista de correos!<br>
+            <br>
+            Por favor, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
+        </p>
+    phrase_to_type: mostrarme todo
+entry:
+    headers:
+        title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
+        date: Fecha
+        amount: Cantidad
+        num_people: Número de personas
+        person_created_list: Persona que creó esta lista
+        exposed: El creador de la lista de correos conoce todas las atribuciones
+        not_exposed: El creador de la lista de correos no conoce todas las atribuciones
+    title: Tu amigo asignado
+    body: >
+        <p>Hola %name%,</p>
+        <p>Se te ha asignado como Secret Santa para entregar un regalo a:</p>
+    wishlist_from: Lista de deseos de %name%
+    wishlist_not_provided: %name% aún no ha facilitado una lista de deseos
+    wishlist:
+        title: Tu lista de deseos
+        description: Para ayudar a tu Secret Santa, puedes dejar una lista de deseos aquí. Nuestros gnomos se encargarán de comunicársela a tu Secret Santa. Puedes reordenar la lista moviendo los elementos hacia el lugar adecuado.
+    wishlist_empty: Tu lista de deseos está vacía. ¡Añade algo!
+
+static:
+    report:
+        max_results: Resultados máx.
+        from: De
+        to: A
+        total_visits: Visitas totales
+        submit: Enviar
+
+label:
+    name: Nombre
+    email: Correo electrónico
+    date_party: Fecha de tu fiesta Secret Santa
+    amount_to_spend: Cantidad a gastar
+    exclude: Excluir
+    confirmed: Confirmado
+    actions: Acciones
+    description: Descripción
+placeholder:
+    exclude: Hacer clic y elegir los participantes que se quiere excluir
+btn:
+    add_person: Añadir persona
+    remove_person: Quitar esta persona
+    create_event: ¡Crear tu evento!
+    create_new_list: ¡Crear una nueva lista Secret Santa!
+    delete_list: Borrar mi lista Secret Santa
+    delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
+    add_wishlist: Añadir elemento a lista de deseos
+    remove_item: Quitar este elemento
+    update_wishlist: Actualizar tu lista de deseos
+    expose: Enviarme todas las atribuciones
+    expose_confirm: Comprendo las consecuencias, enviar mi lista de correos Secret Santa ahora
+    cancel: Cancelar
+
+emails:
+    sender: Santa Claus
+    base:
+        title: Secret Santa by Intracto
+        footer: ¡Diviértete organizando Secret Santa!
+        created_by: Creado por
+    pendingconfirmation:
+        subject: Validación Secret Santa
+        salutation: Hola %name%
+        click_button: Por favor, haz clic en el botón de debajo para validar tu lista de correos Secret Santa. Esto hará que nuestros gnomos envíen a todos tus participantes el mensaje personal que has creado anteriormente.
+        overview_page: En la página de resumen recién creada podrás seguir a todos tus usuarios que han descubierto sus amigos del regalo Secret Santa. Por lo tanto, sabrás cuándo está completa la lista.
+        lastly: Finalmente, ¡no olvides confirmar también tu propia participación! También te enviaremos un nuevo correo electrónico después de que hagas clic en el botón de validación de abajo.
+        btn_validate: Validar mi evento
+        click_link: Por favor, haz clic en el enlace de abajo para validar tu lista de correos Secret Santa.
+    secretsanta:
+        subject: Tu Secret Santa
+        btn_find_out: Descubre a tu persona
+        link_find_out: Descubre a la persona que has asignado aleatoriamente para que dé un regalo en esta url
+    wishlistchanged:
+        subject: Lista de deseos actualizada
+        salutation: Hola %name%
+        buddy_updated_wishlist: Tu amigo ha actualizado su lista de deseos.
+        click_button: Haz clic en el botón de debajo para ver sus sugerencias.
+        btn_check_wishlist: Comprobar la lista de deseos
+        click_link: Haz clic en el siguiente enlace para ver sus sugerencias.
+    emptywishlistreminder:
+        subject: Tu lista de deseos aún sigue vacía
+        updateyourlist: ¡Tu fiesta Secret Santa está cerca y aún no has actualizado tu lista de deseos! Podrías añadir aquello que te gustaría tener.
+    viewentryreminder:
+        subject: Descubrir quién es tu amigo del regalo
+        didyouforget: ¿Olvidaste nuestra fiesta Secret Santa? ¡Aún no has comprobado tu amigo del regalo!
+    created:
+        message: |
+            Hola (NAME),
+
+            (ADMINISTRATOR) creó un evento Secret Santa y te ha listado como participante.
+
+            Únete a la diversión Secret Santa y descubre quién es tu amigo del regalo haciendo clic en el siguiente botón.
+
+            Puedes gastar hasta %amount% para tu regalo. Pero, por supuesto, se permite crear tu propio regalo, es más, ¡se te anima a ello!
+
+            La fiesta Secret Santa está planeada para el %date%. ¡Asegúrate de traer tu regalo!
+
+            %message%
+
+
+            ¡Felices Fiestas!
+    admin_matches:
+        subject: Atribuciones Lista de Correos Secret Santa
+        message:
+            giving: Este miembro está dando ...
+            receiving: ... un regalo a este miembro
+            html: >
+                Estimado %owner%,<br/>
+                <br/>
+                Has solicitado todas las atribuciones en tu lista de correos. Por favor, ten en cuenta que todos los miembros podrán ver eso en su página de la lista de deseos.<br/>
+                <br/>
+                A continuación un resumen de qué miembros se supone que van a recibir regalos y de parte de qué usuarios.<br/>
+            txt: >
+                Estimado %owner%,
+
+                Has solicitado todas las atribuciones en tu lista de deseos. Por favor, ten en cuenta que todos los miembros podrán ver eso en su página de la lista de deseos.
+
+                A continuación un resumen de qué miembros se supone que van a recibir regalos y de parte de qué usuarios.
+flashes:
+    manage:
+        email_validated: >
+         <strong>¡Perfecto!</strong><br/>Tu correo electrónico ha sido validado.<br/>
+         Nuestros gnomos están viajando por Internet mientras hablamos, entregando a todos tus futuros Secret Santas sus amigos del regalo.<br/>
+         <br />
+         No olvides confirmar tu propia participación. Te hemos mandado otro correo electrónico. ¡Compruébalo!
+    delete:
+        not_deleted: <h4>No borrado</h4> La confirmación era incorrecta.
+    expose:
+        not_exposed: <h4>No enviar lista de correos </h4> La confirmación era incorrecta.
+        exposed: <h4>Enviar lista de correos</h4> Se notificará a todos los usuarios cuando comprueben su lista de deseos.
+    resend:
+        resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
+    entry:
+        wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
+        edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
+        saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
+    analytics:
+        invalid_data: <h4>Oops</h4> Ha ocurrido un error al requerir los datos analíticos. Por favor, inténtalo otra vez.
