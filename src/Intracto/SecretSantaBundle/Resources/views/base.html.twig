@@ -8,6 +8,7 @@
     <meta property="og:image" content="http://secretsantaorganiser.com/bundles/intractosecretsanta/img/ico/social.jpg"/>
     <meta property="og:site_name" content="{{ 'base.meta.og.site_name'|trans }}"/>
     <meta property="og:description" content="{{ 'base.meta.og.description'|trans }}"/>
+    {% block metadata %}{% endblock %}
     <title>{% block title %}{{ 'base.meta.title'|trans }}{% endblock %}</title>
 
     {% for supported_locale in supported_locales if app.request.get('_route_params') is not null and supported_locale != app.request.get('_locale') %}
