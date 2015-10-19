@@ -1,0 +1,239 @@
+base:
+    meta:
+        description: Secret Santa Organizer ist ein kostenloses Online-Programm zum Organisieren des Secret Santa-Geschenketausch! Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen und fügen Sie einen Wunschzettel zu.
+        title: Secret Santa Online Geschenketausch-Organizer!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: Secret Santa Organizer ist ein kostenloses Online-Programm zum Organisieren des Secret Santa-Geschenketauschs. Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen und fügen Sie einen Wunschzettel zu.
+    nav:
+        home: Startseite
+    privacy_policy: Datenschutzrichtlinien
+    have_fun: Genießen Sie es, Ihr Secret Santa zu organisieren.
+    need_help: <a href="%FAQ%" target="_blank">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
+pool:
+    header:
+        steps:
+            title: Ihr Geschenketausch <br/>in <span class="accent">3 einfachen Schritten</span>
+            list:
+                one: Listen Sie Ihre Teilnehmer auf
+                two: Fügen Sie eine persönliche Nachricht hinzu
+                three: Versenden!
+            get_started: Los geht´s!
+
+create:
+    what_is:
+        title: Was ist Secret Santa?
+        intro: >
+                <p>Es ist ein <strong>kostenloser</strong> online Secret Santa <strong>Geschenketausch-Organizer</strong>! Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen. Nachdem Sie die Secret-Santa-Mail empfangen haben, können Sie
+                Ihren eigenen <strong>Wunschzettel hinzufügen,</strong>, der an Ihren Secret Santa geliefert wird.</p>
+
+                <p>Jedes Jahr <strong>in der Weihnachtszeit</strong> tauschen Menschen in der ganzen Welt Geschenke aus.<br/>
+                Um dies spannender zu gestalten, <strong>können Sie beliebige Menschen beauftragen</strong> einander
+                zu beschenken.</p>
+
+    add_participants: Fügen Sie Ihre Teilnehmer hinzu
+    list_adminstrator: Diese Person ist auch Ihr Listenadministrator
+    add_personal_message:
+        title: Fügen Sie eine persönliche Nachricht hinzu
+        description: Fügen Sie eine persönliche Nachricht für die Teilnehmer hinzu.
+exclude:
+   title: Ausschlieβen 
+   description: Mit dieser Liste können Sie auch Kombinationen von Teilnehmern ausschließen. o können Sie zum Beispiel verhindern, dass Mitglieder derselben Familie Geschenke füreinander kaufen solle.
+created:
+    title: Nur noch ein Schritt! - Bestätigen Sie Ihre Teilnahme
+    body: >
+            <p>
+                Um zu verhindern, dass Bots oder Trolle die Secret Santa-Party ruinieren, fordert der Listen-Organizer, <b>%ownername%</b> dass alle Teilnehmer ihre Teilnahme bestätigen. Wir haben Ihnen eine Mail mit <b>%owneremail%</b> weiteren Informationen zugesandt.
+            </p>
+            <p>
+                Sobald Ihre Secret Santa-Liste bestätigt ist, wird sie verschlüsselt und alle Teilnehmer empfangen Ihre Nachricht und den Namen Ihres Secret Santa-Geschenkepartners.
+            </p>
+            <p>
+                In der Bestätigungs-E-Mail befindet sich auch ein Link, mit dessen Hilfe der Listen-Organizer nachvollziehen kann, welcher Teilnehmer bereits seinen Geschenkepartner gefunden hat. Stellen Sie sicher, dass jeder Secret Santa-Teilnehmer seine Pflichten kennt.
+            </p>
+    warning: Vorsicht!
+    check_spam: Vergessen Sie nicht, Ihren Spam-Ordner zu kontrollieren!
+
+deleted:
+    title: Ihre Secret Santa-Liste wurde gelöscht!
+    body: >
+        <p>Vielen Dank, dass Sie den Secret Santa-Organizer benutzt haben. Wir hoffen, Sie nächstes Jahr wieder begrüßen zu dürfen!</p>
+
+manage:
+    title: Ihre Secret Santa-Liste
+    yes: Ja
+    not_yet: Noch nicht
+    edit_email: E-Mail bearbeiten
+    resend_email: E-Mail neu senden
+    view_entry: Eintrag anzeigen
+    tip: Hinweis
+    come_back: Sie können jederzeit auf diese Seite zurückkehren, um zu überprüfen, ob alle Teilnehmer ihr Postfach kontrolliert haben.
+    save: Speichern
+
+delete:
+    title: Meine Secret Santa-Liste löschen
+    body: >
+        <p>
+            Sind Sie WIRKLICH sicher?<br>
+            <br>
+            <b>Unerwartete negative Dinge werden passieren, wenn Sie dies nicht lesen!</b><br>
+            <br>
+            Es gibt kein Zurück mehr, sobald Sie Ihre Secret Santa-Liste gelöscht haben. Dieser Schritt kann nicht rückgängig gemacht werden.<br>
+            Dies löscht Ihre Secret Santa-Liste, alle Teilnehmer und deren Wunschzettel dauerhaft.<br>
+            <br>
+            Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
+        </p>
+    phrase_to_type: alles löschen
+expose:
+    title: Senden Sie mir alle Treffer aus diesem Mail-Verteiler zu
+    body: >
+        <p>
+            Sind Sie WIRKLICH sicher?<br>
+            <br>
+            Sie bekommen eine Mail zugesandt, die den kompletten Mail-Verteiler und alle Treffer enthält.<br>
+            <br>
+            <b>Bitte beachten Sie:</b><br>
+            Alle Mitglieder der Liste werden benachrichtigt!<br>
+            <br>
+            Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
+        </p>
+    phrase_to_type: alles anzeigen
+entry:
+    headers:
+        title: Ihre <span class="accent">Secret Santa-Party</span> Details
+        date: Datum
+        amount: Betrag
+        num_people: Anzahl Teilnehmer
+        person_created_list: Person, die die Liste erstellt hat
+        exposed: Die Person, die die Liste erstellt hat, kennt alle Treffer
+        not_exposed: Die Person, die die Liste erstellt hat, kennt nicht alle Treffer
+    title: Der Ihnen zugeordnete Partner
+    body: >
+        <p>Hi %name%,</p>
+        <p>Sie wurden als Secret Santa eingeteilt, dieser Person ein Geschenk zu machen:</p>
+    wishlist_from: Wunschzettel von %name%
+    wishlist_not_provided: %name% hat noch keinen Wunschzettel geschrieben
+    wishlist:
+        title: Ihr Wunschzettel
+        description: Um Ihrem Secret Santa zu helfen, können Sie hier einen Wunschzettel hinterlegen. Unsere Wichtel kümmern sich darum, diese Ihrem Secret Santa mitzuteilen. Sie können die Liste neu sortieren, indem Sie die Bestandteile an deren Platz ziehen.
+    wishlist_empty: Ihr Wunschzettel ist leer. Fügen Sie etwas hinzu!
+
+static:
+    report:
+        max_results: maximale Ergebnisse
+        from: Von
+        to: An:
+        total_visits: Besuche insgesamt
+        submit: Senden
+
+label:
+    name: Name
+    email: E-Mail:
+    date_party: Datum Ihrer Secret Santa-Party
+    amount_to_spend: Auszugebender Betrag
+    exclude: Ausschließen
+    confirmed: Bestätigt
+    actions: Aktionen 
+    description: Beschreibung
+placeholder:
+    exclude: Um den Teilnehmer auszuwählen, der ausgeschlossen werden soll, klicken Sie auf dessen Namen.
+btn:
+    add_person: Person hinzufügen
+    remove_person: Diese Person entfernen
+    create_event: Erstellen Sie Ihr Ereignis!
+    create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
+    delete_list: Meine Secret Santa-Liste löschen
+    delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
+    add_wishlist: Dem Wunschzettel einen Gegenstand hinzufügen
+    remove_item: Diesen Gegenstand entfernen
+    update_wishlist: Aktualisieren Sie Ihren Wunschzettel
+    expose: Senden Sie mir alle Treffer zu
+    expose_confirm: Ich habe die Konsequenzen verstanden, meinen Secret Santa-Mail-Verteiler jetzt versenden 
+    cancel: Löschen
+
+emails:
+    sender: Santa Claus
+    base:
+        title: Secret Santa von Intracto
+        footer: Genießen Sie es, Ihren Secret Santa zu organisieren.
+        created_by: Entworfen durch
+    pendingconfirmation:
+        subject: Secret Santa Bestätigung
+        salutation: Hi %name%
+        click_button: Bitte klicken Sie auf den untenstehenden Button, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.  Dies veranlasst unsere Wichtel dazu, Ihre vorher geschriebene persönliche Nachricht an alle Ihre Teilnehmer zu versenden.
+        overview_page: Auf der neu-entworfenen Übersichtsseite können Sie dann nachvollziehen, wie Ihre Teilnehmer deren Secret Santa-Partner entdecken. So wissen Sie, wann die Liste komplett ist.
+        lastly: Vergessen Sie am Ende nicht, Ihre eigene Teilnahme auch zu bestätigen. Auch Sie bekommen eine neue E-Mail, nachdem Sie den untenstehenden Button angeklickt haben.
+        btn_validate: Mein Ereignis bestätigen
+        click_link: Bitte klicken Sie auf den untenstehenden Link, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.
+    secretsanta:
+        subject: Ihr Secret Santa
+        btn_find_out: Finden Sie Ihren Partner
+        link_find_out: Finden Sie auf dieser Seite heraus, wer der zufällig zugeteilte Partner ist, dem Sie ein Geschenk machen
+    wishlistchanged:
+        subject: Wunschzettel aktualisiert
+        salutation: Hi %name%
+        buddy_updated_wishlist: Ihr Partner hat seinen Wunschzettel aktualisiert.
+        click_button: Klicken Sie auf den untenstehenden Button, um seine / ihre Vorschläge zu sehen.
+        btn_check_wishlist: Wunschzettel ansehen
+        click_link: Klicken auf den untenstehenden Link, um seine / ihre Vorschläge zu sehen.
+    emptywishlistreminder:
+        subject: Ihr Wunschzettel ist immer noch leer.
+        updateyourlist: Ihre Secret Santa-Party rückt näher und Sie haben Ihren Wunschzettel noch nicht aktualisiert! Vielleicht möchten Sie noch Dinge hinzufügen, die Sie mögen.
+    viewentryreminder:
+        subject: Finden Sie heraus, wer Ihr Geschenkepartner ist
+        didyouforget: Haben Sie Ihre Secret Santa-Party vergessen? Sie haben noch nicht nachgesehen, wer Ihr Geschenkpartner ist!
+    created:
+        message: |
+            Hi  (NAME),
+
+            (ADMINISTRATOR) hat ein Secret Santa-Ereignis erstellt und Sie als Teilnehmer angeführt.
+
+            Nehmen Sie am Secret Santa-Spaß teil und finden Sie durch einen Klick auf den untenstehenden Button heraus, wer Ihr Geschenkepartner ist.
+
+            Sie können bis zu %amount% für Ihr Geschenk ausgeben. Natürlich ist es auch erlaubt, ein eigenes Geschenk herzustellen. Dies finden wir sogar gut!
+
+            Die Secret Santa-Party ist geplant für %date%. Denken Sie daran, Ihr Geschenk mitzubringen!
+
+            %message%
+
+
+            Schöne Feiertage!
+    admin_matches:
+        subject: Treffer des Secret Santa-Mail-Verteilers
+        message:
+            giving: Dieses Mitglied gibt....
+            receiving: ... diesem Mitglied ein Geschenk
+            html: >
+                Liebe(r) %owner%,<br/>
+                <br/>
+                Sie haben alle Treffer aus Ihrem Mail-Verteiler angefordert. Bitte beachten Sie, dass alle Teilnehmer dies auf ihrer Wunschzettel-Seite sehen.<br/>
+                <br/>
+                Im Folgenden finden Sie eine Übersicht, welcher Teilnehmer Geschenke für wen besorgen sollte.<br/>
+            txt: >
+                Liebe(r) %owner%,
+
+                Sie haben alle Treffer aus Ihrem Mail-Verteiler angefordert. Bitte beachten Sie, dass alle Teilnehmer dies auf ihrer Wunschzettel-Seite sehen.
+
+                Im Folgenden finden Sie eine Übersicht, welcher Teilnehmer Geschenke für wen besorgen sollte.
+flashes:
+    manage:
+        email_validated: >
+         <strong>Perfekt!</strong><br/>Ihre E-Mail-Adresse ist nun bestätigt.<br/>
+         Während wir hier reden, reisen unsere Wichtel durch das Internet und bringen all Ihren zukünftigen Secret-Santas deren Geschenkepartner.<br/>
+         <br />
+         Vergessen Sie nicht, Ihre eigene Teilnahme zu bestätigen. Wir haben Ihnen eine weitere Mail zugesandt. Überprüfen Sie dies!
+    delete:
+        not_deleted: <h4>Nicht gelöscht</h4> Die Bestätigung war nicht korrekt.
+    expose:
+        not_exposed: <h4>Mail-Verteiler nicht gesendet</h4> Die Bestätigung war nicht korrekt.
+        exposed: <h4>Mail-Verteiler gesendet</h4> Alle Mitglieder werden benachrichtigt, sobald sie  ihren Wunschzettel überprüfen.
+    resend:
+        resent: <strong>Neu versendet!</strong><br/>Die E-Mail an %email% wurde neu versendet.<br/>
+    entry:
+        wishlist_updated: <h4>Wunschzettel aktualisiert</h4>Wir haben unsere Wichtel losgeschickt, um Ihren Secret Santa über Ihre Wünsche zu informieren!
+        edit_email: <h4>Nicht gespeichert</h4> Die E-Mail-Adresse ist fehlerhaft.
+        saved_email: <h4>Gespeichert</h4> Die neue E-Mail-Adresse wurde gespeichert. Wir versenden auch diese E-Mail erneut.
+    analytics:
+        invalid_data: <h4>Hoppla</h4> Während der Datenanforderung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
+

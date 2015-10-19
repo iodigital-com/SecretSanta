@@ -16,6 +16,7 @@ parameters:
         - en
         - es
         - fr
+        - de
         - nl
         - pl
         - pt
@@ -30,6 +31,7 @@ parameters:
         pl: Polskie
         ru: Русский
         es: Español
+        de: Deutsch
 
     secret:            ThisTokenIsNotSoSecretChangeIt
     ad_client:         ca-pub-8492783089085834
