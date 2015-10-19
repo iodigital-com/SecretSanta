@@ -11,6 +11,7 @@ class EmailAddress
      *
      * @Assert\NotBlank()
      * @Assert\Email(
+     *     strict=true,
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
      * )
