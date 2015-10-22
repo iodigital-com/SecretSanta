@@ -440,9 +440,9 @@ td, th {
  * @_clearfix.scss
  * Clearfix to automatically clear child elements
  */
-.clearfix, .tabs {
+.clearfix, .tabs, .header {
   display: block; }
-  .clearfix:after, .tabs:after {
+  .clearfix:after, .tabs:after, .header:after {
     content: ".";
     display: block;
     height: 0;
@@ -450,7 +450,7 @@ td, th {
     visibility: hidden; }
 
 /* Hides from IE-mac \*/
-* html .clearfix, * html .tabs {
+* html .clearfix, * html .tabs, * html .header {
   height: 1%; }
 
 .tabs {
@@ -573,6 +573,10 @@ a {
     min-height: 315px;
     z-index: 5; }
 
+#header {
+  height: 373px;
+  margin-bottom: 30px; }
+
 @keyframes snow {
   0% {
     background-position: 0px 0px, 0px 0px, 0px 0px; }
@@ -586,22 +590,32 @@ a {
 .header__snow {
   background: none;
   font-family: Androgyne;
-  background-image: url('http://www.wearewebstars.dk/codepen/img/s1.png'), url('http://www.wearewebstars.dk/codepen/img//s2.png'), url('http://www.wearewebstars.dk/codepen/img//s3.png');
+  background-image: url('../img/s1.png'), url('http://www.wearewebstars.dk/codepen/img//s2.png'), url('http://www.wearewebstars.dk/codepen/img//s3.png');
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 4;
-  -webkit-animation: snow 10s linear infinite;
-  -moz-animation: snow 10s linear infinite;
-  -ms-animation: snow 10s linear infinite;
   animation: snow 10s linear infinite; }
 
+.header__left {
+  width: 70%;
+  float: left;
+  display: inline-block; }
+
+.header__right {
+  width: 30%;
+  float: right;
+  display: inline-block; }
+
+.header__logo {
+  padding: 40px 0;
+  padding-bottom: 24px; }
+
 .reindeer {
-  width: 260px;
-  position: relative;
-  top: -83px; }
+  width: 175px;
+  float: left; }
 
 svg:not(:root) {
   overflow: visible; }
@@ -637,8 +651,10 @@ svg:not(:root) {
     transform: rotateZ(7deg); } }
 
 #santa {
-  width: 200px;
-  margin-top: 98px; }
+  width: 140px;
+  float: left;
+  margin-top: 40px;
+  margin-left: 10px; }
 
 #hat {
   animation-name: bellring;

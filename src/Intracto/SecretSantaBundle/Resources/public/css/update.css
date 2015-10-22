@@ -192,12 +192,16 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 
 .steps {
     background: url(../img/steps.png) no-repeat left top;
-    padding: 12px 20px 0px 20px;
+    padding: 25px 20px 20px 20px;
     width: 289px;
-    height: 266px;
+    height: 310px;
     position: absolute;
     right: 0;
     top: 45px;
+}
+
+.steps ul.liststyle1 li {
+    margin-bottom: 6px;
 }
 
 .content-container {

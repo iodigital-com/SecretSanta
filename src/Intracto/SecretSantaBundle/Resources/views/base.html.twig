@@ -60,28 +60,35 @@
     {% endif %}
 </head>
 <body>
-<!--a class="github" href="https://github.com/Intracto/SecretSanta" target="_blank">
+<a class="github" href="https://github.com/Intracto/SecretSanta" target="_blank">
     <img style="position: absolute; top: 0; right: 0; border: 0;"
          src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
-</a-->
+</a>
 
 <div id="header" class="header">
     <div class="container">
-        <div class="header__santa">
-            {% include "IntractoSecretSantaBundle:Common:HeaderSvg.html.twig" %}
+        <div class="header__left">
+            <div class="header__logo">
+                <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo" />
+            </div>
+            <div class="header__santa clearfix">
+                {% include "IntractoSecretSantaBundle:Common:HeaderSvg.html.twig" %}
+            </div>
         </div>
 
-        <div class="lang__selection">
-            <select>
-            {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
-                <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
-                    {{ locale_names[supported_locale|replace({'-': '_'})] }}
-                </option>
-            {% endfor %}
-            </select>
+        <div class="header__right">
+            <div class="lang__selection">
+                <select>
+                    {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
+                        <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
+                            {{ locale_names[supported_locale|replace({'-': '_'})] }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% block header %}{% endblock %}
         </div>
 
-        {% block header %}{% endblock %}
     </div>
     <div class="header__snow"></div>
 </div>
