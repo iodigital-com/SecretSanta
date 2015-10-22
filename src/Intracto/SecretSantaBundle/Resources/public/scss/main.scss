@@ -20,3 +20,10 @@
 
 @import "components/reindeer";
 @import "components/santa";
+
+.header__santa {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInTopScale cubic-bezier(0.165, 0.84, 0.44, 1) 650ms 500ms forwards;
+    
+}
