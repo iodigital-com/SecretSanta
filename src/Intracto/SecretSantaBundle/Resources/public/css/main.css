@@ -601,7 +601,40 @@ a {
 .reindeer {
   width: 260px;
   position: relative;
-  top: -75px; }
+  top: -83px; }
+
+svg:not(:root) {
+  overflow: visible; }
+
+.antlers-left {
+  animation-name: antlersLeft;
+  animation-duration: 2400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: -1s;
+  animation-direction: alternate;
+  transform-origin: 135px 170px; }
+
+.antlers-right {
+  animation: antlersRight 3000ms ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: -800ms;
+  animation-direction: alternate;
+  transform-origin: 135px 170px; }
+
+@keyframes antlersLeft {
+  0% {
+    transform: rotateZ(0deg); }
+
+  100% {
+    transform: rotateZ(-10deg); } }
+
+@keyframes antlersRight {
+  0% {
+    transform: rotateZ(0deg); }
+
+  100% {
+    transform: rotateZ(7deg); } }
 
 #santa {
   width: 200px;
