@@ -65,7 +65,6 @@ html {
 }
 
 body {
-    background: url(../img/body-bg.jpg) repeat-x left top;
     font-family: 'OpenSansRegular';
     font-size: 100%;
     font-size: 1.4em;
@@ -177,7 +176,7 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 /**  **/
 
 .wrapper {
-    background: url(../img/header-bg.jpg) no-repeat center top;
+    /*background: url(../img/header-bg.jpg) no-repeat center top;*/
 }
 
 .container {

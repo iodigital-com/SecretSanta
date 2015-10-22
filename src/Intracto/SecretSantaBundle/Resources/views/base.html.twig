@@ -65,8 +65,13 @@
          src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
 </a-->
 
-<div class="wrapper">
+<div id="header" class="header">
     <div class="container">
+
+        <div class="header__santa">
+            {% include "IntractoSecretSantaBundle:Common:HeaderSvg.html.twig" %}
+        </div>
+
         <div class="lang__selection">
             <select>
             {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
@@ -76,10 +81,17 @@
             {% endfor %}
             </select>
         </div>
-        <div id="header">
+
+        {% block header %}{% endblock %}
+    </div>
+    <div class="header__snow"></div>
+</div>
+
+<div class="wrapper">
+    <div class="container">
+        {#<div id="header">
             <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
-            {% block header %}{% endblock %}
-        </div>
+        </div>#}
         {% for flashMessageType in app.session.flashbag.keys %}
             {% if app.session.flashbag.has(flashMessageType) %}
                 <div class="alert alert-{{ flashMessageType }}">

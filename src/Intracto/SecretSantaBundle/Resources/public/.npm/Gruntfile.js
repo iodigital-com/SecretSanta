@@ -10,7 +10,7 @@ module.exports = function (grunt) {
         files: ['../scss/**/*.{scss,sass}'],
         tasks: [
           'sass:dev',
-          //'autoprefixer:dev',
+          'autoprefixer:dev',
           'notify:finished'
         ]
       },

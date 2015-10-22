@@ -1,0 +1,24 @@
+#santa {
+  width: 200px;
+  margin-top: 98px
+}
+
+#hat {
+  animation-name: bellring;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: -1.5s;
+  animation-direction: alternate;
+  transform-origin: 50%;
+}
+
+
+@keyframes bellring {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(5deg);
+  }
+}
