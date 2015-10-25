@@ -12,20 +12,10 @@
 /* Import components styles */
 @import "components/animations";
 @import "components/clearfix";
-@import "components/tabs";
-@import "components/messages";
-@import "components/responsive-images";
 @import "components/formelements";
 @import "components/links";
 @import "components/header";
 
 @import "components/reindeer";
 @import "components/santa";
-
-.header__santa {
-    opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInTopScale cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms 1500ms forwards;
-      transform-origin: 160px bottom;
-
-}
+@import "components/no-svg";

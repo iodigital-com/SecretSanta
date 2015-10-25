@@ -51,12 +51,14 @@ input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
 input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}
 input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
-fieldset{border:1px solid silver}
-legend{border:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
 textarea{overflow:auto}
 optgroup{font-weight:700}
 table{border-collapse:collapse;border-spacing:0}
 td,th{padding:0}
+body{background:url(../img/body-bg.png) center 291px no-repeat}
+@media only screen and (max-width:1024px){body{background:0 0}}
 .wrapper{max-width:93.75em;margin:0 auto}
 @-webkit-keyframes fadeInPop{0%{-webkit-transform:scale(.95);transform:scale(.95);opacity:0}
 40%{-webkit-transform:scale(1.05);transform:scale(1.05);opacity:.8}
@@ -94,30 +96,9 @@ td,th{padding:0}
 @keyframes scaleInPop{0%,44%{-webkit-transform:scale(1);transform:scale(1)}
 50%{-webkit-transform:scale(1.03);transform:scale(1.03)}
 100%,56%{-webkit-transform:scale(1);transform:scale(1)}}
-.clearfix,.header,.tabs{display:block}
-.clearfix:after,.header:after,.tabs:after{content:".";display:block;height:0;clear:both;visibility:hidden}
-* html .clearfix,* html .header,* html .tabs{height:1%}
-.tabs{border-bottom:1px solid #dedede;list-style:none;margin:12px 0;padding:0}
-.tabs li{display:inline-block}
-.tabs a{border-bottom:2px solid transparent;display:block;padding:12px 24px;text-decoration:none}
-.tabs a.active{border-color:#dedede}
-.tabs a:hover{border-color:#20a6f7;text-decoration:none}
-.messages{padding:12px 24px 12px 48px;background-position:12px center;background-repeat:no-repeat}
-img{width:auto;height:auto;max-width:100%}
-input[type=password],input[type=date],input[type=url],input[type=color],input[type=datetime],input[type=datetime-local],input[type=month],input[type=range],input[type=time],input[type=number],input[type=search],input[type=text],input[type=email],select,textarea{background-color:#fff;border:1px solid #dedede;border-radius:0;color:#000;font-family:"PT Sans";font-size:1em;font-weight:400;outline:0;padding:.75em}
-input[type=password].error,input[type=date].error,input[type=url].error,input[type=color].error,input[type=datetime].error,input[type=datetime-local].error,input[type=month].error,input[type=range].error,input[type=time].error,input[type=number].error,input[type=search].error,input[type=text].error,input[type=email].error,select.error,textarea.error{border-color:#f4142e}
-input[type=submit]{background:#20a6f7;border:none;color:#fff;padding:12px 24px}
-input[type=submit]:hover{background-color:#51baf9}
-input[type=submit]+a{margin-left:24px}
-fieldset{font-size:1em;margin:0 0 24px;padding:12px 24px 0}
-legend{margin-left:-6px;padding:6px}
-label{cursor:pointer}
-.webform-component{margin-bottom:24px}
-.webform-container-inline{display:inline-block}
-.form-radios>.form-item{margin-bottom:6px}
-.form-select{height:44px;padding:.75em}
-.form-type-radio>label,.webform-container-inline label{display:inline-block;margin-right:12px}
-label{clear:left;display:block;margin-bottom:12px;margin-right:0}
+.clearfix,.header{display:block}
+.clearfix:after,.header:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+* html .clearfix,* html .header{height:1%}
 a{color:#20a6f7;text-decoration:underline;transition:all .2s cubic-bezier(.42,0,.58,1)}
 a:hover{color:#51baf9}
 .header{background:#97c1bd;position:relative;min-height:315px}
@@ -129,18 +110,20 @@ a:hover{color:#51baf9}
 @keyframes snow{0%{background-position:0 0,0 0,0 0}
 50%{background-position:500px 500px,100px 200px,-100px 150px}
 100%{background-position:500px 1000px,200px 400px,-100px 300px}}
-.header__snow{background:url(../img/s1.png),url(http://www.wearewebstars.dk/codepen/img//s2.png),url(http://www.wearewebstars.dk/codepen/img//s3.png);font-family:Androgyne;height:100%;left:0;position:absolute;top:0;width:100%;z-index:4;-webkit-animation:snow 10s linear infinite;animation:snow 10s linear infinite}
-.header__snow-container{opacity:0;-webkit-animation:fadeIn ease 350ms 1700ms forwards;animation:fadeIn ease 350ms 1700ms forwards}
+.header__snow{background:url(../img/s1.png),url(http://www.wearewebstars.dk/codepen/img//s2.png),url(http://www.wearewebstars.dk/codepen/img//s3.png);font-family:Androgyne;height:100%;left:0;position:absolute;top:0;width:100%;z-index:4}
+.cssanimations .header__snow{-webkit-animation:snow 10s linear infinite;animation:snow 10s linear infinite}
+.cssanimations .header__snow-container{opacity:0;-webkit-animation:fadeIn ease 350ms 1700ms forwards;animation:fadeIn ease 350ms 1700ms forwards}
 .header__left{width:70%;float:left;display:inline-block}
 .header__right{width:30%;float:right;display:inline-block}
 .header__logo{padding:40px 0 24px}
 a.btn-started{display:inline-block;width:100%;height:44px;line-height:44px;background:#b3141c;border:1px solid #901017;border-radius:5px;text-shadow:1px 1px 1px #6e070c;color:#fff;text-align:center;font-size:1.2em;text-decoration:none}
 a.btn-started:hover{background:#901017}
-.steps{opacity:0;-webkit-transform:translateY(5px);transform:translateY(5px);-webkit-animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards;animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards}
+.cssanimations .steps{opacity:0;-webkit-transform:translateY(5px);transform:translateY(5px);-webkit-animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards;animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards}
+.cssanimations .header__santa{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px);-webkit-animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;-webkit-transform-origin:160px bottom;transform-origin:160px bottom}
 .reindeer{width:175px;float:left}
 svg:not(:root){overflow:visible}
-.antlers-left{-webkit-animation-name:antlersLeft;animation-name:antlersLeft;-webkit-animation-duration:2400ms;animation-duration:2400ms;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;-webkit-animation-delay:-1s;animation-delay:-1s;-webkit-animation-direction:alternate;animation-direction:alternate;-webkit-transform-origin:135px 170px;transform-origin:135px 170px}
-.antlers-right{-webkit-animation:antlersRight 3000ms ease-in-out;animation:antlersRight 3000ms ease-in-out;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-delay:-800ms;animation-delay:-800ms;-webkit-animation-direction:alternate;animation-direction:alternate;-webkit-transform-origin:135px 170px;transform-origin:135px 170px}
+.cssanimations .antlers-left{-webkit-animation-name:antlersLeft;animation-name:antlersLeft;-webkit-animation-duration:2400ms;animation-duration:2400ms;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;-webkit-animation-delay:-1s;animation-delay:-1s;-webkit-animation-direction:alternate;animation-direction:alternate;-webkit-transform-origin:135px 170px;transform-origin:135px 170px}
+.cssanimations .antlers-right{-webkit-animation:antlersRight 3000ms ease-in-out;animation:antlersRight 3000ms ease-in-out;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-delay:-800ms;animation-delay:-800ms;-webkit-animation-direction:alternate;animation-direction:alternate;-webkit-transform-origin:135px 170px;transform-origin:135px 170px}
 @-webkit-keyframes antlersLeft{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
 100%{-webkit-transform:rotateZ(-10deg);transform:rotateZ(-10deg)}}
 @keyframes antlersLeft{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
@@ -159,4 +142,5 @@ svg:not(:root){overflow:visible}
 100%{-webkit-transform:rotateZ(5deg);transform:rotateZ(5deg)}}
 @keyframes bellring{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
 100%{-webkit-transform:rotateZ(5deg);transform:rotateZ(5deg)}}
-.header__santa{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px);-webkit-animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;-webkit-transform-origin:160px bottom;transform-origin:160px bottom}
+html.no-svg #header{background:url(../img/header-bg.jpg) center top no-repeat}
+html.no-svg .header__logo,html.no-svg .header__santa{display:none}

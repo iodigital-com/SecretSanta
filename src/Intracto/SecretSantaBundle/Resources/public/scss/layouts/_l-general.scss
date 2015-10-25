@@ -1,3 +1,10 @@
+body {
+  background: url(../img/body-bg.png) no-repeat center 291px;
+  @media only screen and (max-width: 1024px) {
+    background: none;
+  }
+}
+
 .wrapper {
   max-width: $wrapper;
   margin: 0 auto;

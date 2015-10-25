@@ -40,12 +40,16 @@
   top: 0;
   width: 100%;
   z-index: 4;
-  animation: snow 10s linear infinite;
+  .cssanimations &{
+    animation: snow 10s linear infinite;
+  }
 }
 
 .header__snow-container {
-  opacity: 0;
-  animation: fadeIn ease 350ms 1700ms forwards;
+  .cssanimations &{
+    opacity: 0;
+    animation: fadeIn ease 350ms 1700ms forwards;
+  }
 }
 
 .header__left {
@@ -85,7 +89,18 @@ a.btn-started {
 }
 
 .steps {
-  opacity: 0;
+  .cssanimations &{
+    opacity: 0;
     transform: translateY(5px);
     animation: fadeInTopScale cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms 1100ms forwards;
+  }
+}
+
+.header__santa {
+  .cssanimations &{
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInTopScale cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms 1500ms forwards;
+    transform-origin: 160px bottom;
+  }
 }
