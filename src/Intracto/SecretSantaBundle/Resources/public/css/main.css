@@ -58,7 +58,7 @@ textarea{overflow:auto}
 optgroup{font-weight:700}
 table{border-collapse:collapse;border-spacing:0}
 td,th{padding:0}
-body{background:url(../img/body-bg.png) center 291px no-repeat}
+body{background:url(../img/body-bg.png) center 291px repeat-x}
 @media only screen and (max-width:1024px){body{background:0 0}}
 .wrapper{max-width:93.75em;margin:0 auto}
 @-webkit-keyframes fadeInPop{0%{-webkit-transform:scale(.95);transform:scale(.95);opacity:0}
