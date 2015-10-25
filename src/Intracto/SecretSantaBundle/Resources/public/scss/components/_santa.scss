@@ -3,6 +3,22 @@
   float: left;
   margin-top: 40px;
   margin-left: 10px;
+  #capuche {
+    transition: transform cubic-bezier(0.47, 0, 0.745, 0.715) 350ms;
+    will-change: transform;
+    .st15 {
+      will-change: transform;
+      transition: transform ease 320ms;
+      transform-origin: center left;
+    }
+    &:hover {
+      transform: translateY(-7px);
+      //transform-origin: center 100px;
+      .st15 {
+        transform: scale(1.1);
+      }
+    }
+  }
 }
 
 #hat {

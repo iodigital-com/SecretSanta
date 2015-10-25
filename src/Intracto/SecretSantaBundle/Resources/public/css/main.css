@@ -1,735 +1,135 @@
-/* Import abstractions (mixins, reusable classes) & variables */
-/* abstractions */
-/* = Triangles
- *Ex: @include triangle(up, size, color);
- */
-/*
- *  mixin can be used with every property: font-size, margin, top, padding etc etc
- *
- * USE:
- * @include rem-fallback(margin, 0, 0, 12, 0);
- * @include rem-fallback(font-size, 14);
- * @include rem-fallback(line-height, 17);
- *
- * OUTPUT:
- * margin: 0px 0px 12px 0px;
- * margin: 0rem 0rem 0.75rem 0rem;
- * font-size: 14px;
- * font-size: 0.875rem;
- * line-height: 17px;
- * font-size: 1.0625rem;
- */
-/*
- * create 2 sprites: sprite.png & sprite@2x.png
- * sprite.png = 1000x1000 ; sprite@2x.png = 2000x2000
- *
- * arg1: image location without extension
- * arg2: extension without '.'
- * arg3: width of non-retina image
- * arg4: height of non-retina image
- * arg5: repeat image or not
- *
- * EX:
- *  @include background-image-retina("../images/sprite", "png", 1000px, 1000px, no-repeat);
- *  background-position: left -1460px;
- */
-/* variables */
-/* Font family's */
-/* Font weights */
-/* Font sizes */
-/* http://easings.net/nl */
-/* wrapper */
-/* Media queries */
-/* Reusable classes */
-/**
- * @_reuse.scss
- * General classes. Main purpose is to reuse these classes.
- */
-/* Positions */
-.relative {
-  position: relative; }
-
-.absolute {
-  position: absolute; }
-
-.stretch {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
-/* Layout */
-.inline-block {
-  display: inline-block; }
-
-.display-block {
-  display: block; }
-
-.inline {
-  display: inline; }
-
-.table {
-  display: table;
-  width: 100%; }
-
-.table-cell {
-  vertical-align: middle;
-  display: table-cell; }
-
-/* Alignment */
-.align-left {
-  text-align: left; }
-
-.align-right {
-  text-align: right; }
-
-.align-center {
-  text-align: center; }
-
-.v-align-middle {
-  vertical-align: middle; }
-
-.v-align-top {
-  vertical-align: top; }
-
-/* Weights */
-.light {
-  font-weight: 300; }
-
-.regular {
-  font-weight: 400; }
-
-.bold {
-  font-weight: 700; }
-
-.normal {
-  font-style: normal; }
-
-.italic {
-  font-style: italic; }
-
-/* Button */
-.button {
-  user-select: none;
-  cursor: pointer; }
-
-/* Transform */
-.uppercase {
-  text-transform: uppercase; }
-
-/* Import base styles */
+.relative{position:relative}
+.absolute{position:absolute}
+.stretch{position:absolute;top:0;left:0;width:100%;height:100%}
+.inline-block{display:inline-block}
+.display-block{display:block}
+.inline{display:inline}
+.table{display:table;width:100%}
+.table-cell{vertical-align:middle;display:table-cell}
+.align-left{text-align:left}
+.align-right{text-align:right}
+.align-center{text-align:center}
+.v-align-middle{vertical-align:middle}
+.v-align-top{vertical-align:top}
+.light{font-weight:300}
+.regular{font-weight:400}
+.bold{font-weight:700}
+.normal{font-style:normal}
+.italic{font-style:italic}
+.button{user-select:none;cursor:pointer}
+.uppercase{text-transform:uppercase}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
-/**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
-html {
-  font-family: sans-serif;
-  /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */ }
-
-/**
- * Remove default margin.
- */
-body {
-  margin: 0; }
-
-/* HTML5 display definitions
-   ========================================================================== */
-/**
- * Correct `block` display not defined in IE 8/9.
- */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-  display: block; }
-
-/**
- * 1. Correct `inline-block` display not defined in IE 8/9.
- * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
- */
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  /* 1 */
-  vertical-align: baseline;
-  /* 2 */ }
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0; }
-
-/**
- * Address `[hidden]` styling not present in IE 8/9.
- * Hide the `template` element in IE, Safari, and Firefox < 22.
- */
-[hidden],
-template {
-  display: none; }
-
-/* Links
-   ========================================================================== */
-/**
- * Remove the gray background color from active links in IE 10.
- */
-a {
-  background: transparent; }
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-a:active,
-a:hover {
-  outline: 0; }
-
-/* Text-level semantics
-   ========================================================================== */
-/**
- * Address styling not present in IE 8/9, Safari 5, and Chrome.
- */
-abbr[title] {
-  border-bottom: 1px dotted; }
-
-/**
- * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
- */
-b,
-strong {
-  font-weight: bold; }
-
-/**
- * Address styling not present in Safari 5 and Chrome.
- */
-dfn {
-  font-style: italic; }
-
-/**
- * Address styling not present in IE 8/9.
- */
-mark {
-  background: #ff0;
-  color: #000; }
-
-/**
- * Address inconsistent and variable font size in all browsers.
- */
-small {
-  font-size: 80%; }
-
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline; }
-
-sup {
-  top: -0.5em; }
-
-sub {
-  bottom: -0.25em; }
-
-/* Embedded content
-   ========================================================================== */
-/**
- * Remove border when inside `a` element in IE 8/9.
- */
-img {
-  border: 0; }
-
-/**
- * Correct overflow displayed oddly in IE 9.
- */
-svg:not(:root) {
-  overflow: hidden; }
-
-/* Grouping content
-   ========================================================================== */
-/**
- * Address margin not present in IE 8/9 and Safari 5.
- */
-figure {
-  margin: 1em 40px; }
-
-/**
- * Address differences between Firefox and other browsers.
- */
-hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0; }
-
-/**
- * Contain overflow in all browsers.
- */
-pre {
-  overflow: auto; }
-
-/**
- * Address odd `em`-unit font size rendering in all browsers.
- */
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em; }
-
-/* Forms
-   ========================================================================== */
-/**
- * Known limitation: by default, Chrome and Safari on OS X allow very limited
- * styling of `select`, unless a `border` property is set.
- */
-/**
- * 1. Correct color not being inherited.
- *    Known issue: affects color of disabled elements.
- * 2. Correct font properties not being inherited.
- * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  /* 1 */
-  font: inherit;
-  /* 2 */
-  margin: 0;
-  /* 3 */ }
-
-/**
- * Address `overflow` set to `hidden` in IE 8/9/10.
- */
-button {
-  overflow: visible; }
-
-/**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Firefox, IE 8+, and Opera
- * Correct `select` style inheritance in Firefox.
- */
-button,
-select {
-  text-transform: none; }
-
-/**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
- */
-button,
-html input[type="button"], input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  /* 2 */
-  cursor: pointer;
-  /* 3 */ }
-
-/**
- * Re-set default cursor for disabled elements.
- */
-button[disabled],
-html input[disabled] {
-  cursor: default; }
-
-/**
- * Remove inner padding and border in Firefox 4+.
- */
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0; }
-
-/**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
-input {
-  line-height: normal; }
-
-/**
- * It's recommended that you don't attempt to style these elements.
- * Firefox's implementation doesn't respect box-sizing, padding, or width.
- *
- * 1. Address box sizing set to `content-box` in IE 8/9/10.
- * 2. Remove excess padding in IE 8/9/10.
- */
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */ }
-
-/**
- * Fix the cursor style for Chrome's increment/decrement buttons. For certain
- * `font-size` values of the `input`, it causes the cursor style of the
- * decrement button to change from `default` to `text`.
- */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
-
-/**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-input[type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  /* 2 */
-  box-sizing: content-box; }
-
-/**
- * Remove inner padding and search cancel button in Safari and Chrome on OS X.
- * Safari (but not Chrome) clips the cancel button when the search input has
- * padding (and `textfield` appearance).
- */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
-
-/**
- * Define consistent border, margin, and padding.
- */
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
-
-/**
- * 1. Correct `color` not being inherited in IE 8/9.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- */
-legend {
-  border: 0;
-  /* 1 */
-  padding: 0;
-  /* 2 */ }
-
-/**
- * Remove default vertical scrollbar in IE 8/9.
- */
-textarea {
-  overflow: auto; }
-
-/**
- * Don't inherit the `font-weight` (applied by a rule above).
- * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
- */
-optgroup {
-  font-weight: bold; }
-
-/* Tables
-   ========================================================================== */
-/**
- * Remove most spacing between table cells.
- */
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-td,
-th {
-  padding: 0; }
-
-/* Import layout styles */
-.wrapper {
-  max-width: 93.75em;
-  margin: 0 auto; }
-
-/* Import components styles */
-/**
- * @_clearfix.scss
- * Clearfix to automatically clear child elements
- */
-.clearfix, .tabs, .header {
-  display: block; }
-  .clearfix:after, .tabs:after, .header:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden; }
-
-/* Hides from IE-mac \*/
-* html .clearfix, * html .tabs, * html .header {
-  height: 1%; }
-
-.tabs {
-  border-bottom: 1px solid #dedede;
-  list-style: none;
-  margin: 12px 0;
-  padding: 0; }
-  .tabs li {
-    display: inline-block; }
-  .tabs a {
-    border-bottom: 2px solid transparent;
-    display: block;
-    padding: 12px 24px;
-    text-decoration: none; }
-    .tabs a.active {
-      border-color: #dedede; }
-    .tabs a:hover {
-      border-color: #20a6f7;
-      text-decoration: none; }
-
-/**
- * @_messages.scss
- * Define custom formatting for messages instead of Drupal default.
- */
-.messages {
-  padding: 12px 24px 12px 48px;
-  background-position: 12px center;
-  background-repeat: no-repeat; }
-
-/**
- * @_responsive-images.scss
- */
-img {
-  width: auto;
-  height: auto;
-  max-width: 100%; }
-
-/**
- * @_formelements.scss
- * Basic form formatting
- */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="date"],
-input[type="search"],
-input[type="url"],
-input[type="color"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="number"],
-input[type="range"],
-input[type="time"],
-select,
-textarea {
-  background-color: #fff;
-  border: 1px solid #dedede;
-  border-radius: 0;
-  color: black;
-  font-family: "PT Sans";
-  font-size: 1em;
-  font-weight: 400;
-  outline: none;
-  padding: 0.75em; }
-  input[type="text"].error,
-  input[type="email"].error,
-  input[type="password"].error,
-  input[type="number"].error,
-  input[type="date"].error,
-  input[type="search"].error,
-  input[type="url"].error,
-  input[type="color"].error,
-  input[type="datetime"].error,
-  input[type="datetime-local"].error,
-  input[type="month"].error,
-  input[type="number"].error,
-  input[type="range"].error,
-  input[type="time"].error,
-  select.error,
-  textarea.error {
-    border-color: #f4142e; }
-
-input[type=submit] {
-  background: #20a6f7;
-  border: none;
-  color: #fff;
-  padding: 12px 24px; }
-  input[type=submit]:hover {
-    background-color: #51baf9; }
-  input[type=submit] + a {
-    margin-left: 24px; }
-
-fieldset {
-  font-size: 1em;
-  margin: 0 0 24px;
-  padding: 12px 24px 0; }
-
-legend {
-  margin-left: -6px;
-  padding: 6px; }
-
-label {
-  cursor: pointer; }
-
-.webform-component {
-  margin-bottom: 24px; }
-
-.webform-container-inline {
-  display: inline-block; }
-
-.form-radios > .form-item {
-  margin-bottom: 6px; }
-
-.form-select {
-  height: 44px;
-  padding: 0.75em; }
-
-.form-type-radio > label, .webform-container-inline label {
-  display: inline-block;
-  margin-right: 12px; }
-
-label {
-  clear: left;
-  display: block;
-  margin-bottom: 12px;
-  margin-right: 0; }
-
-/**
- * @_links.scss
- * Formatting for links.
- */
-a {
-  color: #20a6f7;
-  text-decoration: underline;
-  transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1); }
-  a:hover {
-    color: #51baf9; }
-
-/**
- * @_header.scss
- * Header with animated background
- */
-.header {
-  background: #97c1bd;
-  position: relative;
-  min-height: 315px; }
-  .header .container {
-    min-height: 315px;
-    z-index: 5; }
-
-#header {
-  height: 373px;
-  margin-bottom: 30px; }
-
-@keyframes snow {
-  0% {
-    background-position: 0px 0px, 0px 0px, 0px 0px; }
-  50% {
-    background-position: 500px 500px, 100px 200px, -100px 150px; }
-  100% {
-    background-position: 500px 1000px, 200px 400px, -100px 300px; } }
-
-.header__snow {
-  background: none;
-  font-family: Androgyne;
-  background-image: url("../img/s1.png"), url("http://www.wearewebstars.dk/codepen/img//s2.png"), url("http://www.wearewebstars.dk/codepen/img//s3.png");
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 4;
-  animation: snow 10s linear infinite; }
-
-.header__left {
-  width: 70%;
-  float: left;
-  display: inline-block; }
-
-.header__right {
-  width: 30%;
-  float: right;
-  display: inline-block; }
-
-.header__logo {
-  padding: 40px 0;
-  padding-bottom: 24px; }
-
-.reindeer {
-  width: 175px;
-  float: left; }
-
-svg:not(:root) {
-  overflow: visible; }
-
-.antlers-left {
-  animation-name: antlersLeft;
-  animation-duration: 2400ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-delay: -1s;
-  animation-direction: alternate;
-  transform-origin: 135px 170px; }
-
-.antlers-right {
-  animation: antlersRight 3000ms ease-in-out;
-  animation-iteration-count: infinite;
-  animation-delay: -800ms;
-  animation-direction: alternate;
-  transform-origin: 135px 170px; }
-
-@keyframes antlersLeft {
-  0% {
-    transform: rotateZ(0deg); }
-  100% {
-    transform: rotateZ(-10deg); } }
-
-@keyframes antlersRight {
-  0% {
-    transform: rotateZ(0deg); }
-  100% {
-    transform: rotateZ(7deg); } }
-
-#santa {
-  width: 140px;
-  float: left;
-  margin-top: 40px;
-  margin-left: 10px; }
-
-#hat {
-  animation-name: bellring;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-delay: -1.5s;
-  animation-direction: alternate;
-  transform-origin: 50%; }
-
-@keyframes bellring {
-  0% {
-    transform: rotateZ(0deg); }
-  100% {
-    transform: rotateZ(5deg); } }
-
-body {
-  background: blue; }
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+a{background:0 0}
+a:active,a:hover{outline:0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:700}
+dfn{font-style:italic}
+mark{background:#ff0;color:#000}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+figure{margin:1em 40px}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+pre{overflow:auto}
+code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}
+button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
+button{overflow:visible}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+input{line-height:normal}
+input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
+input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+fieldset{border:1px solid silver}
+legend{border:0}
+textarea{overflow:auto}
+optgroup{font-weight:700}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0}
+.wrapper{max-width:93.75em;margin:0 auto}
+@keyframes fadeInPop{0%{transform:scale(.95);opacity:0}
+40%{transform:scale(1.05);opacity:.8}
+80%{transform:scale(.95);opacity:.9}
+100%{transform:scale(1);opacity:1}}
+@keyframes fadeIn{0%{opacity:0}
+100%{opacity:1}}
+@keyframes fadeInHeight{0%{opacity:0;transform:scale(.95)}
+100%{opacity:1;height:70px;transform:scale(1)}}
+@keyframes fadeInTop{0%{opacity:0}
+100%{opacity:1;transform:translateY(0)}}
+@keyframes fadeInTopScale{0%{opacity:0;transform:scale(.8)}
+90%{transform:scale(1)}
+100%{opacity:1;transform:translateY(0)}}
+@keyframes inBottom{0%{opacity:0}
+100%{opacity:1;transform:translateY(0)}}
+@keyframes scaleInPop{0%,44%{transform:scale(1)}
+50%{transform:scale(1.03)}
+100%,56%{transform:scale(1)}}
+.clearfix,.header,.tabs{display:block}
+.clearfix:after,.header:after,.tabs:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+* html .clearfix,* html .header,* html .tabs{height:1%}
+.tabs{border-bottom:1px solid #dedede;list-style:none;margin:12px 0;padding:0}
+.tabs li{display:inline-block}
+.tabs a{border-bottom:2px solid transparent;display:block;padding:12px 24px;text-decoration:none}
+.tabs a.active{border-color:#dedede}
+.tabs a:hover{border-color:#20a6f7;text-decoration:none}
+.messages{padding:12px 24px 12px 48px;background-position:12px center;background-repeat:no-repeat}
+img{width:auto;height:auto;max-width:100%}
+input[type=password],input[type=date],input[type=url],input[type=color],input[type=datetime],input[type=datetime-local],input[type=month],input[type=range],input[type=time],input[type=number],input[type=search],input[type=text],input[type=email],select,textarea{background-color:#fff;border:1px solid #dedede;border-radius:0;color:#000;font-family:"PT Sans";font-size:1em;font-weight:400;outline:0;padding:.75em}
+input[type=password].error,input[type=date].error,input[type=url].error,input[type=color].error,input[type=datetime].error,input[type=datetime-local].error,input[type=month].error,input[type=range].error,input[type=time].error,input[type=number].error,input[type=search].error,input[type=text].error,input[type=email].error,select.error,textarea.error{border-color:#f4142e}
+input[type=submit]{background:#20a6f7;border:none;color:#fff;padding:12px 24px}
+input[type=submit]:hover{background-color:#51baf9}
+input[type=submit]+a{margin-left:24px}
+fieldset{font-size:1em;margin:0 0 24px;padding:12px 24px 0}
+legend{margin-left:-6px;padding:6px}
+label{cursor:pointer}
+.webform-component{margin-bottom:24px}
+.webform-container-inline{display:inline-block}
+.form-radios>.form-item{margin-bottom:6px}
+.form-select{height:44px;padding:.75em}
+.form-type-radio>label,.webform-container-inline label{display:inline-block;margin-right:12px}
+label{clear:left;display:block;margin-bottom:12px;margin-right:0}
+a{color:#20a6f7;text-decoration:underline;transition:all .2s cubic-bezier(.42,0,.58,1)}
+a:hover{color:#51baf9}
+.header{background:#97c1bd;position:relative;min-height:315px}
+.header .container{min-height:315px;z-index:5}
+#header{height:373px;margin-bottom:30px}
+@keyframes snow{0%{background-position:0 0,0 0,0 0}
+50%{background-position:500px 500px,100px 200px,-100px 150px}
+100%{background-position:500px 1000px,200px 400px,-100px 300px}}
+.header__snow{background:url(../img/s1.png),url(http://www.wearewebstars.dk/codepen/img//s2.png),url(http://www.wearewebstars.dk/codepen/img//s3.png);font-family:Androgyne;height:100%;left:0;position:absolute;top:0;width:100%;z-index:4;animation:snow 10s linear infinite}
+.header__snow-container{opacity:0;animation:fadeIn ease 350ms 1700ms forwards}
+.header__left{width:70%;float:left;display:inline-block}
+.header__right{width:30%;float:right;display:inline-block}
+.header__logo{padding:40px 0 24px}
+a.btn-started{display:inline-block;width:100%;height:44px;line-height:44px;background:#b3141c;border:1px solid #901017;border-radius:5px;text-shadow:1px 1px 1px #6e070c;color:#fff;text-align:center;font-size:1.2em;text-decoration:none}
+a.btn-started:hover{background:#901017}
+.steps{opacity:0;transform:translateY(5px);animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards}
+.reindeer{width:175px;float:left}
+svg:not(:root){overflow:visible}
+.antlers-left{animation-name:antlersLeft;animation-duration:2400ms;animation-iteration-count:infinite;animation-timing-function:ease-in-out;animation-delay:-1s;animation-direction:alternate;transform-origin:135px 170px}
+.antlers-right{animation:antlersRight 3000ms ease-in-out;animation-iteration-count:infinite;animation-delay:-800ms;animation-direction:alternate;transform-origin:135px 170px}
+@keyframes antlersLeft{0%{transform:rotateZ(0deg)}
+100%{transform:rotateZ(-10deg)}}
+@keyframes antlersRight{0%{transform:rotateZ(0deg)}
+100%{transform:rotateZ(7deg)}}
+#santa{width:140px;float:left;margin-top:40px;margin-left:10px}
+#santa #capuche{transition:transform cubic-bezier(.47,0,.745,.715) 350ms;will-change:transform}
+#santa #capuche .st15{will-change:transform;transition:transform ease 320ms;transform-origin:center left}
+#santa #capuche:hover{transform:translateY(-7px)}
+#santa #capuche:hover .st15{transform:scale(1.1)}
+#hat{animation-name:bellring;animation-duration:3s;animation-iteration-count:infinite;animation-timing-function:ease-in-out;animation-delay:-1.5s;animation-direction:alternate;transform-origin:50%}
+@keyframes bellring{0%{transform:rotateZ(0deg)}
+100%{transform:rotateZ(5deg)}}
+.header__santa{opacity:0;transform:translateY(10px);animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;transform-origin:160px bottom}

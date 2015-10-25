@@ -25,7 +25,6 @@ gulp.task('sass', function() {
         }))
         .pipe(sass())
         .pipe(minifyCSS({keepBreaks:true}))
-        .pipe(rename({suffix: '.min'}))
         .pipe(livereload())
         .pipe(gulp.dest('./css'));
 });

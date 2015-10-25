@@ -110,20 +110,6 @@ a {
     text-decoration: underline;
 }
 
-a.btn-started {
-    display: inline-block;
-    width: 213px;
-    height: 44px;
-    line-height: 44px;
-    color: #ffffff;
-    background: url(../img/btn-started.png) no-repeat left top;
-    text-shadow: 1px 1px 1px #6e070c;
-    text-align: center;
-    font-size: 1.2em;
-    font-family: 'OpenSansBold';
-    text-decoration: none;
-}
-
 a.btn {
     text-decoration: none;
 }
