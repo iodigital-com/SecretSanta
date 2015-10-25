@@ -63,13 +63,10 @@
     {% endif %}
 </head>
 <body>
-{#<a class="github" href="https://github.com/Intracto/SecretSanta" target="_blank">
-    <img style="position: absolute; top: 0; right: 0; border: 0;"
-         src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
-</a>#}
 
 <div id="header" class="header">
     <div class="container">
+        <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
         <div class="header__left">
             <div class="header__logo">
                 <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo" />
@@ -100,9 +97,6 @@
 
 <div class="wrapper">
     <div class="container">
-        {#<div id="header">
-            <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
-        </div>#}
         {% for flashMessageType in app.session.flashbag.keys %}
             {% if app.session.flashbag.has(flashMessageType) %}
                 <div class="alert alert-{{ flashMessageType }}">
