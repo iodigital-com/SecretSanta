@@ -181,9 +181,6 @@ input.span12, textarea.span12, .uneditable-input.span12 {
     padding: 25px 20px 20px 20px;
     width: 289px;
     height: 310px;
-    position: absolute;
-    right: 0;
-    top: 45px;
 }
 
 .steps ul.liststyle1 li {
@@ -310,10 +307,7 @@ ul.form-errors {
  * Language switch in header
  */
 .lang__selection {
-    position: absolute;
     list-style: none;
-    top: 10px;
-    right: 0;
     padding: 0;
     margin: 0;
 }

@@ -7,6 +7,7 @@
   position: relative;
   min-height: 315px;
   @extend .clearfix;
+
   .container {
     min-height: 315px;
     z-index: 5;
@@ -15,7 +16,7 @@
 
 #header {
   height: 373px;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
 }
 
 @keyframes snow {
@@ -53,15 +54,33 @@
 }
 
 .header__left {
-  width: 70%;
+  width: 65%;
   float: left;
   display: inline-block;
+  @media only screen and (max-width: 1024px) {
+    width: 60%;
+  }
 }
 
 .header__right {
-  width: 30%;
+  width: 35%;
   float: right;
   display: inline-block;
+  padding-top: 20px;
+  @media only screen and (max-width: 1024px) {
+    width: 40%;
+  }
+}
+
+.lang__selection {
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    select {
+      width: 100%;
+    }
+  }
 }
 
 .header__logo {
@@ -89,6 +108,11 @@ a.btn-started {
 }
 
 .steps {
+  box-sizing: border-box;
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    height: auto;
+  }
   .cssanimations &{
     opacity: 0;
     transform: translateY(5px);
@@ -97,6 +121,12 @@ a.btn-started {
 }
 
 .header__santa {
+  @media only screen and (max-width: 1280px) {
+    padding-left: 150px;
+  }
+  @media only screen and (max-width: 900px) {
+    padding-left: 0;
+  }
   .cssanimations &{
     opacity: 0;
     transform: translateY(10px);

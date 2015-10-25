@@ -95,3 +95,8 @@
 .uppercase {
   text-transform: uppercase;
 }
+
+.alert {
+  @extend .clearfix;
+  clear: both;
+}
