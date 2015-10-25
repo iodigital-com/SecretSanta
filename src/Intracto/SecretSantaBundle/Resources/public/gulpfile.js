@@ -26,7 +26,7 @@ gulp.task('sass', function() {
         }))
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            browsers: ['last 4 versions'],
             cascade: false
         }))
         .pipe(livereload())
