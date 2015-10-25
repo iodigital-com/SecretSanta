@@ -5,7 +5,8 @@ var gulp = require('gulp')
     ,   plumber    = require('gulp-plumber')
     ,   uglify = require('gulp-uglify')
     ,   livereload = require('gulp-livereload')
-    ,   rename = require('gulp-rename');
+    ,   rename = require('gulp-rename')
+    ,   autoprefixer = require('gulp-autoprefixer');
 
 var onError = function(err) {
     console.log(err);
@@ -25,6 +26,10 @@ gulp.task('sass', function() {
         }))
         .pipe(sass())
         .pipe(minifyCSS({keepBreaks:true}))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
         .pipe(livereload())
         .pipe(gulp.dest('./css'));
 });

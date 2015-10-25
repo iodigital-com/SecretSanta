@@ -16,7 +16,7 @@
 .bold{font-weight:700}
 .normal{font-style:normal}
 .italic{font-style:italic}
-.button{user-select:none;cursor:pointer}
+.button{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer}
 .uppercase{text-transform:uppercase}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
@@ -37,7 +37,7 @@ sup{top:-.5em}
 sub{bottom:-.25em}
 img{border:0}
 figure{margin:1em 40px}
-hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+hr{box-sizing:content-box;height:0}
 pre{overflow:auto}
 code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}
 button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
@@ -49,7 +49,7 @@ button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
 input{line-height:normal}
 input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
-input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}
 input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
 fieldset{border:1px solid silver}
 legend{border:0}
@@ -58,24 +58,42 @@ optgroup{font-weight:700}
 table{border-collapse:collapse;border-spacing:0}
 td,th{padding:0}
 .wrapper{max-width:93.75em;margin:0 auto}
-@keyframes fadeInPop{0%{transform:scale(.95);opacity:0}
-40%{transform:scale(1.05);opacity:.8}
-80%{transform:scale(.95);opacity:.9}
-100%{transform:scale(1);opacity:1}}
+@-webkit-keyframes fadeInPop{0%{-webkit-transform:scale(.95);transform:scale(.95);opacity:0}
+40%{-webkit-transform:scale(1.05);transform:scale(1.05);opacity:.8}
+80%{-webkit-transform:scale(.95);transform:scale(.95);opacity:.9}
+100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}
+@keyframes fadeInPop{0%{-webkit-transform:scale(.95);transform:scale(.95);opacity:0}
+40%{-webkit-transform:scale(1.05);transform:scale(1.05);opacity:.8}
+80%{-webkit-transform:scale(.95);transform:scale(.95);opacity:.9}
+100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}
+@-webkit-keyframes fadeIn{0%{opacity:0}
+100%{opacity:1}}
 @keyframes fadeIn{0%{opacity:0}
 100%{opacity:1}}
-@keyframes fadeInHeight{0%{opacity:0;transform:scale(.95)}
-100%{opacity:1;height:70px;transform:scale(1)}}
+@-webkit-keyframes fadeInHeight{0%{opacity:0;-webkit-transform:scale(.95);transform:scale(.95)}
+100%{opacity:1;height:70px;-webkit-transform:scale(1);transform:scale(1)}}
+@keyframes fadeInHeight{0%{opacity:0;-webkit-transform:scale(.95);transform:scale(.95)}
+100%{opacity:1;height:70px;-webkit-transform:scale(1);transform:scale(1)}}
+@-webkit-keyframes fadeInTop{0%{opacity:0}
+100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
 @keyframes fadeInTop{0%{opacity:0}
-100%{opacity:1;transform:translateY(0)}}
-@keyframes fadeInTopScale{0%{opacity:0;transform:scale(.8)}
-90%{transform:scale(1)}
-100%{opacity:1;transform:translateY(0)}}
+100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
+@-webkit-keyframes fadeInTopScale{0%{opacity:0;-webkit-transform:scale(.8);transform:scale(.8)}
+90%{-webkit-transform:scale(1);transform:scale(1)}
+100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
+@keyframes fadeInTopScale{0%{opacity:0;-webkit-transform:scale(.8);transform:scale(.8)}
+90%{-webkit-transform:scale(1);transform:scale(1)}
+100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
+@-webkit-keyframes inBottom{0%{opacity:0}
+100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
 @keyframes inBottom{0%{opacity:0}
-100%{opacity:1;transform:translateY(0)}}
-@keyframes scaleInPop{0%,44%{transform:scale(1)}
-50%{transform:scale(1.03)}
-100%,56%{transform:scale(1)}}
+100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
+@-webkit-keyframes scaleInPop{0%,44%{-webkit-transform:scale(1);transform:scale(1)}
+50%{-webkit-transform:scale(1.03);transform:scale(1.03)}
+100%,56%{-webkit-transform:scale(1);transform:scale(1)}}
+@keyframes scaleInPop{0%,44%{-webkit-transform:scale(1);transform:scale(1)}
+50%{-webkit-transform:scale(1.03);transform:scale(1.03)}
+100%,56%{-webkit-transform:scale(1);transform:scale(1)}}
 .clearfix,.header,.tabs{display:block}
 .clearfix:after,.header:after,.tabs:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 * html .clearfix,* html .header,* html .tabs{height:1%}
@@ -105,31 +123,40 @@ a:hover{color:#51baf9}
 .header{background:#97c1bd;position:relative;min-height:315px}
 .header .container{min-height:315px;z-index:5}
 #header{height:373px;margin-bottom:30px}
+@-webkit-keyframes snow{0%{background-position:0 0,0 0,0 0}
+50%{background-position:500px 500px,100px 200px,-100px 150px}
+100%{background-position:500px 1000px,200px 400px,-100px 300px}}
 @keyframes snow{0%{background-position:0 0,0 0,0 0}
 50%{background-position:500px 500px,100px 200px,-100px 150px}
 100%{background-position:500px 1000px,200px 400px,-100px 300px}}
-.header__snow{background:url(../img/s1.png),url(http://www.wearewebstars.dk/codepen/img//s2.png),url(http://www.wearewebstars.dk/codepen/img//s3.png);font-family:Androgyne;height:100%;left:0;position:absolute;top:0;width:100%;z-index:4;animation:snow 10s linear infinite}
-.header__snow-container{opacity:0;animation:fadeIn ease 350ms 1700ms forwards}
+.header__snow{background:url(../img/s1.png),url(http://www.wearewebstars.dk/codepen/img//s2.png),url(http://www.wearewebstars.dk/codepen/img//s3.png);font-family:Androgyne;height:100%;left:0;position:absolute;top:0;width:100%;z-index:4;-webkit-animation:snow 10s linear infinite;animation:snow 10s linear infinite}
+.header__snow-container{opacity:0;-webkit-animation:fadeIn ease 350ms 1700ms forwards;animation:fadeIn ease 350ms 1700ms forwards}
 .header__left{width:70%;float:left;display:inline-block}
 .header__right{width:30%;float:right;display:inline-block}
 .header__logo{padding:40px 0 24px}
 a.btn-started{display:inline-block;width:100%;height:44px;line-height:44px;background:#b3141c;border:1px solid #901017;border-radius:5px;text-shadow:1px 1px 1px #6e070c;color:#fff;text-align:center;font-size:1.2em;text-decoration:none}
 a.btn-started:hover{background:#901017}
-.steps{opacity:0;transform:translateY(5px);animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards}
+.steps{opacity:0;-webkit-transform:translateY(5px);transform:translateY(5px);-webkit-animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards;animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1100ms forwards}
 .reindeer{width:175px;float:left}
 svg:not(:root){overflow:visible}
-.antlers-left{animation-name:antlersLeft;animation-duration:2400ms;animation-iteration-count:infinite;animation-timing-function:ease-in-out;animation-delay:-1s;animation-direction:alternate;transform-origin:135px 170px}
-.antlers-right{animation:antlersRight 3000ms ease-in-out;animation-iteration-count:infinite;animation-delay:-800ms;animation-direction:alternate;transform-origin:135px 170px}
-@keyframes antlersLeft{0%{transform:rotateZ(0deg)}
-100%{transform:rotateZ(-10deg)}}
-@keyframes antlersRight{0%{transform:rotateZ(0deg)}
-100%{transform:rotateZ(7deg)}}
+.antlers-left{-webkit-animation-name:antlersLeft;animation-name:antlersLeft;-webkit-animation-duration:2400ms;animation-duration:2400ms;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;-webkit-animation-delay:-1s;animation-delay:-1s;-webkit-animation-direction:alternate;animation-direction:alternate;-webkit-transform-origin:135px 170px;transform-origin:135px 170px}
+.antlers-right{-webkit-animation:antlersRight 3000ms ease-in-out;animation:antlersRight 3000ms ease-in-out;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-delay:-800ms;animation-delay:-800ms;-webkit-animation-direction:alternate;animation-direction:alternate;-webkit-transform-origin:135px 170px;transform-origin:135px 170px}
+@-webkit-keyframes antlersLeft{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
+100%{-webkit-transform:rotateZ(-10deg);transform:rotateZ(-10deg)}}
+@keyframes antlersLeft{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
+100%{-webkit-transform:rotateZ(-10deg);transform:rotateZ(-10deg)}}
+@-webkit-keyframes antlersRight{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
+100%{-webkit-transform:rotateZ(7deg);transform:rotateZ(7deg)}}
+@keyframes antlersRight{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
+100%{-webkit-transform:rotateZ(7deg);transform:rotateZ(7deg)}}
 #santa{width:140px;float:left;margin-top:40px;margin-left:10px}
-#santa #capuche{transition:transform cubic-bezier(.47,0,.745,.715) 350ms;will-change:transform}
-#santa #capuche .st15{will-change:transform;transition:transform ease 320ms;transform-origin:center left}
-#santa #capuche:hover{transform:translateY(-7px)}
-#santa #capuche:hover .st15{transform:scale(1.1)}
-#hat{animation-name:bellring;animation-duration:3s;animation-iteration-count:infinite;animation-timing-function:ease-in-out;animation-delay:-1.5s;animation-direction:alternate;transform-origin:50%}
-@keyframes bellring{0%{transform:rotateZ(0deg)}
-100%{transform:rotateZ(5deg)}}
-.header__santa{opacity:0;transform:translateY(10px);animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;transform-origin:160px bottom}
+#santa #capuche{transition:-webkit-transform cubic-bezier(.47,0,.745,.715) 350ms;transition:transform cubic-bezier(.47,0,.745,.715) 350ms;will-change:transform}
+#santa #capuche .st15{will-change:transform;transition:-webkit-transform ease 320ms;transition:transform ease 320ms;-webkit-transform-origin:center left;transform-origin:center left}
+#santa #capuche:hover{-webkit-transform:translateY(-7px);transform:translateY(-7px)}
+#santa #capuche:hover .st15{-webkit-transform:scale(1.1);transform:scale(1.1)}
+#hat{-webkit-animation-name:bellring;animation-name:bellring;-webkit-animation-duration:3s;animation-duration:3s;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;-webkit-animation-delay:-1.5s;animation-delay:-1.5s;-webkit-animation-direction:alternate;animation-direction:alternate;-webkit-transform-origin:50%;transform-origin:50%}
+@-webkit-keyframes bellring{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
+100%{-webkit-transform:rotateZ(5deg);transform:rotateZ(5deg)}}
+@keyframes bellring{0%{-webkit-transform:rotateZ(0deg);transform:rotateZ(0deg)}
+100%{-webkit-transform:rotateZ(5deg);transform:rotateZ(5deg)}}
+.header__santa{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px);-webkit-animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;animation:fadeInTopScale cubic-bezier(.445,.05,.55,.95) 400ms 1500ms forwards;-webkit-transform-origin:160px bottom;transform-origin:160px bottom}
