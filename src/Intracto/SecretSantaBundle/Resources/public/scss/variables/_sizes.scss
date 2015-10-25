@@ -1,0 +1,15 @@
+/* wrapper */
+$wrapper:         em(1500px);
+
+/* Media queries */
+$largedesktop:    em(1300px);
+$desktop:         em(1100px);
+$tablet:          em(960px);
+$small-tablet:    em(760px);
+$smartphone-landscape: em(600px);
+$smartphone:      em(360px);
+
+
+$base-spacing-unit:   24px;
+$half-spacing-unit:   $base-spacing-unit/2;
+$double-spacing-unit: $base-spacing-unit*2;

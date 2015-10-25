@@ -65,7 +65,6 @@ html {
 }
 
 body {
-    background: url(../img/body-bg.jpg) repeat-x left top;
     font-family: 'OpenSansRegular';
     font-size: 100%;
     font-size: 1.4em;
@@ -109,20 +108,6 @@ p {
 a {
     color: #b3141c;
     text-decoration: underline;
-}
-
-a.btn-started {
-    display: inline-block;
-    width: 213px;
-    height: 44px;
-    line-height: 44px;
-    color: #ffffff;
-    background: url(../img/btn-started.png) no-repeat left top;
-    text-shadow: 1px 1px 1px #6e070c;
-    text-align: center;
-    font-size: 1.2em;
-    font-family: 'OpenSansBold';
-    text-decoration: none;
 }
 
 a.btn {
@@ -177,7 +162,7 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 /**  **/
 
 .wrapper {
-    background: url(../img/header-bg.jpg) no-repeat center top;
+    /*background: url(../img/header-bg.jpg) no-repeat center top;*/
 }
 
 .container {
@@ -193,12 +178,13 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 
 .steps {
     background: url(../img/steps.png) no-repeat left top;
-    padding: 12px 20px 0px 20px;
+    padding: 25px 20px 20px 20px;
     width: 289px;
-    height: 266px;
-    position: absolute;
-    right: 0;
-    top: 45px;
+    height: 310px;
+}
+
+.steps ul.liststyle1 li {
+    margin-bottom: 6px;
 }
 
 .content-container {
@@ -321,10 +307,7 @@ ul.form-errors {
  * Language switch in header
  */
 .lang__selection {
-    position: absolute;
     list-style: none;
-    top: 10px;
-    right: 0;
     padding: 0;
     margin: 0;
 }
