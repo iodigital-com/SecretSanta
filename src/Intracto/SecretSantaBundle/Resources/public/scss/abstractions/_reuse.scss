@@ -1,0 +1,102 @@
+/**
+ * @_reuse.scss
+ * General classes. Main purpose is to reuse these classes.
+ */
+
+/* Positions */
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.stretch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Layout */
+.inline-block {
+  display: inline-block;
+}
+
+.display-block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.table {
+  display: table;
+  width: 100%;
+}
+
+.table-cell {
+  vertical-align: middle;
+  display: table-cell;
+}
+
+/* Alignment */
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.v-align-middle {
+  vertical-align: middle;
+}
+
+.v-align-top {
+  vertical-align: top;
+}
+
+/* Weights */
+.light {
+  font-weight: $light;
+}
+
+.regular {
+  font-weight: $normal;
+}
+
+.bold {
+  font-weight: $bold;
+}
+
+.normal {
+  font-style: normal;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* Button */
+.button {
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Transform */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.alert {
+  @extend .clearfix;
+  clear: both;
+}

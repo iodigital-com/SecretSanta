@@ -1,0 +1,47 @@
+/*
+ *  mixin can be used with every property: font-size, margin, top, padding etc etc
+ *
+ * USE:
+ * @include rem-fallback(margin, 0, 0, 12, 0);
+ * @include rem-fallback(font-size, 14);
+ * @include rem-fallback(line-height, 17);
+ *
+ * OUTPUT:
+ * margin: 0px 0px 12px 0px;
+ * margin: 0rem 0rem 0.75rem 0rem;
+ * font-size: 14px;
+ * font-size: 0.875rem;
+ * line-height: 17px;
+ * font-size: 1.0625rem;
+ */
+
+@mixin rem-fallback($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $pxValues: #{$pxValues + $value}px;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $remValues: #{$remValues + $value/16}rem;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  }
+
+  #{$property}: $pxValues;
+  #{$property}: $remValues;
+}
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
