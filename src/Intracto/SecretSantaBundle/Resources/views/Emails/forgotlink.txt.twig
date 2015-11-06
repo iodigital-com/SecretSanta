@@ -1,0 +1,8 @@
+{{ 'emails.forgot_link.text'|trans|raw }}<br>
+{% for link in poolLinks %}
+    <a href="{{ link.url }}">link.text</a>
+{% endfor %}
+
+{{ 'emails.base.footer'|trans }}
+
+{{ 'emails.base.created_by'|trans }} http://www.intracto.com

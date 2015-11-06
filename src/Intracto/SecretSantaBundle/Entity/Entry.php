@@ -133,6 +133,13 @@ class Entry
     private $updateWishlistReminderSentTime;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="poolAdmin", type="boolean", options={"default"=false})
+     */
+    private $poolAdmin = false;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -539,5 +546,21 @@ class Entry
     public function getExcludedEntries()
     {
         return $this->excluded_entries;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isPoolAdmin()
+    {
+        return $this->poolAdmin;
+    }
+
+    /**
+     * @param boolean $poolAdmin
+     */
+    public function setPoolAdmin($poolAdmin)
+    {
+        $this->poolAdmin = $poolAdmin;
     }
 }
