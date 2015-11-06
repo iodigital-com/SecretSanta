@@ -1,0 +1,9 @@
+.header__chimney {
+  float: left;
+
+  margin-left: -180px;
+  margin-top: 121px;
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
+}

@@ -1,4 +1,7 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block metadata %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
 {% block header %}
     <div class="steps">
         <h2>{{ 'entry.headers.title'|trans|raw }}</h2>
