@@ -341,7 +341,8 @@ flashes:
         edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
         saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
     forgot_manage_link:
-            title: 'Activatie mail opnieuw verzenden'
-            description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw.'
-            success: 'De activatie mail is succesvol opnieuw verstuurd!'
-            error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
+        success: 'De activatie mail is succesvol opnieuw verstuurd!'
+        error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
+forgot_manage_link:
+    title: 'Activatie mail opnieuw verzenden'
+    description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw.'

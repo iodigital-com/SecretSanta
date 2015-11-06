@@ -362,7 +362,8 @@ flashes:
     analytics:
         invalid_data: <h4>Oops</h4> An error occured while requesting analytics data. Please try again.
     forgot_manage_link:
-        title: 'Resend activation mail'
-        description: 'Fill in the email address of the pool owner and we will resend the activation email.'
         success: 'We have successfully resend your activation mail'
         error: 'An error occurred while resending the activation mail. Please try again.'
+forgot_manage_link:
+    title: 'Resend activation mail'
+    description: 'Fill in the email address of the pool owner and we will resend the activation email.'
