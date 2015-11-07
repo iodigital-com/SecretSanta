@@ -97,7 +97,7 @@ expose:
     phrase_to_type: show me everything
 entry:
     headers:
-        title: 你的span class="accent">秘密聖誕老人派對</span>細節
+        title: 你的<span class="accent">秘密聖誕老人派對</span>細節
         date: 日期
         amount: 數量
         num_people: 人數
