@@ -38,8 +38,6 @@ class StaticController extends Controller
         try {
             $data['analytics'] = $reportingService->getAnalytics($options);
         } catch (\Exception $e) {
-            var_dump($e);
-            die;
             $translator = $this->get('translator');
             $this->addFlash(
                 'error',
