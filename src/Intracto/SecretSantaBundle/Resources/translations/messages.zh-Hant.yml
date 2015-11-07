@@ -14,7 +14,7 @@ base:
 pool:
     header:
         steps:
-            title: 交換禮物的span class="accent">3個簡單步驟</span>
+            title: 交換禮物的<span class="accent">3個簡單步驟</span>
             list:
                 one: 列出參與者
                 two: 加入個人訊息
