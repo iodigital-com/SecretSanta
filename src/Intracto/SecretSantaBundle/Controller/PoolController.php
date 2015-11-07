@@ -82,22 +82,6 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
-                //------- Remove between these lines if a fix has been find for max_execution_time error when shuffling
-
-
-                $pool->setCreated(true);
-                $em->persist($pool);
-                $em->flush();
-
-                $this->eventDispatcher->dispatch(
-                    PoolEvents::NEW_POOL_CREATED,
-                    new PoolEvent($pool)
-                );
-
-                return $this->redirect($this->generateUrl('pool_created', array('listUrl' => $pool->getListurl())));
-
-                //-------
-
                 return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
             }
         }
@@ -127,6 +111,12 @@ class PoolController extends Controller
 
                 $this->pool->setCreated(true);
                 $em->persist($this->pool);
+
+                /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
+                $entryService = $this->get('intracto_secret_santa.entry_service');
+
+                $entryService->shuffleEntries($this->pool);
+
                 $em->flush();
 
                 $this->eventDispatcher->dispatch(
@@ -178,7 +168,6 @@ class PoolController extends Controller
             /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
-            $entryService->shuffleEntries($this->pool);
             $entryService->sendSecretSantaMailsForPool($this->pool);
         }
 

@@ -1,1 +1,1 @@
-pool:    non_unique: Oei! Niet alle deelnemers hebben een unieke match.entry:    non_unique: Sorry, geen unieke match gevonden voor"%name%"
+pool:    non_unique: Oei! Niet alle deelnemers hebben een unieke match. Probeer het opnieuw of verwijder enkele combinaties uit de uitsluitingentry:    non_unique: Sorry, geen unieke match gevonden voor"%name%"
