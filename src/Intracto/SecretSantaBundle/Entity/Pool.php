@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
@@ -41,14 +42,14 @@ class Pool
     private $message;
 
     /**
-     * @var datetime $sentdate
+     * @var \DateTime $sentdate
      *
      * @ORM\Column(name="sentdate", type="datetime", length=255, nullable=true)
      */
     private $sentdate;
 
     /**
-     * @var datetime $date
+     * @var \DateTime $date
      *
      * @Assert\NotBlank()
      * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
@@ -191,7 +192,7 @@ class Pool
     /**
      * Set sentdate
      *
-     * @param datetime $sentdate
+     * @param \DateTime $sentdate
      *
      * @return Pool
      */
@@ -205,7 +206,7 @@ class Pool
     /**
      * Get sentdate
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getSentdate()
     {
