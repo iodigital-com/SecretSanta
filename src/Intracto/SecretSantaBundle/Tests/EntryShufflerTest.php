@@ -1724,4 +1724,32 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
             }
         }
     }
+
+    public function testEntryShufflerCase4()
+    {
+        $pool = new Pool();
+        foreach ($pool->getEntries() as $defaultEntry) {
+            $pool->removeEntry($defaultEntry);
+        }
+
+        $entry1 = new Entry();
+        $entry1->setName('Entry 1');
+        $pool->addEntrie($entry1);
+
+        $entry2 = new Entry();
+        $entry2->setName('Entry 2');
+        $pool->addEntrie($entry2);
+
+        $entry3 = new Entry();
+        $entry3->setName('Entry 3');
+        $pool->addEntrie($entry3);
+
+        $entry1->addExcludedEntry($entry2);
+        $entry1->addExcludedEntry($entry3);
+
+        $entryShuffler = new EntryShuffler();
+        $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
+        $this->assertFalse($shuffeledEntries);
+
+    }
 }

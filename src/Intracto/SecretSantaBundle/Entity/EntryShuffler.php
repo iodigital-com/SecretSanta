@@ -7,6 +7,10 @@ namespace Intracto\SecretSantaBundle\Entity;
  */
 class EntryShuffler
 {
+    const SHUFFLE_TIME_LIMIT = 10; //sec
+
+    private $matchedExcludes;
+
     /**
      * @param Pool $pool
      *
@@ -14,7 +18,11 @@ class EntryShuffler
      */
     public function shuffleEntries(Pool $pool)
     {
-        return $this->permutateTillMatch($pool);
+        if ($this->matchedExcludes) {
+            return $this->matchedExcludes;
+        }
+
+        return $this->shuffleTillMatch($pool);
     }
 
     /**
@@ -22,16 +30,20 @@ class EntryShuffler
      *
      * @return array|bool
      */
-    private function permutateTillMatch(Pool $pool)
+    private function shuffleTillMatch(Pool $pool)
     {
+        $timeToStop = microtime(true) + self::SHUFFLE_TIME_LIMIT;
         $entries = $pool->getEntries()->getValues();
-        $set = $this->shuffleArray($entries);
-        do {
+
+        while (microtime(true) < $timeToStop) {
+            $set = $this->shuffleArray($entries);
             if ($this->checkValidMatch($entries, $set)) {
+                $this->matchedExcludes = $set;
                 return $set;
             }
-        } while ($set = $this->shuffleArray($entries));
+        };
 
+        return false;
     }
 
     /**
