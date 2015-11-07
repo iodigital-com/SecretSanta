@@ -22,12 +22,14 @@ parameters:
         - pt
         - ru
         - zh-Hans
+        - zh-Hant
     locale_names:
         en: English
         nl: Nederlands
         fr: Français
         pt: Português
         zh-Hans: 简体中文
+        zh-Hant: 繁體中文
         pl: Polskie
         ru: Русский
         es: Español

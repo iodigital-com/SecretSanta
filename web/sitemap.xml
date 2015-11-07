@@ -43,6 +43,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>http://www.secretsantaorganizer.com/zh-Hant/</loc>
+    <lastmod>2015-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://www.secretsantaorganizer.com/pl/</loc>
     <lastmod>2015-09-07</lastmod>
     <changefreq>daily</changefreq>
