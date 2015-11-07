@@ -1,0 +1,275 @@
+base:
+    meta:
+        description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
+        title: 秘密聖誕老人替你和朋友、同事、家人組織派對
+        og:
+            title:  秘密聖誕老人
+            site_name:  秘密聖誕老人
+            description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
+    nav:
+        home: 主頁
+    privacy_policy: 私隠政策
+    have_fun: 希望你在組織秘密聖誕老人.時開心愉快
+    need_help: <a href="%FAQ%" target="_blank">需要幫助？遇上問題？閱讀FAQ!</a>
+pool:
+    header:
+        steps:
+            title: 交換禮物的span class="accent">3個簡單步驟</span>
+            list:
+                one: 列出參與者
+                two: 加入個人訊息
+                three: 送出訊息
+            get_started: 開始了!
+
+create:
+    what_is:
+        title: 甚麼是秘密聖誕老人?
+        intro: >
+                <p>這是<strong>個免</strong>費網上交換禮物組織者。與朋友、家人、甚至同事組織秘密聖誕老人派對。在收到電郵後，你可以加入你個人的願望單，而願望單會交付到你的秘密聖誕老人。</p>
+                <p>每年世界各地的人都會在<strong>聖誕時份</strong>交換禮物。為令事情感到有趣，你可隨意指派兩邊的人互相交換禮物。</p>
+
+    add_participants: 加入你的參加者
+    list_adminstrator: 這人是你的名單管理者。
+    add_personal_message:
+        title: 加入個人信息
+        description: 為參加者加入個人信息。
+exclude:
+   title: 排除
+   description: 在這個目錄下，你好隨意阻止一些參與者組合。例如，防止來自同一家庭成員互相送禮物。
+created:
+    title: 只需一步，確認你的參與
+    body: >
+            <p>
+              為防止殭屍及釣魚程式破壞秘密聖誕老人派對，我們需要列出組織者<b>%ownername%</b>去確認他/她的參與。我們會發出電郵<b>%owneremail%</b>配合進一步指引。
+            </p>
+            <p>
+              一旦確認，你的秘密聖誕老人 目錄將會迅速起動，所有用戶都會接收到你的訊息連同他們的秘密聖誕老人 禮物朋友們。
+            </p>
+            <p>
+                再確認電郵中，表列組織者將會尋找一個連結去保留所有在秘密聖誕老人表到被視為禮物朋友仔的用戶的行蹤。確認每一個秘密聖誕老人都知道他的責任。
+            </p>
+    warning: 警告！
+    check_spam: 別忘記去檢查你的垃圾文件夾！
+
+deleted:
+    title: 你的秘密聖誕老人 目錄已被刪除
+    body: >
+        <p>多謝你使用秘密聖誕老人 組織者，希望出年再見到你！</p>
+
+manage:
+    title: 你的秘密聖誕老人目錄
+    yes: 是
+    not_yet: 還未
+    edit_email: 編輯電郵
+    resend_email: 重發電郵
+    view_entry: 查看登入
+    tip: 提示
+    come_back: 你可經常回到這頁去確定每一個人已查看他們的郵箱。
+    save: 儲存
+
+delete:
+    title: 刪除我的秘密聖誕老人目錄
+    body: >
+        <p>
+            你是否絕對肯定?<br>
+            <br>
+            <b>如果你不閱讀這個， 想不到的壞事情將會發生！</b><br>
+            <br>
+            當你刪除你的秘密聖誕老人目錄後，這是不能回頭的。這動作是不能解開的。<br>
+            這將會刪除秘密聖誕老人目錄，而所有參與者及他們的願目錄也會永久刪除。<br>
+            <br>
+            請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
+        </p>
+    phrase_to_type: 刪除所有東西
+expose:
+    title: 在這個郵件目錄，把所有相配個者傳送給我
+    body: >
+        <p>
+            你絕對肯定？<br>
+            <br>
+            將發給你是一個電郵，裡面載有全部的郵件名單及相配者。<br>
+            <br>
+            <b>注意：</b><br>
+            所有郵件名單成員會被通知！<br>
+            <br>
+            請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
+        </p>
+    phrase_to_type: show me everything
+entry:
+    headers:
+        title: 你的span class="accent">秘密聖誕老人派對</span>細節
+        date: 日期
+        amount: 數量
+        num_people: 人數
+        person_created_list: 名單創作人
+        exposed: 郵件名單創作人會知道所有相配者
+        not_exposed: 郵件名單創作人會不知道所有相配者
+    title: 你指定的朋友
+    body: >
+        <p>你好%name%,</p>
+        <p>你已被選派成為秘密聖誕老人去送禮物給:</p>
+    wishlist_from: %name%從願望名單
+    wishlist_not_provided: 願望名單還未有提供%name%
+    wishlist:
+        title: 你的願望名單
+        description: 你可留下願望名單在這裡去協助你的秘密聖誕老人。我們的精靈會小心傳遞願望名單到秘密聖誕老人。拉著項目，你可重新整理名單。
+    wishlist_empty: 你的願望名單是空的，請加入東西!
+
+static:
+    privacy_policy:
+        title: Privacy Policy
+        body: >
+            <p>Thank you for visiting secretsantaorganizer.com created by Intracto group NV. This privacy policy tells you
+                how we use personal information collected at this site. Please read this privacy policy before using the
+                site or submitting any personal information. By using the site, you are accepting the practices described in
+                this privacy policy. These practices may be changed, but any changes will be posted and changes will only
+                apply to activities and information on a going forward, not retroactive basis. You are encouraged to review
+                the privacy policy whenever you visit the site to make sure that you understand how any personal information
+                you provide will be used.</p>
+
+            <p>Note: the privacy practices set forth in this privacy policy are for this web site only. If you link to other
+                web sites, please review the privacy policies posted at those sites.</p>
+
+            <h2>Collection of Information</h2>
+
+            <p>We collect personally identifiable information, like names and email addresses, when voluntarily submitted by
+                our visitors. The information you provide is used to fulfill your specific request.</p>
+
+            <h2>Cookie/Tracking Technology</h2>
+
+            <p>This site uses cookies present in Google Analytics for gathering anonymous information such as browser type
+                and operating system, tracking the number of visitors to the site, and understanding how visitors use the
+                site. Personal information cannot be collected via cookies and other tracking technology.</p>
+
+            <p>You can turn off the use of cookies in the settings of your browser.</p>
+
+            <h2>Distribution of Information</h2>
+
+            <p>We may share information with governmental agencies or other companies assisting us in fraud prevention or
+                investigation. We may do so when: (1) permitted or required by law; or, (2) trying to protect against or
+                prevent actual or potential fraud or unauthorized transactions; or, (3) investigating fraud which has
+                already taken place. The information is not provided to these companies for marketing purposes.</p>
+
+            <h2>Commitment to Data Security</h2>
+
+            <p>Your personally identifiable information is kept secure. Only authorized employees, agents and contractors
+                (who have agreed to keep information secure and confidential) have access to this information. All emails
+                from this site are unique to your specific request. No recurring emails or newsletters will be sent to the
+                email addresses provided.</p>
+
+            <h2>Privacy Contact Information</h2>
+
+            <p>If you have any questions, concerns, or comments about our privacy policy you may contact us using the
+                information below:<br/>
+                By e-mail: info@secretsantaorganizer.com</p>
+
+            <p>We reserve the right to make changes to this policy. Any changes to this policy will be posted.</p>
+
+label:
+    name: 名字
+    email: 電郵
+    date_party: 秘密聖誕老人派對日期
+    amount_to_spend: 費用
+    exclude: 排除
+    confirmed: 確認
+    actions: 行動
+    description: 形容
+placeholder:
+    exclude: 點擊及選擇你想排除的參與者
+btn:
+    add_person: 加入人士
+    remove_person: 去掉這人
+    create_event: 創造你的項目!
+    create_new_list: 創造新的秘密聖誕老人名單!
+    delete_list: 刪除我的秘密聖誕老人名單
+    delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
+    add_wishlist: 在願望單加入項目
+    remove_item: 刪除這項目
+    update_wishlist: 更新你的願望單
+    expose: 把所有相配者傳送給我
+    expose_confirm: 我明白後果，將秘密聖誕老人郵件名單傳送給我
+    cancel: 取消
+
+emails:
+    sender: 聖誕老人
+    base:
+        title:  秘密聖誕老人由Intracto所有
+        footer: 組織秘密聖誕老人時感到有趣！
+        created_by: 由
+    pendingconfirmation:
+        subject: 秘密聖誕老人確認
+        salutation: 你好%name%
+        click_button: 請點擊下方的按鈕去確認/批准你的電郵名單。這會觸發我們的精靈傳送你早前創作的個人訊息給你所有參與者。
+        overview_page: 在新創作的概要你將能了解/記錄所有你的用戶尋找他們的秘密聖誕老人 禮物夥伴。這樣可知道名單何時完成。
+        lastly: 最後，別忘記你的個人參與。當你點擊下方的確認/批准按鈕後，我們將會傳送一封新電郵給你。
+        btn_validate: 確認我的事件
+        click_link: 請點擊下方的連結去確認你的秘密聖誕老人電郵名單。
+    secretsanta:
+        subject: 你的秘密聖誕老人
+        btn_find_out: 找出你的人
+        link_find_out: 找出你隨意地指派的人去派禮物經這URL
+    wishlistchanged:
+        subject: 願望單已更新
+        salutation: 你好%name%
+        buddy_updated_wishlist: 你的朋友已更新他的願望單。
+        click_button: 點擊下方的按鈕去檢查他的提議。
+        btn_check_wishlist: 檢查願望單
+        click_link: 點擊下方的連結去檢查他的提議。
+    emptywishlistreminder:
+        subject: 你的願望單仍是空的
+        updateyourlist: 你的秘密聖誕老人派對將至，你仍未更新你的願望單！你可以把你想要的東西加入去。
+    viewentryreminder:
+        subject: 找出誰是你的禮物朋友
+        didyouforget: 你是否忘記我們的秘密聖誕老人派對？你仍未查看誰是你的禮物朋友!
+
+    created:
+        message: |
+            (NAME)你好，
+
+            (ADMINISTRATOR)創作一個秘密聖誕老人項目及已列出你是參與者。
+
+            參與有趣的秘密聖誕老人及點擊下方的接鈕找出誰是你的禮物朋友。
+
+            你可花費達到(一個額)在你的禮物。但當然創作自己的禮物是準許的!
+
+            秘密聖誕老人派對已計劃好:%date%。記得帶來你的禮物!
+
+            %message%
+
+
+            祝你假期愉快！
+    admin_matches:
+        subject: 秘密聖誕老人電郵列出配對者
+        message:
+            giving: 這成員正送給…
+            receiving: …一份禮物給這成員
+            html: >
+                親愛的%owner%,<br/>
+                <br/>
+                你要求了在電郵表列中所有相配者。<br/>
+                <br/>
+                請注意所有成員將能從願望表頁中看到這些。<br/>
+            txt: >
+                親愛的%owner%,
+                接著的的概要是成員期望從用家去得到禮物。
+                請注意所有成員將能從願望表頁中看到這些。
+flashes:
+    manage:
+        email_validated: >
+         <strong>好極！</strong><br/>你的電郵現確認。<br/>
+         當我們說話時精靈們正在互聯網飛馳，傳遞所有你的(即將成為) 秘密聖誕老人禮物朋友。<br/>
+         <br />
+         別忘記去確認你的參與。我們已傳送給你另一封電郵。查看一下吧!
+    delete:
+        not_deleted: <h4>並非已刪除</h4>該確認是不正確。
+    expose:
+        not_exposed: <h4>郵件名單沒有傳送</h4>該確認是不正確。
+        exposed: <h4>邮件名单已发送</h4> 所有用家將被通知，當他們查閱他們的願望單。
+    resend:
+        resent: <strong>重新傳送！</strong><br/>電郵到%email%已被重新傳送。<br/>
+    entry:
+        wishlist_updated: <h4>願望單已更新</h4>我們已送出我們的精靈去通知你的秘密聖誕老人關於你的願望!
+        edit_email: <h4>並沒儲存</h4>這裡有電郵地址錯誤。
+        saved_email: <h4>儲存</h4> 新的電郵地址已儲存。我們亦重新傳送電郵。
+    analytics:
+        invalid_data: <h4>噢</h4>當要求分析數據錯誤出現了。請重試。

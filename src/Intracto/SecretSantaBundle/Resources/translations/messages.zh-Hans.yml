@@ -10,6 +10,7 @@ base:
         home: 首页
     privacy_policy: 私隐政策
     have_fun: 好好享受策划你的秘密圣诞老人吧
+    need_help: <a href="%FAQ%" target="_blank">Need help? Got questions? Read the FAQ!</a>
 pool:
     header:
         steps:
