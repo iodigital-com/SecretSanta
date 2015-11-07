@@ -6,7 +6,7 @@ use Intracto\SecretSantaBundle\Model\AnalyticsOptions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class StaticController extends Controller
 {
@@ -38,6 +38,8 @@ class StaticController extends Controller
         try {
             $data['analytics'] = $reportingService->getAnalytics($options);
         } catch (\Exception $e) {
+            var_dump($e);
+            die;
             $translator = $this->get('translator');
             $this->addFlash(
                 'error',
