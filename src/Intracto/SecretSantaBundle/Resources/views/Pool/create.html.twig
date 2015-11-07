@@ -25,7 +25,7 @@
         <div class="santa-content">
             <h1>{{ 'create.add_participants'|trans }}</h1>
 
-            <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
+            <form action="#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <div class="row toplabels">
                     <div class="span4{% if form_errors(form.date) %} error{% endif %}">{{ form_label(form.date) }}{{ form_widget(form.date) }}</div>
