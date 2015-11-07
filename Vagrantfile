@@ -23,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         # Shared folder over NFS
         secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs"
+        #secretsanta_config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [".git/", "web/bundles/", "app/cache", "app/logs"]
 
         secretsanta_config.vm.network "private_network", ip: "192.168.33.10"
 

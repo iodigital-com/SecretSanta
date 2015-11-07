@@ -4,6 +4,7 @@ namespace Intracto\SecretSantaBundle\Controller;
 
 use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
+use Intracto\SecretSantaBundle\Form\ForgotLinkType;
 use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -81,22 +82,6 @@ class PoolController extends Controller
                 $em->persist($pool);
                 $em->flush();
 
-                //------- Remove between these lines if a fix has been find for max_execution_time error when shuffling
-
-
-                $pool->setCreated(true);
-                $em->persist($pool);
-                $em->flush();
-
-                $this->eventDispatcher->dispatch(
-                    PoolEvents::NEW_POOL_CREATED,
-                    new PoolEvent($pool)
-                );
-
-                return $this->redirect($this->generateUrl('pool_created', array('listUrl' => $pool->getListurl())));
-
-                //-------
-
                 return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
             }
         }
@@ -126,6 +111,12 @@ class PoolController extends Controller
 
                 $this->pool->setCreated(true);
                 $em->persist($this->pool);
+
+                /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
+                $entryService = $this->get('intracto_secret_santa.entry_service');
+
+                $entryService->shuffleEntries($this->pool);
+
                 $em->flush();
 
                 $this->eventDispatcher->dispatch(
@@ -177,14 +168,13 @@ class PoolController extends Controller
             /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
             $entryService = $this->get('intracto_secret_santa.entry_service');
 
-            $entryService->shuffleEntries($this->pool);
             $entryService->sendSecretSantaMailsForPool($this->pool);
         }
 
         return array(
             'pool' => $this->pool,
-            'delete_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('delete_pool'),
-            'expose_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('expose_pool'),
+            'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
+            'expose_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_pool'),
         );
     }
 
@@ -192,14 +182,14 @@ class PoolController extends Controller
      * @Route("/delete/{listUrl}", name="pool_delete")
      * @Template()
      */
-    public function deleteAction($listUrl)
+    public function deleteAction(Request $request, $listUrl)
     {
-        $correctCsrfToken = $this->get('form.csrf_provider')->isCsrfTokenValid(
+        $correctCsrfToken = $this->isCsrfTokenValid(
             'delete_pool',
-            $this->getRequest()->get('csrf_token')
+            $request->get('csrf_token')
         );
         $translator = $this->get('translator');
-        $correctConfirmation = ($this->getRequest()->get('confirmation') === $translator->trans('delete.phrase_to_type'));
+        $correctConfirmation = ($request->get('confirmation') === $translator->trans('delete.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $translator = $this->get('translator');
@@ -222,15 +212,15 @@ class PoolController extends Controller
      * @Route("/expose/{listUrl}", name="pool_expose")
      * @Template()
      */
-    public function exposeAction($listUrl)
+    public function exposeAction(Request $request, $listUrl)
     {
-        $correctCsrfToken = $this->get('form.csrf_provider')->isCsrfTokenValid(
+        $correctCsrfToken = $this->isCsrfTokenValid(
             'expose_pool',
-            $this->getRequest()->get('csrf_token')
+            $request->get('csrf_token')
         );
 
         $translator = $this->get('translator');
-        $correctConfirmation = ($this->getRequest()->get('confirmation') === $translator->trans('expose.phrase_to_type'));
+        $correctConfirmation = ($request->get('confirmation') === $translator->trans('expose.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
@@ -286,6 +276,38 @@ class PoolController extends Controller
         );
 
         return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
+    }
+
+    /**
+     * @Route("/forgot-link", name="pool_forgot_manage_link")
+     * @Template("IntractoSecretSantaBundle:Pool:forgotLink.html.twig")
+     */
+    public function forgotLinkAction(Request $request)
+    {
+        $form = $this->createForm(new ForgotLinkType());
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                if ($this->get('intracto_secret_santa.pool_service')->sendForgotManageLinkMail($form->getData()['email'])) {
+                    $feedback = array(
+                        'type' => 'success',
+                        'message' => $this->get('translator')->trans('flashes.forgot_manage_link.success'),
+                    );
+                } else {
+                    $feedback = array(
+                        'type' => 'error',
+                        'message' => $this->get('translator')->trans('flashes.forgot_manage_link.error'),
+                    );
+                }
+
+                $this->addFlash($feedback['type'], $feedback['message']);
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+        );
     }
 
     /**

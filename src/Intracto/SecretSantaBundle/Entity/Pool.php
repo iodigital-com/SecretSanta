@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
@@ -10,7 +11,7 @@ use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
  * Intracto\SecretSantaBundle\Entity\Pool
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PoolRepository")
  * @ORM\HasLifecycleCallbacks
  *
  * @PoolHasValidExcludes(groups={"exclude_entries"})
@@ -41,14 +42,14 @@ class Pool
     private $message;
 
     /**
-     * @var datetime $sentdate
+     * @var \DateTime $sentdate
      *
      * @ORM\Column(name="sentdate", type="datetime", length=255, nullable=true)
      */
     private $sentdate;
 
     /**
-     * @var datetime $date
+     * @var \DateTime $date
      *
      * @Assert\NotBlank()
      * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
@@ -102,7 +103,11 @@ class Pool
 
         // Create default minimum entries
         for ($i = 0; $i < 3; $i++) {
-            $this->addEntry(new Entry());
+            $entry = new Entry();
+            if ($i == 0) {
+                $entry->setPoolAdmin(true);
+            }
+            $this->addEntry($entry);
         }
     }
 
@@ -187,7 +192,7 @@ class Pool
     /**
      * Set sentdate
      *
-     * @param datetime $sentdate
+     * @param \DateTime $sentdate
      *
      * @return Pool
      */
@@ -201,7 +206,7 @@ class Pool
     /**
      * Get sentdate
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getSentdate()
     {

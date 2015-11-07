@@ -1,0 +1,136 @@
+/**
+ * @_header.scss
+ * Header with animated background
+ */
+.header {
+  background: #97c1bd;
+  position: relative;
+  min-height: 315px;
+  @extend .clearfix;
+
+  .container {
+    min-height: 315px;
+    z-index: 5;
+  }
+}
+
+#header {
+  height: 373px;
+  margin-bottom: 70px;
+}
+
+@keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  50% {
+    background-position: 500px 500px, 100px 200px, -100px 150px;
+  }
+  100% {
+    background-position: 500px 1000px, 200px 400px, -100px 300px;
+  }
+}
+
+.header__snow {
+  background: none;
+  font-family: Androgyne;
+  background-image: url('../img/s1.png'), url('../img/s2.png'), url('../img/s3.png');
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+  .cssanimations &{
+    animation: snow 10s linear infinite;
+  }
+}
+
+.header__snow-container {
+  .cssanimations &{
+    opacity: 0;
+    animation: fadeIn ease 350ms 1700ms forwards;
+  }
+}
+
+.header__left {
+  width: 65%;
+  float: left;
+  display: inline-block;
+  @media only screen and (max-width: 1024px) {
+    width: 60%;
+  }
+}
+
+.header__right {
+  width: 35%;
+  float: right;
+  display: inline-block;
+  padding-top: 20px;
+  @media only screen and (max-width: 1024px) {
+    width: 40%;
+  }
+}
+
+.lang__selection {
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    select {
+      width: 100%;
+    }
+  }
+}
+
+.header__logo {
+  padding: 40px 0;
+  padding-bottom: 24px;
+}
+
+a.btn-started {
+  display: inline-block;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  color: #ffffff;
+  background: #b3141c;
+  border: 1px solid #901017;
+  border-radius: 5px;
+  text-shadow: 1px 1px 1px #6e070c;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  text-decoration: none;
+  &:hover {
+    background: #901017;
+  }
+}
+
+.steps {
+  box-sizing: border-box;
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    height: auto;
+  }
+  .cssanimations &{
+    opacity: 0;
+    transform: translateY(5px);
+    animation: fadeInTopScale cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms 1100ms forwards;
+  }
+}
+
+.header__santa {
+  @media only screen and (max-width: 1280px) {
+    padding-left: 150px;
+  }
+  @media only screen and (max-width: 900px) {
+    padding-left: 0;
+  }
+  .cssanimations &{
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInTopScale cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms 1500ms forwards;
+    transform-origin: 160px bottom;
+  }
+}

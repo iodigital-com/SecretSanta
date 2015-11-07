@@ -1,0 +1,12 @@
+/**
+ * @_links.scss
+ * Formatting for links.
+ */
+a {
+  color: $link;
+  text-decoration: underline;
+  transition: all .2s $ease-in-out;
+  &:hover {
+    color: $link-hover;
+  }
+}

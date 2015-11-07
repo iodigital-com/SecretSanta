@@ -1,0 +1,19 @@
+/* Font family's */
+$base-font-family: 'PT Sans';
+$heading-font-family: 'PT Sans';
+
+/* Font weights */
+$bold: 700;
+$semi: 600;
+$normal: 400;
+$light: 300;
+
+/* Font sizes */
+$root-font-size: 16px;
+$base-font-size: em($root-font-size);
+$large-font-size: em(18px);
+$small-font-size: em(13px);
+
+$base-line-height: em(20px);
+$large-line-height: em(28px);
+$small-line-height: em(24px);

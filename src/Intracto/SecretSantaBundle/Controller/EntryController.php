@@ -3,6 +3,8 @@
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Intracto\SecretSantaBundle\Entity\EntryRepository;
+use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
 use Intracto\SecretSantaBundle\Form\WishlistNewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,7 +22,7 @@ class EntryController extends Controller
     /**
      * @DI\Inject("entry_repository")
      *
-     * @var \Doctrine\ORM\EntityRepository
+     * @var EntryRepository
      */
     public $entryRepository;
 
@@ -53,6 +55,7 @@ class EntryController extends Controller
         if ('POST' === $request->getMethod()) {
             // get current items to compare against items later on
             $currentWishlistItems = new ArrayCollection();
+            /** @var WishlistItem $item */
             foreach ($this->entry->getWishlistItems() as $item) {
                 $currentWishlistItems->add($item);
             }
@@ -116,7 +119,7 @@ class EntryController extends Controller
      * @Route("/entry/edit-email/{listUrl}/{entryId}", name="entry_email_edit")
      * @Template()
      */
-    public function editEmailAction($listUrl, $entryId)
+    public function editEmailAction(Request $request, $listUrl, $entryId)
     {
         /** @var Entry $entry */
         $entry = $this->entryRepository->find($entryId);
@@ -125,7 +128,7 @@ class EntryController extends Controller
             /** @var \Symfony\Component\Validator\Validator $validatorService */
             $validatorService = $this->get('validator');
 
-            $emailAddress = new EmailAddress($this->getRequest()->request->get('email'));
+            $emailAddress = new EmailAddress($request->request->get('email'));
             $emailAddressErrors = $validatorService->validate($emailAddress);
 
             if (count($emailAddressErrors) > 0) {

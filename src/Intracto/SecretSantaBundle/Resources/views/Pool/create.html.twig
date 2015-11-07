@@ -49,12 +49,12 @@
                     </thead>
                     <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.vars['prototype']} %}{% endfilter %}">
                     {% for entry in form.entries %}
-                        <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
+                        <tr class="entry {% if entry.vars.data.poolAdmin %}owner{% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
                             <td {% if form_errors(entry.name) %}class="error"{% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
                             <td {% if form_errors(entry.email) %}class="error"{% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
                             <td style="text-align: right;">
-                                {% if loop.index == 1 %}
+                                {% if entry.vars.data.poolAdmin %}
                                     <small>{{ 'create.list_adminstrator'|trans }}</small>
                                 {% else %}
                                     <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i
@@ -94,8 +94,7 @@
 {% block javascripts %}
     {% javascripts
         '@IntractoSecretSantaBundle/Resources/public/js/jquery.smooth-scroll.min.js'
-        '@IntractoSecretSantaBundle/Resources/public/js/pool.create.js'
-        '@IntractoSecretSantaBundle/Resources/public/js/modernizr.custom.js' %}
+        '@IntractoSecretSantaBundle/Resources/public/js/pool.create.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ form_javascript(form) }}

@@ -128,7 +128,7 @@ static:
 
             <h2>Verzameling van informatie</h2>
 
-            <p>We verzamelen persoonlijk identificeerbare informatie als namen en e-mailadressen, wanneer vrijwillig ingegeven door onze bezoekers. De informatie die je verstrekt wordt gebruikt om je eigen specifieke aanvraag uit te voeren. 
+            <p>We verzamelen persoonlijk identificeerbare informatie als namen en e-mailadressen, wanneer vrijwillig ingegeven door onze bezoekers. De informatie die je verstrekt wordt gebruikt om je eigen specifieke aanvraag uit te voeren.
             </p>
 
             <h2>Cookie/Tracking Technologie</h2>
@@ -139,7 +139,7 @@ static:
 
             <h2>Informatieverspreiding</h2>
 
-            <p>Mogelijk delen we informatie met overheidsagentschappen of andere bedrijven die ons bijstaan in onderzoek naar of preventie van fraude. 
+            <p>Mogelijk delen we informatie met overheidsagentschappen of andere bedrijven die ons bijstaan in onderzoek naar of preventie van fraude.
             Dit kunnen we doen wanneer: (1) toegestaan of verplicht bij wet; of, (2) we jou en onszelf proberen te beschermen tegen feitelijke of potentiële fraude of ongeautoriseerde transacties; of, (3) we fraude die al heeft plaatsgevonden onderzoeken. De informatie wordt niet voor commerciële doeleinden aan deze bedrijven doorgegeven.</p>
 
             <h2>Inspanningen voor gegevensbescherming</h2>
@@ -180,8 +180,7 @@ static:
             <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
 
             <a href="lost"></a><h2>Ik ben mijn bevestigingsmail kwijt.</h2>
-            <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst) is de wereld nog niet ontploft. Neem contact op met ons via het mailadres van de lijstbeheerder. We zullen zo vriendelijk zijn je de link opnieuw toe te sturen.<br/>
-            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">We willen dit ooit nog eens automatiseren.</p>
+            <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> het mailadres van de lijstbeheerder in en we sturen je een mail met de beheer link.</p>
 
             <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
             <p>Bij de aanmaak van het evenement worden alle deelnemers aan elkaar toegewezen. We kunnen niet zomaar iemand toevoegen of verwijderen. Gebruik de beheerpagina van de lijst en probeer op een creatieve manier je probleem op te lossen.</p>
@@ -260,7 +259,7 @@ emails:
     sender: Kerstman
     base:
         title: Secret Santa door Intracto
-        footer: Veel plezier met het organiseren van Secret Santa! 
+        footer: Veel plezier met het organiseren van Secret Santa!
         created_by: Aangemaakt door
     pendingconfirmation:
         subject: Secret Santa Validatie
@@ -278,7 +277,7 @@ emails:
         subject: Verlanglijst geüpdatet
         salutation: Hey %name%
         buddy_updated_wishlist: Je persoon heeft zijn of haar verlanglijst geüpdatet.
-        click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken. 
+        click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken.
         btn_check_wishlist: Bekijk verlanglijst
         click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
     emptywishlistreminder:
@@ -320,6 +319,9 @@ emails:
                 Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.
 
                 Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.
+    forgot_link:
+        text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
+        subject: 'Activatie mail opnieuw verzenden'
 flashes:
     manage:
         email_validated: >
@@ -336,5 +338,11 @@ flashes:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
     entry:
         wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
-        edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres. 
+        edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
         saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
+    forgot_manage_link:
+        success: 'De activatie mail is succesvol opnieuw verstuurd!'
+        error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
+forgot_manage_link:
+    title: 'Activatie mail opnieuw verzenden'
+    description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw.'

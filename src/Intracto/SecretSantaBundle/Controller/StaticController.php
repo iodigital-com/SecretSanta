@@ -6,6 +6,7 @@ use Intracto\SecretSantaBundle\Model\AnalyticsOptions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class StaticController extends Controller
 {
@@ -22,12 +23,12 @@ class StaticController extends Controller
      * @Route("/report", name="report")
      * @Template()
      */
-    public function reportAction()
+    public function reportAction(Request $request)
     {
         $reportingService = $this->get('intracto_secret_santa.reporting');
         $pools = $reportingService->getPools();
         $options = new AnalyticsOptions();
-        $options->loadFromRequest($this->getRequest());
+        $options->loadFromRequest($request);
 
         $data = array(
             'pools' => $pools,

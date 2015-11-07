@@ -1,0 +1,74 @@
+/* Root typography */
+
+/*
+* http://css-tricks.com/rems-ems/
+* Root document is the default 100% (can be scaled trough media queries)
+* Components are declared with rems
+* Components elements are declared with ems
+*/
+
+body {
+  line-height: $base-line-height;
+  word-wrap: break-word;
+  hyphens: auto;
+
+  font-family: $base-font-family, sans-serif;
+  color: $base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 100%;
+}
+
+
+/*
+* Font size classes
+*/
+.normal-fontsize {
+  font-size: $base-font-size;
+}
+
+.large-fontsize {
+  font-size: $large-font-size;
+}
+
+.small-fontsize {
+  font-size: $small-font-size;
+}
+
+
+/*
+* Headings
+*/
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-weight: $bold;
+  line-height: 1;
+  margin-top: 0;
+  text-rendering: optimizeLegibility; /*  voodoo to enable ligatures and kerning | https://developer.mozilla.org/en-US/docs/CSS/text-rendering */
+  color: $heading;
+}
+
+
+/*
+* Paragraph
+*/
+p{
+  &:first-of-type{
+    margin-top: 0;
+  }
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+blockquote {
+  border-left: 2px solid $link;
+  padding: $half-spacing-unit/2 0 $half-spacing-unit/2 $base-spacing-unit;
+}

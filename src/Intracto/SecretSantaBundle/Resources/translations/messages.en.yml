@@ -198,8 +198,7 @@ static:
             <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
 
             <a href="lost"></a><h2>I lost my activation mail.</h2>
-            <p>If you lost your activation e-mail (which contains the link to the admin page), contact us from the list administrator e-mail address and we will send you the link again.
-            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">There is a feature request</a> to automate this.</p>
+            <p>If you lost your activation e-mail (which contains the link to the admin page), fill in the list administrator e-mail address on <a href="http://www.secretsantaorganizer.com/forgot-link">this page</a> and we will send you the link again.</p>
 
             <a name="changes"></a><h2>Can I add or remove people?</h2>
             <p>When creating an event, all participants are assigned to each other so we can't just add or remove someone. Well, we could but it would involve changing the current pairs and possibly confusing people in the process.
@@ -339,6 +338,9 @@ emails:
                 You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
 
                 Following is an overview of which members are supposed to get gifts for which users.
+    forgot_link:
+        text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+        subject: 'Resend activation mail'
 flashes:
     manage:
         email_validated: >
@@ -359,3 +361,9 @@ flashes:
         saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
     analytics:
         invalid_data: <h4>Oops</h4> An error occured while requesting analytics data. Please try again.
+    forgot_manage_link:
+        success: 'We have successfully resend your activation mail'
+        error: 'An error occurred while resending the activation mail. Please try again.'
+forgot_manage_link:
+    title: 'Resend activation mail'
+    description: 'Fill in the email address of the pool owner and we will resend the activation email.'

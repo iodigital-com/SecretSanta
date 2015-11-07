@@ -1,0 +1,100 @@
+/**
+ * @_animations.scss
+ */
+
+ @keyframes fadeInPop {
+   0%{
+     transform: scale(0.95);
+ 	opacity: 0;
+   }
+   40% {
+ 	  transform: scale(1.05);
+ 	  opacity: 0.8
+   }
+   80% {
+ 	  transform: scale(0.95);
+ 	  opacity: 0.9
+   }
+
+   100% {
+     transform: scale(1);
+ 	opacity: 1;
+   }
+ }
+
+ @keyframes fadeIn {
+ 	0% {
+ 		opacity: 0;
+ 	}
+ 	100% {
+ 		opacity: 1;
+ 	}
+ }
+
+ @keyframes fadeInHeight {
+     0% {
+ 		opacity: 0;
+         transform: scale(0.95);
+ 	}
+ 	100% {
+ 		opacity: 1;
+         height: 70px;
+         transform: scale(1);
+ 	}
+ }
+
+ @keyframes fadeInTop {
+ 	0% {
+ 		opacity: 0;
+ 	}
+ 	100% {
+ 		opacity: 1;
+         transform: translateY(0);
+ 	}
+ }
+
+ @keyframes fadeInTopScale {
+ 	0% {
+ 		opacity: 0;
+         transform: scale(0.8);
+ 	}
+     90% {
+         transform: scale(1);
+     }
+ 	100% {
+ 		opacity: 1;
+         transform: translateY(0);
+ 	}
+ }
+
+ @keyframes inBottom {
+ 	0% {
+ 		opacity: 0;
+ 	}
+ 	100% {
+ 		opacity: 1;
+         transform: translateY(0);
+ 	}
+ }
+
+
+
+ @keyframes scaleInPop {
+ 	0%{
+       transform: scale(1);
+     }
+     44% {
+         transform: scale(1);
+     }
+     50% {
+   	  transform: scale(1.03);
+       }
+
+       56% {
+           transform: scale(1);
+       }
+
+     100% {
+       transform: scale(1);
+     }
+ }
