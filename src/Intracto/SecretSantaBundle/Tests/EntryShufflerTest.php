@@ -8,6 +8,7 @@ use Intracto\SecretSantaBundle\Entity\Pool;
 
 class EntryShufflerTest extends \PHPUnit_Framework_TestCase
 {
+    // Simple pool with simple excludes
     public function testEntryShufflerCase1()
     {
         $pool = new Pool();
@@ -51,6 +52,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    // Large pool (100 entries) with a some "random" excludes
     public function testEntryShufflerCase2()
     {
         $pool = new Pool();
@@ -483,6 +485,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    // Large pool (100 entries) with a lot of excludes (10 each)
     public function testEntryShufflerCase3()
     {
         $pool = new Pool();
@@ -1725,6 +1728,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    // You can't pick yourself
     public function testEntryShufflerCase4()
     {
         $pool = new Pool();
@@ -1750,6 +1754,338 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $entryShuffler = new EntryShuffler();
         $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
         $this->assertFalse($shuffeledEntries);
+    }
 
+    // No match can be found with this
+    public function testEntryShufflerCase5()
+    {
+        $pool = new Pool();
+        foreach ($pool->getEntries() as $defaultEntry) {
+            $pool->removeEntry($defaultEntry);
+        }
+
+        $entry1 = new Entry();
+        $entry1->setName('Entry 1');
+        $pool->addEntrie($entry1);
+
+        $entry2 = new Entry();
+        $entry2->setName('Entry 2');
+        $pool->addEntrie($entry2);
+
+        $entry3 = new Entry();
+        $entry3->setName('Entry 3');
+        $pool->addEntrie($entry3);
+
+        $entry1->addExcludedEntry($entry2);
+        $entry2->addExcludedEntry($entry1);
+
+        $entryShuffler = new EntryShuffler();
+        $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
+        $this->assertFalse($shuffeledEntries);
+    }
+
+    // Pool (20 entries) with a lot of excludes (10 each)
+    public function testEntryShufflerCase6()
+    {
+        $pool = new Pool();
+        foreach ($pool->getEntries() as $defaultEntry) {
+            $pool->removeEntry($defaultEntry);
+        }
+
+        $fam0entry0 = new Entry();
+        $fam0entry0->setName('Fam 0 Entry 0');
+        $pool->addEntrie($fam0entry0);
+        $fam0entry1 = new Entry();
+        $fam0entry1->setName('Fam 0 Entry 1');
+        $pool->addEntrie($fam0entry1);
+        $fam0entry2 = new Entry();
+        $fam0entry2->setName('Fam 0 Entry 2');
+        $pool->addEntrie($fam0entry2);
+        $fam0entry3 = new Entry();
+        $fam0entry3->setName('Fam 0 Entry 3');
+        $pool->addEntrie($fam0entry3);
+        $fam0entry4 = new Entry();
+        $fam0entry4->setName('Fam 0 Entry 4');
+        $pool->addEntrie($fam0entry4);
+        $fam0entry5 = new Entry();
+        $fam0entry5->setName('Fam 0 Entry 5');
+        $pool->addEntrie($fam0entry5);
+        $fam0entry6 = new Entry();
+        $fam0entry6->setName('Fam 0 Entry 6');
+        $pool->addEntrie($fam0entry6);
+        $fam0entry7 = new Entry();
+        $fam0entry7->setName('Fam 0 Entry 7');
+        $pool->addEntrie($fam0entry7);
+        $fam0entry8 = new Entry();
+        $fam0entry8->setName('Fam 0 Entry 8');
+        $pool->addEntrie($fam0entry8);
+        $fam0entry9 = new Entry();
+        $fam0entry9->setName('Fam 0 Entry 9');
+        $pool->addEntrie($fam0entry9);
+
+        $fam1entry0 = new Entry();
+        $fam1entry0->setName('Fam 1 Entry 0');
+        $pool->addEntrie($fam1entry0);
+        $fam1entry1 = new Entry();
+        $fam1entry1->setName('Fam 1 Entry 1');
+        $pool->addEntrie($fam1entry1);
+        $fam1entry2 = new Entry();
+        $fam1entry2->setName('Fam 1 Entry 2');
+        $pool->addEntrie($fam1entry2);
+        $fam1entry3 = new Entry();
+        $fam1entry3->setName('Fam 1 Entry 3');
+        $pool->addEntrie($fam1entry3);
+        $fam1entry4 = new Entry();
+        $fam1entry4->setName('Fam 1 Entry 4');
+        $pool->addEntrie($fam1entry4);
+        $fam1entry5 = new Entry();
+        $fam1entry5->setName('Fam 1 Entry 5');
+        $pool->addEntrie($fam1entry5);
+        $fam1entry6 = new Entry();
+        $fam1entry6->setName('Fam 1 Entry 6');
+        $pool->addEntrie($fam1entry6);
+        $fam1entry7 = new Entry();
+        $fam1entry7->setName('Fam 1 Entry 7');
+        $pool->addEntrie($fam1entry7);
+        $fam1entry8 = new Entry();
+        $fam1entry8->setName('Fam 1 Entry 8');
+        $pool->addEntrie($fam1entry8);
+        $fam1entry9 = new Entry();
+        $fam1entry9->setName('Fam 1 Entry 9');
+        $pool->addEntrie($fam1entry9);
+
+        $fam0entry0->addExcludedEntry($fam1entry0);
+        $fam0entry0->addExcludedEntry($fam1entry1);
+        $fam0entry0->addExcludedEntry($fam1entry2);
+        $fam0entry0->addExcludedEntry($fam1entry3);
+        $fam0entry0->addExcludedEntry($fam1entry4);
+        $fam0entry0->addExcludedEntry($fam1entry5);
+        $fam0entry0->addExcludedEntry($fam1entry6);
+        $fam0entry0->addExcludedEntry($fam1entry7);
+        $fam0entry0->addExcludedEntry($fam1entry8);
+        $fam0entry0->addExcludedEntry($fam1entry9);
+
+        $fam0entry1->addExcludedEntry($fam1entry0);
+        $fam0entry1->addExcludedEntry($fam1entry1);
+        $fam0entry1->addExcludedEntry($fam1entry2);
+        $fam0entry1->addExcludedEntry($fam1entry3);
+        $fam0entry1->addExcludedEntry($fam1entry4);
+        $fam0entry1->addExcludedEntry($fam1entry5);
+        $fam0entry1->addExcludedEntry($fam1entry6);
+        $fam0entry1->addExcludedEntry($fam1entry7);
+        $fam0entry1->addExcludedEntry($fam1entry8);
+        $fam0entry1->addExcludedEntry($fam1entry9);
+
+        $fam0entry2->addExcludedEntry($fam1entry0);
+        $fam0entry2->addExcludedEntry($fam1entry1);
+        $fam0entry2->addExcludedEntry($fam1entry2);
+        $fam0entry2->addExcludedEntry($fam1entry3);
+        $fam0entry2->addExcludedEntry($fam1entry4);
+        $fam0entry2->addExcludedEntry($fam1entry5);
+        $fam0entry2->addExcludedEntry($fam1entry6);
+        $fam0entry2->addExcludedEntry($fam1entry7);
+        $fam0entry2->addExcludedEntry($fam1entry8);
+        $fam0entry2->addExcludedEntry($fam1entry9);
+
+        $fam0entry3->addExcludedEntry($fam1entry0);
+        $fam0entry3->addExcludedEntry($fam1entry1);
+        $fam0entry3->addExcludedEntry($fam1entry2);
+        $fam0entry3->addExcludedEntry($fam1entry3);
+        $fam0entry3->addExcludedEntry($fam1entry4);
+        $fam0entry3->addExcludedEntry($fam1entry5);
+        $fam0entry3->addExcludedEntry($fam1entry6);
+        $fam0entry3->addExcludedEntry($fam1entry7);
+        $fam0entry3->addExcludedEntry($fam1entry8);
+        $fam0entry3->addExcludedEntry($fam1entry9);
+
+        $fam0entry4->addExcludedEntry($fam1entry0);
+        $fam0entry4->addExcludedEntry($fam1entry1);
+        $fam0entry4->addExcludedEntry($fam1entry2);
+        $fam0entry4->addExcludedEntry($fam1entry3);
+        $fam0entry4->addExcludedEntry($fam1entry4);
+        $fam0entry4->addExcludedEntry($fam1entry5);
+        $fam0entry4->addExcludedEntry($fam1entry6);
+        $fam0entry4->addExcludedEntry($fam1entry7);
+        $fam0entry4->addExcludedEntry($fam1entry8);
+        $fam0entry4->addExcludedEntry($fam1entry9);
+
+        $fam0entry5->addExcludedEntry($fam1entry0);
+        $fam0entry5->addExcludedEntry($fam1entry1);
+        $fam0entry5->addExcludedEntry($fam1entry2);
+        $fam0entry5->addExcludedEntry($fam1entry3);
+        $fam0entry5->addExcludedEntry($fam1entry4);
+        $fam0entry5->addExcludedEntry($fam1entry5);
+        $fam0entry5->addExcludedEntry($fam1entry6);
+        $fam0entry5->addExcludedEntry($fam1entry7);
+        $fam0entry5->addExcludedEntry($fam1entry8);
+        $fam0entry5->addExcludedEntry($fam1entry9);
+
+        $fam0entry6->addExcludedEntry($fam1entry0);
+        $fam0entry6->addExcludedEntry($fam1entry1);
+        $fam0entry6->addExcludedEntry($fam1entry2);
+        $fam0entry6->addExcludedEntry($fam1entry3);
+        $fam0entry6->addExcludedEntry($fam1entry4);
+        $fam0entry6->addExcludedEntry($fam1entry5);
+        $fam0entry6->addExcludedEntry($fam1entry6);
+        $fam0entry6->addExcludedEntry($fam1entry7);
+        $fam0entry6->addExcludedEntry($fam1entry8);
+        $fam0entry6->addExcludedEntry($fam1entry9);
+
+        $fam0entry7->addExcludedEntry($fam1entry0);
+        $fam0entry7->addExcludedEntry($fam1entry1);
+        $fam0entry7->addExcludedEntry($fam1entry2);
+        $fam0entry7->addExcludedEntry($fam1entry3);
+        $fam0entry7->addExcludedEntry($fam1entry4);
+        $fam0entry7->addExcludedEntry($fam1entry5);
+        $fam0entry7->addExcludedEntry($fam1entry6);
+        $fam0entry7->addExcludedEntry($fam1entry7);
+        $fam0entry7->addExcludedEntry($fam1entry8);
+        $fam0entry7->addExcludedEntry($fam1entry9);
+
+        $fam0entry8->addExcludedEntry($fam1entry0);
+        $fam0entry8->addExcludedEntry($fam1entry1);
+        $fam0entry8->addExcludedEntry($fam1entry2);
+        $fam0entry8->addExcludedEntry($fam1entry3);
+        $fam0entry8->addExcludedEntry($fam1entry4);
+        $fam0entry8->addExcludedEntry($fam1entry5);
+        $fam0entry8->addExcludedEntry($fam1entry6);
+        $fam0entry8->addExcludedEntry($fam1entry7);
+        $fam0entry8->addExcludedEntry($fam1entry8);
+        $fam0entry8->addExcludedEntry($fam1entry9);
+
+        $fam0entry9->addExcludedEntry($fam1entry0);
+        $fam0entry9->addExcludedEntry($fam1entry1);
+        $fam0entry9->addExcludedEntry($fam1entry2);
+        $fam0entry9->addExcludedEntry($fam1entry3);
+        $fam0entry9->addExcludedEntry($fam1entry4);
+        $fam0entry9->addExcludedEntry($fam1entry5);
+        $fam0entry9->addExcludedEntry($fam1entry6);
+        $fam0entry9->addExcludedEntry($fam1entry7);
+        $fam0entry9->addExcludedEntry($fam1entry8);
+        $fam0entry9->addExcludedEntry($fam1entry9);
+       
+        $fam1entry0->addExcludedEntry($fam0entry0);
+        $fam1entry0->addExcludedEntry($fam0entry1);
+        $fam1entry0->addExcludedEntry($fam0entry2);
+        $fam1entry0->addExcludedEntry($fam0entry3);
+        $fam1entry0->addExcludedEntry($fam0entry4);
+        $fam1entry0->addExcludedEntry($fam0entry5);
+        $fam1entry0->addExcludedEntry($fam0entry6);
+        $fam1entry0->addExcludedEntry($fam0entry7);
+        $fam1entry0->addExcludedEntry($fam0entry8);
+        $fam1entry0->addExcludedEntry($fam0entry9);
+
+        $fam1entry1->addExcludedEntry($fam0entry0);
+        $fam1entry1->addExcludedEntry($fam0entry1);
+        $fam1entry1->addExcludedEntry($fam0entry2);
+        $fam1entry1->addExcludedEntry($fam0entry3);
+        $fam1entry1->addExcludedEntry($fam0entry4);
+        $fam1entry1->addExcludedEntry($fam0entry5);
+        $fam1entry1->addExcludedEntry($fam0entry6);
+        $fam1entry1->addExcludedEntry($fam0entry7);
+        $fam1entry1->addExcludedEntry($fam0entry8);
+        $fam1entry1->addExcludedEntry($fam0entry9);
+
+        $fam1entry2->addExcludedEntry($fam0entry0);
+        $fam1entry2->addExcludedEntry($fam0entry1);
+        $fam1entry2->addExcludedEntry($fam0entry2);
+        $fam1entry2->addExcludedEntry($fam0entry3);
+        $fam1entry2->addExcludedEntry($fam0entry4);
+        $fam1entry2->addExcludedEntry($fam0entry5);
+        $fam1entry2->addExcludedEntry($fam0entry6);
+        $fam1entry2->addExcludedEntry($fam0entry7);
+        $fam1entry2->addExcludedEntry($fam0entry8);
+        $fam1entry2->addExcludedEntry($fam0entry9);
+
+        $fam1entry3->addExcludedEntry($fam0entry0);
+        $fam1entry3->addExcludedEntry($fam0entry1);
+        $fam1entry3->addExcludedEntry($fam0entry2);
+        $fam1entry3->addExcludedEntry($fam0entry3);
+        $fam1entry3->addExcludedEntry($fam0entry4);
+        $fam1entry3->addExcludedEntry($fam0entry5);
+        $fam1entry3->addExcludedEntry($fam0entry6);
+        $fam1entry3->addExcludedEntry($fam0entry7);
+        $fam1entry3->addExcludedEntry($fam0entry8);
+        $fam1entry3->addExcludedEntry($fam0entry9);
+
+        $fam1entry4->addExcludedEntry($fam0entry0);
+        $fam1entry4->addExcludedEntry($fam0entry1);
+        $fam1entry4->addExcludedEntry($fam0entry2);
+        $fam1entry4->addExcludedEntry($fam0entry3);
+        $fam1entry4->addExcludedEntry($fam0entry4);
+        $fam1entry4->addExcludedEntry($fam0entry5);
+        $fam1entry4->addExcludedEntry($fam0entry6);
+        $fam1entry4->addExcludedEntry($fam0entry7);
+        $fam1entry4->addExcludedEntry($fam0entry8);
+        $fam1entry4->addExcludedEntry($fam0entry9);
+
+        $fam1entry5->addExcludedEntry($fam0entry0);
+        $fam1entry5->addExcludedEntry($fam0entry1);
+        $fam1entry5->addExcludedEntry($fam0entry2);
+        $fam1entry5->addExcludedEntry($fam0entry3);
+        $fam1entry5->addExcludedEntry($fam0entry4);
+        $fam1entry5->addExcludedEntry($fam0entry5);
+        $fam1entry5->addExcludedEntry($fam0entry6);
+        $fam1entry5->addExcludedEntry($fam0entry7);
+        $fam1entry5->addExcludedEntry($fam0entry8);
+        $fam1entry5->addExcludedEntry($fam0entry9);
+
+        $fam1entry6->addExcludedEntry($fam0entry0);
+        $fam1entry6->addExcludedEntry($fam0entry1);
+        $fam1entry6->addExcludedEntry($fam0entry2);
+        $fam1entry6->addExcludedEntry($fam0entry3);
+        $fam1entry6->addExcludedEntry($fam0entry4);
+        $fam1entry6->addExcludedEntry($fam0entry5);
+        $fam1entry6->addExcludedEntry($fam0entry6);
+        $fam1entry6->addExcludedEntry($fam0entry7);
+        $fam1entry6->addExcludedEntry($fam0entry8);
+        $fam1entry6->addExcludedEntry($fam0entry9);
+
+        $fam1entry7->addExcludedEntry($fam0entry0);
+        $fam1entry7->addExcludedEntry($fam0entry1);
+        $fam1entry7->addExcludedEntry($fam0entry2);
+        $fam1entry7->addExcludedEntry($fam0entry3);
+        $fam1entry7->addExcludedEntry($fam0entry4);
+        $fam1entry7->addExcludedEntry($fam0entry5);
+        $fam1entry7->addExcludedEntry($fam0entry6);
+        $fam1entry7->addExcludedEntry($fam0entry7);
+        $fam1entry7->addExcludedEntry($fam0entry8);
+        $fam1entry7->addExcludedEntry($fam0entry9);
+
+        $fam1entry8->addExcludedEntry($fam0entry0);
+        $fam1entry8->addExcludedEntry($fam0entry1);
+        $fam1entry8->addExcludedEntry($fam0entry2);
+        $fam1entry8->addExcludedEntry($fam0entry3);
+        $fam1entry8->addExcludedEntry($fam0entry4);
+        $fam1entry8->addExcludedEntry($fam0entry5);
+        $fam1entry8->addExcludedEntry($fam0entry6);
+        $fam1entry8->addExcludedEntry($fam0entry7);
+        $fam1entry8->addExcludedEntry($fam0entry8);
+        $fam1entry8->addExcludedEntry($fam0entry9);
+
+        $fam1entry9->addExcludedEntry($fam0entry0);
+        $fam1entry9->addExcludedEntry($fam0entry1);
+        $fam1entry9->addExcludedEntry($fam0entry2);
+        $fam1entry9->addExcludedEntry($fam0entry3);
+        $fam1entry9->addExcludedEntry($fam0entry4);
+        $fam1entry9->addExcludedEntry($fam0entry5);
+        $fam1entry9->addExcludedEntry($fam0entry6);
+        $fam1entry9->addExcludedEntry($fam0entry7);
+        $fam1entry9->addExcludedEntry($fam0entry8);
+        $fam1entry9->addExcludedEntry($fam0entry9);
+
+        $entryShuffler = new EntryShuffler();
+        for ($i = 0; $i < 10; $i++) {
+            $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
+
+            $key = 0;
+            foreach ($pool->getEntries() as $entry) {
+                //check if we did not match excluded entry
+                $this->assertNotContains($shuffeledEntries[$key], $entry->getExcludedEntries());
+                //check if we have an entry matched
+                $this->assertNotNull($shuffeledEntries[$key]);
+                $key++;
+            }
+        }
     }
 }
