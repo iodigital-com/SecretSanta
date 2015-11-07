@@ -173,8 +173,8 @@ class PoolController extends Controller
 
         return array(
             'pool' => $this->pool,
-            'delete_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('delete_pool'),
-            'expose_pool_csrf_token' => $this->get('form.csrf_provider')->generateCsrfToken('expose_pool'),
+            'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
+            'expose_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_pool'),
         );
     }
 
@@ -182,14 +182,14 @@ class PoolController extends Controller
      * @Route("/delete/{listUrl}", name="pool_delete")
      * @Template()
      */
-    public function deleteAction($listUrl)
+    public function deleteAction(Request $request, $listUrl)
     {
-        $correctCsrfToken = $this->get('form.csrf_provider')->isCsrfTokenValid(
+        $correctCsrfToken = $this->isCsrfTokenValid(
             'delete_pool',
-            $this->getRequest()->get('csrf_token')
+            $request->get('csrf_token')
         );
         $translator = $this->get('translator');
-        $correctConfirmation = ($this->getRequest()->get('confirmation') === $translator->trans('delete.phrase_to_type'));
+        $correctConfirmation = ($request->get('confirmation') === $translator->trans('delete.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $translator = $this->get('translator');
@@ -212,15 +212,15 @@ class PoolController extends Controller
      * @Route("/expose/{listUrl}", name="pool_expose")
      * @Template()
      */
-    public function exposeAction($listUrl)
+    public function exposeAction(Request $request, $listUrl)
     {
-        $correctCsrfToken = $this->get('form.csrf_provider')->isCsrfTokenValid(
+        $correctCsrfToken = $this->isCsrfTokenValid(
             'expose_pool',
-            $this->getRequest()->get('csrf_token')
+            $request->get('csrf_token')
         );
 
         $translator = $this->get('translator');
-        $correctConfirmation = ($this->getRequest()->get('confirmation') === $translator->trans('expose.phrase_to_type'));
+        $correctConfirmation = ($request->get('confirmation') === $translator->trans('expose.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
