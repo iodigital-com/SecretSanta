@@ -4,6 +4,7 @@ set -e # exit on error
 
 PROJECT_HOME=/var/www/secretsanta
 VERSION=`date +"%Y%m%d%H%M%S"`
+export SYMFONY_ENV=prod
 cd $PROJECT_HOME
 
 # Get latest version
@@ -16,13 +17,12 @@ cp -R git releases/$VERSION
 cd releases/$VERSION
 
 cp ../../shared/parameters.yml app/config
-export SYMFONY_ENV=prod
 composer.phar install --no-dev --optimize-autoloader
-app/console doctrine:schema:update --force --env=prod
+app/console doctrine:schema:update --force --env=${SYMFONY_ENV}
 
 # Install assets
 app/console assets:install web
-app/console assetic:dump --env=prod --no-debug
+app/console assetic:dump --env=${SYMFONY_ENV} --no-debug
 cp ../../shared/yandex_* web
 
 # Cleanup
