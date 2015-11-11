@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -o xtrace # print commands
 set -e # exit on error
 
 PROJECT_HOME=/var/www/secretsanta
