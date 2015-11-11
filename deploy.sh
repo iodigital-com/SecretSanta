@@ -16,12 +16,13 @@ cp -R git releases/$VERSION
 cd releases/$VERSION
 
 cp ../../shared/parameters.yml app/config
-composer.phar install
-app/console doctrine:schema:update --force
+export SYMFONY_ENV=prod
+composer.phar install --no-dev --optimize-autoloader
+app/console doctrine:schema:update --force --env=prod
 
 # Install assets
 app/console assets:install web
-app/console assetic:dump -env=prod
+app/console assetic:dump --env=prod --no-debug
 cp ../../shared/yandex_* web
 
 # Cleanup
