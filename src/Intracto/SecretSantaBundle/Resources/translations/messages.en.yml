@@ -1,7 +1,7 @@
 base:
     meta:
         description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
-        title: Secret Santa Online gift exchange organizer!
+        title: Secret Santa Online gift exchange organizer & generator!
         og:
             title: Secret Santa
             site_name: Secret Santa
