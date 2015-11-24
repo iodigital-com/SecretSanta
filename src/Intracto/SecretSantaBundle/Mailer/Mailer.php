@@ -84,29 +84,33 @@ class Mailer
         $spool = $this->mailer->getTransport()->getSpool();
 
         foreach ($receivers as $receiver) {
-            $this->writeOutput(' -> ' . $receiver->getEmail());
+            try {
+                $this->writeOutput(' -> ' . $receiver->getEmail());
 
-            $htmlTemplate = $batchMail->getHtmlTemplate($receiver);
-            $plainTextTemplate = $batchMail->getPlainTextTemplate($receiver);
-            $templateData = $batchMail->getTemplateData($receiver, $this->em);
+                $htmlTemplate = $batchMail->getHtmlTemplate($receiver);
+                $plainTextTemplate = $batchMail->getPlainTextTemplate($receiver);
+                $templateData = $batchMail->getTemplateData($receiver, $this->em);
 
-            $this->translator->setLocale($receiver->getPool()->getLocale());
+                $this->translator->setLocale($receiver->getPool()->getLocale());
 
-            $plainTextBody = $this->twig->render($plainTextTemplate, $templateData);
-            $htmlBody = $this->twig->render($htmlTemplate, $templateData);
+                $plainTextBody = $this->twig->render($plainTextTemplate, $templateData);
+                $htmlBody = $this->twig->render($htmlTemplate, $templateData);
 
-            $message = \Swift_Message::newInstance()
-                ->setSubject($batchMail->getSubject($receiver, $this->translator))
-                ->setFrom($fromEmail, $batchMail->getFrom($receiver, $this->translator))
-                ->setTo($receiver->getEmail())
-                ->setBody($plainTextBody)
-                ->addPart($htmlBody, 'text/html');
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($batchMail->getSubject($receiver, $this->translator))
+                    ->setFrom($fromEmail, $batchMail->getFrom($receiver, $this->translator))
+                    ->setTo($receiver->getEmail())
+                    ->setBody($plainTextBody)
+                    ->addPart($htmlBody, 'text/html');
 
-            if ($doSend) {
-                $this->mailer->send($message);
-                $spool->flushQueue($this->transport);
+                if ($doSend) {
+                    $this->mailer->send($message);
+                    $spool->flushQueue($this->transport);
 
-                $batchMail->handleMailSent($receiver, $this->em);
+                    $batchMail->handleMailSent($receiver, $this->em);
+                }
+            } catch (\Exception $e) {
+                $this->writeOutput(sprintf('<error>An error occurred while sending mail for email "%s"</error>', $receiver->getEmail()));
             }
         }
     }
