@@ -83,7 +83,7 @@ class Pool
     /**
      * @var string $locale
      *
-     * @ORM\Column(name="locale", type="string", length=5)
+     * @ORM\Column(name="locale", type="string", length=7)
      */
     private $locale = 'en';
 
