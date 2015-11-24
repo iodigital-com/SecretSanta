@@ -21,6 +21,9 @@ class EntryRepository extends EntityRepository
         return $query->getResult();
     }
 
+    /**
+     * @return Entry[]
+     */
     public function findAllForWishlistNofifcication()
     {
         $query = $this->_em->createQuery('
