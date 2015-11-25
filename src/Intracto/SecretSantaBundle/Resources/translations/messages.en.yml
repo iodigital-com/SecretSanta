@@ -51,7 +51,7 @@ created:
                 Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
             </p>
             <p>
-                In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his duty.
+                In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his or her duty.
             </p>
     warning: Warning!
     check_spam: Don't forget to check your spam folder!
@@ -295,10 +295,10 @@ emails:
     wishlistchanged:
         subject: Wishlist updated
         salutation: Hi %name%
-        buddy_updated_wishlist: Your buddy has updated his wishlist.
-        click_button: Click on the button below to check out his suggestions.
+        buddy_updated_wishlist: Your buddy has updated his or her wishlist.
+        click_button: Click on the button below to check out his or her suggestions.
         btn_check_wishlist: Check wishlist
-        click_link: Click on the link below to check out his suggestions.
+        click_link: Click on the link below to check out his or her suggestions.
     emptywishlistreminder:
         subject: Your wishlist is still empty
         updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
