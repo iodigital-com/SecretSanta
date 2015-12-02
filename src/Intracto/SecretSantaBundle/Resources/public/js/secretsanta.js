@@ -1,7 +1,7 @@
-//$("#header").click(function() {
-//    window.location = $(this).find("a#homelink").attr("href");
-//    return false;
-//});
+$(".header__left").click(function() {
+    window.location = $('#header').find("a#homelink").attr("href");
+    return false;
+});
 
 $(document).ready(function() {
     $('.lang__selection select').on('change', changeLanguage);
