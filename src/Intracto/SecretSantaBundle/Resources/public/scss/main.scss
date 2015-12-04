@@ -6,6 +6,7 @@
 
 /* Import layout styles */
 @import "layouts/l-general";
+@import "layouts/three-column";
 
 /* Import components styles */
 @import "components/animations";
@@ -13,6 +14,7 @@
 @import "components/formelements";
 @import "components/links";
 @import "components/header";
+@import "components/draggable";
 
 /* Import custom header components */
 @import "components/reindeer";

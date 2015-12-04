@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 var gulp = require('gulp')
     ,   sass = require('gulp-sass')
     ,   minifyCSS = require('gulp-minify-css')
