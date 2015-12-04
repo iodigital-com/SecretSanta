@@ -9,11 +9,3 @@ body {
   max-width: $wrapper;
   margin: 0 auto;
 }
-
-.row {
-  .span4 {
-    @media (max-width: 600px) {
-      width: 100%;//test
-    }
-  }
-}
