@@ -22,8 +22,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #secretsanta_config.vm.network "forwarded_port", guest: 80, host: 8888
 
         # Shared folder over NFS
-        secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
-        #secretsanta_config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [".git/", "web/bundles/", "app/cache", "app/logs"]
+        #secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+        secretsanta_config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [".git/", "web/bundles/", "app/cache", "app/logs"]
 
         secretsanta_config.vm.network "private_network", ip: "192.168.33.10"
 
