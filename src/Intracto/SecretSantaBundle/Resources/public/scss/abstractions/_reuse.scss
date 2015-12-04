@@ -100,3 +100,7 @@
   @extend .clearfix;
   clear: both;
 }
+
+.btn-large [class^="icon-"], .btn-large [class*=" icon-"] {
+  margin-top: 5px;
+}
