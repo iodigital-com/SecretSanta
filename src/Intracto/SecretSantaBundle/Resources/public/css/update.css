@@ -128,6 +128,7 @@ table.entries input {
     height: 28px;
     line-height: 28px;
     padding: 0;
+    padding-left: 6px;
 }
 
 .wrapper .btn-primary, .wrapper .btn-primary:active, .wrapper .btn-primary:visited, .wrapper .btn-primary.active {
@@ -330,4 +331,8 @@ ul.form-errors {
     -webkit-transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
     -moz-transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
     transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.ui-sortable-helper {
+    display: table;
 }
