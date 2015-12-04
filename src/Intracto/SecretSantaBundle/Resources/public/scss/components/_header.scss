@@ -113,11 +113,6 @@ a.btn-started {
     width: 100%;
     height: auto;
   }
-  .cssanimations &{
-    opacity: 0;
-    transform: translateY(5px);
-    animation: fadeInTopScale cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms 1100ms forwards;
-  }
 }
 
 .header__santa {
@@ -126,11 +121,5 @@ a.btn-started {
   }
   @media only screen and (max-width: 900px) {
     padding-left: 0;
-  }
-  .cssanimations &{
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeInTopScale cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms 1500ms forwards;
-    transform-origin: 160px bottom;
   }
 }
