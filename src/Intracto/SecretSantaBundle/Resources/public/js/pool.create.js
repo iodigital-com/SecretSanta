@@ -1,4 +1,4 @@
-function addNewEntry(collectionHolder) {
+function addNewEntry(collectionHolder, email, name) {
     // Get entry prototype as defined in attribute data-prototype
     var prototype = collectionHolder.attr('data-prototype');
     // Adjust entry prototype for correct naming
@@ -9,7 +9,16 @@ function addNewEntry(collectionHolder) {
     // Add new entry to pool with animation
     var newForm = $(newFormHtml);
     collectionHolder.append(newForm);
-    newForm.show(300);
+
+    if ( (typeof(email)!=='undefined') && (typeof(name)!=='undefined') ) {
+        // email and name provided, fill in the blanks
+        $(newForm).find('.entry-mail').attr('value', email);
+        $(newForm).find('.entry-name').attr('value', name);
+        newForm.show();
+    } else {
+        newForm.show(300);
+    }
+
     // Handle delete button events
     bindDeleteButtonEvents();
     // Remove disabled state on delete-buttons
