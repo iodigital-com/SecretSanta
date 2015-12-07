@@ -3,6 +3,12 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
+module OS
+    def OS.windows?
+        (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    end
+end
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define :secretsanta do |secretsanta_config|
         secretsanta_config.vm.box = "Debian75"
@@ -21,8 +27,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # allow external connections to the machine
         #secretsanta_config.vm.network "forwarded_port", guest: 80, host: 8888
 
-        # Shared folder over NFS
-        secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+#        is_windows_host = "#{OS.windows?}"
+#        puts "is_windows_host: #{OS.windows?}"
+
+        # Shared folder over NFS unless Windows
+        if OS.windows?
+            secretsanta_config.vm.synced_folder ".", "/vagrant"
+        else
+            secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+        end
+
         #secretsanta_config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [".git/", "web/bundles/", "app/cache", "app/logs"]
 
         secretsanta_config.vm.network "private_network", ip: "192.168.33.10"
