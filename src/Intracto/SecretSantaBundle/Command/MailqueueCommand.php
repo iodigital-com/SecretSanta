@@ -53,7 +53,7 @@ class MailqueueCommand extends ContainerAwareCommand
          * @var EntryRepository $entryRepository
          */
         $entryRepository = $em->getRepository('IntractoSecretSantaBundle:Entry');
-        $secret_santas = $entryRepository->findBatchForWishlistNofifcication();
+        $secret_santas = $entryRepository->findBatchForWishlistNotification();
 
         $container = $this->getContainer();
         $mailer = $container->get('mailer');

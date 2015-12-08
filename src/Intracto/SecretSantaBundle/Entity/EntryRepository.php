@@ -39,7 +39,7 @@ class EntryRepository extends EntityRepository
     /**
      * @return Entry[]
      */
-    public function findBatchForWishlistNofifcication($batchSize = 50)
+    public function findBatchForWishlistNotification($batchSize = 50)
     {
         $query = $this->_em->createQuery('
             SELECT entry
