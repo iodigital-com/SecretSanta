@@ -73,7 +73,7 @@ class SendBatchMailsCommand extends ContainerAwareCommand
                 $this->getContainer()->getParameter('admin_email'),
                 [
                     new BatchViewEntryReminder($batchSize),
-                    new BatchEmptyWishlistReminder($batchSize),
+//                    new BatchEmptyWishlistReminder($batchSize),
                 ],
                 $input->getOption('force')
             );
