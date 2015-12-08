@@ -105,14 +105,20 @@ class Mailer
 
                 if ($doSend) {
                     $this->mailer->send($message);
-                    $spool->flushQueue($this->transport);
-
                     $batchMail->handleMailSent($receiver, $this->em);
                 }
             } catch (\Exception $e) {
                 $this->writeOutput(sprintf('<error>An error occurred while sending mail for email "%s"</error>', $receiver->getEmail()));
+                // mark as handled, as otherwise the system will keep retrying over and over again
+                $batchMail->handleMailSent($receiver, $this->em);
             }
         }
+
+        if ($doSend) {
+            // only flush queue at the end of a batch
+            $spool->flushQueue($this->transport);
+        }
+
     }
 
     /**

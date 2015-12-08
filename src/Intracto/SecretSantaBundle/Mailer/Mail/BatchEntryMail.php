@@ -11,6 +11,9 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 interface BatchEntryMail
 {
+
+    public function __construct($batchSize);
+
     /**
      * @return string
      */

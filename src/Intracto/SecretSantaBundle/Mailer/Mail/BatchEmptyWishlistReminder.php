@@ -13,6 +13,16 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class BatchEmptyWishlistReminder implements BatchEntryMail
 {
+    private $batchSize;
+
+    /**
+     * BatchViewEntryReminder constructor.
+     */
+    public function __construct($batchSize)
+    {
+        $this->batchSize = $batchSize;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -31,7 +41,7 @@ class BatchEmptyWishlistReminder implements BatchEntryMail
          */
         $entryRepository = $entityManager->getRepository('IntractoSecretSantaBundle:Entry');
 
-        return $entryRepository->findAllToRemindOfEmptyWishlist();
+        return $entryRepository->findBatchToRemindOfEmptyWishlist($this->batchSize);
     }
 
     /**
