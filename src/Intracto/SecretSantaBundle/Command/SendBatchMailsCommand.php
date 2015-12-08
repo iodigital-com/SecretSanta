@@ -25,6 +25,20 @@ class SendBatchMailsCommand extends ContainerAwareCommand
                 null,
                 InputOption::VALUE_NONE,
                 'If not set, a trial run will execute. No mails will be actually sent'
+            )
+            ->addOption(
+                'batch-size',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Send this amount of messages at a time (defaults to 10)',
+                10
+            )
+            ->addOption(
+                'time-limit',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Stop processing after this amount of seconds. If not given, a single batch is processed.',
+                0
             );
     }
 
@@ -47,13 +61,27 @@ class SendBatchMailsCommand extends ContainerAwareCommand
 
         $mailer->setOutput($output);
 
-        $mailer->sendBatchMails(
-            $this->getContainer()->getParameter('admin_email'),
-            [
-                new BatchViewEntryReminder(),
-                new BatchEmptyWishlistReminder(),
-            ],
-            $input->getOption('force')
-        );
+        $batchSize = $input->getOption("batch-size");
+        $timeLimit = $input->getOption("time-limit");
+
+        if (!is_numeric($batchSize) || $batchSize < 1) throw new \LogicException("batch size invalid");
+        if (!is_numeric($timeLimit) || $timeLimit < 0) throw new \LogicException("timelimit invalid");
+
+        $started = time();
+        do {
+            $mailer->sendBatchMails(
+                $this->getContainer()->getParameter('admin_email'),
+                [
+                    new BatchViewEntryReminder($batchSize),
+//                    new BatchEmptyWishlistReminder($batchSize),
+                ],
+                $input->getOption('force')
+            );
+
+            // pause a bit
+            sleep(5);
+
+        } while ($timeLimit > (time() - $started));
+
     }
 }

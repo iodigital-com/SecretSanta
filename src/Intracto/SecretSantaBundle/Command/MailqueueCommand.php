@@ -53,7 +53,7 @@ class MailqueueCommand extends ContainerAwareCommand
          * @var EntryRepository $entryRepository
          */
         $entryRepository = $em->getRepository('IntractoSecretSantaBundle:Entry');
-        $secret_santas = $entryRepository->findAllForWishlistNofifcication();
+        $secret_santas = $entryRepository->findBatchForWishlistNotification();
 
         $container = $this->getContainer();
         $mailer = $container->get('mailer');
@@ -93,12 +93,17 @@ class MailqueueCommand extends ContainerAwareCommand
 
             if ($input->getArgument('force')) {
                 $mailer->send($message);
-                $spool->flushQueue($transport);
-
                 $receiver->setWishlistUpdated(false);
-                $em->flush($receiver);
+                $em->persist($receiver);
             }
             echo '.';
         }
+
+        if ($input->getArgument('force')) {
+            // flush queue and entitymanager
+            $spool->flushQueue($transport);
+            $em->flush();
+        }
+
     }
 }

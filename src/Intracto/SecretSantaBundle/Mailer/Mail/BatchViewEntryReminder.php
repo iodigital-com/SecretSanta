@@ -13,6 +13,18 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class BatchViewEntryReminder implements BatchEntryMail
 {
+
+    private $batchSize;
+
+    /**
+     * BatchViewEntryReminder constructor.
+     */
+    public function __construct($batchSize)
+    {
+        $this->batchSize = $batchSize;
+    }
+
+
     /**
      * {@inheritdoc}
      */
@@ -31,7 +43,7 @@ class BatchViewEntryReminder implements BatchEntryMail
          */
         $entryRepository = $entityManager->getRepository('IntractoSecretSantaBundle:Entry');
 
-        return $entryRepository->findAllToRemindToViewEntry();
+        return $entryRepository->findBatchToRemindToViewEntry($this->batchSize);
     }
 
     /**
