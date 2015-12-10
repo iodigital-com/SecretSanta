@@ -95,7 +95,7 @@ expose:
             A mail will be send to you, containing the entire mailing list with the matches.<br>
             <br>
             <b>Be aware:</b><br>
-            All mailing list members will be notified!<br>
+            ONLY YOU will receive the matches, but all others will see that you requested the list.<br>
             <br>
             Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
