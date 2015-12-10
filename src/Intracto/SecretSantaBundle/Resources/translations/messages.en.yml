@@ -258,6 +258,7 @@ label:
     confirmed: Confirmed
     actions: Actions
     description: Description
+    wishlist_filled: Wish List Entered
 placeholder:
     exclude: Click and choose the participants you want to exclude
 btn:

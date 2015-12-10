@@ -239,6 +239,7 @@ label:
     confirmed: Bevestigd
     actions: Acties
     description: Beschrijving
+    wishlist_filled: Wish List Ingevuld
 placeholder:
     exclude: Klik en kies de deelnemers die je wilt uitsluiten
 btn:
