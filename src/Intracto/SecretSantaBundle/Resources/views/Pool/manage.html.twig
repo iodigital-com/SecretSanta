@@ -11,7 +11,8 @@
                 <th class="span1 entry-number-header">#</th>
                 <th class="span3">{{ 'label.name'|trans }}</th>
                 <th class="span4">{{ 'label.email'|trans }}</th>
-                <th class="span4">{{ 'label.confirmed'|trans }}</th>
+                <th class="span2">{{ 'label.confirmed'|trans }}</th>
+                <th class="span2">{{ 'label.wishlist_filled'|trans }}</th>
                 <th class="span1">{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -22,6 +23,7 @@
                     <td>{{ entry.name }}</td>
                     <td id="email_{{ entry.id }}">{{ entry.email }}</td>
                     <td class="{% if entry.viewdate %}viewed">{{ 'manage.yes'|trans }}{% else %}not_viewed">{{ 'manage.not_yet'|trans }}{% endif %}</td>
+                    <td class="{% if entry.wishlistItems is not empty %}viewed">{{ 'manage.yes'|trans }}{% else %}not_viewed">{{ 'manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
                              onclick="editableEmail('{{ pool.listUrl }}', {{ entry.id }});"
