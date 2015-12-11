@@ -92,7 +92,7 @@ expose:
             Er word een mail naar u verzonden, waarin alle leden van deze mailinglijst inclusief koppelingen vermeld zullen staan.<br>
             <br>
             <b>Pas op:</b><br>
-            Alle leden van deze mailinglijst zullen hiervan op de hoogte worden gebracht!<br>
+            ENKEL JIJ krijgt de matches toegestuurd, maar alle leden zullen zien dat jij de lijst hebt opgevraagd.<br>
             <br>
             <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
         </p>
@@ -239,6 +239,7 @@ label:
     confirmed: Bevestigd
     actions: Acties
     description: Beschrijving
+    wishlist_filled: Wish List Ingevuld
 placeholder:
     exclude: Klik en kies de deelnemers die je wilt uitsluiten
 btn:
