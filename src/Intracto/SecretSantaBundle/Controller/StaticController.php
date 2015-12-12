@@ -36,7 +36,7 @@ class StaticController extends Controller
         );
 
         try {
-            $data['analytics'] = $reportingService->getAnalytics($options);
+            $data['analytics'] = []; //$reportingService->getAnalytics($options);
         } catch (\Exception $e) {
             $translator = $this->get('translator');
             $this->addFlash(

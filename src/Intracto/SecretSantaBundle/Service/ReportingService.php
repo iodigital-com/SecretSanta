@@ -34,6 +34,7 @@ class ReportingService
         $pools = $dbal->fetchAll('
             SELECT count(*) created, date(sentdate) sentdate
             FROM Pool
+            WHERE sentdate is not null
             GROUP BY date(sentdate)
             ORDER BY date(sentdate)
         ');
