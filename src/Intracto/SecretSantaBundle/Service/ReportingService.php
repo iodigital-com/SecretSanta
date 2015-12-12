@@ -32,9 +32,8 @@ class ReportingService
         $dbal = $this->doctrine->getConnection();
 
         $pools = $dbal->fetchAll('
-            SELECT count(*) created, date(sentdate) sentdate
+            SELECT count(*) created, ifnull(date(sentdate), now()) sentdate
             FROM Pool
-            WHERE sentdate is not null
             GROUP BY date(sentdate)
             ORDER BY date(sentdate)
         ');
