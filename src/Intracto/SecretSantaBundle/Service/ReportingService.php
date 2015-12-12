@@ -35,7 +35,7 @@ class ReportingService
             SELECT count(*) created, ifnull(date(sentdate), now()) sentdate
             FROM Pool
             GROUP BY date(sentdate)
-            ORDER BY date(sentdate)
+            ORDER BY sentdate
         ');
 
         $this->cache->save('report_pools', serialize($pools), 3600);
