@@ -16,8 +16,11 @@ class PoolRepository extends EntityRepository
             ->join('pool.entries', 'entries')
             ->andWhere('entries.poolAdmin = true')
             ->andWhere('entries.email = :email')
-            ->andWhere('pool.date > CURRENT_TIMESTAMP()')
-            ->setParameter('email', $email);
+            ->andWhere('pool.date >= :date')
+            ->setParameters([
+                'email' => $email,
+                'date' => new \DateTime('-1 week'),
+            ]);
 
         return $qb->getQuery()->getResult();
     }
