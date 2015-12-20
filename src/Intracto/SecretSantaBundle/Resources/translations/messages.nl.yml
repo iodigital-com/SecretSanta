@@ -346,4 +346,4 @@ flashes:
         error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
 forgot_manage_link:
     title: 'Activatie mail opnieuw verzenden'
-    description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw.'
+    description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)'
