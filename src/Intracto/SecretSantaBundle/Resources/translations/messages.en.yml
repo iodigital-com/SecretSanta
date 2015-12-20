@@ -367,4 +367,4 @@ flashes:
         error: 'An error occurred while resending the activation mail. Please try again.'
 forgot_manage_link:
     title: 'Resend activation mail'
-    description: 'Fill in the email address of the pool owner and we will resend the activation email.'
+    description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
