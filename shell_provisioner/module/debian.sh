@@ -9,6 +9,13 @@ locale-gen
 echo "Europe/Brussels" > /etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 
+# dotdeb
+cat << EOF >/etc/apt/sources.list.d/dotdeb.list
+deb http://packages.dotdeb.org wheezy-php56 all
+deb-src http://packages.dotdeb.org wheezy-php56 all
+EOF
+wget -qO - http://www.dotdeb.org/dotdeb.gpg | sudo apt-key add -
+
 # Custom bash prompt
 echo "PS1='[\u@\h-\[\033[00;34m\]dev\[\033[00m\] \w]\n\\$ '" >> /etc/bash.bashrc
 echo "PS1='[\u@\h-\[\033[00;34m\]dev\[\033[00m\] \w]\n\\$ '" >> /home/vagrant/.bashrc
