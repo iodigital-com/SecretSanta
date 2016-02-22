@@ -6,7 +6,10 @@
     margin: 0 auto;
     margin-left: 0;
   }
-
+  .spanColums{
+    float:left;
+    width:200px;
+  }
   .span4 {
     @media (max-width: 1000px) {
       box-sizing: border-box;
