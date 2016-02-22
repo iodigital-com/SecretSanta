@@ -6,6 +6,7 @@
 
     <parameters>
         <parameter key="intracto_secret_santa.service.reporting">Intracto\SecretSantaBundle\Service\ReportingService</parameter>
+        <parameter key="intracto_secret_santa.service.report.reporting">Intracto\SecretSantaBundle\Service\Report\ReportingService</parameter>
     </parameters>
 
     <services>
@@ -15,6 +16,10 @@
             <argument>%ga_email%</argument>
             <argument>%ga_password%</argument>
             <argument>%ga_profile_id%</argument>
+        </service>
+        <service id="intracto_secret_santa.report.reporting" class="%intracto_secret_santa.service.report.reporting%">
+            <argument type="service" id="cache"></argument>
+            <argument type="service" id="doctrine"></argument>
         </service>
     </services>
 </container>

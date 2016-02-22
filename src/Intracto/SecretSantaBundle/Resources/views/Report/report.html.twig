@@ -1,0 +1,23 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block metadata %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+{% block main %}
+    <h1>Report</h1>
+
+    <div>
+        <h2>{{ 'report.pool_amount'|trans }}</h2>
+        <p>{{ pools|length }}</p>
+        <p>{{ dump(pools) }}</p>
+    </div>
+
+    <div>
+        <h2>{{ 'report.user_amount'|trans }}</h2>
+        <p>{{ entries|length }}</p>
+    </div>
+
+    <div>
+        <h2>{{ 'report.average_user_amount'|trans }}</h2>
+        <p>{{ entries|length // pools|length }}</p>
+    </div>
+{% endblock %}

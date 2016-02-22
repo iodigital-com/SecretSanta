@@ -20,7 +20,7 @@ class StaticController extends Controller
     }
 
     /**
-     * @Route("/report", name="report")
+     * @Route("/report2", name="report2")
      * @Template()
      */
     public function reportAction(Request $request)
