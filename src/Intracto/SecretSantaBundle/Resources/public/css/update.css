@@ -340,20 +340,50 @@ ul.form-errors {
 /* Report page */
 .reportLeft{
     float:left;
-    width:100px;
+    width:150px;
     text-align:center;
+    border:solid grey 2px;
+    margin-left:auto;margin-right:auto;
+    color: #222;
+    text-shadow: 0px 2px 3px #555;
 }
-.reportMid{
-    float:left;
-    width:100px;
-    text-align:center;
-    margin-left:30%;
-    margin-right:30%;
+.reportLeft p{
+    font-size:40px;
+}
+.reportLeft h2{
+    font-size:20px;
+}
 
+
+.reportMid {
+    float: left;
+    width: 150px;
+    text-align: center;
+    border: solid grey 2px;
+    margin-left:20px;
+    color:grey;
 }
+.reportMid p{
+    font-size:40px;
+}
+.reportMid h2{
+    font-size:20px;
+}
+
+
+
 .reportRight{
     float:left;
-    width:100px;
+    width:150px;
     text-align:center;
+    border:solid grey 2px;
+    margin-left:20px;
+    color:grey;
 
+}
+.reportRight p{
+    font-size:40px;
+}
+.reportRight h2{
+    font-size:20px;
 }
