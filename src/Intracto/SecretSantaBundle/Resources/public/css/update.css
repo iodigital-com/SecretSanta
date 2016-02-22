@@ -336,3 +336,24 @@ ul.form-errors {
 .ui-sortable-helper {
     display: table;
 }
+
+/* Report page */
+.reportLeft{
+    float:left;
+    width:100px;
+    text-align:center;
+}
+.reportMid{
+    float:left;
+    width:100px;
+    text-align:center;
+    margin-left:30%;
+    margin-right:30%;
+
+}
+.reportRight{
+    float:left;
+    width:100px;
+    text-align:center;
+
+}

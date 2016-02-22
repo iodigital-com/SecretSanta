@@ -5,18 +5,21 @@
 {% block main %}
     <h1>Report</h1>
 
-    <div>
+    <div class="reportLeft">
         <h2>{{ 'report.pool_amount'|trans }}</h2>
         <p>{{ pools|length }}</p>
     </div>
 
-    <div >
+    <div class="reportMid">
         <h2>{{ 'report.user_amount'|trans }}</h2>
         <p>{{ entries|length }}</p>
     </div>
 
-    <div>
+    <div class="reportRight">
         <h2>{{ 'report.average_user_amount'|trans }}</h2>
         <p>{{ entries|length // pools|length }}</p>
+    </div>
+    <div class="clear-fix">
+
     </div>
 {% endblock %}
