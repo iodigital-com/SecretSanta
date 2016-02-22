@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
+use Symfony\Component\HttpFoundation\Request;
 
 class ReportController extends Controller
 {
@@ -14,18 +15,30 @@ class ReportController extends Controller
      * @Route("/report", name="report")
      * @Template()
      */
-    public function reportAction(){
-
-        $em = $this->getDoctrine()->getManager();
-        $poolss = $em->getRepository("IntractoSecretSantaBundle:Pool")->findAll();
-        $entries = $em->getRepository("IntractoSecretSantaBundle:Entry")->findAll();
-
+    public function reportAction(Request $request){
         $reportingServices = $this->get('intracto_secret_santa.report.reporting');
-        $pools = $reportingServices->getPools();
+
+        $pools = $reportingServices->getPools($request);
+        $entries = $reportingServices->getEntries($request);
+        $wishlists = $reportingServices->getFinishedWishlists($request);
+
+        if(count($pools) != 0){
+            $entry_average = number_format(count($entries) / count($pools), 2);
+        } else {
+            $entry_average = number_format(0);
+        }
+
+        if(count($entries) != 0){
+            $wishlist_average = number_format((count($wishlists) / count($entries))*100, 2);
+        } else {
+            $wishlist_average = number_format(0);
+        }
 
         $data = array(
             "pools" => $pools,
-            "entries" => $entries
+            "entries" => $entries,
+            "entry_average" => $entry_average,
+            "wishlist_average" => $wishlist_average
         );
 
         return $data;
