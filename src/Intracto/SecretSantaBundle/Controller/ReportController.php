@@ -25,13 +25,13 @@ class ReportController extends Controller
         $years = $reportingServices->getYears();
 
         if (count($pools) != 0) {
-            $entry_average = number_format(count($entries) / count($pools), 2);
+            $entry_average = number_format(implode($entries[0]) / implode($pools[0]), 2);
         } else {
             $entry_average = number_format(0);
         }
 
         if (count($entries) != 0) {
-            $wishlist_average = number_format((count($wishlists) / count($entries)) * 100, 2);
+            $wishlist_average = number_format((implode($wishlists[0])/ implode($entries[0])) * 100, 2);
         } else {
             $wishlist_average = number_format(0);
         }

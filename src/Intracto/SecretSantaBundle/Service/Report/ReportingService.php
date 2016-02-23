@@ -19,9 +19,9 @@ class ReportingService
         $dbal = $this->doctrine->getConnection();
         $year = $request->get('year');
         if ($year == "all" || $year == '') {
-            $pools = $dbal->fetchAll('SELECT * FROM Pool WHERE year(sentdate) = 2016');
+            $pools = $dbal->fetchAll('SELECT count(*) as poolCount FROM Pool');
         } else {
-            $pools = $dbal->fetchAll('SELECT * FROM Pool WHERE year(sentdate) = ' . $year);
+            $pools = $dbal->fetchAll('SELECT count(*) as poolCount FROM Pool WHERE year(sentdate) = ' . $year);
             //$this->cache->save('track_pools', serialize($pools), 3600);
         }
         return $pools;
@@ -34,9 +34,9 @@ class ReportingService
         $dbal = $this->doctrine->getConnection();
         $year = $request->get('year');
         if ($year == "all" || $year == '') {
-            $entries = $dbal->fetchAll('SELECT * FROM Entry JOIN Pool on Pool.id = Entry.poolId where year(Pool.sentdate) = 2016');
+            $entries = $dbal->fetchAll('SELECT count(*) as entryCount FROM Entry JOIN Pool on Pool.id = Entry.poolId');
         } else {
-            $entries = $dbal->fetchAll('SELECT * FROM Entry JOIN Pool on Pool.id = Entry.poolId where year(Pool.sentdate) = ' . $year);
+            $entries = $dbal->fetchAll('SELECT count(*) as entryCount FROM Entry JOIN Pool on Pool.id = Entry.poolId where year(Pool.sentdate) = ' . $year);
             //$this->cache->save('tracked_entries', serialize($entries), 3600);
         }
         return $entries;
@@ -49,9 +49,9 @@ class ReportingService
         $dbal = $this->doctrine->getConnection();
         $year = $request->get('year');
         if ($year == "all" || $year == '') {
-            $wishlists = $dbal->fetchAll('SELECT * FROM Entry JOIN Pool on Pool.id = Entry.poolId WHERE year(Pool.sentdate) = 2016 AND wishlist_updated = TRUE');
+            $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Entry JOIN Pool on Pool.id = Entry.poolId WHERE wishlist_updated = TRUE');
         } else {
-            $wishlists = $dbal->fetchAll('SELECT * FROM Entry JOIN Pool on Pool.id = Entry.poolId where year(Pool.sentdate) = ' . $year . ' AND Entry.wishlist_updated = TRUE');
+            $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Entry JOIN Pool on Pool.id = Entry.poolId where year(Pool.sentdate) = ' . $year . ' AND Entry.wishlist_updated = TRUE');
             //$this->cache->save('tracked_wishlists', serialize($wishlists), 3600);
         }
         return $wishlists;
