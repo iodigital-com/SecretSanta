@@ -10,15 +10,12 @@
         <div class="row">
             <div class="span3">
                 <label for="Year">Results from:</label>
-                <select name="year" id="Year">
+                <select name="year" id="Year" onchange="this.form.submit();">
+                    <option disabled selected> -- select an option -- </option>
                     <option value="all">All time</option>
                     <option value="2016">2016</option>
                     <option value="2015">2015</option>
                 </select>
-            </div>
-            <div class="span3">
-                <label>&nbsp;</label>
-                <button class="btn btn-primary">{{ 'static.report.submit'|trans }}</button>
             </div>
         </div>
     </form>
@@ -31,7 +28,7 @@
 
     <div class="col-xs-6 .col-sm-3 report">
         <h2>{{ 'report.user_amount'|trans }}</h2>
-        <p><strong>{{ entries|length // pools|length }}</strong></p>
+        <p><strong>{{ entries|length }}</strong></p>
     </div>
 
     <div class="col-xs-6 .col-sm-3 report">
