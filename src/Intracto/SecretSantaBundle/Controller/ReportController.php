@@ -22,6 +22,7 @@ class ReportController extends Controller
         $pools = $reportingServices->getPools($request);
         $entries = $reportingServices->getEntries($request);
         $wishlists = $reportingServices->getFinishedWishlists($request);
+        $years = $reportingServices->getYears();
 
         if (count($pools) != 0) {
             $entry_average = number_format(count($entries) / count($pools), 2);
@@ -39,7 +40,8 @@ class ReportController extends Controller
             "pools" => $pools,
             "entries" => $entries,
             "entry_average" => $entry_average,
-            "wishlist_average" => $wishlist_average
+            "wishlist_average" => $wishlist_average,
+            "years" => $years
         );
 
         return $data;

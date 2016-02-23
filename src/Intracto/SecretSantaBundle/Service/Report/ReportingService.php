@@ -56,4 +56,12 @@ class ReportingService
         }
         return $wishlists;
     }
+
+    public function getYears()
+    {
+        $dbal = $this->doctrine->getConnection();
+        $featured_years = $dbal->fetchAll('SELECT DISTINCT year(sentdate) as featured_year FROM Pool WHERE year(sentdate) IS NOT NULL ORDER BY year(sentdate) DESC');
+
+        return $featured_years;
+    }
 }

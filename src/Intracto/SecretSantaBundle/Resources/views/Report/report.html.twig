@@ -11,8 +11,9 @@
                 <label for="Year">Results from:</label>
                 <select name="year" id="Year" onchange="this.form.submit();">
                     <option value="all">All time</option>
-                    <option value="2016">2016</option>
-                    <option value="2015">2015</option>
+                    {% for year in years %}
+                        <option value="{{ year.featured_year }}">{{ year.featured_year }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
