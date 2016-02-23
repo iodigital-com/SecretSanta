@@ -10,7 +10,8 @@
             <div class="span3">
                 <label for="Year">Results from:</label>
                 <select name="year" id="Year" onchange="this.form.submit();">
-                    <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">All time</option>
+                    <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">All time
+                    </option>
                     {% for year in years %}
                         <option value="{{ year.featured_year }}" {% if(current_year == year.featured_year) %} selected="selected" {% endif %}>{{ year.featured_year }}</option>
                     {% endfor %}

@@ -31,13 +31,13 @@ class ReportController extends Controller
         }
 
         if (count($entries) != 0) {
-            $wishlist_average = number_format((implode($wishlists[0])/ implode($entries[0])) * 100, 2);
+            $wishlist_average = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
         } else {
             $wishlist_average = number_format(0);
         }
-        if(isset ($_GET['year'])){
+        if (isset ($_GET['year'])) {
             $current_year = $_GET['year'];
-        }else {
+        } else {
             $current_year = 'all';
         }
 

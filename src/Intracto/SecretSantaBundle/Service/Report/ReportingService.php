@@ -1,16 +1,20 @@
 <?php
 namespace Intracto\SecretSantaBundle\Service\Report;
+
 use Doctrine\Common\Cache\CacheProvider;
 use Symfony\Component\HttpFoundation\Request;
+
 class ReportingService
 {
     private $cache;
     private $doctrine;
+
     public function __construct(CacheProvider $cache, $doctrine)
     {
         $this->cache = $cache;
         $this->doctrine = $doctrine;
     }
+
     public function getPools(Request $request)
     {
         /*if ($this->cache->contains('tracked_pools')) {
@@ -26,6 +30,7 @@ class ReportingService
         }
         return $pools;
     }
+
     public function getEntries(Request $request)
     {
         /*if ($this->cache->contains('tracked_entries')) {
@@ -41,6 +46,7 @@ class ReportingService
         }
         return $entries;
     }
+
     public function getFinishedWishlists(Request $request)
     {
         /*if ($this->cache->contains('tracked_wishlists')) {
@@ -56,6 +62,7 @@ class ReportingService
         }
         return $wishlists;
     }
+
     public function getYears()
     {
         $dbal = $this->doctrine->getConnection();
