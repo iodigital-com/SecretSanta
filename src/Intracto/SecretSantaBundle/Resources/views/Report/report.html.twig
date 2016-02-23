@@ -9,42 +9,38 @@
         <div class="row">
             <div class="span3">
                 <label for="Year">Results from:</label>
-                <select name="year" id="Year">
+                <select name="year" id="Year" onchange="this.form.submit();">
                     <option value="all">All time</option>
                     <option value="2016">2016</option>
                     <option value="2015">2015</option>
                 </select>
             </div>
-            <div class="span3">
-                <label>&nbsp;</label>
-                <button class="btn btn-primary">{{ 'static.report.submit'|trans }}</button>
-            </div>
         </div>
     </form>
 
-    <div class="col-xs-6 .col-sm-3">
+    <div class="col-xs-6 .col-sm-3 report">
         <h2>{{ 'report.pool_amount'|trans }}</h2>
 
         <p><strong>{{ pools|length }}</strong></p>
     </div>
 
-    <div class="col-xs-6 .col-sm-3">
+    <div class="col-xs-6 .col-sm-3 report">
         <h2>{{ 'report.user_amount'|trans }}</h2>
 
         <p><strong>{{ entries|length }}</strong></p>
     </div>
 
-    <div class="col-xs-6 .col-sm-3">
+    <div class="col-xs-6 .col-sm-3 report">
         <h2>{{ 'report.average_user_amount'|trans }}</h2>
 
-        <p>{{ entry_average }}</p>
+        <p><strong>{{ entry_average }}</strong></p>
     </div>
 
-    <div class="col-xs-6 .col-sm-3">
 
+    <div class="col-xs-6 .col-sm-3 report">
         <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
 
-        <p>{{ wishlist_average }}%</p>
+        <p><strong>{{ wishlist_average }}%</strong></p>
     </div>
     <div class="clearfix"></div>
 
