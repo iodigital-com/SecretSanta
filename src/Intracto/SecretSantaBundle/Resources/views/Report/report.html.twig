@@ -10,11 +10,12 @@
             <div class="span3">
                 <label for="Year">Results from:</label>
                 <select name="year" id="Year" onchange="this.form.submit();">
-                    <option value="all">All time</option>
+                    <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">All time</option>
                     {% for year in years %}
-                        <option value="{{ year.featured_year }}">{{ year.featured_year }}</option>
+                        <option value="{{ year.featured_year }}" {% if(current_year == year.featured_year) %} selected="selected" {% endif %}>{{ year.featured_year }}</option>
                     {% endfor %}
                 </select>
+
             </div>
         </div>
     </form>
@@ -44,5 +45,6 @@
         <p><strong>{{ wishlist_average }}%</strong></p>
     </div>
     <div class="clearfix"></div>
-
 {% endblock %}
+
+

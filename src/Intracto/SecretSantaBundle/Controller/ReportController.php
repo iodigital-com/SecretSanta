@@ -35,13 +35,19 @@ class ReportController extends Controller
         } else {
             $wishlist_average = number_format(0);
         }
+        if(isset ($_GET['year'])){
+            $current_year = $_GET['year'];
+        }else {
+            $current_year = 'all';
+        }
 
         $data = array(
             "pools" => $pools,
             "entries" => $entries,
             "entry_average" => $entry_average,
             "wishlist_average" => $wishlist_average,
-            "years" => $years
+            "years" => $years,
+            "current_year" => $current_year
         );
 
         return $data;
