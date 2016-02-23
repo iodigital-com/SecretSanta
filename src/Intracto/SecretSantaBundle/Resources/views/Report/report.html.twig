@@ -5,7 +5,6 @@
 {% block main %}
     <h1>Report</h1>
 
-
     <form method="GET">
         <div class="row">
             <div class="span3">
@@ -22,7 +21,6 @@
             </div>
         </div>
     </form>
-    
 
     <div class="reportLeft">
         <h2>{{ 'report.pool_amount'|trans }}</h2>
@@ -31,7 +29,7 @@
 
     <div class="reportMid">
         <h2>{{ 'report.user_amount'|trans }}</h2>
-        <p><strong>{{ entries|length // pools|length }}</strong></p>
+        <p><strong>{{ entries|length }}</strong></p>
     </div>
 
     <div class="reportRight">

@@ -15,21 +15,22 @@ class ReportController extends Controller
      * @Route("/report", name="report")
      * @Template()
      */
-    public function reportAction(Request $request){
+    public function reportAction(Request $request)
+    {
         $reportingServices = $this->get('intracto_secret_santa.report.reporting');
 
         $pools = $reportingServices->getPools($request);
         $entries = $reportingServices->getEntries($request);
         $wishlists = $reportingServices->getFinishedWishlists($request);
 
-        if(count($pools) != 0){
+        if (count($pools) != 0) {
             $entry_average = number_format(count($entries) / count($pools), 2);
         } else {
             $entry_average = number_format(0);
         }
 
-        if(count($entries) != 0){
-            $wishlist_average = number_format((count($wishlists) / count($entries))*100, 2);
+        if (count($entries) != 0) {
+            $wishlist_average = number_format((count($wishlists) / count($entries)) * 100, 2);
         } else {
             $wishlist_average = number_format(0);
         }
@@ -43,5 +44,4 @@ class ReportController extends Controller
 
         return $data;
     }
-
 }
