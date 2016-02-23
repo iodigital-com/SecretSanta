@@ -5,7 +5,6 @@
 {% block main %}
     <h1>Report</h1>
 
-
     <form method="GET">
         <div class="row">
             <div class="span3">
@@ -22,26 +21,29 @@
             </div>
         </div>
     </form>
-    
 
     <div class="col-xs-6 .col-sm-3">
         <h2>{{ 'report.pool_amount'|trans }}</h2>
+
         <p><strong>{{ pools|length }}</strong></p>
     </div>
 
     <div class="col-xs-6 .col-sm-3">
         <h2>{{ 'report.user_amount'|trans }}</h2>
-        <p><strong>{{ entries|length // pools|length }}</strong></p>
+
+        <p><strong>{{ entries|length }}</strong></p>
     </div>
 
     <div class="col-xs-6 .col-sm-3">
         <h2>{{ 'report.average_user_amount'|trans }}</h2>
+
         <p>{{ entry_average }}</p>
     </div>
 
-
     <div class="col-xs-6 .col-sm-3">
+
         <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
+
         <p>{{ wishlist_average }}%</p>
     </div>
     <div class="clearfix"></div>
