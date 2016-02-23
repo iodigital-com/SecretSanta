@@ -24,8 +24,9 @@ class ReportingService
         $dbal = $this->doctrine->getConnection();
         $year = $request->get('year');
 
+
         if($year == "all" || $year == ''){
-            $pools = $dbal->fetchAll('SELECT * FROM Pool ORDER BY sentdate');
+            $pools = $dbal->fetchAll('SELECT * FROM Pool WHERE year(sentdate) = 2016 ');
         } else {
             $pools = $dbal->fetchAll('SELECT * FROM Pool WHERE year(sentdate) = '. $year);
         }
