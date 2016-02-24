@@ -19,37 +19,17 @@ class ReportController extends Controller
     {
         $reportingServices = $this->get('intracto_secret_santa.report.reporting');
 
-        $pools = $reportingServices->getPools($request);
-        $entries = $reportingServices->getEntries($request);
-        $wishlists = $reportingServices->getFinishedWishlists($request);
-        $years = $reportingServices->getYears();
-
-        if (count($pools) != 0) {
-            $entry_average = number_format(implode($entries[0]) / implode($pools[0]), 2);
-        } else {
-            $entry_average = number_format(0);
-        }
-
-        if (count($entries) != 0) {
-            $wishlist_average = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
-        } else {
-            $wishlist_average = number_format(0);
-        }
-        if (isset ($_GET['year'])) {
+        if (isset ($_GET['year']) && $_GET['year'] != "all") {
             $current_year = $_GET['year'];
+            $dataPool = $reportingServices->getPullReport($current_year);
         } else {
             $current_year = 'all';
+            $dataPool = $reportingServices->getFullPullReport();
         }
 
-        $data = array(
-            "pools" => $pools,
-            "entries" => $entries,
-            "entry_average" => $entry_average,
-            "wishlist_average" => $wishlist_average,
-            "years" => $years,
-            "current_year" => $current_year
-        );
-
-        return $data;
+        return $data = [
+            "current_year" => $current_year,
+            "dataPool" => $dataPool
+        ];
     }
 }

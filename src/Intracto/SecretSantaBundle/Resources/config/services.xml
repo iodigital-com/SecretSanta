@@ -10,7 +10,6 @@
 
     <services>
         <service id="intracto_secret_santa.report.reporting" class="%intracto_secret_santa.service.report.reporting%">
-            <argument type="service" id="cache"></argument>
             <argument type="service" id="doctrine"></argument>
         </service>
     </services>

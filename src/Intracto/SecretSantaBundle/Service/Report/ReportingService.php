@@ -1,68 +1,92 @@
 <?php
+
 namespace Intracto\SecretSantaBundle\Service\Report;
 
-use Doctrine\Common\Cache\CacheProvider;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Type;
 
 class ReportingService
 {
-    private $cache;
     private $doctrine;
 
-    public function __construct(CacheProvider $cache, $doctrine)
+    public function __construct($doctrine)
     {
-        $this->cache = $cache;
         $this->doctrine = $doctrine;
     }
 
-    public function getPools(Request $request)
+    public function getFullPullReport()
     {
+        /** @var \Doctrine\DBAL\Connection $dbal */
         $dbal = $this->doctrine->getConnection();
-        $year = $request->get('year');
 
-        if ($year == "all" || $year == '') {
-            $pools = $dbal->fetchAll('SELECT count(*) as poolCount FROM Pool');
+        $pools = $dbal->fetchAll('SELECT count(*) as poolCount FROM Pool');
+        $entries = $dbal->fetchAll('SELECT count(*) as entryCount FROM Entry JOIN Pool on Pool.id = Entry.poolId');
+        $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Entry JOIN Pool on Pool.id = Entry.poolId WHERE wishlist_updated = TRUE');
+
+        if ($pools[0]['poolCount'] != 0) {
+            $entry_average = number_format(implode($entries[0]) / implode($pools[0]), 2);
         } else {
-            $pools = $dbal->fetchAll('SELECT count(*) as poolCount FROM Pool WHERE year(sentdate) = ' . $year);
+            $entry_average = number_format(0);
         }
 
-        return $pools;
-    }
-
-    public function getEntries(Request $request)
-    {
-        $dbal = $this->doctrine->getConnection();
-        $year = $request->get('year');
-
-        if ($year == "all" || $year == '') {
-            $entries = $dbal->fetchAll('SELECT count(*) as entryCount FROM Entry JOIN Pool on Pool.id = Entry.poolId');
+        if ($entries[0]['entryCount'] != 0) {
+            $wishlist_average = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
         } else {
-            $entries = $dbal->fetchAll('SELECT count(*) as entryCount FROM Entry JOIN Pool on Pool.id = Entry.poolId where year(Pool.sentdate) = ' . $year);
+            $wishlist_average = number_format(0);
         }
-
-        return $entries;
-    }
-
-    public function getFinishedWishlists(Request $request)
-    {
-        $dbal = $this->doctrine->getConnection();
-        $year = $request->get('year');
-
-        if ($year == "all" || $year == '') {
-            $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Entry JOIN Pool on Pool.id = Entry.poolId WHERE wishlist_updated = TRUE');
-        } else {
-            $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Entry JOIN Pool on Pool.id = Entry.poolId where year(Pool.sentdate) = ' . $year . ' AND Entry.wishlist_updated = TRUE');
-        }
-
-        return $wishlists;
-    }
-
-    public function getYears()
-    {
-        $dbal = $this->doctrine->getConnection();
 
         $featured_years = $dbal->fetchAll('SELECT DISTINCT year(sentdate) as featured_year FROM Pool WHERE year(sentdate) IS NOT NULL ORDER BY year(sentdate) DESC');
 
-        return $featured_years;
+        return $data = [
+            'pools' => $pools,
+            'entries' => $entries,
+            'wishlists' => $wishlists,
+            'featured_years' => $featured_years,
+            'entry_average' => $entry_average,
+            'wishlist_average' => $wishlist_average
+        ];
+    }
+
+    public function getPullReport($year)
+    {
+        /** @var \Doctrine\DBAL\Connection $dbal */
+        $dbal = $this->doctrine->getConnection();
+
+        $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-01-01');
+        $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-01-01');
+
+        $pools = $dbal->fetchAll('SELECT count(*) AS poolCount FROM Pool p WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]);
+
+        $entries = $dbal->fetchAll('SELECT count(*) AS entryCount FROM Pool p JOIN Entry e ON p.id = e.poolId WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]);
+
+        $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Pool p JOIN Entry e on p.id = e.poolId WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]);
+
+        $featured_years = $dbal->fetchAll('SELECT DISTINCT year(sentdate) as featured_year FROM Pool WHERE year(sentdate) IS NOT NULL ORDER BY year(sentdate) DESC');
+
+        if ($pools[0]['poolCount'] != 0) {
+            $entry_average = number_format(implode($entries[0]) / implode($pools[0]), 2);
+        } else {
+            $entry_average = number_format(0, 2);
+        }
+
+        if ($entries[0]['entryCount'] != 0) {
+            $wishlist_average = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
+        } else {
+            $wishlist_average = number_format(0, 2);
+        }
+
+        return $data = [
+            'pools' => $pools,
+            'entries' => $entries,
+            'wishlists' => $wishlists,
+            'featured_years' => $featured_years,
+            'entry_average' => $entry_average,
+            'wishlist_average' => $wishlist_average,
+            'firstDay' => $firstDay,
+            'lastDay' => $lastDay
+        ];
+
     }
 }
