@@ -4,17 +4,4 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="intracto_secret_santa.service.reporting">Intracto\SecretSantaBundle\Service\ReportingService</parameter>
-    </parameters>
-
-    <services>
-        <service id="intracto_secret_santa.reporting" class="%intracto_secret_santa.service.reporting%">
-            <argument type="service" id="cache"></argument>
-            <argument type="service" id="doctrine"></argument>
-            <argument>%ga_email%</argument>
-            <argument>%ga_password%</argument>
-            <argument>%ga_profile_id%</argument>
-        </service>
-    </services>
 </container>
