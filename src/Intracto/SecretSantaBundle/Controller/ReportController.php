@@ -19,17 +19,17 @@ class ReportController extends Controller
     {
         $reportingServices = $this->get('intracto_secret_santa.report.reporting');
 
-        if (isset ($_GET['year']) && $_GET['year'] != "all") {
-            $current_year = $_GET['year'];
+        $current_year = $request->get('year');
+
+        if ($request->get('year') != NULL && $request->get('year') != 'all') {
             $dataPool = $reportingServices->getPullReport($current_year);
         } else {
-            $current_year = 'all';
             $dataPool = $reportingServices->getFullPullReport();
         }
 
         return $data = [
-            "current_year" => $current_year,
-            "dataPool" => $dataPool
+            'current_year' => $current_year,
+            'dataPool' => $dataPool
         ];
     }
 }
