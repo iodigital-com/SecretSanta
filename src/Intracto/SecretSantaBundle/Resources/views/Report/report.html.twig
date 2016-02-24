@@ -1,0 +1,49 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block metadata %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+{% block main %}
+    <h1>Report</h1>
+
+    <form method="GET">
+        <div class="row">
+            <div class="span3">
+                <label for="Year">Results from:</label>
+                <select name="year" id="Year" onchange="this.form.submit();">
+                    <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">All time
+                    </option>
+                    {% for year in years %}
+                        <option value="{{ year.featured_year }}" {% if(current_year == year.featured_year) %} selected="selected" {% endif %}>{{ year.featured_year }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </div>
+    </form>
+
+    <div class="col-xs-6 .col-sm-3 report">
+        <h2>{{ 'report.pool_amount'|trans }}</h2>
+
+        <p><strong>{{ pools[0].poolCount }}</strong></p>
+    </div>
+
+    <div class="col-xs-6 .col-sm-3 report">
+        <h2>{{ 'report.user_amount'|trans }}</h2>
+
+        <p><strong>{{ entries[0].entryCount }}</strong></p>
+    </div>
+
+    <div class="col-xs-6 .col-sm-3 report">
+        <h2>{{ 'report.average_user_amount'|trans }}</h2>
+
+        <p><strong>{{ entry_average }}</strong></p>
+    </div>
+
+
+    <div class="col-xs-6 .col-sm-3 report">
+        <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
+
+        <p><strong>{{ wishlist_average }}%</strong></p>
+    </div>
+    <div class="clearfix"></div>
+{% endblock %}
