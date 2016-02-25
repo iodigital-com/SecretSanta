@@ -12,5 +12,3 @@ composer.phar
 dumps
 .idea
 .vagrant
-*.DS_Store
-.DS_Store
