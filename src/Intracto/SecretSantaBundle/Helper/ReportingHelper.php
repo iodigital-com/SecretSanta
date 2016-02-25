@@ -1,10 +1,10 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Service\Report;
+namespace Intracto\SecretSantaBundle\Helper;
 
 use Symfony\Component\Validator\Constraints\Type;
 
-class ReportingService
+class ReportingHelper
 {
     private $doctrine;
 
@@ -87,6 +87,5 @@ class ReportingService
             'firstDay' => $firstDay,
             'lastDay' => $lastDay
         ];
-
     }
 }

@@ -17,12 +17,12 @@ class ReportController extends Controller
      */
     public function reportAction(Request $request)
     {
-        $reportingServices = $this->get('intracto_secret_santa.report.reporting');
+        $reportingHelper = $this->get('intracto_secret_santa.reporting');
 
         $current_year = $request->get('year');
 
         if ($current_year != NULL && $current_year != 'all') {
-            $dataPool = $reportingServices->getPullReport($current_year);
+            $dataPool = $reportingHelper->getPullReport($current_year);
 
             $featured_years = [];
             foreach ($dataPool['featured_years'] as $d) {
@@ -30,10 +30,10 @@ class ReportController extends Controller
             }
 
             if (!in_array($current_year, $featured_years)) {
-                throw $this->createNotFoundException('Data over dit jaartal zijn niet beschikbaar');
+                throw $this->createNotFoundException('Data over dit jaartal zijn niet beschikbaar.');
             }
         } else {
-            $dataPool = $reportingServices->getFullPullReport();
+            $dataPool = $reportingHelper->getFullPullReport();
         }
 
         return $data = [

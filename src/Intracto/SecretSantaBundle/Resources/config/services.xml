@@ -4,12 +4,8 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="intracto_secret_santa.service.report.reporting">Intracto\SecretSantaBundle\Service\Report\ReportingService</parameter>
-    </parameters>
-
     <services>
-        <service id="intracto_secret_santa.report.reporting" class="%intracto_secret_santa.service.report.reporting%">
+        <service id="intracto_secret_santa.reporting" class="Intracto\SecretSantaBundle\Helper\ReportingHelper">
             <argument type="service" id="doctrine"></argument>
         </service>
     </services>
