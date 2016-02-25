@@ -21,8 +21,17 @@ class ReportController extends Controller
 
         $current_year = $request->get('year');
 
-        if ($request->get('year') != NULL && $request->get('year') != 'all') {
+        if ($current_year != NULL && $current_year != 'all') {
             $dataPool = $reportingServices->getPullReport($current_year);
+
+            $featured_years = [];
+            foreach ($dataPool['featured_years'] as $d) {
+                array_push($featured_years, $d['featured_year']);
+            }
+
+            if (!in_array($current_year, $featured_years)) {
+                throw $this->createNotFoundException('Data over dit jaartal zijn niet beschikbaar');
+            }
         } else {
             $dataPool = $reportingServices->getFullPullReport();
         }
