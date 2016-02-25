@@ -4,6 +4,8 @@
 {% endblock %}
 {% block main %}
     <div class="box">
+        <a href="{{ path('pool_reuse', {'listUrl': pool.listUrl}) }}" class="btn btn-success pull-right"
+           title="{{ 'btn.reuse_info'|trans }}"><i class="icon-repeat icon-white"></i> {{ 'btn.reuse'|trans }}</a>
         <h1>{{ 'manage.title'|trans }}</h1>
         <table class="entries table table-striped" id="mysanta">
             <thead>
@@ -52,9 +54,10 @@
             <strong>{{ 'manage.tip'|trans }}</strong> {{ 'manage.come_back'|trans }}
         </div>
 
-        <button id="btn_delete" class="btn btn-primary"><i class="icon-warning-sign icon-white"></i> {{ 'btn.delete_list'|trans }}</button>
-        <button id="btn_expose" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {{ 'btn.expose'|trans }}</button>
-
+        <button id="btn_delete" class="btn btn-primary"><i
+                    class="icon-warning-sign icon-white"></i> {{ 'btn.delete_list'|trans }}</button>
+        <button id="btn_expose" class="btn btn-warning"><i
+                    class="icon-eye-open icon-white"></i> {{ 'btn.expose'|trans }}</button>
         <br/><br/>
 
         <div id="delete-warning" class="alert alert-error" style="display: none;">
@@ -96,24 +99,24 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        $( document ).ready(function() {
-            $('#btn_delete').click(function(e) {
+        $(document).ready(function () {
+            $('#btn_delete').click(function (e) {
                 $('#delete-warning').show();
                 $('#btn_delete').hide();
                 $('#delete-confirmation').focus();
             });
-            $('#btn_delete_cancel').click(function(e) {
+            $('#btn_delete_cancel').click(function (e) {
                 $('#delete-warning').hide();
                 $('#btn_delete').show().focus();
             });
 
-            $('#btn_expose').click(function(e) {
+            $('#btn_expose').click(function (e) {
                 $('#expose-warning').show();
                 $('#btn_expose').hide();
                 $('#expose-confirmation').focus();
             });
 
-            $('#btn_expose_cancel').click(function(e) {
+            $('#btn_expose_cancel').click(function (e) {
                 $('#expose-warning').hide();
                 $('#btn_expose').show().focus();
             });

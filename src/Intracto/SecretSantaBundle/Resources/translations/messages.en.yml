@@ -274,6 +274,8 @@ btn:
     expose: Send me all the matches
     expose_confirm: I understand the consequences, send my Secret Santa mailing list now
     cancel: Cancel
+    reuse: Reuse this list
+    reuse_info: Reuse this list to start a new list
 
 emails:
     sender: Santa Claus

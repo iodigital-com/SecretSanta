@@ -255,6 +255,8 @@ btn:
     expose: Stuur me alle koppelingen
     expose_confirm: Ik begrijp de gevolgen, stuur mij nu alle koppelingen
     cancel: Annuleren
+    reuse: Hergebruik deze lijst
+    reuse_info: Hergebruik deze lijst voor een nieuwe lijst
 
 emails:
     sender: Kerstman
