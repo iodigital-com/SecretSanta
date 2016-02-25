@@ -3,10 +3,6 @@
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Intracto\SecretSantaBundle\Entity\Pool;
-use Intracto\SecretSantaBundle\Entity\Entry;
 use Symfony\Component\HttpFoundation\Request;
 
 class ReportController extends Controller
