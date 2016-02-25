@@ -21,7 +21,6 @@
 
     <script type="text/javascript" src="{{ asset('/bundles/intractosecretsanta/js/modernizr.custom.js') }}"></script>
 
-    {% block stylesheets %}{% endblock %}
     {% stylesheets
     'bundles/intractosecretsanta/css/bootstrap.min.css'
     'bundles/intractosecretsanta/css/update.css'
@@ -29,9 +28,12 @@
     'bundles/intractosecretsanta/css/jquery-ui.css'
     'bundles/intractosecretsanta/css/jquery-ui.theme.css'
     'bundles/intractosecretsanta/css/main.css'
+    'bundles/intractosecretsanta/css/bootstrap3/bootstrap.min.css'
+    'bundles/intractosecretsanta/css/bootstrap3/bootstrap.css'
     filter='cssrewrite' %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen"/>
     {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
     <style>
         table.entries input {
             margin-bottom: 0;
