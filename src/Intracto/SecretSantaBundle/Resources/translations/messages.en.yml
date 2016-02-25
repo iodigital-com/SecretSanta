@@ -368,3 +368,9 @@ flashes:
 forgot_manage_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
+report:
+    pool_amount: 'Total amount of pools'
+    user_amount: 'Total amount of users'
+    average_user_amount: 'Average amount of users per pool'
+    average_wishlist_amount: 'Average amount of completed wishlists'
+    no_data: 'There are no data available.'
