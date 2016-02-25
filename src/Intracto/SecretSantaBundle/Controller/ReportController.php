@@ -16,19 +16,24 @@ class ReportController extends Controller
     public function reportAction(Request $request)
     {
         $reportQuery = $this->get('intracto_secret_santa.reporting');
-        $featured_years = $reportQuery->getFeaturedYears();
-        $current_year = $request->get('year');
+        $featuredYears = $reportQuery->getFeaturedYears();
+        $currentYear = $request->get('year', 'all');
 
-        if ($current_year != NULL && $current_year != 'all') {
-            $dataPool = $reportQuery->getPoolReport($current_year);
-        } else {
-            $dataPool = $reportQuery->getFullPoolReport();
+        try {
+            if ($currentYear != 'all') {
+                $dataPool = $reportQuery->getPoolReport($currentYear);
+            } else {
+                $dataPool = $reportQuery->getFullPoolReport();
+            }
+        } catch (\Exception $e) {
+            $currentYear = [];
+            $dataPool = [];
         }
 
-        return $data = [
-            'current_year' => $current_year,
-            'dataPool' => $dataPool,
-            'featured_years' => $featured_years
+        return [
+            'current_year' => $currentYear,
+            'data_pool' => $dataPool,
+            'featured_years' => $featuredYears,
         ];
     }
 }

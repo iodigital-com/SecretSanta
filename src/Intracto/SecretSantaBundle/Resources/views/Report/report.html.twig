@@ -20,7 +20,7 @@
         </div>
     </form>
 
-    {% if dataPool is empty %}
+    {% if data_pool is empty %}
         <div>
             <p>{{ 'report.no_data'|trans }}</p>
         </div>
@@ -28,25 +28,25 @@
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.pool_amount'|trans }}</h2>
 
-            <p><strong>{{ dataPool['pools'][0]['poolCount'] }}</strong></p>
+            <p><strong>{{ data_pool['pools'][0]['poolCount'] }}</strong></p>
         </div>
 
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.user_amount'|trans }}</h2>
 
-            <p><strong>{{ dataPool['entries'][0]['entryCount'] }}</strong></p>
+            <p><strong>{{ data_pool['entries'][0]['entryCount'] }}</strong></p>
         </div>
 
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.average_user_amount'|trans }}</h2>
 
-            <p><strong>{{ dataPool['entry_average'] }}</strong></p>
+            <p><strong>{{ data_pool['entry_average'] }}</strong></p>
         </div>
 
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
 
-            <p><strong>{{ dataPool['wishlist_average'] }}%</strong></p>
+            <p><strong>{{ data_pool['wishlist_average'] }}%</strong></p>
         </div>
         <div class="clearfix"></div>
     {% endif %}
