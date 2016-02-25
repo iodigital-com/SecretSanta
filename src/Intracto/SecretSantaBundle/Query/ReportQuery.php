@@ -1,10 +1,8 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Helper;
+namespace Intracto\SecretSantaBundle\Query;
 
-use Symfony\Component\Validator\Constraints\Type;
-
-class ReportingHelper
+class ReportQuery
 {
     private $doctrine;
 
@@ -13,7 +11,7 @@ class ReportingHelper
         $this->doctrine = $doctrine;
     }
 
-    public function getFullPullReport()
+    public function getFullPoolReport()
     {
         /** @var \Doctrine\DBAL\Connection $dbal */
         $dbal = $this->doctrine->getConnection();
@@ -22,31 +20,23 @@ class ReportingHelper
         $entries = $dbal->fetchAll('SELECT count(*) as entryCount FROM Entry JOIN Pool on Pool.id = Entry.poolId');
         $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Entry JOIN Pool on Pool.id = Entry.poolId WHERE wishlist_updated = TRUE');
 
-        if ($pools[0]['poolCount'] != 0) {
+        if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
             $entry_average = number_format(implode($entries[0]) / implode($pools[0]), 2);
-        } else {
-            $entry_average = number_format(0);
-        }
-
-        if ($entries[0]['entryCount'] != 0) {
             $wishlist_average = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
+
+            return $data = [
+                'pools' => $pools,
+                'entries' => $entries,
+                'wishlists' => $wishlists,
+                'entry_average' => $entry_average,
+                'wishlist_average' => $wishlist_average
+            ];
         } else {
-            $wishlist_average = number_format(0);
+            return $data = [];
         }
-
-        $featured_years = $dbal->fetchAll('SELECT DISTINCT year(sentdate) as featured_year FROM Pool WHERE year(sentdate) IS NOT NULL ORDER BY year(sentdate) DESC');
-
-        return $data = [
-            'pools' => $pools,
-            'entries' => $entries,
-            'wishlists' => $wishlists,
-            'featured_years' => $featured_years,
-            'entry_average' => $entry_average,
-            'wishlist_average' => $wishlist_average
-        ];
     }
 
-    public function getPullReport($year)
+    public function getPoolReport($year)
     {
         /** @var \Doctrine\DBAL\Connection $dbal */
         $dbal = $this->doctrine->getConnection();
@@ -63,29 +53,37 @@ class ReportingHelper
         $wishlists = $dbal->fetchAll('SELECT count(*) as wishListCount FROM Pool p JOIN Entry e on p.id = e.poolId WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]);
 
-        $featured_years = $dbal->fetchAll('SELECT DISTINCT year(sentdate) as featured_year FROM Pool WHERE year(sentdate) IS NOT NULL ORDER BY year(sentdate) DESC');
-
-        if ($pools[0]['poolCount'] != 0) {
+        if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
             $entry_average = number_format(implode($entries[0]) / implode($pools[0]), 2);
-        } else {
-            $entry_average = number_format(0, 2);
-        }
-
-        if ($entries[0]['entryCount'] != 0) {
             $wishlist_average = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
+
+            return $data = [
+                'pools' => $pools,
+                'entries' => $entries,
+                'wishlists' => $wishlists,
+                'entry_average' => $entry_average,
+                'wishlist_average' => $wishlist_average
+            ];
         } else {
-            $wishlist_average = number_format(0, 2);
+            return $data = [];
+        }
+    }
+
+    public function getFeaturedYears()
+    {
+        /** @var \Doctrine\DBAL\Connection $dbal */
+        $dbal = $this->doctrine->getConnection();
+
+        $yearsQuery = $dbal->fetchAll('SELECT DISTINCT year(sentdate) as featured_year FROM Pool WHERE year(sentdate) IS NOT NULL ORDER BY year(sentdate) DESC');
+
+        $featured_years = [];
+
+        foreach ($yearsQuery as $f) {
+            array_push($featured_years, $f['featured_year']);
         }
 
         return $data = [
-            'pools' => $pools,
-            'entries' => $entries,
-            'wishlists' => $wishlists,
-            'featured_years' => $featured_years,
-            'entry_average' => $entry_average,
-            'wishlist_average' => $wishlist_average,
-            'firstDay' => $firstDay,
-            'lastDay' => $lastDay
+            'featured_years' => $featured_years
         ];
     }
 }
