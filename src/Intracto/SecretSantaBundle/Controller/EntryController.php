@@ -52,6 +52,12 @@ class EntryController extends Controller
             $em->flush($this->entry);
         }
 
+        // Log ip address on first access
+        if($this->entry->getIp() === null) {
+            $this->entry->setIp($request->getClientIp());
+            $em->flush($this->entry);
+        }
+
         if ('POST' === $request->getMethod()) {
             // get current items to compare against items later on
             $currentWishlistItems = new ArrayCollection();

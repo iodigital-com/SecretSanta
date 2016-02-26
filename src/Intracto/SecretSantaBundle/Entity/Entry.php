@@ -140,6 +140,13 @@ class Entry
     private $poolAdmin = false;
 
     /**
+     * @var string $ip
+     *
+     * @ORM\Column(name="ip", type="string", nullable=true)
+     */
+    private $ip;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -562,5 +569,29 @@ class Entry
     public function setPoolAdmin($poolAdmin)
     {
         $this->poolAdmin = $poolAdmin;
+    }
+
+    /**
+     * Set ip
+     *
+     * @param string $ip
+     *
+     * @return Entry
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $ip;
+    }
+
+    /**
+     * Get ip
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
     }
 }
