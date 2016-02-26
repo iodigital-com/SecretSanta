@@ -371,6 +371,7 @@ forgot_manage_link:
 report:
     pool_amount: 'Total amount of parties'
     user_amount: 'Total amount of participants'
+    distinct_user_amount: 'Total amount of unique participants'
     average_user_amount: 'Average amount of participants per party'
     average_wishlist_amount: 'Average amount of completed wishlists'
     no_data: 'There are no data available.'
