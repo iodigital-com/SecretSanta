@@ -252,6 +252,8 @@ static:
 label:
     name: Name
     email: E-mail
+    host: Host
+    participants: Participants
     date_party: Date of your Secret Santa party
     amount_to_spend: Amount to spend
     exclude: Exclude
