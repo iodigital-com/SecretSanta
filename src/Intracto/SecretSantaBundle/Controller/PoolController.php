@@ -77,7 +77,7 @@ class PoolController extends Controller
                     '%message%' => $pool->getMessage(),
                 ));
 
-                $pool->setCreationDate(new \DateTime(date('Y-m-d H:i:s')));
+                $pool->setCreationDate(new \DateTime());
                 $pool->setMessage($message);
                 $pool->setLocale($request->getLocale());
                 $em->persist($pool);
