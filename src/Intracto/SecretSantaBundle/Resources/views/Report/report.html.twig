@@ -31,25 +31,31 @@
             <p>{{ 'report.no_data'|trans }}</p>
         </div>
     {% else %}
-        <div class="col-xs-6 .col-sm-3 report">
+        <div class="col-xs-6 report">
             <h2>{{ 'report.pool_amount'|trans }}</h2>
 
             <p><strong>{{ data_pool['pools'][0]['poolCount'] }}</strong></p>
         </div>
 
-        <div class="col-xs-6 .col-sm-3 report">
+        <div class="col-xs-6 report">
             <h2>{{ 'report.user_amount'|trans }}</h2>
 
             <p><strong>{{ data_pool['entries'][0]['entryCount'] }}</strong></p>
         </div>
 
-        <div class="col-xs-6 .col-sm-3 report">
+        <div class="col-xs-6 report">
+            <h2>{{ 'report.distinct_user_amount'|trans }}</h2>
+
+            <p><strong>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</strong></p>
+        </div>
+
+        <div class="col-xs-6 report">
             <h2>{{ 'report.average_user_amount'|trans }}</h2>
 
             <p><strong>{{ data_pool['entry_average'] }}</strong></p>
         </div>
 
-        <div class="col-xs-6 .col-sm-3 report">
+        <div class="col-xs-6 report">
             <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
 
             <p><strong>{{ data_pool['wishlist_average'] }}%</strong></p>

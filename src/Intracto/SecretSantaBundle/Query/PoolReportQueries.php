@@ -26,11 +26,19 @@ class PoolReportQueries
             'SELECT count(*) as poolCount
             FROM Pool'
         );
+
         $entries = $this->dbal->fetchAll(
             'SELECT count(*) as entryCount
-            FROM Entry
-            JOIN Pool on Pool.id = Entry.poolId'
+            FROM Pool
+            JOIN Entry on Pool.id = Entry.poolId'
         );
+
+        $distintEntries = $this->dbal->fetchAll(
+            'SELECT count(distinct(Entry.email)) as distinctEntryCount
+            FROM Pool
+            JOIN Entry on Pool.id = Entry.poolId'
+        );
+
         $wishlists = $this->dbal->fetchAll(
             'SELECT count(*) as wishListCount
             FROM Entry
@@ -39,12 +47,13 @@ class PoolReportQueries
         );
 
         if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
-            $entryAverage = number_format(implode($entries[0]) / implode($pools[0]), 2);
+            $entryAverage = round(implode($entries[0]) / implode($pools[0]));
             $wishlistAverage = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
 
             return [
                 'pools' => $pools,
                 'entries' => $entries,
+                'distinct_entries' => $distintEntries,
                 'wishlists' => $wishlists,
                 'entry_average' => $entryAverage,
                 'wishlist_average' => $wishlistAverage,
@@ -55,7 +64,7 @@ class PoolReportQueries
     }
 
     /**
-     * @param $year
+     * @param int $year
      * @return array
      * @throws NoResultException
      */
@@ -79,6 +88,14 @@ class PoolReportQueries
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
 
+        $distinctEntries = $this->dbal->fetchAll(
+            'SELECT count(distinct(e.email)) as distinctEntryCount
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+
         $wishlists = $this->dbal->fetchAll(
             'SELECT count(*) as wishListCount
             FROM Pool p JOIN Entry e on p.id = e.poolId
@@ -87,12 +104,13 @@ class PoolReportQueries
         );
 
         if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
-            $entryAverage = number_format(implode($entries[0]) / implode($pools[0]), 2);
+            $entryAverage = round(implode($entries[0]) / implode($pools[0]));
             $wishlistAverage = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
 
             return [
                 'pools' => $pools,
                 'entries' => $entries,
+                'distinct_entries' => $distinctEntries,
                 'wishlists' => $wishlists,
                 'entry_average' => $entryAverage,
                 'wishlist_average' => $wishlistAverage,

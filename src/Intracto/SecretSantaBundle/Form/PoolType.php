@@ -23,7 +23,7 @@ class PoolType extends AbstractType
               )
           )
           ->add(
-              'date',
+              'eventdate',
               'genemu_jquerydate',
               array(
                   'widget' => 'single_text',

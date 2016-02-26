@@ -28,7 +28,7 @@
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <div class="row toplabels">
-                    <div class="span4{% if form_errors(form.date) %} error{% endif %}">{{ form_label(form.date) }}{{ form_widget(form.date) }}</div>
+                    <div class="span4{% if form_errors(form.eventdate) %} error{% endif %}">{{ form_label(form.eventdate) }}{{ form_widget(form.eventdate) }}</div>
                     <div class="span3{% if form_errors(form.amount) %} error{% endif %}">{{ form_label(form.amount) }}{{ form_widget(form.amount) }}</div>
                 </div>
 

@@ -73,10 +73,11 @@ class PoolController extends Controller
                 $translator = $this->get('translator');
                 $message = $translator->trans('emails.created.message', array(
                     '%amount%' => $pool->getAmount(),
-                    '%date%' => $dateFormatter->format($pool->getDate()->getTimestamp()),
+                    '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
                     '%message%' => $pool->getMessage(),
                 ));
 
+                $pool->setCreationDate(new \DateTime());
                 $pool->setMessage($message);
                 $pool->setLocale($request->getLocale());
                 $em->persist($pool);
