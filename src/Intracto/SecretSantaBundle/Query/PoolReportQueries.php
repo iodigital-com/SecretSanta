@@ -39,7 +39,7 @@ class PoolReportQueries
         );
 
         if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
-            $entryAverage = number_format(implode($entries[0]) / implode($pools[0]), 2);
+            $entryAverage = round(implode($entries[0]) / implode($pools[0]));
             $wishlistAverage = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
 
             return [
@@ -86,7 +86,7 @@ class PoolReportQueries
         );
 
         if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
-            $entryAverage = number_format(implode($entries[0]) / implode($pools[0]), 2);
+            $entryAverage = round(implode($entries[0]) / implode($pools[0]));
             $wishlistAverage = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
 
             return [
