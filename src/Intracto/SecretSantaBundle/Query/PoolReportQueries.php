@@ -53,7 +53,7 @@ class PoolReportQueries
             return [
                 'pools' => $pools,
                 'entries' => $entries,
-                'distint_entries' => $distintEntries,
+                'distinct_entries' => $distintEntries,
                 'wishlists' => $wishlists,
                 'entry_average' => $entryAverage,
                 'wishlist_average' => $wishlistAverage,
