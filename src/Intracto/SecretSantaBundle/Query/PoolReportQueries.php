@@ -66,6 +66,7 @@ class PoolReportQueries
     /**
      * @param int $year
      * @return array
+     * @throws NoResultException
      */
     public function getPoolReport($year)
     {
