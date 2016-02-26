@@ -22,7 +22,6 @@
     <script type="text/javascript" src="{{ asset('/bundles/intractosecretsanta/js/modernizr.custom.js') }}"></script>
 
     {% stylesheets
-    'bundles/intractosecretsanta/css/bootstrap.min.css'
     'bundles/intractosecretsanta/css/update.css'
     'bundles/intractosecretsanta/css/mediaqueries.css'
     'bundles/intractosecretsanta/css/jquery-ui.css'
@@ -31,7 +30,12 @@
     'bundles/intractosecretsanta/css/bootstrap3/bootstrap.min.css'
     'bundles/intractosecretsanta/css/bootstrap3/bootstrap.css'
     filter='cssrewrite' %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          rel="stylesheet"
+          media="screen" />
     <link href="{{ asset_url }}" rel="stylesheet" media="screen"/>
+
+
     {% endstylesheets %}
     {% block stylesheets %}{% endblock %}
     <style>
@@ -121,8 +125,7 @@
 {% javascripts
 '@IntractoSecretSantaBundle/Resources/public/js/jquery-1.8.2.min.js'
 '@IntractoSecretSantaBundle/Resources/public/js/jquery-ui-1.9.0.js'
-'@IntractoSecretSantaBundle/Resources/public/js/bootstrap.min.js'
-'@IntractoSecretSantaBundle/Resources/public/js/secretsanta.js' %}
+'@IntractoSecretSantaBundle/Resources/public/js/secretsanta.js'%}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 {% block javascripts %}{% endblock %}

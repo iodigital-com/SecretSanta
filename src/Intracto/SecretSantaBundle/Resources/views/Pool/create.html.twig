@@ -13,27 +13,21 @@
         </div>
     </div>
 {% endblock %}
-
 {% block main %}
-
     <div class="box">
         <h2>{{ 'create.what_is.title'|trans }}</h2>
-
         {{ 'create.what_is.intro'|trans|raw }}
     </div>
     <div class="content-container" id="mysanta">
         <div class="santa-content">
             <h1>{{ 'create.add_participants'|trans }}</h1>
-
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <div class="row toplabels">
-                    <div class="span4{% if form_errors(form.eventdate) %} error{% endif %}">{{ form_label(form.eventdate) }}{{ form_widget(form.eventdate) }}</div>
-                    <div class="span3{% if form_errors(form.amount) %} error{% endif %}">{{ form_label(form.amount) }}{{ form_widget(form.amount) }}</div>
+
+                    <div class="col-md-4 input{% if form_errors(form.date) %} error{% endif %}">{{ form_label(form.date) }}{{ form_widget(form.date) }}</div>
+                    <div class="col-xs-4 col-sm-6 input{% if form_errors(form.amount) %} error{% endif %}">{{ form_label(form.amount) }}<br>{{ form_widget(form.amount) }}</div>
                 </div>
-
-
-
                 <table class="entries table table-striped mysanta">
                     <thead>
                     <tr>
@@ -42,7 +36,7 @@
                         <th class="span4">{{ 'label.email'|trans }}</th>
                         <th style="text-align: right;" class="span4">
                             <button type="button" class="btn btn-mini btn-success add-new-entry"><i
-                                        class="icon-plus-sign icon-white"></i> {{ 'btn.add_person'|trans }}
+                                        class="fa fa-plus-circle icon-white"></i> {{ 'btn.add_person'|trans }}
                             </button>
                         </th>
                     </tr>
@@ -57,8 +51,8 @@
                                 {% if entry.vars.data.poolAdmin %}
                                     <small>{{ 'create.list_adminstrator'|trans }}</small>
                                 {% else %}
-                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i
-                                                class="icon-minus-sign icon-white"></i> {{ 'btn.remove_person'|trans }}
+                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled">
+                                        <i class="fa fa-times-circle icon-white"></i> {{ 'btn.remove_person'|trans }}
                                     </button>
                                 {% endif %}
                             </td>
@@ -75,7 +69,7 @@
                 </div>
                 <p>
                     <button type="submit" class="btn btn-large btn-primary btn-create-event">
-                        <i class="icon-ok icon-white"></i> {{ 'btn.create_event'|trans }}
+                        <i class="fa fa-check icon-white"></i> {{ 'btn.create_event'|trans }}
                     </button>
                 </p>
             </form>
