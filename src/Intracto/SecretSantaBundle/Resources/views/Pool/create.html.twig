@@ -32,13 +32,9 @@
                     <thead>
                     <tr>
                         <th class="span1 entry-number-header">#</th>
-                        <th class="span3">{{ 'label.name'|trans }}</th>
+                        <th class="span3">{{ 'label.name'|trans }} (Host)</th>
                         <th class="span4">{{ 'label.email'|trans }}</th>
-                        <th style="text-align: right;" class="span4">
-                            <button type="button" class="btn btn-mini btn-success add-new-entry"><i
-                                        class="fa fa-plus-circle icon-white"></i> {{ 'btn.add_person'|trans }}
-                            </button>
-                        </th>
+
                     </tr>
                     </thead>
                     <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with {'entry': form.entries.vars['prototype']} %}{% endfilter %}">
@@ -57,11 +53,26 @@
                                 {% endif %}
                             </td>
                         </tr>
+                        {% if loop.index == 1 %}
+                            </table>
+                            <table class="entries table table-striped mysanta">
+                                <tr>
+                                    <th class="span1 entry-number-header"></th>
+                                    <th class="span3">{{ 'label.name'|trans }} (Participants)</th>
+                                    <th class="span4">{{ 'label.email'|trans }}</th>
+                                    <th style="text-align: right;" class="span4">
+                                        <button type="button" class="btn btn-mini btn-success add-new-entry"><i
+                                                    class="fa fa-plus-circle icon-white"></i> {{ 'btn.add_person'|trans }}
+                                        </button>
+                                    </th>
 
+                                </tr>
+                        {% endif %}
                     {% endfor %}
 
                     </tbody>
                 </table>
+
                 <h1>{{ 'create.add_personal_message.title'|trans }}</h1>
 
                 {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
@@ -75,7 +86,6 @@
                     </button>
                 </p>
             </form>
-
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <ins class="adsbygoogle"
                  style="display:block"
