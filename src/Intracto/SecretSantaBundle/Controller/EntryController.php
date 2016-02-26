@@ -53,7 +53,7 @@ class EntryController extends Controller
         }
 
         // Log ip address on first access
-        if($this->entry->getIp() === null) {
+        if ($this->entry->getIp() === null) {
             $this->entry->setIp($request->getClientIp());
             $em->flush($this->entry);
         }
