@@ -36,7 +36,6 @@ parameters:
         de: Deutsch
 
     secret:            ThisTokenIsNotSoSecretChangeIt
-    ad_client:         ca-pub-8492783089085834
     adwords_password:  secret
     admin_email:       santa@dev.secretsantaorganizer.com
     base_url:          dev.secretsantaorganizer.com
