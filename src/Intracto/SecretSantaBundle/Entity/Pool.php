@@ -56,12 +56,12 @@ class Pool
     private $sentdate;
 
     /**
-     * @var \DateTime $eventdate
+     * @var \DateTime $date
      *
      * @Assert\NotBlank()
      * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
      */
-    private $eventdate;
+    private $date;
 
     /**
      * @var string $amount
@@ -318,13 +318,13 @@ class Pool
     /**
      * Set eventdate
      *
-     * @param \DateTime $eventdate
+     * @param \DateTime $date
      *
      * @return Pool
      */
-    public function setEventdate($eventdate)
+    public function setDate($date)
     {
-        $this->eventdate = $eventdate;
+        $this->date = $date;
 
         return $this;
     }
@@ -334,9 +334,9 @@ class Pool
      *
      * @return \DateTime
      */
-    public function getEventdate()
+    public function getDate()
     {
-        return $this->eventdate;
+        return $this->date;
     }
 
     /**
