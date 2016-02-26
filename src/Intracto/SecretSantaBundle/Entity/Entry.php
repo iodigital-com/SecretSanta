@@ -146,9 +146,6 @@ class Entry
      */
     private $ip;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->excluded_entries = new \Doctrine\Common\Collections\ArrayCollection();
@@ -156,8 +153,6 @@ class Entry
     }
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -166,8 +161,6 @@ class Entry
     }
 
     /**
-     * Set pool
-     *
      * @param Pool $pool
      *
      * @return Entry
@@ -180,8 +173,6 @@ class Entry
     }
 
     /**
-     * Get pool
-     *
      * @return Pool
      */
     public function getPool()
@@ -190,8 +181,6 @@ class Entry
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      *
      * @return Entry
@@ -204,8 +193,6 @@ class Entry
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -214,8 +201,6 @@ class Entry
     }
 
     /**
-     * Set email
-     *
      * @param string $email
      *
      * @return Entry
@@ -228,8 +213,6 @@ class Entry
     }
 
     /**
-     * Get email
-     *
      * @return string
      */
     public function getEmail()
@@ -238,8 +221,6 @@ class Entry
     }
 
     /**
-     * Set wishlist
-     *
      * @param string $wishlist
      *
      * @return Entry
@@ -256,8 +237,6 @@ class Entry
     }
 
     /**
-     * Get wishlist
-     *
      * @return string
      */
     public function getWishlist()
@@ -266,8 +245,6 @@ class Entry
     }
 
     /**
-     * Set entry
-     *
      * @param Entry $entry
      *
      * @return Entry
@@ -280,8 +257,6 @@ class Entry
     }
 
     /**
-     * Get entry
-     *
      * @return Entry
      */
     public function getEntry()
@@ -290,8 +265,6 @@ class Entry
     }
 
     /**
-     * Set viewdate
-     *
      * @param \DateTime $viewdate
      *
      * @return Entry
@@ -304,8 +277,6 @@ class Entry
     }
 
     /**
-     * Get viewdate
-     *
      * @return \DateTime
      */
     public function getViewdate()
@@ -314,8 +285,6 @@ class Entry
     }
 
     /**
-     * Set secret
-     *
      * @param string $secret
      *
      * @return Entry
@@ -328,8 +297,6 @@ class Entry
     }
 
     /**
-     * Get secret
-     *
      * @return string
      */
     public function getSecret()
@@ -338,8 +305,6 @@ class Entry
     }
 
     /**
-     * Set url
-     *
      * @param string $url
      *
      * @return Entry
@@ -352,8 +317,6 @@ class Entry
     }
 
     /**
-     * Get url
-     *
      * @return string
      */
     public function getUrl()
@@ -362,8 +325,6 @@ class Entry
     }
 
     /**
-     * Set send
-     *
      * @param bool $send
      *
      * @return Entry
@@ -376,8 +337,6 @@ class Entry
     }
 
     /**
-     * Get send
-     *
      * @return bool
      */
     public function getSend()
@@ -386,8 +345,6 @@ class Entry
     }
 
     /**
-     * Set ready_to_send
-     *
      * @param bool $readyToSend
      *
      * @return Entry
@@ -400,8 +357,6 @@ class Entry
     }
 
     /**
-     * Get ready_to_send
-     *
      * @return bool
      */
     public function getReadyToSend()
@@ -410,8 +365,6 @@ class Entry
     }
 
     /**
-     * Set wishlist_updated
-     *
      * @param bool $wishlistUpdated
      *
      * @return Entry
@@ -424,8 +377,6 @@ class Entry
     }
 
     /**
-     * Get wishlist_updated
-     *
      * @return bool
      */
     public function getWishlistUpdated()
@@ -522,8 +473,6 @@ class Entry
     }
 
     /**
-     * Add excludedEntry
-     *
      * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
      *
      * @return Entry
@@ -536,8 +485,6 @@ class Entry
     }
 
     /**
-     * Remove excludedEntry
-     *
      * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
      */
     public function removeExcludedEntrie(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
@@ -546,8 +493,6 @@ class Entry
     }
 
     /**
-     * Get excludedEntries
-     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getExcludedEntries()
@@ -572,8 +517,6 @@ class Entry
     }
 
     /**
-     * Set ip
-     *
      * @param string $ip
      *
      * @return Entry
@@ -586,8 +529,6 @@ class Entry
     }
 
     /**
-     * Get ip
-     *
      * @return string
      */
     public function getIp()

@@ -101,9 +101,6 @@ class Pool
      */
     private $exposed = false;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
@@ -119,8 +116,6 @@ class Pool
     }
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -129,8 +124,6 @@ class Pool
     }
 
     /**
-     * Set listurl
-     *
      * @param string $listurl
      *
      * @return Pool
@@ -143,8 +136,6 @@ class Pool
     }
 
     /**
-     * Get listurl
-     *
      * @return string
      */
     public function getListurl()
@@ -153,8 +144,6 @@ class Pool
     }
 
     /**
-     * Set message
-     *
      * @param string $message
      *
      * @return Pool
@@ -167,8 +156,6 @@ class Pool
     }
 
     /**
-     * Get message
-     *
      * @return string
      */
     public function getMessage()
@@ -177,8 +164,6 @@ class Pool
     }
 
     /**
-     * Get owner_name
-     *
      * @return string
      */
     public function getOwnerName()
@@ -187,8 +172,6 @@ class Pool
     }
 
     /**
-     * Get owner_email
-     *
      * @return string
      */
     public function getOwnerEmail()
@@ -197,8 +180,6 @@ class Pool
     }
 
     /**
-     * Set creationdate
-     *
      * @param $creationdate
      *
      * @return Pool
@@ -211,8 +192,6 @@ class Pool
     }
 
     /**
-     * Get creationdate
-     *
      * @return \DateTime
      */
     public function getCreationDate()
@@ -221,8 +200,6 @@ class Pool
     }
 
     /**
-     * Set sentdate
-     *
      * @param \DateTime $sentdate
      *
      * @return Pool
@@ -235,8 +212,6 @@ class Pool
     }
 
     /**
-     * Get sentdate
-     *
      * @return \DateTime
      */
     public function getSentdate()
@@ -245,8 +220,6 @@ class Pool
     }
 
     /**
-     * Add entry
-     *
      * @param Entry $entry
      *
      * @return Pool
@@ -259,8 +232,6 @@ class Pool
     }
 
     /**
-     * Remove entry
-     *
      * @param Entry $entry
      */
     public function removeEntry(Entry $entry)
@@ -269,8 +240,6 @@ class Pool
     }
 
     /**
-     * Get entries
-     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getEntries()
@@ -292,8 +261,6 @@ class Pool
     }
 
     /**
-     * Add entries
-     *
      * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
      *
      * @return Pool
@@ -306,8 +273,6 @@ class Pool
     }
 
     /**
-     * Remove entries
-     *
      * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
      */
     public function removeEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
@@ -316,8 +281,6 @@ class Pool
     }
 
     /**
-     * Set eventdate
-     *
      * @param \DateTime $eventdate
      *
      * @return Pool
@@ -330,8 +293,6 @@ class Pool
     }
 
     /**
-     * Get eventdate
-     *
      * @return \DateTime
      */
     public function getEventdate()
@@ -340,8 +301,6 @@ class Pool
     }
 
     /**
-     * Set amount
-     *
      * @param string $amount
      *
      * @return Pool
@@ -354,8 +313,6 @@ class Pool
     }
 
     /**
-     * Get amount
-     *
      * @return string
      */
     public function getAmount()
@@ -364,8 +321,6 @@ class Pool
     }
 
     /**
-     * Set created
-     *
      * @param bool $created
      *
      * @return Pool
@@ -378,8 +333,6 @@ class Pool
     }
 
     /**
-     * Get created
-     *
      * @return bool
      */
     public function getCreated()
@@ -388,8 +341,6 @@ class Pool
     }
 
     /**
-     * Set locale
-     *
      * @param string $locale
      *
      * @return Pool
@@ -402,8 +353,6 @@ class Pool
     }
 
     /**
-     * Get locale
-     *
      * @return string
      */
     public function getLocale()

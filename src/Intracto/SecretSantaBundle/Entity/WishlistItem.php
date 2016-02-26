@@ -50,8 +50,6 @@ class WishlistItem
     private $rank;
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -60,8 +58,6 @@ class WishlistItem
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      *
      * @return WishlistItem
@@ -74,8 +70,6 @@ class WishlistItem
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -84,8 +78,6 @@ class WishlistItem
     }
 
     /**
-     * Set image
-     *
      * @param string $image
      *
      * @return WishlistItem
@@ -98,8 +90,6 @@ class WishlistItem
     }
 
     /**
-     * Get image
-     *
      * @return string
      */
     public function getImage()
@@ -108,8 +98,6 @@ class WishlistItem
     }
 
     /**
-     * Set rank
-     *
      * @param int $rank
      *
      * @return WishlistItem
@@ -122,8 +110,6 @@ class WishlistItem
     }
 
     /**
-     * Get rank
-     *
      * @return int
      */
     public function getRank()

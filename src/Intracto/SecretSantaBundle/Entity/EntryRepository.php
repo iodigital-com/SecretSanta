@@ -6,6 +6,9 @@ use Doctrine\ORM\EntityRepository;
 
 class EntryRepository extends EntityRepository
 {
+    /**
+     * @return Entry[]
+     */
     public function findAfter(\DateTime $startDate)
     {
         $query = $this->_em->createQuery('
