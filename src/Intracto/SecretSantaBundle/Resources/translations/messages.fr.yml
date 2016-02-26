@@ -224,7 +224,7 @@ placeholder:
     exclude: Cliquez et sélectionnez les partipants que vous désirez exclure
 btn:
     add_person: Ajouter une personne
-    remove_person: Supprimer cette personne
+    remove_person: Supprimer
     create_event: Créer votre événement
     create_new_list: Créer une nouvelle liste Secret Santa !
     delete_list: Supprimer ma liste Secret Santa

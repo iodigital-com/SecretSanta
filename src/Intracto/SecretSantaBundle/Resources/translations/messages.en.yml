@@ -34,7 +34,7 @@ create:
                 present to one another.</p>
 
     add_participants: Add your participants
-    list_adminstrator: This person is participant too.
+    list_adminstrator: This person is a participant too.
     add_personal_message:
         title: Add a personal message
         description: Add a personal message for the participants.

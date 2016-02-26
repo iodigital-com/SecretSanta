@@ -140,7 +140,7 @@ placeholder:
     exclude: Um den Teilnehmer auszuwählen, der ausgeschlossen werden soll, klicken Sie auf dessen Namen.
 btn:
     add_person: Person hinzufügen
-    remove_person: Diese Person entfernen
+    remove_person: entfernen
     create_event: Erstellen Sie Ihr Ereignis!
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
     delete_list: Meine Secret Santa-Liste löschen
