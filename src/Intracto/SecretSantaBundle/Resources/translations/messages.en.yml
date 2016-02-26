@@ -34,7 +34,7 @@ create:
                 present to one another.</p>
 
     add_participants: Add your participants
-    list_adminstrator: This person is also your list administrator.
+    list_adminstrator: This person is participant too.
     add_personal_message:
         title: Add a personal message
         description: Add a personal message for the participants.
@@ -263,7 +263,7 @@ placeholder:
     exclude: Click and choose the participants you want to exclude
 btn:
     add_person: Add person
-    remove_person: Remove this person
+    remove_person: Remove
     create_event: Create your event!
     create_new_list: Create a new Secret Santa list!
     delete_list: Delete my Secret Santa list

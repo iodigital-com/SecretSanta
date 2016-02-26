@@ -8,13 +8,9 @@
 .report p {
     font-size: 30px;
     text-align: center;
+    margin-top:20px;
 }
 
 .col-md-4 input{
     height:50px;
-}
-
-.ui-icon {
-    width: 16px;
-    height: 16px;
 }
