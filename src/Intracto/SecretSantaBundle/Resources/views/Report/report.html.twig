@@ -14,6 +14,7 @@
     <div>
         <p>{{ 'report.season_info'|trans }}</p>
     </div>
+
     <form method="GET">
         <div class="row">
             <div class="span3">
@@ -27,7 +28,6 @@
             </div>
         </div>
     </form>
-
     {% if data_pool is empty %}
         <div>
             <p>{{ 'report.no_data'|trans }}</p>
@@ -35,13 +35,11 @@
     {% else %}
         <div class="col-xs-6 report">
             <h2>{{ 'report.pool_amount'|trans }}</h2>
-
             <p><strong>{{ data_pool['pools'][0]['poolCount'] }}</strong></p>
         </div>
 
-        <div class="col-xs-6 report">
+        <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.user_amount'|trans }}</h2>
-
             <p><strong>{{ data_pool['entries'][0]['entryCount'] }}</strong></p>
         </div>
 
@@ -51,15 +49,14 @@
             <p><strong>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</strong></p>
         </div>
 
-        <div class="col-xs-6 report">
+        <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.average_user_amount'|trans }}</h2>
-
             <p><strong>{{ data_pool['entry_average'] }}</strong></p>
         </div>
 
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
 
+        <div class="col-xs-6 .col-sm-3 report">
+            <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
             <p><strong>{{ data_pool['wishlist_average'] }}%</strong></p>
         </div>
         <div class="clearfix"></div>
