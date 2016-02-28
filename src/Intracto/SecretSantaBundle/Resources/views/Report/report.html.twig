@@ -3,11 +3,11 @@
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
 {% block stylesheets %}
-    {% stylesheets
-    'bundles/intractosecretsanta/css/report.css'
-    filter='cssrewrite' %}
+
+    {% stylesheets 'bundles/intractosecretsanta/css/report.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
-{% endblock %}
+{% endblock stylesheets %}
 {% block main %}
     <h1>{{ 'report.title'|trans }}</h1>
 
@@ -19,10 +19,12 @@
         <div class="row">
             <div class="span3">
                 <select name="year" id="Year" onchange="this.form.submit();">
-                    <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">{{ 'report.all_time'|trans }}
+                    <option {% if(current_year == "all") %} selected="selected" {% endif %}
+                            value="all">{{ 'report.all_time'|trans }}
                     </option>
                     {% for year in featured_years['featured_years'] %}
-                        <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }} - {{ year+1 }}</option>
+                        <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}
+                            - {{ year+1 }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -35,11 +37,13 @@
     {% else %}
         <div class="col-xs-6 report">
             <h2>{{ 'report.pool_amount'|trans }}</h2>
+
             <p>{{ data_pool['pools'][0]['poolCount'] }}</strong></p>
         </div>
 
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.user_amount'|trans }}</h2>
+
             <p>{{ data_pool['entries'][0]['entryCount'] }}</strong></p>
         </div>
 
@@ -51,6 +55,7 @@
 
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.average_user_amount'|trans }}</h2>
+
             <p>{{ data_pool['entry_average'] }}</strong></p>
         </div>
 
@@ -58,6 +63,7 @@
         <div class="col-xs-6 .col-sm-3 report">
 
             <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
+
             <p>{{ data_pool['wishlist_average'] }}%</strong></p>
         </div>
         <div class="clearfix"></div>
