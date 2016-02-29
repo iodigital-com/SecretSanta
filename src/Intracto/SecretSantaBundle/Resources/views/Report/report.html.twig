@@ -33,106 +33,133 @@
             <p>{{ 'report.no_data'|trans }}</p>
         </div>
     {% else %}
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.pool_amount'|trans }}</h2>
+        <h2>Resultaten</h2>
 
-            <p><strong>{{ data_pool['pools'][0]['poolCount'] }}</strong></p>
-        </div>
+        {% if current_year != 'all' %}
+            <div class="col-xs-6 report">
+                <h3>Enkel {{ current_year }}-{{ current_year + 1 }}</h3>
+                <p><strong>Feestjes:</strong> {{ data_pool['pools'][0]['poolCount'] }}</p>
+                <p><strong>Deelnemers:</strong> {{ data_pool['entries'][0]['entryCount'] }}</p>
+                <p><strong>Gemiddelde aantal deelnemers per feestje:</strong> {{ data_pool['entry_average']|round }}</p>
+                <p><strong>Unieke emailadressen:</strong> {{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</p>
+                <p><strong>Aantal ingevulde verlanglijsten:</strong> {{ data_pool['wishlist_average']|number_format(2, '.', '') }}%</p>
+            </div>
 
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.user_amount'|trans }}</h2>
+            <div class="col-xs-6 report">
+                <h3>Totaal (inclusief {{ current_year }}-{{ current_year + 1 }})</h3>
+                <p><strong>Feestjes:</strong> {{ data_pool['total_pools'][0]['totalPoolCount'] }}</p>
+                <p><strong>Deelnemers:</strong> {{ data_pool['total_entries'][0]['totalEntryCount'] }}</p>
+                <p><strong>Gemiddelde aantal deelnemers per feestje:</strong> {{ data_pool['total_entry_average']|round }}</p>
+                <p><strong>Unieke emailadressen:</strong> {{ data_pool['total_distinct_entries'][0]['totalDistinctEntryCount'] }}</p>
+                <p><strong>Aantal ingevulde verlanglijsten:</strong> {{ data_pool['total_wishlist_average']|number_format(2, '.', '') }}%</p>
+            </div>
 
-            <p><strong>{{ data_pool['entries'][0]['entryCount'] }}</strong></p>
-        </div>
+            <div class="col-xs-6 report">
+                {% if current_year == 'all' %}
+                    <h3>Pool growth per year</h3>
+                {% else %}
+                    <h3>Nieuwe feestjes per maand</h3>
+                {% endif %}
 
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.distinct_user_amount'|trans }}</h2>
+                <div id="line_chart_pools" style="width: 100%"></div>
+            </div>
 
-            <p><strong>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</strong></p>
-        </div>
+            <div class="col-xs-6 report">
+                <h3>Totaal feestjes (inclusief {{ current_year }}-{{ current_year + 1 }})</h3>
+                <div id="line_chart_total_pools" style="width: 100%"></div>
+            </div>
 
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.average_user_amount'|trans }}</h2>
+            <div class="col-xs-6 report">
+                {% if current_year == 'all' %}
+                    <h3>Entry growth per year</h3>
+                {% else %}
+                    <h3>Nieuwe deelnemers per maand</h3>
+                {% endif %}
 
-            <p><strong>{{ data_pool['entry_average'] }}</strong></p>
-        </div>
+                <div id="line_chart_entries" style="width: 100%"></div>
+            </div>
 
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
-
-            <p><strong>{{ data_pool['wishlist_average'] }}%</strong></p>
-        </div>
-
-        <div class="col-xs-6 report">
-            {% if current_year == 'all' %}
-                <h2>Pool growth per year</h2>
-            {% else %}
-                <h2>Pool growth per month</h2>
-            {% endif %}
-
-            <div id="line_chart_pools" style="width: 100%"></div>
-        </div>
-
-        <div class="col-xs-6 report">
-            {% if current_year == 'all' %}
-                <h2>Entry growth per year</h2>
-            {% else %}
-                <h2>Entry growth per month</h2>
-            {% endif %}
-
-            <div id="line_chart_entries" style="width: 100%"></div>
-        </div>
+            <div class="col-xs-6 report">
+                <h3>Totaal deelnemers (inclusief {{ current_year }}-{{ current_year + 1 }})</h3>
+                <div id="line_chart_total_entries" style="width: 100%"></div>
+            </div>
+        {% else %}
+            <div>Test</div>
+        {% endif %}
 
         <div class="clearfix"></div>
     {% endif %}
 {% endblock %}
 {% block javascripts %}
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('43', {packages: ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    {% if data_pool is not empty %}
+        {% if current_year != 'all' %}
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                google.charts.load('43', {packages: ['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart(){
-            var poolData = new google.visualization.DataTable();
-            poolData.addColumn('string', 'Month');
-            poolData.addColumn('number', 'Amount');
-            poolData.addRows([
-                {% if current_year == 'all' %}
-                    {% for pool in data_pool['linechart_data']['data'] %}
+                function drawChart(){
+                    var chartOptions = {
+                        legend: {position: 'bottom'}
+                    };
+
+                    var poolData = new google.visualization.DataTable();
+                    poolData.addColumn('string', 'Month');
+                    poolData.addColumn('number', 'Amount');
+                    poolData.addRows([
+                        {% if current_year == 'all' %}
+                        {% for pool in data_pool['linechart_data']['data'] %}
                         ['1', {{ pool[0]['poolCount'] }}],
-                    {% endfor %}
-                {% else %}
-                    {% for pool in data_pool['linechart_pools'] %}
-                        ['{{ pool['month'] }}', {{ pool['growthPool'] }}],
-                    {% endfor %}
-                {% endif %}
-            ]);
+                        {% endfor %}
+                        {% else %}
+                        {% for pool in data_pool['linechart_pools'] %}
+                        ['{{ pool['month']|date("M") }}', {{ pool['growthPool'] }}],
+                        {% endfor %}
+                        {% endif %}
+                    ]);
+                    var poolChart = new google.visualization.LineChart(document.getElementById('line_chart_pools'));
+                    poolChart.draw(poolData, chartOptions);
 
-            var chartOptions = {
-                legend: {position: 'bottom'}
-            };
+                    var totalPoolData = new google.visualization.DataTable();
+                    totalPoolData.addColumn('string', 'Month');
+                    totalPoolData.addColumn('number', 'Amount');
+                    totalPoolData.addRows([
+                        {% for pool in data_pool['total_chart_pools'] %}
+                        ['{{ pool['month']|date("M Y") }}', {{ pool['totalPoolCount'] }}],
+                        {% endfor %}
+                    ]);
+                    var totalPoolChart = new google.visualization.LineChart(document.getElementById('line_chart_total_pools'));
+                    totalPoolChart.draw(totalPoolData, chartOptions);
 
-            var poolChart = new google.visualization.LineChart(document.getElementById('line_chart_pools'));
-
-            poolChart.draw(poolData, chartOptions);
-
-            var entryData = new google.visualization.DataTable();
-            entryData.addColumn('string', 'Month');
-            entryData.addColumn('number', 'Amount');
-            entryData.addRows([
-                {% if current_year == 'all' %}
-                    {% for entry in data_pool['linechart_data']['entry_data'] %}
+                    var entryData = new google.visualization.DataTable();
+                    entryData.addColumn('string', 'Month');
+                    entryData.addColumn('number', 'Amount');
+                    entryData.addRows([
+                        {% if current_year == 'all' %}
+                        {% for entry in data_pool['linechart_data']['entry_data'] %}
                         ['1', {{ entry[0]['entryCount'] }}],
-                    {% endfor %}
-                {% else %}
-                    {% for entry in data_pool['linechart_entries'] %}
-                        ['{{ entry['month'] }}', {{ entry['growthEntries'] }}],
-                    {% endfor %}
-                {% endif %}
-            ]);
+                        {% endfor %}
+                        {% else %}
+                        {% for entry in data_pool['linechart_entries'] %}
+                        ['{{ entry['month']|date("M") }}', {{ entry['growthEntries'] }}],
+                        {% endfor %}
+                        {% endif %}
+                    ]);
+                    var entryChart = new google.visualization.LineChart(document.getElementById('line_chart_entries'));
+                    entryChart.draw(entryData, chartOptions);
 
-            var entryChart = new google.visualization.LineChart(document.getElementById('line_chart_entries'));
-            entryChart.draw(entryData, chartOptions);
-        }
-    </script>
+                    var totalEntryData = new google.visualization.DataTable();
+                    totalEntryData.addColumn('string', 'Month');
+                    totalEntryData.addColumn('number', 'Amount');
+                    totalEntryData.addRows([
+                        {% for entry in data_pool['total_chart_entries'] %}
+                        ['{{ entry['month']|date("M Y") }}', {{ entry['totalEntryCount'] }}],
+                        {% endfor %}
+                    ]);
+                    var totalEntryChart = new google.visualization.LineChart(document.getElementById('line_chart_total_entries'));
+                    totalEntryChart.draw(totalEntryData, chartOptions);
+                }
+            </script>
+        {% endif %}
+    {% endif %}
 {% endblock %}

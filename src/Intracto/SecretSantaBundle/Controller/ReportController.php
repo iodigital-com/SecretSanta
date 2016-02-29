@@ -30,8 +30,6 @@ class ReportController extends Controller
             $dataPool = [];
         }
 
-        var_dump($dataPool['linechart_entries']);
-
         return [
             'current_year' => $currentYear,
             'data_pool' => $dataPool,
