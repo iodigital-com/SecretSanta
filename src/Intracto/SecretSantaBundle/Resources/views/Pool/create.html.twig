@@ -25,62 +25,52 @@
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <div class="row toplabels">
-
-                    <div class="col-md-4 input{% if form_errors(form.date) %} error{% endif %}">{{ form_label(form.date) }}{{ form_widget(form.date) }}</div>
-                    <div class="col-xs-4 col-sm-6 input{% if form_errors(form.amount) %} error{% endif %}">{{ form_label(form.amount) }}<br>{{ form_widget(form.amount) }}</div>
-
+                    <div class="input{% if form_errors(form.date) %} error{% endif %}">
+                        {{ form_label(form.date) }}{{ form_widget(form.date ,{'attr':{'class':'col-xs-12'}}) }}</div>
+                    <div class="amount {% if form_errors(form.amount) %} error{% endif %}">
+                        {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'col-xs-12'}}) }}
+                    </div>
                 </div>
+
+
                 <table class="entries table table-striped mysanta">
                     <thead>
                     <tr>
                         <th class="col-xs-1 entry-number-header">#</th>
                         <th class="col-xs-3">{{ 'label.host'|trans }}</th>
                         <th class="col-xs-4">{{ 'label.email'|trans }}</th>
-                        <th class="col-xs-4"></th>
-
+                        <th style="text-align: right;" class="col-xs-4">
+                            <button type="button" class="btn btn-mini btn-success add-new-entry">
+                                <i class="icon-plus-sign icon-white"></i>{{ 'btn.add_person'|trans }}
+                            </button>
+                        </th>
                     </tr>
                     </thead>
                     <tbody data-prototype="{% filter escape %}
                     {% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with
                     {'entry': form.entries.vars['prototype']} %}{% endfilter %}">
                     {% for entry in form.entries %}
-                    <tr class="entry {% if entry.vars.data.poolAdmin %}owner{% else %}not-owner{% endif %}
-                        {% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
-                        <td class="entry-number">{{ loop.index }}</td>
-                        <td {% if form_errors(entry.name) %}class="error"{% endif %}>
-                            {{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
-                        <td {% if form_errors(entry.email) %}class="error"{% endif %}>
-                            {{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
-                        <td style="text-align: right;">
-                            {% if entry.vars.data.poolAdmin %}
-                                <small>{{ 'create.list_adminstrator'|trans }}</small>
-                            {% else %}
-                                <button type="button" class="btn btn-mini btn-danger remove-entry disabled">
-                                    <i class="fa fa-times-circle icon-white"></i> {{ 'btn.remove_person'|trans }}
-                                </button>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% if loop.index == 1 %}
-                </table>
-                <table class="entries table table-striped mysanta">
-                    <tr>
-                        <th class="col-xs-1 entry-number-header"></th>
-                        <th class="col-xs-3">{{ 'label.participants'|trans }}</th>
-                        <th class="col-xs-4">{{ 'label.email'|trans }}</th>
-                        <th class="col-xs-4" style="text-align: right;">
-                            <button type="button" class="btn btn-mini btn-success add-new-entry">
-                                <i class="fa fa-plus-circle icon-white"></i> {{ 'btn.add_person'|trans }}
-                            </button>
-                        </th>
-
-                    </tr>
-                    {% endif %}
+                        <tr class="entry {% if entry.vars.data.poolAdmin %}owner
+                        {% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %}
+                        error{% endif %}">
+                            <td class="entry-number">{{ loop.index }}</td>
+                            <td {% if form_errors(entry.name) %}class="error"
+                                    {% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
+                            <td {% if form_errors(entry.email) %}class="error"
+                                    {% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
+                            <td style="text-align: right;">
+                                {% if entry.vars.data.poolAdmin %}
+                                    <small>{{ 'create.list_adminstrator'|trans }}</small>
+                                {% else %}
+                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i
+                                                class="fa fa-times-circle icon-white"></i> {{ 'btn.remove_person'|trans }}
+                                    </button>
+                                {% endif %}
+                            </td>
+                        </tr>
                     {% endfor %}
-
                     </tbody>
                 </table>
-
                 <h1>{{ 'create.add_personal_message.title'|trans }}</h1>
 
                 {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
@@ -189,5 +179,12 @@
                 $("#intracto_secretsantabundle_pooltype_date").datepicker("destroy");
             });
         }
+        $(document).ready(function () {
+            $(".owner").after('<tr><th class="col-xs-1"></th>' +
+                    '<th class="col-xs-3">{{ "label.participants"|trans }}</th>' +
+                    '<th class="col-xs-4">{{ "label.email"|trans }}</th>' +
+                    '<th class="col-xs-4" style="text-align: right;">  </th> </tr>'
+            );
+        });
     </script>
 {% endblock %}
