@@ -108,8 +108,13 @@
                 {% endif %}
             ]);
 
+            var chartOptions = {
+                legend: {position: 'bottom'}
+            };
+
             var poolChart = new google.visualization.LineChart(document.getElementById('line_chart_pools'));
-            poolChart.draw(poolData);
+
+            poolChart.draw(poolData, chartOptions);
 
             var entryData = new google.visualization.DataTable();
             entryData.addColumn('string', 'Month');
@@ -127,7 +132,7 @@
             ]);
 
             var entryChart = new google.visualization.LineChart(document.getElementById('line_chart_entries'));
-            entryChart.draw(entryData);
+            entryChart.draw(entryData, chartOptions);
         }
     </script>
 {% endblock %}
