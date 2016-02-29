@@ -46,6 +46,8 @@ class PoolReportQueries
             WHERE wishlist_updated = TRUE'
         );
 
+        $lineChartData = $this->getLineChartData();
+
         if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
             $entryAverage = round(implode($entries[0]) / implode($pools[0]));
             $wishlistAverage = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
@@ -57,6 +59,7 @@ class PoolReportQueries
                 'wishlists' => $wishlists,
                 'entry_average' => $entryAverage,
                 'wishlist_average' => $wishlistAverage,
+                'linechart_data' => $lineChartData,
             ];
         } else {
             throw new NoResultException();
@@ -103,6 +106,23 @@ class PoolReportQueries
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
 
+        $lineChartPools = $this->dbal->fetchAll(
+            'SELECT count(*) as growthPool, month(p.sentdate) as month
+            FROM Pool p
+            WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay
+            GROUP BY month(p.sentdate)',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+
+        $lineChartEntries = $this->dbal->fetchAll(
+            'SELECT count(*) as growthEntries, month(p.sentdate) as month
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay and p.sentdate < :lastDay
+            GROUP BY month(p.sentdate)',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+
         if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount']) {
             $entryAverage = round(implode($entries[0]) / implode($pools[0]));
             $wishlistAverage = number_format((implode($wishlists[0]) / implode($entries[0])) * 100, 2);
@@ -114,6 +134,8 @@ class PoolReportQueries
                 'wishlists' => $wishlists,
                 'entry_average' => $entryAverage,
                 'wishlist_average' => $wishlistAverage,
+                'linechart_pools' => $lineChartPools,
+                'linechart_entries' => $lineChartEntries,
             ];
         } else {
             throw new NoResultException();
@@ -143,8 +165,46 @@ class PoolReportQueries
             }
         }
 
+        $featuredYears = array_reverse($featuredYears);
+
         return [
             'featured_years' => $featuredYears,
+        ];
+    }
+
+    public function getLineChartData()
+    {
+        $featuredYears = $this->getFeaturedYears();
+        $poolData = [];
+        $entryData = [];
+
+        foreach($featuredYears['featured_years'] as $year){
+            $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-04-01');
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
+
+            $pools = $this->dbal->fetchAll(
+                'SELECT count(*) AS poolCount
+                FROM Pool p
+                WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            );
+
+            array_push($poolData, $pools);
+
+            $entries = $this->dbal->fetchAll(
+                'SELECT count(*) AS entryCount
+                FROM Pool p
+                JOIN Entry e ON p.id = e.poolId
+                WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            );
+
+            array_push($entryData, $entries);
+        }
+
+        return [
+            'data' => $poolData,
+            'entry_data' => $entryData,
         ];
     }
 }
