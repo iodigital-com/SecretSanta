@@ -9,17 +9,19 @@
     {% endstylesheets %}
 {% endblock %}
 {% block main %}
-    <h1>Report</h1>
+    <h1>{{ 'report.title'|trans }}</h1>
 
+    <div>
+        <p>{{ 'report.season_info'|trans }}</p>
+    </div>
     <form method="GET">
         <div class="row">
             <div class="span3">
-                <label for="Year">Results from:</label>
                 <select name="year" id="Year" onchange="this.form.submit();">
-                    <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">All time
+                    <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">{{ 'report.all_time'|trans }}
                     </option>
                     {% for year in featured_years['featured_years'] %}
-                        <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}</option>
+                        <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }} - {{ year+1 }}</option>
                     {% endfor %}
                 </select>
             </div>
