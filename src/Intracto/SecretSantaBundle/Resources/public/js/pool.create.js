@@ -39,6 +39,7 @@ function bindDeleteButtonEvents() {
             // Delete last row
             $('table tr.entry.not-owner:last').remove();
 
+
             // Remove delete events when deletable entries < 3
             if ($('table tr.entry.not-owner').length < 3) {
                 $('table tr.entry.not-owner button.remove-entry').addClass('disabled');

@@ -51,8 +51,8 @@
                     {'entry': form.entries.vars['prototype']} %}{% endfilter %}">
                     {% for entry in form.entries %}
                         <tr class="entry {% if entry.vars.data.poolAdmin %}owner
-                        {% else %}not-owner{% endif %}{% if form_errors(entry.name) or form_errors(entry.email) %}
-                        error{% endif %}">
+                        {% else %}not-owner{% endif %}
+                        {% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
                             <td {% if form_errors(entry.name) %}class="error"
                                     {% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
