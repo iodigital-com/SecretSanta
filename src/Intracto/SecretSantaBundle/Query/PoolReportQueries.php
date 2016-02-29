@@ -70,8 +70,8 @@ class PoolReportQueries
      */
     public function getPoolReport($year)
     {
-        $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-01-01');
-        $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-01-01');
+        $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-04-01');
+        $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
 
         $pools = $this->dbal->fetchAll(
             'SELECT count(*) AS poolCount
@@ -135,7 +135,12 @@ class PoolReportQueries
         $featuredYears = [];
 
         foreach ($yearsQuery as $f) {
-            array_push($featuredYears, $f['featured_year']);
+            $checkDate = \DateTime::createFromFormat('Y-m-d', $f['featured_year'] . '-04-01');
+            $dateNow = new \DateTime();
+
+            if ($dateNow >= $checkDate) {
+                array_push($featuredYears, $f['featured_year']);
+            }
         }
 
         return [

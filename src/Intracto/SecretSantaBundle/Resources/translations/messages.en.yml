@@ -375,3 +375,4 @@ report:
     average_user_amount: 'Average amount of participants per party'
     average_wishlist_amount: 'Average amount of completed wishlists'
     no_data: 'There are no data available.'
+    season_info: 'Choose the season you want to get the results from. Each season begins the 1st of April and lasts until March 30.'
