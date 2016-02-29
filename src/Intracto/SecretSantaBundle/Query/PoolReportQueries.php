@@ -110,7 +110,8 @@ class PoolReportQueries
             'SELECT count(*) as growthPool, month(p.sentdate) as month
             FROM Pool p
             WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay
-            GROUP BY month(p.sentdate)',
+            GROUP BY month(p.sentdate)
+            ORDER BY month(p.sentdate) < 4, month(p.sentdate)',
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
 
@@ -119,7 +120,8 @@ class PoolReportQueries
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay and p.sentdate < :lastDay
-            GROUP BY month(p.sentdate)',
+            GROUP BY month(p.sentdate)
+            ORDER BY month(p.sentdate) < 4, month(p.sentdate)',
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
 
