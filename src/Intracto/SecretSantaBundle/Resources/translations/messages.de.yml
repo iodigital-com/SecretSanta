@@ -130,6 +130,8 @@ static:
 label:
     name: Name
     email: E-Mail:
+    host: Listenadministrator
+    participants: Teilnehmer
     date_party: Datum Ihrer Secret Santa-Party
     amount_to_spend: Auszugebender Betrag
     exclude: Ausschließen

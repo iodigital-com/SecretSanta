@@ -213,6 +213,8 @@ static:
 
 label:
     name: Nom
+    host: l'administrateur
+    participants: Participants
     email: E-mail
     date_party: Date de votre Secret Santa party
     amount_to_spend: Montant à dépenser
