@@ -23,71 +23,14 @@ class PoolReportQueries
     {
         return [
             'pools' => $this->getFullPools(),
+            'confirmed_pools' => $this->getFullConfirmedPools(),
             'entries' => $this->getFullEntries(),
             'distinct_entries' => $this->getFullDistinctEntries(),
-            'unconfirmed_entries' => $this->getFullUnconfirmedEntries(),
+            'confirmed_entries' => $this->getFullConfirmedEntries(),
             'entry_average' => $this->getFullEntryAverage(),
             'wishlist_average' => $this->getFullWishlistAverage(),
-            'linechart_pools' => $this->getFullPoolChartData(),
-            'linechart_entries' => $this->getFullEntryChartData(),
-        ];
-    }
-
-    /**
-     * @param int $year
-     * @return array
-     */
-    public function getPoolReport($year)
-    {
-        $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-04-01');
-        $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
-
-        return [
-            'pools' => $this->getPools($firstDay, $lastDay),
-            'total_pools' => $this->getTotalPools($lastDay),
-            'entries' => $this->getEntries($firstDay, $lastDay),
-            'total_entries' => $this->getTotalEntries($lastDay),
-            'distinct_entries' => $this->getDistinctEntries($firstDay, $lastDay),
-            'total_distinct_entries' => $this->getTotalDistinctEntries($lastDay),
-            'total_wishlists' => $this->getTotalWishlists($lastDay),
-            'entry_average' => $this->getEntryAverage($firstDay, $lastDay),
-            'total_entry_average' => $this->getTotalEntryAverage($lastDay),
-            'wishlist_average' => $this->getWishListAverage($firstDay, $lastDay),
-            'total_wishlist_average' => $this->getTotalWishlistAverage($lastDay),
-            'linechart_pools' => $this->getMonthPoolChartData($firstDay, $lastDay),
-            'linechart_entries' => $this->getMonthEntryChartData($firstDay, $lastDay),
-            'total_chart_pools' => $this->getTotalPoolChartData($lastDay),
-            'total_chart_entries' => $this->getTotalEntryChartData($lastDay),
-        ];
-    }
-
-    /**
-     * @return array
-     */
-    public function getFeaturedYears()
-    {
-        $yearsQuery = $this->dbal->fetchAll(
-            'SELECT DISTINCT year(sentdate) as featured_year
-            FROM Pool
-            WHERE year(sentdate) IS NOT NULL
-            ORDER BY year(sentdate) DESC'
-        );
-
-        $featuredYears = [];
-
-        foreach ($yearsQuery as $f) {
-            $checkDate = \DateTime::createFromFormat('Y-m-d', $f['featured_year'] . '-04-01');
-            $dateNow = new \DateTime();
-
-            if ($dateNow >= $checkDate) {
-                array_push($featuredYears, $f['featured_year']);
-            }
-        }
-
-        $featuredYears = array_reverse($featuredYears);
-
-        return [
-            'featured_years' => $featuredYears,
+            'full_pool_chart_data' => $this->getFullPoolChartData(),
+            'full_entry_chart_data' => $this->getFullEntryChartData(),
         ];
     }
 
@@ -105,12 +48,48 @@ class PoolReportQueries
     /**
      * @return array
      */
+    private function getFullConfirmedPools()
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(*) as confirmedPoolCount
+            FROM Pool
+            WHERE sentdate IS NOT NULL'
+        );
+    }
+
+    /**
+     * @return array
+     */
     private function getFullEntries()
     {
         return $this->dbal->fetchAll(
             'SELECT count(*) as entryCount
             FROM Pool
             JOIN Entry on Pool.id = Entry.poolId'
+        );
+    }
+
+    /**
+     * @return array
+     */
+    private function getFullDistinctEntries()
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(distinct(Entry.email)) as distinctEntryCount
+            FROM Pool
+            JOIN Entry on Pool.id = Entry.poolId'
+        );
+    }
+
+    /**
+     * @return array
+     */
+    private function getFullConfirmedEntries()
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(*) as confirmedEntryCount
+            FROM Entry
+            WHERE viewdate IS NOT NULL'
         );
     }
 
@@ -131,31 +110,6 @@ class PoolReportQueries
     }
 
     /**
-     * @return array
-     */
-    private function getFullDistinctEntries()
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(distinct(Entry.email)) as distinctEntryCount
-            FROM Pool
-            JOIN Entry on Pool.id = Entry.poolId'
-        );
-    }
-
-    /**
-     * @return array
-     */
-    private function getFullWishlists()
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(*) as wishListCount
-            FROM Entry
-            JOIN Pool on Pool.id = Entry.poolId
-            WHERE wishlist_updated = TRUE'
-        );
-    }
-
-    /**
      * @return float
      * @throws NoResultException
      */
@@ -164,7 +118,7 @@ class PoolReportQueries
         $wishlists = $this->getFullWishlists();
         $entries = $this->getFullEntries();
 
-        if($entries[0]['entryCount'] != 0) {
+        if ($entries[0]['entryCount'] != 0) {
             return (implode($wishlists[0]) / implode($entries[0])) * 100;
         } else {
             throw new NoResultException();
@@ -174,12 +128,13 @@ class PoolReportQueries
     /**
      * @return array
      */
-    private function getFullUnconfirmedEntries()
+    private function getFullWishlists()
     {
         return $this->dbal->fetchAll(
-            'SELECT count(*) as entryCount
+            'SELECT count(*) as wishlistCount
             FROM Entry
-            WHERE viewdate IS NULL'
+            JOIN Pool on Pool.id = Entry.poolId
+            WHERE wishlist_updated = TRUE'
         );
     }
 
@@ -197,7 +152,7 @@ class PoolReportQueries
 
         $accumulatedPoolCounter = 0;
 
-        foreach($poolChartData as &$poolCount) {
+        foreach ($poolChartData as &$poolCount) {
             $accumulatedPoolCounter += $poolCount['growthPool'];
             $poolCount['growthPool'] = $accumulatedPoolCounter;
         }
@@ -229,6 +184,35 @@ class PoolReportQueries
     }
 
     /**
+     * @param int $year
+     * @return array
+     */
+    public function getPoolReport($year)
+    {
+        $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-04-01');
+        $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
+
+        return [
+            'pools' => $this->getPools($firstDay, $lastDay),
+            'total_pools' => $this->getTotalPools($lastDay),
+            'entries' => $this->getEntries($firstDay, $lastDay),
+            'total_entries' => $this->getTotalEntries($lastDay),
+            'confirmed_entries' => $this->getConfirmedEntries($firstDay, $lastDay),
+            'total_confirmed_entries' => $this->getTotalConfirmedEntries($lastDay),
+            'distinct_entries' => $this->getDistinctEntries($firstDay, $lastDay),
+            'total_distinct_entries' => $this->getTotalDistinctEntries($lastDay),
+            'entry_average' => $this->getEntryAverage($firstDay, $lastDay),
+            'total_entry_average' => $this->getTotalEntryAverage($lastDay),
+            'wishlist_average' => $this->getWishlistAverage($firstDay, $lastDay),
+            'total_wishlist_average' => $this->getTotalWishlistAverage($lastDay),
+            'pool_chart_data' => $this->getMonthPoolChartData($firstDay, $lastDay),
+            'total_pool_chart_data' => $this->getTotalPoolChartData($lastDay),
+            'entry_chart_data' => $this->getMonthEntryChartData($firstDay, $lastDay),
+            'total_entry_chart_data' => $this->getTotalEntryChartData($lastDay),
+        ];
+    }
+
+    /**
      * @param $firstDay
      * @param $lastDay
      * @return array
@@ -240,6 +224,20 @@ class PoolReportQueries
             FROM Pool p
             WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $lastDay
+     * @return array
+     */
+    private function getTotalPools($lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(*) AS totalPoolCount
+            FROM Pool p
+            WHERE p.sentdate < :lastDay',
+            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
     }
 
@@ -256,6 +254,84 @@ class PoolReportQueries
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $lastDay
+     * @return array
+     */
+    private function getTotalEntries($lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(*) AS totalEntryCount
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate < :lastDay',
+            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    private function getConfirmedEntries($firstDay, $lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(*) AS confirmedEntryCount
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.viewdate IS NOT NULL',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    private function getTotalConfirmedEntries($lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(*) AS totalConfirmedEntryCount
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate < :lastDay AND e.viewdate IS NOT NULL',
+            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    private function getDistinctEntries($firstDay, $lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(distinct(e.email)) as distinctEntryCount
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $lastDay
+     * @return array
+     */
+    private function getTotalDistinctEntries($lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(distinct(e.email)) as totalDistinctEntryCount
+            FROM Pool p
+            JOIN Entry e on p.id = e.poolId
+            WHERE p.sentdate < :lastDay',
+            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
     }
 
@@ -277,19 +353,36 @@ class PoolReportQueries
     }
 
     /**
+     * @param $lastDay
+     * @return float
+     */
+    private function getTotalEntryAverage($lastDay)
+    {
+        $totalPools = $this->getTotalPools($lastDay);
+        $totalEntries = $this->getTotalEntries($lastDay);
+
+        if ($totalPools[0]['totalPoolCount'] != 0) {
+            return implode($totalEntries[0]) / implode($totalPools[0]);
+        } else {
+            throw new NoResultException();
+        }
+    }
+
+    /**
      * @param $firstDay
      * @param $lastDay
-     * @return array
+     * @return float
      */
-    private function getDistinctEntries($firstDay, $lastDay)
+    private function getWishlistAverage($firstDay, $lastDay)
     {
-        return $this->dbal->fetchAll(
-            'SELECT count(distinct(e.email)) as distinctEntryCount
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
+        $wishlists = $this->getWishlists($firstDay, $lastDay);
+        $entries = $this->getEntries($firstDay, $lastDay);
+
+        if ($entries[0]['entryCount'] != 0) {
+            return (implode($wishlists[0]) / implode($entries[0])) * 100;
+        } else {
+            throw new NoResultException();
+        }
     }
 
     /**
@@ -300,103 +393,11 @@ class PoolReportQueries
     private function getWishlists($firstDay, $lastDay)
     {
         return $this->dbal->fetchAll(
-            'SELECT count(*) as wishListCount
+            'SELECT count(*) as wishlistCount
             FROM Pool p JOIN Entry e on p.id = e.poolId
             WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
-    }
-
-    /**
-     * @param $firstDay
-     * @param $lastDay
-     * @return float
-     */
-    private function getWishListAverage($firstDay, $lastDay)
-    {
-        $wishlists = $this->getWishlists($firstDay, $lastDay);
-        $entries = $this->getEntries($firstDay, $lastDay);
-
-        if($entries[0]['entryCount'] != 0) {
-            return (implode($wishlists[0]) / implode($entries[0])) * 100;
-        } else {
-            throw new NoResultException();
-        }
-    }
-
-    /**
-     * @param $lastDay
-     * @return array
-     */
-    private function getTotalPools($lastDay)
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(*) AS totalPoolCount
-            FROM Pool p
-            WHERE p.sentdate < :lastDay',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
-    }
-
-    /**
-     * @param $lastDay
-     * @return array
-     */
-    private function getTotalEntries($lastDay)
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(*) AS totalEntryCount
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE p.sentdate < :lastDay',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
-    }
-
-    /**
-     * @param $lastDay
-     * @return array
-     */
-    private function getTotalDistinctEntries($lastDay)
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(distinct(e.email)) as totalDistinctEntryCount
-            FROM Pool p
-            JOIN Entry e on p.id = e.poolId
-            WHERE p.sentdate < :lastDay',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
-    }
-
-    /**
-     * @param $lastDay
-     * @return array
-     */
-    private function getTotalWishlists($lastDay)
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(*) as totalWishListCount
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
-    }
-
-    /**
-     * @param $lastDay
-     * @return float
-     */
-    private function getTotalEntryAverage($lastDay)
-    {
-        $totalPools = $this->getTotalPools($lastDay);
-        $totalEntries = $this->getTotalEntries($lastDay);
-
-        if($totalPools[0]['totalPoolCount'] != 0) {
-            return implode($totalEntries[0]) / implode($totalPools[0]);
-        } else {
-            throw new NoResultException();
-        }
     }
 
     /**
@@ -408,11 +409,26 @@ class PoolReportQueries
         $totalWishlists = $this->getTotalWishlists($lastDay);
         $totalEntries = $this->getTotalEntries($lastDay);
 
-        if($totalEntries[0]['totalEntryCount'] != 0) {
+        if ($totalEntries[0]['totalEntryCount'] != 0) {
             return (implode($totalWishlists[0]) / implode($totalEntries[0])) * 100;
         } else {
             throw new NoResultException();
         }
+    }
+
+    /**
+     * @param $lastDay
+     * @return array
+     */
+    private function getTotalWishlists($lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(*) as totalWishlistCount
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
+            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
     }
 
     /**
@@ -430,6 +446,30 @@ class PoolReportQueries
             ORDER BY month(p.sentdate) < 4, month(p.sentdate)',
             ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
         );
+    }
+
+    /**
+     * @param $lastDay
+     * @return array
+     */
+    private function getTotalPoolChartData($lastDay)
+    {
+        $totalPoolChartData = $this->dbal->fetchAll(
+            'SELECT count(*) as totalPoolCount, p.sentdate as month
+            FROM Pool p
+            WHERE p.sentdate < :lastDay
+            GROUP BY year(p.sentdate), month(p.sentdate)',
+            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+
+        $accumulatedPoolCounter = 0;
+
+        foreach ($totalPoolChartData as &$poolCount) {
+            $accumulatedPoolCounter += $poolCount['totalPoolCount'];
+            $poolCount['totalPoolCount'] = $accumulatedPoolCounter;
+        }
+
+        return $totalPoolChartData;
     }
 
     /**
@@ -454,30 +494,6 @@ class PoolReportQueries
      * @param $lastDay
      * @return array
      */
-    private function getTotalPoolChartData($lastDay)
-    {
-        $totalPoolChartData = $this->dbal->fetchAll(
-            'SELECT count(*) as totalPoolCount, p.sentdate as month
-            FROM Pool p
-            WHERE p.sentdate < :lastDay
-            GROUP BY year(p.sentdate), month(p.sentdate)',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
-
-        $accumulatedPoolCounter = 0;
-
-        foreach($totalPoolChartData as &$poolCount) {
-            $accumulatedPoolCounter += $poolCount['totalPoolCount'];
-            $poolCount['totalPoolCount'] = $accumulatedPoolCounter;
-        }
-
-        return $totalPoolChartData;
-    }
-
-    /**
-     * @param $lastDay
-     * @return array
-     */
     private function getTotalEntryChartData($lastDay)
     {
         $totalEntryChartData = $this->dbal->fetchAll(
@@ -491,11 +507,41 @@ class PoolReportQueries
 
         $accumulatedEntryCounter = 0;
 
-        foreach($totalEntryChartData as &$entryCount) {
+        foreach ($totalEntryChartData as &$entryCount) {
             $accumulatedEntryCounter += $entryCount['totalEntryCount'];
             $entryCount['totalEntryCount'] = $accumulatedEntryCounter;
         }
 
         return $totalEntryChartData;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFeaturedYears()
+    {
+        $yearsQuery = $this->dbal->fetchAll(
+            'SELECT DISTINCT year(sentdate) as featured_year
+            FROM Pool
+            WHERE year(sentdate) IS NOT NULL
+            ORDER BY year(sentdate) DESC'
+        );
+
+        $featuredYears = [];
+
+        foreach ($yearsQuery as $f) {
+            $checkDate = \DateTime::createFromFormat('Y-m-d', $f['featured_year'] . '-04-01');
+            $dateNow = new \DateTime();
+
+            if ($dateNow >= $checkDate) {
+                array_push($featuredYears, $f['featured_year']);
+            }
+        }
+
+        $featuredYears = array_reverse($featuredYears);
+
+        return [
+            'featured_years' => $featuredYears,
+        ];
     }
 }
