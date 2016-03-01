@@ -233,6 +233,8 @@ static:
 label:
     name: Naam
     email: E-mail
+    host: Lijstbeheerder
+    participants: Deelnemers
     date_party: Datum van jouw Secret Santa party
     amount_to_spend: Te spenderen bedrag
     exclude: Uitsluiten
@@ -244,7 +246,7 @@ placeholder:
     exclude: Klik en kies de deelnemers die je wilt uitsluiten
 btn:
     add_person: Persoon toevoegen
-    remove_person: Deze persoon verwijderen
+    remove_person: verwijderen
     create_event: Maak je evenement aan!
     create_new_list: Stel een nieuwe Secret Santa lijst op!
     delete_list: Verwijder mijn Secret Santa lijst

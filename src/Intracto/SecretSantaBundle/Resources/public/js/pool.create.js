@@ -19,16 +19,16 @@ function addNewEntry(collectionHolder) {
 
 function bindDeleteButtonEvents() {
     // Loop over all delete buttons
-    $('button.remove-entry').each(function(i) {
+    $('button.remove-entry').each(function (i) {
         // Remove any previously binded event
         $(this).off('click');
 
         // Bind event
-        $(this).click(function(e) {
+        $(this).click(function (e) {
 
             e.preventDefault();
 
-            $('table tr.entry.not-owner:gt(' + i + ')').each(function(j) {
+            $('table tr.entry.not-owner:gt(' + i + ')').each(function (j) {
                 // Move values from next row to current row
                 var next_row_name = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-name').val();
                 var next_row_mail = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-mail').val();
@@ -38,6 +38,7 @@ function bindDeleteButtonEvents() {
 
             // Delete last row
             $('table tr.entry.not-owner:last').remove();
+
 
             // Remove delete events when deletable entries < 3
             if ($('table tr.entry.not-owner').length < 3) {
@@ -54,22 +55,22 @@ function bindDeleteButtonEvents() {
 var collectionHolder = $('table.entries tbody');
 
 /* Document Ready */
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 
     //Add eventlistener on add-new-entry button
-    $('.add-new-entry').click(function(e) {
+    $('.add-new-entry').click(function (e) {
         e.preventDefault();
         addNewEntry(collectionHolder);
     });
 
     // If form has more then 3 entries, provide delete functionality
-    if($('table tr.entry').length > 3){
+    if ($('table tr.entry').length > 3) {
         bindDeleteButtonEvents();
         $('.remove-entry').removeClass('disabled');
     }
 
     // Add smooth scroll
-    $('a.btn-started').click(function() {
+    $('a.btn-started').click(function () {
         $.smoothScroll({
             scrollTarget: '#mysanta'
         });
