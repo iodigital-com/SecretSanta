@@ -21,7 +21,6 @@
     <div class="content-container" id="mysanta">
         <div class="santa-content">
             <h1>{{ 'create.add_participants'|trans }}</h1>
-
             <form action="{{ path('pool_create') }}#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <div class="row toplabels">
@@ -60,8 +59,8 @@
                                 {% if entry.vars.data.poolAdmin %}
                                     <small>{{ 'create.list_adminstrator'|trans }}</small>
                                 {% else %}
-                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled"><i
-                                                class="fa fa-times-circle icon-white"></i> {{ 'btn.remove_person'|trans }}
+                                    <button type="button" class="btn btn-mini btn-danger remove-entry disabled">
+                                        <i class="fa fa-times-circle icon-white"></i> {{ 'btn.remove_person'|trans }}
                                     </button>
                                 {% endif %}
                             </td>
@@ -93,19 +92,16 @@
             <div class="row three-column">
                 <div class="col-md-4">
                     <h2>What makes a Secret Santa generator so much fun?</h2>
-
                     <p>
                         Seriously, is this a rhetorical question? Organizing a <b>Secret Santa party</b> guarantees you
                         a
                         fun night filled with surprises - I think we can agree on that.
                     </p>
-
                     <p>
                         Thanks to a special <b>Secret Santa generator</b> you won’t have to deal with all the
                         pre-organizing yourself.
                         You just fill in the blanks and the Secret Santa generator does all the work!
                     </p>
-
                     <p>
                         The only thing you have to do is sit back and relax (oh, and buy some snacks and drinks for your
                         Secret Santa party).
@@ -113,7 +109,6 @@
                 </div>
                 <div class="col-md-4">
                     <h2>Why go for Secret Santa online?</h2>
-
                     <p>
                         The best thing about <b>Secret Santa online</b> is that you don’t have to physically plan
                         everything with all the
@@ -121,7 +116,6 @@
                         everything with
                         just an internet connection and a connected device.
                     </p>
-
                     <p>
                         This way, Secret Santa online makes all the organizing stuff way more easy. That means more time
                         for you and
@@ -130,7 +124,6 @@
                 </div>
                 <div class="col-md-4">
                     <h2>Secret Santa all over the world</h2>
-
                     <p>
                         Secret Santa, Kris Kringle, Kris Kindle, Kris Kringel, Wichteln, or even lootjes trekken, namen
                         trekken or
@@ -167,11 +160,20 @@
     {% endjavascripts %}
     {{ form_javascript(form) }}
     <script type="text/javascript">
+        if (Modernizr.inputtypes.date == true) {
+            // support for date input type, remove datepicker
+            $(document).ready(function () {
+                $("#intracto_secretsantabundle_pooltype_date").datepicker("destroy");
+            });
+        }
         $(document).ready(function () {
-            $(".owner").after('<tr><th class="col-xs-1"></th>' +
+            $(".owner").after(
+                    '<tr>' +
+                    '<th class="col-xs-1"></th>' +
                     '<th class="col-xs-3">{{ "label.participants"|trans }}</th>' +
                     '<th class="col-xs-4">{{ "label.email"|trans }}</th>' +
-                    '<th class="col-xs-4" style="text-align: right;">  </th> </tr>'
+                    '<th class="col-xs-4" style="text-align: right;">  </th> ' +
+                    '</tr>'
             );
         });
     </script>
