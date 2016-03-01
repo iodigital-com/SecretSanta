@@ -1,7 +1,7 @@
 <tr style='display: none' class="entry not-owner">
     <td class="entry-number">__entrycount__</td>
-    <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} })  }}</td>
-    <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} })  }}</td>
+    <td>{{ form_widget(entry.name, {'attr': {'class': 'entry-name error'} }) }}</td>
+    <td>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail error'} }) }}</td>
     <td style="text-align: right;">
         <button type="button" class="btn btn-mini btn-danger remove-entry">
             <i class="fa fa-times-circle icon-white"></i> {{ 'btn.remove_person'|trans }}</button>
