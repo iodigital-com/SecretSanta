@@ -3,18 +3,15 @@
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
 {% block stylesheets %}
-
     {% stylesheets 'bundles/intractosecretsanta/css/report.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 {% endblock stylesheets %}
 {% block main %}
     <h1>{{ 'report.title'|trans }}</h1>
-
     <div>
         <p>{{ 'report.season_info'|trans }}</p>
     </div>
-
     <form method="GET">
         <div class="row">
             <div class="span3">
@@ -23,8 +20,11 @@
                             value="all">{{ 'report.all_time'|trans }}
                     </option>
                     {% for year in featured_years['featured_years'] %}
-                        <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}
-                            - {{ year+1 }}</option>
+                        <option value="{{ year }}"
+                                {% if(current_year == year) %}
+                                    selected="selected"
+                                {% endif %}>{{ year }} - {{ year+1 }}
+                        </option>
                     {% endfor %}
                 </select>
             </div>
@@ -37,33 +37,22 @@
     {% else %}
         <div class="col-xs-6 report">
             <h2>{{ 'report.pool_amount'|trans }}</h2>
-
             <p>{{ data_pool['pools'][0]['poolCount'] }}</p>
         </div>
-
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.user_amount'|trans }}</h2>
-
             <p>{{ data_pool['entries'][0]['entryCount'] }}</p>
         </div>
-
         <div class="col-xs-6 report">
             <h2>{{ 'report.distinct_user_amount'|trans }}</h2>
-
             <p><strong>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</strong></p>
         </div>
-
         <div class="col-xs-6 .col-sm-3 report">
             <h2>{{ 'report.average_user_amount'|trans }}</h2>
-
             <p>{{ data_pool['entry_average'] }}</p>
         </div>
-
-
         <div class="col-xs-6 .col-sm-3 report">
-
             <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
-
             <p>{{ data_pool['wishlist_average'] }}%</p>
         </div>
         <div class="clearfix"></div>
