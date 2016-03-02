@@ -389,5 +389,7 @@ report:
     average_entries: 'Average amount of participants per party'
     unique_entries: 'Unique participants'
     completed_wishlists: 'Amount of completed wishlists'
+    ip_usage: 'IP type of visitors'
+    ip_tracking: 'Tracking since March 2016'
     no_data: 'There are no data available for this season.'
     season_info: 'Choose the season you want to get the data from. Each season begins the 1st of April and lasts until March 30.'

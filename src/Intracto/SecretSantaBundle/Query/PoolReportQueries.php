@@ -29,6 +29,7 @@ class PoolReportQueries
             'confirmed_entries' => $this->getFullConfirmedEntries(),
             'entry_average' => $this->getFullEntryAverage(),
             'wishlist_average' => $this->getFullWishlistAverage(),
+            'ip_usage' => $this->getFullIpUsage(),
             'full_pool_chart_data' => $this->getFullPoolChartData(),
             'full_entry_chart_data' => $this->getFullEntryChartData(),
         ];
@@ -141,6 +142,51 @@ class PoolReportQueries
     /**
      * @return array
      */
+    public function getFullIpUsage()
+    {
+        $ipv4 = $this->getFullIpv4Usage();
+        $ipv6 = $this->getFullIpv6Usage();
+
+        if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
+            $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
+            $ipv6Percentage = $ipv6[0]['ipv6Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
+
+            return [
+                'ipv4_percentage' => $ipv4Percentage,
+                'ipv6_percentage' => $ipv6Percentage,
+            ];
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * @return array
+     */
+    private function getFullIpv4Usage()
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(ipv4) as ipv4Count
+            FROM Entry
+            WHERE ipv4 IS NOT NULL'
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function getFullIpv6Usage()
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(ipv6) as ipv6Count
+            FROM Entry
+            WHERE ipv6 IS NOT NULL'
+        );
+    }
+
+    /**
+     * @return array
+     */
     private function getFullPoolChartData()
     {
         $poolChartData = $this->dbal->fetchAll(
@@ -205,6 +251,7 @@ class PoolReportQueries
             'total_entry_average' => $this->getTotalEntryAverage($lastDay),
             'wishlist_average' => $this->getWishlistAverage($firstDay, $lastDay),
             'total_wishlist_average' => $this->getTotalWishlistAverage($lastDay),
+            'ip_usage' => $this->getIpUsage($firstDay, $lastDay),
             'pool_chart_data' => $this->getMonthPoolChartData($firstDay, $lastDay),
             'total_pool_chart_data' => $this->getTotalPoolChartData($lastDay),
             'entry_chart_data' => $this->getMonthEntryChartData($firstDay, $lastDay),
@@ -513,6 +560,61 @@ class PoolReportQueries
         }
 
         return $totalEntryChartData;
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    public function getIpUsage($firstDay, $lastDay)
+    {
+        $ipv4 = $this->getIpv4Usage($firstDay, $lastDay);
+        $ipv6 = $this->getIpv6Usage($firstDay, $lastDay);
+
+        if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
+            $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
+            $ipv6Percentage = $ipv6[0]['ipv6Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
+
+            return [
+                'ipv4_percentage' => $ipv4Percentage,
+                'ipv6_percentage' => $ipv6Percentage,
+            ];
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    private function getIpv4Usage($firstDay, $lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(e.ipv4) as ipv4Count
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE e.ipv4 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    public function getIpv6Usage($firstDay, $lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(e.ipv6) as ipv6Count
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE ipv6 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
     }
 
     /**

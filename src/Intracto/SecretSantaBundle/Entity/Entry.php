@@ -140,11 +140,18 @@ class Entry
     private $poolAdmin = false;
 
     /**
-     * @var string $ip
+     * @var string $ipv4
      *
-     * @ORM\Column(name="ip", type="string", nullable=true)
+     * @ORM\Column(name="ipv4", type="string", nullable=true)
      */
-    private $ip;
+    private $ipv4;
+
+    /**
+     * @var string $ipv6
+     *
+     * @ORM\Column(name="ipv6", type="string", nullable=true)
+     */
+    private $ipv6;
 
     public function __construct()
     {
@@ -517,22 +524,42 @@ class Entry
     }
 
     /**
-     * @param string $ip
+     * @param string $ipv4
      *
      * @return Entry
      */
-    public function setIp($ip)
+    public function setIpv4($ipv4)
     {
-        $this->ip = $ip;
+        $this->ipv4 = $ipv4;
 
-        return $ip;
+        return $ipv4;
     }
 
     /**
      * @return string
      */
-    public function getIp()
+    public function getIpv4()
     {
-        return $this->ip;
+        return $this->ipv4;
+    }
+
+    /**
+     * @param string $ipv6
+     *
+     * @return Entry
+     */
+    public function setIpv6($ipv6)
+    {
+        $this->ipv6 = $ipv6;
+
+        return $ipv6;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIpv6()
+    {
+        return $this->ipv6;
     }
 }
