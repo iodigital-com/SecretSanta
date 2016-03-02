@@ -18,20 +18,31 @@ class ReportController extends Controller
         $report = $this->get('intracto_secret_santa.report');
         $comparison = $this->get('intracto_secret_santa.season_comparison');
 
+        if ($reportQueryResult = $this->get('cache')->fetch('dataP' . $year)) {
+            $cache = unserialize($reportQueryResult);
+            
+            $data = [
+                'current_year' => $year,
+                'data_pool' => $cache['data_pool'],
+                'featured_years' => $cache['featured_years'],
+                'google_data_pool' => $cache['google_data_pool'],
+            ];
+
+            if (isset($cache['difference_data_pool'])) {
+                $data['difference_data_pool'] = $cache['difference_data_pool'];
+            }
+
+            return $data;
+        }
+
         try {
-            if ($reportQueryResult = $this->get('cache')->fetch('dataPool' . $year)) {
-                $dataPool = unserialize($reportQueryResult);
+            if ($year != 'all') {
+                $dataPool = $report->getPoolReport($year);
             } else {
-                if ($year != 'all') {
-                    $dataPool = $report->getPoolReport($year);
-                } else {
-                    $dataPool = $report->getFullPoolReport();
-                }
-                $this->get('cache')->save('dataPool' . $year, serialize($dataPool), 86400);
+                $dataPool = $report->getPoolReport();
             }
         } catch (\Exception $e) {
             $dataPool = [];
-            $differenceDataPool = [];
         }
 
         try {
@@ -44,6 +55,14 @@ class ReportController extends Controller
             $googleDataPool = [];
         }
 
+        try {
+            if ($year != 'all') {
+                $differenceDataPool = $comparison->getComparison($year);
+            }
+        } catch (\Exception $e) {
+            $differenceDataPool = [];
+        }
+
         $data = [
             'current_year' => $year,
             'data_pool' => $dataPool,
@@ -54,6 +73,8 @@ class ReportController extends Controller
         if (isset($differenceDataPool)) {
             $data['difference_data_pool'] = $differenceDataPool;
         }
+
+        $this->get('cache')->save('dataP' . $year, serialize($data), 86400);
 
         return $data;
     }
