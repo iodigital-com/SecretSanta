@@ -1,17 +1,26 @@
 /* Report page */
 .report h2 {
-    font-size: 15px;
-    text-align: center;
+    font-size:11px;
 }
 
 .report p {
-    font-size: 30px;
-    text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
+    font-size: 14px;
+    margin-top:1px;
+    margin-bottom:1px;
 
 }
 
 .col-md-4 input {
     height: 50px;
 }
+
+.report h1{
+    font-size:20px;
+    height:35px;
+}
+
+.report strong{
+    font-size:18px;
+    text-align:right;
+}
+
