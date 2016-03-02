@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Google_Client;
+use Google_Service_Analytics;
 
 class ReportController extends Controller
 {
@@ -30,10 +32,36 @@ class ReportController extends Controller
             $dataPool = [];
         }
 
+                $client = new Google_Client();
+                $credentials = $client->loadServiceAccountJson('../client_secrets.json', "https://www.googleapis.com/auth/analytics.readonly");
+                $client->setAssertionCredentials($credentials);
+                if ($client->getAuth()->isAccessTokenExpired()) {
+                    $client->getAuth()->refreshTokenWithAssertion();
+                }
+
+         $analytics = new Google_Service_Analytics($client);
+
+         // Add Analytics View ID, prefixed with "ga:"
+         $analyticsViewId = 'ga:114986929';
+
+         $startDate = '2016-02-01';
+         $endDate = '2016-02-29';
+         $metrics = 'ga:sessions,ga:pageviews';
+
+         $data = $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
+                 'dimensions' => 'ga:pagePath',
+                 'sort' => '-ga:pageviews',
+             ));
+
+         // Data
+         $items = $data->totalsForAllResults;
+
+         //var_dump($items['ga:sessions']);
         return [
             'current_year' => $currentYear,
             'data_pool' => $dataPool,
             'featured_years' => $featuredYears,
+            'items' => $items,
         ];
     }
 }

@@ -24,7 +24,8 @@
         "genemu/form-bundle": "2.2.*",
         "jms/i18n-routing-bundle": "^1.1",
         "jms/translation-bundle": "^1.1",
-        "egulias/email-validator": "~1.2"
+        "egulias/email-validator": "~1.2",
+        "google/apiclient": "^1.1"
     },
     "scripts": {
         "post-install-cmd": [

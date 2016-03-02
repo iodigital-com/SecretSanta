@@ -186,7 +186,7 @@
                 <p>{{ 'report.completed_wishlists'|trans }} :
                     <strong>
                         {{ data_pool['wishlist_average']|number_format(2, '.', '') }} %
-                    </strong
+                    </strong>
                 </p>
             </div>
             <div class="col-xs-6 col-md-6 report">
@@ -200,7 +200,7 @@
 
                 <div id="entry_chart" style="width: 100%"></div>
             </div>
-
+            <h2>Analytics</h2>
             {% if data_pool['ip_usage'] is not empty %}
                 <div class="col-xs-6 report">
                     <h3>{{ 'report.ip_usage'|trans }}</h3>
@@ -211,6 +211,7 @@
             {% endif %}
 
         {% endif %}
+        
         <div class="clearfix"></div>
     {% endif %}
 {% endblock %}
