@@ -19,11 +19,15 @@ class ReportController extends Controller
         $comparison = $this->get('intracto_secret_santa.season_comparison');
 
         try {
-            if ($year != 'all') {
-                $dataPool = $report->getPoolReport($year);
-                $differenceDataPool = $comparison->getComparison($year);
+            if ($reportQueryResult = $this->get('cache')->fetch('dataPool' . $year)) {
+                $dataPool = unserialize($reportQueryResult);
             } else {
-                $dataPool = $report->getPoolReport();
+                if ($year != 'all') {
+                    $dataPool = $report->getPoolReport($year);
+                } else {
+                    $dataPool = $report->getFullPoolReport();
+                }
+                $this->get('cache')->save('dataPool' . $year, serialize($dataPool), 86400);
             }
         } catch (\Exception $e) {
             $dataPool = [];
