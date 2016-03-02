@@ -53,8 +53,15 @@ class EntryController extends Controller
         }
 
         // Log ip address on first access
-        if ($this->entry->getIp() === null) {
-            $this->entry->setIp($request->getClientIp());
+        if ($this->entry->getIpv4() === null && $this->entry->getIpv6() === null) {
+            $ip = $request->getClientIp();
+
+            if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+                $this->entry->setIpv4($ip);
+            } else if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+                $this->entry->setIpv6($ip);
+            }
+
             $em->flush($this->entry);
         }
 
@@ -122,6 +129,26 @@ class EntryController extends Controller
     }
 
     /**
+     * Retrieve entry by url
+     *
+     * @param string $url
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return bool
+     */
+    protected function getEntry($url)
+    {
+        $this->entry = $this->entryRepository->findOneByUrl($url);
+
+        if (!is_object($this->entry)) {
+            throw new NotFoundHttpException();
+        }
+
+        return true;
+    }
+
+    /**
      * @Route("/entry/edit-email/{listUrl}/{entryId}", name="entry_email_edit")
      * @Template()
      */
@@ -145,7 +172,7 @@ class EntryController extends Controller
                 );
             } else {
                 $em = $this->getDoctrine()->getManager();
-                $entry->setEmail((string) $emailAddress);
+                $entry->setEmail((string)$emailAddress);
                 $em->flush($entry);
 
                 $entryService = $this->get('intracto_secret_santa.entry_service');
@@ -173,25 +200,5 @@ class EntryController extends Controller
         $startCrawling->sub(new \DateInterval('P4M'));
 
         return ['entries' => $this->entryRepository->findAfter($startCrawling)];
-    }
-
-    /**
-     * Retrieve entry by url
-     *
-     * @param string $url
-     *
-     * @throws NotFoundHttpException
-     *
-     * @return bool
-     */
-    protected function getEntry($url)
-    {
-        $this->entry = $this->entryRepository->findOneByUrl($url);
-
-        if (!is_object($this->entry)) {
-            throw new NotFoundHttpException();
-        }
-
-        return true;
     }
 }
