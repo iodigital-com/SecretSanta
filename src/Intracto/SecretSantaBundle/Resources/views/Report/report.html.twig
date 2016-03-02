@@ -17,8 +17,8 @@
 
     <form method="GET">
         <div class="row">
-            <div class="span3">
-                <select name="year" id="Year" onchange="this.form.submit();">
+            <div class="span3 col-xs-12 col-md-3">
+                <select name="year" id="Year" class="form-control" onchange="this.form.submit();">
                     <option {% if(current_year == "all") %} selected="selected" {% endif %}
                             value="all">{{ 'report.all_time'|trans }}
                     </option>
@@ -82,6 +82,14 @@
                 <div id="total_entry_chart" style="width: 100%"></div>
             </div>
 
+            {% if data_pool['ip_usage'] is not empty %}
+                <div class="col-xs-6 report">
+                    <h3>{{ 'report.ip_usage'|trans }}</h3>
+                    <div id="ip_chart" style="width: 100%"></div>
+                    <p>{{ 'report.ip_tracking'|trans }}</p>
+                </div>
+            {% endif %}
+
         {% else %}
 
             <div class="col-xs-12 report">
@@ -104,6 +112,14 @@
                 <h3>{{ 'report.invited_participants'|trans }}</h3>
                 <div id="entry_chart" style="width: 100%"></div>
             </div>
+
+            {% if data_pool['ip_usage'] is not empty %}
+                <div class="col-xs-6 report">
+                    <h3>{{ 'report.ip_usage'|trans }}</h3>
+                    <div id="ip_chart" style="width: 100%"></div>
+                    <p>{{ 'report.ip_tracking'|trans }}</p>
+                </div>
+            {% endif %}
 
         {% endif %}
 
@@ -166,6 +182,19 @@
                     ]);
                     var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
                     totalEntryChart.draw(totalEntryData, chartOptions);
+
+                    {% if data_pool['ip_usage'] is not empty %}
+                        var ipData = new google.visualization.DataTable();
+                        ipData.addColumn('string', 'IP type');
+                        ipData.addColumn('number', 'Percentage');
+                        ipData.addRows([
+                            ['IPv4', {{ data_pool['ip_usage']['ipv4_percentage'] }}],
+                            ['IPv6', {{ data_pool['ip_usage']['ipv6_percentage'] }}]
+                        ]);
+
+                        var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
+                        ipChart.draw(ipData, chartOptions);
+                    {% endif %}
                 {% else %}
                     var poolData = new google.visualization.DataTable();
                     poolData.addColumn('string', 'Month');
@@ -192,6 +221,19 @@
                     ]);
                     var entryChart = new google.visualization.LineChart(document.getElementById('entry_chart'));
                     entryChart.draw(entryData, chartOptions);
+
+                    {% if data_pool['ip_usage'] is not empty %}
+                        var ipData = new google.visualization.DataTable();
+                        ipData.addColumn('string', 'IP type');
+                        ipData.addColumn('number', 'Percentage');
+                        ipData.addRows([
+                            ['IPv4', {{ data_pool['ip_usage']['ipv4_percentage'] }}],
+                            ['IPv6', {{ data_pool['ip_usage']['ipv6_percentage'] }}]
+                        ]);
+
+                        var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
+                        ipChart.draw(ipData, chartOptions);
+                    {% endif %}
                 {% endif %}
             }
         </script>
