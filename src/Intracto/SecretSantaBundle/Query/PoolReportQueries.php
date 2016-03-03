@@ -189,18 +189,25 @@ class PoolReportQueries
      */
     private function getFullPoolChartData()
     {
-        $poolChartData = $this->dbal->fetchAll(
-            'SELECT count(*) as growthPool, p.sentdate as month
-            FROM Pool p
-            WHERE p.sentdate IS NOT NULL
-            GROUP BY year(p.sentdate), month(p.sentdate)'
-        );
+        $featuredYears = $this->getFeaturedYears();
+        $poolChartData = [];
 
-        $accumulatedPoolCounter = 0;
+        foreach ($featuredYears['featured_years'] as $year) {
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
 
-        foreach ($poolChartData as &$poolCount) {
-            $accumulatedPoolCounter += $poolCount['growthPool'];
-            $poolCount['growthPool'] = $accumulatedPoolCounter;
+            $chartData = $this->dbal->fetchAll(
+                'SELECT count(*) as growthPool
+                FROM Pool p
+                WHERE p.sentdate IS NOT NULL AND p.sentdate < :lastDay',
+                ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            );
+
+            $pool = [
+                'year' => $year,
+                'pool' => $chartData
+            ];
+
+            array_push($poolChartData, $pool);
         }
 
         return $poolChartData;
@@ -209,21 +216,58 @@ class PoolReportQueries
     /**
      * @return array
      */
-    private function getFullEntryChartData()
+    public function getFeaturedYears()
     {
-        $entryChartData = $this->dbal->fetchAll(
-            'SELECT count(*) as growthEntries, p.sentdate as month
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE p.sentdate IS NOT NULL
-            GROUP BY year(p.sentdate), month(p.sentdate)'
+        $yearsQuery = $this->dbal->fetchAll(
+            'SELECT DISTINCT year(sentdate) as featured_year
+            FROM Pool
+            WHERE year(sentdate) IS NOT NULL
+            ORDER BY year(sentdate) DESC'
         );
 
-        $accumulatedEntryCounter = 0;
+        $featuredYears = [];
 
-        foreach ($entryChartData as &$entryCount) {
-            $accumulatedEntryCounter += $entryCount['growthEntries'];
-            $entryCount['growthEntries'] = $accumulatedEntryCounter;
+        foreach ($yearsQuery as $f) {
+            $checkDate = \DateTime::createFromFormat('Y-m-d', $f['featured_year'] . '-04-01');
+            $dateNow = new \DateTime();
+
+            if ($dateNow >= $checkDate) {
+                array_push($featuredYears, $f['featured_year']);
+            }
+        }
+
+        $featuredYears = array_reverse($featuredYears);
+
+        return [
+            'featured_years' => $featuredYears,
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    private function getFullEntryChartData()
+    {
+        $featuredYears = $this->getFeaturedYears();
+        $entryChartData = [];
+
+        foreach ($featuredYears['featured_years'] as $year) {
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
+
+            $chartData = $this->dbal->fetchAll(
+                'SELECT count(*) as growthEntries
+                FROM Pool p
+                JOIN Entry e ON p.id = e.poolId
+                WHERE p.sentdate IS NOT NULL AND p.sentdate < :lastDay',
+                ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            );
+
+            $entry = [
+                'year' => $year,
+                'entry' => $chartData
+            ];
+
+            array_push($entryChartData, $entry);
         }
 
         return $entryChartData;
@@ -483,6 +527,61 @@ class PoolReportQueries
      * @param $lastDay
      * @return array
      */
+    public function getIpUsage($firstDay, $lastDay)
+    {
+        $ipv4 = $this->getIpv4Usage($firstDay, $lastDay);
+        $ipv6 = $this->getIpv6Usage($firstDay, $lastDay);
+
+        if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
+            $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
+            $ipv6Percentage = $ipv6[0]['ipv6Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
+
+            return [
+                'ipv4_percentage' => $ipv4Percentage,
+                'ipv6_percentage' => $ipv6Percentage,
+            ];
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    private function getIpv4Usage($firstDay, $lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(e.ipv4) as ipv4Count
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE e.ipv4 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
+    public function getIpv6Usage($firstDay, $lastDay)
+    {
+        return $this->dbal->fetchAll(
+            'SELECT count(e.ipv6) as ipv6Count
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE ipv6 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
+            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+        );
+    }
+
+    /**
+     * @param $firstDay
+     * @param $lastDay
+     * @return array
+     */
     private function getMonthPoolChartData($firstDay, $lastDay)
     {
         return $this->dbal->fetchAll(
@@ -560,90 +659,5 @@ class PoolReportQueries
         }
 
         return $totalEntryChartData;
-    }
-
-    /**
-     * @param $firstDay
-     * @param $lastDay
-     * @return array
-     */
-    public function getIpUsage($firstDay, $lastDay)
-    {
-        $ipv4 = $this->getIpv4Usage($firstDay, $lastDay);
-        $ipv6 = $this->getIpv6Usage($firstDay, $lastDay);
-
-        if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
-            $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
-            $ipv6Percentage = $ipv6[0]['ipv6Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
-
-            return [
-                'ipv4_percentage' => $ipv4Percentage,
-                'ipv6_percentage' => $ipv6Percentage,
-            ];
-        } else {
-            return [];
-        }
-    }
-
-    /**
-     * @param $firstDay
-     * @param $lastDay
-     * @return array
-     */
-    private function getIpv4Usage($firstDay, $lastDay)
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(e.ipv4) as ipv4Count
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE e.ipv4 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
-    }
-
-    /**
-     * @param $firstDay
-     * @param $lastDay
-     * @return array
-     */
-    public function getIpv6Usage($firstDay, $lastDay)
-    {
-        return $this->dbal->fetchAll(
-            'SELECT count(e.ipv6) as ipv6Count
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE ipv6 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-            ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
-        );
-    }
-
-    /**
-     * @return array
-     */
-    public function getFeaturedYears()
-    {
-        $yearsQuery = $this->dbal->fetchAll(
-            'SELECT DISTINCT year(sentdate) as featured_year
-            FROM Pool
-            WHERE year(sentdate) IS NOT NULL
-            ORDER BY year(sentdate) DESC'
-        );
-
-        $featuredYears = [];
-
-        foreach ($yearsQuery as $f) {
-            $checkDate = \DateTime::createFromFormat('Y-m-d', $f['featured_year'] . '-04-01');
-            $dateNow = new \DateTime();
-
-            if ($dateNow >= $checkDate) {
-                array_push($featuredYears, $f['featured_year']);
-            }
-        }
-
-        $featuredYears = array_reverse($featuredYears);
-
-        return [
-            'featured_years' => $featuredYears,
-        ];
     }
 }
