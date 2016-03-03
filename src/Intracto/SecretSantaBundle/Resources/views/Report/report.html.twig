@@ -286,29 +286,28 @@
 
                 {% else %}
                     var poolData = new google.visualization.DataTable();
-                    poolData.addColumn('string', 'Month');
-                    poolData.addColumn('number', '{{ 'report.parties'|trans }}');
-                    poolData.addRows([
-                        {% for pool in data_pool['full_pool_chart_data'] %}
-                            {% if pool['month'] != null %}
-                                ['{{ pool['month']|date("M Y") }}', {{ pool['growthPool'] }}],
-                            {% endif %}
-                        {% endfor %}
-                    ]);
-                    var poolChart = new google.visualization.LineChart(document.getElementById('pool_chart'));
-                    poolChart.draw(poolData, chartOptions);
+                     poolData.addColumn('string', 'Season');
+                     poolData.addColumn('number', '{{ 'report.parties'|trans }}'); 
+                    poolData.addRows([ 
+                        {% for pool in data_pool['full_pool_chart_data'] %} 
+                            {% if pool['year'] != null %} 
+                                ['{{ pool['year'] }} - {{ pool['year'] + 1 }}', {{ pool['pool'][0]['growthPool'] }}], 
+                            {% endif %} 
+                        {% endfor %} ]); 
+                    var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
+                     poolChart.draw(poolData, chartOptions);
 
                     var entryData = new google.visualization.DataTable();
-                    entryData.addColumn('string', 'Month');
+                    entryData.addColumn('string', 'Season');
                     entryData.addColumn('number', '{{ 'report.participants'|trans }}');
                     entryData.addRows([
                         {% for entry in data_pool['full_entry_chart_data'] %}
-                            {% if entry['month'] != null %}
-                                ['{{ entry['month']|date("M Y") }}', {{ entry['growthEntries'] }}],
+                            {% if entry['year'] != null %}
+                                ['{{ entry['year'] }} - {{ entry['year'] + 1 }}', {{ entry['entry'][0]['growthEntries'] }}],
                             {% endif %}
                         {% endfor %}
                     ]);
-                    var entryChart = new google.visualization.LineChart(document.getElementById('entry_chart'));
+                    var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
                     entryChart.draw(entryData, chartOptions);
 
                     {% if data_pool['ip_usage'] is not empty %}
