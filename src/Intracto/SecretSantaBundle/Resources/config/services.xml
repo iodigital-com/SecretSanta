@@ -30,5 +30,6 @@
         <service id="intracto_secret_santa.featured_years" class="Intracto\SecretSantaBundle\Query\FeaturedYearsQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
+        <service id="intracto_secret_santa.analytics" class="Intracto\SecretSantaBundle\Query\GoogleAnalyticsQueries"></service>
     </services>
 </container>

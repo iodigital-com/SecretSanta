@@ -134,16 +134,6 @@
                     <div id="total_entry_chart" style="width: 100%"></div>
                 </div>
             </div>
-            {% if data_pool['ip_usage'] is not empty %}
-                <div class="col-xs-12 col-md-6 report">
-                    <div class="report_inside">
-                        <h3>{{ 'report.ip_usage'|trans }}</h3>
-
-                        <div id="ip_chart" style="width: 100%"></div>
-                        <p>{{ 'report.ip_tracking'|trans }}</p>
-                    </div>
-                </div>
-            {% endif %}
         {% else %}
             <div class="col-xs-12 col-md-6 report">
                 <div class="report_inside">
@@ -171,9 +161,35 @@
                     </div>
                 </div>
             {% endif %}
-        {% endif %}
-        
-        <div class="clearfix"></div>
+
+            <div class="col-xs-6 report">
+                <h3>Visitors per country</h3>
+
+                <div id="country_chart" style="width: 100%"></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-xs-6 report">
+                <h3>Visitors per language</h3>
+
+                <div id="language_chart" style="width: 100%"></div>
+            </div>
+
+            <div class="col-xs-6 report">
+                <h3>Desktop/Mobile</h3>
+
+                <div id="device_chart" style="width: 100%"></div>
+            </div>
+
+            <div class="col-xs-6 report">
+                <h3>Browsers</h3>
+
+                <div id="browser_chart" style="width: 100%"></div>
+            </div>
+
+            <div class="clearfix"></div>
+            {% endif %}
     {% endif %}
 {% endblock %}
 {% block javascripts %}
@@ -247,31 +263,82 @@
                 var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
                 ipChart.draw(ipData, chartOptions);
                 {% endif %}
-                {% else %}
-                var poolData = new google.visualization.DataTable();
-                poolData.addColumn('string', 'Season');
-                poolData.addColumn('number', '{{ 'report.parties'|trans }}');
-                poolData.addRows([
-                    {% for pool in data_pool['yearly_pool_chart_data'] %}
-                    {% if pool['year'] != null %}
-                    ['{{ pool['year'] }} - {{ pool['year'] + 1 }}', {{ pool['pool'][0]['accumulatedPoolCountByYear'] }}],
-                    {% endif %}
-                    {% endfor %}]);
-                var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
-                poolChart.draw(poolData, chartOptions);
 
-                var entryData = new google.visualization.DataTable();
-                entryData.addColumn('string', 'Season');
-                entryData.addColumn('number', '{{ 'report.participants'|trans }}');
-                entryData.addRows([
-                    {% for entry in data_pool['yearly_entry_chart_data'] %}
-                    {% if entry['year'] != null %}
-                    ['{{ entry['year'] }} - {{ entry['year'] + 1 }}', {{ entry['entry'][0]['accumulatedEntryCountByYear'] }}],
-                    {% endif %}
-                    {% endfor %}
-                ]);
-                var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
-                entryChart.draw(entryData, chartOptions);
+                {% else %}
+
+                    var poolData = new google.visualization.DataTable();
+                    poolData.addColumn('string', 'Month');
+                    poolData.addColumn('number', '{{ 'report.parties'|trans }}');
+                    poolData.addRows([
+                        {% for pool in data_pool['pool_chart_data'] %}
+                            ['{{ pool['month']|date("M") }}', {{ pool['growthPool'] }}],
+                        {% endfor %}
+                    ]);
+                    var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
+                    poolChart.draw(poolData, chartOptions);
+
+                    var totalPoolData = new google.visualization.DataTable();
+                    totalPoolData.addColumn('string', 'Month');
+                    totalPoolData.addColumn('number', '{{ 'report.parties'|trans }}');
+                    totalPoolData.addRows([
+                        {% for pool in data_pool['total_pool_chart_data'] %}
+                            ['{{ pool['month']|date("M Y") }}', {{ pool['totalPoolCount'] }}],
+                        {% endfor %}
+                    ]);
+                    var totalPoolChart = new google.visualization.LineChart(document.getElementById('total_pool_chart'));
+                    totalPoolChart.draw(totalPoolData, chartOptions);
+
+                    var entryData = new google.visualization.DataTable();
+                    entryData.addColumn('string', 'Month');
+                    entryData.addColumn('number', '{{ 'report.participants'|trans }}');
+                    entryData.addRows([
+                        {% for entry in data_pool['entry_chart_data'] %}
+                            ['{{ entry['month']|date("M") }}', {{ entry['growthEntries'] }}],
+                        {% endfor %}
+                    ]);
+                    var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
+                    entryChart.draw(entryData, chartOptions);
+
+                    var totalEntryData = new google.visualization.DataTable();
+                    totalEntryData.addColumn('string', 'Month');
+                    totalEntryData.addColumn('number', '{{ 'report.participants'|trans }}');
+                    totalEntryData.addRows([
+                        {% for entry in data_pool['total_entry_chart_data'] %}
+                            ['{{ entry['month']|date("M Y") }}', {{ entry['totalEntryCount'] }}],
+                        {% endfor %}
+                    ]);
+                    var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
+                    totalEntryChart.draw(totalEntryData, chartOptions);
+
+                {% else %}
+
+                    var poolData = new google.visualization.DataTable();
+                    poolData.addColumn('string', 'Month');
+                    poolData.addColumn('number', '{{ 'report.parties'|trans }}');
+                    poolData.addRows([
+                        {% for pool in data_pool['full_pool_chart_data'] %}
+                            {% if pool['month'] != null %}
+                                ['{{ pool['month']|date("M Y") }}', {{ pool['growthPool'] }}],
+                            {% endif %}
+                        {% endfor %}
+                    ]);
+                    var poolChart = new google.visualization.LineChart(document.getElementById('pool_chart'));
+                    poolChart.draw(poolData, chartOptions);
+
+                    var entryData = new google.visualization.DataTable();
+                    entryData.addColumn('string', 'Month');
+                    entryData.addColumn('number', '{{ 'report.participants'|trans }}');
+                    entryData.addRows([
+                        {% for entry in data_pool['full_entry_chart_data'] %}
+                            {% if entry['month'] != null %}
+                                ['{{ entry['month']|date("M Y") }}', {{ entry['growthEntries'] }}],
+                            {% endif %}
+                        {% endfor %}
+                    ]);
+                    var entryChart = new google.visualization.LineChart(document.getElementById('entry_chart'));
+                    entryChart.draw(entryData, chartOptions);
+
+                {% endif %}
 
                 {% if data_pool['ip_usage'] is not empty %}
                 var ipData = new google.visualization.DataTable();
@@ -285,7 +352,50 @@
                 var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
                 ipChart.draw(ipData, chartOptions);
                 {% endif %}
-                {% endif %}
+
+                var countryData = new google.visualization.DataTable();
+                countryData.addColumn('string', 'Country');
+                countryData.addColumn('number', 'Visitors');
+                countryData.addRows([
+                    {% for google in google_data_pool['countries'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var countryChart = new google.visualization.PieChart(document.getElementById('country_chart'));
+                countryChart.draw(countryData, chartOptions);
+
+                var languageData = new google.visualization.DataTable();
+                languageData.addColumn('string', 'Language');
+                languageData.addColumn('number', 'Visitors');
+                languageData.addRows([
+                    {% for google in google_data_pool['language'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var languageChart = new google.visualization.PieChart(document.getElementById('language_chart'));
+                languageChart.draw(languageData, chartOptions);
+
+                var deviceData = new google.visualization.DataTable();
+                deviceData.addColumn('string', 'Device');
+                deviceData.addColumn('number', 'Visitors');
+                deviceData.addRows([
+                    {% for google in google_data_pool['deviceCategory'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var deviceChart = new google.visualization.PieChart(document.getElementById('device_chart'));
+                deviceChart.draw(deviceData, chartOptions);
+
+                var browserData = new google.visualization.DataTable();
+                browserData.addColumn('string', 'Device');
+                browserData.addColumn('number', 'Visitors');
+                browserData.addRows([
+                    {% for google in google_data_pool['browser'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var browserChart = new google.visualization.PieChart(document.getElementById('browser_chart'));
+                browserChart.draw(browserData, chartOptions);
             }
         </script>
     {% endif %}
