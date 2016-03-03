@@ -21,7 +21,7 @@ class GoogleAnalyticsQueries
         }
 
         $analytics = new Google_Service_Analytics($client);
-        $analyticsViewId = 'ga:114986929';
+        $analyticsViewId = 'ga:66807874';
         $startDate = '2012-04-01';
         $endDate = date('Y-m-d');
         $metrics = 'ga:sessions';
@@ -113,7 +113,7 @@ class GoogleAnalyticsQueries
         }
 
         $analytics = new Google_Service_Analytics($client);
-        $analyticsViewId = 'ga:114986929';
+        $analyticsViewId = 'ga:66807874';
         $startDate = $year . '-04-01';
         $endDate = $year + 1 . '-04-01';
         $metrics = 'ga:sessions';
