@@ -181,13 +181,13 @@
                 </p>
             </div>
             <div class="col-xs-6 col-md-6 report">
-                <h3>{{ 'report.created_parties'|trans }}</h3>
+                <h1>{{ 'report.created_parties'|trans }}</h1>
 
                 <div id="pool_chart" style="width: 100%"></div>
             </div>
 
             <div class="col-xs-6 col-md-6 report">
-                <h3>{{ 'report.invited_participants'|trans }}</h3>
+                <h1>{{ 'report.invited_participants'|trans }}</h1>
 
                 <div id="entry_chart" style="width: 100%"></div>
             </div>
@@ -198,21 +198,21 @@
 
         {% if data_pool['ip_usage'] is not empty %}
             <div class="col-xs-6 report">
-                <h3>{{ 'report.ip_usage'|trans }}</h3>
+                <h1>{{ 'report.ip_usage'|trans }}</h1>
 
                 <div id="ip_chart" style="width: 100%"></div>
                 <p>{{ 'report.ip_tracking'|trans }}</p>
             </div>
         {% else %}
             <div class="col-xs-6 report">
-                <h3>{{ 'report.ip_usage'|trans }}</h3>
-                
+                <h1>{{ 'report.ip_usage'|trans }}</h1>
+
                 <p>{{ 'report.ip_tracking'|trans }}</p>
             </div>
         {% endif %}
 
         <div class="col-xs-6 report">
-            <h3>Visitors per country</h3>
+            <h1>{{ 'report.visitors_per_country'|trans }}</h1>
 
             <div id="country_chart" style="width: 100%"></div>
         </div>
@@ -220,19 +220,19 @@
         <div class="clearfix"></div>
 
         <div class="col-xs-6 report">
-            <h3>Visitors per language</h3>
+            <h1>{{ 'report.visitors_per_language'|trans }}</h1>
 
             <div id="language_chart" style="width: 100%"></div>
         </div>
 
         <div class="col-xs-6 report">
-            <h3>Desktop/Mobile</h3>
+            <h1>{{ 'report.mobile_usage'|trans }}</h1>
 
             <div id="device_chart" style="width: 100%"></div>
         </div>
 
         <div class="col-xs-6 report">
-            <h3>Browsers</h3>
+            <h1>{{ 'report.top_browser'|trans }}</h1>
 
             <div id="browser_chart" style="width: 100%"></div>
         </div>
