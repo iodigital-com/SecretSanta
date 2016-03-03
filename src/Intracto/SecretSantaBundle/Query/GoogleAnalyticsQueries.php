@@ -7,6 +7,10 @@ use Google_Service_Analytics;
 
 class GoogleAnalyticsQueries
 {
+    /**
+     * @return array
+     * @throws \Google_Exception
+     */
     public function getFullAnalyticsReport()
     {
         $client = new Google_Client();
@@ -30,20 +34,46 @@ class GoogleAnalyticsQueries
         ];
     }
 
+    /**
+     * @param $analytics
+     * @param $analyticsViewId
+     * @param $startDate
+     * @param $endDate
+     * @param $metrics
+     * @return mixed
+     */
     public function getTopCountries($analytics, $analyticsViewId, $startDate, $endDate, $metrics)
     {
         return $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
-            'dimensions' => 'ga:country'
+            'dimensions' => 'ga:country',
+            'sort' => '-ga:country'
         ));
     }
 
+    /**
+     * @param $analytics
+     * @param $analyticsViewId
+     * @param $startDate
+     * @param $endDate
+     * @param $metrics
+     * @return mixed
+     */
     public function getTopLanguages($analytics, $analyticsViewId, $startDate, $endDate, $metrics)
     {
         return $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
-            'dimensions' => 'ga:language'
+            'dimensions' => 'ga:language',
+            'sort' => '-ga:language'
         ));
     }
 
+    /**
+     * @param $analytics
+     * @param $analyticsViewId
+     * @param $startDate
+     * @param $endDate
+     * @param $metrics
+     * @return mixed
+     */
     public function getDeviceCategory($analytics, $analyticsViewId, $startDate, $endDate, $metrics)
     {
         return $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
@@ -51,13 +81,28 @@ class GoogleAnalyticsQueries
         ));
     }
 
+    /**
+     * @param $analytics
+     * @param $analyticsViewId
+     * @param $startDate
+     * @param $endDate
+     * @param $metrics
+     * @return mixed
+     */
     public function getBrowsers($analytics, $analyticsViewId, $startDate, $endDate, $metrics)
     {
         return $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
-            'dimensions' => 'ga:browser'
+            'dimensions' => 'ga:browser',
+            'sort' => '-ga:browser',
+            'max-results' => 5
         ));
     }
 
+    /**
+     * @param $year
+     * @return array
+     * @throws \Google_Exception
+     */
     public function getAnalyticsReport($year)
     {
         $client = new Google_Client();
