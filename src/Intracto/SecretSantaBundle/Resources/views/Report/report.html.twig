@@ -134,15 +134,6 @@
                 <div id="total_entry_chart" style="width: 100%"></div>
             </div>
 
-            {% if data_pool['ip_usage'] is not empty %}
-                <div class="col-xs-6 report">
-                    <h3>{{ 'report.ip_usage'|trans }}</h3>
-
-                    <div id="ip_chart" style="width: 100%"></div>
-                    <p>{{ 'report.ip_tracking'|trans }}</p>
-                </div>
-            {% endif %}
-
         {% else %}
             <div class="col-xs-12 report">
                 <h3>Totale resultaten</h3>
@@ -200,18 +191,52 @@
 
                 <div id="entry_chart" style="width: 100%"></div>
             </div>
-            <h2>Analytics</h2>
-            {% if data_pool['ip_usage'] is not empty %}
-                <div class="col-xs-6 report">
-                    <h3>{{ 'report.ip_usage'|trans }}</h3>
-
-                    <div id="ip_chart" style="width: 100%"></div>
-                    <p>{{ 'report.ip_tracking'|trans }}</p>
-                </div>
-            {% endif %}
 
         {% endif %}
-        
+
+        <h2>Analytics</h2>
+
+        {% if data_pool['ip_usage'] is not empty %}
+            <div class="col-xs-6 report">
+                <h3>{{ 'report.ip_usage'|trans }}</h3>
+
+                <div id="ip_chart" style="width: 100%"></div>
+                <p>{{ 'report.ip_tracking'|trans }}</p>
+            </div>
+        {% else %}
+            <div class="col-xs-6 report">
+                <h3>{{ 'report.ip_usage'|trans }}</h3>
+                
+                <p>{{ 'report.ip_tracking'|trans }}</p>
+            </div>
+        {% endif %}
+
+        <div class="col-xs-6 report">
+            <h3>Visitors per country</h3>
+
+            <div id="country_chart" style="width: 100%"></div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-xs-6 report">
+            <h3>Visitors per language</h3>
+
+            <div id="language_chart" style="width: 100%"></div>
+        </div>
+
+        <div class="col-xs-6 report">
+            <h3>Desktop/Mobile</h3>
+
+            <div id="device_chart" style="width: 100%"></div>
+        </div>
+
+        <div class="col-xs-6 report">
+            <h3>Browsers</h3>
+
+            <div id="browser_chart" style="width: 100%"></div>
+        </div>
+
         <div class="clearfix"></div>
     {% endif %}
 {% endblock %}
@@ -272,20 +297,8 @@
                     var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
                     totalEntryChart.draw(totalEntryData, chartOptions);
 
-                    {% if data_pool['ip_usage'] is not empty %}
-                        var ipData = new google.visualization.DataTable();
-                        ipData.addColumn('string', 'IP type');
-                        ipData.addColumn('number', 'Percentage');
-                        ipData.addRows([
-                            ['IPv4', {{ data_pool['ip_usage']['ipv4_percentage']|round(2) }}],
-                            ['IPv6', {{ data_pool['ip_usage']['ipv6_percentage']|round(2) }}]
-                        ]);
-
-                        var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
-                        ipChart.draw(ipData, chartOptions);
-                    {% endif %}
-
                 {% else %}
+
                     var poolData = new google.visualization.DataTable();
                     poolData.addColumn('string', 'Month');
                     poolData.addColumn('number', '{{ 'report.parties'|trans }}');
@@ -312,20 +325,64 @@
                     var entryChart = new google.visualization.LineChart(document.getElementById('entry_chart'));
                     entryChart.draw(entryData, chartOptions);
 
-                    {% if data_pool['ip_usage'] is not empty %}
-                        var ipData = new google.visualization.DataTable();
-                        ipData.addColumn('string', 'IP type');
-                        ipData.addColumn('number', 'Percentage');
-                        ipData.addRows([
-                            ['IPv4', {{ data_pool['ip_usage']['ipv4_percentage']|round(2) }}],
-                            ['IPv6', {{ data_pool['ip_usage']['ipv6_percentage']|round(2) }}]
-                        ]);
-
-                        var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
-                        ipChart.draw(ipData, chartOptions);
-                    {% endif %}
-
                 {% endif %}
+
+                {% if data_pool['ip_usage'] is not empty %}
+                var ipData = new google.visualization.DataTable();
+                ipData.addColumn('string', 'IP type');
+                ipData.addColumn('number', 'Percentage');
+                ipData.addRows([
+                    ['IPv4', {{ data_pool['ip_usage']['ipv4_percentage']|round(2) }}],
+                    ['IPv6', {{ data_pool['ip_usage']['ipv6_percentage']|round(2) }}]
+                ]);
+
+                var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
+                ipChart.draw(ipData, chartOptions);
+                {% endif %}
+
+                var countryData = new google.visualization.DataTable();
+                countryData.addColumn('string', 'Country');
+                countryData.addColumn('number', 'Visitors');
+                countryData.addRows([
+                    {% for google in google_data_pool['countries'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var countryChart = new google.visualization.PieChart(document.getElementById('country_chart'));
+                countryChart.draw(countryData, chartOptions);
+
+                var languageData = new google.visualization.DataTable();
+                languageData.addColumn('string', 'Language');
+                languageData.addColumn('number', 'Visitors');
+                languageData.addRows([
+                    {% for google in google_data_pool['language'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var languageChart = new google.visualization.PieChart(document.getElementById('language_chart'));
+                languageChart.draw(languageData, chartOptions);
+
+                var deviceData = new google.visualization.DataTable();
+                deviceData.addColumn('string', 'Device');
+                deviceData.addColumn('number', 'Visitors');
+                deviceData.addRows([
+                    {% for google in google_data_pool['deviceCategory'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var deviceChart = new google.visualization.PieChart(document.getElementById('device_chart'));
+                deviceChart.draw(deviceData, chartOptions);
+
+                var browserData = new google.visualization.DataTable();
+                browserData.addColumn('string', 'Device');
+                browserData.addColumn('number', 'Visitors');
+                browserData.addRows([
+                    {% for google in google_data_pool['browser'] %}
+                        ['{{ google[0] }}', {{ google[1] }}],
+                    {% endfor %}
+                ]);
+                var browserChart = new google.visualization.PieChart(document.getElementById('browser_chart'));
+                browserChart.draw(browserData, chartOptions);
             }
         </script>
     {% endif %}
