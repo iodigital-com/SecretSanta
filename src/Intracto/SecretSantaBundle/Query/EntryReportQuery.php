@@ -21,29 +21,28 @@ class EntryReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function countConfirmedEntries($firstDay = null, $lastDay = null)
+    public function countConfirmedEntries(Period $period = null)
     {
-        if ($firstDay != null && $lastDay != null) {
+        if ($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(*) AS confirmedEntryCount
                 FROM Pool p
                 JOIN Entry e ON p.id = e.poolId
                 WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.viewdate IS NOT NULL',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
-        if ($lastDay != null) {
+        if ($period->getEnd() != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(*) AS ConfirmedEntryCount
                 FROM Pool p
                 JOIN Entry e ON p.id = e.poolId
                 WHERE p.sentdate < :lastDay AND e.viewdate IS NOT NULL',
-                ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['lastDay' => $period->getEnd()]
             );
         }
 
@@ -55,29 +54,28 @@ class EntryReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function countDistinctEntries($firstDay = null, $lastDay = null)
+    public function countDistinctEntries(Period $period= null)
     {
-        if ($firstDay != null && $lastDay != null) {
+        if ($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(distinct(e.email)) as distinctEntryCount
                 FROM Pool p
                 JOIN Entry e ON p.id = e.poolId
                 WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
-        if ($lastDay != null) {
+        if ($period->getEnd() != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(distinct(e.email)) as distinctEntryCount
                 FROM Pool p
                 JOIN Entry e on p.id = e.poolId
                 WHERE p.sentdate < :lastDay',
-                ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['lastDay' => $period->getEnd()]
             );
         }
 
@@ -89,13 +87,12 @@ class EntryReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function queryDataForEntryChart($firstDay = null, $lastDay = null)
+    public function queryDataForEntryChart(Period $period = null)
     {
-        if ($firstDay != null && $lastDay != null) {
+        if ($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(*) as growthEntries, p.sentdate as month
                 FROM Pool p
@@ -103,7 +100,7 @@ class EntryReportQuery
                 WHERE p.sentdate >= :firstDay and p.sentdate < :lastDay
                 GROUP BY month(p.sentdate)
                 ORDER BY month(p.sentdate) < 4, month(p.sentdate)',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
@@ -118,7 +115,7 @@ class EntryReportQuery
                 FROM Pool p
                 JOIN Entry e ON p.id = e.poolId
                 WHERE p.sentdate IS NOT NULL AND p.sentdate < :lastDay',
-                ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['lastDay' => $lastDay]
             );
 
             $entry = [
@@ -133,10 +130,10 @@ class EntryReportQuery
     }
 
     /**
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function queryAllDataForEntryChart($lastDay)
+    public function queryAllDataForEntryChart(Period $period = null)
     {
         $totalEntryChartData = $this->dbal->fetchAll(
             'SELECT count(*) as totalEntryCount, p.sentdate as month
@@ -144,7 +141,7 @@ class EntryReportQuery
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate < :lastDay
             GROUP BY year(p.sentdate), month(p.sentdate)',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            ['lastDay' => $period->getEnd()]
         );
 
         $accumulatedEntryCounter = 0;
@@ -158,15 +155,14 @@ class EntryReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return float
      */
-    public function calculateAverageEntriesPerPool($firstDay = null, $lastDay = null)
+    public function calculateAverageEntriesPerPool(Period $period = null)
     {
-        if ($firstDay != null && $lastDay != null) {
-            $pools = $this->poolReportQuery->countPools($firstDay, $lastDay);
-            $entries = $this->countEntries($firstDay, $lastDay);
+        if ($period != null) {
+            $pools = $this->poolReportQuery->countPools($period);
+            $entries = $this->countEntries($period);
 
             if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount'] != 0) {
                 return implode($entries[0]) / implode($pools[0]);
@@ -186,19 +182,18 @@ class EntryReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function countEntries($firstDay = null, $lastDay = null)
+    public function countEntries(Period $period = null)
     {
-        if ($firstDay != null && $lastDay != null) {
+        if ($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(*) AS entryCount
                 FROM Pool p
                 JOIN Entry e ON p.id = e.poolId
                 WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
@@ -210,13 +205,13 @@ class EntryReportQuery
     }
 
     /**
-     * @param $lastDay
+     * @param Period|null $period
      * @return float
      */
-    public function calculateAverageEntriesPerPoolUntilDate($lastDay)
+    public function calculateAverageEntriesPerPoolUntilDate(Period $period = null)
     {
-        $totalPools = $this->poolReportQuery->countAllPoolsUntilDate($lastDay);
-        $totalEntries = $this->countAllEntriesUntilDate($lastDay);
+        $totalPools = $this->poolReportQuery->countAllPoolsUntilDate($period);
+        $totalEntries = $this->countAllEntriesUntilDate($period);
 
         if ($totalPools[0]['poolCount'] != 0) {
             return implode($totalEntries[0]) / implode($totalPools[0]);
@@ -226,17 +221,17 @@ class EntryReportQuery
     }
 
     /**
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function countAllEntriesUntilDate($lastDay)
+    public function countAllEntriesUntilDate(Period $period = null)
     {
         return $this->dbal->fetchAll(
             'SELECT count(*) AS totalEntryCount
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate < :lastDay',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            ['lastDay' => $period->getEnd()]
         );
     }
 

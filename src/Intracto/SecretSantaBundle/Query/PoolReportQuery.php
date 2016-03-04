@@ -19,18 +19,17 @@ class PoolReportQuery
     }
 
     /**
-     * @param null $firstDay
-     * @param null $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function countPools($firstDay = null, $lastDay = null)
+    public function countPools(Period $period = null)
     {
-        if ($firstDay != null && $lastDay != null) {
+        if ($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(*) AS poolCount
                 FROM Pool p
                 WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
@@ -41,16 +40,16 @@ class PoolReportQuery
     }
 
     /**
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function countAllPoolsUntilDate($lastDay)
+    public function countAllPoolsUntilDate(Period $period = null)
     {
         return $this->dbal->fetchAll(
             'SELECT count(*) AS poolCount
             FROM Pool p
             WHERE p.sentdate < :lastDay',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            ['lastDay' => $period->getEnd()]
         );
     }
 
@@ -67,20 +66,19 @@ class PoolReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function queryDataForPoolChart($firstDay = null, $lastDay = null)
+    public function queryDataForPoolChart(Period $period = null)
     {
-        if ($firstDay != null && $lastDay != null) {
+        if ($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(*) as growthPool, p.sentdate as month
                 FROM Pool p
                 WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay
                 GROUP BY month(p.sentdate)
                 ORDER BY month(p.sentdate) < 4, month(p.sentdate)',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
@@ -94,7 +92,7 @@ class PoolReportQuery
                 'SELECT count(*) as growthPool
                 FROM Pool p
                 WHERE p.sentdate IS NOT NULL AND p.sentdate < :lastDay',
-                ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['lastDay' => $lastDay]
             );
 
             $pool = [
@@ -109,17 +107,17 @@ class PoolReportQuery
     }
 
     /**
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function queryAllDataUntilDateForPoolChart($lastDay)
+    public function queryAllDataUntilDateForPoolChart(Period $period = null)
     {
         $totalPoolChartData = $this->dbal->fetchAll(
             'SELECT count(*) as totalPoolCount, p.sentdate as month
             FROM Pool p
             WHERE p.sentdate < :lastDay
             GROUP BY year(p.sentdate), month(p.sentdate)',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            ['lastDay' => $period->getEnd()]
         );
 
         $accumulatedPoolCounter = 0;
