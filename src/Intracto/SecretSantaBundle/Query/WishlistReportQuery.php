@@ -19,15 +19,14 @@ class WishlistReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return float
      */
-    public function calculateCompletedWishlists($firstDay = null, $lastDay = null)
+    public function calculateCompletedWishlists(Period $period = null)
     {
-        if ($firstDay != null && $lastDay != null) {
-            $wishlists = $this->countWishlists($firstDay, $lastDay);
-            $entries = $this->entryReportQueries->countEntries($firstDay, $lastDay);
+        if ($period!= null) {
+            $wishlists = $this->countWishlists($period);
+            $entries = $this->entryReportQueries->countEntries($period);
 
             if ($entries[0]['entryCount'] != 0) {
                 return (implode($wishlists[0]) / implode($entries[0])) * 100;
@@ -47,19 +46,18 @@ class WishlistReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    private function countWishlists($firstDay = null, $lastDay = null)
+    private function countWishlists(Period $period = null)
     {
-        if($firstDay != null && $lastDay != null) {
+        if($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(*) as wishlistCount
                 FROM Pool p
                 JOIN Entry e on p.id = e.poolId
                 WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
@@ -72,13 +70,13 @@ class WishlistReportQuery
     }
 
     /**
-     * @param $lastDay
+     * @param Period|null $period
      * @return float
      */
-    public function calculateCompletedWishlistsUntilDate($lastDay)
+    public function calculateCompletedWishlistsUntilDate(Period $period = null)
     {
-        $totalWishlists = $this->countAllWishlistsUntilDate($lastDay);
-        $totalEntries = $this->entryReportQueries->countAllEntriesUntilDate($lastDay);
+        $totalWishlists = $this->countAllWishlistsUntilDate($period);
+        $totalEntries = $this->entryReportQueries->countAllEntriesUntilDate($period);
 
         if ($totalEntries[0]['totalEntryCount'] != 0) {
             return (implode($totalWishlists[0]) / implode($totalEntries[0])) * 100;
@@ -88,17 +86,17 @@ class WishlistReportQuery
     }
 
     /**
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    private function countAllWishlistsUntilDate($lastDay)
+    private function countAllWishlistsUntilDate(Period $period = null)
     {
         return $this->dbal->fetchAll(
             'SELECT count(*) as totalWishlistCount
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
-            ['lastDay' => $lastDay->format('Y-m-d H:i:s')]
+            ['lastDay' => $period->getEnd()]
         );
     }
 }

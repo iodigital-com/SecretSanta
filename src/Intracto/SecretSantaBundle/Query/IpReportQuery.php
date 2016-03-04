@@ -17,15 +17,14 @@ class IpReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    public function calculateIpUsage($firstDay = null, $lastDay = null)
+    public function calculateIpUsage(Period $period = null)
     {
-        if($firstDay != null && $lastDay != null) {
-            $ipv4 = $this->queryIpv4Records($firstDay, $lastDay);
-            $ipv6 = $this->queryIpv6Records($firstDay, $lastDay);
+        if($period != null) {
+            $ipv4 = $this->queryIpv4Records($period);
+            $ipv6 = $this->queryIpv6Records($period);
 
             if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
                 $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
@@ -57,19 +56,18 @@ class IpReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    private function queryIpv4Records($firstDay = null, $lastDay = null)
+    private function queryIpv4Records(Period $period = null)
     {
-        if($firstDay != null && $lastDay != null) {
+        if($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(e.ipv4) as ipv4Count
                 FROM Pool p
                 JOIN Entry e ON p.id = e.poolId
                 WHERE e.ipv4 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 
@@ -81,19 +79,18 @@ class IpReportQuery
     }
 
     /**
-     * @param $firstDay
-     * @param $lastDay
+     * @param Period|null $period
      * @return array
      */
-    private function queryIpv6Records($firstDay = null, $lastDay = null)
+    private function queryIpv6Records(Period $period = null)
     {
-        if($firstDay != null && $lastDay != null) {
+        if($period != null) {
             return $this->dbal->fetchAll(
                 'SELECT count(e.ipv6) as ipv6Count
                 FROM Pool p
                 JOIN Entry e ON p.id = e.poolId
                 WHERE ipv6 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $firstDay->format('Y-m-d H:i:s'), 'lastDay' => $lastDay->format('Y-m-d H:i:s')]
+                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
             );
         }
 

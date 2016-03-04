@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nielsroels
- * Date: 3/03/16
- * Time: 16:23
- */
 
 namespace Intracto\SecretSantaBundle\Query;
 
@@ -19,7 +13,7 @@ class Period
      * @param $start
      * @param $end
      */
-    public function __construct($start, $end = null)
+    public function __construct($end, $start = null)
     {
         $this->start = $start;
         $this->end = $end;
@@ -40,7 +34,4 @@ class Period
     {
         return $this->end;
     }
-
-
-
 }

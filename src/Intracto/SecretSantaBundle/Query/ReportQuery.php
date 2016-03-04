@@ -2,6 +2,8 @@
 
 namespace Intracto\SecretSantaBundle\Query;
 
+use Intracto\SecretSantaBundle\Query\Period;
+
 class ReportQuery
 {
     private $poolReportQuery;
@@ -33,27 +35,30 @@ class ReportQuery
     public function getPoolReport($year = null)
     {
         if ($year != null) {
-            $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-04-01');
-            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
+            $firstDay = \DateTime::createFromFormat('Y-m-d', $year . '-04-01')->format('Y-m-d H:i:s');
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01')->format('Y-m-d H:i:s');
+
+            $period = new Period($lastDay, $firstDay);
+            $totalUntil = new Period($lastDay);
 
             return [
-                'pools' => $this->poolReportQuery->countPools($firstDay, $lastDay),
-                'total_pools' => $this->poolReportQuery->countAllPoolsUntilDate($lastDay),
-                'entries' => $this->entryReportQuery->countEntries($firstDay, $lastDay),
-                'total_entries' => $this->entryReportQuery->countAllEntriesUntilDate($lastDay),
-                'confirmed_entries' => $this->entryReportQuery->countConfirmedEntries($firstDay, $lastDay),
-                'total_confirmed_entries' => $this->entryReportQuery->countConfirmedEntries($lastDay),
-                'distinct_entries' => $this->entryReportQuery->countDistinctEntries($firstDay, $lastDay),
-                'total_distinct_entries' => $this->entryReportQuery->countDistinctEntries($lastDay),
-                'entry_average' => $this->entryReportQuery->calculateAverageEntriesPerPool($firstDay, $lastDay),
-                'total_entry_average' => $this->entryReportQuery->calculateAverageEntriesPerPoolUntilDate($lastDay),
-                'wishlist_average' => $this->wishlistReportQuery->calculateCompletedWishlists($firstDay, $lastDay),
-                'total_wishlist_average' => $this->wishlistReportQuery->calculateCompletedWishlistsUntilDate($lastDay),
-                'ip_usage' => $this->ipReportQuery->calculateIpUsage($firstDay, $lastDay),
-                'pool_chart_data' => $this->poolReportQuery->queryDataForPoolChart($firstDay, $lastDay),
-                'total_pool_chart_data' => $this->poolReportQuery->queryAllDataUntilDateForPoolChart($lastDay),
-                'entry_chart_data' => $this->entryReportQuery->queryDataForEntryChart($firstDay, $lastDay),
-                'total_entry_chart_data' => $this->entryReportQuery->queryAllDataForEntryChart($lastDay),
+                'pools' => $this->poolReportQuery->countPools($period),
+                'total_pools' => $this->poolReportQuery->countAllPoolsUntilDate($totalUntil),
+                'entries' => $this->entryReportQuery->countEntries($period),
+                'total_entries' => $this->entryReportQuery->countAllEntriesUntilDate($totalUntil),
+                'confirmed_entries' => $this->entryReportQuery->countConfirmedEntries($period),
+                'total_confirmed_entries' => $this->entryReportQuery->countConfirmedEntries($period),
+                'distinct_entries' => $this->entryReportQuery->countDistinctEntries($period),
+                'total_distinct_entries' => $this->entryReportQuery->countDistinctEntries($period),
+                'entry_average' => $this->entryReportQuery->calculateAverageEntriesPerPool($period),
+                'total_entry_average' => $this->entryReportQuery->calculateAverageEntriesPerPoolUntilDate($totalUntil),
+                'wishlist_average' => $this->wishlistReportQuery->calculateCompletedWishlists($period),
+                'total_wishlist_average' => $this->wishlistReportQuery->calculateCompletedWishlistsUntilDate($totalUntil),
+                'ip_usage' => $this->ipReportQuery->calculateIpUsage($period),
+                'pool_chart_data' => $this->poolReportQuery->queryDataForPoolChart($period),
+                'total_pool_chart_data' => $this->poolReportQuery->queryAllDataUntilDateForPoolChart($totalUntil),
+                'entry_chart_data' => $this->entryReportQuery->queryDataForEntryChart($period),
+                'total_entry_chart_data' => $this->entryReportQuery->queryAllDataForEntryChart($totalUntil),
             ];
         }
 
