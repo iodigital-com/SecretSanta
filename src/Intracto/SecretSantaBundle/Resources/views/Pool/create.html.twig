@@ -31,8 +31,6 @@
                         {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'col-xs-12'}}) }}
                     </div>
                 </div>
-
-
                 <table class="entries table table-striped mysanta">
                     <thead>
                     <tr>
@@ -72,9 +70,7 @@
                     </tbody>
                 </table>
                 <h1>{{ 'create.add_personal_message.title'|trans }}</h1>
-
                 {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
-
                 <div class="description">
                     {{ 'create.add_personal_message.description'|trans }}
                 </div>
@@ -161,7 +157,6 @@
                 </div>
             </div>
         {% endif %}
-
     </div>
 {% endblock %}
 {% block javascripts %}
@@ -171,19 +166,12 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ form_javascript(form) }}
-
     <script type="text/javascript">
-        if (Modernizr.inputtypes.date == true) {
-            // support for date input type, remove datepicker
-            $(document).ready(function () {
-                $("#intracto_secretsantabundle_pooltype_date").datepicker("destroy");
-            });
-        }
         $(document).ready(function () {
             $(".owner").after('<tr><th class="col-xs-1"></th>' +
                     '<th class="col-xs-3">{{ "label.participants"|trans }}</th>' +
                     '<th class="col-xs-4">{{ "label.email"|trans }}</th>' +
-                    '<th class="col-xs-4" style="text-align: right;">  </th> </tr>' + number_of_entries - 1
+                    '<th class="col-xs-4" style="text-align: right;">  </th> </tr>'
             );
         });
     </script>
