@@ -160,11 +160,27 @@ class Entry
     }
 
     /**
+     * @ORM\PostLoad
+     */
+    public function postLoad()
+    {
+        $this->removedWishlistItems = new ArrayCollection();
+    }
+
+    /**
      * @return int
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return Pool
+     */
+    public function getPool()
+    {
+        return $this->pool;
     }
 
     /**
@@ -180,11 +196,11 @@ class Entry
     }
 
     /**
-     * @return Pool
+     * @return string
      */
-    public function getPool()
+    public function getName()
     {
-        return $this->pool;
+        return $this->name;
     }
 
     /**
@@ -202,9 +218,9 @@ class Entry
     /**
      * @return string
      */
-    public function getName()
+    public function getEmail()
     {
-        return $this->name;
+        return $this->email;
     }
 
     /**
@@ -222,9 +238,9 @@ class Entry
     /**
      * @return string
      */
-    public function getEmail()
+    public function getWishlist()
     {
-        return $this->email;
+        return $this->wishlist;
     }
 
     /**
@@ -244,11 +260,11 @@ class Entry
     }
 
     /**
-     * @return string
+     * @return Entry
      */
-    public function getWishlist()
+    public function getEntry()
     {
-        return $this->wishlist;
+        return $this->entry;
     }
 
     /**
@@ -264,11 +280,11 @@ class Entry
     }
 
     /**
-     * @return Entry
+     * @return \DateTime
      */
-    public function getEntry()
+    public function getViewdate()
     {
-        return $this->entry;
+        return $this->viewdate;
     }
 
     /**
@@ -281,14 +297,6 @@ class Entry
         $this->viewdate = $viewdate;
 
         return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getViewdate()
-    {
-        return $this->viewdate;
     }
 
     /**
@@ -312,6 +320,14 @@ class Entry
     }
 
     /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
      * @param string $url
      *
      * @return Entry
@@ -321,14 +337,6 @@ class Entry
         $this->url = $url;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 
     /**
@@ -372,6 +380,14 @@ class Entry
     }
 
     /**
+     * @return bool
+     */
+    public function getWishlistUpdated()
+    {
+        return $this->wishlist_updated;
+    }
+
+    /**
      * @param bool $wishlistUpdated
      *
      * @return Entry
@@ -384,11 +400,11 @@ class Entry
     }
 
     /**
-     * @return bool
+     * @return \DateTime
      */
-    public function getWishlistUpdated()
+    public function getUpdateWishlistReminderSentTime()
     {
-        return $this->wishlist_updated;
+        return $this->updateWishlistReminderSentTime;
     }
 
     /**
@@ -402,9 +418,9 @@ class Entry
     /**
      * @return \DateTime
      */
-    public function getUpdateWishlistReminderSentTime()
+    public function getViewReminderSentTime()
     {
-        return $this->updateWishlistReminderSentTime;
+        return $this->viewReminderSentTime;
     }
 
     /**
@@ -413,22 +429,6 @@ class Entry
     public function setViewReminderSentTime($viewReminderSentTime)
     {
         $this->viewReminderSentTime = $viewReminderSentTime;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getViewReminderSentTime()
-    {
-        return $this->viewReminderSentTime;
-    }
-
-    /**
-     * @ORM\PostLoad
-     */
-    public function postLoad()
-    {
-        $this->removedWishlistItems = new ArrayCollection();
     }
 
     /**
@@ -524,6 +524,38 @@ class Entry
     }
 
     /**
+     * @return string
+     */
+    public function getIp()
+    {
+        if ($this->getIpv4() == null) {
+            return $this->getIpv4();
+        }
+
+        return $this->getIpv6();
+    }
+
+    /**
+     * @param string $ip
+     */
+    public function setIp($ip)
+    {
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+            $this->setIpv4($ip);
+        } else if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+            $this->setIpv6($ip);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getIpv4()
+    {
+        return $this->ipv4;
+    }
+
+    /**
      * @param string $ipv4
      *
      * @return Entry
@@ -538,9 +570,9 @@ class Entry
     /**
      * @return string
      */
-    public function getIpv4()
+    public function getIpv6()
     {
-        return $this->ipv4;
+        return $this->ipv6;
     }
 
     /**
@@ -553,13 +585,5 @@ class Entry
         $this->ipv6 = $ipv6;
 
         return $ipv6;
-    }
-
-    /**
-     * @return string
-     */
-    public function getIpv6()
-    {
-        return $this->ipv6;
     }
 }
