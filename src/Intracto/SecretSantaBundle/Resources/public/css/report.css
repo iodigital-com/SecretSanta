@@ -1,12 +1,12 @@
 /* Report page */
 .report h2 {
-    font-size:11px;
+    font-size: 11px;
 }
 
 .report p {
     font-size: 14px;
-    margin-top:1px;
-    margin-bottom:1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
 
 }
 
@@ -14,13 +14,13 @@
     height: 50px;
 }
 
-.report h1{
-    font-size:20px;
-    height:35px;
+.report h1 {
+    font-size: 20px;
+    height: 35px;
 }
 
-.report strong{
-    font-size:18px;
-    text-align:right;
+.report strong {
+    font-size: 18px;
+    text-align: right;
 }
 
