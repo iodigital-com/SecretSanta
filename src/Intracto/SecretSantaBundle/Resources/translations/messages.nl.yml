@@ -357,6 +357,8 @@ report:
     parties: 'Feestjes'
     participants: 'Deelnemers'
     total: 'Totaal (inclusief dit seizoen)'
+    total_result: 'Totale resultaten'
+    season: 'Seizoen'
     created_parties: 'Totaal aantal aangemaakte feestjes'
     confirmed_parties: 'Bevestigde feestjes'
     confirmed_parties_month: 'Bevestigde feestjes per maand'

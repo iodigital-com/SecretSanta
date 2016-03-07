@@ -19,81 +19,73 @@ class PoolReportQuery
     }
 
     /**
-     * @param Period|null $period
-     * @return array
+     * @param PoolYear $poolYear
+     * @return mixed
      */
-    public function countPools(Period $period = null)
+    public function countPools(PoolYear $poolYear)
     {
-        if ($period != null) {
-            return $this->dbal->fetchAll(
-                'SELECT count(*) AS poolCount
-                FROM Pool p
-                WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
-            );
-        }
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS poolCount')
+            ->from('Pool', 'p')
+            ->andWhere('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
-        return $this->dbal->fetchAll(
-            'SELECT count(*) as poolCount
-            FROM Pool'
-        );
+        return $query->execute()->fetchAll();
     }
 
     /**
-     * @param Period|null $period
-     * @return array
+     * @param \DateTime $date
+     * @return mixed
      */
-    public function countAllPoolsUntilDate(Period $period = null)
+    public function countAllPoolsUntilDate(\DateTime $date)
     {
-        return $this->dbal->fetchAll(
-            'SELECT count(*) AS poolCount
-            FROM Pool p
-            WHERE p.sentdate < :lastDay',
-            ['lastDay' => $period->getEnd()]
-        );
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS poolCount')
+            ->from('Pool', 'p')
+            ->where('p.sentdate < :lastDay')
+            ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
+    }
+
+    /**
+     * @param PoolYear $poolYear
+     * @return mixed
+     */
+    public function queryDataForMonthlyPoolChart(PoolYear $poolYear)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS accumulatedPoolCountByMonth, p.sentdate AS month')
+            ->from('Pool', 'p')
+            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay')
+            ->groupBy('month(p.sentdate)')
+            ->orderBy('month(p.sentdate) < 4, month(p.sentdate)')
+            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
     }
 
     /**
      * @return array
      */
-    public function countConfirmedPools()
+    public function queryDataForYearlyPoolChart()
     {
-        return $this->dbal->fetchAll(
-            'SELECT count(*) as confirmedPoolCount
-            FROM Pool
-            WHERE sentdate IS NOT NULL'
-        );
-    }
-
-    /**
-     * @param Period|null $period
-     * @return array
-     */
-    public function queryDataForPoolChart(Period $period = null)
-    {
-        if ($period != null) {
-            return $this->dbal->fetchAll(
-                'SELECT count(*) as growthPool, p.sentdate as month
-                FROM Pool p
-                WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay
-                GROUP BY month(p.sentdate)
-                ORDER BY month(p.sentdate) < 4, month(p.sentdate)',
-                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
-            );
-        }
-
         $featuredYears = $this->featuredYearsQuery->getFeaturedYears();
         $poolChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
-            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01')->format('Y-m-d H:i:s');
 
-            $chartData = $this->dbal->fetchAll(
-                'SELECT count(*) as growthPool
-                FROM Pool p
-                WHERE p.sentdate IS NOT NULL AND p.sentdate < :lastDay',
-                ['lastDay' => $lastDay]
-            );
+            $query = $this->dbal->createQueryBuilder()
+                ->select('count(p.id) AS accumulatedPoolCountByYear')
+                ->from('Pool', 'p')
+                ->where('p.sentdate IS NOT NULL AND p.sentdate < :lastDay')
+                ->setParameter('lastDay', $lastDay);
+
+            $chartData = $query->execute()->fetchAll();
 
             $pool = [
                 'year' => $year,
@@ -107,18 +99,19 @@ class PoolReportQuery
     }
 
     /**
-     * @param Period|null $period
-     * @return array
+     * @param \DateTime $date
+     * @return mixed
      */
-    public function queryAllDataUntilDateForPoolChart(Period $period = null)
+    public function queryDataForPoolChartUntilDate(\DateTime $date)
     {
-        $totalPoolChartData = $this->dbal->fetchAll(
-            'SELECT count(*) as totalPoolCount, p.sentdate as month
-            FROM Pool p
-            WHERE p.sentdate < :lastDay
-            GROUP BY year(p.sentdate), month(p.sentdate)',
-            ['lastDay' => $period->getEnd()]
-        );
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS totalPoolCount, p.sentdate AS month')
+            ->from('Pool', 'p')
+            ->where('p.sentdate < :lastDay')
+            ->groupBy('year(p.sentdate), month(p.sentdate)')
+            ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
+
+        $totalPoolChartData = $query->execute()->fetchAll();
 
         $accumulatedPoolCounter = 0;
 

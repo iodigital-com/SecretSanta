@@ -19,24 +19,13 @@ class WishlistReportQuery
     }
 
     /**
-     * @param Period|null $period
+     * @param PoolYear $poolYear
      * @return float
      */
-    public function calculateCompletedWishlists(Period $period = null)
+    public function calculateCompletedWishlists(PoolYear $poolYear)
     {
-        if ($period!= null) {
-            $wishlists = $this->countWishlists($period);
-            $entries = $this->entryReportQueries->countEntries($period);
-
-            if ($entries[0]['entryCount'] != 0) {
-                return (implode($wishlists[0]) / implode($entries[0])) * 100;
-            }
-
-            throw new NoResultException();
-        }
-
-        $wishlists = $this->countWishlists();
-        $entries = $this->entryReportQueries->countEntries();
+        $wishlists = $this->countWishlists($poolYear);
+        $entries = $this->entryReportQueries->countEntries($poolYear);
 
         if ($entries[0]['entryCount'] != 0) {
             return (implode($wishlists[0]) / implode($entries[0])) * 100;
@@ -46,37 +35,30 @@ class WishlistReportQuery
     }
 
     /**
-     * @param Period|null $period
-     * @return array
+     * @param PoolYear $poolYear
+     * @return mixed
      */
-    private function countWishlists(Period $period = null)
+    private function countWishlists(PoolYear $poolYear)
     {
-        if($period != null) {
-            return $this->dbal->fetchAll(
-                'SELECT count(*) as wishlistCount
-                FROM Pool p
-                JOIN Entry e on p.id = e.poolId
-                WHERE p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
-                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
-            );
-        }
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS wishlistCount')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.wishlist_updated = TRUE')
+            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
-        return $this->dbal->fetchAll(
-            'SELECT count(*) as wishlistCount
-            FROM Entry
-            JOIN Pool on Pool.id = Entry.poolId
-            WHERE wishlist_updated = TRUE'
-        );
+        return $query->execute()->fetchAll();
     }
 
     /**
-     * @param Period|null $period
+     * @param \DateTime $date
      * @return float
      */
-    public function calculateCompletedWishlistsUntilDate(Period $period = null)
+    public function calculateCompletedWishlistsUntilDate(\DateTime $date)
     {
-        $totalWishlists = $this->countAllWishlistsUntilDate($period);
-        $totalEntries = $this->entryReportQueries->countAllEntriesUntilDate($period);
+        $totalWishlists = $this->countAllWishlistsUntilDate($date);
+        $totalEntries = $this->entryReportQueries->countAllEntriesUntilDate($date);
 
         if ($totalEntries[0]['totalEntryCount'] != 0) {
             return (implode($totalWishlists[0]) / implode($totalEntries[0])) * 100;
@@ -86,17 +68,18 @@ class WishlistReportQuery
     }
 
     /**
-     * @param Period|null $period
-     * @return array
+     * @param \DateTime $date
+     * @return mixed
      */
-    private function countAllWishlistsUntilDate(Period $period = null)
+    private function countAllWishlistsUntilDate(\DateTime $date)
     {
-        return $this->dbal->fetchAll(
-            'SELECT count(*) as totalWishlistCount
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE p.sentdate < :lastDay AND e.wishlist_updated = TRUE',
-            ['lastDay' => $period->getEnd()]
-        );
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS totalWishlistCount')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.sentdate < :lastDay AND e.wishlist_updated = TRUE')
+            ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
     }
 }

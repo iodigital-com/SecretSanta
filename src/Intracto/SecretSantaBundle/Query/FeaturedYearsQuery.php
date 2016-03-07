@@ -21,12 +21,13 @@ class FeaturedYearsQuery
      */
     public function getFeaturedYears()
     {
-        $yearsQuery = $this->dbal->fetchAll(
-            'SELECT DISTINCT year(sentdate) as featured_year
-            FROM Pool
-            WHERE year(sentdate) IS NOT NULL
-            ORDER BY year(sentdate) DESC'
-        );
+        $query = $this->dbal->createQueryBuilder()
+            ->select('distinct(year(p.sentdate)) AS featured_year')
+            ->from('Pool', 'p')
+            ->where('year(p.sentdate) IS NOT NULL')
+            ->orderBy('year(p.sentdate)', 'DESC');
+
+        $yearsQuery = $query->execute()->fetchAll();
 
         $featuredYears = [];
 
