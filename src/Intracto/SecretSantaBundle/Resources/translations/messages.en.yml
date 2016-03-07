@@ -378,6 +378,8 @@ report:
     parties: 'Parties'
     participants: 'Participants'
     total: 'Total (this season included)'
+    total_result: 'All time results'
+    season: 'Season'
     created_parties: 'Total parties created'
     confirmed_parties: 'Confirmed parties'
     confirmed_parties_month: 'Confirmed parties per month'

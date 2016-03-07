@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
+use Proxies\__CG__\Intracto\SecretSantaBundle\Entity\Pool;
 
 class IpReportQuery
 {
@@ -17,30 +18,13 @@ class IpReportQuery
     }
 
     /**
-     * @param Period|null $period
+     * @param PoolYear $poolYear
      * @return array
      */
-    public function calculateIpUsage(Period $period = null)
+    public function calculateIpUsage(PoolYear $poolYear)
     {
-        if($period != null) {
-            $ipv4 = $this->queryIpv4Records($period);
-            $ipv6 = $this->queryIpv6Records($period);
-
-            if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
-                $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
-                $ipv6Percentage = $ipv6[0]['ipv6Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
-
-                return [
-                    'ipv4_percentage' => $ipv4Percentage,
-                    'ipv6_percentage' => $ipv6Percentage,
-                ];
-            }
-
-            return [];
-        }
-
-        $ipv4 = $this->queryIpv4Records();
-        $ipv6 = $this->queryIpv6Records();
+        $ipv4 = $this->queryIpv4Records($poolYear);
+        $ipv6 = $this->queryIpv6Records($poolYear);
 
         if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
             $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
@@ -56,49 +40,36 @@ class IpReportQuery
     }
 
     /**
-     * @param Period|null $period
-     * @return array
+     * @param PoolYear $poolYear
+     * @return mixed
      */
-    private function queryIpv4Records(Period $period = null)
+    private function queryIpv4Records(PoolYear $poolYear)
     {
-        if($period != null) {
-            return $this->dbal->fetchAll(
-                'SELECT count(e.ipv4) as ipv4Count
-                FROM Pool p
-                JOIN Entry e ON p.id = e.poolId
-                WHERE e.ipv4 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
-            );
-        }
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(e.ipv4) AS ipv4Count')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('e.ipv4 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate <:lastDay')
+            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
-        return $this->dbal->fetchAll(
-            'SELECT count(ipv4) as ipv4Count
-            FROM Entry
-            WHERE ipv4 IS NOT NULL'
-        );
+        return $query->execute()->fetchAll();
     }
 
     /**
-     * @param Period|null $period
-     * @return array
+     * @param PoolYear $poolYear
+     * @return mixed
      */
-    private function queryIpv6Records(Period $period = null)
+    private function queryIpv6Records(PoolYear $poolYear)
     {
-        if($period != null) {
-            return $this->dbal->fetchAll(
-                'SELECT count(e.ipv6) as ipv6Count
-                FROM Pool p
-                JOIN Entry e ON p.id = e.poolId
-                WHERE ipv6 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate < :lastDay',
-                ['firstDay' => $period->getStart(), 'lastDay' => $period->getEnd()]
-            );
-        }
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(e.ipv6) AS ipv6Count')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('e.ipv6 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate <:lastDay')
+            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
-        return $this->dbal->fetchAll(
-            'SELECT count(ipv6) as ipv6Count
-            FROM Entry
-            WHERE ipv6 IS NOT NULL'
-        );
+        return $query->execute()->fetchAll();
     }
-
 }
