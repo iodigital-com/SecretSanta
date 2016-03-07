@@ -4,7 +4,30 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="intracto_secret_santa.reporting" class="Intracto\SecretSantaBundle\Query\PoolReportQueries">
+        <service id="intracto_secret_santa.report" class="Intracto\SecretSantaBundle\Query\ReportQuery">
+            <argument type="service" id="intracto_secret_santa.pool"></argument>
+            <argument type="service" id="intracto_secret_santa.entry"></argument>
+            <argument type="service" id="intracto_secret_santa.ip"></argument>
+            <argument type="service" id="intracto_secret_santa.wishlist"></argument>
+            <argument type="service" id="intracto_secret_santa.featured_years"></argument>
+        </service>
+        <service id="intracto_secret_santa.pool" class="Intracto\SecretSantaBundle\Query\PoolReportQuery">
+            <argument type="service" id="database_connection"></argument>
+            <argument type="service" id="intracto_secret_santa.featured_years"></argument>
+        </service>
+        <service id="intracto_secret_santa.entry" class="Intracto\SecretSantaBundle\Query\EntryReportQuery">
+            <argument type="service" id="database_connection"></argument>
+            <argument type="service" id="intracto_secret_santa.pool"></argument>
+            <argument type="service" id="intracto_secret_santa.featured_years"></argument>
+        </service>
+        <service id="intracto_secret_santa.ip" class="Intracto\SecretSantaBundle\Query\IpReportQuery">
+            <argument type="service" id="database_connection"></argument>
+        </service>
+        <service id="intracto_secret_santa.wishlist" class="Intracto\SecretSantaBundle\Query\WishlistReportQuery">
+            <argument type="service" id="database_connection"></argument>
+            <argument type="service" id="intracto_secret_santa.entry"></argument>
+        </service>
+        <service id="intracto_secret_santa.featured_years" class="Intracto\SecretSantaBundle\Query\FeaturedYearsQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
     </services>

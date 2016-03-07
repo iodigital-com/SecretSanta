@@ -3,69 +3,278 @@
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
 {% block stylesheets %}
-
     {% stylesheets 'bundles/intractosecretsanta/css/report.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 {% endblock stylesheets %}
 {% block main %}
     <h1>{{ 'report.title'|trans }}</h1>
-
-    <div>
-        <p>{{ 'report.season_info'|trans }}</p>
-    </div>
-
     <form method="GET">
         <div class="row">
-            <div class="span3">
-                <select name="year" id="Year" onchange="this.form.submit();">
+            <div class="col-xs-12 col-md-3">
+                <select name="year" id="Year" class="form-control" onchange="this.form.submit();">
                     <option {% if(current_year == "all") %} selected="selected" {% endif %}
-                            value="all">{{ 'report.all_time'|trans }}
-                    </option>
+                            value="all">{{ 'report.all_time'|trans }}</option>
                     {% for year in featured_years['featured_years'] %}
                         <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}
-                            - {{ year+1 }}</option>
+                            - {{ year+1 }} </option>
                     {% endfor %}
                 </select>
             </div>
         </div>
     </form>
+    <small>{{ 'report.season_info'|trans }}</small>
     {% if data_pool is empty %}
         <div>
             <p>{{ 'report.no_data'|trans }}</p>
         </div>
     {% else %}
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.pool_amount'|trans }}</h2>
+        <h2>{{ 'report.results'|trans }}</h2>
+        <div class="col-xs-6 col-md-6 report">
+            {% if current_year != 'all' %}
+                <h4>{{ 'report.season'|trans }} {{ current_year }}-{{ current_year + 1 }}</h4>
+            {% else %}
+                <h4>{{ 'report.total_result'|trans }}</h4>
+            {% endif %}
+            <p>{{ 'report.confirmed_parties'|trans }}:
+                <strong>
+                    {{ data_pool['pools'][0]['poolCount'] }}
+                </strong>
+            </p>
 
-            <p>{{ data_pool['pools'][0]['poolCount'] }}</p>
+            <p>{{ 'report.invited_participants'|trans }}:
+                <strong>
+                    {{ data_pool['entries'][0]['entryCount'] }}
+                </strong>
+            </p>
+
+            <p>{{ 'report.confirmed_participants'|trans }}:
+                <strong>
+                    {{ data_pool['confirmed_entries'][0]['confirmedEntryCount'] }}
+                </strong>
+            </p>
+
+            <p>{{ 'report.average_entries'|trans }}:
+                <strong>
+                    {{ data_pool['entry_average']|round }}
+                </strong>
+            </p>
+
+            <p>{{ 'report.unique_entries'|trans }}:
+                <strong>
+                    {{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}
+                </strong>
+            </p>
+
+            <p>{{ 'report.completed_wishlists'|trans }}:
+                <strong>
+                    {{ data_pool['wishlist_average']|number_format(2, '.', '') }} %
+                </strong>
+            </p>
         </div>
+        {% if current_year == 'all' %}
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if current_year != 'all' %}
+            <div class="col-xs-6 col-md-6 report">
+                <h4>{{ 'report.total'|trans }}</h4>
 
-        <div class="col-xs-6 .col-sm-3 report">
-            <h2>{{ 'report.user_amount'|trans }}</h2>
+                <p>{{ 'report.confirmed_parties'|trans }}:
+                    <strong>
+                        {{ data_pool['total_pools'][0]['poolCount'] }}
+                    </strong>
+                </p>
 
-            <p>{{ data_pool['entries'][0]['entryCount'] }}</p>
-        </div>
+                <p>{{ 'report.invited_participants'|trans }}:
+                    <strong>
+                        {{ data_pool['total_entries'][0]['totalEntryCount'] }}
+                    </strong>
+                </p>
 
-        <div class="col-xs-6 report">
-            <h2>{{ 'report.distinct_user_amount'|trans }}</h2>
+                <p>{{ 'report.confirmed_participants'|trans }}:
+                    <strong>
+                        {{ data_pool['total_confirmed_entries'][0]['confirmedEntryCount'] }}
+                    </strong>
+                </p>
 
-            <p><strong>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</strong></p>
-        </div>
+                <p>{{ 'report.average_entries'|trans }}:
+                    <strong>
+                        {{ data_pool['total_entry_average']|round }}
+                    </strong>
+                </p>
 
-        <div class="col-xs-6 .col-sm-3 report">
-            <h2>{{ 'report.average_user_amount'|trans }}</h2>
+                <p>{{ 'report.unique_entries'|trans }}:
+                    <strong>
+                        {{ data_pool['total_distinct_entries'][0]['distinctEntryCount'] }}
+                    </strong>
+                </p>
 
-            <p>{{ data_pool['entry_average'] }}</p>
-        </div>
+                <p>{{ 'report.completed_wishlists'|trans }}:
+                    <strong>
+                        {{ data_pool['total_wishlist_average']|number_format(2, '.', '') }} %
+                    </strong>
+                </p>
+            </div>
+            <div class="col-xs-6 col-md-6 report">
+                <h1>{{ 'report.confirmed_parties_month'|trans }}</h1>
 
+                <div class="" id="pool_chart" style="width: 100%"></div>
+            </div>
+            <div class="col-xs-6 col-md-6 report">
+                <h1>{{ 'report.confirmed_parties_total'|trans }}</h1>
 
-        <div class="col-xs-6 .col-sm-3 report">
+                <div id="total_pool_chart" style="width: 100%"></div>
+            </div>
+            <div class="col-xs-6 col-md-6 report">
+                <h1>{{ 'report.confirmed_participants_month'|trans }}</h1>
 
-            <h2>{{ 'report.average_wishlist_amount'|trans }}</h2>
+                <div id="entry_chart" style="width: 100%"></div>
+            </div>
+            <div class="col-xs-6 col-md-6 report">
+                <h1>{{ 'report.confirmed_participants_total'|trans }}</h1>
 
-            <p>{{ data_pool['wishlist_average'] }}%</p>
-        </div>
+                <div id="total_entry_chart" style="width: 100%"></div>
+            </div>
+            {% if data_pool['ip_usage'] is not empty %}
+                <div class="col-xs-6 report">
+                    <h3>{{ 'report.ip_usage'|trans }}</h3>
+
+                    <div id="ip_chart" style="width: 100%"></div>
+                    <p>{{ 'report.ip_tracking'|trans }}</p>
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="col-xs-6 col-md-6 report">
+                <h3>{{ 'report.created_parties'|trans }}</h3>
+
+                <div id="pool_chart" style="width: 100%"></div>
+            </div>
+            <div class="col-xs-6 col-md-6 report">
+                <h3>{{ 'report.invited_participants'|trans }}</h3>
+
+                <div id="entry_chart" style="width: 100%"></div>
+            </div>
+            {% if data_pool['ip_usage'] is not empty %}
+                <div class="col-xs-6 report">
+                    <h3>{{ 'report.ip_usage'|trans }}</h3>
+
+                    <div id="ip_chart" style="width: 100%"></div>
+                    <p>{{ 'report.ip_tracking'|trans }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
         <div class="clearfix"></div>
+    {% endif %}
+{% endblock %}
+{% block javascripts %}
+    {% if data_pool is not empty %}
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('43', {packages: ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var chartOptions = {
+                    legend: {position: 'bottom'}
+                };
+
+                {% if current_year != 'all' %}
+                var poolData = new google.visualization.DataTable();
+                poolData.addColumn('string', 'Month');
+                poolData.addColumn('number', '{{ 'report.parties'|trans }}');
+                poolData.addRows([
+                    {% for pool in data_pool['pool_chart_data'] %}
+                    ['{{ pool['month']|date("M") }}', {{ pool['accumulatedPoolCountByMonth'] }}],
+                    {% endfor %}
+                ]);
+                var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
+                poolChart.draw(poolData, chartOptions);
+
+                var totalPoolData = new google.visualization.DataTable();
+                totalPoolData.addColumn('string', 'Month');
+                totalPoolData.addColumn('number', '{{ 'report.parties'|trans }}');
+                totalPoolData.addRows([
+                    {% for pool in data_pool['total_pool_chart_data'] %}
+                    ['{{ pool['month']|date("M Y") }}', {{ pool['totalPoolCount'] }}],
+                    {% endfor %}
+                ]);
+                var totalPoolChart = new google.visualization.LineChart(document.getElementById('total_pool_chart'));
+                totalPoolChart.draw(totalPoolData, chartOptions);
+
+                var entryData = new google.visualization.DataTable();
+                entryData.addColumn('string', 'Month');
+                entryData.addColumn('number', '{{ 'report.participants'|trans }}');
+                entryData.addRows([
+                    {% for entry in data_pool['entry_chart_data'] %}
+                    ['{{ entry['month']|date("M") }}', {{ entry['accumulatedEntryCountByMonth'] }}],
+                    {% endfor %}
+                ]);
+                var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
+                entryChart.draw(entryData, chartOptions);
+
+                var totalEntryData = new google.visualization.DataTable();
+                totalEntryData.addColumn('string', 'Month');
+                totalEntryData.addColumn('number', '{{ 'report.participants'|trans }}');
+                totalEntryData.addRows([
+                    {% for entry in data_pool['total_entry_chart_data'] %}
+                    ['{{ entry['month']|date("M Y") }}', {{ entry['totalEntryCount'] }}],
+                    {% endfor %}
+                ]);
+                var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
+                totalEntryChart.draw(totalEntryData, chartOptions);
+
+                {% if data_pool['ip_usage'] is not empty %}
+                var ipData = new google.visualization.DataTable();
+                ipData.addColumn('string', 'IP type');
+                ipData.addColumn('number', 'Percentage');
+                ipData.addRows([
+                    ['IPv4', {{ data_pool['ip_usage']['ipv4_percentage']|round(2) }}],
+                    ['IPv6', {{ data_pool['ip_usage']['ipv6_percentage']|round(2) }}]
+                ]);
+
+                var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
+                ipChart.draw(ipData, chartOptions);
+                {% endif %}
+                {% else %}
+                var poolData = new google.visualization.DataTable();
+                poolData.addColumn('string', 'Season');
+                poolData.addColumn('number', '{{ 'report.parties'|trans }}');
+                poolData.addRows([
+                    {% for pool in data_pool['yearly_pool_chart_data'] %}
+                    {% if pool['year'] != null %}
+                    ['{{ pool['year'] }} - {{ pool['year'] + 1 }}', {{ pool['pool'][0]['accumulatedPoolCountByYear'] }}],
+                    {% endif %}
+                    {% endfor %}]);
+                var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
+                poolChart.draw(poolData, chartOptions);
+
+                var entryData = new google.visualization.DataTable();
+                entryData.addColumn('string', 'Season');
+                entryData.addColumn('number', '{{ 'report.participants'|trans }}');
+                entryData.addRows([
+                    {% for entry in data_pool['yearly_entry_chart_data'] %}
+                    {% if entry['year'] != null %}
+                    ['{{ entry['year'] }} - {{ entry['year'] + 1 }}', {{ entry['entry'][0]['accumulatedEntryCountByYear'] }}],
+                    {% endif %}
+                    {% endfor %}
+                ]);
+                var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
+                entryChart.draw(entryData, chartOptions);
+
+                {% if data_pool['ip_usage'] is not empty %}
+                var ipData = new google.visualization.DataTable();
+                ipData.addColumn('string', 'IP type');
+                ipData.addColumn('number', 'Percentage');
+                ipData.addRows([
+                    ['IPv4', {{ data_pool['ip_usage']['ipv4_percentage']|round(2) }}],
+                    ['IPv6', {{ data_pool['ip_usage']['ipv6_percentage']|round(2) }}]
+                ]);
+
+                var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
+                ipChart.draw(ipData, chartOptions);
+                {% endif %}
+                {% endif %}
+            }
+        </script>
     {% endif %}
 {% endblock %}
