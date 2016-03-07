@@ -550,7 +550,7 @@ class Entry
     /**
      * @return string
      */
-    public function getIpv4()
+    private function getIpv4()
     {
         return $this->ipv4;
     }
@@ -560,7 +560,7 @@ class Entry
      *
      * @return Entry
      */
-    public function setIpv4($ipv4)
+    private function setIpv4($ipv4)
     {
         $this->ipv4 = $ipv4;
 
@@ -570,7 +570,7 @@ class Entry
     /**
      * @return string
      */
-    public function getIpv6()
+    private function getIpv6()
     {
         return $this->ipv6;
     }
@@ -580,7 +580,7 @@ class Entry
      *
      * @return Entry
      */
-    public function setIpv6($ipv6)
+    private function setIpv6($ipv6)
     {
         $this->ipv6 = $ipv6;
 

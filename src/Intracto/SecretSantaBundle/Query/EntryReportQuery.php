@@ -6,14 +6,25 @@ use Doctrine\DBAL\Connection;
 
 class EntryReportQuery
 {
+    /**
+     * @var Connection
+     */
     private $dbal;
+
+    /**
+     * @var PoolReportQuery
+     */
     private $poolReportQuery;
+
+    /**
+     * @var FeaturedYearsQuery
+     */
     private $featuredYearsQuery;
 
     /**
      * @param Connection $dbal
      */
-    public function __construct(Connection $dbal, $poolReportQuery, $featuredYearsQuery)
+    public function __construct(Connection $dbal, PoolReportQuery $poolReportQuery, FeaturedYearsQuery $featuredYearsQuery)
     {
         $this->dbal = $dbal;
         $this->poolReportQuery = $poolReportQuery;
