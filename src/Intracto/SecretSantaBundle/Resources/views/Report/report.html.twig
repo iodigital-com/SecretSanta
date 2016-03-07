@@ -41,26 +41,31 @@
                     {{ data_pool['pools'][0]['poolCount'] }}
                 </strong>
             </p>
+
             <p>{{ 'report.invited_participants'|trans }}:
                 <strong>
                     {{ data_pool['entries'][0]['entryCount'] }}
                 </strong>
             </p>
+
             <p>{{ 'report.confirmed_participants'|trans }}:
                 <strong>
                     {{ data_pool['confirmed_entries'][0]['confirmedEntryCount'] }}
                 </strong>
             </p>
+
             <p>{{ 'report.average_entries'|trans }}:
                 <strong>
                     {{ data_pool['entry_average']|round }}
                 </strong>
             </p>
+
             <p>{{ 'report.unique_entries'|trans }}:
                 <strong>
                     {{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}
                 </strong>
             </p>
+
             <p>{{ 'report.completed_wishlists'|trans }}:
                 <strong>
                     {{ data_pool['wishlist_average']|number_format(2, '.', '') }} %
@@ -73,31 +78,37 @@
         {% if current_year != 'all' %}
             <div class="col-xs-6 col-md-6 report">
                 <h4>{{ 'report.total'|trans }}</h4>
+
                 <p>{{ 'report.confirmed_parties'|trans }}:
                     <strong>
                         {{ data_pool['total_pools'][0]['poolCount'] }}
                     </strong>
                 </p>
+
                 <p>{{ 'report.invited_participants'|trans }}:
                     <strong>
                         {{ data_pool['total_entries'][0]['totalEntryCount'] }}
                     </strong>
                 </p>
+
                 <p>{{ 'report.confirmed_participants'|trans }}:
                     <strong>
                         {{ data_pool['total_confirmed_entries'][0]['confirmedEntryCount'] }}
                     </strong>
                 </p>
+
                 <p>{{ 'report.average_entries'|trans }}:
                     <strong>
                         {{ data_pool['total_entry_average']|round }}
                     </strong>
                 </p>
+
                 <p>{{ 'report.unique_entries'|trans }}:
                     <strong>
                         {{ data_pool['total_distinct_entries'][0]['distinctEntryCount'] }}
                     </strong>
                 </p>
+
                 <p>{{ 'report.completed_wishlists'|trans }}:
                     <strong>
                         {{ data_pool['total_wishlist_average']|number_format(2, '.', '') }} %
@@ -106,23 +117,28 @@
             </div>
             <div class="col-xs-6 col-md-6 report">
                 <h1>{{ 'report.confirmed_parties_month'|trans }}</h1>
+
                 <div class="" id="pool_chart" style="width: 100%"></div>
             </div>
             <div class="col-xs-6 col-md-6 report">
                 <h1>{{ 'report.confirmed_parties_total'|trans }}</h1>
+
                 <div id="total_pool_chart" style="width: 100%"></div>
             </div>
             <div class="col-xs-6 col-md-6 report">
                 <h1>{{ 'report.confirmed_participants_month'|trans }}</h1>
+
                 <div id="entry_chart" style="width: 100%"></div>
             </div>
             <div class="col-xs-6 col-md-6 report">
                 <h1>{{ 'report.confirmed_participants_total'|trans }}</h1>
+
                 <div id="total_entry_chart" style="width: 100%"></div>
             </div>
             {% if data_pool['ip_usage'] is not empty %}
                 <div class="col-xs-6 report">
                     <h3>{{ 'report.ip_usage'|trans }}</h3>
+
                     <div id="ip_chart" style="width: 100%"></div>
                     <p>{{ 'report.ip_tracking'|trans }}</p>
                 </div>
@@ -130,15 +146,18 @@
         {% else %}
             <div class="col-xs-6 col-md-6 report">
                 <h3>{{ 'report.created_parties'|trans }}</h3>
+
                 <div id="pool_chart" style="width: 100%"></div>
             </div>
             <div class="col-xs-6 col-md-6 report">
                 <h3>{{ 'report.invited_participants'|trans }}</h3>
+
                 <div id="entry_chart" style="width: 100%"></div>
             </div>
             {% if data_pool['ip_usage'] is not empty %}
                 <div class="col-xs-6 report">
                     <h3>{{ 'report.ip_usage'|trans }}</h3>
+
                     <div id="ip_chart" style="width: 100%"></div>
                     <p>{{ 'report.ip_tracking'|trans }}</p>
                 </div>
