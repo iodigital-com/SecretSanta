@@ -4,20 +4,37 @@ namespace Intracto\SecretSantaBundle\Query;
 
 class ReportQuery
 {
+    /**
+     * @var PoolReportQuery
+     */
     private $poolReportQuery;
+    /**
+     * @var EntryReportQuery
+     */
     private $entryReportQuery;
+    /**
+     * @var IpReportQuery
+     */
     private $ipReportQuery;
+    /**
+     * @var WishlistReportQuery
+     */
     private $wishlistReportQuery;
+    /**
+     * @var FeaturedYearsQuery
+     */
     private $featuredYearsQuery;
 
     /**
-     * @param $poolReportQuery
-     * @param $entryReportQuery
-     * @param $ipReportQuery
-     * @param $wishlistReportQuery
-     * @param $featuredYearsQuery
+     * @param PoolReportQuery $poolReportQuery
+     * @param EntryReportQuery $entryReportQuery
+     * @param IpReportQuery $ipReportQuery
+     * @param WishlistReportQuery $wishlistReportQuery
+     * @param FeaturedYearsQuery $featuredYearsQuery
      */
-    public function __construct($poolReportQuery, $entryReportQuery, $ipReportQuery, $wishlistReportQuery, $featuredYearsQuery)
+    public function __construct(PoolReportQuery $poolReportQuery, EntryReportQuery $entryReportQuery,
+                                IpReportQuery $ipReportQuery, WishlistReportQuery $wishlistReportQuery,
+                                FeaturedYearsQuery $featuredYearsQuery)
     {
         $this->poolReportQuery = $poolReportQuery;
         $this->entryReportQuery = $entryReportQuery;

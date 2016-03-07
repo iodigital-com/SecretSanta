@@ -6,16 +6,24 @@ use Doctrine\DBAL\Connection;
 
 class WishlistReportQuery
 {
+    /**
+     * @var Connection
+     */
     private $dbal;
-    private $entryReportQueries;
+
+    /**
+     * @var EntryReportQuery
+     */
+    private $entryReportQuery;
 
     /**
      * @param Connection $dbal
+     * @param EntryReportQuery $entryReportQuery
      */
-    public function __construct(Connection $dbal, $entryReportQueries)
+    public function __construct(Connection $dbal, EntryReportQuery $entryReportQuery)
     {
         $this->dbal = $dbal;
-        $this->entryReportQueries = $entryReportQueries;
+        $this->entryReportQuery = $entryReportQuery;
     }
 
     /**
@@ -25,7 +33,7 @@ class WishlistReportQuery
     public function calculateCompletedWishlists(PoolYear $poolYear)
     {
         $wishlists = $this->countWishlists($poolYear);
-        $entries = $this->entryReportQueries->countEntries($poolYear);
+        $entries = $this->entryReportQuery->countEntries($poolYear);
 
         if ($entries[0]['entryCount'] != 0) {
             return (implode($wishlists[0]) / implode($entries[0])) * 100;
@@ -60,7 +68,7 @@ class WishlistReportQuery
     public function calculateCompletedWishlistsUntilDate(\DateTime $date)
     {
         $totalWishlists = $this->countAllWishlistsUntilDate($date);
-        $totalEntries = $this->entryReportQueries->countAllEntriesUntilDate($date);
+        $totalEntries = $this->entryReportQuery->countAllEntriesUntilDate($date);
 
         if ($totalEntries[0]['totalEntryCount'] != 0) {
             return (implode($totalWishlists[0]) / implode($totalEntries[0])) * 100;

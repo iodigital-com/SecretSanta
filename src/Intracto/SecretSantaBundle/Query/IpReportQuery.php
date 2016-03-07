@@ -7,6 +7,9 @@ use Proxies\__CG__\Intracto\SecretSantaBundle\Entity\Pool;
 
 class IpReportQuery
 {
+    /**
+     * @var Connection
+     */
     private $dbal;
 
     /**
