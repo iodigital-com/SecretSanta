@@ -528,7 +528,7 @@ class Entry
      */
     public function getIp()
     {
-        if ($this->getIpv4() == null) {
+        if ($this->getIpv4() != null) {
             return $this->getIpv4();
         }
 
