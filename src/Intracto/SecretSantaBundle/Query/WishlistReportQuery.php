@@ -44,7 +44,9 @@ class WishlistReportQuery
             ->select('count(p.id) AS wishlistCount')
             ->from('Pool', 'p')
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.wishlist_updated = TRUE')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->andWhere('e.wishlist_updated = TRUE')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
@@ -77,7 +79,8 @@ class WishlistReportQuery
             ->select('count(p.id) AS totalWishlistCount')
             ->from('Pool', 'p')
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate < :lastDay AND e.wishlist_updated = TRUE')
+            ->where('p.sentdate < :lastDay')
+            ->andWhere('e.wishlist_updated = TRUE')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();

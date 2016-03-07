@@ -27,7 +27,7 @@ class PoolReportQuery
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS poolCount')
             ->from('Pool', 'p')
-            ->andWhere('p.sentdate >= :firstDay')
+            ->where('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
@@ -59,7 +59,8 @@ class PoolReportQuery
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS accumulatedPoolCountByMonth, p.sentdate AS month')
             ->from('Pool', 'p')
-            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
             ->groupBy('month(p.sentdate)')
             ->orderBy('month(p.sentdate) < 4, month(p.sentdate)')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
@@ -82,7 +83,8 @@ class PoolReportQuery
             $query = $this->dbal->createQueryBuilder()
                 ->select('count(p.id) AS accumulatedPoolCountByYear')
                 ->from('Pool', 'p')
-                ->where('p.sentdate IS NOT NULL AND p.sentdate < :lastDay')
+                ->where('p.sentdate IS NOT NULL')
+                ->andWhere('p.sentdate < :lastDay')
                 ->setParameter('lastDay', $lastDay);
 
             $chartData = $query->execute()->fetchAll();

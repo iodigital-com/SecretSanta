@@ -30,7 +30,9 @@ class EntryReportQuery
             ->select('count(p.id) AS confirmedEntryCount')
             ->from('Pool', 'p')
             ->innerjoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay AND e.viewdate IS NOT NULL')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->andWhere('e.viewdate IS NOT NULL')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
@@ -47,7 +49,8 @@ class EntryReportQuery
             ->select('count(p.id) AS confirmedEntryCount')
             ->from('Pool', 'p')
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate < :lastDay AND e.viewdate IS NOT NULL')
+            ->where('p.sentdate < :lastDay')
+            ->andWhere('e.viewdate IS NOT NULL')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
@@ -63,7 +66,8 @@ class EntryReportQuery
             ->select('count(distinct e.email) AS distinctEntryCount')
             ->from('Pool', 'p')
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
@@ -92,7 +96,8 @@ class EntryReportQuery
             ->select('count(p.id) AS accumulatedEntryCountByMonth, p.sentdate AS month')
             ->from('Pool', 'p')
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
             ->groupBy('month(p.sentdate)')
             ->orderBy('month(p.sentdate) < 4, month(p.sentdate)')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
@@ -116,7 +121,8 @@ class EntryReportQuery
                 ->select('count(p.id) AS accumulatedEntryCountByYear')
                 ->from('Pool', 'p')
                 ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-                ->where('p.sentdate IS NOT NULL AND p.sentdate < :lastDay')
+                ->where('p.sentdate IS NOT NULL')
+                ->andWhere('p.sentdate < :lastDay')
                 ->setParameter('lastDay', $lastDay);
 
             $chartData = $query->execute()->fetchAll();
@@ -184,7 +190,8 @@ class EntryReportQuery
             ->select('count(p.id) AS entryCount')
             ->from('Pool', 'p')
             ->innerjoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay AND p.sentdate < :lastDay')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 

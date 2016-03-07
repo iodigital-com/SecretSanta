@@ -49,7 +49,9 @@ class IpReportQuery
             ->select('count(e.ipv4) AS ipv4Count')
             ->from('Pool', 'p')
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('e.ipv4 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate <:lastDay')
+            ->where('e.ipv4 IS NOT NULL')
+            ->andWhere('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
@@ -66,7 +68,9 @@ class IpReportQuery
             ->select('count(e.ipv6) AS ipv6Count')
             ->from('Pool', 'p')
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('e.ipv6 IS NOT NULL AND p.sentdate >= :firstDay AND p.sentdate <:lastDay')
+            ->where('e.ipv6 IS NOT NULL')
+            ->andWhere('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
             ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
 
