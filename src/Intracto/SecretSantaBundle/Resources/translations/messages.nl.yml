@@ -371,6 +371,6 @@ report:
     unique_entries: 'Unieke deelnemers'
     completed_wishlists: 'Aantal ingevulde verlanglijsten'
     ip_usage: 'IP type van de bezoekers'
-    ip_usage: 'Tracking sinds maart 2016'
+    ip_tracking: 'Tracking sinds maart 2016'
     no_data: 'Er zijn geen cijfers beschikbaar over dit seizoen.'
     season_info: 'Kies het seizoen waarvan u de cijfers wilt bekijken. Elk seizoen begint op 1 april en eindigt op 30 maart.'
