@@ -44,3 +44,11 @@
 .report_inside table tr td:nth-child(2) {
     font-weight: bold;
 }
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
