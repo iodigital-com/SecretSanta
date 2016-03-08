@@ -7,9 +7,7 @@ use Proxies\__CG__\Intracto\SecretSantaBundle\Entity\Pool;
 
 class IpReportQuery
 {
-    /**
-     * @var Connection
-     */
+    /** @var Connection */
     private $dbal;
 
     /**
@@ -21,13 +19,13 @@ class IpReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return array
      */
-    public function calculateIpUsage(PoolYear $poolYear)
+    public function calculateIpUsage(Season $season)
     {
-        $ipv4 = $this->queryIpv4Records($poolYear);
-        $ipv6 = $this->queryIpv6Records($poolYear);
+        $ipv4 = $this->queryIpv4Records($season);
+        $ipv6 = $this->queryIpv6Records($season);
 
         if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
             $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
@@ -43,10 +41,10 @@ class IpReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return mixed
      */
-    private function queryIpv4Records(PoolYear $poolYear)
+    private function queryIpv4Records(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(e.ipv4) AS ipv4Count')
@@ -55,17 +53,17 @@ class IpReportQuery
             ->where('e.ipv4 IS NOT NULL')
             ->andWhere('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return mixed
      */
-    private function queryIpv6Records(PoolYear $poolYear)
+    private function queryIpv6Records(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(e.ipv6) AS ipv6Count')
@@ -74,8 +72,8 @@ class IpReportQuery
             ->where('e.ipv6 IS NOT NULL')
             ->andWhere('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }

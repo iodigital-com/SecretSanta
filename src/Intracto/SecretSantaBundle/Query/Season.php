@@ -2,7 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Query;
 
-class PoolYear
+class Season
 {
     private $start;
     private $end;
