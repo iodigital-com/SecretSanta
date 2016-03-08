@@ -30,5 +30,12 @@
         <service id="intracto_secret_santa.featured_years" class="Intracto\SecretSantaBundle\Query\FeaturedYearsQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
+        <service id="intracto_secret_santa.season_comparison" class="Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery">
+            <argument type="service" id="intracto_secret_santa.pool"></argument>
+            <argument type="service" id="intracto_secret_santa.entry"></argument>
+            <argument type="service" id="intracto_secret_santa.ip"></argument>
+            <argument type="service" id="intracto_secret_santa.wishlist"></argument>
+            <argument type="service" id="intracto_secret_santa.featured_years"></argument>
+        </service>
     </services>
 </container>

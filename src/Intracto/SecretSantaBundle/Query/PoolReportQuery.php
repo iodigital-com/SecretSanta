@@ -38,6 +38,24 @@ class PoolReportQuery
         return $query->execute()->fetchAll();
     }
 
+    public function compareSeasonsPools($year)
+    {
+        $season1 = new PoolYear($year);
+        $season2 = new PoolYear($year - 1);
+
+        $poolsSeason1 = $this->countPools($season1);
+
+        if($season2) {
+            $poolsSeason2 = $this->countPools($season2);
+            $difference = $poolsSeason1[0]['poolCount'] - $poolsSeason2[0]['poolCount'];
+
+            return $difference;
+        }
+
+        $difference = $poolsSeason1[0]['poolCount'];
+        return $difference;
+    }
+
     /**
      * @param \DateTime $date
      * @return mixed
@@ -126,5 +144,18 @@ class PoolReportQuery
         }
 
         return $totalPoolChartData;
+    }
+
+    /**
+     * @param PoolYear $season1
+     * @param PoolYear $season2
+     * @return mixed
+     */
+    public function calculatePoolCountDifferenceBetweenSeasons(PoolYear $season1, PoolYear $season2)
+    {
+        $poolCountSeason1 = $this->countPools($season1);
+        $poolCountSeason2 = $this->countPools($season2);
+
+        return $poolCountSeason1[0]['poolCount'] - $poolCountSeason2[0]['poolCount'];
     }
 }
