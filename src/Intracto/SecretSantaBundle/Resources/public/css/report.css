@@ -1,4 +1,9 @@
 /* Report page */
+.report h1 {
+    font-size: 20px;
+    height: 35px;
+}
+
 .report h2 {
     font-size: 11px;
 }
@@ -14,12 +19,28 @@
     height: 50px;
 }
 
-.report h1 {
-    font-size: 20px;
-    height: 35px;
+.report_inside {
+    background-color: #f7f7f7;
+    padding: 10px;
+    margin: 15px 0;
 }
 
-.report strong {
-    font-size: 18px;
-    text-align: right;
+.report_inside h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    height: 22px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.report_inside table tr td {
+    padding: 2px 0;
+}
+
+.report_inside table tr td:not(:first-child) {
+    padding-left: 10px;
+}
+
+.report_inside table tr td:nth-child(2) {
+    font-weight: bold;
 }
