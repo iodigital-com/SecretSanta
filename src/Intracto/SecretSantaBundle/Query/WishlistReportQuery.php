@@ -6,14 +6,9 @@ use Doctrine\DBAL\Connection;
 
 class WishlistReportQuery
 {
-    /**
-     * @var Connection
-     */
+    /** @var Connection */
     private $dbal;
-
-    /**
-     * @var EntryReportQuery
-     */
+    /** @var EntryReportQuery */
     private $entryReportQuery;
 
     /**
@@ -27,13 +22,13 @@ class WishlistReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return float
      */
-    public function calculateCompletedWishlists(PoolYear $poolYear)
+    public function calculateCompletedWishlists(Season $season)
     {
-        $wishlists = $this->countWishlists($poolYear);
-        $entries = $this->entryReportQuery->countEntries($poolYear);
+        $wishlists = $this->countWishlists($season);
+        $entries = $this->entryReportQuery->countEntries($season);
 
         if ($entries[0]['entryCount'] != 0) {
             return (implode($wishlists[0]) / implode($entries[0])) * 100;
@@ -43,10 +38,10 @@ class WishlistReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return mixed
      */
-    private function countWishlists(PoolYear $poolYear)
+    private function countWishlists(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS wishlistCount')
@@ -55,8 +50,8 @@ class WishlistReportQuery
             ->where('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
             ->andWhere('e.wishlist_updated = TRUE')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }

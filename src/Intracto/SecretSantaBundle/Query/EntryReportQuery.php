@@ -6,36 +6,33 @@ use Doctrine\DBAL\Connection;
 
 class EntryReportQuery
 {
-    /**
-     * @var Connection
-     */
+    /** @var Connection */
     private $dbal;
-
-    /**
-     * @var PoolReportQuery
-     */
+    /** @var PoolReportQuery */
     private $poolReportQuery;
-
-    /**
-     * @var FeaturedYearsQuery
-     */
+    /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
 
     /**
      * @param Connection $dbal
+     * @param PoolReportQuery $poolReportQuery
+     * @param FeaturedYearsQuery $featuredYearsQuery
      */
-    public function __construct(Connection $dbal, PoolReportQuery $poolReportQuery, FeaturedYearsQuery $featuredYearsQuery)
-    {
+    public function __construct(
+        Connection $dbal,
+        PoolReportQuery $poolReportQuery,
+        FeaturedYearsQuery $featuredYearsQuery
+    ) {
         $this->dbal = $dbal;
         $this->poolReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
     /**
-     * @param PoolYear $poolYear
-     * @return array
+     * @param Season $season
+     * @return mixed
      */
-    public function countConfirmedEntries(PoolYear $poolYear)
+    public function countConfirmedEntries(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS confirmedEntryCount')
@@ -44,8 +41,8 @@ class EntryReportQuery
             ->where('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
             ->andWhere('e.viewdate IS NOT NULL')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }
@@ -68,10 +65,10 @@ class EntryReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
-     * @return array
+     * @param Season $season
+     * @return mixed
      */
-    public function countDistinctEntries(PoolYear $poolYear)
+    public function countDistinctEntries(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(distinct e.email) AS distinctEntryCount')
@@ -79,8 +76,8 @@ class EntryReportQuery
             ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
             ->where('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }
@@ -98,10 +95,10 @@ class EntryReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
-     * @return array
+     * @param Season $season
+     * @return mixed
      */
-    public function queryDataForMonthlyEntryChart(PoolYear $poolYear)
+    public function queryDataForMonthlyEntryChart(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS accumulatedEntryCountByMonth, p.sentdate AS month')
@@ -111,8 +108,8 @@ class EntryReportQuery
             ->andWhere('p.sentdate < :lastDay')
             ->groupBy('month(p.sentdate)')
             ->orderBy('month(p.sentdate) < 4, month(p.sentdate)')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }
@@ -176,13 +173,13 @@ class EntryReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return float
      */
-    public function calculateAverageEntriesPerPool(PoolYear $poolYear)
+    public function calculateAverageEntriesPerPool(Season $season)
     {
-        $pools = $this->poolReportQuery->countPools($poolYear);
-        $entries = $this->countEntries($poolYear);
+        $pools = $this->poolReportQuery->countPools($season);
+        $entries = $this->countEntries($season);
 
         if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount'] != 0) {
             return implode($entries[0]) / implode($pools[0]);
@@ -192,10 +189,10 @@ class EntryReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return mixed
      */
-    public function countEntries(PoolYear $poolYear)
+    public function countEntries(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS entryCount')
@@ -203,8 +200,8 @@ class EntryReportQuery
             ->innerjoin('p', 'Entry', 'e', 'p.id = e.poolId')
             ->where('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }

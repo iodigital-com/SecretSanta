@@ -6,9 +6,7 @@ use Doctrine\DBAL\Connection;
 
 class FeaturedYearsQuery
 {
-    /**
-     * @var Connection
-     */
+    /** @var Connection */
     private $dbal;
 
     /**

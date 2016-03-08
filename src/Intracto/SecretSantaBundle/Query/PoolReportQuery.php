@@ -6,14 +6,9 @@ use Doctrine\DBAL\Connection;
 
 class PoolReportQuery
 {
-    /**
-     * @var Connection
-     */
+    /** @var Connection */
     private $dbal;
-
-    /**
-     * @var FeaturedYearsQuery
-     */
+    /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
 
     /**
@@ -27,18 +22,18 @@ class PoolReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return mixed
      */
-    public function countPools(PoolYear $poolYear)
+    public function countPools(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS poolCount')
             ->from('Pool', 'p')
             ->where('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }
@@ -59,10 +54,10 @@ class PoolReportQuery
     }
 
     /**
-     * @param PoolYear $poolYear
+     * @param Season $season
      * @return mixed
      */
-    public function queryDataForMonthlyPoolChart(PoolYear $poolYear)
+    public function queryDataForMonthlyPoolChart(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS accumulatedPoolCountByMonth, p.sentdate AS month')
@@ -71,8 +66,8 @@ class PoolReportQuery
             ->andWhere('p.sentdate < :lastDay')
             ->groupBy('month(p.sentdate)')
             ->orderBy('month(p.sentdate) < 4, month(p.sentdate)')
-            ->setParameter('firstDay', $poolYear->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $poolYear->getEnd()->format('Y-m-d H:i:s'));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }
