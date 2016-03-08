@@ -136,7 +136,12 @@ class PoolReportQuery
     public function calculatePoolCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $poolCountSeason1 = $this->countPools($season1);
-        $poolCountSeason2 = $this->countPools($season2);
+        try {
+            $poolCountSeason2 = $this->countPools($season2);
+        } catch(\Exception $e) {
+            return $poolCountSeason1[0]['poolCount'];
+        }
+
 
         return $poolCountSeason1[0]['poolCount'] - $poolCountSeason2[0]['poolCount'];
     }

@@ -97,7 +97,11 @@ class WishlistReportQuery
     public function calculateCompletedWishlistDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $completedWishlistsSeason1 = $this->calculateCompletedWishlists($season1);
-        $completedWishlistsSeason2 = $this->calculateCompletedWishlists($season2);
+        try {
+            $completedWishlistsSeason2 = $this->calculateCompletedWishlists($season2);
+        } catch(\Exception $e) {
+            return $completedWishlistsSeason1;
+        }
 
         return $completedWishlistsSeason1 - $completedWishlistsSeason2;
     }
