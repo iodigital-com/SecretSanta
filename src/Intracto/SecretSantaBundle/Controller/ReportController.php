@@ -25,19 +25,22 @@ class ReportController extends Controller
                 $differenceDataPool = $comparison->getComparison($currentYear);
             } else {
                 $dataPool = $report->getPoolReport();
-                $differenceDataPool = [];
             }
         } catch (\Exception $e) {
             $currentYear = [];
             $dataPool = [];
-            $differenceDataPool = [];
         }
 
-        return [
+        $data = [
             'current_year' => $currentYear,
             'data_pool' => $dataPool,
             'featured_years' => $this->get('intracto_secret_santa.featured_years')->getFeaturedYears(),
-            'difference_data_pool' => $differenceDataPool,
         ];
+
+        if(isset($differenceDataPool)) {
+            $data['difference_data_pool'] = $differenceDataPool;
+        }
+
+        return $data;
     }
 }
