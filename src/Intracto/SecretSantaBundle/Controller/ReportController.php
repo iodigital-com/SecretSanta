@@ -26,11 +26,9 @@ class ReportController extends Controller
                 $differenceDataPool = $comparison->getComparison($currentYear);
             } else {
                 $dataPool = $report->getPoolReport();
-                $differenceDataPool = [];
             }
         } catch (\Exception $e) {
             $dataPool = [];
-            $differenceDataPool = [];
         }
 
         try {
@@ -43,12 +41,17 @@ class ReportController extends Controller
             $googleDataPool = [];
         }
 
-        return [
+        $data =  [
             'current_year' => $currentYear,
             'data_pool' => $dataPool,
             'featured_years' => $this->get('intracto_secret_santa.featured_years')->getFeaturedYears(),
             'google_data_pool' => $googleDataPool,
-            'difference_data_pool' => $differenceDataPool,
         ];
+
+        if(isset($differenceDataPool)) {
+            $data['difference_data_pool'] = $differenceDataPool;
+        }
+
+        return $data;
     }
 }

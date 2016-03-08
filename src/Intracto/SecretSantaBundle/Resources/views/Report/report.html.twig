@@ -48,7 +48,7 @@
                     <tr>
                         <td>{{ 'report.confirmed_parties'|trans }}:</td>
                         <td>{{ data_pool['pools'][0]['poolCount'] }}</td>
-                        {% if difference_data_pool is not empty %}
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
                             {% if difference_data_pool['pool_count_difference'] > 0 %}
                                 <td class="positive">+ {{ difference_data_pool['pool_count_difference'] }}</td>
                             {% elseif difference_data_pool['pool_count_difference'] == 0 %}
@@ -61,7 +61,7 @@
                     <tr>
                         <td>{{ 'report.invited_participants'|trans }}:</td>
                         <td>{{ data_pool['entries'][0]['entryCount'] }}</td>
-                        {% if difference_data_pool is not empty %}
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
                             {% if difference_data_pool['entry_count_difference'] > 0 %}
                                 <td class="positive">+ {{ difference_data_pool['entry_count_difference'] }}</td>
                             {% elseif difference_data_pool['entry_count_difference'] == 0 %}
@@ -74,7 +74,7 @@
                     <tr>
                         <td>{{ 'report.confirmed_participants'|trans }}:</td>
                         <td>{{ data_pool['confirmed_entries'][0]['confirmedEntryCount'] }}</td>
-                        {% if difference_data_pool is not empty %}
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
                             {% if difference_data_pool['confirmed_entry_count_difference'] > 0 %}
                                 <td class="positive">+ {{ difference_data_pool['confirmed_entry_count_difference'] }}</td>
                             {% elseif difference_data_pool['confirmed_entry_count_difference'] == 0 %}
@@ -87,7 +87,7 @@
                     <tr>
                         <td>{{ 'report.average_entries'|trans }}:</td>
                         <td>{{ data_pool['entry_average']|round }}</td>
-                        {% if difference_data_pool is not empty %}
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
                             {% if difference_data_pool['average_entries_difference']|round > 0 %}
                                 <td class="positive">+ {{ difference_data_pool['average_entries_difference']|round }}</td>
                             {% elseif difference_data_pool['average_entries_difference']|round == 0 %}
@@ -100,7 +100,7 @@
                     <tr>
                         <td>{{ 'report.unique_entries'|trans }}:</td>
                         <td>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</td>
-                        {% if difference_data_pool is not empty %}
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
                             {% if difference_data_pool['distinct_entry_count_difference'] > 0 %}
                                 <td class="positive">+ {{ difference_data_pool['distinct_entry_count_difference'] }}</td>
                             {% elseif difference_data_pool['distinct_entry_count_difference'] == 0 %}
@@ -113,7 +113,7 @@
                     <tr>
                         <td>{{ 'report.completed_wishlists'|trans }}:</td>
                         <td>{{ data_pool['wishlist_average']|number_format(2, '.', '') }} %</td>
-                        {% if difference_data_pool is not empty %}
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
                             {% if difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') > 0 %}
                                 <td class="positive">+ {{ difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') }} %</td>
                             {% elseif difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') == 0 %}
