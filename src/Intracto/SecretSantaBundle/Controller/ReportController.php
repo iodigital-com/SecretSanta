@@ -15,24 +15,37 @@ class ReportController extends Controller
      */
     public function reportAction(Request $request)
     {
-        $report = $this->get('intracto_secret_santa.report');
+        $reportQuery = $this->get('intracto_secret_santa.report');
+        $analyticsQuery = $this->get('intracto_secret_santa.analytics');
         $currentYear = $request->get('year', 'all');
 
         try {
             if ($currentYear != 'all') {
-                $dataPool = $report->getPoolReport($currentYear);
+                $dataPool = $reportQuery->getPoolReport($currentYear);
+
             } else {
-                $dataPool = $report->getPoolReport();
+                $dataPool = $reportQuery->getPoolReport();
+
             }
         } catch (\Exception $e) {
-            $currentYear = [];
             $dataPool = [];
+        }
+
+        try {
+            if ($currentYear != 'all') {
+                $googleDataPool = $analyticsQuery->getAnalyticsReport($currentYear);
+            } else {
+                $googleDataPool = $analyticsQuery->getAnalyticsReport();
+            }
+        } catch (\Exception $e) {
+            $googleDataPool = [];
         }
 
         return [
             'current_year' => $currentYear,
             'data_pool' => $dataPool,
             'featured_years' => $this->get('intracto_secret_santa.featured_years')->getFeaturedYears(),
+            'google_data_pool' => $googleDataPool,
         ];
     }
 }
