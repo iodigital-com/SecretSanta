@@ -7,13 +7,19 @@ use Google_Service_Analytics;
 
 class GoogleAnalyticsQuery
 {
+    private $viewId;
+
+    public function __construct($viewId)
+    {
+        $this->viewId = $viewId;
+    }
+
     /**
-     * @param $viewId
      * @param null $year
      * @return array
      * @throws \Google_Exception
      */
-    public function getAnalyticsReport($viewId, $year = null)
+    public function getAnalyticsReport($year = null)
     {
         $season = new Season($year);
 
@@ -25,7 +31,7 @@ class GoogleAnalyticsQuery
         }
 
         $analytics = new Google_Service_Analytics($client);
-        $analyticsViewId = $viewId;
+        $analyticsViewId = $this->viewId;
         $startDate = $season->getStart()->format('Y-m-d');
         $endDate = $season->getEnd()->format('Y-m-d');
         $metrics = 'ga:sessions';

@@ -352,6 +352,7 @@ forgot_manage_link:
 report:
     title: 'Rapportering'
     results: 'Resultaten'
+    analytics: 'Analytics'
     total_overview: 'Totale resultaten'
     all_time: 'Algemeen overzicht'
     parties: 'Feestjes'
@@ -370,8 +371,7 @@ report:
     average_entries: 'Gemiddeld aantal deelnemers per feestje'
     unique_entries: 'Unieke deelnemers'
     completed_wishlists: 'Aantal ingevulde verlanglijsten'
-    ip_usage: 'IP type van de bezoekers'
-    ip_tracking: 'Tracking sinds maart 2016'
+    ip_usage: 'IP type van de bezoekers (sinds maart 2016)'
     visitors_per_country: 'Bezoekers per land'
     visitors_per_language: 'Bezoekers per taal'
     mobile_usage: 'Mobiel/desktop'

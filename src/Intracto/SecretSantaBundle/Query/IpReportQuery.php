@@ -27,6 +27,11 @@ class IpReportQuery
         $ipv4 = $this->queryIpv4Records($season);
         $ipv6 = $this->queryIpv6Records($season);
 
+        if($ipv4['ipv4Count'] == 0 && $ipv6['ipv6Count'] == 0)
+        {
+            return [];
+        }
+
         return [
             'ipv4' => $ipv4,
             'ipv6' => $ipv6,

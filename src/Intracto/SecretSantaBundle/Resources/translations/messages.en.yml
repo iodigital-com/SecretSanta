@@ -373,6 +373,7 @@ forgot_manage_link:
 report:
     title: 'Report'
     results: 'Results'
+    analytics: 'Analytics'
     total_overview: 'Total overview'
     all_time: 'All time'
     parties: 'Parties'
@@ -391,8 +392,7 @@ report:
     average_entries: 'Average amount of participants per party'
     unique_entries: 'Unique participants'
     completed_wishlists: 'Amount of completed wishlists'
-    ip_usage: 'IP type of visitors'
-    ip_tracking: 'Tracking since March 2016'
+    ip_usage: 'IP type of visitors (since March 2016)'
     visitors_per_country: 'Visitors per country'
     visitors_per_language: 'Visitors per language'
     mobile_usage: 'Mobile/desktop'

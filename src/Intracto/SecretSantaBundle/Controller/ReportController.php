@@ -18,7 +18,6 @@ class ReportController extends Controller
         $reportQuery = $this->get('intracto_secret_santa.report');
         $analyticsQuery = $this->get('intracto_secret_santa.analytics');
         $currentYear = $request->get('year', 'all');
-        $viewId = $this->container->getParameter('ga_view_id');
 
         try {
             if ($currentYear != 'all') {
@@ -34,9 +33,9 @@ class ReportController extends Controller
 
         try {
             if ($currentYear != 'all') {
-                $googleDataPool = $analyticsQuery->getAnalyticsReport($viewId, $currentYear);
+                $googleDataPool = $analyticsQuery->getAnalyticsReport($currentYear);
             } else {
-                $googleDataPool = $analyticsQuery->getAnalyticsReport($viewId);
+                $googleDataPool = $analyticsQuery->getAnalyticsReport();
             }
         } catch (\Exception $e) {
             $googleDataPool = [];
