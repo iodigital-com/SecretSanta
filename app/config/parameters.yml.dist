@@ -41,3 +41,4 @@ parameters:
     base_url:          dev.secretsantaorganizer.com
     export_user:       export
     export_password:   export
+    ga_view_id:        ga:00000000

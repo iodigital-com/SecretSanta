@@ -8,10 +8,12 @@ use Google_Service_Analytics;
 class GoogleAnalyticsQuery
 {
     private $viewId;
+    private $clientSecret;
 
-    public function __construct($viewId)
+    public function __construct($viewId, $clientSecret)
     {
         $this->viewId = $viewId;
+        $this->clientSecret = $clientSecret;
     }
 
     /**
@@ -24,7 +26,7 @@ class GoogleAnalyticsQuery
         $season = new Season($year);
 
         $client = new Google_Client();
-        $credentials = $client->loadServiceAccountJson('../app/config/client_secrets.json', "https://www.googleapis.com/auth/analytics.readonly");
+        $credentials = $client->loadServiceAccountJson($this->clientSecret, "https://www.googleapis.com/auth/analytics.readonly");
         $client->setAssertionCredentials($credentials);
         if ($client->getAuth()->isAccessTokenExpired()) {
             $client->getAuth()->refreshTokenWithAssertion();

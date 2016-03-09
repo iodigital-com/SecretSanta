@@ -32,6 +32,7 @@
         </service>
         <service id="intracto_secret_santa.analytics" class="Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery">
             <argument>%ga_view_id%</argument>
+            <argument>%kernel.root_dir%/config/client_secrets.json</argument>
         </service>
     </services>
 </container>
