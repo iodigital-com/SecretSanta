@@ -27,17 +27,10 @@ class IpReportQuery
         $ipv4 = $this->queryIpv4Records($season);
         $ipv6 = $this->queryIpv6Records($season);
 
-        if ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count'] != 0) {
-            $ipv4Percentage = $ipv4[0]['ipv4Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
-            $ipv6Percentage = $ipv6[0]['ipv6Count'] / ($ipv4[0]['ipv4Count'] + $ipv6[0]['ipv6Count']);
-
-            return [
-                'ipv4_percentage' => $ipv4Percentage,
-                'ipv6_percentage' => $ipv6Percentage,
-            ];
-        }
-
-        return [];
+        return [
+            'ipv4' => $ipv4,
+            'ipv6' => $ipv6,
+        ];
     }
 
     /**
@@ -56,7 +49,7 @@ class IpReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->execute()->fetch();
     }
 
     /**
@@ -75,6 +68,6 @@ class IpReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->execute()->fetch();
     }
 }

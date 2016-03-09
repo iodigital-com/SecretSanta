@@ -375,6 +375,6 @@ report:
     visitors_per_country: 'Bezoekers per land'
     visitors_per_language: 'Bezoekers per taal'
     mobile_usage: 'Mobiel/desktop'
-    top_browser: 'Top 5 browsers'
+    top_browser: 'Top browsers'
     no_data: 'Er zijn geen cijfers beschikbaar over dit seizoen.'
     season_info: 'Kies het seizoen waarvan u de cijfers wilt bekijken. Elk seizoen begint op 1 april en eindigt op 30 maart.'

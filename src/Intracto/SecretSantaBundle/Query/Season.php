@@ -12,7 +12,7 @@ class Season
      */
     public function __construct($year = null)
     {
-        $this->start = \DateTime::createFromFormat('Y-m-d', '2000-04-01');
+        $this->start = \DateTime::createFromFormat('Y-m-d', '2006-04-01');
         $this->end = new \DateTime();
 
         if ($year) {

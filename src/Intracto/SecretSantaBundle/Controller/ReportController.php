@@ -15,21 +15,30 @@ class ReportController extends Controller
      */
     public function reportAction(Request $request)
     {
-        $reportQuery = $this->get('intracto_secret_santa.reporting');
+        $reportQuery = $this->get('intracto_secret_santa.report');
         $analyticsQuery = $this->get('intracto_secret_santa.analytics');
         $currentYear = $request->get('year', 'all');
+        $viewId = $this->container->getParameter('ga_view_id');
 
         try {
             if ($currentYear != 'all') {
                 $dataPool = $reportQuery->getPoolReport($currentYear);
-                $googleDataPool = $analyticsQuery->getAnalyticsReport($currentYear);
+
             } else {
                 $dataPool = $reportQuery->getPoolReport();
-                $googleDataPool = $analyticsQuery->getFullAnalyticsReport();
+
             }
         } catch (\Exception $e) {
-            $currentYear = [];
             $dataPool = [];
+        }
+
+        try {
+            if ($currentYear != 'all') {
+                $googleDataPool = $analyticsQuery->getAnalyticsReport($viewId, $currentYear);
+            } else {
+                $googleDataPool = $analyticsQuery->getAnalyticsReport($viewId);
+            }
+        } catch (\Exception $e) {
             $googleDataPool = [];
         }
 

@@ -396,6 +396,6 @@ report:
     visitors_per_country: 'Visitors per country'
     visitors_per_language: 'Visitors per language'
     mobile_usage: 'Mobile/desktop'
-    top_browser: 'Top 5 browsers'
+    top_browser: 'Top browsers'
     no_data: 'There are no data available for this season.'
     season_info: 'Choose the season you want to get the data from. Each season begins the 1st of April and lasts until March 30.'
