@@ -5,7 +5,7 @@ namespace Intracto\SecretSantaBundle\Query;
 use Google_Client;
 use Google_Service_Analytics;
 
-class GoogleAnalyticsQueries
+class GoogleAnalyticsQuery
 {
     /**
      * @param $viewId
@@ -53,7 +53,7 @@ class GoogleAnalyticsQueries
             $gaParameters->getMetrics(),
             [
                 'dimensions' => 'ga:country',
-                'sort' => '-ga:country'
+                'sort' => '-ga:sessions, -ga:country'
             ]
         );
     }
@@ -71,7 +71,7 @@ class GoogleAnalyticsQueries
             $gaParameters->getMetrics(),
             [
                 'dimensions' => 'ga:language',
-                'sort' => '-ga:language'
+                'sort' => '-ga:sessions, -ga:language'
             ]
         );
     }
@@ -106,7 +106,8 @@ class GoogleAnalyticsQueries
             $gaParameters->getMetrics(),
             [
                 'dimensions' => 'ga:browser',
-                'sort' => 'ga:browser'
+                'sort' => '-ga:sessions, -ga:browser',
+                'max-results' => 5
             ]
         );
     }

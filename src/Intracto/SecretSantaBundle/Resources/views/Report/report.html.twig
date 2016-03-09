@@ -202,13 +202,34 @@
     {% if data_pool is not empty %}
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
+            $(document).ready(function(){
+                $(window).resize(function(){
+                    drawChart();
+                });
+            });
+
             google.charts.load('current', {packages: ['corechart']});
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
                 var chartOptions = {
                     legend: {position: 'bottom'},
-                    colors: ['#c41425', '#e3172b', '#ea3244', '#ed5160', '#f0707c'],
+                    colors: [
+                        '#c41425',
+                        '#d31628',
+                        '#e3172b',
+                        '#e82236',
+                        '#ea3244',
+                        '#ec4152',
+                        '#ed5160',
+                        '#ef606e',
+                        '#f0707c',
+                        '#f27f8a',
+                        '#f48e98',
+                        '#f59ea6',
+                        '#f7adb4',
+                        '#f8bdc2'
+                    ],
                     backgroundColor: { fill:'transparent' }
                 };
 
