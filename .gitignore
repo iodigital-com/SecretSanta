@@ -1,6 +1,7 @@
 web/bundles/
 app/bootstrap.php.cache
 app/config/parameters.yml
+app/config/client_secrets.json
 app/cache/*
 app/logs/*
 web/compiled/*
