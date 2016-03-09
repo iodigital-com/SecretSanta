@@ -14,7 +14,7 @@ class GoogleAnalyticsQueries
     public function getFullAnalyticsReport()
     {
         $client = new Google_Client();
-        $credentials = $client->loadServiceAccountJson('../client_secrets.json', "https://www.googleapis.com/auth/analytics.readonly");
+        $credentials = $client->loadServiceAccountJson('../app/config/client_secrets.json', "https://www.googleapis.com/auth/analytics.readonly");
         $client->setAssertionCredentials($credentials);
         if ($client->getAuth()->isAccessTokenExpired()) {
             $client->getAuth()->refreshTokenWithAssertion();
@@ -106,7 +106,7 @@ class GoogleAnalyticsQueries
     public function getAnalyticsReport($year)
     {
         $client = new Google_Client();
-        $credentials = $client->loadServiceAccountJson('../client_secrets.json', "https://www.googleapis.com/auth/analytics.readonly");
+        $credentials = $client->loadServiceAccountJson('../app/config/client_secrets.json', "https://www.googleapis.com/auth/analytics.readonly");
         $client->setAssertionCredentials($credentials);
         if ($client->getAuth()->isAccessTokenExpired()) {
             $client->getAuth()->refreshTokenWithAssertion();
