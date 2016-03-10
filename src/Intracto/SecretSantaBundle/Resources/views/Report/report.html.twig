@@ -43,8 +43,9 @@
                 {% endif %}
 
                 <table>
-                    <col width="55%">
-                    <col width="20%">
+                    <col width="50%">
+                    <col width="25%">
+                    <col width="25%">
                     <tr>
                         <td>{{ 'report.confirmed_parties'|trans }}:</td>
                         <td>{{ data_pool['pools'][0]['poolCount'] }}</td>
@@ -134,8 +135,8 @@
                 <div class="report_inside">
                     <h3>{{ 'report.total'|trans }}</h3>
                     <table>
-                        <col width="55%">
-                        <col width="45%">
+                        <col width="50%">
+                        <col width="50%">
                         <tr>
                             <td>{{ 'report.confirmed_parties'|trans }}:</td>
                             <td>{{ data_pool['total_pools'][0]['poolCount'] }}</td>
@@ -270,6 +271,7 @@
 
             function drawChart() {
                 var chartOptions = {
+                    height: 300,
                     legend: {position: 'bottom'},
                     colors: [
                         '#c41425',
@@ -291,6 +293,9 @@
                 };
 
                 var analyticsChartOptions = {
+                    height: 300,
+                    chartArea: { left: 0, right:0 },
+                    legend: { alignment: 'center' },
                     backgroundColor: { fill:'transparent' }
                 }
 
