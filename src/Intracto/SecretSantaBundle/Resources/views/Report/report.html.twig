@@ -290,6 +290,10 @@
                     backgroundColor: { fill:'transparent' }
                 };
 
+                var analyticsChartOptions = {
+                    backgroundColor: { fill:'transparent' }
+                }
+
                 {% if current_year != 'all' %}
                     var poolData = new google.visualization.DataTable();
                     poolData.addColumn('string', 'Month');
@@ -371,7 +375,7 @@
                     ]);
 
                     var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
-                    ipChart.draw(ipData, chartOptions);
+                    ipChart.draw(ipData, analyticsChartOptions);
                 {% endif %}
 
                 var countryData = new google.visualization.DataTable();
@@ -383,7 +387,7 @@
                     {% endfor %}
                 ]);
                 var countryChart = new google.visualization.PieChart(document.getElementById('country_chart'));
-                countryChart.draw(countryData, chartOptions);
+                countryChart.draw(countryData, analyticsChartOptions);
 
                 var languageData = new google.visualization.DataTable();
                 languageData.addColumn('string', 'Language');
@@ -394,7 +398,7 @@
                     {% endfor %}
                 ]);
                 var languageChart = new google.visualization.PieChart(document.getElementById('language_chart'));
-                languageChart.draw(languageData, chartOptions);
+                languageChart.draw(languageData, analyticsChartOptions);
 
                 var deviceData = new google.visualization.DataTable();
                 deviceData.addColumn('string', 'Device');
@@ -405,7 +409,7 @@
                     {% endfor %}
                 ]);
                 var deviceChart = new google.visualization.PieChart(document.getElementById('device_chart'));
-                deviceChart.draw(deviceData, chartOptions);
+                deviceChart.draw(deviceData, analyticsChartOptions);
 
                 var browserData = new google.visualization.DataTable();
                 browserData.addColumn('string', 'Device');
@@ -416,7 +420,7 @@
                     {% endfor %}
                 ]);
                 var browserChart = new google.visualization.PieChart(document.getElementById('browser_chart'));
-                browserChart.draw(browserData, chartOptions);
+                browserChart.draw(browserData, analyticsChartOptions);
             }
         </script>
     {% endif %}
