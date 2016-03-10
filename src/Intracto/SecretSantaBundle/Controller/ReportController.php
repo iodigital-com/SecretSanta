@@ -41,7 +41,7 @@ class ReportController extends Controller
             $googleDataPool = [];
         }
 
-        $data =  [
+        $data = [
             'current_year' => $currentYear,
             'data_pool' => $dataPool,
             'featured_years' => $this->get('intracto_secret_santa.featured_years')->getFeaturedYears(),
