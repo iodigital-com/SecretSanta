@@ -252,7 +252,7 @@ class EntryReportQuery
         $entryCountSeason1 = $this->countEntries($season1);
         try {
             $entryCountSeason2 = $this->countEntries($season2);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $entryCountSeason1[0]['entryCount'];
         }
 
@@ -269,7 +269,7 @@ class EntryReportQuery
         $confirmedEntryCountSeason1 = $this->countConfirmedEntries($season1);
         try {
             $confirmedEntryCountSeason2 = $this->countConfirmedEntries($season2);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $confirmedEntryCountSeason1[0]['confirmedEntryCount'];
         }
 
@@ -286,7 +286,7 @@ class EntryReportQuery
         $distinctEntryCountSeason1 = $this->countDistinctEntries($season1);
         try {
             $distinctEntryCountSeason2 = $this->countDistinctEntries($season2);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $distinctEntryCountSeason1[0]['distinctEntryCount'];
         }
 
@@ -303,7 +303,7 @@ class EntryReportQuery
         $averageSeason1 = $this->calculateAverageEntriesPerPool($season1);
         try {
             $averageSeason2 = $this->calculateAverageEntriesPerPool($season2);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $averageSeason1;
         }
 

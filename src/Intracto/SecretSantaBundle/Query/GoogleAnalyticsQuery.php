@@ -150,15 +150,15 @@ class GoogleAnalyticsQuery
             ) {
                 $english += $lang[1];
             } else if (strpos($lang[0], 'es') !== false ||
-                       strpos($lang[0], 'ca') !== false ||
-                       strpos($lang[0], 'gl') !== false ||
-                       strpos($lang[0], 'eu') !== false
+                strpos($lang[0], 'ca') !== false ||
+                strpos($lang[0], 'gl') !== false ||
+                strpos($lang[0], 'eu') !== false
             ) {
                 $spanish += $lang[1];
             } else if (strpos($lang[0], 'nl') !== false) {
                 $dutch += $lang[1];
             } else if (strpos($lang[0], 'fr') !== false ||
-                       strpos($lang[0], 'br') !== false
+                strpos($lang[0], 'br') !== false
             ) {
                 $french += $lang[1];
             } else if (strpos($lang[0], 'ru') !== false) {
@@ -192,7 +192,7 @@ class GoogleAnalyticsQuery
             } else if (strpos($lang[0], 'vi') !== false) {
                 $vietnamese += $lang[1];
             } else if (strpos($lang[0], 'nb') !== false ||
-                       strpos($lang[0], 'no') !== false
+                strpos($lang[0], 'no') !== false
             ) {
                 $norwegian += $lang[1];
             } else if (strpos($lang[0], 'da') !== false) {
@@ -270,7 +270,7 @@ class GoogleAnalyticsQuery
             } else if (strpos($lang[0], 'pa') !== false) {
                 $panjabi += $lang[1];
             } else {
-                array_push($languages, [$lang[0], (int) $lang[1]]);
+                array_push($languages, [$lang[0], (int)$lang[1]]);
             }
         }
 

@@ -99,7 +99,7 @@ class WishlistReportQuery
         $completedWishlistsSeason1 = $this->calculateCompletedWishlists($season1);
         try {
             $completedWishlistsSeason2 = $this->calculateCompletedWishlists($season2);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $completedWishlistsSeason1;
         }
 

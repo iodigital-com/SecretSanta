@@ -138,7 +138,7 @@ class PoolReportQuery
         $poolCountSeason1 = $this->countPools($season1);
         try {
             $poolCountSeason2 = $this->countPools($season2);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $poolCountSeason1[0]['poolCount'];
         }
 

@@ -47,7 +47,7 @@ class ReportController extends Controller
             'google_data_pool' => $googleDataPool,
         ];
 
-        if(isset($differenceDataPool)) {
+        if (isset($differenceDataPool)) {
             $data['difference_data_pool'] = $differenceDataPool;
         }
 
