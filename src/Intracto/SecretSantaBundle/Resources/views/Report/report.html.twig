@@ -9,20 +9,18 @@
 {% endblock stylesheets %}
 {% block main %}
     <h1>{{ 'report.title'|trans }}</h1>
-    <form method="GET">
-        <div class="row">
-            <div class="col-xs-12 col-md-3">
-                <select name="year" id="Year" class="form-control" onchange="this.form.submit();">
-                    <option {% if(current_year == "all") %} selected="selected" {% endif %}
-                            value="all">{{ 'report.all_time'|trans }}</option>
-                    {% for year in featured_years['featured_years'] %}
-                        <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}
-                            - {{ year+1 }} </option>
-                    {% endfor %}
-                </select>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <select name="year" id="select-season" class="form-control"">
+                <option {% if(current_year == "all") %} selected="selected" {% endif %}
+                        value="all">{{ 'report.all_time'|trans }}</option>
+                {% for year in featured_years['featured_years'] %}
+                    <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}
+                        - {{ year+1 }} </option>
+                {% endfor %}
+            </select>
         </div>
-    </form>
+    </div>
     <small>{{ 'report.season_info'|trans }}</small>
     {% if data_pool is empty %}
         <div>
@@ -261,6 +259,11 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+                $('#select-season').on('change', function() {
+                    var url = '{{ path("report", { 'year' : "CHOICE" }) }}';
+                    window.location = url.replace('CHOICE', $(this).val());
+                });
+
                 $(window).resize(function(){
                     drawChart();
                 });

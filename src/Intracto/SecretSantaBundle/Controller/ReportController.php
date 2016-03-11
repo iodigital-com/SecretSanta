@@ -10,30 +10,30 @@ use Symfony\Component\HttpFoundation\Request;
 class ReportController extends Controller
 {
     /**
-     * @Route("/report", name="report")
+     * @Route("/report/{year}", defaults={"year" = "all"}, name="report")
      * @Template()
      */
-    public function reportAction(Request $request)
+    public function reportAction($year)
     {
         $analyticsQuery = $this->get('intracto_secret_santa.analytics');
         $report = $this->get('intracto_secret_santa.report');
         $comparison = $this->get('intracto_secret_santa.season_comparison');
-        $currentYear = $request->get('year', 'all');
 
         try {
-            if ($currentYear != 'all') {
-                $dataPool = $report->getPoolReport($currentYear);
-                $differenceDataPool = $comparison->getComparison($currentYear);
+            if ($year != 'all') {
+                $dataPool = $report->getPoolReport($year);
+                $differenceDataPool = $comparison->getComparison($year);
             } else {
                 $dataPool = $report->getPoolReport();
             }
         } catch (\Exception $e) {
             $dataPool = [];
+            $differenceDataPool = [];
         }
 
         try {
-            if ($currentYear != 'all') {
-                $googleDataPool = $analyticsQuery->getAnalyticsReport($currentYear);
+            if ($year != 'all') {
+                $googleDataPool = $analyticsQuery->getAnalyticsReport($year);
             } else {
                 $googleDataPool = $analyticsQuery->getAnalyticsReport();
             }
@@ -42,7 +42,7 @@ class ReportController extends Controller
         }
 
         $data = [
-            'current_year' => $currentYear,
+            'current_year' => $year,
             'data_pool' => $dataPool,
             'featured_years' => $this->get('intracto_secret_santa.featured_years')->getFeaturedYears(),
             'google_data_pool' => $googleDataPool,
