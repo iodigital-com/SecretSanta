@@ -9,20 +9,18 @@
 {% endblock stylesheets %}
 {% block main %}
     <h1>{{ 'report.title'|trans }}</h1>
-    <form method="GET">
-        <div class="row">
-            <div class="col-xs-12 col-md-3">
-                <select name="year" id="Year" class="form-control" onchange="this.form.submit();">
-                    <option {% if(current_year == "all") %} selected="selected" {% endif %}
-                            value="all">{{ 'report.all_time'|trans }}</option>
-                    {% for year in featured_years['featured_years'] %}
-                        <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}
-                            - {{ year+1 }} </option>
-                    {% endfor %}
-                </select>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <select name="year" id="select-season" class="form-control"">
+                <option {% if(current_year == "all") %} selected="selected" {% endif %}
+                        value="all">{{ 'report.all_time'|trans }}</option>
+                {% for year in featured_years['featured_years'] %}
+                    <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }}
+                        - {{ year+1 }} </option>
+                {% endfor %}
+            </select>
         </div>
-    </form>
+    </div>
     <small>{{ 'report.season_info'|trans }}</small>
     {% if data_pool is empty %}
         <div>
@@ -43,29 +41,86 @@
                 {% endif %}
 
                 <table>
+                    <col width="50%">
+                    <col width="25%">
+                    <col width="25%">
                     <tr>
                         <td>{{ 'report.confirmed_parties'|trans }}:</td>
                         <td>{{ data_pool['pools'][0]['poolCount'] }}</td>
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                            {% if difference_data_pool['pool_count_difference'] > 0 %}
+                                <td class="positive">+ {{ difference_data_pool['pool_count_difference'] }}</td>
+                            {% elseif difference_data_pool['pool_count_difference'] == 0 %}
+                                <td>0</td>
+                            {% else %}
+                                <td class="negative">- {{ difference_data_pool['pool_count_difference'] }}</td>
+                            {% endif %}
+                        {% endif %}
                     </tr>
                     <tr>
                         <td>{{ 'report.invited_participants'|trans }}:</td>
                         <td>{{ data_pool['entries'][0]['entryCount'] }}</td>
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                            {% if difference_data_pool['entry_count_difference'] > 0 %}
+                                <td class="positive">+ {{ difference_data_pool['entry_count_difference'] }}</td>
+                            {% elseif difference_data_pool['entry_count_difference'] == 0 %}
+                                <td>0</td>
+                            {% else %}
+                                <td class="negative">- {{ difference_data_pool['entry_count_difference'] }}</td>
+                            {% endif %}
+                        {% endif %}
                     </tr>
                     <tr>
                         <td>{{ 'report.confirmed_participants'|trans }}:</td>
                         <td>{{ data_pool['confirmed_entries'][0]['confirmedEntryCount'] }}</td>
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                            {% if difference_data_pool['confirmed_entry_count_difference'] > 0 %}
+                                <td class="positive">+ {{ difference_data_pool['confirmed_entry_count_difference'] }}</td>
+                            {% elseif difference_data_pool['confirmed_entry_count_difference'] == 0 %}
+                                <td>0</td>
+                            {% else %}
+                                <td class="negative">- {{ difference_data_pool['confirmed_entry_count_difference'] }}</td>
+                            {% endif %}
+                        {% endif %}
                     </tr>
                     <tr>
                         <td>{{ 'report.average_entries'|trans }}:</td>
                         <td>{{ data_pool['entry_average']|round }}</td>
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                            {% if difference_data_pool['average_entries_difference']|round > 0 %}
+                                <td class="positive">+ {{ difference_data_pool['average_entries_difference']|round }}</td>
+                            {% elseif difference_data_pool['average_entries_difference']|round == 0 %}
+                                <td>0</td>
+                            {% else %}
+                                <td class="negative">- {{ difference_data_pool['average_entries_difference']|round }}</td>
+                            {% endif %}
+                        {% endif %}
                     </tr>
                     <tr>
                         <td>{{ 'report.unique_entries'|trans }}:</td>
                         <td>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</td>
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                            {% if difference_data_pool['distinct_entry_count_difference'] > 0 %}
+                                <td class="positive">+ {{ difference_data_pool['distinct_entry_count_difference'] }}</td>
+                            {% elseif difference_data_pool['distinct_entry_count_difference'] == 0 %}
+                                <td>0</td>
+                            {% else %}
+                                <td class="negative">- {{ difference_data_pool['distinct_entry_count_difference'] }}</td>
+                            {% endif %}
+                        {% endif %}
                     </tr>
                     <tr>
                         <td>{{ 'report.completed_wishlists'|trans }}:</td>
                         <td>{{ data_pool['wishlist_average']|number_format(2, '.', '') }} %</td>
+                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                            {% if difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') > 0 %}
+                                <td class="positive">+ {{ difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') }} %</td>
+                            {% elseif difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') == 0 %}
+                                <td>0.00%</td>
+                            {% else %}
+                                <td class="negative">- {{ difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') }} %</td>
+                            {% endif %}
+                        {% endif %}
                     </tr>
                 </table>
             </div>
@@ -77,8 +132,9 @@
             <div class="col-xs-12 col-md-6 report">
                 <div class="report_inside">
                     <h3>{{ 'report.total'|trans }}</h3>
-
                     <table>
+                        <col width="50%">
+                        <col width="50%">
                         <tr>
                             <td>{{ 'report.confirmed_parties'|trans }}:</td>
                             <td>{{ data_pool['total_pools'][0]['poolCount'] }}</td>
@@ -203,6 +259,11 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+                $('#select-season').on('change', function() {
+                    var url = '{{ path("report", { 'year' : "CHOICE" }) }}';
+                    window.location = url.replace('CHOICE', $(this).val());
+                });
+
                 $(window).resize(function(){
                     drawChart();
                 });
@@ -213,6 +274,7 @@
 
             function drawChart() {
                 var chartOptions = {
+                    height: 300,
                     legend: {position: 'bottom'},
                     colors: [
                         '#c41425',
@@ -232,6 +294,13 @@
                     ],
                     backgroundColor: { fill:'transparent' }
                 };
+
+                var analyticsChartOptions = {
+                    height: 300,
+                    chartArea: { left: 0, right:0 },
+                    legend: { alignment: 'center' },
+                    backgroundColor: { fill:'transparent' }
+                }
 
                 {% if current_year != 'all' %}
                     var poolData = new google.visualization.DataTable();
@@ -314,7 +383,7 @@
                     ]);
 
                     var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
-                    ipChart.draw(ipData, chartOptions);
+                    ipChart.draw(ipData, analyticsChartOptions);
                 {% endif %}
 
                 var countryData = new google.visualization.DataTable();
@@ -326,7 +395,7 @@
                     {% endfor %}
                 ]);
                 var countryChart = new google.visualization.PieChart(document.getElementById('country_chart'));
-                countryChart.draw(countryData, chartOptions);
+                countryChart.draw(countryData, analyticsChartOptions);
 
                 var languageData = new google.visualization.DataTable();
                 languageData.addColumn('string', 'Language');
@@ -337,7 +406,7 @@
                     {% endfor %}
                 ]);
                 var languageChart = new google.visualization.PieChart(document.getElementById('language_chart'));
-                languageChart.draw(languageData, chartOptions);
+                languageChart.draw(languageData, analyticsChartOptions);
 
                 var deviceData = new google.visualization.DataTable();
                 deviceData.addColumn('string', 'Device');
@@ -348,7 +417,7 @@
                     {% endfor %}
                 ]);
                 var deviceChart = new google.visualization.PieChart(document.getElementById('device_chart'));
-                deviceChart.draw(deviceData, chartOptions);
+                deviceChart.draw(deviceData, analyticsChartOptions);
 
                 var browserData = new google.visualization.DataTable();
                 browserData.addColumn('string', 'Device');
@@ -359,7 +428,7 @@
                     {% endfor %}
                 ]);
                 var browserChart = new google.visualization.PieChart(document.getElementById('browser_chart'));
-                browserChart.draw(browserData, chartOptions);
+                browserChart.draw(browserData, analyticsChartOptions);
             }
         </script>
     {% endif %}

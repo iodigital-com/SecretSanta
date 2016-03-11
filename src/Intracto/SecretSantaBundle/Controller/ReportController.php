@@ -5,35 +5,34 @@ namespace Intracto\SecretSantaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 
 class ReportController extends Controller
 {
     /**
-     * @Route("/report", name="report")
+     * @Route("/report/{year}", defaults={"year" = "all"}, name="report")
      * @Template()
      */
-    public function reportAction(Request $request)
+    public function reportAction($year)
     {
-        $reportQuery = $this->get('intracto_secret_santa.report');
         $analyticsQuery = $this->get('intracto_secret_santa.analytics');
-        $currentYear = $request->get('year', 'all');
+        $report = $this->get('intracto_secret_santa.report');
+        $comparison = $this->get('intracto_secret_santa.season_comparison');
 
         try {
-            if ($currentYear != 'all') {
-                $dataPool = $reportQuery->getPoolReport($currentYear);
-
+            if ($year != 'all') {
+                $dataPool = $report->getPoolReport($year);
+                $differenceDataPool = $comparison->getComparison($year);
             } else {
-                $dataPool = $reportQuery->getPoolReport();
-
+                $dataPool = $report->getPoolReport();
             }
         } catch (\Exception $e) {
             $dataPool = [];
+            $differenceDataPool = [];
         }
 
         try {
-            if ($currentYear != 'all') {
-                $googleDataPool = $analyticsQuery->getAnalyticsReport($currentYear);
+            if ($year != 'all') {
+                $googleDataPool = $analyticsQuery->getAnalyticsReport($year);
             } else {
                 $googleDataPool = $analyticsQuery->getAnalyticsReport();
             }
@@ -41,11 +40,17 @@ class ReportController extends Controller
             $googleDataPool = [];
         }
 
-        return [
-            'current_year' => $currentYear,
+        $data = [
+            'current_year' => $year,
             'data_pool' => $dataPool,
             'featured_years' => $this->get('intracto_secret_santa.featured_years')->getFeaturedYears(),
             'google_data_pool' => $googleDataPool,
         ];
+
+        if (isset($differenceDataPool)) {
+            $data['difference_data_pool'] = $differenceDataPool;
+        }
+
+        return $data;
     }
 }

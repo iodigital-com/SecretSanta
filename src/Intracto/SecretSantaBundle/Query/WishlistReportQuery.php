@@ -88,4 +88,21 @@ class WishlistReportQuery
 
         return $query->execute()->fetchAll();
     }
+
+    /**
+     * @param Season $season1
+     * @param Season $season2
+     * @return float
+     */
+    public function calculateCompletedWishlistDifferenceBetweenSeasons(Season $season1, Season $season2)
+    {
+        $completedWishlistsSeason1 = $this->calculateCompletedWishlists($season1);
+        try {
+            $completedWishlistsSeason2 = $this->calculateCompletedWishlists($season2);
+        } catch (\Exception $e) {
+            return $completedWishlistsSeason1;
+        }
+
+        return $completedWishlistsSeason1 - $completedWishlistsSeason2;
+    }
 }

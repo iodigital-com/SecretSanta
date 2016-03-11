@@ -82,6 +82,10 @@ class EntryReportQuery
         return $query->execute()->fetchAll();
     }
 
+    /**
+     * @param \DateTime $date
+     * @return mixed
+     */
     public function countDistinctEntriesUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
@@ -236,5 +240,73 @@ class EntryReportQuery
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
+    }
+
+    /**
+     * @param Season $season1
+     * @param Season $season2
+     * @return mixed
+     */
+    public function calculateEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    {
+        $entryCountSeason1 = $this->countEntries($season1);
+        try {
+            $entryCountSeason2 = $this->countEntries($season2);
+        } catch (\Exception $e) {
+            return $entryCountSeason1[0]['entryCount'];
+        }
+
+        return $entryCountSeason1[0]['entryCount'] - $entryCountSeason2[0]['entryCount'];
+    }
+
+    /**
+     * @param Season $season1
+     * @param Season $season2
+     * @return mixed
+     */
+    public function calculateConfirmedEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    {
+        $confirmedEntryCountSeason1 = $this->countConfirmedEntries($season1);
+        try {
+            $confirmedEntryCountSeason2 = $this->countConfirmedEntries($season2);
+        } catch (\Exception $e) {
+            return $confirmedEntryCountSeason1[0]['confirmedEntryCount'];
+        }
+
+        return $confirmedEntryCountSeason1[0]['confirmedEntryCount'] - $confirmedEntryCountSeason2[0]['confirmedEntryCount'];
+    }
+
+    /**
+     * @param Season $season1
+     * @param Season $season2
+     * @return mixed
+     */
+    public function calculateDistinctEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    {
+        $distinctEntryCountSeason1 = $this->countDistinctEntries($season1);
+        try {
+            $distinctEntryCountSeason2 = $this->countDistinctEntries($season2);
+        } catch (\Exception $e) {
+            return $distinctEntryCountSeason1[0]['distinctEntryCount'];
+        }
+
+        return $distinctEntryCountSeason1[0]['distinctEntryCount'] - $distinctEntryCountSeason2[0]['distinctEntryCount'];
+    }
+
+    /**
+     * @param Season $season1
+     * @param Season $season2
+     * @return float
+     */
+    public function calculateAverageEntriesPerPoolBetweenSeasons(Season $season1, Season $season2)
+    {
+        $averageSeason1 = $this->calculateAverageEntriesPerPool($season1);
+        try {
+            $averageSeason2 = $this->calculateAverageEntriesPerPool($season2);
+        } catch (\Exception $e) {
+            return $averageSeason1;
+        }
+
+        return $averageSeason1 - $averageSeason2;
     }
 }
