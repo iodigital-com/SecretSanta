@@ -18,9 +18,9 @@ class ReportController extends Controller
         $report = $this->get('intracto_secret_santa.report');
         $comparison = $this->get('intracto_secret_santa.season_comparison');
 
-        if ($reportQueryResult = $this->get('cache')->fetch('dataP' . $year)) {
+        if ($reportQueryResult = $this->get('cache')->fetch('data' . $year)) {
             $cache = unserialize($reportQueryResult);
-            
+
             $data = [
                 'current_year' => $year,
                 'data_pool' => $cache['data_pool'],
@@ -74,7 +74,7 @@ class ReportController extends Controller
             $data['difference_data_pool'] = $differenceDataPool;
         }
 
-        $this->get('cache')->save('dataP' . $year, serialize($data), 86400);
+        $this->get('cache')->save('data' . $year, serialize($data), 86400);
 
         return $data;
     }
