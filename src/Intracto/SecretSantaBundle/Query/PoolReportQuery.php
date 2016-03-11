@@ -142,7 +142,6 @@ class PoolReportQuery
             return $poolCountSeason1[0]['poolCount'];
         }
 
-
         return $poolCountSeason1[0]['poolCount'] - $poolCountSeason2[0]['poolCount'];
     }
 }

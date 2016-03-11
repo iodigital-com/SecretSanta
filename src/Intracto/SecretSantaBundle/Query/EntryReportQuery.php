@@ -256,7 +256,6 @@ class EntryReportQuery
             return $entryCountSeason1[0]['entryCount'];
         }
 
-
         return $entryCountSeason1[0]['entryCount'] - $entryCountSeason2[0]['entryCount'];
     }
 
@@ -291,7 +290,6 @@ class EntryReportQuery
             return $distinctEntryCountSeason1[0]['distinctEntryCount'];
         }
 
-
         return $distinctEntryCountSeason1[0]['distinctEntryCount'] - $distinctEntryCountSeason2[0]['distinctEntryCount'];
     }
 
@@ -308,7 +306,6 @@ class EntryReportQuery
         } catch(\Exception $e) {
             return $averageSeason1;
         }
-
 
         return $averageSeason1 - $averageSeason2;
     }
