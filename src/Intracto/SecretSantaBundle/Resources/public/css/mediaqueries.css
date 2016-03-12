@@ -51,7 +51,7 @@
     }
 
     .lang__selection select {
-        width: auto;
+        width: 100px;
         font-size: 1.2em;
     }
 }
@@ -127,4 +127,12 @@
     .mysanta .entry-number, .mysanta .entry-number-header {
         display: none;
     }
+}
+
+
+@media only screen and (min-width:800px){
+    .mobile_lang{
+        display:none;
+    }
+
 }

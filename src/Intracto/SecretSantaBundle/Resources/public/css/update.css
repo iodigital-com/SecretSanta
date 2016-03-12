@@ -322,7 +322,7 @@ ul.form-errors {
     padding: 4px 18px;
     padding-right: 30px;
     font-family: 'straitregular';
-    width: 328px;
+    width: auto;
 }
 
 .lang__selection:hover select {
@@ -337,4 +337,15 @@ ul.form-errors {
 
 .ui-sortable-helper {
     display: table;
+}
+.input{
+    max-width:250px;
+
+
+}
+
+.amount{
+
+    max-width:250px;
+
 }
