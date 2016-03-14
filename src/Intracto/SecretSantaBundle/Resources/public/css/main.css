@@ -97,7 +97,6 @@
     margin-top: 5px
 }
 
-
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
 html {
@@ -690,8 +689,10 @@ a:hover {
     display: inline-block;
     padding-top: 20px
 }
-.lang__selection{
+
+.lang__selection {
 }
+
 @media only screen and (max-width: 1024px) {
     .header__right {
         width: 40%
@@ -707,11 +708,11 @@ a:hover {
     .lang__selection {
         width: 100%
     }
+
     .lang__selection select {
         width: 100%
     }
 }
-
 
 .header__logo {
     padding: 40px 0;

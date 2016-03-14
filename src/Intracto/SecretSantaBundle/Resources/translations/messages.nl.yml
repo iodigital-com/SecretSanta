@@ -235,7 +235,7 @@ label:
     email: E-mail
     host: Lijstbeheerder
     participants: Deelnemers
-    date_party: Datum van jouw Secret Santa party
+    date_party: Datum van jouw Secret Santa feest
     amount_to_spend: Te spenderen bedrag
     exclude: Uitsluiten
     confirmed: Bevestigd

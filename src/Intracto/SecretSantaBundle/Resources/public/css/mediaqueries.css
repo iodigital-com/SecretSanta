@@ -94,11 +94,12 @@
     }
 
     select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-        font-size: 1em;
+        font-size: 0.49em;
     }
 
     .table th, .table td {
         padding: 8px 2px;
+        font-size: 11px;
     }
 
     #footer-santa {
@@ -127,12 +128,34 @@
     .mysanta .entry-number, .mysanta .entry-number-header {
         display: none;
     }
+
+    .text_remove {
+        display: none;
+    }
+
+    .input {
+        margin-left: -17px;
+    }
+
+    .amount {
+        margin-left: -17px;
+    }
+
 }
 
+@media only screen and (min-width: 800px) {
+    .mobile_lang {
+        display: none;
+    }
 
-@media only screen and (min-width:800px){
-    .mobile_lang{
-        display:none;
+    .input {
+        width: auto;
+        max-width: 400px;
+    }
+
+    .amount {
+        width: auto;
+        max-width: 150px;
     }
 
 }

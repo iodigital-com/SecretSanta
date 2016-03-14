@@ -73,7 +73,6 @@
 <div id="header" class="header">
     <div class="container">
         <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
-
         <div class="header__left">
             <div class="header__logo">
                 <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo"/>
@@ -94,13 +93,11 @@
             </div>
             {% block header %}{% endblock %}
         </div>
-
     </div>
     <div class="header__snow-container">
         <div class="header__snow"></div>
     </div>
 </div>
-
 <div class="wrapper">
     <div class="container">
         {% for flashMessageType in app.session.flashbag.keys %}
