@@ -14,10 +14,10 @@ base:
 pool:
     header:
         steps:
-            title: Your gift exchange event <br/>in <span class="accent">3 easy steps</span>
+            title: Your party <br/><small>in <span class="accent">3 easy steps</span></small>
             list:
                 one: List your participants
-                two: Add a personal message
+                two: Add a message
                 three: Send!
             get_started: Get Started!
 
@@ -264,7 +264,7 @@ label:
 placeholder:
     exclude: Click and choose the participants you want to exclude
 btn:
-    add_person: Add person
+    add_person:  Add person
     remove_person: Remove
     create_event: Create your event!
     create_new_list: Create a new Secret Santa list!

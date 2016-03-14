@@ -14,7 +14,7 @@ base:
 pool:
   header:
     steps:
-      title: 'Twoja wymiana prezentów <br/>w <span class="accent">trzech prostych krokach</span>'
+      title: Twoja strona <br/> <small> w <span class="accent">trzech prostych krokach</span>'</small>
       list:
         one: Wybierz uczestników
         two: Dodaj wiadomość

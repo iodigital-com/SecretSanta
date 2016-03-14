@@ -14,10 +14,10 @@ base:
 pool:
     header:
         steps:
-            title: Tu evento de intercambio de regalos <br/>en <span class="accent">3 sencillos pasos </span>
+            title: Tu fiesta <br/><small>en <span class="accent">3 sencillos pasos </span></small>
             list:
                 one: Haz una lista de tus participantes
-                two: Añade un mensaje personal
+                two: Añadir un mensaje
                 three: ¡Envía!
             get_started: ¡Prepárate!
 
