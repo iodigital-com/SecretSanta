@@ -33,7 +33,7 @@ create:
                 zu beschenken.</p>
 
     add_participants: Fügen Sie Ihre Teilnehmer hinzu
-    list_adminstrator: Diese Person ist auch Ihr Listenadministrator
+    list_adminstrator: Diese Person ist auch Ihr administrator
     add_personal_message:
         title: Fügen Sie eine persönliche Nachricht hinzu
         description: Fügen Sie eine persönliche Nachricht für die Teilnehmer hinzu.
@@ -130,7 +130,7 @@ static:
 label:
     name: Name
     email: E-Mail:
-    host: Listenadministrator
+    host: Administrator
     participants: Teilnehmer
     date_party: Datum Ihrer Secret Santa-Party
     amount_to_spend: Auszugebender Betrag
