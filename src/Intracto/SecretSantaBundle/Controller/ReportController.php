@@ -17,6 +17,7 @@ class ReportController extends Controller
         $analyticsQuery = $this->get('intracto_secret_santa.analytics');
         $report = $this->get('intracto_secret_santa.report');
         $comparison = $this->get('intracto_secret_santa.season_comparison');
+        $featuredYears = $this->get('intracto_secret_santa.featured_years')->getFeaturedYears();
 
         if ($reportQueryResult = $this->get('cache')->fetch('data' . $year)) {
             $cache = unserialize($reportQueryResult);
@@ -66,7 +67,7 @@ class ReportController extends Controller
         $data = [
             'current_year' => $year,
             'data_pool' => $dataPool,
-            'featured_years' => $this->get('intracto_secret_santa.featured_years')->getFeaturedYears(),
+            'featured_years' => $featuredYears,
             'google_data_pool' => $googleDataPool,
         ];
 
@@ -74,7 +75,16 @@ class ReportController extends Controller
             $data['difference_data_pool'] = $differenceDataPool;
         }
 
-        $this->get('cache')->save('data' . $year, serialize($data), 86400);
+        end($featuredYears['featured_years']);
+        $lastKey = key($featuredYears['featured_years']);
+
+        if ($year == 'all' || $year == $featuredYears['featured_years'][$lastKey]) {
+            $this->get('cache')->save('data' . $year, serialize($data), 24*60*60);
+
+            return $data;
+        }
+
+        $this->get('cache')->save('data' . $year, serialize($data));
 
         return $data;
     }
