@@ -14,7 +14,7 @@ base:
 pool:
     header:
         steps:
-            title: Мероприятие по обмену подарками <br/> -  <span class="accent">3 простых шага</span>
+            title: вы праздник <br/><small> -  <span class="accent">3 простых шага</span></small>
             list:
                 one: Составить список участников
                 two: Ввести личное сообщение

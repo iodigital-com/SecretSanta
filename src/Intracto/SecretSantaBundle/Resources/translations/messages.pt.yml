@@ -14,10 +14,10 @@ base:
 pool:
     header:
         steps:
-            title: Seu Amigo Secreto <br/>em <span class="accent">3 etapas simples</span>
+            title: Seu festa <br/><small>em <span class="accent">3 etapas simples</span></small>
             list:
                 one: Lista de participantes
-                two: Adicione uma mensagem pessoal
+                two: Adicione uma mensagem
                 three: Mandar!
             get_started: Começar agora!
 

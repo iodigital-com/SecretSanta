@@ -14,10 +14,10 @@ base:
 pool:
     header:
         steps:
-            title: Jouw geschenkuitwisselings- <br>evenement <small>in <span class="accent">3 eenvoudige stappen</span></small>
+            title: Jouw feest <br><small>in <span class="accent">3 eenvoudige stappen</span></small>
             list:
                 one: Stel je deelnemerslijst samen
-                two: Voeg een persoonlijke boodschap toe
+                two: Voeg een boodschap toe
                 three: Verstuur!
             get_started: Vlieg er meteen in!
 
