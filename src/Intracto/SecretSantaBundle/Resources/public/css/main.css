@@ -729,14 +729,14 @@ a.btn-started {
     border: 1px solid #901017;
     border-radius: 5px;
     text-shadow: 1px 1px 1px #6e070c;
-    color: white;
     text-align: center;
     font-size: 1.2em;
     text-decoration: none
 }
 
 a.btn-started:hover {
-    background: #901017
+    background: #901017;
+    text-decoration:none;
 }
 
 .steps {

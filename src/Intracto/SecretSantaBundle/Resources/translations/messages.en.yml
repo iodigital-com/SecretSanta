@@ -264,7 +264,7 @@ label:
 placeholder:
     exclude: Click and choose the participants you want to exclude
 btn:
-    add_person: Add person
+    add_person:  Add person
     remove_person: Remove
     create_event: Create your event!
     create_new_list: Create a new Secret Santa list!

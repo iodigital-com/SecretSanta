@@ -42,7 +42,6 @@
                         {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'form-control col-xs-12','style':'margin-bottom:50px;'}}) }}
                     </div>
                 </div>
-
                 <div class="clearfix"></div>
                 <button style="float:right;" type="button" class="btn btn-mini btn-success add-new-entry">
                     <i class="fa fa-plus-circle fa-inverse"></i><i>{{ 'btn.add_person'|trans }}</i>
@@ -74,7 +73,7 @@
                                     <small>{{ 'create.list_adminstrator'|trans }}</small>
                                 {% else %}
                                     <button type="button" class="btn btn-mini btn-danger remove-entry disabled">
-                                        <i class="fa fa-times-circle fa-inverse"></i> <i class="text_remove">{{ 'btn.remove_person'|trans }}</i>
+                                        <i class="fa fa-times-circle fa-inverse" ></i> <i class="text_remove">{{ 'btn.remove_person'|trans }}</i>
                                     </button>
                                 {% endif %}
                             </td>
