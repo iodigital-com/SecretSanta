@@ -322,7 +322,7 @@ ul.form-errors {
     padding: 4px 18px;
     padding-right: 30px;
     font-family: 'straitregular';
-    width: auto;
+    width:90%;
 }
 
 .lang__selection:hover select {
