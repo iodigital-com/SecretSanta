@@ -13,6 +13,7 @@ jQuery(document).ready(function() {
 
     $('.btn-import-cancel').click(function(e) {
         e.preventDefault();
+        $('#importCSV').val('');
         $('.row-import-entries').hide(300);
     });
 
@@ -80,5 +81,43 @@ jQuery(document).ready(function() {
             $(this).val(data);
         }
     });
-
 });
+
+var dropImportCSV = document.getElementById('importCSV');
+var errorImportCSV = document.getElementById('errorImportCSV');
+
+dropImportCSV.addEventListener('drop', importCSV, false);
+
+function importCSV(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    var files = e.dataTransfer.files;
+    var number = files.length;
+
+    switch(number) {
+        case 1:
+            parseFiles(files);
+            errorImportCSV.innerHTML = "";
+            break;
+
+        default:
+            errorImportCSV.innerHTML = 'Only one file can be uploaded at a time';
+            break;
+    }
+}
+
+function parseFiles(files) {
+    var file = files[0];
+    var reader = new FileReader();
+
+    reader.readAsText(file, 'UTF-8');
+    reader.onload = handleReaderLoad;
+}
+
+function handleReaderLoad(e) {
+    var csv = e.target.result;
+    var splitCSVFile = csv.split(";");
+
+    dropImportCSV.innerHTML = splitCSVFile;
+}

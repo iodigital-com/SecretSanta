@@ -36,6 +36,8 @@ create:
     add_personal_message:
         title: Voeg een persoonlijke boodschap toe
         description: Voeg een persoonlijke boodschap voor de deelnemers toe
+    import:
+            instructions: Voeg meerdere personen in één keer toe aan jouw evenement. Het enige wat je nodig hebt is een CSV-bestand met 2 kolommen (naam en email). Sleep je CSV-bestand in het onderstaande tekstvak en jouw vrienden of collega's worden snel en makkelijk toegevoegd aan jouw evenement.
 exclude:
    title: Uitsluiten
    description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
@@ -248,7 +250,7 @@ btn:
     add_person: Persoon toevoegen
     remove_person: verwijderen
     import_persons:
-        open: Voeg meerdere toe
+        open: Voeg meerdere personen toe
         do: Voeg toe aan je evenement
     create_event: Maak je evenement aan!
     create_new_list: Stel een nieuwe Secret Santa lijst op!

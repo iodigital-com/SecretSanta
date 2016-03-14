@@ -71,9 +71,9 @@
                         {% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
                             <td {% if form_errors(entry.name) %}class="error"
-                                    {% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name form-control'} }) }}</td>
+                                    {% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
                             <td {% if form_errors(entry.email) %}class="error"
-                                    {% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail form-control'} }) }}</td>
+                                    {% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
                             <td style="text-align: right;">
                                 {% if entry.vars.data.poolAdmin %}
                                     <small>{{ 'create.list_adminstrator'|trans }}</small>
@@ -91,7 +91,8 @@
                     <div colspan="2">
                         <div>{{ 'create.import.instructions' |trans }}</div>
                         <br />
-                        <textarea class="add-import-entry-data form-control"></textarea>
+                        <p id="errorImportCSV"></p>
+                        <textarea id="importCSV" class="add-import-entry-data form-control"></textarea>
                         <br />
                         <button type="button" class="btn btn-mini btn-success add-import-entry-do"><i
                                     class="icon-plus-sign icon-white"></i> {{ 'btn.import_persons.do'|trans }}
@@ -102,7 +103,7 @@
                     </div>
                 </div>
                 <h1>{{ 'create.add_personal_message.title'|trans }}</h1>
-                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12 form-control'} }) }}<br/>
+                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
                 <div class="description">
                     {{ 'create.add_personal_message.description'|trans }}
                 </div>
