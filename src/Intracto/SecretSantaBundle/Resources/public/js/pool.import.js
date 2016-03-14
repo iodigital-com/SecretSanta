@@ -86,11 +86,23 @@ jQuery(document).ready(function() {
 var dropImportCSV = document.getElementById('importCSV');
 var errorImportCSV = document.getElementById('errorImportCSV');
 
+dropImportCSV.addEventListener('dragenter', function (e) {
+    e.stopPropagation(e);
+    e.preventDefault(e);
+});
+
+dropImportCSV.addEventListener('dragover', function (e) {
+    e.stopPropagation(e);
+    e.preventDefault(e);
+
+    return false;
+});
+
 dropImportCSV.addEventListener('drop', importCSV, false);
 
 function importCSV(e) {
-    e.stopPropagation();
-    e.preventDefault();
+    e.stopPropagation(e);
+    e.preventDefault(e);
 
     var files = e.dataTransfer.files;
     var number = files.length;
@@ -119,5 +131,5 @@ function handleReaderLoad(e) {
     var csv = e.target.result;
     var splitCSVFile = csv.split(";");
 
-    dropImportCSV.innerHTML = splitCSVFile;
+    dropImportCSV.value = splitCSVFile;
 }
