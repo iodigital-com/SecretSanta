@@ -38,6 +38,8 @@ create:
     add_personal_message:
         title: Add a personal message
         description: Add a personal message for the participants.
+    import:
+        instructions: Add multiple people at once to your party by using the CSV dataformat. All you need is a name and an emailaddress separated by a comma or semicolon. Each new person requires a new line, click submit and your friends or colleagues will be added fast and easy.
 exclude:
    title: Exclude
    description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
@@ -266,6 +268,9 @@ placeholder:
 btn:
     add_person:  Add person
     remove_person: Remove
+    import_persons:
+        open: Add multiple people
+        do: Add to party
     create_event: Create your event!
     create_new_list: Create a new Secret Santa list!
     delete_list: Delete my Secret Santa list
