@@ -43,23 +43,23 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <button style="float:right;" type="button" class="btn btn-mini btn-success add-new-entry">
-                    <i class="fa fa-plus-circle fa-inverse"></i><i>{{ 'btn.add_person'|trans }}</i>
-                </button>
+                <div style="display: block; overflow: auto; margin-bottom: 10px">
+                    <button style="float: right;" type="button" class="btn btn-mini btn-success add-new-entry">
+                        <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_person'|trans }}
+                    </button>
+                </div>
+                <div style="display: block; overflow: auto">
+                    <button style="float: right" type="button" class="btn btn-mini btn-success add-import-entry">
+                        <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.import_persons.open'|trans }}
+                    </button>
+                </div>
                 <table class="entries table table-striped mysanta">
                     <thead>
                     <tr>
                         <th class="col-xs-1 entry-number-header">#</th>
                         <th class="col-xs-3 col-md-4">{{ 'label.host'|trans }}</th>
                         <th class="col-xs-3 col-md-4">{{ 'label.email'|trans }}</th>
-                        <th style="text-align: right;" class="col-xs-4">
-                            <button type="button" class="btn btn-mini btn-success add-new-entry">
-                                <i class="icon-plus-sign icon-white"></i>{{ 'btn.add_person'|trans }}
-                            </button>
-                            <button type="button" class="btn btn-mini btn-success add-import-entry">
-                                <i class="icon-plus-sign icon-white"></i> {{ 'btn.import_persons.open'|trans }}
-                            </button>
-                        </th>
+                        <th style="text-align: right;" class="col-xs-4"></th>
                     </tr>
                     </thead>
                     <tbody data-prototype="{% filter escape %}
