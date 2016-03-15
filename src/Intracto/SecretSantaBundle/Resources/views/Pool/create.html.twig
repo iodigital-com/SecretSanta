@@ -14,16 +14,6 @@
     </div>
 {% endblock %}
 {% block main %}
-    <div class="mobile_lang">
-        <select style="background-color:white;color:black;border:solid black 1px;width:auto;float:right;">
-            {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
-                <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
-                    {{ locale_names[supported_locale|replace({'-': '_'})] }}
-                </option>
-            {% endfor %}
-        </select>
-     </div>
-    <br>
     <div class="box">
         <h2>{{ 'create.what_is.title'|trans }}</h2>
         {{ 'create.what_is.intro'|trans|raw }}

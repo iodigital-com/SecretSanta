@@ -144,10 +144,6 @@
 }
 
 @media only screen and (min-width: 800px) {
-    .mobile_lang {
-        display: none;
-    }
-
     .input {
         width: auto;
         max-width: 400px;
@@ -158,4 +154,7 @@
         max-width: 200px;
     }
 
+    .mobile__lang__selection {
+        display: none;
+    }
 }
