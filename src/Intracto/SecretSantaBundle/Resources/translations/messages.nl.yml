@@ -37,7 +37,9 @@ create:
         title: Voeg een persoonlijke boodschap toe
         description: Voeg een persoonlijke boodschap voor de deelnemers toe
     import:
-            instructions: Voeg meerdere personen in één keer toe aan jouw evenement. Het enige wat je nodig hebt is een CSV-bestand met 2 kolommen (naam en email). Sleep je CSV-bestand in het onderstaande tekstvak en jouw vrienden of collega's worden snel en makkelijk toegevoegd aan jouw evenement.
+        instructions: Voeg meerdere personen in één keer toe aan jouw evenement. Het enige wat je nodig hebt is een csv-bestand met 2 kolommen (naam en email). Sleep je csv-bestand in het onderstaande tekstvak en jouw vrienden of collega's worden snel en makkelijk toegevoegd aan jouw evenement.
+        too_many_files: Gelieve slecht één bestand per keer up te loaden.
+        wrong_format: Het bestand dat je probeert up te loaden heeft niet het gewenste formaat (csv of txt).
 exclude:
    title: Uitsluiten
    description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.

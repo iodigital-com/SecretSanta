@@ -39,7 +39,7 @@
                         {{ form_label(form.eventdate )  }}{{ form_widget(form.eventdate ,{'attr':{'class':'form-control col-xs-12'}}) }}
                     </div>
                     <div class="amount col-xs-12 {% if form_errors(form.amount) %} error{% endif %}">
-                        {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'form-control col-xs-12','style':'margin-bottom:50px;'}}) }}
+                        {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'form-control col-xs-12','style':'margin-bottom:10px;'}}) }}
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -71,9 +71,9 @@
                         {% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
                             <td {% if form_errors(entry.name) %}class="error"
-                                    {% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name'} }) }}</td>
+                                    {% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name form-control'} }) }}</td>
                             <td {% if form_errors(entry.email) %}class="error"
-                                    {% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail'} }) }}</td>
+                                    {% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail form-control'} }) }}</td>
                             <td style="text-align: right;">
                                 {% if entry.vars.data.poolAdmin %}
                                     <small>{{ 'create.list_adminstrator'|trans }}</small>
@@ -91,7 +91,8 @@
                     <div colspan="2">
                         <div>{{ 'create.import.instructions' |trans }}</div>
                         <br />
-                        <p id="errorImportCSV"></p>
+                        <div id="warningImportCSV" class="alert alert-warning" style="display: none">{{ 'create.import.too_many_files'|trans }}</div>
+                        <div id="errorImportCSV" class="alert alert-danger" style="display: none">{{ 'create.import.wrong_format'|trans }}</div>
                         <textarea id="importCSV" class="add-import-entry-data form-control"></textarea>
                         <br />
                         <button type="button" class="btn btn-mini btn-success add-import-entry-do"><i

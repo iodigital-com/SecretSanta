@@ -1,38 +1,47 @@
-
 /* Variables */
 var collectionHolder = $('table.entries tbody');
+var dropImportCSV = document.getElementById('importCSV');
+var errorImportCSV = document.getElementById('errorImportCSV');
+var warningImportCSV = document.getElementById('warningImportCSV');
 
 /* Document Ready */
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 
     //Add eventlistener on add-new-entry button
-    $('.add-import-entry').click(function(e) {
+    $('.add-import-entry').click(function (e) {
         e.preventDefault();
         $('.row-import-entries').show(300);
     });
 
-    $('.btn-import-cancel').click(function(e) {
+    $('.btn-import-cancel').click(function (e) {
         e.preventDefault();
         $('#importCSV').val('');
+        $('#errorImportCSV').hide();
+        $('#warningImportCSV').hide();
         $('.row-import-entries').hide(300);
     });
 
-    $('.add-import-entry-do').click(function(e) {
+    $('.add-import-entry-do').click(function (e) {
         e.preventDefault();
 
-        var entries = $.csv.toArrays($('.add-import-entry-data').val(), {headers: false, seperator: ',', delimiter: '"' } );
+        var entries = $.csv.toArrays($('.add-import-entry-data').val(), {
+            headers: false,
+            seperator: ',',
+            delimiter: '"'
+        });
 
-        if(typeof(entries[0]) === 'undefined') {
+        if (typeof(entries[0]) === 'undefined') {
             return;
         }
 
-        var added = 0; var lookForEmpty = true;
-        for(var entry in entries) {
+        var added = 0;
+        var lookForEmpty = true;
+        for (var entry in entries) {
 
             var email = '';
             var name = '';
 
-            for(var field in entries[entry]) {
+            for (var field in entries[entry]) {
                 // very basic check, can/should probably be done some other way
                 // check if this is an e-mailaddress
                 if (email == '' && entries[entry][field].indexOf('@') != -1) {
@@ -74,7 +83,7 @@ jQuery(document).ready(function() {
 
     });
 
-    $('.add-import-entry-data').change(function() {
+    $('.add-import-entry-data').change(function () {
         // replace tab and ; delimiter with ,
         data = $(this).val().replace(/\t/g, ",").replace(/;/g, ",");
         if (data != $(this).text()) {
@@ -82,9 +91,6 @@ jQuery(document).ready(function() {
         }
     });
 });
-
-var dropImportCSV = document.getElementById('importCSV');
-var errorImportCSV = document.getElementById('errorImportCSV');
 
 dropImportCSV.addEventListener('dragenter', function (e) {
     e.stopPropagation(e);
@@ -107,29 +113,42 @@ function importCSV(e) {
     var files = e.dataTransfer.files;
     var number = files.length;
 
-    switch(number) {
+    switch (number) {
         case 1:
             parseFiles(files);
-            errorImportCSV.innerHTML = "";
+            warningImportCSV.style.display = 'none';
             break;
 
         default:
-            errorImportCSV.innerHTML = 'Only one file can be uploaded at a time';
+            warningImportCSV.style.display = 'block';
             break;
     }
 }
 
 function parseFiles(files) {
     var file = files[0];
-    var reader = new FileReader();
+    var fileName = file['name'];
+    var fileExtension = fileName.replace(/^.*\./, '');
 
-    reader.readAsText(file, 'UTF-8');
-    reader.onload = handleReaderLoad;
+    switch (fileExtension) {
+        case 'csv':
+        case 'txt':
+            errorImportCSV.style.display = 'none';
+
+            var reader = new FileReader();
+
+            reader.readAsText(file, 'UTF-8');
+            reader.onload = handleReaderLoad;
+            break;
+
+        default:
+            errorImportCSV.style.display = 'block';
+            break;
+    }
 }
 
 function handleReaderLoad(e) {
     var csv = e.target.result;
-    var splitCSVFile = csv.split(";");
 
-    dropImportCSV.value = splitCSVFile;
+    dropImportCSV.value = csv.split(';');
 }
