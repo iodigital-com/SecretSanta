@@ -339,3 +339,10 @@ ul.form-errors {
     display: table;
 }
 
+.row-import-entries {
+    display: none;
+}
+.add-import-entry-data {
+    width: 100%;
+    height: 100px;
+}

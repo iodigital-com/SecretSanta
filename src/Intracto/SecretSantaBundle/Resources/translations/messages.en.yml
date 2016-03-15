@@ -38,6 +38,10 @@ create:
     add_personal_message:
         title: Add a personal message
         description: Add a personal message for the participants.
+    import:
+        instructions: Add multiple people at once to your event. All you need is a csv-file with 2 columns (name and mail). Drag and drop the csv-file into the field below and your friends or colleagues will be added fast and easy to your event.
+        too_many_files: Only one file can be uploaded at a time.
+        wrong_format: The file you're trying to upload does not have the required format (csv or txt).
 exclude:
    title: Exclude
    description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
@@ -266,6 +270,9 @@ placeholder:
 btn:
     add_person:  Add person
     remove_person: Remove
+    import_persons:
+        open: Add multiple people
+        do: Add to your event
     create_event: Create your event!
     create_new_list: Create a new Secret Santa list!
     delete_list: Delete my Secret Santa list

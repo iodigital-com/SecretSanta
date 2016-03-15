@@ -39,21 +39,27 @@
                         {{ form_label(form.eventdate )  }}{{ form_widget(form.eventdate ,{'attr':{'class':'form-control col-xs-12'}}) }}
                     </div>
                     <div class="amount col-xs-12 {% if form_errors(form.amount) %} error{% endif %}">
-                        {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'form-control col-xs-12','style':'margin-bottom:50px;'}}) }}
+                        {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'form-control col-xs-12','style':'margin-bottom:10px;'}}) }}
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <button style="float:right;" type="button" class="btn btn-mini btn-success add-new-entry">
-                    <i class="fa fa-plus-circle fa-inverse"></i><i>{{ 'btn.add_person'|trans }}</i>
-                </button>
+                <div style="display: block; overflow: auto; margin-bottom: 10px">
+                    <button style="float: right;" type="button" class="btn btn-mini btn-success add-new-entry">
+                        <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_person'|trans }}
+                    </button>
+                </div>
+                <div style="display: block; overflow: auto">
+                    <button style="float: right" type="button" class="btn btn-mini btn-success add-import-entry">
+                        <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.import_persons.open'|trans }}
+                    </button>
+                </div>
                 <table class="entries table table-striped mysanta">
                     <thead>
                     <tr>
                         <th class="col-xs-1 entry-number-header">#</th>
                         <th class="col-xs-3 col-md-4">{{ 'label.host'|trans }}</th>
                         <th class="col-xs-3 col-md-4">{{ 'label.email'|trans }}</th>
-                        <th style="text-align: right;" class="col-xs-4">
-                        </th>
+                        <th style="text-align: right;" class="col-xs-4"></th>
                     </tr>
                     </thead>
                     <tbody data-prototype="{% filter escape %}
@@ -81,8 +87,24 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                <div class="row-import-entries">
+                    <div colspan="2">
+                        <div>{{ 'create.import.instructions' |trans }}</div>
+                        <br />
+                        <div id="warningImportCSV" class="alert alert-warning" style="display: none">{{ 'create.import.too_many_files'|trans }}</div>
+                        <div id="errorImportCSV" class="alert alert-danger" style="display: none">{{ 'create.import.wrong_format'|trans }}</div>
+                        <textarea id="importCSV" class="add-import-entry-data form-control"></textarea>
+                        <br />
+                        <button type="button" class="btn btn-mini btn-success add-import-entry-do"><i
+                                    class="icon-plus-sign icon-white"></i> {{ 'btn.import_persons.do'|trans }}
+                        </button>
+                        <button type="button" class="btn btn-mini btn-danger btn-import-cancel"><i
+                                    class="icon-minus-sign icon-white"></i> {{ 'btn.cancel'|trans }}
+                        </button>
+                    </div>
+                </div>
                 <h1>{{ 'create.add_personal_message.title'|trans }}</h1>
-                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12 form-control'} }) }}<br/>
+                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
                 <div class="description">
                     {{ 'create.add_personal_message.description'|trans }}
                 </div>
@@ -167,10 +189,11 @@
 {% endblock %}
 {% block javascripts %}
     {% javascripts
-    '@IntractoSecretSantaBundle/Resources/public/js/jquery.smooth-scroll.min.js'
-    '@IntractoSecretSantaBundle/Resources/public/js/pool.create.js' %}
-
-    <script type="text/javascript" src="{{ asset_url }}"></script>
+        '@IntractoSecretSantaBundle/Resources/public/js/jquery.smooth-scroll.min.js'
+        '@IntractoSecretSantaBundle/Resources/public/js/jquery.csv-0.71.min.js'
+        '@IntractoSecretSantaBundle/Resources/public/js/pool.create.js'
+        '@IntractoSecretSantaBundle/Resources/public/js/pool.import.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ form_javascript(form) }}
     <script type="text/javascript">

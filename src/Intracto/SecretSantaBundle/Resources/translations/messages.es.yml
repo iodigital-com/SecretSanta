@@ -35,6 +35,10 @@ create:
     add_personal_message:
         title: Añade un mensaje personal
         description: Añade un mensaje personal para los participantes.
+    import:
+        instructions: Añade más persones a tu evenemento de una vez. Sólo necesitas un archivo csv con 2 columnas (nobmre y e-mail). Arrastra el archivo hasta el compartimiento abajo y tus amigos o compañeros de trabajo seran añadido a tu evenemento de una manera rápido y fácil.
+        too_many_files: Sírvase cargar sólo un archivo.
+        wrong_format: El archivo que intentas cargar no tiene el formato deseado (csv o txt).
 exclude:
    title: Excluye
    description: Con esta lista puedes evitar, opcionalmente, algunas combinaciones de participantes. Por ejemplo, evitar que miembros de la misma familia tengan que comprar regalos los unos para los otros.
@@ -139,6 +143,9 @@ placeholder:
 btn:
     add_person: Añadir persona
     remove_person: Quitar esta persona
+    import_persons:
+        open: Añadir más personas
+        do: Añadir a tu fiesta
     create_event: ¡Crear tu evento!
     create_new_list: ¡Crear una nueva lista Secret Santa!
     delete_list: Borrar mi lista Secret Santa
