@@ -73,6 +73,7 @@
 <div id="header" class="header">
     <div class="container">
         <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
+
         <div class="header__left">
             <div class="header__logo">
                 <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo"/>
@@ -124,8 +125,7 @@
             </div>
             <br>
         {% endblock %}
-        {% block main %}
-        {% endblock %}
+        {% block main %}{% endblock %}
         {% block footer %}
             <div id="footer-santa" class="clearfix">
                 {{ 'base.need_help'|trans({'%FAQ%': path('faq')})|raw }}
