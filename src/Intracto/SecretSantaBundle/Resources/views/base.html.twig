@@ -73,6 +73,7 @@
 <div id="header" class="header">
     <div class="container">
         <a id="homelink" href="{{ url('pool_create') }}">{{ 'nav.home'|trans }}</a>
+
         <div class="header__left">
             <div class="header__logo">
                 <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo"/>
@@ -110,6 +111,20 @@
                 </div>
             {% endif %}
         {% endfor %}
+        {% block mobile_lang %}
+            <div class="box">
+                <div class="mobile__lang__selection pull-right">
+                    <select>
+                        {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
+                            <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
+                                {{ locale_names[supported_locale|replace({'-': '_'})] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <br>
+        {% endblock %}
         {% block main %}{% endblock %}
         {% block footer %}
             <div id="footer-santa" class="clearfix">
