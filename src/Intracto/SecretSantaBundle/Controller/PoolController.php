@@ -74,28 +74,6 @@ class PoolController extends Controller
     }
 
     /**
-     * Retrieve pool by url
-     *
-     * @param $listurl
-     *
-     * @throws NotFoundHttpException
-     *
-     * @internal param string $url
-     *
-     * @return bool
-     */
-    protected function getPool($listurl)
-    {
-        $this->pool = $this->poolRepository->findOneByListurl($listurl);
-
-        if (!is_object($this->pool)) {
-            throw new NotFoundHttpException();
-        }
-
-        return true;
-    }
-
-    /**
      * @Route("/exclude/{listUrl}", name="pool_exclude")
      * @Template()
      */
@@ -312,6 +290,28 @@ class PoolController extends Controller
         return array(
             'form' => $form->createView(),
         );
+    }
+
+    /**
+     * Retrieve pool by url
+     *
+     * @param $listurl
+     *
+     * @throws NotFoundHttpException
+     *
+     * @internal param string $url
+     *
+     * @return bool
+     */
+    protected function getPool($listurl)
+    {
+        $this->pool = $this->poolRepository->findOneByListurl($listurl);
+
+        if (!is_object($this->pool)) {
+            throw new NotFoundHttpException();
+        }
+
+        return true;
     }
 
     /**
