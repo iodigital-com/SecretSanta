@@ -3,7 +3,9 @@
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Intracto\SecretSantaBundle\Query\Season;
 
 /**
  * @Route("/export")
@@ -11,14 +13,34 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ExportController extends Controller
 {
     /**
-     * @Route("/entries", name="export_entries")
+     * @Route("/admins", name="export_admins")
      */
-    public function entriesAction()
+    public function exportPoolAdminMailsAction()
     {
-        $entryService = $this->get('intracto_secret_santa.entry_service');
+        $entryService = $this->get('intracto_secret_santa.entry');
         $exportService = $this->get('intracto_secret_santa.service.export');
 
-        $data = $entryService->getAllUniqueEmails();
+        $previousYear = date('Y', strtotime('-1 year'));
+        $season = new Season($previousYear);
+
+        $data = $entryService->fetchAdminEmailsForExport($season);
+        $response = $exportService->exportCSV($data);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/participants", name="export_participants")
+     */
+    public function exportPoolParticipantMailsAction()
+    {
+        $entryService = $this->get('intracto_secret_santa.entry');
+        $exportService = $this->get('intracto_secret_santa.service.export');
+
+        $previousYear = date('Y', strtotime('-1 year'));
+        $season = new Season($previousYear);
+
+        $data = $entryService->fetchParticipantEmailsForExport($season);
         $response = $exportService->exportCSV($data);
 
         return $response;

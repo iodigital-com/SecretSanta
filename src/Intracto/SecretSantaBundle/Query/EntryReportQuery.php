@@ -309,4 +309,42 @@ class EntryReportQuery
 
         return $averageSeason1 - $averageSeason2;
     }
+
+    /**
+     * @param Season $season
+     * @return mixed
+     */
+    public function fetchAdminEmailsForExport(Season $season)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('distinct e.email')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->andWhere('e.poolAdmin = 1')
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
+    }
+
+    /**
+     * @param Season $season
+     * @return mixed
+     */
+    public function fetchParticipantEmailsForExport(Season $season)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('distinct e.email')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->andWhere('e.poolAdmin = 0')
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
+    }
 }
