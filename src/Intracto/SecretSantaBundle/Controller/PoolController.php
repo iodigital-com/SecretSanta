@@ -331,7 +331,11 @@ class PoolController extends Controller
                 }
                 $em = $this->getDoctrine()->getManager();
 
-                $dateFormatter = \IntlDateFormatter::create($request->getLocale(), \IntlDateFormatter::MEDIUM, \IntlDateFormatter::NONE);
+                $dateFormatter = \IntlDateFormatter::create(
+                    $request->getLocale(),
+                    \IntlDateFormatter::MEDIUM,
+                    \IntlDateFormatter::NONE
+                );
 
                 $translator = $this->get('translator');
                 $message = $translator->trans('emails.created.message', array(
