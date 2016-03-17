@@ -36,7 +36,7 @@ class PoolType extends AbstractType
             )
             ->add(
                 'amount',
-                'integer',
+                'text',
                 array(
                     'label' => 'label.amount_to_spend',
                 )
