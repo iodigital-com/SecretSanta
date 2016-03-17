@@ -58,38 +58,19 @@ class PoolController extends Controller
     {
         $pool = new Pool();
 
-        $form = $this->createForm(new PoolType(), $pool);
+        return $this->handlePoolCreation($request, $pool);
+    }
 
-        if ('POST' === $request->getMethod()) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                foreach ($pool->getEntries() as $entry) {
-                    $entry->setPool($pool);
-                }
-                $em = $this->getDoctrine()->getManager();
+    /**
+     * @Route("/reuse/{listUrl}", name="pool_reuse")
+     * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
+     */
+    public function reuseAction(Request $request, $listUrl)
+    {
+        $this->getPool($listUrl);
+        $pool = $this->pool->createNewPoolForReuse();
 
-                $dateFormatter = \IntlDateFormatter::create($request->getLocale(), \IntlDateFormatter::MEDIUM, \IntlDateFormatter::NONE);
-
-                $translator = $this->get('translator');
-                $message = $translator->trans('emails.created.message', array(
-                    '%amount%' => $pool->getAmount(),
-                    '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
-                    '%message%' => $pool->getMessage(),
-                ));
-
-                $pool->setCreationDate(new \DateTime());
-                $pool->setMessage($message);
-                $pool->setLocale($request->getLocale());
-                $em->persist($pool);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
-            }
-        }
-
-        return array(
-            'form' => $form->createView(),
-        );
+        return $this->handlePoolCreation($request, $pool);
     }
 
     /**
@@ -331,5 +312,50 @@ class PoolController extends Controller
         }
 
         return true;
+    }
+
+    /**
+     * @param Request $request
+     * @param Pool $pool
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    private function handlePoolCreation(Request $request, Pool $pool)
+    {
+        $form = $this->createForm(new PoolType(), $pool);
+
+        if ('POST' === $request->getMethod()) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                foreach ($pool->getEntries() as $entry) {
+                    $entry->setPool($pool);
+                }
+                $em = $this->getDoctrine()->getManager();
+
+                $dateFormatter = \IntlDateFormatter::create(
+                    $request->getLocale(),
+                    \IntlDateFormatter::MEDIUM,
+                    \IntlDateFormatter::NONE
+                );
+
+                $translator = $this->get('translator');
+                $message = $translator->trans('emails.created.message', array(
+                    '%amount%' => $pool->getAmount(),
+                    '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
+                    '%message%' => $pool->getMessage(),
+                ));
+
+                $pool->setCreationDate(new \DateTime());
+                $pool->setMessage($message);
+                $pool->setLocale($request->getLocale());
+                $em->persist($pool);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('pool_exclude', array('listUrl' => $pool->getListurl())));
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+        );
     }
 }

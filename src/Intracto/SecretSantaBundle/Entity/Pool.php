@@ -101,17 +101,19 @@ class Pool
      */
     private $exposed = false;
 
-    public function __construct()
+    public function __construct($createDefaults = true)
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
 
-        // Create default minimum entries
-        for ($i = 0; $i < 3; $i++) {
-            $entry = new Entry();
-            if ($i == 0) {
-                $entry->setPoolAdmin(true);
+        if($createDefaults) {
+            // Create default minimum entries
+            for ($i = 0; $i < 3; $i++) {
+                $entry = new Entry();
+                if ($i == 0) {
+                    $entry->setPoolAdmin(true);
+                }
+                $this->addEntry($entry);
             }
-            $this->addEntry($entry);
         }
     }
 
@@ -376,5 +378,25 @@ class Pool
     public function getExposed()
     {
         return $this->exposed;
+    }
+
+    public function createNewPoolForReuse()
+    {
+        $originalPool = $this;
+
+        $pool = new Pool(false);
+        $pool->setAmount($originalPool->getAmount());
+
+        $originalEntries = $originalPool->getEntries();
+
+        foreach ($originalEntries as $originalEntry) {
+            $entry = new Entry();
+            $entry->setName($originalEntry->getName());
+            $entry->setEmail($originalEntry->getEmail());
+            $entry->setPoolAdmin($originalEntry->isPoolAdmin());
+            $pool->addEntry($entry);
+        }
+
+        return $pool;
     }
 }
