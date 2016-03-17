@@ -63,7 +63,7 @@ class PoolController extends Controller
 
     /**
      * @Route("/reuse/{listUrl}", name="pool_reuse")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
      */
     public function reuseAction(Request $request, $listUrl)
     {
@@ -71,6 +71,28 @@ class PoolController extends Controller
         $pool = $this->pool->createNewPoolForReuse();
 
         return $this->handlePoolCreation($request, $pool);
+    }
+
+    /**
+     * Retrieve pool by url
+     *
+     * @param $listurl
+     *
+     * @throws NotFoundHttpException
+     *
+     * @internal param string $url
+     *
+     * @return bool
+     */
+    protected function getPool($listurl)
+    {
+        $this->pool = $this->poolRepository->findOneByListurl($listurl);
+
+        if (!is_object($this->pool)) {
+            throw new NotFoundHttpException();
+        }
+
+        return true;
     }
 
     /**
@@ -293,27 +315,10 @@ class PoolController extends Controller
     }
 
     /**
-     * Retrieve pool by url
-     *
-     * @param $listurl
-     *
-     * @throws NotFoundHttpException
-     *
-     * @internal param string $url
-     *
-     * @return bool
+     * @param Request $request
+     * @param Pool $pool
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    protected function getPool($listurl)
-    {
-        $this->pool = $this->poolRepository->findOneByListurl($listurl);
-
-        if (!is_object($this->pool)) {
-            throw new NotFoundHttpException();
-        }
-
-        return true;
-    }
-
     private function handlePoolCreation(Request $request, Pool $pool)
     {
         $form = $this->createForm(new PoolType(), $pool);
