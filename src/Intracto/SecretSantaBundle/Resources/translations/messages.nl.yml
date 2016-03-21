@@ -105,6 +105,7 @@ entry:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
         date: Datum
+        location: Locatie
         amount: Bedrag
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
