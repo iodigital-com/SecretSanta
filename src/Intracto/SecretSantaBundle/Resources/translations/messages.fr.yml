@@ -103,7 +103,7 @@ entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
         date: Date
-        Location: Emplacement
+        location: Emplacement
         amount: Montant
         num_people: Nombre de personnes
         person_created_list: Créateur de la liste
