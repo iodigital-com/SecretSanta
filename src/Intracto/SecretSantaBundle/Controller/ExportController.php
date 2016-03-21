@@ -18,15 +18,13 @@ class ExportController extends Controller
     public function exportPoolAdminMailsAction()
     {
         $entryService = $this->get('intracto_secret_santa.entry');
-        $exportService = $this->get('intracto_secret_santa.service.export');
 
         $previousYear = date('Y', strtotime('-1 year'));
         $season = new Season($previousYear);
 
         $data = $entryService->fetchAdminEmailsForExport($season);
-        $response = $exportService->exportCSV($data);
 
-        return $response;
+        return $data;
     }
 
     /**
@@ -35,14 +33,12 @@ class ExportController extends Controller
     public function exportPoolParticipantMailsAction()
     {
         $entryService = $this->get('intracto_secret_santa.entry');
-        $exportService = $this->get('intracto_secret_santa.service.export');
 
         $previousYear = date('Y', strtotime('-1 year'));
         $season = new Season($previousYear);
 
         $data = $entryService->fetchParticipantEmailsForExport($season);
-        $response = $exportService->exportCSV($data);
 
-        return $response;
+        return $data;
     }
 }

@@ -316,17 +316,23 @@ class EntryReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
-        $query = $this->dbal->createQueryBuilder()
-            ->select('distinct e.email')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->andWhere('e.poolAdmin = 1')
-            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
-
-        return $query->execute()->fetchAll();
+        return $this->dbal->fetchAll("
+            SELECT distinct(e.email)
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay
+            AND p.sentdate < :lastDay
+            AND e.poolAdmin = 1
+            INTO OUTFILE :location
+            FIELDS TERMINATED BY ','
+            ENCLOSED BY '\"'
+            LINES TERMINATED BY '\\n'",
+            [
+                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
+                'location' => '/vagrant/export/admins/' . date('Y-m-d H.i.s') . '_admins.csv',
+            ]
+        );
     }
 
     /**
@@ -335,16 +341,22 @@ class EntryReportQuery
      */
     public function fetchParticipantEmailsForExport(Season $season)
     {
-        $query = $this->dbal->createQueryBuilder()
-            ->select('distinct e.email')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->andWhere('e.poolAdmin = 0')
-            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
-
-        return $query->execute()->fetchAll();
+        return $this->dbal->fetchAll("
+            SELECT distinct(e.email)
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay
+            AND p.sentdate < :lastDay
+            AND e.poolAdmin = 0
+            INTO OUTFILE :location
+            FIELDS TERMINATED BY ','
+            ENCLOSED BY '\"'
+            LINES TERMINATED BY '\\n'",
+            [
+                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
+                'location' => '/vagrant/export/participants/'.date('Y-m-d H.i.s').'_participants.csv',
+            ]
+        );
     }
 }
