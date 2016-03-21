@@ -241,6 +241,7 @@ label:
     participants: Deelnemers
     date_party: Datum van jouw Secret Santa feest
     amount_to_spend: Te spenderen bedrag
+    location: Locatie van jouw Secret Santa feest
     exclude: Uitsluiten
     confirmed: Bevestigd
     actions: Acties
@@ -306,7 +307,7 @@ emails:
 
             Je mag tot %amount% aan je cadeau spenderen. Maar wees niet bevreesd cheapo's, eigen geschenken maken is toegestaan. We moedigen het zelfs aan!
 
-            Het Secret Santa feestje vindt plaats op %date%. Vergeet je cadeau niet!
+            Het Secret Santa feestje vindt plaats op %eventdate% op de volgende locatie: %location%. Vergeet je cadeau niet!
 
             %message%
 

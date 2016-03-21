@@ -141,12 +141,21 @@
         margin-left: -17px;
     }
 
+    .location {
+        margin-left: -17px;
+    }
+
 }
 
 @media only screen and (min-width: 800px) {
     .input {
         width: auto;
-        max-width: 400px;
+        max-width: 300px;
+    }
+    
+    .location {
+        width: auto;
+        max-width: 300px;
     }
 
     .amount {
