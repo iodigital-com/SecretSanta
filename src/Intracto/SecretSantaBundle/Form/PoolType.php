@@ -40,6 +40,13 @@ class PoolType extends AbstractType
                 array(
                     'label' => 'label.amount_to_spend',
                 )
+            )
+            ->add(
+                'location',
+                'text',
+                array(
+                    'label' => 'label.location',
+                )
             );
     }
 

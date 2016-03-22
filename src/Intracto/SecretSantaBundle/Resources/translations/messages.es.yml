@@ -105,6 +105,7 @@ entry:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
         date: Fecha
+        location: Sitio
         amount: Cantidad
         num_people: Número de personas
         person_created_list: Persona que creó esta lista
@@ -134,6 +135,7 @@ label:
     email: Correo electrónico
     date_party: Fecha de tu fiesta Secret Santa
     amount_to_spend: Cantidad a gastar
+    location: Sitio de tu fiesta Secret Santa
     exclude: Excluir
     confirmed: Confirmado
     actions: Acciones
@@ -198,7 +200,7 @@ emails:
 
             Puedes gastar hasta %amount% para tu regalo. Pero, por supuesto, se permite crear tu propio regalo, es más, ¡se te anima a ello!
 
-            La fiesta Secret Santa está planeada para el %date%. ¡Asegúrate de traer tu regalo!
+            La fiesta Secret Santa está planeada para el %eventdate% y tiene lugar en %location%. ¡Asegúrate de traer tu regalo!
 
             %message%
 

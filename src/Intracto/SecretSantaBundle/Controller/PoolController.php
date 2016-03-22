@@ -341,6 +341,7 @@ class PoolController extends Controller
                 $message = $translator->trans('emails.created.message', array(
                     '%amount%' => $pool->getAmount(),
                     '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
+                    '%location%' => $pool->getLocation(),
                     '%message%' => $pool->getMessage(),
                 ));
 

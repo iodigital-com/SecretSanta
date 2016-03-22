@@ -101,6 +101,14 @@ class Pool
      */
     private $exposed = false;
 
+    /**
+     * @var string $location
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="location", type="string", length=255, nullable=true)
+     */
+    private $location;
+
     public function __construct($createDefaults = true)
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
@@ -378,6 +386,22 @@ class Pool
     public function getExposed()
     {
         return $this->exposed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
     }
 
     public function createNewPoolForReuse()

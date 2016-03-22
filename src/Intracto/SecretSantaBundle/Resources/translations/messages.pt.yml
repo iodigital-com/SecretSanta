@@ -282,7 +282,7 @@ emails:
             Divirta-se brincando de Amigo Secreto e descubra quem será o seu amigo secreto clicando no botão abaixo.
 
             É permitido gastar até %amount% no presente. Não tenha medo, seu avarento: você também pode criar um presente personalizado e artesanal. A gente até te encoraja a fazê-lo!
-            A festa do Amigo Secreto será dia %date%. Não esqueça o seu presente!
+            A festa do Amigo Secreto será dia %eventdate%. Não esqueça o seu presente!
 
             %message%
 

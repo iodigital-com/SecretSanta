@@ -103,6 +103,7 @@ entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
         date: Date
+        location: Emplacement
         amount: Montant
         num_people: Nombre de personnes
         person_created_list: Créateur de la liste
@@ -222,6 +223,7 @@ label:
     email: E-mail
     date_party: Date de votre Secret Santa party
     amount_to_spend: Montant à dépenser
+    location: Emplacement de votre Secret Santa party
     exclude: Exclure
     confirmed: Confirmés
     actions: Actions
@@ -286,7 +288,7 @@ emails:
 
             Pouvez dépenser jusqu'à %amount% pour votre cadeau. Mais bien sûr, créer votre cadeau est permis. C'est même vivement recommandé !
 
-            La Secret Santa party est prévue le %date%. Assurez-vous d'amener votre cadeau.
+            La Secret Santa party est prévue le %eventdate% et a lieu à %location%. Assurez-vous d'amener votre cadeau.
 
             %message%
 

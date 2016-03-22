@@ -108,6 +108,7 @@ entry:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details
         date: Date
+        location: Location
         amount: Amount
         num_people: Number of people
         person_created_list: Person who created this list
@@ -260,6 +261,7 @@ label:
     participants: Participants
     date_party: Date of your Secret Santa party
     amount_to_spend: Amount to spend
+    location: Location of your Secret Santa party
     exclude: Exclude
     confirmed: Confirmed
     actions: Actions
@@ -325,7 +327,7 @@ emails:
 
             You can spend up to %amount% for your gift. But of course creating your own present is allowed. Even encouraged!
 
-            The Secret Santa party is planned %date%. Be sure to bring your gift!
+            The Secret Santa party is planned %eventdate% and will take place at/in %location%. Be sure to bring your gift!
 
             %message%
 

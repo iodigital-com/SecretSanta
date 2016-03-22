@@ -27,6 +27,9 @@
                     <div class="input col-xs-12{% if form_errors(form.eventdate) %} error{% endif %}">
                         {{ form_label(form.eventdate )  }}{{ form_widget(form.eventdate ,{'attr':{'class':'form-control col-xs-12'}}) }}
                     </div>
+                    <div class="location col-xs-12{% if form_errors(form.location) %} error{% endif %}">
+                        {{ form_label(form.location) }}{{ form_widget(form.location,{'attr':{'class':'form-control col-xs-12'}}) }}
+                    </div>
                     <div class="amount col-xs-12 {% if form_errors(form.amount) %} error{% endif %}">
                         {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'form-control col-xs-12','style':'margin-bottom:10px;'}}) }}
                     </div>

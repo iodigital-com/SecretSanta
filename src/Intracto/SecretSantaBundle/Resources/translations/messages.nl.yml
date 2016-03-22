@@ -105,6 +105,7 @@ entry:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
         date: Datum
+        location: Locatie
         amount: Bedrag
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
@@ -241,6 +242,7 @@ label:
     participants: Deelnemers
     date_party: Datum van jouw Secret Santa feest
     amount_to_spend: Te spenderen bedrag
+    location: Locatie van jouw Secret Santa feest
     exclude: Uitsluiten
     confirmed: Bevestigd
     actions: Acties
@@ -306,7 +308,7 @@ emails:
 
             Je mag tot %amount% aan je cadeau spenderen. Maar wees niet bevreesd cheapo's, eigen geschenken maken is toegestaan. We moedigen het zelfs aan!
 
-            Het Secret Santa feestje vindt plaats op %date%. Vergeet je cadeau niet!
+            Het Secret Santa feestje vindt plaats op %eventdate% op de volgende locatie: %location%. Vergeet je cadeau niet!
 
             %message%
 

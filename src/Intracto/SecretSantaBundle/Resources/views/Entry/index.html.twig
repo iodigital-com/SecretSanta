@@ -7,6 +7,7 @@
         <h2>{{ 'entry.headers.title'|trans|raw }}</h2>
         <ul class="liststyle1">
             <li><strong>{{ 'entry.headers.date'|trans }} </strong> {{ entry.pool.eventdate|localizeddate('medium', 'none') }}</li>
+            <li><strong>{{ 'entry.headers.location'|trans }}</strong> {{ entry.pool.location }}</li>
             <li><strong>{{ 'entry.headers.amount'|trans }} </strong> {{ entry.pool.amount }}</li>
             <li><strong>{{ 'entry.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
             <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> {{ entry.pool.entries|first.email }}
