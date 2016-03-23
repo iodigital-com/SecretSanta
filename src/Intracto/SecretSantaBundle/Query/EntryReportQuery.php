@@ -316,7 +316,7 @@ class EntryReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
-        return $this->dbal->fetchAll("
+        return $this->dbal->executeQuery("
             SELECT distinct(e.email)
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
@@ -330,7 +330,7 @@ class EntryReportQuery
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => '/vagrant/export/admins/' . date('Y-m-d H.i.s') . '_admins.csv',
+                'location' => '/vagrant/export/admin/' . date('Y-m-d H.i.s') . '_admins.csv',
             ]
         );
     }
@@ -341,7 +341,7 @@ class EntryReportQuery
      */
     public function fetchParticipantEmailsForExport(Season $season)
     {
-        return $this->dbal->fetchAll("
+        return $this->dbal->executeQuery("
             SELECT distinct(e.email)
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
@@ -355,7 +355,7 @@ class EntryReportQuery
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => '/vagrant/export/participants/'.date('Y-m-d H.i.s').'_participants.csv',
+                'location' => '/vagrant/export/participant/'.date('Y-m-d H.i.s').'_participants.csv',
             ]
         );
     }

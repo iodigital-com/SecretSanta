@@ -35,10 +35,12 @@ class ExportMailsCommand extends ContainerAwareCommand
         switch ($type) {
             case 'admin':
                 $entryService->fetchAdminEmailsForExport($season);
+                $output->writeln("Last years admin emails exported to /export/admin");
 
                 break;
             case 'participant':
                 $entryService->fetchParticipantEmailsForExport($season);
+                $output->writeln("Last year's participant emails exported to /export/participant");
                 break;
             default:
                 $output->writeln('No valid parameter included');
