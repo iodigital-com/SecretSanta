@@ -36,6 +36,8 @@ echo "roundcube-core roundcube/dbconfig-install boolean true" | debconf-set-sele
 echo "roundcube-core roundcube/database-type select mysql" | debconf-set-selections
 
 apt-get -y install roundcube-core dovecot-imapd php-mdb2-driver-mysql
+pear install MDB2
+pear install MDB2_Driver_Mysql
 
 sed -i 's/mail_location = .*/mail_location = maildir:~\/Maildir/' /etc/dovecot/conf.d/10-mail.conf
 /etc/init.d/dovecot restart
