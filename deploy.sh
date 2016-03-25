@@ -19,6 +19,7 @@ cd releases/$VERSION
 
 cp ../../shared/parameters.yml app/config
 cp ../../shared/client_secrets.json app/config
+ln -s ../../export
 composer.phar install --no-dev --optimize-autoloader
 app/console doctrine:schema:update --force --env=${SYMFONY_ENV}
 
