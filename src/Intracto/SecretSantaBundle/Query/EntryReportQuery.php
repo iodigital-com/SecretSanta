@@ -12,6 +12,7 @@ class EntryReportQuery
     private $poolReportQuery;
     /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
+    private $rootDirectory;
 
     /**
      * @param Connection $dbal
@@ -21,30 +22,14 @@ class EntryReportQuery
     public function __construct(
         Connection $dbal,
         PoolReportQuery $poolReportQuery,
-        FeaturedYearsQuery $featuredYearsQuery
-    ) {
+        FeaturedYearsQuery $featuredYearsQuery,
+        $rootDirectory
+    )
+    {
         $this->dbal = $dbal;
         $this->poolReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
-    }
-
-    /**
-     * @param Season $season
-     * @return mixed
-     */
-    public function countConfirmedEntries(Season $season)
-    {
-        $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS confirmedEntryCount')
-            ->from('Pool', 'p')
-            ->innerjoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->andWhere('e.viewdate IS NOT NULL')
-            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
-
-        return $query->execute()->fetchAll();
+        $this->rootDirectory = $rootDirectory;
     }
 
     /**
@@ -60,24 +45,6 @@ class EntryReportQuery
             ->where('p.sentdate < :lastDay')
             ->andWhere('e.viewdate IS NOT NULL')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
-
-        return $query->execute()->fetchAll();
-    }
-
-    /**
-     * @param Season $season
-     * @return mixed
-     */
-    public function countDistinctEntries(Season $season)
-    {
-        $query = $this->dbal->createQueryBuilder()
-            ->select('count(distinct e.email) AS distinctEntryCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
     }
@@ -177,40 +144,6 @@ class EntryReportQuery
     }
 
     /**
-     * @param Season $season
-     * @return float
-     */
-    public function calculateAverageEntriesPerPool(Season $season)
-    {
-        $pools = $this->poolReportQuery->countPools($season);
-        $entries = $this->countEntries($season);
-
-        if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount'] != 0) {
-            return implode($entries[0]) / implode($pools[0]);
-        }
-
-        throw new NoResultException();
-    }
-
-    /**
-     * @param Season $season
-     * @return mixed
-     */
-    public function countEntries(Season $season)
-    {
-        $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS entryCount')
-            ->from('Pool', 'p')
-            ->innerjoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
-
-        return $query->execute()->fetchAll();
-    }
-
-    /**
      * @param \DateTime $date
      * @return float
      */
@@ -260,6 +193,24 @@ class EntryReportQuery
     }
 
     /**
+     * @param Season $season
+     * @return mixed
+     */
+    public function countEntries(Season $season)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS entryCount')
+            ->from('Pool', 'p')
+            ->innerjoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
+    }
+
+    /**
      * @param Season $season1
      * @param Season $season2
      * @return mixed
@@ -274,6 +225,25 @@ class EntryReportQuery
         }
 
         return $confirmedEntryCountSeason1[0]['confirmedEntryCount'] - $confirmedEntryCountSeason2[0]['confirmedEntryCount'];
+    }
+
+    /**
+     * @param Season $season
+     * @return mixed
+     */
+    public function countConfirmedEntries(Season $season)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(p.id) AS confirmedEntryCount')
+            ->from('Pool', 'p')
+            ->innerjoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->andWhere('e.viewdate IS NOT NULL')
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
     }
 
     /**
@@ -294,6 +264,24 @@ class EntryReportQuery
     }
 
     /**
+     * @param Season $season
+     * @return mixed
+     */
+    public function countDistinctEntries(Season $season)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('count(distinct e.email) AS distinctEntryCount')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.sentdate >= :firstDay')
+            ->andWhere('p.sentdate < :lastDay')
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
+
+        return $query->execute()->fetchAll();
+    }
+
+    /**
      * @param Season $season1
      * @param Season $season2
      * @return float
@@ -308,5 +296,73 @@ class EntryReportQuery
         }
 
         return $averageSeason1 - $averageSeason2;
+    }
+
+    /**
+     * @param Season $season
+     * @return float
+     */
+    public function calculateAverageEntriesPerPool(Season $season)
+    {
+        $pools = $this->poolReportQuery->countPools($season);
+        $entries = $this->countEntries($season);
+
+        if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount'] != 0) {
+            return implode($entries[0]) / implode($pools[0]);
+        }
+
+        throw new NoResultException();
+    }
+
+    /**
+     * @param Season $season
+     * @return mixed
+     */
+    public function fetchAdminEmailsForExport(Season $season)
+    {
+        return $this->dbal->executeQuery("
+            SELECT e.name, e.email, e.poolId
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay
+            AND p.sentdate < :lastDay
+            AND e.poolAdmin = 1
+            GROUP BY e.email
+            INTO OUTFILE :location
+            FIELDS TERMINATED BY ','
+            ENCLOSED BY '\"'
+            LINES TERMINATED BY '\\n'",
+            [
+                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
+                'location' => $this->rootDirectory . '/../export/admin/' . date('Y-m-d H.i.s') . '_admins.csv',
+            ]
+        );
+    }
+
+    /**
+     * @param Season $season
+     * @return mixed
+     */
+    public function fetchParticipantEmailsForExport(Season $season)
+    {
+        return $this->dbal->executeQuery("
+            SELECT e.name, e.email, e.poolId
+            FROM Pool p
+            JOIN Entry e ON p.id = e.poolId
+            WHERE p.sentdate >= :firstDay
+            AND p.sentdate < :lastDay
+            AND e.poolAdmin = 0
+            GROUP BY e.email
+            INTO OUTFILE :location
+            FIELDS TERMINATED BY ','
+            ENCLOSED BY '\"'
+            LINES TERMINATED BY '\\n'",
+            [
+                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
+                'location' => $this->rootDirectory . '/../export/participant/' . date('Y-m-d H.i.s') . '_participants.csv',
+            ]
+        );
     }
 }
