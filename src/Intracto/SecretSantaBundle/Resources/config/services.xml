@@ -19,6 +19,7 @@
             <argument type="service" id="database_connection"></argument>
             <argument type="service" id="intracto_secret_santa.pool"></argument>
             <argument type="service" id="intracto_secret_santa.featured_years"></argument>
+            <argument>%kernel.root_dir%</argument>
         </service>
         <service id="intracto_secret_santa.ip" class="Intracto\SecretSantaBundle\Query\IpReportQuery">
             <argument type="service" id="database_connection"></argument>
