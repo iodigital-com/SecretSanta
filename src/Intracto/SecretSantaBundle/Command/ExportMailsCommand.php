@@ -19,31 +19,32 @@ class ExportMailsCommand extends ContainerAwareCommand
             ->setName('intracto:exportmails')
             ->setDescription('Export mails from database')
             ->addArgument(
-                'type',
-                InputArgument::REQUIRED
-            )
-        ;
+                'userType',
+                InputArgument::OPTIONAL
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $entryService = $this->getContainer()->get('intracto_secret_santa.entry');
-        $previousYear = date('Y', strtotime('-1 year'));
-        $season = new Season($previousYear);
-        $type = $input->getArgument('type');
+        $lastSeason = date('Y', strtotime('-1 year'));
+        $season = new Season($lastSeason);
+        $userType = $input->getArgument('userType');
 
-        switch ($type) {
+        switch ($userType) {
             case 'admin':
                 $entryService->fetchAdminEmailsForExport($season);
-                $output->writeln("Last years admin emails exported to /export/admin");
+                $output->writeln("Last season's admin emails exported to /export/admin");
 
                 break;
             case 'participant':
                 $entryService->fetchParticipantEmailsForExport($season);
-                $output->writeln("Last year's participant emails exported to /export/participant");
+                $output->writeln("Last season's participant emails exported to /export/participant");
                 break;
             default:
-                $output->writeln('No valid parameter included');
+                $entryService->fetchAdminEmailsForExport($season);
+                $entryService->fetchParticipantEmailsForExport($season);
+                $output->writeln("All emails exported to /export/admin & /export/participant");
                 break;
         }
     }
