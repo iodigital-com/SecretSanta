@@ -195,4 +195,24 @@ class EntryController extends Controller
 
         return ['entries' => $this->entryRepository->findAfter($startCrawling)];
     }
+
+    /**
+     * @Route("/poke/{url}/{entryId}", name="poke_buddy")
+     * @Template()
+     */
+    public function pokeBuddyAction($url, $entryId)
+    {
+        $entry = $this->entryRepository->find($entryId);
+
+        $entryService = $this->get('intracto_secret_santa.mail');
+        $entryService->sendPokeMailToBuddy($entry);
+
+        $translator = $this->get('translator');
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            $translator->trans('flashes.entry.poke_buddy')
+        );
+
+        return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+    }
 }
