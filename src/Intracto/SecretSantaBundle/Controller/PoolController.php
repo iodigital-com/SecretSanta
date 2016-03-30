@@ -147,10 +147,10 @@ class PoolController extends Controller
                 'success',
                 $translator->trans('flashes.manage.email_validated')
             );
-            /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
-            $entryService = $this->get('intracto_secret_santa.entry_service');
+            /** @var \Intracto\SecretSantaBundle\Mailer\MailerService $mailerService */
+            $mailerService = $this->get('intracto_secret_santa.mail');
 
-            $entryService->sendSecretSantaMailsForPool($this->pool);
+            $mailerService->sendSecretSantaMailsForPool($this->pool);
         }
 
         return array(
@@ -225,9 +225,9 @@ class PoolController extends Controller
         $em->flush();
 
         /* Mail pool owner the pool matches */
-        /** @var \Intracto\SecretSantaBundle\Entity\EntryService $entryService */
-        $entryService = $this->get('intracto_secret_santa.entry_service');
-        $entryService->sendPoolMatchesToAdmin($this->pool);
+        /** @var \Intracto\SecretSantaBundle\Mailer\MailerService $mailerService */
+        $mailerService = $this->get('intracto_secret_santa.mail');
+        $mailerService->sendPoolMatchesToAdmin($this->pool);
 
         return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
     }
@@ -248,8 +248,9 @@ class PoolController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $entryService = $this->get('intracto_secret_santa.entry_service');
-        $entryService->sendSecretSantaMailForEntry($entry);
+        /** @var \Intracto\SecretSantaBundle\Mailer\MailerService $mailerService */
+        $mailerService = $this->get('intracto_secret_santa.mail');
+        $mailerService->sendSecretSantaMailForEntry($entry);
 
         $translator = $this->get('translator');
         $this->get('session')->getFlashBag()->add(
@@ -267,11 +268,13 @@ class PoolController extends Controller
     public function forgotLinkAction(Request $request)
     {
         $form = $this->createForm(new ForgotLinkType());
+        /** @var \Intracto\SecretSantaBundle\Mailer\MailerService $mailerService */
+        $mailerService = $this->get('intracto_secret_santa.mail');
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                if ($this->get('intracto_secret_santa.pool_service')->sendForgotManageLinkMail($form->getData()['email'])) {
+                if ($mailerService->sendForgotManageLinkMail($form->getData()['email'])) {
                     $feedback = array(
                         'type' => 'success',
                         'message' => $this->get('translator')->trans('flashes.forgot_manage_link.success'),
