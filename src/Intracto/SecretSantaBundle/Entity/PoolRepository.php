@@ -10,13 +10,13 @@ class PoolRepository extends EntityRepository
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->addSelect('pool.listurl')
-            ->addSelect('pool.date')
+            ->addSelect('pool.eventdate')
             ->addSelect('pool.locale')
             ->from('IntractoSecretSantaBundle:Pool', 'pool')
             ->join('pool.entries', 'entries')
             ->andWhere('entries.poolAdmin = true')
             ->andWhere('entries.email = :email')
-            ->andWhere('pool.date >= :date')
+            ->andWhere('pool.eventdate >= :date')
             ->setParameters([
                 'email' => $email,
                 'date' => new \DateTime('-1 week'),
