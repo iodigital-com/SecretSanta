@@ -25,6 +25,8 @@ class SendEntryViewReminderCommand extends ContainerAwareCommand
     }
 
     /**
+     * Execute the command
+     *
      * @param InputInterface $input
      * @param OutputInterface $output
      *

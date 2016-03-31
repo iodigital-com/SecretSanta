@@ -297,4 +297,35 @@ class MailerService
             )
         );
     }
+
+    /**
+     * @param Entry $entry
+     */
+    public function sendEntryViewReminderMail(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.viewentryreminder.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:viewentryreminder.html.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:viewentryreminder.txt.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
 }
