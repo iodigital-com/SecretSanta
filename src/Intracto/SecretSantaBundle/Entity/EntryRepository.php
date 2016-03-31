@@ -27,21 +27,6 @@ class EntryRepository extends EntityRepository
     /**
      * @return Entry[]
      */
-    public function findAllForWishlistNofifcication()
-    {
-        $query = $this->_em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-            JOIN entry.entry peer
-            WHERE peer.wishlist_updated = 1
-        ');
-
-        return $query->getResult();
-    }
-
-    /**
-     * @return Entry[]
-     */
     public function findBatchForWishlistNotification($batchSize = 50)
     {
         $query = $this->_em->createQuery('

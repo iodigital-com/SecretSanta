@@ -328,4 +328,38 @@ class MailerService
             )
         );
     }
+
+    /**
+     * @param Entry $receiver
+     * @param Entry $entry
+     */
+    public function sendWishlistUpdatedMail(Entry $receiver, Entry $entry)
+    {
+        $this->translator->setLocale($receiver->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.wishlistchanged.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:wishlistchanged.html.twig',
+                    [
+                        'entry' => $receiver,
+                        'secret_santa' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:wishlistchanged.txt.twig',
+                    [
+                        'entry' => $receiver,
+                        'secret_santa' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
 }
