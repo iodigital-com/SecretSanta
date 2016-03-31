@@ -354,19 +354,24 @@ emails:
                 Following is an overview of which members are supposed to get gifts for which users.
     poke_buddy:
         subject: Your buddy is waiting for your wishlist
+    pool_update:
+        subject: Our Secret Santa party
         message:
             html: >
                 Dear %name%, <br/>
                 <br/>
-                Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
+                You've been invited to %owner%'s party. This party is coming soon and that's why we're bringing you a quick update on what to expect.<br/>
                 <br/>
-                Click the link below and add some stuff to your wishlist you'd like.
+                Your party takes place %date% in/at %place%. %owner% has invited %participantCount% people and so far %viewedCount% opened the invitation, %wishlistCount% of them added items to their wishlist.<br/>
+                <br/>
+                If you haven't confirmed your participation or if you haven't filled in your wishlist, click the link down below and contribute to a great party!
             txt: >
                 Dear %name%,
 
-                Your Secret Santa buddy is waiting for you to add some items to your wishlist.
+                You've been invited to %owner%'s party. This party is coming soon and that's why we're bringing you a quick update on what to expect.
 
-                Click the link below and add some stuff to your wishlist you'd like.
+                If you haven't confirmed your participation or if you haven't filled in your wishlist, click the link down below and contribute to a great party!
+        btn_pool_update: Check your buddy and wishlist
     forgot_link:
         text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
         subject: 'Resend activation mail'
@@ -394,6 +399,8 @@ flashes:
     forgot_manage_link:
         success: 'We have successfully resend your activation mail'
         error: 'An error occurred while resending the activation mail. Please try again.'
+    pool_update:
+        success: <h4>Success</h4> An update has been sent to all participants.
 forgot_manage_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
