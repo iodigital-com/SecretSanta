@@ -15,13 +15,7 @@ class SendEmptyWishlistReminderCommand extends ContainerAwareCommand
     {
         $this
             ->setName('intracto:sendWishlistReminderMails')
-            ->setDescription('Send reminder to add items to wishlist')
-            ->addArgument(
-                'force',
-                null,
-                'If not set, a trial run will execute. No mails will be actually sent',
-                false
-            );
+            ->setDescription('Send reminder to add items to wishlist');
     }
 
     /**

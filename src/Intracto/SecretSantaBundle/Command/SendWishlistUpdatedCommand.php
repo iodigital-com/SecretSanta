@@ -15,13 +15,7 @@ class SendWishlistUpdatedCommand extends ContainerAwareCommand
     protected function configure() {
         $this
             ->setName('intracto:sendWishlistUpdatedMails')
-            ->setDescription('Send notification to buddy to alert them the wishlist has been updated')
-            ->addArgument(
-                'force',
-                null,
-                'If not set, a trial run will execute. No mails will be actually sent',
-                false
-            );
+            ->setDescription('Send notification to buddy to alert them the wishlist has been updated');
     }
 
     /**

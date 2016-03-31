@@ -15,13 +15,7 @@ class SendEntryViewReminderCommand extends ContainerAwareCommand
     {
         $this
             ->setName('intracto:sendEntryViewReminderMails')
-            ->setDescription('Send reminder to participants to confirm their presence at the party')
-            ->addArgument(
-                'force',
-                null,
-                'If not set, a trial run will execute. No mails will be actually sent',
-                false
-            );
+            ->setDescription('Send reminder to participants to confirm their presence at the party');
     }
 
     /**

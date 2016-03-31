@@ -15,13 +15,7 @@ class SendPoolStatusCommand extends ContainerAwareCommand
     {
         $this
             ->setName('intracto:sendpoolstatusmails')
-            ->setDescription('Send pool status mail to admins')
-            ->addArgument(
-                'force',
-                null,
-                'If not set, a trial run will execute. No mails will be actually sent',
-                false
-            );
+            ->setDescription('Send pool status mail to admins');
     }
 
     /**
