@@ -266,4 +266,35 @@ class MailerService
             )
         );
     }
+
+    /**
+     * @param Entry $entry
+     */
+    public function sendWishlistReminderMail(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.emptywishlistreminder.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.html.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.txt.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
 }

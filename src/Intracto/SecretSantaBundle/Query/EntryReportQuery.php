@@ -3,11 +3,14 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\ORM\EntityManager;
 
 class EntryReportQuery
 {
     /** @var Connection */
     private $dbal;
+    /** @var EntityManager */
+    private $em;
     /** @var PoolReportQuery */
     private $poolReportQuery;
     /** @var FeaturedYearsQuery */
@@ -16,17 +19,21 @@ class EntryReportQuery
 
     /**
      * @param Connection $dbal
+     * @param EntityManager $em
      * @param PoolReportQuery $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
+     * @param $rootDirectory
      */
     public function __construct(
         Connection $dbal,
+        EntityManager $em,
         PoolReportQuery $poolReportQuery,
         FeaturedYearsQuery $featuredYearsQuery,
         $rootDirectory
     )
     {
         $this->dbal = $dbal;
+        $this->em = $em;
         $this->poolReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
         $this->rootDirectory = $rootDirectory;
@@ -405,5 +412,36 @@ class EntryReportQuery
             'wishlistCount' => $wishlistCount->execute()->fetchAll(),
             'viewedCount' => $viewedCount->execute()->fetchAll(),
         ];
+    }
+
+    /**
+     * Find all entries that have an empty wishlist in Pools which were sent out
+     * more than two weeks ago and the party date is max six weeks in the future.
+     *
+     * @return array
+     */
+    public function findAllToRemindOfEmptyWishlist()
+    {
+        $today = new \DateTime();
+        $twoWeeksAgo = new \DateTime('now - 2 weeks');
+        $sixWeeksFromNow = new \DateTime('now + 6 weeks');
+
+        $query = $this->em->createQuery('
+            SELECT entry
+            FROM IntractoSecretSantaBundle:Entry entry
+              JOIN entry.pool pool
+            WHERE entry.wishlist_updated = 0
+              AND pool.created = 1
+              AND pool.eventdate > :today
+              AND pool.eventdate < :sixWeeksFromNow
+              AND pool.sentdate < :twoWeeksAgo
+              AND (entry.updateWishlistReminderSentTime IS NULL OR entry.updateWishlistReminderSentTime < :twoWeeksAgo)
+        ');
+
+        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
+
+        return $query->getResult();
     }
 }
