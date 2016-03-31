@@ -504,4 +504,29 @@ class EntryReportQuery
 
         return $query->getResult();
     }
+
+    public function findAllAdminsForPoolStatusMail()
+    {
+        $today = new \DateTime();
+        $twoWeeksAgo = new \DateTime('now - 2 weeks');
+        $sixWeeksFromNow = new \DateTime('now + 6 weeks');
+
+        $query = $this->em->createQuery('
+            SELECT entry
+            FROM IntractoSecretSantaBundle:Entry entry
+              JOIN entry.pool pool
+            WHERE entry.poolAdmin = 1
+              AND entry.url IS NOT NULL
+              AND pool.created = 1
+              AND pool.eventdate > :today
+              AND pool.eventdate < :sixWeeksFromNow
+              AND pool.sentdate < :twoWeeksAgo
+        ');
+
+        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
+
+        return $query->getResult();
+    }
 }
