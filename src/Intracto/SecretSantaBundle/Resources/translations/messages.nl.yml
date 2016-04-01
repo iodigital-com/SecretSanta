@@ -369,6 +369,22 @@ emails:
 
                 Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
         btn_pool_update: Check wie je maatje is en vul je wenslijst in
+    poolstatus:
+        subject: Status Secret Santa feestje
+        message:
+            html: >
+                Beste %owner%, <br/>
+                <br/>
+                Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
+                <br/>
+                Klik op de onderstaande link en beheer jouw feestje.
+            txt: >
+                Beste %owner%, <br/>
+                <br/>
+                Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
+                <br/>
+                Klik op de onderstaande link en beheer jouw feestje.
+        btn_poolstatus: Beheer jouw feestje
     forgot_link:
         text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
         subject: 'Activatie mail opnieuw verzenden'

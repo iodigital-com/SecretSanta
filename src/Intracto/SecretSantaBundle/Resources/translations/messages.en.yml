@@ -399,9 +399,11 @@ emails:
                 Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
             txt: >
                 Dear %owner%,
+
                 Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statusses.
+
                 Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
-        btn_poolstatus: Manage your pool
+        btn_poolstatus: Manage your party
     forgot_link:
         text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
         subject: 'Resend activation mail'
