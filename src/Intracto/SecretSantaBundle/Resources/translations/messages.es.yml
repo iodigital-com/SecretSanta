@@ -223,6 +223,21 @@ emails:
                 Has solicitado todas las atribuciones en tu lista de deseos. Por favor, ten en cuenta que todos los miembros podrán ver eso en su página de la lista de deseos.
 
                 A continuación un resumen de qué miembros se supone que van a recibir regalos y de parte de qué usuarios.
+    poke_buddy:
+        subject: Tu amigote est&aacute; esperando tu lista de deseos
+        message:
+            html: >
+                Estimado %name%, <br/>
+                <br/>
+                Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.<br/>
+                <br/>
+                Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
+            txt: >
+                Estimado %name%,
+
+                Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.
+
+                Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
 flashes:
     manage:
         email_validated: >

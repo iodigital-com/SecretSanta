@@ -311,6 +311,21 @@ emails:
                 Vous avez demand&eacute; à conna&icirc;tre toutes les attributions de votre liste. Sachez que chaque membre en sera inform&eacute; sur sa liste de souhaits.
 
                 Ci-dessous, la liste des membres et leurs copains cadeaux.
+    poke_buddy:
+        subject: Votre copain est en attente de votre liste des objets d&eacutesir&eacutes
+        message:
+            html: >
+                Cher(e) %name%, <br/>
+                <br/>
+                Votre copain Secret Santa est en attente de votre liste des objets d&eacute;sir&eacute;s.<br/>
+                <br/>
+                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste des objets d&eacute;sir&eacute;s.
+            txt: >
+                Cher(e) %name%,
+
+                Votre copain Secret Santa est en attente de votre liste des objets d&eacute;sir&eacute;s.
+
+                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste des objets d&eacute;sir&eacute;s.
 flashes:
     manage:
         email_validated: >

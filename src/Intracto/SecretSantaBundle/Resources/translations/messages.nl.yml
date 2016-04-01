@@ -331,6 +331,21 @@ emails:
                 Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.
 
                 Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.
+    poke_buddy:
+        subject: Je maatje wacht op jouw verlanglijstje
+        message:
+            html: >
+                Beste %name%, <br/>
+                <br/>
+                Jouw Secret Santa maatje wacht op jouw wenslijst. <br/>
+                <br/>
+                Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
+            txt: >
+                Beste %name%,
+
+                Jouw Secret Santa maatje wacht op jouw wenslijst.
+
+                Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
     forgot_link:
         text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
         subject: 'Activatie mail opnieuw verzenden'

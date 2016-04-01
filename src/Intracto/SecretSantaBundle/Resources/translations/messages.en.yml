@@ -363,7 +363,9 @@ emails:
                 Click the link below and add some stuff to your wishlist you'd like.
             txt: >
                 Dear %name%,
+
                 Your Secret Santa buddy is waiting for you to add some items to your wishlist.
+
                 Click the link below and add some stuff to your wishlist you'd like.
     forgot_link:
         text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
