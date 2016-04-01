@@ -286,6 +286,7 @@ btn:
     update_wishlist: Update your wishlist
     expose: Send me all the matches
     expose_confirm: I understand the consequences, send my Secret Santa mailing list now
+    pool_update: Send party update to participants
     cancel: Cancel
 
 emails:
@@ -354,6 +355,19 @@ emails:
                 Following is an overview of which members are supposed to get gifts for which users.
     poke_buddy:
         subject: Your buddy is waiting for your wishlist
+        message:
+            html: >
+                Dear %name%, <br/>
+                <br/>
+                Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
+                <br/>
+                Click the link below and add some stuff to your wishlist you'd like.
+            txt: >
+                Dear %name%,
+
+                Your Secret Santa buddy is waiting for you to add some items to your wishlist.
+
+                Click the link below and add some stuff to your wishlist you'd like.
     pool_update:
         subject: Our Secret Santa party
         message:
@@ -369,6 +383,8 @@ emails:
                 Dear %name%,
 
                 You've been invited to %owner%'s party. This party is coming soon and that's why we're bringing you a quick update on what to expect.
+
+                Your party takes place %date% in/at %place%. %owner% has invited %participantCount% people and so far %viewedCount% opened the invitation, %wishlistCount% of them added items to their wishlist.
 
                 If you haven't confirmed your participation or if you haven't filled in your wishlist, click the link down below and contribute to a great party!
         btn_pool_update: Check your buddy and wishlist

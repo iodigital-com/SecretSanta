@@ -159,6 +159,7 @@ btn:
     update_wishlist: Actualizar tu lista de deseos
     expose: Enviarme todas las atribuciones
     expose_confirm: Comprendo las consecuencias, enviar mi lista de correos Secret Santa ahora
+    pool_update: Envia una actualizaci&oacute;n a los participantes
     cancel: Cancelar
 
 emails:
@@ -240,6 +241,26 @@ emails:
                 Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.
 
                 Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
+    pool_update:
+        subject: Nuestra fiesta Secret Santa
+        message:
+            html: >
+                Estimado %name%,<br/>
+                <br/>
+                %owner% te ha invitado a su fiesta. La fiesta se acerca y por eso os damos una actualizaci&oacute;n en la que peudes esperar.<br/>
+                <br/>
+                Tu fiesta tiene luger en/a %place%. %owner% ha invitado %participantCount% personas y hasta ahora %viewedCount% han abierto la invitaci&oacute;n y %wishlistCount% personas han a&ntilde;adido cosas a su lista de deseos.<br/>
+                <br/>
+                Si no has confirmado tu participaci&oacute;n o si no has rellenado la lista de deseos, haz clic en el siguente enlace para contribuir a una fiesta maravillosa.
+            txt: >
+                Estimado %name%,
+
+                %owner% te ha invitado a su fiesta. La fiesta se acerca y por eso os damos una actualizaci&oacute;n en la que peudes esperar.
+
+                Tu fiesta tiene luger en/a %place%. %owner% ha invitado %participantCount% personas y hasta ahora %viewedCount% han abierto la invitaci&oacute;n y %wishlistCount% personas han a&ntilde;adido cosas a su lista de deseos.
+
+                Si no has confirmado tu participaci&oacute;n o si no has rellenado la lista de deseos, haz clic en el siguente enlace para contribuir a una fiesta maravillosa.
+        btn_pool_update: Comprueba quién es tu amigote o tu lista de deseos.
 flashes:
     manage:
         email_validated: >
@@ -261,3 +282,5 @@ flashes:
         saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
     analytics:
         invalid_data: <h4>Oops</h4> Ha ocurrido un error al requerir los datos analíticos. Por favor, inténtalo otra vez.
+    pool_update:
+        success: <h4>Éxito</h4> Todos los participantes han recibido una actualizaci&oacute;n sobre la fiesta.

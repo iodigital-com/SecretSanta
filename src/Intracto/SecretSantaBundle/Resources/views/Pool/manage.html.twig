@@ -54,7 +54,7 @@
 
         <button id="btn_delete" class="btn btn-primary"><i class="icon-warning-sign icon-white"></i> {{ 'btn.delete_list'|trans }}</button>
         <button id="btn_expose" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {{ 'btn.expose'|trans }}</button>
-        <a class="btn btn-info" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}">Send pool update to users</a>
+        <a class="btn btn-info" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}">{{ 'btn.pool_update'|trans|raw }}</a>
 
         <br/><br/>
 

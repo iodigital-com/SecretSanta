@@ -267,6 +267,7 @@ btn:
     update_wishlist: Update je verlanglijst
     expose: Stuur me alle koppelingen
     expose_confirm: Ik begrijp de gevolgen, stuur mij nu alle koppelingen
+    pool_update: Verstuur update naar alle deelnemers
     cancel: Annuleren
 
 emails:
@@ -348,6 +349,26 @@ emails:
                 Jouw Secret Santa maatje wacht op jouw wenslijst.
 
                 Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
+    pool_update:
+        subject: Ons Secret Santa feestje
+        message:
+            html: >
+                Beste %name%,<br>
+                <br>
+                %owner% heeft je uitgenodigd voor een Secret Santa feestje. Dit feestje komt er snel aan een brengen we je nu een update zodat je weet wat je te wachten staat.<br/>
+                <br/>
+                Je feestje gaat door op %date% in/bij %place%. %owner% heeft %participantCount% mensen uitgenodigd en momenteel is de uitnodiging bekeken door %viewedCount% perso(o)n(en) en %wishlistCount% mens(en) hebben dingen toegevoegd aan hun verlanglijst.<br/>
+                <br/>
+                Indien je je deelname nog niet hebt bevestigd of je wenslijst nog niet hebt ingevuld, klik dan op de onderstaande link en zorg mee voor een geweldig feestje.
+            txt: >
+                Beste %name%,
+
+                %owner% heeft je uitgenodigd voor een Secret Santa feestje. Dit feestje komt er snel aan een brengen we je nu een update zodat je weet wat je te wachten staat.
+
+                Je feestje gaat door op %date% in/bij %place%. %owner% heeft %participantCount% mensen uitgenodigd en momenteel is de uitnodiging bekeken door %viewedCount% perso(o)n(en) en %wishlistCount% mens(en) hebben dingen toegevoegd aan hun verlanglijst.
+
+                Indien je je deelname nog niet hebt bevestigd of je wenslijst nog niet hebt ingevuld, klik dan op de onderstaande link en zorg mee voor een geweldig feestje.
+        btn_pool_update: Check wie je maatje is en vul je wenslijst in
     forgot_link:
         text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
         subject: 'Activatie mail opnieuw verzenden'
@@ -373,6 +394,8 @@ flashes:
     forgot_manage_link:
         success: 'De activatie mail is succesvol opnieuw verstuurd!'
         error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
+    pool_update:
+        success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
 forgot_manage_link:
     title: 'Activatie mail opnieuw verzenden'
     description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)'
