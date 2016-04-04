@@ -242,24 +242,24 @@ emails:
 
                 Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
     pool_update:
-        subject: Nuestra fiesta Secret Santa
+        subject: Nuestra fiesta Secret Santa se acerca!
         message:
             html: >
                 Estimado %name%,<br/>
                 <br/>
-                %owner% te ha invitado a su fiesta. La fiesta se acerca y por eso os damos una actualizaci&oacute;n en la que peudes esperar.<br/>
+                Esperamos que est&eacute;s esperando con impaciencia la fiesta de %owner%. %owner% ha inivitado %participantCount% personas para su fiesta que tiene lugar el %date% en/a %place% y para disfrutar del goce de hacer regalos.<br/>
                 <br/>
-                Tu fiesta tiene luger en/a %place%. %owner% ha invitado %participantCount% personas y hasta ahora %viewedCount% han abierto la invitaci&oacute;n y %wishlistCount% personas han a&ntilde;adido cosas a su lista de deseos.<br/>
+                Para que podemos disfrutar al m&aacute;ximo, ser&iacute;a agradable si cada invitado estar&iacute;a presente y traer&iacute;a un regalo. Hasta ahora %viewedCount% persona(s) ha(n) abierto su invitaci&oacute;n y %wishlistCount% persona(s) ha(n) rempliado un lista de deseos.<br/>
                 <br/>
-                Si no has confirmado tu participaci&oacute;n o si no has rellenado la lista de deseos, haz clic en el siguente enlace para contribuir a una fiesta maravillosa.
+                Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
             txt: >
                 Estimado %name%,
 
-                %owner% te ha invitado a su fiesta. La fiesta se acerca y por eso os damos una actualizaci&oacute;n en la que peudes esperar.
+                Esperamos que est&eacute;s esperando con impaciencia la fiesta de %owner%. %owner% ha inivitado %participantCount% personas para su fiesta que tiene lugar el %date% en/a %place% y para disfrutar del goce de hacer regalos.
 
-                Tu fiesta tiene luger en/a %place%. %owner% ha invitado %participantCount% personas y hasta ahora %viewedCount% han abierto la invitaci&oacute;n y %wishlistCount% personas han a&ntilde;adido cosas a su lista de deseos.
+                Para que podemos disfrutar al m&aacute;ximo, ser&iacute;a agradable si cada invitado estar&iacute;a presente y traer&iacute;a un regalo. Hasta ahora %viewedCount% persona(s) ha(n) abierto su invitaci&oacute;n y %wishlistCount% persona(s) ha(n) rempliado un lista de deseos.
 
-                Si no has confirmado tu participaci&oacute;n o si no has rellenado la lista de deseos, haz clic en el siguente enlace para contribuir a una fiesta maravillosa.
+                Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
         btn_pool_update: Comprueba quién es tu amigote o tu lista de deseos.
 flashes:
     manage:

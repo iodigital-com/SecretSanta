@@ -330,24 +330,24 @@ emails:
 
                 Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
     pool_update:
-        subject: Notre f&ecirc;te Secret Santa
+        subject: Notre f&ecirc;te Secret Santa s'approche
         message:
             html: >
                 Cher(e) %name%, <br>
                 <br>
-                %owner% vous a invité à lui joindre à une f&ecirc;te. Cette f&ecirc;te s'approche et pour ça nous vous allons donner une mise à jour pour que vous savez ce que vous pouvez vous attendre.<br/>
+                Nous esperons que vous guettez la f&ecirc;te de %owner% qui s'approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te le %date% chez/&agrave; %place% pour jouir le plaisir de faire cadeau des choses aux autres.<br/>
                 <br/>
-                Votre f&ecirc;te aura lieu %date% &agrave;/chez %place%. %owner% a invité %participantCount% persone(s) et jusqu'&agrave; pr&eacute;sent %viewedCount% persone(s) ont ouvert l'invitation, %wishlistCount% persone(s) ont ajouté des choses &agrave; leur liste de souhaits.<br/>
+                Pour qu'on puisse donner beaucoup de plaisir &agrave; tout le monde, serait agr&eacute;able si chaque invit&eacute; assiterait &agrave; la f&ecirc;te y apporterait un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.<br/>
                 <br/>
-                Si vous n'avez pas encore confirmé votre participation ou vous n'avez pas encore remplis votre liste des objets d&eacute;sir&eacute, cliquez sur le boutton ci-dessous afin de contribuer à une f&eacute;te formidable.
+                Cliquez sur le boutton ci-dessous afin de controler le point o&ugrave; en est votre copain et passe &agrave; l'action si c'est n&eacute;cessaire pour qu'il prend part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
             txt: >
                 Cher(e) %name%,
 
-                %owner% vous a invité à lui joindre à une f&ecirc;te. Cette f&ecirc;te s'approche et pour ça nous vous allons donner une mise à jour pour que vous savez ce que vous pouvez vous attendre.
+                Nous esperons que vous guettez la f&ecirc;te de %owner% qui s'approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te le %date% chez/&agrave; %place% pour jouir le plaisir de faire cadeau des choses aux autres.
 
-                Votre f&ecirc;te aura lieu %date% &agrave;/chez %place%. %owner% a invité %participantCount% persone(s) et jusqu'&agrave; pr&eacute;sent %viewedCount% persone(s) ont ouvert l'invitation, %wishlistCount% persone(s) ont ajouté des choses &agrave; leur liste de souhaits.
+                Pour qu'on peut donner beaucoup de plaisir &agrave; tout le monde, serait agr&eacute;able si chaque invit&eacute; assiterait &agrave; la f&ecirc;te y apporterait un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.
 
-                Si vous n'avez pas encore confirmé votre participation ou vous n'avez pas encore remplis votre liste des objets d&eacute;sir&eacute, cliquez sur le boutton ci-dessous afin de contribuer à une f&eacute;te formidable.
+                Cliquez sur le boutton ci-dessous afin de controler le point o&ugrave; en est votre copain et passe &agrave; l'action si c'est n&eacute;cessaire pour qu'il prend part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
         btn_pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
 flashes:
     manage:
