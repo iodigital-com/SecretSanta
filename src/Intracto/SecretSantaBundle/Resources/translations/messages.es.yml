@@ -121,7 +121,9 @@ entry:
         title: Tu lista de deseos
         description: Para ayudar a tu Secret Santa, puedes dejar una lista de deseos aquí. Nuestros gnomos se encargarán de comunicársela a tu Secret Santa. Puedes reordenar la lista moviendo los elementos hacia el lugar adecuado.
     wishlist_empty: Tu lista de deseos está vacía. ¡Añade algo!
-
+poke:
+    poke: Empuja
+    poke_sentence: tu amigote para avisarla que su lista de deseos est&aacute; vac&iacute;a.
 static:
     report:
         max_results: Resultados máx.
@@ -146,8 +148,8 @@ btn:
     add_person: Añadir persona
     remove_person: Quitar esta persona
     import_persons:
-        open: Añadir más personas
-        do: Añadir a tu fiesta
+        open: A&ntilde;adir m&aacute;s personas
+        do: A&ntilde;adir a tu fiesta
     create_event: ¡Crear tu evento!
     create_new_list: ¡Crear una nueva lista Secret Santa!
     delete_list: Borrar mi lista Secret Santa
@@ -254,6 +256,7 @@ flashes:
         resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
     entry:
         wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
+        poke_buddy: <h4>Empujado</h4> Nuestros gnomos est&aacute;n de camino para avisar tu amigote Secret Santa que su lista de deseos est&aacute; vac&iacute;a.
         edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
         saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
     analytics:

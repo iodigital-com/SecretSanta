@@ -126,7 +126,7 @@ entry:
     wishlist_empty: Your wishlist is empty. Add something!
 poke:
     poke: Poke
-    poke_sentence: your budy to let him/her know their wishlist is empty.
+    poke_sentence: your buddy to let him/her know their wishlist is empty.
 static:
     privacy_policy:
         title: Privacy Policy

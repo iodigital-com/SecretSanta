@@ -121,7 +121,9 @@ entry:
         title: Jouw verlanglijstje
         description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
     wishlist_empty: Je verlanglijst is leeg. Voeg iets toe!
-
+poke:
+    poke: Por
+    poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
 static:
     privacy_policy:
         title: Privacybeleid
@@ -360,11 +362,12 @@ flashes:
         not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
     expose:
         not_exposed: <h4>Mailinglijst niet gestuurd</h4> De bevestiging verliep foutief.
-        exposed: <h4>Mailinglijst gestuurd</h4> All gebruikers worden op de hoogte gebracht wanneer zij hun wenslijst bekijken.
+        exposed: <h4>Mailinglijst gestuurd</h4> Alle gebruikers worden op de hoogte gebracht wanneer zij hun wenslijst bekijken.
     resend:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
     entry:
         wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
+        poke_buddy: <h4>Gepord</h4> Onze kabourtjes zijn onderweg naar jouw Secret Santa om te vragen naar interessante spulletjes voor op hun verlanglijstje.
         edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
         saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
     forgot_manage_link:

@@ -119,7 +119,9 @@ entry:
         title: Votre liste de souhaits
         description: Afin d'aider votre Père-Noël Secret, vous pouvez laisser une liste de souhaits ici. Nos gnomes prendront soin de la communiquer à votre Père-Noël Secret. Vous pouvez réorganiser la liste en faisant glisser les éléments.
     wishlist_empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
-
+poke:
+    poke: Stimule
+    poke_sentence: votre copain Secret Santa de remplir leur liste de souhaits.
 static:
     privacy_policy:
         title: Protection vie privée
@@ -218,7 +220,7 @@ static:
 
 label:
     name: Nom
-    host: l'administrateur
+    host: L'administrateur
     participants: Participants
     email: E-mail
     date_party: Date de votre Secret Santa party
@@ -312,20 +314,20 @@ emails:
 
                 Ci-dessous, la liste des membres et leurs copains cadeaux.
     poke_buddy:
-        subject: Votre copain est en attente de votre liste des objets d&eacutesir&eacutes
+        subject: Votre copain est en attente de votre liste de souhaits
         message:
             html: >
                 Cher(e) %name%, <br/>
                 <br/>
-                Votre copain Secret Santa est en attente de votre liste des objets d&eacute;sir&eacute;s.<br/>
+                Votre copain Secret Santa est en attente de votre liste de souhaits.<br/>
                 <br/>
-                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste des objets d&eacute;sir&eacute;s.
+                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
             txt: >
                 Cher(e) %name%,
 
-                Votre copain Secret Santa est en attente de votre liste des objets d&eacute;sir&eacute;s.
+                Votre copain Secret Santa est en attente de votre liste de souhaits.
 
-                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste des objets d&eacute;sir&eacute;s.
+                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
 flashes:
     manage:
         email_validated: >
@@ -342,5 +344,6 @@ flashes:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
     entry:
         wishlist_updated: <h4>Liste de souhaits mise à jour</h4>Nous avons envoyé nos gnomes afin qu'ils avertissent votre Père-Noël secret de vos souhaits !
+        poke_buddy: <h4>Stimulé</h4> Nos gnomes sont en route pour avertir votre copain Secret Santa que leur liste de souhaits est vide.
         edit_email: <h4>Non enregistrée</h4> Il y a une erreur dans l'adresse e-mail.
         saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.
