@@ -13,13 +13,6 @@ use Symfony\Component\Templating\EngineInterface;
 class EntryService
 {
     /**
-     * @DI\Inject("mailer")
-     *
-     * @var \Swift_Mailer
-     */
-    public $mailer;
-
-    /**
      * @DI\Inject("doctrine.orm.entity_manager")
      *
      * @var EntityManager
@@ -32,25 +25,6 @@ class EntryService
      * @var EntryShuffler $entryShuffler
      */
     public $entryShuffler;
-
-    /**
-     * @DI\Inject("templating")
-     *
-     * @var EngineInterface
-     */
-    public $templating;
-
-    /**
-     * @DI\Inject("%admin_email%")
-     */
-    public $adminEmail;
-
-    /**
-     * @DI\Inject("translator")
-     *
-     * @var TranslatorInterface;
-     */
-    public $translator;
 
     /**
      * Shuffles all entries for pool and save result to each entry
@@ -75,28 +49,5 @@ class EntryService
         }
 
         $this->em->flush();
-    }
-
-    /**
-     * @return array
-     *
-     * @throws \Doctrine\DBAL\DBALException
-     */
-    public function getAllUniqueEmails()
-    {
-        $query = '  SELECT name, email, MAX( admin ) AS admin
-                    FROM (
-                        SELECT e.email, e.name, IF( MIN( e2.id ) = e.id, 1, 0 ) AS admin
-                        FROM Entry e
-                        LEFT JOIN Entry e2 ON e.poolId = e2.poolId
-                        GROUP BY e.id
-                    )x
-                    GROUP BY email';
-
-        $connection = $this->em->getConnection();
-        $statement = $connection->prepare($query);
-        $statement->execute();
-
-        return $statement->fetchAll();
     }
 }
