@@ -101,6 +101,17 @@ expose:
             Por favor, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
         </p>
     phrase_to_type: mostrarme todo
+expose_wishlists:
+    title: Enviarme todas las listas de deseos en esta lista de correos
+    body: >
+        <p>
+            ¿Estás COMPLETAMENTE seguro?<br>
+            <br>
+            Se te enviará un correo electónico, con todas listas de deseos de las personas en la lista de correos!<br>
+            <br>
+            Por favor, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
+        </p>
+    phrase_to_type: mostrarme todas las listas de deseos
 entry:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
@@ -142,6 +153,7 @@ label:
     confirmed: Confirmado
     actions: Acciones
     description: Descripción
+    items: Regalos deseados
 placeholder:
     exclude: Hacer clic y elegir los participantes que se quiere excluir
 btn:
@@ -159,6 +171,8 @@ btn:
     update_wishlist: Actualizar tu lista de deseos
     expose: Enviarme todas las atribuciones
     expose_confirm: Comprendo las consecuencias, enviar mi lista de correos Secret Santa ahora
+    expose_wishlists: Enviarme todas las listas de deseos
+    expose_wishlists_confirm: Comprendo las consecuencias, enviar todas las listas de deseos ahore
     pool_update: Envia una actualizaci&oacute;n a los participantes
     cancel: Cancelar
 
@@ -277,6 +291,21 @@ emails:
 
                 Haz clic en el siguiente enlace para llevar tu fiesta.
         btn_poolstatus: Gestiona tu fiesta
+    admin_wishlists:
+        subject: Secret Santa Listas de deseos
+        message:
+            html: >
+                Estimado %owner%,<br/>
+                <br/>
+                Has solicitado todas las listas de deseos de personas en tu lista de Correos. Por favor, ten en cuenta que todos los miembros prodrán ver eso en su página de la lista de deseos.<br/>
+                <br/>
+                A continuación un resumen de cada miembro y sus regalos deseados.
+            txt: >
+                Estimado %owner%,
+
+                Has solicitado todas las listas de deseos de personas en tu lista de Correos. Por favor, ten en cuenta que todos los miembros prodrán ver eso en su página de la lista de deseos.
+
+                A continuación un resumen de cada miembro y sus regalos deseados.
 flashes:
     manage:
         email_validated: >
@@ -289,6 +318,9 @@ flashes:
     expose:
         not_exposed: <h4>No enviar lista de correos </h4> La confirmación era incorrecta.
         exposed: <h4>Enviar lista de correos</h4> Se notificará a todos los usuarios cuando comprueben su lista de deseos.
+    expose_wishlists:
+        not_exposed: <h4>No envier listas de deseos</h4> La confirmación era incorrecta.
+        exposed: <h4>Enviar listas de deseos</h4> Se notificará a todos los usuarios cuando comprueben su lista de deseos.
     resend:
         resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
     entry:

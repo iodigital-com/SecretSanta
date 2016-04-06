@@ -99,6 +99,20 @@ expose:
             Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br>
         </p>
     phrase_to_type: Montrez-moi tout
+expose_wishlists:
+    title: Envoyer-moi toutes les listes de souhaits par e-mail
+    body: >
+        <p>
+            Etes-vous ABSOLUMENT certain?<br>
+            <br>
+            Un e-mail va vous &ecirc;tre envoy&eacute;, contenant les listes de souhaits de votre f&ecirc;te.
+            <br>
+            <b>Avertissement:</b><br>
+            Vous serez la SEULE personne à recevoir les correspondances, mais les autres verront que vous avez obtenu la liste.<br>
+            <br>
+            Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confimer.<br>
+        </p>
+    phrase_to_type: Montrez-moi tous les listes de souhaits
 entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
@@ -230,6 +244,7 @@ label:
     confirmed: Confirmés
     actions: Actions
     description: Déscription
+    items: Cadeaux désirés
 placeholder:
     exclude: Cliquez et sélectionnez les partipants que vous désirez exclure
 btn:
@@ -247,9 +262,10 @@ btn:
     update_wishlist: Mettre à jour votre liste de souhaits
     expose: Envoyez-moi toutes les attributions
     expose_confirm: J'ai compris les cons&eacute;quences, envoyez-moi la liste Secret Santa maintenant
+    expose_wishlists: Envoyez-moi toutes les listes de souhaits
+    expose_wishlists_confirm: J'ai compris les cons&eacute;quences, envoyer-moi les listes de souhaits maintenant
     pool_update: Envoie une mise &agrave; jour &agrave; tous les participants
     cancel: Annuler
-
 emails:
     sender: Santa Claus
     base:
@@ -365,6 +381,21 @@ emails:
 
                 Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
         btn_poolstatus: Manage votre f&ecirc;te
+    admin_wishlists:
+        subject: Listes de souhaits Secret Santa
+        message:
+            html: >
+                Cher(e) %owner%,<br/>
+                <br/>
+                Vous avez demand&eacute; à conna&icirc;tre toutes les listes de souhaits de votre liste. Sachez que chaque membre en sera inform&eactue; sur sa liste de souhatis.<br/>
+                <br/>
+                Ci-dessous, la liste des chaque membre et leur cadeaux désirés.
+            txt: >
+                Cher(e) %owner%,
+
+                Vous avez demand&eacute; à conna&icirc;tre toutes les listes de souhaits de votre liste. Sachez que chaque membre en sera inform&eactue; sur sa liste de souhatis.
+
+                Ci-dessous, la liste des chaque membre et leur cadeaux désirés.
 flashes:
     manage:
         email_validated: >
@@ -377,6 +408,9 @@ flashes:
     expose:
         not_exposed: <h4>Liste non envoy&eacute;e</h4> La phrase de confirmation est incorrecte.
         exposed: <h4>Liste envoy&eacute;e</h4> Chaque membre en sera inform&eacute; lorsqu'ils consulteront leur liste de souhaits.
+    expose_wishlists:
+        not_exposed: <h4>Listes de souhaits non envoy&eacute;es</h4> La phrase de confirmation est incorrecte.
+        exposed: <h4>Listes de souhaits envoy&eacute;es</h4> Chaque membre en sera inform&eacute; lorsu'ils consulteront leur liste de souhaits.
     resend:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
     entry:

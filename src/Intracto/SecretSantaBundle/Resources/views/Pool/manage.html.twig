@@ -104,7 +104,7 @@
                 <input type="text" name="confirmation" id="expose-wishlists-confirmation" autocomplete="off"
                         onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_wishlists_confirmation').removeAttr('disabled');"><br>
                 <button class="btn btn-warning" type="submit" id="btn_expose_wishlists_confirmation" disabled>
-                    {{ 'btn.expose_wishlists_confirm'|trans }}
+                    {{ 'btn.expose_wishlists_confirm'|trans|raw }}
                 </button>
                 <button type="reset" class="btn btn-warning" id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
             </form>

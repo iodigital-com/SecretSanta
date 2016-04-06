@@ -105,7 +105,7 @@ expose:
         </p>
     phrase_to_type: show me everything
 expose_wishlists:
-    title: Send me all wishlists in this maling list
+    title: Send me all wishlists in this mailing list
     body: >
         <p>
             Are you ABSOLUTELY sure?<br>
