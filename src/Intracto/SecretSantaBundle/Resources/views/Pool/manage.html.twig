@@ -54,6 +54,7 @@
 
         <button id="btn_delete" class="btn btn-primary"><i class="icon-warning-sign icon-white"></i> {{ 'btn.delete_list'|trans }}</button>
         <button id="btn_expose" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {{ 'btn.expose'|trans }}</button>
+        <button id="btn_expose_wishlists" class="btn btn-warning">{{ 'btn.expose_wishlists'|trans }}</button>
         <a class="btn btn-info" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}">{{ 'btn.pool_update'|trans|raw }}</a>
 
         <br/><br/>
@@ -91,6 +92,23 @@
                 <button type="reset" class="btn btn-warning" id="btn_expose_cancel">{{ 'btn.cancel'|trans }}</button>
             </form>
         </div>
+
+        <div id="expose-wishlists-warning" class="alert alert-warning" style="display:none;">
+            <h3>{{ 'expose_wishlists.title'|trans }}</h3>
+
+            {% set phraseToType = 'expose_wishlists.phrase_to_type'|trans %}
+            {{ 'expose_wishlists.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+
+            <form action="{{ path('pool_expose_wishlists', { 'listUrl':pool.listUrl }) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ expose_pool_wishlists_csrf_token }}">
+                <input type="text" name="confirmation" id="expose-wishlists-confirmation" autocomplete="off"
+                        onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_wishlists_confirmation').removeAttr('disabled');"><br>
+                <button class="btn btn-warning" type="submit" id="btn_expose_wishlists_confirmation" disabled>
+                    {{ 'btn.expose_wishlists_confirm'|trans }}
+                </button>
+                <button type="reset" class="btn btn-warning" id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
+            </form>
+        </div>
     </div>
 {% endblock %}
 
@@ -117,6 +135,17 @@
             $('#btn_expose_cancel').click(function(e) {
                 $('#expose-warning').hide();
                 $('#btn_expose').show().focus();
+            });
+
+            $('#btn_expose_wishlists').click(function(e) {
+                $('#expose-wishlists-warning').show();
+                $('#btn_expose_wishlists').hide();
+                $('#expose-wishlists-confirmation').focus();
+            });
+
+            $('#btn_expose_wishlists_cancel').click(function(e) {
+                $('#expose-wishlists-warning').hide();
+                $('#btn_expose_wishlists').show().focus();
             });
         });
 

@@ -1,0 +1,39 @@
+{% extends 'IntractoSecretSantaBundle:Emails:basemail.html.twig' %}
+{% block main %}
+    <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
+        <tr>
+            <td width="37" align="left">
+                <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
+            </td>
+            <td width="566">
+                <p>{{ 'emails.admin_wishlists.message.html'|trans({'%owner%': pool.ownername()})|raw }}</p>
+                {% for entry in pool.entries %}
+                    <table cellspacing="0" cellpadding="3" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
+                        <tr>
+                            <th style="border-bottom: 1px solid #000; text-align: left;"><strong>{{ 'label.name'|trans }}</strong></th>
+                            <th style="border-bottom: 1px solid #000;">&nbsp;</th>
+                            <th style="border-bottom: 1px solid #000; text-align: left;"><strong>{{ 'label.items'|trans }}</strong></th>
+                        </tr>
+                        <tr>
+                            <td valign="top">{{ entry.name }}</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                {% if entry.wishlistitems|length > 0 %}
+                                    {% for item in entry.wishlistitems %}
+                                        {{ item.description|escape|linkify|raw }}<br>
+                                    {% endfor %}
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    </table>
+                {% endfor %}
+            </td>
+            <td width="37" align="right">
+                <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
+            </td>
+        </tr>
+    </table>
+{% endblock %}
