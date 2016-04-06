@@ -14,7 +14,7 @@ class SendPoolStatusCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('intracto:sendpoolstatusmails')
+            ->setName('intracto:sendPoolStatusMails')
             ->setDescription('Send pool status mail to admins');
     }
 
