@@ -39,7 +39,7 @@
                         {% if(secret_santa.getwishlist) %}
                             {{ secret_santa.getwishlist|linkify|raw }}
                         {% else %}
-                            {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
+                            {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}. <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'poke.poke'|trans }}</a> {{ 'poke.poke_sentence'|trans|raw }}
                         {% endif %}
                     {% else %}
                         <ul class="wishlist">

@@ -190,4 +190,35 @@ class MailerService
 
         return true;
     }
+
+    /**
+     * @param Entry $entry
+     */
+    public function sendPokeMailToBuddy(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.poke_buddy.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:pokebuddy.html.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:pokebuddy.txt.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
 }

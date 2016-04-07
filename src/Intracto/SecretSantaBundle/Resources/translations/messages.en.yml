@@ -124,7 +124,9 @@ entry:
         title: Your wishlist
         description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
     wishlist_empty: Your wishlist is empty. Add something!
-
+poke:
+    poke: Poke
+    poke_sentence: your buddy to let him/her know their wishlist is empty.
 static:
     privacy_policy:
         title: Privacy Policy
@@ -350,6 +352,21 @@ emails:
                 You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
 
                 Following is an overview of which members are supposed to get gifts for which users.
+    poke_buddy:
+        subject: Your buddy is waiting for your wishlist
+        message:
+            html: >
+                Dear %name%, <br/>
+                <br/>
+                Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
+                <br/>
+                Click the link below and add some stuff to your wishlist you'd like.
+            txt: >
+                Dear %name%,
+
+                Your Secret Santa buddy is waiting for you to add some items to your wishlist.
+
+                Click the link below and add some stuff to your wishlist you'd like.
     forgot_link:
         text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
         subject: 'Resend activation mail'
@@ -369,6 +386,7 @@ flashes:
         resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
     entry:
         wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
+        poke_buddy: <h4>Poked</h4> We've sent out our gnomes to ask your Secret Santa to add items to the wishlist!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
         saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
     analytics:
