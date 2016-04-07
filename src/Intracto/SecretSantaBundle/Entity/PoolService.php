@@ -59,49 +59,5 @@ class PoolService
      */
     public $routing;
 
-    public function sendForgotManageLinkMail($email)
-    {
-        $results = $this->em->getRepository('IntractoSecretSantaBundle:Pool')->findAllAdminPools($email);
 
-        if (count($results) == 0) {
-            return false;
-        }
-
-        $poolLinks = array();
-        foreach ($results as $result) {
-            $text = $this->translator->trans('manage.title');
-
-            if ($result['date'] instanceof \DateTime) {
-                $text .= ' (' . $result['date']->format('d/m/Y') . ')';
-            }
-
-            $poolLinks[] = array(
-                'url' => $this->routing->generate('pool_manage', array('listUrl' => $result['listurl']), Router::ABSOLUTE_URL),
-                'text' => $text,
-            );
-        }
-
-        $this->translator->setLocale($results[0]['locale']);
-
-        $message = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.forgot_link.subject'))
-            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
-            ->setTo($email)
-            ->setBody(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:forgotlink.txt.twig',
-                    array('poolLinks' => $poolLinks)
-                )
-            )
-            ->addPart(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:forgotlink.html.twig',
-                    array('poolLinks' => $poolLinks)
-                ),
-                'text/html'
-            );
-        $this->mailer->send($message);
-
-        return true;
-    }
 }
