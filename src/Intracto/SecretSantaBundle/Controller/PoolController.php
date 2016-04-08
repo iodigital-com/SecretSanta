@@ -16,6 +16,7 @@ use Doctrine\ORM\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Form\PoolType;
+use Intracto\SecretSantaBundle\Mailer\MailerService;
 
 class PoolController extends Controller
 {
@@ -263,6 +264,10 @@ class PoolController extends Controller
         }
 
         $this->getPool($listUrl);
+        $this->pool->exposeWishlists();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
 
         $this->mailerService->sendAllWishlistsToAdmin($this->pool);
 

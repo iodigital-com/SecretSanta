@@ -125,6 +125,8 @@ entry:
         person_created_list: Persoon die deze lijst samenstelde
         exposed: Lijst maker kent alle koppelingen
         not_exposed: Lijst maker kent de koppelingen niet
+        wishlists_exposed: Lijst maker kent alle wenslijsten
+        wishlists_not_exposed: Lijst maker kent niet alle wenslijsten
     title: Jouw toegewezen maatje
     body: >
         <p>Hey %name%,</p>

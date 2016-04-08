@@ -128,6 +128,8 @@ entry:
         person_created_list: Person who created this list
         exposed: Mailing list creator knows all matches
         not_exposed: Mailing list creator does not know all matches
+        wishlists_exposed: Mailing list creator has all the wishlists
+        wishlists_not_exposed: Mailing list creater does not have all the wishlists
     title: Your assigned buddy
     body: >
         <p>Hi %name%,</p>

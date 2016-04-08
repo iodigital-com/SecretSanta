@@ -123,6 +123,8 @@ entry:
         person_created_list: Créateur de la liste
         exposed: Le cr&eacute;ateur de la liste conna&icirc;t toutes les attributions
         not_exposed: Le cr&eacute;ateur de la liste ne conna&icirc;t pas les attributions
+        wishlists_exposed: Le cr&eacute;ateur de la liste conna&icirc;t toutes les listes de souhaits
+        wishlists_not_exposed: Le cr&eacute;ateur de la liste ne conna&icirc;t pas toutes les listes de souhaits
     title: Personne désignée
     body: >
         <p>Bonjour %name%,</p>
