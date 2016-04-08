@@ -547,4 +547,20 @@ class EntryReportQuery
 
         return $query->execute()->fetchAll();
     }
+
+    /**
+     * @param $poolId
+     * @return mixed
+     */
+    public function findAdminIdByPoolId($poolId)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('e.id')
+            ->from('Entry', 'e')
+            ->where('e.poolId = :poolId')
+            ->andWhere('e.poolAdmin = 1')
+            ->setParameter('poolId', $poolId);
+        
+        return $query->execute()->fetchAll();
+    }
 }

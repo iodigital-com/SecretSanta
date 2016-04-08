@@ -7,10 +7,12 @@ use Doctrine\ORM\EntityRepository;
 use Intracto\SecretSantaBundle\Entity\EntryService;
 use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
+use Intracto\SecretSantaBundle\Form\AddEntryType;
 use Intracto\SecretSantaBundle\Form\ForgotLinkType;
 use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
+use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Intracto\SecretSantaBundle\Query\EntryReportQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -89,6 +91,11 @@ class PoolController extends Controller
      * @var Pool
      */
     private $pool;
+
+    /**
+     * @var Entry
+     */
+    private $entry;
 
     /**
      * @Route("/", name="pool_create")
@@ -237,7 +244,7 @@ class PoolController extends Controller
      * @Route("/manage/{listUrl}", name="pool_manage")
      * @Template()
      */
-    public function manageAction($listUrl)
+    public function manageAction(Request $request, $listUrl)
     {
         $this->getPool($listUrl);
         if (!$this->pool->getCreated()) {
@@ -253,7 +260,51 @@ class PoolController extends Controller
             $this->mailerService->sendSecretSantaMailsForPool($this->pool);
         }
 
+        $newEntry = new Entry();
+
+        $form = $this->createForm(new AddEntryType(), $newEntry);
+
+        if ($request->getMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isSubmitted()) {
+                if ($form->isValid()) {
+                    $newEntry->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
+                    $newEntry->setPool($this->pool);
+
+                    $this->em->persist($newEntry);
+                    $this->em->flush($newEntry);
+
+                    $adminId = $this->entryQuery->findAdminIdByPoolId($this->pool->getId());
+                    $admin = $this->entryRepository->findOneById($adminId[0]['id']);
+                    $adminMatch = $admin->getEntry();
+
+                    $admin->setEntry($newEntry);
+                    $this->em->persist($admin);
+                    $this->em->flush($admin);
+
+                    $newEntry->setEntry($adminMatch);
+                    $this->em->persist($newEntry);
+                    $this->em->flush();
+
+                    $this->mailerService->sendSecretSantaMailForEntry($newEntry);
+
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        $this->translator->trans('flashes.add_participant.success')
+                    );
+                } else {
+                    $this->get('session')->getFlashBag()->add(
+                        'danger',
+                        $this->translator->trans('flashes.add_participant.danger')
+                    );
+                }
+
+                return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            }
+        }
+
         return [
+            'form' => $form->createView(),
             'pool' => $this->pool,
             'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             'expose_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_pool'),
