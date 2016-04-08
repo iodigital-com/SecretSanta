@@ -16,6 +16,11 @@
                 {% else %}
                     <i class="icon-eye-close" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.not_exposed'|trans }}"></i>
                 {% endif %}
+                {% if entry.pool.wishlistsExposed %}
+                    <i class="icon-eye-open" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_exposed'|trans }}"></i>
+                {% else %}
+                    <i class="icon-eye-close" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_not_exposed'|trans }}"></i>
+                {% endif %}
             </li>
         </ul>
     </div>

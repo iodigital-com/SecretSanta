@@ -1,0 +1,8 @@
+{{ "emails.admin_wishlists.message.txt"|trans({"%owner%": pool.ownername()})|raw }}
+
+{{ "label.name"|trans }} >> {{ "label.items"|trans }}
+{% for entry in pool.entries %}
+    {{ entry.name }} >> {% if entry.wishlistitems|length > 0 %}{% for item in entry.wishlistitems %}{{ item.description|escape|linkify|raw }} | {% endfor %}{% else %}--{% endif %}
+{% endfor %}
+
+{{ 'emails.base.created_by'|trans }} http://www.intracto.com

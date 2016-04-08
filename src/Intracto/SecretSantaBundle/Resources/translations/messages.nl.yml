@@ -101,6 +101,20 @@ expose:
             <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
         </p>
     phrase_to_type: toon me alles
+expose_wishlists:
+    title: Toon alle verlanglijstjes in deze mailinglijst
+    body: >
+        <p>
+            Weet je het ECHT zeker?<br>
+            <br>
+            Er word een mail naar u verzonden, waarin alle verlanglijstjes van mensen in deze mailinglijst vermeld zullen staan.<br>
+            <br>
+            <b>Pas op:</b><br>
+            ENKEL JIJ krijgt de verlanglijstjes toegestuurd, maar alle leden zullen zien dat jij de lijst hebt opgevraagd.<br>
+            <br>
+            <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+        </p>
+    phrase_to_type: toon me alle verlanglijstjes
 entry:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
@@ -111,6 +125,8 @@ entry:
         person_created_list: Persoon die deze lijst samenstelde
         exposed: Lijst maker kent alle koppelingen
         not_exposed: Lijst maker kent de koppelingen niet
+        wishlists_exposed: Lijst maker kent alle wenslijsten
+        wishlists_not_exposed: Lijst maker kent niet alle wenslijsten
     title: Jouw toegewezen maatje
     body: >
         <p>Hey %name%,</p>
@@ -250,6 +266,7 @@ label:
     actions: Acties
     description: Beschrijving
     wishlist_filled: Wish List Ingevuld
+    items: Gewenste verrassingen
 placeholder:
     exclude: Klik en kies de deelnemers die je wilt uitsluiten
 btn:
@@ -267,6 +284,8 @@ btn:
     update_wishlist: Update je verlanglijst
     expose: Stuur me alle koppelingen
     expose_confirm: Ik begrijp de gevolgen, stuur mij nu alle koppelingen
+    expose_wishlists: Stuur me alle verlanglijstjes
+    expose_wishlists_confirm: Ik begrijp de gevolgen, stuur mij nu alle verlanglijstjes
     pool_update: Verstuur update naar alle deelnemers
     cancel: Annuleren
 
@@ -325,13 +344,13 @@ emails:
             html: >
                 Beste %owner%,<br/>
                 <br/>
-                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.<br/>
+                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.<br/>
                 <br/>
                 Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.<br/>
             txt: >
                 Beste %owner%,
 
-                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun wenslijst pagina.
+                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.
 
                 Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.
     poke_buddy:
@@ -385,6 +404,21 @@ emails:
                 <br/>
                 Klik op de onderstaande link en beheer jouw feestje.
         btn_poolstatus: Beheer jouw feestje
+    admin_wishlists:
+        subject: Secret Santa Mailinglijst verlanglijsten
+        message:
+            html: >
+                Beste %owner%,<br/>
+                <br/>
+                Je hebt een overzicht van alle verlanglijsten in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.<br/>
+                <br/>
+                Hier volgt een overzicht van elk lid en hun gewenste cadeautjes.
+            txt: >
+                Beste %owner%,
+
+                Je hebt een overzicht van alle verlanglijsten in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.
+
+                Hier volgt een overzicht van elk lid en hun gewenste cadeautjes.
     forgot_link:
         text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
         subject: 'Activatie mail opnieuw verzenden'
@@ -399,7 +433,10 @@ flashes:
         not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
     expose:
         not_exposed: <h4>Mailinglijst niet gestuurd</h4> De bevestiging verliep foutief.
-        exposed: <h4>Mailinglijst gestuurd</h4> Alle gebruikers worden op de hoogte gebracht wanneer zij hun wenslijst bekijken.
+        exposed: <h4>Mailinglijst gestuurd</h4> Alle gebruikers worden op de hoogte gebracht wanneer zij hun verlanglijst bekijken.
+    expose_wishlists:
+        not_exposed: <h4>Verlanglijsten niet gestuurd</h4> De bevestiging verliep foutief.
+        exposed: <h4>Verlanglijsten gestuurd</h4> Alle gebruikers worden op de hoogte gebracht wanneer zij hun verlanglijst bekijken.
     resend:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
     entry:
