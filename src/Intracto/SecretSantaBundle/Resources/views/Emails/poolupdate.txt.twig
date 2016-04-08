@@ -1,0 +1,6 @@
+{{ 'emails.pool_update.message.txt'|trans({'%name%': entry.name, '%owner%': results['pool'][0]['adminName'], '%date%': results['pool'][0]['eventdate']|date('Y-m-d'), '%place%': results['pool'][0]['location'], '%participantCount%': results['participantCount'][0]['participantCount'], '%viewedCount%': results['viewedCount'][0]['viewedCount'], '%wishlistCount%': results['wishlistCount'][0]['wishlistCount'] })|raw }}
+
+{{ 'emails.pool_update.btn_pool_update'|trans|raw }}
+{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}
+
+{{ 'emails.base.created_by'|trans }} http://www.intracto.com

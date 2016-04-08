@@ -247,6 +247,7 @@ btn:
     update_wishlist: Mettre à jour votre liste de souhaits
     expose: Envoyez-moi toutes les attributions
     expose_confirm: J'ai compris les cons&eacute;quences, envoyez-moi la liste Secret Santa maintenant
+    pool_update: Envoie une mise &agrave; jour &agrave; tous les participants
     cancel: Annuler
 
 emails:
@@ -328,6 +329,26 @@ emails:
                 Votre copain Secret Santa est en attente de votre liste de souhaits.
 
                 Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
+    pool_update:
+        subject: Notre f&ecirc;te Secret Santa s'approche
+        message:
+            html: >
+                Cher(e) %name%, <br>
+                <br>
+                Nous esperons que vous guettez la f&ecirc;te de %owner% qui s'approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te le %date% chez/&agrave; %place% pour jouir le plaisir de faire cadeau des choses aux autres.<br/>
+                <br/>
+                Pour qu'on puisse donner beaucoup de plaisir &agrave; tout le monde, serait agr&eacute;able si chaque invit&eacute; assiterait &agrave; la f&ecirc;te y apporterait un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.<br/>
+                <br/>
+                Cliquez sur le boutton ci-dessous afin de controler le point o&ugrave; en est votre copain et passe &agrave; l'action si c'est n&eacute;cessaire pour qu'il prend part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
+            txt: >
+                Cher(e) %name%,
+
+                Nous esperons que vous guettez la f&ecirc;te de %owner% qui s'approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te le %date% chez/&agrave; %place% pour jouir le plaisir de faire cadeau des choses aux autres.
+
+                Pour qu'on peut donner beaucoup de plaisir &agrave; tout le monde, serait agr&eacute;able si chaque invit&eacute; assiterait &agrave; la f&ecirc;te y apporterait un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.
+
+                Cliquez sur le boutton ci-dessous afin de controler le point o&ugrave; en est votre copain et passe &agrave; l'action si c'est n&eacute;cessaire pour qu'il prend part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
+        btn_pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
 flashes:
     manage:
         email_validated: >
@@ -347,3 +368,5 @@ flashes:
         poke_buddy: <h4>Stimulé</h4> Nos gnomes sont en route pour avertir votre copain Secret Santa que leur liste de souhaits est vide.
         edit_email: <h4>Non enregistrée</h4> Il y a une erreur dans l'adresse e-mail.
         saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.
+    pool_update:
+        success: <h4>Succ&egrave;s</h4> Votre participants ont reçu une mise &agrave; jour sur la f&ecirc;te.

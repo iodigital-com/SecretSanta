@@ -221,4 +221,49 @@ class MailerService
             )
         );
     }
+
+    /**
+     * @param Pool $pool
+     * @param $results
+     */
+    public function sendPoolUpdateMailForPool(Pool $pool, $results)
+    {
+        foreach($pool->getEntries() as $entry) {
+            $this->sendPoolUpdateMailForEntry($entry, $results);
+        }
+    }
+
+    /**
+     * @param Entry $entry
+     * @param $results
+     */
+    public function sendPoolUpdateMailForEntry(Entry $entry, $results)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.pool_update.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:poolupdate.html.twig',
+                    [
+                        'entry' => $entry,
+                        'results' => $results,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:poolupdate.txt.twig',
+                    [
+                        'entry' => $entry,
+                        'results' => $results,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
 }

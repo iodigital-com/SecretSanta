@@ -365,4 +365,45 @@ class EntryReportQuery
             ]
         );
     }
+
+    /**
+     * @param $listUrl
+     * @return array
+     */
+    public function fetchDataForPoolUpdateMail($listUrl)
+    {
+        $pool = $this->dbal->createQueryBuilder()
+            ->select('p.*, e.name AS adminName')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.listurl = :listurl')
+            ->andWhere('e.poolAdmin = 1')
+            ->setParameter(':listurl', $listUrl);
+        $participantCount = $this->dbal->createQueryBuilder()
+            ->select('count(e.id) AS participantCount')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.listurl = :listurl')
+            ->setParameter(':listurl', $listUrl);
+        $wishlistCount = $this->dbal->createQueryBuilder()
+            ->select('count(e.id) AS wishlistCount')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->where('p.listurl = :listurl')
+            ->andWhere('wishlist_updated = 1')
+            ->setParameter(':listurl', $listUrl);
+        $viewedCount = $this->dbal->createQueryBuilder()
+            ->select('count(e.id) AS viewedCount')
+            ->from('Pool', 'p')
+            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolid')
+            ->where('p.listurl = :listurl')
+            ->andWhere('viewdate is not null')
+            ->setParameter(':listurl', $listUrl);
+        return [
+            'pool' => $pool->execute()->fetchAll(),
+            'participantCount' => $participantCount->execute()->fetchAll(),
+            'wishlistCount' => $wishlistCount->execute()->fetchAll(),
+            'viewedCount' => $viewedCount->execute()->fetchAll(),
+        ];
+    }
 }
