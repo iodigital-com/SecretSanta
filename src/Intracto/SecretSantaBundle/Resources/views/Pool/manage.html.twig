@@ -59,6 +59,7 @@
         <button id="btn_expose" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {{ 'btn.expose'|trans }}</button>
         <button id="btn_expose_wishlists" class="btn btn-warning">{{ 'btn.expose_wishlists'|trans }}</button>
         <a class="btn btn-info" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}">{{ 'btn.pool_update'|trans|raw }}</a>
+        <button id="btn_add" class="btn btn-success" {% if (form_errors(form.name)) or (form_errors(form.email)) %}style="display: none;"{% endif %}>{{ 'btn.add_participant'|trans|raw }}</button>
 
         <br/><br/>
 
@@ -112,6 +113,37 @@
                 <button type="reset" class="btn btn-warning" id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
             </form>
         </div>
+
+        <div id="add-participant" class="alert alert-success" {% if (form_errors(form.name)) or (form_errors(form.email)) %}style="display: block;"{% else %}style="display: none"{% endif %}>
+            <h3>{{ 'add_participant.title'|trans|raw }}</h3>
+
+            {{ 'add_participant.body'|trans|raw }}
+
+            <form method="post" {{ form_enctype(form) }}>
+                {{ form_row(form._token) }}
+                <div {% if form_errors(form.name) %}class="error"{% endif %}>
+                    <strong>{{ 'label.name'|trans }}</strong> {{ form_widget(form.name ,{'attr':{'class':'col-xs-12 add-participant-input'}}) }}
+                    {% if form_errors(form.name) %}
+                        {% for error in form.name.vars.errors %}
+                            <strong>{{ error.message }}</strong><br/>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div {% if form_errors(form.email) %}class="error"{% endif %}>
+                    <strong>{{ 'label.email'|trans }}</strong> {{ form_widget(form.email ,{'attr':{'class':'col-xs-12 add-participant-input'}}) }}
+                    <br>
+                    {% if form_errors(form.email) %}
+                        {% for error in form.email.vars.errors %}
+                            <strong>{{ error.message }}</strong><br/>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <br/>
+                <button type="submit" class="btn btn-success" id="btn_add_confirmation">{{ 'btn.add_participant_confirm'|trans|raw }}</button>
+                <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'btn.cancel'|trans }}</button>
+            </form>
+        </div>
+    </div>
     </div>
 {% endblock %}
 
@@ -149,6 +181,17 @@
             $('#btn_expose_wishlists_cancel').click(function(e) {
                 $('#expose-wishlists-warning').hide();
                 $('#btn_expose_wishlists').show().focus();
+            });
+
+            $('#btn_add').click(function(e) {
+                $('#add-participant').show();
+                $('#btn_add').hide();
+                $('#add-participant-name').focus();
+            });
+
+            $('#btn_add_cancel').click(function(e) {
+                $('#add-participant').hide();
+                $('#btn_add').show().focus();
             });
         });
 

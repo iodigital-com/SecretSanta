@@ -114,13 +114,13 @@ a.btn {
     text-decoration: none;
 }
 
-.btn-success {
+.add-btn-create {
     font-size: 0.9em;
     padding: 5px 13px;
     font-family: 'OpenSansBold';
 }
 
-.btn-success [class^="icon-"] {
+.add-btn-create [class^="icon-"] {
     margin-top: 1px;
 }
 
@@ -386,4 +386,9 @@ ul.form-errors {
 
 .add-participant-link:hover {
     text-decoration: none;
+}
+
+.add-participant-input {
+    padding-left: 0;
+    padding-right: 0;
 }
