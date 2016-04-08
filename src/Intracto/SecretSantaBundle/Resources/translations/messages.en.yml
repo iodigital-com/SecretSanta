@@ -469,6 +469,10 @@ flashes:
         error: 'An error occurred while resending the activation mail. Please try again.'
     pool_update:
         success: <h4>Success</h4> An update has been sent to all participants.
+    remove_participant:
+        success: <h4>Removed!</h4> Participant succesfully removed.
+        danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
+        warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
 forgot_manage_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'

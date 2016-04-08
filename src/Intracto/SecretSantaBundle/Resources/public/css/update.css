@@ -379,3 +379,11 @@ ul.form-errors {
     width: 100%;
     height: 100px;
 }
+
+.add-participant-link {
+    text-decoration: none;
+}
+
+.add-participant-link:hover {
+    text-decoration: none;
+}

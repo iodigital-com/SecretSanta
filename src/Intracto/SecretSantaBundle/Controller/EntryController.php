@@ -11,6 +11,7 @@ use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
 use Intracto\SecretSantaBundle\Form\WishlistNewType;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
+use Intracto\SecretSantaBundle\Query\EntryReportQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -30,6 +31,13 @@ class EntryController extends Controller
      * @var EntryRepository
      */
     public $entryRepository;
+
+    /**
+     * @DI\Inject("intracto_secret_santa.entry")
+     *
+     * @var EntryReportQuery
+     */
+    public $entryQuery;
 
     /**
      * @DI\Inject("doctrine.orm.entity_manager")
@@ -228,15 +236,57 @@ class EntryController extends Controller
     {
         $entry = $this->entryRepository->find($entryId);
 
-        $entryService = $this->get('intracto_secret_santa.mail');
-        $entryService->sendPokeMailToBuddy($entry);
+        $this->mailerService->sendPokeMailToBuddy($entry);
 
-        $translator = $this->get('translator');
         $this->get('session')->getFlashBag()->add(
             'success',
-            $translator->trans('flashes.entry.poke_buddy')
+            $this->translator->trans('flashes.entry.poke_buddy')
         );
 
         return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+    }
+
+    /**
+     * @Route("/entry/remove/{listUrl}/{entryId}", name="entry_remove")
+     * @Template()
+     */
+    public function removeEntryFromPoolAction($listUrl, $entryId)
+    {
+        $entry = $this->entryRepository->find($entryId);
+        $pool = $entry->getPool()->getEntries();
+
+        if (count($pool) > 3) {
+            if ($entry->isPoolAdmin()) {
+                $this->get('session')->getFlashBag()->add(
+                    'warning',
+                    $this->translator->trans('flashes.remove_participant.warning')
+                );
+            } else {
+                $secretSanta = $entry->getEntry();
+                $buddyId = $this->entryQuery->findBuddyByEntryId($entryId);
+                $buddy = $this->entryRepository->find($buddyId[0]['id']);
+
+                $this->em->remove($entry);
+                $this->em->flush();
+
+                $buddy->setEntry($secretSanta);
+                $this->em->persist($buddy);
+                $this->em->flush();
+
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    $this->translator->trans('flashes.remove_participant.success')
+                );
+
+                return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            }
+        } else {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->translator->trans('flashes.remove_participant.danger')
+            );
+        }
+
+        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
 }

@@ -36,12 +36,15 @@
                             </a>
                         {% endspaceless %}
                         {% if app.environment == 'dev' %}
-                            <a href="{{ path('entry_view', { 'url': entry.url }) }}">
+                            <a href="{{ path('entry_view', { 'url': entry.url }) }}" class="add-participant-link">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
                                      title="{{ entry.entry.name }} <{{ entry.entry.email }}>"
                                      alt="{{ 'manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
+                        <a href="{{ path('entry_remove', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}" class="btn btn-mini btn-danger">
+                            <i class="fa fa-times-circle fa-inverse"></i>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

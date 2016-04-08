@@ -449,6 +449,10 @@ flashes:
         error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
     pool_update:
         success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
+    remove_participant:
+        success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
+        danger: <h4>Oops</h4> Deze deelnemer kan niet toegevoegd worden, jouw feestje heeft minstens 3 deelnemers nodig.
+        warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
 forgot_manage_link:
     title: 'Activatie mail opnieuw verzenden'
     description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)'
