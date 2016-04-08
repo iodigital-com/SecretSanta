@@ -140,6 +140,14 @@ entry:
 poke:
     poke: Por
     poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
+add_participant:
+    title: Voeg een deelnemer toe aan je feestje
+    body: >
+        <p>
+            Door het onderstaande formulier in te vullen, wordt er een nieuwe deelnemer toegevoegd aan jouw feestje.<br>
+            <br>
+            De nieuwe deelnemer zal meteen een Secret Santa maatje toegewezen krijgen en een uitnodiging ontvangen via mail.<br>
+        </p>
 static:
     privacy_policy:
         title: Privacybeleid
@@ -287,8 +295,9 @@ btn:
     expose_wishlists: Stuur me alle verlanglijstjes
     expose_wishlists_confirm: Ik begrijp de gevolgen, stuur mij nu alle verlanglijstjes
     pool_update: Verstuur update naar alle deelnemers
+    add_participant: Voeg een deelnemer aan je feestje
+    add_participant_confirm: Voeg deze deelnemer toe
     cancel: Annuleren
-
 emails:
     sender: Kerstman
     base:
@@ -453,6 +462,9 @@ flashes:
         success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
         danger: <h4>Oops</h4> Deze deelnemer kan niet toegevoegd worden, jouw feestje heeft minstens 3 deelnemers nodig.
         warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
+    add_participant:
+        success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
+        danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
 forgot_manage_link:
     title: 'Activatie mail opnieuw verzenden'
     description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)'
