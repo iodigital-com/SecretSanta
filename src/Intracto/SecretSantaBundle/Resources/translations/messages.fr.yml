@@ -349,6 +349,22 @@ emails:
 
                 Cliquez sur le boutton ci-dessous afin de controler le point o&ugrave; en est votre copain et passe &agrave; l'action si c'est n&eacute;cessaire pour qu'il prend part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
         btn_pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
+    poolstatus:
+        subject: L'état de votre f&ecirc;te Secret Santa
+        message:
+            html: >
+                Cher(e) %owner%, <br/>
+                <br/>
+                Votre f&ecirc;te se passera sous peu. Afin d'assurer la f&ecirc;te parfaite, ça serait bien d'avoir un cadeau pour chaque participant. Ici une vue générale de tous les participants et leur situation.<br/>
+                <br/>
+                Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
+            txt: >
+                Cher(e) %owner%,
+
+                Votre f&ecirc;te se passera sous peu. Afin d'assurer la f&ecirc;te parfaite, ça serait bien d'avoir un cadeau pour chaque participant. Ici une vue générale de tous les participants et leur situation.
+
+                Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
+        btn_poolstatus: Manage votre f&ecirc;te
 flashes:
     manage:
         email_validated: >

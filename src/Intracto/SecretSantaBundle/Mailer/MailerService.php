@@ -266,4 +266,131 @@ class MailerService
             )
         );
     }
+
+    /**
+     * @param Entry $entry
+     */
+    public function sendWishlistReminderMail(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.emptywishlistreminder.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.html.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.txt.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
+
+    /**
+     * @param Entry $entry
+     */
+    public function sendEntryViewReminderMail(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.viewentryreminder.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:viewentryreminder.html.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:viewentryreminder.txt.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
+
+    /**
+     * @param Entry $receiver
+     * @param Entry $entry
+     */
+    public function sendWishlistUpdatedMail(Entry $receiver, Entry $entry)
+    {
+        $this->translator->setLocale($receiver->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.wishlistchanged.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:wishlistchanged.html.twig',
+                    [
+                        'entry' => $receiver,
+                        'secret_santa' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:wishlistchanged.txt.twig',
+                    [
+                        'entry' => $receiver,
+                        'secret_santa' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
+
+    /**
+     * @param Entry $entry
+     */
+    public function sendPoolStatusMail(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.poolstatus.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:poolstatus.html.twig',
+                    [
+                        'pool' => $entry->getPool(),
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:poolstatus.txt.twig',
+                    [
+                        'pool' => $entry->getPool(),
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
 }

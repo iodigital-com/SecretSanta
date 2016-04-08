@@ -261,6 +261,22 @@ emails:
 
                 Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
         btn_pool_update: Comprueba quién es tu amigote o tu lista de deseos.
+    poolstatus:
+        subject: Secret Santa fiesta status
+        message:
+            html: >
+                Estimado %owner%, <br/>
+                <br/>
+                Tu fiesta sucedera dentro de poco. Para asegurar la fiesta perfecta, ser&iacute;a bien si cada participante tendr&iacute;a un regalo. Aqu&iacute; una vision de conjunto de todos los participantes y sus situac&iacute;ones.<br/>
+                <br/>
+                Haz clic en el siguiente enlace para llevar tu fiesta.
+            txt: >
+                Estimado %owner%,
+
+                Tu fiesta sucedera dentro de poco. Para asegurar la fiesta perfecta, ser&iacute;a bien si cada participante tendr&iacute;a un regalo. Aqu&iacute; una vision de conjunto de todos los participantes y sus situac&iacute;ones.
+
+                Haz clic en el siguiente enlace para llevar tu fiesta.
+        btn_poolstatus: Gestiona tu fiesta
 flashes:
     manage:
         email_validated: >
