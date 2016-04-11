@@ -436,6 +436,7 @@ flashes:
         success: <h4>Supprimé!</h4> Participant supprimé avec succès.
         danger: <h4>Oops</h4> On ne peut pas supprimer ce participant, votre f&ecirc;te nécessite au moins 3 participants.
         warning: <h4>Oops</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous enlever. Si vous pouvez quitter la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer la liste Secret Santa.
+        excluded_entries: <h4>Oops</h4> On ne peut pas supprimer ce participant, vous avez utiliser des exclusions en creant cette f&ecirc;te, supprimer un participant peut causer des probl&egrave;mes et pour ça cette fonctionnalit&eacute; n'est pas disponible pour cette f&ecirc;te.
     add_participant:
         success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
         danger: <h4>Oops</h4> Une erreur se passait en ajouter un participant. S'il vous pla&icirc;t, essaye encore une fois.

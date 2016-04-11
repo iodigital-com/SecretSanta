@@ -262,23 +262,38 @@ class EntryController extends Controller
                     $this->translator->trans('flashes.remove_participant.warning')
                 );
             } else {
-                $secretSanta = $entry->getEntry();
-                $buddyId = $this->entryQuery->findBuddyByEntryId($entryId);
-                $buddy = $this->entryRepository->find($buddyId[0]['id']);
+                $excludeCount = 0;
 
-                $this->em->remove($entry);
-                $this->em->flush();
+                foreach ($pool as $p) {
+                    if ($p->getExcludedEntries()) {
+                        $excludeCount++;
+                    }
+                }
 
-                $buddy->setEntry($secretSanta);
-                $this->em->persist($buddy);
-                $this->em->flush();
+                if ($excludeCount > 0) {
+                    $this->get('session')->getFlashBag()->add(
+                        'warning',
+                        $this->translator->trans('flashes.remove_participant.excluded_entries')
+                    );
+                } else {
+                    $secretSanta = $entry->getEntry();
+                    $buddyId = $this->entryQuery->findBuddyByEntryId($entryId);
+                    $buddy = $this->entryRepository->find($buddyId[0]['id']);
 
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    $this->translator->trans('flashes.remove_participant.success')
-                );
+                    $this->em->remove($entry);
+                    $this->em->flush();
 
-                return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+                    $buddy->setEntry($secretSanta);
+                    $this->em->persist($buddy);
+                    $this->em->flush();
+
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        $this->translator->trans('flashes.remove_participant.success')
+                    );
+
+                    return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+                }
             }
         } else {
             $this->get('session')->getFlashBag()->add(

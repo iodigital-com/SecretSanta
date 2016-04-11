@@ -483,6 +483,7 @@ flashes:
         success: <h4>Removed!</h4> Participant succesfully removed.
         danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
         warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
+        excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
     add_participant:
         success: <h4>Added!</h4> Participant succesfully added to your party.
         danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.

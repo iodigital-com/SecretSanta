@@ -460,8 +460,9 @@ flashes:
         success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
     remove_participant:
         success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
-        danger: <h4>Oops</h4> Deze deelnemer kan niet toegevoegd worden, jouw feestje heeft minstens 3 deelnemers nodig.
+        danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
         warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
+        excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
     add_participant:
         success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
         danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
