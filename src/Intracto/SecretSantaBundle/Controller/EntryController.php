@@ -265,7 +265,7 @@ class EntryController extends Controller
                 $excludeCount = 0;
 
                 foreach ($pool as $p) {
-                    if ($p->getExcludedEntries()) {
+                    if (count($p->getExcludedEntries()) > 0) {
                         $excludeCount++;
                     }
                 }
