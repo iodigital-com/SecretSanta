@@ -55,10 +55,10 @@
             <strong>{{ 'manage.tip'|trans }}</strong> {{ 'manage.come_back'|trans }}
         </div>
 
-        <button id="btn_delete" class="btn btn-primary"><i class="icon-warning-sign icon-white"></i> {{ 'btn.delete_list'|trans }}</button>
-        <button id="btn_expose" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {{ 'btn.expose'|trans }}</button>
-        <button id="btn_expose_wishlists" class="btn btn-warning">{{ 'btn.expose_wishlists'|trans }}</button>
-        <a class="btn btn-info" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}">{{ 'btn.pool_update'|trans|raw }}</a>
+        <button id="btn_delete" class="btn btn-primary"><i class="fa fa-exclamation-circle"></i> {{ 'btn.delete_list'|trans }}</button>
+        <button id="btn_expose" class="btn btn-warning"><i class="fa fa-eye"></i> {{ 'btn.expose'|trans }}</button>
+        <button id="btn_expose_wishlists" class="btn btn-warning"><i class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</button>
+        <a class="btn btn-info" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}"><i class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
         <button id="btn_add" class="btn btn-success" {% if (form_errors(form.name)) or (form_errors(form.email)) %}style="display: none;"{% endif %}>{{ 'btn.add_participant'|trans|raw }}</button>
 
         <br/><br/>
@@ -203,7 +203,7 @@
             $('#email_' + entryId).html(
                     '<form action="' + url + '" method="post">' +
                     '<input type="text" name="email" value="' + email + '">&nbsp;' +
-                    '<button class="btn btn-small btn-primary" type="submit"><i class="icon-ok icon-white"></i> {{ 'manage.save'|trans }}</button>' +
+                    '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
                     '</form>'
             );
         }

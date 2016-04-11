@@ -12,14 +12,14 @@
             <li><strong>{{ 'entry.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
             <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> {{ entry.pool.entries|first.email }}
                 {% if entry.pool.exposed %}
-                    <i class="icon-eye-open" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.exposed'|trans }}"></i>
+                    <i class="fa fa-eye-slash" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.not_exposed'|trans }}"></i>
                 {% else %}
-                    <i class="icon-eye-close" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.not_exposed'|trans }}"></i>
+                    <i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.exposed'|trans }}"></i>
                 {% endif %}
                 {% if entry.pool.wishlistsExposed %}
-                    <i class="icon-eye-open" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_exposed'|trans }}"></i>
+                    <i class="fa fa-eye-slash" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_not_exposed'|trans }}"></i>
                 {% else %}
-                    <i class="icon-eye-close" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_not_exposed'|trans }}"></i>
+                    <i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_exposed'|trans }}"></i>
                 {% endif %}
             </li>
         </ul>
@@ -91,7 +91,7 @@
                         <th class="span7">{{ 'label.description'|trans }}</th>
                         <th style="text-align: right;" class="span4">
                             <button type="button" class="btn btn-mini btn-success add-new-entry"><i
-                                        class="icon-plus-sign icon-white"></i> {{ 'btn.add_wishlist'|trans }}
+                                        class="fa fa-plus-circle"></i> {{ 'btn.add_wishlist'|trans }}
                             </button>
                         </th>
                     </tr>
@@ -108,7 +108,7 @@
                                 <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
                                 <td style="text-align: right;">
                                     <button type="button" class="btn btn-mini btn-danger remove-entry"><i
-                                                class="icon-minus-sign icon-white"></i> {{ 'btn.remove_item'|trans }}
+                                                class="fa fa-times-circle"></i> {{ 'btn.remove_item'|trans }}
                                     </button>
                                 </td>
                             </tr>
@@ -121,7 +121,7 @@
 
             <p>
                 <br><button type="submit" class="btn btn-large btn-primary">
-                    <i class="icon-ok icon-white"></i> {{ 'btn.update_wishlist'|trans }}
+                    <i class="fa fa-check"></i> {{ 'btn.update_wishlist'|trans }}
                 </button>
             </p>
             {{ form_end(form, {'render_rest': false}) }}
