@@ -292,14 +292,14 @@ class PoolController extends Controller
                         'success',
                         $this->translator->trans('flashes.add_participant.success')
                     );
+
+                    return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
                 } else {
                     $this->get('session')->getFlashBag()->add(
                         'danger',
                         $this->translator->trans('flashes.add_participant.danger')
                     );
                 }
-
-                return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
             }
         }
 
