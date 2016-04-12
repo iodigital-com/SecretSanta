@@ -435,3 +435,11 @@ ul.form-errors {
     margin-bottom: 10px;
     margin-right: 10px;
 }
+
+.input_edit_email {
+    margin-bottom: 5px;
+}
+
+.btn_edit_email {
+    margin-left: -4px;
+}

@@ -59,7 +59,7 @@
         <button id="btn_expose" class="btn btn-warning manage_btn manage_btn_middle"><i class="fa fa-eye"></i> {{ 'btn.expose'|trans }}</button>
         <button id="btn_expose_wishlists" class="btn btn-warning manage_btn"><i class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</button>
         <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}"><i class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
-        <button id="btn_add" class="btn btn-success manage_btn" {% if (form_errors(form.name)) or (form_errors(form.email)) %}style="display: none;"{% endif %}>{{ 'btn.add_participant'|trans|raw }}</button>
+        <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle" {% if (form_errors(form.name)) or (form_errors(form.email)) %}disabled{% endif %}><i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_participant'|trans|raw }}</button>
 
         <br/><br/>
 
@@ -124,11 +124,11 @@
             <h3>{{ 'add_participant.title'|trans|raw }}</h3>
 
             {{ 'add_participant.body'|trans|raw }}
-
+            <br>
             <form method="post" {{ form_enctype(form) }}>
                 {{ form_row(form._token) }}
                 <div {% if form_errors(form.name) %}class="error"{% endif %}>
-                    <strong>{{ 'label.name'|trans }}</strong> {{ form_widget(form.name ,{'attr':{'class':'col-xs-12 add-participant-input'}}) }}
+                    <strong>{{ 'label.name'|trans }}</strong> {{ form_widget(form.name ,{'attr':{'class':'form-control add-participant-input'}}) }}
                     {% if form_errors(form.name) %}
                         {% for error in form.name.vars.errors %}
                             <strong>{{ error.message }}</strong><br/>
@@ -136,8 +136,7 @@
                     {% endif %}
                 </div>
                 <div {% if form_errors(form.email) %}class="error"{% endif %}>
-                    <strong>{{ 'label.email'|trans }}</strong> {{ form_widget(form.email ,{'attr':{'class':'col-xs-12 add-participant-input'}}) }}
-                    <br>
+                    <strong>{{ 'label.email'|trans }}</strong> {{ form_widget(form.email ,{'attr':{'class':'form-control add-participant-input'}}) }}
                     {% if form_errors(form.email) %}
                         {% for error in form.email.vars.errors %}
                             <strong>{{ error.message }}</strong><br/>
@@ -191,13 +190,13 @@
 
             $('#btn_add').click(function(e) {
                 $('#add-participant').show();
-                $('#btn_add').hide();
+                $('#btn_add').attr('disabled', true);
                 $('#add-participant-name').focus();
             });
 
             $('#btn_add_cancel').click(function(e) {
                 $('#add-participant').hide();
-                $('#btn_add').show().focus();
+                $('#btn_add').attr('disabled', false).focus();
             });
         });
 
@@ -208,8 +207,8 @@
             url = url.replace("entryId", entryId);
             $('#email_' + entryId).html(
                     '<form action="' + url + '" method="post">' +
-                    '<input type="text" name="email" value="' + email + '">&nbsp;' +
-                    '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
+                    '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '">&nbsp;' +
+                    '<button class="btn btn-small btn-primary btn_edit_email" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
                     '</form>'
             );
         }
