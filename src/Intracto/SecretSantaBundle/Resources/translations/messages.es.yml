@@ -137,6 +137,14 @@ entry:
 poke:
     poke: Empuja
     poke_sentence: tu amigote para avisarla que su lista de deseos est&aacute; vac&iacute;a.
+add_participant:
+    title: A&ntilde;adir un nuevo participante a tu fiesta
+    body: >
+        <p>
+            Por rellenar el siguiente formulario, un nuevo participante ser&aacute; a&ntilde;adido a la fiesta.<br>
+            <br>
+            El nuevo participante ser&aacute; adjudicado un amigote Secret Santa inmediato y recibirá una invitaci&oacute;n por correo electr&oacute;nico.<br>
+        </p>
 static:
     report:
         max_results: Resultados máx.
@@ -176,8 +184,9 @@ btn:
     expose_wishlists: Enviarme todas las listas de deseos
     expose_wishlists_confirm: Comprendo las consecuencias, enviar todas las listas de deseos ahore
     pool_update: Envia una actualizaci&oacute;n a los participantes
+    add_participant: A&ntilde;adir un participante a la fiesta
+    add_participant_confirm: A&ntilde;nadir este participante
     cancel: Cancelar
-
 emails:
     sender: Santa Claus
     base:
@@ -334,3 +343,11 @@ flashes:
         invalid_data: <h4>Oops</h4> Ha ocurrido un error al requerir los datos analíticos. Por favor, inténtalo otra vez.
     pool_update:
         success: <h4>Éxito</h4> Todos los participantes han recibido una actualizaci&oacute;n sobre la fiesta.
+    remove_participant:
+        success: <h4>¡Expulsado!</h4> Participante expulsado de éxito.
+        danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.
+        warning: <h4>Oops</h4> Organizas la fiesta, no puedes expulsarte. Si quieres dejar la fiesta, haz clic en el enlace abajo para borrar la lista Secret Santa.
+        excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
+    add_participant:
+        success: <h4>¡A&ntilde;adido!</h4> Participante a&ntilde;adido a tu fiesta de éxito.
+        danger: <h4>Oops</h4> Ha ocurrido un error al a&ntilde;adir el participante. Por favor, inténtalo otra vez.

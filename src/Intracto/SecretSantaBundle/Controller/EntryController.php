@@ -3,19 +3,25 @@
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManager;
+use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\EmailAddress;
 use Intracto\SecretSantaBundle\Entity\EntryRepository;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
 use Intracto\SecretSantaBundle\Form\WishlistNewType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Intracto\SecretSantaBundle\Mailer\MailerService;
+use Intracto\SecretSantaBundle\Query\EntryReportQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Validator\Validator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Intracto\SecretSantaBundle\Entity\Entry;
-use Intracto\SecretSantaBundle\Entity\EmailAddress;
+
 
 class EntryController extends Controller
 {
@@ -26,6 +32,41 @@ class EntryController extends Controller
      */
     public $entryRepository;
 
+    /**
+     * @DI\Inject("intracto_secret_santa.entry")
+     *
+     * @var EntryReportQuery
+     */
+    public $entryQuery;
+
+    /**
+     * @DI\Inject("doctrine.orm.entity_manager")
+     *
+     * @var EntityManager
+     */
+    public $em;
+
+    /**
+     * @DI\Inject("validator")
+     *
+     * @var Validator
+     */
+    public $validator;
+
+    /**
+     * @DI\Inject("translator")
+     *
+     * @var TranslatorInterface;
+     */
+    public $translator;
+
+    /**
+     * @DI\Inject("intracto_secret_santa.mail")
+     *
+     * @var MailerService
+     */
+    public $mailerService;
+
     /** @var Entry */
     public $entry;
 
@@ -35,7 +76,6 @@ class EntryController extends Controller
      */
     public function indexAction(Request $request, $url)
     {
-        $em = $this->getDoctrine()->getManager();
         $this->getEntry($url);
 
         if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != '') {
@@ -49,14 +89,14 @@ class EntryController extends Controller
         // Log visit on first access
         if ($this->entry->getViewdate() === null) {
             $this->entry->setViewdate(new \DateTime());
-            $em->flush($this->entry);
+            $this->em->flush($this->entry);
         }
 
         // Log ip address on first access
         if ($this->entry->getIp() === null) {
             $ip = $request->getClientIp();
             $this->entry->setIp($ip);
-            $em->flush($this->entry);
+            $this->em->flush($this->entry);
         }
 
         if ('POST' === $request->getMethod()) {
@@ -75,7 +115,7 @@ class EntryController extends Controller
 
                 foreach ($newWishlistItems as $item) {
                     $item->setEntry($this->entry);
-                    $em->persist($item);
+                    $this->em->persist($item);
                     // keep track of rank
                     if ($item->getRank() < $lastRank) {
                         $inOrder = false;
@@ -86,40 +126,39 @@ class EntryController extends Controller
                 // remove entries not passed
                 foreach ($currentWishlistItems as $item) {
                     if (!$newWishlistItems->contains($item)) {
-                        $em->remove($item);
+                        $this->em->remove($item);
                     }
                 }
 
                 // For now assume that a save of entry means the list has changed
                 $this->entry->setWishlistUpdated(true);
 
-                $em->persist($this->entry);
-                $em->flush();
+                $this->em->persist($this->entry);
+                $this->em->flush();
 
-                $translator = $this->get('translator');
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    $translator->trans('flashes.entry.wishlist_updated')
+                    $this->translator->trans('flashes.entry.wishlist_updated')
                 );
 
                 if (!$inOrder) {
                     // redirect to force refresh of form and entity
-                    return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
+                    return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
                 }
 
                 if ($legacyWishlist && ($this->entry->getWishlist() === null || $this->entry->getWishlist() === '')) {
                     // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
-                    return $this->redirect($this->generateUrl('entry_view', array('url' => $url)));
+                    return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
                 }
             }
         }
         $secret_santa = $this->entry->getEntry();
 
-        return array(
+        return [
             'entry' => $this->entry,
             'form' => $form->createView(),
             'secret_santa' => $secret_santa,
-        );
+        ];
     }
 
     /**
@@ -152,35 +191,28 @@ class EntryController extends Controller
         $entry = $this->entryRepository->find($entryId);
 
         if ($entry->getPool()->getListurl() === $listUrl) {
-            /** @var \Symfony\Component\Validator\Validator $validatorService */
-            $validatorService = $this->get('validator');
-
             $emailAddress = new EmailAddress($request->request->get('email'));
-            $emailAddressErrors = $validatorService->validate($emailAddress);
+            $emailAddressErrors = $this->validator->validate($emailAddress);
 
             if (count($emailAddressErrors) > 0) {
-                $translator = $this->get('translator');
                 $this->get('session')->getFlashBag()->add(
                     'error',
-                    $translator->trans('flashes.entry.edit_email')
+                    $this->translator->trans('flashes.entry.edit_email')
                 );
             } else {
-                $em = $this->getDoctrine()->getManager();
                 $entry->setEmail((string)$emailAddress);
-                $em->flush($entry);
+                $this->em->flush($entry);
 
-                $entryService = $this->get('intracto_secret_santa.entry_service');
-                $entryService->sendSecretSantaMailForEntry($entry);
+                $this->mailerService->sendSecretSantaMailForEntry($entry);
 
-                $translator = $this->get('translator');
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    $translator->trans('flashes.entry.saved_email')
+                    $this->translator->trans('flashes.entry.saved_email')
                 );
             }
         }
 
-        return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
+        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
 
     /**
@@ -204,15 +236,72 @@ class EntryController extends Controller
     {
         $entry = $this->entryRepository->find($entryId);
 
-        $entryService = $this->get('intracto_secret_santa.mail');
-        $entryService->sendPokeMailToBuddy($entry);
+        $this->mailerService->sendPokeMailToBuddy($entry);
 
-        $translator = $this->get('translator');
         $this->get('session')->getFlashBag()->add(
             'success',
-            $translator->trans('flashes.entry.poke_buddy')
+            $this->translator->trans('flashes.entry.poke_buddy')
         );
 
         return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+    }
+
+    /**
+     * @Route("/entry/remove/{listUrl}/{entryId}", name="entry_remove")
+     * @Template()
+     */
+    public function removeEntryFromPoolAction($listUrl, $entryId)
+    {
+        $entry = $this->entryRepository->find($entryId);
+        $pool = $entry->getPool()->getEntries();
+
+        if (count($pool) > 3) {
+            if ($entry->isPoolAdmin()) {
+                $this->get('session')->getFlashBag()->add(
+                    'warning',
+                    $this->translator->trans('flashes.remove_participant.warning')
+                );
+            } else {
+                $excludeCount = 0;
+
+                foreach ($pool as $p) {
+                    if (count($p->getExcludedEntries()) > 0) {
+                        $excludeCount++;
+                    }
+                }
+
+                if ($excludeCount > 0) {
+                    $this->get('session')->getFlashBag()->add(
+                        'warning',
+                        $this->translator->trans('flashes.remove_participant.excluded_entries')
+                    );
+                } else {
+                    $secretSanta = $entry->getEntry();
+                    $buddyId = $this->entryQuery->findBuddyByEntryId($entryId);
+                    $buddy = $this->entryRepository->find($buddyId[0]['id']);
+
+                    $this->em->remove($entry);
+                    $this->em->flush();
+
+                    $buddy->setEntry($secretSanta);
+                    $this->em->persist($buddy);
+                    $this->em->flush();
+
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        $this->translator->trans('flashes.remove_participant.success')
+                    );
+
+                    return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+                }
+            }
+        } else {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->translator->trans('flashes.remove_participant.danger')
+            );
+        }
+
+        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
 }

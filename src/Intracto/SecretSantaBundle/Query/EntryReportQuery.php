@@ -505,6 +505,9 @@ class EntryReportQuery
         return $query->getResult();
     }
 
+    /**
+     * @return array
+     */
     public function findAllAdminsForPoolStatusMail()
     {
         $today = new \DateTime();
@@ -528,5 +531,36 @@ class EntryReportQuery
         $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
 
         return $query->getResult();
+    }
+
+    /**
+     * @param $entryId
+     * @return mixed
+     */
+    public function findBuddyByEntryId($entryId)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('e.id')
+            ->from('Entry', 'e')
+            ->where('e.entryId = :entryId')
+            ->setParameter('entryId', $entryId);
+
+        return $query->execute()->fetchAll();
+    }
+
+    /**
+     * @param $poolId
+     * @return mixed
+     */
+    public function findAdminIdByPoolId($poolId)
+    {
+        $query = $this->dbal->createQueryBuilder()
+            ->select('e.id')
+            ->from('Entry', 'e')
+            ->where('e.poolId = :poolId')
+            ->andWhere('e.poolAdmin = 1')
+            ->setParameter('poolId', $poolId);
+        
+        return $query->execute()->fetchAll();
     }
 }

@@ -138,6 +138,14 @@ entry:
 poke:
     poke: Stimule
     poke_sentence: votre copain Secret Santa de remplir leur liste de souhaits.
+add_participant:
+    title: Ajouter un nouveau participant à la f&ecirc;te
+    body: >
+        <p>
+            Par remplir le formulaire ci-dessous, un nouveau participant sera ajouté à votre f&ecirc;te.<br>
+            <br>
+            Le nouveau participant sera assigné un copain Secret Santa immédiatement et recevra une invitation par mail.
+        </p>
 static:
     privacy_policy:
         title: Protection vie privée
@@ -267,6 +275,8 @@ btn:
     expose_wishlists: Envoyez-moi toutes les listes de souhaits
     expose_wishlists_confirm: J'ai compris les cons&eacute;quences, envoyer-moi les listes de souhaits maintenant
     pool_update: Envoie une mise &agrave; jour &agrave; tous les participants
+    add_participant: Ajouter un participant à la f&ecirc;te
+    add_participant_confirm: Ajouter ce participant
     cancel: Annuler
 emails:
     sender: Santa Claus
@@ -422,3 +432,11 @@ flashes:
         saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.
     pool_update:
         success: <h4>Succ&egrave;s</h4> Votre participants ont reçu une mise &agrave; jour sur la f&ecirc;te.
+    remove_participant:
+        success: <h4>Supprimé!</h4> Participant supprimé avec succès.
+        danger: <h4>Oops</h4> On ne peut pas supprimer ce participant, votre f&ecirc;te nécessite au moins 3 participants.
+        warning: <h4>Oops</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous enlever. Si vous pouvez quitter la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer la liste Secret Santa.
+        excluded_entries: <h4>Oops</h4> On ne peut pas supprimer ce participant, vous avez utiliser des exclusions en creant cette f&ecirc;te, supprimer un participant peut causer des probl&egrave;mes et pour ça cette fonctionnalit&eacute; n'est pas disponible pour cette f&ecirc;te.
+    add_participant:
+        success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
+        danger: <h4>Oops</h4> Une erreur se passait en ajouter un participant. S'il vous pla&icirc;t, essaye encore une fois.

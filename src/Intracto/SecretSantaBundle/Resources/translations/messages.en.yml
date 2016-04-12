@@ -143,6 +143,14 @@ entry:
 poke:
     poke: Poke
     poke_sentence: your buddy to let him/her know their wishlist is empty.
+add_participant:
+    title: Add a new participant to your party
+    body: >
+        <p>
+            By filling in the form below, a new participant will be added to your party.<br>
+            <br>
+            The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
+        </p>
 static:
     privacy_policy:
         title: Privacy Policy
@@ -306,6 +314,8 @@ btn:
     expose_wishlists: Send me all the wishlists
     expose_wishlists_confirm: I understand the consequences, send me all wishlists now
     pool_update: Send party update to participants
+    add_participant: Add participant to party
+    add_participant_confirm: Add this participant
     cancel: Cancel
 emails:
     sender: Santa Claus
@@ -469,6 +479,14 @@ flashes:
         error: 'An error occurred while resending the activation mail. Please try again.'
     pool_update:
         success: <h4>Success</h4> An update has been sent to all participants.
+    remove_participant:
+        success: <h4>Removed!</h4> Participant succesfully removed.
+        danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
+        warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
+        excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+    add_participant:
+        success: <h4>Added!</h4> Participant succesfully added to your party.
+        danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
 forgot_manage_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
