@@ -401,3 +401,37 @@ ul.form-errors {
     padding-left: 0;
     padding-right: 0;
 }
+
+#mysanta {
+    table-layout: fixed;
+}
+
+#mysanta tr,
+#mysanta td {
+    word-wrap: break-word;
+}
+
+.manage_btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.manage_btn_link {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+.btn_long_text {
+    display: block;
+    max-width: 100%;
+    float: left;
+    white-space: normal;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}

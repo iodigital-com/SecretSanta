@@ -5,15 +5,15 @@
 {% block main %}
     <div class="box">
         <h1>{{ 'manage.title'|trans }}</h1>
-        <table class="entries table table-striped" id="mysanta">
+        <table class="table table-striped mysanta" id="mysanta">
             <thead>
             <tr>
-                <th class="span1 entry-number-header">#</th>
-                <th class="span3">{{ 'label.name'|trans }}</th>
-                <th class="span4">{{ 'label.email'|trans }}</th>
-                <th class="span2">{{ 'label.confirmed'|trans }}</th>
-                <th class="span2">{{ 'label.wishlist_filled'|trans }}</th>
-                <th class="span1">{{ 'label.actions'|trans }}</th>
+                <th class="col-xs-1 entry-number-header">#</th>
+                <th class="col-xs-2">{{ 'label.name'|trans }}</th>
+                <th class="col-xs-3">{{ 'label.email'|trans }}</th>
+                <th class="col-xs-2">{{ 'label.confirmed'|trans }}</th>
+                <th class="col-xs-2">{{ 'label.wishlist_filled'|trans }}</th>
+                <th class="col-xs-2">{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -55,25 +55,27 @@
             <strong>{{ 'manage.tip'|trans }}</strong> {{ 'manage.come_back'|trans }}
         </div>
 
-        <button id="btn_delete" class="btn btn-primary"><i class="fa fa-exclamation-circle"></i> {{ 'btn.delete_list'|trans }}</button>
-        <button id="btn_expose" class="btn btn-warning"><i class="fa fa-eye"></i> {{ 'btn.expose'|trans }}</button>
-        <button id="btn_expose_wishlists" class="btn btn-warning"><i class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</button>
-        <a class="btn btn-info" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}"><i class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
-        <button id="btn_add" class="btn btn-success" {% if (form_errors(form.name)) or (form_errors(form.email)) %}style="display: none;"{% endif %}>{{ 'btn.add_participant'|trans|raw }}</button>
+        <button id="btn_delete" class="btn btn-primary manage_btn"><i class="fa fa-exclamation-circle"></i> {{ 'btn.delete_list'|trans }}</button>
+        <button id="btn_expose" class="btn btn-warning manage_btn manage_btn_middle"><i class="fa fa-eye"></i> {{ 'btn.expose'|trans }}</button>
+        <button id="btn_expose_wishlists" class="btn btn-warning manage_btn"><i class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</button>
+        <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}"><i class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
+        <button id="btn_add" class="btn btn-success manage_btn" {% if (form_errors(form.name)) or (form_errors(form.email)) %}style="display: none;"{% endif %}>{{ 'btn.add_participant'|trans|raw }}</button>
 
         <br/><br/>
 
-        <div id="delete-warning" class="alert alert-error" style="display: none;">
+        <div id="delete-warning" class="alert alert-danger" style="display: none;">
             <h3>{{ 'delete.title'|trans }}</h3>
 
             {% set phraseToType = 'delete.phrase_to_type'|trans %}
             {{ 'delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
-
+            <br>
             <form action="{{ path('pool_delete', { 'listUrl': pool.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_pool_csrf_token }}">
                 <input type="text" name="confirmation" id="delete-confirmation" autocomplete="off"
-                       onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"><br>
-                <button class="btn btn-primary" type="submit" id="btn_delete_confirmation" disabled>
+                       onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"
+                       class="form-control">
+                <br>
+                <button class="btn btn-primary btn_long_text" type="submit" id="btn_delete_confirmation" disabled>
                     {{ 'btn.delete_confirm'|trans }}
                 </button>
                 <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'btn.cancel'|trans }}</button>
@@ -85,12 +87,14 @@
 
             {% set phraseToType = 'expose.phrase_to_type'|trans %}
             {{ 'expose.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
-
+            <br>
             <form action="{{ path('pool_expose', { 'listUrl': pool.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ expose_pool_csrf_token }}">
                 <input type="text" name="confirmation" id="expose-confirmation" autocomplete="off"
-                       onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_confirmation').removeAttr('disabled');"><br>
-                <button class="btn btn-warning" type="submit" id="btn_expose_confirmation" disabled>
+                       onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_confirmation').removeAttr('disabled');"
+                       class="form-control">
+                <br>
+                <button class="btn btn-warning btn_long_text" type="submit" id="btn_expose_confirmation" disabled>
                     {{ 'btn.expose_confirm'|trans }}
                 </button>
                 <button type="reset" class="btn btn-warning" id="btn_expose_cancel">{{ 'btn.cancel'|trans }}</button>
@@ -102,15 +106,17 @@
 
             {% set phraseToType = 'expose_wishlists.phrase_to_type'|trans %}
             {{ 'expose_wishlists.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
-
+            <br>
             <form action="{{ path('pool_expose_wishlists', { 'listUrl':pool.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ expose_pool_wishlists_csrf_token }}">
                 <input type="text" name="confirmation" id="expose-wishlists-confirmation" autocomplete="off"
-                        onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_wishlists_confirmation').removeAttr('disabled');"><br>
-                <button class="btn btn-warning" type="submit" id="btn_expose_wishlists_confirmation" disabled>
+                        onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_wishlists_confirmation').removeAttr('disabled');"
+                        class="form-control">
+                <br>
+                <button class="btn btn-warning btn_long_text" type="submit" id="btn_expose_wishlists_confirmation" disabled>
                     {{ 'btn.expose_wishlists_confirm'|trans|raw }}
                 </button>
-                <button type="reset" class="btn btn-warning" id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
+                <button type="reset" class="btn btn-warning btn_long_text" id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
             </form>
         </div>
 
@@ -153,34 +159,34 @@
         $( document ).ready(function() {
             $('#btn_delete').click(function(e) {
                 $('#delete-warning').show();
-                $('#btn_delete').hide();
+                $('#btn_delete').attr('disabled', true);
                 $('#delete-confirmation').focus();
             });
             $('#btn_delete_cancel').click(function(e) {
                 $('#delete-warning').hide();
-                $('#btn_delete').show().focus();
+                $('#btn_delete').attr('disabled', false).focus();
             });
 
             $('#btn_expose').click(function(e) {
                 $('#expose-warning').show();
-                $('#btn_expose').hide();
+                $('#btn_expose').attr('disabled', true);
                 $('#expose-confirmation').focus();
             });
 
             $('#btn_expose_cancel').click(function(e) {
                 $('#expose-warning').hide();
-                $('#btn_expose').show().focus();
+                $('#btn_expose').attr('disabled', false).focus();
             });
 
             $('#btn_expose_wishlists').click(function(e) {
                 $('#expose-wishlists-warning').show();
-                $('#btn_expose_wishlists').hide();
+                $('#btn_expose_wishlists').attr('disabled', true);
                 $('#expose-wishlists-confirmation').focus();
             });
 
             $('#btn_expose_wishlists_cancel').click(function(e) {
                 $('#expose-wishlists-warning').hide();
-                $('#btn_expose_wishlists').show().focus();
+                $('#btn_expose_wishlists').attr('disabled', false).focus();
             });
 
             $('#btn_add').click(function(e) {

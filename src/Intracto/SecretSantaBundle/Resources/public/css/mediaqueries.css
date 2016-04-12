@@ -138,6 +138,16 @@
     .mobile__lang__selection {
         display: none;
     }
+
+    .manage_btn {
+        width: 32%;
+        float: left;
+    }
+
+    .manage_btn_middle {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -159,5 +169,20 @@
 
     .form-create-pool label {
         height: 40px;
+    }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 801px) {
+    .manage_btn {
+        width: 47.5%;
+        float: left;
+    }
+
+    .manage_btn:nth-child(odd) {
+        margin-left: 2.5%;
+    }
+
+    .manage_btn:nth-child(even) {
+        margin-right: 2.5%;
     }
 }
