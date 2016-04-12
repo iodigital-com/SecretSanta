@@ -255,52 +255,56 @@ class EntryController extends Controller
         $entry = $this->entryRepository->find($entryId);
         $pool = $entry->getPool()->getEntries();
 
-        if (count($pool) > 3) {
-            if ($entry->isPoolAdmin()) {
-                $this->get('session')->getFlashBag()->add(
-                    'warning',
-                    $this->translator->trans('flashes.remove_participant.warning')
-                );
-            } else {
-                $excludeCount = 0;
-
-                foreach ($pool as $p) {
-                    if (count($p->getExcludedEntries()) > 0) {
-                        $excludeCount++;
-                    }
-                }
-
-                if ($excludeCount > 0) {
-                    $this->get('session')->getFlashBag()->add(
-                        'warning',
-                        $this->translator->trans('flashes.remove_participant.excluded_entries')
-                    );
-                } else {
-                    $secretSanta = $entry->getEntry();
-                    $buddyId = $this->entryQuery->findBuddyByEntryId($entryId);
-                    $buddy = $this->entryRepository->find($buddyId[0]['id']);
-
-                    $this->em->remove($entry);
-                    $this->em->flush();
-
-                    $buddy->setEntry($secretSanta);
-                    $this->em->persist($buddy);
-                    $this->em->flush();
-
-                    $this->get('session')->getFlashBag()->add(
-                        'success',
-                        $this->translator->trans('flashes.remove_participant.success')
-                    );
-
-                    return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-                }
-            }
-        } else {
+        if (count($pool) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->translator->trans('flashes.remove_participant.danger')
             );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
+
+        if ($entry->isPoolAdmin()) {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                $this->translator->trans('flashes.remove_participant.warning')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
+
+        $excludeCount = 0;
+
+        foreach ($pool as $p) {
+            if (count($p->getExcludedEntries()) > 0) {
+                $excludeCount++;
+            }
+        }
+
+        if ($excludeCount > 0) {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                $this->translator->trans('flashes.remove_participant.excluded_entries')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
+
+        $secretSanta = $entry->getEntry();
+        $buddyId = $this->entryQuery->findBuddyByEntryId($entryId);
+        $buddy = $this->entryRepository->find($buddyId[0]['id']);
+
+        $this->em->remove($entry);
+        $this->em->flush();
+
+        $buddy->setEntry($secretSanta);
+        $this->em->persist($buddy);
+        $this->em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            $this->translator->trans('flashes.remove_participant.success')
+        );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
