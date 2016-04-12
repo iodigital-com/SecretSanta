@@ -5,7 +5,14 @@
         <h1>{{ 'forgot_manage_link.title'|trans }}</h1>
 
         <p>{{ 'forgot_manage_link.description'|trans }}</p>
-        {{ form(form) }}
+        <form method="post" {{ form_enctype(form) }} novalidate>
+            {{ form_row(form._token) }}
+            <div class="form-group">
+                <strong>{{ form_label(form.email) }}</strong>
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.submit) }}
+            </div>
+        </form>
     </div>
 {% endblock %}
 
