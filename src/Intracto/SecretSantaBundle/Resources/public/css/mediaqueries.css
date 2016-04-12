@@ -132,38 +132,32 @@
     .text_remove {
         display: none;
     }
-
-    .input {
-        margin-left: -17px;
-    }
-
-    .amount {
-        margin-left: -17px;
-    }
-
-    .location {
-        margin-left: -17px;
-    }
-
 }
 
-@media only screen and (min-width: 800px) {
-    .input {
-        width: auto;
-        max-width: 300px;
-    }
-    
-    .location {
-        width: auto;
-        max-width: 300px;
-    }
-
-    .amount {
-        width: auto;
-        max-width: 200px;
-    }
-
+@media only screen and (min-width: 802px) {
     .mobile__lang__selection {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .form-create-pool {
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .form-create-pool {
+        float: left;
+        width: 30%;
+    }
+
+    .form-create-pool:nth-child(2) {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .form-create-pool label {
+        height: 40px;
     }
 }

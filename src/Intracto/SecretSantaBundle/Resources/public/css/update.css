@@ -114,10 +114,19 @@ a.btn {
     text-decoration: none;
 }
 
+.add-btn-container {
+    display: block;
+    overflow: auto;
+    margin-bottom: 10px;
+    float: right;
+}
+
 .add-btn-create {
     font-size: 0.9em;
     padding: 5px 13px;
     font-family: 'OpenSansBold';
+    float: left;
+    margin-left: 10px;
 }
 
 .add-btn-create [class^="icon-"] {
@@ -216,7 +225,6 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 
 .description {
     font-size: 0.8em;
-    margin-left: 13px;
     margin-bottom: 3px;
     color: #6E6E6E;
 }
@@ -355,6 +363,7 @@ ul.form-errors {
     padding: 4px 18px;
     font-family: 'straitregular';
     width: 100%;
+    font-size: 14px;
 }
 
 .lang__selection:hover select {
