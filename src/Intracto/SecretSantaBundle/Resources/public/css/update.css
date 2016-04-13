@@ -163,7 +163,7 @@ table.entries input {
     background-repeat:repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
-    text-shadow: 0 -1px 0 #6f070c;
+    text-shadow: 0 -1px 0 #985e0d;
 }
 
 #wrapper .btn-warning:hover {
@@ -178,7 +178,7 @@ table.entries input {
     background-repeat:repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
-    text-shadow: 0 -1px 0 #6f070c;
+    text-shadow: 0 -1px 0 #1b6d85;
 }
 
 #wrapper .btn-info:hover {
@@ -193,7 +193,7 @@ table.entries input {
    background-repeat:repeat-x;
    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
    color: #FFFFFF;
-   text-shadow: 0 -1px 0 #6f070c;
+   text-shadow: 0 -1px 0 #255625;
 }
 
 #wrapper .btn-success:hover {
@@ -477,6 +477,9 @@ ul.form-errors {
     text-align: left;
     margin-bottom: 10px;
     word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .manage_btn_link {
@@ -487,7 +490,7 @@ ul.form-errors {
     transition: none !important;
 }
 
-.btn_long_text {
+.btn_confirmation_pop_up {
     display: block;
     max-width: 100%;
     float: left;
@@ -498,10 +501,6 @@ ul.form-errors {
 
 .input_edit_email {
     margin-bottom: 5px;
-}
-
-.btn_edit_email {
-    margin-left: -4px;
 }
 
 .link_remove_participant {

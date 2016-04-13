@@ -75,7 +75,7 @@
                        onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"
                        class="form-control">
                 <br>
-                <button class="btn btn-primary btn_long_text" type="submit" id="btn_delete_confirmation" disabled>
+                <button class="btn btn-primary btn_confirmation_pop_up" type="submit" id="btn_delete_confirmation" disabled>
                     {{ 'btn.delete_confirm'|trans }}
                 </button>
                 <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'btn.cancel'|trans }}</button>
@@ -94,7 +94,7 @@
                        onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_confirmation').removeAttr('disabled');"
                        class="form-control">
                 <br>
-                <button class="btn btn-warning btn_long_text" type="submit" id="btn_expose_confirmation" disabled>
+                <button class="btn btn-warning btn_confirmation_pop_up" type="submit" id="btn_expose_confirmation" disabled>
                     {{ 'btn.expose_confirm'|trans }}
                 </button>
                 <button type="reset" class="btn btn-warning" id="btn_expose_cancel">{{ 'btn.cancel'|trans }}</button>
@@ -113,10 +113,10 @@
                         onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_expose_wishlists_confirmation').removeAttr('disabled');"
                         class="form-control">
                 <br>
-                <button class="btn btn-warning btn_long_text" type="submit" id="btn_expose_wishlists_confirmation" disabled>
+                <button class="btn btn-warning btn_confirmation_pop_up" type="submit" id="btn_expose_wishlists_confirmation" disabled>
                     {{ 'btn.expose_wishlists_confirm'|trans|raw }}
                 </button>
-                <button type="reset" class="btn btn-warning btn_long_text" id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
+                <button type="reset" class="btn btn-warning" id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
             </form>
         </div>
 
@@ -208,7 +208,7 @@
             $('#email_' + entryId).html(
                     '<form action="' + url + '" method="post">' +
                     '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '">&nbsp;' +
-                    '<button class="btn btn-small btn-primary btn_edit_email" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
+                    '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
                     '</form>'
             );
         }
