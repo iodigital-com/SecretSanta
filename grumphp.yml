@@ -1,0 +1,12 @@
+parameters:
+    bin_dir: "./bin/vendor"
+    git_dir: "."
+    stop_on_failure: false
+    ignore_unstaged_commits: false
+    tasks:
+        git_commit_message:
+            matchers:
+                - /#([0-9]*)/
+            case_insensitive: true
+        phpcsfixer:
+            level: symfony
