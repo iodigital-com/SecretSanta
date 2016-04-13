@@ -3,6 +3,6 @@
     <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
     <td style="text-align: right;">
         <button type="button" class="btn btn-mini btn-danger remove-entry"><i
-                    class="icon-minus-sign icon-white"></i> {{ 'btn.remove_item'|trans }}</button>
+                    class="fa fa-times-circle"></i> {{ 'btn.remove_item'|trans }}</button>
     </td>
 </tr>

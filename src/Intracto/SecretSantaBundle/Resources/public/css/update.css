@@ -114,10 +114,19 @@ a.btn {
     text-decoration: none;
 }
 
+.add-btn-container {
+    display: block;
+    overflow: auto;
+    margin-bottom: 10px;
+    float: right;
+}
+
 .add-btn-create {
     font-size: 0.9em;
     padding: 5px 13px;
     font-family: 'OpenSansBold';
+    float: left;
+    margin-left: 10px;
 }
 
 .add-btn-create [class^="icon-"] {
@@ -144,6 +153,66 @@ table.entries input {
 
 #wrapper .btn-primary:hover {
     background: #A9181F;
+}
+
+.wrapper .btn-warning, .wrapper .btn-warning:active, .wrapper .btn-warning:visited, .wrapper .btn-warning.active {
+    background-color: #d78512;
+    background-image: linear-gradient(to bottom, #d78512, #ec971f);
+    background-image: -moz-linear-gradient(top, #d78512, #ec971f);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d78512), to(#ec971f));
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #985e0d;
+}
+
+#wrapper .btn-warning:hover {
+    background: #d78512;
+}
+
+.wrapper .btn-info, .wrapper .btn-info:active, .wrapper .btn-info:visited, .wrapper .btn-info.active {
+    background-color: #279bbd;
+    background-image: linear-gradient(to bottom, #279bbd, #31b0d5);
+    background-image: -moz-linear-gradient(top, #279bbd, #31b0d5);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#279bbd), to(#31b0d5));
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #1b6d85;
+}
+
+#wrapper .btn-info:hover {
+    background: #279bbd;
+}
+
+.wrapper .btn-success, .wrapper .btn-success:active, .wrapper .btn-success:visited, .wrapper .btn-success.active {
+    background-color: #3a853a;
+    background-image: linear-gradient(to bottom, #3a853a, #449d44);
+    background-image: -moz-linear-gradient(top, #3a853a, #449d44);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3a853a), to(#449d44));
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #255625;
+}
+
+#wrapper .btn-success:hover {
+    background: #3a853a;
+}
+
+.wrapper .btn-danger, .wrapper .btn-danger:active, .wrapper .btn-danger:visited, .wrapper .btn-danger.active {
+    background-color: #ad2926;
+    background-image: linear-gradient(to bottom, #ad2926, #c9302c);
+    background-image: -moz-linear-gradient(top, #ad2926, #c9302c);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ad2926), to(#c9302c));
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #6f070c;
+}
+
+#wrapper .btn-danger:hover {
+    background: #ad2926;
 }
 
 textarea {
@@ -216,7 +285,6 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 
 .description {
     font-size: 0.8em;
-    margin-left: 13px;
     margin-bottom: 3px;
     color: #6E6E6E;
 }
@@ -355,6 +423,7 @@ ul.form-errors {
     padding: 4px 18px;
     font-family: 'straitregular';
     width: 100%;
+    font-size: 14px;
 }
 
 .lang__selection:hover select {
@@ -391,4 +460,49 @@ ul.form-errors {
 .add-participant-input {
     padding-left: 0;
     padding-right: 0;
+}
+
+#mysanta {
+    table-layout: fixed;
+}
+
+#mysanta tr,
+#mysanta td {
+    word-wrap: break-word;
+}
+
+.manage_btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.manage_btn_link {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+.btn_confirmation_pop_up {
+    display: block;
+    max-width: 100%;
+    float: left;
+    white-space: normal;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.input_edit_email {
+    margin-bottom: 5px;
+}
+
+.link_remove_participant {
+    padding: 0;
 }

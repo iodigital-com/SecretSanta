@@ -28,9 +28,9 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th class="span1">#</th>
-                <th class="span3">{{ 'label.name'|trans }}</th>
-                <th>{{ 'label.exclude'|trans }}</th>
+                <th class="col-xs-1">#</th>
+                <th class="col-xs-3">{{ 'label.name'|trans }}</th>
+                <th class="col-xs-8">{{ 'label.exclude'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
         </table>
         <p>
             <button type="submit" class="btn btn-large btn-primary btn-create-event">
-                <i class="fa fa-check icon-white"></i> {{ 'btn.create_event'|trans }}
+                <i class="fa fa-check"></i> {{ 'btn.create_event'|trans }}
             </button>
         </p>
         {{ form_end(form) }}

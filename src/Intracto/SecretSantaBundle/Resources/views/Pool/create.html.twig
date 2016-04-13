@@ -24,24 +24,25 @@
             <form action="#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
                 {{ form_row(form._token) }}
                 <div class="toplabels">
-                    <div class="input col-xs-12{% if form_errors(form.eventdate) %} error{% endif %}">
-                        {{ form_label(form.eventdate )  }}{{ form_widget(form.eventdate ,{'attr':{'class':'form-control col-xs-12'}}) }}
+                    <div class="form-group form-create-pool {% if form_errors(form.eventdate) %}error{% endif %}">
+                        {{ form_label(form.eventdate) }}
+                        {{ form_widget(form.eventdate, { 'attr': { 'class': 'form-control' }}) }}
                     </div>
-                    <div class="location col-xs-12{% if form_errors(form.location) %} error{% endif %}">
-                        {{ form_label(form.location) }}{{ form_widget(form.location,{'attr':{'class':'form-control col-xs-12'}}) }}
+                    <div class="form-group form-create-pool {% if form_errors(form.location) %}error{% endif %}">
+                        {{ form_label(form.location) }}
+                        {{ form_widget(form.location, { 'attr': { 'class': 'form-control'}}) }}
                     </div>
-                    <div class="amount col-xs-12 {% if form_errors(form.amount) %} error{% endif %}">
-                        {{ form_label(form.amount) }}<br>{{ form_widget(form.amount,{'attr':{'class':'form-control col-xs-12','style':'margin-bottom:10px;'}}) }}
+                    <div class="form-group form-create-pool {% if form_errors(form.amount) %}error{% endif %}">
+                        {{ form_label(form.amount) }}
+                        {{ form_widget(form.amount, { 'attr': { 'class': 'form-control'}}) }}
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div style="display: block; overflow: auto; margin-bottom: 10px">
-                    <button style="float: right;" type="button" class="btn btn-mini btn-success add-btn-create add-new-entry">
+                <div class="add-btn-container">
+                    <button type="button" class="btn btn-mini btn-success add-btn-create add-new-entry">
                         <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_person'|trans|raw }}
                     </button>
-                </div>
-                <div style="display: block; overflow: auto">
-                    <button style="float: right" type="button" class="btn btn-mini btn-success add-btn-create add-import-entry">
+                    <button type="button" class="btn btn-mini btn-success add-btn-create add-import-entry">
                         <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.import_persons.open'|trans|raw }}
                     </button>
                 </div>
@@ -49,9 +50,9 @@
                     <thead>
                     <tr>
                         <th class="col-xs-1 entry-number-header">#</th>
-                        <th class="col-xs-3 col-md-4">{{ 'label.host'|trans }}</th>
-                        <th class="col-xs-3 col-md-4">{{ 'label.email'|trans }}</th>
-                        <th style="text-align: right;" class="col-xs-4"></th>
+                        <th class="col-xs-4 col-md-4">{{ 'label.host'|trans }}</th>
+                        <th class="col-xs-4 col-md-4">{{ 'label.email'|trans }}</th>
+                        <th style="text-align: right;" class="col-xs-3"></th>
                     </tr>
                     </thead>
                     <tbody data-prototype="{% filter escape %}
@@ -88,10 +89,10 @@
                         <textarea id="importCSV" class="add-import-entry-data form-control"></textarea>
                         <br />
                         <button type="button" class="btn btn-mini btn-success add-import-entry-do"><i
-                                    class="icon-plus-sign icon-white"></i> {{ 'btn.import_persons.do'|trans }}
+                                    class="fa fa-plus-circle"></i> {{ 'btn.import_persons.do'|trans }}
                         </button>
                         <button type="button" class="btn btn-mini btn-danger btn-import-cancel"><i
-                                    class="icon-minus-sign icon-white"></i> {{ 'btn.cancel'|trans }}
+                                    class="fa fa-times-circle"></i> {{ 'btn.cancel'|trans }}
                         </button>
                     </div>
                 </div>
@@ -102,7 +103,7 @@
                 </div>
                 <p>
                     <button type="submit" class="btn btn-large btn-primary btn-create-event">
-                        <i class="fa fa-check icon-white"></i> {{ 'btn.create_event'|trans }}
+                        <i class="fa fa-check"></i> {{ 'btn.create_event'|trans }}
                     </button>
                 </p>
             </form>
