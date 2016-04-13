@@ -42,8 +42,8 @@
                                      alt="{{ 'manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
-                        <a href="{{ path('entry_remove', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}" class="btn btn-mini btn-danger">
-                            <i class="fa fa-times-circle fa-inverse"></i>
+                        <a href="{{ path('entry_remove', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}" class="btn btn-mini link_remove_participant">
+                            <i class="fa fa-times"></i>
                         </a>
                     </td>
                 </tr>

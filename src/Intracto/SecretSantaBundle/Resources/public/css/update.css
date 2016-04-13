@@ -155,6 +155,66 @@ table.entries input {
     background: #A9181F;
 }
 
+.wrapper .btn-warning, .wrapper .btn-warning:active, .wrapper .btn-warning:visited, .wrapper .btn-warning.active {
+    background-color: #d78512;
+    background-image: linear-gradient(to bottom, #d78512, #ec971f);
+    background-image: -moz-linear-gradient(top, #d78512, #ec971f);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d78512), to(#ec971f));
+    background-repeat:repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #6f070c;
+}
+
+#wrapper .btn-warning:hover {
+    background: #d78512;
+}
+
+.wrapper .btn-info, .wrapper .btn-info:active, .wrapper .btn-info:visited, .wrapper .btn-info.active {
+    background-color: #279bbd;
+    background-image: linear-gradient(to bottom, #279bbd, #31b0d5);
+    background-image: -moz-linear-gradient(top, #279bbd, #31b0d5);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#279bbd), to(#31b0d5));
+    background-repeat:repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #6f070c;
+}
+
+#wrapper .btn-info:hover {
+    background: #279bbd;
+}
+
+.wrapper .btn-success, .wrapper .btn-success:active, .wrapper .btn-success:visited, .wrapper .btn-success.active {
+   background-color: #3a853a;
+   background-image: linear-gradient(to bottom, #3a853a, #449d44);
+   background-image: -moz-linear-gradient(top, #3a853a, #449d44);
+   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3a853a), to(#449d44));
+   background-repeat:repeat-x;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   color: #FFFFFF;
+   text-shadow: 0 -1px 0 #6f070c;
+}
+
+#wrapper .btn-success:hover {
+    background: #3a853a;
+}
+
+.wrapper .btn-danger, .wrapper .btn-danger:active, .wrapper .btn-danger:visited, .wrapper .btn-danger.active {
+    background-color: #ad2926;
+    background-image: linear-gradient(to bottom, #ad2926, #c9302c);
+    background-image: -moz-linear-gradient(top, #ad2926, #c9302c);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ad2926), to(#c9302c));
+    background-repeat:repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #6f070c;
+}
+
+#wrapper .btn-danger:hover {
+    background: #ad2926;
+}
+
 textarea {
     color: #333333;
 }
@@ -442,4 +502,8 @@ ul.form-errors {
 
 .btn_edit_email {
     margin-left: -4px;
+}
+
+.link_remove_participant {
+    padding: 0;
 }
