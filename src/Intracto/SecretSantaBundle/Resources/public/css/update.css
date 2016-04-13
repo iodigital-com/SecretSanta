@@ -160,7 +160,7 @@ table.entries input {
     background-image: linear-gradient(to bottom, #d78512, #ec971f);
     background-image: -moz-linear-gradient(top, #d78512, #ec971f);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d78512), to(#ec971f));
-    background-repeat:repeat-x;
+    background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
     text-shadow: 0 -1px 0 #985e0d;
@@ -175,7 +175,7 @@ table.entries input {
     background-image: linear-gradient(to bottom, #279bbd, #31b0d5);
     background-image: -moz-linear-gradient(top, #279bbd, #31b0d5);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#279bbd), to(#31b0d5));
-    background-repeat:repeat-x;
+    background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
     text-shadow: 0 -1px 0 #1b6d85;
@@ -186,14 +186,14 @@ table.entries input {
 }
 
 .wrapper .btn-success, .wrapper .btn-success:active, .wrapper .btn-success:visited, .wrapper .btn-success.active {
-   background-color: #3a853a;
-   background-image: linear-gradient(to bottom, #3a853a, #449d44);
-   background-image: -moz-linear-gradient(top, #3a853a, #449d44);
-   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3a853a), to(#449d44));
-   background-repeat:repeat-x;
-   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-   color: #FFFFFF;
-   text-shadow: 0 -1px 0 #255625;
+    background-color: #3a853a;
+    background-image: linear-gradient(to bottom, #3a853a, #449d44);
+    background-image: -moz-linear-gradient(top, #3a853a, #449d44);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3a853a), to(#449d44));
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 #255625;
 }
 
 #wrapper .btn-success:hover {
@@ -205,7 +205,7 @@ table.entries input {
     background-image: linear-gradient(to bottom, #ad2926, #c9302c);
     background-image: -moz-linear-gradient(top, #ad2926, #c9302c);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ad2926), to(#c9302c));
-    background-repeat:repeat-x;
+    background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
     text-shadow: 0 -1px 0 #6f070c;
