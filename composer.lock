@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "027d67fd0d50b49d5176c01a6634bacc",
-    "content-hash": "3c9673c256e7bef42d1263aa6af465da",
+    "hash": "d87def491448f0965eee11400ca59e25",
+    "content-hash": "39e94163b65c8cf2fc203e93916c5841",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2270,7 +2270,186 @@
             "time": "2016-01-25 21:22:18"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "gitonomy/gitlib",
+            "version": "v0.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gitonomy/gitlib.git",
+                "reference": "f575b8f7da917ade7890c6aa705fa22545690389"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gitonomy/gitlib/zipball/f575b8f7da917ade7890c6aa705fa22545690389",
+                "reference": "f575b8f7da917ade7890c6aa705fa22545690389",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/process": "^2.3|^3.0"
+            },
+            "require-dev": {
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Add some log"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gitonomy\\Git\\": "src/Gitonomy/Git/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandre Salomé",
+                    "email": "alexandre.salome@gmail.com",
+                    "homepage": "http://alexandre-salome.fr"
+                },
+                {
+                    "name": "Julien DIDIER",
+                    "email": "genzo.wm@gmail.com",
+                    "homepage": "http://www.jdidier.net"
+                }
+            ],
+            "description": "Library for accessing git",
+            "homepage": "http://gitonomy.com",
+            "time": "2015-12-01 22:25:57"
+        },
+        {
+            "name": "phpro/grumphp",
+            "version": "v0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpro/grumphp.git",
+                "reference": "06671cdb6b3706d25a0f91916ffe904efae1e9f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpro/grumphp/zipball/06671cdb6b3706d25a0f91916ffe904efae1e9f4",
+                "reference": "06671cdb6b3706d25a0f91916ffe904efae1e9f4",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "~1.0",
+                "doctrine/collections": "~1.2",
+                "gitonomy/gitlib": "~0.1.7",
+                "monolog/monolog": "~1.17",
+                "php": ">=5.3.6",
+                "seld/jsonlint": "~1.1",
+                "symfony/config": "~2.4|~3.0",
+                "symfony/console": "~2.6|~3.0",
+                "symfony/dependency-injection": "~2.4|~3.0",
+                "symfony/event-dispatcher": "~2.5|~3.0",
+                "symfony/filesystem": "~2.4|~3.0",
+                "symfony/finder": "~2.4|~3.0",
+                "symfony/options-resolver": "~2.6|~3.0",
+                "symfony/process": "~2.4|~3.0",
+                "symfony/yaml": "~2.4|~3.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0-alpha11",
+                "fabpot/php-cs-fixer": "~1.0",
+                "phpspec/phpspec": "~2.4",
+                "phpunit/phpunit": "^4.8",
+                "sensiolabs/security-checker": "^3.0",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "suggest": {
+                "behat/behat": "Lets GrumPHP validate your project features.",
+                "codeception/codeception": "Lets GrumPHP run your project's full stack tests",
+                "fabpot/php-cs-fixer": "Lets GrumPHP automatically fix your codestyle.",
+                "phpspec/phpspec": "Lets GrumPHP spec your code.",
+                "phpunit/phpunit": "Lets GrumPHP run your unit tests.",
+                "roave/security-advisories": "Lets GrumPHP be sure that there are no known security issues.",
+                "sensiolabs/security-checker": "Lets GrumPHP be sure that there are no known security issues.",
+                "squizlabs/php_codesniffer": "Lets GrumPHP sniff on your code."
+            },
+            "bin": [
+                "bin/grumphp"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "class": "GrumPHP\\Composer\\GrumPHPPlugin"
+            },
+            "autoload": {
+                "psr-0": {
+                    "GrumPHP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toon Verwerft",
+                    "email": "toon.verwerft@phpro.be"
+                },
+                {
+                    "name": "Alexander Deruwe",
+                    "email": "alexander.deruwe@phpro.be"
+                }
+            ],
+            "description": "A composer plugin that enables source code quality checks.",
+            "time": "2016-02-29 05:56:57"
+        },
+        {
+            "name": "seld/jsonlint",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/jsonlint.git",
+                "reference": "66834d3e3566bb5798db7294619388786ae99394"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/66834d3e3566bb5798db7294619388786ae99394",
+                "reference": "66834d3e3566bb5798db7294619388786ae99394",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7.0"
+            },
+            "bin": [
+                "bin/jsonlint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Seld\\JsonLint\\": "src/Seld/JsonLint/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "JSON Linter",
+            "keywords": [
+                "json",
+                "linter",
+                "parser",
+                "validator"
+            ],
+            "time": "2015-11-21 02:21:41"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

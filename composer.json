@@ -57,5 +57,8 @@
         "branch-alias": {
             "dev-master": "2.3-dev"
         }
+    },
+    "require-dev": {
+        "phpro/grumphp": "^0.8.0"
     }
 }
