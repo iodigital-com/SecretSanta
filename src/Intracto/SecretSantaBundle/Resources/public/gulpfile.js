@@ -34,6 +34,15 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('./css'));
 });
 
+gulp.task('uglify', function() {
+    gulp.src(['./js/*.js', '!./js/*.min.js'])
+        .pipe(uglify())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('./js'));
+});
+
 gulp.task('build', [
     'sass'
 ]);
