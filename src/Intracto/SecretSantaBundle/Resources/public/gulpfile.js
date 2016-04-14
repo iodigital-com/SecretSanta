@@ -44,5 +44,6 @@ gulp.task('uglify', function() {
 });
 
 gulp.task('build', [
-    'sass'
+    'sass',
+    'uglify'
 ]);
