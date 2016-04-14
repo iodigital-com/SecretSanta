@@ -8,10 +8,10 @@
     {% endstylesheets %}
 {% endblock stylesheets %}
 {% block main %}
-    <h1>{{ 'report.title'|trans }}</h1>
-    <div class="row">
-        <div class="col-xs-12 col-md-3">
-            <select name="year" id="select-season" class="form-control"">
+    <div class="box">
+        <h1>{{ 'report.title'|trans }}</h1>
+        <div class="select-secret-santa">
+            <select name="year" id="select-season">
                 <option {% if(current_year == "all") %} selected="selected" {% endif %}
                         value="all">{{ 'report.all_time'|trans }}</option>
                 {% for year in featured_years['featured_years'] %}
@@ -20,245 +20,245 @@
                 {% endfor %}
             </select>
         </div>
-    </div>
-    <small>{{ 'report.season_info'|trans }}</small>
-    {% if data_pool is empty %}
-        <div>
-            <p>{{ 'report.no_data'|trans }}</p>
-        </div>
-    {% else %}
-        <h2>{{ 'report.results'|trans }}</h2>
-        {% if current_year != 'all' %}
-            <div class="col-xs-12 col-md-6 report">
-        {% else %}
-            <div class="col-xs-12 report">
-        {% endif %}
-            <div class="report_inside">
-                {% if current_year != 'all' %}
-                    <h3>{{ 'report.season'|trans }} {{ current_year }}-{{ current_year + 1 }}</h3>
-                {% else %}
-                    <h3>{{ 'report.total_result'|trans }}</h3>
-                {% endif %}
-
-                <table>
-                    <col width="50%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr>
-                        <td>{{ 'report.confirmed_parties'|trans }}:</td>
-                        <td>{{ data_pool['pools'][0]['poolCount'] }}</td>
-                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
-                            {% if difference_data_pool['pool_count_difference'] > 0 %}
-                                <td class="positive">+ {{ difference_data_pool['pool_count_difference'] }}</td>
-                            {% elseif difference_data_pool['pool_count_difference'] == 0 %}
-                                <td>0</td>
-                            {% else %}
-                                <td class="negative">- {{ difference_data_pool['pool_count_difference'] }}</td>
-                            {% endif %}
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        <td>{{ 'report.invited_participants'|trans }}:</td>
-                        <td>{{ data_pool['entries'][0]['entryCount'] }}</td>
-                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
-                            {% if difference_data_pool['entry_count_difference'] > 0 %}
-                                <td class="positive">+ {{ difference_data_pool['entry_count_difference'] }}</td>
-                            {% elseif difference_data_pool['entry_count_difference'] == 0 %}
-                                <td>0</td>
-                            {% else %}
-                                <td class="negative">- {{ difference_data_pool['entry_count_difference'] }}</td>
-                            {% endif %}
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        <td>{{ 'report.confirmed_participants'|trans }}:</td>
-                        <td>{{ data_pool['confirmed_entries'][0]['confirmedEntryCount'] }}</td>
-                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
-                            {% if difference_data_pool['confirmed_entry_count_difference'] > 0 %}
-                                <td class="positive">+ {{ difference_data_pool['confirmed_entry_count_difference'] }}</td>
-                            {% elseif difference_data_pool['confirmed_entry_count_difference'] == 0 %}
-                                <td>0</td>
-                            {% else %}
-                                <td class="negative">- {{ difference_data_pool['confirmed_entry_count_difference'] }}</td>
-                            {% endif %}
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        <td>{{ 'report.average_entries'|trans }}:</td>
-                        <td>{{ data_pool['entry_average']|round }}</td>
-                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
-                            {% if difference_data_pool['average_entries_difference']|round > 0 %}
-                                <td class="positive">+ {{ difference_data_pool['average_entries_difference']|round }}</td>
-                            {% elseif difference_data_pool['average_entries_difference']|round == 0 %}
-                                <td>0</td>
-                            {% else %}
-                                <td class="negative">- {{ difference_data_pool['average_entries_difference']|round }}</td>
-                            {% endif %}
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        <td>{{ 'report.unique_entries'|trans }}:</td>
-                        <td>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</td>
-                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
-                            {% if difference_data_pool['distinct_entry_count_difference'] > 0 %}
-                                <td class="positive">+ {{ difference_data_pool['distinct_entry_count_difference'] }}</td>
-                            {% elseif difference_data_pool['distinct_entry_count_difference'] == 0 %}
-                                <td>0</td>
-                            {% else %}
-                                <td class="negative">- {{ difference_data_pool['distinct_entry_count_difference'] }}</td>
-                            {% endif %}
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        <td>{{ 'report.completed_wishlists'|trans }}:</td>
-                        <td>{{ data_pool['wishlist_average']|number_format(2, '.', '') }} %</td>
-                        {% if difference_data_pool is defined and difference_data_pool is not empty %}
-                            {% if difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') > 0 %}
-                                <td class="positive">+ {{ difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') }} %</td>
-                            {% elseif difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') == 0 %}
-                                <td>0.00%</td>
-                            {% else %}
-                                <td class="negative">- {{ difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') }} %</td>
-                            {% endif %}
-                        {% endif %}
-                    </tr>
-                </table>
+        <small>{{ 'report.season_info'|trans }}</small>
+        {% if data_pool is empty %}
+            <div>
+                <p>{{ 'report.no_data'|trans }}</p>
             </div>
-        </div>
-        {% if current_year == 'all' %}
-            <div class="clearfix"></div>
-        {% endif %}
-        {% if current_year != 'all' %}
-            <div class="col-xs-12 col-md-6 report">
+        {% else %}
+            <h2>{{ 'report.results'|trans }}</h2>
+            {% if current_year != 'all' %}
+                <div class="col-xs-12 col-md-6 report">
+            {% else %}
+                <div class="col-xs-12 report">
+            {% endif %}
                 <div class="report_inside">
-                    <h3>{{ 'report.total'|trans }}</h3>
+                    {% if current_year != 'all' %}
+                        <h3>{{ 'report.season'|trans }} {{ current_year }}-{{ current_year + 1 }}</h3>
+                    {% else %}
+                        <h3>{{ 'report.total_result'|trans }}</h3>
+                    {% endif %}
+
                     <table>
                         <col width="50%">
-                        <col width="50%">
+                        <col width="25%">
+                        <col width="25%">
                         <tr>
                             <td>{{ 'report.confirmed_parties'|trans }}:</td>
-                            <td>{{ data_pool['total_pools'][0]['poolCount'] }}</td>
+                            <td>{{ data_pool['pools'][0]['poolCount'] }}</td>
+                            {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                                {% if difference_data_pool['pool_count_difference'] > 0 %}
+                                    <td class="positive">+ {{ difference_data_pool['pool_count_difference'] }}</td>
+                                {% elseif difference_data_pool['pool_count_difference'] == 0 %}
+                                    <td>0</td>
+                                {% else %}
+                                    <td class="negative">{{ difference_data_pool['pool_count_difference'] }}</td>
+                                {% endif %}
+                            {% endif %}
                         </tr>
                         <tr>
                             <td>{{ 'report.invited_participants'|trans }}:</td>
-                            <td>{{ data_pool['total_entries'][0]['totalEntryCount'] }}</td>
+                            <td>{{ data_pool['entries'][0]['entryCount'] }}</td>
+                            {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                                {% if difference_data_pool['entry_count_difference'] > 0 %}
+                                    <td class="positive">+ {{ difference_data_pool['entry_count_difference'] }}</td>
+                                {% elseif difference_data_pool['entry_count_difference'] == 0 %}
+                                    <td>0</td>
+                                {% else %}
+                                    <td class="negative">{{ difference_data_pool['entry_count_difference'] }}</td>
+                                {% endif %}
+                            {% endif %}
                         </tr>
                         <tr>
                             <td>{{ 'report.confirmed_participants'|trans }}:</td>
-                            <td>{{ data_pool['total_confirmed_entries'][0]['confirmedEntryCount'] }}</td>
+                            <td>{{ data_pool['confirmed_entries'][0]['confirmedEntryCount'] }}</td>
+                            {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                                {% if difference_data_pool['confirmed_entry_count_difference'] > 0 %}
+                                    <td class="positive">+ {{ difference_data_pool['confirmed_entry_count_difference'] }}</td>
+                                {% elseif difference_data_pool['confirmed_entry_count_difference'] == 0 %}
+                                    <td>0</td>
+                                {% else %}
+                                    <td class="negative">{{ difference_data_pool['confirmed_entry_count_difference'] }}</td>
+                                {% endif %}
+                            {% endif %}
                         </tr>
                         <tr>
                             <td>{{ 'report.average_entries'|trans }}:</td>
-                            <td>{{ data_pool['total_entry_average']|round }}</td>
+                            <td>{{ data_pool['entry_average']|round }}</td>
+                            {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                                {% if difference_data_pool['average_entries_difference']|round > 0 %}
+                                    <td class="positive">+ {{ difference_data_pool['average_entries_difference']|round }}</td>
+                                {% elseif difference_data_pool['average_entries_difference']|round == 0 %}
+                                    <td>0</td>
+                                {% else %}
+                                    <td class="negative">{{ difference_data_pool['average_entries_difference']|round }}</td>
+                                {% endif %}
+                            {% endif %}
                         </tr>
                         <tr>
                             <td>{{ 'report.unique_entries'|trans }}:</td>
-                            <td>{{ data_pool['total_distinct_entries'][0]['distinctEntryCount'] }}</td>
+                            <td>{{ data_pool['distinct_entries'][0]['distinctEntryCount'] }}</td>
+                            {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                                {% if difference_data_pool['distinct_entry_count_difference'] > 0 %}
+                                    <td class="positive">+ {{ difference_data_pool['distinct_entry_count_difference'] }}</td>
+                                {% elseif difference_data_pool['distinct_entry_count_difference'] == 0 %}
+                                    <td>0</td>
+                                {% else %}
+                                    <td class="negative">{{ difference_data_pool['distinct_entry_count_difference'] }}</td>
+                                {% endif %}
+                            {% endif %}
                         </tr>
                         <tr>
                             <td>{{ 'report.completed_wishlists'|trans }}:</td>
-                            <td>{{ data_pool['total_wishlist_average']|number_format(2, '.', '') }} %</td>
+                            <td>{{ data_pool['wishlist_average']|number_format(2, '.', '') }} %</td>
+                            {% if difference_data_pool is defined and difference_data_pool is not empty %}
+                                {% if difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') > 0 %}
+                                    <td class="positive">+ {{ difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') }} %</td>
+                                {% elseif difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') == 0 %}
+                                    <td>0.00%</td>
+                                {% else %}
+                                    <td class="negative">{{ difference_data_pool['average_wishlist_difference']|number_format(2, '.', '') }} %</td>
+                                {% endif %}
+                            {% endif %}
                         </tr>
                     </table>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.confirmed_parties_month'|trans }}</h3>
-
-                    <div id="pool_chart" style="width: 100%"></div>
+            {% if current_year == 'all' %}
+                <div class="clearfix"></div>
+            {% endif %}
+            {% if current_year != 'all' %}
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.total'|trans }}</h3>
+                        <table>
+                            <col width="50%">
+                            <col width="50%">
+                            <tr>
+                                <td>{{ 'report.confirmed_parties'|trans }}:</td>
+                                <td>{{ data_pool['total_pools'][0]['poolCount'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'report.invited_participants'|trans }}:</td>
+                                <td>{{ data_pool['total_entries'][0]['totalEntryCount'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'report.confirmed_participants'|trans }}:</td>
+                                <td>{{ data_pool['total_confirmed_entries'][0]['confirmedEntryCount'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'report.average_entries'|trans }}:</td>
+                                <td>{{ data_pool['total_entry_average']|round }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'report.unique_entries'|trans }}:</td>
+                                <td>{{ data_pool['total_distinct_entries'][0]['distinctEntryCount'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'report.completed_wishlists'|trans }}:</td>
+                                <td>{{ data_pool['total_wishlist_average']|number_format(2, '.', '') }} %</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.confirmed_parties_total'|trans }}</h3>
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.confirmed_parties_month'|trans }}</h3>
 
-                    <div id="total_pool_chart" style="width: 100%"></div>
+                        <div id="pool_chart" style="width: 100%"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.confirmed_participants_month'|trans }}</h3>
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.confirmed_parties_total'|trans }}</h3>
 
-                    <div id="entry_chart" style="width: 100%"></div>
+                        <div id="total_pool_chart" style="width: 100%"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.confirmed_participants_total'|trans }}</h3>
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.confirmed_participants_month'|trans }}</h3>
 
-                    <div id="total_entry_chart" style="width: 100%"></div>
+                        <div id="entry_chart" style="width: 100%"></div>
+                    </div>
                 </div>
-            </div>
-        {% else %}
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.created_parties'|trans }}</h3>
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.confirmed_participants_total'|trans }}</h3>
 
-                    <div id="pool_chart" style="width: 100%"></div>
+                        <div id="total_entry_chart" style="width: 100%"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.invited_participants'|trans }}</h3>
+            {% else %}
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.created_parties'|trans }}</h3>
 
-                    <div id="entry_chart" style="width: 100%"></div>
+                        <div id="pool_chart" style="width: 100%"></div>
+                    </div>
                 </div>
-            </div>
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.invited_participants'|trans }}</h3>
+
+                        <div id="entry_chart" style="width: 100%"></div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <h2>{{ 'report.analytics'|trans }}</h2>
+
+            {% if data_pool['ip_usage'] is not empty %}
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.ip_usage'|trans }}</h3>
+
+                        <div id="ip_chart" style="width: 100%"></div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if google_data_pool is not empty %}
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.visitors_per_country'|trans }}</h3>
+
+                        <div id="country_chart" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.visitors_per_language'|trans }}</h3>
+
+                        <div id="language_chart" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.mobile_usage'|trans }}</h3>
+
+                        <div id="device_chart" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6 report">
+                    <div class="report_inside">
+                        <h3>{{ 'report.top_browser'|trans }}</h3>
+
+                        <div id="browser_chart" style="width: 100%"></div>
+                    </div>
+                </div>
+            {% else %}
+                <div>
+                    <p>{{ 'report.no_data'|trans }}</p>
+                </div>
+            {% endif %}
+
+            <div class="clearfix"></div>
         {% endif %}
-
-        <h2>{{ 'report.analytics'|trans }}</h2>
-
-        {% if data_pool['ip_usage'] is not empty %}
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.ip_usage'|trans }}</h3>
-
-                    <div id="ip_chart" style="width: 100%"></div>
-                </div>
-            </div>
-        {% endif %}
-
-        {% if google_data_pool is not empty %}
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.visitors_per_country'|trans }}</h3>
-
-                    <div id="country_chart" style="width: 100%"></div>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.visitors_per_language'|trans }}</h3>
-
-                    <div id="language_chart" style="width: 100%"></div>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.mobile_usage'|trans }}</h3>
-
-                    <div id="device_chart" style="width: 100%"></div>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-md-6 report">
-                <div class="report_inside">
-                    <h3>{{ 'report.top_browser'|trans }}</h3>
-
-                    <div id="browser_chart" style="width: 100%"></div>
-                </div>
-            </div>
-        {% else %}
-            <div>
-                <p>{{ 'report.no_data'|trans }}</p>
-            </div>
-        {% endif %}
-
-        <div class="clearfix"></div>
-    {% endif %}
+    </div>
 {% endblock %}
 {% block javascripts %}
     {% if data_pool is not empty %}
