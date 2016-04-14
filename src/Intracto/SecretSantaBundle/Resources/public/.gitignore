@@ -14,7 +14,7 @@ css/main.css
 js/plugins.js
 
 # sourceMap files
-*.css
+# *.css
 *.map
 
 # Demo file
