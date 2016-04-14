@@ -406,7 +406,7 @@ ul.form-errors {
 /**
  * Language switch on mobile
  */
-.mobile__lang__selection {
+.select-secret-santa {
     display: block;
     width: 100%;
     list-style: none;
@@ -414,7 +414,7 @@ ul.form-errors {
     margin: 0;
 }
 
-.mobile__lang__selection select {
+.select-secret-santa select {
     background-color: #fff;
     border: 2px solid #99C2C1;
     border-radius: 20px;

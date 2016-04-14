@@ -139,6 +139,10 @@
         display: none;
     }
 
+    .select-secret-santa {
+        width: 20%;
+    }
+
     .manage_btn {
         width: 32%;
         float: left;
