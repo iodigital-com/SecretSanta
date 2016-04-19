@@ -307,6 +307,8 @@ btn:
     delete_list: Delete my Secret Santa list
     delete_confirm: I understand the consequences, delete my Secret Santa list now
     add_wishlist: Add item to wishlist
+    save_item: Save this item
+    update_item: Update this item
     remove_item: Remove this item
     update_wishlist: Update your wishlist
     expose: Send me all the matches
@@ -487,6 +489,11 @@ flashes:
     add_participant:
         success: <h4>Added!</h4> Participant succesfully added to your party.
         danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
+    wishlist:
+        empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
+        added: <h4>Added!</h4> Item succesfully added to your wishlist.
+        updated: <h4>Updated!</h4> Item succesfully updated.
+        removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
 forgot_manage_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
