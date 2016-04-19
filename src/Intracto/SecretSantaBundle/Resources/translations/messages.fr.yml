@@ -268,7 +268,9 @@ btn:
     delete_list: Supprimer ma liste Secret Santa
     delete_confirm: J'ai compris les conséquences, supprimer ma liste Secret Santa maintenant
     add_wishlist: Ajouter un objet à ma liste de souhaits
-    remove_item: Supprimer cet objet
+    save_item: Mémoriser cet objet
+    update_item: Actualiser cet object
+    remove_item: Supprimer
     update_wishlist: Mettre à jour votre liste de souhaits
     expose: Envoyez-moi toutes les attributions
     expose_confirm: J'ai compris les cons&eacute;quences, envoyez-moi la liste Secret Santa maintenant
@@ -440,3 +442,8 @@ flashes:
     add_participant:
         success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
         danger: <h4>Oops</h4> Une erreur se passait en ajouter un participant. S'il vous pla&icirc;t, essaye encore une fois.
+    wishlist:
+        empty_row: <h4>Oops</h4> Supprime la rangée vide avant d'avancer s'il vous pla&icirc;t.
+        added: <h4>Ajouté!</h4> L'article est ajouté &agrave; votre liste de souhaits avec succ&egrave;s.
+        updated: <h4>Mis &agrave; jour!</h4> L'article est mis &agrave; jour avec succ&egrave;s.
+        removed: <h4>Supprimé!</h4> L'article est supprimé de votre liste de souhaits avec succ&egrave;s.

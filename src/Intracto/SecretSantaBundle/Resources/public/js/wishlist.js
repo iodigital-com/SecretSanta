@@ -27,17 +27,34 @@ function addNewEntry(collectionHolder) {
 
 function bindDeleteButtonEvents() {
     // Loop over all delete buttons
-    $('button.remove-entry').each(function(i) {
+    $('button.remove-entry').each(function (i) {
         // Remove any previously binded event
         $(this).off('click');
 
         // Bind event
-        $(this).click(function(e) {
+        $(this).click(function (e) {
             e.preventDefault();
-            $(this).parents("tr.wishlistitem").remove();
-            resetRanks();
-        });
 
+            if ($(this).parents("tr.wishlistitem").hasClass('new-row')) {
+                $(this).parents("tr.wishlistitem").remove();
+                $('.add-new-entry').show();
+            }
+
+            var newRowValue = $('.new-row .wishlistitem-description').val();
+            if (typeof newRowValue != 'undefined' && newRowValue == '') {
+                $('.ajax-response .empty').show();
+
+                return false;
+            }
+
+            $('.ajax-response').children().hide();
+            $('.ajax-response .empty').hide();
+            $('.ajax-response .removed').show();
+            $(this).parents("tr.wishlistitem").remove();
+
+            resetRanks();
+            ajaxSaveWishlist();
+        });
     });
 }
 
@@ -48,16 +65,69 @@ function resetRanks() {
     });
 }
 
+function ajaxSaveWishlist() {
+    var newRowValue = $('.new-row .wishlistitem-description').val();
+    if (typeof newRowValue != 'undefined' && newRowValue == '') {
+        $('.ajax-response .empty').show();
+
+        return false;
+    }
+
+    $('.ajax-response .empty').hide();
+    var formData = $('#add_item_to_wishlist_form').serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        data: formData
+    }, function (data) {
+        if (data.responseCode == 200) {
+            console.log('Succes!');
+        }
+    });
+}
+
 /* Variables */
 var collectionHolder = $('table.entries tbody');
 
 /* Document Ready */
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 
     //Add eventlistener on add-new-entry button
-    $('.add-new-entry').click(function(e) {
+    $('.add-new-entry').click(function (e) {
         e.preventDefault();
+
+        $('.add-new-entry').hide();
+
         addNewEntry(collectionHolder);
+    });
+
+    $('.update-entry').click(function (e) {
+        e.preventDefault();
+
+        $(this).hide();
+        $('.ajax-response').children().hide();
+        $('.ajax-response .updated').show();
+
+        ajaxSaveWishlist();
+    });
+
+    $('#add_item_to_wishlist_form').submit(function (e) {
+        e.preventDefault();
+
+        var submitButton = $(this).find('button[type=submit]');
+        submitButton.hide();
+
+        $('.add-new-entry').hide();
+        $('.ajax-response').children().hide();
+        $('.ajax-response .added').show();
+        $('tr.wishlistitem').removeClass('new-row');
+
+        ajaxSaveWishlist();
+        addNewEntry(collectionHolder);
+    });
+
+    $('.wishlistitem').on('keydown', '.wishlistitem-description', function () {
+        $(this).closest('.wishlistitem').find('button.update-entry').show();
     });
 
     bindDeleteButtonEvents();
@@ -67,11 +137,12 @@ jQuery(document).ready(function() {
     $("table.entries tbody").sortable({
         stop: function () {
             resetRanks();
+            ajaxSaveWishlist();
         }
     });
 
-    $('table.entries tbody').bind('click.sortable mousedown.sortable',function(ev){
+    $('table.entries tbody').bind('click.sortable mousedown.sortable', function (ev) {
         ev.target.focus();
     });
-        
+
 });

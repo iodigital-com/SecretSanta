@@ -73,8 +73,23 @@
         <p>
 
         <div class="description">{{ 'entry.wishlist.description'|trans|raw }}</div>
+
+        <div class="box ajax-response">
+            <div class="alert alert-warning empty" style="display:none;">
+                <div>{{ 'flashes.wishlist.empty_row'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success added" style="display:none;">
+                <div>{{ 'flashes.wishlist.added'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success updated" style="display:none;">
+                <div>{{ 'flashes.wishlist.updated'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success removed" style="display:none;">
+                <div>{{ 'flashes.wishlist.removed'|trans|raw }}</div>
+            </div>
+        </div>
         <p>
-            {{ form_start(form) }}
+            {{ form_start(form, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
             {{ form_row(form._token) }}
             {% if entry.wishlist != "" %}
 
@@ -87,11 +102,11 @@
                 <table class="entries table table-striped">
                     <thead>
                     <tr>
-                        <th class="span1 entry-number-header">#</th>
-                        <th class="span7">{{ 'label.description'|trans }}</th>
-                        <th style="text-align: right;" class="span4">
-                            <button type="button" class="btn btn-mini btn-success add-new-entry"><i
-                                        class="fa fa-plus-circle"></i> {{ 'btn.add_wishlist'|trans }}
+                        <th class="col-xs-1 entry-number-header">#</th>
+                        <th class="col-xs-7 col-sm-6">{{ 'label.description'|trans }}</th>
+                        <th style="text-align: right;" class="col-xs-4 col-sm-5">
+                            <button type="button" class="btn btn-mini btn-success add-new-entry">
+                                <i class="fa fa-plus-circle"></i> <span class="text_remove_wishlist">{{ 'btn.add_wishlist'|trans }}</span>
                             </button>
                         </th>
                     </tr>
@@ -107,8 +122,11 @@
                                 <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
                                 <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
                                 <td style="text-align: right;">
-                                    <button type="button" class="btn btn-mini btn-danger remove-entry"><i
-                                                class="fa fa-times-circle"></i> {{ 'btn.remove_item'|trans }}
+                                    <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
+                                        <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'btn.update_item'|trans }}</span>
+                                    </button>
+                                    <button type="button" class="btn btn-mini btn-danger remove-entry">
+                                        <i class="fa fa-times-circle"></i> <span class="text_remove_wishlist">{{ 'btn.remove_item'|trans }}</span>
                                     </button>
                                 </td>
                             </tr>
@@ -118,12 +136,6 @@
                 </table>
 
             {% endif %}
-
-            <p>
-                <br><button type="submit" class="btn btn-large btn-primary">
-                    <i class="fa fa-check"></i> {{ 'btn.update_wishlist'|trans }}
-                </button>
-            </p>
             {{ form_end(form, {'render_rest': false}) }}
         </p>
 

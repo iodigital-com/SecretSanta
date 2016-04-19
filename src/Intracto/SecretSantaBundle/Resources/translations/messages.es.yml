@@ -177,7 +177,9 @@ btn:
     delete_list: Borrar mi lista Secret Santa
     delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
     add_wishlist: Añadir elemento a lista de deseos
-    remove_item: Quitar este elemento
+    save_item: Guardar este elemento
+    update_item: Actualizar este elemento
+    remove_item: Quitar
     update_wishlist: Actualizar tu lista de deseos
     expose: Enviarme todas las atribuciones
     expose_confirm: Comprendo las consecuencias, enviar mi lista de correos Secret Santa ahora
@@ -351,3 +353,8 @@ flashes:
     add_participant:
         success: <h4>¡A&ntilde;adido!</h4> Participante a&ntilde;adido a tu fiesta de éxito.
         danger: <h4>Oops</h4> Ha ocurrido un error al a&ntilde;adir el participante. Por favor, inténtalo otra vez.
+    wishlist:
+        empty_row: <h4>Oops</h4> Expulsa la fila vac&iacute;a antes de progresar por favor.
+        added: <h4>¡A&ntilde;adido!</h4> L'art&iacute;culo ha sido a&ntilde;adido a tu lista de deseos.
+        updated: <h4>¡Actualizado!</h4> L'art&iacute;culo ha sido actualizado de &eacute;xito.
+        removed: <h4>¡Expulsado!</h4> L'art&iacute;culo ha sido expulsado de tu lista de deseos de &eacute;xito.

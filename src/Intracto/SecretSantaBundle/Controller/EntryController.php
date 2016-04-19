@@ -19,9 +19,9 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Validator;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
 
 class EntryController extends Controller
 {
@@ -106,7 +106,9 @@ class EntryController extends Controller
             foreach ($this->entry->getWishlistItems() as $item) {
                 $currentWishlistItems->add($item);
             }
+
             $form->submit($request);
+
             if ($form->isValid()) {
                 // save entries passed and check rank
                 $inOrder = true;
@@ -136,33 +138,44 @@ class EntryController extends Controller
                 $this->em->persist($this->entry);
                 $this->em->flush();
 
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    $this->translator->trans('flashes.entry.wishlist_updated')
-                );
+                if (!$request->isXmlHttpRequest()) {
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        $this->translator->trans('flashes.entry.wishlist_updated')
+                    );
 
-                if (!$inOrder) {
-                    // redirect to force refresh of form and entity
-                    return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+                    if (!$inOrder) {
+                        // redirect to force refresh of form and entity
+                        return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+                    }
+
+                    if ($legacyWishlist && ($this->entry->getWishlist() === null || $this->entry->getWishlist() === '')) {
+                        // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
+                        return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+                    }
                 }
 
-                if ($legacyWishlist && ($this->entry->getWishlist() === null || $this->entry->getWishlist() === '')) {
-                    // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
-                    return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+                if ($request->isXmlHttpRequest()) {
+                    $return = ['responseCode' => 200, 'message' => 'Added!'];
+
+                    return new Response(json_encode($return), 200, ['Content-Type' => 'application/json']);
                 }
             }
         }
+
         $secret_santa = $this->entry->getEntry();
 
-        return [
-            'entry' => $this->entry,
-            'form' => $form->createView(),
-            'secret_santa' => $secret_santa,
-        ];
+        if (!$request->isXmlHttpRequest()) {
+            return [
+                'entry' => $this->entry,
+                'form' => $form->createView(),
+                'secret_santa' => $secret_santa,
+            ];
+        }
     }
 
     /**
-     * Retrieve entry by url
+     * Retrieve entry by url.
      *
      * @param string $url
      *
@@ -200,7 +213,7 @@ class EntryController extends Controller
                     $this->translator->trans('flashes.entry.edit_email')
                 );
             } else {
-                $entry->setEmail((string)$emailAddress);
+                $entry->setEmail((string) $emailAddress);
                 $this->em->flush($entry);
 
                 $this->mailerService->sendSecretSantaMailForEntry($entry);
@@ -277,7 +290,7 @@ class EntryController extends Controller
 
         foreach ($pool as $p) {
             if (count($p->getExcludedEntries()) > 0) {
-                $excludeCount++;
+                ++$excludeCount;
             }
         }
 
