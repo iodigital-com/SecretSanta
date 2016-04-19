@@ -133,11 +133,19 @@ a.btn {
     margin-top: 1px;
 }
 
+table.entries {
+    table-layout: fixed;
+}
+
 table.entries input {
     height: 28px;
     line-height: 28px;
     padding: 0;
     padding-left: 6px;
+}
+
+table.entries button {
+    margin-bottom: 3px;
 }
 
 .wrapper .btn-primary, .wrapper .btn-primary:active, .wrapper .btn-primary:visited, .wrapper .btn-primary.active {
