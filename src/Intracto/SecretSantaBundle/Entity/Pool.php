@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
 
 /**
- * Intracto\SecretSantaBundle\Entity\Pool
+ * Intracto\SecretSantaBundle\Entity\Pool.
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PoolRepository")
@@ -19,7 +19,7 @@ use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
 class Pool
 {
     /**
-     * @var int $id
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -28,35 +28,35 @@ class Pool
     private $id;
 
     /**
-     * @var string $listurl
+     * @var string
      *
      * @ORM\Column(name="listurl", type="string", length=255)
      */
     private $listurl;
 
     /**
-     * @var string $message
+     * @var string
      *
      * @ORM\Column(name="message", type="text")
      */
     private $message;
 
     /**
-     * @var \DateTime $creationdate
+     * @var \DateTime
      *
      * @ORM\Column(name="creationdate", type="datetime", length=255)
      */
     private $creationdate;
 
     /**
-     * @var \DateTime $sentdate
+     * @var \DateTime
      *
      * @ORM\Column(name="sentdate", type="datetime", length=255, nullable=true)
      */
     private $sentdate;
 
     /**
-     * @var \DateTime $eventdate
+     * @var \DateTime
      *
      * @Assert\NotBlank()
      * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
@@ -64,7 +64,7 @@ class Pool
     private $eventdate;
 
     /**
-     * @var string $amount
+     * @var string
      *
      * @Assert\NotBlank()
      * @ORM\Column(name="amount", type="string", length=255, nullable=true)
@@ -72,7 +72,7 @@ class Pool
     private $amount;
 
     /**
-     * @var ArrayCollection $entries
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Entry", mappedBy="pool", cascade={"persist", "remove"})
      *
@@ -81,35 +81,35 @@ class Pool
     private $entries;
 
     /**
-     * @var bool $created
+     * @var bool
      *
      * @ORM\Column(name="created", type="boolean")
      */
     private $created = false;
 
     /**
-     * @var string $locale
+     * @var string
      *
      * @ORM\Column(name="locale", type="string", length=7)
      */
     private $locale = 'en';
 
     /**
-     * @var bool $exposed
+     * @var bool
      *
      * @ORM\Column(name="exposed", type="boolean")
      */
     private $exposed = false;
 
     /**
-     * @var bool $wishlists_exposed
+     * @var bool
      *
      * @ORM\Column(name="wishlists_exposed", type="boolean")
      */
     private $wishlistsExposed = false;
 
     /**
-     * @var string $location
+     * @var string
      *
      * @Assert\NotBlank()
      * @ORM\Column(name="location", type="string", length=255, nullable=true)
@@ -120,9 +120,9 @@ class Pool
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
 
-        if($createDefaults) {
+        if ($createDefaults) {
             // Create default minimum entries
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; $i < 3; ++$i) {
                 $entry = new Entry();
                 if ($i == 0) {
                     $entry->setPoolAdmin(true);
@@ -266,7 +266,7 @@ class Pool
 
     public function __toString()
     {
-        return 'Id: ' . $this->id . ' - Entries: ' . $this->entries->count() . ' - Owner: ' . $this->getOwnerName();
+        return 'Id: '.$this->id.' - Entries: '.$this->entries->count().' - Owner: '.$this->getOwnerName();
     }
 
     /**
@@ -433,8 +433,9 @@ class Pool
     {
         $originalPool = $this;
 
-        $pool = new Pool(false);
+        $pool = new self(false);
         $pool->setAmount($originalPool->getAmount());
+        $pool->setLocation($originalPool->getLocation());
 
         $originalEntries = $originalPool->getEntries();
 

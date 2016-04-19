@@ -17,9 +17,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Validator;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -158,7 +158,7 @@ class EntryController extends Controller
                 if ($request->isXmlHttpRequest()) {
                     $return = ['responseCode' => 200, 'message' => 'Added!'];
 
-                    return new Response(json_encode($return), 200, ['Content-Type' => 'application/json']);
+                    return new JsonResponse($return);
                 }
             }
         }
