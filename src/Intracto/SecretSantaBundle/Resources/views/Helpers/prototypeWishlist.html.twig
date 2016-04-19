@@ -1,8 +1,15 @@
-<tr class="wishlistitem">
-    <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
+<tr class="wishlistitem new-row">
+    <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank, {'attr': {'class': 'wishlistitem-rank'} }) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
     <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
     <td style="text-align: right;">
-        <button type="button" class="btn btn-mini btn-danger remove-entry"><i
-                    class="fa fa-times-circle"></i> {{ 'btn.remove_item'|trans }}</button>
+        <button type="submit" class="btn btn-mini btn-success save-new-entry">
+            <i class="fa fa-check-circle"></i> {{ 'btn.save_item'|trans }}
+        </button>
+        <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
+            <i class="fa fa-check-circle"></i> {{ 'btn.update_item'|trans }}
+        </button>
+        <button type="button" class="btn btn-mini btn-danger remove-entry">
+            <i class="fa fa-times-circle"></i> {{ 'btn.remove_item'|trans }}
+        </button>
     </td>
 </tr>
