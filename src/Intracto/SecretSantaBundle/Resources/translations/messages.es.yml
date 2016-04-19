@@ -179,7 +179,7 @@ btn:
     add_wishlist: Añadir elemento a lista de deseos
     save_item: Guardar este elemento
     update_item: Actualizar este elemento
-    remove_item: Quitar este elemento
+    remove_item: Quitar
     update_wishlist: Actualizar tu lista de deseos
     expose: Enviarme todas las atribuciones
     expose_confirm: Comprendo las consecuencias, enviar mi lista de correos Secret Santa ahora

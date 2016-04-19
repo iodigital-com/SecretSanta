@@ -309,7 +309,7 @@ btn:
     add_wishlist: Add item to wishlist
     save_item: Save this item
     update_item: Update this item
-    remove_item: Remove this item
+    remove_item: Remove
     update_wishlist: Update your wishlist
     expose: Send me all the matches
     expose_confirm: I understand the consequences, send my Secret Santa mailing list now

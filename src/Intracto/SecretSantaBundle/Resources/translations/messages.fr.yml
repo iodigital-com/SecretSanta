@@ -270,7 +270,7 @@ btn:
     add_wishlist: Ajouter un objet à ma liste de souhaits
     save_item: Mémoriser cet objet
     update_item: Actualiser cet object
-    remove_item: Supprimer cet objet
+    remove_item: Supprimer
     update_wishlist: Mettre à jour votre liste de souhaits
     expose: Envoyez-moi toutes les attributions
     expose_confirm: J'ai compris les cons&eacute;quences, envoyez-moi la liste Secret Santa maintenant
