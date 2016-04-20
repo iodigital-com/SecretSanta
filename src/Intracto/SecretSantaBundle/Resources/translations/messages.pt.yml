@@ -14,14 +14,18 @@ base:
 pool:
     header:
         steps:
-            title: Seu festa <br/><small>em <span class="accent">3 etapas simples</span></small>
+            title: Sua festa <br/><small>em <span class="accent">3 etapas simples</span></small>
             list:
                 one: Lista de participantes
                 two: Adicione uma mensagem
-                three: Mandar!
+                three: Enviar!
             get_started: Começar agora!
 
 create:
+    import:
+        instructions: Adicione várias pessoas para o seu evento de uma vez. Tudo que precisa é um arquivo csv com duas colunas (nome e e-mail). Arraste e largue o arquivo csv no campo aqui em baixo para os seus amigos e colegas serem adicionados rapidamente e facilmente ao seu evento.
+        too_many_files: Pode carregar somente um arquivo ao mesmo tempo.
+        wrong_format: O arquivo que você está tentando carregar não tem o formato correto (csv ou txt).
     what_is:
         title: O que é Secret Santa?
         intro: >
@@ -216,6 +220,24 @@ static:
         to: Para
         total_visits: Total de visitantes
         submit: Enviar
+        title: 'Relatório'
+        results: 'Resultados'
+        analytics: 'Analytics'
+        total_overview: 'Resumo geral'
+        all_time: 'Todos os tempos'
+        parties: 'Festas'
+        participants: 'Participantes'
+        total: 'Total (esta temporada incluída)
+        total_result: 'Resultados de todos os tempos'
+        season: 'Temporada'
+        created_parties: 'Total de festas criadas'
+        confirmed_parties: 'Festas confirmadas'
+        confirmed_parties_month: 'Festas confirmadas por mês'
+        confirmed_parties_total: 'Número total de festas confirmadas (esta temporada incluída)'
+        invited_participants: 'Participantes invitados'
+        confirmed_participants: 'Participantes confirmados'
+        confirmed_participants_month: 'Participantes confirmados por mês'
+        confirmed_participants_total: 'Número total de participantes confirmados (esta temporada incluída)'
 
 label:
     name: Nome
@@ -237,10 +259,13 @@ btn:
     delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa
     add_wishlist: Adicione um item a lista do Secret Santa
     remove_item: Eliminar este item
-    update_wishlist: Atualizar a sua lista de desejos
+    update_wishlist: Atualizar minha lista de desejos
     expose: Mande-me todas as combinações
     expose_confirm: Eu entendo e aceito as consequências. Mande-me a lista de combinações agora.
     cancel: Cancelar
+    import_persons:
+        open: Adicione várias pessoas
+        do: Adicione ao seu evento
 
 emails:
     sender: Papai Noel
