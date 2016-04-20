@@ -79,7 +79,7 @@
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
                 {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) %}disabled{% endif %}><i
                     class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_participant'|trans|raw }}</button>
-        <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> {{ 'btn.updated_party'|trans }}
+        <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> {{ 'btn.updated_party'|trans|raw }}
         </button>
 
         <br/><br/>

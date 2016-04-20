@@ -461,5 +461,5 @@ flashes:
         updated: <h4>Mis &agrave; jour!</h4> L'article est mis &agrave; jour avec succ&egrave;s.
         removed: <h4>Supprimé!</h4> L'article est supprimé de votre liste de souhaits avec succ&egrave;s.
     updated_party:
-        success: <h4>Mis @agrave; jour!</h4> Les détails sont été mis &agrave; jour avec succ&egrave;s.
+        success: <h4>Mis &agrave; jour!</h4> Les détails sont été mis &agrave; jour avec succ&egrave;s.
         danger: <h4>Oops</h4> Une erreur se passait en mettre &agrave; jour votre f&ecirc;te. S'il vous pla&icirc;t, essayez encore une fois.
