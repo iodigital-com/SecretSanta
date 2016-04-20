@@ -313,16 +313,18 @@ class PoolController extends Controller
                     $this->em->persist($updatePool);
                     $this->em->flush();
 
+                    $this->mailerService->sendPoolUpdatedMailsForPool($updatePool);
+
                     $this->get('session')->getFlashBag()->add(
                         'success',
-                        $this->translator->trans('flashes.update_party.success')
+                        $this->translator->trans('flashes.updated_party.success')
                     );
 
                     return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
                 } else {
                     $this->get('session')->getFlashBag()->add(
                         'danger',
-                        $this->translator->trans('flashes.update_party.danger')
+                        $this->translator->trans('flashes.updated_party.danger')
                     );
                 }
             }

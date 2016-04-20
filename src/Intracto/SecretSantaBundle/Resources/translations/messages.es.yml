@@ -319,6 +319,18 @@ emails:
                 Has solicitado todas las listas de deseos de personas en tu lista de Correos. Por favor, ten en cuenta que todos los miembros prodrán ver eso en su página de la lista de deseos.
 
                 A continuación un resumen de cada miembro y sus regalos deseados.
+    updated_party:
+        subject: ¡Los planes han cambiado!
+        message:
+            html: >
+                Estimado %name%,<br/>
+                <br/>
+                %owner% ha cambiado algos detalles de la fiesta a la que estas invitado. Abajo encuentras los nuevos detalles.
+            txt: >
+                Estimado %name%,
+
+                %owner% ha cambiado algos detalles de la fiesta a la que estas invitado. Abajo encuentras los nuevos detalles.
+        btn_updated_party: Comprueba quién es tu amigote o tu lista de deseos por esta fiesta
 flashes:
     manage:
         email_validated: >
@@ -358,3 +370,6 @@ flashes:
         added: <h4>¡A&ntilde;adido!</h4> L'art&iacute;culo ha sido a&ntilde;adido a tu lista de deseos.
         updated: <h4>¡Actualizado!</h4> L'art&iacute;culo ha sido actualizado de &eacute;xito.
         removed: <h4>¡Expulsado!</h4> L'art&iacute;culo ha sido expulsado de tu lista de deseos de &eacute;xito.
+    updated_party:
+        success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
+        danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.

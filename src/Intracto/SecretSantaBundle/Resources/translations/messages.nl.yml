@@ -148,6 +148,14 @@ add_participant:
             <br>
             De nieuwe deelnemer zal meteen een Secret Santa maatje toegewezen krijgen en een uitnodiging ontvangen via mail.<br>
         </p>
+updated_party:
+    title: Bewerk de details van jouw Secret Santa feestje
+    body: >
+        <p>
+            Door het onderstande formulier in te vullen, kan je de details van het feestje dat je organiseert bewerken.<br>
+            <br>
+            Jouw deelnemers zullen onmiddelijk op de hoogte gebracht worden van deze veranderingen.
+        </p>
 static:
     privacy_policy:
         title: Privacybeleid
@@ -299,6 +307,7 @@ btn:
     pool_update: Verstuur update naar alle deelnemers
     add_participant: Voeg een deelnemer aan je feestje
     add_participant_confirm: Voeg deze deelnemer toe
+    updated_party: Bewerk de details van dit feestje
     cancel: Annuleren
 emails:
     sender: Kerstman
@@ -430,6 +439,18 @@ emails:
                 Je hebt een overzicht van alle verlanglijsten in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.
 
                 Hier volgt een overzicht van elk lid en hun gewenste cadeautjes.
+    updated_party:
+        subject: De plannen zijn gewijzigd!
+        message:
+            html: >
+                Dear %name%,<br/>
+                <br/>
+                %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
+            txt: >
+                Dear %name%,
+
+                %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
+        btn_updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
     forgot_link:
         text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
         subject: 'Activatie mail opnieuw verzenden'
@@ -473,6 +494,9 @@ flashes:
         added: <h4>Toegevoegd!</h4> Jouw wens is succesvol toegevoegd aan jouw wenslijst.
         updated: <h4>Aangepast!</h4> Jouw wens is succesvol aangepast.
         removed: <h4>Verwijderd!</h4> Jouw wens is succesvol verwijderd uit jouw wenslijst.
+    updated_party:
+        success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
+        danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
 forgot_manage_link:
     title: 'Activatie mail opnieuw verzenden'
     description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)'
