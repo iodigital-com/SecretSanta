@@ -329,7 +329,7 @@ class PoolController extends Controller
         }
 
         return [
-            'form' => $addEntryForm->createView(),
+            'addEntryForm' => $addEntryForm->createView(),
             'updatePoolDetailsForm' => $updatePoolDetailsForm->createView(),
             'pool' => $this->pool,
             'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),

@@ -77,7 +77,7 @@
            href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}"><i
                     class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
-                {% if (form_errors(form.name)) or (form_errors(form.email)) %}disabled{% endif %}><i
+                {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) %}disabled{% endif %}><i
                     class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_participant'|trans|raw }}</button>
         <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> Update party details
         </button>
@@ -146,26 +146,26 @@
         </div>
 
         <div id="add-participant" class="alert alert-success manage-page-form"
-             {% if (form_errors(form.name)) or (form_errors(form.email)) %}style="display: block;"
+             {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) %}style="display: block;"
              {% else %}style="display: none"{% endif %}>
             <h3>{{ 'add_participant.title'|trans|raw }}</h3>
 
             {{ 'add_participant.body'|trans|raw }}
             <br>
-            <form method="post" {{ form_enctype(form) }}>
-                {{ form_row(form._token) }}
-                <div class="form-group {% if form_errors(form.name) %}error{% endif %}">
-                    <strong>{{ 'label.name'|trans }}</strong> {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
-                    {% if form_errors(form.name) %}
-                        {% for error in form.name.vars.errors %}
+            <form method="post" {{ form_enctype(addEntryForm) }}>
+                {{ form_row(addEntryForm._token) }}
+                <div class="form-group {% if form_errors(addEntryForm.name) %}error{% endif %}">
+                    <strong>{{ 'label.name'|trans }}</strong> {{ form_widget(addEntryForm.name ,{'attr':{'class':'form-control'}}) }}
+                    {% if form_errors(addEntryForm.name) %}
+                        {% for error in addEntryForm.name.vars.errors %}
                             <strong>{{ error.message }}</strong><br/>
                         {% endfor %}
                     {% endif %}
                 </div>
-                <div class="form-group {% if form_errors(form.email) %}error{% endif %}">
-                    <strong>{{ 'label.email'|trans }}</strong> {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
-                    {% if form_errors(form.email) %}
-                        {% for error in form.email.vars.errors %}
+                <div class="form-group {% if form_errors(addEntryForm.email) %}error{% endif %}">
+                    <strong>{{ 'label.email'|trans }}</strong> {{ form_widget(addEntryForm.email ,{'attr':{'class':'form-control'}}) }}
+                    {% if form_errors(addEntryForm.email) %}
+                        {% for error in addEntryForm.email.vars.errors %}
                             <strong>{{ error.message }}</strong><br/>
                         {% endfor %}
                     {% endif %}
