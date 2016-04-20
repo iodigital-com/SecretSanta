@@ -13,6 +13,7 @@ use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Form\UpdatePoolDetailsType;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Intracto\SecretSantaBundle\Query\EntryReportQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -110,7 +111,8 @@ class PoolController extends Controller
 
     /**
      * @param Request $request
-     * @param Pool $pool
+     * @param Pool    $pool
+     *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     private function handlePoolCreation(Request $request, Pool $pool)
@@ -165,7 +167,7 @@ class PoolController extends Controller
     }
 
     /**
-     * Retrieve pool by url
+     * Retrieve pool by url.
      *
      * @param $listurl
      *
@@ -261,13 +263,17 @@ class PoolController extends Controller
         }
 
         $newEntry = new Entry();
+        $updatePool = $this->pool;
 
-        $form = $this->createForm(new AddEntryType(), $newEntry);
+        $addEntryForm = $this->createForm(new AddEntryType(), $newEntry);
+        $updatePoolDetailsForm = $this->createForm(new UpdatePoolDetailsType(), $updatePool);
 
         if ($request->getMethod('POST')) {
-            $form->handleRequest($request);
-            if ($form->isSubmitted()) {
-                if ($form->isValid()) {
+            $addEntryForm->handleRequest($request);
+            $updatePoolDetailsForm->handleRequest($request);
+
+            if ($addEntryForm->isSubmitted()) {
+                if ($addEntryForm->isValid()) {
                     $newEntry->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
                     $newEntry->setPool($this->pool);
 
@@ -301,10 +307,30 @@ class PoolController extends Controller
                     );
                 }
             }
+
+            if ($updatePoolDetailsForm->isSubmitted()) {
+                if ($updatePoolDetailsForm->isValid()) {
+                    $this->em->persist($updatePool);
+                    $this->em->flush();
+
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        $this->translator->trans('flashes.update_party.success')
+                    );
+
+                    return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+                } else {
+                    $this->get('session')->getFlashBag()->add(
+                        'danger',
+                        $this->translator->trans('flashes.update_party.danger')
+                    );
+                }
+            }
         }
 
         return [
-            'form' => $form->createView(),
+            'form' => $addEntryForm->createView(),
+            'updatePoolDetailsForm' => $updatePoolDetailsForm->createView(),
             'pool' => $this->pool,
             'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             'expose_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_pool'),
