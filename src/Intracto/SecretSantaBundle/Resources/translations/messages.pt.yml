@@ -227,7 +227,7 @@ static:
         all_time: 'Todos os tempos'
         parties: 'Festas'
         participants: 'Participantes'
-        total: 'Total (esta temporada incluída)
+        total: 'Total (esta temporada incluída)'
         total_result: 'Resultados de todos os tempos'
         season: 'Temporada'
         created_parties: 'Total de festas criadas'
