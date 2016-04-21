@@ -24,11 +24,11 @@ class MailerService
     public $adminEmail;
 
     /**
-     * @param \Swift_Mailer $mailer
-     * @param EntityManager $em
-     * @param EngineInterface $templating
+     * @param \Swift_Mailer       $mailer
+     * @param EntityManager       $em
+     * @param EngineInterface     $templating
      * @param TranslatorInterface $translator
-     * @param Router $routing
+     * @param Router              $routing
      * @param $adminEmail
      */
     public function __construct(
@@ -38,8 +38,7 @@ class MailerService
         TranslatorInterface $translator,
         Router $routing,
         $adminEmail
-    )
-    {
+    ) {
         $this->mailer = $mailer;
         $this->em = $em;
         $this->templating = $templating;
@@ -49,7 +48,7 @@ class MailerService
     }
 
     /**
-     * Sends out all mails for a Pool
+     * Sends out all mails for a Pool.
      *
      * @param Pool $pool
      */
@@ -64,7 +63,7 @@ class MailerService
     }
 
     /**
-     * Sends out mail for a Entry
+     * Sends out mail for a Entry.
      *
      * @param Entry $entry
      */
@@ -168,6 +167,7 @@ class MailerService
 
     /**
      * @param $email
+     *
      * @return bool
      */
     public function sendForgotManageLinkMail($email)
@@ -183,7 +183,7 @@ class MailerService
             $text = $this->translator->trans('manage.title');
 
             if ($result['eventdate'] instanceof \DateTime) {
-                $text .= ' (' . $result['eventdate']->format('d/m/Y') . ')';
+                $text .= ' ('.$result['eventdate']->format('d/m/Y').')';
             }
 
             $poolLinks[] = array(
@@ -259,7 +259,7 @@ class MailerService
      */
     public function sendPoolUpdateMailForPool(Pool $pool, $results)
     {
-        foreach($pool->getEntries() as $entry) {
+        foreach ($pool->getEntries() as $entry) {
             $this->sendPoolUpdateMailForEntry($entry, $results);
         }
     }
@@ -418,6 +418,47 @@ class MailerService
                     'IntractoSecretSantaBundle:Emails:poolstatus.txt.twig',
                     [
                         'pool' => $entry->getPool(),
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
+
+    /**
+     * @param Pool $pool
+     */
+    public function sendPoolUpdatedMailsForPool(Pool $pool)
+    {
+        foreach ($pool->getEntries() as $entry) {
+            $this->sendPoolUpdatedMailForEntry($entry);
+        }
+    }
+
+    /**
+     * @param Entry $entry
+     */
+    public function sendPoolUpdatedMailForEntry(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.updated_party.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:updatedparty.html.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:updatedparty.txt.twig',
+                    [
+                        'entry' => $entry,
                     ]
                 ),
                 'text/plain'

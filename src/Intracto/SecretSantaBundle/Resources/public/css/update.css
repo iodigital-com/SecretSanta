@@ -465,11 +465,6 @@ ul.form-errors {
     text-decoration: none;
 }
 
-.add-participant-input {
-    padding-left: 0;
-    padding-right: 0;
-}
-
 #mysanta {
     table-layout: fixed;
 }
@@ -513,4 +508,8 @@ ul.form-errors {
 
 .link_remove_participant {
     padding: 0;
+}
+
+.manage-page-form .form-group {
+    margin-top: 5px;
 }

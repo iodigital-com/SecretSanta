@@ -151,6 +151,14 @@ add_participant:
             <br>
             The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
         </p>
+updated_party:
+    title: Update the details of your Secret Santa party
+    body: >
+        <p>
+            By filling in the form below, you can edit the details of the party you're organizing.<br>
+            <br>
+            Your participants will be notified of these changes immeadiatly.
+        </p>
 static:
     privacy_policy:
         title: Privacy Policy
@@ -318,6 +326,7 @@ btn:
     pool_update: Send party update to participants
     add_participant: Add participant to party
     add_participant_confirm: Add this participant
+    updated_party: Update your party details
     cancel: Cancel
 emails:
     sender: Santa Claus
@@ -449,6 +458,18 @@ emails:
                 You have requested all wishlists of people in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
 
                 Following is an overview of each member and their desired Secret Santa presents.
+    updated_party:
+        subject: The plans have changed!
+        message:
+            html: >
+                Dear %name%,<br/>
+                <br/>
+                %owner% has changed some details of the party you're invited to. Below you can find the new details you're friend has provided for you.
+            txt: >
+                Dear %name%,
+
+                %owner% has changed some details of the party you're invited to. Below you can find the new details you're friend has provided for you.
+        btn_updated_party: Check your buddy and wishlist for this party
     forgot_link:
         text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
         subject: 'Resend activation mail'
@@ -494,6 +515,9 @@ flashes:
         added: <h4>Added!</h4> Item succesfully added to your wishlist.
         updated: <h4>Updated!</h4> Item succesfully updated.
         removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
+    updated_party:
+        success: <h4>Updated!</h4> Your party details have been succesfully updated.
+        danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
 forgot_manage_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
