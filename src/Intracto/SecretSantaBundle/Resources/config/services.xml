@@ -50,5 +50,11 @@
             <argument type="service" id="router"></argument>
             <argument>%admin_email%</argument>
         </service>
+        <service id="intracto_secret_santa.entry_mail" class="Intracto\SecretSantaBundle\Query\EntryMailQuery">
+            <argument type="service" id="doctrine.orm.entity_manager"></argument>
+        </service>
+        <service id="intracto_secret_santa.pool_mail" class="Intracto\SecretSantaBundle\Query\PoolMailQuery">
+            <argument type="service" id="doctrine.orm.entity_manager"></argument>
+        </service>
     </services>
 </container>

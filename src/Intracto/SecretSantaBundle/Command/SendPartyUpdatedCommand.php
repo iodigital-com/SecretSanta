@@ -32,9 +32,9 @@ class SendPartyUpdatedCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         /** @var EntityManager $em */
         $em = $container->get('doctrine')->getManager();
-        $poolQuery = $container->get('intracto_secret_santa.pool');
+        $poolMailQuery = $container->get('intracto_secret_santa.pool_mail');
         $mailerService = $container->get('intracto_secret_santa.mail');
-        $updatedPools = $poolQuery->findAllToNotifyOfUpdatedPartyMail();
+        $updatedPools = $poolMailQuery->findAllToNotifyOfUpdatedPartyMail();
 
         foreach ($updatedPools as $pool) {
             $mailerService->sendPoolUpdatedMailsForPool($pool);
