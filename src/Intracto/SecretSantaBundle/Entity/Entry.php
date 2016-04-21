@@ -156,14 +156,14 @@ class Entry
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="poolstatus_sent", type="datetime", length=255, nullable=true)
+     * @ORM\Column(name="poolstatus_sent", type="datetime", nullable=true)
      */
     private $poolStatusSentTime;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="emptywishlistreminder_sent", type="datetime", length=255, nullable=true)
+     * @ORM\Column(name="emptywishlistreminder_sent", type="datetime", nullable=true)
      */
     private $emptyWishlistReminderSentTime;
 

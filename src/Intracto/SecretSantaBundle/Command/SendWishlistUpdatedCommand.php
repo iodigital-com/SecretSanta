@@ -34,7 +34,7 @@ class SendWishlistUpdatedCommand extends ContainerAwareCommand
         $em = $container->get('doctrine')->getManager();
         $entryQuery = $container->get('intracto_secret_santa.entry');
         $mailerService = $container->get('intracto_secret_santa.mail');
-        $secret_santas = $entryQuery->findAllForWishlistNotification();
+        $secret_santas = $entryQuery->findAllToRemindOfUpdatedWishlist();
         $timeNow = new \DateTime();
 
         foreach ($secret_santas as $secret_santa) {
