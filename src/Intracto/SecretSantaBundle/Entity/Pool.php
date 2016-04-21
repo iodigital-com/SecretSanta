@@ -116,6 +116,20 @@ class Pool
      */
     private $location;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="details_updated", type="boolean")
+     */
+    private $detailsUpdated;
+
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="detailsupdated_time", type="datetime", nullable=true)
+     */
+    private $detailsUpdatedTime;
+
     public function __construct($createDefaults = true)
     {
         $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
@@ -427,6 +441,38 @@ class Pool
     public function setLocation($location)
     {
         $this->location = $location;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDetailsUpdated()
+    {
+        return $this->detailsUpdated;
+    }
+
+    /**
+     * @param bool $detailsUpdated
+     */
+    public function setDetailsUpdated($detailsUpdated)
+    {
+        $this->detailsUpdated = $detailsUpdated;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDetailsUpdatedTime()
+    {
+        return $this->detailsUpdatedTime;
+    }
+
+    /**
+     * @param \DateTime $detailsUpdatedTime
+     */
+    public function setDetailsUpdatedTime($detailsUpdatedTime)
+    {
+        $this->detailsUpdatedTime = $detailsUpdatedTime;
     }
 
     public function createNewPoolForReuse()

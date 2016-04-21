@@ -3,26 +3,31 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\ORM\EntityManager;
 
 class PoolReportQuery
 {
     /** @var Connection */
     private $dbal;
+    /** @var EntityManager */
+    private $em;
     /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
 
     /**
-     * @param Connection $dbal
+     * @param Connection         $dbal
      * @param FeaturedYearsQuery $featuredYearsQuery
      */
-    public function __construct(Connection $dbal, FeaturedYearsQuery $featuredYearsQuery)
+    public function __construct(Connection $dbal, EntityManager $em, FeaturedYearsQuery $featuredYearsQuery)
     {
         $this->dbal = $dbal;
+        $this->em = $em;
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function countPools(Season $season)
@@ -40,6 +45,7 @@ class PoolReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     public function countAllPoolsUntilDate(\DateTime $date)
@@ -55,6 +61,7 @@ class PoolReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function queryDataForMonthlyPoolChart(Season $season)
@@ -81,7 +88,7 @@ class PoolReportQuery
         $poolChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
-            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01')->format('Y-m-d H:i:s');
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()
                 ->select('count(p.id) AS accumulatedPoolCountByYear')
@@ -94,7 +101,7 @@ class PoolReportQuery
 
             $pool = [
                 'year' => $year,
-                'pool' => $chartData
+                'pool' => $chartData,
             ];
 
             array_push($poolChartData, $pool);
@@ -105,6 +112,7 @@ class PoolReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     public function queryDataForPoolChartUntilDate(\DateTime $date)
@@ -131,6 +139,7 @@ class PoolReportQuery
     /**
      * @param Season $season1
      * @param Season $season2
+     *
      * @return mixed
      */
     public function calculatePoolCountDifferenceBetweenSeasons(Season $season1, Season $season2)
@@ -143,5 +152,34 @@ class PoolReportQuery
         }
 
         return $poolCountSeason1[0]['poolCount'] - $poolCountSeason2[0]['poolCount'];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function findAllToNotifyOfUpdatedPartyMail()
+    {
+        $today = new \DateTime();
+        $oneHourAgo = new \DateTime('now - 1 hour');
+        $twoWeeksAgo = new \DateTime('now - 2 weeks');
+        $sixWeeksFromNow = new \DateTime('now + 6 weeks');
+
+        $query = $this->em->createQuery('
+            SELECT pool
+            FROM IntractoSecretSantaBundle:Pool pool
+            WHERE pool.detailsUpdated = 1
+              AND pool.created = 1
+              AND pool.eventdate > :today
+              AND pool.eventdate < :sixWeeksFromNow
+              AND pool.sentdate < :twoWeeksAgo
+              AND pool.detailsUpdatedTime < :oneHourAgo
+        ');
+
+        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('oneHourAgo', $oneHourAgo, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
+
+        return $query->getResult();
     }
 }
