@@ -133,7 +133,9 @@ class EntryController extends Controller
                 }
 
                 // For now assume that a save of entry means the list has changed
+                $time_now = new \DateTime();
                 $this->entry->setWishlistUpdated(true);
+                $this->entry->setWishlistUpdatedTime($time_now);
 
                 $this->em->persist($this->entry);
                 $this->em->flush();

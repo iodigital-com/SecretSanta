@@ -167,6 +167,13 @@ class Entry
      */
     private $emptyWishlistReminderSentTime;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="wishlistupdated_time", type="datetime", nullable=true)
+     */
+    private $wishlistUpdatedTime;
+
     public function __construct()
     {
         $this->excluded_entries = new \Doctrine\Common\Collections\ArrayCollection();
@@ -631,5 +638,21 @@ class Entry
     public function setEmptyWishlistReminderSentTime($emptyWishlistReminderSentTime)
     {
         $this->emptyWishlistReminderSentTime = $emptyWishlistReminderSentTime;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getWishlistUpdatedTime()
+    {
+        return $this->wishlistUpdatedTime;
+    }
+
+    /**
+     * @param \DateTime $wishlistUpdatedTime
+     */
+    public function setWishlistUpdatedTime($wishlistUpdatedTime)
+    {
+        $this->wishlistUpdatedTime = $wishlistUpdatedTime;
     }
 }

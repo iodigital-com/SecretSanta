@@ -26,6 +26,7 @@ class EntryMailQuery
     public function findAllToRemindOfEmptyWishlist()
     {
         $today = new \DateTime();
+        $oneWeekAgo = new \DateTime('now - 1 week');
         $twoWeeksAgo = new \DateTime('now - 2 weeks');
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
 
@@ -38,10 +39,11 @@ class EntryMailQuery
               AND pool.eventdate > :today
               AND pool.eventdate < :sixWeeksFromNow
               AND pool.sentdate < :twoWeeksAgo
-              AND (entry.emptyWishlistReminderSentTime IS NULL OR entry.emptyWishlistReminderSentTime < :twoWeeksAgo)
+              AND (entry.emptyWishlistReminderSentTime IS NULL OR entry.emptyWishlistReminderSentTime < :oneWeekAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('oneWeekAgo', $oneWeekAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
 
@@ -88,6 +90,7 @@ class EntryMailQuery
     public function findAllToRemindOfUpdatedWishlist()
     {
         $today = new \DateTime();
+        $oneHourAgo = new \DateTime('now - 1 hour');
         $oneDayAgo = new \DateTime('now - 1 day');
         $twoWeeksAgo = new \DateTime('now - 2 weeks');
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
@@ -102,10 +105,12 @@ class EntryMailQuery
               AND pool.eventdate > :today
               AND pool.eventdate < :sixWeeksFromNow
               AND pool.sentdate < :twoWeeksAgo
-              AND (entry.updateWishlistReminderSentTime < :oneDayAgo OR entry.updateWishlistReminderSentTime IS NULL)
+              AND (entry.wishlistUpdatedTime IS NULL OR entry.wishlistUpdatedTime < :oneHourAgo)
+              AND (entry.updateWishlistReminderSentTime IS NULL OR entry.updateWishlistReminderSentTime < :oneDayAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('oneHourAgo', $oneHourAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('oneDayAgo', $oneDayAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
@@ -133,7 +138,7 @@ class EntryMailQuery
               AND pool.eventdate > :today
               AND pool.eventdate < :sixWeeksFromNow
               AND pool.sentdate < :twoWeeksAgo
-              AND (entry.poolStatusSentTime < :oneWeekAgo OR entry.poolStatusSentTime IS NULL)
+              AND (entry.poolStatusSentTime IS NULL OR entry.poolStatusSentTime < :oneWeekAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
