@@ -310,10 +310,13 @@ class PoolController extends Controller
 
             if ($updatePoolDetailsForm->isSubmitted()) {
                 if ($updatePoolDetailsForm->isValid()) {
+                    $time_now = new \DateTime();
+
+                    $updatePool->setDetailsUpdated(true);
+                    $updatePool->setDetailsUpdatedTime($time_now);
+
                     $this->em->persist($updatePool);
                     $this->em->flush();
-
-                    $this->mailerService->sendPoolUpdatedMailsForPool($updatePool);
 
                     $this->get('session')->getFlashBag()->add(
                         'success',

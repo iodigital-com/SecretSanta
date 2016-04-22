@@ -3,14 +3,11 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\ORM\EntityManager;
 
 class EntryReportQuery
 {
     /** @var Connection */
     private $dbal;
-    /** @var EntityManager */
-    private $em;
     /** @var PoolReportQuery */
     private $poolReportQuery;
     /** @var FeaturedYearsQuery */
@@ -18,22 +15,18 @@ class EntryReportQuery
     private $rootDirectory;
 
     /**
-     * @param Connection $dbal
-     * @param EntityManager $em
-     * @param PoolReportQuery $poolReportQuery
+     * @param Connection         $dbal
+     * @param PoolReportQuery    $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
      * @param $rootDirectory
      */
     public function __construct(
         Connection $dbal,
-        EntityManager $em,
         PoolReportQuery $poolReportQuery,
         FeaturedYearsQuery $featuredYearsQuery,
         $rootDirectory
-    )
-    {
+    ) {
         $this->dbal = $dbal;
-        $this->em = $em;
         $this->poolReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
         $this->rootDirectory = $rootDirectory;
@@ -41,6 +34,7 @@ class EntryReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     public function countConfirmedEntriesUntilDate(\DateTime $date)
@@ -58,6 +52,7 @@ class EntryReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     public function countDistinctEntriesUntilDate(\DateTime $date)
@@ -74,6 +69,7 @@ class EntryReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function queryDataForMonthlyEntryChart(Season $season)
@@ -101,7 +97,7 @@ class EntryReportQuery
         $entryChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
-            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01')->format('Y-m-d H:i:s');
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()
                 ->select('count(p.id) AS accumulatedEntryCountByYear')
@@ -115,7 +111,7 @@ class EntryReportQuery
 
             $entry = [
                 'year' => $year,
-                'entry' => $chartData
+                'entry' => $chartData,
             ];
 
             array_push($entryChartData, $entry);
@@ -126,6 +122,7 @@ class EntryReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return array
      */
     public function queryDataForEntryChartUntilDate(\DateTime $date)
@@ -152,6 +149,7 @@ class EntryReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return float
      */
     public function calculateAverageEntriesPerPoolUntilDate(\DateTime $date)
@@ -168,6 +166,7 @@ class EntryReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     public function countAllEntriesUntilDate(\DateTime $date)
@@ -185,6 +184,7 @@ class EntryReportQuery
     /**
      * @param Season $season1
      * @param Season $season2
+     *
      * @return mixed
      */
     public function calculateEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
@@ -201,6 +201,7 @@ class EntryReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function countEntries(Season $season)
@@ -220,6 +221,7 @@ class EntryReportQuery
     /**
      * @param Season $season1
      * @param Season $season2
+     *
      * @return mixed
      */
     public function calculateConfirmedEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
@@ -236,6 +238,7 @@ class EntryReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function countConfirmedEntries(Season $season)
@@ -256,6 +259,7 @@ class EntryReportQuery
     /**
      * @param Season $season1
      * @param Season $season2
+     *
      * @return mixed
      */
     public function calculateDistinctEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
@@ -272,6 +276,7 @@ class EntryReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function countDistinctEntries(Season $season)
@@ -291,6 +296,7 @@ class EntryReportQuery
     /**
      * @param Season $season1
      * @param Season $season2
+     *
      * @return float
      */
     public function calculateAverageEntriesPerPoolBetweenSeasons(Season $season1, Season $season2)
@@ -307,6 +313,7 @@ class EntryReportQuery
 
     /**
      * @param Season $season
+     *
      * @return float
      */
     public function calculateAverageEntriesPerPool(Season $season)
@@ -323,6 +330,7 @@ class EntryReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function fetchAdminEmailsForExport(Season $season)
@@ -342,13 +350,14 @@ class EntryReportQuery
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => $this->rootDirectory . '/../export/admin/' . date('Y-m-d H.i.s') . '_admins.csv',
+                'location' => $this->rootDirectory.'/../export/admin/'.date('Y-m-d H.i.s').'_admins.csv',
             ]
         );
     }
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function fetchParticipantEmailsForExport(Season $season)
@@ -368,13 +377,14 @@ class EntryReportQuery
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => $this->rootDirectory . '/../export/participant/' . date('Y-m-d H.i.s') . '_participants.csv',
+                'location' => $this->rootDirectory.'/../export/participant/'.date('Y-m-d H.i.s').'_participants.csv',
             ]
         );
     }
 
     /**
      * @param $listUrl
+     *
      * @return array
      */
     public function fetchDataForPoolUpdateMail($listUrl)
@@ -406,6 +416,7 @@ class EntryReportQuery
             ->where('p.listurl = :listurl')
             ->andWhere('viewdate is not null')
             ->setParameter(':listurl', $listUrl);
+
         return [
             'pool' => $pool->execute()->fetchAll(),
             'participantCount' => $participantCount->execute()->fetchAll(),
@@ -415,126 +426,8 @@ class EntryReportQuery
     }
 
     /**
-     * Find all entries that have an empty wishlist in Pools which were sent out
-     * more than two weeks ago and the party date is max six weeks in the future.
-     *
-     * @return array
-     */
-    public function findAllToRemindOfEmptyWishlist()
-    {
-        $today = new \DateTime();
-        $twoWeeksAgo = new \DateTime('now - 2 weeks');
-        $sixWeeksFromNow = new \DateTime('now + 6 weeks');
-
-        $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-              JOIN entry.pool pool
-            WHERE entry.wishlist_updated = 0
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-              AND (entry.updateWishlistReminderSentTime IS NULL OR entry.updateWishlistReminderSentTime < :twoWeeksAgo)
-        ');
-
-        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
-
-        return $query->getResult();
-    }
-
-    /**
-     * Find all entries that haven't been watched yet in Pools which were sent
-     * out more than two weeks ago and the party date is max six weeks in the
-     * future.
-     *
-     * @return array
-     */
-    public function findAllToRemindToViewEntry()
-    {
-        $today = new \DateTime();
-        $twoWeeksAgo = new \DateTime('now - 2 weeks');
-        $sixWeeksFromNow = new \DateTime('now + 6 weeks');
-
-        $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-              JOIN entry.pool pool
-            WHERE entry.viewdate IS NULL
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-              AND (entry.viewReminderSentTime IS NULL OR entry.viewReminderSentTime < :twoWeeksAgo)
-        ');
-
-        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
-
-        return $query->getResult();
-    }
-
-    /**
-     * @return array
-     */
-    public function findAllForWishlistNotification()
-    {
-        $today = new \DateTime();
-        $twoWeeksAgo = new \DateTime('now - 2 weeks');
-        $sixWeeksFromNow = new \DateTime('now + 6 weeks');
-
-        $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-            JOIN entry.pool pool
-            JOIN entry.entry peer
-            WHERE peer.wishlist_updated = 1
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-        ');
-
-        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
-
-        return $query->getResult();
-    }
-
-    /**
-     * @return array
-     */
-    public function findAllAdminsForPoolStatusMail()
-    {
-        $today = new \DateTime();
-        $twoWeeksAgo = new \DateTime('now - 2 weeks');
-        $sixWeeksFromNow = new \DateTime('now + 6 weeks');
-
-        $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-              JOIN entry.pool pool
-            WHERE entry.poolAdmin = 1
-              AND entry.url IS NOT NULL
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-        ');
-
-        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
-
-        return $query->getResult();
-    }
-
-    /**
      * @param $entryId
+     *
      * @return mixed
      */
     public function findBuddyByEntryId($entryId)
@@ -550,6 +443,7 @@ class EntryReportQuery
 
     /**
      * @param $poolId
+     *
      * @return mixed
      */
     public function findAdminIdByPoolId($poolId)
@@ -560,7 +454,7 @@ class EntryReportQuery
             ->where('e.poolId = :poolId')
             ->andWhere('e.poolAdmin = 1')
             ->setParameter('poolId', $poolId);
-        
+
         return $query->execute()->fetchAll();
     }
 }

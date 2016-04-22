@@ -12,7 +12,7 @@ class PoolReportQuery
     private $featuredYearsQuery;
 
     /**
-     * @param Connection $dbal
+     * @param Connection         $dbal
      * @param FeaturedYearsQuery $featuredYearsQuery
      */
     public function __construct(Connection $dbal, FeaturedYearsQuery $featuredYearsQuery)
@@ -23,6 +23,7 @@ class PoolReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function countPools(Season $season)
@@ -40,6 +41,7 @@ class PoolReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     public function countAllPoolsUntilDate(\DateTime $date)
@@ -55,6 +57,7 @@ class PoolReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     public function queryDataForMonthlyPoolChart(Season $season)
@@ -81,7 +84,7 @@ class PoolReportQuery
         $poolChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
-            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01')->format('Y-m-d H:i:s');
+            $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()
                 ->select('count(p.id) AS accumulatedPoolCountByYear')
@@ -94,7 +97,7 @@ class PoolReportQuery
 
             $pool = [
                 'year' => $year,
-                'pool' => $chartData
+                'pool' => $chartData,
             ];
 
             array_push($poolChartData, $pool);
@@ -105,6 +108,7 @@ class PoolReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     public function queryDataForPoolChartUntilDate(\DateTime $date)
@@ -131,6 +135,7 @@ class PoolReportQuery
     /**
      * @param Season $season1
      * @param Season $season2
+     *
      * @return mixed
      */
     public function calculatePoolCountDifferenceBetweenSeasons(Season $season1, Season $season2)

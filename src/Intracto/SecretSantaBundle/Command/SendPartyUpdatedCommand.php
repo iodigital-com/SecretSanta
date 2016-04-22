@@ -2,12 +2,12 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Doctrine\ORM\EntityManager;
 
-class SendWishlistUpdatedCommand extends ContainerAwareCommand
+class SendPartyUpdatedCommand extends ContainerAwareCommand
 {
     /**
      * Configure the command options.
@@ -15,8 +15,8 @@ class SendWishlistUpdatedCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('intracto:sendWishlistUpdatedMails')
-            ->setDescription('Send notification to buddy to alert them the wishlist has been updated');
+            ->setName('intracto:sendPartyUpdatedMails')
+            ->setDescription('Send notification to all participants if party has been updated');
     }
 
     /**
@@ -32,19 +32,15 @@ class SendWishlistUpdatedCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         /** @var EntityManager $em */
         $em = $container->get('doctrine')->getManager();
-        $entryMailQuery = $container->get('intracto_secret_santa.entry_mail');
+        $poolMailQuery = $container->get('intracto_secret_santa.pool_mail');
         $mailerService = $container->get('intracto_secret_santa.mail');
-        $secret_santas = $entryMailQuery->findAllToRemindOfUpdatedWishlist();
-        $timeNow = new \DateTime();
+        $updatedPools = $poolMailQuery->findAllToNotifyOfUpdatedPartyMail();
 
-        foreach ($secret_santas as $secret_santa) {
-            $receiver = $secret_santa->getEntry();
+        foreach ($updatedPools as $pool) {
+            $mailerService->sendPoolUpdatedMailsForPool($pool);
 
-            $mailerService->sendWishlistUpdatedMail($receiver, $secret_santa);
-
-            $receiver->setWishlistUpdated(false);
-            $receiver->setUpdateWishlistReminderSentTime($timeNow);
-            $em->persist($receiver);
+            $pool->setDetailsUpdated(false);
+            $em->persist($pool);
         }
 
         $em->flush();

@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
 
 /**
- * Intracto\SecretSantaBundle\Entity\Entry
+ * Intracto\SecretSantaBundle\Entity\Entry.
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\EntryRepository")
@@ -19,7 +19,7 @@ use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
 class Entry
 {
     /**
-     * @var int $id
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -28,7 +28,7 @@ class Entry
     private $id;
 
     /**
-     * @var Pool $pool
+     * @var Pool
      *
      * @ORM\ManyToOne(targetEntity="Pool", inversedBy="entries")
      * @ORM\JoinColumn(name="poolId", referencedColumnName="id", onDelete="CASCADE")
@@ -36,7 +36,7 @@ class Entry
     private $pool;
 
     /**
-     * @var string $name
+     * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      *
@@ -45,7 +45,7 @@ class Entry
     private $name;
 
     /**
-     * @var string $email
+     * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
      *
@@ -59,7 +59,7 @@ class Entry
     private $email;
 
     /**
-     * @var Entry $entry
+     * @var Entry
      *
      * @ORM\OneToOne(targetEntity="Entry")
      * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true, onDelete="SET NULL")
@@ -67,7 +67,7 @@ class Entry
     private $entry;
 
     /**
-     * @var ArrayCollection $excludedEntries
+     * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Entry")
      * @ORM\JoinTable(name="exclude",
@@ -78,35 +78,35 @@ class Entry
     private $excluded_entries;
 
     /**
-     * @var string $wishlist
+     * @var string
      *
      * @ORM\Column(name="wishlist", type="text", nullable=true)
      */
     private $wishlist;
 
     /**
-     * @var \DateTime $viewdate
+     * @var \DateTime
      *
      * @ORM\Column(name="viewdate", type="datetime", nullable=true)
      */
     private $viewdate;
 
     /**
-     * @var \DateTime $viewReminderSentTime
+     * @var \DateTime
      *
      * @ORM\Column(name="viewreminder_sent", type="datetime", nullable=true)
      */
     private $viewReminderSentTime;
 
     /**
-     * @var string $url
+     * @var string
      *
      * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
 
     /**
-     * @var ArrayCollection $wishlistItems
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="WishlistItem", mappedBy="entry", cascade={"persist", "remove"})
      * @ORM\OrderBy({"rank" = "asc"})
@@ -114,19 +114,19 @@ class Entry
     private $wishlistItems;
 
     /**
-     * @var WishlistItem $removedWishlistItems
+     * @var WishlistItem
      */
     private $removedWishlistItems;
 
     /**
-     * @var bool $wishlist_updated
+     * @var bool
      *
      * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
     private $wishlist_updated = false;
 
     /**
-     * @var \DateTime $updateWishlistReminderSentTime
+     * @var \DateTime
      *
      * @ORM\Column(name="updatewishlistreminder_sent", type="datetime", nullable=true)
      */
@@ -140,18 +140,39 @@ class Entry
     private $poolAdmin = false;
 
     /**
-     * @var string $ipv4
+     * @var string
      *
      * @ORM\Column(name="ipv4", type="string", nullable=true)
      */
     private $ipv4;
 
     /**
-     * @var string $ipv6
+     * @var string
      *
      * @ORM\Column(name="ipv6", type="string", nullable=true)
      */
     private $ipv6;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="poolstatus_sent", type="datetime", nullable=true)
+     */
+    private $poolStatusSentTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="emptywishlistreminder_sent", type="datetime", nullable=true)
+     */
+    private $emptyWishlistReminderSentTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="wishlistupdated_time", type="datetime", nullable=true)
+     */
+    private $wishlistUpdatedTime;
 
     public function __construct()
     {
@@ -508,7 +529,7 @@ class Entry
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isPoolAdmin()
     {
@@ -516,7 +537,7 @@ class Entry
     }
 
     /**
-     * @param boolean $poolAdmin
+     * @param bool $poolAdmin
      */
     public function setPoolAdmin($poolAdmin)
     {
@@ -542,7 +563,7 @@ class Entry
     {
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $this->setIpv4($ip);
-        } else if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        } elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
             $this->setIpv6($ip);
         }
     }
@@ -585,5 +606,53 @@ class Entry
         $this->ipv6 = $ipv6;
 
         return $ipv6;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPoolStatusSentTime()
+    {
+        return $this->poolStatusSentTime;
+    }
+
+    /**
+     * @param \DateTime $poolStatusSentTime
+     */
+    public function setPoolStatusSentTime($poolStatusSentTime)
+    {
+        $this->poolStatusSentTime = $poolStatusSentTime;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEmptyWishlistReminderSentTime()
+    {
+        return $this->emptyWishlistReminderSentTime;
+    }
+
+    /**
+     * @param \DateTime $emptyWishlistReminderSentTime
+     */
+    public function setEmptyWishlistReminderSentTime($emptyWishlistReminderSentTime)
+    {
+        $this->emptyWishlistReminderSentTime = $emptyWishlistReminderSentTime;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getWishlistUpdatedTime()
+    {
+        return $this->wishlistUpdatedTime;
+    }
+
+    /**
+     * @param \DateTime $wishlistUpdatedTime
+     */
+    public function setWishlistUpdatedTime($wishlistUpdatedTime)
+    {
+        $this->wishlistUpdatedTime = $wishlistUpdatedTime;
     }
 }
