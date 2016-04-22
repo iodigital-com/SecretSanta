@@ -3,14 +3,11 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\ORM\EntityManager;
 
 class EntryReportQuery
 {
     /** @var Connection */
     private $dbal;
-    /** @var EntityManager */
-    private $em;
     /** @var PoolReportQuery */
     private $poolReportQuery;
     /** @var FeaturedYearsQuery */
@@ -19,20 +16,17 @@ class EntryReportQuery
 
     /**
      * @param Connection         $dbal
-     * @param EntityManager      $em
      * @param PoolReportQuery    $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
      * @param $rootDirectory
      */
     public function __construct(
         Connection $dbal,
-        EntityManager $em,
         PoolReportQuery $poolReportQuery,
         FeaturedYearsQuery $featuredYearsQuery,
         $rootDirectory
     ) {
         $this->dbal = $dbal;
-        $this->em = $em;
         $this->poolReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
         $this->rootDirectory = $rootDirectory;

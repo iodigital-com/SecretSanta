@@ -3,14 +3,11 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\ORM\EntityManager;
 
 class PoolReportQuery
 {
     /** @var Connection */
     private $dbal;
-    /** @var EntityManager */
-    private $em;
     /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
 
@@ -18,10 +15,9 @@ class PoolReportQuery
      * @param Connection         $dbal
      * @param FeaturedYearsQuery $featuredYearsQuery
      */
-    public function __construct(Connection $dbal, EntityManager $em, FeaturedYearsQuery $featuredYearsQuery)
+    public function __construct(Connection $dbal, FeaturedYearsQuery $featuredYearsQuery)
     {
         $this->dbal = $dbal;
-        $this->em = $em;
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 

@@ -13,12 +13,10 @@
         </service>
         <service id="intracto_secret_santa.pool" class="Intracto\SecretSantaBundle\Query\PoolReportQuery">
             <argument type="service" id="database_connection"></argument>
-            <argument type="service" id="doctrine.orm.entity_manager"></argument>
             <argument type="service" id="intracto_secret_santa.featured_years"></argument>
         </service>
         <service id="intracto_secret_santa.entry" class="Intracto\SecretSantaBundle\Query\EntryReportQuery">
             <argument type="service" id="database_connection"></argument>
-            <argument type="service" id="doctrine.orm.entity_manager"></argument>
             <argument type="service" id="intracto_secret_santa.pool"></argument>
             <argument type="service" id="intracto_secret_santa.featured_years"></argument>
             <argument>%kernel.root_dir%</argument>
