@@ -424,6 +424,22 @@ emails:
 
                 %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Ci-dessous vous trouvez les nouveaux détails.
         btn_updated_party: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits pour cette f&ecirc;te.
+    removed_secret_santa:
+        subject: Découvrez votre nouvelle personne Secret Santa
+        message:
+            html: >
+                Cher(e) %name%,<br/>
+                <br/>
+                Vous &ecirc;tes assigné &agrave; une nouvelle personne comme Secret Santa parce que %owner% a supprimé votre dernier copain de sa f&ecirc;te.<br/>
+                <br/>
+                Cliquez sur le boutton ci-dessous afin de découvrir votre nouvelle personne Secret Santa.
+            txt: >
+                Cher(e) %name%,
+
+                Vous &ecirc;tes assigné &agrave; une nouvelle personne comme Secret Santa parce que %owner% a supprimé votre dernier copain de sa f&ecirc;te.
+
+                Cliquez sur le boutton ci-dessous afin de découvrir votre nouvelle personne Secret Santa.
+        btn_find_out: Découvrez votre nouvelle personne Secret Santa
 flashes:
     manage:
         email_validated: >

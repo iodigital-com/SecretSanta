@@ -316,6 +316,8 @@ class EntryController extends Controller
         $this->em->persist($buddy);
         $this->em->flush();
 
+        $this->mailerService->sendRemovedSecretSantaMail($buddy);
+
         $this->get('session')->getFlashBag()->add(
             'success',
             $this->translator->trans('flashes.remove_participant.success')

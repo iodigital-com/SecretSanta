@@ -469,6 +469,22 @@ emails:
 
                 %owner% has changed some details of the party you're invited to. Below you can find the new details you're friend has provided for you.
         btn_updated_party: Check your buddy and wishlist for this party
+    removed_secret_santa:
+        subject: Find out who your new Secret Santa is
+        message:
+            html: >
+                Dear %name%,<br/>
+                <br/>
+                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.<br/>
+                <br/>
+                Click the link below to find out who your new Secret Santa is.
+            text: >
+                Dear %name%,
+
+                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.
+
+                Click the link below to find out who your new Secret Santa is.
+        btn_find_out: Find out your new person
     forgot_link:
         text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
         subject: 'Resend activation mail'

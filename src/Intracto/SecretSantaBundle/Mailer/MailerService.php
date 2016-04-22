@@ -465,4 +465,32 @@ class MailerService
             )
         );
     }
+
+    public function sendRemovedSecretSantaMail(Entry $entry)
+    {
+        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->mailer->send(\Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.removed_secret_santa.subject'))
+            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setTo($entry->getEmail(), $entry->getName())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:removedsecretsanta.html.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:removedsecretsanta.txt.twig',
+                    [
+                        'entry' => $entry,
+                    ]
+                ),
+                'text/plain'
+            )
+        );
+    }
 }
