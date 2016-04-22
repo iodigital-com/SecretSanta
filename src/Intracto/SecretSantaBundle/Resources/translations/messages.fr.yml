@@ -197,7 +197,7 @@ static:
             <p>Les participants reçoivent un lien vers une page où ils peuvent découvrir leur copain secret. Ils peuvent également ajouter leur propre liste de souhaits et voir celle de leur ami.</p>
 
             <a name="reuse"></a><h2>Puis-je réutiliser une liste?</h2>
-            <p>Il est impossible de réutiliser automatiquement la liste de l'année passée pour en recréer une nouvelle. <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank">Ceci est une fonctionnalité sur demande</a>, commentez à propos de cette fonctionnalité si elle vous intéresse (nous préférons un pull request).</p>
+            <p>Il est possible de réutiliser la liste de l'année passée pour en recréer une nouvelle. Chaque année on enverra des e-mails qui contiennent un lien avec lequel vous pouvez recréer une nouvelle liste. Vous pouvez adapter cette liste selon vos propre go&ucirc;t avant de créer une nouvelle.</p>
 
             <a name="manage"></a><h2>Comment puis-je gérer ma Secret Santa party et les participants?</h2>
             <p>L'e-mail de confirmation envoyé à l'administrateur contient un lien vers une page permettant de gérer la liste.</p>
@@ -206,14 +206,15 @@ static:
             <p>Si vous perdez votre e-mail d'activation (contenant le lien vers la page d'administration), contactez-nous à partir de l'adresse e-mail utilisée lors de votre inscription et nous vous enverrons à nouveau le lien. Il y a une <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">demande de fonctionnalité</a> afin d'automatiser cela.</p>
 
             <a name="changes"></a><h2>Puis-je ajouter ou retirer quelqu'un?</h2>
-            <p>Lorsque vous créez un événement, chaque participant est affecté à un autre. Il est donc impossible d'ajouter ou retirer quelqu'un. Enfin, nous pourrions, mais il faudrait alors changer toutes les attributions et cela pourrait prêter à confusion pour les participants. Utilisez la page d'administration et soyez un peu créatif afin de régler votre problème manuellement.</p>
+            <p>Il est possible d'ajouter ou retirer une personne après de créer votre evenement. Sur votre page d'administration vous trouvez une bouton avec laquelle vous pouvez retirer quelqu'un ou une formulaire avec laquelle vous pouvez ajouter quelqu'un.
+            Il y a qu'une exception: s'il l'administrateur a exclu des combinaisons avant de créer l'événement vous ne pouvez pas ajouter ou retirer des personnes. Si nous le permettons, on court le risque que des combinaisons exclus se produisent, c'est pour ça qu'on a decidé de ne pas permettre cette fonctionalité en ce cas.</p>
 
             <a href="email"></a><h2>Puis-je renvoyer un e-mail?</h2>
             <p>Si un participant n'a pas reçu l'e-mail contenant le nom de la personne à qui il doit envoyer un cadeau, l'administrateur peut renvoyer un e-mail pour ce participant depuis la page d'administration. Vous pouvez également changer l'adresse e-mail d'un participant à partir de cette même page et lui renvoyer un e-mail.<br><br>
             Si vous ne recevez pas l'e-mail d'activation, vérifier vos courriers indésirables (SPAM). Vous devriez recevoir cet e-mail après peu de temps. Si vous n'avez toujours pas reçu l'e-mail d'activation, vous devez alors créer à nouvelle votre liste.</p>
 
-            <a href="combinations"></a><h2>Puis-je voir toutes les combinaisons?</h2>
-            <p>Vous pouvez demander à recevoir toutes les attributions depuis la page de gestion de votre liste. Mais cela va gâcher le secret de votre Secret Santa party. C'est pourquoi nous avons ajouté un indicateur informant les participants que l'administrateur connaît toutes les combinaisons lorsqu'il effectue cette demande.</p>
+            <a href="combinations"></a><h2>Puis-je voir toutes les combinaisons / listes de souhaits?</h2>
+            <p>Vous pouvez demander à recevoir toutes les attributions / listes de souhaits depuis la page de gestion de votre liste. Mais cela va gâcher le secret de votre Secret Santa party. C'est pourquoi nous avons ajouté un indicateur informant les participants que l'administrateur connaît toutes les combinaisons / listes de souhaits lorsqu'il effectue cette demande.</p>
 
             <a href="delete"></a><h2>Puis-je supprimer ma liste?</h2>
             <p>Bien sûr que vous pouvez. Rendez-vous sur la page de gestion de votre liste et utilisez l'option de suppression. Toutes les données liées à votre liste seront supprimées de notre système.</p>
