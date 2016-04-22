@@ -26,6 +26,7 @@ class EntryMailQuery
     public function findAllToRemindOfEmptyWishlist()
     {
         $today = new \DateTime();
+        $oneHourAgo = new \DateTime('now - 1 hour');
         $oneWeekAgo = new \DateTime('now - 1 week');
         $twoWeeksAgo = new \DateTime('now - 2 weeks');
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
@@ -39,10 +40,12 @@ class EntryMailQuery
               AND pool.eventdate > :today
               AND pool.eventdate < :sixWeeksFromNow
               AND pool.sentdate < :twoWeeksAgo
+              AND (entry.wishlistUpdatedTime IS NULL OR entry.wishlistUpdatedTime < :oneHourAgo)
               AND (entry.emptyWishlistReminderSentTime IS NULL OR entry.emptyWishlistReminderSentTime < :oneWeekAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
+        $query->setParameter('oneHourAgo', $oneHourAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('oneWeekAgo', $oneWeekAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
