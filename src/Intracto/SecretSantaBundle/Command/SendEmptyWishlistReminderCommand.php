@@ -33,15 +33,20 @@ class SendEmptyWishlistReminderCommand extends ContainerAwareCommand
         /** @var EntityManager $em */
         $em = $container->get('doctrine')->getManager();
         $entryMailQuery = $container->get('intracto_secret_santa.entry_mail');
+        $wishlistMailQuery = $container->get('intracto_secret_santa.wishlist_mail');
         $mailerService = $container->get('intracto_secret_santa.mail');
         $emptyWishlists = $entryMailQuery->findAllToRemindOfEmptyWishlist();
         $timeNow = new \DateTime();
 
         foreach ($emptyWishlists as $entry) {
-            $mailerService->sendWishlistReminderMail($entry);
+            $itemCount = $wishlistMailQuery->countWishlistItemsOfParticipant($entry);
 
-            $entry->setEmptyWishlistReminderSentTime($timeNow);
-            $em->persist($entry);
+            if ($itemCount[0]['wishlistItemCount'] == 0) {
+                $mailerService->sendWishlistReminderMail($entry);
+
+                $entry->setEmptyWishlistReminderSentTime($timeNow);
+                $em->persist($entry);
+            }
         }
 
         $em->flush();

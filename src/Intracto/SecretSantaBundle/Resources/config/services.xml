@@ -56,5 +56,8 @@
         <service id="intracto_secret_santa.pool_mail" class="Intracto\SecretSantaBundle\Query\PoolMailQuery">
             <argument type="service" id="doctrine.orm.entity_manager"></argument>
         </service>
+        <service id="intracto_secret_santa.wishlist_mail" class="Intracto\SecretSantaBundle\Query\WishlistMailQuery">
+            <argument type="service" id="database_connection"></argument>
+        </service>
     </services>
 </container>
