@@ -121,7 +121,7 @@ class Pool
      *
      * @ORM\Column(name="details_updated", type="boolean")
      */
-    private $detailsUpdated;
+    private $detailsUpdated = false;
 
     /**
      * @var \DateTime
