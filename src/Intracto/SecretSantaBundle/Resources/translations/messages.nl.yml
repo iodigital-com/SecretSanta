@@ -70,6 +70,8 @@ manage:
     view_entry: Deelnemer bekijken
     tip: Tip
     come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
+    watch_out: Opgelet
+    modify_list: Het toevoegen en verwijderen van deelnemers is enkel mogelijk tot een week voordat jouw feestje doorgaat.
     save: Bewaar
 
 delete:
