@@ -230,8 +230,7 @@ static:
             <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
 
             <a name="reuse"></a><h2>Can I reuse a list?</h2>
-            <p>You can't automatically reuse last year's list to create a new list this year.
-            <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank">This is a feature request</a>, comment on that issue if you want this (we prefer a PR).</p>
+            <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.</p>
 
             <a name="manage"></a><h2>How do I manage my party / participants?</h2>
             <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
@@ -240,15 +239,15 @@ static:
             <p>If you lost your activation e-mail (which contains the link to the admin page), fill in the list administrator e-mail address on <a href="http://www.secretsantaorganizer.com/forgot-link">this page</a> and we will send you the link again.</p>
 
             <a name="changes"></a><h2>Can I add or remove people?</h2>
-            <p>When creating an event, all participants are assigned to each other so we can't just add or remove someone. Well, we could but it would involve changing the current pairs and possibly confusing people in the process.
-            Use the admin page and be a little bit creative to solve your problem manually.</p>
+            <p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event.
+            Allowing this would mess up the system and people might still be assigned to their excluded buddy, this made us to decide to prevent adding people if excluded combinations are present.</p>
 
             <a href="email"></a><h2>Can I resend an email?</h2>
             <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
             If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
 
-            <a href="combinations"></a><h2>Can I look into all combinations?</h2>
-            <p>You can request the combinations from the list management page. But it sort of spoils the "secret" part of our Secret Santa. That's why we added an indicator to all participants' buddy pages that all combinations were exposed to the list admin when you actually performed the request :-)</p>
+            <a href="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
+            <p>You can request the combinations / wishlists from the list management page. But it sort of spoils the "secret" part of our Secret Santa. That's why we added indicators to all participants' buddy pages that all combinations / wishlists were exposed to the list admin when you actually performed the request :-)</p>
 
             <a href="delete"></a><h2>Can I delete my list?</h2>
             <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
