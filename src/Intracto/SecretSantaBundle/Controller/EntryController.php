@@ -265,8 +265,23 @@ class EntryController extends Controller
      * @Route("/entry/remove/{listUrl}/{entryId}", name="entry_remove")
      * @Template()
      */
-    public function removeEntryFromPoolAction($listUrl, $entryId)
+    public function removeEntryFromPoolAction(Request $request, $listUrl, $entryId)
     {
+        $correctCsrfToken = $this->isCsrfTokenValid(
+            'delete_participant',
+            $request->get('csrf_token')
+        );
+
+        $correctConfirmation = ($request->get('confirmation') === $this->translator->trans('remove_participant.phrase_to_type'));
+        if ($correctConfirmation === false || $correctCsrfToken === false) {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->translator->trans('flashes.remove_participant.wrong')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
+
         $entry = $this->entryRepository->find($entryId);
         $pool = $entry->getPool()->getEntries();
 

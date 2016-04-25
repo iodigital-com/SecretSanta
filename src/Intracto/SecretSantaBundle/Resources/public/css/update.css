@@ -508,6 +508,8 @@ ul.form-errors {
 
 .link_remove_participant {
     padding: 0;
+    background: none;
+    color: #b3141c;
 }
 
 .manage-page-form .form-group {

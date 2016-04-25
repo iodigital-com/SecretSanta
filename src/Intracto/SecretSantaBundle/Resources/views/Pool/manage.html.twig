@@ -53,10 +53,9 @@
                                      alt="{{ 'manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
-                        <a href="{{ path('entry_remove', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}"
-                           class="btn btn-mini link_remove_participant">
+                        <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}">
                             <i class="fa fa-times"></i>
-                        </a>
+                        </button>
                     </td>
                 </tr>
             {% endfor %}
@@ -175,6 +174,28 @@
                 <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'btn.cancel'|trans }}</button>
             </form>
         </div>
+
+        <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
+            <h3>{{ 'remove_participant.title'|trans|raw }}</h3>
+
+            {% set phraseToType = 'remove_participant.phrase_to_type'|trans %}
+            {{ 'remove_participant.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            <br>
+            <form id="delete-participant-form" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
+                <input type="text" name="confirmation" id="delete-participant-confirmation" autocomplete="off"
+                       onkeyup="if ($(this).val() == '{{ phraseToType }}') $('#btn_remove_participant_confirmation').removeAttr('disabled');"
+                       class="form-control">
+                <br>
+                <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
+                        id="btn_remove_participant_confirmation" disabled>
+                    {{ 'btn.remove_participant_confirm'|trans|raw }}
+                </button>
+                <button type="reset" class="btn btn-danger btn_remove_participant_cancel"
+                        >{{ 'btn.cancel'|trans }}</button>
+            </form>
+        </div>
+
         <div id="update-party-details" class="alert alert-warning manage-page-form"
              {% if (form_errors(updatePoolDetailsForm.eventdate)) or (form_errors(updatePoolDetailsForm.amount)) or (form_errors(updatePoolDetailsForm.location)) %}style="display: block;"
              {% else %}style="display: none"{% endif %}>
@@ -270,6 +291,20 @@
                 $('#btn_update').attr('disabled', false).focus();
             });
 
+            $('.link_remove_participant').click(function(e) {
+                $('#delete-participant').show();
+                $('.link_remove_participant').attr('disabled', true);
+                $('#delete-participant-confirmation').focus();
+                var listUrl = '{{ pool.listUrl }}';
+                var entryId = $(this).data('entry');
+                attachAction(listUrl, entryId);
+            });
+
+            $('.btn_remove_participant_cancel').click(function (e) {
+                $('#delete-participant').hide();
+                $('.link_remove_participant').attr('disabled', false);
+            });
+
             if (Modernizr.inputtypes.date == true) {
                 $("#intracto_secretsantabundle_updatepooldetailstype_eventdate").click(function (e) {
                     $(this).datepicker({dateFormat: 'dd-mm-yy'});
@@ -288,6 +323,13 @@
                     '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
                     '</form>'
             );
+        }
+
+        function attachAction(listUrl, entryId) {
+            var url = '{{ path('entry_remove', {'listUrl': 'listUrl', 'entryId': 'entryId'}) }}';
+            url = url.replace('listUrl', listUrl);
+            url = url.replace('entryId', entryId);
+            $('#delete-participant-form').attr('action', url);
         }
     </script>
 {% endblock %}
