@@ -145,6 +145,19 @@ add_participant:
             <br>
             El nuevo participante ser&aacute; adjudicado un amigote Secret Santa inmediato y recibirá una invitaci&oacute;n por correo electr&oacute;nico.<br>
         </p>
+remove_participant:
+    title: Expulsar este participante de mi lista
+    body: >
+        <p>
+            ¿Estás COMPLETAMENTE seguro?<br>
+            <br>
+            Expulsar este participante causa consecuencias permanentes. No es possible de recuperar las atribuciones actuales y el participante serà borrado inmediatamente.<br>
+            <br>
+            Tiene en cuente que alguien ya puede ha comprado un regalo por este participante.<br>
+            <br>
+            Si estás seguro de que puedes borrar este participante, escribe "<b>%phrase_to_type</b>" debajo para confirmar.<br>
+        </p>
+    phrase_to_type: expulsar este participante
 static:
     report:
         max_results: Resultados máx.
@@ -188,6 +201,8 @@ btn:
     pool_update: Envia una actualizaci&oacute;n a los participantes
     add_participant: A&ntilde;adir un participante a la fiesta
     add_participant_confirm: A&ntilde;nadir este participante
+    remove_participant_confirm: Expulsar este participante
+    updated_party: Adaptar los detalles de la fiesta
     cancel: Cancelar
 emails:
     sender: Santa Claus
@@ -378,6 +393,7 @@ flashes:
         danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.
         warning: <h4>Oops</h4> Organizas la fiesta, no puedes expulsarte. Si quieres dejar la fiesta, haz clic en el enlace abajo para borrar la lista Secret Santa.
         excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
+        wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
     add_participant:
         success: <h4>¡A&ntilde;adido!</h4> Participante a&ntilde;adido a tu fiesta de éxito.
         danger: <h4>Oops</h4> Ha ocurrido un error al a&ntilde;adir el participante. Por favor, inténtalo otra vez.

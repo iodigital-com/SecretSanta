@@ -148,6 +148,19 @@ add_participant:
             <br>
             De nieuwe deelnemer zal meteen een Secret Santa maatje toegewezen krijgen en een uitnodiging ontvangen via mail.<br>
         </p>
+remove_participant:
+    title: Verwijder deze deelnemer uit je lijst
+    body: >
+        <p>
+            Weet je het ECHT zeker?<br>
+            <br>
+            Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddelijk verwijderd worden.<br>
+            <br>
+            Hou er ook rekening mee dat er iemand misschien al een geschenk heeft gekocht voor deze deelnemer.<br>
+            <br>
+            Als je echt zeker bent dat je deze deelnemer wilt verwijderen, typ dan "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+        </p>
+    phrase_to_type: verwijder deze deelnemer
 updated_party:
     title: Bewerk de details van jouw Secret Santa feestje
     body: >
@@ -308,6 +321,7 @@ btn:
     pool_update: Verstuur update naar alle deelnemers
     add_participant: Voeg een deelnemer aan je feestje
     add_participant_confirm: Voeg deze deelnemer toe
+    remove_participant_confirm: Verwijder deze deelnemer
     updated_party: Bewerk de details van dit feestje
     cancel: Annuleren
 emails:
@@ -503,6 +517,7 @@ flashes:
         danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
         warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
         excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
+        wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
     add_participant:
         success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
         danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.

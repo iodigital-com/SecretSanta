@@ -146,6 +146,19 @@ add_participant:
             <br>
             Le nouveau participant sera assigné un copain Secret Santa immédiatement et recevra une invitation par mail.
         </p>
+remove_participant:
+    title: Supprimez ce participant de ma liste
+    body: >
+        <p>
+            Etes-vous ABSOLUMENT certain?<br>
+            <br>
+            Supprimer ce participant cause de conséquences permanentes. Il est impossible de remettre les attributions actuelles et le participants sera supprimé imméadiatement.<br>
+            <br>
+            Tenez compte avec la possibilité que quelqu'un peut avoir déjà acheter un cadeau pour ce participant.<br>
+            <br>
+            Si vous êtes sûr que vous voulez supprimer ce participant, entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br>
+        </p>
+    phrase_to_type: supprimer ce participant
 static:
     privacy_policy:
         title: Protection vie privée
@@ -280,6 +293,7 @@ btn:
     pool_update: Envoie une mise &agrave; jour &agrave; tous les participants
     add_participant: Ajouter un participant à la f&ecirc;te
     add_participant_confirm: Ajouter ce participant
+    remove_participant_confirm: Supprimer ce participant
     updated_party: Mis &agrave; jour les détails de votre f&ecirc;te
     cancel: Annuler
 emails:
@@ -469,6 +483,7 @@ flashes:
         danger: <h4>Oops</h4> On ne peut pas supprimer ce participant, votre f&ecirc;te nécessite au moins 3 participants.
         warning: <h4>Oops</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous enlever. Si vous pouvez quitter la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer la liste Secret Santa.
         excluded_entries: <h4>Oops</h4> On ne peut pas supprimer ce participant, vous avez utiliser des exclusions en creant cette f&ecirc;te, supprimer un participant peut causer des probl&egrave;mes et pour ça cette fonctionnalit&eacute; n'est pas disponible pour cette f&ecirc;te.
+        wrong: <h4>Oops</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas avec la phrase que nous gardons à l'esprit.
     add_participant:
         success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
         danger: <h4>Oops</h4> Une erreur se passait en ajouter un participant. S'il vous pla&icirc;t, essayez encore une fois.

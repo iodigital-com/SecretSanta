@@ -151,6 +151,19 @@ add_participant:
             <br>
             The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
         </p>
+remove_participant:
+    title: Delete this participant from your list
+    body: >
+        <p>
+            Are you ABSOLUTELY sure?<br>
+            <br>
+            Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
+            <br>
+            Somebody might have bought them a present already.<br>
+            <br>
+            If you're really sure you want delete this participant, type "<b>%phrase_to_type%</b>" below to confirm.<br>
+        </p>
+    phrase_to_type: delete this participant
 updated_party:
     title: Update the details of your Secret Santa party
     body: >
@@ -325,6 +338,7 @@ btn:
     pool_update: Send party update to participants
     add_participant: Add participant to party
     add_participant_confirm: Add this participant
+    remove_participant_confirm: Remove this participant
     updated_party: Update your party details
     cancel: Cancel
 emails:
@@ -522,6 +536,7 @@ flashes:
         danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
         warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
         excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+        wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
     add_participant:
         success: <h4>Added!</h4> Participant succesfully added to your party.
         danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
