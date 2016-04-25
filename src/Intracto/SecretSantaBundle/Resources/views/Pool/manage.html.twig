@@ -53,7 +53,7 @@
                                      alt="{{ 'manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
-                        <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}">
+                        <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}" {% if 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}>
                             <i class="fa fa-times"></i>
                         </button>
                     </td>
@@ -64,6 +64,9 @@
 
         <div class="alert alert-info">
             <strong>{{ 'manage.tip'|trans }}</strong> {{ 'manage.come_back'|trans }}
+        </div>
+        <div class="alert alert-warning">
+            <strong>{{ 'manage.watch_out'|trans }}</strong> {{ 'manage.modify_list'|trans }}
         </div>
 
         <button id="btn_delete" class="btn btn-primary manage_btn"><i
@@ -76,7 +79,7 @@
            href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}"><i
                     class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
-                {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) %}disabled{% endif %}><i
+                {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) or 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}><i
                     class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_participant'|trans|raw }}</button>
         <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> {{ 'btn.updated_party'|trans|raw }}
         </button>

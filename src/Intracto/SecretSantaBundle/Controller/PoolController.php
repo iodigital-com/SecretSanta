@@ -262,6 +262,9 @@ class PoolController extends Controller
             $this->mailerService->sendSecretSantaMailsForPool($this->pool);
         }
 
+        $eventDate = date_format($this->pool->getEventdate(), 'Y-m-d');
+        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
+
         $newEntry = new Entry();
         $updatePool = $this->pool;
 
@@ -274,6 +277,15 @@ class PoolController extends Controller
 
             if ($addEntryForm->isSubmitted()) {
                 if ($addEntryForm->isValid()) {
+                    if (date('Y-m-d') > $oneWeekFromEventDate) {
+                        $this->get('session')->getFlashBag()->add(
+                            'warning',
+                            $this->translator->trans('flashes.modify_list.warning')
+                        );
+
+                        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+                    }
+
                     $newEntry->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
                     $newEntry->setPool($this->pool);
 
@@ -299,7 +311,7 @@ class PoolController extends Controller
                         $this->translator->trans('flashes.add_participant.success')
                     );
 
-                    return $this->redirect($this->generateUrl('pool_manage', array('listUrl' => $listUrl)));
+                    return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
                 } else {
                     $this->get('session')->getFlashBag()->add(
                         'danger',
@@ -337,6 +349,7 @@ class PoolController extends Controller
             'addEntryForm' => $addEntryForm->createView(),
             'updatePoolDetailsForm' => $updatePoolDetailsForm->createView(),
             'pool' => $this->pool,
+            'oneWeekFromEventDate' => $oneWeekFromEventDate,
             'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             'expose_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_pool'),
             'expose_pool_wishlists_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_wishlists'),

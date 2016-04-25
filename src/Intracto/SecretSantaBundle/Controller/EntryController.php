@@ -285,6 +285,17 @@ class EntryController extends Controller
         $entry = $this->entryRepository->find($entryId);
         $pool = $entry->getPool()->getEntries();
 
+        $eventDate = date_format($entry->getPool()->getEventdate(), 'Y-m-d');
+        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
+        if (date('Y-m-d') > $oneWeekFromEventDate) {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                $this->translator->trans('flashes.modify_list.warning')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
+
         if (count($pool) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
