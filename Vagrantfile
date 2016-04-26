@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         if OS.windows?
             secretsanta_config.vm.synced_folder ".", "/vagrant"
         else
-            secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+            secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc', 'nolock', 'actimeo=2']
         end
 
         secretsanta_config.vm.network "private_network", ip: "192.168.33.10"
