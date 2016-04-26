@@ -35,7 +35,7 @@ create:
         title: Ajoutez un message personnel
         description: Ajoutez un message personnel pour les participant.
     import:
-        instructions: Ajoutez plusiers personnes à votre événement d'un coup. La seule chose qu'il est nécessaire est un fichier csv avec 2 colonnes (nom et email). Traînez-vous votre fichier csv vers le panneau ci-dessous et vos amis ou collègues seront ajoutés à votre événement d'une façon rapide et facile.
+        instructions: Ajoutez plusiers personnes à votre événement d'un coup. Téléchargez <a href="%downloadPath%">ce fichier CSV</a> et ajoutez les noms et emails des personnes que vous voulez inviter. Si vous êtes prêt, vous pouvez traîner votre fichier CSV vers le panneau ci-dessous et vos amis ou collègues seront ajoutés à votre fête d'une façon rapide et facile.
         too_many_files: Veuillez télécharger qu'un fichier.
         wrong_format: Le fichier que vous essayez de télécharger n'a pas le format désirable (csv ou txt).
 exclude:
@@ -279,7 +279,7 @@ btn:
     add_person: Ajouter une personne
     remove_person: Supprimer
     import_persons:
-        open: Ajouter plusiers personnes
+        open: Ajouter plusiers personnes avec CSV
         do: Ajouter à votre événement
     create_event: Créer votre événement
     create_new_list: Créer une nouvelle liste Secret Santa !
