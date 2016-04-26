@@ -137,6 +137,8 @@ entry:
         title: Votre liste de souhaits
         description: Afin d'aider votre Père-Noël Secret, vous pouvez laisser une liste de souhaits ici. Nos gnomes prendront soin de la communiquer à votre Père-Noël Secret. Vous pouvez réorganiser la liste en faisant glisser les éléments.
     wishlist_empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
+    watch_out: Attention
+    modify_list: L'organisateur de cette fête peut ajouter ou supprimer des personnes jusqu'à %oneWeekFromEventDate%, tenez compte de ça peut dire que vous pouvez encore être assigné à un autre copain Secret Santa. Peut-être c'est mieux attendre d'acheter un cadeau jusqu'à vous êtes absolument sûre que votre copain actuel est vraiment votre copain Secret Santa.
 poke:
     poke: Stimule
     poke_sentence: votre copain Secret Santa de remplir leur liste de souhaits.

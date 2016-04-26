@@ -166,12 +166,15 @@ class EntryController extends Controller
         }
 
         $secret_santa = $this->entry->getEntry();
+        $eventDate = date_format($this->entry->getPool()->getEventdate(), 'Y-m-d');
+        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
 
         if (!$request->isXmlHttpRequest()) {
             return [
                 'entry' => $this->entry,
                 'form' => $form->createView(),
                 'secret_santa' => $secret_santa,
+                'oneWeekFromEventDate' => $oneWeekFromEventDate,
             ];
         }
     }
