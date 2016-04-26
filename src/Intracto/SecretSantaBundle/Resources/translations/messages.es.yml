@@ -72,7 +72,7 @@ manage:
     tip: Consejo
     come_back: Siempre puedes volver a esta página para asegurarte de que todo el mundo ha comprobado su buzón de correo electrónico.
     watch_out: Atención
-    modify_list: Añadir y expulsar participantas serà solamente possible hasta una semana antes de tu fiesta.
+    modify_list: Añadir participantes a la fiesta o expulsar estos participantas serà solamente possible hasta %oneWeekFromEventDate%.
     save: Guardar
 
 delete:

@@ -71,7 +71,7 @@ manage:
     tip: Astuce
     come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
     watch_out: Attention
-    modify_list: Ajouter et supprimer des participants sera seulement possible jusqu'à une semaine avant de votre fête.
+    modify_list: Ajouter des participants à cette fête ou supprimer des participants sera seulement possible jusqu'à %oneWeekFromEventDate%.
     save: Enregistrer
 
 delete:

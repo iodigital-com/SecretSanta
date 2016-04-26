@@ -71,7 +71,7 @@ manage:
     tip: Tip
     come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
     watch_out: Opgelet
-    modify_list: Het toevoegen en verwijderen van deelnemers is enkel mogelijk tot een week voordat jouw feestje doorgaat.
+    modify_list: Het toevoegen van deelnemers aan dit feestje of het verwijderen ervan is enkel mogelijk tot en met %oneWeekFromEventDate%.
     save: Bewaar
 
 delete:

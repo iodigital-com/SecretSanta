@@ -75,7 +75,7 @@ manage:
     tip: Tip
     come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
     watch_out: Watch out
-    modify_list: Adding and removing people will be only possible until one week before your party.
+    modify_list: Adding people to this party or removing people from this party will be only possible until %oneWeekFromEventDate%.
     save: Save
 
 delete:
