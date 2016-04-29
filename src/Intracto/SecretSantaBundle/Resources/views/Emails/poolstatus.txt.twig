@@ -1,11 +1,11 @@
-s{{ 'emails.poolstatus.message.html'|trans({'%owner%': pool.getOwnerName}) }}
+{{ 'emails.poolstatus.message.html'|trans({'%owner%': pool.getOwnerName}) }}
 
 {{ 'label.name'|trans }} >> {{ 'label.email' }} >> {{ 'label.confirmed' }} >> {{ 'label.wishlist_filled' }}
 {% for entry in pool.entries %}
     {{ entry.name }} >> {{ entry.email }} >> {% if entry.viewdate %}{{ 'manage.yes'|trans }}{% else %}{{ 'manage.not_yet'|trans }}{% endif %} >> {% if entry.wishlistItems is not empty %}{{ 'manage.yes'|trans }}{% else %}{{ 'manage.not_yet'|trans }}{% endif %}
 {% endfor %}
 
-{{ 'emails.poolstatus_btn_poolstatus'|trans }}:
+{{ 'emails.poolstatus.btn_poolstatus'|trans }}:
 {{ url('pool_manage', { 'listUrl': pool.listurl }) }}
 
 {{ 'emails.base.created_by'|trans }} http://www.intracto.com

@@ -70,6 +70,8 @@ manage:
     view_entry: Voir l'entrée
     tip: Astuce
     come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
+    watch_out: Attention
+    modify_list: Ajouter des participants à cette fête ou supprimer des participants sera seulement possible jusqu'à %oneWeekFromEventDate%.
     save: Enregistrer
 
 delete:
@@ -135,6 +137,8 @@ entry:
         title: Votre liste de souhaits
         description: Afin d'aider votre Père-Noël Secret, vous pouvez laisser une liste de souhaits ici. Nos gnomes prendront soin de la communiquer à votre Père-Noël Secret. Vous pouvez réorganiser la liste en faisant glisser les éléments.
     wishlist_empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
+    watch_out: Attention
+    modify_list: L'organisateur de cette fête peut ajouter ou supprimer des personnes jusqu'à %oneWeekFromEventDate%, tenez compte de ça peut dire que vous pouvez encore être assigné à un autre copain Secret Santa. Peut-être c'est mieux attendre d'acheter un cadeau jusqu'à vous êtes absolument sûre que votre copain actuel est vraiment votre copain Secret Santa.
 poke:
     poke: Stimule
     poke_sentence: votre copain Secret Santa de remplir leur liste de souhaits.
@@ -146,6 +150,19 @@ add_participant:
             <br>
             Le nouveau participant sera assigné un copain Secret Santa immédiatement et recevra une invitation par mail.
         </p>
+remove_participant:
+    title: Supprimez ce participant de ma liste
+    body: >
+        <p>
+            Etes-vous ABSOLUMENT certain?<br>
+            <br>
+            Supprimer ce participant cause de conséquences permanentes. Il est impossible de remettre les attributions actuelles et le participants sera supprimé imméadiatement.<br>
+            <br>
+            Tenez compte avec la possibilité que quelqu'un peut avoir déjà acheter un cadeau pour ce participant.<br>
+            <br>
+            Si vous êtes sûr que vous voulez supprimer ce participant, entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br>
+        </p>
+    phrase_to_type: supprimer ce participant
 static:
     privacy_policy:
         title: Protection vie privée
@@ -280,6 +297,7 @@ btn:
     pool_update: Envoie une mise &agrave; jour &agrave; tous les participants
     add_participant: Ajouter un participant à la f&ecirc;te
     add_participant_confirm: Ajouter ce participant
+    remove_participant_confirm: Supprimer ce participant
     updated_party: Mis &agrave; jour les détails de votre f&ecirc;te
     cancel: Annuler
 emails:
@@ -424,6 +442,22 @@ emails:
 
                 %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Ci-dessous vous trouvez les nouveaux détails.
         btn_updated_party: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits pour cette f&ecirc;te.
+    removed_secret_santa:
+        subject: Découvrez votre nouvelle personne Secret Santa
+        message:
+            html: >
+                Cher(e) %name%,<br/>
+                <br/>
+                Vous &ecirc;tes assigné &agrave; une nouvelle personne comme Secret Santa parce que %owner% a supprimé votre dernier copain de sa f&ecirc;te.<br/>
+                <br/>
+                Cliquez sur le boutton ci-dessous afin de découvrir votre nouvelle personne Secret Santa.
+            txt: >
+                Cher(e) %name%,
+
+                Vous &ecirc;tes assigné &agrave; une nouvelle personne comme Secret Santa parce que %owner% a supprimé votre dernier copain de sa f&ecirc;te.
+
+                Cliquez sur le boutton ci-dessous afin de découvrir votre nouvelle personne Secret Santa.
+        btn_find_out: Découvrez votre nouvelle personne Secret Santa
 flashes:
     manage:
         email_validated: >
@@ -453,6 +487,7 @@ flashes:
         danger: <h4>Oops</h4> On ne peut pas supprimer ce participant, votre f&ecirc;te nécessite au moins 3 participants.
         warning: <h4>Oops</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous enlever. Si vous pouvez quitter la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer la liste Secret Santa.
         excluded_entries: <h4>Oops</h4> On ne peut pas supprimer ce participant, vous avez utiliser des exclusions en creant cette f&ecirc;te, supprimer un participant peut causer des probl&egrave;mes et pour ça cette fonctionnalit&eacute; n'est pas disponible pour cette f&ecirc;te.
+        wrong: <h4>Oops</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas avec la phrase que nous gardons à l'esprit.
     add_participant:
         success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
         danger: <h4>Oops</h4> Une erreur se passait en ajouter un participant. S'il vous pla&icirc;t, essayez encore une fois.

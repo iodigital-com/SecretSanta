@@ -74,6 +74,8 @@ manage:
     view_entry: View entry
     tip: Tip
     come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
+    watch_out: Watch out
+    modify_list: Adding people to this party or removing people from this party will be only possible until %oneWeekFromEventDate%.
     save: Save
 
 delete:
@@ -140,6 +142,8 @@ entry:
         title: Your wishlist
         description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
     wishlist_empty: Your wishlist is empty. Add something!
+    watch_out: Watch out
+    modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
 poke:
     poke: Poke
     poke_sentence: your buddy to let him/her know their wishlist is empty.
@@ -151,6 +155,19 @@ add_participant:
             <br>
             The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
         </p>
+remove_participant:
+    title: Delete this participant from your list
+    body: >
+        <p>
+            Are you ABSOLUTELY sure?<br>
+            <br>
+            Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
+            <br>
+            Somebody might have bought them a present already.<br>
+            <br>
+            If you're really sure you want delete this participant, type "<b>%phrase_to_type%</b>" below to confirm.<br>
+        </p>
+    phrase_to_type: delete this participant
 updated_party:
     title: Update the details of your Secret Santa party
     body: >
@@ -325,6 +342,7 @@ btn:
     pool_update: Send party update to participants
     add_participant: Add participant to party
     add_participant_confirm: Add this participant
+    remove_participant_confirm: Remove this participant
     updated_party: Update your party details
     cancel: Cancel
 emails:
@@ -469,6 +487,22 @@ emails:
 
                 %owner% has changed some details of the party you're invited to. Below you can find the new details you're friend has provided for you.
         btn_updated_party: Check your buddy and wishlist for this party
+    removed_secret_santa:
+        subject: Find out who your new Secret Santa is
+        message:
+            html: >
+                Dear %name%,<br/>
+                <br/>
+                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.<br/>
+                <br/>
+                Click the link below to find out who your new Secret Santa is.
+            text: >
+                Dear %name%,
+
+                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.
+
+                Click the link below to find out who your new Secret Santa is.
+        btn_find_out: Find out your new person
     forgot_link:
         text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
         subject: 'Resend activation mail'
@@ -506,9 +540,12 @@ flashes:
         danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
         warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
         excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+        wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
     add_participant:
         success: <h4>Added!</h4> Participant succesfully added to your party.
         danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
+    modify_list:
+        warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
     wishlist:
         empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
         added: <h4>Added!</h4> Item succesfully added to your wishlist.

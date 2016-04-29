@@ -70,6 +70,8 @@ manage:
     view_entry: Deelnemer bekijken
     tip: Tip
     come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
+    watch_out: Opgelet
+    modify_list: Het toevoegen van deelnemers aan dit feestje of het verwijderen ervan is enkel mogelijk tot en met %oneWeekFromEventDate%.
     save: Bewaar
 
 delete:
@@ -137,6 +139,8 @@ entry:
         title: Jouw verlanglijstje
         description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
     wishlist_empty: Je verlanglijst is leeg. Voeg iets toe!
+    watch_out: Opgelet
+    modify_list: The organisator van dit feestje kan mensen toevoegen en verwijderen tot en met %oneWeekFromEventDate%, hou er rekening mee dat dit ervoor zou kunnen zorgen dat je alsnog een ander maatje krijgt toegewezen. Misschien wacht je beter met het kopen van een cadeautje totdat je er zeker van bent dat dit effectief jouw Secret Santa maatje is.
 poke:
     poke: Por
     poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
@@ -148,6 +152,19 @@ add_participant:
             <br>
             De nieuwe deelnemer zal meteen een Secret Santa maatje toegewezen krijgen en een uitnodiging ontvangen via mail.<br>
         </p>
+remove_participant:
+    title: Verwijder deze deelnemer uit je lijst
+    body: >
+        <p>
+            Weet je het ECHT zeker?<br>
+            <br>
+            Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddelijk verwijderd worden.<br>
+            <br>
+            Hou er ook rekening mee dat er iemand misschien al een geschenk heeft gekocht voor deze deelnemer.<br>
+            <br>
+            Als je echt zeker bent dat je deze deelnemer wilt verwijderen, typ dan "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+        </p>
+    phrase_to_type: verwijder deze deelnemer
 updated_party:
     title: Bewerk de details van jouw Secret Santa feestje
     body: >
@@ -308,6 +325,7 @@ btn:
     pool_update: Verstuur update naar alle deelnemers
     add_participant: Voeg een deelnemer aan je feestje
     add_participant_confirm: Voeg deze deelnemer toe
+    remove_participant_confirm: Verwijder deze deelnemer
     updated_party: Bewerk de details van dit feestje
     cancel: Annuleren
 emails:
@@ -444,14 +462,30 @@ emails:
         subject: De plannen zijn gewijzigd!
         message:
             html: >
-                Dear %name%,<br/>
+                Beste %name%,<br/>
                 <br/>
                 %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
             txt: >
-                Dear %name%,
+                Beste %name%,
 
                 %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
         btn_updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
+    removed_secret_santa:
+        subject: Ontdek wiens nieuwe Secret Santa je bent
+        message:
+            html: >
+                Beste %name%,<br/>
+                <br/>
+                Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.<br/>
+                <br/>
+                Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
+            txt: >
+                Beste %name%,
+
+                Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.
+
+                Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
+        btn_find_out: Ontdek wiens nieuwe Secret Santa je bent
     forgot_link:
         text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
         subject: 'Activatie mail opnieuw verzenden'
@@ -487,6 +521,7 @@ flashes:
         danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
         warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
         excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
+        wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
     add_participant:
         success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
         danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.

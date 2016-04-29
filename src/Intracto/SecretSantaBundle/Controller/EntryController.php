@@ -166,12 +166,15 @@ class EntryController extends Controller
         }
 
         $secret_santa = $this->entry->getEntry();
+        $eventDate = date_format($this->entry->getPool()->getEventdate(), 'Y-m-d');
+        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
 
         if (!$request->isXmlHttpRequest()) {
             return [
                 'entry' => $this->entry,
                 'form' => $form->createView(),
                 'secret_santa' => $secret_santa,
+                'oneWeekFromEventDate' => $oneWeekFromEventDate,
             ];
         }
     }
@@ -265,10 +268,36 @@ class EntryController extends Controller
      * @Route("/entry/remove/{listUrl}/{entryId}", name="entry_remove")
      * @Template()
      */
-    public function removeEntryFromPoolAction($listUrl, $entryId)
+    public function removeEntryFromPoolAction(Request $request, $listUrl, $entryId)
     {
+        $correctCsrfToken = $this->isCsrfTokenValid(
+            'delete_participant',
+            $request->get('csrf_token')
+        );
+
+        $correctConfirmation = ($request->get('confirmation') === $this->translator->trans('remove_participant.phrase_to_type'));
+        if ($correctConfirmation === false || $correctCsrfToken === false) {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->translator->trans('flashes.remove_participant.wrong')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
+
         $entry = $this->entryRepository->find($entryId);
         $pool = $entry->getPool()->getEntries();
+
+        $eventDate = date_format($entry->getPool()->getEventdate(), 'Y-m-d');
+        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
+        if (date('Y-m-d') > $oneWeekFromEventDate) {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                $this->translator->trans('flashes.modify_list.warning')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
 
         if (count($pool) <= 3) {
             $this->get('session')->getFlashBag()->add(
@@ -315,6 +344,8 @@ class EntryController extends Controller
         $buddy->setEntry($secretSanta);
         $this->em->persist($buddy);
         $this->em->flush();
+
+        $this->mailerService->sendRemovedSecretSantaMail($buddy);
 
         $this->get('session')->getFlashBag()->add(
             'success',

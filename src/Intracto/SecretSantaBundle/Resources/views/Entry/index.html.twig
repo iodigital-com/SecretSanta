@@ -37,6 +37,10 @@
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
                 </div>
 
+                <div class="alert alert-warning">
+                    <strong>{{ 'entry.watch_out'|trans }}</strong> {{ 'entry.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
+                </div>
+
                 <div class="well bottom-spacer">
                     <h4>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
                     {% if(secret_santa.wishlistitems|length == 0) %}
