@@ -39,12 +39,16 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="add-btn-container">
-                    <button type="button" class="btn btn-mini btn-success add-btn-create add-new-entry">
-                        <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_person'|trans|raw }}
-                    </button>
-                    <button type="button" class="btn btn-mini btn-success add-btn-create add-import-entry">
-                        <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.import_persons.open'|trans|raw }}
-                    </button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-mini btn-success add-btn-create add-new-entry">
+                            <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_person'|trans|raw }}
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-mini btn-success add-btn-create add-import-entry">
+                            <i class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.import_persons.open'|trans|raw }}
+                        </button>
+                    </div>
                 </div>
                 <table class="entries table table-striped mysanta">
                     <thead>
@@ -82,7 +86,7 @@
                 </table>
                 <div class="row-import-entries">
                     <div colspan="2">
-                        <div>{{ 'create.import.instructions' |trans }}</div>
+                        <div>{{ 'create.import.instructions'|trans({'%downloadPath%': path('download_csv_template')})|raw }}</div>
                         <br />
                         <div id="warningImportCSV" class="alert alert-warning" style="display: none">{{ 'create.import.too_many_files'|trans }}</div>
                         <div id="errorImportCSV" class="alert alert-danger" style="display: none">{{ 'create.import.wrong_format'|trans }}</div>

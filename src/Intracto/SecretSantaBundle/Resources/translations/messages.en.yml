@@ -39,7 +39,7 @@ create:
         title: Add a personal message
         description: Add a personal message for the participants.
     import:
-        instructions: Add multiple people at once to your event. All you need is a csv-file with 2 columns (name and mail). Drag and drop the csv-file into the field below and your friends or colleagues will be added fast and easy to your event.
+        instructions: Add multiple people at once to your event. Download <a href="%downloadPath%">this CSV template file</a> and add all names and mailaddresses of the people you want to invite to the file. When you're finished, you can drag and drop the CSV file into the field below and your friends or colleagues will be added fast and easy to your party.
         too_many_files: Only one file can be uploaded at a time.
         wrong_format: The file you're trying to upload does not have the required format (csv or txt).
 exclude:
@@ -324,7 +324,7 @@ btn:
     add_person:  Add person
     remove_person: Remove
     import_persons:
-        open: Add multiple people
+        open: Add multiple people by CSV
         do: Add to your event
     create_event: Create your event!
     create_new_list: Create a new Secret Santa list!

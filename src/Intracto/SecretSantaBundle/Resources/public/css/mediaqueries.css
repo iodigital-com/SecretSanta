@@ -154,6 +154,16 @@
     .text_remove_wishlist {
         display: none;
     }
+
+    .add-btn-container .btn-group {
+        display: block;
+        width: 100%;
+    }
+
+    .add-btn-container .btn-group button {
+        float: right;
+        margin-bottom: 5px;
+    }
 }
 
 @media only screen and (min-width: 768px) {

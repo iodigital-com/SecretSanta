@@ -22,6 +22,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -532,5 +533,23 @@ class PoolController extends Controller
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $this->pool->getListurl()]));
+    }
+
+    /**
+     * @Route("/download-csv-template", name="download_csv_template")
+     * @Template()
+     */
+    public function downloadCSVTemplateAction()
+    {
+        $path = $this->get('kernel')->getRootDir().'/../src/Intracto/SecretSantaBundle/Resources/public/downloads/templateCSVSecretSantaOrganizer.csv';
+        $content = file_get_contents($path);
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set('Content-Disposition', 'attachment;filename="templateCSVSecretSantaOrganizer.csv"');
+
+        $response->setContent($content);
+
+        return $response;
     }
 }

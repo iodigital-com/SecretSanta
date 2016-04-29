@@ -34,6 +34,10 @@ jQuery(document).ready(function () {
             return;
         }
 
+        if (entries[0][1].indexOf('@') == -1) {
+            entries.splice(0, 1);
+        }
+
         var added = 0;
         var lookForEmpty = true;
         for (var entry in entries) {
