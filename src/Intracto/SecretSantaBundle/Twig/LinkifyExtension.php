@@ -20,7 +20,7 @@ class LinkifyExtension extends \Twig_Extension
 
         return preg_replace(
             '~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~',
-            '<a href="\\0" target="_blank">\\0</a>',
+            '<a href="\\0" target="_blank" rel="noopener noreferrer">\\0</a>',
             $html
         );
     }
