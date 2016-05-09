@@ -10,7 +10,7 @@ base:
     home: Strona główna
   privacy_policy: Polityka prywatności
   have_fun: Życzymy udanego Tajnego Mikołaja!
-  need_help: '<a href="%FAQ%" target="_blank">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>'
+  need_help: '<a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>'
 pool:
   header:
     steps:

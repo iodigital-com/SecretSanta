@@ -10,7 +10,7 @@ base:
         home: Startseite
     privacy_policy: Datenschutzrichtlinien
     have_fun: Genießen Sie es, Ihr Secret Santa zu organisieren.
-    need_help: <a href="%FAQ%" target="_blank">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
 pool:
     header:
         steps:

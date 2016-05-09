@@ -10,7 +10,7 @@ base:
         home: 主頁
     privacy_policy: 私隠政策
     have_fun: 希望你在組織秘密聖誕老人.時開心愉快
-    need_help: <a href="%FAQ%" target="_blank">需要幫助？遇上問題？閱讀FAQ!</a>
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
 pool:
     header:
         steps:

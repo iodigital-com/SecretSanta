@@ -10,7 +10,7 @@ base:
         home: Home
     privacy_policy: Privacy policy
     have_fun: Organiseer je eigen Secret Santa en amuseer je rot!
-    need_help: <a href="%FAQ%" target="_blank">Hulp nodig? Vragen? Lees de FAQ!</a>
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
 pool:
     header:
         steps:
@@ -218,7 +218,7 @@ static:
             Om het voor iedereen wat spannender te maken, kan je mensen willekeurig toewijzen om voor elkaar geschenkjes te kopen.</p>
 
             <a name="how"></a><h2>Hoe werkt het?</h2>
-            <p>Maak een evenement aan op de <a href="http://www.secretsantaorganizer.com" target="_blank">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
+            <p>Maak een evenement aan op de <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
             De lijstbeheerder zal een bevestigingmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
             We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
@@ -253,23 +253,23 @@ static:
             <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijderoptie. Al de gegevens met betrekking tot deze lijst zullen permanent uit ons systeem verwijderd worden.</p>
 
             <a name="who"></a><h2>Wie zijn jullie?</h2>
-            <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">developers</a>,
+            <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
             designers, frontenders, SEO's en marketingmensen.
-            Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>.
+            Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
             Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
 
             <a name="privacy"></a><h2>Wat doen jullie met mijn gegevens?</h2>
-            <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="http://www.secretsantaorganizer.com/nl/privacy-policy" target="_blank">privacybeleid</a> voor een uitgebreid antwoord.
+            <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="http://www.secretsantaorganizer.com/nl/privacy-policy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord.
             Vergeet niet dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheerpagina.</p>
 
             <a name="features"></a><h2>Kan je feature X toevoegen?</h2>
             <p>Je hebt een geweldig idee voor en toepassing voor Secret Santa? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die dit wel kan dezelfde functionaliteit wil hebben.
-            Maak een <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank">issue aan op GitHub</a> die je feature of wijziging beschrijft.
+            Maak een <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">issue aan op GitHub</a> die je feature of wijziging beschrijft.
             Voor de mensen die wel kunnen coden, we verkiezen transpiratie boven inspiratie. Met andere woorden, we aanvaarden PR's.</p>
 
             <a name="opensource"></a><h2>Open source</h2>
-            <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/Intracto/SecretSanta" target="_blank">GitHub</a>.
-            Het project is beschikbaar onder een heel vrije <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC-licentie</a>.
+            <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            Het project is beschikbaar onder een heel vrije <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licentie</a>.
             Je bent vrij om het project te forken en bijvoorbeeld je eigen "Secret Panda gift exchange" te maken. Of je kan bijdragen aan dit project door pull requests (PR's) te openen.
             Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
 

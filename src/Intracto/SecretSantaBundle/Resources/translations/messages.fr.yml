@@ -10,7 +10,7 @@ base:
         home: Accueil
     privacy_policy: Protection vie privée
     have_fun: Amusez-vous en créant votre Secret Santa!
-    need_help: <a href="%FAQ%" target="_blank">Besoin d'aide? Des questions? Consultez le FAQ!</a>
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Besoin d'aide? Des questions? Consultez le FAQ!</a>
 pool:
     header:
         steps:
@@ -204,7 +204,7 @@ static:
             <p>Afin de garder les choses intéressantes, vous pouvez assigner au hasard une personne à une autre afin qu'elles offrent un présent aux autres.</p>
 
             <a name="how"></a><h2>Comment ça fonctionne?</h2>
-            <p>Créez un <a href="http://www.secretsantaorganizer.com" target="_blank">évènement sur la page d'accueil</a>. Vous avez besoin d'aux minimum 3 participants. Le premier participant deviendra l'administrateur de la liste. L'administrateur recevra un lien de confirmation par e-mail. Une fois votre inscription validée, votre liste Secret Santa sera brouillée et tous les participants recevront un message contenant le nom de leur copain cadeau Secret Santa. Nous demandons une confirmation afin d'empêcher les robots et trolls de gâcher votre Secret Santa party. <b>L'e-mail de validation vous fournira un lien vers le gestionnaire de l'évènement Secret Santa.</b></p>
+            <p>Créez un <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">évènement sur la page d'accueil</a>. Vous avez besoin d'aux minimum 3 participants. Le premier participant deviendra l'administrateur de la liste. L'administrateur recevra un lien de confirmation par e-mail. Une fois votre inscription validée, votre liste Secret Santa sera brouillée et tous les participants recevront un message contenant le nom de leur copain cadeau Secret Santa. Nous demandons une confirmation afin d'empêcher les robots et trolls de gâcher votre Secret Santa party. <b>L'e-mail de validation vous fournira un lien vers le gestionnaire de l'évènement Secret Santa.</b></p>
 
             <!--a name="exclude"></a><h2>Puis-je exclure des combinaisons?</h2>
             <p>Après avoir fourni la liste de tous les participants, vous pouvez éventuellement empêcher certaines combinaisons. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.<br><br>
@@ -220,7 +220,7 @@ static:
             <p>L'e-mail de confirmation envoyé à l'administrateur contient un lien vers une page permettant de gérer la liste.</p>
 
             <a href="lost"></a><h2>J'ai perdu mon e-mail d'activation</h2>
-            <p>Si vous perdez votre e-mail d'activation (contenant le lien vers la page d'administration), contactez-nous à partir de l'adresse e-mail utilisée lors de votre inscription et nous vous enverrons à nouveau le lien. Il y a une <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">demande de fonctionnalité</a> afin d'automatiser cela.</p>
+            <p>Si vous perdez votre e-mail d'activation (contenant le lien vers la page d'administration), contactez-nous à partir de l'adresse e-mail utilisée lors de votre inscription et nous vous enverrons à nouveau le lien. Il y a une <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank" rel="noopener noreferrer">demande de fonctionnalité</a> afin d'automatiser cela.</p>
 
             <a name="changes"></a><h2>Puis-je ajouter ou retirer quelqu'un?</h2>
             <p>Il est possible d'ajouter ou retirer une personne après de créer votre evenement. Sur votre page d'administration vous trouvez une bouton avec laquelle vous pouvez retirer quelqu'un ou une formulaire avec laquelle vous pouvez ajouter quelqu'un.
@@ -237,16 +237,16 @@ static:
             <p>Bien sûr que vous pouvez. Rendez-vous sur la page de gestion de votre liste et utilisez l'option de suppression. Toutes les données liées à votre liste seront supprimées de notre système.</p>
 
             <a name="who"></a><h2>Qui êtes-vous?</h2>
-            <p>Nous sommes une poignée de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">développeurs</a>, designers, frontenders, SEO's et marketers. Secret Santa est l'un de nos projets. Nous sommes sponsorisés par notre employeur <a href="http://www.intracto.com/" target="_blank">Intracto digital agency</a>. Notre but est de mettre en place un simple et très utile Secret Santa organiseur. Nous pourrions également profiter de ce projet pour faire des expériences. Notre objectif principal est qu'il soit utilisé par tous. Au plus il y a de monde, mieux c'est ! ;-)</p>
+            <p>Nous sommes une poignée de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">développeurs</a>, designers, frontenders, SEO's et marketers. Secret Santa est l'un de nos projets. Nous sommes sponsorisés par notre employeur <a href="http://www.intracto.com/" target="_blank">Intracto digital agency</a>. Notre but est de mettre en place un simple et très utile Secret Santa organiseur. Nous pourrions également profiter de ce projet pour faire des expériences. Notre objectif principal est qu'il soit utilisé par tous. Au plus il y a de monde, mieux c'est ! ;-)</p>
 
             <a name="privacy"></a><h2>Comment gérez-vous mes données?</h2>
-            <p>Réponse courte, nous ne sommes absolument pas intéressés par vos données. Nous ne les utilisons pas pour autre chose. Lisez notre <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank">politique de confidentialité</a> pour une réponse plus détaillée. Aussi, vous pouvez à tout moment supprimer votre compte Secret Santa depuis la page d'administration.</p>
+            <p>Réponse courte, nous ne sommes absolument pas intéressés par vos données. Nous ne les utilisons pas pour autre chose. Lisez notre <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> pour une réponse plus détaillée. Aussi, vous pouvez à tout moment supprimer votre compte Secret Santa depuis la page d'administration.</p>
 
             <a name="features"></a><h2>Pouvez-vous ajouter des fonctionnalités?</h2>
-            <p>Vous avez une super idée pour une fonctionnalité ? Nous sommes tous des volontaires, alors si vous ne savez pas programmer, vous devez attendre qu'un programmeur le fasse. Créer s'il vous plaît une <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank">demande sur GitHub</a> décrivant votre fonctionnalité ou changement. Pour ceux qui savent coder, nous préférons la transpiration à l'inspiration. En d'autres termes, nous acceptons vos PR's (pull request).</p>
+            <p>Vous avez une super idée pour une fonctionnalité ? Nous sommes tous des volontaires, alors si vous ne savez pas programmer, vous devez attendre qu'un programmeur le fasse. Créer s'il vous plaît une <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">demande sur GitHub</a> décrivant votre fonctionnalité ou changement. Pour ceux qui savent coder, nous préférons la transpiration à l'inspiration. En d'autres termes, nous acceptons vos PR's (pull request).</p>
 
             <a name="opensource"></a><h2>Open source</h2>
-            <p>Chaque octet de ce site Internet est rendu Open Source sur <a href="https://github.com/Intracto/SecretSanta" target="_blank">GitHub</a>. Le projet est disponible sous une <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">licence ISC</a>, très permissive. Vous pouvez donc copier ce projet et, par exemple, créer votre propre Secret Santa. Ou participer à ce projet en soumettant votre contribution (pull request). Si vous souhaitez un changement ou une nouvelle fonction, ajoutez-la simplement.</p>
+            <p>Chaque octet de ce site Internet est rendu Open Source sur <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Le projet est disponible sous une <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">licence ISC</a>, très permissive. Vous pouvez donc copier ce projet et, par exemple, créer votre propre Secret Santa. Ou participer à ce projet en soumettant votre contribution (pull request). Si vous souhaitez un changement ou une nouvelle fonction, ajoutez-la simplement.</p>
 
             <a name="ads"></a><h2>A propos des publicités</h2>
             <p>Nous avons des publicités Google ici et là afin de couvrir certaines de nos dépenses. Par exemple, l'hébergement, le nom de domaine, etc. Nous faisons tout nous-mêmes et gratuitement et l'argent que nous collectons est réinjecté dans le projet. Il pourrait être utilisé afin d'acheter des pizzas et boissons pour l'un de nos hackdays. Ou il pourrait encore servir à payer un traducteur afin d'ajouter de nouvelles langues à notre Secret Santa Organizer. Ou d'autres choses encore. Au fait, nous recherchons toujours des traductions en russe, japonais... Si vous pouvez nous aider (gratuitement), merci de bien vouloir nous contacter.</p>

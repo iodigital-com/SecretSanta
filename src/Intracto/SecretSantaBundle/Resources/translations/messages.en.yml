@@ -10,7 +10,7 @@ base:
         home: Home
     privacy_policy: Privacy policy
     have_fun: Have fun organizing your Secret Santa!
-    need_help: <a href="%FAQ%" target="_blank">Need help? Got questions? Read the FAQ!</a>
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
 pool:
     header:
         steps:
@@ -235,7 +235,7 @@ static:
             To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
 
             <a name="how"></a><h2>How does it work?</h2>
-            <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
+            <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
             The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
             We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
 
@@ -270,23 +270,23 @@ static:
             <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
 
             <a name="who"></a><h2>Who are you?</h2>
-            <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">developers</a>,
+            <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
             designers, frontenders, SEO's and marketing people.
-            Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>.
+            Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
             Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
 
             <a name="privacy"></a><h2>How do you handle my data?</h2>
-            <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank">privacy policy</a> for an extended answer.
+            <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
             Also, at any point in time, you can just delete your Secret Santa from the admin page.</p>
 
             <a name="features"></a><h2>Can you add feature X?</h2>
             <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
-            Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank">create an issue on GitHub</a> that describes your feature or change.
+            Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change.
             For those who can code, we prefer transpiration to inspiration. In other words, we accept your PR's.</p>
 
             <a name="opensource"></a><h2>Open source</h2>
-            <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank">GitHub</a>.
-            The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC license</a>.
+            <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
             You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
             If you want a change or a whole new feature, just add it.</p>
 

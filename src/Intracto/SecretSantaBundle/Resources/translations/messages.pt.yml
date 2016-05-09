@@ -10,7 +10,7 @@ base:
         home: Home
     privacy_policy: Declaração de privacidade
     have_fun: Organize o seu próprio Amigo Secreto. Show de bola!
-    need_help: <a href="%FAQ%" target="_blank">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
 pool:
     header:
         steps:
@@ -160,7 +160,7 @@ static:
             <p>Todos os anos, pessoas no mundo inteiro trocam presentes durante o período de Natal.<br/> Para deixar esse momento ainda mais memorável, você pode fazer com que <strong>pessoas escolhidas arbitrariamente</strong> comprem presentes umas para as outras.</p>
 
             <a name="how"></a><h2>Como funciona?</h2>
-            <p>Basta criar um evento <a href="http://www.secretsantaorganizer.com" target="_blank">na página inicial</a>. Você precisa de, no mínimo, 3 participantes, <b>sendo o primeiro participante também o proprietário e operador do evento e lista.</b> O operador da lista irá receber o link de confirmação por e-mail, no qual ele precisará clicar para validar o evento. Uma vez validado, os nomes que estão na lista do seu Secret Santa será sorteado e todos os participantes receberão a mensagem que você escreveu para eles junto com o nome do amigo para o qual eles deves comprar um presente, ou seja, seu Amigo Secreto. Essa confirmação é necessária para evitar que hóspedes indesejáveis ou trols estraguem a brincadeira do Secret Santa. <b>O e-mail de validação irá gerar um link para o proprietário do evento.</b>.</p>
+            <p>Basta criar um evento <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">na página inicial</a>. Você precisa de, no mínimo, 3 participantes, <b>sendo o primeiro participante também o proprietário e operador do evento e lista.</b> O operador da lista irá receber o link de confirmação por e-mail, no qual ele precisará clicar para validar o evento. Uma vez validado, os nomes que estão na lista do seu Secret Santa será sorteado e todos os participantes receberão a mensagem que você escreveu para eles junto com o nome do amigo para o qual eles deves comprar um presente, ou seja, seu Amigo Secreto. Essa confirmação é necessária para evitar que hóspedes indesejáveis ou trols estraguem a brincadeira do Secret Santa. <b>O e-mail de validação irá gerar um link para o proprietário do evento.</b>.</p>
 
             <!--a name="exclude"></a><h2>Posso excluir combinações?</h2>
             <p>Depois de dar os nomes de todos os participantes, você tem a opção de prevenir algumas combinações. Por exemplo, para evitar que membros de uma mesma família comprem presentes um para o outro.<br><br>Não é possível reutilizar automaticamente uma lista de combinações do Secret Santa de anos anteriores. Nós não conseguimos encontrar um meio de salvar essas listas sem criar uma grande confusão nas pessoas, e pedimos desculpas por isso.</p-->
@@ -170,14 +170,14 @@ static:
 
             <a name="reuse"></a><h2>Posso reutilizar uma lista?</h2>
             <p>Não é possível reutilizar automaticamente uma lista feita nos anos anteriores. 
-            <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank"> Esta é uma solicitação de recurso</a>, deixe um comentário se você quer que esta opção esteja disponível nas próximas atualizações (de preferência um PR).</p>
+            <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank" rel="noopener noreferrer"> Esta é uma solicitação de recurso</a>, deixe um comentário se você quer que esta opção esteja disponível nas próximas atualizações (de preferência um PR).</p>
 
             <a name="manage"></a><h2>Como posso gerenciar meu evento ou participantes?</h2>
             <p>O e-mail de confirmação mandado ao operador da lista contém um link para a página de Gerenciamento da Lista.</p>
 
             <a href="lost"></a><h2>Eu perdi meu e-mail de ativação.</h2>
             <p>Se você perdeu seu e-mail de ativação (que contém o link para gerenciar sua lista), entre em contato conosco pelo e-mail do proprietário da lista e nós lhe reenviaremos o link. 
-            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank">Lá você encontra uma solicitação de recurso</a> para automatizar este recurso.</p>
+            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank" rel="noopener noreferrer">Lá você encontra uma solicitação de recurso</a> para automatizar este recurso.</p>
 
             <a name="changes"></a><h2>Posso adicionar ou remover pessoas?</h2>
             <p>Ao criar um evento, todos os participantes são automaticamente sorteados e atribuídos uns aos outros. Dessa forma, é difícil reverter o processo adicionando ou removendo pessoas depois de tê-las sorteado. Isso envolveria mudar todos os pares, causando transtornos e confusões indesejáveis. 
@@ -194,18 +194,18 @@ static:
             <p>É claro que pode! Na sua página de gerenciamento de listas você encontra a opção "deletar minha lista do Secret Santa". Toda a sua lista será removida permanentemente do nosso sistema.</p>
 
             <a name="who"></a><h2>Quem são vocês?</h2>
-            <p>Nós somos um bando de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank">desenvolvedores</a>,
+            <p>Nós somos um bando de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">desenvolvedores</a>,
             designers, frontenders, SEO's e pessoal de marketing.
-            Secret Santa é um dos nossos projetos extras. Somos patrocinados pelo nosso empregador <a href="http://www.intracto.com" target="_blank">Intracto digital agency</a>. Nossa meta é montar um organizador de Amigo Secreto que seja simples, mas funcional. Nós também nos utilizamos desse programa para nos aperfeiçoar. Mas o objetivo principal do Secret Santa Organizer é fazer com que mais e mais pessoas o utilizem e se divirtam! ;-)</p>
+            Secret Santa é um dos nossos projetos extras. Somos patrocinados pelo nosso empregador <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Nossa meta é montar um organizador de Amigo Secreto que seja simples, mas funcional. Nós também nos utilizamos desse programa para nos aperfeiçoar. Mas o objetivo principal do Secret Santa Organizer é fazer com que mais e mais pessoas o utilizem e se divirtam! ;-)</p>
 
             <a name="privacy"></a><h2>Como vocês utilizam meus dados?</h2>
-            <p>Deixemos claro: nós não temos qualquer interesse nos vossos dados pessoais. Nós não os utilizamos para absolutamente nada. Leia nossa <a href="http://www.secretsantaorganizer.com/pt/privacy-policy" target="_blank">Política de Privacidade</a> para ter uma resposta mais completa sobre essa questão. Além disso, você pode deletar este programa na sua página de Gerenciamento sempre e a qualquer momento que quiser.</p>
+            <p>Deixemos claro: nós não temos qualquer interesse nos vossos dados pessoais. Nós não os utilizamos para absolutamente nada. Leia nossa <a href="http://www.secretsantaorganizer.com/pt/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Privacidade</a> para ter uma resposta mais completa sobre essa questão. Além disso, você pode deletar este programa na sua página de Gerenciamento sempre e a qualquer momento que quiser.</p>
 
             <a name="features"></a><h2>Vocês podem adicionar X para melhorar o programa?</h2>
-            <p>Você tem alguma ideia genial para melhorar o Secret Santa Organizer? Por sermos todos voluntários neste projeto, pedimos para que você mesmo adicione suas melhorias de forma técnica ou terá de esperar alguém com mais conhecimento técnico e que queira as mesmas melhorias para fazer isso. Por favor, <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank">crie um assunto aqui GitHub</a> que descreva suas ideias ou melhorias. Para aqueles que sabem codificar, nós gostamos mais de transpiração do que inspiração. Em outras palavras, aceitamos de coração aberto seus PR's.</p>
+            <p>Você tem alguma ideia genial para melhorar o Secret Santa Organizer? Por sermos todos voluntários neste projeto, pedimos para que você mesmo adicione suas melhorias de forma técnica ou terá de esperar alguém com mais conhecimento técnico e que queira as mesmas melhorias para fazer isso. Por favor, <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">crie um assunto aqui GitHub</a> que descreva suas ideias ou melhorias. Para aqueles que sabem codificar, nós gostamos mais de transpiração do que inspiração. Em outras palavras, aceitamos de coração aberto seus PR's.</p>
 
             <a name="opensource"></a><h2>Código aberto</h2>
-            <p>Cada milésimo codificado deste website está descrito aqui <a href="https://github.com/Intracto/SecretSanta" target="_blank">GitHub</a>. O projeto está disponível sob uma <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC licença bastante tolerante</a>. Você é bem-vindo para fuçar neste projeto e, por exemplo, criar o seu próprio  "Secret Panda - troca de presentes” . Ou pode também contribuir com o projeto enviando suas melhorias (PR's). Se quiser alterar este ou criar um programa totalmente novo a partir deste, vá em frente.</p>
+            <p>Cada milésimo codificado deste website está descrito aqui <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. O projeto está disponível sob uma <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC licença bastante tolerante</a>. Você é bem-vindo para fuçar neste projeto e, por exemplo, criar o seu próprio  "Secret Panda - troca de presentes” . Ou pode também contribuir com o projeto enviando suas melhorias (PR's). Se quiser alterar este ou criar um programa totalmente novo a partir deste, vá em frente.</p>
 
             <a name="ads"></a><h2>E quanto as propagandas?</h2>
             <p>Nós nos utilizamos de propagandas do Google aqui e ali para cobrir nossas despesas. Coisas como hospedagem, nomes de domínio, etc. custa dinheiro. Nós mesmos trabalhamos basicamente de forma voluntária e todo o dinheiro arrecadado com este projeto para para ele.
