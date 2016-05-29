@@ -2,9 +2,6 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityRepository;
-use Intracto\SecretSantaBundle\Entity\EntryService;
 use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
 use Intracto\SecretSantaBundle\Form\AddEntryType;
@@ -14,81 +11,15 @@ use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Form\UpdatePoolDetailsType;
-use Intracto\SecretSantaBundle\Mailer\MailerService;
-use Intracto\SecretSantaBundle\Query\EntryReportQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class PoolController extends Controller
 {
-    /**
-     * @DI\Inject("%admin_email%")
-     */
-    public $adminEmail;
-
-    /**
-     * @DI\Inject("pool_repository")
-     *
-     * @var EntityRepository
-     */
-    public $poolRepository;
-
-    /**
-     * @DI\Inject("entry_repository")
-     *
-     * @var EntityRepository
-     */
-    public $entryRepository;
-
-    /**
-     * @DI\Inject("event_dispatcher")
-     *
-     * @var EventDispatcherInterface
-     */
-    public $eventDispatcher;
-
-    /**
-     * @DI\Inject("intracto_secret_santa.entry_service")
-     *
-     * @var EntryService
-     */
-    public $entryService;
-
-    /**
-     * @DI\Inject("intracto_secret_santa.mail")
-     *
-     * @var MailerService
-     */
-    public $mailerService;
-
-    /**
-     * @DI\Inject("intracto_secret_santa.entry")
-     *
-     * @var EntryReportQuery
-     */
-    public $entryQuery;
-
-    /**
-     * @DI\Inject("translator")
-     *
-     * @var TranslatorInterface
-     */
-    public $translator;
-
-    /**
-     * @DI\Inject("doctrine.orm.entity_manager")
-     *
-     * @var EntityManager
-     */
-    public $em;
-
     /**
      * @var Pool
      */
@@ -133,7 +64,7 @@ class PoolController extends Controller
                     \IntlDateFormatter::NONE
                 );
 
-                $message = $this->translator->trans('emails.created.message', [
+                $message = $this->get('translator')->trans('emails.created.message', [
                     '%amount%' => $pool->getAmount(),
                     '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
                     '%location%' => $pool->getLocation(),
@@ -148,8 +79,8 @@ class PoolController extends Controller
                     $pool->setCreated(true);
                 }
 
-                $this->em->persist($pool);
-                $this->em->flush();
+                $this->get('doctrine.orm.entity_manager')->persist($pool);
+                $this->get('doctrine.orm.entity_manager')->flush();
 
                 return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $pool->getListurl()]));
             }
@@ -185,7 +116,7 @@ class PoolController extends Controller
      */
     protected function getPool($listurl)
     {
-        $this->pool = $this->poolRepository->findOneByListurl($listurl);
+        $this->pool = $this->get('pool_repository')->findOneByListurl($listurl);
 
         if (!is_object($this->pool)) {
             throw new NotFoundHttpException();
@@ -211,13 +142,13 @@ class PoolController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $this->pool->setCreated(true);
-                $this->em->persist($this->pool);
+                $this->get('doctrine.orm.entity_manager')->persist($this->pool);
 
-                $this->entryService->shuffleEntries($this->pool);
+                $this->get('intracto_secret_santa.entry_service')->shuffleEntries($this->pool);
 
-                $this->em->flush();
+                $this->get('doctrine.orm.entity_manager')->flush();
 
-                $this->eventDispatcher->dispatch(
+                $this->get('event_dispatcher')->dispatch(
                     PoolEvents::NEW_POOL_CREATED,
                     new PoolEvent($this->pool)
                 );
@@ -262,10 +193,10 @@ class PoolController extends Controller
         if ($this->pool->getSentdate() === null) {
             $this->get('session')->getFlashBag()->add(
                 'success',
-                $this->translator->trans('flashes.manage.email_validated')
+                $this->get('translator')->trans('flashes.manage.email_validated')
             );
 
-            $this->mailerService->sendSecretSantaMailsForPool($this->pool);
+            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($this->pool);
         }
 
         $eventDate = date_format($this->pool->getEventdate(), 'Y-m-d');
@@ -286,7 +217,7 @@ class PoolController extends Controller
                     if (date('Y-m-d') > $oneWeekFromEventDate) {
                         $this->get('session')->getFlashBag()->add(
                             'warning',
-                            $this->translator->trans('flashes.modify_list.warning')
+                            $this->get('translator')->trans('flashes.modify_list.warning')
                         );
 
                         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -295,33 +226,33 @@ class PoolController extends Controller
                     $newEntry->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
                     $newEntry->setPool($this->pool);
 
-                    $this->em->persist($newEntry);
-                    $this->em->flush($newEntry);
+                    $this->get('doctrine.orm.entity_manager')->persist($newEntry);
+                    $this->get('doctrine.orm.entity_manager')->flush($newEntry);
 
-                    $adminId = $this->entryQuery->findAdminIdByPoolId($this->pool->getId());
-                    $admin = $this->entryRepository->findOneById($adminId[0]['id']);
+                    $adminId = $this->get('intracto_secret_santa.entry')->findAdminIdByPoolId($this->pool->getId());
+                    $admin = $this->get('entry_repository')->findOneById($adminId[0]['id']);
                     $adminMatch = $admin->getEntry();
 
                     $admin->setEntry($newEntry);
-                    $this->em->persist($admin);
-                    $this->em->flush($admin);
+                    $this->get('doctrine.orm.entity_manager')->persist($admin);
+                    $this->get('doctrine.orm.entity_manager')->flush($admin);
 
                     $newEntry->setEntry($adminMatch);
-                    $this->em->persist($newEntry);
-                    $this->em->flush();
+                    $this->get('doctrine.orm.entity_manager')->persist($newEntry);
+                    $this->get('doctrine.orm.entity_manager')->flush();
 
-                    $this->mailerService->sendSecretSantaMailForEntry($newEntry);
+                    $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($newEntry);
 
                     $this->get('session')->getFlashBag()->add(
                         'success',
-                        $this->translator->trans('flashes.add_participant.success')
+                        $this->get('translator')->trans('flashes.add_participant.success')
                     );
 
                     return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
                 } else {
                     $this->get('session')->getFlashBag()->add(
                         'danger',
-                        $this->translator->trans('flashes.add_participant.danger')
+                        $this->get('translator')->trans('flashes.add_participant.danger')
                     );
                 }
             }
@@ -333,19 +264,19 @@ class PoolController extends Controller
                     $updatePool->setDetailsUpdated(true);
                     $updatePool->setDetailsUpdatedTime($time_now);
 
-                    $this->em->persist($updatePool);
-                    $this->em->flush();
+                    $this->get('doctrine.orm.entity_manager')->persist($updatePool);
+                    $this->get('doctrine.orm.entity_manager')->flush();
 
                     $this->get('session')->getFlashBag()->add(
                         'success',
-                        $this->translator->trans('flashes.updated_party.success')
+                        $this->get('translator')->trans('flashes.updated_party.success')
                     );
 
                     return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
                 } else {
                     $this->get('session')->getFlashBag()->add(
                         'danger',
-                        $this->translator->trans('flashes.updated_party.danger')
+                        $this->get('translator')->trans('flashes.updated_party.danger')
                     );
                 }
             }
@@ -373,12 +304,12 @@ class PoolController extends Controller
             'delete_pool',
             $request->get('csrf_token')
         );
-        $correctConfirmation = ($request->get('confirmation') === $this->translator->trans('delete.phrase_to_type'));
+        $correctConfirmation = ($request->get('confirmation') === $this->get('translator')->trans('delete.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'error',
-                $this->translator->trans('flashes.delete.not_deleted')
+                $this->get('translator')->trans('flashes.delete.not_deleted')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -386,8 +317,8 @@ class PoolController extends Controller
 
         $this->getPool($listUrl);
 
-        $this->em->remove($this->pool);
-        $this->em->flush();
+        $this->get('doctrine.orm.entity_manager')->remove($this->pool);
+        $this->get('doctrine.orm.entity_manager')->flush();
     }
 
     /**
@@ -401,17 +332,17 @@ class PoolController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = ($request->get('confirmation') === $this->translator->trans('expose.phrase_to_type'));
+        $correctConfirmation = ($request->get('confirmation') === $this->get('translator')->trans('expose.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->translator->trans('flashes.expose.not_exposed')
+                $this->get('translator')->trans('flashes.expose.not_exposed')
             );
         } else {
             $this->get('session')->getFlashBag()->add(
                 'success',
-                $this->translator->trans('flashes.expose.exposed')
+                $this->get('translator')->trans('flashes.expose.exposed')
             );
         }
 
@@ -420,10 +351,10 @@ class PoolController extends Controller
         $this->pool->expose();
 
         /* Save db changes */
-        $this->em->flush();
+        $this->get('doctrine.orm.entity_manager')->flush();
 
         /* Mail pool owner the pool matches */
-        $this->mailerService->sendPoolMatchesToAdmin($this->pool);
+        $this->get('intracto_secret_santa.mail')->sendPoolMatchesToAdmin($this->pool);
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
@@ -439,26 +370,26 @@ class PoolController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = ($request->get('confirmation') === $this->translator->trans('expose_wishlists.phrase_to_type'));
+        $correctConfirmation = ($request->get('confirmation') === $this->get('translator')->trans('expose_wishlists.phrase_to_type'));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->translator->trans('flashes.expose_wishlists.not_exposed')
+                $this->get('translator')->trans('flashes.expose_wishlists.not_exposed')
             );
         } else {
             $this->get('session')->getFlashBag()->add(
                 'success',
-                $this->translator->trans('flashes.expose_wishlists.exposed')
+                $this->get('translator')->trans('flashes.expose_wishlists.exposed')
             );
         }
 
         $this->getPool($listUrl);
         $this->pool->exposeWishlists();
 
-        $this->em->flush();
+        $this->get('doctrine.orm.entity_manager')->flush();
 
-        $this->mailerService->sendAllWishlistsToAdmin($this->pool);
+        $this->get('intracto_secret_santa.mail')->sendAllWishlistsToAdmin($this->pool);
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
@@ -469,7 +400,7 @@ class PoolController extends Controller
      */
     public function resendAction($listUrl, $entryId)
     {
-        $entry = $this->entryRepository->find($entryId);
+        $entry = $this->get('entry_repository')->find($entryId);
 
         if (!is_object($entry)) {
             throw new NotFoundHttpException();
@@ -479,11 +410,11 @@ class PoolController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $this->mailerService->sendSecretSantaMailForEntry($entry);
+        $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($entry);
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->translator->trans('flashes.resend.resent', ['%email%' => $entry->getName()])
+            $this->get('translator')->trans('flashes.resend.resent', ['%email%' => $entry->getName()])
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -500,7 +431,7 @@ class PoolController extends Controller
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                if ($this->mailerService->sendForgotManageLinkMail($form->getData()['email'])) {
+                if ($this->get('intracto_secret_santa.mail')->sendForgotManageLinkMail($form->getData()['email'])) {
                     $feedback = [
                         'type' => 'success',
                         'message' => $this->get('translator')->trans('flashes.forgot_manage_link.success'),
@@ -527,10 +458,10 @@ class PoolController extends Controller
      */
     public function sendPoolUpdateAction($listUrl)
     {
-        $results = $this->entryQuery->fetchDataForPoolUpdateMail($listUrl);
+        $results = $this->get('intracto_secret_santa.entry')->fetchDataForPoolUpdateMail($listUrl);
         $this->getPool($listUrl);
 
-        $this->mailerService->sendPoolUpdateMailForPool($this->pool, $results);
+        $this->get('intracto_secret_santa.mail')->sendPoolUpdateMailForPool($this->pool, $results);
 
         $this->get('session')->getFlashBag()->add(
             'success',
