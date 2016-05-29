@@ -24,9 +24,4 @@ class AddEntryType extends AbstractType
         );
 
     }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_addentrytype';
-    }
 }

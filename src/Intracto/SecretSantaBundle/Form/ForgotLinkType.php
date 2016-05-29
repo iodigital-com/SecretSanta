@@ -3,6 +3,8 @@
 namespace Intracto\SecretSantaBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Email;
@@ -13,7 +15,7 @@ class ForgotLinkType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', 'email', array(
+            ->add('email', EmailType::class, array(
                 'constraints' => array(
                     new Email(array(
                         'strict' => true,
@@ -22,15 +24,10 @@ class ForgotLinkType extends AbstractType
                     ))
                 )
             ))
-            ->add('submit', 'submit', array(
+            ->add('submit', SubmitType::class, array(
                 'attr' => array('class' => 'btn btn-large btn-primary btn-create-event'),
                 'label' => 'manage.resend_email',
             ))
         ;
-    }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_forgotlinktype';
     }
 }

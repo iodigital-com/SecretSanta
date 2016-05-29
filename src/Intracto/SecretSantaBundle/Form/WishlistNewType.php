@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -10,9 +11,9 @@ class WishlistNewType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('wishlistItems', 'collection',
+        $builder->add('wishlistItems', CollectionType::class,
             array(
-                'type' => new WishlistItemType(),
+                'entry_type' => WishlistItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
             ));
@@ -25,10 +26,5 @@ class WishlistNewType extends AbstractType
                 'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
             )
         );
-    }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_wishlistnewtype';
     }
 }

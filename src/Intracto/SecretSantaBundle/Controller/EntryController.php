@@ -80,10 +80,10 @@ class EntryController extends Controller
 
         if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != '') {
             $legacyWishlist = true;
-            $form = $this->createForm(new WishlistType(), $this->entry);
+            $form = $this->createForm(WishlistType::class, $this->entry);
         } else {
             $legacyWishlist = false;
-            $form = $this->createForm(new WishlistNewType(), $this->entry);
+            $form = $this->createForm(WishlistNewType::class, $this->entry);
         }
 
         // Log visit on first access

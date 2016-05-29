@@ -118,7 +118,7 @@ class PoolController extends Controller
      */
     private function handlePoolCreation(Request $request, Pool $pool)
     {
-        $form = $this->createForm(new PoolType(), $pool);
+        $form = $this->createForm(PoolType::class, $pool);
 
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
@@ -269,8 +269,8 @@ class PoolController extends Controller
         $newEntry = new Entry();
         $updatePool = $this->pool;
 
-        $addEntryForm = $this->createForm(new AddEntryType(), $newEntry);
-        $updatePoolDetailsForm = $this->createForm(new UpdatePoolDetailsType(), $updatePool);
+        $addEntryForm = $this->createForm(AddEntryType::class, $newEntry);
+        $updatePoolDetailsForm = $this->createForm(UpdatePoolDetailsType::class, $updatePool);
 
         if ($request->getMethod('POST')) {
             $addEntryForm->handleRequest($request);

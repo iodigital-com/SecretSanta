@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -18,7 +19,7 @@ class ExcludeEntryType extends AbstractType
             $me = $event->getData();
             $form = $event->getForm();
 
-            $form->add('excluded_entries', 'entity', array(
+            $form->add('excluded_entries', EntityType::class, array(
                 'class' => 'IntractoSecretSantaBundle:Entry',
                 'multiple' => true,
                 'expanded' => false,
@@ -47,10 +48,5 @@ class ExcludeEntryType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
         ));
-    }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_excludeentrytype';
     }
 }
