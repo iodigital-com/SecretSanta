@@ -16,11 +16,11 @@ class ReportQuery
     private $featuredYearsQuery;
 
     /**
-     * @param PoolReportQuery $poolReportQuery
-     * @param EntryReportQuery $entryReportQuery
-     * @param IpReportQuery $ipReportQuery
+     * @param PoolReportQuery     $poolReportQuery
+     * @param EntryReportQuery    $entryReportQuery
+     * @param IpReportQuery       $ipReportQuery
      * @param WishlistReportQuery $wishlistReportQuery
-     * @param FeaturedYearsQuery $featuredYearsQuery
+     * @param FeaturedYearsQuery  $featuredYearsQuery
      */
     public function __construct(
         PoolReportQuery $poolReportQuery,
@@ -38,6 +38,7 @@ class ReportQuery
 
     /**
      * @param null $year
+     *
      * @return array
      */
     public function getPoolReport($year = null)

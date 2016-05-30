@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class EmailAddress
 {
     /**
-     * @var string $emailAddress
+     * @var string
      *
      * @Assert\NotBlank()
      * @Assert\Email(

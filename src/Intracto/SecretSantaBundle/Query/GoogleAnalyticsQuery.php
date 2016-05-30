@@ -18,7 +18,9 @@ class GoogleAnalyticsQuery
 
     /**
      * @param null $year
+     *
      * @return array
+     *
      * @throws \Google_Exception
      */
     public function getAnalyticsReport($year = null)
@@ -26,7 +28,7 @@ class GoogleAnalyticsQuery
         $season = new Season($year);
 
         $client = new Google_Client();
-        $credentials = $client->loadServiceAccountJson($this->clientSecret, "https://www.googleapis.com/auth/analytics.readonly");
+        $credentials = $client->loadServiceAccountJson($this->clientSecret, 'https://www.googleapis.com/auth/analytics.readonly');
         $client->setAssertionCredentials($credentials);
         if ($client->getAuth()->isAccessTokenExpired()) {
             $client->getAuth()->refreshTokenWithAssertion();
@@ -50,6 +52,7 @@ class GoogleAnalyticsQuery
 
     /**
      * @param GaParameters $gaParameters
+     *
      * @return mixed
      */
     public function getTopCountries(GaParameters $gaParameters)
@@ -61,13 +64,14 @@ class GoogleAnalyticsQuery
             $gaParameters->getMetrics(),
             [
                 'dimensions' => 'ga:country',
-                'sort' => '-ga:sessions, -ga:country'
+                'sort' => '-ga:sessions, -ga:country',
             ]
         );
     }
 
     /**
      * @param GaParameters $gaParameters
+     *
      * @return mixed
      */
     public function getTopLanguages(GaParameters $gaParameters)
@@ -79,7 +83,7 @@ class GoogleAnalyticsQuery
             $gaParameters->getMetrics(),
             [
                 'dimensions' => 'ga:language',
-                'sort' => '-ga:sessions, -ga:language'
+                'sort' => '-ga:sessions, -ga:language',
             ]
         );
 
@@ -116,6 +120,7 @@ class GoogleAnalyticsQuery
 
     /**
      * @param GaParameters $gaParameters
+     *
      * @return mixed
      */
     public function getDeviceCategory(GaParameters $gaParameters)
@@ -126,13 +131,14 @@ class GoogleAnalyticsQuery
             $gaParameters->getEnd(),
             $gaParameters->getMetrics(),
             [
-                'dimensions' => 'ga:deviceCategory'
+                'dimensions' => 'ga:deviceCategory',
             ]
         );
     }
 
     /**
      * @param GaParameters $gaParameters
+     *
      * @return mixed
      */
     public function getBrowsers(GaParameters $gaParameters)
@@ -145,7 +151,7 @@ class GoogleAnalyticsQuery
             [
                 'dimensions' => 'ga:browser',
                 'sort' => '-ga:sessions, -ga:browser',
-                'max-results' => 5
+                'max-results' => 5,
             ]
         );
     }

@@ -20,6 +20,7 @@ class IpReportQuery
 
     /**
      * @param Season $season
+     *
      * @return array
      */
     public function calculateIpUsage(Season $season)
@@ -39,6 +40,7 @@ class IpReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     private function queryIpv4Records(Season $season)
@@ -58,6 +60,7 @@ class IpReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     private function queryIpv6Records(Season $season)

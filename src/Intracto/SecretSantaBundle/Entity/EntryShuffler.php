@@ -3,7 +3,7 @@
 namespace Intracto\SecretSantaBundle\Entity;
 
 /**
- * Class EntryShuffler
+ * Class EntryShuffler.
  */
 class EntryShuffler
 {
@@ -39,6 +39,7 @@ class EntryShuffler
             $set = $this->shuffleArray($entries);
             if ($this->checkValidMatch($entries, $set)) {
                 $this->matchedExcludes = $set;
+
                 return $set;
             }
         };
@@ -75,6 +76,4 @@ class EntryShuffler
 
         return $list;
     }
-
-
 }

@@ -30,9 +30,9 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             PoolEvents::NEW_POOL_CREATED => 'onNewPool',
-        );
+        ];
     }
 
     public function __construct(EngineInterface $templating, \Swift_Mailer $mailer, $adminEmail, TranslatorInterface $translator)
@@ -59,13 +59,13 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
             ->setBody(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:pendingconfirmation.txt.twig',
-                    array('pool' => $pool)
+                    ['pool' => $pool]
                 )
             )
             ->addPart(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig',
-                    array('pool' => $pool)
+                    ['pool' => $pool]
                 ),
                 'text/html'
             );

@@ -2,17 +2,14 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Intracto\SecretSantaBundle\Query\Season;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
 class ExportMailsCommand extends ContainerAwareCommand
 {
-
     protected function configure()
     {
         $this
@@ -44,7 +41,7 @@ class ExportMailsCommand extends ContainerAwareCommand
             default:
                 $entryService->fetchAdminEmailsForExport($season);
                 $entryService->fetchParticipantEmailsForExport($season);
-                $output->writeln("All emails exported to /export/admin & /export/participant");
+                $output->writeln('All emails exported to /export/admin & /export/participant');
                 break;
         }
     }

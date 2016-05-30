@@ -6,9 +6,9 @@ class LinkifyExtension extends \Twig_Extension
 {
     public function getFilters()
     {
-        return array(
-            new \Twig_SimpleFilter('linkify', array($this, 'linkifyFilter')),
-        );
+        return [
+            new \Twig_SimpleFilter('linkify', [$this, 'linkifyFilter']),
+        ];
     }
 
     public function linkifyFilter($html)
