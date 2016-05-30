@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Form;
 
+use Intracto\SecretSantaBundle\Entity\Pool;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,20 +16,20 @@ class PoolExcludeEntryType extends AbstractType
             ->add(
                 'entries',
                 CollectionType::class,
-                array(
+                [
                     'entry_type' => ExcludeEntryType::class,
-                )
+                ]
             );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
-                'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool',
-                'validation_groups' => array('exclude_entries'),
+            [
+                'data_class' => Pool::class,
+                'validation_groups' => ['exclude_entries'],
                 'cascade_validation' => true,
-            )
+            ]
         );
     }
 }

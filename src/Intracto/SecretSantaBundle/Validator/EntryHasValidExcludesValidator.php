@@ -19,7 +19,7 @@ class EntryHasValidExcludesValidator extends ConstraintValidator
             $this->context->addViolationAt(
                 'excluded_entries',
                 $constraint->messageNoUniqueMatch,
-                array('%name%' => $entry->getName())
+                ['%name%' => $entry->getName()]
             );
         }
         //Should not be necessary but you never know eyy..
@@ -27,7 +27,7 @@ class EntryHasValidExcludesValidator extends ConstraintValidator
             $this->context->addViolationAt(
                 'excluded_entries',
                 '%name% can not exclude itself',
-                array('%name%' => $entry->getName())
+                ['%name%' => $entry->getName()]
             );
         }
     }

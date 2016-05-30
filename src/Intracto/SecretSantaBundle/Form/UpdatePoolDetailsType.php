@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Form;
 
 use Genemu\Bundle\FormBundle\Form\JQuery\Type\DateType;
+use Intracto\SecretSantaBundle\Entity\Pool;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,10 +28,8 @@ class UpdatePoolDetailsType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(
-            [
-                'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool',
-            ]
-        );
+        $resolver->setDefaults([
+            'data_class' => Pool::class,
+        ]);
     }
 }

@@ -186,10 +186,10 @@ class MailerService
                 $text .= ' ('.$result['eventdate']->format('d/m/Y').')';
             }
 
-            $poolLinks[] = array(
+            $poolLinks[] = [
                 'url' => $this->routing->generate('pool_manage', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
                 'text' => $text,
-            );
+            ];
         }
 
         $this->translator->setLocale($results[0]['locale']);
