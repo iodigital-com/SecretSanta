@@ -2,7 +2,10 @@
 
 namespace Intracto\SecretSantaBundle\Form;
 
+use Genemu\Bundle\FormBundle\Form\JQuery\Type\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,9 +17,9 @@ class PoolType extends AbstractType
             ->add('message')
             ->add(
                 'entries',
-                'collection',
+                CollectionType::class,
                 array(
-                    'type' => new EntryType(),
+                    'entry_type' => EntryType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'by_reference' => false,
@@ -24,7 +27,7 @@ class PoolType extends AbstractType
             )
             ->add(
                 'eventdate',
-                'genemu_jquerydate',
+                DateType::class,
                 array(
                     'widget' => 'single_text',
                     'label' => 'label.date_party',
@@ -36,14 +39,14 @@ class PoolType extends AbstractType
             )
             ->add(
                 'amount',
-                'text',
+                TextType::class,
                 array(
                     'label' => 'label.amount_to_spend',
                 )
             )
             ->add(
                 'location',
-                'text',
+                TextType::class,
                 array(
                     'label' => 'label.location',
                 )
@@ -57,10 +60,5 @@ class PoolType extends AbstractType
                 'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool',
             )
         );
-    }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_pooltype';
     }
 }

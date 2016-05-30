@@ -2,7 +2,9 @@
 
 namespace Intracto\SecretSantaBundle\Form;
 
+use Genemu\Bundle\FormBundle\Form\JQuery\Type\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -11,32 +13,16 @@ class UpdatePoolDetailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
-                'eventdate',
-                'genemu_jquerydate',
-                [
-                    'widget' => 'single_text',
-                    'label' => 'label.date_party',
-                    'format' => 'dd-MM-yyyy',
-                    'configs' => [
-                        'minDate' => 0,
-                    ],
-                ]
-            )
-            ->add(
-                'amount',
-                'text',
-                [
-                    'label' => 'label.amount_to_spend',
-                ]
-            )
-            ->add(
-                'location',
-                'text',
-                [
-                    'label' => 'label.location',
-                ]
-            );
+            ->add('eventdate', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'label.date_party',
+                'format' => 'dd-MM-yyyy',
+                'configs' => [
+                    'minDate' => 0,
+                ],
+            ])
+            ->add('amount', TextType::class, ['label' => 'label.amount_to_spend'])
+            ->add('location', TextType::class, ['label' => 'label.location']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -46,10 +32,5 @@ class UpdatePoolDetailsType extends AbstractType
                 'data_class' => 'Intracto\SecretSantaBundle\Entity\Pool',
             ]
         );
-    }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_updatepooldetailstype';
     }
 }

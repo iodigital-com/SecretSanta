@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Form;
 
+use Genemu\Bundle\FormBundle\Form\Core\Type\TinymceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,7 +12,7 @@ class WishlistType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('wishlist', 'genemu_tinymce');
+            ->add('wishlist', TinymceType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -21,10 +22,5 @@ class WishlistType extends AbstractType
                 'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
             )
         );
-    }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_wishlisttype';
     }
 }

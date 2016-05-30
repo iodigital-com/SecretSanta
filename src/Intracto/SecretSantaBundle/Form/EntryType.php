@@ -21,9 +21,4 @@ class EntryType extends AbstractType
             'data_class' => 'Intracto\SecretSantaBundle\Entity\Entry',
         ));
     }
-
-    public function getName()
-    {
-        return 'intracto_secretsantabundle_entrytype';
-    }
 }
