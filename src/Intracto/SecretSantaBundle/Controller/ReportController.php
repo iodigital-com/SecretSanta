@@ -19,7 +19,7 @@ class ReportController extends Controller
         $comparison = $this->get('intracto_secret_santa.season_comparison');
         $featuredYears = $this->get('intracto_secret_santa.featured_years')->getFeaturedYears();
 
-        if ($reportQueryResult = $this->get('cache')->fetch('data' . $year)) {
+        if ($reportQueryResult = $this->get('cache')->fetch('data'.$year)) {
             $cache = unserialize($reportQueryResult);
 
             $data = [
@@ -79,12 +79,12 @@ class ReportController extends Controller
         $lastKey = key($featuredYears['featured_years']);
 
         if ($year == 'all' || $year == $featuredYears['featured_years'][$lastKey]) {
-            $this->get('cache')->save('data' . $year, serialize($data), 24*60*60);
+            $this->get('cache')->save('data'.$year, serialize($data), 24 * 60 * 60);
 
             return $data;
         }
 
-        $this->get('cache')->save('data' . $year, serialize($data));
+        $this->get('cache')->save('data'.$year, serialize($data));
 
         return $data;
     }

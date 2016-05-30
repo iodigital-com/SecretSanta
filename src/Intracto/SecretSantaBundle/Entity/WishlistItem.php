@@ -5,7 +5,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * WishlistItem
+ * WishlistItem.
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -22,7 +22,7 @@ class WishlistItem
     private $id;
 
     /**
-     * @var Entry $entry
+     * @var Entry
      *
      * @ORM\ManyToOne(targetEntity="Entry", inversedBy="wishlistItems")
      */

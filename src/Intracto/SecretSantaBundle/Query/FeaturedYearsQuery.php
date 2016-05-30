@@ -33,7 +33,7 @@ class FeaturedYearsQuery
         $featuredYears = [];
 
         foreach ($yearsQuery as $f) {
-            $checkDate = \DateTime::createFromFormat('Y-m-d', $f['featured_year'] . '-04-01');
+            $checkDate = \DateTime::createFromFormat('Y-m-d', $f['featured_year'].'-04-01');
             $dateNow = new \DateTime();
 
             if ($dateNow >= $checkDate) {

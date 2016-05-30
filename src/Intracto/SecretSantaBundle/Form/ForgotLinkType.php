@@ -6,9 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\EmailValidator;
 
 class ForgotLinkType extends AbstractType
 {
@@ -21,8 +19,8 @@ class ForgotLinkType extends AbstractType
                         'strict' => true,
                         'message' => "The email '{{ value }}' is not a valid email.",
                         'checkMX' => true,
-                    ])
-                ]
+                    ]),
+                ],
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-large btn-primary btn-create-event'],

@@ -38,7 +38,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $entry4->addExcludedEntry($entry2);
 
         $entryShuffler = new EntryShuffler();
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 1000; ++$i) {
             $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
 
             $key = 0;
@@ -47,7 +47,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
                 $this->assertNotContains($shuffeledEntries[$key], $entry->getExcludedEntries());
                 //check if we have an entry matched
                 $this->assertNotNull($shuffeledEntries[$key]);
-                $key++;
+                ++$key;
             }
         }
     }
@@ -389,7 +389,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $fam0entry1->addExcludedEntry($fam7entry1);
         $fam0entry1->addExcludedEntry($fam8entry1);
         $fam0entry1->addExcludedEntry($fam9entry1);
-       
+
         $fam0entry2->addExcludedEntry($fam1entry2);
         $fam0entry2->addExcludedEntry($fam2entry2);
         $fam0entry2->addExcludedEntry($fam3entry2);
@@ -471,7 +471,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $fam0entry9->addExcludedEntry($fam9entry9);
 
         $entryShuffler = new EntryShuffler();
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 1000; ++$i) {
             $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
 
             $key = 0;
@@ -480,7 +480,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
                 $this->assertNotContains($shuffeledEntries[$key], $entry->getExcludedEntries());
                 //check if we have an entry matched
                 $this->assertNotNull($shuffeledEntries[$key]);
-                $key++;
+                ++$key;
             }
         }
     }
@@ -1714,7 +1714,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $fam9entry9->addExcludedEntry($fam9entry8);
 
         $entryShuffler = new EntryShuffler();
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
 
             $key = 0;
@@ -1723,7 +1723,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
                 $this->assertNotContains($shuffeledEntries[$key], $entry->getExcludedEntries());
                 //check if we have an entry matched
                 $this->assertNotNull($shuffeledEntries[$key]);
-                $key++;
+                ++$key;
             }
         }
     }
@@ -1963,7 +1963,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $fam0entry9->addExcludedEntry($fam1entry7);
         $fam0entry9->addExcludedEntry($fam1entry8);
         $fam0entry9->addExcludedEntry($fam1entry9);
-       
+
         $fam1entry0->addExcludedEntry($fam0entry0);
         $fam1entry0->addExcludedEntry($fam0entry1);
         $fam1entry0->addExcludedEntry($fam0entry2);
@@ -2075,7 +2075,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
         $fam1entry9->addExcludedEntry($fam0entry9);
 
         $entryShuffler = new EntryShuffler();
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $shuffeledEntries = $entryShuffler->shuffleEntries($pool);
 
             $key = 0;
@@ -2084,7 +2084,7 @@ class EntryShufflerTest extends \PHPUnit_Framework_TestCase
                 $this->assertNotContains($shuffeledEntries[$key], $entry->getExcludedEntries());
                 //check if we have an entry matched
                 $this->assertNotNull($shuffeledEntries[$key]);
-                $key++;
+                ++$key;
             }
         }
     }

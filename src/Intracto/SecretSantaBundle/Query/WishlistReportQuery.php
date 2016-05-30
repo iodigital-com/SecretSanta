@@ -12,7 +12,7 @@ class WishlistReportQuery
     private $entryReportQuery;
 
     /**
-     * @param Connection $dbal
+     * @param Connection       $dbal
      * @param EntryReportQuery $entryReportQuery
      */
     public function __construct(Connection $dbal, EntryReportQuery $entryReportQuery)
@@ -23,6 +23,7 @@ class WishlistReportQuery
 
     /**
      * @param Season $season
+     *
      * @return float
      */
     public function calculateCompletedWishlists(Season $season)
@@ -39,6 +40,7 @@ class WishlistReportQuery
 
     /**
      * @param Season $season
+     *
      * @return mixed
      */
     private function countWishlists(Season $season)
@@ -58,6 +60,7 @@ class WishlistReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return float
      */
     public function calculateCompletedWishlistsUntilDate(\DateTime $date)
@@ -74,6 +77,7 @@ class WishlistReportQuery
 
     /**
      * @param \DateTime $date
+     *
      * @return mixed
      */
     private function countAllWishlistsUntilDate(\DateTime $date)
@@ -92,6 +96,7 @@ class WishlistReportQuery
     /**
      * @param Season $season1
      * @param Season $season2
+     *
      * @return float
      */
     public function calculateCompletedWishlistDifferenceBetweenSeasons(Season $season1, Season $season2)

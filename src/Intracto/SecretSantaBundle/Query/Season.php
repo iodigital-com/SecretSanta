@@ -16,8 +16,8 @@ class Season
         $this->end = new \DateTime();
 
         if ($year) {
-            $this->start = \DateTime::createFromFormat('Y-m-d', $year . '-04-01');
-            $this->end = \DateTime::createFromFormat('Y-m-d', $year + 1 . '-04-01');
+            $this->start = \DateTime::createFromFormat('Y-m-d', $year.'-04-01');
+            $this->end = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01');
         }
     }
 

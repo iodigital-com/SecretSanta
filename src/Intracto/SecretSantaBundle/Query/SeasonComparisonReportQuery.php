@@ -12,8 +12,8 @@ class SeasonComparisonReportQuery
     private $wishlistReportQuery;
 
     /**
-     * @param PoolReportQuery $poolReportQuery
-     * @param EntryReportQuery $entryReportQuery
+     * @param PoolReportQuery     $poolReportQuery
+     * @param EntryReportQuery    $entryReportQuery
      * @param WishlistReportQuery $wishlistReportQuery
      */
     public function __construct(
@@ -28,6 +28,7 @@ class SeasonComparisonReportQuery
 
     /**
      * @param $year
+     *
      * @return array
      */
     public function getComparison($year)

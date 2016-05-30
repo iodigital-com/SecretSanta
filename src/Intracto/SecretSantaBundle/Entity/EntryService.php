@@ -4,8 +4,6 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
 use JMS\DiExtraBundle\Annotation as DI;
-use Symfony\Component\Translation\TranslatorInterface;
-use Symfony\Component\Templating\EngineInterface;
 
 /**
  * @DI\Service("intracto_secret_santa.entry_service")
@@ -22,12 +20,12 @@ class EntryService
     /**
      * @DI\Inject("intracto_secret_santa.entry_shuffler")
      *
-     * @var EntryShuffler $entryShuffler
+     * @var EntryShuffler
      */
     public $entryShuffler;
 
     /**
-     * Shuffles all entries for pool and save result to each entry
+     * Shuffles all entries for pool and save result to each entry.
      *
      * @param Pool $pool
      *

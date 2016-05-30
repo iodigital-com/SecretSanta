@@ -26,7 +26,7 @@ class ExcludeEntryType extends AbstractType
                 'expanded' => false,
                 'property' => 'name',
 
-                /** @Ignore */
+                /* @Ignore */
                 'label' => $me->getName(),
                 'attr' => ['data-entry' => $me->getId()],
                 'query_builder' => function (EntityRepository $er) use ($me) {
