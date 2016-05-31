@@ -143,6 +143,12 @@ class PoolController extends Controller
                 $pool->setCreationDate(new \DateTime());
                 $pool->setMessage($message);
                 $pool->setLocale($request->getLocale());
+
+
+                if ($pool->getEntries()->count() <= 3) {
+                    $pool->setCreated(true);
+                }
+
                 $this->em->persist($pool);
                 $this->em->flush();
 

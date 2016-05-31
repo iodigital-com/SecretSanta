@@ -28,7 +28,7 @@ class ExcludeEntryType extends AbstractType
 
                 /* @Ignore */
                 'label' => $me->getName(),
-                'attr' => ['data-entry' => $me->getId()],
+                'attr' => ['data-entry' => $me->getId(), 'class' => 'js-selector-entry'],
                 'query_builder' => function (EntityRepository $er) use ($me) {
                     return $er->createQueryBuilder('e')
                         ->where('e.pool = :pool')
