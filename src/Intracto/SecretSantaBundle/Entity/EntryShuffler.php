@@ -2,9 +2,6 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-/**
- * Class EntryShuffler.
- */
 class EntryShuffler
 {
     const SHUFFLE_TIME_LIMIT = 10; //sec

@@ -144,7 +144,6 @@ class PoolController extends Controller
                 $pool->setMessage($message);
                 $pool->setLocale($request->getLocale());
 
-
                 if ($pool->getEntries()->count() <= 3) {
                     $pool->setCreated(true);
                 }
