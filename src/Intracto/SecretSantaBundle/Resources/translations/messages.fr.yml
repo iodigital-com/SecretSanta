@@ -304,7 +304,7 @@ emails:
     sender: Santa Claus
     base:
         title: Secret Santa par Intracto
-        footer: Have fun organizing Secret Santa!
+        footer: Bon amusement pour votre Secret Santa party!
         created_by: Créé par
     pendingconfirmation:
         subject: Confirmation Secret Santa
