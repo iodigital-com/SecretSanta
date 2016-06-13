@@ -162,6 +162,14 @@ remove_participant:
             Si estás seguro de que puedes borrar este participante, escribe "<b>%phrase_to_type</b>" debajo para confirmar.<br>
         </p>
     phrase_to_type: expulsar este participante
+updated_party:
+    title: Actualizar los datos de tu fiesta de Secret Santa
+    body: >
+        <p>
+            Rellenando el siguiente formulario, puedes cambiar los detalles de la fiesta que está organizando.<br>
+            <br>
+            Tus participantes serán notificados de estos cambios immediatamente.
+        </p>
 static:
     report:
         max_results: Resultados máx.
@@ -173,6 +181,8 @@ static:
 label:
     name: Nombre
     email: Correo electrónico
+    host: Organizador
+    participants: Participantes
     date_party: Fecha de tu fiesta Secret Santa
     amount_to_spend: Cantidad a gastar
     location: Sitio de tu fiesta Secret Santa
@@ -180,6 +190,7 @@ label:
     confirmed: Confirmado
     actions: Acciones
     description: Descripción
+    wishlist_filled: Lista de deseos insertado
     items: Regalos deseados
 placeholder:
     exclude: Hacer clic y elegir los participantes que se quiere excluir
@@ -366,6 +377,9 @@ emails:
 
                 Haz clic en el siguiente enlace para descubrir quien es tu nuevo amigote Secret Santa
         btn_find_out: Descubre a tu nueva persona
+    forgot_link:
+        text: 'Hola, <br><br>tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.<br>'
+        subject: 'Reenviar el correo de activación'
 flashes:
     manage:
         email_validated: >
@@ -390,6 +404,9 @@ flashes:
         saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
     analytics:
         invalid_data: <h4>Oops</h4> Ha ocurrido un error al requerir los datos analíticos. Por favor, inténtalo otra vez.
+    forgot_manage_link:
+        success: 'Hemos enviado exitosamente reenviado su correo de activación.'
+        error: 'Se produjo un error durante la transmisión del correo de activación. Por favor, inténtalo de nuevo.'
     pool_update:
         success: <h4>Éxito</h4> Todos los participantes han recibido una actualizaci&oacute;n sobre la fiesta.
     remove_participant:
@@ -401,6 +418,8 @@ flashes:
     add_participant:
         success: <h4>¡A&ntilde;adido!</h4> Participante a&ntilde;adido a tu fiesta de éxito.
         danger: <h4>Oops</h4> Ha ocurrido un error al a&ntilde;adir el participante. Por favor, inténtalo otra vez.
+    modify_list:
+        warning: <h4>Oops</h4> Parece que tu fiesta de Santa Secreto está en menos de una semana, no se puede añadir o eliminar participantes más.
     wishlist:
         empty_row: <h4>Oops</h4> Expulsa la fila vac&iacute;a antes de progresar por favor.
         added: <h4>¡A&ntilde;adido!</h4> L'art&iacute;culo ha sido a&ntilde;adido a tu lista de deseos.
@@ -409,3 +428,6 @@ flashes:
     updated_party:
         success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
         danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
+forgot_manage_link:
+    title: 'Reenviar el correo de activación'
+    description: 'Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.'
