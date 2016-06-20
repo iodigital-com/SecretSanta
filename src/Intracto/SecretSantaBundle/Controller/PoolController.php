@@ -203,6 +203,11 @@ class PoolController extends Controller
         $this->getPool($listUrl);
 
         if ($this->pool->getCreated()) {
+            $this->eventDispatcher->dispatch(
+                PoolEvents::NEW_POOL_CREATED,
+                new PoolEvent($this->pool)
+            );
+            
             return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $this->pool->getListurl()]));
         }
 
