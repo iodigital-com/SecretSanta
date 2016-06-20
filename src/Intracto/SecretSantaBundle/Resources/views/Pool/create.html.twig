@@ -21,7 +21,7 @@
     <div class="content-container" id="mysanta">
         <div class="santa-content">
             <h1>{{ 'create.add_participants'|trans }}</h1>
-            <form action="#mysanta" method="POST" {{ form_enctype(form) }} novalidate>
+            {{ form_start(form) }}
                 {{ form_row(form._token) }}
                 <div class="toplabels">
                     <div class="form-group form-create-pool {% if form_errors(form.eventdate) %}error{% endif %}">
@@ -110,7 +110,7 @@
                         <i class="fa fa-check"></i> {{ 'btn.create_event'|trans }}
                     </button>
                 </p>
-            </form>
+            {{ form_end(form) }}
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <ins class="adsbygoogle"
                  style="display:block"

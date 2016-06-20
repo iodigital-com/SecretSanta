@@ -59,6 +59,10 @@ class PoolType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => Pool::class,
+                'action' => '#mysanta',
+                'attr' => [
+                    'novalidate' => 'novalidate',
+                ],
             ]
         );
     }
