@@ -19,10 +19,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "jms/security-extra-bundle": "1.5.*",
         "genemu/form-bundle": "^2.3",
         "jms/i18n-routing-bundle": "^2.0",
-        "jms/translation-bundle": "^1.1",
         "egulias/email-validator": "~1.2",
         "google/apiclient": "^1.1"
     },

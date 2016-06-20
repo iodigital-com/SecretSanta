@@ -10,7 +10,6 @@ use Intracto\SecretSantaBundle\Form\WishlistType;
 use Intracto\SecretSantaBundle\Form\WishlistNewType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\Validator;
@@ -188,10 +187,11 @@ class EntryController extends Controller
     /**
      * @Route("/dump-entries", name="dump_entries")
      * @Template()
-     * @Secure(roles="ROLE_ADWORDS")
      */
     public function dumpEntriesAction()
     {
+        $this->denyAccessUnlessGranted('ROLE_ADWORDS');
+
         $startCrawling = new \DateTime();
         $startCrawling->sub(new \DateInterval('P4M'));
 
