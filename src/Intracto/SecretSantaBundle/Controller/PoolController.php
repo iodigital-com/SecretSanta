@@ -134,7 +134,7 @@ class PoolController extends Controller
         $this->getPool($listUrl);
 
         if ($this->pool->getCreated()) {
-            $this->eventDispatcher->dispatch(
+            $this->get('event_dispatcher')->dispatch(
                 PoolEvents::NEW_POOL_CREATED,
                 new PoolEvent($this->pool)
             );
@@ -470,7 +470,7 @@ class PoolController extends Controller
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->translator->trans('flashes.pool_update.success')
+            $this->get('translator')->trans('flashes.pool_update.success')
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $this->pool->getListurl()]));
