@@ -18,6 +18,7 @@ class PoolExcludeEntryType extends AbstractType
                 CollectionType::class,
                 [
                     'entry_type' => ExcludeEntryType::class,
+                    'by_reference' => false,
                 ]
             );
     }

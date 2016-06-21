@@ -62,23 +62,11 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-jms_di_extra:
-    locations:
-        all_bundles: true
-
 jms_i18n_routing:
     default_locale: "%locale%"
     locales: %supported_locales%
     strategy: prefix_except_default
 
-jms_translation:
-    configs:
-        app:
-            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
-            output_dir: %kernel.root_dir%/Resources/translations
-            ignored_domains: [routes]
-            excluded_names: ["*TestCase.php", "*Test.php"]
-            excluded_dirs: [cache, data, logs]
 genemu_form:
     tinymce:
         enabled: true

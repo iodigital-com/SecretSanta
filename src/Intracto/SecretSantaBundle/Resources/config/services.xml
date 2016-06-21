@@ -57,5 +57,9 @@
         <service id="intracto_secret_santa.wishlist_mail" class="Intracto\SecretSantaBundle\Query\WishlistMailQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
+        <service id="intracto_secret_santa.entry_service" class="Intracto\SecretSantaBundle\Entity\EntryService">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="intracto_secret_santa.entry_shuffler" />
+        </service>
     </services>
 </container>

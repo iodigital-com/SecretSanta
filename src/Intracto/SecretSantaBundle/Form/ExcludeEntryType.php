@@ -24,7 +24,7 @@ class ExcludeEntryType extends AbstractType
                 'class' => 'IntractoSecretSantaBundle:Entry',
                 'multiple' => true,
                 'expanded' => false,
-                'property' => 'name',
+                'choice_label' => 'name',
 
                 /* @Ignore */
                 'label' => $me->getName(),
