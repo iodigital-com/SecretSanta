@@ -154,7 +154,7 @@
 
             {{ 'add_participant.body'|trans|raw }}
             <br>
-            <form method="post" {{ form_enctype(addEntryForm) }}>
+            {{ form_start(addEntryForm) }}
                 {{ form_row(addEntryForm._token) }}
                 <div class="form-group {% if form_errors(addEntryForm.name) %}error{% endif %}">
                     <strong>{{ 'label.name'|trans }}</strong> {{ form_widget(addEntryForm.name ,{'attr':{'class':'form-control'}}) }}
@@ -175,7 +175,7 @@
                 <button type="submit" class="btn btn-success"
                         id="btn_add_confirmation">{{ 'btn.add_participant_confirm'|trans|raw }}</button>
                 <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'btn.cancel'|trans }}</button>
-            </form>
+            {{ form_end(addEntryForm) }}
         </div>
 
         <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
@@ -206,7 +206,7 @@
 
             {{ 'updated_party.body'|trans|raw }}
             <br>
-            <form method="post" {{ form_enctype(updatePoolDetailsForm) }}>
+            {{ form_start(updatePoolDetailsForm) }}
                 {{ form_row(updatePoolDetailsForm._token) }}
                 <div class="form-group {% if form_errors(updatePoolDetailsForm.eventdate) %}error{% endif %}">
                     <strong>{{ form_label(updatePoolDetailsForm.eventdate) }}</strong>
@@ -231,7 +231,7 @@
                 </div>
                 <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
                 <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'btn.cancel'|trans }}</button>
-            </form>
+            {{ form_end(updatePoolDetailsForm) }}
         </div>
     </div>
     </div>
