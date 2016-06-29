@@ -38,17 +38,21 @@ class SendEmptyWishlistReminderCommand extends ContainerAwareCommand
         $emptyWishlists = $entryMailQuery->findAllToRemindOfEmptyWishlist();
         $timeNow = new \DateTime();
 
-        foreach ($emptyWishlists as $entry) {
-            $itemCount = $wishlistMailQuery->countWishlistItemsOfParticipant($entry);
+        try {
+            foreach ($emptyWishlists as $entry) {
+                $itemCount = $wishlistMailQuery->countWishlistItemsOfParticipant($entry);
 
-            if ($itemCount[0]['wishlistItemCount'] == 0) {
-                $mailerService->sendWishlistReminderMail($entry);
-
-                $entry->setEmptyWishlistReminderSentTime($timeNow);
-                $em->persist($entry);
+                if ($itemCount[0]['wishlistItemCount'] == 0) {
+                    $mailerService->sendWishlistReminderMail($entry);
+    
+                    $entry->setEmptyWishlistReminderSentTime($timeNow);
+                    $em->persist($entry);
+                }
             }
+        } catch (\Exception $e) {
+            throw $e;
+        } finally {
+            $em->flush();
         }
-
-        $em->flush();
     }
 }
