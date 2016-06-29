@@ -37,13 +37,19 @@ class SendEntryViewReminderCommand extends ContainerAwareCommand
         $needsViewReminder = $entryMailQuery->findAllToRemindToViewEntry();
         $timeNow = new \DateTime();
 
-        foreach ($needsViewReminder as $entry) {
-            $mailerService->sendEntryViewReminderMail($entry);
+        try {
+            foreach ($needsViewReminder as $entry) {
+                $mailerService->sendEntryViewReminderMail($entry);
+    
+                $entry->setViewReminderSentTime($timeNow);
+                $em->persist($entry);
+            }
 
-            $entry->setViewReminderSentTime($timeNow);
-            $em->persist($entry);
+            $em->flush();
+        } catch (\Exception $e) {
+            throw $e;
+        } finally {
+            $em->flush();
         }
-
-        $em->flush();
     }
 }

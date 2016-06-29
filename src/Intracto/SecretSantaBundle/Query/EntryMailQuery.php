@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\ORM\EntityManager;
+use Intracto\SecretSantaBundle\Entity\Entry;
 
 class EntryMailQuery
 {
@@ -21,7 +22,7 @@ class EntryMailQuery
      * Find all entries that have an empty wishlist in Pools which were sent out
      * more than two weeks ago and the party date is max six weeks in the future.
      *
-     * @return array
+     * @return Entry[]|array
      */
     public function findAllToRemindOfEmptyWishlist()
     {
@@ -58,7 +59,7 @@ class EntryMailQuery
      * out more than two weeks ago and the party date is max six weeks in the
      * future.
      *
-     * @return array
+     * @return Entry[]|array
      */
     public function findAllToRemindToViewEntry()
     {
