@@ -75,10 +75,6 @@ class PoolController extends Controller
                 $pool->setMessage($message);
                 $pool->setLocale($request->getLocale());
 
-                if ($pool->getEntries()->count() <= 3) {
-                    $pool->setCreated(true);
-                }
-
                 $this->get('doctrine.orm.entity_manager')->persist($pool);
                 $this->get('doctrine.orm.entity_manager')->flush();
 
@@ -139,6 +135,22 @@ class PoolController extends Controller
                 new PoolEvent($this->pool)
             );
             
+            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $this->pool->getListurl()]));
+        }
+
+        if ($this->pool->getEntries()->count() <= 3) {
+            $this->pool->setCreated(true);
+            $this->get('doctrine.orm.entity_manager')->persist($this->pool);
+
+            $this->get('intracto_secret_santa.entry_service')->shuffleEntries($this->pool);
+
+            $this->get('doctrine.orm.entity_manager')->flush();
+
+            $this->get('event_dispatcher')->dispatch(
+                PoolEvents::NEW_POOL_CREATED,
+                new PoolEvent($this->pool)
+            );
+
             return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $this->pool->getListurl()]));
         }
 
