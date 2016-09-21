@@ -2,4 +2,4 @@
 
 echo "Install dependencies"
 
-composer install --no-interaction --no-scripts --prefer-dist -o || exit $?
+composer install --no-interaction --prefer-dist -o || exit $?
