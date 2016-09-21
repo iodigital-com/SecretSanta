@@ -1,0 +1,55 @@
+default:
+    formatters:
+        pretty:
+            verbose: true
+            paths: false
+            snippets: false
+
+    suites:
+        secretsanta:
+            type: symfony_bundle
+            bundle: IntractoSecretSantaBundle
+            contexts:
+                   - Intracto\SecretSantaBundle\Features\Context\Bootstrap\PoolContext
+
+    extensions:
+        Behat\MinkExtension:
+            base_url: 'http://dev.secretsantaorganizer.com/'
+            default_session: symfony
+            javascript_session: chrome
+            sessions:
+                symfony:
+                    symfony2: ~
+                chrome:
+                    selenium2:
+                        browser: chrome
+                        capabilities:
+                            browserName: chrome
+                            browser: chrome
+                            version: ''
+                            chrome:
+                                switches:
+                                    - 'start-fullscreen'
+                                    - 'start-maximized'
+                                    - 'no-sandbox'
+                firefox:
+                    selenium2:
+                        browser: firefox
+            show_auto: false
+
+        Behat\Symfony2Extension:
+            kernel:
+                env: test_travis
+                debug: false
+
+        Lakion\Behat\MinkDebugExtension:
+            directory: .travis/build
+            clean_start: false
+            screenshot: false
+
+        FriendsOfBehat\PerformanceExtension: ~
+
+        SensioLabs\Behat\PageObjectExtension:
+          namespaces:
+            page:
+              - Intracto\SecretSantaBundle\Behat\Page

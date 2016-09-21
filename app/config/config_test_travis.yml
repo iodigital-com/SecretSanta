@@ -1,0 +1,41 @@
+imports:
+    - { resource: config.yml }
+
+parameters:
+    database_user: root
+    database_password: ''
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+
+swiftmailer:
+    disable_delivery: true
+    logging: true
+    spool:
+        type: file
+        path: "%kernel.cache_dir%/spool"
+
+doctrine:
+    dbal:
+        dbname: "%database_name%_test"
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: error
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                metadata_cache_driver:
+                    type: memcached
+                    host: localhost
+                    port: 11211
+
+twig:
+    strict_variables: true
