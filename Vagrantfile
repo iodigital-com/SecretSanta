@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             secretsanta_config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc', 'nolock', 'actimeo=2']
         end
 
-        secretsanta_config.vm.network "private_network", ip: "192.168.33.10"
+        secretsanta_config.vm.network "private_network", ip: "192.168.33.50"
 
         # Shell provisioning
         secretsanta_config.vm.provision :shell, :path => "shell_provisioner/run.sh"
