@@ -25,7 +25,8 @@
         "google/apiclient": "^1.1"
     },
     "require-dev": {
-        "phpro/grumphp": "^0.8.0"
+        "phpro/grumphp": "^0.8.0",
+        "phpunit/phpunit": "^5.5"
     },
     "scripts": {
         "post-install-cmd": [
