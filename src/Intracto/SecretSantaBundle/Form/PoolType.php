@@ -6,6 +6,7 @@ use Genemu\Bundle\FormBundle\Form\JQuery\Type\DateType;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,7 +16,7 @@ class PoolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('message', TextType::class)
+            ->add('message', TextareaType::class)
             ->add(
                 'entries',
                 CollectionType::class,
