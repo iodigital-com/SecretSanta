@@ -1,5 +1,7 @@
 # Welcome to Secret Santa Online gift exchange organizer!
 
+[![Build Status](https://travis-ci.org/Intracto/SecretSanta.svg?branch=master)](https://travis-ci.org/Intracto/SecretSanta)
+
 Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends,
 family or even co-workers and add your wishlist.
 
