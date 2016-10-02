@@ -13,3 +13,4 @@ composer.phar
 dumps
 .idea
 .vagrant
+.travis/build/behat-*

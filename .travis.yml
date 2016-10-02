@@ -7,6 +7,10 @@ env:
         - BUILD_CACHE_DIR=$HOME/.build-cache
         - TRAVIS_BUILD_DIR=.travis/build
 
+services:
+  - mysql
+  - memcached
+
 php:
   - '5.6'
   - '7.0'
