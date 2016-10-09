@@ -84,13 +84,16 @@ class PoolReportQuery
         $poolChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
+            $firstDay = \DateTime::createFromFormat('Y-m-d', $year .'-04-01')->format('Y-m-d H:i:s');
             $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()
                 ->select('count(p.id) AS accumulatedPoolCountByYear')
                 ->from('Pool', 'p')
                 ->where('p.sentdate IS NOT NULL')
+                ->andWhere('p.sentdate >= :firstDay')
                 ->andWhere('p.sentdate < :lastDay')
+                ->setParameter('firstDay', $firstDay)
                 ->setParameter('lastDay', $lastDay);
 
             $chartData = $query->execute()->fetchAll();

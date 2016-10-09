@@ -396,9 +396,11 @@
                 countryData.addColumn('string', 'Country');
                 countryData.addColumn('number', 'Visitors');
                 countryData.addRows([
-                    {% for google in google_data_pool['countries'] %}
-                        ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
+                    {% if google_data_pool['countries'] is defined %}
+                        {% for google in google_data_pool['countries'] %}
+                            ['{{ google[0] }}', {{ google[1] }}],
+                        {% endfor %}
+                    {% endif %}
                 ]);
                 var countryChart = new google.visualization.PieChart(document.getElementById('country_chart'));
                 countryChart.draw(countryData, analyticsChartOptions);
@@ -407,9 +409,11 @@
                 languageData.addColumn('string', 'Language');
                 languageData.addColumn('number', 'Visitors');
                 languageData.addRows([
-                    {% for google in google_data_pool['language'] %}
-                        ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
+                    {% if google_data_pool['language'] is defined %}
+                        {% for google in google_data_pool['language'] %}
+                            ['{{ google[0] }}', {{ google[1] }}],
+                        {% endfor %}
+                    {% endif %}
                 ]);
                 var languageChart = new google.visualization.PieChart(document.getElementById('language_chart'));
                 languageChart.draw(languageData, analyticsChartOptions);
@@ -418,9 +422,11 @@
                 deviceData.addColumn('string', 'Device');
                 deviceData.addColumn('number', 'Visitors');
                 deviceData.addRows([
-                    {% for google in google_data_pool['deviceCategory'] %}
-                        ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
+                    {% if google_data_pool['deviceCategory'] is defined %}
+                        {% for google in google_data_pool['deviceCategory'] %}
+                            ['{{ google[0] }}', {{ google[1] }}],
+                        {% endfor %}
+                    {% endif %}
                 ]);
                 var deviceChart = new google.visualization.PieChart(document.getElementById('device_chart'));
                 deviceChart.draw(deviceData, analyticsChartOptions);
@@ -429,9 +435,11 @@
                 browserData.addColumn('string', 'Device');
                 browserData.addColumn('number', 'Visitors');
                 browserData.addRows([
-                    {% for google in google_data_pool['browser'] %}
-                        ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
+                    {% if google_data_pool['browser'] is defined %}
+                        {% for google in google_data_pool['browser'] %}
+                            ['{{ google[0] }}', {{ google[1] }}],
+                        {% endfor %}
+                    {% endif %}
                 ]);
                 var browserChart = new google.visualization.PieChart(document.getElementById('browser_chart'));
                 browserChart.draw(browserData, analyticsChartOptions);
