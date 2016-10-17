@@ -12,13 +12,12 @@ class EntryReportQuery
     private $poolReportQuery;
     /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
-    private $rootDirectory;
 
     /**
      * @param Connection         $dbal
      * @param PoolReportQuery    $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
-     * @param $rootDirectory
+     * @param $rootDirectory @todo: remove, not used
      */
     public function __construct(
         Connection $dbal,
@@ -29,7 +28,6 @@ class EntryReportQuery
         $this->dbal = $dbal;
         $this->poolReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
-        $this->rootDirectory = $rootDirectory;
     }
 
     /**
@@ -339,13 +337,13 @@ class EntryReportQuery
     public function fetchAdminEmailsForExport(Season $season)
     {
         return $this->dbal->executeQuery("
-            SELECT e.name, e.email, e.poolId
+            SELECT e.name, e.email, e.poolId, p.locale
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
             AND p.sentdate < :lastDay
             AND e.poolAdmin = 1
-            GROUP BY e.email
+            GROUP BY e.name, e.email, e.poolId
             INTO OUTFILE :location
             FIELDS TERMINATED BY ','
             ENCLOSED BY '\"'
@@ -353,7 +351,7 @@ class EntryReportQuery
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => $this->rootDirectory.'/../export/admin/'.date('Y-m-d H.i.s').'_admins.csv',
+                'location' => '/tmp/'.date('Y-m-d H.i.s').'_admins.csv',
             ]
         );
     }
@@ -366,13 +364,13 @@ class EntryReportQuery
     public function fetchParticipantEmailsForExport(Season $season)
     {
         return $this->dbal->executeQuery("
-            SELECT e.name, e.email, e.poolId
+            SELECT e.name, e.email, e.poolId, p.locale
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
             AND p.sentdate < :lastDay
             AND e.poolAdmin = 0
-            GROUP BY e.email
+            GROUP BY e.name, e.email, e.poolId
             INTO OUTFILE :location
             FIELDS TERMINATED BY ','
             ENCLOSED BY '\"'
@@ -380,7 +378,7 @@ class EntryReportQuery
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => $this->rootDirectory.'/../export/participant/'.date('Y-m-d H.i.s').'_participants.csv',
+                'location' => '/tmp/'.date('Y-m-d H.i.s').'_participants.csv',
             ]
         );
     }
