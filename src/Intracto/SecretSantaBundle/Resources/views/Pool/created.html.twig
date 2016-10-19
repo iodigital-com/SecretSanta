@@ -2,6 +2,19 @@
 {% block metadata %}
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
+{% block javascripts %}
+<script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': 'createParty',
+        'pId': '{{ pool.listurl }}',
+        'pLocation': '{{ pool.location }}',
+        'pAmount': '{{ pool.amount }}',
+        'pParticipants': '{{ pool.entries|length }}',
+        'pDate': '{{ pool.listurl }}'
+    });
+</script>
+{% endblock %}
 {% block main %}
 <div class="box">
     <h1>{{ 'created.title'|trans }}</h1>
