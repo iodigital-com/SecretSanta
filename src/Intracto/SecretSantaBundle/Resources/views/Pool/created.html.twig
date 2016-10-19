@@ -11,7 +11,7 @@
         'pLocation': '{{ pool.location }}',
         'pAmount': '{{ pool.amount }}',
         'pParticipants': '{{ pool.entries|length }}',
-        'pDate': '{{ pool.listurl }}'
+        'pDate': '{{ pool.eventdate|date('Y-m-d') }}'
     });
 </script>
 {% endblock %}
