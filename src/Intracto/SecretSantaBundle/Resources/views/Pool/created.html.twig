@@ -3,17 +3,18 @@
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
 {% block javascripts %}
-<script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        'event': 'createParty',
-        'pId': '{{ pool.listurl }}',
-        'pLocation': '{{ pool.location }}',
-        'pAmount': '{{ pool.amount }}',
-        'pParticipants': '{{ pool.entries|length }}',
-        'pDate': '{{ pool.eventdate|date('Y-m-d') }}'
-    });
-</script>
+    {% if app.environment == 'prod' %}
+        <script>
+            dataLayer.push({
+                'event': 'createParty',
+                'pId': '{{ pool.listurl }}',
+                'pLocation': '{{ pool.location }}',
+                'pAmount': '{{ pool.amount }}',
+                'pParticipants': '{{ pool.entries|length }}',
+                'pDate': '{{ pool.eventdate|date('Y-m-d') }}'
+            });
+        </script>
+    {% endif %}
 {% endblock %}
 {% block main %}
 <div class="box">
