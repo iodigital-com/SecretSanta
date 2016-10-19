@@ -17,13 +17,11 @@ class EntryReportQuery
      * @param Connection         $dbal
      * @param PoolReportQuery    $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
-     * @param $rootDirectory @todo: remove, not used
      */
     public function __construct(
         Connection $dbal,
         PoolReportQuery $poolReportQuery,
-        FeaturedYearsQuery $featuredYearsQuery,
-        $rootDirectory
+        FeaturedYearsQuery $featuredYearsQuery
     ) {
         $this->dbal = $dbal;
         $this->poolReportQuery = $poolReportQuery;
