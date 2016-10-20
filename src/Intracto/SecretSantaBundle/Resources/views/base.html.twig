@@ -45,6 +45,9 @@
 </head>
 <body>
 {% if app.environment == 'prod' %}
+    <script>
+        dataLayer = [];
+    </script>
     {% block datalayer %}{% endblock %}
     <!-- Google Tag Manager -->
     <noscript>
