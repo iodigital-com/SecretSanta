@@ -7,11 +7,6 @@
         <script>
             dataLayer.push({
                 'event': 'createParty',
-                'pId': '{{ pool.listurl }}',
-                'pLocation': '{{ pool.location }}',
-                'pAmount': '{{ pool.amount }}',
-                'pParticipants': '{{ pool.entries|length }}',
-                'pDate': '{{ pool.eventdate|date('Y-m-d') }}'
             });
         </script>
     {% endif %}

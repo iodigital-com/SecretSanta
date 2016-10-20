@@ -45,6 +45,17 @@
 </head>
 <body>
 {% if app.environment == 'prod' %}
+    {% if pool is defined %}
+        <script>
+            dataLayer.push({
+                'pId': '{{ pool.listurl }}',
+                'pLocation': '{{ pool.location }}',
+                'pAmount': '{{ pool.amount }}',
+                'pParticipants': '{{ pool.entries|length }}',
+                'pDate': '{{ pool.eventdate|date('Y-m-d') }}',
+            });
+        </script>
+    {% endif %}
     <!-- Google Tag Manager -->
     <noscript>
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-T4Q9GL" height="0" width="0"
