@@ -2,6 +2,17 @@
 {% block metadata %}
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
+{% block datalayer %}
+    <script>
+        dataLayer.push({
+            'pId': '{{ entry.pool.listurl }}',
+            'pLocation': '{{ entry.pool.location }}',
+            'pAmount': '{{ entry.pool.amount }}',
+            'pParticipants': '{{ entry.pool.entries|length }}',
+            'pDate': '{{ entry.pool.eventdate|date('Y-m-d') }}',
+        });
+    </script>
+{% endblock %}
 {% block header %}
     <div class="steps">
         <h2>{{ 'entry.headers.title'|trans|raw }}</h2>

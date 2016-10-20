@@ -2,14 +2,17 @@
 {% block metadata %}
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
-{% block javascripts %}
-    {% if app.environment == 'prod' %}
-        <script>
-            dataLayer.push({
-                'event': 'createParty',
-            });
-        </script>
-    {% endif %}
+{% block datalayer %}
+    <script>
+        dataLayer.push({
+            'pId': '{{ pool.listurl }}',
+            'pLocation': '{{ pool.location }}',
+            'pAmount': '{{ pool.amount }}',
+            'pParticipants': '{{ pool.entries|length }}',
+            'pDate': '{{ pool.eventdate|date('Y-m-d') }}',
+            'event': 'createParty',
+        });
+    </script>
 {% endblock %}
 {% block main %}
 <div class="box">
