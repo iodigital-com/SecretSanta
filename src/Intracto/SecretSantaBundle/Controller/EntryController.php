@@ -290,6 +290,16 @@ class EntryController extends Controller
         $buddyId = $this->get('intracto_secret_santa.entry')->findBuddyByEntryId($entryId);
         $buddy = $this->get('entry_repository')->find($buddyId[0]['id']);
 
+        // if A -> B -> A we can't delete B anymore or A is assigned to A
+        if ($entry->getEntry()->getEntry()->getId() === $entry->getId()) {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                $this->get('translator')->trans('flashes.remove_participant.self_assigned')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
+
         $this->get('doctrine.orm.entity_manager')->remove($entry);
         $this->get('doctrine.orm.entity_manager')->flush();
 
