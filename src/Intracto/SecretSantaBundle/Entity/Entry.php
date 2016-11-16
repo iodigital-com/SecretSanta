@@ -231,7 +231,7 @@ class Entry
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = preg_replace("/[^[:alnum:][:space:]]/u", '', $name);
 
         return $this;
     }
