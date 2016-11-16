@@ -42,3 +42,11 @@ Run the tests with:
     phpunit.phar -c app
 
 Note, don't worry if you see the shell provisioning print a lot of red lines. It all works fine.
+
+Building the frontend:
+
+```
+cd /vagrant/src/Intracto/SecretSantaBundle/Resources/public
+gulp build
+```
+
