@@ -310,8 +310,8 @@ input.span12, textarea.span12, .uneditable-input.span12 {
     font-size: 1.1em;
     line-height: 41px;
     margin: 0 15px 0 0;
-    padding: 22px 0 10px 87px;
-    width: 197px;
+    padding: 22px 10px 10px 87px;
+    min-width: 197px;
 }
 
 .entry .viewed {
