@@ -159,7 +159,7 @@ remove_participant:
             <br>
             Tiene en cuente que alguien ya puede ha comprado un regalo por este participante.<br>
             <br>
-            Si estás seguro de que puedes borrar este participante, escribe "<b>%phrase_to_type</b>" debajo para confirmar.<br>
+            Si estás seguro de que puedes borrar este participante, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
         </p>
     phrase_to_type: expulsar este participante
 updated_party:
