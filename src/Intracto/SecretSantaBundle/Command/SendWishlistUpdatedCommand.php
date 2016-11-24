@@ -37,16 +37,22 @@ class SendWishlistUpdatedCommand extends ContainerAwareCommand
         $secret_santas = $entryMailQuery->findAllToRemindOfUpdatedWishlist();
         $timeNow = new \DateTime();
 
-        foreach ($secret_santas as $secret_santa) {
-            $receiver = $secret_santa->getEntry();
+        try {
+            foreach ($secret_santas as $secret_santa) {
+                $receiver = $secret_santa->getEntry();
 
-            $mailerService->sendWishlistUpdatedMail($receiver, $secret_santa);
+                $mailerService->sendWishlistUpdatedMail($receiver, $secret_santa);
 
-            $receiver->setWishlistUpdated(false);
-            $receiver->setUpdateWishlistReminderSentTime($timeNow);
-            $em->persist($receiver);
+                $receiver->setWishlistUpdated(false);
+                $receiver->setUpdateWishlistReminderSentTime($timeNow);
+                $em->persist($receiver);
+            }
+
+            $em->flush();
+        } catch (\Exception $e) {
+            throw $e;
+        } finally {
+            $em->flush();
         }
-
-        $em->flush();
     }
 }
