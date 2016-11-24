@@ -22,7 +22,8 @@
         "genemu/form-bundle": "^2.3",
         "jms/i18n-routing-bundle": "^2.0",
         "egulias/email-validator": "~1.2",
-        "google/apiclient": "^1.1"
+        "google/apiclient": "^1.1",
+        "swiftmailer/swiftmailer": "dev-utf8_email_fix as 5.4.2"
     },
     "require-dev": {
         "phpro/grumphp": "^0.8.0",
@@ -39,6 +40,12 @@
         "sensiolabs/behat-page-object-extension": "^2.0",
         "webmozart/assert": "^1.1"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:Intracto/swiftmailer.git"
+        }
+    ],
     "scripts": {
         "travis-build": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

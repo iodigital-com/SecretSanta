@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "95d71db63bbb10e728b61988b6610ede",
-    "content-hash": "400586b051b5ab5ac566451dada84575",
+    "hash": "24abe55c726110de5da726cb783add4e",
+    "content-hash": "ec4e4c0b8f6dc7058d033f4e41c94fbd",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1597,23 +1597,24 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.2",
+            "version": "dev-utf8_email_fix",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "d8db871a54619458a805229a057ea2af33c753e8"
+                "url": "https://github.com/Intracto/swiftmailer.git",
+                "reference": "b37aa7f278fae29a7d79a060698513be967c2827"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d8db871a54619458a805229a057ea2af33c753e8",
-                "reference": "d8db871a54619458a805229a057ea2af33c753e8",
+                "url": "https://api.github.com/repos/Intracto/swiftmailer/zipball/b37aa7f278fae29a7d79a060698513be967c2827",
+                "reference": "b37aa7f278fae29a7d79a060698513be967c2827",
                 "shasum": ""
             },
             "require": {
+                "egulias/email-validator": "~1.2",
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1,<0.9.4"
+                "mockery/mockery": "~0.9.1"
             },
             "type": "library",
             "extra": {
@@ -1626,7 +1627,11 @@
                     "lib/swift_required.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Swift_": "tests/unit"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1646,7 +1651,10 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-05-01 08:45:47"
+            "support": {
+                "source": "https://github.com/Intracto/swiftmailer/tree/utf8_email_fix"
+            },
+            "time": "2016-11-24 13:37:08"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -4876,9 +4884,18 @@
             "time": "2016-02-18 20:53:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "5.4.2",
+            "alias_normalized": "5.4.2.0",
+            "version": "dev-utf8_email_fix",
+            "package": "swiftmailer/swiftmailer"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "swiftmailer/swiftmailer": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
