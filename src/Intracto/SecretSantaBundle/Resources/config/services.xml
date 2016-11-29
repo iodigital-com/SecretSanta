@@ -41,6 +41,7 @@
         </service>
         <service id="intracto_secret_santa.mail" class="Intracto\SecretSantaBundle\Mailer\MailerService">
             <argument type="service" id="mailer"></argument>
+            <argument type="service" id="swiftmailer.mailer.mandrill"></argument>
             <argument type="service" id="doctrine.orm.entity_manager"></argument>
             <argument type="service" id="templating"></argument>
             <argument type="service" id="translator"></argument>

@@ -10,6 +10,10 @@ parameters:
     mailer_host:       localhost
     mailer_user:       ~
     mailer_password:   ~
+    mandrill_transport:  smtp
+    mandrill_host:       localhost
+    mandrill_user:       ~
+    mandrill_password:   ~
 
     locale:            en
     supported_locales:

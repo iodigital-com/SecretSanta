@@ -13,6 +13,8 @@ class MailerService
 {
     /** @var \Swift_Mailer */
     public $mailer;
+    /** @var \Swift_Mailer */
+    public $mandrill;
     /** @var EntityManager */
     public $em;
     /** @var EngineInterface */
@@ -24,7 +26,8 @@ class MailerService
     public $adminEmail;
 
     /**
-     * @param \Swift_Mailer       $mailer
+     * @param \Swift_Mailer       $mailer a regular SMTP mailer, bad monitoring, cheap
+     * @param \Swift_Mailer       $mandrill for important mails only, good monitoring, not cheap
      * @param EntityManager       $em
      * @param EngineInterface     $templating
      * @param TranslatorInterface $translator
@@ -33,6 +36,7 @@ class MailerService
      */
     public function __construct(
         \Swift_Mailer $mailer,
+        \Swift_Mailer $mandrill,
         EntityManager $em,
         EngineInterface $templating,
         TranslatorInterface $translator,
@@ -40,6 +44,7 @@ class MailerService
         $adminEmail
     ) {
         $this->mailer = $mailer;
+        $this->mandrill = $mandrill;
         $this->em = $em;
         $this->templating = $templating;
         $this->translator = $translator;
@@ -100,7 +105,7 @@ class MailerService
                 ),
                 'text/plain'
             );
-        $this->mailer->send($mail);
+        $this->mandrill->send($mail);
     }
 
     /**
