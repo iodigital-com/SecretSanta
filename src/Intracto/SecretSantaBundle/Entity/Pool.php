@@ -10,7 +10,7 @@ use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
 /**
  * Intracto\SecretSantaBundle\Entity\Pool
  *
- * @ORM\Table()
+ * @ORM\Table(indexes={@ORM\Index(name="listurl", columns={"listurl"}),@ORM\Index(name="dates", columns={"created", "eventdate", "sentdate"})})
  * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PoolRepository")
  * @ORM\HasLifecycleCallbacks
  *
