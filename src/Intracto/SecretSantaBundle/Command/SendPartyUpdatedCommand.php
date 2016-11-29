@@ -36,13 +36,19 @@ class SendPartyUpdatedCommand extends ContainerAwareCommand
         $mailerService = $container->get('intracto_secret_santa.mail');
         $updatedPools = $poolMailQuery->findAllToNotifyOfUpdatedPartyMail();
 
-        foreach ($updatedPools as $pool) {
-            $mailerService->sendPoolUpdatedMailsForPool($pool);
+        try {
+            foreach ($updatedPools as $pool) {
+                $mailerService->sendPoolUpdatedMailsForPool($pool);
 
-            $pool->setDetailsUpdated(false);
-            $em->persist($pool);
+                $pool->setDetailsUpdated(false);
+                $em->persist($pool);
+            }
+
+            $em->flush();
+        } catch (\Exception $e) {
+            throw $e;
+        } finally {
+            $em->flush();
         }
-
-        $em->flush();
     }
 }

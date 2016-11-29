@@ -37,13 +37,19 @@ class SendPoolStatusCommand extends ContainerAwareCommand
         $poolAdmins = $entryMailQuery->findAllAdminsForPoolStatusMail();
         $timeNow = new \DateTime();
 
-        foreach ($poolAdmins as $poolAdmin) {
-            $mailerService->sendPoolStatusMail($poolAdmin);
+        try {
+            foreach ($poolAdmins as $poolAdmin) {
+                $mailerService->sendPoolStatusMail($poolAdmin);
 
-            $poolAdmin->setPoolStatusSentTime($timeNow);
-            $em->persist($poolAdmin);
+                $poolAdmin->setPoolStatusSentTime($timeNow);
+                $em->persist($poolAdmin);
+            }
+
+            $em->flush();
+        } catch (\Exception $e) {
+            throw $e;
+        } finally {
+            $em->flush();
         }
-
-        $em->flush();
     }
 }
