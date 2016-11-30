@@ -481,11 +481,11 @@ emails:
             html: >
                 Dear %name%,<br/>
                 <br/>
-                %owner% has changed some details of the party you're invited to. Below you can find the new details you're friend has provided for you.
+                %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
             txt: >
                 Dear %name%,
 
-                %owner% has changed some details of the party you're invited to. Below you can find the new details you're friend has provided for you.
+                %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
         btn_updated_party: Check your buddy and wishlist for this party
     removed_secret_santa:
         subject: Find out who your new Secret Santa is
