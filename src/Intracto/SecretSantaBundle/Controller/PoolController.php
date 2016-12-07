@@ -321,7 +321,7 @@ class PoolController extends Controller
             'delete_pool',
             $request->get('csrf_token')
         );
-        $correctConfirmation = ($request->get('confirmation') === $this->get('translator')->trans('delete.phrase_to_type'));
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('delete.phrase_to_type')));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
@@ -349,7 +349,7 @@ class PoolController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = ($request->get('confirmation') === $this->get('translator')->trans('expose.phrase_to_type'));
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('expose.phrase_to_type')));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
@@ -387,7 +387,7 @@ class PoolController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = ($request->get('confirmation') === $this->get('translator')->trans('expose_wishlists.phrase_to_type'));
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('expose_wishlists.phrase_to_type')));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
