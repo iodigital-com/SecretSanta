@@ -355,7 +355,7 @@ emails:
         click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
     emptywishlistreminder:
         subject: Je verlanglijst is nog leeg
-        updateyourlist: Jou Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
+        updateyourlist: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
     viewentryreminder:
         subject: Ontdek wiens Secret Santa je bent
         didyouforget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
