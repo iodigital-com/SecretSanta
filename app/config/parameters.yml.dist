@@ -42,6 +42,7 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     adwords_password:  secret
     admin_email:       santa@dev.secretsantaorganizer.com
+    noreply_email:     no-reply@dev.secretsantaorganizer.com
     base_url:          dev.secretsantaorganizer.com
     export_user:       export
     export_password:   export
