@@ -109,7 +109,7 @@ class MailerService
                 ),
                 'text/plain'
             );
-        $this->mandrill->send($mail);
+        $this->mailer->send($mail);
     }
 
     /**
