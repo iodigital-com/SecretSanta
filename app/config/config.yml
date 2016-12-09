@@ -119,7 +119,7 @@ services:
         arguments:
             - @templating
             - @swiftmailer.mailer.mandrill
-            - "%admin_email%"
+            - "%noreply_email%"
             - @translator
         tags:
             - { name: kernel.event_subscriber }

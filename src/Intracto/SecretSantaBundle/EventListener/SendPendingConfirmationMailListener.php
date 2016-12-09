@@ -22,7 +22,7 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
     /**
      * @var string
      */
-    private $adminEmail;
+    private $noreplyEmail;
     /**
      * @var TranslatorInterface
      */
@@ -35,11 +35,11 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
         ];
     }
 
-    public function __construct(EngineInterface $templating, \Swift_Mailer $mailer, $adminEmail, TranslatorInterface $translator)
+    public function __construct(EngineInterface $templating, \Swift_Mailer $mailer, $noreplyEmail, TranslatorInterface $translator)
     {
         $this->templating = $templating;
         $this->mailer = $mailer;
-        $this->adminEmail = $adminEmail;
+        $this->noreplyEmail = $noreplyEmail;
         $this->translator = $translator;
     }
 
@@ -54,7 +54,7 @@ class SendPendingConfirmationMailListener implements EventSubscriberInterface
 
         $message = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.pendingconfirmation.subject'))
-            ->setFrom($this->adminEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
             ->setTo($pool->getOwnerEmail())
             ->setBody(
                 $this->templating->render(

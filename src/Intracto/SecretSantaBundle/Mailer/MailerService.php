@@ -23,7 +23,6 @@ class MailerService
     public $translator;
     /** @var \Symfony\Bundle\FrameworkBundle\Routing\Router */
     public $routing;
-    public $adminEmail;
     public $noreplyEmail;
 
     /**
@@ -33,7 +32,6 @@ class MailerService
      * @param EngineInterface     $templating
      * @param TranslatorInterface $translator
      * @param Router              $routing
-     * @param $adminEmail
      * @param $noreplyEmail
      */
     public function __construct(
@@ -43,7 +41,6 @@ class MailerService
         EngineInterface $templating,
         TranslatorInterface $translator,
         Router $routing,
-        $adminEmail,
         $noreplyEmail
     ) {
         $this->mailer = $mailer;
@@ -52,7 +49,6 @@ class MailerService
         $this->templating = $templating;
         $this->translator = $translator;
         $this->routing = $routing;
-        $this->adminEmail = $adminEmail;
         $this->noreplyEmail = $noreplyEmail;
     }
 
@@ -86,7 +82,7 @@ class MailerService
 
         $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.secretsanta.subject'))
-            ->setFrom($this->adminEmail, $entry->getPool()->getOwnerName())
+            ->setFrom($this->noreplyEmail, $entry->getPool()->getOwnerName())
             ->setReplyTo([$entry->getPool()->getOwnerEmail() => $entry->getPool()->getOwnerName()])
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
