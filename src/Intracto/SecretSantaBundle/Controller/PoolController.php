@@ -258,6 +258,7 @@ class PoolController extends Controller
                     $this->get('doctrine.orm.entity_manager')->persist($newEntry);
                     $this->get('doctrine.orm.entity_manager')->flush();
 
+                    $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($admin);
                     $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($newEntry);
 
                     $this->get('session')->getFlashBag()->add(
