@@ -105,7 +105,11 @@ class MailerService
                 ),
                 'text/plain'
             );
-        $this->mailer->send($mail);
+        if (strpos($entry->getEmail(), '@hotmail.') === false) {
+            $this->mailer->send($mail);
+        } else {
+            $this->mandrill->send($mail);
+        }
     }
 
     /**
