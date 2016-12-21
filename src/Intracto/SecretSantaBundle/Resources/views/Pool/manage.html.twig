@@ -42,8 +42,8 @@
             {% for entry in pool.entries %}
                 <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
-                    <td>{{ entry.name }}</td>
-                    <td id="email_{{ entry.id }}">{{ entry.email }}</td>
+                    <td data-hj-masked>{{ entry.name }}</td>
+                    <td id="email_{{ entry.id }}" data-hj-masked>{{ entry.email }}</td>
                     <td class="{% if entry.viewdate %}viewed">{{ 'manage.yes'|trans }}{% else %}not_viewed">{{ 'manage.not_yet'|trans }}{% endif %}</td>
                     <td class="{% if entry.wishlistItems is not empty %}viewed">{{ 'manage.yes'|trans }}{% else %}not_viewed">{{ 'manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
@@ -334,7 +334,7 @@
             if ($('#email_' + entryId).has('form').length == 0) {
                 $('#email_' + entryId).html(
                     '<form action="' + url + '" method="post">' +
-                    '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '">&nbsp;' +
+                    '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
                     '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
                     '</form>'
                 );

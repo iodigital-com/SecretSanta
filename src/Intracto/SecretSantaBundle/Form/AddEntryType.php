@@ -13,8 +13,17 @@ class AddEntryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('email', TextType::class);
+            ->add(
+                'name',
+                TextType::class,
+                [ 'attr' => ['data-hj-masked' => ''] ]
+            )
+            ->add(
+                'email',
+                TextType::class,
+                [ 'attr' => ['data-hj-masked' => ''] ]
+            )
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

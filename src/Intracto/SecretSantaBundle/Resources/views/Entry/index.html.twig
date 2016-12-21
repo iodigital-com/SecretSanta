@@ -21,7 +21,7 @@
             <li><strong>{{ 'entry.headers.location'|trans }}</strong> {{ entry.pool.location }}</li>
             <li><strong>{{ 'entry.headers.amount'|trans }} </strong> {{ entry.pool.amount }}</li>
             <li><strong>{{ 'entry.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
-            <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> {{ entry.pool.entries|first.email }}
+            <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> <span data-hj-masked>{{ entry.pool.entries|first.email }}</span>
                 {% if entry.pool.exposed == false %}
                     <i class="fa fa-eye-slash" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.not_exposed'|trans }}"></i>
                 {% else %}
@@ -44,7 +44,7 @@
 
                 {{ 'entry.body'|trans({'%name%': entry.name})|raw }}
 
-                <div class="yoursecretsant">
+                <div class="yoursecretsant" data-hj-masked>
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
                 </div>
 
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="well bottom-spacer">
-                    <h4>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
+                    <h4 data-hj-masked>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
                     {% if(secret_santa.wishlistitems|length == 0) %}
                         {# check for legacy wishlist #}
                         {% if(secret_santa.getwishlist) %}
