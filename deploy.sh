@@ -40,8 +40,9 @@ sudo chmod -R a+rwX app/logs app/cache
 cd ../..
 
 # Activate latest
+sudo service apache2 stop
 ln -sfn releases/$VERSION current
-sudo service apache2 restart
+sudo service apache2 start
 
 # Cleanup old deployment, keep last 2
 cd releases
