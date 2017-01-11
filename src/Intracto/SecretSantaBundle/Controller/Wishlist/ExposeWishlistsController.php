@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ExposeEntriesController extends Controller
+class ExposeWishlistsController extends Controller
 {
     /**
      * @Route("/expose_wishlists/{listUrl}", name="pool_expose_wishlists")
