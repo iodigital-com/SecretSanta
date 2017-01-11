@@ -28,11 +28,8 @@ class ExposeEntriesController extends Controller
                 'danger',
                 $this->get('translator')->trans('flashes.expose_wishlists.not_exposed')
             );
-        } else {
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.expose_wishlists.exposed')
-            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
         $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
@@ -44,6 +41,11 @@ class ExposeEntriesController extends Controller
         $this->get('doctrine.orm.entity_manager')->flush();
 
         $this->get('intracto_secret_santa.mail')->sendAllWishlistsToAdmin($pool);
+
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            $this->get('translator')->trans('flashes.expose_wishlists.exposed')
+        );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
