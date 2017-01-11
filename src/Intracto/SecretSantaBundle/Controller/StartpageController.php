@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
@@ -11,6 +12,7 @@ class StartpageController extends Controller
 {
     /**
      * @Route("/", name="startpage")
+     * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
      */
     public function indexAction()
     {
@@ -22,11 +24,8 @@ class StartpageController extends Controller
             ]
         );
 
-        return $this->render(
-            'IntractoSecretSantaBundle:Pool:create.html.twig',
-            [
-                'form' => $poolForm->createView(),
-            ]
-        );
+        return [
+            'form' => $poolForm->createView(),
+        ];
     }
 }
