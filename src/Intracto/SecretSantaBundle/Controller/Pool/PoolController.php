@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller;
+namespace Intracto\SecretSantaBundle\Controller\Pool;
 
 use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
