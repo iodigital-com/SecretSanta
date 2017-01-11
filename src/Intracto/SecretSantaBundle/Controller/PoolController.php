@@ -5,7 +5,6 @@ namespace Intracto\SecretSantaBundle\Controller;
 use Intracto\SecretSantaBundle\Event\PoolEvent;
 use Intracto\SecretSantaBundle\Event\PoolEvents;
 use Intracto\SecretSantaBundle\Form\AddEntryType;
-use Intracto\SecretSantaBundle\Form\ForgotLinkType;
 use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
@@ -367,38 +366,6 @@ class PoolController extends Controller
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-    }
-
-    /**
-     * @Route("/forgot-link", name="pool_forgot_manage_link")
-     * @Template("IntractoSecretSantaBundle:Pool:forgotLink.html.twig")
-     */
-    public function forgotLinkAction(Request $request)
-    {
-        $form = $this->createForm(new ForgotLinkType());
-
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                if ($this->get('intracto_secret_santa.mail')->sendForgotManageLinkMail($form->getData()['email'])) {
-                    $feedback = [
-                        'type' => 'success',
-                        'message' => $this->get('translator')->trans('flashes.forgot_manage_link.success'),
-                    ];
-                } else {
-                    $feedback = [
-                        'type' => 'error',
-                        'message' => $this->get('translator')->trans('flashes.forgot_manage_link.error'),
-                    ];
-                }
-
-                $this->addFlash($feedback['type'], $feedback['message']);
-            }
-        }
-
-        return [
-            'form' => $form->createView(),
-        ];
     }
 
     /**
