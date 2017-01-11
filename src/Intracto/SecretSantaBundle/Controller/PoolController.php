@@ -344,41 +344,6 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/expose_wishlists/{listUrl}", name="pool_expose_wishlists")
-     * @Template()
-     */
-    public function exposeWishlistsAction(Request $request, $listUrl)
-    {
-        $correctCsrfToken = $this->isCsrfTokenValid(
-            'expose_wishlists',
-            $request->get('csrf_token')
-        );
-
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('expose_wishlists.phrase_to_type')));
-
-        if ($correctConfirmation === false || $correctCsrfToken === false) {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.expose_wishlists.not_exposed')
-            );
-        } else {
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.expose_wishlists.exposed')
-            );
-        }
-
-        $this->getPool($listUrl);
-        $this->pool->exposeWishlists();
-
-        $this->get('doctrine.orm.entity_manager')->flush();
-
-        $this->get('intracto_secret_santa.mail')->sendAllWishlistsToAdmin($this->pool);
-
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-    }
-
-    /**
      * @Route("/resend/{listUrl}/{entryId}", name="pool_resend")
      * @Template("IntractoSecretSantaBundle:Pool:manage.html.twig")
      */
