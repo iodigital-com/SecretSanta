@@ -344,44 +344,6 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/expose/{listUrl}", name="pool_expose")
-     * @Template()
-     */
-    public function exposeAction(Request $request, $listUrl)
-    {
-        $correctCsrfToken = $this->isCsrfTokenValid(
-            'expose_pool',
-            $request->get('csrf_token')
-        );
-
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('expose.phrase_to_type')));
-
-        if ($correctConfirmation === false || $correctCsrfToken === false) {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.expose.not_exposed')
-            );
-        } else {
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.expose.exposed')
-            );
-        }
-
-        /* Tell db pool has been exposed */
-        $this->getPool($listUrl);
-        $this->pool->expose();
-
-        /* Save db changes */
-        $this->get('doctrine.orm.entity_manager')->flush();
-
-        /* Mail pool owner the pool matches */
-        $this->get('intracto_secret_santa.mail')->sendPoolMatchesToAdmin($this->pool);
-
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-    }
-
-    /**
      * @Route("/expose_wishlists/{listUrl}", name="pool_expose_wishlists")
      * @Template()
      */

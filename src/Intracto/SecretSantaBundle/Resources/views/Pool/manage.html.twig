@@ -123,7 +123,7 @@
             {% set phraseToType = 'expose.phrase_to_type'|trans|lower %}
             {{ 'expose.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
             <br>
-            <form action="{{ path('pool_expose', { 'listUrl': pool.listUrl }) }}" method="post">
+            <form action="{{ path('expose_entries', { 'listUrl': pool.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ expose_pool_csrf_token }}">
                 <input type="text" name="confirmation" id="expose-confirmation" autocomplete="off"
                        onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_expose_confirmation').removeAttr('disabled');"
