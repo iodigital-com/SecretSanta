@@ -12,6 +12,7 @@ use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Form\UpdatePoolDetailsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,19 +27,16 @@ class PoolController extends Controller
     private $pool;
 
     /**
-     * @var Entry
-     */
-    private $entry;
-
-    /**
-     * @Route("/", name="pool_create")
+     * @Route("/pool/create", name="create_pool")
+     * @Method("POST")
      * @Template()
      */
     public function createAction(Request $request)
     {
-        $pool = new Pool();
-
-        return $this->handlePoolCreation($request, $pool);
+        return $this->handlePoolCreation(
+            $request,
+            new Pool()
+        );
     }
 
     /**
@@ -49,7 +47,13 @@ class PoolController extends Controller
      */
     private function handlePoolCreation(Request $request, Pool $pool)
     {
-        $form = $this->createForm(PoolType::class, $pool);
+        $form = $this->createForm(
+            PoolType::class,
+            $pool,
+            [
+                'action' => $this->generateUrl('create_pool'),
+            ]
+        );
 
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
