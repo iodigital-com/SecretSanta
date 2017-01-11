@@ -23,7 +23,7 @@ class EntryController extends Controller
 
     /**
      * @Route("/entry/{url}", name="entry_view")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Entry:index.html.twig")
      */
     public function indexAction(Request $request, $url)
     {
@@ -152,7 +152,6 @@ class EntryController extends Controller
 
     /**
      * @Route("/entry/edit-email/{listUrl}/{entryId}", name="entry_email_edit")
-     * @Template()
      */
     public function editEmailAction(Request $request, $listUrl, $entryId)
     {
@@ -186,7 +185,7 @@ class EntryController extends Controller
 
     /**
      * @Route("/dump-entries", name="dump_entries")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Entry:dumpEntries.html.twig")
      */
     public function dumpEntriesAction()
     {
@@ -200,7 +199,6 @@ class EntryController extends Controller
 
     /**
      * @Route("/poke/{url}/{entryId}", name="poke_buddy")
-     * @Template()
      */
     public function pokeBuddyAction($url, $entryId)
     {
@@ -218,7 +216,6 @@ class EntryController extends Controller
 
     /**
      * @Route("/entry/remove/{listUrl}/{entryId}", name="entry_remove")
-     * @Template()
      */
     public function removeEntryFromPoolAction(Request $request, $listUrl, $entryId)
     {

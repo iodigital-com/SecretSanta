@@ -28,7 +28,7 @@ class PoolController extends Controller
     /**
      * @Route("/pool/create", name="create_pool")
      * @Method("POST")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -126,7 +126,7 @@ class PoolController extends Controller
 
     /**
      * @Route("/exclude/{listUrl}", name="pool_exclude")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Pool:exclude.html.twig")
      */
     public function excludeAction(Request $request, $listUrl)
     {
@@ -185,7 +185,7 @@ class PoolController extends Controller
 
     /**
      * @Route("/created/{listUrl}", name="pool_created")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Pool:created.html.twig")
      */
     public function createdAction($listUrl)
     {
@@ -201,7 +201,7 @@ class PoolController extends Controller
 
     /**
      * @Route("/manage/{listUrl}", name="pool_manage")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Pool:manage.html.twig")
      */
     public function manageAction(Request $request, $listUrl)
     {
@@ -317,7 +317,7 @@ class PoolController extends Controller
 
     /**
      * @Route("/delete/{listUrl}", name="pool_delete")
-     * @Template()
+     * @Template("IntractoSecretSantaBundle:Pool:delete.html.twig")
      */
     public function deleteAction(Request $request, $listUrl)
     {
@@ -344,7 +344,6 @@ class PoolController extends Controller
 
     /**
      * @Route("/resend/{listUrl}/{entryId}", name="pool_resend")
-     * @Template("IntractoSecretSantaBundle:Pool:manage.html.twig")
      */
     public function resendAction($listUrl, $entryId)
     {
@@ -370,7 +369,6 @@ class PoolController extends Controller
 
     /**
      * @Route("/pool-update/{listUrl}", name="pool_update")
-     * @Template()
      */
     public function sendPoolUpdateAction($listUrl)
     {
@@ -389,7 +387,6 @@ class PoolController extends Controller
 
     /**
      * @Route("/download-csv-template", name="download_csv_template")
-     * @Template()
      */
     public function downloadCSVTemplateAction()
     {
