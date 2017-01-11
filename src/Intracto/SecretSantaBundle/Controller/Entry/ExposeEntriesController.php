@@ -28,11 +28,8 @@ class ExposeEntriesController extends Controller
                 'danger',
                 $this->get('translator')->trans('flashes.expose.not_exposed')
             );
-        } else {
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.expose.exposed')
-            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
         /* Tell db pool has been exposed */
@@ -47,6 +44,11 @@ class ExposeEntriesController extends Controller
 
         /* Mail pool owner the pool matches */
         $this->get('intracto_secret_santa.mail')->sendPoolMatchesToAdmin($pool);
+
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            $this->get('translator')->trans('flashes.expose.exposed')
+        );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
     }
