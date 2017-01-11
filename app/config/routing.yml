@@ -3,7 +3,14 @@ intracto_secret_santa:
     type:     annotation
     prefix:   /
 
-# Internal routing configuration to handle ESI
-#_internal:
-#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#    prefix:   /_internal
+privacy-policy:
+    path: /privacy
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     'IntractoSecretSantaBundle:Static:privacyPolicy.html.twig'
+
+faq:
+    path: /faq
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     'IntractoSecretSantaBundle:Static:faq.html.twig'
