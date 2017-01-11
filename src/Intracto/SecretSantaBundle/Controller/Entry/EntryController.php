@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller;
+namespace Intracto\SecretSantaBundle\Controller\Entry;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Intracto\SecretSantaBundle\Entity\Entry;
