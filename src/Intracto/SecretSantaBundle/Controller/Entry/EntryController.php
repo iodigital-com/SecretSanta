@@ -2,18 +2,18 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Entry;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Intracto\SecretSantaBundle\Entity\Entry;
-use Intracto\SecretSantaBundle\Entity\EmailAddress;
-use Intracto\SecretSantaBundle\Entity\WishlistItem;
-use Intracto\SecretSantaBundle\Form\WishlistType;
-use Intracto\SecretSantaBundle\Form\WishlistNewType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Doctrine\Common\Collections\ArrayCollection;
+use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\EmailAddress;
+use Intracto\SecretSantaBundle\Entity\WishlistItem;
+use Intracto\SecretSantaBundle\Form\WishlistType;
+use Intracto\SecretSantaBundle\Form\WishlistNewType;
 
 class EntryController extends Controller
 {
@@ -160,20 +160,6 @@ class EntryController extends Controller
         }
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-    }
-
-    /**
-     * @Route("/dump-entries", name="dump_entries")
-     * @Template("IntractoSecretSantaBundle:Entry:dumpEntries.html.twig")
-     */
-    public function dumpEntriesAction()
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADWORDS');
-
-        $startCrawling = new \DateTime();
-        $startCrawling->sub(new \DateInterval('P4M'));
-
-        return ['entries' => $this->get('entry_repository')->findAfter($startCrawling)];
     }
 
     /**
