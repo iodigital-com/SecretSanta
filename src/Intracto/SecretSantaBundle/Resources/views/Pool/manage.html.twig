@@ -87,7 +87,7 @@
         <button id="btn_expose_wishlists" class="btn btn-warning manage_btn"><i
                     class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</button>
         <a class="btn btn-info manage_btn manage_btn_link"
-           href="{{ path('pool_update', { 'listUrl': pool.listurl }) }}"><i
+           href="{{ path('send_party_update', { 'listUrl': pool.listurl }) }}"><i
                     class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
                 {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) or 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}><i

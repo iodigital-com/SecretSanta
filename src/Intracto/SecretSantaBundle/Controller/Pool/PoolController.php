@@ -343,24 +343,6 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/pool-update/{listUrl}", name="pool_update")
-     */
-    public function sendPoolUpdateAction($listUrl)
-    {
-        $results = $this->get('intracto_secret_santa.entry')->fetchDataForPoolUpdateMail($listUrl);
-        $this->getPool($listUrl);
-
-        $this->get('intracto_secret_santa.mail')->sendPoolUpdateMailForPool($this->pool, $results);
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $this->get('translator')->trans('flashes.pool_update.success')
-        );
-
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $this->pool->getListurl()]));
-    }
-
-    /**
      * @Route("/download-csv-template", name="download_csv_template")
      */
     public function downloadCSVTemplateAction()
