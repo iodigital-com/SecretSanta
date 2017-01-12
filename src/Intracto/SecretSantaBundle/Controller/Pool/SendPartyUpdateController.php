@@ -13,15 +13,18 @@ class SendPartyUpdateController extends Controller
     public function sendPoolUpdateAction($listUrl)
     {
         $results = $this->get('intracto_secret_santa.entry')->fetchDataForPoolUpdateMail($listUrl);
-        $this->getPool($listUrl);
+        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
+        if (!is_object($pool)) {
+            throw new NotFoundHttpException();
+        }
 
-        $this->get('intracto_secret_santa.mail')->sendPoolUpdateMailForPool($this->pool, $results);
+        $this->get('intracto_secret_santa.mail')->sendPoolUpdateMailForPool($pool, $results);
 
         $this->get('session')->getFlashBag()->add(
             'success',
             $this->get('translator')->trans('flashes.pool_update.success')
         );
 
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $this->pool->getListurl()]));
+        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $pool->getListurl()]));
     }
 }
