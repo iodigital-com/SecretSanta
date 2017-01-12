@@ -2,29 +2,20 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Pool;
 
-use Intracto\SecretSantaBundle\Event\PoolEvent;
-use Intracto\SecretSantaBundle\Event\PoolEvents;
-use Intracto\SecretSantaBundle\Form\AddEntryType;
-use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
-use Intracto\SecretSantaBundle\Form\PoolType;
-use Intracto\SecretSantaBundle\Entity\Pool;
-use Intracto\SecretSantaBundle\Entity\Entry;
-use Intracto\SecretSantaBundle\Form\UpdatePoolDetailsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Intracto\SecretSantaBundle\Event\PoolEvent;
+use Intracto\SecretSantaBundle\Event\PoolEvents;
+use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
+use Intracto\SecretSantaBundle\Form\PoolType;
+use Intracto\SecretSantaBundle\Entity\Pool;
 
 class PoolController extends Controller
 {
-    /**
-     * @var Pool
-     */
-    private $pool;
-
     /**
      * @Route("/pool/create", name="create_pool")
      * @Method("POST")
@@ -36,6 +27,120 @@ class PoolController extends Controller
             $request,
             new Pool()
         );
+    }
+
+    /**
+     * @Route("/created/{listUrl}", name="pool_created")
+     * @Template("IntractoSecretSantaBundle:Pool:created.html.twig")
+     */
+    public function createdAction($listUrl)
+    {
+        $pool = $this->getPool($listUrl);
+        if (! $pool->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $pool->getListurl()]));
+        }
+
+        return [
+            'pool' => $pool,
+        ];
+    }
+
+    /**
+     * @Route("/exclude/{listUrl}", name="pool_exclude")
+     * @Template("IntractoSecretSantaBundle:Pool:exclude.html.twig")
+     */
+    public function excludeAction(Request $request, $listUrl)
+    {
+        $pool = $this->getPool($listUrl);
+
+        if ($pool->getCreated()) {
+            $this->get('event_dispatcher')->dispatch(
+                PoolEvents::NEW_POOL_CREATED,
+                new PoolEvent($pool)
+            );
+
+            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
+        }
+
+        if ($pool->getEntries()->count() <= 3) {
+            $pool->setCreated(true);
+            $this->get('doctrine.orm.entity_manager')->persist($pool);
+
+            $this->get('intracto_secret_santa.entry_service')->shuffleEntries($pool);
+
+            $this->get('doctrine.orm.entity_manager')->flush();
+
+            $this->get('event_dispatcher')->dispatch(
+                PoolEvents::NEW_POOL_CREATED,
+                new PoolEvent($pool)
+            );
+
+            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
+        }
+
+        $form = $this->createForm(new PoolExcludeEntryType(), $pool);
+        if ('POST' === $request->getMethod()) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $pool->setCreated(true);
+                $this->get('doctrine.orm.entity_manager')->persist($pool);
+
+                $this->get('intracto_secret_santa.entry_service')->shuffleEntries($pool);
+
+                $this->get('doctrine.orm.entity_manager')->flush();
+
+                $this->get('event_dispatcher')->dispatch(
+                    PoolEvents::NEW_POOL_CREATED,
+                    new PoolEvent($pool)
+                );
+
+                return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
+            }
+        }
+
+        return [
+            'form' => $form->createView(),
+            'pool' => $pool,
+        ];
+    }
+
+    /**
+     * @Route("/reuse/{listUrl}", name="pool_reuse")
+     * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
+     */
+    public function reuseAction(Request $request, $listUrl)
+    {
+        $pool = $this->getPool($listUrl);
+        $pool = $pool->createNewPoolForReuse();
+
+        return $this->handlePoolCreation($request, $pool);
+    }
+
+    /**
+     * @Route("/delete/{listUrl}", name="pool_delete")
+     * @Template("IntractoSecretSantaBundle:Pool:delete.html.twig")
+     */
+    public function deleteAction(Request $request, $listUrl)
+    {
+        $correctCsrfToken = $this->isCsrfTokenValid(
+            'delete_pool',
+            $request->get('csrf_token')
+        );
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('delete.phrase_to_type')));
+
+        if ($correctConfirmation === false || $correctCsrfToken === false) {
+            $this->get('session')->getFlashBag()->add(
+                'error',
+                $this->get('translator')->trans('flashes.delete.not_deleted')
+            );
+
+            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        }
+
+        $pool = $this->getPool($listUrl);
+
+        $this->get('doctrine.orm.entity_manager')->remove($pool);
+        $this->get('doctrine.orm.entity_manager')->flush();
     }
 
     /**
@@ -91,254 +196,21 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/reuse/{listUrl}", name="pool_reuse")
-     * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
-     */
-    public function reuseAction(Request $request, $listUrl)
-    {
-        $this->getPool($listUrl);
-        $pool = $this->pool->createNewPoolForReuse();
-
-        return $this->handlePoolCreation($request, $pool);
-    }
-
-    /**
      * Retrieve pool by url.
      *
-     * @param $listurl
+     * @param $listUrl
+     *
+     * @return Pool
      *
      * @throws NotFoundHttpException
-     *
-     * @internal param string $url
-     *
-     * @return bool
      */
-    protected function getPool($listurl)
+    private function getPool($listUrl)
     {
-        $this->pool = $this->get('pool_repository')->findOneByListurl($listurl);
-
-        if (!is_object($this->pool)) {
+        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
+        if (!is_object($pool)) {
             throw new NotFoundHttpException();
         }
 
-        return true;
-    }
-
-    /**
-     * @Route("/exclude/{listUrl}", name="pool_exclude")
-     * @Template("IntractoSecretSantaBundle:Pool:exclude.html.twig")
-     */
-    public function excludeAction(Request $request, $listUrl)
-    {
-        $this->getPool($listUrl);
-
-        if ($this->pool->getCreated()) {
-            $this->get('event_dispatcher')->dispatch(
-                PoolEvents::NEW_POOL_CREATED,
-                new PoolEvent($this->pool)
-            );
-            
-            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $this->pool->getListurl()]));
-        }
-
-        if ($this->pool->getEntries()->count() <= 3) {
-            $this->pool->setCreated(true);
-            $this->get('doctrine.orm.entity_manager')->persist($this->pool);
-
-            $this->get('intracto_secret_santa.entry_service')->shuffleEntries($this->pool);
-
-            $this->get('doctrine.orm.entity_manager')->flush();
-
-            $this->get('event_dispatcher')->dispatch(
-                PoolEvents::NEW_POOL_CREATED,
-                new PoolEvent($this->pool)
-            );
-
-            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $this->pool->getListurl()]));
-        }
-
-        $form = $this->createForm(new PoolExcludeEntryType(), $this->pool);
-        if ('POST' === $request->getMethod()) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $this->pool->setCreated(true);
-                $this->get('doctrine.orm.entity_manager')->persist($this->pool);
-
-                $this->get('intracto_secret_santa.entry_service')->shuffleEntries($this->pool);
-
-                $this->get('doctrine.orm.entity_manager')->flush();
-
-                $this->get('event_dispatcher')->dispatch(
-                    PoolEvents::NEW_POOL_CREATED,
-                    new PoolEvent($this->pool)
-                );
-
-                return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $this->pool->getListurl()]));
-            }
-        }
-
-        return [
-            'form' => $form->createView(),
-            'pool' => $this->pool,
-        ];
-    }
-
-    /**
-     * @Route("/created/{listUrl}", name="pool_created")
-     * @Template("IntractoSecretSantaBundle:Pool:created.html.twig")
-     */
-    public function createdAction($listUrl)
-    {
-        $this->getPool($listUrl);
-        if (!$this->pool->getCreated()) {
-            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $this->pool->getListurl()]));
-        }
-
-        return [
-            'pool' => $this->pool,
-        ];
-    }
-
-    /**
-     * @Route("/manage/{listUrl}", name="pool_manage")
-     * @Template("IntractoSecretSantaBundle:Pool:manage.html.twig")
-     */
-    public function manageAction(Request $request, $listUrl)
-    {
-        $this->getPool($listUrl);
-        if (!$this->pool->getCreated()) {
-            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $this->pool->getListurl()]));
-        }
-
-        if ($this->pool->getSentdate() === null) {
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.manage.email_validated')
-            );
-
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($this->pool);
-        }
-
-        $eventDate = date_format($this->pool->getEventdate(), 'Y-m-d');
-        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
-
-        $newEntry = new Entry();
-        $updatePool = $this->pool;
-
-        $addEntryForm = $this->createForm(AddEntryType::class, $newEntry);
-        $updatePoolDetailsForm = $this->createForm(UpdatePoolDetailsType::class, $updatePool);
-
-        if ($request->getMethod('POST')) {
-            $addEntryForm->handleRequest($request);
-            $updatePoolDetailsForm->handleRequest($request);
-
-            if ($addEntryForm->isSubmitted()) {
-                if ($addEntryForm->isValid()) {
-                    if (date('Y-m-d') > $oneWeekFromEventDate) {
-                        $this->get('session')->getFlashBag()->add(
-                            'warning',
-                            $this->get('translator')->trans('flashes.modify_list.warning')
-                        );
-
-                        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-                    }
-
-                    $newEntry->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
-                    $newEntry->setPool($this->pool);
-
-                    $this->get('doctrine.orm.entity_manager')->persist($newEntry);
-                    $this->get('doctrine.orm.entity_manager')->flush($newEntry);
-
-                    $adminId = $this->get('intracto_secret_santa.entry')->findAdminIdByPoolId($this->pool->getId());
-                    $admin = $this->get('entry_repository')->findOneById($adminId[0]['id']);
-                    $adminMatch = $admin->getEntry();
-
-                    $admin->setEntry($newEntry);
-                    $this->get('doctrine.orm.entity_manager')->persist($admin);
-                    $this->get('doctrine.orm.entity_manager')->flush($admin);
-
-                    $newEntry->setEntry($adminMatch);
-                    $this->get('doctrine.orm.entity_manager')->persist($newEntry);
-                    $this->get('doctrine.orm.entity_manager')->flush();
-
-                    $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($admin);
-                    $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($newEntry);
-
-                    $this->get('session')->getFlashBag()->add(
-                        'success',
-                        $this->get('translator')->trans('flashes.add_participant.success')
-                    );
-
-                    return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-                } else {
-                    $this->get('session')->getFlashBag()->add(
-                        'danger',
-                        $this->get('translator')->trans('flashes.add_participant.danger')
-                    );
-                }
-            }
-
-            if ($updatePoolDetailsForm->isSubmitted()) {
-                if ($updatePoolDetailsForm->isValid()) {
-                    $time_now = new \DateTime();
-
-                    $updatePool->setDetailsUpdated(true);
-                    $updatePool->setDetailsUpdatedTime($time_now);
-
-                    $this->get('doctrine.orm.entity_manager')->persist($updatePool);
-                    $this->get('doctrine.orm.entity_manager')->flush();
-
-                    $this->get('session')->getFlashBag()->add(
-                        'success',
-                        $this->get('translator')->trans('flashes.updated_party.success')
-                    );
-
-                    return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-                } else {
-                    $this->get('session')->getFlashBag()->add(
-                        'danger',
-                        $this->get('translator')->trans('flashes.updated_party.danger')
-                    );
-                }
-            }
-        }
-
-        return [
-            'addEntryForm' => $addEntryForm->createView(),
-            'updatePoolDetailsForm' => $updatePoolDetailsForm->createView(),
-            'pool' => $this->pool,
-            'oneWeekFromEventDate' => $oneWeekFromEventDate,
-            'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
-            'expose_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_pool'),
-            'expose_pool_wishlists_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_wishlists'),
-            'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
-        ];
-    }
-
-    /**
-     * @Route("/delete/{listUrl}", name="pool_delete")
-     * @Template("IntractoSecretSantaBundle:Pool:delete.html.twig")
-     */
-    public function deleteAction(Request $request, $listUrl)
-    {
-        $correctCsrfToken = $this->isCsrfTokenValid(
-            'delete_pool',
-            $request->get('csrf_token')
-        );
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('delete.phrase_to_type')));
-
-        if ($correctConfirmation === false || $correctCsrfToken === false) {
-            $this->get('session')->getFlashBag()->add(
-                'error',
-                $this->get('translator')->trans('flashes.delete.not_deleted')
-            );
-
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-        }
-
-        $this->getPool($listUrl);
-
-        $this->get('doctrine.orm.entity_manager')->remove($this->pool);
-        $this->get('doctrine.orm.entity_manager')->flush();
+        return $pool;
     }
 }
