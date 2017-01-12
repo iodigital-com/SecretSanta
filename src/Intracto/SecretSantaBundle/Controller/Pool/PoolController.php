@@ -341,21 +341,4 @@ class PoolController extends Controller
         $this->get('doctrine.orm.entity_manager')->remove($this->pool);
         $this->get('doctrine.orm.entity_manager')->flush();
     }
-
-    /**
-     * @Route("/download-csv-template", name="download_csv_template")
-     */
-    public function downloadCSVTemplateAction()
-    {
-        $path = $this->get('kernel')->getRootDir().'/../src/Intracto/SecretSantaBundle/Resources/public/downloads/templateCSVSecretSantaOrganizer.csv';
-        $content = file_get_contents($path);
-
-        $response = new Response();
-        $response->headers->set('Content-Type', 'text/csv');
-        $response->headers->set('Content-Disposition', 'attachment;filename="templateCSVSecretSantaOrganizer.csv"');
-
-        $response->setContent($content);
-
-        return $response;
-    }
 }
