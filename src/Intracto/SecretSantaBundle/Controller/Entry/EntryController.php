@@ -183,7 +183,7 @@ class EntryController extends Controller
         }
 
         $entry = $this->get('entry_repository')->find($entryId);
-        $pool = $entry->getPool()->getEntries();
+        $poolEntries = $entry->getPool()->getEntries();
 
         $eventDate = date_format($entry->getPool()->getEventdate(), 'Y-m-d');
         $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
@@ -196,7 +196,7 @@ class EntryController extends Controller
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
-        if (count($pool) <= 3) {
+        if (count($poolEntries) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('flashes.remove_participant.danger')
@@ -216,8 +216,8 @@ class EntryController extends Controller
 
         $excludeCount = 0;
 
-        foreach ($pool as $p) {
-            if (count($p->getExcludedEntries()) > 0) {
+        foreach ($poolEntries as $poolEntry) {
+            if (count($poolEntry->getExcludedEntries()) > 0) {
                 ++$excludeCount;
             }
         }
