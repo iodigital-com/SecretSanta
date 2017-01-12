@@ -52,7 +52,7 @@
                              rel="tooltip" title="{{ 'manage.edit_email'|trans }}" alt="{{ 'manage.edit_email'|trans }}"
                              style="cursor: pointer;">
                         {% spaceless %}
-                            <a href="{{ path('pool_resend', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
+                            <a href="{{ path('resend_entry', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
                                      title="{{ 'manage.resend_email'|trans }}" alt="{{ 'manage.resend_email'|trans }}">
                             </a>

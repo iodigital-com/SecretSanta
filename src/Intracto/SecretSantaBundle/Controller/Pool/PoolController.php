@@ -343,31 +343,6 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/resend/{listUrl}/{entryId}", name="pool_resend")
-     */
-    public function resendAction($listUrl, $entryId)
-    {
-        $entry = $this->get('entry_repository')->find($entryId);
-
-        if (!is_object($entry)) {
-            throw new NotFoundHttpException();
-        }
-
-        if ($entry->getPool()->getListUrl() !== $listUrl) {
-            throw new NotFoundHttpException();
-        }
-
-        $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($entry);
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $this->get('translator')->trans('flashes.resend.resent', ['%email%' => $entry->getName()])
-        );
-
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-    }
-
-    /**
      * @Route("/pool-update/{listUrl}", name="pool_update")
      */
     public function sendPoolUpdateAction($listUrl)
