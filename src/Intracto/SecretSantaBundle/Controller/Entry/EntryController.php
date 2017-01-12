@@ -17,43 +17,43 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class EntryController extends Controller
 {
-    /** @var Entry */
-    public $entry;
-
     /**
      * @Route("/entry/{url}", name="entry_view")
      * @Template("IntractoSecretSantaBundle:Entry:index.html.twig")
      */
     public function indexAction(Request $request, $url)
     {
-        $this->getEntry($url);
+        $entry = $this->get('entry_repository')->findOneByUrl($url);
+        if (!is_object($entry)) {
+            throw new NotFoundHttpException();
+        }
 
-        if ($this->entry->getWishlist() !== null && $this->entry->getWishlist() != '') {
+        if ($entry->getWishlist() !== null && $entry->getWishlist() != '') {
             $legacyWishlist = true;
-            $form = $this->createForm(WishlistType::class, $this->entry);
+            $form = $this->createForm(WishlistType::class, $entry);
         } else {
             $legacyWishlist = false;
-            $form = $this->createForm(WishlistNewType::class, $this->entry);
+            $form = $this->createForm(WishlistNewType::class, $entry);
         }
 
         // Log visit on first access
-        if ($this->entry->getViewdate() === null) {
-            $this->entry->setViewdate(new \DateTime());
-            $this->get('doctrine.orm.entity_manager')->flush($this->entry);
+        if ($entry->getViewdate() === null) {
+            $entry->setViewdate(new \DateTime());
+            $this->get('doctrine.orm.entity_manager')->flush($entry);
         }
 
         // Log ip address on first access
-        if ($this->entry->getIp() === null) {
+        if ($entry->getIp() === null) {
             $ip = $request->getClientIp();
-            $this->entry->setIp($ip);
-            $this->get('doctrine.orm.entity_manager')->flush($this->entry);
+            $entry->setIp($ip);
+            $this->get('doctrine.orm.entity_manager')->flush($entry);
         }
 
         if ('POST' === $request->getMethod()) {
             // get current items to compare against items later on
             $currentWishlistItems = new ArrayCollection();
             /** @var WishlistItem $item */
-            foreach ($this->entry->getWishlistItems() as $item) {
+            foreach ($entry->getWishlistItems() as $item) {
                 $currentWishlistItems->add($item);
             }
 
@@ -63,10 +63,10 @@ class EntryController extends Controller
                 // save entries passed and check rank
                 $inOrder = true;
                 $lastRank = 0;
-                $newWishlistItems = $this->entry->getWishlistItems();
+                $newWishlistItems = $entry->getWishlistItems();
 
                 foreach ($newWishlistItems as $item) {
-                    $item->setEntry($this->entry);
+                    $item->setEntry($entry);
                     $this->get('doctrine.orm.entity_manager')->persist($item);
                     // keep track of rank
                     if ($item->getRank() < $lastRank) {
@@ -84,10 +84,10 @@ class EntryController extends Controller
 
                 // For now assume that a save of entry means the list has changed
                 $time_now = new \DateTime();
-                $this->entry->setWishlistUpdated(true);
-                $this->entry->setWishlistUpdatedTime($time_now);
+                $entry->setWishlistUpdated(true);
+                $entry->setWishlistUpdatedTime($time_now);
 
-                $this->get('doctrine.orm.entity_manager')->persist($this->entry);
+                $this->get('doctrine.orm.entity_manager')->persist($entry);
                 $this->get('doctrine.orm.entity_manager')->flush();
 
                 if (!$request->isXmlHttpRequest()) {
@@ -101,7 +101,7 @@ class EntryController extends Controller
                         return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
                     }
 
-                    if ($legacyWishlist && ($this->entry->getWishlist() === null || $this->entry->getWishlist() === '')) {
+                    if ($legacyWishlist && ($entry->getWishlist() === null || $entry->getWishlist() === '')) {
                         // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
                         return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
                     }
@@ -115,38 +115,18 @@ class EntryController extends Controller
             }
         }
 
-        $secret_santa = $this->entry->getEntry();
-        $eventDate = date_format($this->entry->getPool()->getEventdate(), 'Y-m-d');
+        $secret_santa = $entry->getEntry();
+        $eventDate = date_format($entry->getPool()->getEventdate(), 'Y-m-d');
         $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
 
         if (!$request->isXmlHttpRequest()) {
             return [
-                'entry' => $this->entry,
+                'entry' => $entry,
                 'form' => $form->createView(),
                 'secret_santa' => $secret_santa,
                 'oneWeekFromEventDate' => $oneWeekFromEventDate,
             ];
         }
-    }
-
-    /**
-     * Retrieve entry by url.
-     *
-     * @param string $url
-     *
-     * @throws NotFoundHttpException
-     *
-     * @return bool
-     */
-    protected function getEntry($url)
-    {
-        $this->entry = $this->get('entry_repository')->findOneByUrl($url);
-
-        if (!is_object($this->entry)) {
-            throw new NotFoundHttpException();
-        }
-
-        return true;
     }
 
     /**
