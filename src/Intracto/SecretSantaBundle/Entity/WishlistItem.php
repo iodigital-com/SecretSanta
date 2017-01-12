@@ -5,8 +5,6 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * WishlistItem.
- *
  * @ORM\Table()
  * @ORM\Entity
  */
