@@ -12,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Validator\Validator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -195,23 +194,6 @@ class EntryController extends Controller
         $startCrawling->sub(new \DateInterval('P4M'));
 
         return ['entries' => $this->get('entry_repository')->findAfter($startCrawling)];
-    }
-
-    /**
-     * @Route("/poke/{url}/{entryId}", name="poke_buddy")
-     */
-    public function pokeBuddyAction($url, $entryId)
-    {
-        $entry = $this->get('entry_repository')->find($entryId);
-
-        $this->get('intracto_secret_santa.mail')->sendPokeMailToBuddy($entry);
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $this->get('translator')->trans('flashes.entry.poke_buddy')
-        );
-
-        return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
     }
 
     /**
