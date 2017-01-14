@@ -2,14 +2,12 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Intracto\SecretSantaBundle\Entity\Entry.
- *
  * @ORM\Table(indexes={@ORM\Index(name="entry_url", columns={"url"})})
  * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\EntryRepository")
  * @ORM\HasLifecycleCallbacks()
@@ -176,7 +174,7 @@ class Entry
 
     public function __construct()
     {
-        $this->excluded_entries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->excluded_entries = new ArrayCollection();
         $this->postLoad();
     }
 
@@ -231,7 +229,7 @@ class Entry
      */
     public function setName($name)
     {
-        $this->name = preg_replace("/[^[:alnum:][:space:]]/u", '', $name);
+        $this->name = preg_replace('/[^[:alnum:][:space:]]/u', '', $name);
 
         return $this;
     }
@@ -321,26 +319,6 @@ class Entry
     }
 
     /**
-     * @param string $secret
-     *
-     * @return Entry
-     */
-    public function setSecret($secret)
-    {
-        $this->secret = $secret;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSecret()
-    {
-        return $this->secret;
-    }
-
-    /**
      * @return string
      */
     public function getUrl()
@@ -358,46 +336,6 @@ class Entry
         $this->url = $url;
 
         return $this;
-    }
-
-    /**
-     * @param bool $send
-     *
-     * @return Entry
-     */
-    public function setSend($send)
-    {
-        $this->send = $send;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getSend()
-    {
-        return $this->send;
-    }
-
-    /**
-     * @param bool $readyToSend
-     *
-     * @return Entry
-     */
-    public function setReadyToSend($readyToSend)
-    {
-        $this->ready_to_send = $readyToSend;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getReadyToSend()
-    {
-        return $this->ready_to_send;
     }
 
     /**
@@ -501,11 +439,11 @@ class Entry
     }
 
     /**
-     * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
+     * @param Entry $excludedEntry
      *
      * @return Entry
      */
-    public function addExcludedEntry(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
+    public function addExcludedEntry(Entry $excludedEntry)
     {
         $this->excluded_entries[] = $excludedEntry;
 
@@ -513,9 +451,9 @@ class Entry
     }
 
     /**
-     * @param \Intracto\SecretSantaBundle\Entity\Entry $excludedEntry
+     * @param Entry $excludedEntry
      */
-    public function removeExcludedEntrie(\Intracto\SecretSantaBundle\Entity\Entry $excludedEntry)
+    public function removeExcludedEntrie(Entry $excludedEntry)
     {
         $this->excluded_entries->removeElement($excludedEntry);
     }
@@ -549,7 +487,7 @@ class Entry
      */
     public function getIp()
     {
-        if ($this->getIpv4() != null) {
+        if ($this->getIpv4() !== null) {
             return $this->getIpv4();
         }
 
@@ -656,3 +594,4 @@ class Entry
         $this->wishlistUpdatedTime = $wishlistUpdatedTime;
     }
 }
+

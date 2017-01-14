@@ -7,6 +7,8 @@ use Doctrine\ORM\EntityRepository;
 class EntryRepository extends EntityRepository
 {
     /**
+     * @param \DateTime $startDate
+     *
      * @return Entry[]
      */
     public function findAfter(\DateTime $startDate)
