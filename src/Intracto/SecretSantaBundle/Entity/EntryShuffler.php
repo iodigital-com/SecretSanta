@@ -4,7 +4,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 class EntryShuffler
 {
-    const SHUFFLE_TIME_LIMIT = 10; //sec
+    const SHUFFLE_TIME_LIMIT = 10; // seconds
 
     private $matchedExcludes;
 
@@ -39,7 +39,7 @@ class EntryShuffler
 
                 return $set;
             }
-        };
+        }
 
         return false;
     }
@@ -54,7 +54,7 @@ class EntryShuffler
     {
         foreach ($entries as $key => $entry) {
             $possibleMatch = $shuffled[$key];
-            if ($entry->getExcludedEntries()->contains($possibleMatch) || $entry == $possibleMatch) {
+            if ($entry === $possibleMatch || $entry->getExcludedEntries()->contains($possibleMatch)) {
                 return false;
             }
         }

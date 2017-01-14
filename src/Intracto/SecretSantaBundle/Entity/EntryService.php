@@ -3,7 +3,6 @@
 namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
-use JMS\DiExtraBundle\Annotation as DI;
 
 class EntryService
 {
@@ -36,7 +35,7 @@ class EntryService
      */
     public function shuffleEntries(Pool $pool)
     {
-        //Validator should already have shuffled it.
+        // Validator should already have shuffled it.
         if (!$shuffled = $this->entryShuffler->shuffleEntries($pool)) {
             return false;
         }

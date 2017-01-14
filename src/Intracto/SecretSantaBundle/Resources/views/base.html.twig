@@ -69,9 +69,7 @@
 {% endif %}
 <div id="header" class="header">
     <div class="container">
-        <a id="homelink" href="{{ url('startpage') }}">{{ 'nav.home'|trans }}</a>
-
-        <div class="header__left">
+        <div class="header__left" onclick="window.location='{{ url('startpage') }}'">
             <div class="header__logo">
                 <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo"/>
             </div>

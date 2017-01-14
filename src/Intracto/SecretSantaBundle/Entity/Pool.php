@@ -2,14 +2,12 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Intracto\SecretSantaBundle\Entity\Pool.
- *
  * @ORM\Table(indexes={@ORM\Index(name="listurl", columns={"listurl"}),@ORM\Index(name="dates", columns={"created", "eventdate", "sentdate"})})
  * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PoolRepository")
  * @ORM\HasLifecycleCallbacks
@@ -132,13 +130,13 @@ class Pool
 
     public function __construct($createDefaults = true)
     {
-        $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->entries = new ArrayCollection();
 
         if ($createDefaults) {
             // Create default minimum entries
             for ($i = 0; $i < 3; ++$i) {
                 $entry = new Entry();
-                if ($i == 0) {
+                if ($i === 0) {
                     $entry->setPoolAdmin(true);
                 }
                 $this->addEntry($entry);
@@ -292,11 +290,11 @@ class Pool
     }
 
     /**
-     * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
+     * @param Entry $entries
      *
      * @return Pool
      */
-    public function addEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
+    public function addEntrie(Entry $entries)
     {
         $this->entries[] = $entries;
 
@@ -304,9 +302,9 @@ class Pool
     }
 
     /**
-     * @param \Intracto\SecretSantaBundle\Entity\Entry $entries
+     * @param Entry $entries
      */
-    public function removeEntrie(\Intracto\SecretSantaBundle\Entity\Entry $entries)
+    public function removeEntrie(Entry $entries)
     {
         $this->entries->removeElement($entries);
     }
