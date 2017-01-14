@@ -340,10 +340,6 @@ input.span12, textarea.span12, .uneditable-input.span12 {
     cursor: pointer;
 }
 
-#homelink {
-    display: none;
-}
-
 .toplabels .error {
     color: #CF706C;
 }
