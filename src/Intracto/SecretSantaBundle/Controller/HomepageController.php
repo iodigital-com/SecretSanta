@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
 
-class StartpageController extends Controller
+class HomepageController extends Controller
 {
     /**
-     * @Route("/", name="startpage")
+     * @Route("/", name="homepage")
      * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
      */
     public function indexAction()
