@@ -115,16 +115,6 @@ services:
         arguments:
             - IntractoSecretSantaBundle:Entry
 
-    intracto_secretsanta.send_pending_confirmation_mail_listener:
-        class: Intracto\SecretSantaBundle\EventListener\SendPendingConfirmationMailListener
-        arguments:
-            - @templating
-            - @swiftmailer.mailer.mandrill
-            - "%noreply_email%"
-            - @translator
-        tags:
-            - { name: kernel.event_subscriber }
-
     intracto.validator.entry_has_valid_excludes:
         class: Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator
         tags:

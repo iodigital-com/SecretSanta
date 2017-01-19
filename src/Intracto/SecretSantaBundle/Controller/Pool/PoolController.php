@@ -8,8 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Intracto\SecretSantaBundle\Event\PoolEvent;
-use Intracto\SecretSantaBundle\Event\PoolEvents;
+use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
 use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
@@ -51,13 +50,12 @@ class PoolController extends Controller
      */
     public function excludeAction(Request $request, $listUrl)
     {
+        /** @var MailerService $mailerService */
+        $mailerService = $this->get('intracto_secret_santa.mail');
         $pool = $this->getPool($listUrl);
 
         if ($pool->getCreated()) {
-            $this->get('event_dispatcher')->dispatch(
-                PoolEvents::NEW_POOL_CREATED,
-                new PoolEvent($pool)
-            );
+            $mailerService->sendPendingConfirmationMail($pool);
 
             return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
         }
@@ -70,10 +68,7 @@ class PoolController extends Controller
 
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $this->get('event_dispatcher')->dispatch(
-                PoolEvents::NEW_POOL_CREATED,
-                new PoolEvent($pool)
-            );
+            $mailerService->sendPendingConfirmationMail($pool);
 
             return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
         }
@@ -89,10 +84,7 @@ class PoolController extends Controller
 
                 $this->get('doctrine.orm.entity_manager')->flush();
 
-                $this->get('event_dispatcher')->dispatch(
-                    PoolEvents::NEW_POOL_CREATED,
-                    new PoolEvent($pool)
-                );
+                $mailerService->sendPendingConfirmationMail($pool);
 
                 return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
             }
