@@ -13,7 +13,6 @@ use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Entity\EmailAddress;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\WishlistType;
-use Intracto\SecretSantaBundle\Form\WishlistNewType;
 
 class EntryController extends Controller
 {
@@ -28,13 +27,7 @@ class EntryController extends Controller
             throw new NotFoundHttpException();
         }
 
-        if ($entry->getWishlist() !== null && $entry->getWishlist() != '') {
-            $legacyWishlist = true;
-            $form = $this->createForm(WishlistType::class, $entry);
-        } else {
-            $legacyWishlist = false;
-            $form = $this->createForm(WishlistNewType::class, $entry);
-        }
+        $form = $this->createForm(WishlistType::class, $entry);
 
         // Log visit on first access
         if ($entry->getViewdate() === null) {
@@ -98,11 +91,6 @@ class EntryController extends Controller
 
                     if (!$inOrder) {
                         // redirect to force refresh of form and entity
-                        return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
-                    }
-
-                    if ($legacyWishlist && ($entry->getWishlist() === null || $entry->getWishlist() === '')) {
-                        // started out with legacy, wishlist is empty now, reload page to switch to new wishlist
                         return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
                     }
                 }

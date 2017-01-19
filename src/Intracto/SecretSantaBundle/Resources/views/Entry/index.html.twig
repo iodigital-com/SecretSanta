@@ -44,12 +44,7 @@
                 <div class="well bottom-spacer">
                     <h4 data-hj-masked>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
                     {% if(secret_santa.wishlistitems|length == 0) %}
-                        {# check for legacy wishlist #}
-                        {% if(secret_santa.getwishlist) %}
-                            {{ secret_santa.getwishlist|linkify|raw }}
-                        {% else %}
-                            {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}. <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'poke.poke'|trans }}</a> {{ 'poke.poke_sentence'|trans|raw }}
-                        {% endif %}
+                        {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}. <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'poke.poke'|trans }}</a> {{ 'poke.poke_sentence'|trans|raw }}
                     {% else %}
                         <ul class="wishlist">
                             {% for item in secret_santa.wishlistitems %}
@@ -116,51 +111,42 @@
         <p>
             {{ form_start(form, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
             {{ form_row(form._token) }}
-            {% if entry.wishlist != "" %}
-
-                {# legacy wishlist #}
-                {{ form_widget(form.wishlist, {'attr': {'rows': '8', 'class': 'field span12'} }) }}
-
-            {% else %}
-
-                {# item-based wishlist #}
-                <table class="entries table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="col-xs-1 entry-number-header">#</th>
-                        <th class="col-xs-7 col-sm-6">{{ 'label.description'|trans }}</th>
-                        <th style="text-align: right;" class="col-xs-4 col-sm-5">
-                            <button type="button" class="btn btn-mini btn-success add-new-entry">
-                                <i class="fa fa-plus-circle"></i> <span class="text_remove_wishlist">{{ 'btn.add_wishlist'|trans }}</span>
-                            </button>
-                        </th>
+            <table class="entries table table-striped">
+                <thead>
+                <tr>
+                    <th class="col-xs-1 entry-number-header">#</th>
+                    <th class="col-xs-7 col-sm-6">{{ 'label.description'|trans }}</th>
+                    <th style="text-align: right;" class="col-xs-4 col-sm-5">
+                        <button type="button" class="btn btn-mini btn-success add-new-entry">
+                            <i class="fa fa-plus-circle"></i> <span class="text_remove_wishlist">{{ 'btn.add_wishlist'|trans }}</span>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
+                {% if form.wishlistItems |length == 0 %}
+                    <tr class="noitems">
+                        <td colspan="3">{{ 'entry.wishlist_empty'|trans }}</td>
                     </tr>
-                    </thead>
-                    <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
-                    {% if form.wishlistItems |length == 0 %}
-                        <tr class="noitems">
-                            <td colspan="3">{{ 'entry.wishlist_empty'|trans }}</td>
+                {% else %}
+                    {% for item in form.wishlistItems %}
+                        <tr class="wishlistitem">
+                            <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
+                            <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
+                            <td style="text-align: right;">
+                                <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
+                                    <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'btn.update_item'|trans }}</span>
+                                </button>
+                                <button type="button" class="btn btn-mini btn-danger remove-entry">
+                                    <i class="fa fa-times-circle"></i> <span class="text_remove_wishlist">{{ 'btn.remove_item'|trans }}</span>
+                                </button>
+                            </td>
                         </tr>
-                    {% else %}
-                        {% for item in form.wishlistItems %}
-                            <tr class="wishlistitem">
-                                <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
-                                <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
-                                <td style="text-align: right;">
-                                    <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
-                                        <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'btn.update_item'|trans }}</span>
-                                    </button>
-                                    <button type="button" class="btn btn-mini btn-danger remove-entry">
-                                        <i class="fa fa-times-circle"></i> <span class="text_remove_wishlist">{{ 'btn.remove_item'|trans }}</span>
-                                    </button>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    {% endif %}
-                    </tbody>
-                </table>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
 
-            {% endif %}
             {{ form_end(form, {'render_rest': false}) }}
         </p>
     </div>
