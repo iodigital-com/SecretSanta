@@ -76,13 +76,6 @@ class Entry
     private $excluded_entries;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="wishlist", type="text", nullable=true)
-     */
-    private $wishlist;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="viewdate", type="datetime", nullable=true)
@@ -250,30 +243,6 @@ class Entry
     public function setEmail($email)
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWishlist()
-    {
-        return $this->wishlist;
-    }
-
-    /**
-     * @param string $wishlist
-     *
-     * @return Entry
-     */
-    public function setWishlist($wishlist)
-    {
-        if ($this->wishlist !== $wishlist) {
-            $this->wishlist_updated = true;
-        }
-
-        $this->wishlist = $wishlist;
 
         return $this;
     }
