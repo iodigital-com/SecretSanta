@@ -84,8 +84,9 @@
                     class="fa fa-exclamation-circle"></i> {{ 'btn.delete_list'|trans }}</button>
         <button id="btn_expose" class="btn btn-warning manage_btn manage_btn_middle"><i
                     class="fa fa-eye"></i> {{ 'btn.expose'|trans }}</button>
-        <button id="btn_expose_wishlists" class="btn btn-warning manage_btn"><i
-                    class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</button>
+        <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link"
+            href="{{ path('pool_expose_wishlists', { 'listUrl': pool.listurl }) }}"><i
+                    class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</a>
         <a class="btn btn-info manage_btn manage_btn_link"
            href="{{ path('send_party_update', { 'listUrl': pool.listurl }) }}"><i
                     class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
@@ -134,27 +135,6 @@
                     {{ 'btn.expose_confirm'|trans }}
                 </button>
                 <button type="reset" class="btn btn-warning" id="btn_expose_cancel">{{ 'btn.cancel'|trans }}</button>
-            </form>
-        </div>
-
-        <div id="expose-wishlists-warning" class="alert alert-warning" style="display:none;">
-            <h3>{{ 'expose_wishlists.title'|trans }}</h3>
-
-            {% set phraseToType = 'expose_wishlists.phrase_to_type'|trans|lower %}
-            {{ 'expose_wishlists.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
-            <br>
-            <form action="{{ path('pool_expose_wishlists', { 'listUrl':pool.listUrl }) }}" method="post">
-                <input type="hidden" name="csrf_token" value="{{ expose_pool_wishlists_csrf_token }}">
-                <input type="text" name="confirmation" id="expose-wishlists-confirmation" autocomplete="off"
-                       onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_expose_wishlists_confirmation').removeAttr('disabled');"
-                       class="form-control">
-                <br>
-                <button class="btn btn-warning btn_confirmation_pop_up" type="submit"
-                        id="btn_expose_wishlists_confirmation" disabled>
-                    {{ 'btn.expose_wishlists_confirm'|trans|raw }}
-                </button>
-                <button type="reset" class="btn btn-warning"
-                        id="btn_expose_wishlists_cancel">{{ 'btn.cancel'|trans }}</button>
             </form>
         </div>
 
@@ -271,17 +251,6 @@
             $('#btn_expose_cancel').click(function (e) {
                 $('#expose-warning').hide();
                 $('#btn_expose').attr('disabled', false).focus();
-            });
-
-            $('#btn_expose_wishlists').click(function (e) {
-                $('#expose-wishlists-warning').show();
-                $('#btn_expose_wishlists').attr('disabled', true);
-                $('#expose-wishlists-confirmation').focus();
-            });
-
-            $('#btn_expose_wishlists_cancel').click(function (e) {
-                $('#expose-wishlists-warning').hide();
-                $('#btn_expose_wishlists').attr('disabled', false).focus();
             });
 
             $('#btn_add').click(function (e) {

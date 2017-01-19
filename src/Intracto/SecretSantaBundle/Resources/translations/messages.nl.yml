@@ -89,6 +89,9 @@ delete:
         <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
         </p>
     phrase_to_type: alles verwijderen
+wishlists:
+    expose:
+      title: Alle verlanglijstjes voor dit feestje
 expose:
     title: Toon alle gekoppelde leden in deze mailinglijst
     body: >

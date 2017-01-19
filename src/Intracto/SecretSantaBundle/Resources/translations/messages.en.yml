@@ -92,6 +92,9 @@ delete:
             Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
     phrase_to_type: delete everything
+wishlists:
+    expose:
+      title: All wishlists for this party
 expose:
     title: Send me all matches in this mailing list
     body: >
@@ -337,7 +340,7 @@ btn:
     update_wishlist: Update your wishlist
     expose: Send me all the matches
     expose_confirm: I understand the consequences, send my Secret Santa mailing list now
-    expose_wishlists: Send me all the wishlists
+    expose_wishlists: View all wishlists in this mailing list
     expose_wishlists_confirm: I understand the consequences, send me all wishlists now
     pool_update: Send party update to participants
     add_participant: Add participant to party
