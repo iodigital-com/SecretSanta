@@ -1,1 +1,0 @@
-192.168.33.50 dev.secretsantaorganizer.com
