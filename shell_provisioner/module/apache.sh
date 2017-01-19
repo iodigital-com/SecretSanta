@@ -2,7 +2,9 @@
 
 # Apache
 
-a2enmod rewrite expires headers php5
+apt-get install -y apache2
+
+a2enmod rewrite expires headers proxy proxy_http proxy_fcgi
 
 a2dissite 000-default
 echo "ServerTokens Prod" >>/etc/apache2/apache2.conf
@@ -17,7 +19,7 @@ sed -i 's/640/666/' /etc/logrotate.d/apache2
 sed -i 's/*:80/192.168.33.50:80/' /etc/apache2/ports.conf
 sed -i 's/Listen 80/Listen 192.168.33.50:80/' /etc/apache2/ports.conf
 
-cat ${CONFIG_PATH}/apache/dev.secretsantaorganizer.com.conf > /etc/apache2/sites-available/dev.secretsantaorganizer.com
+cat ${CONFIG_PATH}/apache/${APP_DOMAIN}.conf > /etc/apache2/sites-available/${APP_DOMAIN}.conf
 
-a2ensite dev.secretsantaorganizer.com
+a2ensite ${APP_DOMAIN}
 service apache2 restart
