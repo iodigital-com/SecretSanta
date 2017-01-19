@@ -14,14 +14,24 @@ See [LICENSE](https://github.com/Intracto/SecretSanta/blob/master/LICENSE) for u
 
 First get the code on your machine.
 
-    git clone git@github.com:Intracto/SecretSanta.git
-    cd SecretSanta
+```
+git clone git@github.com:Intracto/SecretSanta.git
+cd SecretSanta
+```
 
-Install VirtualBox 4.3.10 and Vagrant 1.6.2 (or more recent).
+Install VirtualBox 5.0.24 and Vagrant 1.8.7 (or more recent).
 
-    vagrant up
+```
+vagrant up
+```
 
-Add the records from ```shell_provisioner/config/hosts.txt``` in your own /etc/hosts file.
+Add these records to your own ```/etc/hosts``` file:
+
+```
+192.168.33.50 dev.secretsantaorganizer.com
+192.168.33.50 mailcatcher.dev.secretsantaorganizer.com
+192.168.33.50 phpmyadmin.dev.secretsantaorganizer.com
+```
 
 Browse to http://dev.secretsantaorganizer.com/app_dev.php to see the project homepage.
 
@@ -39,7 +49,9 @@ Xdebug remote debugging is enabled. Configure your PhpStorm so you can step debu
 
 Run the tests with:
 
-    phpunit.phar -c app
+```
+phpunit.phar -c app
+```
 
 Note, don't worry if you see the shell provisioning print a lot of red lines. It all works fine.
 
@@ -49,4 +61,3 @@ Building the frontend:
 cd /vagrant/src/Intracto/SecretSantaBundle/Resources/public
 gulp build
 ```
-

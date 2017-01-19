@@ -11,7 +11,7 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define :secretsanta do |secretsanta_config|
-        secretsanta_config.vm.box = "Intracto/Debian75"
+        secretsanta_config.vm.box = "Intracto/Debian8"
         secretsanta_config.vm.provider "virtualbox" do |v|
             # show a display for easy debugging
             v.gui = false

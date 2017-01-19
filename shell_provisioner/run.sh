@@ -5,6 +5,9 @@
 MODULE_PATH='/vagrant/shell_provisioner/module'
 CONFIG_PATH='/vagrant/shell_provisioner/config'
 
+TIMEZONE='Europe/Brussels'
+APP_DOMAIN='dev.secretsantaorganizer.com'
+
 DEPENDENCIES=(
     debian
     tools
@@ -14,7 +17,7 @@ DEPENDENCIES=(
     apache
     phpmyadmin
     symfony
-    roundcube
+    mailcatcher
 )
 
 for MODULE in ${DEPENDENCIES[@]}; do

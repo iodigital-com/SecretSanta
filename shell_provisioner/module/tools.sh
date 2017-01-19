@@ -2,4 +2,4 @@
 
 # Tools
 
-apt-get install -y tmux htop zip unzip strace curl tcpdump tree
+apt-get install -y tmux htop zip unzip strace curl tcpdump tree git jq

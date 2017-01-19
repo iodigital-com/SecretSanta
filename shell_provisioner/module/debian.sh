@@ -3,26 +3,27 @@
 # Locales
 sed -i 's/# nl_BE.UTF-8 UTF-8/nl_BE.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
-# echo 'LANG=nl_BE.UTF-8' > /etc/default/locale
 
 # Timezone
-echo "Europe/Brussels" > /etc/timezone
+echo $TIMEZONE > /etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 
-# dotdeb
-cat << EOF >/etc/apt/sources.list.d/dotdeb.list
-deb http://packages.dotdeb.org wheezy-php56 all
-deb-src http://packages.dotdeb.org wheezy-php56 all
-EOF
-wget -qO - http://www.dotdeb.org/dotdeb.gpg | sudo apt-key add -
-
 # Custom bash prompt
-echo "PS1='[\u@\h-\[\033[00;34m\]dev\[\033[00m\] \w]\n\\$ '" >> /etc/bash.bashrc
-echo "PS1='[\u@\h-\[\033[00;34m\]dev\[\033[00m\] \w]\n\\$ '" >> /home/vagrant/.bashrc
+echo "PS1='[\[\033[00;34m\]\u@readingcorner DEV \[\033[00;31m\]\w$(__git_ps1)\[\033[00m\]]\n\\$ '" >> /etc/bash.bashrc
+echo "PS1='[\[\033[00;34m\]\u@readingcorner DEV \[\033[00;31m\]\w$(__git_ps1)\[\033[00m\]]\n\\$ '" >> /home/vagrant/.bashrc
 
-# Console keyboard
-sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="be"/' /etc/default/keyboard
-setupcon --force
+# Host file
+echo 127.0.0.1 $APP_DOMAIN >> /etc/hosts
+echo 127.0.0.1 phpmyadmin.$APP_DOMAIN >> /etc/hosts
+echo 127.0.0.1 mailcatcher.$APP_DOMAIN >> /etc/hosts
+
+# Add dotdeb repository
+wget -O- https://www.dotdeb.org/dotdeb.gpg | apt-key add -
+
+cat << EOF >/etc/apt/sources.list.d/dotdeb.list
+deb http://packages.dotdeb.org jessie all
+deb-src http://packages.dotdeb.org jessie all
+EOF
 
 # Sync package index files
 apt-get update
