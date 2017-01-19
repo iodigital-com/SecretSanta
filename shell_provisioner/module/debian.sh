@@ -17,13 +17,6 @@ echo 127.0.0.1 $APP_DOMAIN >> /etc/hosts
 echo 127.0.0.1 phpmyadmin.$APP_DOMAIN >> /etc/hosts
 echo 127.0.0.1 mailcatcher.$APP_DOMAIN >> /etc/hosts
 
-# Add dotdeb repository
-wget -O- https://www.dotdeb.org/dotdeb.gpg | apt-key add -
-
-cat << EOF >/etc/apt/sources.list.d/dotdeb.list
-deb http://packages.dotdeb.org jessie all
-deb-src http://packages.dotdeb.org jessie all
-EOF
-
 # Sync package index files
 apt-get update
+apt-get install -y apt-transport-https lsb-release ca-certificates
