@@ -9,8 +9,8 @@ echo $TIMEZONE > /etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 
 # Custom bash prompt
-echo "PS1='[\[\033[00;34m\]\u@readingcorner DEV \[\033[00;31m\]\w$(__git_ps1)\[\033[00m\]]\n\\$ '" >> /etc/bash.bashrc
-echo "PS1='[\[\033[00;34m\]\u@readingcorner DEV \[\033[00;31m\]\w$(__git_ps1)\[\033[00m\]]\n\\$ '" >> /home/vagrant/.bashrc
+echo "PS1='[\[\033[00;34m\]\u@secretsanta DEV \[\033[00;31m\]\w$(__git_ps1)\[\033[00m\]]\n\\$ '" >> /etc/bash.bashrc
+echo "PS1='[\[\033[00;34m\]\u@secretsanta DEV \[\033[00;31m\]\w$(__git_ps1)\[\033[00m\]]\n\\$ '" >> /home/vagrant/.bashrc
 
 # Host file
 echo 127.0.0.1 $APP_DOMAIN >> /etc/hosts
