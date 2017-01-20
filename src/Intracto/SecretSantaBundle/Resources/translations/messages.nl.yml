@@ -144,6 +144,10 @@ entry:
     wishlist_empty: Je verlanglijst is leeg. Voeg iets toe!
     watch_out: Opgelet
     modify_list: The organisator van dit feestje kan mensen toevoegen en verwijderen tot en met %oneWeekFromEventDate%, hou er rekening mee dat dit ervoor zou kunnen zorgen dat je alsnog een ander maatje krijgt toegewezen. Misschien wacht je beter met het kopen van een cadeautje totdat je er zeker van bent dat dit effectief jouw Secret Santa maatje is.
+    exposed:
+      title: Secret Santa Mailinglijst Koppelingen
+      giving: Dit lid geeft ...
+      receiving: ... een cadeau aan dit lid
 poke:
     poke: Por
     poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
@@ -321,7 +325,7 @@ btn:
     update_item: Update dit item
     remove_item: Verwijder
     update_wishlist: Update je verlanglijst
-    expose: Stuur me alle koppelingen
+    expose: Bekijk alle koppelingen in deze lijst
     expose_confirm: Ik begrijp de gevolgen, stuur mij nu alle koppelingen
     expose_wishlists: Stuur me alle verlanglijstjes
     expose_wishlists_confirm: Ik begrijp de gevolgen, stuur mij nu alle verlanglijstjes

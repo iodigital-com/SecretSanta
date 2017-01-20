@@ -147,6 +147,10 @@ entry:
     wishlist_empty: Your wishlist is empty. Add something!
     watch_out: Watch out
     modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
+    exposed:
+      title: Secret Santa Mailing List Matches
+      giving: This member is giving ...
+      receiving: ... a gift to this member
 poke:
     poke: Poke
     poke_sentence: your buddy to let him/her know their wishlist is empty.
@@ -338,7 +342,7 @@ btn:
     update_item: Update this item
     remove_item: Remove
     update_wishlist: Update your wishlist
-    expose: Send me all the matches
+    expose: View all the matches in this list
     expose_confirm: I understand the consequences, send my Secret Santa mailing list now
     expose_wishlists: View all wishlists in this mailing list
     expose_wishlists_confirm: I understand the consequences, send me all wishlists now
