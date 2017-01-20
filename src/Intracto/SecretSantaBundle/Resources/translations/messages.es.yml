@@ -138,6 +138,10 @@ entry:
     wishlist_empty: Tu lista de deseos está vacía. ¡Añade algo!
     watch_out: Atención
     modify_list: El organizador de esta fiesta puede añadir o expulsar personas de esta fiesta hasta %oneWeekFromEventDate%, tiene en cuenta sus acciones pueden causar que tu estará assignado a otro amigote Secret Santa. Quizás es mejor esperar comprar un regalo hasta que estes completamente seguro de que este amigote está vuestro amigote Secret Santa de seguro.
+    exposed:
+        title: Atribuciones Lista de Correos Secret Santa
+        giving: Este miembro está dando ...
+        receiving: ... un regalo a este miembro
 poke:
     poke: Empuja
     poke_sentence: tu amigote para avisarla que su lista de deseos est&aacute; vac&iacute;a.

@@ -1,8 +1,0 @@
-{{ "emails.admin_matches.message.txt"|trans({"%owner%": pool.ownername()})|raw }}
-
-{{ "emails.admin_matches.message.giving"|trans }} >> {{ "emails.admin_matches.message.receiving"|trans }}
-{% for entry in pool.entries %}
-    {{ entry.name }} ({{ entry.email }}) >> {{ entry.entry.name }} ({{ entry.entry.email }})
-{% endfor %}
-
-{{ 'emails.base.created_by'|trans }} http://www.intracto.com

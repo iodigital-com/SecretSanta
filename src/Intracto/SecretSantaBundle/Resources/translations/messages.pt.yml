@@ -118,6 +118,10 @@ entry:
         title: Sua lista de desejos
         description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
     wishlist_empty: A sua lista de desejos está vazia. Adicione algo!
+    exposed:
+      title: Combinações do Amigo Secreto
+      giving:  Este participante é o Papai Noel de ...
+      receiving: ...
 
 static:
     privacy_policy:
