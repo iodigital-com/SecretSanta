@@ -17,9 +17,8 @@ class ExposeEntriesController extends Controller
      */
     public function indexAction($listUrl)
     {
-        /** @var Pool $pool */
         $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-        if (!$pool instanceof Pool) {
+        if ($pool === null) {
             throw new NotFoundHttpException();
         }
 

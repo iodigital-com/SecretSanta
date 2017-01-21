@@ -17,10 +17,8 @@ class WishlistController extends Controller
      */
     public function showAllAction($listUrl)
     {
-        /** @var Pool $pool */
         $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-
-        if (!is_object($pool)) {
+        if ($pool === false) {
             throw new NotFoundHttpException();
         }
 

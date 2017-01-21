@@ -23,7 +23,7 @@ class EntryController extends Controller
     public function indexAction(Request $request, $url)
     {
         $entry = $this->get('entry_repository')->findOneByUrl($url);
-        if (!is_object($entry)) {
+        if ($entry === null) {
             throw new NotFoundHttpException();
         }
 
