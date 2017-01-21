@@ -87,6 +87,9 @@ delete:
         <br>
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
+wishlists:
+    expose:
+      title: Listes de souhaits Secret Santa
 entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
@@ -366,21 +369,6 @@ emails:
 
                 Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
         btn_poolstatus: Gérez votre f&ecirc;te
-    admin_wishlists:
-        subject: Listes de souhaits Secret Santa
-        message:
-            html: >
-                Cher(e) %owner%,<br/>
-                <br/>
-                Vous avez demand&eacute; à conna&icirc;tre toutes les listes de souhaits des personnes au sein de votre liste. Sachez que chaque membre en sera inform&eactue; sur sa liste de souhatis.<br/>
-                <br/>
-                Ci-dessous, la liste des chaque membre et leur cadeaux désirés.
-            txt: >
-                Cher(e) %owner%,
-
-                Vous avez demand&eacute; à conna&icirc;tre toutes les listes de souhaits des personnes au sein de votre liste. Sachez que chaque membre en sera inform&eactue; sur sa liste de souhatis.
-
-                Ci-dessous, la liste des chaque membre et leur cadeaux désirés.
     updated_party:
         subject: Les plans ont changé!
         message:

@@ -94,7 +94,7 @@ delete:
     phrase_to_type: delete everything
 wishlists:
     expose:
-      title: All wishlists for this party
+      title: Secret Santa Mailing Wishlists
 entry:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details
@@ -416,21 +416,6 @@ emails:
 
                 Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
         btn_poolstatus: Manage your party
-    admin_wishlists:
-        subject: Secret Santa Mailing Wishlists
-        message:
-            html: >
-                Dear %owner%,<br/>
-                <br/>
-                You have requested all wishlists of people in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.<br/>
-                <br/>
-                Following is an overview of each member and their desired Secret Santa presents.
-            txt: >
-                Dear %owner%,
-
-                You have requested all wishlists of people in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
-
-                Following is an overview of each member and their desired Secret Santa presents.
     updated_party:
         subject: The plans have changed!
         message:

@@ -91,7 +91,7 @@ delete:
     phrase_to_type: alles verwijderen
 wishlists:
     expose:
-      title: Alle verlanglijstjes voor dit feestje
+      title: Secret Santa Mailinglijst verlanglijsten
 entry:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
@@ -399,21 +399,6 @@ emails:
                 <br/>
                 Klik op de onderstaande link en beheer jouw feestje.
         btn_poolstatus: Beheer jouw feestje
-    admin_wishlists:
-        subject: Secret Santa Mailinglijst verlanglijsten
-        message:
-            html: >
-                Beste %owner%,<br/>
-                <br/>
-                Je hebt een overzicht van alle verlanglijsten in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.<br/>
-                <br/>
-                Hier volgt een overzicht van elk lid en hun gewenste cadeautjes.
-            txt: >
-                Beste %owner%,
-
-                Je hebt een overzicht van alle verlanglijsten in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.
-
-                Hier volgt een overzicht van elk lid en hun gewenste cadeautjes.
     updated_party:
         subject: De plannen zijn gewijzigd!
         message:
