@@ -3,7 +3,7 @@ parameters:
     database_host:     localhost
     database_port:     ~
     database_name:     secretsanta
-    database_user:     vagrant
+    database_user:     secretsanta
     database_password: vagrant
 
     mailer_transport:  smtp
