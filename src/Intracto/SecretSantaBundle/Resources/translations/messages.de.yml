@@ -113,8 +113,6 @@ entry:
         locatie: Platz
         num_people: Anzahl Teilnehmer
         person_created_list: Person, die die Liste erstellt hat
-        exposed: Die Person, die die Liste erstellt hat, kennt alle Treffer
-        not_exposed: Die Person, die die Liste erstellt hat, kennt nicht alle Treffer
     title: Der Ihnen zugeordnete Partner
     body: >
         <p>Hi %name%,</p>

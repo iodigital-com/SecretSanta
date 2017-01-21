@@ -107,8 +107,6 @@ entry:
         amount: Количество
         num_people: Количество людей
         person_created_list: Автор списка
-        exposed: Автор списка знает о всех парах
-        not_exposed: Автор списка не знает о всех парах
     title: Ваш получатель подарка
     body: >
         <p>Привет! %name%,</p>

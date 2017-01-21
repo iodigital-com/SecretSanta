@@ -67,8 +67,6 @@ entry:
     amount: Ilość
     num_people: Liczba osób
     person_created_list: Osoba która utworzyła tę listę
-    exposed: Twórca listy mailingowej wie wszystko o tym kto komu daje prezent
-    not_exposed: Twórca listy mailingowej nie wie kto komu daje prezent
   title: Osoba, którą masz obdarować
   body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
   wishlist_from: 'Lista życzeń %name%'

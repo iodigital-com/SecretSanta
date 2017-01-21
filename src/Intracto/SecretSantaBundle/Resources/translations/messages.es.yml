@@ -122,8 +122,6 @@ entry:
         amount: Cantidad
         num_people: Número de personas
         person_created_list: Persona que creó esta lista
-        exposed: El creador de la lista de correos conoce todas las atribuciones
-        not_exposed: El creador de la lista de correos no conoce todas las atribuciones
     title: Tu amigo asignado
     body: >
         <p>Hola %name%,</p>

@@ -128,8 +128,6 @@ entry:
         amount: Bedrag
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
-        exposed: Lijst maker kent alle koppelingen
-        not_exposed: Lijst maker kent de koppelingen niet
     title: Jouw toegewezen maatje
     body: >
         <p>Hey %name%,</p>

@@ -106,8 +106,6 @@ entry:
         amount: Valor
         num_people: Número de participantes
         person_created_list: Proprietário desta lista
-        exposed: O proprietário sabe de todas as combinações
-        not_exposed: O proprietário não sabe as combinações
     title: Seu Amigo Secreto
     body: >
         <p>Olá %name%,</p>

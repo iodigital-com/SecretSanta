@@ -102,8 +102,6 @@ entry:
         amount: 數量
         num_people: 人數
         person_created_list: 名單創作人
-        exposed: 郵件名單創作人會知道所有相配者
-        not_exposed: 郵件名單創作人會不知道所有相配者
     title: 你指定的朋友
     body: >
         <p>你好%name%,</p>

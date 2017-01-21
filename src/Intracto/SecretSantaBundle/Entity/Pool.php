@@ -93,13 +93,6 @@ class Pool
     private $locale = 'en';
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="exposed", type="boolean")
-     */
-    private $exposed = false;
-
-    /**
      * @var string
      *
      * @Assert\NotBlank()
@@ -380,24 +373,6 @@ class Pool
     public function getLocale()
     {
         return $this->locale;
-    }
-
-    /**
-     * @return Pool
-     */
-    public function expose()
-    {
-        $this->exposed = true;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getExposed()
-    {
-        return $this->exposed;
     }
 
     /**

@@ -103,8 +103,6 @@ entry:
         amount: 数量
         num_people: 人员数目
         person_created_list: 名单创建者
-        exposed: 邮件名单创建者知道所有配对
-        not_exposed: 邮件名单创建者不知道所有配对
     title: 你的分配密友
     body: >
         <p>你好%name%,</p>

@@ -131,8 +131,6 @@ entry:
         amount: Amount
         num_people: Number of people
         person_created_list: Person who created this list
-        exposed: Mailing list creator knows all matches
-        not_exposed: Mailing list creator does not know all matches
     title: Your assigned buddy
     body: >
         <p>Hi %name%,</p>
