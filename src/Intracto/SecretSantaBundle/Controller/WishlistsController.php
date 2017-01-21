@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Wishlist;
+namespace Intracto\SecretSantaBundle\Controller;
 
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,24 +9,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ExposeWishlistsController extends Controller
+class WishlistsController extends Controller
 {
     /**
-     * @Route("/wishlists/expose/{listUrl}", name="pool_expose_wishlists")
+     * @Route("/wishlists/show/{listUrl}", name="wishlists_show_all")
      * @Template("IntractoSecretSantaBundle:Wishlist:expose.html.twig")
      */
-    public function exposeWishlistsAction(Request $request, $listUrl)
+    public function showAllAction($listUrl)
     {
-
         /** @var Pool $pool */
         $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
+
         if (!is_object($pool)) {
             throw new NotFoundHttpException();
         }
-
-        $pool->exposeWishlists();
-
-        $this->get('doctrine.orm.entity_manager')->flush();
 
         return [
             'pool' => $pool,

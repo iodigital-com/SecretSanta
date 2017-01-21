@@ -124,8 +124,6 @@ entry:
         person_created_list: Persona que creó esta lista
         exposed: El creador de la lista de correos conoce todas las atribuciones
         not_exposed: El creador de la lista de correos no conoce todas las atribuciones
-        wishlists_exposed: El creador de la lista de correos conoce todas las listas de deseos
-        wishlists_not_exposed: El creador de la lista de correos no conoce todas las listas de deseos
     title: Tu amigo asignado
     body: >
         <p>Hola %name%,</p>

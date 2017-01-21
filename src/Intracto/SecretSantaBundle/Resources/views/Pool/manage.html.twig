@@ -86,7 +86,7 @@
             <i class="fa fa-eye"></i> {{ 'btn.expose'|trans }}
         </a>
         <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link"
-            href="{{ path('pool_expose_wishlists', { 'listUrl': pool.listurl }) }}"><i
+            href="{{ path('wishlists_show_all', { 'listUrl': pool.listurl }) }}"><i
                     class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</a>
         <a class="btn btn-info manage_btn manage_btn_link"
            href="{{ path('send_party_update', { 'listUrl': pool.listurl }) }}"><i

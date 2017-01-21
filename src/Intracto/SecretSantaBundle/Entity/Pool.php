@@ -100,13 +100,6 @@ class Pool
     private $exposed = false;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="wishlists_exposed", type="boolean")
-     */
-    private $wishlistsExposed = false;
-
-    /**
      * @var string
      *
      * @Assert\NotBlank()
@@ -405,24 +398,6 @@ class Pool
     public function getExposed()
     {
         return $this->exposed;
-    }
-
-    /**
-     * @return Pool
-     */
-    public function exposeWishlists()
-    {
-        $this->wishlistsExposed = true;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWishlistsExposed()
-    {
-        return $this->wishlistsExposed;
     }
 
     /**

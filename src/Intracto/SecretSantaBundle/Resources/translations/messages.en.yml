@@ -133,8 +133,6 @@ entry:
         person_created_list: Person who created this list
         exposed: Mailing list creator knows all matches
         not_exposed: Mailing list creator does not know all matches
-        wishlists_exposed: Mailing list creator has all the wishlists
-        wishlists_not_exposed: Mailing list creater does not have all the wishlists
     title: Your assigned buddy
     body: >
         <p>Hi %name%,</p>
@@ -344,7 +342,7 @@ btn:
     update_wishlist: Update your wishlist
     expose: View all the matches in this list
     expose_confirm: I understand the consequences, send my Secret Santa mailing list now
-    expose_wishlists: View all wishlists in this mailing list
+    expose_wishlists:  View all participants wishlists
     expose_wishlists_confirm: I understand the consequences, send me all wishlists now
     pool_update: Send party update to participants
     add_participant: Add participant to party
