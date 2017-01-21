@@ -56,10 +56,6 @@ delete:
   title: Usuń moją listę Tajnego Mikołaja
   body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br><b>Jeśli tego nie przeczytasz mogą wydarzyć się złe rzeczy!</b><br><br>Kiedy skasujesz listę Tajnego Mikołaja, nie ma już powrotu. NIE DA SIĘ już tego cofnąć.<br> Zostanie usunięta lista Tajnego Mikołaja, wszyscy jej uczestnicy i ich listy życzeń.<br><br> Wpisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
   phrase_to_type: usuń wszystko
-expose:
-  title: Wyślij mi wszystkie dopasowania na tej liście
-  body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br> Wyślemy Ci mail, zawierający listę wszystkich dopasowań pomiędzy użytkownikami.<br><br><b>Pamiętaj:</b><br> Wszyscy uczestnicy zostaną powiadomieni!<br><br> Proszę napisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
-  phrase_to_type: pokaż mi wszystko
 entry:
   headers:
     title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
@@ -107,8 +103,6 @@ btn:
   add_wishlist: Dodaj do listy życzeń
   remove_item: Usuń pozycję
   update_wishlist: Zapisz listę życzeń
-  expose: Wyślij mi wszystkie pary uczestników
-  expose_confirm: Rozumiem konsekwencje, roześlij moją listę Tajnego Mikołaja
   cancel: Anuluj
 emails:
   sender: Tajny Mikołaj
@@ -156,23 +150,11 @@ emails:
       %message%
       
       Wesołych Świąt!
-  admin_matches:
-    subject: Dopasowania na liście Tajnych Mikołajów
-    message:
-      giving: Ten uczestnik podaruje...
-      receiving: ... prezent dla tego uczestnika
-      html: 'Drogi(a) %owner%,<br/><br/>Poprosiłeś(aś) o wysłanie wszystkich dopasowań na Twojej liście Tajnych Mikołajów. Pamiętaj, że wszyscy uczestnicy dowiedzą się o tym, kiedy zajrzą na swoje listy życzeń.<br/><br/>Poniżej znajdziesz informacje, kto kogo powinien obdarować.<br/>'
-      txt: |
-        Drogi(a) %owner%,
-        Poprosiłeś(aś) o wysłanie wszystkich dopasowań na Twojej liście Tajnych Mikołajów. Pamiętaj, że wszyscy uczestnicy dowiedzą się o tym, kiedy zajrzą na swoje listy życzeń. Poniżej znajdziesz informacje, kto kogo powinien obdarować.
 flashes:
   manage:
     email_validated: '<strong>Świetnie!</strong><br/>Twój email został zweryfikowany.<br/> Nasze skrzaty wyruszyły w internetową podróż, żeby dostarczyć wszystkie wiadomości dla przyszłych Tajnych Mikołajów.<br/><br/> Nie zapomnij potwierdzić swojego uczestnictwa. Wyślemy Ci kolejny email. Sprawdź swoją skrzynkę pocztową!'
   delete:
     not_deleted: '<h4>Nie usunięto</h4> Nie odnotowano prawidłowego potwierdzenia.'
-  expose:
-    not_exposed: '<h4>Nie rozesłano listów</h4> Nie odnotowano prawidłowego potwierdzenia.'
-    exposed: '<h4>Listy zostały rozesłane</h4> Wszyscy użytkownicy zostaną powiadomieni, kiedy sprawdzą swoje listy życzeń.'
   resend:
     resent: '<strong>Wysłano ponownie!</strong><br/>E-mail do %email% został ponownie wysłany.<br/>'
   entry:

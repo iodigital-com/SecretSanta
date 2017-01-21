@@ -81,20 +81,6 @@ delete:
             請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
         </p>
     phrase_to_type: 刪除所有東西
-expose:
-    title: 在這個郵件目錄，把所有相配個者傳送給我
-    body: >
-        <p>
-            你絕對肯定？<br>
-            <br>
-            將發給你是一個電郵，裡面載有全部的郵件名單及相配者。<br>
-            <br>
-            <b>注意：</b><br>
-            所有郵件名單成員會被通知！<br>
-            <br>
-            請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
-        </p>
-    phrase_to_type: show me everything
 entry:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
@@ -184,8 +170,6 @@ btn:
     add_wishlist: 在願望單加入項目
     remove_item: 刪除這項目
     update_wishlist: 更新你的願望單
-    expose: 把所有相配者傳送給我
-    expose_confirm: 我明白後果，將秘密聖誕老人郵件名單傳送給我
     cancel: 取消
 
 emails:
@@ -236,21 +220,6 @@ emails:
 
 
             祝你假期愉快！
-    admin_matches:
-        subject: 秘密聖誕老人電郵列出配對者
-        message:
-            giving: 這成員正送給…
-            receiving: …一份禮物給這成員
-            html: >
-                親愛的%owner%,<br/>
-                <br/>
-                你要求了在電郵表列中所有相配者。<br/>
-                <br/>
-                請注意所有成員將能從願望表頁中看到這些。<br/>
-            txt: >
-                親愛的%owner%,
-                接著的的概要是成員期望從用家去得到禮物。
-                請注意所有成員將能從願望表頁中看到這些。
 flashes:
     manage:
         email_validated: >
@@ -260,9 +229,6 @@ flashes:
          別忘記去確認你的參與。我們已傳送給你另一封電郵。查看一下吧!
     delete:
         not_deleted: <h4>並非已刪除</h4>該確認是不正確。
-    expose:
-        not_exposed: <h4>郵件名單沒有傳送</h4>該確認是不正確。
-        exposed: <h4>邮件名单已发送</h4> 所有用家將被通知，當他們查閱他們的願望單。
     resend:
         resent: <strong>重新傳送！</strong><br/>電郵到%email%已被重新傳送。<br/>
     entry:

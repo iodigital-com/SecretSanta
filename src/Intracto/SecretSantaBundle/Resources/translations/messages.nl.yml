@@ -92,34 +92,6 @@ delete:
 wishlists:
     expose:
       title: Alle verlanglijstjes voor dit feestje
-expose:
-    title: Toon alle gekoppelde leden in deze mailinglijst
-    body: >
-        <p>
-            Weet je het ECHT zeker?<br>
-            <br>
-            Er word een mail naar u verzonden, waarin alle leden van deze mailinglijst inclusief koppelingen vermeld zullen staan.<br>
-            <br>
-            <b>Pas op:</b><br>
-            ENKEL JIJ krijgt de matches toegestuurd, maar alle leden zullen zien dat jij de lijst hebt opgevraagd.<br>
-            <br>
-            <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
-        </p>
-    phrase_to_type: toon me alles
-expose_wishlists:
-    title: Toon alle verlanglijstjes in deze mailinglijst
-    body: >
-        <p>
-            Weet je het ECHT zeker?<br>
-            <br>
-            Er word een mail naar u verzonden, waarin alle verlanglijstjes van mensen in deze mailinglijst vermeld zullen staan.<br>
-            <br>
-            <b>Pas op:</b><br>
-            ENKEL JIJ krijgt de verlanglijstjes toegestuurd, maar alle leden zullen zien dat jij de lijst hebt opgevraagd.<br>
-            <br>
-            <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
-        </p>
-    phrase_to_type: toon me alle verlanglijstjes
 entry:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
@@ -322,9 +294,7 @@ btn:
     remove_item: Verwijder
     update_wishlist: Update je verlanglijst
     expose: Bekijk alle koppelingen in deze lijst
-    expose_confirm: Ik begrijp de gevolgen, stuur mij nu alle koppelingen
-    expose_wishlists: Stuur me alle verlanglijstjes
-    expose_wishlists_confirm: Ik begrijp de gevolgen, stuur mij nu alle verlanglijstjes
+    expose_wishlists: Bekijk alle verlanglijstjes
     pool_update: Verstuur update naar alle deelnemers
     add_participant: Voeg een deelnemer aan je feestje
     add_participant_confirm: Voeg deze deelnemer toe
@@ -378,23 +348,6 @@ emails:
 
 
             Geniet van de feestdagen!
-    admin_matches:
-        subject: Secret Santa Mailinglijst Koppelingen
-        message:
-            giving: Dit lid geeft ...
-            receiving: ... een cadeau aan dit lid
-            html: >
-                Beste %owner%,<br/>
-                <br/>
-                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.<br/>
-                <br/>
-                Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.<br/>
-            txt: >
-                Beste %owner%,
-
-                Je hebt een overzicht van alle koppelingen in je mailinglijst aangevraagd. Let op: Alle leden kunnen dit zien op hun verlanglijst pagina.
-
-                Hier volgt het overzicht van welke leden een cadeau zouden moeten voorzien voor welke leden.
     poke_buddy:
         subject: Je maatje wacht op jouw verlanglijstje
         message:
@@ -501,12 +454,6 @@ flashes:
          Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
     delete:
         not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
-    expose:
-        not_exposed: <h4>Mailinglijst niet gestuurd</h4> De bevestiging verliep foutief.
-        exposed: <h4>Mailinglijst gestuurd</h4> Alle gebruikers worden op de hoogte gebracht wanneer zij hun verlanglijst bekijken.
-    expose_wishlists:
-        not_exposed: <h4>Verlanglijsten niet gestuurd</h4> De bevestiging verliep foutief.
-        exposed: <h4>Verlanglijsten gestuurd</h4> Alle gebruikers worden op de hoogte gebracht wanneer zij hun verlanglijst bekijken.
     resend:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
     entry:

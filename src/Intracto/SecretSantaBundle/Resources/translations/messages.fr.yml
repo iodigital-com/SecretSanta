@@ -87,34 +87,6 @@ delete:
         <br>
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
-expose:
-    title: Envoyez-moi toutes les attributions par e-mail
-    body: >
-        <p>
-            Etes-vous ABSOLUMENT certain ?<br>
-            <br>
-            Un e-mail contenant la liste enti&egrave;re des attributions va vous &ecirc;tre envoy&eacute; <br>
-            <br>
-            <b>Avertissement:</b><br>
-            Vous serez la SEULE personne à recevoir les correspondances, mais les autres verront que vous avez obtenu la liste.<br>
-            <br>
-            Veuillez entrer la phrase "<b>%phrase_to_type%</b>" ci-dessous afin de confimer.<br>
-        </p>
-    phrase_to_type: Montrez-moi tout
-expose_wishlists:
-    title: M'envoyer toutes les listes de souhaits par e-mail
-    body: >
-        <p>
-            Etes-vous ABSOLUMENT certain?<br>
-            <br>
-            Un e-mail contenant les listes de souhaits de votre f&ecirc;te va vous &ecirc;tre envoy&eacute;.
-            <br>
-            <b>Avertissement:</b><br>
-            Vous serez la SEULE personne à recevoir les correspondances, mais les autres verront que vous avez obtenu la liste.<br>
-            <br>
-            Veuillez entrer la phrase "<b>%phrase_to_type%</b>" ci-dessous afin de confimer.<br>
-        </p>
-    phrase_to_type: Montrez-moi tous les listes de souhaits
 entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
@@ -290,10 +262,6 @@ btn:
     update_item: Actualiser cet object
     remove_item: Supprimer
     update_wishlist: Mettre à jour votre liste de souhaits
-    expose: Envoyez-moi toutes les attributions
-    expose_confirm: J'ai compris les cons&eacute;quences, envoyez-moi la liste Secret Santa maintenant
-    expose_wishlists: Envoyez-moi toutes les listes de souhaits
-    expose_wishlists_confirm: J'ai compris les cons&eacute;quences, envoyez-moi les listes de souhaits maintenant
     pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
     add_participant: Ajouter un participant à la f&ecirc;te
     add_participant_confirm: Ajouter ce participant
@@ -347,23 +315,6 @@ emails:
 
 
             Bonnes vacances !
-    admin_matches:
-        subject: Liste des attributions Secret Santa
-        message:
-            giving: Ce membre donne ...
-            receiving: ... un cadeau à ce membre
-            html: >
-                Cher(e) %owner%,<br/>
-                <br/>
-                Vous avez demand&eacute; à conna&icirc;tre toutes les attributions de votre liste. Sachez que chaque membre en sera inform&eacute; sur sa liste de souhaits.<br/>
-                <br/>
-                Ci-dessous, la liste des membres et leurs copains cadeaux.<br/>
-            txt: >
-                Cher(e) %owner%,
-
-                Vous avez demand&eacute; à conna&icirc;tre toutes les attributions de votre liste. Sachez que chaque membre en sera inform&eacute; sur sa liste de souhaits.
-
-                Ci-dessous, la liste des membres et leurs copains cadeaux.
     poke_buddy:
         subject: Votre copain est en attente de votre liste de souhaits
         message:
@@ -467,12 +418,6 @@ flashes:
          N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
     delete:
         not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
-    expose:
-        not_exposed: <h4>Liste non envoy&eacute;e</h4> La phrase de confirmation est incorrecte.
-        exposed: <h4>Liste envoy&eacute;e</h4> Chaque membre en sera inform&eacute; lorsqu'ils consulteront leur liste de souhaits.
-    expose_wishlists:
-        not_exposed: <h4>Listes de souhaits non envoy&eacute;es</h4> La phrase de confirmation est incorrecte.
-        exposed: <h4>Listes de souhaits envoy&eacute;es</h4> Chaque membre en sera inform&eacute; lorsqu'ils consulteront leur liste de souhaits.
     resend:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
     entry:

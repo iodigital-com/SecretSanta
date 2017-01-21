@@ -90,20 +90,6 @@ delete:
             Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
         </p>
     phrase_to_type: alles löschen
-expose:
-    title: Senden Sie mir alle Treffer aus diesem Mail-Verteiler zu
-    body: >
-        <p>
-            Sind Sie WIRKLICH sicher?<br>
-            <br>
-            Sie bekommen eine Mail zugesandt, die den kompletten Mail-Verteiler und alle Treffer enthält.<br>
-            <br>
-            <b>Bitte beachten Sie:</b><br>
-            Alle Mitglieder der Liste werden benachrichtigt!<br>
-            <br>
-            Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
-        </p>
-    phrase_to_type: alles anzeigen
 entry:
     headers:
         title: Ihre <span class="accent">Secret Santa-Party</span> Details
@@ -163,8 +149,6 @@ btn:
     add_wishlist: Dem Wunschzettel einen Gegenstand hinzufügen
     remove_item: Diesen Gegenstand entfernen
     update_wishlist: Aktualisieren Sie Ihren Wunschzettel
-    expose: Senden Sie mir alle Treffer zu
-    expose_confirm: Ich habe die Konsequenzen verstanden, meinen Secret Santa-Mail-Verteiler jetzt versenden 
     cancel: Löschen
 
 emails:
@@ -214,23 +198,6 @@ emails:
 
 
             Schöne Feiertage!
-    admin_matches:
-        subject: Treffer des Secret Santa-Mail-Verteilers
-        message:
-            giving: Dieses Mitglied gibt....
-            receiving: ... diesem Mitglied ein Geschenk
-            html: >
-                Liebe(r) %owner%,<br/>
-                <br/>
-                Sie haben alle Treffer aus Ihrem Mail-Verteiler angefordert. Bitte beachten Sie, dass alle Teilnehmer dies auf ihrer Wunschzettel-Seite sehen.<br/>
-                <br/>
-                Im Folgenden finden Sie eine Übersicht, welcher Teilnehmer Geschenke für wen besorgen sollte.<br/>
-            txt: >
-                Liebe(r) %owner%,
-
-                Sie haben alle Treffer aus Ihrem Mail-Verteiler angefordert. Bitte beachten Sie, dass alle Teilnehmer dies auf ihrer Wunschzettel-Seite sehen.
-
-                Im Folgenden finden Sie eine Übersicht, welcher Teilnehmer Geschenke für wen besorgen sollte.
 flashes:
     manage:
         email_validated: >
@@ -240,9 +207,6 @@ flashes:
          Vergessen Sie nicht, Ihre eigene Teilnahme zu bestätigen. Wir haben Ihnen eine weitere Mail zugesandt. Überprüfen Sie dies!
     delete:
         not_deleted: <h4>Nicht gelöscht</h4> Die Bestätigung war nicht korrekt.
-    expose:
-        not_exposed: <h4>Mail-Verteiler nicht gesendet</h4> Die Bestätigung war nicht korrekt.
-        exposed: <h4>Mail-Verteiler gesendet</h4> Alle Mitglieder werden benachrichtigt, sobald sie  ihren Wunschzettel überprüfen.
     resend:
         resent: <strong>Neu versendet!</strong><br/>Die E-Mail an %email% wurde neu versendet.<br/>
     entry:
