@@ -3,24 +3,19 @@
 {% block main %}
     <div class="box">
         <h1>{{ 'wishlists.expose.title'|trans }}</h1>
-        <div class="exposed-wishlists">
             {% for entry in pool.entries %}
-                <div class="exposed-wishlists__participant__name">
-                    {{ entry.name }}
-                </div>
-                <div class="exposed-wishlists__participant__list">
+                <h3>{{ entry.name }}</h3>
                     {% if entry.wishlistitems|length > 0 %}
-                        <ul>
+                        <ul class="list-group">
                             {% for item in entry.wishlistitems %}
-                                <li class="exposed-wishlists__participant__list__item">
+                                <li class="list-group-item">
                                     {{ item.description|escape|linkify|raw }}
                                 </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        --
+                        <p>--</p>
                     {% endif %}
-                </div>
             {% endfor %}
         </div>
     </div>
