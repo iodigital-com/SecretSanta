@@ -9,11 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class WishlistsController extends Controller
+class WishlistController extends Controller
 {
     /**
-     * @Route("/wishlists/show/{listUrl}", name="wishlists_show_all")
-     * @Template("IntractoSecretSantaBundle:Wishlist:expose.html.twig")
+     * @Route("/wishlists/show/{listUrl}", name="wishlist_show_all")
+     * @Template("IntractoSecretSantaBundle:Wishlist:show_all.html.twig")
      */
     public function showAllAction($listUrl)
     {
