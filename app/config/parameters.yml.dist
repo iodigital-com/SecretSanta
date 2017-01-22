@@ -27,6 +27,7 @@ parameters:
         - ru
         - zh-Hans
         - zh-Hant
+        - no
     locale_names:
         en: English
         nl: Nederlands
@@ -38,6 +39,7 @@ parameters:
         ru: Русский
         es: Español
         de: Deutsch
+        no: Norsk
 
     secret:            ThisTokenIsNotSoSecretChangeIt
     adwords_password:  secret

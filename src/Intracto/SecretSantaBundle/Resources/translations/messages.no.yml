@@ -1,0 +1,588 @@
+base:
+    meta:
+        description: \"Secret Santa Organizer\" er et gratis program som lar deg organisere gavebytter! Arranger en \"hemmelig nisse\" fest med venner, familie eller kolleger og legg til din egen ønskeliste.
+        title: Online Secret Santa generator og organisator for gavebytter!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: \"Secret Santa Organizer\" er et gratis program som lar deg organisere gavebytter! Arranger en \"hemmelig nisse\" fest med venner, familie eller kolleger og legg til din egen ønskeliste.
+    nav:
+        home: Hjem
+    privacy_policy: Personvern
+    have_fun: Ha det gøy med å organisere årets \"Secret Santa\"!
+    need_help: <a href=\"%FAQ%\" target=\"_blank\" rel=\"noopener noreferrer\">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
+pool:
+    header:
+        steps:
+            title: Ditt selskap <br/><small>in <span class=\"accent\">3 enkle steg</span></small>
+            list:
+                en: Skriv ned navnet på deltagerne
+                to: Legg til en personlig beskjed
+                tre: Send!
+            get_started: Kom i gang!
+
+create:
+    what_is:
+        title: Hva er Secret Santa?
+        intro: >
+                <p>Et <strong>free</strong> online Secret Santa <strong>gavebytte-program / hemmelig venn generator</strong>!
+                Organiser et hemmelig-venn selskap med venner, familie eller kolleger. Når du mottar hemmelig-venn eposten kan du legge til din
+                egen<strong>ønskeliste</strong>, som vi leverer til din hemmelige venn.</p>
+
+                <p>Hele året rundt <strong>Christmas</strong> utveksler folk over hele verden gaver.<br/>
+                For å gjøre ting mer spennende kan du <strong>fordele, helt tilfeldig,</strong> hvem som skal
+                gi hverandre gaver.</p>
+
+    add_participants: Legge til deltagere
+    list_adminstrator: Denne personen er også en deltager.
+    add_personal_message:
+        title: Legg til en melding
+        description: Skriv ned en personlig beskjed til alle deltagerne.
+    import:
+        instruksjoner: Legg til flere personer på en gang til ditt selskap. Last ned<a href=\"%downloadPath%\">denne CSV-malen</a> og legg til navn og epostadresser på alle deltagerne som skal inviteres. Når du er ferdig kan du dra og slippe filen i feltet nedenfor og dine venner eller kolleger blir raskt og enkelt lagt til listen.
+        too_many_files: Det går kun an å laste opp én fil av gangen..
+        wrong_format: Filen du prøver å bruke har ikke riktig format(csv eller txt).
+exclude:
+   title: Eksluder kombinasjoner
+   description: Med denne listen kan du helt valgfritt forhindre enkelte kombinasjoner av deltagerne. For eksempel kan du unngå at familiemedlemmer kjøper gaver til hverandre.
+created:
+    title: Bare 1 trinn igjen! - Bekreft din deltagelse
+    body: >
+            <p>
+                For å unngå at roboter eller troll ødelegger hemmelig-venn selskapet ditt må liste-organisatoren <b>%ownername%</b> bekrefte hans eller hennes deltagelse. Vi har sendt en epost til <b>%owneremail%</b> med et par intstrukser.
+            </p>
+            <p>
+                Så snart den er bekreftet, vil din \"Secret Santa\" liste mikses og alle deltagerne får tilsendt meldingen fra deg samt navnet på den de skal kjøpe gave til.
+            </p>
+            <p>
+                I e-posten som må bekreftes vil administratoren også få en link for å kunne holde seg oppdatert på alle deltagerne i Secret Santa-listen som allerede har funnet ut hvem de skal gi gave til. Sånn er du sikker på at alle nissene er klar over sin plikt.
+            </p>
+    warning: Warning!
+    check_spam: Ikke glem å sjekke søppelposten!
+
+deleted:
+    title: Din Secret Santa-liste ble slettet!
+    body: >
+        <p>Takk for at du bruker Secret Santa Organizer. Vi håper å se deg igjen til neste år!</p>
+
+manage:
+    title: Din Secret Santa-liste
+    yes: Ja
+    not_yet: Ikke ennå
+    edit_email: Rediger e-posten
+    resend_email: Sen e-post på nytt
+    view_entry: Se listen
+    tip: Tip
+    come_back: Du kan alltids komme tilbake til denne siden for å sjekke at alle har undersøkt innboksen sin.
+    watch_out: Watch out
+    modify_list: Å legge til eller slette deltagere fra listen er kun mulig inntil %oneWeekFromEventDate%.
+    save: Lagre
+
+delete:
+    title: Slett min Secret Santa-liste
+    body: >
+        <p>
+            Er du HELT sikker?<br>
+            <br>
+            <b>Uforutsette, forferdelige ting skjer hvis du ikke leser dette!</b><br>
+            <br>
+            Så snart du har slettet din Secret Santa-liste kan du ikke ombestemme deg. Denne handlingen kan IKKE omgjøres.<br>
+            Dette vil permanent slette din Secret Santa-liste, alle deltagerne og deres ønskelister.<br>
+            <br>
+            Vennligst tast \"<b>%phrase_to_type%</b>\" nedenfor for å bekrefte valget ditt.<br>
+        </p>
+    phrase_to_type: slett alt
+expose:
+    title: Send meg alle kombinasjonene i e-postlisten
+    body: >
+        <p>
+            Er du HELT sikker?<br>
+            <br>
+            En e-post blir sendt til din mailadresse med hele deltagerlisten og kombinasjonene av hemmelige nisser ;)<br>
+            <br>
+            <b>Vær oppmerksom på:</b><br>
+            KUN DU får tilgang til kombinasjonene av gavegivere, men deltagerne vil kunne se at du har fått listen tilsendt.<br>
+            <br>
+            Vennligst tast \"<b>%phrase_to_type%</b>\" nedenfor for å bekrefte valget ditt.<br>
+        </p>
+    phrase_to_type: vis meg alle nissene
+expose_wishlists:
+    title: Send meg alle nissenes ønskelister
+    body: >
+        <p>
+            Er du HELT sikker?<br>
+            <br>
+            En e-post blir sendt til din mailadresse med hele deltagerlisten og alle deres ønskelister.<br>
+            <br>
+            <b>Vær oppmerksom på:</b><br>
+            KUN DU får tilgang til ønskelisten, men deltagerne vil kunne se at du har fått listen tilsendt.<br>
+            <br>
+            Please type \"<b>%phrase_to_type%</b>\" below to confirm.<br>
+        </p>
+    phrase_to_type: vis meg ønskelistene
+entry:
+    headers:
+        title: Ditt<span class=\"accent\">Secret Santa-selskap</span> med detaljer
+        date: Date
+        location: Sted
+        amount: Beløp
+        num_people: Antall personer
+        person_created_list: Administrator
+        exposed: Administratoren kjenner til deltager-kombinasjonene
+        not_exposed: Administrator kjenner ikke til deltager-kombinasjonene
+        wishlists_exposed: Administrator kjenner til alles ønskelister
+        wishlists_not_exposed: Administrator kjenner ikke til alles ønskelister
+    title: Du har fått tildelt følgende nisse
+    body: >
+        <p>Hi %name%,</p>
+        <p>Du skal være hemmelig julenisse for:</p>
+    wishlist_from: Ønskeliste fra %name%
+    wishlist_not_provided: %name% har ikke lagt inn sin ønskeliste ennå
+    wishlist:
+        title: Din ønskeliste
+        description: For å hjelpe din julenisse med å handle gave til deg, kan du skrive inn din ønskeliste her. Våre troll og smånisser vil sende ønskelisten til julenissen din. Du kan omarrangere på listen din ved å dra og slippe ønskene dine.
+    wishlist_empty: Your wishlist is empty. Add something!
+    watch_out: Watch out
+    modify_list: Administrator kan legge til eller slette deltagere fram til %oneWeekFromEventDate%, husk at det er en mulighet for at dette vil gi deg en ny person å være julenisse for. Det kan være lurt å vente med å kjøpe gave til du er helt sikker på hvem du får tildelt å kjøpe gave til.
+poke:
+    poke: Dytt på
+    poke_sentence: vennen din for å gjøre han/hun klar over at ønskelisten deres er tom.
+add_participant:
+    title: Legg til deltagere til festen
+    body: >
+        <p>
+            Ved å fylle ut skjemaet nedenfor legger du til en ny person til festen.<br>
+            <br>
+            Den nye deltageren legges til og får med en gang tildelt en å være julenisse for, og får tilsendt denne informasjonen på epost.<br>
+        </p>
+remove_participant:
+    title: Slett denne deltageren fra listen
+    body: >
+        <p>
+            Er du HELT sikker?<br>
+            <br>
+            Å slette denne deltageren blir på permanent basis. DU kan ikke angre deg og personen denne deltageren har fått tildelt blir fjernet som kombinasjon.<br>
+            <br>
+            Noen kan ha kjøpt gaven allerede.<br>
+            <br>
+            Hvis du er helt sikker på at du vil slette denne deltageren, vennligst tast \"<b>%phrase_to_type%</b>\" nedenfor for å bekrefte valget ditt.<br>
+        </p>
+    phrase_to_type: slett denne nissen
+updated_party:
+    title: Oppdater detaljer for festen
+    body: >
+        <p>
+            Ved å fylle ut skjemaet nedenfor kan du oppdatere og endre detaljer for festen du arrangerer.<br>
+            <br>
+            Nissene får beskjed om endringene som blir gjort umiddelbart
+        </p>
+static:
+    privacy_policy:
+        title: Personvernserklæring
+        body: >
+            <p>Takk for at du besøkte secretsantaorganizer.com skapt av Intracto group NV. Denne personvernserklæringen forteller deg
+                hvordan vi behandler personlig informasjon på denne siden. Vennligst les personvernerklæringen før du bruker denne
+                nettiden eller legger til noen form for personlig informasjon. Ved å bruke nettsiden aksepterer du vår bruk av personlig informasjon
+                som beskrevet av denne erklæringen. Bruken kan endres, men endringer blir offentliggjort og vil kun brukes til informasjon og aktiviteter
+                på en framtenkende, ikke retro-aktiv basis. Vi oppfordrer brukere å gi oss tilbakemelding på hvordan personvernerklæringen
+                oppfattes og forstås når du bruker siden.</p>
+
+            <p>Merk: bruken som beskrives av denne personvernerklæringen gjelder kun denne nettsiden. Dersom du legger ved lenker til andre
+                nettsider, vennligst les de respektive nettsidenes egne personvernserklæringer.</p>
+
+            <h2>Innsamling av informasjon</h2>
+
+            <p>Vi samler inn personlig informasjon, som navn og e-postadresserm når de legges inn frivillig av
+                besøkende på denne siden. Informasjonen du gir oss benyttes kun til ditt bruk.</p>
+
+            <h2>Cookie/Sporingsteknologi</h2>
+
+            <p>Denne siden bruker cookies gjennom Google Analytics for å innhente anonym informasjon som internett-browser og
+                ioerativsystem, for å spore antall besøkende på siden, og får å forstå hvordan besøkende  bruker siden.
+                Personlig informasjon kan ikke samles via cookies og annen sporingsteknologi.</p>
+
+            <p>Du kan slå av cookies i innstillingene i din internett-browser.</p>
+
+            <h2>Deling av informasjon</h2>
+
+            <p>I noen tilfeller vil vi dele informasjon med meyndigheter eller andre organisasjoner som arbeider for å forhindre svindel
+                eller med etterforskning. Vi gjør dette når: (1) det er lovpålagt, eller (2) man prøver å beskytte mot eller forhindre
+                faktisk eller potensiell svindel eller uautoriserte transaksjoner, eller (3) man etterforsker svindel som allerede
+                har inntruffet. Informasjon deles ikke med myndigheter eller organisasjoner i markedsføringsøyemed.</p>
+
+            <h2>Datsikkerhet</h2>
+
+            <p>Din personlige informasjon er sikret. Bare autorisert personell, agenter eller innleid personell (som har
+                inngått taushetserklæring) har tilgang til denne informasjonen. Alle eposter på denne nettsiden er unike for dine
+                spesifikasjoner. Nyhetsbrev og andre e-poster vil ikke blir sendt til epostadressene på listen du oppretter.</p>
+
+            <h2>Kontaktinformasjon for personvern</h2>
+
+            <p>Dersom du har spørsmål, bekymringer eller kommentarer angrående vårt personvern er du velkommen til å kontakte oss ved å bruke
+                følgende informasjon:<br/>
+                Via e-post: info@secretsantaorganizer.com</p>
+
+            <p>Vi reserverer rettigheten til å endre personverkerklæringen. Eventuelle endringer vil bli opplyst til våre besøkende.</p>
+    faq:
+        title: Ofte stilte spørsmål
+        body: >
+            <p>Nedenfor følger en liste med ofte stilte spørsmål (FAQ) om hvordan Secret Santa fungerer.</p>
+
+            <a href=\"what\"></a><h2>Hva er Secret Santa?</h2>
+            <p>Et gratis online \"hemmelig venn\" program for å organisere gaveutveksling! Arranger et juleselskap med \"hemmelig venn\"/Secret Santa med venner, familie eller kolleger. HVert år rundt juletider, over hele verden, gir man hverandre gaver.
+            For å gjøre ting mer interessant kan du tildele andre en tilfeldig \"venn\" eller \"nisse\" å gi presanger til.</p>
+
+            <a name=\"how\"></a><h2>Hvordan fungerer det?</h2>
+            <p>Opprett et arrangement <a href=\"http://www.secretsantaorganizer.com\" target=\"_blank\" rel=\"noopener noreferrer\">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b>
+            Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en \"hemmelig venn\" å gi gave til.
+            Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden.</b>.</p>
+
+            <!--a name=\"exclude\"></a><h2>Kan jeg forhindre enkelte kombinasjoner?</h2>
+            <p>Når alle deltagerne er lagt til listen, kan du forhindre enkelte kombinasjoner av nisser. For eksempel kan du forhindre at familiemedlemmer gir gaver til hverandre.<br><br>
+            Det er ikke mulig å automatisk gjenbruke fjorårets liste og forhindre de samme kombinasjonene fra å brukes, ettersom vi på dette tidspunktet ikke kan legge til denne funksjonen uten at det skaper forvirring - beklager det!</p-->
+
+            <a name=\"wishlist\"></a><h2>Kan jeg legge inn en ønskeliste?</h2>
+            <p>Deltagerne mottar en link til en nettside hvor de finner navnet på sin \"hemmelige nisse\". De kan legge til sin egen ønskeliste og se ønskelisten til sin hemmelige venn, eller nisse, på den samme siden.</p>
+
+            <a name=\"reuse\"></a><h2>Kan jeg gjenbruke en liste?</h2>
+            <p>Du kan bruke fjorårets liste for å lage en ny liste i år. Hvert år sender vi ut en e-post med link til hvordan dette gjøres. Du kan fortsatt redigere listen din før du legger den inn i secretsantaorganizer igjen.</p>
+
+            <a name=\"manage\"></a><h2>Hvordan holder jeg oversikt over festen/deltagerne?</h2>
+            <p>Bekreftelsen sendes til administratoren, og den inneholder også link til en administrasjonsside hvor du kan gjøre endringer.</p>
+
+            <a href=\"lost\"></a><h2>Jeg mistet bekreftelseseposten.</h2>
+            <p>Hvis du har mistet e-posten med bekreftelseslinken i (som også inneholder linken til administrasjonssiden), skriv inn administratorens e-post <a href=\"http://www.secretsantaorganizer.com/forgot-link\">her</a> og vi sender deg linken på nytt.</p>
+
+            <a name=\"changes\"></a><h2>Kan jeg legge til eller fjerne personer fra listen?</h2>
+            <p>Du kan legge til eller fjerne personer etter arrangementet er opprettet. På admin-siden finner du en slett-knapp og et skjema for å legge til nye personer. Det er bare én hake ved det: Du kan ikke gjøre dette dersom administrator har forhindret enkelte kombinasjoner av personer før arrangementet ble opprettet.
+            Dette fordi det skaper unødvendig mye krøll i systemet, og det gjør det i tillegg vanskelig å legge til nye personer.</p>
+
+            <a href=\"email\"></a><h2>Kan jeg sende eposter på nytt?</h2>
+            <p>Hvis en deltager ikke mottok e-posten første gangen, kan administrator sende en ny e-post til denne personen. Du kan også endre deltagernes epostadresser på den samme siden og sende e-posten på nytt til denne adressen.<br><br>
+            Hvis du ikke mottok e-posten med link til å bekrefte arrangementet, sjekk søppelpost i innboksen din. Du skal ha mottat e-posten innen et par minutter. Har du fortsatt ikke mottat denne eposten, må du dessverre opprette en ny liste.</p>
+
+            <a href=\"combinations\"></a><h2>Kan jeg få oversikt over kombinasjoner/ønskelister?</h2>
+            <p>Du kan hente kombinasjonen av nisser/ønskelister fra admin-siden. Men det ødelegger på en måte poenget med \"hemmelig nisse\". Derfor har vi lagt til en indikator til alle deltagerne som viser når kombinasjonen av nisser/ønskelister har blitt hentet av administrator :-)</p>
+
+            <a href=\"delete\"></a><h2>Kan jeg slette listen min?</h2>
+            <p>Selvfølgelig, bare gå til admin-siden og velg slett-knappen. All informasjon fra din liste vil bli slettet fra våre systemer.</p>
+
+            <a name=\"who\"></a><h2>Hvem er dere?</h2>
+            <p>Vi er en gruppe med <a href=\"https://github.com/Intracto/SecretSanta/graphs/contributors\" target=\"_blank\" rel=\"noopener noreferrer\">developers</a>,
+            designere, markedsførere og bedriftsledere.
+            Secret Santa er et av våre sideprosjekter, og på en måte en hobby. Vi sponses av våre arbeidsgivere i <a href=\"http://www.intracto.com\" target=\"_blank\" rel=\"noopener noreferrer\">Intracto digital agency</a>.
+            Vårt mål er å skape et enkelt, men effektivt verktøy for å kunne arrangere \"Secret Santa\". Vi bruker også siden i noen av våre egne eksperimenter. Men hovedmålet vårt er at du der ute bruker nettsiden vår, jo flere jo bedre ;-)</p>
+
+            <a name=\"privacy\"></a><h2>Hvordan behandler dere mine data?</h2>
+            <p>Kort og godt, vi er ikke interessert i dine personlige data. Vi bruker det til niks og nada. Les vår <a href=\"http://www.secretsantaorganizer.com/privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">personvernerklaering</a> for mer informasjon.
+            Du er også helt fri til når som helst å slette din egen liste.</p>
+
+            <a name=\"features\"></a><h2>Kan dere legge til funksjon X?</h2>
+            <p>Har du en fantastisk idé til en funksjon listen vår må ha? Vi består av frivillige, så hvis du ikke kan skrive kode selv må du vente med å se ideen din bli til virkelighet til som kan skrive kode vil ha den samme funksjonen satt i live.
+            Vennligst<a href=\"https://github.com/Intracto/SecretSanta/issues\" target=\"_blank\" rel=\"noopener noreferrer\">legg til ideen din på GitHub</a> med en beskrivelse, eller forslag til en endring.
+            De av dere som kan skrive kode: vi foretrekker transpirasjon framfor inspirasjon. Med andre ord, vi aksepterer PR ;)</p>
+
+            <a name=\"opensource\"></a><h2>Open source</h2>
+            <p>Every bit of this website is open sourced on <a href=\"https://github.com/Intracto/SecretSanta\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>.
+            The project is available under a very permissive <a href=\"https://github.com/Intracto/SecretSanta/blob/master/LICENSE\" target=\"_blank\" rel=\"noopener noreferrer\">ISC license</a>.
+            You are welcome to fork the project and, for example, create your own \"Secret Panda gift exchange\". Or, contribute to this project by opening pull requests (PR's).
+            If you want a change or a whole new feature, just add it.</p>
+
+            <a name=\"ads\"></a><h2>Hvorfor er det reklame på nettsiden deres?</h2>
+            <p>Vi bruker Goodle ads for å dekke over enkelte utgifter. Ting som domenenavn osv. koster penger. I utgangspunktet gjør vi alt gratis selv, og alle penger vi samler inn går til prosjektet.
+            Innimellom hender det selvfølgelig at vi spanderer pizza og drinker på koderne våre. Eller vi får profesjonelle oversettere til å oversette nettsiden til andre språk. Eller vi bruker pengene på noe annet.
+            Forresten, vi ser fortsatt etter noen til å oversette nettsiden til russisk, japansk, indisk.... Hvis du vil hjelpe oss med dette (gratis), vennligst kontakt oss!</p>
+
+            <a href=\"questions\"></a><h2>Andre spørsmål?</h2>
+            <p>Har du andre spørsmål, bekymringer, eller kommentarer? Kontakt oss per e-post:<br/>info@secretsantaorganizer.com</p>
+    report:
+        max_results: Maksimum antall resultater
+        from: Fra
+        to: Til
+        total_visits: Totalt antall besøk
+        submit: Send
+
+label:
+    name: Navn
+    email: e-post
+    host: Vert
+    participants: Deltagere
+    date_party: Dato
+    amount_to_spend: Beløp å bruke på gaven
+    location: Sted
+    exclude: Ekskluder
+    confirmed: Bekreftet
+    actions: Valg
+    description: Beskrivelse
+    wishlist_filled: Ønskeliste lagt inn
+    items: Ønsker på ønskelisten
+placeholder:
+    exclude: Klikk og velg deltagere du vil ekskludere fra listen
+btn:
+    add_person:  Legg til
+    remove_person: Fjern
+    import_persons:
+        open: Legg til flere personer samtidig ved å bruke CSV
+        do: Legg til ditt selskap
+    create_event: Opprett arrangement!
+    create_new_list: Opprett en ny Secret Santa-liste!
+    delete_list: Slett min Secret Santa-liste
+    delete_confirm: Jeg har forstått konsekvensene, slett min liste
+    add_wishlist: Legg til i ønskelisten
+    save_item: Lagre
+    update_item: Oppdater
+    remove_item: Fjern
+    update_wishlist: Oppdater min ønskeliste
+    expose: Send meg alle kombinasjonene
+    expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
+    expose_wishlists: Send meg alle ønskelistene
+    expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
+    pool_update: Send party update to participants
+    add_participant: Legg til deltager
+    add_participant_confirm: Legg til denne deltageren
+    remove_participant_confirm: Fjern denne deltageren
+    updated_party: Oppdater detaljer for ditt arrangement
+    cancel: Avbryt
+emails:
+    sender: Julenissen
+    base:
+        title: Hemmelig-nisse
+        footer: Kos deg med å arrangere Secret Santa!
+        created_by: Laget av
+    pendingconfirmation:
+        subject: Secret Santa bekreftelse
+        salutation: Hei %name%
+        click_button: Vennligst trykk på knappen nedenfor for å bekrefte deltagerlisten for ditt \"Secret Santa\" arrangement. Dette får våre smånisser og troll til å sende ut den personlige meldingen du skrev til alle deltagerne på listen.
+        overview_page: På administrasjonssiden kan du få oversikt over alle deltagerne, og se hvem som har åpnet e-posten. Dermed vet du når listen er fullført!
+        lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
+        btn_validate: Validate my event
+        click_link: Vennligst trykk på knappen nedenfor for å bekrefte e-postlisten med hemmelige nisser.
+    secretsanta:
+        subject: Din hemmelige nisse
+        btn_find_out: Finn ut hvem du skal gi gave til
+        link_find_out: Finn ut hvilken person våre smånisser trakk ut av hatten til deg, her
+    wishlistchanged:
+        subject: Ønskeliste oppdatert
+        salutation: Hei %name%
+        buddy_updated_wishlist: Din hemmelige nisse har oppdatert sin personlige ønskeliste.
+        click_button: Trykk på knappen nedenfor for å se hans eller hennes juleønsker.
+        btn_check_wishlist: Ønskeliste
+        click_link: Trykk på linken nedenfor for å se hans eller hennes juleønsker.
+    emptywishlistreminder:
+        subject: Ønskelisten din er fortsatt tom!
+        updateyourlist: Din hemmelige nisse-fest nærmer seg, og du har fortsatt ikke skrevet ønskeliste til nissen! Legg til noen ting du ønsker deg da vel.
+    viewentryreminder:
+        subject: Finn ut hvem din nisse er
+        didyouforget: Har du glemt hemmelig-nisse festen? Du har ikke sett hvem du skalk være nisse for ennå!
+    created:
+        message: |
+            Ho ho ho (NAME),
+
+            (ADMINISTRATOR) opprettet en hemmelig nisse-fest og har invitert deg til å delta.
+
+            Bli med på julens giverglede og finn ut hvem du er nisse for i år ved å trykke på knappen nedenfor.
+
+            Du kan bruke opptil %amount% på gaven. Og du kan selvfølgelig gi noe hjemmelaget og koselig!
+
+            Festen skal være den %eventdate% og finner sted her /in %location%. Husk å ta med gaven!
+
+            %message%
+
+
+            God førjulstid!
+    admin_matches:
+        subject: Secret Santa liste med kombinasjoner av deltagere
+        message:
+            giving: Denne deltageren skal gi ...
+            receiving: ... en gave til denne deltageren
+            html: >
+                Kjære %owner%,<br/>
+                <br/>
+                Du har sendt inn en forespørsel på listen over kombinasjonene av alle deltagerne. Vær klar over at deltagerne kan se at du har fått tilgang til denne listen og at du kan se ønskelistene deres.<br/>
+                <br/>
+                Nedenfor er en oversikt over hvem som skal gi gaver til hvem.<br/>
+            txt: >
+                Kjære %owner%,
+
+                Du har sendt inn en forespørsel på listen over kombinasjonene av alle deltagerne. Vær klar over at deltagerne kan se at du har fått tilgang til denne listen og at du kan se ønskelistene deres.
+
+                Nedenfor er en oversikt over hvem som skal gi gaver til hvem.
+    poke_buddy:
+        subject: Julenissen venter på ønskelisten din
+        message:
+            html: >
+                Kjære %name%, <br/>
+                <br/>
+                Julenissen din venter på at du legger noen ønsker til ønskelisten din.<br/>
+                <br/>
+                Trykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
+            txt: >
+                Kjære%name%,
+
+                Julenissen din venter på at du legger noen ønsker til ønskelisten din.
+
+                rykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
+    pool_update:
+        subject: Nissefesten vår nærmer seg!
+        message:
+            html: >
+                Kjære %name%, <br/>
+                <br/>
+                Vi håper du gleder deg til %owner%s julebord/julefest som nærmer seg. %owner% venter et oppmøte på %participantCount% og håper alle kommer i god tid den %date% på/i %place% for å ta del i gleden av å gi!<br/>
+                <br/>
+                For at alle skal kose seg er det fint om alle sammen tar med en julegave til festen. Så langt har %viewedCount% åpnet sin invitasjon og %wishlistCount% av disse har laget en ønskeliste.<br/>
+                <br/>
+                Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
+            txt: >
+                Kjære %name%,
+
+                Vi håper du gleder deg til %owner%s julebord/julefest som nærmer seg. %owner% venter et oppmøte på %participantCount% og håper alle kommer i god tid den %date% på/i %place% for å ta del i gleden av å gi!
+
+                For at alle skal kose seg er det fint om alle sammen tar med en julegave til festen. Så langt har %viewedCount% åpnet sin invitasjon og %wishlistCount% av disse har laget en ønskeliste.
+
+                Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
+        btn_pool_update: Check your buddy and wishlist
+    poolstatus:
+        subject: Secret Santa fest: status
+        message:
+            html: >
+                Kjære %owner%, <br/>
+                <br/>
+                Arrangementet ditt går snart av stabelen. For å sørge for at festen går knirkefritt, er det fint om alle får en gave. Her er en statusoppdatering for alle deltagerne.<br/>
+                <br/>
+                Trykk på linken nedenfor for å sende e-poster på nytt, redigere epostadresser eller administrere listen over deltagerne.
+            txt: >
+                Kjære %owner%,
+
+                Arrangementet ditt går snart av stabelen. For å sørge for at festen går knirkefritt, er det fint om alle får en gave. Her er en statusoppdatering for alle deltagerne.
+
+                Trykk på linken nedenfor for å sende e-poster på nytt, redigere epostadresser eller administrere listen over deltagerne.
+        btn_poolstatus: Administrer ditt arrangement
+    admin_wishlists:
+        subject: Secret Santa ønskelister
+        message:
+            html: >
+                Kjære %owner%,<br/>
+                <br/>
+                Du har sendt inn en forespørsel om tilgang til ønskelistene for alle deltagerne på listen din. Vær oppmerksom på at deltagerne kan se at du har fått denne listen tilsendt.<br/>
+                <br/>
+                Her følger en oversikt over alle medlemmene og deres ønskelister til julenissen.
+            txt: >
+                Kjære %owner%,
+
+                Du har sendt inn en forespørsel om tilgang til ønskelistene for alle deltagerne på listen din. Vær oppmerksom på at deltagerne kan se at du har fått denne listen tilsendt.
+
+                Her følger en oversikt over alle medlemmene og deres ønskelister til julenissen.
+    updated_party:
+        subject: Endring i planene!
+        message:
+            html: >
+                Kjære %name%,<br/>
+                <br/>
+                %owner% har gjort noen endringer i arrangementet/festen du er invitert til. Nedenfor finner du nærmere informasjon om festen og hva som har endret seg.
+            txt: >
+                Kjære %name%,
+
+                %owner% har gjort noen endringer i arrangementet/festen du er invitert til. Nedenfor finner du nærmere informasjon om festen og hva som har endret seg.
+        btn_updated_party: Finn din hemmelige venn of hans/hennes ønskeliste
+    removed_secret_santa:
+        subject: Finn din nye nisse
+        message:
+            html: >
+                Kjære %name%,<br/>
+                <br/>
+                Du har fått tildelt en ny nisse etter at %owner% slettet den forrige julenissen din fra invitasjonslisten.<br/>
+                <br/>
+                Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
+            text: >
+                Kjære %name%,
+
+                Du har fått tildelt en ny nisse etter at %owner% slettet den forrige julenissen din fra invitasjonslisten.
+
+                Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
+        btn_find_out: Find out your new person
+    forgot_link:
+        text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+        subject: 'Resend activation mail'
+flashes:
+    manage:
+        email_validated: >
+         <strong>Perfekt!</strong><br/>E-posten din har blitt bekreftet.<br/>
+         Smånissene og trollene våre farter over hele internettet nettopp nå for å levere invitasjonen til alle nissene på listen din.<br/>
+         <br />
+         Ikke glem å bekrefte din egen deltagelse. Vi har sendt deg en ny e-post. Vær så god og kast deg over den!
+    delete:
+        not_deleted: <h4>Ikke slettet</h4> Bekreftelsen var ikke korrekt.
+    expose:
+        not_exposed: <h4>Listen ikke sendt</h4> Bekreftelsen var ikke korrekt.
+        exposed: <h4>Listen er sendt</h4> Alle inviterte nisser får beskjed når de sjekker ønskelisten sin.
+    expose_wishlists:
+        not_exposed: <h4>Ønskelister ikke sendt</h4> Bekreftelsen var ikke korrekt.
+        exposed: <h4>Ønskelister sendt</h4> Alle inviterte nisser får beskjeden når de sjekker ønskelisten sin.
+    resend:
+        resent: <strong>Sendt på nytt!</strong><br/>Eposten til %email% har blitt sendt på nytt.<br/>
+    entry:
+        wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
+        poke_buddy: <h4>Poked</h4> Vi har sendt en smånisse til nissen din for å si at han eller hun må lage en ønskeliste!
+        edit_email: <h4>Not saved</h4> There is an error in the email address.
+        saved_email: <h4>Lagret</h4> Den nye epostadressen har blitt lagret. Vi har også sendt eposten på nytt.
+    analytics:
+        invalid_data: <h4>Oops</h4> En feil oppstod mens smånissene våre hentet dataen du spurte etter - vennligst prøv igjen!
+    forgot_manage_link:
+        success: 'Vi har sendt en smånisse med en ny bekreftelsesepost til deg'
+        error: 'En feil inntraff mens din bekreftelsesepost ble sendt. Vennligst prøv igjen.'
+    pool_update:
+        success: <h4>Sukksess!</h4> Alle oppfateringer har blitt sendt til deltagerne på listen din.
+    remove_participant:
+        success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
+        danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.
+        warning: <h4>Oops</h4> Du er administrator for dette arrangementet, du kan ikke slette deg selv. Hvis du ikke vil delta, trykk på linken nedenfor eller slett listen din.
+        excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
+        self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som \"hemmelig venn\" å gi gave til.
+        wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
+    add_participant:
+        success: <h4>Added!</h4> Deltager lagt til arrangementet.
+        danger: <h4>Oops</h4> En feil oppstod da du ville legge til denne deltageren. Vennligst prøv igjen.
+    modify_list:
+        warning: <h4>Oops</h4> Det ser ut til at arrangementet ditt skal holdes om mindre enn en uke, da er det for sent å fjerne deltagere nå!
+    wishlist:
+        empty_row: <h4>Oops</h4> Vennligst fjern den tomme kolonnen før du går videre.
+        added: <h4>Added!</h4> Ønsket lagt til i listen din.
+        updated: <h4>Updated!</h4> Ønsket ditt er oppdatert.
+        removed: <h4>Deleted!</h4> Ønsket er fjernet fra listen din.
+    updated_party:
+        success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
+        danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
+forgot_manage_link:
+    title: 'Send bekreftelsesepost på nytt'
+    description: 'Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)'
+report:
+    title: 'Report'
+    results: 'Results'
+    analytics: 'Analytics'
+    total_overview: 'Total overview'
+    all_time: 'All time'
+    parties: 'Parties'
+    participants: 'Participants'
+    total: 'Total (this season included)'
+    total_result: 'All time results'
+    season: 'Season'
+    created_parties: 'Total parties created'
+    confirmed_parties: 'Confirmed parties'
+    confirmed_parties_month: 'Confirmed parties per month'
+    confirmed_parties_total: 'Total amount of confirmed parties (this season included)'
+    invited_participants: 'Total participants invited'
+    confirmed_participants: 'Confirmed participants'
+    confirmed_participants_month: 'Confirmed participants per month'
+    confirmed_participants_total: 'Total amount of confirmed participants (this season included)'
+    average_entries: 'Average amount of participants per party'
+    unique_entries: 'Unique participants'
+    completed_wishlists: 'Amount of completed wishlists'
+    ip_usage: 'IP type of visitors (since March 2016)'
+    visitors_per_country: 'Visitors per country'
+    visitors_per_language: 'Visitors per language'
+    mobile_usage: 'Mobile/desktop'
+    top_browser: 'Top 5 browsers'
+    no_data: 'There are no data available for this season.'
+    season_info: 'Choose the season you want to get the data from. Each season begins the 1st of April and lasts until March 30.'
+buy_from_amazon: What are the most wished for items?
