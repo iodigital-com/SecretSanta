@@ -53,6 +53,33 @@ class MailerService
     }
 
     /**
+     * @param Pool $pool
+     */
+    public function sendPendingConfirmationMail(Pool $pool)
+    {
+        $this->translator->setLocale($pool->getLocale());
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails.pendingconfirmation.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setTo($pool->getOwnerEmail())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:pendingconfirmation.txt.twig',
+                    [ 'pool' => $pool ]
+                )
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig',
+                    [ 'pool' => $pool ]
+                ),
+                'text/html'
+            );
+        $this->mailer->send($message);
+    }
+
+    /**
      * Sends out all mails for a Pool.
      *
      * @param Pool $pool
