@@ -199,7 +199,7 @@ class PoolController extends Controller
     private function getPool($listUrl)
     {
         $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-        if (!is_object($pool)) {
+        if ($pool === null) {
             throw new NotFoundHttpException();
         }
 

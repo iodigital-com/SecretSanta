@@ -14,7 +14,7 @@ class SendPartyUpdateController extends Controller
     {
         $results = $this->get('intracto_secret_santa.entry')->fetchDataForPoolUpdateMail($listUrl);
         $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-        if (!is_object($pool)) {
+        if ($pool === null) {
             throw new NotFoundHttpException();
         }
 

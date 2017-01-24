@@ -85,20 +85,6 @@ delete:
             Digite "<b>%phrase_to_type%</b>" abaixo para confirmar.<br>
         </p>
     phrase_to_type: eliminar tudo
-expose:
-    title: Mande-me a lista com todas as combinações
-    body: >
-        <p>
-            Você tem CERTEZA de que quer ver as combinações?<br>
-            <br>
-            Um e-mail será enviado a você contendo todas as combinações feitas neste evento.<br>
-            <br>
-            <b>Importante saber:</b><br>
-            Só você vai receber as combinações, mas todos os participantes verão que você pediu a lista.<br>
-            <br>
-            Digite "<b>%phrase_to_type%</b>" abaixo para confirmar.<br>
-        </p>
-    phrase_to_type: mostre-me tudo
 entry:
     headers:
         title: Detalhes da sua <span class="accent">festa Secret Santa</span>
@@ -106,8 +92,6 @@ entry:
         amount: Valor
         num_people: Número de participantes
         person_created_list: Proprietário desta lista
-        exposed: O proprietário sabe de todas as combinações
-        not_exposed: O proprietário não sabe as combinações
     title: Seu Amigo Secreto
     body: >
         <p>Olá %name%,</p>
@@ -118,6 +102,10 @@ entry:
         title: Sua lista de desejos
         description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
     wishlist_empty: A sua lista de desejos está vazia. Adicione algo!
+    exposed:
+      title: Combinações do Amigo Secreto
+      giving:  Este participante é o Papai Noel de ...
+      receiving: ...
 
 static:
     privacy_policy:
@@ -271,8 +259,6 @@ btn:
     add_wishlist: Adicione um item a lista do Secret Santa
     remove_item: Eliminar este item
     update_wishlist: Atualizar minha lista de desejos
-    expose: Mande-me todas as combinações
-    expose_confirm: Eu entendo e aceito as consequências. Mande-me a lista de combinações agora.
     cancel: Cancelar
     import_persons:
         open: Adicione várias pessoas
@@ -323,23 +309,6 @@ emails:
             %message%
 
             Boas Festas!
-    admin_matches:
-        subject: Combinações do Amigo Secreto
-        message:
-            giving: Este participante é o Papai Noel de ...
-            receiving: ...
-            html: >
-                Caro %owner%,<br/>
-                <br/>
-                Você pediu pelas combinações do seu Secret Santa. Por favor, note que todos os participantes do seu Amigo Secreto serão avisados de que você sabe das combinações.<br/>
-                <br/>
-                A seguir, a lista de quem ganha presente de quem neste Secret Santa.<br/>
-            txt: >
-                Caro %owner%,
-
-                Você pediu pelas combinações do seu Secret Santa. Por favor, note que todos os participantes do seu Amigo Secreto serão avisados de que você sabe das combinações.
-
-                A seguir, a lista de quem ganha presente de quem neste Secret Santa.
 flashes:
     manage:
         email_validated: >
@@ -349,9 +318,6 @@ flashes:
          Não se esqueça de confirmar sua própria participação. Te mandamos mais um e-mail. Leia-o agora!
     delete:
         not_deleted: <h4>Não eliminado</h4> A confirmação não deu certo.
-    expose:
-        not_exposed: <h4>Lista não enviada</h4> A confirmação não deu certo.
-        exposed: <h4>Lista enviada</h4> Todos os participantes receberão uma notificação ao checarem suas páginas de Lista de Desejo.
     resend:
         resent: <strong>Enviado novamente!</strong><br/>O e-mail destinado a %email% foi enviado novamente.<br/>
     entry:

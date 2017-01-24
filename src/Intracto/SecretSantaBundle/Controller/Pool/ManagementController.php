@@ -24,7 +24,7 @@ class ManagementController extends Controller
     public function manageAction(Request $request, $listUrl)
     {
         $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-        if (!is_object($pool)) {
+        if ($pool === null) {
             throw new NotFoundHttpException();
         }
 

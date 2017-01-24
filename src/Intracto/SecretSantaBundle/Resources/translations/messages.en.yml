@@ -92,34 +92,9 @@ delete:
             Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
     phrase_to_type: delete everything
-expose:
-    title: Send me all matches in this mailing list
-    body: >
-        <p>
-            Are you ABSOLUTELY sure?<br>
-            <br>
-            A mail will be send to you, containing the entire mailing list with the matches.<br>
-            <br>
-            <b>Be aware:</b><br>
-            ONLY YOU will receive the matches, but all others will see that you requested the list.<br>
-            <br>
-            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
-        </p>
-    phrase_to_type: show me everything
-expose_wishlists:
-    title: Send me all wishlists in this mailing list
-    body: >
-        <p>
-            Are you ABSOLUTELY sure?<br>
-            <br>
-            A mail will be send to you, containing the wishlists of all people in your mailing list.<br>
-            <br>
-            <b>Be aware:</b><br>
-            ONLY YOU will receive all the wishlists, but all the others will see that you requested them.<br>
-            <br>
-            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
-        </p>
-    phrase_to_type: show me all wishlists
+wishlists:
+    expose:
+      title: Secret Santa Mailing Wishlists
 entry:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details
@@ -128,10 +103,6 @@ entry:
         amount: Amount
         num_people: Number of people
         person_created_list: Person who created this list
-        exposed: Mailing list creator knows all matches
-        not_exposed: Mailing list creator does not know all matches
-        wishlists_exposed: Mailing list creator has all the wishlists
-        wishlists_not_exposed: Mailing list creater does not have all the wishlists
     title: Your assigned buddy
     body: >
         <p>Hi %name%,</p>
@@ -144,6 +115,10 @@ entry:
     wishlist_empty: Your wishlist is empty. Add something!
     watch_out: Watch out
     modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
+    exposed:
+      title: Secret Santa Mailing List Matches
+      giving: This member is giving ...
+      receiving: ... a gift to this member
 poke:
     poke: Poke
     poke_sentence: your buddy to let him/her know their wishlist is empty.
@@ -335,10 +310,8 @@ btn:
     update_item: Update this item
     remove_item: Remove
     update_wishlist: Update your wishlist
-    expose: Send me all the matches
-    expose_confirm: I understand the consequences, send my Secret Santa mailing list now
-    expose_wishlists: Send me all the wishlists
-    expose_wishlists_confirm: I understand the consequences, send me all wishlists now
+    expose: View all the matches in this list
+    expose_wishlists:  View all participants wishlists
     pool_update: Send party update to participants
     add_participant: Add participant to party
     add_participant_confirm: Add this participant
@@ -392,23 +365,6 @@ emails:
 
 
             Happy Holidays!
-    admin_matches:
-        subject: Secret Santa Mailing List Matches
-        message:
-            giving: This member is giving ...
-            receiving: ... a gift to this member
-            html: >
-                Dear %owner%,<br/>
-                <br/>
-                You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.<br/>
-                <br/>
-                Following is an overview of which members are supposed to get gifts for which users.<br/>
-            txt: >
-                Dear %owner%,
-
-                You have requested all matches in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
-
-                Following is an overview of which members are supposed to get gifts for which users.
     poke_buddy:
         subject: Your buddy is waiting for your wishlist
         message:
@@ -460,21 +416,6 @@ emails:
 
                 Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
         btn_poolstatus: Manage your party
-    admin_wishlists:
-        subject: Secret Santa Mailing Wishlists
-        message:
-            html: >
-                Dear %owner%,<br/>
-                <br/>
-                You have requested all wishlists of people in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.<br/>
-                <br/>
-                Following is an overview of each member and their desired Secret Santa presents.
-            txt: >
-                Dear %owner%,
-
-                You have requested all wishlists of people in your mailing list. Please be aware that all the members will be able to see this on their wishlist page.
-
-                Following is an overview of each member and their desired Secret Santa presents.
     updated_party:
         subject: The plans have changed!
         message:
@@ -515,12 +456,6 @@ flashes:
          Don't forget to confirm your own participation. We've sent you another email. Go check it out!
     delete:
         not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
-    expose:
-        not_exposed: <h4>Mailing list not send</h4> The confirmation was incorrect.
-        exposed: <h4>Mailing list send</h4> All users will be notified when they check their wishlist.
-    expose_wishlists:
-        not_exposed: <h4>Wishlists not send</h4> The confirmation was incorrect.
-        exposed: <h4>Wishlists send</h4> All users will be notified when they check their wishlist.
     resend:
         resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
     entry:

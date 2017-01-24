@@ -87,34 +87,9 @@ delete:
         <br>
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
-expose:
-    title: Envoyez-moi toutes les attributions par e-mail
-    body: >
-        <p>
-            Etes-vous ABSOLUMENT certain ?<br>
-            <br>
-            Un e-mail contenant la liste enti&egrave;re des attributions va vous &ecirc;tre envoy&eacute; <br>
-            <br>
-            <b>Avertissement:</b><br>
-            Vous serez la SEULE personne à recevoir les correspondances, mais les autres verront que vous avez obtenu la liste.<br>
-            <br>
-            Veuillez entrer la phrase "<b>%phrase_to_type%</b>" ci-dessous afin de confimer.<br>
-        </p>
-    phrase_to_type: Montrez-moi tout
-expose_wishlists:
-    title: M'envoyer toutes les listes de souhaits par e-mail
-    body: >
-        <p>
-            Etes-vous ABSOLUMENT certain?<br>
-            <br>
-            Un e-mail contenant les listes de souhaits de votre f&ecirc;te va vous &ecirc;tre envoy&eacute;.
-            <br>
-            <b>Avertissement:</b><br>
-            Vous serez la SEULE personne à recevoir les correspondances, mais les autres verront que vous avez obtenu la liste.<br>
-            <br>
-            Veuillez entrer la phrase "<b>%phrase_to_type%</b>" ci-dessous afin de confimer.<br>
-        </p>
-    phrase_to_type: Montrez-moi tous les listes de souhaits
+wishlists:
+    expose:
+      title: Listes de souhaits Secret Santa
 entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
@@ -123,10 +98,6 @@ entry:
         amount: Montant
         num_people: Nombre de personnes
         person_created_list: Créateur de la liste
-        exposed: Le cr&eacute;ateur de la liste conna&icirc;t toutes les attributions
-        not_exposed: Le cr&eacute;ateur de la liste ne conna&icirc;t pas les attributions
-        wishlists_exposed: Le cr&eacute;ateur de la liste conna&icirc;t toutes les listes de souhaits
-        wishlists_not_exposed: Le cr&eacute;ateur de la liste ne conna&icirc;t pas les listes de souhaits
     title: Personne désignée
     body: >
         <p>Bonjour %name%,</p>
@@ -139,7 +110,10 @@ entry:
     wishlist_empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
     watch_out: Attention
     modify_list: L'organisateur de cette fête peut ajouter ou supprimer des personnes jusqu'à %oneWeekFromEventDate%, cela veut dire que vous pouvez encore être assigné à un autre copain Secret Santa. Peut-être qu'il serait mieux d’attendre que vous soyez sûr que votre copain actuel soit vraiment votre copain Secret Santa avant de lui acheter un cadeau.
-
+    exposed:
+        title: Liste des attributions Secret Santa
+        giving: Ce membre donne ...
+        receiving: ... un cadeau à ce membre
 poke:
     poke: Poke
     poke_sentence: Votre copain Secret Santa de remplir leur liste de souhaits.
@@ -291,10 +265,6 @@ btn:
     update_item: Actualiser cet object
     remove_item: Supprimer
     update_wishlist: Mettre à jour votre liste de souhaits
-    expose: Envoyez-moi toutes les attributions
-    expose_confirm: J'ai compris les cons&eacute;quences, envoyez-moi la liste Secret Santa maintenant
-    expose_wishlists: Envoyez-moi toutes les listes de souhaits
-    expose_wishlists_confirm: J'ai compris les cons&eacute;quences, envoyez-moi les listes de souhaits maintenant
     pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
     add_participant: Ajouter un participant à la f&ecirc;te
     add_participant_confirm: Ajouter ce participant
@@ -348,23 +318,6 @@ emails:
 
 
             Bonnes vacances !
-    admin_matches:
-        subject: Liste des attributions Secret Santa
-        message:
-            giving: Ce membre donne ...
-            receiving: ... un cadeau à ce membre
-            html: >
-                Cher(e) %owner%,<br/>
-                <br/>
-                Vous avez demand&eacute; à conna&icirc;tre toutes les attributions de votre liste. Sachez que chaque membre en sera inform&eacute; sur sa liste de souhaits.<br/>
-                <br/>
-                Ci-dessous, la liste des membres et leurs copains cadeaux.<br/>
-            txt: >
-                Cher(e) %owner%,
-
-                Vous avez demand&eacute; à conna&icirc;tre toutes les attributions de votre liste. Sachez que chaque membre en sera inform&eacute; sur sa liste de souhaits.
-
-                Ci-dessous, la liste des membres et leurs copains cadeaux.
     poke_buddy:
         subject: Votre copain est en attente de votre liste de souhaits
         message:
@@ -416,21 +369,6 @@ emails:
 
                 Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
         btn_poolstatus: Gérez votre f&ecirc;te
-    admin_wishlists:
-        subject: Listes de souhaits Secret Santa
-        message:
-            html: >
-                Cher(e) %owner%,<br/>
-                <br/>
-                Vous avez demand&eacute; à conna&icirc;tre toutes les listes de souhaits des personnes au sein de votre liste. Sachez que chaque membre en sera inform&eactue; sur sa liste de souhatis.<br/>
-                <br/>
-                Ci-dessous, la liste des chaque membre et leur cadeaux désirés.
-            txt: >
-                Cher(e) %owner%,
-
-                Vous avez demand&eacute; à conna&icirc;tre toutes les listes de souhaits des personnes au sein de votre liste. Sachez que chaque membre en sera inform&eactue; sur sa liste de souhatis.
-
-                Ci-dessous, la liste des chaque membre et leur cadeaux désirés.
     updated_party:
         subject: Les plans ont changé!
         message:
@@ -468,12 +406,6 @@ flashes:
          N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
     delete:
         not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
-    expose:
-        not_exposed: <h4>Liste non envoy&eacute;e</h4> La phrase de confirmation est incorrecte.
-        exposed: <h4>Liste envoy&eacute;e</h4> Chaque membre en sera inform&eacute; lorsqu'ils consulteront leur liste de souhaits.
-    expose_wishlists:
-        not_exposed: <h4>Listes de souhaits non envoy&eacute;es</h4> La phrase de confirmation est incorrecte.
-        exposed: <h4>Listes de souhaits envoy&eacute;es</h4> Chaque membre en sera inform&eacute; lorsqu'ils consulteront leur liste de souhaits.
     resend:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
     entry:

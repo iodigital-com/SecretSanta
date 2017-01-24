@@ -14,8 +14,7 @@ class ResendEntryController extends Controller
     public function resendAction($listUrl, $entryId)
     {
         $entry = $this->get('entry_repository')->find($entryId);
-
-        if (!is_object($entry)) {
+        if ($entry === null) {
             throw new NotFoundHttpException();
         }
 

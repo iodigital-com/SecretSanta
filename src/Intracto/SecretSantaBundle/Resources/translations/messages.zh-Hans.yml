@@ -82,20 +82,6 @@ delete:
             请输入"<b>%phrase_to_type%</b>" 以下确认
         </p>
     phrase_to_type: 删除一切
-expose:
-    title: 发送给我这个邮件名单的所有配对
-    body: >
-        <p>
-            你绝对确定吗？<br>
-            <br>
-            将有一封邮件发送给你，里面包含整个邮件名单的所有配对。<br>
-            <br>
-            <b>注意：</b><br>
-            所有邮件名单的成员将被通知！<br>
-            <br>
-            请输入"<b>%phrase_to_type%</b>" 以下确认。<br>
-        </p>
-    phrase_to_type: show me everything
 entry:
     headers:
         title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
@@ -103,8 +89,6 @@ entry:
         amount: 数量
         num_people: 人员数目
         person_created_list: 名单创建者
-        exposed: 邮件名单创建者知道所有配对
-        not_exposed: 邮件名单创建者不知道所有配对
     title: 你的分配密友
     body: >
         <p>你好%name%,</p>
@@ -267,8 +251,6 @@ btn:
     remove_item: 删除这个物品
     update_wishlist: 更新你的愿望清单
     update_wishlist: 更新你的愿望清单
-    expose: 把所有配对发送给我
-    expose_confirm: 我知道后果，现在发送我的秘密圣诞老人名单
     cancel: 取消
 
 emails:
@@ -319,21 +301,6 @@ emails:
 
 
             节日快乐！
-    admin_matches:
-        subject: 秘密圣诞老人邮件名单配对
-        message:
-            giving: 这个参与人员将给…
-            receiving: …一个礼物给这个参与人员
-            html: >
-                亲爱的%owner%,<br/>
-                <br/>
-                你已经邀请了在邮件名单中的所有配对人员。你要知道所有参与人员将能在他们的愿望清单页面上看到这个。<br/>
-                <br/>
-                接下来是一个对所有参与人员和与他们配对将得到礼物的人的总结情况。<br/>
-            txt: >
-                亲爱的%owner%,
-                你已经邀请了在邮件名单中的所有配对人员。你要知道所有参与人员将能在他们的愿望清单页面上看到这个。
-                接下来是一个对所有参与人员和与他们配对将得到礼物的人的总结情况。
 flashes:
     manage:
         email_validated: >
@@ -343,9 +310,6 @@ flashes:
          不要忘记你自己也参与其中。我们已经发送另外一封邮件给你了。去查查看吧！
     delete:
         not_deleted: <h4>未能删除</h4>这个确认不正确。
-    expose:
-        not_exposed: <h4>邮件名单未发送</h4> 这个确认不正确。
-        exposed: <h4>邮件名单已发送</h4> 当所有用户查看他们的愿望清单时，他们将会被通知到。
     resend:
         resent: <strong>已重新发送！</strong><br/>已重新发送至 %email%电子邮箱中。<br/>
     entry:

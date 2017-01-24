@@ -89,31 +89,9 @@ delete:
             Por favor escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
         </p>
     phrase_to_type: borrar todo
-expose:
-    title: Enviarme todas las atribuciones en esta lista de correos
-    body: >
-        <p>
-            ¿Estás COMPLETAMENTE seguro?<br>
-            <br>
-            Se te enviará un correo electrónico, con toda la lista de correos con todas las atribuciones.<br>
-            <br>
-            <b>Atención:</b><br>
-            ¡Se notificará a todos los miembros de la lista de correos!<br>
-            <br>
-            Por favor, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
-        </p>
-    phrase_to_type: mostrarme todo
-expose_wishlists:
-    title: Enviarme todas las listas de deseos en esta lista de correos
-    body: >
-        <p>
-            ¿Estás COMPLETAMENTE seguro?<br>
-            <br>
-            Se te enviará un correo electónico, con todas listas de deseos de las personas en la lista de correos!<br>
-            <br>
-            Por favor, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
-        </p>
-    phrase_to_type: mostrarme todas las listas de deseos
+wishlists:
+    expose:
+      title: Secret Santa Listas de deseos
 entry:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
@@ -122,10 +100,6 @@ entry:
         amount: Cantidad
         num_people: Número de personas
         person_created_list: Persona que creó esta lista
-        exposed: El creador de la lista de correos conoce todas las atribuciones
-        not_exposed: El creador de la lista de correos no conoce todas las atribuciones
-        wishlists_exposed: El creador de la lista de correos conoce todas las listas de deseos
-        wishlists_not_exposed: El creador de la lista de correos no conoce todas las listas de deseos
     title: Tu amigo asignado
     body: >
         <p>Hola %name%,</p>
@@ -138,6 +112,10 @@ entry:
     wishlist_empty: Tu lista de deseos está vacía. ¡Añade algo!
     watch_out: Atención
     modify_list: El organizador de esta fiesta puede añadir o expulsar personas de esta fiesta hasta %oneWeekFromEventDate%, tiene en cuenta sus acciones pueden causar que tu estará assignado a otro amigote Secret Santa. Quizás es mejor esperar comprar un regalo hasta que estes completamente seguro de que este amigote está vuestro amigote Secret Santa de seguro.
+    exposed:
+        title: Atribuciones Lista de Correos Secret Santa
+        giving: Este miembro está dando ...
+        receiving: ... un regalo a este miembro
 poke:
     poke: Empuja
     poke_sentence: tu amigote para avisarla que su lista de deseos est&aacute; vac&iacute;a.
@@ -209,10 +187,6 @@ btn:
     update_item: Actualizar este elemento
     remove_item: Quitar
     update_wishlist: Actualizar tu lista de deseos
-    expose: Enviarme todas las atribuciones
-    expose_confirm: Comprendo las consecuencias, enviar mi lista de correos Secret Santa ahora
-    expose_wishlists: Enviarme todas las listas de deseos
-    expose_wishlists_confirm: Comprendo las consecuencias, enviar todas las listas de deseos ahore
     pool_update: Envia una actualizaci&oacute;n a los participantes
     add_participant: A&ntilde;adir un participante a la fiesta
     add_participant_confirm: A&ntilde;nadir este participante
@@ -266,23 +240,6 @@ emails:
 
 
             ¡Felices Fiestas!
-    admin_matches:
-        subject: Atribuciones Lista de Correos Secret Santa
-        message:
-            giving: Este miembro está dando ...
-            receiving: ... un regalo a este miembro
-            html: >
-                Estimado %owner%,<br/>
-                <br/>
-                Has solicitado todas las atribuciones en tu lista de correos. Por favor, ten en cuenta que todos los miembros podrán ver eso en su página de la lista de deseos.<br/>
-                <br/>
-                A continuación un resumen de qué miembros se supone que van a recibir regalos y de parte de qué usuarios.<br/>
-            txt: >
-                Estimado %owner%,
-
-                Has solicitado todas las atribuciones en tu lista de deseos. Por favor, ten en cuenta que todos los miembros podrán ver eso en su página de la lista de deseos.
-
-                A continuación un resumen de qué miembros se supone que van a recibir regalos y de parte de qué usuarios.
     poke_buddy:
         subject: Tu amigote est&aacute; esperando tu lista de deseos
         message:
@@ -334,21 +291,6 @@ emails:
 
                 Haz clic en el siguiente enlace para llevar tu fiesta.
         btn_poolstatus: Gestiona tu fiesta
-    admin_wishlists:
-        subject: Secret Santa Listas de deseos
-        message:
-            html: >
-                Estimado %owner%,<br/>
-                <br/>
-                Has solicitado todas las listas de deseos de personas en tu lista de Correos. Por favor, ten en cuenta que todos los miembros prodrán ver eso en su página de la lista de deseos.<br/>
-                <br/>
-                A continuación un resumen de cada miembro y sus regalos deseados.
-            txt: >
-                Estimado %owner%,
-
-                Has solicitado todas las listas de deseos de personas en tu lista de Correos. Por favor, ten en cuenta que todos los miembros prodrán ver eso en su página de la lista de deseos.
-
-                A continuación un resumen de cada miembro y sus regalos deseados.
     updated_party:
         subject: ¡Los planes han cambiado!
         message:
@@ -389,12 +331,6 @@ flashes:
          No olvides confirmar tu propia participación. Te hemos mandado otro correo electrónico. ¡Compruébalo!
     delete:
         not_deleted: <h4>No borrado</h4> La confirmación era incorrecta.
-    expose:
-        not_exposed: <h4>No enviar lista de correos </h4> La confirmación era incorrecta.
-        exposed: <h4>Enviar lista de correos</h4> Se notificará a todos los usuarios cuando comprueben su lista de deseos.
-    expose_wishlists:
-        not_exposed: <h4>No envier listas de deseos</h4> La confirmación era incorrecta.
-        exposed: <h4>Enviar listas de deseos</h4> Se notificará a todos los usuarios cuando comprueben su lista de deseos.
     resend:
         resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
     entry:

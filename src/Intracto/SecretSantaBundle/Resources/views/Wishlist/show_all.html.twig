@@ -1,0 +1,23 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+
+{% block main %}
+    <div class="box">
+        <h1>{{ 'wishlists.expose.title'|trans }}</h1>
+            {% for entry in pool.entries %}
+                <h3>{{ entry.name }}</h3>
+                    {% if entry.wishlistitems|length > 0 %}
+                        <ul class="list-group">
+                            {% for item in entry.wishlistitems %}
+                                <li class="list-group-item">
+                                    {{ item.description|escape|linkify|raw }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>--</p>
+                    {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock main %}

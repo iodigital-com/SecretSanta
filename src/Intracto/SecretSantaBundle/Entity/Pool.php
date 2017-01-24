@@ -93,20 +93,6 @@ class Pool
     private $locale = 'en';
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="exposed", type="boolean")
-     */
-    private $exposed = false;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="wishlists_exposed", type="boolean")
-     */
-    private $wishlistsExposed = false;
-
-    /**
      * @var string
      *
      * @Assert\NotBlank()
@@ -387,42 +373,6 @@ class Pool
     public function getLocale()
     {
         return $this->locale;
-    }
-
-    /**
-     * @return Pool
-     */
-    public function expose()
-    {
-        $this->exposed = true;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getExposed()
-    {
-        return $this->exposed;
-    }
-
-    /**
-     * @return Pool
-     */
-    public function exposeWishlists()
-    {
-        $this->wishlistsExposed = true;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWishlistsExposed()
-    {
-        return $this->wishlistsExposed;
     }
 
     /**

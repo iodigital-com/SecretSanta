@@ -22,17 +22,6 @@
             <li><strong>{{ 'entry.headers.amount'|trans }} </strong> {{ entry.pool.amount }}</li>
             <li><strong>{{ 'entry.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
             <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> <span data-hj-masked>{{ entry.pool.entries|first.email }}</span>
-                {% if entry.pool.exposed == false %}
-                    <i class="fa fa-eye-slash" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.not_exposed'|trans }}"></i>
-                {% else %}
-                    <i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.exposed'|trans }}"></i>
-                {% endif %}
-                {% if entry.pool.wishlistsExposed == false %}
-                    <i class="fa fa-eye-slash" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_not_exposed'|trans }}"></i>
-                {% else %}
-                    <i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="{{ 'entry.headers.wishlists_exposed'|trans }}"></i>
-                {% endif %}
-            </li>
         </ul>
     </div>
 {% endblock %}
