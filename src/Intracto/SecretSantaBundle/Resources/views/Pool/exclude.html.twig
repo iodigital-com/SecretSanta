@@ -39,7 +39,7 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_entries.vars.label }}</td>
                     <td>
-                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'pool-exclude.placeholder_exclude'|trans} } ) }}
+                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'pool-exclude.placeholder_exclude'} } ) }}
                         {{ form_errors(entry.excluded_entries) }}
                     </td>
                 </tr>
