@@ -9,7 +9,8 @@ base:
             description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
 
-pool:
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: Twoja strona <br/> <small> w <span class="accent">trzech prostych krokach</span>'</small>
@@ -18,7 +19,7 @@ pool:
                 two: Dodaj wiadomość
                 three: Wyślij!
             get_started: Zaczynamy!
-create:
+
     what_is:
         title: Kim jest Tajny Mikołaj?
         intro: |
@@ -29,6 +30,22 @@ create:
     add_personal_message:
         title: Dodaj wiadomość
         description: Dodaj wiadomość dla uczestników.
+
+    btn:
+        add_person: Dodaj osobę
+        remove_person: Usuń osobę
+#        import_persons_open: ?
+#        import_persons_do: ?
+        cancel: Anuluj
+        create_event: Utwórz wydarzenie!
+
+    label:
+#        host: ?
+        email: E-mail
+        participants: Uczestników
+
+### end of cleanup ###
+
 exclude:
     title: Wyłącz
     description: Ta lista może potencjalnie wykluczyć pewne kombinacje uczestników. Na przykład uniemożliwić członkom tej samej rodziny wymianę prezentów między sobą.
@@ -92,7 +109,6 @@ label:
 placeholder:
     exclude: Kliknij i wybierz uczestników, których chcesz wykluczyć
 btn:
-    add_person: Dodaj osobę
     remove_person: Usuń osobę
     create_event: Utwórz wydarzenie!
     create_new_list: Stwórz nową listę Tajnego Mikołaja!

@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
@@ -6,12 +7,10 @@ base:
             title:  秘密聖誕老人
             site_name:  秘密聖誕老人
             description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
-    nav:
-        home: 主頁
-    privacy_policy: 私隠政策
-    have_fun: 希望你在組織秘密聖誕老人.時開心愉快
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
-pool:
+
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: 交換禮物的<span class="accent">3個簡單步驟</span>
@@ -21,7 +20,6 @@ pool:
                 three: 送出訊息
             get_started: 開始了!
 
-create:
     what_is:
         title: 甚麼是秘密聖誕老人?
         intro: >
@@ -33,6 +31,22 @@ create:
     add_personal_message:
         title: 加入個人信息
         description: 為參加者加入個人信息。
+
+    btn:
+        add_person: 加入人士
+        remove_person: 去掉這人
+#        import_persons_open: ?
+#        import_persons_do: ?
+        cancel: 取消
+        create_event: 創造你的項目!
+
+    label:
+#        host: ?
+        email: 電郵
+#        participants: ?
+
+### end of cleanup ###
+
 exclude:
    title: 排除
    description: 在這個目錄下，你好隨意阻止一些參與者組合。例如，防止來自同一家庭成員互相送禮物。
@@ -161,7 +175,6 @@ label:
 placeholder:
     exclude: 點擊及選擇你想排除的參與者
 btn:
-    add_person: 加入人士
     remove_person: 去掉這人
     create_event: 創造你的項目!
     create_new_list: 創造新的秘密聖誕老人名單!

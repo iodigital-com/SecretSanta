@@ -9,7 +9,8 @@ base:
             description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
 
-pool:
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: Jouw feest <br><small>in <span class="accent">3 eenvoudige stappen</span></small>
@@ -19,7 +20,6 @@ pool:
                 three: Verstuur!
             get_started: Vlieg er meteen in!
 
-create:
     what_is:
         title: Wat is Secret Santa?
         intro: >
@@ -38,6 +38,22 @@ create:
         instructions: Voeg meerdere personen in één keer toe aan jouw evenement. Download <a href="%downloadPath%">dit CSV bestand</a> en voeg alle namen en mailadressen van de personen die je wilt uitnodigen eraan toe. Wanneer je er klaar mee bent, sleep je CSV bestand in het onderstaande tekstvak en zo worden jouw vrienden of collega's snel en makkelijk toegevoegd aan jouw feestje.
         too_many_files: Gelieve slecht één bestand per keer up te loaden.
         wrong_format: Het bestand dat je probeert up te loaden heeft niet het gewenste formaat (csv of txt).
+
+    btn:
+        add_person: Persoon toevoegen
+        remove_person: verwijderen
+        import_persons_open: Voeg meerdere personen toe met CSV
+        import_persons_do: Voeg toe aan je evenement
+        cancel: Annuleren
+        create_event: Maak je evenement aan!
+
+    label:
+        host: Beheerder
+        email: E-mail
+        participants: Deelnemers
+
+### end of cleanup ###
+
 exclude:
    title: Uitsluiten
    description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
@@ -263,8 +279,6 @@ static:
 label:
     name: Naam
     email: E-mail
-    host: Beheerder
-    participants: Deelnemers
     date_party: Datum van jouw Secret Santa feest
     amount_to_spend: Te spenderen bedrag
     location: Locatie van jouw Secret Santa feest
@@ -277,11 +291,7 @@ label:
 placeholder:
     exclude: Klik en kies de deelnemers die je wilt uitsluiten
 btn:
-    add_person: Persoon toevoegen
     remove_person: verwijderen
-    import_persons:
-        open: Voeg meerdere personen toe met CSV
-        do: Voeg toe aan je evenement
     create_event: Maak je evenement aan!
     create_new_list: Stel een nieuwe Secret Santa lijst op!
     delete_list: Verwijder mijn Secret Santa lijst

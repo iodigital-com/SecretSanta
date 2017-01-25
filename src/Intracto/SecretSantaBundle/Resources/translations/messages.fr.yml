@@ -9,7 +9,8 @@ base:
             description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Besoin d'aide ? Des questions ? Consultez la FAQ !</a>
 
-pool:
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: Votre fête <br/><small>en<span class="accent"> 3 étapes</span></small>
@@ -19,7 +20,6 @@ pool:
                 three: Envoyez!
             get_started: Commencez !
 
-create:
     what_is:
         title: Qu'est-ce que Secret Santa ?
         intro: >
@@ -36,6 +36,22 @@ create:
         instructions: Ajoutez plusiers personnes à votre événement d'un seul coup. Téléchargez <a href="%downloadPath%">ce fichier CSV</a> et ajoutez les noms et emails des personnes que vous souhaitez inviter. Une fois que c'est prêt, vous pouvez glisser votre fichier CSV vers le panneau ci-dessous et vos amis ou collègues seront ajoutés à votre fête d'une façon rapide et facile.
         too_many_files: Veuillez télécharger qu'un fichier.
         wrong_format: Le fichier que vous essayez de télécharger n'a pas le format souhaité (csv ou txt).
+
+    btn:
+        add_person: Ajouter une personne
+        remove_person: Supprimer
+        import_persons_open: Ajouter plusiers personnes via CSV
+        import_persons_do: Ajouter à votre événement
+        cancel: Annuler
+        create_event: Créez votre événement
+
+    label:
+        host: L'administrateur
+        email: E-mail
+        participants: Participants
+
+### end of cleanup ###
+
 exclude:
    title: Exclure
    description: Avec cette liste, vous pouvez éventuellement éviter certaines combinaisons entre les membres. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.
@@ -235,8 +251,6 @@ static:
 
 label:
     name: Nom
-    host: L'administrateur
-    participants: Participants
     email: E-mail
     date_party: Date de votre Secret Santa party
     amount_to_spend: Montant à dépenser
@@ -249,11 +263,7 @@ label:
 placeholder:
     exclude: Cliquez et sélectionnez les partipants que vous désirez exclure
 btn:
-    add_person: Ajouter une personne
     remove_person: Supprimer
-    import_persons:
-        open: Ajouter plusiers personnes via CSV
-        do: Ajouter à votre événement
     create_event: Créez votre événement
     create_new_list: Créez une nouvelle liste Secret Santa !
     delete_list: Supprimer ma liste Secret Santa

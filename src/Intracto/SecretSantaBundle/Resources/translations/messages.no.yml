@@ -9,7 +9,8 @@ base:
             description: Secret Santa Organizer er et gratis program som lar deg organisere gavebytter! Arranger en hemmelig nisse fest med venner, familie eller kolleger og legg til din egen ønskeliste.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
 
-pool:
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: Ditt selskap <br/><small>in <span class=\"accent\">3 enkle steg</span></small>
@@ -19,7 +20,6 @@ pool:
                 tre: Send!
             get_started: Kom i gang!
 
-create:
     what_is:
         title: Hva er Secret Santa?
         intro: >
@@ -40,6 +40,22 @@ create:
         instruksjoner: Legg til flere personer på en gang til ditt selskap. Last ned<a href=\"%downloadPath%\">denne CSV-malen</a> og legg til navn og epostadresser på alle deltagerne som skal inviteres. Når du er ferdig kan du dra og slippe filen i feltet nedenfor og dine venner eller kolleger blir raskt og enkelt lagt til listen.
         too_many_files: Det går kun an å laste opp én fil av gangen..
         wrong_format: Filen du prøver å bruke har ikke riktig format(csv eller txt).
+
+    btn:
+        add_person:  Legg til
+        remove_person: Fjern
+        import_persons_open: Legg til flere personer samtidig ved å bruke CSV
+        import_persons_do: Legg til ditt selskap
+        cancel: Avbryt
+        create_event: Opprett arrangement!
+
+    label:
+        host: Vert
+        email: e-post
+        participants: Deltagere
+
+### end of cleanup ###
+
 exclude:
    title: Eksluder kombinasjoner
    description: Med denne listen kan du helt valgfritt forhindre enkelte kombinasjoner av deltagerne. For eksempel kan du unngå at familiemedlemmer kjøper gaver til hverandre.
@@ -303,8 +319,6 @@ static:
 label:
     name: Navn
     email: e-post
-    host: Vert
-    participants: Deltagere
     date_party: Dato
     amount_to_spend: Beløp å bruke på gaven
     location: Sted
@@ -317,11 +331,7 @@ label:
 placeholder:
     exclude: Klikk og velg deltagere du vil ekskludere fra listen
 btn:
-    add_person:  Legg til
     remove_person: Fjern
-    import_persons:
-        open: Legg til flere personer samtidig ved å bruke CSV
-        do: Legg til ditt selskap
     create_event: Opprett arrangement!
     create_new_list: Opprett en ny Secret Santa-liste!
     delete_list: Slett min Secret Santa-liste

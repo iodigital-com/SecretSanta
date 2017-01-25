@@ -9,7 +9,8 @@ base:
             description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
 
-pool:
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: Sua festa <br/><small>em <span class="accent">3 etapas simples</span></small>
@@ -19,7 +20,6 @@ pool:
                 three: Enviar!
             get_started: Começar agora!
 
-create:
     import:
         instructions: Adicione várias pessoas para o seu evento de uma vez. Tudo que precisa é um arquivo csv com duas colunas (nome e e-mail). Arraste e largue o arquivo csv no campo aqui em baixo para os seus amigos e colegas serem adicionados rapidamente e facilmente ao seu evento.
         too_many_files: Pode carregar somente um arquivo ao mesmo tempo.
@@ -35,6 +35,22 @@ create:
     add_personal_message:
         title: Adicione uma mensagem pessoal
         description: Adicione uma mensagem pessoal para os participantes.
+
+    btn:
+        add_person: Adicionar pessoa
+        remove_person: Eliminar esta pessoa
+        import_persons_open: Adicione várias pessoas
+        import_persons_do: Adicione ao seu evento
+        cancel: Cancelar
+        create_event: Criar um evento!
+
+    label:
+#        host: ?
+        email: E-mail
+        participants: Participantes
+
+### end of cleanup ###
+
 exclude:
    title: Excluir
    description: Com essa lista, você tem a opção de prevenir algumas combinações indesejadas. Por exemplo, para evitar que os membros de uma mesma família troque presentes apenas entre si.
@@ -248,7 +264,6 @@ label:
 placeholder:
     exclude: Clique e escolha os participantes a excluir
 btn:
-    add_person: Adicionar pessoa
     remove_person: Eliminar esta pessoa
     create_event: Criar um evento!
     create_new_list: Montar uma nova lista do Secret Santa!
@@ -258,9 +273,6 @@ btn:
     remove_item: Eliminar este item
     update_wishlist: Atualizar minha lista de desejos
     cancel: Cancelar
-    import_persons:
-        open: Adicione várias pessoas
-        do: Adicione ao seu evento
 
 emails:
     sender: Papai Noel

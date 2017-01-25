@@ -9,7 +9,8 @@ base:
             description: ¡Secret Santa Organizer es un organizador de intercambio de regalos gratis en línea! Organiza una fiesta Secret Santa con amigos, familia o incluso compañeros y añade tu lista de deseos.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">¿Necesitas ayuda? ¿Tienes preguntas? ¡Lee las Preguntas Frecuentes!</a>
 
-pool:
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: Tu fiesta <br/><small>en <span class="accent">3 sencillos pasos </span></small>
@@ -19,7 +20,6 @@ pool:
                 three: ¡Envía!
             get_started: ¡Prepárate!
 
-create:
     what_is:
         title: ¿Qué es Secret Santa?
         intro: >
@@ -37,6 +37,22 @@ create:
         instructions: Añade más persones a tu evenemento de una vez. Descarga <a href="%downloadPath%">este archivo CSV</a> y añade los nombres y correos electrónicos de las personas que quieres invitar. Cuando estás listo, arrastra tu archivo CSV hasta el compartimiento abajo y tus amigos o compañeros de trabajo seran añadido a tu evenemento de una manera rápido y fácil.
         too_many_files: Sírvase cargar sólo un archivo.
         wrong_format: El archivo que intentas cargar no tiene el formato deseado (csv o txt).
+
+    btn:
+        add_person: Añadir persona
+        remove_person: Quitar esta persona
+        import_persons_open: A&ntilde;adir m&aacute;s personas con CSV
+        import_persons_do: A&ntilde;adir a tu fiesta
+        cancel: Cancelar
+        create_event: ¡Crear tu evento!
+
+    label:
+        host: Organizador
+        email: Correo electrónico
+        participants: Participantes
+
+### end of cleanup ###
+
 exclude:
    title: Excluye
    description: Con esta lista puedes evitar, opcionalmente, algunas combinaciones de participantes. Por ejemplo, evitar que miembros de la misma familia tengan que comprar regalos los unos para los otros.
@@ -157,8 +173,6 @@ static:
 label:
     name: Nombre
     email: Correo electrónico
-    host: Organizador
-    participants: Participantes
     date_party: Fecha de tu fiesta Secret Santa
     amount_to_spend: Cantidad a gastar
     location: Sitio de tu fiesta Secret Santa
@@ -171,11 +185,7 @@ label:
 placeholder:
     exclude: Hacer clic y elegir los participantes que se quiere excluir
 btn:
-    add_person: Añadir persona
     remove_person: Quitar esta persona
-    import_persons:
-        open: A&ntilde;adir m&aacute;s personas con CSV
-        do: A&ntilde;adir a tu fiesta
     create_event: ¡Crear tu evento!
     create_new_list: ¡Crear una nueva lista Secret Santa!
     delete_list: Borrar mi lista Secret Santa

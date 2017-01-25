@@ -9,7 +9,8 @@ base:
             description: Организатор вечеринки Тайного Санты - бесплатный сервис по организации обмена рождественскими подарками от Тайного Санты! Организуйте собственную тайную вечеринку Санты для ваших друзей, членов семьи или даже коллег по работе и создайте ваш список желаний.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Нужна помощь? Появились вопросы? Ознакомьтесь с ответами на часто задаваемые вопросы!</a>
 
-pool:
+# Pool/create.html.twig
+pool-create:
     header:
         steps:
             title: вы праздник <br/><small> -  <span class="accent">3 простых шага</span></small>
@@ -19,7 +20,6 @@ pool:
                 three: Отправить!
             get_started: Начать!
 
-create:
     what_is:
         title: Что такое Тайный Санта?
         intro: >
@@ -36,6 +36,22 @@ create:
     add_personal_message:
         title: Ввести личное сообщение
         description: ввести личное сообщение для участников.
+
+    btn:
+        add_person: Добавить
+        remove_person: Удалить
+#        import_persons_open: ?
+#        import_persons_do: ?
+        cancel: Отменить
+        create_event: Создать событие!
+
+    label:
+#        host: ?
+        email: Электронная почта
+        participants: участников
+
+### end of cleanup ###
+
 exclude:
    title: Исключить:
    description: Список позволит вам на ваш выбор предотвратить нежелательные комбинации получателей и дарителей. Например, это поможет членам одной семьи не выбирать подарки друг для друга.
@@ -126,7 +142,6 @@ label:
 placeholder:
     exclude: Кликните для выбора участников, которых вы хотели бы исключить
 btn:
-    add_person: Добавить
     remove_person: Удалить
     create_event: Создать событие!
     create_new_list: Создать новый список Тайного Санты!
