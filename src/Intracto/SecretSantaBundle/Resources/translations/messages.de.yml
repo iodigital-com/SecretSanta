@@ -53,11 +53,22 @@ pool-create:
         email: E-Mail:
         participants: Teilnehmer
 
+# Pool/exclude.html.twig
+pool-exclude:
+    title: Ausschlieβen
+    description: Mit dieser Liste können Sie auch Kombinationen von Teilnehmern ausschließen. o können Sie zum Beispiel verhindern, dass Mitglieder derselben Familie Geschenke füreinander kaufen solle.
+
+    placeholder_exclude: Um den Teilnehmer auszuwählen, der ausgeschlossen werden soll, klicken Sie auf dessen Namen.
+
+    btn:
+        create_event: Erstellen Sie Ihr Ereignis!
+
+    label:
+        name: Name
+        exclude: Ausschließen
+
 ### end of cleanup ###
 
-exclude:
-   title: Ausschlieβen 
-   description: Mit dieser Liste können Sie auch Kombinationen von Teilnehmern ausschließen. o können Sie zum Beispiel verhindern, dass Mitglieder derselben Familie Geschenke füreinander kaufen solle.
 created:
     title: Nur noch ein Schritt! - Bestätigen Sie Ihre Teilnahme
     body: >
@@ -141,15 +152,11 @@ label:
     date_party: Datum Ihrer Secret Santa-Party
     amount_to_spend: Auszugebender Betrag
     location: Platz von Ihrer Secret Santa-Party
-    exclude: Ausschließen
     confirmed: Bestätigt
     actions: Aktionen 
     description: Beschreibung
-placeholder:
-    exclude: Um den Teilnehmer auszuwählen, der ausgeschlossen werden soll, klicken Sie auf dessen Namen.
 btn:
     remove_person: entfernen
-    create_event: Erstellen Sie Ihr Ereignis!
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
     delete_list: Meine Secret Santa-Liste löschen
     delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen

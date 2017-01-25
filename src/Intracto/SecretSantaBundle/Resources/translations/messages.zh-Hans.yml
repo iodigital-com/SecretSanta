@@ -46,11 +46,22 @@ pool-create:
         email: 电子邮箱
 #        participants: ?
 
+# Pool/exclude.html.twig
+pool-exclude:
+    title: 排除
+    description: 在这名单里你可以随意防止一些参与人员的组合配对。例如防止同一家庭成员之间不得不买礼物给对方。
+
+    placeholder_exclude: 点击选择你想要排除的参与人员
+
+    btn:
+        create_event: 创建你的礼物交换活动！
+
+    label:
+        name: 名字
+        exclude: 排除
+
 ### end of cleanup ###
 
-exclude:
-   title: 排除
-   description: 在这名单里你可以随意防止一些参与人员的组合配对。例如防止同一家庭成员之间不得不买礼物给对方。
 created:
     title: 仅此一步！确认你的参与人员
     body: >
@@ -248,15 +259,11 @@ label:
     email: 电子邮箱
     date_party: 你的秘密圣诞老人派对日期
     amount_to_spend: 消费金额
-    exclude: 排除
     confirmed: 确认
     actions: 作用
     description: 描述
-placeholder:
-    exclude: 点击选择你想要排除的参与人员
 btn:
     remove_person: 删除此人员
-    create_event: 创建你的礼物交换活动！
     create_new_list: 创建一个新的秘密圣诞老人名单！
     delete_list: 删除我的秘密圣诞老人名单
     delete_confirm: 我知道后果，现在删除我的秘密圣诞老人名单

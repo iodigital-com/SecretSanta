@@ -54,11 +54,22 @@ pool-create:
         email: e-post
         participants: Deltagere
 
+# Pool/exclude.html.twig
+pool-exclude:
+    title: Eksluder kombinasjoner
+    description: Med denne listen kan du helt valgfritt forhindre enkelte kombinasjoner av deltagerne. For eksempel kan du unngå at familiemedlemmer kjøper gaver til hverandre.
+
+    placeholder_exclude: Klikk og velg deltagere du vil ekskludere fra listen
+
+    btn:
+        create_event: Opprett arrangement!
+
+    label:
+        name: Navn
+        exclude: Ekskluder
+
 ### end of cleanup ###
 
-exclude:
-   title: Eksluder kombinasjoner
-   description: Med denne listen kan du helt valgfritt forhindre enkelte kombinasjoner av deltagerne. For eksempel kan du unngå at familiemedlemmer kjøper gaver til hverandre.
 created:
     title: Bare 1 trinn igjen! - Bekreft din deltagelse
     body: >
@@ -322,17 +333,13 @@ label:
     date_party: Dato
     amount_to_spend: Beløp å bruke på gaven
     location: Sted
-    exclude: Ekskluder
     confirmed: Bekreftet
     actions: Valg
     description: Beskrivelse
     wishlist_filled: Ønskeliste lagt inn
     items: Ønsker på ønskelisten
-placeholder:
-    exclude: Klikk og velg deltagere du vil ekskludere fra listen
 btn:
     remove_person: Fjern
-    create_event: Opprett arrangement!
     create_new_list: Opprett en ny Secret Santa-liste!
     delete_list: Slett min Secret Santa-liste
     delete_confirm: Jeg har forstått konsekvensene, slett min liste

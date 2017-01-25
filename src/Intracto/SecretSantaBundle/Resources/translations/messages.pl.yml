@@ -44,11 +44,22 @@ pool-create:
         email: E-mail
         participants: Uczestników
 
-### end of cleanup ###
-
-exclude:
+# Pool/exclude.html.twig
+pool-exclude:
     title: Wyłącz
     description: Ta lista może potencjalnie wykluczyć pewne kombinacje uczestników. Na przykład uniemożliwić członkom tej samej rodziny wymianę prezentów między sobą.
+
+    placeholder_exclude: Kliknij i wybierz uczestników, których chcesz wykluczyć
+
+    btn:
+        create_event: Utwórz wydarzenie!
+
+    label:
+        name: Imię
+        exclude: Wyłącz
+
+### end of cleanup ###
+
 created:
     title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
     body: '<p>Aby powstrzymać trolle przed zrujnowaniem Twojego Przyjęcia Tajnego Mikołaja potrzebujemy znać <b>%ownername%</b> organizatora listy aby zweryfikować jego uczestnictwo. Wysłaliśmy mail do <b>%owneremail%</b> z kolejnymi informacjami.</p><p>Po weryfikacji Twoja lista Tajnego Mikołaja zostanie wymieszana i uczestnicy otrzymają Twoją wiadomość wraz z imieniem osoby do obdarowania.</p><p>W wiadomości weryfikacyjnej organizator listy znajdzie link, który umożliwi mu śledzenie aktywności pozostałych uczestników, którzy mają już przypisane osoby do obdarowania. To daje pewność, że każdy Tajny Mikołaj wie co ma robić.</p>'
@@ -102,15 +113,11 @@ label:
     email: E-mail
     date_party: Data Twojego Przyjęcia Tajnego Mikołaja
     amount_to_spend: Suma do wydania
-    exclude: Wyłącz
     confirmed: Potwierdzony
     actions: Akcje
     description: Opis
-placeholder:
-    exclude: Kliknij i wybierz uczestników, których chcesz wykluczyć
 btn:
     remove_person: Usuń osobę
-    create_event: Utwórz wydarzenie!
     create_new_list: Stwórz nową listę Tajnego Mikołaja!
     delete_list: Usuń moją listę Tajnego Mikołaja
     delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja

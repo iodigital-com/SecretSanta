@@ -54,11 +54,22 @@ pool-create:
         email: E-mail
         participants: Participants
 
+# Pool/exclude.html.twig
+pool-exclude:
+    title: Exclude
+    description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
+
+    placeholder_exclude: Click and choose the participants you want to exclude
+
+    btn:
+        create_event: Create your event!
+
+    label:
+        name: Name
+        exclude: Exclude
+
 ### end of cleanup ###
 
-exclude:
-   title: Exclude
-   description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
 created:
     title: Only 1 step to go! - Validate your participation
     body: >
@@ -299,17 +310,13 @@ label:
     date_party: Date of your Secret Santa party
     amount_to_spend: Amount to spend
     location: Location of your Secret Santa party
-    exclude: Exclude
     confirmed: Confirmed
     actions: Actions
     description: Description
     wishlist_filled: Wish List Entered
     items: Wishlist items
-placeholder:
-    exclude: Click and choose the participants you want to exclude
 btn:
     remove_person: Remove
-    create_event: Create your event!
     create_new_list: Create a new Secret Santa list!
     delete_list: Delete my Secret Santa list
     delete_confirm: I understand the consequences, delete my Secret Santa list now

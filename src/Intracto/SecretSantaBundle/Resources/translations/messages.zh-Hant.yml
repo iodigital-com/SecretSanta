@@ -45,11 +45,22 @@ pool-create:
         email: 電郵
 #        participants: ?
 
+# Pool/exclude.html.twig
+pool-exclude:
+    title: 排除
+    description: 在這個目錄下，你好隨意阻止一些參與者組合。例如，防止來自同一家庭成員互相送禮物。
+
+    placeholder_exclude: 點擊及選擇你想排除的參與者
+
+    btn:
+        create_event: 創造你的項目!
+
+    label:
+        name: 名字
+        exclude: 排除?
+
 ### end of cleanup ###
 
-exclude:
-   title: 排除
-   description: 在這個目錄下，你好隨意阻止一些參與者組合。例如，防止來自同一家庭成員互相送禮物。
 created:
     title: 只需一步，確認你的參與
     body: >
@@ -168,15 +179,11 @@ label:
     email: 電郵
     date_party: 秘密聖誕老人派對日期
     amount_to_spend: 費用
-    exclude: 排除
     confirmed: 確認
     actions: 行動
     description: 形容
-placeholder:
-    exclude: 點擊及選擇你想排除的參與者
 btn:
     remove_person: 去掉這人
-    create_event: 創造你的項目!
     create_new_list: 創造新的秘密聖誕老人名單!
     delete_list: 刪除我的秘密聖誕老人名單
     delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單

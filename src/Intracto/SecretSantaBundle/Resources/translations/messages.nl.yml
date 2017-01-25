@@ -52,11 +52,22 @@ pool-create:
         email: E-mail
         participants: Deelnemers
 
+# Pool/exclude.html.twig
+pool-exclude:
+    title: Uitsluiten
+    description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
+
+    placeholder_exclude: Klik en kies de deelnemers die je wilt uitsluiten
+
+    btn:
+        create_event: Maak je evenement aan!
+
+    label:
+        name: Naam
+        exclude: Uitsluiten
+
 ### end of cleanup ###
 
-exclude:
-   title: Uitsluiten
-   description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
 created:
     title: Nog 1 stapje te gaan! - Valideer je deelname
     body: >
@@ -282,17 +293,13 @@ label:
     date_party: Datum van jouw Secret Santa feest
     amount_to_spend: Te spenderen bedrag
     location: Locatie van jouw Secret Santa feest
-    exclude: Uitsluiten
     confirmed: Bevestigd
     actions: Acties
     description: Beschrijving
     wishlist_filled: Wish List Ingevuld
     items: Gewenste verrassingen
-placeholder:
-    exclude: Klik en kies de deelnemers die je wilt uitsluiten
 btn:
     remove_person: verwijderen
-    create_event: Maak je evenement aan!
     create_new_list: Stel een nieuwe Secret Santa lijst op!
     delete_list: Verwijder mijn Secret Santa lijst
     delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
