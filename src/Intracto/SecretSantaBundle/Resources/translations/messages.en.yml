@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
@@ -6,11 +7,8 @@ base:
             title: Secret Santa
             site_name: Secret Santa
             description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
-    nav:
-        home: Home
-    privacy_policy: Privacy policy
-    have_fun: Have fun organizing your Secret Santa!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
+
 pool:
     header:
         steps:

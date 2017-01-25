@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
@@ -6,11 +7,8 @@ base:
             title: Secret Santa
             site_name: Secret Santa
             description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
-    nav:
-        home: Accueil
-    privacy_policy: Protection vie privée
-    have_fun: Amusez-vous en créant votre Secret Santa party !
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Besoin d'aide ? Des questions ? Consultez la FAQ !</a>
+
 pool:
     header:
         steps:

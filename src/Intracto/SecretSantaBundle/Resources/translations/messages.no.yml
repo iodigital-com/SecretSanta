@@ -1,16 +1,14 @@
+# base.html.twig
 base:
     meta:
-        description: \"Secret Santa Organizer\" er et gratis program som lar deg organisere gavebytter! Arranger en \"hemmelig nisse\" fest med venner, familie eller kolleger og legg til din egen ønskeliste.
+        description: Secret Santa Organizer er et gratis program som lar deg organisere gavebytter! Arranger en hemmelig nisse fest med venner, familie eller kolleger og legg til din egen ønskeliste.
         title: Online Secret Santa generator og organisator for gavebytter!
         og:
             title: Secret Santa
             site_name: Secret Santa
-            description: \"Secret Santa Organizer\" er et gratis program som lar deg organisere gavebytter! Arranger en \"hemmelig nisse\" fest med venner, familie eller kolleger og legg til din egen ønskeliste.
-    nav:
-        home: Hjem
-    privacy_policy: Personvern
-    have_fun: Ha det gøy med å organisere årets \"Secret Santa\"!
-    need_help: <a href=\"%FAQ%\" target=\"_blank\" rel=\"noopener noreferrer\">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
+            description: Secret Santa Organizer er et gratis program som lar deg organisere gavebytter! Arranger en hemmelig nisse fest med venner, familie eller kolleger og legg til din egen ønskeliste.
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
+
 pool:
     header:
         steps:

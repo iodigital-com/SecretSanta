@@ -1,16 +1,14 @@
+# base.html.twig
 base:
-  meta:
-    description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów! Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
-    title: 'Tajny Mikołaj - pomaga w wymianie prezentów!'
-    og:
-      title: Tajny Mikołaj
-      site_name: Tajny Mikołaj
-      description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
-  nav:
-    home: Strona główna
-  privacy_policy: Polityka prywatności
-  have_fun: Życzymy udanego Tajnego Mikołaja!
-  need_help: '<a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>'
+    meta:
+        description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów! Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
+        title: Tajny Mikołaj - pomaga w wymianie prezentów!
+        og:
+            title: Tajny Mikołaj
+            site_name: Tajny Mikołaj
+            description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
+
 pool:
   header:
     steps:

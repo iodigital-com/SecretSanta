@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
@@ -6,11 +7,8 @@ base:
             title: Secret Santa
             site_name: Secret Santa
             description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
-    nav:
-        home: Home
-    privacy_policy: Declaração de privacidade
-    have_fun: Organize o seu próprio Amigo Secreto. Show de bola!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
+
 pool:
     header:
         steps:

@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijstje naar vrienden, familie,..
@@ -6,11 +7,8 @@ base:
             title: Secret Santa
             site_name: Secret Santa
             description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
-    nav:
-        home: Home
-    privacy_policy: Privacy policy
-    have_fun: Organiseer je eigen Secret Santa en amuseer je rot!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
+
 pool:
     header:
         steps:
