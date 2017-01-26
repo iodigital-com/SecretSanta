@@ -230,41 +230,6 @@ static:
 
             <a href="questions"></a><h2>Outras perguntas</h2>
             <p>Se você tiver qualquer outra pergunta, sugestão ou reclamações, apenas entre em contato conosco por e-mail:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Resultados Max
-        from: De
-        to: Para
-        total_visits: Total de visitantes
-        submit: Enviar
-        title: 'Relatório'
-        results: 'Resultados'
-        analytics: 'Analytics'
-        total_overview: 'Resumo geral'
-        all_time: 'Todos os tempos'
-        parties: 'Festas'
-        participants: 'Participantes'
-        total: 'Total (esta temporada incluída)'
-        total_result: 'Resultados de todos os tempos'
-        season: 'Temporada'
-        created_parties: 'Total de festas criadas'
-        confirmed_parties: 'Festas confirmadas'
-        confirmed_parties_month: 'Festas confirmadas por mês'
-        confirmed_parties_total: 'Número total de festas confirmadas (esta temporada incluída)'
-        invited_participants: 'Participantes invitados'
-        confirmed_participants: 'Participantes confirmados'
-        confirmed_participants_month: 'Participantes confirmados por mês'
-        confirmed_participants_total: 'Número total de participantes confirmados (esta temporada incluída)'
-        average_entries: 'Participantes por festa'
-        unique_entries: 'Participantes únicos'
-        completed_wishlists: 'Número de listas de desejos completadas'
-        ip_usage: 'Tipo de IP dos visitantes (desde março 2016)'
-        visitors_per_country: 'Visitantes por país'
-        visitors_per_language: 'Visitantes por língua'
-        mobile_usage: 'Móvel/desktop'
-        top_browser: 'Top 5 navegadores'
-        no_data: 'Não há dados disponíveis para esta temporada.'
-        season_info: 'Escolhe a temporada da qual quer obter os dados. Cada temporada começa no primeiro de abril e demora até março 30.'
-        
 
 label:
     name: Nome

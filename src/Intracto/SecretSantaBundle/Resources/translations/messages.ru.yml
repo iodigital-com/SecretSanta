@@ -136,14 +136,6 @@ entry:
       giving: Это участник готовит подарок...
       receiving: ... для этого участника
 
-static:
-    report:
-        max_results: Макс. результаты
-        from: От
-        to: Кому
-        total_visits: Всего посещений
-        submit: Отправить
-
 label:
     name: Имя
     email: Электронная почта

@@ -300,12 +300,6 @@ static:
 
             <a href="questions"></a><h2>Other questions</h2>
             <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Max results
-        from: From
-        to: To
-        total_visits: Total visits
-        submit: Submit
 
 label:
     name: Name
@@ -511,33 +505,5 @@ flashes:
 forgot_manage_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
-report:
-    title: 'Report'
-    results: 'Results'
-    analytics: 'Analytics'
-    total_overview: 'Total overview'
-    all_time: 'All time'
-    parties: 'Parties'
-    participants: 'Participants'
-    total: 'Total (this season included)'
-    total_result: 'All time results'
-    season: 'Season'
-    created_parties: 'Total parties created'
-    confirmed_parties: 'Confirmed parties'
-    confirmed_parties_month: 'Confirmed parties per month'
-    confirmed_parties_total: 'Total amount of confirmed parties (this season included)'
-    invited_participants: 'Total participants invited'
-    confirmed_participants: 'Confirmed participants'
-    confirmed_participants_month: 'Confirmed participants per month'
-    confirmed_participants_total: 'Total amount of confirmed participants (this season included)'
-    average_entries: 'Average amount of participants per party'
-    unique_entries: 'Unique participants'
-    completed_wishlists: 'Amount of completed wishlists'
-    ip_usage: 'IP type of visitors (since March 2016)'
-    visitors_per_country: 'Visitors per country'
-    visitors_per_language: 'Visitors per language'
-    mobile_usage: 'Mobile/desktop'
-    top_browser: 'Top 5 browsers'
-    no_data: 'There are no data available for this season.'
-    season_info: 'Choose the season you want to get the data from. Each season begins the 1st of April and lasts until March 30.'
+
 buy_from_amazon: What are the most wished for items?

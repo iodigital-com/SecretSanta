@@ -176,13 +176,6 @@ updated_party:
             <br>
             Tus participantes serán notificados de estos cambios immediatamente.
         </p>
-static:
-    report:
-        max_results: Resultados máx.
-        from: De
-        to: A
-        total_visits: Visitas totales
-        submit: Enviar
 
 label:
     name: Nombre

@@ -250,12 +250,7 @@ static:
 
             <a href="questions"></a><h2>Other questions</h2>
             <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Max results
-        from: From
-        to: To
-        total_visits: Total visits
-        submit: Submit
+
 label:
     name: 名字
     email: 电子邮箱

@@ -141,14 +141,6 @@ entry:
         giving: Dieses Mitglied gibt....
         receiving: ... diesem Mitglied ein Geschenk
 
-static:
-    report:
-        max_results: maximale Ergebnisse
-        from: Von
-        to: An:
-        total_visits: Besuche insgesamt
-        submit: Senden
-
 label:
     name: Name
     email: E-Mail:

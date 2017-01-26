@@ -256,12 +256,6 @@ static:
 
             <a href="questions"></a><h2>Autres questions</h2>
             <p>D'autres questions, préoccupations ou commentaires ? Contactez-nous par:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Résultats maximums
-        from: De
-        to: A
-        total_visits: Total des visites
-        submit: Envoyez
 
 label:
     name: Nom

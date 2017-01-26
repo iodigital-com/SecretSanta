@@ -107,13 +107,7 @@ entry:
         title: Dopasowania na liście Tajnych Mikołajów
         giving: Ten uczestnik podaruje...
         receiving: ... prezent dla tego uczestnika
-static:
-    report:
-        max_results: Maksymalnie wyników
-        from: Od
-        to: Do
-        total_visits: Razem wizyt
-        submit: Wyślij
+
 label:
     name: Imię
     email: E-mail

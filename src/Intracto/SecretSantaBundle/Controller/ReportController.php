@@ -12,7 +12,7 @@ class ReportController extends Controller
      * @Route("/report/{year}", defaults={"year" = "all"}, name="report")
      * @Template()
      */
-    public function reportAction($year)
+    public function indexAction($year)
     {
         $analyticsQuery = $this->get('intracto_secret_santa.analytics');
         $report = $this->get('intracto_secret_santa.report');

@@ -323,12 +323,6 @@ static:
 
             <a href=\"questions\"></a><h2>Andre spørsmål?</h2>
             <p>Har du andre spørsmål, bekymringer, eller kommentarer? Kontakt oss per e-post:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Maksimum antall resultater
-        from: Fra
-        to: Til
-        total_visits: Totalt antall besøk
-        submit: Send
 
 label:
     name: Navn
@@ -559,33 +553,4 @@ flashes:
 forgot_manage_link:
     title: 'Send bekreftelsesepost på nytt'
     description: 'Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)'
-report:
-    title: 'Report'
-    results: 'Results'
-    analytics: 'Analytics'
-    total_overview: 'Total overview'
-    all_time: 'All time'
-    parties: 'Parties'
-    participants: 'Participants'
-    total: 'Total (this season included)'
-    total_result: 'All time results'
-    season: 'Season'
-    created_parties: 'Total parties created'
-    confirmed_parties: 'Confirmed parties'
-    confirmed_parties_month: 'Confirmed parties per month'
-    confirmed_parties_total: 'Total amount of confirmed parties (this season included)'
-    invited_participants: 'Total participants invited'
-    confirmed_participants: 'Confirmed participants'
-    confirmed_participants_month: 'Confirmed participants per month'
-    confirmed_participants_total: 'Total amount of confirmed participants (this season included)'
-    average_entries: 'Average amount of participants per party'
-    unique_entries: 'Unique participants'
-    completed_wishlists: 'Amount of completed wishlists'
-    ip_usage: 'IP type of visitors (since March 2016)'
-    visitors_per_country: 'Visitors per country'
-    visitors_per_language: 'Visitors per language'
-    mobile_usage: 'Mobile/desktop'
-    top_browser: 'Top 5 browsers'
-    no_data: 'There are no data available for this season.'
-    season_info: 'Choose the season you want to get the data from. Each season begins the 1st of April and lasts until March 30.'
 buy_from_amazon: What are the most wished for items?
