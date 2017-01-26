@@ -86,6 +86,10 @@ pool-deleted:
 #    title: ?
 #    description: ?
 
+# Wishlist/showAll.html.twig
+#wishlist-show_all:
+#    title: ?
+
 # Static/faq.html.twig
 static-faq:
 #    title: ?

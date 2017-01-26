@@ -95,6 +95,10 @@ pool-forgot_link:
     title: Send bekreftelsesepost på nytt
     description: Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)
 
+# Wishlist/showAll.html.twig
+#wishlist-show_all:
+#    title: ?
+
 # Static/faq.html.twig
 static-faq:
     title: Ofte stilte spørsmål

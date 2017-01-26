@@ -95,6 +95,10 @@ pool-forgot_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
 
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: All Secret Santa Wishlists
+
 # Static/faq.html.twig
 static-faq:
     title: Frequently Asked Questions
@@ -199,9 +203,6 @@ delete:
             Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
     phrase_to_type: delete everything
-wishlists:
-    expose:
-      title: Secret Santa Mailing Wishlists
 entry:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details

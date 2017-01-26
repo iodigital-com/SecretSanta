@@ -2,7 +2,7 @@
 
 {% block main %}
     <div class="box">
-        <h1>{{ 'wishlists.expose.title'|trans }}</h1>
+        <h1>{{ 'wishlist-show_all.title'|trans }}</h1>
             {% for entry in pool.entries %}
                 <h3>{{ entry.name }}</h3>
                     {% if entry.wishlistitems|length > 0 %}

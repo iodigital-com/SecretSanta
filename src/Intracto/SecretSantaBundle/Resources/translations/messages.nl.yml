@@ -93,6 +93,10 @@ pool-forgot_link:
     title: Activatie mail opnieuw verzenden
     description: Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)
 
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: Secret Santa Mailinglijst verlanglijsten
+
 # Static/faq.html.twig
 static-faq:
     title: Veelgestelde vragen
@@ -198,9 +202,6 @@ delete:
         <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
         </p>
     phrase_to_type: alles verwijderen
-wishlists:
-    expose:
-      title: Secret Santa Mailinglijst verlanglijsten
 entry:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details

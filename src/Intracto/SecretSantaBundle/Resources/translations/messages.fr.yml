@@ -91,6 +91,10 @@ pool-deleted:
 #    title: ?
 #    description: ?
 
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: Listes de souhaits Secret Santa
+
 # Static/faq.html.twig
 static-faq:
     title: Questions fréquemment posées
@@ -181,9 +185,6 @@ delete:
         <br>
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
-wishlists:
-    expose:
-      title: Listes de souhaits Secret Santa
 entry:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>

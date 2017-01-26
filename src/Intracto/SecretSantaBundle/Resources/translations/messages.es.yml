@@ -92,6 +92,10 @@ pool-forgot_link:
     title: Reenviar el correo de activación
     description: Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.
 
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: Secret Santa Listas de deseos
+
 # Static/faq.html.twig
 static-faq:
 #    title: ?
@@ -127,9 +131,6 @@ delete:
             Por favor escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
         </p>
     phrase_to_type: borrar todo
-wishlists:
-    expose:
-      title: Secret Santa Listas de deseos
 entry:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
