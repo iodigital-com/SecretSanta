@@ -65,11 +65,15 @@ pool-created:
     warning: Uwaga!
     check_spam: Nie zapomnij sprawdzić folderu spam!
 
+# Pool/deleted.html.twig
+pool-deleted:
+    title: Lista Tajnego Mikołaja została usunięta!
+    body: <p>Dziękujemy za skorzystanie z Tajnego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>
+    btn:
+        create_new_list: Stwórz nową listę Tajnego Mikołaja!
+
 ### end of cleanup ###
 
-deleted:
-    title: Lista Tajnego Mikołaja została usunięta!
-    body: '<p>Dziękujemy za skorzystanie z Tajnego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>'
 manage:
     title: Twoja lista Tajnego Mikołaja
     "yes": true

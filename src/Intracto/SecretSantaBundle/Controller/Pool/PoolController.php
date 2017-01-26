@@ -110,7 +110,7 @@ class PoolController extends Controller
 
     /**
      * @Route("/delete/{listUrl}", name="pool_delete")
-     * @Template("IntractoSecretSantaBundle:Pool:delete.html.twig")
+     * @Template("IntractoSecretSantaBundle:Pool:deleted.html.twig")
      */
     public function deleteAction(Request $request, $listUrl)
     {

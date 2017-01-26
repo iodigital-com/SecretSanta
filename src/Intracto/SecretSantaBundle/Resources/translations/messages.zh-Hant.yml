@@ -75,12 +75,14 @@ pool-created:
     warning: 警告！
     check_spam: 別忘記去檢查你的垃圾文件夾！
 
-### end of cleanup ###
-
-deleted:
+# Pool/deleted.html.twig
+pool-deleted:
     title: 你的秘密聖誕老人 目錄已被刪除
-    body: >
-        <p>多謝你使用秘密聖誕老人 組織者，希望出年再見到你！</p>
+    body: <p>多謝你使用秘密聖誕老人 組織者，希望出年再見到你！</p>
+    btn:
+        create_new_list: 創造新的秘密聖誕老人名單!
+
+### end of cleanup ###
 
 manage:
     title: 你的秘密聖誕老人目錄

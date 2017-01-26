@@ -82,12 +82,14 @@ pool-created:
     warning: Let op!
     check_spam: Vergeet je spamfolder niet te checken!
 
-### end of cleanup ###
-
-deleted:
+# Pool/deleted.html.twig
+pool-deleted:
     title: Je Secret Santa lijst werd verwijderd!
-    body: >
-        <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar! </p>
+    body: <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar!</p>
+    btn:
+        create_new_list: Stel een nieuwe Secret Santa lijst op!
+
+### end of cleanup ###
 
 manage:
     title: Jouw Secret Santa lijst

@@ -75,12 +75,14 @@ pool-created:
     warning: 提示
     check_spam: 不要忘记检查你的垃圾邮件文件夹！
 
-### end of cleanup ###
-
-deleted:
+# Pool/deleted.html.twig
+pool-deleted:
     title: 不要忘记检查你的垃圾邮件文件夹！
-    body: >
-        <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
+    body: <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
+    btn:
+        create_new_list: 创建一个新的秘密圣诞老人名单！
+
+### end of cleanup ###
 
 manage:
     title: 你的秘密圣诞老人名单
