@@ -81,6 +81,11 @@ pool-deleted:
     body: <p>多謝你使用秘密聖誕老人 組織者，希望出年再見到你！</p>
     create_new_list: 創造新的秘密聖誕老人名單!
 
+# Pool/forgotLink.html.twig
+#pool-forgot_link:
+#    title: ?
+#    description: ?
+
 # Static/faq.html.twig
 static-faq:
 #    title: ?

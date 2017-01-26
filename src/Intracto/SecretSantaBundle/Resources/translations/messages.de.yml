@@ -89,6 +89,11 @@ pool-deleted:
     body: <p>Vielen Dank, dass Sie den Secret Santa-Organizer benutzt haben. Wir hoffen, Sie nächstes Jahr wieder begrüßen zu dürfen!</p>
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
+# Pool/forgotLink.html.twig
+#pool-forgot_link:
+#    title: ?
+#    description: ?
+
 # Static/faq.html.twig
 static-faq:
 #    title: ?

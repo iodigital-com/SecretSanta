@@ -87,6 +87,11 @@ pool-deleted:
     body: <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
     create_new_list: ¡Crear una nueva lista Secret Santa!
 
+# Pool/forgotLink.html.twig
+pool-forgot_link:
+    title: Reenviar el correo de activación
+    description: Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.
+
 # Static/faq.html.twig
 static-faq:
 #    title: ?
@@ -379,6 +384,3 @@ flashes:
     updated_party:
         success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
         danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
-forgot_manage_link:
-    title: 'Reenviar el correo de activación'
-    description: 'Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.'

@@ -86,6 +86,11 @@ pool-deleted:
     body: <p>Благодарим вас за использование сервиса Тайного Санты. Надеемся увидеть вас в следующем году!</p>
     create_new_list: Создать новый список Тайного Санты!
 
+# Pool/forgotLink.html.twig
+#pool-forgot_link:
+#    title: ?
+#    description: ?
+
 # Static/faq.html.twig
 static-faq:
 #    title: ?

@@ -90,6 +90,11 @@ pool-deleted:
     body: <p>Thank you for using Secret Santa Organizer. And, we hope to see you again next year!</p>
     create_new_list: Create a new Secret Santa list!
 
+# Pool/forgotLink.html.twig
+pool-forgot_link:
+    title: 'Resend activation mail'
+    description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
+
 # Static/faq.html.twig
 static-faq:
     title: Frequently Asked Questions
@@ -454,8 +459,5 @@ flashes:
     updated_party:
         success: <h4>Updated!</h4> Your party details have been succesfully updated.
         danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
-forgot_manage_link:
-    title: 'Resend activation mail'
-    description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
 
 buy_from_amazon: What are the most wished for items?

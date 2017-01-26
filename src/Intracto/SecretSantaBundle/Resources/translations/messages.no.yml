@@ -90,6 +90,11 @@ pool-deleted:
     body: <p>Takk for at du bruker Secret Santa Organizer. Vi håper å se deg igjen til neste år!</p>
     create_new_list: Opprett en ny Secret Santa-liste!
 
+# Pool/forgotLink.html.twig
+pool-forgot_link:
+    title: Send bekreftelsesepost på nytt
+    description: Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)
+
 # Static/faq.html.twig
 static-faq:
     title: Ofte stilte spørsmål
@@ -504,7 +509,4 @@ flashes:
     updated_party:
         success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
         danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
-forgot_manage_link:
-    title: 'Send bekreftelsesepost på nytt'
-    description: 'Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)'
 buy_from_amazon: What are the most wished for items?

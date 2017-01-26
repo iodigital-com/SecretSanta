@@ -88,6 +88,11 @@ pool-deleted:
     body: <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar!</p>
     create_new_list: Stel een nieuwe Secret Santa lijst op!
 
+# Pool/forgotLink.html.twig
+pool-forgot_link:
+    title: Activatie mail opnieuw verzenden
+    description: Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)
+
 # Static/faq.html.twig
 static-faq:
     title: Veelgestelde vragen
@@ -448,6 +453,3 @@ flashes:
     updated_party:
         success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
         danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
-forgot_manage_link:
-    title: 'Activatie mail opnieuw verzenden'
-    description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)'
