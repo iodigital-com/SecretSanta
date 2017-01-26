@@ -179,40 +179,6 @@ updated_party:
             Jouw deelnemers zullen onmiddelijk op de hoogte gebracht worden van deze veranderingen.
         </p>
 static:
-    privacy_policy:
-        title: Privacybeleid
-        body: >
-            <p>Bedankt voor je bezoek aan secretsantaorganizer.com, gerealiseerd door Intracto group NV. Dit privacybeleid beschrijft hoe we op deze website persoonlijke informatie verzamelen. Lees dit privacybeleid zorgvuldig vooraleer je de website gebruikt of persoonlijke informatie achterlaat. Door deze website te gebruiken, accepteer je de regels die in dit privacybeleid beschreven staan.
-            Deze regels zijn onderhevig aan veranderingen, maar deze veranderingen worden gepubliceerd en zijn enkel van toepassing op toekomstig activiteiten en informatie en zijn dus niet met terugwerkende kracht. We moedigen aan het privacybeleid bij ieder bezoek aan de website te herlezen om je ervan te verzekeren dat je gebruikt hoe door jou ingegeven persoonlijke informatie wordt gebruikt.<p>
-
-            <p>Toelichting: De privacyregels die in dit privacybeleid beschreven staan zijn enkel van toepassing op deze website. Link je naar andere websites, lees dan het privacybeleid van de respectievelijke websites.<p>
-
-            <h2>Verzameling van informatie</h2>
-
-            <p>We verzamelen persoonlijk identificeerbare informatie als namen en e-mailadressen, wanneer vrijwillig ingegeven door onze bezoekers. De informatie die je verstrekt wordt gebruikt om je eigen specifieke aanvraag uit te voeren.
-            </p>
-
-            <h2>Cookie/Tracking Technologie</h2>
-
-            <p>Deze website gebruikt cookies aanwezig in Google Analytics voor het verzamelen van anonieme informatie zoals je type browser en besturingssysteem, het tracken van bezoekersaantallen op de website en het begrijpen van gebruikersgedrag. Persoonlijke informatie kan niet via cookies en andere trackingtechnology verzameld worden.</p>
-
-            <p>Je kan het gebruik van cookies uitschakelen in de instellingen van je browser.</p>
-
-            <h2>Informatieverspreiding</h2>
-
-            <p>Mogelijk delen we informatie met overheidsagentschappen of andere bedrijven die ons bijstaan in onderzoek naar of preventie van fraude.
-            Dit kunnen we doen wanneer: (1) toegestaan of verplicht bij wet; of, (2) we jou en onszelf proberen te beschermen tegen feitelijke of potentiële fraude of ongeautoriseerde transacties; of, (3) we fraude die al heeft plaatsgevonden onderzoeken. De informatie wordt niet voor commerciële doeleinden aan deze bedrijven doorgegeven.</p>
-
-            <h2>Inspanningen voor gegevensbescherming</h2>
-
-            <p>Jouw persoonlijk identificeerbare informatie wordt veilig bewaard. Enkel bevoegde werknemers, vertegenwoordigers en uitvoerders (die zich akkoord hebben verklaard informatie veilig en vertrouwelijk te houden) hebben toegang tot deze informatie. Alle e-mails van deze website zijn komen louter tegemoet aan jouw specifieke aanvraag. Er worden geen terugkerende e-mails of nieuwsbrieven naar de verstrekte e-mailadressen verstuurd.</p>
-
-            <h2>Privacy contactinformatie</h2>
-
-            <p>Heb je vragen, bezorgdheden of opmerkingen over ons privacybeleid, contacteer ons dan aan de hand van onderstaande informatie:<br/>
-            Via e-mail: info@secretsantaorganizer.com</p>
-
-            <p>We behouden het recht om dit beleid te wijzigen. Alle wijzigingen aan dit beleid worden gepubliceerd.</p>
     faq:
         title: Veelgestelde vragen
         body: >

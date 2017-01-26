@@ -167,36 +167,6 @@ remove_participant:
         </p>
     phrase_to_type: supprimer ce participant
 static:
-    privacy_policy:
-        title: Protection vie privée
-        body: >
-            <p>Merci de visiter secretsantaorganizer.com créé par Intracto group NV. Cette politique de confidentialité vous informe sur la manière dont nous utilisons les données personnelles collectées sur ce site. Merci de bien vouloir lire notre politique de confidentialité avant d'utiliser ce site ou d'envoyer toute information personnelle. En utilisant ce site, vous acceptez les conditions décrites dans ce document. Ces conditions peuvent être modifiées, mais chaque modification sera affichée et les changements concerneront seulement l'activité et des informations sur un changement futur, et non de manière rétroactive. Nous vous encourageons donc à vérifier notre politique de confidentialité lors de chaque visite sur le site afin de comprendre exactement comment sont utilisées les données personnelles que vous fournissez.</p>
-
-            <p>Note: La politique de confidentialité décrite ci-dessous concerne uniquement ce site Internet. Si vous accédez à un autre site Internet, merci de bien vouloir consulter la politique de confidentialité présente sur ce site.</p>
-
-            <h2>Collecte d'information</h2>
-
-            <p>Nous collectons des données personnelles identifiables, comme les noms ou adresses e-mails lorsqu'elles sont soumisent volontairement par nos visiteurs. Les informations fournies sont utilisées dans le but de répondre à une demande spécifique de votre part.</p>
-
-            <h2>Cookies/Suivi</h2>
-
-            <p>Ce site utilise des cookies afin de fournir des informations à Google Analytics de manière anonyme. Ces informations peuvent être: le type de navigateur utilisé, le système d'exploitation, le nombre de visiteurs et la façon dont l'internaute utilise le site.</p>
-
-            <p>Vous pouvez désactiver l'utilisation des cookies dans les paramètres de votre navigateur</p>
-
-            <h2>Partage de l'information</h2>
-
-            <p>Nous pouvons partager les informations avec des agences gouvernementales ou d'autres sociétés nous aidant à luter contre la fraude ou menant une enquête. Nous le faisons lorsque: (1)c'est permis ou requis par la loi; ou, (2)il y a suspicion de fraude réelle ou potentionelle, ou des transactions non autorisées, ou (3)une enquête est ouverte concernant une fraude. Ces données ne sont pas fournies à des sociétés tierces à des fins de marketing.</p>
-
-            <h2>Sécurité des données</h2>
-
-            <p>Vos données personnelles sont maintenues en sécurité. Seuls les employés, agents et sous-traitants (qui ont accepté de garder les données confidentielles et de manière sécurisée) ont accès à ces informations. Tous les e-mails envoyés depuis ce site répondent à une demande spécifique de votre part. Aucun e-mail non sollicité ou newsletter ne sera envoyé vers ces adresses.</p>
-
-            <h2>Confidentialité de vos coordonnées</h2>
-
-            <p>Pour toute question ou commententaire concernant notre politique de confidentialité, vous pouvez nous contacter via:<br/> e-mail: info@secretsantaorganizer.com</p>
-
-            <p>Nous nous réservons le droit d'apporter des changements à notre politique de confidentialités. Tout changement sera notifié</p>
     faq:
         title: Questions fréquemment posées
         body: >

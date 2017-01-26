@@ -136,36 +136,6 @@ entry:
       receiving: ...
 
 static:
-    privacy_policy:
-        title: Declaração de privacidade
-        body: >
-            <p>Obrigado pela visita ao secretsantaorganizer.com, realizado por Intracto Group NV. Esta declaração de privacidade descreve como recolhemos informação pessoal neste site. Leia esta declaração de privacidade com atenção antes de utilizar o site ou deixar suas informações pessoais. Utilizando este site, você aceita as regras descritas nesta declaração de privacidade. Essas regras estão sujeitas a variações, mas essas variações serão sempre publicadas e se aplicam somente as atividades e informações futuras e assim não são retroativas. Nós o aconselhamos a ler a declaração de privacidade novamente a cada visita para assegurar como a informação - inserido por você mesmo - é utilizada.</p>
-
-            <p>Nota: As regras de privacidade descritas nesta declaração de privacidade aplicam somente a este website. Se você for fazer ligações com outros sites, leia a declaração de privacidade dos sites respectivos.<p>
-
-            <h2>Recolhimento de informação</h2>
-
-            <p>Nós recolhemos pessoalmente toda informação  identificável como nomes e endereços de e-mail, quando voluntariamente inseridos pelos nossos visitantes. A informação fornecida por você é utilizada somente para responder ao seu próprio pedido específico.</p>
-
-            <h2>Tecnologia de cookies/seguimento</h2> 
-
-            <p>Este site utiliza cookies presentes no Google Analytics para o recolhimento  de informação anônima como o tipo de navegador e sistema de comando, o seguimento do número de visitantes no site e a compreensão do comportamento dos utilizadores. Informações pessoais não podem ser recolhidas utilizando-se de cookies e tecnologia de seguimento.
-
-            <p>É possível desativar a utilização de cookies nas configurações do seu navegador.</p> 
-
-            <h2>Distribuição de informação</h2> 
-
-            <p>Possivelmente nós compartilhamos informações com agências estatais ou outras empresas que prestam assistência a investigação ou prevenção de fraude. Isso pode acontecer quando: (1) permitido ou obrigado por lei; ou, (2) tentamos proteger você e a nós contra fraude fatual ou potencial ou transações não autorizadas; ou, (3) investigamos fraude que já ocorreu. As informações não serão utilizadas por essas empresas para fins comerciais. 
-
-            <h2>Compromisso com a protecção de dados</h2> 
-            <p>A sua informação pessoal identificável é conservada seguramente. Somente trabalhadores autorizados, representantes e executantes (que concordaram de manter toda a informação segura e confidencial) tem acesso a essa informação. Todos os e-mails vindos deste site são somente utilizados para responder ao seu próprio pedido específico. Nós não enviamos e-mails recorrentes ou boletins aos endereços fornecidos.
-            </p>
-
-            <h2>Informações de contato legados à privacidade</h2> 
-            <p>Se você tem perguntas, preocupações ou comentários sobre a nossa declaração de privacidade, por favor, entre em contato pelos meios abaixo assinalados:
-            <br/>
-            Por e-mail: info@secretsantaorganizer.com</p>
-            <p>Nós reservamo-nos no direito de alterar esta declaração. Todas as alterações desta declaração serão publicadas.</p>
     faq:
         title: Perguntas Frequentes
         body: >

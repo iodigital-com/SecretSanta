@@ -205,52 +205,6 @@ updated_party:
             Nissene får beskjed om endringene som blir gjort umiddelbart
         </p>
 static:
-    privacy_policy:
-        title: Personvernserklæring
-        body: >
-            <p>Takk for at du besøkte secretsantaorganizer.com skapt av Intracto group NV. Denne personvernserklæringen forteller deg
-                hvordan vi behandler personlig informasjon på denne siden. Vennligst les personvernerklæringen før du bruker denne
-                nettiden eller legger til noen form for personlig informasjon. Ved å bruke nettsiden aksepterer du vår bruk av personlig informasjon
-                som beskrevet av denne erklæringen. Bruken kan endres, men endringer blir offentliggjort og vil kun brukes til informasjon og aktiviteter
-                på en framtenkende, ikke retro-aktiv basis. Vi oppfordrer brukere å gi oss tilbakemelding på hvordan personvernerklæringen
-                oppfattes og forstås når du bruker siden.</p>
-
-            <p>Merk: bruken som beskrives av denne personvernerklæringen gjelder kun denne nettsiden. Dersom du legger ved lenker til andre
-                nettsider, vennligst les de respektive nettsidenes egne personvernserklæringer.</p>
-
-            <h2>Innsamling av informasjon</h2>
-
-            <p>Vi samler inn personlig informasjon, som navn og e-postadresserm når de legges inn frivillig av
-                besøkende på denne siden. Informasjonen du gir oss benyttes kun til ditt bruk.</p>
-
-            <h2>Cookie/Sporingsteknologi</h2>
-
-            <p>Denne siden bruker cookies gjennom Google Analytics for å innhente anonym informasjon som internett-browser og
-                ioerativsystem, for å spore antall besøkende på siden, og får å forstå hvordan besøkende  bruker siden.
-                Personlig informasjon kan ikke samles via cookies og annen sporingsteknologi.</p>
-
-            <p>Du kan slå av cookies i innstillingene i din internett-browser.</p>
-
-            <h2>Deling av informasjon</h2>
-
-            <p>I noen tilfeller vil vi dele informasjon med meyndigheter eller andre organisasjoner som arbeider for å forhindre svindel
-                eller med etterforskning. Vi gjør dette når: (1) det er lovpålagt, eller (2) man prøver å beskytte mot eller forhindre
-                faktisk eller potensiell svindel eller uautoriserte transaksjoner, eller (3) man etterforsker svindel som allerede
-                har inntruffet. Informasjon deles ikke med myndigheter eller organisasjoner i markedsføringsøyemed.</p>
-
-            <h2>Datsikkerhet</h2>
-
-            <p>Din personlige informasjon er sikret. Bare autorisert personell, agenter eller innleid personell (som har
-                inngått taushetserklæring) har tilgang til denne informasjonen. Alle eposter på denne nettsiden er unike for dine
-                spesifikasjoner. Nyhetsbrev og andre e-poster vil ikke blir sendt til epostadressene på listen du oppretter.</p>
-
-            <h2>Kontaktinformasjon for personvern</h2>
-
-            <p>Dersom du har spørsmål, bekymringer eller kommentarer angrående vårt personvern er du velkommen til å kontakte oss ved å bruke
-                følgende informasjon:<br/>
-                Via e-post: info@secretsantaorganizer.com</p>
-
-            <p>Vi reserverer rettigheten til å endre personverkerklæringen. Eventuelle endringer vil bli opplyst til våre besøkende.</p>
     faq:
         title: Ofte stilte spørsmål
         body: >
