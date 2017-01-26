@@ -23,11 +23,11 @@ pool-create:
     what_is:
         title: Wat is Secret Santa?
         intro: >
-                <p>Het is een <strong>gratis</strong> online Secret Santa <strong>geschenkuitwisselings organizer</strong>! Organiseer een Secret
-                Santa party met vrienden, familie of zelfs collega's. Nadat je een mailtje hebt ontvangen van Secret Santa Organizer,
-                kan je je eigen <strong>verlanglijst</strong> toevoegen, die sturen wij dan door naar jouw Secret Santa.</p>
+            <p>Het is een <strong>gratis</strong> online Secret Santa <strong>geschenkuitwisselings organizer</strong>! Organiseer een Secret
+            Santa party met vrienden, familie of zelfs collega's. Nadat je een mailtje hebt ontvangen van Secret Santa Organizer,
+            kan je je eigen <strong>verlanglijst</strong> toevoegen, die sturen wij dan door naar jouw Secret Santa.</p>
 
-                <p>Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.<br/> Om het voor iedereen wat spannender te maken, kan je mensen <strong>willekeurig toewijzen</strong> om voor elkaar geschenkjes te kopen.</p>
+            <p>Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.<br/> Om het voor iedereen wat spannender te maken, kan je mensen <strong>willekeurig toewijzen</strong> om voor elkaar geschenkjes te kopen.</p>
 
     add_participants: Voeg je deelnemers toe
     list_adminstrator: Deze persoon is ook jouw lijstbeheerder
@@ -66,20 +66,23 @@ pool-exclude:
         name: Naam
         exclude: Uitsluiten
 
-### end of cleanup ###
-
-created:
+# Pool/created.html.twig
+pool-created:
     title: Nog 1 stapje te gaan! - Valideer je deelname
     body: >
-            <p>
-                Om te voorkomen dat ongewenste gasten je Secret Santa party verknallen, moet lijstbeheerder <b>%ownername%</b> iedere deelname valideren. We hebben <b>%owneremail%</b> een mailtje gestuurd met verdere instructies.
-            </p>
-            <p>Eens de deelnemerslijst is goedgekeurd, wordt hij door elkaar gegooid en krijgen alle gebruikers jouw boodschap en de naam van de persoon voor wie ze een geschenk moeten kopen.
-            </p>
-            <p>
-                In de validatiemail vindt de lijstbeheerder ook een link om iedereen die al weet voor wie hij of zij iets moet kopen op te volgen. Zo weet de organisator zeker dat iedere Secret Santa zich van zijn of haar zware taak bewust is.</p>
+        <p>
+            Om te voorkomen dat ongewenste gasten je Secret Santa party verknallen, moet lijstbeheerder <b>%ownername%</b> iedere deelname valideren. We hebben <b>%owneremail%</b> een mailtje gestuurd met verdere instructies.
+        </p>
+        <p>
+            Eens de deelnemerslijst is goedgekeurd, wordt hij door elkaar gegooid en krijgen alle gebruikers jouw boodschap en de naam van de persoon voor wie ze een geschenk moeten kopen.
+        </p>
+        <p>
+            In de validatiemail vindt de lijstbeheerder ook een link om iedereen die al weet voor wie hij of zij iets moet kopen op te volgen. Zo weet de organisator zeker dat iedere Secret Santa zich van zijn of haar zware taak bewust is.
+        </p>
     warning: Let op!
     check_spam: Vergeet je spamfolder niet te checken!
+
+### end of cleanup ###
 
 deleted:
     title: Je Secret Santa lijst werd verwijderd!

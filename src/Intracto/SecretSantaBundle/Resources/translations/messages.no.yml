@@ -23,13 +23,13 @@ pool-create:
     what_is:
         title: Hva er Secret Santa?
         intro: >
-                <p>Et <strong>free</strong> online Secret Santa <strong>gavebytte-program / hemmelig venn generator</strong>!
-                Organiser et hemmelig-venn selskap med venner, familie eller kolleger. Når du mottar hemmelig-venn eposten kan du legge til din
-                egen<strong>ønskeliste</strong>, som vi leverer til din hemmelige venn.</p>
+            <p>Et <strong>free</strong> online Secret Santa <strong>gavebytte-program / hemmelig venn generator</strong>!
+            Organiser et hemmelig-venn selskap med venner, familie eller kolleger. Når du mottar hemmelig-venn eposten kan du legge til din
+            egen<strong>ønskeliste</strong>, som vi leverer til din hemmelige venn.</p>
 
-                <p>Hele året rundt <strong>Christmas</strong> utveksler folk over hele verden gaver.<br/>
-                For å gjøre ting mer spennende kan du <strong>fordele, helt tilfeldig,</strong> hvem som skal
-                gi hverandre gaver.</p>
+            <p>Hele året rundt <strong>Christmas</strong> utveksler folk over hele verden gaver.<br/>
+            For å gjøre ting mer spennende kan du <strong>fordele, helt tilfeldig,</strong> hvem som skal
+            gi hverandre gaver.</p>
 
     add_participants: Legge til deltagere
     list_adminstrator: Denne personen er også en deltager.
@@ -68,22 +68,23 @@ pool-exclude:
         name: Navn
         exclude: Ekskluder
 
-### end of cleanup ###
-
-created:
+# Pool/created.html.twig
+pool-created:
     title: Bare 1 trinn igjen! - Bekreft din deltagelse
     body: >
-            <p>
-                For å unngå at roboter eller troll ødelegger hemmelig-venn selskapet ditt må liste-organisatoren <b>%ownername%</b> bekrefte hans eller hennes deltagelse. Vi har sendt en epost til <b>%owneremail%</b> med et par intstrukser.
-            </p>
-            <p>
-                Så snart den er bekreftet, vil din \"Secret Santa\" liste mikses og alle deltagerne får tilsendt meldingen fra deg samt navnet på den de skal kjøpe gave til.
-            </p>
-            <p>
-                I e-posten som må bekreftes vil administratoren også få en link for å kunne holde seg oppdatert på alle deltagerne i Secret Santa-listen som allerede har funnet ut hvem de skal gi gave til. Sånn er du sikker på at alle nissene er klar over sin plikt.
-            </p>
+        <p>
+            For å unngå at roboter eller troll ødelegger hemmelig-venn selskapet ditt må liste-organisatoren <b>%ownername%</b> bekrefte hans eller hennes deltagelse. Vi har sendt en epost til <b>%owneremail%</b> med et par intstrukser.
+        </p>
+        <p>
+            Så snart den er bekreftet, vil din \"Secret Santa\" liste mikses og alle deltagerne får tilsendt meldingen fra deg samt navnet på den de skal kjøpe gave til.
+        </p>
+        <p>
+            I e-posten som må bekreftes vil administratoren også få en link for å kunne holde seg oppdatert på alle deltagerne i Secret Santa-listen som allerede har funnet ut hvem de skal gi gave til. Sånn er du sikker på at alle nissene er klar over sin plikt.
+        </p>
     warning: Warning!
     check_spam: Ikke glem å sjekke søppelposten!
+
+### end of cleanup ###
 
 deleted:
     title: Din Secret Santa-liste ble slettet!

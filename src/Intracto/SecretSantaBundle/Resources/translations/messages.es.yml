@@ -23,10 +23,10 @@ pool-create:
     what_is:
         title: ¿Qué es Secret Santa?
         intro: >
-                <p>Es un <strong>organizador de intercambio de regalos gratuito</strong> en línea Secret Santa. Organiza una fiesta Secret Santa con tus amigos, familia o incluso compañeros de trabajo. Después de recibir el correo de Secret Santa puedes añadir tu propia <strong>lista de deseos</strong>, que será entregada a tu Secret Santa.</p>
+            <p>Es un <strong>organizador de intercambio de regalos gratuito</strong> en línea Secret Santa. Organiza una fiesta Secret Santa con tus amigos, familia o incluso compañeros de trabajo. Después de recibir el correo de Secret Santa puedes añadir tu propia <strong>lista de deseos</strong>, que será entregada a tu Secret Santa.</p>
 
-                <p>Cada año cerca de la época de <strong> Navidad</strong> la gente de todo el mundo intercambia regalos.<br/>
-                Para hacer que las cosas sigan siendo interesantes, podéis <strong>asignar aleatoriamente personas</strong> para entregaros el regalo unos a otros.</p>
+            <p>Cada año cerca de la época de <strong> Navidad</strong> la gente de todo el mundo intercambia regalos.<br/>
+            Para hacer que las cosas sigan siendo interesantes, podéis <strong>asignar aleatoriamente personas</strong> para entregaros el regalo unos a otros.</p>
 
     add_participants: Añade tus participantes
     list_adminstrator: Esta persona también es el administrador de tu lista.
@@ -65,22 +65,23 @@ pool-exclude:
         name: Nombre
         exclude: Excluir
 
-### end of cleanup ###
-
-created:
+# Pool/created.html.twig
+pool-created:
     title: ¡Sólo 1 paso para terminar! – Valida tu participación
     body: >
-            <p>
-                Para evitar que robots o trols echen por tierra tu fiesta Secret Santa, necesitamos que el organizador de la lista <b>%ownername%</b> valide su participación. Hemos enviado un correo electrónico a <b>%owneremail%</b> con más instrucciones.
-            </p>
-            <p>
-                Una vez validada, tu lista Secret Santa será mezclada y todos los usuarios recibirán tu mensaje junto con el nombre de su amigo del regalo Secret Santa.
-            </p>
-            <p>
-                En el correo electrónico de validación el organizador de la lista también encontrará un enlace para seguir a todos los usuarios en su lista Secret Santa que ya hayan descubierto a su amigo del regalo. Asegúrate de que cada Secret Santa sepa su cometido.
-            </p>
+        <p>
+            Para evitar que robots o trols echen por tierra tu fiesta Secret Santa, necesitamos que el organizador de la lista <b>%ownername%</b> valide su participación. Hemos enviado un correo electrónico a <b>%owneremail%</b> con más instrucciones.
+        </p>
+        <p>
+            Una vez validada, tu lista Secret Santa será mezclada y todos los usuarios recibirán tu mensaje junto con el nombre de su amigo del regalo Secret Santa.
+        </p>
+        <p>
+            En el correo electrónico de validación el organizador de la lista también encontrará un enlace para seguir a todos los usuarios en su lista Secret Santa que ya hayan descubierto a su amigo del regalo. Asegúrate de que cada Secret Santa sepa su cometido.
+        </p>
     warning: ¡Advertencia!
     check_spam: ¡No olvides comprobar tu carpeta de correo no deseado!
+
+### end of cleanup ###
 
 deleted:
     title: ¡Tu lista Secret Santa fue borrada!

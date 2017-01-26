@@ -23,13 +23,13 @@ pool-create:
     what_is:
         title: What is Secret Santa?
         intro: >
-                <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer / Kris Kringle generator</strong>!
-                Organize a Secret Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your
-                own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
+            <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer / Kris Kringle generator</strong>!
+            Organize a Secret Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your
+            own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
 
-                <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/>
-                To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
-                present to one another.</p>
+            <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/>
+            To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
+            present to one another.</p>
 
     add_participants: Add your participants
     list_adminstrator: This person is a participant too.
@@ -68,22 +68,23 @@ pool-exclude:
         name: Name
         exclude: Exclude
 
-### end of cleanup ###
-
-created:
+# Pool/created.html.twig
+pool-created:
     title: Only 1 step to go! - Validate your participation
     body: >
-            <p>
-                To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
-            </p>
-            <p>
-                Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
-            </p>
-            <p>
-                In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his or her duty.
-            </p>
+        <p>
+            To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
+        </p>
+        <p>
+            Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+        </p>
+        <p>
+            In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his or her duty.
+        </p>
     warning: Warning!
     check_spam: Don't forget to check your spam folder!
+
+### end of cleanup ###
 
 deleted:
     title: Your Secret Santa list was deleted!

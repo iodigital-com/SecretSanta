@@ -64,22 +64,23 @@ pool-exclude:
         name: Nom
         exclude: Exclure
 
-### end of cleanup ###
-
-created:
+# Pool/created.html.twig
+pool-created:
     title: Plus qu'une étape ! - Validez votre participation
     body: >
-            <p>
-               Afin de se prémunir des robots ou des trolls qui pourraient gâcher le secret, nous avons besoin que l'organisateur <b>%ownername%</b> confirme sa participation. Nous venons d'envoyer un e-mail à <b>%owneremail%</b> avec les instructions nécessaires.
-            </p>
-            <p>
-                Une fois la participation validée, votre liste Secret Santa sera brouillée et chaque partipant recevra un message avec le nom de la personne à qui offrir un cadeau.
-            </p>
-            <p>
-                Dans l'e-mail de confirmation, l'organisateur trouvera également un lien qui lui permettra de savoir qui a déjà trouvé son ami cadeau. Assurez-vous que chaque Père-Noël secret connaisse son ami cadeau.
-            </p>
+        <p>
+           Afin de se prémunir des robots ou des trolls qui pourraient gâcher le secret, nous avons besoin que l'organisateur <b>%ownername%</b> confirme sa participation. Nous venons d'envoyer un e-mail à <b>%owneremail%</b> avec les instructions nécessaires.
+        </p>
+        <p>
+            Une fois la participation validée, votre liste Secret Santa sera brouillée et chaque partipant recevra un message avec le nom de la personne à qui offrir un cadeau.
+        </p>
+        <p>
+            Dans l'e-mail de confirmation, l'organisateur trouvera également un lien qui lui permettra de savoir qui a déjà trouvé son ami cadeau. Assurez-vous que chaque Père-Noël secret connaisse son ami cadeau.
+        </p>
     warning: Attention !
     check_spam: N'oubliez pas de vérifier votre dossier Spam !
+
+### end of cleanup ###
 
 deleted:
     title: Votre liste Secret Santa a été supprimée !

@@ -23,12 +23,12 @@ pool-create:
     what_is:
         title: Was ist Secret Santa?
         intro: >
-                <p>Es ist ein <strong>kostenloser</strong> online Secret Santa <strong>Geschenketausch-Organizer</strong>! Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen. Nachdem Sie die Secret-Santa-Mail empfangen haben, können Sie
-                Ihren eigenen <strong>Wunschzettel hinzufügen,</strong>, der an Ihren Secret Santa geliefert wird.</p>
+            <p>Es ist ein <strong>kostenloser</strong> online Secret Santa <strong>Geschenketausch-Organizer</strong>! Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen. Nachdem Sie die Secret-Santa-Mail empfangen haben, können Sie
+            Ihren eigenen <strong>Wunschzettel hinzufügen,</strong>, der an Ihren Secret Santa geliefert wird.</p>
 
-                <p>Jedes Jahr <strong>in der Weihnachtszeit</strong> tauschen Menschen in der ganzen Welt Geschenke aus.<br/>
-                Um dies spannender zu gestalten, <strong>können Sie beliebige Menschen beauftragen</strong> einander
-                zu beschenken.</p>
+            <p>Jedes Jahr <strong>in der Weihnachtszeit</strong> tauschen Menschen in der ganzen Welt Geschenke aus.<br/>
+            Um dies spannender zu gestalten, <strong>können Sie beliebige Menschen beauftragen</strong> einander
+            zu beschenken.</p>
 
     add_participants: Fügen Sie Ihre Teilnehmer hinzu
     list_adminstrator: Diese Person ist auch Ihr administrator
@@ -67,22 +67,23 @@ pool-exclude:
         name: Name
         exclude: Ausschließen
 
-### end of cleanup ###
-
-created:
+# Pool/created.html.twig
+pool-created:
     title: Nur noch ein Schritt! - Bestätigen Sie Ihre Teilnahme
     body: >
-            <p>
-                Um zu verhindern, dass Bots oder Trolle die Secret Santa-Party ruinieren, fordert der Listen-Organizer, <b>%ownername%</b> dass alle Teilnehmer ihre Teilnahme bestätigen. Wir haben Ihnen eine Mail mit <b>%owneremail%</b> weiteren Informationen zugesandt.
-            </p>
-            <p>
-                Sobald Ihre Secret Santa-Liste bestätigt ist, wird sie verschlüsselt und alle Teilnehmer empfangen Ihre Nachricht und den Namen Ihres Secret Santa-Geschenkepartners.
-            </p>
-            <p>
-                In der Bestätigungs-E-Mail befindet sich auch ein Link, mit dessen Hilfe der Listen-Organizer nachvollziehen kann, welcher Teilnehmer bereits seinen Geschenkepartner gefunden hat. Stellen Sie sicher, dass jeder Secret Santa-Teilnehmer seine Pflichten kennt.
-            </p>
+        <p>
+            Um zu verhindern, dass Bots oder Trolle die Secret Santa-Party ruinieren, fordert der Listen-Organizer, <b>%ownername%</b> dass alle Teilnehmer ihre Teilnahme bestätigen. Wir haben Ihnen eine Mail mit <b>%owneremail%</b> weiteren Informationen zugesandt.
+        </p>
+        <p>
+            Sobald Ihre Secret Santa-Liste bestätigt ist, wird sie verschlüsselt und alle Teilnehmer empfangen Ihre Nachricht und den Namen Ihres Secret Santa-Geschenkepartners.
+        </p>
+        <p>
+            In der Bestätigungs-E-Mail befindet sich auch ein Link, mit dessen Hilfe der Listen-Organizer nachvollziehen kann, welcher Teilnehmer bereits seinen Geschenkepartner gefunden hat. Stellen Sie sicher, dass jeder Secret Santa-Teilnehmer seine Pflichten kennt.
+        </p>
     warning: Vorsicht!
     check_spam: Vergessen Sie nicht, Ihren Spam-Ordner zu kontrollieren!
+
+### end of cleanup ###
 
 deleted:
     title: Ihre Secret Santa-Liste wurde gelöscht!

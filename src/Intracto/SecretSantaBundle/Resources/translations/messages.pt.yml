@@ -63,22 +63,23 @@ pool-exclude:
         name: Nome
         exclude: Excluir
 
-### end of cleanup ###
-
-created:
+# Pool/created.html.twig
+pool-created:
     title: Só mais 1 etapa! - Validar a sua participação
     body: >
         <p>
-        Para evitar que hóspedes indesejáveis estraguem a sua festa de Amigo Secreto, o operador da lista <b>%ownername%</b> precisa validar cada participação. Nós já mandamos um e-mail para <b>%owneremail%</b> dando mais instruções. 
+            Para evitar que hóspedes indesejáveis estraguem a sua festa de Amigo Secreto, o operador da lista <b>%ownername%</b> precisa validar cada participação. Nós já mandamos um e-mail para <b>%owneremail%</b> dando mais instruções.
         </p>
         <p>
-        Após a aprovação da lista de participantes, o aplicativo faz o sorteio e todos os participantes recebem a sua mensagem e o nome da pessoa para quem eles precisam comprar um presente.
+            Após a aprovação da lista de participantes, o aplicativo faz o sorteio e todos os participantes recebem a sua mensagem e o nome da pessoa para quem eles precisam comprar um presente.
         </p>
         <p>
-        Dentro do e-mail de validação, o operador de lista também encontra um link para verificar se os participantes já sabem quem ele ou ela tirou de Amigo Secreto. Assim o operador tem certeza que cada Amigo Secreto esteja consciente da sua tarefa.
+            Dentro do e-mail de validação, o operador de lista também encontra um link para verificar se os participantes já sabem quem ele ou ela tirou de Amigo Secreto. Assim o operador tem certeza que cada Amigo Secreto esteja consciente da sua tarefa.
         </p>
     warning: Cuidado!
     check_spam: Não esqueça de verificar sua pasta de Lixo ou Spam!
+
+### end of cleanup ###
 
 deleted:
     title: A sua lista do Secret Santa foi eliminada!
