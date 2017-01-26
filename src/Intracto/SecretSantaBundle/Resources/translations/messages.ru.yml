@@ -84,8 +84,13 @@ pool-created:
 pool-deleted:
     title: Ваш список Тайного Санты удален!
     body: <p>Благодарим вас за использование сервиса Тайного Санты. Надеемся увидеть вас в следующем году!</p>
-    btn:
-        create_new_list: Создать новый список Тайного Санты!
+    create_new_list: Создать новый список Тайного Санты!
+
+# Static/faq.html.twig
+static-faq:
+#    title: ?
+#    body: ?
+    create_new_list: Создать новый список Тайного Санты!
 
 ### end of cleanup ###
 
@@ -146,7 +151,6 @@ label:
     description: Описание
 btn:
     remove_person: Удалить
-    create_new_list: Создать новый список Тайного Санты!
     delete_list: Удалить мой список Тайного Санты
     delete_confirm: Я понимаю последствия, удалите сейчас мой список Тайного Санты
     add_wishlist: Добавить в список желаний

@@ -85,8 +85,13 @@ pool-created:
 pool-deleted:
     title: ¡Tu lista Secret Santa fue borrada!
     body: <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
-    btn:
-        create_new_list: ¡Crear una nueva lista Secret Santa!
+    create_new_list: ¡Crear una nueva lista Secret Santa!
+
+# Static/faq.html.twig
+static-faq:
+#    title: ?
+#    body: ?
+    create_new_list: ¡Crear una nueva lista Secret Santa!
 
 ### end of cleanup ###
 
@@ -190,7 +195,6 @@ label:
     items: Regalos deseados
 btn:
     remove_person: Quitar esta persona
-    create_new_list: ¡Crear una nueva lista Secret Santa!
     delete_list: Borrar mi lista Secret Santa
     delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
     add_wishlist: Añadir elemento a lista de deseos

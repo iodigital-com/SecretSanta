@@ -79,8 +79,13 @@ pool-created:
 pool-deleted:
     title: 不要忘记检查你的垃圾邮件文件夹！
     body: <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
-    btn:
-        create_new_list: 创建一个新的秘密圣诞老人名单！
+    create_new_list: 创建一个新的秘密圣诞老人名单！
+
+# Static/faq.html.twig
+static-faq:
+#    title: ?
+#    body: ?
+    create_new_list: 创建一个新的秘密圣诞老人名单！
 
 ### end of cleanup ###
 
@@ -127,16 +132,6 @@ entry:
         description: 你可以在这留下一个愿望清单，以帮助你的秘密圣诞老人。我们的小矮人将会把这个传达到你的秘密圣诞老人那。你可以拖动项目条对物品进行重新排序。
     wishlist_empty: 你的愿望清单是空的。请添加东西！
 
-static:
-    faq:
-        title: Frequently Asked Questions
-        body: >
-            <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
-
-            <a href="what"></a><h2>What is Secret Santa?</h2>
-            <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
-            To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
-
 label:
     name: 名字
     email: 电子邮箱
@@ -147,7 +142,6 @@ label:
     description: 描述
 btn:
     remove_person: 删除此人员
-    create_new_list: 创建一个新的秘密圣诞老人名单！
     delete_list: 删除我的秘密圣诞老人名单
     delete_confirm: 我知道后果，现在删除我的秘密圣诞老人名单
     add_wishlist: 添加物品到愿望清单

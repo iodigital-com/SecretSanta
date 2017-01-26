@@ -79,8 +79,13 @@ pool-created:
 pool-deleted:
     title: 你的秘密聖誕老人 目錄已被刪除
     body: <p>多謝你使用秘密聖誕老人 組織者，希望出年再見到你！</p>
-    btn:
-        create_new_list: 創造新的秘密聖誕老人名單!
+    create_new_list: 創造新的秘密聖誕老人名單!
+
+# Static/faq.html.twig
+static-faq:
+#    title: ?
+#    body: ?
+    create_new_list: 創造新的秘密聖誕老人名單!
 
 ### end of cleanup ###
 
@@ -137,7 +142,6 @@ label:
     description: 形容
 btn:
     remove_person: 去掉這人
-    create_new_list: 創造新的秘密聖誕老人名單!
     delete_list: 刪除我的秘密聖誕老人名單
     delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
     add_wishlist: 在願望單加入項目

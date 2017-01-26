@@ -69,8 +69,13 @@ pool-created:
 pool-deleted:
     title: Lista Tajnego Mikołaja została usunięta!
     body: <p>Dziękujemy za skorzystanie z Tajnego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>
-    btn:
-        create_new_list: Stwórz nową listę Tajnego Mikołaja!
+    create_new_list: Stwórz nową listę Tajnego Mikołaja!
+
+# Static/faq.html.twig
+static-faq:
+#    title: ?
+#    body: ?
+    create_new_list: Stwórz nową listę Tajnego Mikołaja!
 
 ### end of cleanup ###
 
@@ -118,7 +123,6 @@ label:
     description: Opis
 btn:
     remove_person: Usuń osobę
-    create_new_list: Stwórz nową listę Tajnego Mikołaja!
     delete_list: Usuń moją listę Tajnego Mikołaja
     delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja
     add_wishlist: Dodaj do listy życzeń
