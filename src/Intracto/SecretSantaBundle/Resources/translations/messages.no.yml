@@ -476,21 +476,6 @@ emails:
 
                 Trykk på linken nedenfor for å sende e-poster på nytt, redigere epostadresser eller administrere listen over deltagerne.
         btn_poolstatus: Administrer ditt arrangement
-    admin_wishlists:
-        subject: Secret Santa ønskelister
-        message:
-            html: >
-                Kjære %owner%,<br/>
-                <br/>
-                Du har sendt inn en forespørsel om tilgang til ønskelistene for alle deltagerne på listen din. Vær oppmerksom på at deltagerne kan se at du har fått denne listen tilsendt.<br/>
-                <br/>
-                Her følger en oversikt over alle medlemmene og deres ønskelister til julenissen.
-            txt: >
-                Kjære %owner%,
-
-                Du har sendt inn en forespørsel om tilgang til ønskelistene for alle deltagerne på listen din. Vær oppmerksom på at deltagerne kan se at du har fått denne listen tilsendt.
-
-                Her følger en oversikt over alle medlemmene og deres ønskelister til julenissen.
     updated_party:
         subject: Endring i planene!
         message:

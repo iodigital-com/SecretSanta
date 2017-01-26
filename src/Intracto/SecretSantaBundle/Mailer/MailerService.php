@@ -140,37 +140,6 @@ class MailerService
     }
 
     /**
-     * @param Pool $pool
-     */
-    public function sendAllWishlistsToAdmin(Pool $pool)
-    {
-        $this->translator->setLocale($pool->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.admin_wishlists.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
-            ->setTo($pool->getOwnerEmail(), $pool->getOwnerName())
-            ->setBody(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:admin_wishlists.html.twig',
-                    [
-                        'pool' => $pool,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:admin_wishlists.txt.twig',
-                    [
-                        'pool' => $pool,
-                    ]
-                ),
-                'text/plain'
-            )
-        );
-    }
-
-    /**
      * @param $email
      *
      * @return bool
