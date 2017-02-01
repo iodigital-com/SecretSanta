@@ -104,6 +104,18 @@ static-faq:
 #    body: ?
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
+# Helper/prototypeEntry.html.twig
+helper_prototype_entry:
+    btn:
+        remove_person: entfernen
+
+# Helper/prototypeWishlist.html.twig
+helper_prototype_wishlist:
+    btn:
+#        save_item: ?
+#        update_item: ?
+        remove_item: Diesen Gegenstand entfernen
+
 ### end of cleanup ###
 
 manage:
@@ -165,7 +177,6 @@ label:
     actions: Aktionen 
     description: Beschreibung
 btn:
-    remove_person: entfernen
     delete_list: Meine Secret Santa-Liste löschen
     delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
     add_wishlist: Dem Wunschzettel einen Gegenstand hinzufügen

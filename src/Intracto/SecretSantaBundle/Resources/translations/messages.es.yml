@@ -102,6 +102,18 @@ static-faq:
 #    body: ?
     create_new_list: ¡Crear una nueva lista Secret Santa!
 
+# Helper/prototypeEntry.html.twig
+helper_prototype_entry:
+    btn:
+        remove_person: Quitar esta persona
+
+# Helper/prototypeWishlist.html.twig
+helper_prototype_wishlist:
+    btn:
+        save_item: Guardar este elemento
+        update_item: Actualizar este elemento
+        remove_item: Quitar
+
 ### end of cleanup ###
 
 manage:
@@ -200,11 +212,9 @@ label:
     wishlist_filled: Lista de deseos insertado
     items: Regalos deseados
 btn:
-    remove_person: Quitar esta persona
     delete_list: Borrar mi lista Secret Santa
     delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
     add_wishlist: Añadir elemento a lista de deseos
-    save_item: Guardar este elemento
     update_item: Actualizar este elemento
     remove_item: Quitar
     update_wishlist: Actualizar tu lista de deseos

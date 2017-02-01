@@ -96,6 +96,18 @@ static-faq:
 #    body: ?
     create_new_list: 創造新的秘密聖誕老人名單!
 
+# Helper/prototypeEntry.html.twig
+helper_prototype_entry:
+    btn:
+        remove_person: 去掉這人
+
+# Helper/prototypeWishlist.html.twig
+helper_prototype_wishlist:
+    btn:
+#        save_item: ?
+#        update_item: ?
+        remove_item: 刪除這項目
+
 ### end of cleanup ###
 
 manage:
@@ -150,7 +162,6 @@ label:
     actions: 行動
     description: 形容
 btn:
-    remove_person: 去掉這人
     delete_list: 刪除我的秘密聖誕老人名單
     delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
     add_wishlist: 在願望單加入項目

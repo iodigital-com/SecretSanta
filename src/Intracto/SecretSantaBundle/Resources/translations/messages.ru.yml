@@ -101,6 +101,18 @@ static-faq:
 #    body: ?
     create_new_list: Создать новый список Тайного Санты!
 
+# Helper/prototypeEntry.html.twig
+helper_prototype_entry:
+    btn:
+        remove_person: Удалить
+
+# Helper/prototypeWishlist.html.twig
+helper_prototype_wishlist:
+    btn:
+#        save_item: ?
+#        update_item: ?
+        remove_item: Удалить из списка
+
 ### end of cleanup ###
 
 manage:
@@ -159,7 +171,6 @@ label:
     actions: Действия
     description: Описание
 btn:
-    remove_person: Удалить
     delete_list: Удалить мой список Тайного Санты
     delete_confirm: Я понимаю последствия, удалите сейчас мой список Тайного Санты
     add_wishlist: Добавить в список желаний

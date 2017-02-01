@@ -161,6 +161,18 @@ static-faq:
         <p>Se você tiver qualquer outra pergunta, sugestão ou reclamações, apenas entre em contato conosco por e-mail:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Montar uma nova lista do Secret Santa!
 
+# Helper/prototypeEntry.html.twig
+helper_prototype_entry:
+    btn:
+        remove_person: Eliminar esta pessoa
+
+# Helper/prototypeWishlist.html.twig
+helper_prototype_wishlist:
+    btn:
+#        save_item: ?
+#        update_item: ?
+        remove_item: Eliminar este item
+
 ### end of cleanup ###
 
 manage:
@@ -219,7 +231,6 @@ label:
     actions: Ações
     description: Descrição
 btn:
-    remove_person: Eliminar esta pessoa
     delete_list: Eliminar minha lista do Secret Santa
     delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa
     add_wishlist: Adicione um item a lista do Secret Santa

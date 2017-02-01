@@ -172,6 +172,18 @@ static-faq:
         <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via e-mail:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Stel een nieuwe Secret Santa lijst op!
 
+# Helper/prototypeEntry.html.twig
+helper_prototype_entry:
+    btn:
+        remove_person: verwijderen
+
+# Helper/prototypeWishlist.html.twig
+helper_prototype_wishlist:
+    btn:
+        save_item: Bewaar dit item
+        update_item: Update dit item
+        remove_item: Verwijder
+
 ### end of cleanup ###
 
 manage:
@@ -271,11 +283,9 @@ label:
     wishlist_filled: Wish List Ingevuld
     items: Gewenste verrassingen
 btn:
-    remove_person: verwijderen
     delete_list: Verwijder mijn Secret Santa lijst
     delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
     add_wishlist: Voeg item toe aan verlanglijst
-    save_item: Bewaar dit item
     update_item: Update dit item
     remove_item: Verwijder
     update_wishlist: Update je verlanglijst
