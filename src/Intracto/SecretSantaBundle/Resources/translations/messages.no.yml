@@ -186,6 +186,12 @@ helper-prototype_wishlist:
         update_item: Oppdater
         remove_item: Fjern
 
+# Entry/exposeAll.html.twig
+#entry-expose_all:
+#    title: ?
+#    giving: ?
+#    receiving: ?
+
 ### end of cleanup ###
 
 manage:

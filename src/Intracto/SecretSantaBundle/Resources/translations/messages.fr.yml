@@ -169,6 +169,12 @@ helper-prototype_wishlist:
         update_item: Actualiser cet object
         remove_item: Supprimer
 
+# Entry/exposeAll.html.twig
+entry-expose_all:
+    title: Liste des attributions Secret Santa
+    giving: Ce membre donne ...
+    receiving: ... un cadeau à ce membre
+
 ### end of cleanup ###
 
 manage:
@@ -217,10 +223,7 @@ entry:
     wishlist_empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
     watch_out: Attention
     modify_list: L'organisateur de cette fête peut ajouter ou supprimer des personnes jusqu'à %oneWeekFromEventDate%, cela veut dire que vous pouvez encore être assigné à un autre copain Secret Santa. Peut-être qu'il serait mieux d’attendre que vous soyez sûr que votre copain actuel soit vraiment votre copain Secret Santa avant de lui acheter un cadeau.
-    exposed:
-        title: Liste des attributions Secret Santa
-        giving: Ce membre donne ...
-        receiving: ... un cadeau à ce membre
+
 poke:
     poke: Poke
     poke_sentence: Votre copain Secret Santa de remplir leur liste de souhaits.

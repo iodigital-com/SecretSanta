@@ -108,6 +108,12 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: 删除这个物品
 
+# Entry/exposeAll.html.twig
+#entry-expose_all:
+#    title: ?
+#    giving: ?
+#    receiving: ?
+
 ### end of cleanup ###
 
 manage:

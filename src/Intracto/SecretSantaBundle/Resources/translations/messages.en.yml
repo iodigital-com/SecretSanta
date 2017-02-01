@@ -186,6 +186,12 @@ helper-prototype_wishlist:
         update_item: Update this item
         remove_item: Remove
 
+# Entry/exposeAll.html.twig
+entry-expose_all:
+    title: Secret Santa Mailing List Matches
+    giving: This member is giving ...
+    receiving: ... a gift to this member
+
 ### end of cleanup ###
 
 manage:
@@ -235,10 +241,7 @@ entry:
     wishlist_empty: Your wishlist is empty. Add something!
     watch_out: Watch out
     modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
-    exposed:
-      title: Secret Santa Mailing List Matches
-      giving: This member is giving ...
-      receiving: ... a gift to this member
+
 poke:
     poke: Poke
     poke_sentence: your buddy to let him/her know their wishlist is empty.

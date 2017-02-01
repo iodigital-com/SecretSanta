@@ -114,6 +114,12 @@ helper-prototype_wishlist:
         update_item: Actualizar este elemento
         remove_item: Quitar
 
+# Entry/exposeAll.html.twig
+entry-expose_all:
+    title: Secret Santa Mailing List Matches
+    giving: This member is giving ...
+    receiving: ... a gift to this member
+
 ### end of cleanup ###
 
 manage:

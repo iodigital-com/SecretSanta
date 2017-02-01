@@ -98,6 +98,12 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: Usuń pozycję
 
+# Entry/exposeAll.html.twig
+entry-expose_all:
+    title: Dopasowania na liście Tajnych Mikołajów
+    giving: Ten uczestnik podaruje...
+    receiving: ... prezent dla tego uczestnika
+
 ### end of cleanup ###
 
 manage:
@@ -129,10 +135,6 @@ entry:
         title: Twoja lista życzeń
         description: Aby pomóc Tajnemu Mikołajowi możesz zostawić tu listę życzeń. Nasze skrzaty przekażą wszystko Tajnemu Mikołajowi. Możesz zmienić kolejność rzeczy na liście przenosząc je z miejsca na miejsce.
     wishlist_empty: Twoja lista życzeń jest pusta. Dodaj coś!
-    exposed:
-        title: Dopasowania na liście Tajnych Mikołajów
-        giving: Ten uczestnik podaruje...
-        receiving: ... prezent dla tego uczestnika
 
 label:
     name: Imię

@@ -173,6 +173,12 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: Eliminar este item
 
+# Entry/exposeAll.html.twig
+entry-expose_all:
+      title: Combinações do Amigo Secreto
+      giving:  Este participante é o Papai Noel de ...
+#      receiving: ?
+
 ### end of cleanup ###
 
 manage:
@@ -217,10 +223,6 @@ entry:
         title: Sua lista de desejos
         description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
     wishlist_empty: A sua lista de desejos está vazia. Adicione algo!
-    exposed:
-      title: Combinações do Amigo Secreto
-      giving:  Este participante é o Papai Noel de ...
-      receiving: ...
 
 label:
     name: Nome

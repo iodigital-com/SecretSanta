@@ -116,6 +116,12 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: Diesen Gegenstand entfernen
 
+# Entry/exposeAll.html.twig
+entry-expose_all:
+    title: Treffer des Secret Santa-Mail-Verteilers
+    giving: Dieses Mitglied gibt....
+    receiving: ... diesem Mitglied ein Geschenk
+
 ### end of cleanup ###
 
 manage:
@@ -162,10 +168,6 @@ entry:
         title: Ihr Wunschzettel
         description: Um Ihrem Secret Santa zu helfen, können Sie hier einen Wunschzettel hinterlegen. Unsere Wichtel kümmern sich darum, diese Ihrem Secret Santa mitzuteilen. Sie können die Liste neu sortieren, indem Sie die Bestandteile an deren Platz ziehen.
     wishlist_empty: Ihr Wunschzettel ist leer. Fügen Sie etwas hinzu!
-    exposed:
-        title: Treffer des Secret Santa-Mail-Verteilers
-        giving: Dieses Mitglied gibt....
-        receiving: ... diesem Mitglied ein Geschenk
 
 label:
     name: Name
