@@ -15,13 +15,13 @@
 {% endblock %}
 {% block header %}
     <div class="steps">
-        <h2>{{ 'entry.headers.title'|trans|raw }}</h2>
+        <h2>{{ 'entry_show.headers.title'|trans|raw }}</h2>
         <ul class="liststyle1">
-            <li><strong>{{ 'entry.headers.date'|trans }} </strong> {{ entry.pool.eventdate|localizeddate('medium', 'none') }}</li>
-            <li><strong>{{ 'entry.headers.location'|trans }}</strong> {{ entry.pool.location }}</li>
-            <li><strong>{{ 'entry.headers.amount'|trans }} </strong> {{ entry.pool.amount }}</li>
-            <li><strong>{{ 'entry.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
-            <li><strong>{{ 'entry.headers.person_created_list'|trans }} </strong> <span data-hj-masked>{{ entry.pool.entries|first.email }}</span>
+            <li><strong>{{ 'entry_show.headers.date'|trans }} </strong> {{ entry.pool.eventdate|localizeddate('medium', 'none') }}</li>
+            <li><strong>{{ 'entry_show.headers.location'|trans }}</strong> {{ entry.pool.location }}</li>
+            <li><strong>{{ 'entry_show.headers.amount'|trans }} </strong> {{ entry.pool.amount }}</li>
+            <li><strong>{{ 'entry_show.headers.num_people'|trans }} </strong> {{ entry.pool.entries|length }}</li>
+            <li><strong>{{ 'entry_show.headers.person_created_list'|trans }} </strong> <span data-hj-masked>{{ entry.pool.entries|first.email }}</span>
         </ul>
     </div>
 {% endblock %}
@@ -29,22 +29,24 @@
     <div class="box">
         <div class="row">
             <div class="span8">
-                <h1>{{ 'entry.title'|trans }}</h1>
+                <h1>{{ 'entry_show.entry.title'|trans }}</h1>
 
-                {{ 'entry.body'|trans({'%name%': entry.name})|raw }}
+                {{ 'entry_show.entry.body'|trans({'%name%': entry.name})|raw }}
 
                 <div class="yoursecretsant" data-hj-masked>
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
                 </div>
 
                 <div class="alert alert-warning">
-                    <strong>{{ 'entry.watch_out'|trans }}</strong> {{ 'entry.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
+                    <strong>{{ 'entry_show.entry.watch_out'|trans }}</strong> {{ 'entry_show.entry.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
                 </div>
 
                 <div class="well bottom-spacer">
-                    <h4 data-hj-masked>{{ 'entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
+                    <h4 data-hj-masked>{{ 'entry_show.entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
                     {% if(secret_santa.wishlistitems|length == 0) %}
-                        {{ 'entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}. <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'poke.poke'|trans }}</a> {{ 'poke.poke_sentence'|trans|raw }}
+                        {{ 'entry_show.entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
+                        <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'entry_show.poke.poke'|trans }}</a>
+                        {{ 'entry_show.poke.poke_sentence'|trans|raw }}
                     {% else %}
                         <ul class="wishlist">
                             {% for item in secret_santa.wishlistitems %}
@@ -52,7 +54,7 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20" target="_blank" rel="noopener noreferrer">{{ 'buy_from_amazon'|trans }}</a></b>
+                    <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20" target="_blank" rel="noopener noreferrer">{{ 'entry_show.buy_from_amazon'|trans }}</a></b>
                 </div>
             </div>
         </div>
@@ -88,24 +90,24 @@
             </div>
         </div>
 
-        <h1>{{ 'entry.wishlist.title'|trans }}</h1>
+        <h1>{{ 'entry_show.wishlist.title'|trans }}</h1>
 
         <p>
 
-        <div class="description">{{ 'entry.wishlist.description'|trans|raw }}</div>
+        <div class="description">{{ 'entry_show.wishlist.description'|trans|raw }}</div>
 
         <div class="box ajax-response">
             <div class="alert alert-warning empty" style="display:none;">
-                <div>{{ 'flashes.wishlist.empty_row'|trans|raw }}</div>
+                <div>{{ 'entry_show.flashes.wishlist.empty_row'|trans|raw }}</div>
             </div>
             <div class="alert alert-success added" style="display:none;">
-                <div>{{ 'flashes.wishlist.added'|trans|raw }}</div>
+                <div>{{ 'entry_show.flashes.wishlist.added'|trans|raw }}</div>
             </div>
             <div class="alert alert-success updated" style="display:none;">
-                <div>{{ 'flashes.wishlist.updated'|trans|raw }}</div>
+                <div>{{ 'entry_show.flashes.wishlist.updated'|trans|raw }}</div>
             </div>
             <div class="alert alert-success removed" style="display:none;">
-                <div>{{ 'flashes.wishlist.removed'|trans|raw }}</div>
+                <div>{{ 'entry_show.flashes.wishlist.removed'|trans|raw }}</div>
             </div>
         </div>
         <p>
@@ -115,10 +117,10 @@
                 <thead>
                 <tr>
                     <th class="col-xs-1 entry-number-header">#</th>
-                    <th class="col-xs-7 col-sm-6">{{ 'label.description'|trans }}</th>
+                    <th class="col-xs-7 col-sm-6">{{ 'entry_show.label.description'|trans }}</th>
                     <th style="text-align: right;" class="col-xs-4 col-sm-5">
                         <button type="button" class="btn btn-mini btn-success add-new-entry">
-                            <i class="fa fa-plus-circle"></i> <span class="text_remove_wishlist">{{ 'btn.add_wishlist'|trans }}</span>
+                            <i class="fa fa-plus-circle"></i> <span class="text_remove_wishlist">{{ 'entry_show.btn.add_wishlist'|trans }}</span>
                         </button>
                     </th>
                 </tr>
@@ -126,7 +128,7 @@
                 <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
                 {% if form.wishlistItems |length == 0 %}
                     <tr class="noitems">
-                        <td colspan="3">{{ 'entry.wishlist_empty'|trans }}</td>
+                        <td colspan="3">{{ 'entry_show.wishlist.empty'|trans }}</td>
                     </tr>
                 {% else %}
                     {% for item in form.wishlistItems %}
@@ -135,10 +137,10 @@
                             <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
                             <td style="text-align: right;">
                                 <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
-                                    <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'btn.update_item'|trans }}</span>
+                                    <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'entry_show.btn.update_item'|trans }}</span>
                                 </button>
                                 <button type="button" class="btn btn-mini btn-danger remove-entry">
-                                    <i class="fa fa-times-circle"></i> <span class="text_remove_wishlist">{{ 'btn.remove_item'|trans }}</span>
+                                    <i class="fa fa-times-circle"></i> <span class="text_remove_wishlist">{{ 'entry_show.btn.remove_item'|trans }}</span>
                                 </button>
                             </td>
                         </tr>

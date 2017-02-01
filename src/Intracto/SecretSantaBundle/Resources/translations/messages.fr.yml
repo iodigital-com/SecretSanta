@@ -175,6 +175,50 @@ entry-expose_all:
     giving: Ce membre donne ...
     receiving: ... un cadeau à ce membre
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Détails de votre <span class="accent">Secret Santa party</span>
+        date: Date
+        location: Lieu
+        amount: Montant
+        num_people: Nombre de personnes
+        person_created_list: Créateur de la liste
+    entry:
+        title: Personne désignée
+        body: >
+            <p>Bonjour %name%,</p>
+            <p>En tant que Père-Noël secret, vous devez distribuer un cadeau à:</p>
+        watch_out: Attention
+        modify_list: L'organisateur de cette fête peut ajouter ou supprimer des personnes jusqu'à %oneWeekFromEventDate%, cela veut dire que vous pouvez encore être assigné à un autre copain Secret Santa. Peut-être qu'il serait mieux d’attendre que vous soyez sûr que votre copain actuel soit vraiment votre copain Secret Santa avant de lui acheter un cadeau.
+        wishlist_from: Liste de souhaits de %name%
+        wishlist_not_provided: %name% n'a pas encore publié de liste de souhaits
+    poke:
+        poke: Poke
+        poke_sentence: Votre copain Secret Santa de remplir leur liste de souhaits.
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: Votre liste de souhaits
+        description: Afin d'aider votre Père-Noël secret, vous pouvez laisser une liste de souhaits ici. Nos gnomes prendront soin de la communiquer à votre Père-Noël secret. Vous pouvez réorganiser la liste en faisant glisser les éléments.
+        empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Veuillez supprimer la ligne vide avant de continuer.
+            added: <h4>Ajouté!</h4> L'Article a été ajouté &agrave; votre liste de souhaits avec succès.
+            updated: <h4>Mis &agrave; jour!</h4> L'article a été mis &agrave; jour avec succ&egrave;s.
+            removed: <h4>Supprimé!</h4> L'article a été supprimé de votre liste de souhaits avec succ&egrave;s.
+
+    label:
+        description: Déscription
+
+    btn:
+        add_wishlist: Ajouter un objet à ma liste de souhaits
+        update_item: Actualiser cet object
+        remove_item: Supprimer
+
 ### end of cleanup ###
 
 manage:
@@ -209,24 +253,7 @@ entry:
         date: Date
         location: Lieu
         amount: Montant
-        num_people: Nombre de personnes
-        person_created_list: Créateur de la liste
-    title: Personne désignée
-    body: >
-        <p>Bonjour %name%,</p>
-        <p>En tant que Père-Noël secret, vous devez distribuer un cadeau à:</p>
-    wishlist_from: Liste de souhaits de %name%
-    wishlist_not_provided: %name% n'a pas encore publié de liste de souhaits
-    wishlist:
-        title: Votre liste de souhaits
-        description: Afin d'aider votre Père-Noël secret, vous pouvez laisser une liste de souhaits ici. Nos gnomes prendront soin de la communiquer à votre Père-Noël secret. Vous pouvez réorganiser la liste en faisant glisser les éléments.
-    wishlist_empty: Votre liste de souhaits est vide. Ajoutez quelque chose !
-    watch_out: Attention
-    modify_list: L'organisateur de cette fête peut ajouter ou supprimer des personnes jusqu'à %oneWeekFromEventDate%, cela veut dire que vous pouvez encore être assigné à un autre copain Secret Santa. Peut-être qu'il serait mieux d’attendre que vous soyez sûr que votre copain actuel soit vraiment votre copain Secret Santa avant de lui acheter un cadeau.
 
-poke:
-    poke: Poke
-    poke_sentence: Votre copain Secret Santa de remplir leur liste de souhaits.
 add_participant:
     title: Ajoutez un nouveau participant à la f&ecirc;te
     body: >
@@ -257,14 +284,10 @@ label:
     location: Lieu
     confirmed: Confirmés
     actions: Actions
-    description: Déscription
     items: Cadeaux souhaités
 btn:
     delete_list: Supprimer ma liste Secret Santa
     delete_confirm: J'ai compris les conséquences, supprimer ma liste Secret Santa maintenant
-    add_wishlist: Ajouter un objet à ma liste de souhaits
-    update_item: Actualiser cet object
-    remove_item: Supprimer
     update_wishlist: Mettre à jour votre liste de souhaits
     pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
     add_participant: Ajouter un participant à la f&ecirc;te
@@ -425,11 +448,6 @@ flashes:
     add_participant:
         success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
         danger: <h4>Oops</h4> Une erreur s'est produite lors de l'ajout du participant. Veuillez essayer à nouveau.
-    wishlist:
-        empty_row: <h4>Oops</h4> Veuillez supprimer la ligne vide avant de continuer.
-        added: <h4>Ajouté!</h4> L'Article a été ajouté &agrave; votre liste de souhaits avec succès.
-        updated: <h4>Mis &agrave; jour!</h4> L'article a été mis &agrave; jour avec succ&egrave;s.
-        removed: <h4>Supprimé!</h4> L'article a été supprimé de votre liste de souhaits avec succ&egrave;s.
     updated_party:
         success: <h4>Mis &agrave; jour!</h4> Les détails ont été mis &agrave; jour avec succ&egrave;s.
         danger: <h4>Oops</h4> Une erreur s'est produite lors de la mise &agrave; jour de votre f&ecirc;te. Veuillez essayer à nouveau.

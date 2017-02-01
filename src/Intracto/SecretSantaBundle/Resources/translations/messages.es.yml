@@ -120,6 +120,50 @@ entry-expose_all:
     giving: This member is giving ...
     receiving: ... a gift to this member
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
+        date: Fecha
+        location: Sitio
+        amount: Cantidad
+        num_people: Número de personas
+        person_created_list: Persona que creó esta lista
+    entry:
+        title: Tu amigo asignado
+        body: >
+            <p>Hola %name%,</p>
+            <p>Se te ha asignado como Secret Santa para entregar un regalo a:</p>
+        watch_out: Atención
+        modify_list: El organizador de esta fiesta puede añadir o expulsar personas de esta fiesta hasta %oneWeekFromEventDate%, tiene en cuenta sus acciones pueden causar que tu estará assignado a otro amigote Secret Santa. Quizás es mejor esperar comprar un regalo hasta que estes completamente seguro de que este amigote está vuestro amigote Secret Santa de seguro.
+        wishlist_from: Lista de deseos de %name%
+        wishlist_not_provided: %name% aún no ha facilitado una lista de deseos
+    poke:
+        poke: Empuja
+        poke_sentence: tu amigote para avisarla que su lista de deseos est&aacute; vac&iacute;a.
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: Tu lista de deseos
+        description: Para ayudar a tu Secret Santa, puedes dejar una lista de deseos aquí. Nuestros gnomos se encargarán de comunicársela a tu Secret Santa. Puedes reordenar la lista moviendo los elementos hacia el lugar adecuado.
+        empty: Tu lista de deseos está vacía. ¡Añade algo!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Expulsa la fila vac&iacute;a antes de progresar por favor.
+            added: <h4>¡A&ntilde;adido!</h4> L'art&iacute;culo ha sido a&ntilde;adido a tu lista de deseos.
+            updated: <h4>¡Actualizado!</h4> L'art&iacute;culo ha sido actualizado de &eacute;xito.
+            removed: <h4>¡Expulsado!</h4> L'art&iacute;culo ha sido expulsado de tu lista de deseos de &eacute;xito.
+
+    label:
+        description: Descripción
+
+    btn:
+        add_wishlist: Añadir elemento a lista de deseos
+        update_item: Actualizar este elemento
+        remove_item: Quitar
+
 ### end of cleanup ###
 
 manage:
@@ -155,27 +199,10 @@ entry:
         date: Fecha
         location: Sitio
         amount: Cantidad
-        num_people: Número de personas
-        person_created_list: Persona que creó esta lista
-    title: Tu amigo asignado
-    body: >
-        <p>Hola %name%,</p>
-        <p>Se te ha asignado como Secret Santa para entregar un regalo a:</p>
-    wishlist_from: Lista de deseos de %name%
-    wishlist_not_provided: %name% aún no ha facilitado una lista de deseos
-    wishlist:
-        title: Tu lista de deseos
-        description: Para ayudar a tu Secret Santa, puedes dejar una lista de deseos aquí. Nuestros gnomos se encargarán de comunicársela a tu Secret Santa. Puedes reordenar la lista moviendo los elementos hacia el lugar adecuado.
-    wishlist_empty: Tu lista de deseos está vacía. ¡Añade algo!
-    watch_out: Atención
-    modify_list: El organizador de esta fiesta puede añadir o expulsar personas de esta fiesta hasta %oneWeekFromEventDate%, tiene en cuenta sus acciones pueden causar que tu estará assignado a otro amigote Secret Santa. Quizás es mejor esperar comprar un regalo hasta que estes completamente seguro de que este amigote está vuestro amigote Secret Santa de seguro.
     exposed:
         title: Atribuciones Lista de Correos Secret Santa
         giving: Este miembro está dando ...
         receiving: ... un regalo a este miembro
-poke:
-    poke: Empuja
-    poke_sentence: tu amigote para avisarla que su lista de deseos est&aacute; vac&iacute;a.
 add_participant:
     title: A&ntilde;adir un nuevo participante a tu fiesta
     body: >
@@ -214,15 +241,11 @@ label:
     location: Sitio de tu fiesta Secret Santa
     confirmed: Confirmado
     actions: Acciones
-    description: Descripción
     wishlist_filled: Lista de deseos insertado
     items: Regalos deseados
 btn:
     delete_list: Borrar mi lista Secret Santa
     delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
-    add_wishlist: Añadir elemento a lista de deseos
-    update_item: Actualizar este elemento
-    remove_item: Quitar
     update_wishlist: Actualizar tu lista de deseos
     pool_update: Envia una actualizaci&oacute;n a los participantes
     add_participant: A&ntilde;adir un participante a la fiesta
@@ -393,11 +416,6 @@ flashes:
         danger: <h4>Oops</h4> Ha ocurrido un error al a&ntilde;adir el participante. Por favor, inténtalo otra vez.
     modify_list:
         warning: <h4>Oops</h4> Parece que tu fiesta de Santa Secreto está en menos de una semana, no se puede añadir o eliminar participantes más.
-    wishlist:
-        empty_row: <h4>Oops</h4> Expulsa la fila vac&iacute;a antes de progresar por favor.
-        added: <h4>¡A&ntilde;adido!</h4> L'art&iacute;culo ha sido a&ntilde;adido a tu lista de deseos.
-        updated: <h4>¡Actualizado!</h4> L'art&iacute;culo ha sido actualizado de &eacute;xito.
-        removed: <h4>¡Expulsado!</h4> L'art&iacute;culo ha sido expulsado de tu lista de deseos de &eacute;xito.
     updated_party:
         success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
         danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.

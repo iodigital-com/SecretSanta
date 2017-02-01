@@ -18,9 +18,9 @@ class EntryController extends Controller
 {
     /**
      * @Route("/entry/{url}", name="entry_view")
-     * @Template("IntractoSecretSantaBundle:Entry:index.html.twig")
+     * @Template("IntractoSecretSantaBundle:Entry:show.html.twig")
      */
-    public function indexAction(Request $request, $url)
+    public function showAction(Request $request, $url)
     {
         $entry = $this->get('entry_repository')->findOneByUrl($url);
         if ($entry === null) {

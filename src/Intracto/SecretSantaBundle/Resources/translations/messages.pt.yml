@@ -179,6 +179,50 @@ entry-expose_all:
       giving:  Este participante é o Papai Noel de ...
 #      receiving: ?
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Detalhes da sua <span class="accent">festa Secret Santa</span>
+        date: Data
+#        location: ?
+        amount: Valor
+        num_people: Número de participantes
+        person_created_list: Proprietário desta lista
+    entry:
+        title: Seu Amigo Secreto
+        body: >
+            <p>Olá %name%,</p>
+            <p>Seu Amigo Secreto é:</p>
+#        watch_out: ?
+#        modify_list: ?
+        wishlist_from: Lista de desejos de %name%
+        wishlist_not_provided: %name% ainda não montou uma lista de desejos
+#    poke:
+#        poke: ?
+#        poke_sentence: ?
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: Sua lista de desejos
+        description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
+        empty: A sua lista de desejos está vazia. Adicione algo!
+
+#    flashes:
+#        wishlist:
+#            empty_row: ?
+#            added: ?
+#            updated: ?
+#            removed: ?
+
+    label:
+        description: Descrição
+
+    btn:
+        add_wishlist: Adicione um item a lista do Secret Santa
+        update_wishlist: Atualizar minha lista de desejos
+        remove_item: Eliminar este item
+
 ### end of cleanup ###
 
 manage:
@@ -211,18 +255,6 @@ entry:
         title: Detalhes da sua <span class="accent">festa Secret Santa</span>
         date: Data
         amount: Valor
-        num_people: Número de participantes
-        person_created_list: Proprietário desta lista
-    title: Seu Amigo Secreto
-    body: >
-        <p>Olá %name%,</p>
-        <p>Seu Amigo Secreto é:</p>
-    wishlist_from: Lista de desejos de %name%
-    wishlist_not_provided: %name% ainda não montou uma lista de desejos
-    wishlist:
-        title: Sua lista de desejos
-        description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
-    wishlist_empty: A sua lista de desejos está vazia. Adicione algo!
 
 label:
     name: Nome
@@ -231,13 +263,9 @@ label:
     amount_to_spend: Valor máximo a gastar
     confirmed: Confirmado
     actions: Ações
-    description: Descrição
 btn:
     delete_list: Eliminar minha lista do Secret Santa
     delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa
-    add_wishlist: Adicione um item a lista do Secret Santa
-    remove_item: Eliminar este item
-    update_wishlist: Atualizar minha lista de desejos
     cancel: Cancelar
 
 emails:

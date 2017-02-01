@@ -192,6 +192,50 @@ helper-prototype_wishlist:
 #    giving: ?
 #    receiving: ?
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Ditt<span class="accent">Secret Santa-selskap</span> med detaljer
+        date: Date
+        location: Sted
+        amount: Beløp
+        num_people: Antall personer
+        person_created_list: Administrator
+    entry:
+        title: Du har fått tildelt følgende nisse
+        body: >
+            <p>Hi %name%,</p>
+            <p>Du skal være hemmelig julenisse for:</p>
+        watch_out: Watch out
+        modify_list: Administrator kan legge til eller slette deltagere fram til %oneWeekFromEventDate%, husk at det er en mulighet for at dette vil gi deg en ny person å være julenisse for. Det kan være lurt å vente med å kjøpe gave til du er helt sikker på hvem du får tildelt å kjøpe gave til.
+        wishlist_from: Ønskeliste fra %name%
+        wishlist_not_provided: %name% har ikke lagt inn sin ønskeliste ennå
+    poke:
+        poke: Dytt på
+        poke_sentence: vennen din for å gjøre han/hun klar over at ønskelisten deres er tom.
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: Din ønskeliste
+        description: For å hjelpe din julenisse med å handle gave til deg, kan du skrive inn din ønskeliste her. Våre troll og smånisser vil sende ønskelisten til julenissen din. Du kan omarrangere på listen din ved å dra og slippe ønskene dine.
+        empty: Your wishlist is empty. Add something!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Vennligst fjern den tomme kolonnen før du går videre.
+            added: <h4>Added!</h4> Ønsket lagt til i listen din.
+            updated: <h4>Updated!</h4> Ønsket ditt er oppdatert.
+            removed: <h4>Deleted!</h4> Ønsket er fjernet fra listen din.
+
+    label:
+        description: Beskrivelse
+
+    btn:
+        add_wishlist: Legg til i ønskelisten
+        update_item: Oppdater
+        remove_item: Fjern
+
 ### end of cleanup ###
 
 manage:
@@ -255,27 +299,6 @@ entry:
         date: Date
         location: Sted
         amount: Beløp
-        num_people: Antall personer
-        person_created_list: Administrator
-        exposed: Administratoren kjenner til deltager-kombinasjonene
-        not_exposed: Administrator kjenner ikke til deltager-kombinasjonene
-        wishlists_exposed: Administrator kjenner til alles ønskelister
-        wishlists_not_exposed: Administrator kjenner ikke til alles ønskelister
-    title: Du har fått tildelt følgende nisse
-    body: >
-        <p>Hi %name%,</p>
-        <p>Du skal være hemmelig julenisse for:</p>
-    wishlist_from: Ønskeliste fra %name%
-    wishlist_not_provided: %name% har ikke lagt inn sin ønskeliste ennå
-    wishlist:
-        title: Din ønskeliste
-        description: For å hjelpe din julenisse med å handle gave til deg, kan du skrive inn din ønskeliste her. Våre troll og smånisser vil sende ønskelisten til julenissen din. Du kan omarrangere på listen din ved å dra og slippe ønskene dine.
-    wishlist_empty: Your wishlist is empty. Add something!
-    watch_out: Watch out
-    modify_list: Administrator kan legge til eller slette deltagere fram til %oneWeekFromEventDate%, husk at det er en mulighet for at dette vil gi deg en ny person å være julenisse for. Det kan være lurt å vente med å kjøpe gave til du er helt sikker på hvem du får tildelt å kjøpe gave til.
-poke:
-    poke: Dytt på
-    poke_sentence: vennen din for å gjøre han/hun klar over at ønskelisten deres er tom.
 add_participant:
     title: Legg til deltagere til festen
     body: >
@@ -314,15 +337,11 @@ label:
     location: Sted
     confirmed: Bekreftet
     actions: Valg
-    description: Beskrivelse
     wishlist_filled: Ønskeliste lagt inn
     items: Ønsker på ønskelisten
 btn:
     delete_list: Slett min Secret Santa-liste
     delete_confirm: Jeg har forstått konsekvensene, slett min liste
-    add_wishlist: Legg til i ønskelisten
-    update_item: Oppdater
-    remove_item: Fjern
     update_wishlist: Oppdater min ønskeliste
     expose: Send meg alle kombinasjonene
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
@@ -521,12 +540,6 @@ flashes:
         danger: <h4>Oops</h4> En feil oppstod da du ville legge til denne deltageren. Vennligst prøv igjen.
     modify_list:
         warning: <h4>Oops</h4> Det ser ut til at arrangementet ditt skal holdes om mindre enn en uke, da er det for sent å fjerne deltagere nå!
-    wishlist:
-        empty_row: <h4>Oops</h4> Vennligst fjern den tomme kolonnen før du går videre.
-        added: <h4>Added!</h4> Ønsket lagt til i listen din.
-        updated: <h4>Updated!</h4> Ønsket ditt er oppdatert.
-        removed: <h4>Deleted!</h4> Ønsket er fjernet fra listen din.
     updated_party:
         success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
         danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
-buy_from_amazon: What are the most wished for items?

@@ -122,6 +122,51 @@ entry-expose_all:
     giving: Dieses Mitglied gibt....
     receiving: ... diesem Mitglied ein Geschenk
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Ihre <span class="accent">Secret Santa-Party</span> Details
+        date: Datum
+        location: Platz
+        amount: Betrag
+        locatie: Platz
+        num_people: Anzahl Teilnehmer
+        person_created_list: Person, die die Liste erstellt hat
+    entry:
+        title: Der Ihnen zugeordnete Partner
+        body: >
+            <p>Hi %name%,</p>
+            <p>Sie wurden als Secret Santa eingeteilt, dieser Person ein Geschenk zu machen:</p>
+#        watch_out: ?
+#        modify_list: ?
+        wishlist_from: Wunschzettel von %name%
+        wishlist_not_provided: %name% hat noch keinen Wunschzettel geschrieben
+#    poke:
+#        poke:
+#        poke_sentence:
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: Ihr Wunschzettel
+        description: Um Ihrem Secret Santa zu helfen, können Sie hier einen Wunschzettel hinterlegen. Unsere Wichtel kümmern sich darum, diese Ihrem Secret Santa mitzuteilen. Sie können die Liste neu sortieren, indem Sie die Bestandteile an deren Platz ziehen.
+        empty: Ihr Wunschzettel ist leer. Fügen Sie etwas hinzu!
+
+#    flashes:
+#        wishlist:
+#            empty_row: ?
+#            added: ?
+#            updated: ?
+#            removed: ?
+
+    label:
+        description: Beschreibung
+
+    btn:
+        add_wishlist: Dem Wunschzettel einen Gegenstand hinzufügen
+        update_wishlist: Aktualisieren Sie Ihren Wunschzettel
+        remove_item: Diesen Gegenstand entfernen
+
 ### end of cleanup ###
 
 manage:
@@ -156,18 +201,6 @@ entry:
         location: Platz
         amount: Betrag
         locatie: Platz
-        num_people: Anzahl Teilnehmer
-        person_created_list: Person, die die Liste erstellt hat
-    title: Der Ihnen zugeordnete Partner
-    body: >
-        <p>Hi %name%,</p>
-        <p>Sie wurden als Secret Santa eingeteilt, dieser Person ein Geschenk zu machen:</p>
-    wishlist_from: Wunschzettel von %name%
-    wishlist_not_provided: %name% hat noch keinen Wunschzettel geschrieben
-    wishlist:
-        title: Ihr Wunschzettel
-        description: Um Ihrem Secret Santa zu helfen, können Sie hier einen Wunschzettel hinterlegen. Unsere Wichtel kümmern sich darum, diese Ihrem Secret Santa mitzuteilen. Sie können die Liste neu sortieren, indem Sie die Bestandteile an deren Platz ziehen.
-    wishlist_empty: Ihr Wunschzettel ist leer. Fügen Sie etwas hinzu!
 
 label:
     name: Name
@@ -176,14 +209,10 @@ label:
     amount_to_spend: Auszugebender Betrag
     location: Platz von Ihrer Secret Santa-Party
     confirmed: Bestätigt
-    actions: Aktionen 
-    description: Beschreibung
+    actions: Aktionen
 btn:
     delete_list: Meine Secret Santa-Liste löschen
     delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
-    add_wishlist: Dem Wunschzettel einen Gegenstand hinzufügen
-    remove_item: Diesen Gegenstand entfernen
-    update_wishlist: Aktualisieren Sie Ihren Wunschzettel
     cancel: Löschen
 
 emails:

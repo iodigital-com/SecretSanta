@@ -190,6 +190,50 @@ entry-expose_all:
     giving: Dit lid geeft ...
     receiving: ... een cadeau aan dit lid
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Jouw <span class="accent">Secret Santa party</span> details
+        date: Datum
+        location: Locatie
+        amount: Bedrag
+        num_people: Aantal mensen
+        person_created_list: Persoon die deze lijst samenstelde
+    entry:
+        title: Jouw toegewezen maatje
+        body: >
+            <p>Hey %name%,</p>
+            <p>Je bent toegewezen als Secret Santa aan:</p>
+        watch_out: Opgelet
+        modify_list: The organisator van dit feestje kan mensen toevoegen en verwijderen tot en met %oneWeekFromEventDate%, hou er rekening mee dat dit ervoor zou kunnen zorgen dat je alsnog een ander maatje krijgt toegewezen. Misschien wacht je beter met het kopen van een cadeautje totdat je er zeker van bent dat dit effectief jouw Secret Santa maatje is.
+        wishlist_from: Verlanglijst van %name%
+        wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
+    poke:
+        poke: Por
+        poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
+
+    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
+
+    wishlist:
+        title: Jouw verlanglijstje
+        description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
+        empty: Je verlanglijst is leeg. Voeg iets toe!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Gelieve de lege rij te verwijderen vooraleer verder te gaan.
+            added: <h4>Toegevoegd!</h4> Jouw wens is succesvol toegevoegd aan jouw wenslijst.
+            updated: <h4>Aangepast!</h4> Jouw wens is succesvol aangepast.
+            removed: <h4>Verwijderd!</h4> Jouw wens is succesvol verwijderd uit jouw wenslijst.
+
+    label:
+        description: Beschrijving
+
+    btn:
+        add_wishlist: Voeg item toe aan verlanglijst
+        update_item: Update dit item
+        remove_item: Verwijder
+
 ### end of cleanup ###
 
 manage:
@@ -226,24 +270,7 @@ entry:
         date: Datum
         location: Locatie
         amount: Bedrag
-        num_people: Aantal mensen
-        person_created_list: Persoon die deze lijst samenstelde
-    title: Jouw toegewezen maatje
-    body: >
-        <p>Hey %name%,</p>
-        <p>Je bent toegewezen als Secret Santa aan:</p>
-    wishlist_from: Verlanglijst van %name%
-    wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
-    wishlist:
-        title: Jouw verlanglijstje
-        description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
-    wishlist_empty: Je verlanglijst is leeg. Voeg iets toe!
-    watch_out: Opgelet
-    modify_list: The organisator van dit feestje kan mensen toevoegen en verwijderen tot en met %oneWeekFromEventDate%, hou er rekening mee dat dit ervoor zou kunnen zorgen dat je alsnog een ander maatje krijgt toegewezen. Misschien wacht je beter met het kopen van een cadeautje totdat je er zeker van bent dat dit effectief jouw Secret Santa maatje is.
 
-poke:
-    poke: Por
-    poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
 add_participant:
     title: Voeg een deelnemer toe aan je feestje
     body: >
@@ -282,15 +309,11 @@ label:
     location: Locatie van jouw Secret Santa feest
     confirmed: Bevestigd
     actions: Acties
-    description: Beschrijving
     wishlist_filled: Wish List Ingevuld
     items: Gewenste verrassingen
 btn:
     delete_list: Verwijder mijn Secret Santa lijst
     delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
-    add_wishlist: Voeg item toe aan verlanglijst
-    update_item: Update dit item
-    remove_item: Verwijder
     update_wishlist: Update je verlanglijst
     expose: Bekijk alle koppelingen in deze lijst
     expose_wishlists: Bekijk alle verlanglijstjes
@@ -459,11 +482,6 @@ flashes:
     add_participant:
         success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
         danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
-    wishlist:
-        empty_row: <h4>Oops</h4> Gelieve de lege rij te verwijderen vooraleer verder te gaan.
-        added: <h4>Toegevoegd!</h4> Jouw wens is succesvol toegevoegd aan jouw wenslijst.
-        updated: <h4>Aangepast!</h4> Jouw wens is succesvol aangepast.
-        removed: <h4>Verwijderd!</h4> Jouw wens is succesvol verwijderd uit jouw wenslijst.
     updated_party:
         success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
         danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.

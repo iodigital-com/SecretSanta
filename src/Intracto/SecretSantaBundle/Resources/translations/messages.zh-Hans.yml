@@ -114,6 +114,50 @@ helper-prototype_wishlist:
 #    giving: ?
 #    receiving: ?
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
+        date: 日期
+#        location: ?
+        amount: 数量
+        num_people: 人员数目
+        person_created_list: 名单创建者
+    entry:
+        title: 你的分配密友
+        body: >
+            <p>你好%name%,</p>
+            <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
+#        watch_out: ?
+#        modify_list: ?
+        wishlist_from: 愿望清单来自 %name%
+        wishlist_not_provided: %name%尚未提供愿望清单
+#    poke:
+#        poke: ?
+#        poke_sentence: ?
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: 你的愿望清单
+        description: 你可以在这留下一个愿望清单，以帮助你的秘密圣诞老人。我们的小矮人将会把这个传达到你的秘密圣诞老人那。你可以拖动项目条对物品进行重新排序。
+        empty: 你的愿望清单是空的。请添加东西！
+
+#    flashes:
+#        wishlist:
+#            empty_row: ?
+#            added: ?
+#            updated: ?
+#            removed: ?
+
+    label:
+        description: 描述
+
+    btn:
+        add_wishlist: 添加物品到愿望清单
+        update_wishlist: 更新你的愿望清单
+        remove_item: 删除这个物品
+
 ### end of cleanup ###
 
 manage:
@@ -146,18 +190,6 @@ entry:
         title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
         date: 日期
         amount: 数量
-        num_people: 人员数目
-        person_created_list: 名单创建者
-    title: 你的分配密友
-    body: >
-        <p>你好%name%,</p>
-        <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
-    wishlist_from: 愿望清单来自 %name%
-    wishlist_not_provided: %name%尚未提供愿望清单
-    wishlist:
-        title: 你的愿望清单
-        description: 你可以在这留下一个愿望清单，以帮助你的秘密圣诞老人。我们的小矮人将会把这个传达到你的秘密圣诞老人那。你可以拖动项目条对物品进行重新排序。
-    wishlist_empty: 你的愿望清单是空的。请添加东西！
 
 label:
     name: 名字
@@ -166,14 +198,9 @@ label:
     amount_to_spend: 消费金额
     confirmed: 确认
     actions: 作用
-    description: 描述
 btn:
     delete_list: 删除我的秘密圣诞老人名单
     delete_confirm: 我知道后果，现在删除我的秘密圣诞老人名单
-    add_wishlist: 添加物品到愿望清单
-    remove_item: 删除这个物品
-    update_wishlist: 更新你的愿望清单
-    update_wishlist: 更新你的愿望清单
     cancel: 取消
 
 emails:

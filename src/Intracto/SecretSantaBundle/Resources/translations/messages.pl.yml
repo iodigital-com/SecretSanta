@@ -104,6 +104,48 @@ entry-expose_all:
     giving: Ten uczestnik podaruje...
     receiving: ... prezent dla tego uczestnika
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
+        date: Data
+#        location: ?
+        amount: Ilość
+        num_people: Liczba osób
+        person_created_list: Osoba która utworzyła tę listę
+    entry:
+        title: Osoba, którą masz obdarować
+        body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
+#        watch_out: ?
+#        modify_list: ?
+        wishlist_from: 'Lista życzeń %name%'
+        wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
+#    poke:
+#        poke: ?
+#        poke_sentence: ?
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: Twoja lista życzeń
+        description: Aby pomóc Tajnemu Mikołajowi możesz zostawić tu listę życzeń. Nasze skrzaty przekażą wszystko Tajnemu Mikołajowi. Możesz zmienić kolejność rzeczy na liście przenosząc je z miejsca na miejsce.
+        empty: Twoja lista życzeń jest pusta. Dodaj coś!
+
+#    flashes:
+#        wishlist:
+#            empty_row: ?
+#            added: ?
+#            updated: ?
+#            removed: ?
+
+    label:
+        description: Opis
+
+    btn:
+        add_wishlist: Dodaj do listy życzeń
+        update_wishlist: Zapisz listę życzeń
+        remove_item: Usuń pozycję
+
 ### end of cleanup ###
 
 manage:
@@ -125,16 +167,6 @@ entry:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
         amount: Ilość
-        num_people: Liczba osób
-        person_created_list: Osoba która utworzyła tę listę
-    title: Osoba, którą masz obdarować
-    body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
-    wishlist_from: 'Lista życzeń %name%'
-    wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
-    wishlist:
-        title: Twoja lista życzeń
-        description: Aby pomóc Tajnemu Mikołajowi możesz zostawić tu listę życzeń. Nasze skrzaty przekażą wszystko Tajnemu Mikołajowi. Możesz zmienić kolejność rzeczy na liście przenosząc je z miejsca na miejsce.
-    wishlist_empty: Twoja lista życzeń jest pusta. Dodaj coś!
 
 label:
     name: Imię
@@ -143,13 +175,9 @@ label:
     amount_to_spend: Suma do wydania
     confirmed: Potwierdzony
     actions: Akcje
-    description: Opis
 btn:
     delete_list: Usuń moją listę Tajnego Mikołaja
     delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja
-    add_wishlist: Dodaj do listy życzeń
-    remove_item: Usuń pozycję
-    update_wishlist: Zapisz listę życzeń
     cancel: Anuluj
 emails:
     sender: Tajny Mikołaj

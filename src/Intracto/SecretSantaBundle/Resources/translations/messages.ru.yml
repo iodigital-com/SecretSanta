@@ -119,6 +119,50 @@ entry-expose_all:
     giving: Это участник готовит подарок...
     receiving: ... для этого участника
 
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты
+        date: Дата
+#        location: ?
+        amount: Количество
+        num_people: Количество людей
+        person_created_list: Автор списка
+    entry:
+        title: Ваш получатель подарка
+        body: >
+            <p>Привет! %name%,</p>
+            <p>Тайный Санта назначил тебе получателя подарка:</p>
+#        watch_out: ?
+#        modify_list: ?
+        wishlist_from: Список желаний от %name%
+        wishlist_not_provided: %name% еще не предоставил свой список желаний
+#    poke:
+#        poke: ?
+#        poke_sentence: ?
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: Твой список желаний
+        description: Чтобы помочь твоему Тайному Санте, ты можешь оставить список желаний здесь. Наши гномы позаботятся о том, чтобы он попал к твоему Тайному Санте. Ты можешь изменить список, перетащив предметы на нужные места.
+        empty: Твой список желаний пуст. Добавь в него что-нибудь.
+
+#    flashes:
+#        wishlist:
+#            empty_row: ?
+#            added: ?
+#            updated: ?
+#            removed: ?
+
+    label:
+        description: Описание
+
+    btn:
+        add_wishlist: Добавить в список желаний
+        update_wishlist: Обновить ваш список желаний
+        remove_item: Удалить из списка
+
 ### end of cleanup ###
 
 manage:
@@ -151,18 +195,6 @@ entry:
         title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты
         date: Дата
         amount: Количество
-        num_people: Количество людей
-        person_created_list: Автор списка
-    title: Ваш получатель подарка
-    body: >
-        <p>Привет! %name%,</p>
-        <p>Тайный Санта назначил тебе получателя подарка:</p>
-    wishlist_from: Список желаний от %name%
-    wishlist_not_provided: %name% еще не предоставил свой список желаний
-    wishlist:
-        title: Твой список желаний
-        description: Чтобы помочь твоему Тайному Санте, ты можешь оставить список желаний здесь. Наши гномы позаботятся о том, чтобы он попал к твоему Тайному Санте. Ты можешь изменить список, перетащив предметы на нужные места.
-    wishlist_empty: Твой список желаний пуст. Добавь в него что-нибудь.
 
 label:
     name: Имя
@@ -171,13 +203,9 @@ label:
     amount_to_spend: Сумма
     confirmed: Подтверждено
     actions: Действия
-    description: Описание
 btn:
     delete_list: Удалить мой список Тайного Санты
     delete_confirm: Я понимаю последствия, удалите сейчас мой список Тайного Санты
-    add_wishlist: Добавить в список желаний
-    remove_item: Удалить из списка
-    update_wishlist: Обновить ваш список желаний
     cancel: Отменить
 
 emails:

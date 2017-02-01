@@ -192,6 +192,51 @@ entry-expose_all:
     giving: This member is giving ...
     receiving: ... a gift to this member
 
+
+# Entry/index.html.twig
+entry_show:
+    headers:
+        title: Your <span class="accent">Secret Santa party</span> details
+        date: Date
+        location: Location
+        amount: Amount
+        num_people: Number of people
+        person_created_list: Person who created this list
+    entry:
+        title: Your assigned buddy
+        body: >
+            <p>Hi %name%,</p>
+            <p>You are assigned as Secret Santa to give a present to:</p>
+        watch_out: Watch out
+        modify_list: Adding people to this party or removing people from this party will be only possible until %oneWeekFromEventDate%.
+        wishlist_from: Wishlist from %name%
+        wishlist_not_provided: %name% has not yet provided a wishlist
+    poke:
+        poke: Poke
+        poke_sentence: your buddy to let him/her know their wishlist is empty.
+
+    buy_from_amazon: What are the most wished for items?
+
+    wishlist:
+        title: Your wishlist
+        description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
+        empty: Your wishlist is empty. Add something!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
+            added: <h4>Added!</h4> Item succesfully added to your wishlist.
+            updated: <h4>Updated!</h4> Item succesfully updated.
+            removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
+
+    label:
+        description: Description
+
+    btn:
+        add_wishlist: Add item to wishlist
+        update_item: Update this item
+        remove_item: Remove
+
 ### end of cleanup ###
 
 manage:
@@ -203,8 +248,6 @@ manage:
     view_entry: View entry
     tip: Tip
     come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
-    watch_out: Watch out
-    modify_list: Adding people to this party or removing people from this party will be only possible until %oneWeekFromEventDate%.
     save: Save
 
 delete:
@@ -227,24 +270,9 @@ entry:
         date: Date
         location: Location
         amount: Amount
-        num_people: Number of people
-        person_created_list: Person who created this list
-    title: Your assigned buddy
-    body: >
-        <p>Hi %name%,</p>
-        <p>You are assigned as Secret Santa to give a present to:</p>
-    wishlist_from: Wishlist from %name%
-    wishlist_not_provided: %name% has not yet provided a wishlist
-    wishlist:
-        title: Your wishlist
-        description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
-    wishlist_empty: Your wishlist is empty. Add something!
     watch_out: Watch out
     modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
 
-poke:
-    poke: Poke
-    poke_sentence: your buddy to let him/her know their wishlist is empty.
 add_participant:
     title: Add a new participant to your party
     body: >
@@ -283,15 +311,11 @@ label:
     location: Location of your Secret Santa party
     confirmed: Confirmed
     actions: Actions
-    description: Description
     wishlist_filled: Wish List Entered
     items: Wishlist items
 btn:
     delete_list: Delete my Secret Santa list
     delete_confirm: I understand the consequences, delete my Secret Santa list now
-    add_wishlist: Add item to wishlist
-    update_item: Update this item
-    remove_item: Remove
     update_wishlist: Update your wishlist
     expose: View all the matches in this list
     expose_wishlists:  View all participants wishlists
@@ -465,11 +489,6 @@ flashes:
         danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
     modify_list:
         warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
-    wishlist:
-        empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
-        added: <h4>Added!</h4> Item succesfully added to your wishlist.
-        updated: <h4>Updated!</h4> Item succesfully updated.
-        removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
     updated_party:
         success: <h4>Updated!</h4> Your party details have been succesfully updated.
         danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
