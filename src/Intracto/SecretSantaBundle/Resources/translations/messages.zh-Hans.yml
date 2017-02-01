@@ -97,12 +97,12 @@ static-faq:
     create_new_list: 创建一个新的秘密圣诞老人名单！
 
 # Helper/prototypeEntry.html.twig
-helper_prototype_entry:
+helper-prototype_entry:
     btn:
         remove_person: 删除此人员
 
 # Helper/prototypeWishlist.html.twig
-helper_prototype_wishlist:
+helper-prototype_wishlist:
     btn:
 #        save_item: ?
 #        update_item: ?

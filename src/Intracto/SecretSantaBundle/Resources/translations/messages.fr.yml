@@ -158,12 +158,12 @@ static-faq:
     create_new_list: Créez une nouvelle liste Secret Santa !
 
 # Helper/prototypeEntry.html.twig
-helper_prototype_entry:
+helper-prototype_entry:
     btn:
         remove_person: Supprimer
 
 # Helper/prototypeWishlist.html.twig
-helper_prototype_wishlist:
+helper-prototype_wishlist:
     btn:
         save_item: Mémoriser cet objet
         update_item: Actualiser cet object

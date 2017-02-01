@@ -3,13 +3,13 @@
     <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
     <td style="text-align: right;">
         <button type="submit" class="btn btn-mini btn-success save-new-entry">
-            <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'helper_prototype_wishlist.btn.save_item'|trans }}</span>
+            <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'helper-prototype_wishlist.btn.save_item'|trans }}</span>
         </button>
         <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
-            <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'helper_prototype_wishlist.btn.update_item'|trans }}</span>
+            <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'helper-prototype_wishlist.btn.update_item'|trans }}</span>
         </button>
         <button type="button" class="btn btn-mini btn-danger remove-entry">
-            <i class="fa fa-times-circle"></i> <span class="text_remove_wishlist">{{ 'helper_prototype_wishlist.btn.remove_item'|trans }}</span>
+            <i class="fa fa-times-circle"></i> <span class="text_remove_wishlist">{{ 'helper-prototype_wishlist.btn.remove_item'|trans }}</span>
         </button>
     </td>
 </tr>
