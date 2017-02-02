@@ -114,7 +114,7 @@ helper-prototype_wishlist:
 #    giving: ?
 #    receiving: ?
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息

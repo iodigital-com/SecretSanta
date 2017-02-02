@@ -120,7 +120,7 @@ entry-expose_all:
     giving: This member is giving ...
     receiving: ... a gift to this member
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>

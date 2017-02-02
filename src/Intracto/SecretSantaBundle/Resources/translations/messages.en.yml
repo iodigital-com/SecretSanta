@@ -193,7 +193,7 @@ entry-expose_all:
     receiving: ... a gift to this member
 
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details

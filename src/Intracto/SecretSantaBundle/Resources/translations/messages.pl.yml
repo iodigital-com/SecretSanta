@@ -104,7 +104,7 @@ entry-expose_all:
     giving: Ten uczestnik podaruje...
     receiving: ... prezent dla tego uczestnika
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'

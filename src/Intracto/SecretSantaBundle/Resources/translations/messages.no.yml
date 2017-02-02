@@ -192,7 +192,7 @@ helper-prototype_wishlist:
 #    giving: ?
 #    receiving: ?
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: Ditt<span class="accent">Secret Santa-selskap</span> med detaljer

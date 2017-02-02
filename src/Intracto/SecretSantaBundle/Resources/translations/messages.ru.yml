@@ -119,7 +119,7 @@ entry-expose_all:
     giving: Это участник готовит подарок...
     receiving: ... для этого участника
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты

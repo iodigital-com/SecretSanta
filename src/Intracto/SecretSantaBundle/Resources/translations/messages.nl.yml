@@ -190,7 +190,7 @@ entry-expose_all:
     giving: Dit lid geeft ...
     receiving: ... een cadeau aan dit lid
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details

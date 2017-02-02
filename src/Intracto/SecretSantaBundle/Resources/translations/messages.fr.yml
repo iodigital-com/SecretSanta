@@ -175,7 +175,7 @@ entry-expose_all:
     giving: Ce membre donne ...
     receiving: ... un cadeau à ce membre
 
-# Entry/index.html.twig
+# Entry/show.html.twig
 entry_show:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
