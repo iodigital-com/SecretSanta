@@ -258,14 +258,53 @@ pool_manage:
         modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
         save: Save
 
-#label.name
-#label.email
-#label.confirmed
-#label.wishlist_filled
-#label.actions
-#label.name
-#label.email
-#
+    delete:
+        title: Delete my Secret Santa list
+        body: >
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                <b>Unexpected bad things will happen if you don't read this!</b><br>
+                <br>
+                Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
+                This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
+                <br>
+                Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            </p>
+        phrase_to_type: delete everything
+
+    add_participant:
+        title: Add a new participant to your party
+        body: >
+            <p>
+                By filling in the form below, a new participant will be added to your party.<br>
+                <br>
+                The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
+            </p>
+
+    remove_participant:
+        title: Delete this participant from your list
+        body: >
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
+                <br>
+                Somebody might have bought them a present already.<br>
+                <br>
+                If you're really sure you want delete this participant, type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            </p>
+        phrase_to_type: delete this participant
+
+    updated_party:
+        title: Update the details of your Secret Santa party
+        body: >
+            <p>
+                By filling in the form below, you can edit the details of the party you're organizing.<br>
+                <br>
+                Your participants will be notified of these changes immeadiatly.
+            </p>
+
 #btn.delete_list
 #btn.expose
 #btn.expose_wishlists
@@ -279,20 +318,13 @@ pool_manage:
 #btn.remove_participant_confirm
 #btn.cancel
 #btn.cancel
-#
-#delete.title
-#delete.phrase_to_type
-#delete.body
-#
-#add_participant.title
-#add_participant.body
-#
-#remove_participant.title
-#remove_participant.phrase_to_type
-#remove_participant.body
-#
-#updated_party.title
-#updated_party.body
+
+    label:
+        name: Name
+        email: E-mail
+        confirmed: Confirmed
+        wishlist_filled: Wish List Entered
+        actions: Actions
 
 ### end of cleanup ###
 
@@ -300,60 +332,14 @@ manage:
     yes: Yes
     not_yet: Not yet
 
-delete:
-    title: Delete my Secret Santa list
-    body: >
-        <p>
-            Are you ABSOLUTELY sure?<br>
-            <br>
-            <b>Unexpected bad things will happen if you don't read this!</b><br>
-            <br>
-            Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
-            This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
-            <br>
-            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
-        </p>
-    phrase_to_type: delete everything
-
-add_participant:
-    title: Add a new participant to your party
-    body: >
-        <p>
-            By filling in the form below, a new participant will be added to your party.<br>
-            <br>
-            The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
-        </p>
-remove_participant:
-    title: Delete this participant from your list
-    body: >
-        <p>
-            Are you ABSOLUTELY sure?<br>
-            <br>
-            Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
-            <br>
-            Somebody might have bought them a present already.<br>
-            <br>
-            If you're really sure you want delete this participant, type "<b>%phrase_to_type%</b>" below to confirm.<br>
-        </p>
-    phrase_to_type: delete this participant
-updated_party:
-    title: Update the details of your Secret Santa party
-    body: >
-        <p>
-            By filling in the form below, you can edit the details of the party you're organizing.<br>
-            <br>
-            Your participants will be notified of these changes immeadiatly.
-        </p>
-
 label:
     name: Name
     email: E-mail
+    confirmed: Confirmed
+    wishlist_filled: Wish List Entered
     date_party: Date of your Secret Santa party
     amount_to_spend: Amount to spend
     location: Location of your Secret Santa party
-    confirmed: Confirmed
-    actions: Actions
-    wishlist_filled: Wish List Entered
     items: Wishlist items
 btn:
     delete_list: Delete my Secret Santa list

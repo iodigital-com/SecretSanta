@@ -179,26 +179,46 @@ pool_manage:
 #        modify_list: ?
         save: 保存
 
+    delete:
+        title: 删除我的秘密圣诞老人名单
+        body: >
+            <p>
+                你绝对确定吗？<br>
+                <br>
+                <b>如果你不阅读这个，不确保坏事不会发生！</b><br>
+                <br>
+                一旦你删除了你的秘密圣诞老人名单，这将不能恢复。这个行为将不能被复原。<br>
+                这将永久删除这个秘密圣诞老人名单，包括所有里面的所有参与人员和他们的愿望清单。<br>
+                <br>
+                请输入"<b>%phrase_to_type%</b>" 以下确认
+            </p>
+        phrase_to_type: 删除一切
+
+#    add_participant:
+#        title: ?
+#        body: ?
+
+#    remove_participant:
+#        title: ?
+#        phrase_to_type: ?
+#        body: ?
+
+#    updated_party:
+#        title: ?
+#        body: ?
+
+    label:
+        name: 名字
+        email: 电子邮箱
+        confirmed: 确认
+#        wishlist_filled: ?
+        actions: 作用
+
 ### end of cleanup ###
 
 manage:
     yes: 是
     not_yet: 尚未
-
-delete:
-    title: 删除我的秘密圣诞老人名单
-    body: >
-        <p>
-            你绝对确定吗？<br>
-            <br>
-            <b>如果你不阅读这个，不确保坏事不会发生！</b><br>
-            <br>
-            一旦你删除了你的秘密圣诞老人名单，这将不能恢复。这个行为将不能被复原。<br>
-            这将永久删除这个秘密圣诞老人名单，包括所有里面的所有参与人员和他们的愿望清单。<br>
-            <br>
-            请输入"<b>%phrase_to_type%</b>" 以下确认
-        </p>
-    phrase_to_type: 删除一切
 
 label:
     name: 名字
@@ -206,7 +226,6 @@ label:
     date_party: 你的秘密圣诞老人派对日期
     amount_to_spend: 消费金额
     confirmed: 确认
-    actions: 作用
 btn:
     delete_list: 删除我的秘密圣诞老人名单
     delete_confirm: 我知道后果，现在删除我的秘密圣诞老人名单

@@ -160,7 +160,7 @@ class EntryController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('remove_participant.phrase_to_type')));
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('pool_manage.remove_participant.phrase_to_type')));
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'danger',

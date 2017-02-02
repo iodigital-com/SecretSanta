@@ -167,16 +167,36 @@ pool_manage:
 #        modify_list: ?
         save: Zapisz
 
+    delete:
+        title: Usuń moją listę Tajnego Mikołaja
+        body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br><b>Jeśli tego nie przeczytasz mogą wydarzyć się złe rzeczy!</b><br><br>Kiedy skasujesz listę Tajnego Mikołaja, nie ma już powrotu. NIE DA SIĘ już tego cofnąć.<br> Zostanie usunięta lista Tajnego Mikołaja, wszyscy jej uczestnicy i ich listy życzeń.<br><br> Wpisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
+        phrase_to_type: usuń wszystko
+
+#    add_participant:
+#        title: ?
+#        body: ?
+
+#    remove_participant:
+#        title: ?
+#        phrase_to_type: ?
+#        body: ?
+
+#    updated_party:
+#        title: ?
+#        body: ?
+
+    label:
+        name: Imię
+        email: E-mail
+        confirmed: Potwierdzony
+#        wishlist_filled: ?
+        actions: Akcje
+
 ### end of cleanup ###
 
 manage:
     yes: true
     not_yet: Jeszcze nie
-
-delete:
-    title: Usuń moją listę Tajnego Mikołaja
-    body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br><b>Jeśli tego nie przeczytasz mogą wydarzyć się złe rzeczy!</b><br><br>Kiedy skasujesz listę Tajnego Mikołaja, nie ma już powrotu. NIE DA SIĘ już tego cofnąć.<br> Zostanie usunięta lista Tajnego Mikołaja, wszyscy jej uczestnicy i ich listy życzeń.<br><br> Wpisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
-    phrase_to_type: usuń wszystko
 
 label:
     name: Imię
@@ -184,7 +204,6 @@ label:
     date_party: Data Twojego Przyjęcia Tajnego Mikołaja
     amount_to_spend: Suma do wydania
     confirmed: Potwierdzony
-    actions: Akcje
 btn:
     delete_list: Usuń moją listę Tajnego Mikołaja
     delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja

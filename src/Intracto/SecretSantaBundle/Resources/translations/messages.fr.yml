@@ -240,47 +240,59 @@ pool_manage:
         modify_list: Ajouter ou supprimer des participants à cette fête sera seulement possible jusqu'à %oneWeekFromEventDate%.
         save: Enregistrer
 
+    delete:
+        title: Supprimer ma liste Secret Santa
+        body: >
+            <p>
+            Etes-vous vraiment certain ?<br>
+            <br>
+            <b>Quelque chose d'inattendu se produira si vous ne lisez pas ceci !</b><br>
+            <br>
+            Une fois que votre liste Secret Santa sera supprimée, il n'y a aucun retour en arrière possible. Cette action NE POURRA PAS être annulée.<br>
+            Cela effacera la liste Secret Santa, tous ses participants ainsi que leur liste de souhaits de façon permanente.<br>
+            <br>
+            Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
+        phrase_to_type: Supprimer tout
+
+    add_participant:
+        title: Ajoutez un nouveau participant à la f&ecirc;te
+        body: >
+            <p>
+                En remplissant le formulaire ci-dessous, un nouveau participant sera ajouté à votre f&ecirc;te.<br>
+                <br>
+                Le nouveau participant sera immédiatement assigné à un copain Secret Santa et recevra une invitation par e-mail.
+            </p>
+
+    remove_participant:
+        title: Supprimez ce participant de ma liste
+        body: >
+            <p>
+                Etes-vous ABSOLUMENT certain ?<br>
+                <br>
+                Supprimer ce participant causera de conséquences permanentes. Il sera impossible de rétablir les attributions actuelles et le participant sera supprimé imméadiatement.<br>
+                <br>
+                Tenez compte de la possibilité que quelqu'un peut avoir déjà acheté un cadeau pour ce participant.<br>
+                <br>
+                Si vous êtes certain de vouloir supprimer ce participant, entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br>
+            </p>
+        phrase_to_type: supprimer ce participant
+
+#    updated_party:
+#        title: ?
+#        body: ?
+
+    label:
+        name: Nom
+        email: E-mail
+        confirmed: Confirmés
+#        wishlist_filled: ?
+        actions: Actions
+
 ### end of cleanup ###
 
 manage:
     yes: Oui
     not_yet: Pas encore
-
-delete:
-    title: Supprimer ma liste Secret Santa
-    body: >
-        <p>
-        Etes-vous vraiment certain ?<br>
-        <br>
-        <b>Quelque chose d'inattendu se produira si vous ne lisez pas ceci !</b><br>
-        <br>
-        Une fois que votre liste Secret Santa sera supprimée, il n'y a aucun retour en arrière possible. Cette action NE POURRA PAS être annulée.<br>
-        Cela effacera la liste Secret Santa, tous ses participants ainsi que leur liste de souhaits de façon permanente.<br>
-        <br>
-        Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
-    phrase_to_type: Supprimer tout
-
-add_participant:
-    title: Ajoutez un nouveau participant à la f&ecirc;te
-    body: >
-        <p>
-            En remplissant le formulaire ci-dessous, un nouveau participant sera ajouté à votre f&ecirc;te.<br>
-            <br>
-            Le nouveau participant sera immédiatement assigné à un copain Secret Santa et recevra une invitation par e-mail.
-        </p>
-remove_participant:
-    title: Supprimez ce participant de ma liste
-    body: >
-        <p>
-            Etes-vous ABSOLUMENT certain ?<br>
-            <br>
-            Supprimer ce participant causera de conséquences permanentes. Il sera impossible de rétablir les attributions actuelles et le participant sera supprimé imméadiatement.<br>
-            <br>
-            Tenez compte de la possibilité que quelqu'un peut avoir déjà acheté un cadeau pour ce participant.<br>
-            <br>
-            Si vous êtes certain de vouloir supprimer ce participant, entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br>
-        </p>
-    phrase_to_type: supprimer ce participant
 
 label:
     name: Nom
@@ -289,7 +301,6 @@ label:
     amount_to_spend: Montant à dépenser
     location: Lieu
     confirmed: Confirmés
-    actions: Actions
     items: Cadeaux souhaités
 btn:
     delete_list: Supprimer ma liste Secret Santa

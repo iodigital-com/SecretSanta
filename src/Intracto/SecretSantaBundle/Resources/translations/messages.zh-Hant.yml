@@ -179,26 +179,46 @@ pool_manage:
 #        modify_list: ?
         save: 儲存
 
+    delete:
+        title: 刪除我的秘密聖誕老人目錄
+        body: >
+            <p>
+                你是否絕對肯定?<br>
+                <br>
+                <b>如果你不閱讀這個， 想不到的壞事情將會發生！</b><br>
+                <br>
+                當你刪除你的秘密聖誕老人目錄後，這是不能回頭的。這動作是不能解開的。<br>
+                這將會刪除秘密聖誕老人目錄，而所有參與者及他們的願目錄也會永久刪除。<br>
+                <br>
+                請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
+            </p>
+        phrase_to_type: 刪除所有東西
+
+#    add_participant:
+#        title: ?
+#        body: ?
+
+#    remove_participant:
+#        title: ?
+#        phrase_to_type: ?
+#        body: ?
+
+#    updated_party:
+#        title: ?
+#        body: ?
+
+    label:
+        name: 名字
+        email: 電郵
+        confirmed: 確認
+#        wishlist_filled: ?
+        actions: 行動
+
 ### end of cleanup ###
 
 manage:
     yes: 是
     not_yet: 還未
-
-delete:
-    title: 刪除我的秘密聖誕老人目錄
-    body: >
-        <p>
-            你是否絕對肯定?<br>
-            <br>
-            <b>如果你不閱讀這個， 想不到的壞事情將會發生！</b><br>
-            <br>
-            當你刪除你的秘密聖誕老人目錄後，這是不能回頭的。這動作是不能解開的。<br>
-            這將會刪除秘密聖誕老人目錄，而所有參與者及他們的願目錄也會永久刪除。<br>
-            <br>
-            請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
-        </p>
-    phrase_to_type: 刪除所有東西
 
 label:
     name: 名字
@@ -206,7 +226,6 @@ label:
     date_party: 秘密聖誕老人派對日期
     amount_to_spend: 費用
     confirmed: 確認
-    actions: 行動
 btn:
     delete_list: 刪除我的秘密聖誕老人名單
     delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單

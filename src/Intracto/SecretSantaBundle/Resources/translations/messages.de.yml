@@ -187,26 +187,46 @@ pool_manage:
 #        modify_list: ?
         save: Speichern
 
+    delete:
+        title: Meine Secret Santa-Liste löschen
+        body: >
+            <p>
+                Sind Sie WIRKLICH sicher?<br>
+                <br>
+                <b>Unerwartete negative Dinge werden passieren, wenn Sie dies nicht lesen!</b><br>
+                <br>
+                Es gibt kein Zurück mehr, sobald Sie Ihre Secret Santa-Liste gelöscht haben. Dieser Schritt kann nicht rückgängig gemacht werden.<br>
+                Dies löscht Ihre Secret Santa-Liste, alle Teilnehmer und deren Wunschzettel dauerhaft.<br>
+                <br>
+                Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
+            </p>
+        phrase_to_type: alles löschen
+
+#    add_participant:
+#        title: ?
+#        body: ?
+
+#    remove_participant:
+#        title: ?
+#        phrase_to_type: ?
+#        body: ?
+
+#    updated_party:
+#        title: ?
+#        body: ?
+
+    label:
+        name: Name
+        email: E-Mail:
+        confirmed: Bestätigt
+#        wishlist_filled: ?
+        actions: Aktionen
+
 ### end of cleanup ###
 
 manage:
     yes: Ja
     not_yet: Noch nicht
-
-delete:
-    title: Meine Secret Santa-Liste löschen
-    body: >
-        <p>
-            Sind Sie WIRKLICH sicher?<br>
-            <br>
-            <b>Unerwartete negative Dinge werden passieren, wenn Sie dies nicht lesen!</b><br>
-            <br>
-            Es gibt kein Zurück mehr, sobald Sie Ihre Secret Santa-Liste gelöscht haben. Dieser Schritt kann nicht rückgängig gemacht werden.<br>
-            Dies löscht Ihre Secret Santa-Liste, alle Teilnehmer und deren Wunschzettel dauerhaft.<br>
-            <br>
-            Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
-        </p>
-    phrase_to_type: alles löschen
 
 label:
     name: Name
@@ -215,7 +235,6 @@ label:
     amount_to_spend: Auszugebender Betrag
     location: Platz von Ihrer Secret Santa-Party
     confirmed: Bestätigt
-    actions: Aktionen
 btn:
     delete_list: Meine Secret Santa-Liste löschen
     delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen

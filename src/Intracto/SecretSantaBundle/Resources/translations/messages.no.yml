@@ -257,26 +257,66 @@ pool_manage:
         modify_list: Å legge til eller slette deltagere fra listen er kun mulig inntil %oneWeekFromEventDate%.
         save: Lagre
 
+    delete:
+        title: Slett min Secret Santa-liste
+        body: >
+            <p>
+                Er du HELT sikker?<br>
+                <br>
+                <b>Uforutsette, forferdelige ting skjer hvis du ikke leser dette!</b><br>
+                <br>
+                Så snart du har slettet din Secret Santa-liste kan du ikke ombestemme deg. Denne handlingen kan IKKE omgjøres.<br>
+                Dette vil permanent slette din Secret Santa-liste, alle deltagerne og deres ønskelister.<br>
+                <br>
+                Vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
+            </p>
+        phrase_to_type: slett alt
+
+    add_participant:
+        title: Legg til deltagere til festen
+        body: >
+            <p>
+                Ved å fylle ut skjemaet nedenfor legger du til en ny person til festen.<br>
+                <br>
+                Den nye deltageren legges til og får med en gang tildelt en å være julenisse for, og får tilsendt denne informasjonen på epost.<br>
+            </p>
+
+    remove_participant:
+        title: Slett denne deltageren fra listen
+        body: >
+            <p>
+                Er du HELT sikker?<br>
+                <br>
+                Å slette denne deltageren blir på permanent basis. DU kan ikke angre deg og personen denne deltageren har fått tildelt blir fjernet som kombinasjon.<br>
+                <br>
+                Noen kan ha kjøpt gaven allerede.<br>
+                <br>
+                Hvis du er helt sikker på at du vil slette denne deltageren, vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
+            </p>
+        phrase_to_type: slett denne nissen
+
+    updated_party:
+        title: Oppdater detaljer for festen
+        body: >
+            <p>
+                Ved å fylle ut skjemaet nedenfor kan du oppdatere og endre detaljer for festen du arrangerer.<br>
+                <br>
+                Nissene får beskjed om endringene som blir gjort umiddelbart
+            </p>
+
+    label:
+        name: Navn
+        email: e-post
+        confirmed: Bekreftet
+        wishlist_filled: Ønskeliste lagt inn
+        actions: Valg
+
 ### end of cleanup ###
 
 manage:
     yes: Ja
     not_yet: Ikke ennå
 
-delete:
-    title: Slett min Secret Santa-liste
-    body: >
-        <p>
-            Er du HELT sikker?<br>
-            <br>
-            <b>Uforutsette, forferdelige ting skjer hvis du ikke leser dette!</b><br>
-            <br>
-            Så snart du har slettet din Secret Santa-liste kan du ikke ombestemme deg. Denne handlingen kan IKKE omgjøres.<br>
-            Dette vil permanent slette din Secret Santa-liste, alle deltagerne og deres ønskelister.<br>
-            <br>
-            Vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
-        </p>
-    phrase_to_type: slett alt
 expose:
     title: Send meg alle kombinasjonene i e-postlisten
     body: >
@@ -306,36 +346,6 @@ expose_wishlists:
         </p>
     phrase_to_type: vis meg ønskelistene
 
-add_participant:
-    title: Legg til deltagere til festen
-    body: >
-        <p>
-            Ved å fylle ut skjemaet nedenfor legger du til en ny person til festen.<br>
-            <br>
-            Den nye deltageren legges til og får med en gang tildelt en å være julenisse for, og får tilsendt denne informasjonen på epost.<br>
-        </p>
-remove_participant:
-    title: Slett denne deltageren fra listen
-    body: >
-        <p>
-            Er du HELT sikker?<br>
-            <br>
-            Å slette denne deltageren blir på permanent basis. DU kan ikke angre deg og personen denne deltageren har fått tildelt blir fjernet som kombinasjon.<br>
-            <br>
-            Noen kan ha kjøpt gaven allerede.<br>
-            <br>
-            Hvis du er helt sikker på at du vil slette denne deltageren, vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
-        </p>
-    phrase_to_type: slett denne nissen
-updated_party:
-    title: Oppdater detaljer for festen
-    body: >
-        <p>
-            Ved å fylle ut skjemaet nedenfor kan du oppdatere og endre detaljer for festen du arrangerer.<br>
-            <br>
-            Nissene får beskjed om endringene som blir gjort umiddelbart
-        </p>
-
 label:
     name: Navn
     email: e-post
@@ -343,7 +353,6 @@ label:
     amount_to_spend: Beløp å bruke på gaven
     location: Sted
     confirmed: Bekreftet
-    actions: Valg
     wishlist_filled: Ønskeliste lagt inn
     items: Ønsker på ønskelisten
 btn:

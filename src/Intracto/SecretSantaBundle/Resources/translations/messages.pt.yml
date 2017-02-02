@@ -244,26 +244,46 @@ pool_manage:
 #        modify_list: ?
         save: Salvar
 
+    delete:
+        title: Deletar a minha lista do Secret Santa
+        body: >
+            <p>
+                Tem MESMO certeza?<br>
+                <br>
+                <b>Não é hora de brincar, leia isso primeiro!</b><br>
+                <br>
+            Após ter eliminado a sua lista do Secret Santa, não há como voltar atrás. NÃO É POSSÍVEL CANCELAR esta ação. <br>
+            A sua lista do Secret Santa será eliminada permanentemente, junto a todos os participantes e suas respectivas listas de desejos.<br>
+                <br>
+                Digite "<b>%phrase_to_type%</b>" abaixo para confirmar.<br>
+            </p>
+        phrase_to_type: eliminar tudo
+
+#    add_participant:
+#        title: ?
+#        body: ?
+
+#    remove_participant:
+#        title: ?
+#        phrase_to_type: ?
+#        body: ?
+
+#    updated_party:
+#        title: ?
+#        body: ?
+
+    label:
+        name: Nome
+        email: E-mail
+        confirmed: Confirmado
+#        wishlist_filled: ?
+        actions: Ações
+
 ### end of cleanup ###
 
 manage:
     yes: Sim
     not_yet: Ainda não
-
-delete:
-    title: Deletar a minha lista do Secret Santa
-    body: >
-        <p>
-            Tem MESMO certeza?<br> 
-            <br>
-            <b>Não é hora de brincar, leia isso primeiro!</b><br>
-            <br>
-        Após ter eliminado a sua lista do Secret Santa, não há como voltar atrás. NÃO É POSSÍVEL CANCELAR esta ação. <br>
-        A sua lista do Secret Santa será eliminada permanentemente, junto a todos os participantes e suas respectivas listas de desejos.<br>
-            <br>
-            Digite "<b>%phrase_to_type%</b>" abaixo para confirmar.<br>
-        </p>
-    phrase_to_type: eliminar tudo
 
 label:
     name: Nome
@@ -271,7 +291,6 @@ label:
     date_party: Data da sua festa de Amigo Secreto
     amount_to_spend: Valor máximo a gastar
     confirmed: Confirmado
-    actions: Ações
 btn:
     delete_list: Eliminar minha lista do Secret Santa
     delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa

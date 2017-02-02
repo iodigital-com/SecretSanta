@@ -185,60 +185,71 @@ pool_manage:
         modify_list: Añadir participantes a la fiesta o expulsar estos participantas serà solamente possible hasta %oneWeekFromEventDate%.
         save: Guardar
 
+    delete:
+        title: Borrar mi lista Secret Santa
+        body: >
+            <p>
+                ¿Estás COMPLETAMENTE seguro?<br>
+                <br>
+                <b>¡Cosas malas inesperadas sucederán si no lees esto!</b><br>
+                <br>
+                Una vez hayas borrada tu lista Secret Santa, no hay vuelta atrás. Esta acción NO puede deshacerse.<br>
+                Esto borrará esta lista Secret Santa, todos sus participantes y sus listas de deseos permanentemente.<br>
+                <br>
+                Por favor escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
+            </p>
+        phrase_to_type: borrar todo
+
+    add_participant:
+        title: A&ntilde;adir un nuevo participante a tu fiesta
+        body: >
+            <p>
+                Por rellenar el siguiente formulario, un nuevo participante ser&aacute; a&ntilde;adido a la fiesta.<br>
+                <br>
+                El nuevo participante ser&aacute; adjudicado un amigote Secret Santa inmediato y recibirá una invitaci&oacute;n por correo electr&oacute;nico.<br>
+            </p>
+
+    remove_participant:
+        title: Expulsar este participante de mi lista
+        body: >
+            <p>
+                ¿Estás COMPLETAMENTE seguro?<br>
+                <br>
+                Expulsar este participante causa consecuencias permanentes. No es possible de recuperar las atribuciones actuales y el participante serà borrado inmediatamente.<br>
+                <br>
+                Tiene en cuente que alguien ya puede ha comprado un regalo por este participante.<br>
+                <br>
+                Si estás seguro de que puedes borrar este participante, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
+            </p>
+        phrase_to_type: expulsar este participante
+
+    updated_party:
+        title: Actualizar los datos de tu fiesta de Secret Santa
+        body: >
+            <p>
+                Rellenando el siguiente formulario, puedes cambiar los detalles de la fiesta que está organizando.<br>
+                <br>
+                Tus participantes serán notificados de estos cambios immediatamente.
+            </p>
+
+    label:
+        name: Nombre
+        email: Correo electrónico
+        confirmed: Confirmado
+        wishlist_filled: Lista de deseos insertado
+        actions: Acciones
+
 ### end of cleanup ###
 
 manage:
     yes: Sí
     not_yet: Aún no
 
-delete:
-    title: Borrar mi lista Secret Santa
-    body: >
-        <p>
-            ¿Estás COMPLETAMENTE seguro?<br>
-            <br>
-            <b>¡Cosas malas inesperadas sucederán si no lees esto!</b><br>
-            <br>
-            Una vez hayas borrada tu lista Secret Santa, no hay vuelta atrás. Esta acción NO puede deshacerse.<br>
-            Esto borrará esta lista Secret Santa, todos sus participantes y sus listas de deseos permanentemente.<br>
-            <br>
-            Por favor escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
-        </p>
-    phrase_to_type: borrar todo
 entry:
     exposed:
         title: Atribuciones Lista de Correos Secret Santa
         giving: Este miembro está dando ...
         receiving: ... un regalo a este miembro
-add_participant:
-    title: A&ntilde;adir un nuevo participante a tu fiesta
-    body: >
-        <p>
-            Por rellenar el siguiente formulario, un nuevo participante ser&aacute; a&ntilde;adido a la fiesta.<br>
-            <br>
-            El nuevo participante ser&aacute; adjudicado un amigote Secret Santa inmediato y recibirá una invitaci&oacute;n por correo electr&oacute;nico.<br>
-        </p>
-remove_participant:
-    title: Expulsar este participante de mi lista
-    body: >
-        <p>
-            ¿Estás COMPLETAMENTE seguro?<br>
-            <br>
-            Expulsar este participante causa consecuencias permanentes. No es possible de recuperar las atribuciones actuales y el participante serà borrado inmediatamente.<br>
-            <br>
-            Tiene en cuente que alguien ya puede ha comprado un regalo por este participante.<br>
-            <br>
-            Si estás seguro de que puedes borrar este participante, escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
-        </p>
-    phrase_to_type: expulsar este participante
-updated_party:
-    title: Actualizar los datos de tu fiesta de Secret Santa
-    body: >
-        <p>
-            Rellenando el siguiente formulario, puedes cambiar los detalles de la fiesta que está organizando.<br>
-            <br>
-            Tus participantes serán notificados de estos cambios immediatamente.
-        </p>
 
 label:
     name: Nombre
@@ -247,7 +258,6 @@ label:
     amount_to_spend: Cantidad a gastar
     location: Sitio de tu fiesta Secret Santa
     confirmed: Confirmado
-    actions: Acciones
     wishlist_filled: Lista de deseos insertado
     items: Regalos deseados
 btn:
