@@ -215,6 +215,18 @@ pool_manage:
 #        title: ?
 #        body: ?
 
+    btn:
+        add_participant
+        add_participant_confirm
+        cancel
+        delete_confirm
+        delete_list
+        expose
+        expose_wishlists
+        pool_update
+        remove_participant_confirm
+        updated_party
+
     label:
         name: Name
         email: E-Mail:

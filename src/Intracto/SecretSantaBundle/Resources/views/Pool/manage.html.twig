@@ -80,20 +80,20 @@
         </div>
 
         <button id="btn_delete" class="btn btn-primary manage_btn"><i
-                    class="fa fa-exclamation-circle"></i> {{ 'btn.delete_list'|trans }}</button>
+                    class="fa fa-exclamation-circle"></i> {{ 'pool_manage.btn.delete_list'|trans }}</button>
         <a href="{{ path('expose_entries', { 'listUrl': pool.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
-            <i class="fa fa-eye"></i> {{ 'btn.expose'|trans }}
+            <i class="fa fa-eye"></i> {{ 'pool_manage.btn.expose'|trans }}
         </a>
         <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link"
             href="{{ path('wishlist_show_all', { 'listUrl': pool.listurl }) }}"><i
-                    class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</a>
+                    class="fa fa-eye"></i> {{ 'pool_manage.btn.expose_wishlists'|trans }}</a>
         <a class="btn btn-info manage_btn manage_btn_link"
            href="{{ path('send_party_update', { 'listUrl': pool.listurl }) }}"><i
-                    class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
+                    class="fa fa-envelope"></i> {{ 'pool_manage.btn.pool_update'|trans|raw }}</a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
                 {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) or 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}><i
-                    class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_participant'|trans|raw }}</button>
-        <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> {{ 'btn.updated_party'|trans|raw }}
+                    class="fa fa-plus-circle fa-inverse"></i> {{ 'pool_manage.btn.add_participant'|trans|raw }}</button>
+        <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> {{ 'pool_manage.btn.updated_party'|trans|raw }}
         </button>
 
         <br/><br/>
@@ -112,9 +112,9 @@
                 <br>
                 <button class="btn btn-primary btn_confirmation_pop_up" type="submit" id="btn_delete_confirmation"
                         disabled>
-                    {{ 'btn.delete_confirm'|trans }}
+                    {{ 'pool_manage.btn.delete_confirm'|trans }}
                 </button>
-                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'btn.cancel'|trans }}</button>
+                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'pool_manage.btn.cancel'|trans }}</button>
             </form>
         </div>
 
@@ -144,8 +144,8 @@
                     {% endif %}
                 </div>
                 <button type="submit" class="btn btn-success"
-                        id="btn_add_confirmation">{{ 'btn.add_participant_confirm'|trans|raw }}</button>
-                <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'btn.cancel'|trans }}</button>
+                        id="btn_add_confirmation">{{ 'pool_manage.btn.add_participant_confirm'|trans|raw }}</button>
+                <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'pool_manage.btn.cancel'|trans }}</button>
             {{ form_end(addEntryForm) }}
         </div>
 
@@ -163,10 +163,10 @@
                 <br>
                 <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
                         id="btn_remove_participant_confirmation" disabled>
-                    {{ 'btn.remove_participant_confirm'|trans|raw }}
+                    {{ 'pool_manage.btn.remove_participant_confirm'|trans|raw }}
                 </button>
                 <button type="reset" class="btn btn-danger btn_remove_participant_cancel"
-                        >{{ 'btn.cancel'|trans }}</button>
+                        >{{ 'pool_manage.btn.cancel'|trans }}</button>
             </form>
         </div>
 
@@ -201,7 +201,7 @@
                     {% endfor %}
                 </div>
                 <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
-                <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'btn.cancel'|trans }}</button>
+                <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'pool_manage.btn.cancel'|trans }}</button>
             {{ form_end(updatePoolDetailsForm) }}
         </div>
     </div>

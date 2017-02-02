@@ -207,6 +207,18 @@ pool_manage:
 #        title: ?
 #        body: ?
 
+    btn:
+#        add_participant: ?
+#        add_participant_confirm: ?
+        cancel: 取消
+        delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
+        delete_list: 刪除我的秘密聖誕老人名單
+#        expose: ?
+#        expose_wishlists: ?
+#        pool_update: ?
+#        remove_participant_confirm: ?
+#        updated_party: ?
+
     label:
         name: 名字
         email: 電郵
@@ -226,10 +238,6 @@ label:
     date_party: 秘密聖誕老人派對日期
     amount_to_spend: 費用
     confirmed: 確認
-btn:
-    delete_list: 刪除我的秘密聖誕老人名單
-    delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
-    cancel: 取消
 
 emails:
     sender: 聖誕老人

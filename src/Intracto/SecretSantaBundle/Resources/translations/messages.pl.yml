@@ -185,6 +185,18 @@ pool_manage:
 #        title: ?
 #        body: ?
 
+    btn:
+#        add_participant: ?
+#        add_participant_confirm: ?
+        cancel: Anuluj
+        delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja
+        delete_list: Usuń moją listę Tajnego Mikołaja
+#        expose: ?
+#        expose_wishlists: ?
+#        pool_update: ?
+#        remove_participant_confirm: ?
+#        updated_party: ?
+
     label:
         name: Imię
         email: E-mail
@@ -204,10 +216,6 @@ label:
     date_party: Data Twojego Przyjęcia Tajnego Mikołaja
     amount_to_spend: Suma do wydania
     confirmed: Potwierdzony
-btn:
-    delete_list: Usuń moją listę Tajnego Mikołaja
-    delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja
-    cancel: Anuluj
 emails:
     sender: Tajny Mikołaj
     base:

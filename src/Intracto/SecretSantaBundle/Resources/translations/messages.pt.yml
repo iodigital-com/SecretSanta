@@ -272,6 +272,18 @@ pool_manage:
 #        title: ?
 #        body: ?
 
+    btn:
+#        add_participant: ?
+#        add_participant_confirm: ?
+        cancel: Cancelar
+        delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa
+        delete_list: Eliminar minha lista do Secret Santa
+#        expose: ?
+#        expose_wishlists: ?
+#        pool_update: ?
+#        remove_participant_confirm: ?
+#        updated_party: ?
+
     label:
         name: Nome
         email: E-mail
@@ -291,10 +303,6 @@ label:
     date_party: Data da sua festa de Amigo Secreto
     amount_to_spend: Valor máximo a gastar
     confirmed: Confirmado
-btn:
-    delete_list: Eliminar minha lista do Secret Santa
-    delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa
-    cancel: Cancelar
 
 emails:
     sender: Papai Noel

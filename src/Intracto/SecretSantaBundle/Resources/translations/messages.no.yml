@@ -304,6 +304,18 @@ pool_manage:
                 Nissene får beskjed om endringene som blir gjort umiddelbart
             </p>
 
+    btn:
+        add_participant: Legg til deltager
+        add_participant_confirm: Legg til denne deltageren
+        cancel: Avbryt
+        delete_confirm: Jeg har forstått konsekvensene, slett min liste
+        delete_list: Slett min Secret Santa-liste
+        expose: Send meg alle kombinasjonene
+        expose_wishlists: Send meg alle ønskelistene
+        pool_update: Send party update to participants
+        remove_participant_confirm: Fjern denne deltageren
+        updated_party: Oppdater detaljer for ditt arrangement
+
     label:
         name: Navn
         email: e-post
@@ -356,19 +368,9 @@ label:
     wishlist_filled: Ønskeliste lagt inn
     items: Ønsker på ønskelisten
 btn:
-    delete_list: Slett min Secret Santa-liste
-    delete_confirm: Jeg har forstått konsekvensene, slett min liste
     update_wishlist: Oppdater min ønskeliste
-    expose: Send meg alle kombinasjonene
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
-    expose_wishlists: Send meg alle ønskelistene
     expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
-    pool_update: Send party update to participants
-    add_participant: Legg til deltager
-    add_participant_confirm: Legg til denne deltageren
-    remove_participant_confirm: Fjern denne deltageren
-    updated_party: Oppdater detaljer for ditt arrangement
-    cancel: Avbryt
 emails:
     sender: Julenissen
     base:

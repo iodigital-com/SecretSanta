@@ -212,6 +212,18 @@ pool_manage:
 #        title: ?
 #        body: ?
 
+    btn:
+#        add_participant: ?
+#        add_participant_confirm: ?
+        cancel: Отменить
+        delete_confirm: Я понимаю последствия, удалите сейчас мой список Тайного Санты
+        delete_list: Удалить мой список Тайного Санты
+#        expose: ?
+#        expose_wishlists: ?
+#        pool_update: ?
+#        remove_participant_confirm: ?
+#        updated_party: ?
+
     label:
         name: Имя
         email: Электронная почта
@@ -231,10 +243,6 @@ label:
     date_party: Дата проведения твоей вечеринки Тайного Санты
     amount_to_spend: Сумма
     confirmed: Подтверждено
-btn:
-    delete_list: Удалить мой список Тайного Санты
-    delete_confirm: Я понимаю последствия, удалите сейчас мой список Тайного Санты
-    cancel: Отменить
 
 emails:
     sender: Санта Клаус

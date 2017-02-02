@@ -303,6 +303,18 @@ pool_manage:
                 Jouw deelnemers zullen onmiddelijk op de hoogte gebracht worden van deze veranderingen.
             </p>
 
+    btn:
+        add_participant: Voeg een deelnemer aan je feestje
+        add_participant_confirm: Voeg deze deelnemer toe
+        cancel: Annuleren
+        delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
+        delete_list: Verwijder mijn Secret Santa lijst
+        expose: Bekijk alle koppelingen in deze lijst
+        expose_wishlists: Bekijk alle verlanglijstjes
+        pool_update: Verstuur update naar alle deelnemers
+        remove_participant_confirm: Verwijder deze deelnemer
+        updated_party: Bewerk de details van dit feestje
+
     label:
         name: Naam
         email: E-mail
@@ -326,17 +338,7 @@ label:
     wishlist_filled: Wish List Ingevuld
     items: Gewenste verrassingen
 btn:
-    delete_list: Verwijder mijn Secret Santa lijst
-    delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
     update_wishlist: Update je verlanglijst
-    expose: Bekijk alle koppelingen in deze lijst
-    expose_wishlists: Bekijk alle verlanglijstjes
-    pool_update: Verstuur update naar alle deelnemers
-    add_participant: Voeg een deelnemer aan je feestje
-    add_participant_confirm: Voeg deze deelnemer toe
-    remove_participant_confirm: Verwijder deze deelnemer
-    updated_party: Bewerk de details van dit feestje
-    cancel: Annuleren
 emails:
     sender: Kerstman
     base:

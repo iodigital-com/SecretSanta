@@ -305,19 +305,17 @@ pool_manage:
                 Your participants will be notified of these changes immeadiatly.
             </p>
 
-#btn.delete_list
-#btn.expose
-#btn.expose_wishlists
-#btn.pool_update
-#btn.add_participant
-#btn.updated_party
-#btn.delete_confirm
-#btn.cancel
-#btn.add_participant_confirm
-#btn.cancel
-#btn.remove_participant_confirm
-#btn.cancel
-#btn.cancel
+    btn:
+        add_participant: Add participant to party
+        add_participant_confirm: Add this participant
+        cancel: Cancel
+        delete_confirm: I understand the consequences, delete my Secret Santa list now
+        delete_list: Delete my Secret Santa list
+        expose: View all the matches in this list
+        expose_wishlists:  View all participants wishlists
+        pool_update: Send party update to participants
+        remove_participant_confirm: Remove this participant
+        updated_party: Update your party details
 
     label:
         name: Name
@@ -342,17 +340,7 @@ label:
     location: Location of your Secret Santa party
     items: Wishlist items
 btn:
-    delete_list: Delete my Secret Santa list
-    delete_confirm: I understand the consequences, delete my Secret Santa list now
     update_wishlist: Update your wishlist
-    expose: View all the matches in this list
-    expose_wishlists:  View all participants wishlists
-    pool_update: Send party update to participants
-    add_participant: Add participant to party
-    add_participant_confirm: Add this participant
-    remove_participant_confirm: Remove this participant
-    updated_party: Update your party details
-    cancel: Cancel
 emails:
     sender: Santa Claus
     base:

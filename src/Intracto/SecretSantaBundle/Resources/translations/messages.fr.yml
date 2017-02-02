@@ -281,6 +281,18 @@ pool_manage:
 #        title: ?
 #        body: ?
 
+    btn:
+        add_participant: Ajouter un participant à la f&ecirc;te
+        add_participant_confirm: Ajouter ce participant
+        cancel: Annuler
+        delete_confirm: J'ai compris les conséquences, supprimer ma liste Secret Santa maintenant
+        delete_list: Supprimer ma liste Secret Santa
+#        expose: ?
+#        expose_wishlists: ?
+        pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
+        remove_participant_confirm: Supprimer ce participant
+        updated_party: Mettre &agrave; jour les détails de ma f&ecirc;te
+
     label:
         name: Nom
         email: E-mail
@@ -303,15 +315,7 @@ label:
     confirmed: Confirmés
     items: Cadeaux souhaités
 btn:
-    delete_list: Supprimer ma liste Secret Santa
-    delete_confirm: J'ai compris les conséquences, supprimer ma liste Secret Santa maintenant
     update_wishlist: Mettre à jour votre liste de souhaits
-    pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
-    add_participant: Ajouter un participant à la f&ecirc;te
-    add_participant_confirm: Ajouter ce participant
-    remove_participant_confirm: Supprimer ce participant
-    updated_party: Mettre &agrave; jour les détails de ma f&ecirc;te
-    cancel: Annuler
 emails:
     sender: Santa Claus
     base:
