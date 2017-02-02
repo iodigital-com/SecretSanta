@@ -146,27 +146,37 @@ entry_show:
         update_wishlist: Zapisz listę życzeń
         remove_item: Usuń pozycję
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
+        date: Data
+#        location: ?
+        amount: Ilość
+
+    manage:
+        title: Twoja lista Tajnego Mikołaja
+        yes: true
+        not_yet: Jeszcze nie
+        edit_email: Edytuj e-mail
+        resend_email: Wyślij ponownie e-mail
+        view_entry: Zobacz wpis
+        tip: Wskazówka
+        come_back: Możesz zawsze wrócić na tę stronę aby upewnić się, że wszyscy przeczytali wiadomość.
+#        watch_out: ?
+#        modify_list: ?
+        save: Zapisz
+
 ### end of cleanup ###
 
 manage:
-    title: Twoja lista Tajnego Mikołaja
-    "yes": true
+    yes: true
     not_yet: Jeszcze nie
-    edit_email: Edytuj e-mail
-    resend_email: Wyślij ponownie e-mail
-    view_entry: Zobacz wpis
-    tip: Wskazówka
-    come_back: Możesz zawsze wrócić na tę stronę aby upewnić się, że wszyscy przeczytali wiadomość.
-    save: Zapisz
+
 delete:
     title: Usuń moją listę Tajnego Mikołaja
     body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br><b>Jeśli tego nie przeczytasz mogą wydarzyć się złe rzeczy!</b><br><br>Kiedy skasujesz listę Tajnego Mikołaja, nie ma już powrotu. NIE DA SIĘ już tego cofnąć.<br> Zostanie usunięta lista Tajnego Mikołaja, wszyscy jej uczestnicy i ich listy życzeń.<br><br> Wpisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
     phrase_to_type: usuń wszystko
-entry:
-    headers:
-        title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
-        date: Data
-        amount: Ilość
 
 label:
     name: Imię

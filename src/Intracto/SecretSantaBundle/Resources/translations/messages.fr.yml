@@ -219,20 +219,32 @@ entry_show:
         update_item: Actualiser cet object
         remove_item: Supprimer
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Détails de votre <span class="accent">Secret Santa party</span>
+        date: Date
+        location: Lieu
+        amount: Montant
+
+    manage:
+        title: Votre liste Secret Santa
+        yes: Oui
+        not_yet: Pas encore
+        edit_email: Modifier l'e-mail
+        resend_email: Renvoyer l'e-mail
+        view_entry: Voir l'entrée
+        tip: Astuce:
+        come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
+        watch_out: Attention:
+        modify_list: Ajouter ou supprimer des participants à cette fête sera seulement possible jusqu'à %oneWeekFromEventDate%.
+        save: Enregistrer
+
 ### end of cleanup ###
 
 manage:
-    title: Votre liste Secret Santa
     yes: Oui
     not_yet: Pas encore
-    edit_email: Modifier l'e-mail
-    resend_email: Renvoyer l'e-mail
-    view_entry: Voir l'entrée
-    tip: Astuce:
-    come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
-    watch_out: Attention:
-    modify_list: Ajouter ou supprimer des participants à cette fête sera seulement possible jusqu'à %oneWeekFromEventDate%.
-    save: Enregistrer
 
 delete:
     title: Supprimer ma liste Secret Santa
@@ -247,12 +259,6 @@ delete:
         <br>
         Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
     phrase_to_type: Supprimer tout
-entry:
-    headers:
-        title: Détails de votre <span class="accent">Secret Santa party</span>
-        date: Date
-        location: Lieu
-        amount: Montant
 
 add_participant:
     title: Ajoutez un nouveau participant à la f&ecirc;te

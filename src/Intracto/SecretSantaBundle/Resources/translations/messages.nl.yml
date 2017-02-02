@@ -234,20 +234,32 @@ entry_show:
         update_item: Update dit item
         remove_item: Verwijder
 
+    manage:
+        title: Jouw Secret Santa lijst
+        yes: Ja
+        not_yet: Nog niet
+        edit_email: E-mail aanpassen
+        resend_email: E-mail nogmaals verzenden
+        view_entry: Deelnemer bekijken
+        tip: Tip
+        come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
+        watch_out: Opgelet
+        modify_list: Het toevoegen van deelnemers aan dit feestje of het verwijderen ervan is enkel mogelijk tot en met %oneWeekFromEventDate%.
+        save: Bewaar
+
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Jouw <span class="accent">Secret Santa party</span> details
+        date: Datum
+        location: Locatie
+        amount: Bedrag
+
 ### end of cleanup ###
 
 manage:
-    title: Jouw Secret Santa lijst
     yes: Ja
     not_yet: Nog niet
-    edit_email: E-mail aanpassen
-    resend_email: E-mail nogmaals verzenden
-    view_entry: Deelnemer bekijken
-    tip: Tip
-    come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
-    watch_out: Opgelet
-    modify_list: Het toevoegen van deelnemers aan dit feestje of het verwijderen ervan is enkel mogelijk tot en met %oneWeekFromEventDate%.
-    save: Bewaar
 
 delete:
     title: Verwijder mijn Secret Santa lijst
@@ -264,12 +276,6 @@ delete:
         <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
         </p>
     phrase_to_type: alles verwijderen
-entry:
-    headers:
-        title: Jouw <span class="accent">Secret Santa party</span> details
-        date: Datum
-        location: Locatie
-        amount: Bedrag
 
 add_participant:
     title: Voeg een deelnemer toe aan je feestje

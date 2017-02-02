@@ -164,20 +164,32 @@ entry_show:
         update_item: Actualizar este elemento
         remove_item: Quitar
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
+        date: Fecha
+        location: Sitio
+        amount: Cantidad
+
+    manage:
+        title: Tu lista Secret Santa
+        yes: Sí
+        not_yet: Aún no
+        edit_email: Editar correo electrónico
+        resend_email: Volver a enviar correo electrónico
+        view_entry: Ver entrada
+        tip: Consejo
+        come_back: Siempre puedes volver a esta página para asegurarte de que todo el mundo ha comprobado su buzón de correo electrónico.
+        watch_out: Atención
+        modify_list: Añadir participantes a la fiesta o expulsar estos participantas serà solamente possible hasta %oneWeekFromEventDate%.
+        save: Guardar
+
 ### end of cleanup ###
 
 manage:
-    title: Tu lista Secret Santa
     yes: Sí
     not_yet: Aún no
-    edit_email: Editar correo electrónico
-    resend_email: Volver a enviar correo electrónico
-    view_entry: Ver entrada
-    tip: Consejo
-    come_back: Siempre puedes volver a esta página para asegurarte de que todo el mundo ha comprobado su buzón de correo electrónico.
-    watch_out: Atención
-    modify_list: Añadir participantes a la fiesta o expulsar estos participantas serà solamente possible hasta %oneWeekFromEventDate%.
-    save: Guardar
 
 delete:
     title: Borrar mi lista Secret Santa
@@ -194,11 +206,6 @@ delete:
         </p>
     phrase_to_type: borrar todo
 entry:
-    headers:
-        title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
-        date: Fecha
-        location: Sitio
-        amount: Cantidad
     exposed:
         title: Atribuciones Lista de Correos Secret Santa
         giving: Este miembro está dando ...

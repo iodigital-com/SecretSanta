@@ -158,18 +158,32 @@ entry_show:
         update_wishlist: 更新你的願望單
         remove_item: 刪除這項目
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: 你的<span class="accent">秘密聖誕老人派對</span>細節
+        date: 日期
+#        location: ?
+        amount: 數量
+
+    manage:
+        title: 你的秘密聖誕老人目錄
+        yes: 是
+        not_yet: 還未
+        edit_email: 編輯電郵
+        resend_email: 重發電郵
+        view_entry: 查看登入
+        tip: 提示
+        come_back: 你可經常回到這頁去確定每一個人已查看他們的郵箱。
+#        watch_out: ?
+#        modify_list: ?
+        save: 儲存
+
 ### end of cleanup ###
 
 manage:
-    title: 你的秘密聖誕老人目錄
     yes: 是
     not_yet: 還未
-    edit_email: 編輯電郵
-    resend_email: 重發電郵
-    view_entry: 查看登入
-    tip: 提示
-    come_back: 你可經常回到這頁去確定每一個人已查看他們的郵箱。
-    save: 儲存
 
 delete:
     title: 刪除我的秘密聖誕老人目錄
@@ -185,11 +199,6 @@ delete:
             請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
         </p>
     phrase_to_type: 刪除所有東西
-entry:
-    headers:
-        title: 你的<span class="accent">秘密聖誕老人派對</span>細節
-        date: 日期
-        amount: 數量
 
 label:
     name: 名字

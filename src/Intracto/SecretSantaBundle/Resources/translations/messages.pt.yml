@@ -223,18 +223,32 @@ entry_show:
         update_wishlist: Atualizar minha lista de desejos
         remove_item: Eliminar este item
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Detalhes da sua <span class="accent">festa Secret Santa</span>
+        date: Data
+#        location: ?
+        amount: Valor
+
+    manage:
+        title: Sua lista Secret Santa
+        yes: Sim
+        not_yet: Ainda não
+        edit_email: Modificar e-mail
+        resend_email: Reenviar o e-mail
+        view_entry: Ver perfil do participante
+        tip: Dica
+        come_back: Você sempre pode voltar para esta página para verificar se todo mundo verificou a sua caixa de entrada.
+#        watch_out: ?
+#        modify_list: ?
+        save: Salvar
+
 ### end of cleanup ###
 
 manage:
-    title: Sua lista Secret Santa
     yes: Sim
-    not_yet: Ainda não 
-    edit_email: Modificar e-mail
-    resend_email: Reenviar o e-mail
-    view_entry: Ver perfil do participante
-    tip: Dica
-    come_back: Você sempre pode voltar para esta página para verificar se todo mundo verificou a sua caixa de entrada. 
-    save: Salvar
+    not_yet: Ainda não
 
 delete:
     title: Deletar a minha lista do Secret Santa
@@ -250,11 +264,6 @@ delete:
             Digite "<b>%phrase_to_type%</b>" abaixo para confirmar.<br>
         </p>
     phrase_to_type: eliminar tudo
-entry:
-    headers:
-        title: Detalhes da sua <span class="accent">festa Secret Santa</span>
-        date: Data
-        amount: Valor
 
 label:
     name: Nome

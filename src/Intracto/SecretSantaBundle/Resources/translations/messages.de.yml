@@ -129,7 +129,6 @@ entry_show:
         date: Datum
         location: Platz
         amount: Betrag
-        locatie: Platz
         num_people: Anzahl Teilnehmer
         person_created_list: Person, die die Liste erstellt hat
     entry:
@@ -167,18 +166,32 @@ entry_show:
         update_wishlist: Aktualisieren Sie Ihren Wunschzettel
         remove_item: Diesen Gegenstand entfernen
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Ihre <span class="accent">Secret Santa-Party</span> Details
+        date: Datum
+        location: Platz
+        amount: Betrag
+
+    manage:
+        title: Ihre Secret Santa-Liste
+        yes: Ja
+        not_yet: Noch nicht
+        edit_email: E-Mail bearbeiten
+        resend_email: E-Mail neu senden
+        view_entry: Eintrag anzeigen
+        tip: Hinweis
+        come_back: Sie können jederzeit auf diese Seite zurückkehren, um zu überprüfen, ob alle Teilnehmer ihr Postfach kontrolliert haben.
+#        watch_out: ?
+#        modify_list: ?
+        save: Speichern
+
 ### end of cleanup ###
 
 manage:
-    title: Ihre Secret Santa-Liste
     yes: Ja
     not_yet: Noch nicht
-    edit_email: E-Mail bearbeiten
-    resend_email: E-Mail neu senden
-    view_entry: Eintrag anzeigen
-    tip: Hinweis
-    come_back: Sie können jederzeit auf diese Seite zurückkehren, um zu überprüfen, ob alle Teilnehmer ihr Postfach kontrolliert haben.
-    save: Speichern
 
 delete:
     title: Meine Secret Santa-Liste löschen
@@ -194,13 +207,6 @@ delete:
             Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
         </p>
     phrase_to_type: alles löschen
-entry:
-    headers:
-        title: Ihre <span class="accent">Secret Santa-Party</span> Details
-        date: Datum
-        location: Platz
-        amount: Betrag
-        locatie: Platz
 
 label:
     name: Name

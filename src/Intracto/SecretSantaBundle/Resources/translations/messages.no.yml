@@ -236,20 +236,32 @@ entry_show:
         update_item: Oppdater
         remove_item: Fjern
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Ditt<span class="accent">Secret Santa-selskap</span> med detaljer
+        date: Date
+        location: Sted
+        amount: Beløp
+
+    manage:
+        title: Din Secret Santa-liste
+        yes: Ja
+        not_yet: Ikke ennå
+        edit_email: Rediger e-posten
+        resend_email: Sen e-post på nytt
+        view_entry: Se listen
+        tip: Tip
+        come_back: Du kan alltids komme tilbake til denne siden for å sjekke at alle har undersøkt innboksen sin.
+        watch_out: Watch out
+        modify_list: Å legge til eller slette deltagere fra listen er kun mulig inntil %oneWeekFromEventDate%.
+        save: Lagre
+
 ### end of cleanup ###
 
 manage:
-    title: Din Secret Santa-liste
     yes: Ja
     not_yet: Ikke ennå
-    edit_email: Rediger e-posten
-    resend_email: Sen e-post på nytt
-    view_entry: Se listen
-    tip: Tip
-    come_back: Du kan alltids komme tilbake til denne siden for å sjekke at alle har undersøkt innboksen sin.
-    watch_out: Watch out
-    modify_list: Å legge til eller slette deltagere fra listen er kun mulig inntil %oneWeekFromEventDate%.
-    save: Lagre
 
 delete:
     title: Slett min Secret Santa-liste
@@ -293,12 +305,7 @@ expose_wishlists:
             Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
     phrase_to_type: vis meg ønskelistene
-entry:
-    headers:
-        title: Ditt<span class="accent">Secret Santa-selskap</span> med detaljer
-        date: Date
-        location: Sted
-        amount: Beløp
+
 add_participant:
     title: Legg til deltagere til festen
     body: >

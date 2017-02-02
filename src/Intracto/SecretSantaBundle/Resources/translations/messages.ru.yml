@@ -163,18 +163,32 @@ entry_show:
         update_wishlist: Обновить ваш список желаний
         remove_item: Удалить из списка
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты
+        date: Дата
+#        location: ?
+        amount: Количество
+
+    manage:
+        title: Ваш список Тайного Санты
+        yes: Да
+        not_yet: Еще нет
+        edit_email: Редактировать письмо
+        resend_email: Отправить письмо повторно
+        view_entry: Просмотреть запись
+        tip: Совет
+        come_back: Вы всегда можете вернуться на эту страницу и убедиться, что каждый адресат проверил свой почтовый ящик.
+#        watch_out: ?
+#        modify_list: ?
+        save: Сохранить
+
 ### end of cleanup ###
 
 manage:
-    title: Ваш список Тайного Санты
     yes: Да
     not_yet: Еще нет
-    edit_email: Редактировать письмо
-    resend_email: Отправить письмо повторно
-    view_entry: Просмотреть запись
-    tip: Совет
-    come_back: Вы всегда можете вернуться на эту страницу и убедиться, что каждый адресат проверил свой почтовый ящик.
-    save: Сохранить
 
 delete:
     title: Удалить мой список Тайного Санты
@@ -190,11 +204,6 @@ delete:
             Пожалуйста, введите "<b>%phrase_to_type%</b>" ниже для подтверждения.<br>
         </p>
     phrase_to_type: удалить все
-entry:
-    headers:
-        title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты
-        date: Дата
-        amount: Количество
 
 label:
     name: Имя

@@ -237,18 +237,68 @@ entry_show:
         update_item: Update this item
         remove_item: Remove
 
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Your <span class="accent">Secret Santa party</span> details
+        date: Date
+        location: Location
+        amount: Amount
+
+    manage:
+        title: Your Secret Santa list
+        yes: Yes
+        not_yet: Not yet
+        edit_email: Edit e-mail
+        resend_email: Resend e-mail
+        view_entry: View entry
+        tip: Tip
+        come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
+        watch_out: Watch out
+        modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
+        save: Save
+
+#label.name
+#label.email
+#label.confirmed
+#label.wishlist_filled
+#label.actions
+#label.name
+#label.email
+#
+#btn.delete_list
+#btn.expose
+#btn.expose_wishlists
+#btn.pool_update
+#btn.add_participant
+#btn.updated_party
+#btn.delete_confirm
+#btn.cancel
+#btn.add_participant_confirm
+#btn.cancel
+#btn.remove_participant_confirm
+#btn.cancel
+#btn.cancel
+#
+#delete.title
+#delete.phrase_to_type
+#delete.body
+#
+#add_participant.title
+#add_participant.body
+#
+#remove_participant.title
+#remove_participant.phrase_to_type
+#remove_participant.body
+#
+#updated_party.title
+#updated_party.body
+
 ### end of cleanup ###
 
 manage:
-    title: Your Secret Santa list
     yes: Yes
     not_yet: Not yet
-    edit_email: Edit e-mail
-    resend_email: Resend e-mail
-    view_entry: View entry
-    tip: Tip
-    come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
-    save: Save
 
 delete:
     title: Delete my Secret Santa list
@@ -264,14 +314,6 @@ delete:
             Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
         </p>
     phrase_to_type: delete everything
-entry:
-    headers:
-        title: Your <span class="accent">Secret Santa party</span> details
-        date: Date
-        location: Location
-        amount: Amount
-    watch_out: Watch out
-    modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
 
 add_participant:
     title: Add a new participant to your party
