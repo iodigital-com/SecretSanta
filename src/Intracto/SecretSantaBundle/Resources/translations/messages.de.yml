@@ -260,6 +260,15 @@ emails-participant:
     subject: Ihr Secret Santa
     find_out: Finden Sie Ihren Partner
 
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa Bestätigung
+    salutation: Hi %name%
+    click_button: Bitte klicken Sie auf den untenstehenden Button, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.  Dies veranlasst unsere Wichtel dazu, Ihre vorher geschriebene persönliche Nachricht an alle Ihre Teilnehmer zu versenden.
+    overview_page: Auf der neu-entworfenen Übersichtsseite können Sie dann nachvollziehen, wie Ihre Teilnehmer deren Secret Santa-Partner entdecken. So wissen Sie, wann die Liste komplett ist.
+    lastly: Vergessen Sie am Ende nicht, Ihre eigene Teilnahme auch zu bestätigen. Auch Sie bekommen eine neue E-Mail, nachdem Sie den untenstehenden Button angeklickt haben.
+    btn_validate: Mein Ereignis bestätigen
+
 ### end of cleanup ###
 
 manage:
@@ -279,14 +288,6 @@ btn:
     cancel: Löschen
 
 emails:
-    pendingconfirmation:
-        subject: Secret Santa Bestätigung
-        salutation: Hi %name%
-        click_button: Bitte klicken Sie auf den untenstehenden Button, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.  Dies veranlasst unsere Wichtel dazu, Ihre vorher geschriebene persönliche Nachricht an alle Ihre Teilnehmer zu versenden.
-        overview_page: Auf der neu-entworfenen Übersichtsseite können Sie dann nachvollziehen, wie Ihre Teilnehmer deren Secret Santa-Partner entdecken. So wissen Sie, wann die Liste komplett ist.
-        lastly: Vergessen Sie am Ende nicht, Ihre eigene Teilnahme auch zu bestätigen. Auch Sie bekommen eine neue E-Mail, nachdem Sie den untenstehenden Button angeklickt haben.
-        btn_validate: Mein Ereignis bestätigen
-        click_link: Bitte klicken Sie auf den untenstehenden Link, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.
     wishlistchanged:
         subject: Wunschzettel aktualisiert
         salutation: Hi %name%

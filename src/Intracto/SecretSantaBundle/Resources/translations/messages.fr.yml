@@ -326,6 +326,15 @@ emails-participant:
     subject: Votre Secret Santa
     find_out: Découvrez votre personne
 
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Confirmation Secret Santa
+    salutation: Bonjour %name%
+    click_button: Merci de bien vouloir cliquer sur le bouton ci-dessous afin de valider votre liste de diffusion Secret Santa. Cela réveillera nos gnomes afin qu'ils envoient le message personnel que vous avez créé précédemment à tous les participants.
+    overview_page: Sur la page de présentation nouvellement créée, vous serez en mesure de garder une trace de tous les utilisateurs découvrant leur ami cadeau Secret Santa. Mais aussi d'être informé une fois que la liste sera complète.
+    lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
+    btn_validate: Valider mon événement
+
 ### end of cleanup ###
 
 manage:
@@ -343,14 +352,6 @@ label:
 btn:
     update_wishlist: Mettre à jour votre liste de souhaits
 emails:
-    pendingconfirmation:
-        subject: Confirmation Secret Santa
-        salutation: Bonjour %name%
-        click_button: Merci de bien vouloir cliquer sur le bouton ci-dessous afin de valider votre liste de diffusion Secret Santa. Cela réveillera nos gnomes afin qu'ils envoient le message personnel que vous avez créé précédemment à tous les participants.
-        overview_page: Sur la page de présentation nouvellement créée, vous serez en mesure de garder une trace de tous les utilisateurs découvrant leur ami cadeau Secret Santa. Mais aussi d'être informé une fois que la liste sera complète.
-        lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
-        btn_validate: Valider mon événement
-        click_link: Merci de bien vouloir cliquer sur le lien ci-dessous afin de valider votre liste de diffusion Secret Santa
     wishlistchanged:
         subject: Liste de souhaits mise à jour
         salutation: Bonjour %name%

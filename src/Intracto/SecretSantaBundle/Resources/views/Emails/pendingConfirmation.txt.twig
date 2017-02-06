@@ -1,9 +1,8 @@
-{{ 'emails.pendingconfirmation.salutation'|trans({'%name%': pool.getOwnerName}) }},
+{{ 'emails-pendingConfirmation.salutation'|trans({'%name%': pool.getOwnerName}) }},
 
+{{ 'emails-pendingConfirmation.click_button'|trans }}
+{{ 'emails-pendingConfirmation.overview_page'|trans }}
 
-{{ 'emails.pendingconfirmation.click_link'|trans() }}
-{{ 'emails.pendingconfirmation.overview_page'|trans }}
-
-{{ 'emails.pendingconfirmation.lastly'|trans }}
+{{ 'emails-pendingConfirmation.lastly'|trans }}
 
 {{ url('pool_manage', { 'listUrl': pool.listurl }) }}

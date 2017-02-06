@@ -348,6 +348,15 @@ emails-participant:
     subject: Jouw Secret Santa
     find_out: Ontdek wiens Secret Santa je bent
 
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa Validatie
+    salutation: Hey %name%
+    click_button: Klik op onderstaande knop om je Secret Santa mailinglijst te valideren. Dan krijgen onze kaboutertjes automatisch een emmer water in hun gezicht gegooid. Als ze wakker zijn brengen ze jouw eerder opgestelde persoonlijke boodschap tot bij alle deelnemers.
+    overview_page: Op de net aangemaakte overzichtspagina kan je dan op de hoogte blijven van welke gebruikers al te weten zijn gekomen voor wie ze Secret Santa mogen spelen. Zo weet je wanneer je lijst volledig is.
+    lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
+    btn_validate: Valideer mijn evenement
+
 ### end of cleanup ###
 
 manage:
@@ -366,14 +375,6 @@ label:
 btn:
     update_wishlist: Update je verlanglijst
 emails:
-    pendingconfirmation:
-        subject: Secret Santa Validatie
-        salutation: Hey %name%
-        click_button: Klik op onderstaande knop om je Secret Santa mailinglijst te valideren. Dan krijgen onze kaboutertjes automatisch een emmer water in hun gezicht gegooid. Als ze wakker zijn brengen ze jouw eerder opgestelde persoonlijke boodschap tot bij alle deelnemers.
-        overview_page: Op de net aangemaakte overzichtspagina kan je dan op de hoogte blijven van welke gebruikers al te weten zijn gekomen voor wie ze Secret Santa mogen spelen. Zo weet je wanneer je lijst volledig is.
-        lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
-        btn_validate: Valideer mijn evenement
-        click_link: Klik op onderstaande link om je Secret Santa mailinglijst te bevestigen.
     wishlistchanged:
         subject: Verlanglijst geüpdatet
         salutation: Hey %name%

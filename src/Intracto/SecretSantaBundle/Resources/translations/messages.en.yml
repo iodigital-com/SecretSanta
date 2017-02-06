@@ -350,6 +350,23 @@ emails-participant:
     subject: Your Secret Santa
     find_out: Find out your person
 
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa Validation
+    salutation: Hi %name%
+    click_button: Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
+    overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
+    lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
+    btn_validate: Validate my event
+
+# Emails/pokeBuddy.{html,txt}.twig
+# Emails/poolStatus.{html,txt}.twig
+# Emails/poolUpdate.{html,txt}.twig
+# Emails/removedSecretSanta.{html,txt}.twig
+# Emails/updatedParty.{html,txt}.twig
+# Emails/viewEntryReminder.{html,txt}.twig
+# Emails/wishlistChanged.{html,txt}.twig
+
 ### end of cleanup ###
 
 manage:
@@ -368,14 +385,6 @@ label:
 btn:
     update_wishlist: Update your wishlist
 emails:
-    pendingconfirmation:
-        subject: Secret Santa Validation
-        salutation: Hi %name%
-        click_button: Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
-        overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
-        lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
-        btn_validate: Validate my event
-        click_link: Please click on the link below to validate your Secret Santa mailing list.
     wishlistchanged:
         subject: Wishlist updated
         salutation: Hi %name%

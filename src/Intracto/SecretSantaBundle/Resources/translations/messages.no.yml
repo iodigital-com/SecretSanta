@@ -349,6 +349,15 @@ emails-participant:
     subject: Din hemmelige nisse
     find_out: Finn ut hvem du skal gi gave til
 
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa bekreftelse
+    salutation: Hei %name%
+    click_button: Vennligst trykk på knappen nedenfor for å bekrefte deltagerlisten for ditt "Secret Santa" arrangement. Dette får våre smånisser og troll til å sende ut den personlige meldingen du skrev til alle deltagerne på listen.
+    overview_page: På administrasjonssiden kan du få oversikt over alle deltagerne, og se hvem som har åpnet e-posten. Dermed vet du når listen er fullført!
+    lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
+    btn_validate: Validate my event
+
 ### end of cleanup ###
 
 manage:
@@ -398,14 +407,6 @@ btn:
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
     expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
 emails:
-    pendingconfirmation:
-        subject: Secret Santa bekreftelse
-        salutation: Hei %name%
-        click_button: Vennligst trykk på knappen nedenfor for å bekrefte deltagerlisten for ditt "Secret Santa" arrangement. Dette får våre smånisser og troll til å sende ut den personlige meldingen du skrev til alle deltagerne på listen.
-        overview_page: På administrasjonssiden kan du få oversikt over alle deltagerne, og se hvem som har åpnet e-posten. Dermed vet du når listen er fullført!
-        lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
-        btn_validate: Validate my event
-        click_link: Vennligst trykk på knappen nedenfor for å bekrefte e-postlisten med hemmelige nisser.
     wishlistchanged:
         subject: Ønskeliste oppdatert
         salutation: Hei %name%

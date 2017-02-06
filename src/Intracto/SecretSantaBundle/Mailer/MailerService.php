@@ -60,7 +60,7 @@ class MailerService
         $this->translator->setLocale($pool->getLocale());
 
         $message = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.pendingconfirmation.subject'))
+            ->setSubject($this->translator->trans('emails-pendingConfirmation.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($pool->getOwnerEmail())
             ->setBody(
