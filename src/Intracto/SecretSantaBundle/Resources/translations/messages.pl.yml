@@ -143,7 +143,7 @@ entry_show:
 
     btn:
         add_wishlist: Dodaj do listy życzeń
-        update_wishlist: Zapisz listę życzeń
+#        update_item: ?
         remove_item: Usuń pozycję
 
 # Pool/manage.html.twig
@@ -210,6 +210,14 @@ emails-base_email:
     footer: Życzymy udanego Przyjęcia Tajnego Mikołaja!
     created_by: Utworzona przez
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+#emails-emptyWishlistReminder:
+    update_your_list: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
+#    buy_from_amazon: ?
+
+#    btn:
+#        update_wishlist: ?
+
 ### end of cleanup ###
 
 manage:
@@ -245,7 +253,6 @@ emails:
         click_link: Kliknij na link poniżej aby zobaczyć podpowiedzi.
     emptywishlistreminder:
         subject: Twoja lista życzeń jest nadal pusta
-        updateyourlist: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
     viewentryreminder:
         subject: Dowiedz się, kim jest osoba, którą masz obdarować
         didyouforget: Zapomniałeś o naszym Przyjęciu Tajnego Mikołaja? Nie sprawdziłeś(aś) kim jest osoba, którą masz obdarować!

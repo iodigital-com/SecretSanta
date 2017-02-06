@@ -155,7 +155,7 @@ entry_show:
 
     btn:
         add_wishlist: 添加物品到愿望清单
-        update_wishlist: 更新你的愿望清单
+#        update_item: ?
         remove_item: 删除这个物品
 
 # Pool/manage.html.twig
@@ -232,6 +232,14 @@ emails-base_email:
     footer: 好好享受规划你的秘密圣诞老人吧！
     created_by: 创建者为
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+#emails-emptyWishlistReminder:
+    update_your_list: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
+#    buy_from_amazon: ?
+
+    btn:
+        update_wishlist: 更新你的愿望清单
+
 ### end of cleanup ###
 
 manage:
@@ -268,7 +276,6 @@ emails:
         click_link: 点击以下链接查看他的建议。
     emptywishlistreminder:
         subject: 你的愿望清单仍然为空
-        updateyourlist: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
     viewentryreminder:
         subject: 查看谁是你的礼物密友
         didyouforget: 你忘记秘密圣诞老人派对了吗？你还没查看谁是你的礼物密友呢！

@@ -163,7 +163,7 @@ entry_show:
 
     btn:
         add_wishlist: Dem Wunschzettel einen Gegenstand hinzufügen
-        update_wishlist: Aktualisieren Sie Ihren Wunschzettel
+#        update_item: ?
         remove_item: Diesen Gegenstand entfernen
 
 # Pool/manage.html.twig
@@ -240,6 +240,14 @@ emails-base_email:
     footer: Genießen Sie es, Ihren Secret Santa zu organisieren.
     created_by: Entworfen durch
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    update_your_list: Ihre Secret Santa-Party rückt näher und Sie haben Ihren Wunschzettel noch nicht aktualisiert! Vielleicht möchten Sie noch Dinge hinzufügen, die Sie mögen.
+#    buy_from_amazon: ?
+
+    btn:
+        update_wishlist: Aktualisieren Sie Ihren Wunschzettel
+
 ### end of cleanup ###
 
 manage:
@@ -281,7 +289,6 @@ emails:
         click_link: Klicken auf den untenstehenden Link, um seine / ihre Vorschläge zu sehen.
     emptywishlistreminder:
         subject: Ihr Wunschzettel ist immer noch leer.
-        updateyourlist: Ihre Secret Santa-Party rückt näher und Sie haben Ihren Wunschzettel noch nicht aktualisiert! Vielleicht möchten Sie noch Dinge hinzufügen, die Sie mögen.
     viewentryreminder:
         subject: Finden Sie heraus, wer Ihr Geschenkepartner ist
         didyouforget: Haben Sie Ihre Secret Santa-Party vergessen? Sie haben noch nicht nachgesehen, wer Ihr Geschenkpartner ist!

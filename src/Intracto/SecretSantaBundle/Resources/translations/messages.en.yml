@@ -330,6 +330,14 @@ emails-base_email:
     footer: Have fun organizing Secret Santa!
     created_by: Created by
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    update_your_list: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
+    buy_from_amazon: What are the most wished for items?
+
+    btn:
+        update_wishlist: Update your wishlist
+
 ### end of cleanup ###
 
 manage:
@@ -370,7 +378,6 @@ emails:
         click_link: Click on the link below to check out his or her suggestions.
     emptywishlistreminder:
         subject: Your wishlist is still empty
-        updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
     viewentryreminder:
         subject: Find out who your gift buddy is
         didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!

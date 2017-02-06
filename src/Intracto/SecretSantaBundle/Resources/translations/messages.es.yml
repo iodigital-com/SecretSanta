@@ -257,6 +257,14 @@ emails-base_email:
     footer: ¡Diviértete organizando Secret Santa!
     created_by: Creado por
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    update_your_list: ¡Tu fiesta Secret Santa está cerca y aún no has actualizado tu lista de deseos! Podrías añadir aquello que te gustaría tener.
+#    buy_from_amazon: ?
+
+    btn:
+        update_wishlist: Actualizar tu lista de deseos
+
 ### end of cleanup ###
 
 manage:
@@ -304,7 +312,6 @@ emails:
         click_link: Haz clic en el siguiente enlace para ver sus sugerencias.
     emptywishlistreminder:
         subject: Tu lista de deseos aún sigue vacía
-        updateyourlist: ¡Tu fiesta Secret Santa está cerca y aún no has actualizado tu lista de deseos! Podrías añadir aquello que te gustaría tener.
     viewentryreminder:
         subject: Descubrir quién es tu amigo del regalo
         didyouforget: ¿Olvidaste nuestra fiesta Secret Santa? ¡Aún no has comprobado tu amigo del regalo!

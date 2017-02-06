@@ -220,7 +220,7 @@ entry_show:
 
     btn:
         add_wishlist: Adicione um item a lista do Secret Santa
-        update_wishlist: Atualizar minha lista de desejos
+#        update_item: ?
         remove_item: Eliminar este item
 
 # Pool/manage.html.twig
@@ -297,6 +297,14 @@ emails-base_email:
     footer: Divirta-se organizando seu Amigo Secreto!
     created_by: Criado por
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+#emails-emptyWishlistReminder:
+    update_your_list: A revelação do seu Amigo Secreto está chegando e você ainda não atualizou sua lista de desejos! Facilite a vida de quem te tirou de amigo secreto e arraste algumas das coisas que você gostaria de ganhar para a sua lista!
+#    buy_from_amazon: ?
+
+#    btn:
+#        update_wishlist: Atualizar minha lista de desejos
+
 ### end of cleanup ###
 
 manage:
@@ -333,7 +341,6 @@ emails:
         click_link: Clique no link abaixo para ver as sugestões dele.
     emptywishlistreminder:
         subject: Sua lista de desejos ainda está vazia!
-        updateyourlist: A revelação do seu Amigo Secreto está chegando e você ainda não atualizou sua lista de desejos! Facilite a vida de quem te tirou de amigo secreto e arraste algumas das coisas que você gostaria de ganhar para a sua lista!
     viewentryreminder:
         subject: Descubra quem é seu Amigo Secreto
         didyouforget: Você, por acaso, se esqueceu da nossa brincadeira? Você ainda não foi ver quem é seu Amigo Secreto!

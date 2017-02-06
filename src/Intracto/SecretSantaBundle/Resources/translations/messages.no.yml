@@ -329,6 +329,14 @@ emails-base_email:
     footer: Kos deg med å arrangere Secret Santa!
     created_by: Laget av
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    update_your_list: Din hemmelige nisse-fest nærmer seg, og du har fortsatt ikke skrevet ønskeliste til nissen! Legg til noen ting du ønsker deg da vel.
+#    buy_from_amazon: ?
+
+    btn:
+        update_wishlist: Oppdater min ønskeliste
+
 ### end of cleanup ###
 
 manage:
@@ -400,7 +408,6 @@ emails:
         click_link: Trykk på linken nedenfor for å se hans eller hennes juleønsker.
     emptywishlistreminder:
         subject: Ønskelisten din er fortsatt tom!
-        updateyourlist: Din hemmelige nisse-fest nærmer seg, og du har fortsatt ikke skrevet ønskeliste til nissen! Legg til noen ting du ønsker deg da vel.
     viewentryreminder:
         subject: Finn ut hvem din nisse er
         didyouforget: Har du glemt hemmelig-nisse festen? Du har ikke sett hvem du skalk være nisse for ennå!

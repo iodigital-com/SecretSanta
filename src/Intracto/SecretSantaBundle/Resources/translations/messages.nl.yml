@@ -328,6 +328,14 @@ emails-base_email:
     footer: Veel plezier met het organiseren van Secret Santa!
     created_by: Aangemaakt door
 
+# Emails/EmptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    update_your_list: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
+    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
+
+    btn:
+        update_wishlist: Zapisz listę życzeń
+
 ### end of cleanup ###
 
 manage:
@@ -368,7 +376,6 @@ emails:
         click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
     emptywishlistreminder:
         subject: Je verlanglijst is nog leeg
-        updateyourlist: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
     viewentryreminder:
         subject: Ontdek wiens Secret Santa je bent
         didyouforget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
