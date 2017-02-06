@@ -238,7 +238,7 @@ emails-base_email:
     footer: Желаем вам получить массу удовольствия от организации вечеринки Тайного Санты!
     created_by: Создано
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Твой список желаний все еще пуст.
     update_your_list: Дата проведения вашей вечеринки Тайного Санты все ближе, а вы все еще не обновили ваш список желаний! Может быть, вы хотите добавить что-нибудь, от чего бы не отказались?
@@ -247,10 +247,15 @@ emails-emptyWishlistReminder:
     btn:
         update_wishlist: Обновить ваш список желаний
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
 #    subject: ?
 #    text: ?
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Ваш Тайный Санта
+    find_out: Найдите вашего получателя подарка
 
 ### end of cleanup ###
 
@@ -274,10 +279,6 @@ emails:
         lastly: И в завершение не забудьте подтвердить ваше собственное участие! Мы также направим вам письмо, как только вы кликните кнопку подтверждения ниже.
         btn_validate: Подтвердить мое событие
         click_link: Пожалуйста, кликните на ссылку ниже для подтверждения вашего списка Тайного Санты.
-    secretsanta:
-        subject: Ваш Тайный Санта
-        btn_find_out: Найдите вашего получателя подарка
-        link_find_out: Найти получателя подарка методом случайного выбора по этому url
     wishlistchanged:
         subject: Список желаний обновлен
         salutation: Привет, %name%

@@ -331,7 +331,7 @@ emails-base_email:
     footer: Have fun organizing Secret Santa!
     created_by: Created by
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Your wishlist is still empty
     update_your_list: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
@@ -344,6 +344,11 @@ emails-emptyWishlistReminder:
 emails-forgot_link:
     subject: Resend activation mail
     text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Your Secret Santa
+    find_out: Find out your person
 
 ### end of cleanup ###
 
@@ -371,10 +376,6 @@ emails:
         lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
         btn_validate: Validate my event
         click_link: Please click on the link below to validate your Secret Santa mailing list.
-    secretsanta:
-        subject: Your Secret Santa
-        btn_find_out: Find out your person
-        link_find_out: Find out your randomly assigned person to give a gift to, on this url
     wishlistchanged:
         subject: Wishlist updated
         salutation: Hi %name%

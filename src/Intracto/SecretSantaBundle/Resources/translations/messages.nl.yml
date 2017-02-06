@@ -329,7 +329,7 @@ emails-base_email:
     footer: Veel plezier met het organiseren van Secret Santa!
     created_by: Aangemaakt door
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Je verlanglijst is nog leeg
     update_your_list: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
@@ -338,10 +338,15 @@ emails-emptyWishlistReminder:
     btn:
         update_wishlist: Zapisz listę życzeń
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Activatie mail opnieuw verzenden
     text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Jouw Secret Santa
+    find_out: Ontdek wiens Secret Santa je bent
 
 ### end of cleanup ###
 
@@ -369,10 +374,6 @@ emails:
         lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
         btn_validate: Valideer mijn evenement
         click_link: Klik op onderstaande link om je Secret Santa mailinglijst te bevestigen.
-    secretsanta:
-        subject: Jouw Secret Santa
-        btn_find_out: Ontdek wiens Secret Santa je bent
-        link_find_out: Ontdek je willekeurig geselecteerde persoon aan wie je een cadeau geeft via deze url
     wishlistchanged:
         subject: Verlanglijst geüpdatet
         salutation: Hey %name%

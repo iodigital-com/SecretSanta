@@ -241,7 +241,7 @@ emails-base_email:
     footer: Genießen Sie es, Ihren Secret Santa zu organisieren.
     created_by: Entworfen durch
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Ihr Wunschzettel ist immer noch leer.
     update_your_list: Ihre Secret Santa-Party rückt näher und Sie haben Ihren Wunschzettel noch nicht aktualisiert! Vielleicht möchten Sie noch Dinge hinzufügen, die Sie mögen.
@@ -250,10 +250,15 @@ emails-emptyWishlistReminder:
     btn:
         update_wishlist: Aktualisieren Sie Ihren Wunschzettel
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
 #    subject: ?
 #    text: ?
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Ihr Secret Santa
+    find_out: Finden Sie Ihren Partner
 
 ### end of cleanup ###
 
@@ -282,10 +287,6 @@ emails:
         lastly: Vergessen Sie am Ende nicht, Ihre eigene Teilnahme auch zu bestätigen. Auch Sie bekommen eine neue E-Mail, nachdem Sie den untenstehenden Button angeklickt haben.
         btn_validate: Mein Ereignis bestätigen
         click_link: Bitte klicken Sie auf den untenstehenden Link, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.
-    secretsanta:
-        subject: Ihr Secret Santa
-        btn_find_out: Finden Sie Ihren Partner
-        link_find_out: Finden Sie auf dieser Seite heraus, wer der zufällig zugeteilte Partner ist, dem Sie ein Geschenk machen
     wishlistchanged:
         subject: Wunschzettel aktualisiert
         salutation: Hi %name%

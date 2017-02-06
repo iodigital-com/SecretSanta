@@ -233,7 +233,7 @@ emails-base_email:
     footer: 好好享受规划你的秘密圣诞老人吧！
     created_by: 创建者为
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: 你的愿望清单仍然为空
     update_your_list: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
@@ -242,10 +242,15 @@ emails-emptyWishlistReminder:
     btn:
         update_wishlist: 更新你的愿望清单
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
 #    subject: ?
 #    text: ?
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: 你的秘密圣诞老人
+    find_out: 查看你的人员
 
 ### end of cleanup ###
 
@@ -269,10 +274,6 @@ emails:
         lastly: 最后，别忘记你自己也参与其中！在你点击以下确认按键后，我们也将发送一封新的电子邮件给你。
         btn_validate: 确认我的活动
         click_link: 请点击以下链接确认你的秘密圣诞老人邮件名单。
-    secretsanta:
-        subject: 你的秘密圣诞老人
-        btn_find_out: 查看你的人员
-        link_find_out: 在这个网址中查看你被随机安排送礼物的人员
     wishlistchanged:
         subject: 愿望清单已更新
         salutation: 你好%name%

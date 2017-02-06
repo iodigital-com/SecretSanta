@@ -211,7 +211,7 @@ emails-base_email:
     footer: Życzymy udanego Przyjęcia Tajnego Mikołaja!
     created_by: Utworzona przez
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Twoja lista życzeń jest nadal pusta
     update_your_list: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
@@ -220,10 +220,15 @@ emails-emptyWishlistReminder:
 #    btn:
 #        update_wishlist: ?
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
 #    subject:?
 #    text: ?
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Twój Tajny Mikołaj
+    find_out: Dowiedz się kim jest Twoja osoba
 
 ### end of cleanup ###
 
@@ -246,10 +251,6 @@ emails:
         lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
         btn_validate: Zweryfikuj wydarzenie
         click_link: Kliknij w link poniżej aby zweryfikować Twoją Listę Tajnego Mikołaja.
-    secretsanta:
-        subject: Twój Tajny Mikołaj
-        btn_find_out: Dowiedz się kim jest Twoja osoba
-        link_find_out: Dowiedz się, kim jest losowo wybrana osoba do obdarowania, pod tym adresem
     wishlistchanged:
         subject: Lista życzeń została zaktualizowana
         salutation: 'Cześć %name%'

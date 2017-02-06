@@ -307,7 +307,7 @@ emails-base_email:
     footer: Bon amusement pour votre Secret Santa party!
     created_by: Créé par
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Votre liste de souhaits est toujours vide
     update_your_list: Votre Secret Santa party arrive bientôt et vous n'avez pas encore mis à jour votre liste de souhaits ! Vous pouvez ajouter des choses que vous souhaiteriez.
@@ -316,10 +316,15 @@ emails-emptyWishlistReminder:
     btn:
         update_wishlist: Mettre à jour votre liste de souhaits
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
 #    subject: ?
 #    text: ?
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Votre Secret Santa
+    find_out: Découvrez votre personne
 
 ### end of cleanup ###
 
@@ -346,10 +351,6 @@ emails:
         lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
         btn_validate: Valider mon événement
         click_link: Merci de bien vouloir cliquer sur le lien ci-dessous afin de valider votre liste de diffusion Secret Santa
-    secretsanta:
-        subject: Votre Secret Santa
-        btn_find_out: Découvrez votre personne
-        link_find_out: Découvrez la personne qui vous a été attribuée au hasard et à qui vous devez offrir un cadeau, à cette adresse
     wishlistchanged:
         subject: Liste de souhaits mise à jour
         salutation: Bonjour %name%

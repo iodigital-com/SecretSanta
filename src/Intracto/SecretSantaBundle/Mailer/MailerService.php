@@ -108,7 +108,7 @@ class MailerService
         $message = str_replace('(ADMINISTRATOR)', $entry->getPool()->getOwnerName(), $message);
 
         $mail = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.secretsanta.subject'))
+            ->setSubject($this->translator->trans('emails-participant.subject'))
             ->setFrom($this->noreplyEmail, $entry->getPool()->getOwnerName())
             ->setReplyTo([$entry->getPool()->getOwnerEmail() => $entry->getPool()->getOwnerName()])
             ->setTo($entry->getEmail(), $entry->getName())

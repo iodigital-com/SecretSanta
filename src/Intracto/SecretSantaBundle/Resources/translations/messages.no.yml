@@ -330,7 +330,7 @@ emails-base_email:
     footer: Kos deg med å arrangere Secret Santa!
     created_by: Laget av
 
-# Emails/EmptyWishlistReminder.{html,txt}.twig
+# Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Ønskelisten din er fortsatt tom!
     update_your_list: Din hemmelige nisse-fest nærmer seg, og du har fortsatt ikke skrevet ønskeliste til nissen! Legg til noen ting du ønsker deg da vel.
@@ -339,10 +339,15 @@ emails-emptyWishlistReminder:
     btn:
         update_wishlist: Oppdater min ønskeliste
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Resend activation mail
     text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Din hemmelige nisse
+    find_out: Finn ut hvem du skal gi gave til
 
 ### end of cleanup ###
 
@@ -401,10 +406,6 @@ emails:
         lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
         btn_validate: Validate my event
         click_link: Vennligst trykk på knappen nedenfor for å bekrefte e-postlisten med hemmelige nisser.
-    secretsanta:
-        subject: Din hemmelige nisse
-        btn_find_out: Finn ut hvem du skal gi gave til
-        link_find_out: Finn ut hvilken person våre smånisser trakk ut av hatten til deg, her
     wishlistchanged:
         subject: Ønskeliste oppdatert
         salutation: Hei %name%
