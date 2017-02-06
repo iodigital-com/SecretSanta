@@ -323,6 +323,12 @@ pool_manage:
         wishlist_filled: Ønskeliste lagt inn
         actions: Valg
 
+# Emails/baseEmail.html.twig
+emails-base_email:
+    title: Hemmelig-nisse
+    footer: Kos deg med å arrangere Secret Santa!
+    created_by: Laget av
+
 ### end of cleanup ###
 
 manage:
@@ -373,10 +379,6 @@ btn:
     expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
 emails:
     sender: Julenissen
-    base:
-        title: Hemmelig-nisse
-        footer: Kos deg med å arrangere Secret Santa!
-        created_by: Laget av
     pendingconfirmation:
         subject: Secret Santa bekreftelse
         salutation: Hei %name%

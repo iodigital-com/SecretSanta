@@ -204,6 +204,12 @@ pool_manage:
 #        wishlist_filled: ?
         actions: Akcje
 
+# Emails/baseEmail.html.twig
+emails-base_email:
+    title: Tajny Mikołaj stworzony przez Intracto
+    footer: Życzymy udanego Przyjęcia Tajnego Mikołaja!
+    created_by: Utworzona przez
+
 ### end of cleanup ###
 
 manage:
@@ -218,10 +224,6 @@ label:
     confirmed: Potwierdzony
 emails:
     sender: Tajny Mikołaj
-    base:
-        title: Tajny Mikołaj stworzony przez Intracto
-        footer: Życzymy udanego Przyjęcia Tajnego Mikołaja!
-        created_by: Utworzona przez
     pendingconfirmation:
         subject: Weryfikacja Tajnego Mikołaja
         salutation: 'Cześć %name%'

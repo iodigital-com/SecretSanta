@@ -322,6 +322,12 @@ pool_manage:
         wishlist_filled: Wish List Ingevuld
         actions: Acties
 
+# Emails/baseEmail.html.twig
+emails-base_email:
+    title: Secret Santa door Intracto
+    footer: Veel plezier met het organiseren van Secret Santa!
+    created_by: Aangemaakt door
+
 ### end of cleanup ###
 
 manage:
@@ -341,10 +347,6 @@ btn:
     update_wishlist: Update je verlanglijst
 emails:
     sender: Kerstman
-    base:
-        title: Secret Santa door Intracto
-        footer: Veel plezier met het organiseren van Secret Santa!
-        created_by: Aangemaakt door
     pendingconfirmation:
         subject: Secret Santa Validatie
         salutation: Hey %name%

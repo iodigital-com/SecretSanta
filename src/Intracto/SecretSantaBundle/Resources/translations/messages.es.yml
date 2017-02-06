@@ -251,6 +251,12 @@ pool_manage:
         wishlist_filled: Lista de deseos insertado
         actions: Acciones
 
+# Emails/baseEmail.html.twig
+emails-base_email:
+    title: Secret Santa by Intracto
+    footer: ¡Diviértete organizando Secret Santa!
+    created_by: Creado por
+
 ### end of cleanup ###
 
 manage:
@@ -277,10 +283,6 @@ btn:
 
 emails:
     sender: Santa Claus
-    base:
-        title: Secret Santa by Intracto
-        footer: ¡Diviértete organizando Secret Santa!
-        created_by: Creado por
     pendingconfirmation:
         subject: Validación Secret Santa
         salutation: Hola %name%

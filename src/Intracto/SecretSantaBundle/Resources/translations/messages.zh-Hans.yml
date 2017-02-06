@@ -226,6 +226,12 @@ pool_manage:
 #        wishlist_filled: ?
         actions: 作用
 
+# Emails/baseEmail.html.twig
+emails-base_email:
+    title: 秘密圣诞老人由Intracto所有
+    footer: 好好享受规划你的秘密圣诞老人吧！
+    created_by: 创建者为
+
 ### end of cleanup ###
 
 manage:
@@ -241,10 +247,6 @@ label:
 
 emails:
     sender: 圣诞老人
-    base:
-        title: 秘密圣诞老人由Intracto所有
-        footer: 好好享受规划你的秘密圣诞老人吧！
-        created_by: 创建者为
     pendingconfirmation:
         subject: 秘密圣诞老人确认
         salutation: 你好%name%

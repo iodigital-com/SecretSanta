@@ -231,6 +231,12 @@ pool_manage:
 #        wishlist_filled: ?
         actions: Действия
 
+# Emails/baseEmail.html.twig
+emails-base_email:
+    title: Тайный Санта от Intracto
+    footer: Желаем вам получить массу удовольствия от организации вечеринки Тайного Санты!
+    created_by: Создано
+
 ### end of cleanup ###
 
 manage:
@@ -246,10 +252,6 @@ label:
 
 emails:
     sender: Санта Клаус
-    base:
-        title: Тайный Санта от Intracto
-        footer: Желаем вам получить массу удовольствия от организации вечеринки Тайного Санты!
-        created_by: Создано
     pendingconfirmation:
         subject: Подтверждение Тайного Санты
         salutation: Привет, %name%
