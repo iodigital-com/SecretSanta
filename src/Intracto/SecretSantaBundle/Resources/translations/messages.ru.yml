@@ -266,6 +266,14 @@ emails-pendingConfirmation:
     lastly: И в завершение не забудьте подтвердить ваше собственное участие! Мы также направим вам письмо, как только вы кликните кнопку подтверждения ниже.
     btn_validate: Подтвердить мое событие
 
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+    update_wishlist: Обновить ваш список желаний
+
 ### end of cleanup ###
 
 manage:

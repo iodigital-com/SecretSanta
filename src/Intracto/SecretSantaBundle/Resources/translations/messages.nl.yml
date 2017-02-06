@@ -357,6 +357,24 @@ emails-pendingConfirmation:
     lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
     btn_validate: Valideer mijn evenement
 
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+    subject: Je maatje wacht op jouw verlanglijstje
+    message:
+        html: >
+            Beste %name%, <br/>
+            <br/>
+            Jouw Secret Santa maatje wacht op jouw wenslijst. <br/>
+            <br/>
+            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
+        txt: >
+            Beste %name%,
+
+            Jouw Secret Santa maatje wacht op jouw wenslijst.
+
+            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
+    update_wishlist: Update je verlanglijst
+
 ### end of cleanup ###
 
 manage:
@@ -372,8 +390,6 @@ label:
     confirmed: Bevestigd
     wishlist_filled: Wish List Ingevuld
     items: Gewenste verrassingen
-btn:
-    update_wishlist: Update je verlanglijst
 emails:
     wishlistchanged:
         subject: Verlanglijst geüpdatet
@@ -401,21 +417,6 @@ emails:
 
 
             Geniet van de feestdagen!
-    poke_buddy:
-        subject: Je maatje wacht op jouw verlanglijstje
-        message:
-            html: >
-                Beste %name%, <br/>
-                <br/>
-                Jouw Secret Santa maatje wacht op jouw wenslijst. <br/>
-                <br/>
-                Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
-            txt: >
-                Beste %name%,
-
-                Jouw Secret Santa maatje wacht op jouw wenslijst.
-
-                Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
     pool_update:
         subject: Ons Secret Santa feestje komt eraan!
         message:

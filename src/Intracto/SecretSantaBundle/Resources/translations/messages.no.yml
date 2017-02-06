@@ -358,6 +358,24 @@ emails-pendingConfirmation:
     lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
     btn_validate: Validate my event
 
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+    subject: Julenissen venter på ønskelisten din
+    message:
+        html: >
+            Kjære %name%, <br/>
+            <br/>
+            Julenissen din venter på at du legger noen ønsker til ønskelisten din.<br/>
+            <br/>
+            Trykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
+        txt: >
+            Kjære%name%,
+
+            Julenissen din venter på at du legger noen ønsker til ønskelisten din.
+
+            rykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
+    update_wishlist: Oppdater min ønskeliste
+
 ### end of cleanup ###
 
 manage:
@@ -403,7 +421,6 @@ label:
     wishlist_filled: Ønskeliste lagt inn
     items: Ønsker på ønskelisten
 btn:
-    update_wishlist: Oppdater min ønskeliste
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
     expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
 emails:
@@ -450,21 +467,6 @@ emails:
                 Du har sendt inn en forespørsel på listen over kombinasjonene av alle deltagerne. Vær klar over at deltagerne kan se at du har fått tilgang til denne listen og at du kan se ønskelistene deres.
 
                 Nedenfor er en oversikt over hvem som skal gi gaver til hvem.
-    poke_buddy:
-        subject: Julenissen venter på ønskelisten din
-        message:
-            html: >
-                Kjære %name%, <br/>
-                <br/>
-                Julenissen din venter på at du legger noen ønsker til ønskelisten din.<br/>
-                <br/>
-                Trykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
-            txt: >
-                Kjære%name%,
-
-                Julenissen din venter på at du legger noen ønsker til ønskelisten din.
-
-                rykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
     pool_update:
         subject: Nissefesten vår nærmer seg!
         message:

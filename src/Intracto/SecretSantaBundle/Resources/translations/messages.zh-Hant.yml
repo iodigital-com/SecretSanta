@@ -261,6 +261,14 @@ emails-pendingConfirmation:
     lastly: 最後，別忘記你的個人參與。當你點擊下方的確認/批准按鈕後，我們將會傳送一封新電郵給你。
     btn_validate: 確認我的事件
 
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+    update_wishlist: 更新你的願望單
+
 ### end of cleanup ###
 
 manage:

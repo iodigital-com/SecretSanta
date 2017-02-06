@@ -269,6 +269,14 @@ emails-pendingConfirmation:
     lastly: Vergessen Sie am Ende nicht, Ihre eigene Teilnahme auch zu bestätigen. Auch Sie bekommen eine neue E-Mail, nachdem Sie den untenstehenden Button angeklickt haben.
     btn_validate: Mein Ereignis bestätigen
 
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+    update_wishlist: Aktualisieren Sie Ihren Wunschzettel
+
 ### end of cleanup ###
 
 manage:

@@ -335,6 +335,24 @@ emails-pendingConfirmation:
     lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
     btn_validate: Valider mon événement
 
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+    subject: Votre copain est en attente de votre liste de souhaits
+    message:
+        html: >
+            Cher(e) %name%, <br/>
+            <br/>
+            Votre copain Secret Santa est en attente de votre liste de souhaits.<br/>
+            <br/>
+            Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
+        txt: >
+            Cher(e) %name%,
+
+            Votre copain Secret Santa est en attente de votre liste de souhaits.
+
+            Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
+    update_wishlist: Mettre à jour votre liste de souhaits
+
 ### end of cleanup ###
 
 manage:
@@ -349,8 +367,6 @@ label:
     location: Lieu
     confirmed: Confirmés
     items: Cadeaux souhaités
-btn:
-    update_wishlist: Mettre à jour votre liste de souhaits
 emails:
     wishlistchanged:
         subject: Liste de souhaits mise à jour
@@ -378,21 +394,6 @@ emails:
 
 
             Bonnes vacances !
-    poke_buddy:
-        subject: Votre copain est en attente de votre liste de souhaits
-        message:
-            html: >
-                Cher(e) %name%, <br/>
-                <br/>
-                Votre copain Secret Santa est en attente de votre liste de souhaits.<br/>
-                <br/>
-                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
-            txt: >
-                Cher(e) %name%,
-
-                Votre copain Secret Santa est en attente de votre liste de souhaits.
-
-                Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
     pool_update:
         subject: Votre f&ecirc;te Secret Santa approche
         message:

@@ -360,6 +360,23 @@ emails-pendingConfirmation:
     btn_validate: Validate my event
 
 # Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+    subject: Your buddy is waiting for your wishlist
+    message:
+        html: >
+            Dear %name%, <br/>
+            <br/>
+            Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
+            <br/>
+            Click the link below and add some stuff to your wishlist you'd like.
+        txt: >
+            Dear %name%,
+
+            Your Secret Santa buddy is waiting for you to add some items to your wishlist.
+
+            Click the link below and add some stuff to your wishlist you'd like.
+    update_wishlist: Update your wishlist
+
 # Emails/poolStatus.{html,txt}.twig
 # Emails/poolUpdate.{html,txt}.twig
 # Emails/removedSecretSanta.{html,txt}.twig
@@ -382,8 +399,6 @@ label:
     amount_to_spend: Amount to spend
     location: Location of your Secret Santa party
     items: Wishlist items
-btn:
-    update_wishlist: Update your wishlist
 emails:
     wishlistchanged:
         subject: Wishlist updated
@@ -411,21 +426,6 @@ emails:
 
 
             Happy Holidays!
-    poke_buddy:
-        subject: Your buddy is waiting for your wishlist
-        message:
-            html: >
-                Dear %name%, <br/>
-                <br/>
-                Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
-                <br/>
-                Click the link below and add some stuff to your wishlist you'd like.
-            txt: >
-                Dear %name%,
-
-                Your Secret Santa buddy is waiting for you to add some items to your wishlist.
-
-                Click the link below and add some stuff to your wishlist you'd like.
     pool_update:
         subject: Our Secret Santa party is coming soon!
         message:

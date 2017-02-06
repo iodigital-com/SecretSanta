@@ -286,6 +286,24 @@ emails-pendingConfirmation:
     lastly: Finalmente, ¡no olvides confirmar también tu propia participación! También te enviaremos un nuevo correo electrónico después de que hagas clic en el botón de validación de abajo.
     btn_validate: Validar mi evento
 
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+    subject: Tu amigote est&aacute; esperando tu lista de deseos
+    message:
+        html: >
+            Estimado %name%, <br/>
+            <br/>
+            Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.<br/>
+            <br/>
+            Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
+        txt: >
+            Estimado %name%,
+
+            Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.
+
+            Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
+    update_wishlist: Actualizar tu lista de deseos
+
 ### end of cleanup ###
 
 manage:
@@ -307,8 +325,6 @@ label:
     confirmed: Confirmado
     wishlist_filled: Lista de deseos insertado
     items: Regalos deseados
-btn:
-    update_wishlist: Actualizar tu lista de deseos
 
 emails:
     wishlistchanged:
@@ -337,21 +353,6 @@ emails:
 
 
             ¡Felices Fiestas!
-    poke_buddy:
-        subject: Tu amigote est&aacute; esperando tu lista de deseos
-        message:
-            html: >
-                Estimado %name%, <br/>
-                <br/>
-                Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.<br/>
-                <br/>
-                Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
-            txt: >
-                Estimado %name%,
-
-                Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.
-
-                Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
     pool_update:
         subject: Nuestra fiesta Secret Santa se acerca!
         message:

@@ -304,8 +304,8 @@ emails-emptyWishlistReminder:
     update_your_list: A revelação do seu Amigo Secreto está chegando e você ainda não atualizou sua lista de desejos! Facilite a vida de quem te tirou de amigo secreto e arraste algumas das coisas que você gostaria de ganhar para a sua lista!
 #    buy_from_amazon: ?
 
-#    btn:
-#        update_wishlist: Atualizar minha lista de desejos
+    btn:
+        update_wishlist: Atualizar minha lista de desejos
 
 # Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
@@ -325,6 +325,14 @@ emails-pendingConfirmation:
     overview_page: Na (recentemente montada) página de visão geral há sempre um resumo de quem já sabe quem é seu Amigo Secreto. Assim, você fica sabendo quando a lista estiver completa.
     lastly: E por último, não se esqueça de sua própria participação! Seria um pouco tonto, né? Nós mandaremos um novo e-mail após você ter clicado no botão de confirmação abaixo.
     btn_validate: Validar meu evento
+
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+    update_wishlist: Atualizar minha lista de desejo
 
 ### end of cleanup ###
 

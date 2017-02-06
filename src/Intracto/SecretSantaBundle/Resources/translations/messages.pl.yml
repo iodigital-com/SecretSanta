@@ -239,6 +239,14 @@ emails-pendingConfirmation:
     lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
     btn_validate: Zweryfikuj wydarzenie
 
+# Emails/pokeBuddy.{html,txt}.twig
+#emails-pokeBuddy:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+#    update_wishlist: ?
+
 ### end of cleanup ###
 
 manage:
