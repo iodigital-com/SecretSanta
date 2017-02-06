@@ -65,13 +65,13 @@ class MailerService
             ->setTo($pool->getOwnerEmail())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pendingconfirmation.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:pendingConfirmation.txt.twig',
                     [ 'pool' => $pool ]
                 )
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig',
+                    'IntractoSecretSantaBundle:Emails:pendingConfirmation.html.twig',
                     [ 'pool' => $pool ]
                 ),
                 'text/html'
@@ -114,7 +114,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:secretsanta.html.twig',
+                    'IntractoSecretSantaBundle:Emails:participant.html.twig',
                     [
                         'message' => $message,
                         'entry' => $entry,
@@ -124,7 +124,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:secretsanta.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:participant.txt.twig',
                     [
                         'message' => $message,
                         'entry' => $entry,
@@ -174,7 +174,7 @@ class MailerService
             ->setTo($email)
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:forgotlink.html.twig',
+                    'IntractoSecretSantaBundle:Emails:forgotLink.html.twig',
                     [
                         'poolLinks' => $poolLinks,
                     ]
@@ -208,7 +208,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pokebuddy.html.twig',
+                    'IntractoSecretSantaBundle:Emails:pokeBuddy.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -217,7 +217,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pokebuddy.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:pokeBuddy.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -251,7 +251,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolupdate.html.twig',
+                    'IntractoSecretSantaBundle:Emails:poolUpdate.html.twig',
                     [
                         'entry' => $entry,
                         'results' => $results,
@@ -261,7 +261,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolupdate.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:poolUpdate.txt.twig',
                     [
                         'entry' => $entry,
                         'results' => $results,
@@ -284,7 +284,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.html.twig',
+                    'IntractoSecretSantaBundle:Emails:emptyWishlistReminder.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -293,7 +293,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:emptyWishlistReminder.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -315,7 +315,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:viewentryreminder.html.twig',
+                    'IntractoSecretSantaBundle:Emails:viewEntryReminder.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -324,7 +324,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:viewentryreminder.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:viewEntryReminder.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -347,7 +347,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:wishlistchanged.html.twig',
+                    'IntractoSecretSantaBundle:Emails:wishlistChanged.html.twig',
                     [
                         'entry' => $receiver,
                         'secret_santa' => $entry,
@@ -357,7 +357,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:wishlistchanged.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:wishlistChanged.txt.twig',
                     [
                         'entry' => $receiver,
                         'secret_santa' => $entry,
@@ -380,7 +380,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolstatus.html.twig',
+                    'IntractoSecretSantaBundle:Emails:poolStatus.html.twig',
                     [
                         'pool' => $entry->getPool(),
                     ]
@@ -389,7 +389,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolstatus.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:poolStatus.txt.twig',
                     [
                         'pool' => $entry->getPool(),
                     ]
@@ -421,7 +421,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:updatedparty.html.twig',
+                    'IntractoSecretSantaBundle:Emails:updatedParty.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -430,7 +430,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:updatedparty.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:updatedParty.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -449,7 +449,7 @@ class MailerService
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:removedsecretsanta.html.twig',
+                    'IntractoSecretSantaBundle:Emails:removedSecretSanta.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -458,7 +458,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:removedsecretsanta.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:removedSecretSanta.txt.twig',
                     [
                         'entry' => $entry,
                     ]
