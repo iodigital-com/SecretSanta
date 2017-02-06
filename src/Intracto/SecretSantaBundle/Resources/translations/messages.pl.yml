@@ -206,17 +206,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: Tajny Mikołaj
     title: Tajny Mikołaj stworzony przez Intracto
     footer: Życzymy udanego Przyjęcia Tajnego Mikołaja!
     created_by: Utworzona przez
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
-#emails-emptyWishlistReminder:
+emails-emptyWishlistReminder:
+    subject: Twoja lista życzeń jest nadal pusta
     update_your_list: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
 #    buy_from_amazon: ?
 
 #    btn:
 #        update_wishlist: ?
+
+# Emails/ForgotLink.{html,txt}.twig
+#emails-forgot_link:
+#    subject:?
+#    text: ?
 
 ### end of cleanup ###
 
@@ -231,7 +238,6 @@ label:
     amount_to_spend: Suma do wydania
     confirmed: Potwierdzony
 emails:
-    sender: Tajny Mikołaj
     pendingconfirmation:
         subject: Weryfikacja Tajnego Mikołaja
         salutation: 'Cześć %name%'
@@ -251,8 +257,6 @@ emails:
         click_button: Kliknij na przycisk poniżej aby uzyskać podpowiedzi.
         btn_check_wishlist: Sprawdź listę życzeń
         click_link: Kliknij na link poniżej aby zobaczyć podpowiedzi.
-    emptywishlistreminder:
-        subject: Twoja lista życzeń jest nadal pusta
     viewentryreminder:
         subject: Dowiedz się, kim jest osoba, którą masz obdarować
         didyouforget: Zapomniałeś o naszym Przyjęciu Tajnego Mikołaja? Nie sprawdziłeś(aś) kim jest osoba, którą masz obdarować!

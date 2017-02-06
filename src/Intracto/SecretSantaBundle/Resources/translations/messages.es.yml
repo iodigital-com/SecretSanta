@@ -253,17 +253,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: Santa Claus
     title: Secret Santa by Intracto
     footer: ¡Diviértete organizando Secret Santa!
     created_by: Creado por
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
+    subject: Tu lista de deseos aún sigue vacía
     update_your_list: ¡Tu fiesta Secret Santa está cerca y aún no has actualizado tu lista de deseos! Podrías añadir aquello que te gustaría tener.
 #    buy_from_amazon: ?
 
     btn:
         update_wishlist: Actualizar tu lista de deseos
+
+# Emails/ForgotLink.{html,txt}.twig
+emails-forgot_link:
+    subject: Reenviar el correo de activación
+    text: 'Hola, <br><br>tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.<br>'
 
 ### end of cleanup ###
 
@@ -290,7 +297,6 @@ btn:
     update_wishlist: Actualizar tu lista de deseos
 
 emails:
-    sender: Santa Claus
     pendingconfirmation:
         subject: Validación Secret Santa
         salutation: Hola %name%
@@ -310,8 +316,6 @@ emails:
         click_button: Haz clic en el botón de debajo para ver sus sugerencias.
         btn_check_wishlist: Comprobar la lista de deseos
         click_link: Haz clic en el siguiente enlace para ver sus sugerencias.
-    emptywishlistreminder:
-        subject: Tu lista de deseos aún sigue vacía
     viewentryreminder:
         subject: Descubrir quién es tu amigo del regalo
         didyouforget: ¿Olvidaste nuestra fiesta Secret Santa? ¡Aún no has comprobado tu amigo del regalo!
@@ -410,9 +414,6 @@ emails:
 
                 Haz clic en el siguiente enlace para descubrir quien es tu nuevo amigote Secret Santa
         btn_find_out: Descubre a tu nueva persona
-    forgot_link:
-        text: 'Hola, <br><br>tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.<br>'
-        subject: 'Reenviar el correo de activación'
 flashes:
     manage:
         email_validated: >

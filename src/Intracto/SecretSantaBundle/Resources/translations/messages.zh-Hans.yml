@@ -228,17 +228,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: 圣诞老人
     title: 秘密圣诞老人由Intracto所有
     footer: 好好享受规划你的秘密圣诞老人吧！
     created_by: 创建者为
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
-#emails-emptyWishlistReminder:
+emails-emptyWishlistReminder:
+    subject: 你的愿望清单仍然为空
     update_your_list: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
 #    buy_from_amazon: ?
 
     btn:
         update_wishlist: 更新你的愿望清单
+
+# Emails/ForgotLink.{html,txt}.twig
+#emails-forgot_link:
+#    subject: ?
+#    text: ?
 
 ### end of cleanup ###
 
@@ -254,7 +261,6 @@ label:
     confirmed: 确认
 
 emails:
-    sender: 圣诞老人
     pendingconfirmation:
         subject: 秘密圣诞老人确认
         salutation: 你好%name%
@@ -274,8 +280,6 @@ emails:
         click_button: 点击以下按键查看他的建议。
         btn_check_wishlist: 查看愿望清单
         click_link: 点击以下链接查看他的建议。
-    emptywishlistreminder:
-        subject: 你的愿望清单仍然为空
     viewentryreminder:
         subject: 查看谁是你的礼物密友
         didyouforget: 你忘记秘密圣诞老人派对了吗？你还没查看谁是你的礼物密友呢！

@@ -61,7 +61,7 @@ class MailerService
 
         $message = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.pendingconfirmation.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($pool->getOwnerEmail())
             ->setBody(
                 $this->templating->render(
@@ -169,8 +169,8 @@ class MailerService
         $this->translator->setLocale($results[0]['locale']);
 
         $message = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.forgot_link.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-forgot_link.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($email)
             ->setBody(
                 $this->templating->render(
@@ -204,7 +204,7 @@ class MailerService
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.poke_buddy.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -247,7 +247,7 @@ class MailerService
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.pool_update.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -279,8 +279,8 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.emptywishlistreminder.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-emptyWishlistReminder.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -311,7 +311,7 @@ class MailerService
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.viewentryreminder.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -343,7 +343,7 @@ class MailerService
         $this->translator->setLocale($receiver->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.wishlistchanged.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -376,7 +376,7 @@ class MailerService
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.poolstatus.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -417,7 +417,7 @@ class MailerService
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.updated_party.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -445,7 +445,7 @@ class MailerService
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails.removed_secret_santa.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(

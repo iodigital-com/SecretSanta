@@ -324,17 +324,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: Kerstman
     title: Secret Santa door Intracto
     footer: Veel plezier met het organiseren van Secret Santa!
     created_by: Aangemaakt door
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
+    subject: Je verlanglijst is nog leeg
     update_your_list: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
     buy_from_amazon: Welke geschenken worden het vaakst gekocht?
 
     btn:
         update_wishlist: Zapisz listę życzeń
+
+# Emails/ForgotLink.{html,txt}.twig
+emails-forgot_link:
+    subject: Activatie mail opnieuw verzenden
+    text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
 
 ### end of cleanup ###
 
@@ -354,7 +361,6 @@ label:
 btn:
     update_wishlist: Update je verlanglijst
 emails:
-    sender: Kerstman
     pendingconfirmation:
         subject: Secret Santa Validatie
         salutation: Hey %name%
@@ -374,8 +380,6 @@ emails:
         click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken.
         btn_check_wishlist: Bekijk verlanglijst
         click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
-    emptywishlistreminder:
-        subject: Je verlanglijst is nog leeg
     viewentryreminder:
         subject: Ontdek wiens Secret Santa je bent
         didyouforget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
@@ -474,9 +478,6 @@ emails:
 
                 Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
         btn_find_out: Ontdek wiens nieuwe Secret Santa je bent
-    forgot_link:
-        text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
-        subject: 'Activatie mail opnieuw verzenden'
 flashes:
     manage:
         email_validated: >

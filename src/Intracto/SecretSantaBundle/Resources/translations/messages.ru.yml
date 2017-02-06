@@ -233,17 +233,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: Санта Клаус
     title: Тайный Санта от Intracto
     footer: Желаем вам получить массу удовольствия от организации вечеринки Тайного Санты!
     created_by: Создано
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
-#emails-emptyWishlistReminder:
+emails-emptyWishlistReminder:
+    subject: Твой список желаний все еще пуст.
     update_your_list: Дата проведения вашей вечеринки Тайного Санты все ближе, а вы все еще не обновили ваш список желаний! Может быть, вы хотите добавить что-нибудь, от чего бы не отказались?
 #    buy_from_amazon: ?
 
     btn:
         update_wishlist: Обновить ваш список желаний
+
+# Emails/ForgotLink.{html,txt}.twig
+#emails-forgot_link:
+#    subject: ?
+#    text: ?
 
 ### end of cleanup ###
 
@@ -259,7 +266,6 @@ label:
     confirmed: Подтверждено
 
 emails:
-    sender: Санта Клаус
     pendingconfirmation:
         subject: Подтверждение Тайного Санты
         salutation: Привет, %name%
@@ -279,8 +285,6 @@ emails:
         click_button: Кликните на кнопку ниже, чтобы просмотреть его пожелания.
         btn_check_wishlist: Проверить список желаний
         click_link: Кликните на ссылку ниже, чтобы просмотреть его пожелания.
-    emptywishlistreminder:
-        subject: Твой список желаний все еще пуст.
     viewentryreminder:
         subject: Узнайте, кто ваш получатель подарка
         didyouforget: Вы не забыли о вечеринке Тайного Санты? Вы еще не проверили, кто будет вашим получателем подарка!

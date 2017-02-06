@@ -302,17 +302,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: Santa Claus
     title: Secret Santa par Intracto
     footer: Bon amusement pour votre Secret Santa party!
     created_by: Créé par
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
+    subject: Votre liste de souhaits est toujours vide
     update_your_list: Votre Secret Santa party arrive bientôt et vous n'avez pas encore mis à jour votre liste de souhaits ! Vous pouvez ajouter des choses que vous souhaiteriez.
 #    buy_from_amazon: ?
 
     btn:
         update_wishlist: Mettre à jour votre liste de souhaits
+
+# Emails/ForgotLink.{html,txt}.twig
+#emails-forgot_link:
+#    subject: ?
+#    text: ?
 
 ### end of cleanup ###
 
@@ -331,7 +338,6 @@ label:
 btn:
     update_wishlist: Mettre à jour votre liste de souhaits
 emails:
-    sender: Santa Claus
     pendingconfirmation:
         subject: Confirmation Secret Santa
         salutation: Bonjour %name%
@@ -351,8 +357,6 @@ emails:
         click_button: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
         btn_check_wishlist: Découvrir la liste de souhaits
         click_link: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
-    emptywishlistreminder:
-        subject: Votre liste de souhaits est toujours vide
     viewentryreminder:
         subject: Découvrez qui est votre copain cadeau
         didyouforget: Auriez-vous oublié votre Secret Santa party ? Vous n'avez pas encore découvert qui était votre copain cadeau !

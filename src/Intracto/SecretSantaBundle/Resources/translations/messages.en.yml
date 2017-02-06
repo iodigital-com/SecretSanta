@@ -326,17 +326,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: Santa Claus
     title: Secret Santa by Intracto
     footer: Have fun organizing Secret Santa!
     created_by: Created by
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
+    subject: Your wishlist is still empty
     update_your_list: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
     buy_from_amazon: What are the most wished for items?
 
     btn:
         update_wishlist: Update your wishlist
+
+# Emails/ForgotLink.{html,txt}.twig
+emails-forgot_link:
+    subject: Resend activation mail
+    text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
 
 ### end of cleanup ###
 
@@ -356,7 +363,6 @@ label:
 btn:
     update_wishlist: Update your wishlist
 emails:
-    sender: Santa Claus
     pendingconfirmation:
         subject: Secret Santa Validation
         salutation: Hi %name%
@@ -376,8 +382,6 @@ emails:
         click_button: Click on the button below to check out his or her suggestions.
         btn_check_wishlist: Check wishlist
         click_link: Click on the link below to check out his or her suggestions.
-    emptywishlistreminder:
-        subject: Your wishlist is still empty
     viewentryreminder:
         subject: Find out who your gift buddy is
         didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
@@ -476,9 +480,6 @@ emails:
 
                 Click the link below to find out who your new Secret Santa is.
         btn_find_out: Find out your new person
-    forgot_link:
-        text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
-        subject: 'Resend activation mail'
 flashes:
     manage:
         email_validated: >

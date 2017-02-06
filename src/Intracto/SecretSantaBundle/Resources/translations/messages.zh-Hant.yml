@@ -228,17 +228,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
-        title:  秘密聖誕老人由Intracto所有
-        footer: 組織秘密聖誕老人時感到有趣！
-        created_by: 由
+    sender: 聖誕老人
+    title:  秘密聖誕老人由Intracto所有
+    footer: 組織秘密聖誕老人時感到有趣！
+    created_by: 由
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
-#emails-emptyWishlistReminder:
+emails-emptyWishlistReminder:
+    subject: 你的願望單仍是空的
     update_your_list: 你的秘密聖誕老人派對將至，你仍未更新你的願望單！你可以把你想要的東西加入去。
 #    buy_from_amazon: ?
 
     btn:
         update_wishlist: 更新你的願望單
+
+# Emails/ForgotLink.{html,txt}.twig
+#emails-forgot_link:
+#    subject: ?
+#    text: ?
 
 ### end of cleanup ###
 
@@ -254,7 +261,6 @@ label:
     confirmed: 確認
 
 emails:
-    sender: 聖誕老人
     pendingconfirmation:
         subject: 秘密聖誕老人確認
         salutation: 你好%name%
@@ -274,8 +280,6 @@ emails:
         click_button: 點擊下方的按鈕去檢查他的提議。
         btn_check_wishlist: 檢查願望單
         click_link: 點擊下方的連結去檢查他的提議。
-    emptywishlistreminder:
-        subject: 你的願望單仍是空的
     viewentryreminder:
         subject: 找出誰是你的禮物朋友
         didyouforget: 你是否忘記我們的秘密聖誕老人派對？你仍未查看誰是你的禮物朋友!

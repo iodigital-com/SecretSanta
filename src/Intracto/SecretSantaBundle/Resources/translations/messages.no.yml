@@ -325,17 +325,24 @@ pool_manage:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
+    sender: Julenissen
     title: Hemmelig-nisse
     footer: Kos deg med å arrangere Secret Santa!
     created_by: Laget av
 
 # Emails/EmptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
+    subject: Ønskelisten din er fortsatt tom!
     update_your_list: Din hemmelige nisse-fest nærmer seg, og du har fortsatt ikke skrevet ønskeliste til nissen! Legg til noen ting du ønsker deg da vel.
 #    buy_from_amazon: ?
 
     btn:
         update_wishlist: Oppdater min ønskeliste
+
+# Emails/ForgotLink.{html,txt}.twig
+emails-forgot_link:
+    subject: Resend activation mail
+    text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
 
 ### end of cleanup ###
 
@@ -386,7 +393,6 @@ btn:
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
     expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
 emails:
-    sender: Julenissen
     pendingconfirmation:
         subject: Secret Santa bekreftelse
         salutation: Hei %name%
@@ -406,8 +412,6 @@ emails:
         click_button: Trykk på knappen nedenfor for å se hans eller hennes juleønsker.
         btn_check_wishlist: Ønskeliste
         click_link: Trykk på linken nedenfor for å se hans eller hennes juleønsker.
-    emptywishlistreminder:
-        subject: Ønskelisten din er fortsatt tom!
     viewentryreminder:
         subject: Finn ut hvem din nisse er
         didyouforget: Har du glemt hemmelig-nisse festen? Du har ikke sett hvem du skalk være nisse for ennå!
@@ -523,9 +527,6 @@ emails:
 
                 Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
         btn_find_out: Find out your new person
-    forgot_link:
-        text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
-        subject: 'Resend activation mail'
 flashes:
     manage:
         email_validated: >
