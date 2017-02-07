@@ -247,18 +247,30 @@ emails-pendingConfirmation:
 #        txt: ?
 #    update_wishlist: ?
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
 
-manage:
     yes: true
     not_yet: Jeszcze nie
 
+    label:
+        name: Imię
+        email: E-mail
+        confirmed: Potwierdzony
+#        wishlist_filled: ?
+
+#    btn:
+#        poolstatus: ?
+
+### end of cleanup ###
+
 label:
-    name: Imię
-    email: E-mail
     date_party: Data Twojego Przyjęcia Tajnego Mikołaja
     amount_to_spend: Suma do wydania
-    confirmed: Potwierdzony
 emails:
     wishlistchanged:
         subject: Lista życzeń została zaktualizowana

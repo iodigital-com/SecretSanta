@@ -269,18 +269,30 @@ emails-pokeBuddy:
 #        txt: ?
     update_wishlist: 更新你的愿望清单
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
 
-manage:
     yes: 是
     not_yet: 尚未
 
+    label:
+        name: 名字
+        email: 电子邮箱
+        confirmed: 确认
+#        wishlist_filled: ?
+
+#    btn:
+#        poolstatus: ?
+
+### end of cleanup ###
+
 label:
-    name: 名字
-    email: 电子邮箱
     date_party: 你的秘密圣诞老人派对日期
     amount_to_spend: 消费金额
-    confirmed: 确认
 
 emails:
     wishlistchanged:

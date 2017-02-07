@@ -304,11 +304,36 @@ emails-pokeBuddy:
             Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
     update_wishlist: Actualizar tu lista de deseos
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+    subject: Secret Santa fiesta status
+    message:
+        html: >
+            Estimado %owner%, <br/>
+            <br/>
+            Tu fiesta sucedera dentro de poco. Para asegurar la fiesta perfecta, ser&iacute;a bien si cada participante tendr&iacute;a un regalo. Aqu&iacute; una vision de conjunto de todos los participantes y sus situac&iacute;ones.<br/>
+            <br/>
+            Haz clic en el siguiente enlace para llevar tu fiesta.
+        txt: >
+            Estimado %owner%,
 
-manage:
+            Tu fiesta sucedera dentro de poco. Para asegurar la fiesta perfecta, ser&iacute;a bien si cada participante tendr&iacute;a un regalo. Aqu&iacute; una vision de conjunto de todos los participantes y sus situac&iacute;ones.
+
+            Haz clic en el siguiente enlace para llevar tu fiesta.
+
     yes: Sí
     not_yet: Aún no
+
+    label:
+        name: Nombre
+        email: Correo electrónico
+        confirmed: Confirmado
+        wishlist_filled: Lista de deseos insertado
+
+    btn:
+        poolstatus: Gestiona tu fiesta
+
+### end of cleanup ###
 
 entry:
     exposed:
@@ -317,13 +342,9 @@ entry:
         receiving: ... un regalo a este miembro
 
 label:
-    name: Nombre
-    email: Correo electrónico
     date_party: Fecha de tu fiesta Secret Santa
     amount_to_spend: Cantidad a gastar
     location: Sitio de tu fiesta Secret Santa
-    confirmed: Confirmado
-    wishlist_filled: Lista de deseos insertado
     items: Regalos deseados
 
 emails:
@@ -373,22 +394,6 @@ emails:
 
                 Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
         btn_pool_update: Comprueba quién es tu amigote o tu lista de deseos.
-    poolstatus:
-        subject: Secret Santa fiesta status
-        message:
-            html: >
-                Estimado %owner%, <br/>
-                <br/>
-                Tu fiesta sucedera dentro de poco. Para asegurar la fiesta perfecta, ser&iacute;a bien si cada participante tendr&iacute;a un regalo. Aqu&iacute; una vision de conjunto de todos los participantes y sus situac&iacute;ones.<br/>
-                <br/>
-                Haz clic en el siguiente enlace para llevar tu fiesta.
-            txt: >
-                Estimado %owner%,
-
-                Tu fiesta sucedera dentro de poco. Para asegurar la fiesta perfecta, ser&iacute;a bien si cada participante tendr&iacute;a un regalo. Aqu&iacute; una vision de conjunto de todos los participantes y sus situac&iacute;ones.
-
-                Haz clic en el siguiente enlace para llevar tu fiesta.
-        btn_poolstatus: Gestiona tu fiesta
     updated_party:
         subject: ¡Los planes han cambiado!
         message:

@@ -6,14 +6,14 @@
                 <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
             </td>
             <td width="566">
-                <p>{{ 'emails.poolstatus.message.html'|trans({'%owner%': pool.getOwnerName})|raw }}</p>
+                <p>{{ 'emails-pool_status.message.html'|trans({'%owner%': pool.getOwnerName})|raw }}</p>
                 <table cellspacing="0" cellpadding="3" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
                     <thead>
                     <tr>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'label.name'|trans }}</th>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'label.email'|trans }}</th>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'label.confirmed'|trans }}</th>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'label.wishlist_filled'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.name'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.email'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.confirmed'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.wishlist_filled'|trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -21,8 +21,8 @@
                         <tr>
                             <td>{{ entry.name }}</td>
                             <td>{{ entry.email }}</td>
-                            <td>{% if entry.viewdate %}{{ 'manage.yes'|trans }}{% else %}{{ 'manage.not_yet'|trans }}{% endif %}</td>
-                            <td>{% if entry.wishlistItems is not empty %}{{ 'manage.yes'|trans }}{% else %}{{ 'manage.not_yet'|trans }}{% endif %}</td>
+                            <td>{% if entry.viewdate %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
+                            <td>{% if entry.wishlistItems is not empty %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -62,7 +62,7 @@
                                         <a href="{{ url('pool_manage', { 'listUrl': pool.listurl }) }}"
                                            target="_blank" rel="noopener noreferrer"
                                            style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails.poolstatus.btn_poolstatus'|trans }}
+                                            {{ 'emails-pool_status.btn.poolstatus'|trans }}
                                         </a>
                                     </td>
                                 </tr>

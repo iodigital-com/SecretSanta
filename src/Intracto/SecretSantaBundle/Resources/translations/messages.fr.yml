@@ -353,19 +353,41 @@ emails-pokeBuddy:
             Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
     update_wishlist: Mettre à jour votre liste de souhaits
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+    subject: L'état de votre f&ecirc;te Secret Santa
+    message:
+        html: >
+            Cher(e) %owner%, <br/>
+            <br/>
+            Votre f&ecirc;te approche à grands pas. Afin de vous assurer que votre f&ecirc;te soit parfaite, Il serait bien d'avoir un cadeau pour chacun de vos participants. Voici un résumé de tous vos participants ainsi que de leur statut.<br/>
+            <br/>
+            Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
+        txt: >
+            Cher(e) %owner%,
 
-manage:
+            Votre f&ecirc;te approche à grands pas. Afin de vous assurer que votre f&ecirc;te soit parfaite, Il serait bien d'avoir un cadeau pour chacun de vos participants. Voici un résumé de tous vos participants ainsi que de leur statut.
+
+            Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
+
     yes: Oui
     not_yet: Pas encore
 
+    label:
+        name: Nom
+        email: E-mail
+        confirmed: Confirmés
+#        wishlist_filled: ?
+
+    btn:
+        poolstatus: Gérez votre f&ecirc;te
+
+### end of cleanup ###
+
 label:
-    name: Nom
-    email: E-mail
     date_party: Date de votre Secret Santa party
     amount_to_spend: Montant à dépenser
     location: Lieu
-    confirmed: Confirmés
     items: Cadeaux souhaités
 emails:
     wishlistchanged:
@@ -414,22 +436,6 @@ emails:
 
                 Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
         btn_pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
-    poolstatus:
-        subject: L'état de votre f&ecirc;te Secret Santa
-        message:
-            html: >
-                Cher(e) %owner%, <br/>
-                <br/>
-                Votre f&ecirc;te approche à grands pas. Afin de vous assurer que votre f&ecirc;te soit parfaite, Il serait bien d'avoir un cadeau pour chacun de vos participants. Voici un résumé de tous vos participants ainsi que de leur statut.<br/>
-                <br/>
-                Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
-            txt: >
-                Cher(e) %owner%,
-
-                Votre f&ecirc;te approche à grands pas. Afin de vous assurer que votre f&ecirc;te soit parfaite, Il serait bien d'avoir un cadeau pour chacun de vos participants. Voici un résumé de tous vos participants ainsi que de leur statut.
-
-                Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
-        btn_poolstatus: Gérez votre f&ecirc;te
     updated_party:
         subject: Les plans ont changé!
         message:

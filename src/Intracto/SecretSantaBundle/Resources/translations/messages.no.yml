@@ -376,11 +376,36 @@ emails-pokeBuddy:
             rykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
     update_wishlist: Oppdater min ønskeliste
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+    subject: Secret Santa fest: status
+    message:
+        html: >
+            Kjære %owner%, <br/>
+            <br/>
+            Arrangementet ditt går snart av stabelen. For å sørge for at festen går knirkefritt, er det fint om alle får en gave. Her er en statusoppdatering for alle deltagerne.<br/>
+            <br/>
+            Trykk på linken nedenfor for å sende e-poster på nytt, redigere epostadresser eller administrere listen over deltagerne.
+        txt: >
+            Kjære %owner%,
 
-manage:
+            Arrangementet ditt går snart av stabelen. For å sørge for at festen går knirkefritt, er det fint om alle får en gave. Her er en statusoppdatering for alle deltagerne.
+
+            Trykk på linken nedenfor for å sende e-poster på nytt, redigere epostadresser eller administrere listen over deltagerne.
+
     yes: Ja
     not_yet: Ikke ennå
+
+    label:
+        name: Navn
+        email: e-post
+        confirmed: Bekreftet
+        wishlist_filled: Ønskeliste lagt inn
+
+    btn:
+        poolstatus: Administrer ditt arrangement
+
+### end of cleanup ###
 
 expose:
     title: Send meg alle kombinasjonene i e-postlisten
@@ -412,13 +437,9 @@ expose_wishlists:
     phrase_to_type: vis meg ønskelistene
 
 label:
-    name: Navn
-    email: e-post
     date_party: Dato
     amount_to_spend: Beløp å bruke på gaven
     location: Sted
-    confirmed: Bekreftet
-    wishlist_filled: Ønskeliste lagt inn
     items: Ønsker på ønskelisten
 btn:
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
@@ -487,22 +508,6 @@ emails:
 
                 Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
         btn_pool_update: Check your buddy and wishlist
-    poolstatus:
-        subject: Secret Santa fest: status
-        message:
-            html: >
-                Kjære %owner%, <br/>
-                <br/>
-                Arrangementet ditt går snart av stabelen. For å sørge for at festen går knirkefritt, er det fint om alle får en gave. Her er en statusoppdatering for alle deltagerne.<br/>
-                <br/>
-                Trykk på linken nedenfor for å sende e-poster på nytt, redigere epostadresser eller administrere listen over deltagerne.
-            txt: >
-                Kjære %owner%,
-
-                Arrangementet ditt går snart av stabelen. For å sørge for at festen går knirkefritt, er det fint om alle får en gave. Her er en statusoppdatering for alle deltagerne.
-
-                Trykk på linken nedenfor for å sende e-poster på nytt, redigere epostadresser eller administrere listen over deltagerne.
-        btn_poolstatus: Administrer ditt arrangement
     updated_party:
         subject: Endring i planene!
         message:

@@ -274,18 +274,30 @@ emails-pokeBuddy:
 #        txt: ?
     update_wishlist: Обновить ваш список желаний
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
 
-manage:
     yes: Да
     not_yet: Еще нет
 
+    label:
+        name: Имя
+        email: Электронная почта
+        confirmed: Подтверждено
+#        wishlist_filled: ?
+
+#    btn:
+#        poolstatus: ?
+
+### end of cleanup ###
+
 label:
-    name: Имя
-    email: Электронная почта
     date_party: Дата проведения твоей вечеринки Тайного Санты
     amount_to_spend: Сумма
-    confirmed: Подтверждено
 
 emails:
     wishlistchanged:

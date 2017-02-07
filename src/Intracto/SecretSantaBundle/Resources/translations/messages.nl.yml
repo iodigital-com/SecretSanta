@@ -375,20 +375,41 @@ emails-pokeBuddy:
             Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
     update_wishlist: Update je verlanglijst
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+    subject: Status Secret Santa feestje
+    message:
+        html: >
+            Beste %owner%, <br/>
+            <br/>
+            Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
+            <br/>
+            Klik op de onderstaande link en beheer jouw feestje.
+        txt: >
+            Beste %owner%, <br/>
+            <br/>
+            Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
+            <br/>
+            Klik op de onderstaande link en beheer jouw feestje.
 
-manage:
     yes: Ja
     not_yet: Nog niet
 
+    label:
+        name: Naam
+        email: E-mail
+        confirmed: Bevestigd
+        wishlist_filled: Wish List Ingevuld
+
+    btn:
+        poolstatus: Beheer jouw feestje
+
+### end of cleanup ###
+
 label:
-    name: Naam
-    email: E-mail
     date_party: Datum van jouw Secret Santa feest
     amount_to_spend: Te spenderen bedrag
     location: Locatie van jouw Secret Santa feest
-    confirmed: Bevestigd
-    wishlist_filled: Wish List Ingevuld
     items: Gewenste verrassingen
 emails:
     wishlistchanged:
@@ -437,22 +458,6 @@ emails:
 
                 Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
         btn_pool_update: Check wie je maatje is en vul je wenslijst in
-    poolstatus:
-        subject: Status Secret Santa feestje
-        message:
-            html: >
-                Beste %owner%, <br/>
-                <br/>
-                Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
-                <br/>
-                Klik op de onderstaande link en beheer jouw feestje.
-            txt: >
-                Beste %owner%, <br/>
-                <br/>
-                Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
-                <br/>
-                Klik op de onderstaande link en beheer jouw feestje.
-        btn_poolstatus: Beheer jouw feestje
     updated_party:
         subject: De plannen zijn gewijzigd!
         message:

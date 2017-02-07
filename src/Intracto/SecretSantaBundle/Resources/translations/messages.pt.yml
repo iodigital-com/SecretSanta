@@ -334,18 +334,30 @@ emails-pokeBuddy:
 #        txt: ?
     update_wishlist: Atualizar minha lista de desejo
 
-### end of cleanup ###
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
 
-manage:
     yes: Sim
     not_yet: Ainda não
 
+    label:
+        name: Nome
+        email: E-mail
+        confirmed: Confirmado
+#        wishlist_filled: ?
+
+#    btn:
+#        poolstatus: ?
+
+### end of cleanup ###
+
 label:
-    name: Nome
-    email: E-mail
     date_party: Data da sua festa de Amigo Secreto
     amount_to_spend: Valor máximo a gastar
-    confirmed: Confirmado
 
 emails:
     wishlistchanged:
