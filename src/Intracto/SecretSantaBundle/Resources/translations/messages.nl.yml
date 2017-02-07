@@ -341,7 +341,12 @@ emails-emptyWishlistReminder:
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Activatie mail opnieuw verzenden
-    text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
+    message:
+        html: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
+        txt: >
+            Hallo,
+
+            U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -428,6 +433,26 @@ emails-pool_update:
     btn:
         pool_update: Check wie je maatje is en vul je wenslijst in
 
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Ontdek wiens nieuwe Secret Santa je bent
+    message:
+        html: >
+            Beste %name%,<br/>
+            <br/>
+            Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.<br/>
+            <br/>
+            Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
+        txt: >
+            Beste %name%,
+
+            Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.
+
+            Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
+
+    btn:
+        find_out: Ontdek wiens nieuwe Secret Santa je bent
+
 ### end of cleanup ###
 
 label:
@@ -474,22 +499,6 @@ emails:
 
                 %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
         btn_updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
-    removed_secret_santa:
-        subject: Ontdek wiens nieuwe Secret Santa je bent
-        message:
-            html: >
-                Beste %name%,<br/>
-                <br/>
-                Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.<br/>
-                <br/>
-                Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
-            txt: >
-                Beste %name%,
-
-                Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.
-
-                Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
-        btn_find_out: Ontdek wiens nieuwe Secret Santa je bent
 flashes:
     manage:
         email_validated: >

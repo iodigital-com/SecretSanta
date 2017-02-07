@@ -340,9 +340,11 @@ emails-emptyWishlistReminder:
         update_wishlist: Oppdater min ønskeliste
 
 # Emails/forgotLink.{html,txt}.twig
-emails-forgot_link:
-    subject: Resend activation mail
-    text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+#emails-forgot_link:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -428,6 +430,26 @@ emails-pool_update:
 
     btn:
         pool_update: Check your buddy and wishlist
+
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Finn din nye nisse
+    message:
+        html: >
+            Kjære %name%,<br/>
+            <br/>
+            Du har fått tildelt en ny nisse etter at %owner% slettet den forrige julenissen din fra invitasjonslisten.<br/>
+            <br/>
+            Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
+        txt: >
+            Kjære %name%,
+
+            Du har fått tildelt en ny nisse etter at %owner% slettet den forrige julenissen din fra invitasjonslisten.
+
+            Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
+
+    btn:
+        find_out: Find out your new person
 
 ### end of cleanup ###
 
@@ -524,22 +546,6 @@ emails:
 
                 %owner% har gjort noen endringer i arrangementet/festen du er invitert til. Nedenfor finner du nærmere informasjon om festen og hva som har endret seg.
         btn_updated_party: Finn din hemmelige venn of hans/hennes ønskeliste
-    removed_secret_santa:
-        subject: Finn din nye nisse
-        message:
-            html: >
-                Kjære %name%,<br/>
-                <br/>
-                Du har fått tildelt en ny nisse etter at %owner% slettet den forrige julenissen din fra invitasjonslisten.<br/>
-                <br/>
-                Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
-            text: >
-                Kjære %name%,
-
-                Du har fått tildelt en ny nisse etter at %owner% slettet den forrige julenissen din fra invitasjonslisten.
-
-                Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
-        btn_find_out: Find out your new person
 flashes:
     manage:
         email_validated: >

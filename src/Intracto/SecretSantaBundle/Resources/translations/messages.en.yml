@@ -343,7 +343,12 @@ emails-emptyWishlistReminder:
 # Emails/ForgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Resend activation mail
-    text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+    message:
+        html: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+        txt: >
+            Hi there,
+
+            You have requested us to resend your activation mail with the event manage link(s)
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -431,6 +436,25 @@ emails-pool_update:
         pool_update: Check your buddy and wishlist
 
 # Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Find out who your new Secret Santa is
+    message:
+        html: >
+            Dear %name%,<br/>
+            <br/>
+            You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.<br/>
+            <br/>
+            Click the link below to find out who your new Secret Santa is.
+        txt: >
+            Dear %name%,
+
+            You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.
+
+            Click the link below to find out who your new Secret Santa is.
+
+    btn:
+        find_out: Find out your new person
+
 # Emails/updatedParty.{html,txt}.twig
 # Emails/viewEntryReminder.{html,txt}.twig
 # Emails/wishlistChanged.{html,txt}.twig
@@ -481,22 +505,6 @@ emails:
 
                 %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
         btn_updated_party: Check your buddy and wishlist for this party
-    removed_secret_santa:
-        subject: Find out who your new Secret Santa is
-        message:
-            html: >
-                Dear %name%,<br/>
-                <br/>
-                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.<br/>
-                <br/>
-                Click the link below to find out who your new Secret Santa is.
-            text: >
-                Dear %name%,
-
-                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.
-
-                Click the link below to find out who your new Secret Santa is.
-        btn_find_out: Find out your new person
 flashes:
     manage:
         email_validated: >

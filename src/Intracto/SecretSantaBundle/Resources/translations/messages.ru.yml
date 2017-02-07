@@ -250,7 +250,9 @@ emails-emptyWishlistReminder:
 # Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
 #    subject: ?
-#    text: ?
+#    message:
+#        html: ?
+#        txt: ?
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -302,6 +304,16 @@ emails-pool_status:
 
 #    btn:
 #        pool_update:
+
+# Emails/removedSecretSanta.{html,txt}.twig
+#emails-removed_secret_santa:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+
+#    btn:
+#        find_out: ?
 
 ### end of cleanup ###
 

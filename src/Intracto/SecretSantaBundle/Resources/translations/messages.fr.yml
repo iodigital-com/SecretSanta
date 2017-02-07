@@ -319,7 +319,9 @@ emails-emptyWishlistReminder:
 # Emails/forgotLink.{html,txt}.twig
 #emails-forgot_link:
 #    subject: ?
-#    text: ?
+#    message:
+#        html: ?
+#        txt: ?
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -406,6 +408,26 @@ emails-pool_update:
     btn:
         pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
 
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Découvrez votre nouveau Père-Noël secret
+    message:
+        html: >
+            Cher(e) %name%,<br/>
+            <br/>
+            Vous &ecirc;tes assigné(e) &agrave; un nouveau Père-Noël secret car %owner% a supprimé votre ancien de sa f&ecirc;te.<br/>
+            <br/>
+            Cliquez sur le boutton ci-dessous afin de découvrir votre nouveau Père-Noël secret.
+        txt: >
+            Cher(e) %name%,
+
+            Vous &ecirc;tes assigné(e) &agrave; un nouveau Père-Noël secret car %owner% a supprimé votre ancien de sa f&ecirc;te.
+
+            Cliquez sur le boutton ci-dessous afin de découvrir votre nouveau Père-Noël secret.
+
+    btn:
+        find_out: Découvrez votre nouveau Père-Noël secret
+
 ### end of cleanup ###
 
 label:
@@ -452,22 +474,6 @@ emails:
 
                 %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Vous trouverez ci-dessous les nouveaux détails.
         btn_updated_party: Contr&ocirc;lez v&ocirc;tre copain ou liste de souhaits pour cette f&ecirc;te.
-    removed_secret_santa:
-        subject: Découvrez votre nouveau Père-Noël secret
-        message:
-            html: >
-                Cher(e) %name%,<br/>
-                <br/>
-                Vous &ecirc;tes assigné(e) &agrave; un nouveau Père-Noël secret car %owner% a supprimé votre ancien de sa f&ecirc;te.<br/>
-                <br/>
-                Cliquez sur le boutton ci-dessous afin de découvrir votre nouveau Père-Noël secret.
-            txt: >
-                Cher(e) %name%,
-
-                Vous &ecirc;tes assigné(e) &agrave; un nouveau Père-Noël secret car %owner% a supprimé votre ancien de sa f&ecirc;te.
-
-                Cliquez sur le boutton ci-dessous afin de découvrir votre nouveau Père-Noël secret.
-        btn_find_out: Découvrez votre nouveau Père-Noël secret
 flashes:
     manage:
         email_validated: >

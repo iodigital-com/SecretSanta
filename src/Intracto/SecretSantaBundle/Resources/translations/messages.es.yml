@@ -270,7 +270,12 @@ emails-emptyWishlistReminder:
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Reenviar el correo de activación
-    text: 'Hola, <br><br>tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.<br>'
+    message:
+        html: 'Hola, <br><br>tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.<br>'
+        txt: >
+            Hola,
+
+            tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -357,6 +362,26 @@ emails-pool_update:
     btn:
         pool_update: Comprueba quién es tu amigote o tu lista de deseos.
 
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Descubre a tu nueva persona Secret Santa
+    message:
+        html: >
+            Estimado %name%,<br/>
+            <br/>
+            Eres adjudicado un nuevo amigote Secret Santa después que %owner% ha expulsado tu examigote de su fiesta.<br/>
+            <br/>
+            Haz clic en el siguiente enlace para descubrir quien es tu nuevo amigote Secret Santa
+        txt: >
+            Estimado %name%,
+
+            Eres adjudicado un nuevo amigote Secret Santa después que %owner% ha expulsado tu examigote de su fiesta.
+
+            Haz clic en el siguiente enlace para descubrir quien es tu nuevo amigote Secret Santa
+
+    btn:
+        find_out: Descubre a tu nueva persona
+
 ### end of cleanup ###
 
 entry:
@@ -410,22 +435,6 @@ emails:
 
                 %owner% ha cambiado algos detalles de la fiesta a la que estas invitado. Abajo encuentras los nuevos detalles.
         btn_updated_party: Comprueba quién es tu amigote o tu lista de deseos por esta fiesta
-    removed_secret_santa:
-        subject: Descubre a tu nueva persona Secret Santa
-        message:
-            html: >
-                Estimado %name%,<br/>
-                <br/>
-                Eres adjudicado un nuevo amigote Secret Santa después que %owner% ha expulsado tu examigote de su fiesta.<br/>
-                <br/>
-                Haz clic en el siguiente enlace para descubrir quien es tu nuevo amigote Secret Santa
-            txt: >
-                Estimado %name%,
-
-                Eres adjudicado un nuevo amigote Secret Santa después que %owner% ha expulsado tu examigote de su fiesta.
-
-                Haz clic en el siguiente enlace para descubrir quien es tu nuevo amigote Secret Santa
-        btn_find_out: Descubre a tu nueva persona
 flashes:
     manage:
         email_validated: >
