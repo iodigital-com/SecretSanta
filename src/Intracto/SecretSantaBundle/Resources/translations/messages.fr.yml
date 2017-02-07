@@ -382,6 +382,30 @@ emails-pool_status:
     btn:
         poolstatus: Gérez votre f&ecirc;te
 
+# Emails/poolUpdate.{html,txt}.twig
+emails-pool_update:
+    subject: Votre f&ecirc;te Secret Santa approche
+    message:
+        html: >
+            Cher(e) %name%, <br>
+            <br>
+            Nous esperons que vous attendez avec impatience la f&ecirc;te de %owner% qui approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te qui aura lieu le %date% chez/&agrave; %place% pour profiter de la joie d'offrir des cadeaux.<br/>
+            <br/>
+            Afin d'assurer le maximum de plaisir, il serait bien que chaque invit&eacute; se rendant &agrave; la f&ecirc;te y apporte un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.<br/>
+            <br/>
+            Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
+        txt: >
+            Cher(e) %name%,
+
+            Nous esperons que vous attendez avec impatience la f&ecirc;te de %owner% qui approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te qui aura lieu le %date% chez/&agrave; %place% pour profiter de la joie d'offrir des cadeaux.
+
+            Afin d'assurer le maximum de plaisir, il serait bien que chaque invit&eacute; se rendant &agrave; la f&ecirc;te y apporte un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.
+
+            Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
+
+    btn:
+        pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
+
 ### end of cleanup ###
 
 label:
@@ -416,26 +440,6 @@ emails:
 
 
             Bonnes vacances !
-    pool_update:
-        subject: Votre f&ecirc;te Secret Santa approche
-        message:
-            html: >
-                Cher(e) %name%, <br>
-                <br>
-                Nous esperons que vous attendez avec impatience la f&ecirc;te de %owner% qui approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te qui aura lieu le %date% chez/&agrave; %place% pour profiter de la joie d'offrir des cadeaux.<br/>
-                <br/>
-                Afin d'assurer le maximum de plaisir, il serait bien que chaque invit&eacute; se rendant &agrave; la f&ecirc;te y apporte un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.<br/>
-                <br/>
-                Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
-            txt: >
-                Cher(e) %name%,
-
-                Nous esperons que vous attendez avec impatience la f&ecirc;te de %owner% qui approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te qui aura lieu le %date% chez/&agrave; %place% pour profiter de la joie d'offrir des cadeaux.
-
-                Afin d'assurer le maximum de plaisir, il serait bien que chaque invit&eacute; se rendant &agrave; la f&ecirc;te y apporte un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.
-
-                Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
-        btn_pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
     updated_party:
         subject: Les plans ont changé!
         message:

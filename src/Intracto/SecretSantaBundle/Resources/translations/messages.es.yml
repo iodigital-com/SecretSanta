@@ -333,6 +333,30 @@ emails-pool_status:
     btn:
         poolstatus: Gestiona tu fiesta
 
+# Emails/poolUpdate.{html,txt}.twig
+emails-pool_update:
+    subject: Nuestra fiesta Secret Santa se acerca!
+    message:
+        html: >
+            Estimado %name%,<br/>
+            <br/>
+            Esperamos que est&eacute;s esperando con impaciencia la fiesta de %owner%. %owner% ha inivitado %participantCount% personas para su fiesta que tiene lugar el %date% en/a %place% y para disfrutar del goce de hacer regalos.<br/>
+            <br/>
+            Para que podemos disfrutar al m&aacute;ximo, ser&iacute;a agradable si cada invitado estar&iacute;a presente y traer&iacute;a un regalo. Hasta ahora %viewedCount% persona(s) ha(n) abierto su invitaci&oacute;n y %wishlistCount% persona(s) ha(n) rempliado un lista de deseos.<br/>
+            <br/>
+            Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
+        txt: >
+            Estimado %name%,
+
+            Esperamos que est&eacute;s esperando con impaciencia la fiesta de %owner%. %owner% ha inivitado %participantCount% personas para su fiesta que tiene lugar el %date% en/a %place% y para disfrutar del goce de hacer regalos.
+
+            Para que podemos disfrutar al m&aacute;ximo, ser&iacute;a agradable si cada invitado estar&iacute;a presente y traer&iacute;a un regalo. Hasta ahora %viewedCount% persona(s) ha(n) abierto su invitaci&oacute;n y %wishlistCount% persona(s) ha(n) rempliado un lista de deseos.
+
+            Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
+
+    btn:
+        pool_update: Comprueba quién es tu amigote o tu lista de deseos.
+
 ### end of cleanup ###
 
 entry:
@@ -374,26 +398,6 @@ emails:
 
 
             ¡Felices Fiestas!
-    pool_update:
-        subject: Nuestra fiesta Secret Santa se acerca!
-        message:
-            html: >
-                Estimado %name%,<br/>
-                <br/>
-                Esperamos que est&eacute;s esperando con impaciencia la fiesta de %owner%. %owner% ha inivitado %participantCount% personas para su fiesta que tiene lugar el %date% en/a %place% y para disfrutar del goce de hacer regalos.<br/>
-                <br/>
-                Para que podemos disfrutar al m&aacute;ximo, ser&iacute;a agradable si cada invitado estar&iacute;a presente y traer&iacute;a un regalo. Hasta ahora %viewedCount% persona(s) ha(n) abierto su invitaci&oacute;n y %wishlistCount% persona(s) ha(n) rempliado un lista de deseos.<br/>
-                <br/>
-                Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
-            txt: >
-                Estimado %name%,
-
-                Esperamos que est&eacute;s esperando con impaciencia la fiesta de %owner%. %owner% ha inivitado %participantCount% personas para su fiesta que tiene lugar el %date% en/a %place% y para disfrutar del goce de hacer regalos.
-
-                Para que podemos disfrutar al m&aacute;ximo, ser&iacute;a agradable si cada invitado estar&iacute;a presente y traer&iacute;a un regalo. Hasta ahora %viewedCount% persona(s) ha(n) abierto su invitaci&oacute;n y %wishlistCount% persona(s) ha(n) rempliado un lista de deseos.
-
-                Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
-        btn_pool_update: Comprueba quién es tu amigote o tu lista de deseos.
     updated_party:
         subject: ¡Los planes han cambiado!
         message:

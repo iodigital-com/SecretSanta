@@ -405,6 +405,30 @@ emails-pool_status:
     btn:
         poolstatus: Administrer ditt arrangement
 
+# Emails/poolUpdate.{html,txt}.twig
+emails-pool_update:
+    subject: Nissefesten vår nærmer seg!
+    message:
+        html: >
+            Kjære %name%, <br/>
+            <br/>
+            Vi håper du gleder deg til %owner%s julebord/julefest som nærmer seg. %owner% venter et oppmøte på %participantCount% og håper alle kommer i god tid den %date% på/i %place% for å ta del i gleden av å gi!<br/>
+            <br/>
+            For at alle skal kose seg er det fint om alle sammen tar med en julegave til festen. Så langt har %viewedCount% åpnet sin invitasjon og %wishlistCount% av disse har laget en ønskeliste.<br/>
+            <br/>
+            Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
+        txt: >
+            Kjære %name%,
+
+            Vi håper du gleder deg til %owner%s julebord/julefest som nærmer seg. %owner% venter et oppmøte på %participantCount% og håper alle kommer i god tid den %date% på/i %place% for å ta del i gleden av å gi!
+
+            For at alle skal kose seg er det fint om alle sammen tar med en julegave til festen. Så langt har %viewedCount% åpnet sin invitasjon og %wishlistCount% av disse har laget en ønskeliste.
+
+            Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
+
+    btn:
+        pool_update: Check your buddy and wishlist
+
 ### end of cleanup ###
 
 expose:
@@ -488,26 +512,6 @@ emails:
                 Du har sendt inn en forespørsel på listen over kombinasjonene av alle deltagerne. Vær klar over at deltagerne kan se at du har fått tilgang til denne listen og at du kan se ønskelistene deres.
 
                 Nedenfor er en oversikt over hvem som skal gi gaver til hvem.
-    pool_update:
-        subject: Nissefesten vår nærmer seg!
-        message:
-            html: >
-                Kjære %name%, <br/>
-                <br/>
-                Vi håper du gleder deg til %owner%s julebord/julefest som nærmer seg. %owner% venter et oppmøte på %participantCount% og håper alle kommer i god tid den %date% på/i %place% for å ta del i gleden av å gi!<br/>
-                <br/>
-                For at alle skal kose seg er det fint om alle sammen tar med en julegave til festen. Så langt har %viewedCount% åpnet sin invitasjon og %wishlistCount% av disse har laget en ønskeliste.<br/>
-                <br/>
-                Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
-            txt: >
-                Kjære %name%,
-
-                Vi håper du gleder deg til %owner%s julebord/julefest som nærmer seg. %owner% venter et oppmøte på %participantCount% og håper alle kommer i god tid den %date% på/i %place% for å ta del i gleden av å gi!
-
-                For at alle skal kose seg er det fint om alle sammen tar med en julegave til festen. Så langt har %viewedCount% åpnet sin invitasjon og %wishlistCount% av disse har laget en ønskeliste.
-
-                Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
-        btn_pool_update: Check your buddy and wishlist
     updated_party:
         subject: Endring i planene!
         message:

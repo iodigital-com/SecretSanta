@@ -293,6 +293,16 @@ emails-pool_status:
 #    btn:
 #        poolstatus: ?
 
+# Emails/poolUpdate.{html,txt}.twig
+#emails-pool_update:
+#    subject:
+#    message:
+#        html: ?
+#        txt: ?
+
+#    btn:
+#        pool_update:
+
 ### end of cleanup ###
 
 label:

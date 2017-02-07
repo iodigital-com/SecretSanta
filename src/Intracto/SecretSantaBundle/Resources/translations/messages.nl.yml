@@ -404,6 +404,30 @@ emails-pool_status:
     btn:
         poolstatus: Beheer jouw feestje
 
+# Emails/poolUpdate.{html,txt}.twig
+emails-pool_update:
+    subject: Ons Secret Santa feestje komt eraan!
+    message:
+        html: >
+            Beste %name%,<br>
+            <br>
+            We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.<br/>
+            <br/>
+            Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.<br/>
+            <br/>
+            Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
+        txt: >
+            Beste %name%,
+
+            We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.
+
+            Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.
+
+            Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
+
+    btn:
+        pool_update: Check wie je maatje is en vul je wenslijst in
+
 ### end of cleanup ###
 
 label:
@@ -438,26 +462,6 @@ emails:
 
 
             Geniet van de feestdagen!
-    pool_update:
-        subject: Ons Secret Santa feestje komt eraan!
-        message:
-            html: >
-                Beste %name%,<br>
-                <br>
-                We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.<br/>
-                <br/>
-                Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.<br/>
-                <br/>
-                Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
-            txt: >
-                Beste %name%,
-
-                We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.
-
-                Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.
-
-                Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
-        btn_pool_update: Check wie je maatje is en vul je wenslijst in
     updated_party:
         subject: De plannen zijn gewijzigd!
         message:

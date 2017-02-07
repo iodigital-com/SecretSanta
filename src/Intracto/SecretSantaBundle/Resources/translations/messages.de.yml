@@ -216,16 +216,16 @@ pool_manage:
 #        body: ?
 
     btn:
-        add_participant
-        add_participant_confirm
-        cancel
-        delete_confirm
-        delete_list
-        expose
-        expose_wishlists
-        pool_update
-        remove_participant_confirm
-        updated_party
+        add_participant: Person hinzufügen
+#        add_participant_confirm: ?
+        cancel: Löschen
+        delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
+        delete_list: Meine Secret Santa-Liste löschen
+#        expose: ?
+#        expose_wishlists: ?
+#        pool_update: ?
+#        remove_participant_confirm: ?
+#        updated_party: ?
 
     label:
         name: Name
@@ -295,6 +295,16 @@ emails-pool_status:
 
 #    btn:
 #        poolstatus: ?
+
+# Emails/poolUpdate.{html,txt}.twig
+#emails-pool_update:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+
+#    btn:
+#        pool_update:
 
 ### end of cleanup ###
 
