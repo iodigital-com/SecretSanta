@@ -9,6 +9,13 @@ base:
             description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Besoin d'aide ? Des questions ? Consultez la FAQ !</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Date de votre Secret Santa party
+        location: Lieu
+        amount_to_spend: Montant à dépenser
+
 # PoolController
 pool_controller:
     created:
@@ -490,12 +497,6 @@ emails-wishlistChanged:
         check_wishlist: Découvrir la liste de souhaits
 
 ### end of cleanup ###
-
-label:
-    date_party: Date de votre Secret Santa party
-    location: Lieu
-    amount_to_spend: Montant à dépenser
-    items: Cadeaux souhaités
 
 flashes:
     manage:

@@ -9,6 +9,13 @@ base:
             description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: 秘密聖誕老人派對日期
+#        location: ?
+        amount_to_spend: 費用
+
 # PoolController
 pool_controller:
     created:
@@ -366,10 +373,6 @@ emails-wishlistChanged:
         check_wishlist: 檢查願望單
 
 ### end of cleanup ###
-
-label:
-    date_party: 秘密聖誕老人派對日期
-    amount_to_spend: 費用
 
 flashes:
     manage:

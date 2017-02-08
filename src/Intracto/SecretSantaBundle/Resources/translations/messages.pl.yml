@@ -9,6 +9,13 @@ base:
             description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Data Twojego Przyjęcia Tajnego Mikołaja
+#        location: ?
+        amount_to_spend: Suma do wydania
+
 # PoolController
 pool_controller:
     created:
@@ -343,10 +350,6 @@ emails-wishlistChanged:
         check_wishlist: Sprawdź listę życzeń
 
 ### end of cleanup ###
-
-label:
-    date_party: Data Twojego Przyjęcia Tajnego Mikołaja
-    amount_to_spend: Suma do wydania
 
 flashes:
     manage:

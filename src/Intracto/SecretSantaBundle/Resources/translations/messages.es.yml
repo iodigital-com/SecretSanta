@@ -9,6 +9,13 @@ base:
             description: ¡Secret Santa Organizer es un organizador de intercambio de regalos gratis en línea! Organiza una fiesta Secret Santa con amigos, familia o incluso compañeros y añade tu lista de deseos.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">¿Necesitas ayuda? ¿Tienes preguntas? ¡Lee las Preguntas Frecuentes!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Fecha de tu fiesta Secret Santa
+        location: Sitio de tu fiesta Secret Santa
+        amount_to_spend: Cantidad a gastar
+
 # PoolController
 pool_controller:
     created:
@@ -444,18 +451,6 @@ emails-wishlistChanged:
         check_wishlist: Comprobar la lista de deseos
 
 ### end of cleanup ###
-
-entry:
-    exposed:
-        title: Atribuciones Lista de Correos Secret Santa
-        giving: Este miembro está dando ...
-        receiving: ... un regalo a este miembro
-
-label:
-    date_party: Fecha de tu fiesta Secret Santa
-    location: Sitio de tu fiesta Secret Santa
-    amount_to_spend: Cantidad a gastar
-    items: Regalos deseados
 
 flashes:
     manage:

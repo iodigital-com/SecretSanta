@@ -16,14 +16,15 @@ class UpdatePoolDetailsType extends AbstractType
         $builder
             ->add('eventdate', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'label.date_party',
+                'label' => 'form-pool.label.date_party',
                 'format' => 'dd-MM-yyyy',
                 'configs' => [
                     'minDate' => 0,
                 ],
             ])
-            ->add('amount', TextType::class, ['label' => 'label.amount_to_spend'])
-            ->add('location', TextType::class, ['label' => 'label.location']);
+            ->add('amount', TextType::class, ['label' => 'form-pool.label.amount_to_spend'])
+            ->add('location', TextType::class, ['label' => 'form-pool.label.location'])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

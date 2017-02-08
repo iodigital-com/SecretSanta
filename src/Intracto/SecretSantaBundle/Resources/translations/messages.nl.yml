@@ -9,6 +9,13 @@ base:
             description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Datum van jouw Secret Santa feest
+        location: Locatie van jouw Secret Santa feest
+        amount_to_spend: Te spenderen bedrag
+
 # PoolController
 pool_controller:
     created:
@@ -515,12 +522,6 @@ emails-wishlistChanged:
         check_wishlist: Bekijk verlanglijst
 
 ### end of cleanup ###
-
-label:
-    date_party: Datum van jouw Secret Santa feest
-    location: Locatie van jouw Secret Santa feest
-    amount_to_spend: Te spenderen bedrag
-    items: Gewenste verrassingen
 
 flashes:
     manage:

@@ -9,6 +9,13 @@ base:
             description: Secret Santa Organizer ist ein kostenloses Online-Programm zum Organisieren des Secret Santa-Geschenketauschs. Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen und fügen Sie einen Wunschzettel zu.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Datum Ihrer Secret Santa-Party
+        location: Platz von Ihrer Secret Santa-Party
+        amount_to_spend: Auszugebender Betrag
+
 # PoolController
 pool_controller:
     created:
@@ -375,10 +382,6 @@ emails-wishlistChanged:
 
 ### end of cleanup ###
 
-label:
-    date_party: Datum Ihrer Secret Santa-Party
-    location: Platz von Ihrer Secret Santa-Party
-    amount_to_spend: Auszugebender Betrag
 btn:
     delete_list: Meine Secret Santa-Liste löschen
     delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen

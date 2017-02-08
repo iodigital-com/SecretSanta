@@ -9,6 +9,13 @@ base:
             description: Организатор вечеринки Тайного Санты - бесплатный сервис по организации обмена рождественскими подарками от Тайного Санты! Организуйте собственную тайную вечеринку Санты для ваших друзей, членов семьи или даже коллег по работе и создайте ваш список желаний.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Нужна помощь? Появились вопросы? Ознакомьтесь с ответами на часто задаваемые вопросы!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Дата проведения твоей вечеринки Тайного Санты
+#        location: ?
+        amount_to_spend: Сумма
+
 # PoolController
 pool_controller:
     created:
@@ -371,10 +378,6 @@ emails-wishlistChanged:
         check_wishlist: Проверить список желаний
 
 ### end of cleanup ###
-
-label:
-    date_party: Дата проведения твоей вечеринки Тайного Санты
-    amount_to_spend: Сумма
 
 flashes:
     manage:

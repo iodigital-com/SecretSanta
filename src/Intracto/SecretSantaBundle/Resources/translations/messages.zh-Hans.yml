@@ -9,6 +9,13 @@ base:
             description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: 你的秘密圣诞老人派对日期
+#        location: ?
+        amount_to_spend: 消费金额
+
 # PoolController
 pool_controller:
     created:
@@ -366,10 +373,6 @@ emails-wishlistChanged:
         check_wishlist: 查看愿望清单
 
 ### end of cleanup ###
-
-label:
-    date_party: 你的秘密圣诞老人派对日期
-    amount_to_spend: 消费金额
 
 flashes:
     manage:

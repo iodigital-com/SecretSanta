@@ -9,6 +9,13 @@ base:
             description: Secret Santa Organizer er et gratis program som lar deg organisere gavebytter! Arranger en hemmelig nisse fest med venner, familie eller kolleger og legg til din egen ønskeliste.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
 
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Dato
+        location: Sted
+        amount_to_spend: Beløp å bruke på gaven
+
 # PoolController
 pool_controller:
     created:
@@ -513,12 +520,6 @@ emails-wishlistChanged:
         check_wishlist: Ønskeliste
 
 ### end of cleanup ###
-
-label:
-    date_party: Dato
-    location: Sted
-    amount_to_spend: Beløp å bruke på gaven
-    items: Ønsker på ønskelisten
 
 flashes:
     manage:
