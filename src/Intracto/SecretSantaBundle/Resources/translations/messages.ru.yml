@@ -338,6 +338,16 @@ emails-viewEntryReminder:
     btn:
         find_out: Найдите вашего получателя подарка
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Список желаний обновлен
+    salutation: Привет, %name%
+    buddy_updated_wishlist: Ваш получатель подарка обновил свой список желаний
+    click_button: Кликните на кнопку ниже, чтобы просмотреть его пожелания.
+
+    btn:
+        check_wishlist: Проверить список желаний
+
 ### end of cleanup ###
 
 label:
@@ -345,13 +355,6 @@ label:
     amount_to_spend: Сумма
 
 emails:
-    wishlistchanged:
-        subject: Список желаний обновлен
-        salutation: Привет, %name%
-        buddy_updated_wishlist: Ваш получатель подарка обновил свой список желаний
-        click_button: Кликните на кнопку ниже, чтобы просмотреть его пожелания.
-        btn_check_wishlist: Проверить список желаний
-        click_link: Кликните на ссылку ниже, чтобы просмотреть его пожелания.
     created:
         message: |
             Привет, (NAME),

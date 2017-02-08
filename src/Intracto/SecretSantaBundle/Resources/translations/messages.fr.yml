@@ -457,6 +457,16 @@ emails-viewEntryReminder:
     btn:
         find_out: Découvrez votre personne
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Liste de souhaits mise à jour
+    salutation: Bonjour %name%
+    buddy_updated_wishlist: Votre ami a mis à jour sa liste de souhaits.
+    click_button: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
+
+    btn:
+        check_wishlist: Découvrir la liste de souhaits
+
 ### end of cleanup ###
 
 label:
@@ -465,13 +475,6 @@ label:
     amount_to_spend: Montant à dépenser
     items: Cadeaux souhaités
 emails:
-    wishlistchanged:
-        subject: Liste de souhaits mise à jour
-        salutation: Bonjour %name%
-        buddy_updated_wishlist: Votre ami a mis à jour sa liste de souhaits.
-        click_button: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
-        btn_check_wishlist: Découvrir la liste de souhaits
-        click_link: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
     created:
         message: |
             Bonjour (NAME),

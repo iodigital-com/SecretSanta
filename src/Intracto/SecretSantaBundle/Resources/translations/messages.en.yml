@@ -485,6 +485,14 @@ emails-viewEntryReminder:
         find_out: Find out your new person
 
 # Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Wishlist updated
+    salutation: Hi %name%
+    buddy_updated_wishlist: Your buddy has updated his or her wishlist.
+    click_button: Click on the button below to check out his or her suggestions.
+
+    btn:
+        check_wishlist: Check wishlist
 
 ### end of cleanup ###
 
@@ -494,13 +502,6 @@ label:
     amount_to_spend: Amount to spend
     items: Wishlist items
 emails:
-    wishlistchanged:
-        subject: Wishlist updated
-        salutation: Hi %name%
-        buddy_updated_wishlist: Your buddy has updated his or her wishlist.
-        click_button: Click on the button below to check out his or her suggestions.
-        btn_check_wishlist: Check wishlist
-        click_link: Click on the link below to check out his or her suggestions.
     created:
         message: |
             Hi there (NAME),

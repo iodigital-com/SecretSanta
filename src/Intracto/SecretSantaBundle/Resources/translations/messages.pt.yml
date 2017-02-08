@@ -398,6 +398,16 @@ emails-viewEntryReminder:
     btn:
         find_out: Descubra quem é seu Amigo Secreto
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Lista de desejos atualizada
+    salutation: Olá %name%
+    buddy_updated_wishlist: Seu Amigo Secreto atualizou sua lista de desejos
+    click_button: Clique no botão abaixo para ver as sugestões dele.
+
+    btn:
+        check_wishlist: Ver a lista de desejos
+
 ### end of cleanup ###
 
 label:
@@ -405,13 +415,6 @@ label:
     amount_to_spend: Valor máximo a gastar
 
 emails:
-    wishlistchanged:
-        subject: Lista de desejos atualizada
-        salutation: Olá %name%
-        buddy_updated_wishlist: Seu Amigo Secreto atualizou sua lista de desejos
-        click_button: Clique no botão abaixo para ver as sugestões dele.
-        btn_check_wishlist: Ver a lista de desejos
-        click_link: Clique no link abaixo para ver as sugestões dele.
     created:
         message: |
             Olá (NAME),

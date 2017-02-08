@@ -480,6 +480,16 @@ emails-viewEntryReminder:
     btn:
         find_out: Finn ut hvem du skal gi gave til
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Ønskeliste oppdatert
+    salutation: Hei %name%
+    buddy_updated_wishlist: Din hemmelige nisse har oppdatert sin personlige ønskeliste.
+    click_button: Trykk på knappen nedenfor for å se hans eller hennes juleønsker.
+
+    btn:
+        check_wishlist: Ønskeliste
+
 ### end of cleanup ###
 
 expose:
@@ -520,13 +530,6 @@ btn:
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
     expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
 emails:
-    wishlistchanged:
-        subject: Ønskeliste oppdatert
-        salutation: Hei %name%
-        buddy_updated_wishlist: Din hemmelige nisse har oppdatert sin personlige ønskeliste.
-        click_button: Trykk på knappen nedenfor for å se hans eller hennes juleønsker.
-        btn_check_wishlist: Ønskeliste
-        click_link: Trykk på linken nedenfor for å se hans eller hennes juleønsker.
     created:
         message: |
             Ho ho ho (NAME),

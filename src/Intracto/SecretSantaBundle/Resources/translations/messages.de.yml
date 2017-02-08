@@ -341,6 +341,16 @@ emails-viewEntryReminder:
     btn:
         find_out: Finden Sie Ihren Partner
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Wunschzettel aktualisiert
+    salutation: Hi %name%
+    buddy_updated_wishlist: Ihr Partner hat seinen Wunschzettel aktualisiert.
+    click_button: Klicken Sie auf den untenstehenden Button, um seine / ihre Vorschläge zu sehen.
+
+    btn:
+        check_wishlist: Wunschzettel ansehen
+
 ### end of cleanup ###
 
 label:
@@ -353,13 +363,6 @@ btn:
     cancel: Löschen
 
 emails:
-    wishlistchanged:
-        subject: Wunschzettel aktualisiert
-        salutation: Hi %name%
-        buddy_updated_wishlist: Ihr Partner hat seinen Wunschzettel aktualisiert.
-        click_button: Klicken Sie auf den untenstehenden Button, um seine / ihre Vorschläge zu sehen.
-        btn_check_wishlist: Wunschzettel ansehen
-        click_link: Klicken auf den untenstehenden Link, um seine / ihre Vorschläge zu sehen.
     created:
         message: |
             Hi  (NAME),

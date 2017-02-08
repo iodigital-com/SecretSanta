@@ -482,6 +482,16 @@ emails-viewEntryReminder:
     btn:
         find_out: Ontdek wiens Secret Santa je bent
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Verlanglijst geüpdatet
+    salutation: Hey %name%
+    buddy_updated_wishlist: Je persoon heeft zijn of haar verlanglijst geüpdatet.
+    click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken.
+
+    btn:
+        check_wishlist: Bekijk verlanglijst
+
 ### end of cleanup ###
 
 label:
@@ -490,13 +500,6 @@ label:
     amount_to_spend: Te spenderen bedrag
     items: Gewenste verrassingen
 emails:
-    wishlistchanged:
-        subject: Verlanglijst geüpdatet
-        salutation: Hey %name%
-        buddy_updated_wishlist: Je persoon heeft zijn of haar verlanglijst geüpdatet.
-        click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken.
-        btn_check_wishlist: Bekijk verlanglijst
-        click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
     created:
         message: |
             Hey (NAME),

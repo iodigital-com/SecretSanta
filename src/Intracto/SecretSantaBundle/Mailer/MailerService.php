@@ -342,7 +342,7 @@ class MailerService
     {
         $this->translator->setLocale($receiver->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.wishlistchanged.subject'))
+            ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(

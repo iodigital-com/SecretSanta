@@ -311,19 +311,22 @@ emails-viewEntryReminder:
     btn:
         find_out: Dowiedz się kim jest Twoja osoba
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Lista życzeń została zaktualizowana
+    salutation: 'Cześć %name%'
+    buddy_updated_wishlist: Osoba, którą masz obdarować, zaktualizowała swoją listę życzeń.
+    click_button: Kliknij na przycisk poniżej aby uzyskać podpowiedzi.
+
+    btn:
+        check_wishlist: Sprawdź listę życzeń
+
 ### end of cleanup ###
 
 label:
     date_party: Data Twojego Przyjęcia Tajnego Mikołaja
     amount_to_spend: Suma do wydania
 emails:
-    wishlistchanged:
-        subject: Lista życzeń została zaktualizowana
-        salutation: 'Cześć %name%'
-        buddy_updated_wishlist: Osoba, którą masz obdarować, zaktualizowała swoją listę życzeń.
-        click_button: Kliknij na przycisk poniżej aby uzyskać podpowiedzi.
-        btn_check_wishlist: Sprawdź listę życzeń
-        click_link: Kliknij na link poniżej aby zobaczyć podpowiedzi.
     created:
         message: |
             Witaj (NAME),

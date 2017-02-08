@@ -333,6 +333,16 @@ emails-viewEntryReminder:
     btn:
         find_out: 查看你的人员
 
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: 愿望清单已更新
+    salutation: 你好%name%
+    buddy_updated_wishlist: 你密友的愿望清单已更新。
+    click_button: 点击以下按键查看他的建议。
+
+    btn:
+        check_wishlist: 查看愿望清单
+
 ### end of cleanup ###
 
 label:
@@ -340,14 +350,6 @@ label:
     amount_to_spend: 消费金额
 
 emails:
-    wishlistchanged:
-        subject: 愿望清单已更新
-        salutation: 你好%name%
-        buddy_updated_wishlist: 你密友的愿望清单已更新。
-        click_button: 点击以下按键查看他的建议。
-        btn_check_wishlist: 查看愿望清单
-        click_link: 点击以下链接查看他的建议。
-
     created:
         message: |
             你好(NAME),
