@@ -366,14 +366,14 @@ emails-pool_status:
 #        pool_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
-#emails-removed_secret_santa:
+emails-removed_secret_santa:
 #    subject: ?
 #    message:
 #        html: ?
 #        txt: ?
 
-#    btn:
-#        find_out: ?
+    btn:
+        find_out: Descubra quem é seu Amigo Secreto
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
@@ -390,6 +390,14 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Descubra quem é seu Amigo Secreto
+    didYouForget: Você, por acaso, se esqueceu da nossa brincadeira? Você ainda não foi ver quem é seu Amigo Secreto!
+
+    btn:
+        find_out: Descubra quem é seu Amigo Secreto
+
 ### end of cleanup ###
 
 label:
@@ -404,9 +412,6 @@ emails:
         click_button: Clique no botão abaixo para ver as sugestões dele.
         btn_check_wishlist: Ver a lista de desejos
         click_link: Clique no link abaixo para ver as sugestões dele.
-    viewentryreminder:
-        subject: Descubra quem é seu Amigo Secreto
-        didyouforget: Você, por acaso, se esqueceu da nossa brincadeira? Você ainda não foi ver quem é seu Amigo Secreto!
     created:
         message: |
             Olá (NAME),

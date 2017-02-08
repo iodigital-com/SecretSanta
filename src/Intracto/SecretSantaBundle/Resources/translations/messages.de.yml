@@ -309,14 +309,14 @@ emails-pool_status:
 #        pool_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
-#emails-removed_secret_santa:
+emails-removed_secret_santa:
 #    subject: ?
 #    message:
 #        html: ?
 #        txt: ?
 
-#    btn:
-#        find_out: ?
+    btn:
+        find_out: Finden Sie Ihren Partner
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
@@ -332,6 +332,14 @@ emails-updated_party:
 
 #    btn:
 #        updated_party: ?
+
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Finden Sie heraus, wer Ihr Geschenkepartner ist
+    didYouForget: Haben Sie Ihre Secret Santa-Party vergessen? Sie haben noch nicht nachgesehen, wer Ihr Geschenkpartner ist!
+
+    btn:
+        find_out: Finden Sie Ihren Partner
 
 ### end of cleanup ###
 
@@ -352,9 +360,6 @@ emails:
         click_button: Klicken Sie auf den untenstehenden Button, um seine / ihre Vorschläge zu sehen.
         btn_check_wishlist: Wunschzettel ansehen
         click_link: Klicken auf den untenstehenden Link, um seine / ihre Vorschläge zu sehen.
-    viewentryreminder:
-        subject: Finden Sie heraus, wer Ihr Geschenkepartner ist
-        didyouforget: Haben Sie Ihre Secret Santa-Party vergessen? Sie haben noch nicht nachgesehen, wer Ihr Geschenkpartner ist!
     created:
         message: |
             Hi  (NAME),

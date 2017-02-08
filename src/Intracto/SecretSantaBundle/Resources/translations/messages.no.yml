@@ -449,7 +449,7 @@ emails-removed_secret_santa:
             Trykk på linken nedenfor for å finne ut hvem den nye nissen din er.
 
     btn:
-        find_out: Find out your new person
+        find_out: Finn ut hvem du skal gi gave til
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
@@ -471,6 +471,14 @@ emails-updated_party:
 
     btn:
         updated_party: Finn din hemmelige venn of hans/hennes ønskeliste
+
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Finn ut hvem din nisse er
+    didYouForget: Har du glemt hemmelig-nisse festen? Du har ikke sett hvem du skalk være nisse for ennå!
+
+    btn:
+        find_out: Finn ut hvem du skal gi gave til
 
 ### end of cleanup ###
 
@@ -519,9 +527,6 @@ emails:
         click_button: Trykk på knappen nedenfor for å se hans eller hennes juleønsker.
         btn_check_wishlist: Ønskeliste
         click_link: Trykk på linken nedenfor for å se hans eller hennes juleønsker.
-    viewentryreminder:
-        subject: Finn ut hvem din nisse er
-        didyouforget: Har du glemt hemmelig-nisse festen? Du har ikke sett hvem du skalk være nisse for ennå!
     created:
         message: |
             Ho ho ho (NAME),

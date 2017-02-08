@@ -403,6 +403,14 @@ emails-updated_party:
     btn:
         updated_party: Comprueba quién es tu amigote o tu lista de deseos por esta fiesta
 
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Descubrir quién es tu amigo del regalo
+    didYouForget: ¿Olvidaste nuestra fiesta Secret Santa? ¡Aún no has comprobado tu amigo del regalo!
+
+    btn:
+        find_out: Descubre a tu persona
+
 ### end of cleanup ###
 
 entry:
@@ -425,9 +433,6 @@ emails:
         click_button: Haz clic en el botón de debajo para ver sus sugerencias.
         btn_check_wishlist: Comprobar la lista de deseos
         click_link: Haz clic en el siguiente enlace para ver sus sugerencias.
-    viewentryreminder:
-        subject: Descubrir quién es tu amigo del regalo
-        didyouforget: ¿Olvidaste nuestra fiesta Secret Santa? ¡Aún no has comprobado tu amigo del regalo!
     created:
         message: |
             Hola (NAME),

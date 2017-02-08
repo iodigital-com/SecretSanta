@@ -474,6 +474,14 @@ emails-updated_party:
     btn:
         updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
 
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Ontdek wiens Secret Santa je bent
+    didYouForget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
+
+    btn:
+        find_out: Ontdek wiens Secret Santa je bent
+
 ### end of cleanup ###
 
 label:
@@ -489,9 +497,6 @@ emails:
         click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken.
         btn_check_wishlist: Bekijk verlanglijst
         click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
-    viewentryreminder:
-        subject: Ontdek wiens Secret Santa je bent
-        didyouforget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
     created:
         message: |
             Hey (NAME),

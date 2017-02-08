@@ -279,14 +279,14 @@ emails-pool_status:
 #        pool_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
-#emails-removed_secret_santa:
+emails-removed_secret_santa:
 #    subject: ?
 #    message:
 #        html: ?
 #        txt: ?
 
-#    btn:
-#        find_out: ?
+    btn:
+        find_out: Dowiedz się kim jest Twoja osoba
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
@@ -303,6 +303,14 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Dowiedz się, kim jest osoba, którą masz obdarować
+    didYouForget: Zapomniałeś o naszym Przyjęciu Tajnego Mikołaja? Nie sprawdziłeś(aś) kim jest osoba, którą masz obdarować!
+
+    btn:
+        find_out: Dowiedz się kim jest Twoja osoba
+
 ### end of cleanup ###
 
 label:
@@ -316,9 +324,6 @@ emails:
         click_button: Kliknij na przycisk poniżej aby uzyskać podpowiedzi.
         btn_check_wishlist: Sprawdź listę życzeń
         click_link: Kliknij na link poniżej aby zobaczyć podpowiedzi.
-    viewentryreminder:
-        subject: Dowiedz się, kim jest osoba, którą masz obdarować
-        didyouforget: Zapomniałeś o naszym Przyjęciu Tajnego Mikołaja? Nie sprawdziłeś(aś) kim jest osoba, którą masz obdarować!
     created:
         message: |
             Witaj (NAME),

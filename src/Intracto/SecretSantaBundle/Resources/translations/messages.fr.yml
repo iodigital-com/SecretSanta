@@ -449,6 +449,14 @@ emails-updated_party:
     btn:
         updated_party: Contr&ocirc;lez v&ocirc;tre copain ou liste de souhaits pour cette f&ecirc;te.
 
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Découvrez qui est votre copain cadeau
+    didYouForget: Auriez-vous oublié votre Secret Santa party ? Vous n'avez pas encore découvert qui était votre copain cadeau !
+
+    btn:
+        find_out: Découvrez votre personne
+
 ### end of cleanup ###
 
 label:
@@ -464,9 +472,6 @@ emails:
         click_button: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
         btn_check_wishlist: Découvrir la liste de souhaits
         click_link: Cliquez sur le boutton ci-dessous afin de découvrir ses suggestions
-    viewentryreminder:
-        subject: Découvrez qui est votre copain cadeau
-        didyouforget: Auriez-vous oublié votre Secret Santa party ? Vous n'avez pas encore découvert qui était votre copain cadeau !
     created:
         message: |
             Bonjour (NAME),

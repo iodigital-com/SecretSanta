@@ -477,6 +477,13 @@ emails-updated_party:
         updated_party: Check your buddy and wishlist for this party
 
 # Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Find out who your gift buddy is
+    didYouForget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
+
+    btn:
+        find_out: Find out your new person
+
 # Emails/wishlistChanged.{html,txt}.twig
 
 ### end of cleanup ###
@@ -494,9 +501,6 @@ emails:
         click_button: Click on the button below to check out his or her suggestions.
         btn_check_wishlist: Check wishlist
         click_link: Click on the link below to check out his or her suggestions.
-    viewentryreminder:
-        subject: Find out who your gift buddy is
-        didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
     created:
         message: |
             Hi there (NAME),

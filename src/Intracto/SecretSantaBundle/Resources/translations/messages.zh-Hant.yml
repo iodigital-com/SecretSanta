@@ -301,14 +301,14 @@ emails-pool_status:
 #        pool_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
-#emails-removed_secret_santa:
+emails-removed_secret_santa:
 #    subject: ?
 #    message:
 #        html: ?
 #        txt: ?
 
-#    btn:
-#        find_out: ?
+    btn:
+        find_out: 找出你的人
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
@@ -325,6 +325,14 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: 找出誰是你的禮物朋友
+    didYouForget: 你是否忘記我們的秘密聖誕老人派對？你仍未查看誰是你的禮物朋友!
+
+    btn:
+        find_out: 找出你的人
+
 ### end of cleanup ###
 
 label:
@@ -339,9 +347,6 @@ emails:
         click_button: 點擊下方的按鈕去檢查他的提議。
         btn_check_wishlist: 檢查願望單
         click_link: 點擊下方的連結去檢查他的提議。
-    viewentryreminder:
-        subject: 找出誰是你的禮物朋友
-        didyouforget: 你是否忘記我們的秘密聖誕老人派對？你仍未查看誰是你的禮物朋友!
 
     created:
         message: |

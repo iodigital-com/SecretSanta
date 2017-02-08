@@ -310,7 +310,7 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.viewentryreminder.subject'))
+            ->setSubject($this->translator->trans('emails-viewEntryReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
