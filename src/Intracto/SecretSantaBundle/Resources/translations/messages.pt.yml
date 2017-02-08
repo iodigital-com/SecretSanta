@@ -435,22 +435,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Ver a lista de desejos
 
-### end of cleanup ###
-
 flashes:
-    manage:
+    # SendPartyUpdateController
+#    send_party_update:
+#        success: ?
+
+    # ForgotManagementURLController
+#    forgot_management_url:
+#        success: ?
+#        error: ?
+
+    # ManagementController
+    management:
         email_validated: >
-         <strong>Beleza!</strong><br/>O seu e-mail foi validado.<br/>
-         Neste exato momento, os nossos elfos mágicos estão a caminho para entregar um Amigo Secreto a cada um dos seus participantes!<br/>
-         <br />
-         Não se esqueça de confirmar sua própria participação. Te mandamos mais um e-mail. Leia-o agora!
-    delete:
+            <strong>Beleza!</strong><br/>O seu e-mail foi validado.<br/>
+            Neste exato momento, os nossos elfos mágicos estão a caminho para entregar um Amigo Secreto a cada um dos seus participantes!<br/>
+            <br />
+            Não se esqueça de confirmar sua própria participação. Te mandamos mais um e-mail. Leia-o agora!
+#        modify_list_warning: ?
+#        add_participant:
+#            success: ?
+#            danger: ?
+#        updated_party:
+#            success: ?
+#            danger: ?
+
+    # PoolController
+    pool:
         not_deleted: <h4>Não eliminado</h4> A confirmação não deu certo.
-    resend:
+
+    # ResendEntryController
+    resend_entry:
         resent: <strong>Enviado novamente!</strong><br/>O e-mail destinado a %email% foi enviado novamente.<br/>
+
+    # PokeBuddyController
+#    poke_buddy:
+#        poke_buddy: ?
+
+    # EntryController
     entry:
         wishlist_updated: <h4>Lista de desejos atualizada</h4> Mandamos os nossos elfos mágicos ir avisar quem te tirou de Amigo Secreto quais são os presentes super bacanas que você está esperando receber!
         edit_email: <h4>Não salvo</h4> Tem algo errado com o endereço e-mail.
         saved_email: <h4>Salvo</h4> O novo endereço de e-mail foi salvo. Nós também enviamos o e-mail novamente.
-    analytics:
-        invalid_data: <h4>Oops</h4> Ocorreu um erro durante a solicitação de dados de análise. Por favor, tente novamente.
+#        modify_list_warning: ?
+#        remove_participant:
+#            success: ?
+#            danger: ?
+#            warning: ?
+#            excluded_entries: ?
+#            self_assigned: ?
+#            wrong: ?

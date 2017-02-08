@@ -380,28 +380,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Wunschzettel ansehen
 
-### end of cleanup ###
-
-btn:
-    delete_list: Meine Secret Santa-Liste löschen
-    delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
-    cancel: Löschen
-
 flashes:
-    manage:
+    # SendPartyUpdateController
+#    send_party_update:
+#            success: ?
+
+    # ForgotManagementURLController
+#    forgot_management_url:
+#        success: ?
+#        error: ?
+
+    # ManagementController
+    management:
         email_validated: >
-         <strong>Perfekt!</strong><br/>Ihre E-Mail-Adresse ist nun bestätigt.<br/>
-         Während wir hier reden, reisen unsere Wichtel durch das Internet und bringen all Ihren zukünftigen Secret-Santas deren Geschenkepartner.<br/>
-         <br />
-         Vergessen Sie nicht, Ihre eigene Teilnahme zu bestätigen. Wir haben Ihnen eine weitere Mail zugesandt. Überprüfen Sie dies!
-    delete:
+            <strong>Perfekt!</strong><br/>Ihre E-Mail-Adresse ist nun bestätigt.<br/>
+            Während wir hier reden, reisen unsere Wichtel durch das Internet und bringen all Ihren zukünftigen Secret-Santas deren Geschenkepartner.<br/>
+            <br />
+            Vergessen Sie nicht, Ihre eigene Teilnahme zu bestätigen. Wir haben Ihnen eine weitere Mail zugesandt. Überprüfen Sie dies!
+#        modify_list_warning: ?
+#        add_participant:
+#            success: ?
+#            danger: ?
+#        updated_party:
+#            success: ?
+#            danger: ?
+
+    # PoolController
+    pool:
         not_deleted: <h4>Nicht gelöscht</h4> Die Bestätigung war nicht korrekt.
-    resend:
+
+    # ResendEntryController
+    resend_entry:
         resent: <strong>Neu versendet!</strong><br/>Die E-Mail an %email% wurde neu versendet.<br/>
+
+    # PokeBuddyController
+#    poke_buddy:
+#        poke_buddy: ?
+
+    # EntryController
     entry:
         wishlist_updated: <h4>Wunschzettel aktualisiert</h4>Wir haben unsere Wichtel losgeschickt, um Ihren Secret Santa über Ihre Wünsche zu informieren!
         edit_email: <h4>Nicht gespeichert</h4> Die E-Mail-Adresse ist fehlerhaft.
         saved_email: <h4>Gespeichert</h4> Die neue E-Mail-Adresse wurde gespeichert. Wir versenden auch diese E-Mail erneut.
-    analytics:
-        invalid_data: <h4>Hoppla</h4> Während der Datenanforderung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
-
+#        modify_list_warning: ?
+#        remove_participant:
+#            success: ?
+#            danger: ?
+#            warning: ?
+#            excluded_entries: ?
+#            self_assigned: ?
+#            wrong: ?

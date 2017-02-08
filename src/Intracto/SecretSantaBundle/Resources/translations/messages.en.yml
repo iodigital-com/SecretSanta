@@ -523,43 +523,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Check wishlist
 
-### end of cleanup ###
-
 flashes:
-    manage:
-        email_validated: >
-         <strong>Perfect!</strong><br/>Your email is now validated.<br/>
-         Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
-         <br />
-         Don't forget to confirm your own participation. We've sent you another email. Go check it out!
-    delete:
-        not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
-    resend:
-        resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
-    entry:
-        wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
-        poke_buddy: <h4>Poked</h4> We've sent out our gnomes to ask your Secret Santa to add items to the wishlist!
-        edit_email: <h4>Not saved</h4> There is an error in the email address.
-        saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
-    analytics:
-        invalid_data: <h4>Oops</h4> An error occured while requesting analytics data. Please try again.
-    forgot_manage_link:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Success</h4> An update has been sent to all participants.
+
+    # ForgotManagementURLController
+    forgot_management_url:
         success: 'We have successfully resend your activation mail'
         error: 'An error occurred while resending the activation mail. Please try again.'
-    pool_update:
-        success: <h4>Success</h4> An update has been sent to all participants.
-    remove_participant:
-        success: <h4>Removed!</h4> Participant succesfully removed.
-        danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
-        warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
-        excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
-        self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
-        wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
-    add_participant:
-        success: <h4>Added!</h4> Participant succesfully added to your party.
-        danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
-    modify_list:
-        warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
-    updated_party:
-        success: <h4>Updated!</h4> Your party details have been succesfully updated.
-        danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Perfect!</strong><br/>Your email is now validated.<br/>
+            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
+            <br />
+            Don't forget to confirm your own participation. We've sent you another email. Go check it out!
+        modify_list_warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
+        add_participant:
+            success: <h4>Added!</h4> Participant succesfully added to your party.
+            danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
+        updated_party:
+            success: <h4>Updated!</h4> Your party details have been succesfully updated.
+            danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
+
+    # PoolController
+    pool:
+        not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
+
+    # ResendEntryController
+    resend_entry:
+        resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
+
+    # PokeBuddyController
+    poke_buddy:
+        poke_buddy: <h4>Poked</h4> We've sent out our gnomes to ask your Secret Santa to add items to the wishlist!
+
+    # EntryController
+    entry:
+        wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
+        edit_email: <h4>Not saved</h4> There is an error in the email address.
+        saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
+        modify_list_warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
+        remove_participant:
+            success: <h4>Removed!</h4> Participant succesfully removed.
+            danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
+            warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
+            excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+            self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
+            wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.

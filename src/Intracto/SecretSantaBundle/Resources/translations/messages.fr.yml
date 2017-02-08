@@ -496,35 +496,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Découvrir la liste de souhaits
 
-### end of cleanup ###
-
 flashes:
-    manage:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Succ&egrave;s</h4> Une mise à jour a été envoyée à tous vos participants.
+
+    # ForgotManagementURLController
+#    forgot_management_url:
+#        success: ?
+#        error: ?
+
+    # ManagementController
+    management:
         email_validated: >
-         <strong>Parfait !</strong><br/>Votre adresse e-mail est maintenant validée<br/>
-         En ce moment, nos gnomes voyagent à travers l'Internet, afin de communiquer aux Pères-Noël secrets leur copain cadeau.<br/>
-         <br />
-         N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
-    delete:
+            <strong>Parfait !</strong><br/>Votre adresse e-mail est maintenant validée<br/>
+            En ce moment, nos gnomes voyagent à travers l'Internet, afin de communiquer aux Pères-Noël secrets leur copain cadeau.<br/>
+            <br />
+            N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
+#        modify_list_warning: ?
+        add_participant:
+            success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
+            danger: <h4>Oops</h4> Une erreur s'est produite lors de l'ajout du participant. Veuillez essayer à nouveau.
+        updated_party:
+            success: <h4>Mis &agrave; jour!</h4> Les détails ont été mis &agrave; jour avec succ&egrave;s.
+            danger: <h4>Oops</h4> Une erreur s'est produite lors de la mise &agrave; jour de votre f&ecirc;te. Veuillez essayer à nouveau.
+
+    # PoolController
+    pool:
         not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
-    resend:
+
+    # ResendEntryController
+    resend_entry:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
+
+    # PokeBuddyController
+    poke_buddy:
+        poke_buddy: <h4>Stimulé</h4> Nos gnomes sont en route pour avertir votre Père-Noël secret afin  qu'il complète sa liste de souhaits.
+
+    # EntryController
     entry:
         wishlist_updated: <h4>Liste de souhaits mise à jour</h4>Nous avons envoyé nos gnomes afin qu'ils avertissent votre Père-Noël secret de vos souhaits !
-        poke_buddy: <h4>Stimulé</h4> Nos gnomes sont en route pour avertir votre Père-Noël secret afin  qu'il complète sa liste de souhaits.
         edit_email: <h4>Non enregistrée</h4> l'adresse e-mail comporte une erreur.
         saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.
-    pool_update:
-        success: <h4>Succ&egrave;s</h4> Une mise à jour a été envoyée à tous vos participants.
-    remove_participant:
-        success: <h4>Supprimé!</h4> Participant supprimé avec succès.
-        danger: <h4>Oops</h4> Ce participant ne peut être supprimé, votre f&ecirc;te nécessite au moins 3 participants.
-        warning: <h4>Oops</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous supprimer. Si vous souhaitez abandonner la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer votre liste Secret Santa.
-        excluded_entries: <h4>Oops</h4> Suppression des participants impossible. Vous avez utilisé des exclusions lors de la création de cette f&ecirc;te, ce qui peut causer de sproblèmes lors de la suppression d'un participant. Cette fonctionnalit&eacute; n'est donc pas disponible pour cette f&ecirc;te.
-        wrong: <h4>Oops</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas à la phrase attendue.
-    add_participant:
-        success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
-        danger: <h4>Oops</h4> Une erreur s'est produite lors de l'ajout du participant. Veuillez essayer à nouveau.
-    updated_party:
-        success: <h4>Mis &agrave; jour!</h4> Les détails ont été mis &agrave; jour avec succ&egrave;s.
-        danger: <h4>Oops</h4> Une erreur s'est produite lors de la mise &agrave; jour de votre f&ecirc;te. Veuillez essayer à nouveau.
+#        modify_list_warning: ?
+        remove_participant:
+            success: <h4>Supprimé!</h4> Participant supprimé avec succès.
+            danger: <h4>Oops</h4> Ce participant ne peut être supprimé, votre f&ecirc;te nécessite au moins 3 participants.
+            warning: <h4>Oops</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous supprimer. Si vous souhaitez abandonner la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer votre liste Secret Santa.
+            excluded_entries: <h4>Oops</h4> Suppression des participants impossible. Vous avez utilisé des exclusions lors de la création de cette f&ecirc;te, ce qui peut causer de sproblèmes lors de la suppression d'un participant. Cette fonctionnalit&eacute; n'est donc pas disponible pour cette f&ecirc;te.
+#            self_assigned: ?
+            wrong: <h4>Oops</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas à la phrase attendue.

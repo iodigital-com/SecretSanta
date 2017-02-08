@@ -123,7 +123,7 @@ class PoolController extends Controller
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'error',
-                $this->get('translator')->trans('flashes.delete.not_deleted')
+                $this->get('translator')->trans('flashes.pool.not_deleted')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));

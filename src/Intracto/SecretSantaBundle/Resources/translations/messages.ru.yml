@@ -377,22 +377,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Проверить список желаний
 
-### end of cleanup ###
-
 flashes:
-    manage:
+    # SendPartyUpdateController
+#    send_party_update:
+#        success: ?
+
+    # ForgotManagementURLController
+#    forgot_management_url:
+#        success: ?
+#        error: ?
+
+    # ManagementController
+    management:
         email_validated: >
-         <strong>Отлично!</strong><br/>Твой адрес электронной почты теперь подтвержден.<br/>
-         Как мы и говорили, наши гномы отправились в путешествие по интернету, рассказывая всем новым Тайным Санта об их получателя подарков.<br/>
-         <br />
-         Не забудьте подтвердить ваше собственное участие! Мы отправили вам другое письмо. Проверьте его получение!
-    delete:
+            <strong>Отлично!</strong><br/>Твой адрес электронной почты теперь подтвержден.<br/>
+            Как мы и говорили, наши гномы отправились в путешествие по интернету, рассказывая всем новым Тайным Санта об их получателя подарков.<br/>
+            <br />
+            Не забудьте подтвердить ваше собственное участие! Мы отправили вам другое письмо. Проверьте его получение!
+#        modify_list_warning: ?
+#        add_participant:
+#            success: ?
+#            danger: ?
+#        updated_party:
+#            success: ?
+#            danger: ?
+
+    # PoolController
+    pool:
         not_deleted: <h4>Не удалено</h4> При подтверждении произошла ошибка.
-    resend:
+
+    # ResendEntryController
+    resend_entry:
         resent: <strong>Отправлено повторно!</strong><br/>Письмо на адрес %email% отправлено повторно.<br/>
+
+    # PokeBuddyController
+#    poke_buddy:
+#        poke_buddy: ?
+
+    # EntryController
     entry:
         wishlist_updated: <h4>Список желаний обновлен</h4>Мы отправили наших гномов сообщить вашему Тайному Санте, что вы изменили список желаний!
         edit_email: <h4>Не сохранено</h4> Ошибка в написании электронного адреса.
         saved_email: <h4>Сохранено</h4> Новый адрес электронной почты сохранен. Мы также повторно отправили письмо.
-    analytics:
-        invalid_data: <h4>Ой</h4> При запросе аналитических данных произошла ошибка. Пожалуйста, повторите попытку.
+#        modify_list_warning: ?
+#        remove_participant:
+#            success: ?
+#            danger: ?
+#            warning: ?
+#            excluded_entries: ?
+#            self_assigned: ?
+#            wrong: ?

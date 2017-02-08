@@ -26,7 +26,7 @@ class ResendEntryController extends Controller
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->get('translator')->trans('flashes.resend.resent', ['%email%' => $entry->getName()])
+            $this->get('translator')->trans('flashes.resend_entry.resent', ['%email%' => $entry->getName()])
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));

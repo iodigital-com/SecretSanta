@@ -519,49 +519,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Ønskeliste
 
-### end of cleanup ###
-
 flashes:
-    manage:
-        email_validated: >
-         <strong>Perfekt!</strong><br/>E-posten din har blitt bekreftet.<br/>
-         Smånissene og trollene våre farter over hele internettet nettopp nå for å levere invitasjonen til alle nissene på listen din.<br/>
-         <br />
-         Ikke glem å bekrefte din egen deltagelse. Vi har sendt deg en ny e-post. Vær så god og kast deg over den!
-    delete:
-        not_deleted: <h4>Ikke slettet</h4> Bekreftelsen var ikke korrekt.
-    expose:
-        not_exposed: <h4>Listen ikke sendt</h4> Bekreftelsen var ikke korrekt.
-        exposed: <h4>Listen er sendt</h4> Alle inviterte nisser får beskjed når de sjekker ønskelisten sin.
-    expose_wishlists:
-        not_exposed: <h4>Ønskelister ikke sendt</h4> Bekreftelsen var ikke korrekt.
-        exposed: <h4>Ønskelister sendt</h4> Alle inviterte nisser får beskjeden når de sjekker ønskelisten sin.
-    resend:
-        resent: <strong>Sendt på nytt!</strong><br/>Eposten til %email% har blitt sendt på nytt.<br/>
-    entry:
-        wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
-        poke_buddy: <h4>Poked</h4> Vi har sendt en smånisse til nissen din for å si at han eller hun må lage en ønskeliste!
-        edit_email: <h4>Not saved</h4> There is an error in the email address.
-        saved_email: <h4>Lagret</h4> Den nye epostadressen har blitt lagret. Vi har også sendt eposten på nytt.
-    analytics:
-        invalid_data: <h4>Oops</h4> En feil oppstod mens smånissene våre hentet dataen du spurte etter - vennligst prøv igjen!
-    forgot_manage_link:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Sukksess!</h4> Alle oppfateringer har blitt sendt til deltagerne på listen din.
+
+    # ForgotManagementURLController
+    forgot_management_url:
         success: 'Vi har sendt en smånisse med en ny bekreftelsesepost til deg'
         error: 'En feil inntraff mens din bekreftelsesepost ble sendt. Vennligst prøv igjen.'
-    pool_update:
-        success: <h4>Sukksess!</h4> Alle oppfateringer har blitt sendt til deltagerne på listen din.
-    remove_participant:
-        success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
-        danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.
-        warning: <h4>Oops</h4> Du er administrator for dette arrangementet, du kan ikke slette deg selv. Hvis du ikke vil delta, trykk på linken nedenfor eller slett listen din.
-        excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
-        self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
-        wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
-    add_participant:
-        success: <h4>Added!</h4> Deltager lagt til arrangementet.
-        danger: <h4>Oops</h4> En feil oppstod da du ville legge til denne deltageren. Vennligst prøv igjen.
-    modify_list:
-        warning: <h4>Oops</h4> Det ser ut til at arrangementet ditt skal holdes om mindre enn en uke, da er det for sent å fjerne deltagere nå!
-    updated_party:
-        success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
-        danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Perfekt!</strong><br/>E-posten din har blitt bekreftet.<br/>
+            Smånissene og trollene våre farter over hele internettet nettopp nå for å levere invitasjonen til alle nissene på listen din.<br/>
+            <br />
+            Ikke glem å bekrefte din egen deltagelse. Vi har sendt deg en ny e-post. Vær så god og kast deg over den!
+        modify_list_warning: <h4>Oops</h4> Det ser ut til at arrangementet ditt skal holdes om mindre enn en uke, da er det for sent å fjerne deltagere nå!
+        add_participant:
+            success: <h4>Added!</h4> Deltager lagt til arrangementet.
+            danger: <h4>Oops</h4> En feil oppstod da du ville legge til denne deltageren. Vennligst prøv igjen.
+        updated_party:
+            success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
+            danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
+
+    # PoolController
+    pool:
+        not_deleted: <h4>Ikke slettet</h4> Bekreftelsen var ikke korrekt.
+
+    # ResendEntryController
+    resend_entry:
+        resent: <strong>Sendt på nytt!</strong><br/>Eposten til %email% har blitt sendt på nytt.<br/>
+
+    # PokeBuddyController
+    poke_buddy:
+        poke_buddy: <h4>Poked</h4> Vi har sendt en smånisse til nissen din for å si at han eller hun må lage en ønskeliste!
+
+    # EntryController
+    entry:
+        wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
+        edit_email: <h4>Not saved</h4> There is an error in the email address.
+        saved_email: <h4>Lagret</h4> Den nye epostadressen har blitt lagret. Vi har også sendt eposten på nytt.
+        modify_list_warning: <h4>Oops</h4> Det ser ut til at arrangementet ditt skal holdes om mindre enn en uke, da er det for sent å fjerne deltagere nå!
+        remove_participant:
+            success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
+            danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.
+            warning: <h4>Oops</h4> Du er administrator for dette arrangementet, du kan ikke slette deg selv. Hvis du ikke vil delta, trykk på linken nedenfor eller slett listen din.
+            excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
+            self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
+            wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.

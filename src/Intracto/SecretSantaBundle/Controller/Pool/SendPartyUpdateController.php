@@ -22,7 +22,7 @@ class SendPartyUpdateController extends Controller
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->get('translator')->trans('flashes.pool_update.success')
+            $this->get('translator')->trans('flashes.send_party_update.success')
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $pool->getListurl()]));

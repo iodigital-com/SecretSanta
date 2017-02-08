@@ -372,22 +372,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: 查看愿望清单
 
-### end of cleanup ###
-
 flashes:
-    manage:
+    # SendPartyUpdateController
+#    send_party_update:
+#        success: ?
+
+    # ForgotManagementURLController
+#    forgot_management_url:
+#        success: ?
+#        error: ?
+
+    # ManagementController
+    management:
         email_validated: >
-         <strong>完美！</strong><br/>你的电子邮件已确认。<br/>
-         我们的小矮人已听从我们的号令，正漫游在网上，把礼物密友们的名字传达给所有准秘密圣诞老人们耳中。<br/>
-         <br />
-         不要忘记你自己也参与其中。我们已经发送另外一封邮件给你了。去查查看吧！
-    delete:
+            <strong>完美！</strong><br/>你的电子邮件已确认。<br/>
+            我们的小矮人已听从我们的号令，正漫游在网上，把礼物密友们的名字传达给所有准秘密圣诞老人们耳中。<br/>
+            <br />
+            不要忘记你自己也参与其中。我们已经发送另外一封邮件给你了。去查查看吧！
+#        modify_list_warning: ?
+#        add_participant:
+#            success: ?
+#            danger: ?
+#        updated_party:
+#            success: ?
+#            danger: ?
+
+    # PoolController
+    pool:
         not_deleted: <h4>未能删除</h4>这个确认不正确。
-    resend:
+
+    # ResendEntryController
+    resend_entry:
         resent: <strong>已重新发送！</strong><br/>已重新发送至 %email%电子邮箱中。<br/>
+
+    # PokeBuddyController
+#    poke_buddy:
+#        poke_buddy: ?
+
+    # EntryController
     entry:
         wishlist_updated: <h4>愿望清单已更新</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>未保存</h4> 电子邮箱地址出错。
         saved_email: <h4>已保存</h4> 已保存。新的电子邮箱地址已保存。我们也已重新发送电子邮件了。
-    analytics:
-        invalid_data: <h4>哎呀</h4>分析数据时出错。请再试一次。
+#        modify_list_warning: ?
+#        remove_participant:
+#            success: ?
+#            danger: ?
+#            warning: ?
+#            excluded_entries: ?
+#            self_assigned: ?
+#            wrong: ?

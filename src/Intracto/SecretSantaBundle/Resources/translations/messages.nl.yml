@@ -521,38 +521,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Bekijk verlanglijst
 
-### end of cleanup ###
-
 flashes:
-    manage:
-        email_validated: >
-         <strong>Perfect!</strong><br/>Je e-mail is nu gevalideerd.<br/>
-         Onze kaboutertjes wurmen zich op dit eigenste moment doorheen het netwerk om al je toekomstige Secret Santa's een persoon te bezorgen.<br/>
-         <br />
-         Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
-    delete:
-        not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
-    resend:
-        resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
-    entry:
-        wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
-        poke_buddy: <h4>Gepord</h4> Onze kaboutertjes zijn onderweg naar jouw Secret Santa om te vragen naar interessante spulletjes voor op hun verlanglijstje.
-        edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
-        saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
-    forgot_manage_link:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
+
+    # ForgotManagementURLController
+    forgot_management_url:
         success: 'De activatie mail is succesvol opnieuw verstuurd!'
         error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
-    pool_update:
-        success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
-    remove_participant:
-        success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
-        danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
-        warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
-        excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
-        wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
-    add_participant:
-        success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
-        danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
-    updated_party:
-        success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
-        danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Perfect!</strong><br/>Je e-mail is nu gevalideerd.<br/>
+            Onze kaboutertjes wurmen zich op dit eigenste moment doorheen het netwerk om al je toekomstige Secret Santa's een persoon te bezorgen.<br/>
+            <br />
+            Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
+#        modify_list_warning: ?
+        add_participant:
+            success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
+            danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
+        updated_party:
+            success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
+            danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
+
+    # PoolController
+    pool:
+        not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
+
+    # ResendEntryController
+    resend_entry:
+        resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
+
+    # PokeBuddyController
+    poke_buddy:
+        poke_buddy: <h4>Gepord</h4> Onze kaboutertjes zijn onderweg naar jouw Secret Santa om te vragen naar interessante spulletjes voor op hun verlanglijstje.
+
+    # EntryController
+    entry:
+        wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
+        edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
+        saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
+#        modify_list_warning: ?
+        remove_participant:
+            success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
+            danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
+            warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
+            excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
+#            self_assigned: ?
+            wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.

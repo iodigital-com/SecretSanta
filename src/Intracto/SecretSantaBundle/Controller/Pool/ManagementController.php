@@ -35,7 +35,7 @@ class ManagementController extends Controller
         if ($pool->getSentdate() === null) {
             $this->get('session')->getFlashBag()->add(
                 'success',
-                $this->get('translator')->trans('flashes.manage.email_validated')
+                $this->get('translator')->trans('flashes.management.email_validated')
             );
 
             $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($pool);
@@ -59,7 +59,7 @@ class ManagementController extends Controller
                     if (date('Y-m-d') > $oneWeekFromEventDate) {
                         $this->get('session')->getFlashBag()->add(
                             'warning',
-                            $this->get('translator')->trans('flashes.modify_list.warning')
+                            $this->get('translator')->trans('flashes.management.modify_list_warning')
                         );
 
                         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -88,14 +88,14 @@ class ManagementController extends Controller
 
                     $this->get('session')->getFlashBag()->add(
                         'success',
-                        $this->get('translator')->trans('flashes.add_participant.success')
+                        $this->get('translator')->trans('flashes.management.add_participant.success')
                     );
 
                     return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
                 } else {
                     $this->get('session')->getFlashBag()->add(
                         'danger',
-                        $this->get('translator')->trans('flashes.add_participant.danger')
+                        $this->get('translator')->trans('flashes.management.add_participant.danger')
                     );
                 }
             }
@@ -112,14 +112,14 @@ class ManagementController extends Controller
 
                     $this->get('session')->getFlashBag()->add(
                         'success',
-                        $this->get('translator')->trans('flashes.updated_party.success')
+                        $this->get('translator')->trans('flashes.management.updated_party.success')
                     );
 
                     return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
                 } else {
                     $this->get('session')->getFlashBag()->add(
                         'danger',
-                        $this->get('translator')->trans('flashes.updated_party.danger')
+                        $this->get('translator')->trans('flashes.management.updated_party.danger')
                     );
                 }
             }

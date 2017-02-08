@@ -450,42 +450,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Comprobar la lista de deseos
 
-### end of cleanup ###
-
 flashes:
-    manage:
-        email_validated: >
-         <strong>¡Perfecto!</strong><br/>Tu correo electrónico ha sido validado.<br/>
-         Nuestros gnomos están viajando por Internet mientras hablamos, entregando a todos tus futuros Secret Santas sus amigos del regalo.<br/>
-         <br />
-         No olvides confirmar tu propia participación. Te hemos mandado otro correo electrónico. ¡Compruébalo!
-    delete:
-        not_deleted: <h4>No borrado</h4> La confirmación era incorrecta.
-    resend:
-        resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
-    entry:
-        wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
-        poke_buddy: <h4>Empujado</h4> Nuestros gnomos est&aacute;n de camino para avisar tu amigote Secret Santa que su lista de deseos est&aacute; vac&iacute;a.
-        edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
-        saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
-    analytics:
-        invalid_data: <h4>Oops</h4> Ha ocurrido un error al requerir los datos analíticos. Por favor, inténtalo otra vez.
-    forgot_manage_link:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Éxito</h4> Todos los participantes han recibido una actualizaci&oacute;n sobre la fiesta.
+
+    # ForgotManagementURLController
+    forgot_management_url:
         success: 'Hemos enviado exitosamente reenviado su correo de activación.'
         error: 'Se produjo un error durante la transmisión del correo de activación. Por favor, inténtalo de nuevo.'
-    pool_update:
-        success: <h4>Éxito</h4> Todos los participantes han recibido una actualizaci&oacute;n sobre la fiesta.
-    remove_participant:
-        success: <h4>¡Expulsado!</h4> Participante expulsado de éxito.
-        danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.
-        warning: <h4>Oops</h4> Organizas la fiesta, no puedes expulsarte. Si quieres dejar la fiesta, haz clic en el enlace abajo para borrar la lista Secret Santa.
-        excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
-        wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
-    add_participant:
-        success: <h4>¡A&ntilde;adido!</h4> Participante a&ntilde;adido a tu fiesta de éxito.
-        danger: <h4>Oops</h4> Ha ocurrido un error al a&ntilde;adir el participante. Por favor, inténtalo otra vez.
-    modify_list:
-        warning: <h4>Oops</h4> Parece que tu fiesta de Santa Secreto está en menos de una semana, no se puede añadir o eliminar participantes más.
-    updated_party:
-        success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
-        danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>¡Perfecto!</strong><br/>Tu correo electrónico ha sido validado.<br/>
+            Nuestros gnomos están viajando por Internet mientras hablamos, entregando a todos tus futuros Secret Santas sus amigos del regalo.<br/>
+            <br />
+            No olvides confirmar tu propia participación. Te hemos mandado otro correo electrónico. ¡Compruébalo!
+        modify_list_warning: <h4>Oops</h4> Parece que tu fiesta de Santa Secreto está en menos de una semana, no se puede añadir o eliminar participantes más.
+        add_participant:
+            success: <h4>¡A&ntilde;adido!</h4> Participante a&ntilde;adido a tu fiesta de éxito.
+            danger: <h4>Oops</h4> Ha ocurrido un error al a&ntilde;adir el participante. Por favor, inténtalo otra vez.
+        updated_party:
+            success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
+            danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
+
+    # PoolController
+    pool:
+        not_deleted: <h4>No borrado</h4> La confirmación era incorrecta.
+
+    # ResendEntryController
+    resend_entry:
+        resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
+
+    # PokeBuddyController
+    poke_buddy:
+        poke_buddy: <h4>Empujado</h4> Nuestros gnomos est&aacute;n de camino para avisar tu amigote Secret Santa que su lista de deseos est&aacute; vac&iacute;a.
+
+    # EntryController
+    entry:
+        wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
+        edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
+        saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
+        modify_list_warning: <h4>Oops</h4> Parece que tu fiesta de Santa Secreto está en menos de una semana, no se puede añadir o eliminar participantes más.
+        remove_participant:
+            success: <h4>¡Expulsado!</h4> Participante expulsado de éxito.
+            danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.
+            warning: <h4>Oops</h4> Organizas la fiesta, no puedes expulsarte. Si quieres dejar la fiesta, haz clic en el enlace abajo para borrar la lista Secret Santa.
+            excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
+#            self_assigned: ?
+            wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.

@@ -372,22 +372,53 @@ emails-wishlistChanged:
     btn:
         check_wishlist: 檢查願望單
 
-### end of cleanup ###
-
 flashes:
-    manage:
+    # SendPartyUpdateController
+#    send_party_update:
+#        success: ?
+
+    # ForgotManagementURLController
+#    forgot_management_url:
+#        success: ?
+#        error: ?
+
+    # ManagementController
+    management:
         email_validated: >
-         <strong>好極！</strong><br/>你的電郵現確認。<br/>
-         當我們說話時精靈們正在互聯網飛馳，傳遞所有你的(即將成為) 秘密聖誕老人禮物朋友。<br/>
-         <br />
-         別忘記去確認你的參與。我們已傳送給你另一封電郵。查看一下吧!
-    delete:
+            <strong>好極！</strong><br/>你的電郵現確認。<br/>
+            當我們說話時精靈們正在互聯網飛馳，傳遞所有你的(即將成為) 秘密聖誕老人禮物朋友。<br/>
+            <br />
+            別忘記去確認你的參與。我們已傳送給你另一封電郵。查看一下吧!
+#        modify_list_warning: ?
+#        add_participant:
+#            success: ?
+#            danger: ?
+#        updated_party:
+#            success: ?
+#            danger: ?
+
+    # PoolController
+    pool:
         not_deleted: <h4>並非已刪除</h4>該確認是不正確。
-    resend:
+
+    # ResendEntryController
+    resend_entry:
         resent: <strong>重新傳送！</strong><br/>電郵到%email%已被重新傳送。<br/>
+
+    # PokeBuddyController
+#    poke_buddy:
+#        poke_buddy: ?
+
+    # EntryController
     entry:
         wishlist_updated: <h4>願望單已更新</h4>我們已送出我們的精靈去通知你的秘密聖誕老人關於你的願望!
         edit_email: <h4>並沒儲存</h4>這裡有電郵地址錯誤。
         saved_email: <h4>儲存</h4> 新的電郵地址已儲存。我們亦重新傳送電郵。
-    analytics:
-        invalid_data: <h4>噢</h4>當要求分析數據錯誤出現了。請重試。
+#        modify_list_warning: ?
+#        remove_participant:
+#            success: ?
+#            danger: ?
+#            warning: ?
+#            excluded_entries: ?
+#            self_assigned: ?
+#            wrong: ?
