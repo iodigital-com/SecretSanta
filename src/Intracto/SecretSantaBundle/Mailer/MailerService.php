@@ -154,7 +154,7 @@ class MailerService
 
         $poolLinks = [];
         foreach ($results as $result) {
-            $text = $this->translator->trans('manage.title');
+            $text = $this->translator->trans('emails-forgot_link.title');
 
             if ($result['eventdate'] instanceof \DateTime) {
                 $text .= ' ('.$result['eventdate']->format('d/m/Y').')';

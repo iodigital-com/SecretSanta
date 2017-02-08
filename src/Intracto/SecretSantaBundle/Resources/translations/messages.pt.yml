@@ -308,7 +308,8 @@ emails-emptyWishlistReminder:
         update_wishlist: Atualizar minha lista de desejos
 
 # Emails/forgotLink.{html,txt}.twig
-#emails-forgot_link:
+emails-forgot_link:
+    title: Sua lista Secret Santa
 #    subject:?
 #    message:
 #        html: ?

@@ -340,6 +340,7 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
+    title: Jouw Secret Santa lijst
     subject: Activatie mail opnieuw verzenden
     message:
         html: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'

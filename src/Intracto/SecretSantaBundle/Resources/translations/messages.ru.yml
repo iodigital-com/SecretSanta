@@ -248,7 +248,8 @@ emails-emptyWishlistReminder:
         update_wishlist: Обновить ваш список желаний
 
 # Emails/forgotLink.{html,txt}.twig
-#emails-forgot_link:
+emails-forgot_link:
+    title: Ваш список Тайного Санты
 #    subject: ?
 #    message:
 #        html: ?

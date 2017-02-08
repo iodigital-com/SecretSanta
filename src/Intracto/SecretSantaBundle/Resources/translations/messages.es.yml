@@ -269,6 +269,7 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
+    title: Tu lista Secret Santa
     subject: Reenviar el correo de activación
     message:
         html: 'Hola, <br><br>tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.<br>'

@@ -251,7 +251,8 @@ emails-emptyWishlistReminder:
         update_wishlist: Aktualisieren Sie Ihren Wunschzettel
 
 # Emails/forgotLink.{html,txt}.twig
-#emails-forgot_link:
+emails-forgot_link:
+    title: Ihre Secret Santa-Liste
 #    subject: ?
 #    message:
 #        html: ?

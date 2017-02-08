@@ -243,7 +243,8 @@ emails-emptyWishlistReminder:
         update_wishlist: 更新你的願望單
 
 # Emails/forgotLink.{html,txt}.twig
-#emails-forgot_link:
+emails-forgot_link:
+    title: 你的秘密聖誕老人目錄
 #    subject: ?
 #    message:
 #        html: ?

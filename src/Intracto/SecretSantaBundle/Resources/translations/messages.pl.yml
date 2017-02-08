@@ -221,7 +221,8 @@ emails-emptyWishlistReminder:
 #        update_wishlist: ?
 
 # Emails/forgotLink.{html,txt}.twig
-#emails-forgot_link:
+emails-forgot_link:
+    title: Twoja lista Tajnego Mikołaja
 #    subject:?
 #    message:
 #        html: ?
