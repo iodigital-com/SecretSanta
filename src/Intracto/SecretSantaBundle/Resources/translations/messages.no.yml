@@ -371,6 +371,8 @@ emails-participant:
     subject: Din hemmelige nisse
     find_out: Finn ut hvem du skal gi gave til
 
+#    buy_from_amazon: ?
+
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
     subject: Secret Santa bekreftelse

@@ -274,6 +274,8 @@ emails-participant:
     subject: 你的秘密圣诞老人
     find_out: 查看你的人员
 
+#    buy_from_amazon: ?
+
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
     subject: 秘密圣诞老人确认

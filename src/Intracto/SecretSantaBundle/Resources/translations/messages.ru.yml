@@ -279,6 +279,8 @@ emails-participant:
     subject: Ваш Тайный Санта
     find_out: Найдите вашего получателя подарка
 
+#    buy_from_amazon: ?
+
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
     subject: Подтверждение Тайного Санты

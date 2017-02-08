@@ -375,6 +375,8 @@ emails-participant:
     subject: Your Secret Santa
     find_out: Find out your person
 
+    buy_from_amazon: What are the most wished for items?
+
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
     subject: Secret Santa Validation
@@ -559,5 +561,3 @@ flashes:
     updated_party:
         success: <h4>Updated!</h4> Your party details have been succesfully updated.
         danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
-
-buy_from_amazon: What are the most wished for items?

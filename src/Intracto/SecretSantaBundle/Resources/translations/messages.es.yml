@@ -302,6 +302,8 @@ emails-participant:
     subject: Tu Secret Santa
     find_out: Descubre a tu persona
 
+#    buy_from_amazon: ?
+
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
     subject: Validación Secret Santa

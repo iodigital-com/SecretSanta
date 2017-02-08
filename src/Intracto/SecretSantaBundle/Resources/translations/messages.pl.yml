@@ -251,6 +251,8 @@ emails-participant:
     subject: Twój Tajny Mikołaj
     find_out: Dowiedz się kim jest Twoja osoba
 
+#    buy_from_amazon: ?
+
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
     subject: Weryfikacja Tajnego Mikołaja

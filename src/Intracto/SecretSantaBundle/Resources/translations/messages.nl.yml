@@ -373,6 +373,8 @@ emails-participant:
     subject: Jouw Secret Santa
     find_out: Ontdek wiens Secret Santa je bent
 
+    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
+
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
     subject: Secret Santa Validatie
