@@ -9,6 +9,25 @@ base:
             description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            Hey (NAME),
+
+            (ADMINISTRATOR) heeft een Secret Santa evenement gecreëerd en heeft jou als deelnemer opgegeven.
+
+            Amuseer je te pletter met Secret Santa en ontdek wiens Secret Santa je bent door op onderstaande knop te klikken.
+
+            Je mag tot %amount% aan je cadeau spenderen. Maar wees niet bevreesd cheapo's, eigen geschenken maken is toegestaan. We moedigen het zelfs aan!
+
+            Het Secret Santa feestje vindt plaats op %eventdate% op de volgende locatie: %location%. Vergeet je cadeau niet!
+
+            %message%
+
+
+            Geniet van de feestdagen!
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -500,23 +519,7 @@ label:
     location: Locatie van jouw Secret Santa feest
     amount_to_spend: Te spenderen bedrag
     items: Gewenste verrassingen
-emails:
-    created:
-        message: |
-            Hey (NAME),
 
-            (ADMINISTRATOR) heeft een Secret Santa evenement gecreëerd en heeft jou als deelnemer opgegeven.
-
-            Amuseer je te pletter met Secret Santa en ontdek wiens Secret Santa je bent door op onderstaande knop te klikken.
-
-            Je mag tot %amount% aan je cadeau spenderen. Maar wees niet bevreesd cheapo's, eigen geschenken maken is toegestaan. We moedigen het zelfs aan!
-
-            Het Secret Santa feestje vindt plaats op %eventdate% op de volgende locatie: %location%. Vergeet je cadeau niet!
-
-            %message%
-
-
-            Geniet van de feestdagen!
 flashes:
     manage:
         email_validated: >

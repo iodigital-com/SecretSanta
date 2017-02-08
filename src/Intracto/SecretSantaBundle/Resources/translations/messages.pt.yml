@@ -9,6 +9,23 @@ base:
             description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            Olá (NAME),
+
+            (ADMINISTRATOR) criou um evento do Secret Santa (Amigo Secreto) e declarou você participante!
+
+            Divirta-se brincando de Amigo Secreto e descubra quem será o seu amigo secreto clicando no botão abaixo.
+
+            É permitido gastar até %amount% no presente. Não tenha medo, seu avarento: você também pode criar um presente personalizado e artesanal. A gente até te encoraja a fazê-lo!
+            A festa do Amigo Secreto será dia %eventdate%. Não esqueça o seu presente!
+
+            %message%
+
+            Boas Festas!
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -415,21 +432,6 @@ label:
     date_party: Data da sua festa de Amigo Secreto
     amount_to_spend: Valor máximo a gastar
 
-emails:
-    created:
-        message: |
-            Olá (NAME),
-
-            (ADMINISTRATOR) criou um evento do Secret Santa (Amigo Secreto) e declarou você participante!
-
-            Divirta-se brincando de Amigo Secreto e descubra quem será o seu amigo secreto clicando no botão abaixo.
-
-            É permitido gastar até %amount% no presente. Não tenha medo, seu avarento: você também pode criar um presente personalizado e artesanal. A gente até te encoraja a fazê-lo!
-            A festa do Amigo Secreto será dia %eventdate%. Não esqueça o seu presente!
-
-            %message%
-
-            Boas Festas!
 flashes:
     manage:
         email_validated: >

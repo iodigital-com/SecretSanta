@@ -164,7 +164,7 @@ class PoolController extends Controller
                     \IntlDateFormatter::NONE
                 );
 
-                $message = $this->get('translator')->trans('emails.created.message', [
+                $message = $this->get('translator')->trans('pool_controller.created.message', [
                     '%amount%' => $pool->getAmount(),
                     '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
                     '%location%' => $pool->getLocation(),

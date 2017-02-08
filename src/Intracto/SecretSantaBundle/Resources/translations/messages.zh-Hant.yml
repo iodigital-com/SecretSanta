@@ -9,6 +9,25 @@ base:
             description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            (NAME)你好，
+
+            (ADMINISTRATOR)創作一個秘密聖誕老人項目及已列出你是參與者。
+
+            參與有趣的秘密聖誕老人及點擊下方的接鈕找出誰是你的禮物朋友。
+
+            你可花費達到(一個額)在你的禮物。但當然創作自己的禮物是準許的!
+
+            秘密聖誕老人派對已計劃好:%eventdate%。記得帶來你的禮物!
+
+            %message%
+
+
+            祝你假期愉快！
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -350,23 +369,6 @@ label:
     date_party: 秘密聖誕老人派對日期
     amount_to_spend: 費用
 
-emails:
-    created:
-        message: |
-            (NAME)你好，
-
-            (ADMINISTRATOR)創作一個秘密聖誕老人項目及已列出你是參與者。
-
-            參與有趣的秘密聖誕老人及點擊下方的接鈕找出誰是你的禮物朋友。
-
-            你可花費達到(一個額)在你的禮物。但當然創作自己的禮物是準許的!
-
-            秘密聖誕老人派對已計劃好:%eventdate%。記得帶來你的禮物!
-
-            %message%
-
-
-            祝你假期愉快！
 flashes:
     manage:
         email_validated: >

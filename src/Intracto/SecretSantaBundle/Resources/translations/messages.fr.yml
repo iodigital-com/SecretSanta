@@ -9,6 +9,25 @@ base:
             description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Besoin d'aide ? Des questions ? Consultez la FAQ !</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            Bonjour (NAME),
+
+            (ADMINISTRATOR) a créé un événement Secret Santa et vous a ajouté comme participant.
+
+            Rejoignez le jeu Secret Santa et découvrez la personne à qui vous devrez offrir un cadeau en cliquant sur le bouton ci-dessous.
+
+            Vous pouvez dépenser jusqu'à %amount% pour votre cadeau. Mais bien sûr, créer votre propre cadeau est permis. C'est même vivement recommandé !
+
+            La Secret Santa party est prévue le %eventdate% et aura lieu à %location%. Assurez-vous d'amener votre cadeau.
+
+            %message%
+
+
+            Bonnes vacances !
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -475,23 +494,7 @@ label:
     location: Lieu
     amount_to_spend: Montant à dépenser
     items: Cadeaux souhaités
-emails:
-    created:
-        message: |
-            Bonjour (NAME),
 
-            (ADMINISTRATOR) a créé un événement Secret Santa et vous a ajouté comme participant.
-
-            Rejoignez le jeu Secret Santa et découvrez la personne à qui vous devrez offrir un cadeau en cliquant sur le bouton ci-dessous.
-
-            Vous pouvez dépenser jusqu'à %amount% pour votre cadeau. Mais bien sûr, créer votre propre cadeau est permis. C'est même vivement recommandé !
-
-            La Secret Santa party est prévue le %eventdate% et aura lieu à %location%. Assurez-vous d'amener votre cadeau.
-
-            %message%
-
-
-            Bonnes vacances !
 flashes:
     manage:
         email_validated: >

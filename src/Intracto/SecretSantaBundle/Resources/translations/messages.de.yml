@@ -9,6 +9,25 @@ base:
             description: Secret Santa Organizer ist ein kostenloses Online-Programm zum Organisieren des Secret Santa-Geschenketauschs. Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen und fügen Sie einen Wunschzettel zu.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            Hi  (NAME),
+
+            (ADMINISTRATOR) hat ein Secret Santa-Ereignis erstellt und Sie als Teilnehmer angeführt.
+
+            Nehmen Sie am Secret Santa-Spaß teil und finden Sie durch einen Klick auf den untenstehenden Button heraus, wer Ihr Geschenkepartner ist.
+
+            Sie können bis zu %amount% für Ihr Geschenk ausgeben. Natürlich ist es auch erlaubt, ein eigenes Geschenk herzustellen. Dies finden wir sogar gut!
+
+            Die Secret Santa-Party ist geplant für %eventdate% und Findet Statt in %location%. Denken Sie daran, Ihr Geschenk mitzubringen!
+
+            %message%
+
+
+            Schöne Feiertage!
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -363,23 +382,6 @@ btn:
     delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
     cancel: Löschen
 
-emails:
-    created:
-        message: |
-            Hi  (NAME),
-
-            (ADMINISTRATOR) hat ein Secret Santa-Ereignis erstellt und Sie als Teilnehmer angeführt.
-
-            Nehmen Sie am Secret Santa-Spaß teil und finden Sie durch einen Klick auf den untenstehenden Button heraus, wer Ihr Geschenkepartner ist.
-
-            Sie können bis zu %amount% für Ihr Geschenk ausgeben. Natürlich ist es auch erlaubt, ein eigenes Geschenk herzustellen. Dies finden wir sogar gut!
-
-            Die Secret Santa-Party ist geplant für %eventdate% und Findet Statt in %location%. Denken Sie daran, Ihr Geschenk mitzubringen!
-
-            %message%
-
-
-            Schöne Feiertage!
 flashes:
     manage:
         email_validated: >

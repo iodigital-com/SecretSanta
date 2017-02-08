@@ -9,6 +9,25 @@ base:
             description: Secret Santa Organizer er et gratis program som lar deg organisere gavebytter! Arranger en hemmelig nisse fest med venner, familie eller kolleger og legg til din egen ønskeliste.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            Ho ho ho (NAME),
+
+            (ADMINISTRATOR) opprettet en hemmelig nisse-fest og har invitert deg til å delta.
+
+            Bli med på julens giverglede og finn ut hvem du er nisse for i år ved å trykke på knappen nedenfor.
+
+            Du kan bruke opptil %amount% på gaven. Og du kan selvfølgelig gi noe hjemmelaget og koselig!
+
+            Festen skal være den %eventdate% og finner sted her /in %location%. Husk å ta med gaven!
+
+            %message%
+
+
+            God førjulstid!
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -493,77 +512,12 @@ emails-wishlistChanged:
 
 ### end of cleanup ###
 
-expose:
-    title: Send meg alle kombinasjonene i e-postlisten
-    body: >
-        <p>
-            Er du HELT sikker?<br>
-            <br>
-            En e-post blir sendt til din mailadresse med hele deltagerlisten og kombinasjonene av hemmelige nisser ;)<br>
-            <br>
-            <b>Vær oppmerksom på:</b><br>
-            KUN DU får tilgang til kombinasjonene av gavegivere, men deltagerne vil kunne se at du har fått listen tilsendt.<br>
-            <br>
-            Vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
-        </p>
-    phrase_to_type: vis meg alle nissene
-expose_wishlists:
-    title: Send meg alle nissenes ønskelister
-    body: >
-        <p>
-            Er du HELT sikker?<br>
-            <br>
-            En e-post blir sendt til din mailadresse med hele deltagerlisten og alle deres ønskelister.<br>
-            <br>
-            <b>Vær oppmerksom på:</b><br>
-            KUN DU får tilgang til ønskelisten, men deltagerne vil kunne se at du har fått listen tilsendt.<br>
-            <br>
-            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
-        </p>
-    phrase_to_type: vis meg ønskelistene
-
 label:
     date_party: Dato
     location: Sted
     amount_to_spend: Beløp å bruke på gaven
     items: Ønsker på ønskelisten
-btn:
-    expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
-    expose_wishlists_confirm: Jeg er innforstått med konsekvensene, send meg alle ønskelistene
-emails:
-    created:
-        message: |
-            Ho ho ho (NAME),
 
-            (ADMINISTRATOR) opprettet en hemmelig nisse-fest og har invitert deg til å delta.
-
-            Bli med på julens giverglede og finn ut hvem du er nisse for i år ved å trykke på knappen nedenfor.
-
-            Du kan bruke opptil %amount% på gaven. Og du kan selvfølgelig gi noe hjemmelaget og koselig!
-
-            Festen skal være den %eventdate% og finner sted her /in %location%. Husk å ta med gaven!
-
-            %message%
-
-
-            God førjulstid!
-    admin_matches:
-        subject: Secret Santa liste med kombinasjoner av deltagere
-        message:
-            giving: Denne deltageren skal gi ...
-            receiving: ... en gave til denne deltageren
-            html: >
-                Kjære %owner%,<br/>
-                <br/>
-                Du har sendt inn en forespørsel på listen over kombinasjonene av alle deltagerne. Vær klar over at deltagerne kan se at du har fått tilgang til denne listen og at du kan se ønskelistene deres.<br/>
-                <br/>
-                Nedenfor er en oversikt over hvem som skal gi gaver til hvem.<br/>
-            txt: >
-                Kjære %owner%,
-
-                Du har sendt inn en forespørsel på listen over kombinasjonene av alle deltagerne. Vær klar over at deltagerne kan se at du har fått tilgang til denne listen og at du kan se ønskelistene deres.
-
-                Nedenfor er en oversikt over hvem som skal gi gaver til hvem.
 flashes:
     manage:
         email_validated: >

@@ -9,6 +9,25 @@ base:
             description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            你好(NAME),
+
+            (ADMINISTRATOR)创建了一个秘密圣诞老人活动同时也把你列入参与人员当中。
+
+            点击以下按键加入秘密圣诞老人狂欢，同时找出谁是你的礼物密友。
+
+            你最多能花费到%amount%在你的礼物上。当然，制作你自己的礼物也是可以的。甚至鼓励的话语也可以！
+
+            秘密圣诞老人派对计划在 %eventdate%。确保带上你的礼物哟！
+
+            %message%
+
+
+            节日快乐！
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -350,23 +369,6 @@ label:
     date_party: 你的秘密圣诞老人派对日期
     amount_to_spend: 消费金额
 
-emails:
-    created:
-        message: |
-            你好(NAME),
-
-            (ADMINISTRATOR)创建了一个秘密圣诞老人活动同时也把你列入参与人员当中。
-
-            点击以下按键加入秘密圣诞老人狂欢，同时找出谁是你的礼物密友。
-
-            你最多能花费到%amount%在你的礼物上。当然，制作你自己的礼物也是可以的。甚至鼓励的话语也可以！
-
-            秘密圣诞老人派对计划在 %eventdate%。确保带上你的礼物哟！
-
-            %message%
-
-
-            节日快乐！
 flashes:
     manage:
         email_validated: >

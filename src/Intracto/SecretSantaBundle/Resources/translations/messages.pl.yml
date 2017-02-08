@@ -9,6 +9,24 @@ base:
             description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
 
+# PoolController
+pool_controller:
+    created:
+        message: |
+            Witaj (NAME),
+
+            (ADMINISTRATOR) utworzył nowe wydarzenie Tajnego Mikołaja wskazał Cię jako jednego z uczestników.
+
+            Przyłącz się do zabawy w Tajnego Mikołaja i dowiedz się, kim jest osoba, którą masz obdarować, klikając na link poniżej.
+
+            Możesz wydać nie więcej niż %amount% na swój prezent. Oczywiście samodzielne stworzenie swojego prezentu jest dozwolone, a nawet wskazane!
+
+            Przyjęcie Tajnego Mikołaja jest planowane na %eventdate%. Pamiętaj zabrać na nie swój prezent!
+
+            %message%
+
+            Wesołych Świąt!
+
 # Pool/create.html.twig
 pool-create:
     header:
@@ -327,22 +345,7 @@ emails-wishlistChanged:
 label:
     date_party: Data Twojego Przyjęcia Tajnego Mikołaja
     amount_to_spend: Suma do wydania
-emails:
-    created:
-        message: |
-            Witaj (NAME),
 
-            (ADMINISTRATOR) utworzył nowe wydarzenie Tajnego Mikołaja wskazał Cię jako jednego z uczestników.
-
-            Przyłącz się do zabawy w Tajnego Mikołaja i dowiedz się, kim jest osoba, którą masz obdarować, klikając na link poniżej.
-
-            Możesz wydać nie więcej niż %amount% na swój prezent. Oczywiście samodzielne stworzenie swojego prezentu jest dozwolone, a nawet wskazane!
-
-            Przyjęcie Tajnego Mikołaja jest planowane na %eventdate%. Pamiętaj zabrać na nie swój prezent!
-
-            %message%
-
-            Wesołych Świąt!
 flashes:
     manage:
         email_validated: '<strong>Świetnie!</strong><br/>Twój email został zweryfikowany.<br/> Nasze skrzaty wyruszyły w internetową podróż, żeby dostarczyć wszystkie wiadomości dla przyszłych Tajnych Mikołajów.<br/><br/> Nie zapomnij potwierdzić swojego uczestnictwa. Wyślemy Ci kolejny email. Sprawdź swoją skrzynkę pocztową!'
