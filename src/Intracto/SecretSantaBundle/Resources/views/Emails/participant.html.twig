@@ -1,4 +1,4 @@
-{% extends 'IntractoSecretSantaBundle:Emails:basemail.html.twig' %}
+{% extends "IntractoSecretSantaBundle:Emails:baseEmail.html.twig" %}
 {% block main %}
     <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
         <tr>
@@ -6,7 +6,11 @@
                 <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
             </td>
             <td width="566">
-                <p>{{ 'emails.removed_secret_santa.message.html'|trans({'%name%': entry.name, '%owner%': entry.pool.getOwnerName})|raw }}</p>
+                <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
+                    {{ message|nl2br }}
+                </span>
+                <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20" target="_blank" rel="noopener noreferrer">{{ 'emails-participant.buy_from_amazon'|trans }}</a></b>
+                <br /> <br /><br />
             </td>
             <td width="37" align="right">
                 <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
@@ -39,7 +43,7 @@
                                 <tr>
                                     <td height="40" valign="middle" style="background-color:#bd1019;">
                                         <a href="{{ url('entry_view', { 'url': entry.url }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails.removed_secret_santa.btn_find_out'|trans }}
+                                            {{ 'emails-participant.find_out'|trans }}
                                         </a>
                                     </td>
                                 </tr>

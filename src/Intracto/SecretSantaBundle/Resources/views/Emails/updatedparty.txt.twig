@@ -1,9 +1,0 @@
-{{ 'emails.updated_party.message.txt'|trans({'%name%': entry.name, '%owner%': entry.pool.getOwnerName}) }}
-
-{{ 'label.date_party'|trans }} >> {{ 'label.location'|trans }} >> {{ 'label.amount_to_spend'|trans }}
-{{ entry.pool.eventdate|date('d M y') }} >> {{ entry.pool.location }} >> {{ entry.pool.amount }}
-
-{{ "emails.updated_party.btn_updated_party"|trans|raw }}:
-{{ url("entry_view", { "url": entry.url, "_locale": entry.pool.locale }) }}
-
-{{ 'emails.base.created_by'|trans }} http://www.intracto.com

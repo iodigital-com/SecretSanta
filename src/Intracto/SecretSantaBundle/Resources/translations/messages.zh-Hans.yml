@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
@@ -6,285 +7,17 @@ base:
             title: 秘密圣诞老人
             site_name: 秘密圣诞老人
             description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
-    nav:
-        home: 首页
-    privacy_policy: 私隐政策
-    have_fun: 好好享受策划你的秘密圣诞老人吧
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
-pool:
-    header:
-        steps:
-            title: 简单<span class="accent">三步</span>完成你的礼物交换活动
-            list:
-                one: 列出你的参与人员
-                two: 添加个人的信息
-                three: 发送！
-            get_started: 开始！
 
-create:
-    what_is:
-        title: 什么是秘密圣诞老人
-        intro: >
-                <p>这是一个<strong>免费</strong>的在线秘密圣诞老人<strong>礼物交换组织机构</strong>！和朋友们，家人甚至同事们一起组织一个秘密圣诞老人派对。收到秘密圣诞老人的邮件后你可以加入你自己的</strong>愿望清单</strong>那将会传送到你的秘密圣诞老人。</p>
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: 你的秘密圣诞老人派对日期
+#        location: ?
+        amount_to_spend: 消费金额
 
-                <p>每一年到了圣诞期间，全世界各地的人都在交换礼物。为了保持事情的有趣性，你可以随机分配人员对人员之间</strong>交换礼物</p>
-
-    add_participants: 添加你的参与人员
-    list_adminstrator: 此人也是你的名单管理者。
-    add_personal_message:
-        title: 添加个人信息
-        description: 为你的参与人员添加个人信息。
-exclude:
-   title: 排除
-   description: 在这名单里你可以随意防止一些参与人员的组合配对。例如防止同一家庭成员之间不得不买礼物给对方。
-created:
-    title: 仅此一步！确认你的参与人员
-    body: >
-            <p>
-              为了阻止机器人和网络谩骂者破坏秘密圣诞老人派对，我们需要名单的组织者<b>%ownername%</b>确认他/她的参与人员。我们已经发送了一个<b>%owneremail%</b> 进一步说明。
-            </p>
-            <p>
-              一旦确认，你的秘密圣诞老人名单将被打乱，紧接着所有用户将各自收到自己的秘密圣诞老人礼物密友的名字。
-            </p>
-            <p>
-                在确认电子邮件中，名单的组织者也将会有一个了解所有用户中哪些用户已知道自己的礼物密友的一个链接。以此来确认每个秘密圣诞老人知道他的任务。
-            </p>
-    warning: 提示
-    check_spam: 不要忘记检查你的垃圾邮件文件夹！
-
-deleted:
-    title: 不要忘记检查你的垃圾邮件文件夹！
-    body: >
-        <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
-
-manage:
-    title: 你的秘密圣诞老人名单
-    yes: 是
-    not_yet: 尚未
-    edit_email: 编辑电子邮件
-    resend_email: 再次发送电子邮件
-    view_entry: 查看词条
-    tip: 贴士
-    come_back: 你可以经常回到这个页面来确认所有人已经看过他/她的邮箱。
-    save: 保存
-
-delete:
-    title: 删除我的秘密圣诞老人名单
-    body: >
-        <p>
-            你绝对确定吗？<br>
-            <br>
-            <b>如果你不阅读这个，不确保坏事不会发生！</b><br>
-            <br>
-            一旦你删除了你的秘密圣诞老人名单，这将不能恢复。这个行为将不能被复原。<br>
-            这将永久删除这个秘密圣诞老人名单，包括所有里面的所有参与人员和他们的愿望清单。<br>
-            <br>
-            请输入"<b>%phrase_to_type%</b>" 以下确认
-        </p>
-    phrase_to_type: 删除一切
-entry:
-    headers:
-        title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
-        date: 日期
-        amount: 数量
-        num_people: 人员数目
-        person_created_list: 名单创建者
-    title: 你的分配密友
-    body: >
-        <p>你好%name%,</p>
-        <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
-    wishlist_from: 愿望清单来自 %name%
-    wishlist_not_provided: %name%尚未提供愿望清单
-    wishlist:
-        title: 你的愿望清单
-        description: 你可以在这留下一个愿望清单，以帮助你的秘密圣诞老人。我们的小矮人将会把这个传达到你的秘密圣诞老人那。你可以拖动项目条对物品进行重新排序。
-    wishlist_empty: 你的愿望清单是空的。请添加东西！
-
-static:
-    privacy_policy:
-        title: Privacy Policy
-        body: >
-            <p>Thank you for visiting secretsantaorganizer.com created by Intracto group NV. This privacy policy tells you
-                how we use personal information collected at this site. Please read this privacy policy before using the
-                site or submitting any personal information. By using the site, you are accepting the practices described in
-                this privacy policy. These practices may be changed, but any changes will be posted and changes will only
-                apply to activities and information on a going forward, not retroactive basis. You are encouraged to review
-                the privacy policy whenever you visit the site to make sure that you understand how any personal information
-                you provide will be used.</p>
-
-            <p>Note: the privacy practices set forth in this privacy policy are for this web site only. If you link to other
-                web sites, please review the privacy policies posted at those sites.</p>
-
-            <h2>Collection of Information</h2>
-
-            <p>We collect personally identifiable information, like names and email addresses, when voluntarily submitted by
-                our visitors. The information you provide is used to fulfill your specific request.</p>
-
-            <h2>Cookie/Tracking Technology</h2>
-
-            <p>This site uses cookies present in Google Analytics for gathering anonymous information such as browser type
-                and operating system, tracking the number of visitors to the site, and understanding how visitors use the
-                site. Personal information cannot be collected via cookies and other tracking technology.</p>
-
-            <p>You can turn off the use of cookies in the settings of your browser.</p>
-
-            <h2>Distribution of Information</h2>
-
-            <p>We may share information with governmental agencies or other companies assisting us in fraud prevention or
-                investigation. We may do so when: (1) permitted or required by law; or, (2) trying to protect against or
-                prevent actual or potential fraud or unauthorized transactions; or, (3) investigating fraud which has
-                already taken place. The information is not provided to these companies for marketing purposes.</p>
-
-            <h2>Commitment to Data Security</h2>
-
-            <p>Your personally identifiable information is kept secure. Only authorized employees, agents and contractors
-                (who have agreed to keep information secure and confidential) have access to this information. All emails
-                from this site are unique to your specific request. No recurring emails or newsletters will be sent to the
-                email addresses provided.</p>
-
-            <h2>Privacy Contact Information</h2>
-
-            <p>If you have any questions, concerns, or comments about our privacy policy you may contact us using the
-                information below:<br/>
-                By e-mail: info@secretsantaorganizer.com</p>
-
-            <p>We reserve the right to make changes to this policy. Any changes to this policy will be posted.</p>
-    faq:
-        title: Frequently Asked Questions
-        body: >
-            <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
-
-            <a href="what"></a><h2>What is Secret Santa?</h2>
-            <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
-            To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
-
-            <a name="how"></a><h2>How does it work?</h2>
-            <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
-            The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
-            We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
-
-            <!--a name="exclude"></a><h2>Can I exclude combinations?</h2>
-            <p>After providing all participants, you can optionally prevent some participant combinations. For example to prevent members of the same family having to buy gifts for each other.<br><br>
-            It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p-->
-
-            <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
-            <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
-
-            <a name="reuse"></a><h2>Can I reuse a list?</h2>
-            <p>You can't automatically reuse last year's list to create a new list this year.
-            <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank" rel="noopener noreferrer">This is a feature request</a>, comment on that issue if you want this (we prefer a PR).</p>
-
-            <a name="manage"></a><h2>How do I manage my party / participants?</h2>
-            <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
-
-            <a href="lost"></a><h2>I lost my activation mail.</h2>
-            <p>If you lost your activation e-mail (which contains the link to the admin page), contact us from the list administrator e-mail address and we will send you the link again.
-            <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank" rel="noopener noreferrer">There is a feature request</a> to automate this.</p>
-
-            <a name="changes"></a><h2>Can I add or remove people?</h2>
-            <p>When creating an event, all participants are assigned to each other so we can't just add or remove someone. Well, we could but it would involve changing the current pairs and possibly confusing people in the process.
-            Use the admin page and be a little bit creative to solve your problem manually.</p>
-
-            <a href="email"></a><h2>Can I resend an email?</h2>
-            <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
-            If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
-
-            <a href="combinations"></a><h2>Can I look into all combinations?</h2>
-            <p>You can request the combinations from the list management page. But it sort of spoils the "secret" part of our Secret Santa. That's why we added an indicator to all participants' buddy pages that all combinations were exposed to the list admin when you actually performed the request :-)</p>
-
-            <a href="delete"></a><h2>Can I delete my list?</h2>
-            <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
-
-            <a name="who"></a><h2>Who are you?</h2>
-            <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
-            designers, frontenders, SEO's and marketing people.
-            Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
-            Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
-
-            <a name="privacy"></a><h2>How do you handle my data?</h2>
-            <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
-            Also, at any point in time, you can just delete your Secret Santa from the admin page.</p>
-
-            <a name="features"></a><h2>Can you add feature X?</h2>
-            <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
-            Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change.
-            For those who can code, we prefer transpiration to inspiration. In other words, we accept your PR's.</p>
-
-            <a name="opensource"></a><h2>Open source</h2>
-            <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
-            The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
-            You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
-            If you want a change or a whole new feature, just add it.</p>
-
-            <a name="ads"></a><h2>What about the ads?</h2>
-            <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project.
-            We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else.
-            By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
-
-            <a href="questions"></a><h2>Other questions</h2>
-            <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Max results
-        from: From
-        to: To
-        total_visits: Total visits
-        submit: Submit
-label:
-    name: 名字
-    email: 电子邮箱
-    date_party: 你的秘密圣诞老人派对日期
-    amount_to_spend: 消费金额
-    exclude: 排除
-    confirmed: 确认
-    actions: 作用
-    description: 描述
-placeholder:
-    exclude: 点击选择你想要排除的参与人员
-btn:
-    add_person: 添加人员
-    remove_person: 删除此人员
-    create_event: 创建你的礼物交换活动！
-    create_new_list: 创建一个新的秘密圣诞老人名单！
-    delete_list: 删除我的秘密圣诞老人名单
-    delete_confirm: 我知道后果，现在删除我的秘密圣诞老人名单
-    add_wishlist: 添加物品到愿望清单
-    remove_item: 删除这个物品
-    update_wishlist: 更新你的愿望清单
-    update_wishlist: 更新你的愿望清单
-    cancel: 取消
-
-emails:
-    sender: 圣诞老人
-    base:
-        title: 秘密圣诞老人由Intracto所有
-        footer: 好好享受规划你的秘密圣诞老人吧！
-        created_by: 创建者为
-    pendingconfirmation:
-        subject: 秘密圣诞老人确认
-        salutation: 你好%name%
-        click_button: 请点击以下按键确认你的秘密圣诞老人邮件名单。这将使我们的小矮人提早将你创建的私人信息发送到你所有参与人员手上。
-        overview_page: 在最新创建的总结情况页面中，你将可以持续跟踪你所有参与人员查看自己的秘密圣诞老人礼物密友情况。从而知道什么时候所有参与人员已全部查看。
-        lastly: 最后，别忘记你自己也参与其中！在你点击以下确认按键后，我们也将发送一封新的电子邮件给你。
-        btn_validate: 确认我的活动
-        click_link: 请点击以下链接确认你的秘密圣诞老人邮件名单。
-    secretsanta:
-        subject: 你的秘密圣诞老人
-        btn_find_out: 查看你的人员
-        link_find_out: 在这个网址中查看你被随机安排送礼物的人员
-    wishlistchanged:
-        subject: 愿望清单已更新
-        salutation: 你好%name%
-        buddy_updated_wishlist: 你密友的愿望清单已更新。
-        click_button: 点击以下按键查看他的建议。
-        btn_check_wishlist: 查看愿望清单
-        click_link: 点击以下链接查看他的建议。
-    emptywishlistreminder:
-        subject: 你的愿望清单仍然为空
-        updateyourlist: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
-    viewentryreminder:
-        subject: 查看谁是你的礼物密友
-        didyouforget: 你忘记秘密圣诞老人派对了吗？你还没查看谁是你的礼物密友呢！
-
+# PoolController
+pool_controller:
     created:
         message: |
             你好(NAME),
@@ -301,20 +34,391 @@ emails:
 
 
             节日快乐！
-flashes:
+
+# Pool/create.html.twig
+pool-create:
+    header:
+        steps:
+            title: 简单<span class="accent">三步</span>完成你的礼物交换活动
+            list:
+                one: 列出你的参与人员
+                two: 添加个人的信息
+                three: 发送！
+            get_started: 开始！
+
+    what_is:
+        title: 什么是秘密圣诞老人
+        intro: >
+            <p>这是一个<strong>免费</strong>的在线秘密圣诞老人<strong>礼物交换组织机构</strong>！和朋友们，家人甚至同事们一起组织一个秘密圣诞老人派对。收到秘密圣诞老人的邮件后你可以加入你自己的</strong>愿望清单</strong>那将会传送到你的秘密圣诞老人。</p>
+            <p>每一年到了圣诞期间，全世界各地的人都在交换礼物。为了保持事情的有趣性，你可以随机分配人员对人员之间</strong>交换礼物</p>
+
+    add_participants: 添加你的参与人员
+    list_adminstrator: 此人也是你的名单管理者。
+    add_personal_message:
+        title: 添加个人信息
+        description: 为你的参与人员添加个人信息。
+
+    btn:
+        add_person: 添加人员
+        remove_person: 删除此人员
+#        import_persons_open: ?
+#        import_persons_do: ?
+        cancel: 取消
+        create_event: 创建你的礼物交换活动！
+
+    label:
+#        host: ?
+        email: 电子邮箱
+#        participants: ?
+
+# Pool/exclude.html.twig
+pool-exclude:
+    title: 排除
+    description: 在这名单里你可以随意防止一些参与人员的组合配对。例如防止同一家庭成员之间不得不买礼物给对方。
+
+    placeholder_exclude: 点击选择你想要排除的参与人员
+
+    btn:
+        create_event: 创建你的礼物交换活动！
+
+    label:
+        name: 名字
+        exclude: 排除
+
+# Pool/created.html.twig
+pool-created:
+    title: 仅此一步！确认你的参与人员
+    body: >
+        <p>
+          为了阻止机器人和网络谩骂者破坏秘密圣诞老人派对，我们需要名单的组织者<b>%ownername%</b>确认他/她的参与人员。我们已经发送了一个<b>%owneremail%</b> 进一步说明。
+        </p>
+        <p>
+          一旦确认，你的秘密圣诞老人名单将被打乱，紧接着所有用户将各自收到自己的秘密圣诞老人礼物密友的名字。
+        </p>
+        <p>
+            在确认电子邮件中，名单的组织者也将会有一个了解所有用户中哪些用户已知道自己的礼物密友的一个链接。以此来确认每个秘密圣诞老人知道他的任务。
+        </p>
+    warning: 提示
+    check_spam: 不要忘记检查你的垃圾邮件文件夹！
+
+# Pool/deleted.html.twig
+pool-deleted:
+    title: 不要忘记检查你的垃圾邮件文件夹！
+    body: <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
+    create_new_list: 创建一个新的秘密圣诞老人名单！
+
+# Pool/forgotLink.html.twig
+#pool-forgot_link:
+#    title: ?
+#    description: ?
+
+# Wishlist/showAll.html.twig
+#wishlist-show_all:
+#    title: ?
+
+# Static/faq.html.twig
+static-faq:
+#    title: ?
+#    body: ?
+    create_new_list: 创建一个新的秘密圣诞老人名单！
+
+# Helper/prototypeEntry.html.twig
+helper-prototype_entry:
+    btn:
+        remove_person: 删除此人员
+
+# Helper/prototypeWishlist.html.twig
+helper-prototype_wishlist:
+    btn:
+#        save_item: ?
+#        update_item: ?
+        remove_item: 删除这个物品
+
+# Entry/exposeAll.html.twig
+#entry-expose_all:
+#    title: ?
+#    giving: ?
+#    receiving: ?
+
+# Entry/show.html.twig
+entry_show:
+    headers:
+        title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
+        date: 日期
+#        location: ?
+        amount: 数量
+        num_people: 人员数目
+        person_created_list: 名单创建者
+    entry:
+        title: 你的分配密友
+        body: >
+            <p>你好%name%,</p>
+            <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
+#        watch_out: ?
+#        modify_list: ?
+        wishlist_from: 愿望清单来自 %name%
+        wishlist_not_provided: %name%尚未提供愿望清单
+#    poke:
+#        poke: ?
+#        poke_sentence: ?
+
+#    buy_from_amazon: ?
+
+    wishlist:
+        title: 你的愿望清单
+        description: 你可以在这留下一个愿望清单，以帮助你的秘密圣诞老人。我们的小矮人将会把这个传达到你的秘密圣诞老人那。你可以拖动项目条对物品进行重新排序。
+        empty: 你的愿望清单是空的。请添加东西！
+
+#    flashes:
+#        wishlist:
+#            empty_row: ?
+#            added: ?
+#            updated: ?
+#            removed: ?
+
+    label:
+        description: 描述
+
+    btn:
+        add_wishlist: 添加物品到愿望清单
+#        update_item: ?
+        remove_item: 删除这个物品
+
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
+        date: 日期
+#        location: ?
+        amount: 数量
+
     manage:
-        email_validated: >
-         <strong>完美！</strong><br/>你的电子邮件已确认。<br/>
-         我们的小矮人已听从我们的号令，正漫游在网上，把礼物密友们的名字传达给所有准秘密圣诞老人们耳中。<br/>
-         <br />
-         不要忘记你自己也参与其中。我们已经发送另外一封邮件给你了。去查查看吧！
+        title: 你的秘密圣诞老人名单
+        yes: 是
+        not_yet: 尚未
+        edit_email: 编辑电子邮件
+        resend_email: 再次发送电子邮件
+        view_entry: 查看词条
+        tip: 贴士
+        come_back: 你可以经常回到这个页面来确认所有人已经看过他/她的邮箱。
+#        watch_out: ?
+#        modify_list: ?
+        save: 保存
+
     delete:
+        title: 删除我的秘密圣诞老人名单
+        body: >
+            <p>
+                你绝对确定吗？<br>
+                <br>
+                <b>如果你不阅读这个，不确保坏事不会发生！</b><br>
+                <br>
+                一旦你删除了你的秘密圣诞老人名单，这将不能恢复。这个行为将不能被复原。<br>
+                这将永久删除这个秘密圣诞老人名单，包括所有里面的所有参与人员和他们的愿望清单。<br>
+                <br>
+                请输入"<b>%phrase_to_type%</b>" 以下确认
+            </p>
+        phrase_to_type: 删除一切
+
+#    add_participant:
+#        title: ?
+#        body: ?
+
+#    remove_participant:
+#        title: ?
+#        phrase_to_type: ?
+#        body: ?
+
+#    updated_party:
+#        title: ?
+#        body: ?
+
+    btn:
+#        add_participant: ?
+#        add_participant_confirm: ?
+        cancel: 取消
+        delete_confirm: 我知道后果，现在删除我的秘密圣诞老人名单
+        delete_list: 删除我的秘密圣诞老人名单
+#        expose: ?
+#        expose_wishlists: ?
+#        pool_update: ?
+#        remove_participant_confirm: ?
+#        updated_party: ?
+
+    label:
+        name: 名字
+        email: 电子邮箱
+        confirmed: 确认
+#        wishlist_filled: ?
+        actions: 作用
+
+# Emails/baseEmail.html.twig
+emails-base_email:
+    sender: 圣诞老人
+    title: 秘密圣诞老人由Intracto所有
+    footer: 好好享受规划你的秘密圣诞老人吧！
+    created_by: 创建者为
+
+# Emails/emptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    subject: 你的愿望清单仍然为空
+    update_your_list: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
+#    buy_from_amazon: ?
+
+    btn:
+        update_wishlist: 更新你的愿望清单
+
+# Emails/forgotLink.{html,txt}.twig
+emails-forgot_link:
+    title: 你的秘密圣诞老人名单
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: 你的秘密圣诞老人
+    find_out: 查看你的人员
+
+#    buy_from_amazon: ?
+
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: 秘密圣诞老人确认
+    salutation: 你好%name%
+    click_button: 请点击以下按键确认你的秘密圣诞老人邮件名单。这将使我们的小矮人提早将你创建的私人信息发送到你所有参与人员手上。
+    overview_page: 在最新创建的总结情况页面中，你将可以持续跟踪你所有参与人员查看自己的秘密圣诞老人礼物密友情况。从而知道什么时候所有参与人员已全部查看。
+    lastly: 最后，别忘记你自己也参与其中！在你点击以下确认按键后，我们也将发送一封新的电子邮件给你。
+    btn_validate: 确认我的活动
+
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+    update_wishlist: 更新你的愿望清单
+
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+
+    yes: 是
+    not_yet: 尚未
+
+    label:
+        name: 名字
+        email: 电子邮箱
+        confirmed: 确认
+#        wishlist_filled: ?
+
+#    btn:
+#        poolstatus: ?
+
+# Emails/poolUpdate.{html,txt}.twig
+#emails-pool_update:
+#    subject:
+#    message:
+#        html: ?
+#        txt: ?
+
+#    btn:
+#        pool_update:
+
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+#    subject: ?
+#    message:
+#        html: ?
+#        txt: ?
+
+    btn:
+        find_out: 查看你的人员
+
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+#    subject:
+#    message:
+#        html: ?
+#        txt: ?
+
+    label:
+        date_party: 你的秘密圣诞老人派对日期
+#        location: ?
+        amount_to_spend: 消费金额
+
+#    btn:
+#        updated_party: ?
+
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: 查看谁是你的礼物密友
+    didYouForget: 你忘记秘密圣诞老人派对了吗？你还没查看谁是你的礼物密友呢！
+
+    btn:
+        find_out: 查看你的人员
+
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: 愿望清单已更新
+    salutation: 你好%name%
+    buddy_updated_wishlist: 你密友的愿望清单已更新。
+    click_button: 点击以下按键查看他的建议。
+
+    btn:
+        check_wishlist: 查看愿望清单
+
+flashes:
+    # SendPartyUpdateController
+#    send_party_update:
+#        success: ?
+
+    # ForgotManagementURLController
+#    forgot_management_url:
+#        success: ?
+#        error: ?
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>完美！</strong><br/>你的电子邮件已确认。<br/>
+            我们的小矮人已听从我们的号令，正漫游在网上，把礼物密友们的名字传达给所有准秘密圣诞老人们耳中。<br/>
+            <br />
+            不要忘记你自己也参与其中。我们已经发送另外一封邮件给你了。去查查看吧！
+#        modify_list_warning: ?
+#        add_participant:
+#            success: ?
+#            danger: ?
+#        updated_party:
+#            success: ?
+#            danger: ?
+
+    # PoolController
+    pool:
         not_deleted: <h4>未能删除</h4>这个确认不正确。
-    resend:
+
+    # ResendEntryController
+    resend_entry:
         resent: <strong>已重新发送！</strong><br/>已重新发送至 %email%电子邮箱中。<br/>
+
+    # PokeBuddyController
+#    poke_buddy:
+#        poke_buddy: ?
+
+    # EntryController
     entry:
         wishlist_updated: <h4>愿望清单已更新</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>未保存</h4> 电子邮箱地址出错。
         saved_email: <h4>已保存</h4> 已保存。新的电子邮箱地址已保存。我们也已重新发送电子邮件了。
-    analytics:
-        invalid_data: <h4>哎呀</h4>分析数据时出错。请再试一次。
+#        modify_list_warning: ?
+#        remove_participant:
+#            success: ?
+#            danger: ?
+#            warning: ?
+#            excluded_entries: ?
+#            self_assigned: ?
+#            wrong: ?

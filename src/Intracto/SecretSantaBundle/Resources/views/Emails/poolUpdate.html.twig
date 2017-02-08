@@ -1,15 +1,12 @@
-{% extends "IntractoSecretSantaBundle:Emails:basemail.html.twig" %}
+{% extends 'IntractoSecretSantaBundle:Emails:baseEmail.html.twig' %}
 {% block main %}
-    <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
+    <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
         <tr>
             <td width="37" align="left">
                 <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
             </td>
             <td width="566">
-                <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails.viewentryreminder.didyouforget'|trans }}
-                </span>
-                <br /> <br /><br />
+                <p>{{ 'emails-pool_update.message.html'|trans({'%name%': entry.name, '%owner%': results['pool'][0]['adminName'], '%date%': results['pool'][0]['eventdate']|date('Y-m-d'), '%place%': results['pool'][0]['location'], '%participantCount%': results['participantCount'][0]['participantCount'], '%viewedCount%': results['viewedCount'][0]['viewedCount'], '%wishlistCount%': results['wishlistCount'][0]['wishlistCount'] })|raw }}</p>
             </td>
             <td width="37" align="right">
                 <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
@@ -41,8 +38,8 @@
                                 </tr>
                                 <tr>
                                     <td height="40" valign="middle" style="background-color:#bd1019;">
-                                        <a href="{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails.secretsanta.btn_find_out'|trans }}
+                                        <a href="{{ url('entry_view', { 'url': entry.url }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
+                                            {{ 'emails-pool_update.btn.pool_update'|trans|raw }}
                                         </a>
                                     </td>
                                 </tr>

@@ -60,18 +60,18 @@ class MailerService
         $this->translator->setLocale($pool->getLocale());
 
         $message = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.pendingconfirmation.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-pendingConfirmation.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($pool->getOwnerEmail())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pendingconfirmation.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:pendingConfirmation.txt.twig',
                     [ 'pool' => $pool ]
                 )
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pendingconfirmation.html.twig',
+                    'IntractoSecretSantaBundle:Emails:pendingConfirmation.html.twig',
                     [ 'pool' => $pool ]
                 ),
                 'text/html'
@@ -108,13 +108,13 @@ class MailerService
         $message = str_replace('(ADMINISTRATOR)', $entry->getPool()->getOwnerName(), $message);
 
         $mail = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.secretsanta.subject'))
+            ->setSubject($this->translator->trans('emails-participant.subject'))
             ->setFrom($this->noreplyEmail, $entry->getPool()->getOwnerName())
             ->setReplyTo([$entry->getPool()->getOwnerEmail() => $entry->getPool()->getOwnerName()])
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:secretsanta.html.twig',
+                    'IntractoSecretSantaBundle:Emails:participant.html.twig',
                     [
                         'message' => $message,
                         'entry' => $entry,
@@ -124,7 +124,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:secretsanta.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:participant.txt.twig',
                     [
                         'message' => $message,
                         'entry' => $entry,
@@ -137,37 +137,6 @@ class MailerService
         } else {
             $this->mandrill->send($mail);
         }
-    }
-
-    /**
-     * @param Pool $pool
-     */
-    public function sendAllWishlistsToAdmin(Pool $pool)
-    {
-        $this->translator->setLocale($pool->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.admin_wishlists.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
-            ->setTo($pool->getOwnerEmail(), $pool->getOwnerName())
-            ->setBody(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:admin_wishlists.html.twig',
-                    [
-                        'pool' => $pool,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:admin_wishlists.txt.twig',
-                    [
-                        'pool' => $pool,
-                    ]
-                ),
-                'text/plain'
-            )
-        );
     }
 
     /**
@@ -185,7 +154,7 @@ class MailerService
 
         $poolLinks = [];
         foreach ($results as $result) {
-            $text = $this->translator->trans('manage.title');
+            $text = $this->translator->trans('emails-forgot_link.title');
 
             if ($result['eventdate'] instanceof \DateTime) {
                 $text .= ' ('.$result['eventdate']->format('d/m/Y').')';
@@ -200,12 +169,12 @@ class MailerService
         $this->translator->setLocale($results[0]['locale']);
 
         $message = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.forgot_link.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-forgot_link.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($email)
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:forgotlink.html.twig',
+                    'IntractoSecretSantaBundle:Emails:forgotLink.html.twig',
                     [
                         'poolLinks' => $poolLinks,
                     ]
@@ -234,12 +203,12 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.poke_buddy.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-pokeBuddy.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pokebuddy.html.twig',
+                    'IntractoSecretSantaBundle:Emails:pokeBuddy.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -248,7 +217,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pokebuddy.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:pokeBuddy.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -277,12 +246,12 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.pool_update.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-pool_update.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolupdate.html.twig',
+                    'IntractoSecretSantaBundle:Emails:poolUpdate.html.twig',
                     [
                         'entry' => $entry,
                         'results' => $results,
@@ -292,7 +261,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolupdate.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:poolUpdate.txt.twig',
                     [
                         'entry' => $entry,
                         'results' => $results,
@@ -310,12 +279,12 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.emptywishlistreminder.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-emptyWishlistReminder.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.html.twig',
+                    'IntractoSecretSantaBundle:Emails:emptyWishlistReminder.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -324,7 +293,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:emptywishlistreminder.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:emptyWishlistReminder.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -341,12 +310,12 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.viewentryreminder.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-viewEntryReminder.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:viewentryreminder.html.twig',
+                    'IntractoSecretSantaBundle:Emails:viewEntryReminder.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -355,7 +324,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:viewentryreminder.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:viewEntryReminder.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -373,12 +342,12 @@ class MailerService
     {
         $this->translator->setLocale($receiver->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.wishlistchanged.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:wishlistchanged.html.twig',
+                    'IntractoSecretSantaBundle:Emails:wishlistChanged.html.twig',
                     [
                         'entry' => $receiver,
                         'secret_santa' => $entry,
@@ -388,7 +357,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:wishlistchanged.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:wishlistChanged.txt.twig',
                     [
                         'entry' => $receiver,
                         'secret_santa' => $entry,
@@ -406,12 +375,12 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.poolstatus.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-pool_status.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolstatus.html.twig',
+                    'IntractoSecretSantaBundle:Emails:poolStatus.html.twig',
                     [
                         'pool' => $entry->getPool(),
                     ]
@@ -420,7 +389,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolstatus.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:poolStatus.txt.twig',
                     [
                         'pool' => $entry->getPool(),
                     ]
@@ -447,12 +416,12 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.updated_party.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-updated_party.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:updatedparty.html.twig',
+                    'IntractoSecretSantaBundle:Emails:updatedParty.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -461,7 +430,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:updatedparty.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:updatedParty.txt.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -475,12 +444,12 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.removed_secret_santa.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails.sender'))
+            ->setSubject($this->translator->trans('emails-removed_secret_santa.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:removedsecretsanta.html.twig',
+                    'IntractoSecretSantaBundle:Emails:removedSecretSanta.html.twig',
                     [
                         'entry' => $entry,
                     ]
@@ -489,7 +458,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:removedsecretsanta.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:removedSecretSanta.txt.twig',
                     [
                         'entry' => $entry,
                     ]

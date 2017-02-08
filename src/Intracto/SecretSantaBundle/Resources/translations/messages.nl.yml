@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijstje naar vrienden, familie,..
@@ -6,332 +7,17 @@ base:
             title: Secret Santa
             site_name: Secret Santa
             description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
-    nav:
-        home: Home
-    privacy_policy: Privacy policy
-    have_fun: Organiseer je eigen Secret Santa en amuseer je rot!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
-pool:
-    header:
-        steps:
-            title: Jouw feest <br><small>in <span class="accent">3 eenvoudige stappen</span></small>
-            list:
-                one: Stel je deelnemerslijst samen
-                two: Voeg een boodschap toe
-                three: Verstuur!
-            get_started: Vlieg er meteen in!
 
-create:
-    what_is:
-        title: Wat is Secret Santa?
-        intro: >
-                <p>Het is een <strong>gratis</strong> online Secret Santa <strong>geschenkuitwisselings organizer</strong>! Organiseer een Secret
-                Santa party met vrienden, familie of zelfs collega's. Nadat je een mailtje hebt ontvangen van Secret Santa Organizer,
-                kan je je eigen <strong>verlanglijst</strong> toevoegen, die sturen wij dan door naar jouw Secret Santa.</p>
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Datum van jouw Secret Santa feest
+        location: Locatie van jouw Secret Santa feest
+        amount_to_spend: Te spenderen bedrag
 
-                <p>Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.<br/> Om het voor iedereen wat spannender te maken, kan je mensen <strong>willekeurig toewijzen</strong> om voor elkaar geschenkjes te kopen.</p>
-
-    add_participants: Voeg je deelnemers toe
-    list_adminstrator: Deze persoon is ook jouw lijstbeheerder
-    add_personal_message:
-        title: Voeg een persoonlijke boodschap toe
-        description: Voeg een persoonlijke boodschap voor de deelnemers toe
-    import:
-        instructions: Voeg meerdere personen in één keer toe aan jouw evenement. Download <a href="%downloadPath%">dit CSV bestand</a> en voeg alle namen en mailadressen van de personen die je wilt uitnodigen eraan toe. Wanneer je er klaar mee bent, sleep je CSV bestand in het onderstaande tekstvak en zo worden jouw vrienden of collega's snel en makkelijk toegevoegd aan jouw feestje.
-        too_many_files: Gelieve slecht één bestand per keer up te loaden.
-        wrong_format: Het bestand dat je probeert up te loaden heeft niet het gewenste formaat (csv of txt).
-exclude:
-   title: Uitsluiten
-   description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
-created:
-    title: Nog 1 stapje te gaan! - Valideer je deelname
-    body: >
-            <p>
-                Om te voorkomen dat ongewenste gasten je Secret Santa party verknallen, moet lijstbeheerder <b>%ownername%</b> iedere deelname valideren. We hebben <b>%owneremail%</b> een mailtje gestuurd met verdere instructies.
-            </p>
-            <p>Eens de deelnemerslijst is goedgekeurd, wordt hij door elkaar gegooid en krijgen alle gebruikers jouw boodschap en de naam van de persoon voor wie ze een geschenk moeten kopen.
-            </p>
-            <p>
-                In de validatiemail vindt de lijstbeheerder ook een link om iedereen die al weet voor wie hij of zij iets moet kopen op te volgen. Zo weet de organisator zeker dat iedere Secret Santa zich van zijn of haar zware taak bewust is.</p>
-    warning: Let op!
-    check_spam: Vergeet je spamfolder niet te checken!
-
-deleted:
-    title: Je Secret Santa lijst werd verwijderd!
-    body: >
-        <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar! </p>
-
-manage:
-    title: Jouw Secret Santa lijst
-    yes: Ja
-    not_yet: Nog niet
-    edit_email: E-mail aanpassen
-    resend_email: E-mail nogmaals verzenden
-    view_entry: Deelnemer bekijken
-    tip: Tip
-    come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
-    watch_out: Opgelet
-    modify_list: Het toevoegen van deelnemers aan dit feestje of het verwijderen ervan is enkel mogelijk tot en met %oneWeekFromEventDate%.
-    save: Bewaar
-
-delete:
-    title: Verwijder mijn Secret Santa lijst
-    body: >
-        <p>
-        Ben je HELEMAAL zeker?<br>
-        <br>
-        <b>De zeven plagen hangen in de lucht als je dit niet leest!</b><br>
-        <br>
-        Eens je jouw Secret Santa lijst verwijderd hebt, mag je er een kruis over maken. Je KAN DEZE ACTIE NIET ongedaan maken. <br>
-
-        Je Secret Santa lijst wordt permanent verwijderd, samen met alle deelnemers en hun droomgeschenken.<br>
-
-        <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
-        </p>
-    phrase_to_type: alles verwijderen
-wishlists:
-    expose:
-      title: Secret Santa Mailinglijst verlanglijsten
-entry:
-    headers:
-        title: Jouw <span class="accent">Secret Santa party</span> details
-        date: Datum
-        location: Locatie
-        amount: Bedrag
-        num_people: Aantal mensen
-        person_created_list: Persoon die deze lijst samenstelde
-    title: Jouw toegewezen maatje
-    body: >
-        <p>Hey %name%,</p>
-        <p>Je bent toegewezen als Secret Santa aan:</p>
-    wishlist_from: Verlanglijst van %name%
-    wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
-    wishlist:
-        title: Jouw verlanglijstje
-        description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
-    wishlist_empty: Je verlanglijst is leeg. Voeg iets toe!
-    watch_out: Opgelet
-    modify_list: The organisator van dit feestje kan mensen toevoegen en verwijderen tot en met %oneWeekFromEventDate%, hou er rekening mee dat dit ervoor zou kunnen zorgen dat je alsnog een ander maatje krijgt toegewezen. Misschien wacht je beter met het kopen van een cadeautje totdat je er zeker van bent dat dit effectief jouw Secret Santa maatje is.
-    exposed:
-      title: Secret Santa Mailinglijst Koppelingen
-      giving: Dit lid geeft ...
-      receiving: ... een cadeau aan dit lid
-poke:
-    poke: Por
-    poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
-add_participant:
-    title: Voeg een deelnemer toe aan je feestje
-    body: >
-        <p>
-            Door het onderstaande formulier in te vullen, wordt er een nieuwe deelnemer toegevoegd aan jouw feestje.<br>
-            <br>
-            De nieuwe deelnemer zal meteen een Secret Santa maatje toegewezen krijgen en een uitnodiging ontvangen via mail.<br>
-        </p>
-remove_participant:
-    title: Verwijder deze deelnemer uit je lijst
-    body: >
-        <p>
-            Weet je het ECHT zeker?<br>
-            <br>
-            Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddelijk verwijderd worden.<br>
-            <br>
-            Hou er ook rekening mee dat er iemand misschien al een geschenk heeft gekocht voor deze deelnemer.<br>
-            <br>
-            Als je echt zeker bent dat je deze deelnemer wilt verwijderen, typ dan "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
-        </p>
-    phrase_to_type: verwijder deze deelnemer
-updated_party:
-    title: Bewerk de details van jouw Secret Santa feestje
-    body: >
-        <p>
-            Door het onderstande formulier in te vullen, kan je de details van het feestje dat je organiseert bewerken.<br>
-            <br>
-            Jouw deelnemers zullen onmiddelijk op de hoogte gebracht worden van deze veranderingen.
-        </p>
-static:
-    privacy_policy:
-        title: Privacybeleid
-        body: >
-            <p>Bedankt voor je bezoek aan secretsantaorganizer.com, gerealiseerd door Intracto group NV. Dit privacybeleid beschrijft hoe we op deze website persoonlijke informatie verzamelen. Lees dit privacybeleid zorgvuldig vooraleer je de website gebruikt of persoonlijke informatie achterlaat. Door deze website te gebruiken, accepteer je de regels die in dit privacybeleid beschreven staan.
-            Deze regels zijn onderhevig aan veranderingen, maar deze veranderingen worden gepubliceerd en zijn enkel van toepassing op toekomstig activiteiten en informatie en zijn dus niet met terugwerkende kracht. We moedigen aan het privacybeleid bij ieder bezoek aan de website te herlezen om je ervan te verzekeren dat je gebruikt hoe door jou ingegeven persoonlijke informatie wordt gebruikt.<p>
-
-            <p>Toelichting: De privacyregels die in dit privacybeleid beschreven staan zijn enkel van toepassing op deze website. Link je naar andere websites, lees dan het privacybeleid van de respectievelijke websites.<p>
-
-            <h2>Verzameling van informatie</h2>
-
-            <p>We verzamelen persoonlijk identificeerbare informatie als namen en e-mailadressen, wanneer vrijwillig ingegeven door onze bezoekers. De informatie die je verstrekt wordt gebruikt om je eigen specifieke aanvraag uit te voeren.
-            </p>
-
-            <h2>Cookie/Tracking Technologie</h2>
-
-            <p>Deze website gebruikt cookies aanwezig in Google Analytics voor het verzamelen van anonieme informatie zoals je type browser en besturingssysteem, het tracken van bezoekersaantallen op de website en het begrijpen van gebruikersgedrag. Persoonlijke informatie kan niet via cookies en andere trackingtechnology verzameld worden.</p>
-
-            <p>Je kan het gebruik van cookies uitschakelen in de instellingen van je browser.</p>
-
-            <h2>Informatieverspreiding</h2>
-
-            <p>Mogelijk delen we informatie met overheidsagentschappen of andere bedrijven die ons bijstaan in onderzoek naar of preventie van fraude.
-            Dit kunnen we doen wanneer: (1) toegestaan of verplicht bij wet; of, (2) we jou en onszelf proberen te beschermen tegen feitelijke of potentiële fraude of ongeautoriseerde transacties; of, (3) we fraude die al heeft plaatsgevonden onderzoeken. De informatie wordt niet voor commerciële doeleinden aan deze bedrijven doorgegeven.</p>
-
-            <h2>Inspanningen voor gegevensbescherming</h2>
-
-            <p>Jouw persoonlijk identificeerbare informatie wordt veilig bewaard. Enkel bevoegde werknemers, vertegenwoordigers en uitvoerders (die zich akkoord hebben verklaard informatie veilig en vertrouwelijk te houden) hebben toegang tot deze informatie. Alle e-mails van deze website zijn komen louter tegemoet aan jouw specifieke aanvraag. Er worden geen terugkerende e-mails of nieuwsbrieven naar de verstrekte e-mailadressen verstuurd.</p>
-
-            <h2>Privacy contactinformatie</h2>
-
-            <p>Heb je vragen, bezorgdheden of opmerkingen over ons privacybeleid, contacteer ons dan aan de hand van onderstaande informatie:<br/>
-            Via e-mail: info@secretsantaorganizer.com</p>
-
-            <p>We behouden het recht om dit beleid te wijzigen. Alle wijzigingen aan dit beleid worden gepubliceerd.</p>
-    faq:
-        title: Veelgestelde vragen
-        body: >
-            <p>Dit is een lijst met vaak gestelde vragen (Frequently Asked Questions / FAQ) die je kunnen helpen om deze Secret Santa beter te begrijpen.</p>
-
-            <a href="what"></a><h2>Wat is Secret Santa?</h2>
-            <p>Het is een gratis online Secret Santa geschenkuitwisselings-organizer! Ieder jaar wisselen wereldwijd mensen tijdens de kerstperiode wereldwijd geschenken uit.
-            Om het voor iedereen wat spannender te maken, kan je mensen willekeurig toewijzen om voor elkaar geschenkjes te kopen.</p>
-
-            <a name="how"></a><h2>Hoe werkt het?</h2>
-            <p>Maak een evenement aan op de <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
-            De lijstbeheerder zal een bevestigingmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
-            We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
-
-            <!--a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
-            <p>Als je een evenement aanmaakt, kan je - nadat je alle deelnemers hebt ingegeven - optioneel een aantal combinaties uitsluiten. Bijvoorbeeld, als je niet wil dat deelnemers van het zelfde gezin voor elkaar geschenken moeten kopen.<br><br>
-            Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p-->
-
-            <a name="wishlist"></a><h2>Kan ik een verlanglijst maken?</h2>
-            <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst opstellen en ook de verlanglijst van hun geheime persoon bekijken.</p>
-
-            <a name="reuse"></a><h2>Kan ik een lijst hergebruiken?</h2>
-            <p>Het is mogelijk om de lijst van het voorgaande jaar te hergebruiken voor de lijst van dit jaar. Elk jaar zullen we e-mails versturen die in een link bevatten waarmee jouw lijst hergebruikt kan worden. Deze lijst kan je zelf nog naar jouw wensen aanpassen vooraleer je het nieuwe evenement aanmaakt.</p>
-
-            <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
-            <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
-
-            <a href="lost"></a><h2>Ik ben mijn bevestigingsmail kwijt.</h2>
-            <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> het mailadres van de lijstbeheerder in en we sturen je een mail met de beheer link.</p>
-
-            <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
-            <p>Je kan deelnemers toevoegen of verwijderen na het aanmaken van je evenement. Op de beheerpagina kan je een knop vinden om deelnemers te verwijderen en is er een formulier waarmee een deelnemer toegevoegd kan worden.
-            Er is slecht één uitzondering: je kan geen deelnemers toevoegen of verwijderen wanneer de beheerder combinaties heeft uitgesloten bij het aanmaken van het evenement. Indien we dit zouden toelaten, bestaat de kans dat uitgesloten combinaties toch zouden voorvallen, daarom hebben we besloten om dit niet toe te laten.</p>
-
-            <a href="email"></a><h2>Kan ik een e-mail opnieuw versturen?</h2>
-            <p>Als een deelnemer geen e-mail heeft ontvangen kan de lijstbeheerder de e-mail opnieuw versturen vanaf de beheerpagina. Je kan ook het e-mailadres van een deelnemer wijzigen vanaf dezelfde pagina en de mail opnieuw versturen.<br><br>
-            Als je geen bevestigingsmail hebt ontvangen, controleer dan je spam folder. Je zou de e-mail binnen enkele minuten moeten ontvangen. Nog altijd geen bevestigingsmail ontvangen? Maak dan een nieuwe lijst aan.</p>
-
-            <a href="combinations"></a><h2>Kan ik alle combinaties / verlanglijsten opvragen?</h2>
-            <p>Je kan de combinaties / verlanglijsten opvragen vanaf de beheerpagina. Omdat er dan niet veel "secret" meer aan is, zullen alle deelnemers zien dat de beheerder al dan niet de combinaties / verlanglijsten heeft bekeken :-)</p>
-
-            <a href="delete"></a><h2>Kan ik mijn lijst verwijderen?</h2>
-            <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijderoptie. Al de gegevens met betrekking tot deze lijst zullen permanent uit ons systeem verwijderd worden.</p>
-
-            <a name="who"></a><h2>Wie zijn jullie?</h2>
-            <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
-            designers, frontenders, SEO's en marketingmensen.
-            Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
-            Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
-
-            <a name="privacy"></a><h2>Wat doen jullie met mijn gegevens?</h2>
-            <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="http://www.secretsantaorganizer.com/nl/privacy-policy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord.
-            Vergeet niet dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheerpagina.</p>
-
-            <a name="features"></a><h2>Kan je feature X toevoegen?</h2>
-            <p>Je hebt een geweldig idee voor en toepassing voor Secret Santa? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die dit wel kan dezelfde functionaliteit wil hebben.
-            Maak een <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">issue aan op GitHub</a> die je feature of wijziging beschrijft.
-            Voor de mensen die wel kunnen coden, we verkiezen transpiratie boven inspiratie. Met andere woorden, we aanvaarden PR's.</p>
-
-            <a name="opensource"></a><h2>Open source</h2>
-            <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
-            Het project is beschikbaar onder een heel vrije <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licentie</a>.
-            Je bent vrij om het project te forken en bijvoorbeeld je eigen "Secret Panda gift exchange" te maken. Of je kan bijdragen aan dit project door pull requests (PR's) te openen.
-            Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
-
-            <a name="ads"></a><h2>Hoe zit het met die advertenties?</h2>
-            <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domainnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project.
-            Zo hebben we eurolingers voor pizza en drank op onze hackdays maar ook voor professionele vertalers waarmee we dan weer verder de wereld veroveren met Secret Santa Organizer.
-            We zoeken trouwens nog Russische, Indische, Japanse, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
-
-            <a href="questions"></a><h2>Andere vragen</h2>
-            <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via e-mail:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Aantal resultaten
-        from: Van
-        to: Tot
-        total_visits: Totaal visits
-        submit: Weergeven
-
-label:
-    name: Naam
-    email: E-mail
-    host: Beheerder
-    participants: Deelnemers
-    date_party: Datum van jouw Secret Santa feest
-    amount_to_spend: Te spenderen bedrag
-    location: Locatie van jouw Secret Santa feest
-    exclude: Uitsluiten
-    confirmed: Bevestigd
-    actions: Acties
-    description: Beschrijving
-    wishlist_filled: Wish List Ingevuld
-    items: Gewenste verrassingen
-placeholder:
-    exclude: Klik en kies de deelnemers die je wilt uitsluiten
-btn:
-    add_person: Persoon toevoegen
-    remove_person: verwijderen
-    import_persons:
-        open: Voeg meerdere personen toe met CSV
-        do: Voeg toe aan je evenement
-    create_event: Maak je evenement aan!
-    create_new_list: Stel een nieuwe Secret Santa lijst op!
-    delete_list: Verwijder mijn Secret Santa lijst
-    delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
-    add_wishlist: Voeg item toe aan verlanglijst
-    save_item: Bewaar dit item
-    update_item: Update dit item
-    remove_item: Verwijder
-    update_wishlist: Update je verlanglijst
-    expose: Bekijk alle koppelingen in deze lijst
-    expose_wishlists: Bekijk alle verlanglijstjes
-    pool_update: Verstuur update naar alle deelnemers
-    add_participant: Voeg een deelnemer aan je feestje
-    add_participant_confirm: Voeg deze deelnemer toe
-    remove_participant_confirm: Verwijder deze deelnemer
-    updated_party: Bewerk de details van dit feestje
-    cancel: Annuleren
-emails:
-    sender: Kerstman
-    base:
-        title: Secret Santa door Intracto
-        footer: Veel plezier met het organiseren van Secret Santa!
-        created_by: Aangemaakt door
-    pendingconfirmation:
-        subject: Secret Santa Validatie
-        salutation: Hey %name%
-        click_button: Klik op onderstaande knop om je Secret Santa mailinglijst te valideren. Dan krijgen onze kaboutertjes automatisch een emmer water in hun gezicht gegooid. Als ze wakker zijn brengen ze jouw eerder opgestelde persoonlijke boodschap tot bij alle deelnemers.
-        overview_page: Op de net aangemaakte overzichtspagina kan je dan op de hoogte blijven van welke gebruikers al te weten zijn gekomen voor wie ze Secret Santa mogen spelen. Zo weet je wanneer je lijst volledig is.
-        lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
-        btn_validate: Valideer mijn evenement
-        click_link: Klik op onderstaande link om je Secret Santa mailinglijst te bevestigen.
-    secretsanta:
-        subject: Jouw Secret Santa
-        btn_find_out: Ontdek wiens Secret Santa je bent
-        link_find_out: Ontdek je willekeurig geselecteerde persoon aan wie je een cadeau geeft via deze url
-    wishlistchanged:
-        subject: Verlanglijst geüpdatet
-        salutation: Hey %name%
-        buddy_updated_wishlist: Je persoon heeft zijn of haar verlanglijst geüpdatet.
-        click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken.
-        btn_check_wishlist: Bekijk verlanglijst
-        click_link: Klik op onderstaande link om zijn of haar suggesties te bekijken.
-    emptywishlistreminder:
-        subject: Je verlanglijst is nog leeg
-        updateyourlist: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
-    viewentryreminder:
-        subject: Ontdek wiens Secret Santa je bent
-        didyouforget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
+# PoolController
+pool_controller:
     created:
         message: |
             Hey (NAME),
@@ -348,155 +34,540 @@ emails:
 
 
             Geniet van de feestdagen!
-    poke_buddy:
-        subject: Je maatje wacht op jouw verlanglijstje
-        message:
-            html: >
-                Beste %name%, <br/>
-                <br/>
-                Jouw Secret Santa maatje wacht op jouw wenslijst. <br/>
-                <br/>
-                Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
-            txt: >
-                Beste %name%,
 
-                Jouw Secret Santa maatje wacht op jouw wenslijst.
+# Pool/create.html.twig
+pool-create:
+    header:
+        steps:
+            title: Jouw feest <br><small>in <span class="accent">3 eenvoudige stappen</span></small>
+            list:
+                one: Stel je deelnemerslijst samen
+                two: Voeg een boodschap toe
+                three: Verstuur!
+            get_started: Vlieg er meteen in!
 
-                Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
-    pool_update:
-        subject: Ons Secret Santa feestje komt eraan!
-        message:
-            html: >
-                Beste %name%,<br>
-                <br>
-                We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.<br/>
-                <br/>
-                Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.<br/>
-                <br/>
-                Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
-            txt: >
-                Beste %name%,
+    what_is:
+        title: Wat is Secret Santa?
+        intro: >
+            <p>Het is een <strong>gratis</strong> online Secret Santa <strong>geschenkuitwisselings organizer</strong>! Organiseer een Secret
+            Santa party met vrienden, familie of zelfs collega's. Nadat je een mailtje hebt ontvangen van Secret Santa Organizer,
+            kan je je eigen <strong>verlanglijst</strong> toevoegen, die sturen wij dan door naar jouw Secret Santa.</p>
 
-                We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.
+            <p>Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.<br/> Om het voor iedereen wat spannender te maken, kan je mensen <strong>willekeurig toewijzen</strong> om voor elkaar geschenkjes te kopen.</p>
 
-                Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.
+    add_participants: Voeg je deelnemers toe
+    list_adminstrator: Deze persoon is ook jouw lijstbeheerder
+    add_personal_message:
+        title: Voeg een persoonlijke boodschap toe
+        description: Voeg een persoonlijke boodschap voor de deelnemers toe
+    import:
+        instructions: Voeg meerdere personen in één keer toe aan jouw evenement. Download <a href="%downloadPath%">dit CSV bestand</a> en voeg alle namen en mailadressen van de personen die je wilt uitnodigen eraan toe. Wanneer je er klaar mee bent, sleep je CSV bestand in het onderstaande tekstvak en zo worden jouw vrienden of collega's snel en makkelijk toegevoegd aan jouw feestje.
+        too_many_files: Gelieve slecht één bestand per keer up te loaden.
+        wrong_format: Het bestand dat je probeert up te loaden heeft niet het gewenste formaat (csv of txt).
 
-                Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
-        btn_pool_update: Check wie je maatje is en vul je wenslijst in
-    poolstatus:
-        subject: Status Secret Santa feestje
-        message:
-            html: >
-                Beste %owner%, <br/>
-                <br/>
-                Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
-                <br/>
-                Klik op de onderstaande link en beheer jouw feestje.
-            txt: >
-                Beste %owner%, <br/>
-                <br/>
-                Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
-                <br/>
-                Klik op de onderstaande link en beheer jouw feestje.
-        btn_poolstatus: Beheer jouw feestje
-    updated_party:
-        subject: De plannen zijn gewijzigd!
-        message:
-            html: >
-                Beste %name%,<br/>
-                <br/>
-                %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
-            txt: >
-                Beste %name%,
+    btn:
+        add_person: Persoon toevoegen
+        remove_person: verwijderen
+        import_persons_open: Voeg meerdere personen toe met CSV
+        import_persons_do: Voeg toe aan je evenement
+        cancel: Annuleren
+        create_event: Maak je evenement aan!
 
-                %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
-        btn_updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
-    removed_secret_santa:
-        subject: Ontdek wiens nieuwe Secret Santa je bent
-        message:
-            html: >
-                Beste %name%,<br/>
-                <br/>
-                Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.<br/>
-                <br/>
-                Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
-            txt: >
-                Beste %name%,
+    label:
+        host: Beheerder
+        email: E-mail
+        participants: Deelnemers
 
-                Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.
+# Pool/exclude.html.twig
+pool-exclude:
+    title: Uitsluiten
+    description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
 
-                Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
-        btn_find_out: Ontdek wiens nieuwe Secret Santa je bent
-    forgot_link:
-        text: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
-        subject: 'Activatie mail opnieuw verzenden'
-flashes:
-    manage:
-        email_validated: >
-         <strong>Perfect!</strong><br/>Je e-mail is nu gevalideerd.<br/>
-         Onze kaboutertjes wurmen zich op dit eigenste moment doorheen het netwerk om al je toekomstige Secret Santa's een persoon te bezorgen.<br/>
-         <br />
-         Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
-    delete:
-        not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
-    resend:
-        resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
+    placeholder_exclude: Klik en kies de deelnemers die je wilt uitsluiten
+
+    btn:
+        create_event: Maak je evenement aan!
+
+    label:
+        name: Naam
+        exclude: Uitsluiten
+
+# Pool/created.html.twig
+pool-created:
+    title: Nog 1 stapje te gaan! - Valideer je deelname
+    body: >
+        <p>
+            Om te voorkomen dat ongewenste gasten je Secret Santa party verknallen, moet lijstbeheerder <b>%ownername%</b> iedere deelname valideren. We hebben <b>%owneremail%</b> een mailtje gestuurd met verdere instructies.
+        </p>
+        <p>
+            Eens de deelnemerslijst is goedgekeurd, wordt hij door elkaar gegooid en krijgen alle gebruikers jouw boodschap en de naam van de persoon voor wie ze een geschenk moeten kopen.
+        </p>
+        <p>
+            In de validatiemail vindt de lijstbeheerder ook een link om iedereen die al weet voor wie hij of zij iets moet kopen op te volgen. Zo weet de organisator zeker dat iedere Secret Santa zich van zijn of haar zware taak bewust is.
+        </p>
+    warning: Let op!
+    check_spam: Vergeet je spamfolder niet te checken!
+
+# Pool/deleted.html.twig
+pool-deleted:
+    title: Je Secret Santa lijst werd verwijderd!
+    body: <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar!</p>
+    create_new_list: Stel een nieuwe Secret Santa lijst op!
+
+# Pool/forgotLink.html.twig
+pool-forgot_link:
+    title: Activatie mail opnieuw verzenden
+    description: Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)
+
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: Secret Santa Mailinglijst verlanglijsten
+
+# Static/faq.html.twig
+static-faq:
+    title: Veelgestelde vragen
+    body: >
+        <p>Dit is een lijst met vaak gestelde vragen (Frequently Asked Questions / FAQ) die je kunnen helpen om deze Secret Santa beter te begrijpen.</p>
+
+        <a href="what"></a><h2>Wat is Secret Santa?</h2>
+        <p>Het is een gratis online Secret Santa geschenkuitwisselings-organizer! Ieder jaar wisselen wereldwijd mensen tijdens de kerstperiode wereldwijd geschenken uit.
+        Om het voor iedereen wat spannender te maken, kan je mensen willekeurig toewijzen om voor elkaar geschenkjes te kopen.</p>
+
+        <a name="how"></a><h2>Hoe werkt het?</h2>
+        <p>Maak een evenement aan op de <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
+        De lijstbeheerder zal een bevestigingmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
+        We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
+
+        <!--a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
+        <p>Als je een evenement aanmaakt, kan je - nadat je alle deelnemers hebt ingegeven - optioneel een aantal combinaties uitsluiten. Bijvoorbeeld, als je niet wil dat deelnemers van het zelfde gezin voor elkaar geschenken moeten kopen.<br><br>
+        Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p-->
+
+        <a name="wishlist"></a><h2>Kan ik een verlanglijst maken?</h2>
+        <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst opstellen en ook de verlanglijst van hun geheime persoon bekijken.</p>
+
+        <a name="reuse"></a><h2>Kan ik een lijst hergebruiken?</h2>
+        <p>Het is mogelijk om de lijst van het voorgaande jaar te hergebruiken voor de lijst van dit jaar. Elk jaar zullen we e-mails versturen die in een link bevatten waarmee jouw lijst hergebruikt kan worden. Deze lijst kan je zelf nog naar jouw wensen aanpassen vooraleer je het nieuwe evenement aanmaakt.</p>
+
+        <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
+        <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
+
+        <a href="lost"></a><h2>Ik ben mijn bevestigingsmail kwijt.</h2>
+        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> het mailadres van de lijstbeheerder in en we sturen je een mail met de beheer link.</p>
+
+        <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
+        <p>Je kan deelnemers toevoegen of verwijderen na het aanmaken van je evenement. Op de beheerpagina kan je een knop vinden om deelnemers te verwijderen en is er een formulier waarmee een deelnemer toegevoegd kan worden.
+        Er is slecht één uitzondering: je kan geen deelnemers toevoegen of verwijderen wanneer de beheerder combinaties heeft uitgesloten bij het aanmaken van het evenement. Indien we dit zouden toelaten, bestaat de kans dat uitgesloten combinaties toch zouden voorvallen, daarom hebben we besloten om dit niet toe te laten.</p>
+
+        <a href="email"></a><h2>Kan ik een e-mail opnieuw versturen?</h2>
+        <p>Als een deelnemer geen e-mail heeft ontvangen kan de lijstbeheerder de e-mail opnieuw versturen vanaf de beheerpagina. Je kan ook het e-mailadres van een deelnemer wijzigen vanaf dezelfde pagina en de mail opnieuw versturen.<br><br>
+        Als je geen bevestigingsmail hebt ontvangen, controleer dan je spam folder. Je zou de e-mail binnen enkele minuten moeten ontvangen. Nog altijd geen bevestigingsmail ontvangen? Maak dan een nieuwe lijst aan.</p>
+
+        <a href="combinations"></a><h2>Kan ik alle combinaties / verlanglijsten opvragen?</h2>
+        <p>Je kan de combinaties / verlanglijsten opvragen vanaf de beheerpagina. Omdat er dan niet veel "secret" meer aan is, zullen alle deelnemers zien dat de beheerder al dan niet de combinaties / verlanglijsten heeft bekeken :-)</p>
+
+        <a href="delete"></a><h2>Kan ik mijn lijst verwijderen?</h2>
+        <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijderoptie. Al de gegevens met betrekking tot deze lijst zullen permanent uit ons systeem verwijderd worden.</p>
+
+        <a name="who"></a><h2>Wie zijn jullie?</h2>
+        <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
+        designers, frontenders, SEO's en marketingmensen.
+        Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
+        Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
+
+        <a name="privacy"></a><h2>Wat doen jullie met mijn gegevens?</h2>
+        <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="http://www.secretsantaorganizer.com/nl/privacy-policy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord.
+        Vergeet niet dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheerpagina.</p>
+
+        <a name="features"></a><h2>Kan je feature X toevoegen?</h2>
+        <p>Je hebt een geweldig idee voor en toepassing voor Secret Santa? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die dit wel kan dezelfde functionaliteit wil hebben.
+        Maak een <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">issue aan op GitHub</a> die je feature of wijziging beschrijft.
+        Voor de mensen die wel kunnen coden, we verkiezen transpiratie boven inspiratie. Met andere woorden, we aanvaarden PR's.</p>
+
+        <a name="opensource"></a><h2>Open source</h2>
+        <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        Het project is beschikbaar onder een heel vrije <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licentie</a>.
+        Je bent vrij om het project te forken en bijvoorbeeld je eigen "Secret Panda gift exchange" te maken. Of je kan bijdragen aan dit project door pull requests (PR's) te openen.
+        Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
+
+        <a name="ads"></a><h2>Hoe zit het met die advertenties?</h2>
+        <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domainnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project.
+        Zo hebben we eurolingers voor pizza en drank op onze hackdays maar ook voor professionele vertalers waarmee we dan weer verder de wereld veroveren met Secret Santa Organizer.
+        We zoeken trouwens nog Russische, Indische, Japanse, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
+
+        <a href="questions"></a><h2>Andere vragen</h2>
+        <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via e-mail:<br/>info@secretsantaorganizer.com</p>
+    create_new_list: Stel een nieuwe Secret Santa lijst op!
+
+# Helper/prototypeEntry.html.twig
+helper-prototype_entry:
+    btn:
+        remove_person: verwijderen
+
+# Helper/prototypeWishlist.html.twig
+helper-prototype_wishlist:
+    btn:
+        save_item: Bewaar dit item
+        update_item: Update dit item
+        remove_item: Verwijder
+
+# Entry/exposeAll.html.twig
+entry-expose_all:
+    title: Secret Santa Mailinglijst Koppelingen
+    giving: Dit lid geeft ...
+    receiving: ... een cadeau aan dit lid
+
+# Entry/show.html.twig
+entry_show:
+    headers:
+        title: Jouw <span class="accent">Secret Santa party</span> details
+        date: Datum
+        location: Locatie
+        amount: Bedrag
+        num_people: Aantal mensen
+        person_created_list: Persoon die deze lijst samenstelde
     entry:
-        wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
-        poke_buddy: <h4>Gepord</h4> Onze kaboutertjes zijn onderweg naar jouw Secret Santa om te vragen naar interessante spulletjes voor op hun verlanglijstje.
-        edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
-        saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
-    forgot_manage_link:
+        title: Jouw toegewezen maatje
+        body: >
+            <p>Hey %name%,</p>
+            <p>Je bent toegewezen als Secret Santa aan:</p>
+        watch_out: Opgelet
+        modify_list: The organisator van dit feestje kan mensen toevoegen en verwijderen tot en met %oneWeekFromEventDate%, hou er rekening mee dat dit ervoor zou kunnen zorgen dat je alsnog een ander maatje krijgt toegewezen. Misschien wacht je beter met het kopen van een cadeautje totdat je er zeker van bent dat dit effectief jouw Secret Santa maatje is.
+        wishlist_from: Verlanglijst van %name%
+        wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
+    poke:
+        poke: Por
+        poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
+
+    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
+
+    wishlist:
+        title: Jouw verlanglijstje
+        description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
+        empty: Je verlanglijst is leeg. Voeg iets toe!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Gelieve de lege rij te verwijderen vooraleer verder te gaan.
+            added: <h4>Toegevoegd!</h4> Jouw wens is succesvol toegevoegd aan jouw wenslijst.
+            updated: <h4>Aangepast!</h4> Jouw wens is succesvol aangepast.
+            removed: <h4>Verwijderd!</h4> Jouw wens is succesvol verwijderd uit jouw wenslijst.
+
+    label:
+        description: Beschrijving
+
+    btn:
+        add_wishlist: Voeg item toe aan verlanglijst
+        update_item: Update dit item
+        remove_item: Verwijder
+
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Jouw <span class="accent">Secret Santa party</span> details
+        date: Datum
+        location: Locatie
+        amount: Bedrag
+
+    manage:
+        title: Jouw Secret Santa lijst
+        yes: Ja
+        not_yet: Nog niet
+        edit_email: E-mail aanpassen
+        resend_email: E-mail nogmaals verzenden
+        view_entry: Deelnemer bekijken
+        tip: Tip
+        come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
+        watch_out: Opgelet
+        modify_list: Het toevoegen van deelnemers aan dit feestje of het verwijderen ervan is enkel mogelijk tot en met %oneWeekFromEventDate%.
+        save: Bewaar
+
+    delete:
+        title: Verwijder mijn Secret Santa lijst
+        body: >
+            <p>
+            Ben je HELEMAAL zeker?<br>
+            <br>
+            <b>De zeven plagen hangen in de lucht als je dit niet leest!</b><br>
+            <br>
+            Eens je jouw Secret Santa lijst verwijderd hebt, mag je er een kruis over maken. Je KAN DEZE ACTIE NIET ongedaan maken. <br>
+
+            Je Secret Santa lijst wordt permanent verwijderd, samen met alle deelnemers en hun droomgeschenken.<br>
+
+            <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+            </p>
+        phrase_to_type: alles verwijderen
+
+    add_participant:
+        title: Voeg een deelnemer toe aan je feestje
+        body: >
+            <p>
+                Door het onderstaande formulier in te vullen, wordt er een nieuwe deelnemer toegevoegd aan jouw feestje.<br>
+                <br>
+                De nieuwe deelnemer zal meteen een Secret Santa maatje toegewezen krijgen en een uitnodiging ontvangen via mail.<br>
+            </p>
+
+    remove_participant:
+        title: Verwijder deze deelnemer uit je lijst
+        body: >
+            <p>
+                Weet je het ECHT zeker?<br>
+                <br>
+                Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddelijk verwijderd worden.<br>
+                <br>
+                Hou er ook rekening mee dat er iemand misschien al een geschenk heeft gekocht voor deze deelnemer.<br>
+                <br>
+                Als je echt zeker bent dat je deze deelnemer wilt verwijderen, typ dan "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+            </p>
+        phrase_to_type: verwijder deze deelnemer
+
+    updated_party:
+        title: Bewerk de details van jouw Secret Santa feestje
+        body: >
+            <p>
+                Door het onderstande formulier in te vullen, kan je de details van het feestje dat je organiseert bewerken.<br>
+                <br>
+                Jouw deelnemers zullen onmiddelijk op de hoogte gebracht worden van deze veranderingen.
+            </p>
+
+    btn:
+        add_participant: Voeg een deelnemer aan je feestje
+        add_participant_confirm: Voeg deze deelnemer toe
+        cancel: Annuleren
+        delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
+        delete_list: Verwijder mijn Secret Santa lijst
+        expose: Bekijk alle koppelingen in deze lijst
+        expose_wishlists: Bekijk alle verlanglijstjes
+        pool_update: Verstuur update naar alle deelnemers
+        remove_participant_confirm: Verwijder deze deelnemer
+        updated_party: Bewerk de details van dit feestje
+
+    label:
+        name: Naam
+        email: E-mail
+        confirmed: Bevestigd
+        wishlist_filled: Wish List Ingevuld
+        actions: Acties
+
+# Emails/baseEmail.html.twig
+emails-base_email:
+    sender: Kerstman
+    title: Secret Santa door Intracto
+    footer: Veel plezier met het organiseren van Secret Santa!
+    created_by: Aangemaakt door
+
+# Emails/emptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    subject: Je verlanglijst is nog leeg
+    update_your_list: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
+    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
+
+    btn:
+        update_wishlist: Zapisz listę życzeń
+
+# Emails/forgotLink.{html,txt}.twig
+emails-forgot_link:
+    title: Jouw Secret Santa lijst
+    subject: Activatie mail opnieuw verzenden
+    message:
+        html: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
+        txt: >
+            Hallo,
+
+            U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Jouw Secret Santa
+    find_out: Ontdek wiens Secret Santa je bent
+
+    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
+
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa Validatie
+    salutation: Hey %name%
+    click_button: Klik op onderstaande knop om je Secret Santa mailinglijst te valideren. Dan krijgen onze kaboutertjes automatisch een emmer water in hun gezicht gegooid. Als ze wakker zijn brengen ze jouw eerder opgestelde persoonlijke boodschap tot bij alle deelnemers.
+    overview_page: Op de net aangemaakte overzichtspagina kan je dan op de hoogte blijven van welke gebruikers al te weten zijn gekomen voor wie ze Secret Santa mogen spelen. Zo weet je wanneer je lijst volledig is.
+    lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
+    btn_validate: Valideer mijn evenement
+
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+    subject: Je maatje wacht op jouw verlanglijstje
+    message:
+        html: >
+            Beste %name%, <br/>
+            <br/>
+            Jouw Secret Santa maatje wacht op jouw wenslijst. <br/>
+            <br/>
+            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
+        txt: >
+            Beste %name%,
+
+            Jouw Secret Santa maatje wacht op jouw wenslijst.
+
+            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
+    update_wishlist: Update je verlanglijst
+
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+    subject: Status Secret Santa feestje
+    message:
+        html: >
+            Beste %owner%, <br/>
+            <br/>
+            Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
+            <br/>
+            Klik op de onderstaande link en beheer jouw feestje.
+        txt: >
+            Beste %owner%, <br/>
+            <br/>
+            Jouw Secret Santa feestje kom er aan. Bij een goed feestje horen natuurlijk ook cadeautjes voor iedereen. Hier is een overzicht van al jouw genodigden en hun status.<br/>
+            <br/>
+            Klik op de onderstaande link en beheer jouw feestje.
+
+    yes: Ja
+    not_yet: Nog niet
+
+    label:
+        name: Naam
+        email: E-mail
+        confirmed: Bevestigd
+        wishlist_filled: Wish List Ingevuld
+
+    btn:
+        poolstatus: Beheer jouw feestje
+
+# Emails/poolUpdate.{html,txt}.twig
+emails-pool_update:
+    subject: Ons Secret Santa feestje komt eraan!
+    message:
+        html: >
+            Beste %name%,<br>
+            <br>
+            We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.<br/>
+            <br/>
+            Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.<br/>
+            <br/>
+            Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
+        txt: >
+            Beste %name%,
+
+            We hopen dat je uitkijkt naar feestje van %owner% dat er binnenkort aankomt. %owner% verwacht %participantCount% mensen op het feestje op %date% in/bij %place% om het plezier van cadeautjes uitdelen met elkaar te delen.
+
+            Om zoveel mogelijk plezier te beleven, zou het leuk zijn als elke uitgenodigde persoon zou langskomen op het feestje en een cadeautje zou meebrengen. Tot nu toe hebben %viewedCount% perso(o)n(en) hun uitnodiging geopend en hebben er %wishlistCount% hun verlanglijstje ingevuld.
+
+            Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
+
+    btn:
+        pool_update: Check wie je maatje is en vul je wenslijst in
+
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Ontdek wiens nieuwe Secret Santa je bent
+    message:
+        html: >
+            Beste %name%,<br/>
+            <br/>
+            Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.<br/>
+            <br/>
+            Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
+        txt: >
+            Beste %name%,
+
+            Je bent toegewezen aan een nieuwe persoon als Secret Santa nadat %owner% je vorige maatje verwijderd heeft uit zijn feestje.
+
+            Klik op de onderstaande link om te ontdekken wiens nieuwe Secret Santa je bent.
+
+    btn:
+        find_out: Ontdek wiens nieuwe Secret Santa je bent
+
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: De plannen zijn gewijzigd!
+    message:
+        html: >
+            Beste %name%,<br/>
+            <br/>
+            %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
+        txt: >
+            Beste %name%,
+
+            %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
+
+    label:
+        date_party: Datum van jouw Secret Santa feest
+        location: Locatie van jouw Secret Santa feest
+        amount_to_spend: Te spenderen bedrag
+
+    btn:
+        updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
+
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Ontdek wiens Secret Santa je bent
+    didYouForget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
+
+    btn:
+        find_out: Ontdek wiens Secret Santa je bent
+
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Verlanglijst geüpdatet
+    salutation: Hey %name%
+    buddy_updated_wishlist: Je persoon heeft zijn of haar verlanglijst geüpdatet.
+    click_button: Klik op onderstaande knop om zijn of haar suggesties te bekijken.
+
+    btn:
+        check_wishlist: Bekijk verlanglijst
+
+flashes:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
+
+    # ForgotManagementURLController
+    forgot_management_url:
         success: 'De activatie mail is succesvol opnieuw verstuurd!'
         error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
-    pool_update:
-        success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
-    remove_participant:
-        success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
-        danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
-        warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
-        excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
-        wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
-    add_participant:
-        success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
-        danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
-    wishlist:
-        empty_row: <h4>Oops</h4> Gelieve de lege rij te verwijderen vooraleer verder te gaan.
-        added: <h4>Toegevoegd!</h4> Jouw wens is succesvol toegevoegd aan jouw wenslijst.
-        updated: <h4>Aangepast!</h4> Jouw wens is succesvol aangepast.
-        removed: <h4>Verwijderd!</h4> Jouw wens is succesvol verwijderd uit jouw wenslijst.
-    updated_party:
-        success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
-        danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
-forgot_manage_link:
-    title: 'Activatie mail opnieuw verzenden'
-    description: 'Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)'
-report:
-    title: 'Rapportering'
-    results: 'Resultaten'
-    analytics: 'Analytics'
-    total_overview: 'Totale resultaten'
-    all_time: 'Algemeen overzicht'
-    parties: 'Feestjes'
-    participants: 'Deelnemers'
-    total: 'Totaal (inclusief dit seizoen)'
-    total_result: 'Totale resultaten'
-    season: 'Seizoen'
-    created_parties: 'Totaal aantal aangemaakte feestjes'
-    confirmed_parties: 'Bevestigde feestjes'
-    confirmed_parties_month: 'Bevestigde feestjes per maand'
-    confirmed_parties_total: 'Totaal bevestigde feestjes (inclusief dit seizoen)'
-    invited_participants: 'Totaal aantal uitgenodigde deelnemers'
-    confirmed_participants: 'Bevestigde deelnames'
-    confirmed_participants_month: 'Bevestigde deelnames per maand'
-    confirmed_participants_total: 'Totaal bevestigde deelnames (inclusief dit seizoen)'
-    average_entries: 'Gemiddeld aantal deelnemers per feestje'
-    unique_entries: 'Unieke deelnemers'
-    completed_wishlists: 'Aantal ingevulde verlanglijsten'
-    ip_usage: 'IP type van de bezoekers (sinds maart 2016)'
-    visitors_per_country: 'Bezoekers per land'
-    visitors_per_language: 'Bezoekers per taal'
-    mobile_usage: 'Mobiel/desktop'
-    top_browser: 'Top 5 browsers'
-    no_data: 'Er zijn geen cijfers beschikbaar over dit seizoen.'
-    season_info: 'Kies het seizoen waarvan u de cijfers wilt bekijken. Elk seizoen begint op 1 april en eindigt op 30 maart.'
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Perfect!</strong><br/>Je e-mail is nu gevalideerd.<br/>
+            Onze kaboutertjes wurmen zich op dit eigenste moment doorheen het netwerk om al je toekomstige Secret Santa's een persoon te bezorgen.<br/>
+            <br />
+            Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
+#        modify_list_warning: ?
+        add_participant:
+            success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
+            danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
+        updated_party:
+            success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
+            danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
+
+    # PoolController
+    pool:
+        not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
+
+    # ResendEntryController
+    resend_entry:
+        resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
+
+    # PokeBuddyController
+    poke_buddy:
+        poke_buddy: <h4>Gepord</h4> Onze kaboutertjes zijn onderweg naar jouw Secret Santa om te vragen naar interessante spulletjes voor op hun verlanglijstje.
+
+    # EntryController
+    entry:
+        wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
+        edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
+        saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
+#        modify_list_warning: ?
+        remove_participant:
+            success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
+            danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
+            warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
+            excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
+#            self_assigned: ?
+            wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.

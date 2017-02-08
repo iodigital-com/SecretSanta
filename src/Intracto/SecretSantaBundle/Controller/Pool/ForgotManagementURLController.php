@@ -50,12 +50,12 @@ class ForgotManagementURLController extends Controller
             if ($this->get('intracto_secret_santa.mail')->sendForgotManageLinkMail($form->getData()['email'])) {
                 $feedback = [
                     'type' => 'success',
-                    'message' => $this->get('translator')->trans('flashes.forgot_manage_link.success'),
+                    'message' => $this->get('translator')->trans('flashes.forgot_management_url.success'),
                 ];
             } else {
                 $feedback = [
                     'type' => 'error',
-                    'message' => $this->get('translator')->trans('flashes.forgot_manage_link.error'),
+                    'message' => $this->get('translator')->trans('flashes.forgot_management_url.error'),
                 ];
             }
 

@@ -1,4 +1,4 @@
-{% extends "IntractoSecretSantaBundle:Emails:basemail.html.twig" %}
+{% extends "IntractoSecretSantaBundle:Emails:baseEmail.html.twig" %}
 {% block main %}
     <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
         <tr>
@@ -7,20 +7,10 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails.pendingconfirmation.salutation'|trans({'%name%': pool.getOwnerName}) }}, <br/><br/>
-                    {{ 'emails.pendingconfirmation.click_button'|trans }}
-
+                    {{ 'emails-emptyWishlistReminder.update_your_list'|trans }}
                 </span>
-                <br /> <br />
-                <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
-                    {{ 'emails.pendingconfirmation.overview_page'|trans }}
-                </span>
-                <br /> <br />
-                    <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
-                    {{ 'emails.pendingconfirmation.lastly'|trans }}
-                </span>
-                <br /> <br />
-                <br />
+                <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20" target="_blank" rel="noopener noreferrer">{{ 'emails-emptyWishlistReminder.buy_from_amazon'|trans }}</a></b>
+                <br /> <br /><br />
             </td>
             <td width="37" align="right">
                 <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
@@ -52,8 +42,8 @@
                                 </tr>
                                 <tr>
                                     <td height="40" valign="middle" style="background-color:#bd1019;">
-                                        <a href="{{ url('pool_manage', { 'listUrl': pool.listurl }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails.pendingconfirmation.btn_validate'|trans }}
+                                        <a href="{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
+                                            {{ 'emails-emptyWishlistReminder.btn.update_wishlist'|trans }}
                                         </a>
                                     </td>
                                 </tr>

@@ -13,7 +13,7 @@ class ExposeEntriesController extends Controller
 {
     /**
      * @Route("/entries/expose/{listUrl}", name="expose_entries")
-     * @Template("IntractoSecretSantaBundle:Entry:expose_all.html.twig")
+     * @Template("IntractoSecretSantaBundle:Entry:exposeAll.html.twig")
      */
     public function indexAction($listUrl)
     {

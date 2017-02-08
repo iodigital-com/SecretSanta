@@ -1,0 +1,16 @@
+{{ 'emails-pool_status.message.txt'|trans({'%owner%': pool.getOwnerName}) }}
+
+{{ 'emails-pool_status.label.name'|trans }} >>
+{{ 'emails-pool_status.label.email'|trans }} >>
+{{ 'emails-pool_status.label.confirmed'|trans }} >>
+{{ 'emails-pool_status.label.wishlist_filled'|trans }}
+
+{% for entry in pool.entries %}
+    {{ entry.name }} >>
+    {{ entry.email }} >>
+    {% if entry.viewdate %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %} >>
+    {% if entry.wishlistItems is not empty %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}
+{% endfor %}
+
+{{ 'emails-pool_status.btn.poolstatus'|trans }}:
+{{ url('pool_manage', { 'listUrl': pool.listurl }) }}

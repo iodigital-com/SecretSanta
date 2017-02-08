@@ -18,9 +18,9 @@ class EntryController extends Controller
 {
     /**
      * @Route("/entry/{url}", name="entry_view")
-     * @Template("IntractoSecretSantaBundle:Entry:index.html.twig")
+     * @Template("IntractoSecretSantaBundle:Entry:show.html.twig")
      */
-    public function indexAction(Request $request, $url)
+    public function showAction(Request $request, $url)
     {
         $entry = $this->get('entry_repository')->findOneByUrl($url);
         if ($entry === null) {
@@ -160,11 +160,11 @@ class EntryController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('remove_participant.phrase_to_type')));
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('pool_manage.remove_participant.phrase_to_type')));
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('flashes.remove_participant.wrong')
+                $this->get('translator')->trans('flashes.entry.remove_participant.wrong')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -178,7 +178,7 @@ class EntryController extends Controller
         if (date('Y-m-d') > $oneWeekFromEventDate) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
-                $this->get('translator')->trans('flashes.modify_list.warning')
+                $this->get('translator')->trans('flashes.entry.modify_list_warning')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -187,7 +187,7 @@ class EntryController extends Controller
         if (count($poolEntries) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('flashes.remove_participant.danger')
+                $this->get('translator')->trans('flashes.entry.remove_participant.danger')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -196,7 +196,7 @@ class EntryController extends Controller
         if ($entry->isPoolAdmin()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
-                $this->get('translator')->trans('flashes.remove_participant.warning')
+                $this->get('translator')->trans('flashes.entry.remove_participant.warning')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -213,7 +213,7 @@ class EntryController extends Controller
         if ($excludeCount > 0) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
-                $this->get('translator')->trans('flashes.remove_participant.excluded_entries')
+                $this->get('translator')->trans('flashes.entry.remove_participant.excluded_entries')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -227,7 +227,7 @@ class EntryController extends Controller
         if ($entry->getEntry()->getEntry()->getId() === $entry->getId()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
-                $this->get('translator')->trans('flashes.remove_participant.self_assigned')
+                $this->get('translator')->trans('flashes.entry.remove_participant.self_assigned')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -244,7 +244,7 @@ class EntryController extends Controller
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->get('translator')->trans('flashes.remove_participant.success')
+            $this->get('translator')->trans('flashes.entry.remove_participant.success')
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));

@@ -1,4 +1,4 @@
-{% extends "IntractoSecretSantaBundle:Emails:basemail.html.twig" %}
+{% extends "IntractoSecretSantaBundle:Emails:baseEmail.html.twig" %}
 {% block main %}
     <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
         <tr>
@@ -7,9 +7,10 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ message|nl2br }}
+                    {{ 'emails-wishlistChanged.salutation'|trans({'%name%': secret_santa.name}) }},<br/><br/>
+                    {{ 'emails-wishlistChanged.buddy_updated_wishlist'|trans }}<br/>
+                    {{ 'emails-wishlistChanged.click_button'|trans }}
                 </span>
-                <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20" target="_blank" rel="noopener noreferrer">{{ 'buy_from_amazon'|trans }}</a></b>
                 <br /> <br /><br />
             </td>
             <td width="37" align="right">
@@ -42,8 +43,10 @@
                                 </tr>
                                 <tr>
                                     <td height="40" valign="middle" style="background-color:#bd1019;">
-                                        <a href="{{ url('entry_view', { 'url': entry.url }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails.secretsanta.btn_find_out'|trans }}
+                                        <a href="{{ url('entry_view', { 'url': secret_santa.url, '_locale': secret_santa.pool.locale }) }}"
+                                           target="_blank" rel="noopener noreferrer"
+                                           style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
+                                            {{ 'emails-wishlistChanged.btn.check_wishlist'|trans }}
                                         </a>
                                     </td>
                                 </tr>

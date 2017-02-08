@@ -17,54 +17,37 @@ class PoolType extends AbstractType
     {
         $builder
             ->add('message', TextareaType::class)
-            ->add(
-                'entries',
-                CollectionType::class,
-                [
-                    'entry_type' => EntryType::class,
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'by_reference' => false,
-                ]
-            )
-            ->add(
-                'eventdate',
-                DateType::class,
-                [
-                    'widget' => 'single_text',
-                    'label' => 'label.date_party',
-                    'format' => 'dd-MM-yyyy',
-                    'configs' => [
-                        'minDate' => 0,
-                    ],
-                ]
-            )
-            ->add(
-                'amount',
-                TextType::class,
-                [
-                    'label' => 'label.amount_to_spend',
-                ]
-            )
-            ->add(
-                'location',
-                TextType::class,
-                [
-                    'label' => 'label.location',
-                ]
-            );
+            ->add('entries',  CollectionType::class, [
+                'entry_type' => EntryType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ])
+            ->add('eventdate', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'form-pool.label.date_party',
+                'format' => 'dd-MM-yyyy',
+                'configs' => [
+                    'minDate' => 0,
+                ],
+            ])
+            ->add('amount', TextType::class, [
+                'label' => 'form-pool.label.amount_to_spend',
+            ])
+            ->add('location', TextType::class, [
+                'label' => 'form-pool.label.location',
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(
-            [
-                'data_class' => Pool::class,
-                'action' => '#mysanta',
-                'attr' => [
-                    'novalidate' => 'novalidate',
-                ],
-            ]
-        );
+        $resolver->setDefaults([
+            'data_class' => Pool::class,
+            'action' => '#mysanta',
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ],
+        ]);
     }
 }

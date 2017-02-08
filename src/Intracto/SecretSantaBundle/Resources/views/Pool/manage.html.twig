@@ -15,27 +15,26 @@
 {% endblock %}
 {% block header %}
     <div class="steps">
-        <h2>{{ 'entry.headers.title'|trans|raw }}</h2>
+        <h2>{{ 'pool_manage.headers.title'|trans|raw }}</h2>
         <ul class="liststyle1">
-            <li><strong>{{ 'entry.headers.date'|trans }} </strong> {{ pool.eventdate|localizeddate('medium', 'none') }}
-            </li>
-            <li><strong>{{ 'entry.headers.location'|trans }}</strong> {{ pool.location }}</li>
-            <li><strong>{{ 'entry.headers.amount'|trans }} </strong> {{ pool.amount }}</li>
+            <li><strong>{{ 'pool_manage.headers.date'|trans }} </strong> {{ pool.eventdate|localizeddate('medium', 'none') }}</li>
+            <li><strong>{{ 'pool_manage.headers.location'|trans }}</strong> {{ pool.location }}</li>
+            <li><strong>{{ 'pool_manage.headers.amount'|trans }} </strong> {{ pool.amount }}</li>
         </ul>
     </div>
 {% endblock %}
 {% block main %}
     <div class="box">
-        <h1>{{ 'manage.title'|trans }}</h1>
+        <h1>{{ 'pool_manage.manage.title'|trans }}</h1>
         <table class="table table-striped mysanta" id="mysanta">
             <thead>
             <tr>
                 <th class="col-xs-1 entry-number-header">#</th>
-                <th class="col-xs-2">{{ 'label.name'|trans }}</th>
-                <th class="col-xs-3">{{ 'label.email'|trans }}</th>
-                <th class="col-xs-2">{{ 'label.confirmed'|trans }}</th>
-                <th class="col-xs-2">{{ 'label.wishlist_filled'|trans }}</th>
-                <th class="col-xs-2">{{ 'label.actions'|trans }}</th>
+                <th class="col-xs-2">{{ 'pool_manage.label.name'|trans }}</th>
+                <th class="col-xs-3">{{ 'pool_manage.label.email'|trans }}</th>
+                <th class="col-xs-2">{{ 'pool_manage.label.confirmed'|trans }}</th>
+                <th class="col-xs-2">{{ 'pool_manage.label.wishlist_filled'|trans }}</th>
+                <th class="col-xs-2">{{ 'pool_manage.label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -44,24 +43,24 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td data-hj-masked>{{ entry.name }}</td>
                     <td id="email_{{ entry.id }}" data-hj-masked>{{ entry.email }}</td>
-                    <td class="{% if entry.viewdate %}viewed">{{ 'manage.yes'|trans }}{% else %}not_viewed">{{ 'manage.not_yet'|trans }}{% endif %}</td>
-                    <td class="{% if entry.wishlistItems is not empty %}viewed">{{ 'manage.yes'|trans }}{% else %}not_viewed">{{ 'manage.not_yet'|trans }}{% endif %}</td>
+                    <td class="{% if entry.viewdate %}viewed">{{ 'pool_manage.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage.manage.not_yet'|trans }}{% endif %}</td>
+                    <td class="{% if entry.wishlistItems is not empty %}viewed">{{ 'pool_manage.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
                              onclick="editableEmail('{{ pool.listUrl }}', {{ entry.id }});"
-                             rel="tooltip" title="{{ 'manage.edit_email'|trans }}" alt="{{ 'manage.edit_email'|trans }}"
+                             rel="tooltip" title="{{ 'pool_manage.manage.edit_email'|trans }}" alt="{{ 'pool_manage.manage.edit_email'|trans }}"
                              style="cursor: pointer;">
                         {% spaceless %}
                             <a href="{{ path('resend_entry', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
-                                     title="{{ 'manage.resend_email'|trans }}" alt="{{ 'manage.resend_email'|trans }}">
+                                     title="{{ 'pool_manage.manage.resend_email'|trans }}" alt="{{ 'pool_manage.manage.resend_email'|trans }}">
                             </a>
                         {% endspaceless %}
                         {% if app.environment == 'dev' %}
                             <a href="{{ path('entry_view', { 'url': entry.url }) }}" class="add-participant-link">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
                                      title="{{ entry.entry.name }} <{{ entry.entry.email }}>"
-                                     alt="{{ 'manage.view_entry'|trans }}">
+                                     alt="{{ 'pool_manage.manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
                         <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}" {% if 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}>
@@ -74,36 +73,36 @@
         </table>
 
         <div class="alert alert-info">
-            <strong>{{ 'manage.tip'|trans }}</strong> {{ 'manage.come_back'|trans }}
+            <strong>{{ 'pool_manage.manage.tip'|trans }}</strong> {{ 'pool_manage.manage.come_back'|trans }}
         </div>
         <div class="alert alert-warning">
-            <strong>{{ 'manage.watch_out'|trans }}</strong> {{ 'manage.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
+            <strong>{{ 'pool_manage.manage.watch_out'|trans }}</strong> {{ 'pool_manage.manage.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
         </div>
 
         <button id="btn_delete" class="btn btn-primary manage_btn"><i
-                    class="fa fa-exclamation-circle"></i> {{ 'btn.delete_list'|trans }}</button>
+                    class="fa fa-exclamation-circle"></i> {{ 'pool_manage.btn.delete_list'|trans }}</button>
         <a href="{{ path('expose_entries', { 'listUrl': pool.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
-            <i class="fa fa-eye"></i> {{ 'btn.expose'|trans }}
+            <i class="fa fa-eye"></i> {{ 'pool_manage.btn.expose'|trans }}
         </a>
         <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link"
             href="{{ path('wishlist_show_all', { 'listUrl': pool.listurl }) }}"><i
-                    class="fa fa-eye"></i> {{ 'btn.expose_wishlists'|trans }}</a>
+                    class="fa fa-eye"></i> {{ 'pool_manage.btn.expose_wishlists'|trans }}</a>
         <a class="btn btn-info manage_btn manage_btn_link"
            href="{{ path('send_party_update', { 'listUrl': pool.listurl }) }}"><i
-                    class="fa fa-envelope"></i> {{ 'btn.pool_update'|trans|raw }}</a>
+                    class="fa fa-envelope"></i> {{ 'pool_manage.btn.pool_update'|trans|raw }}</a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
                 {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) or 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}><i
-                    class="fa fa-plus-circle fa-inverse"></i> {{ 'btn.add_participant'|trans|raw }}</button>
-        <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> {{ 'btn.updated_party'|trans|raw }}
+                    class="fa fa-plus-circle fa-inverse"></i> {{ 'pool_manage.btn.add_participant'|trans|raw }}</button>
+        <button id="btn_update" class="btn btn-warning manage_btn"><i class="fa fa-refresh"></i> {{ 'pool_manage.btn.updated_party'|trans|raw }}
         </button>
 
         <br/><br/>
 
         <div id="delete-warning" class="alert alert-danger" style="display: none;">
-            <h3>{{ 'delete.title'|trans }}</h3>
+            <h3>{{ 'pool_manage.delete.title'|trans }}</h3>
 
-            {% set phraseToType = 'delete.phrase_to_type'|trans|lower %}
-            {{ 'delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            {% set phraseToType = 'pool_manage.delete.phrase_to_type'|trans|lower %}
+            {{ 'pool_manage.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
             <br>
             <form action="{{ path('pool_delete', { 'listUrl': pool.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_pool_csrf_token }}">
@@ -113,18 +112,18 @@
                 <br>
                 <button class="btn btn-primary btn_confirmation_pop_up" type="submit" id="btn_delete_confirmation"
                         disabled>
-                    {{ 'btn.delete_confirm'|trans }}
+                    {{ 'pool_manage.btn.delete_confirm'|trans }}
                 </button>
-                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'btn.cancel'|trans }}</button>
+                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'pool_manage.btn.cancel'|trans }}</button>
             </form>
         </div>
 
         <div id="add-participant" class="alert alert-success manage-page-form"
              {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) %}style="display: block;"
              {% else %}style="display: none"{% endif %}>
-            <h3>{{ 'add_participant.title'|trans|raw }}</h3>
+            <h3>{{ 'pool_manage.add_participant.title'|trans|raw }}</h3>
 
-            {{ 'add_participant.body'|trans|raw }}
+            {{ 'pool_manage.add_participant.body'|trans|raw }}
             <br>
             {{ form_start(addEntryForm) }}
                 {{ form_row(addEntryForm._token) }}
@@ -145,16 +144,16 @@
                     {% endif %}
                 </div>
                 <button type="submit" class="btn btn-success"
-                        id="btn_add_confirmation">{{ 'btn.add_participant_confirm'|trans|raw }}</button>
-                <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'btn.cancel'|trans }}</button>
+                        id="btn_add_confirmation">{{ 'pool_manage.btn.add_participant_confirm'|trans|raw }}</button>
+                <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'pool_manage.btn.cancel'|trans }}</button>
             {{ form_end(addEntryForm) }}
         </div>
 
         <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
-            <h3>{{ 'remove_participant.title'|trans|raw }}</h3>
+            <h3>{{ 'pool_manage.remove_participant.title'|trans|raw }}</h3>
 
-            {% set phraseToType = 'remove_participant.phrase_to_type'|trans|lower %}
-            {{ 'remove_participant.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            {% set phraseToType = 'pool_manage.remove_participant.phrase_to_type'|trans|lower %}
+            {{ 'pool_manage.remove_participant.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
             <br>
             <form id="delete-participant-form" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
@@ -164,19 +163,19 @@
                 <br>
                 <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
                         id="btn_remove_participant_confirmation" disabled>
-                    {{ 'btn.remove_participant_confirm'|trans|raw }}
+                    {{ 'pool_manage.btn.remove_participant_confirm'|trans|raw }}
                 </button>
                 <button type="reset" class="btn btn-danger btn_remove_participant_cancel"
-                        >{{ 'btn.cancel'|trans }}</button>
+                        >{{ 'pool_manage.btn.cancel'|trans }}</button>
             </form>
         </div>
 
         <div id="update-party-details" class="alert alert-warning manage-page-form"
              {% if (form_errors(updatePoolDetailsForm.eventdate)) or (form_errors(updatePoolDetailsForm.amount)) or (form_errors(updatePoolDetailsForm.location)) %}style="display: block;"
              {% else %}style="display: none"{% endif %}>
-            <h3>{{ 'updated_party.title'|trans }}</h3>
+            <h3>{{ 'pool_manage.updated_party.title'|trans }}</h3>
 
-            {{ 'updated_party.body'|trans|raw }}
+            {{ 'pool_manage.updated_party.body'|trans|raw }}
             <br>
             {{ form_start(updatePoolDetailsForm) }}
                 {{ form_row(updatePoolDetailsForm._token) }}
@@ -202,7 +201,7 @@
                     {% endfor %}
                 </div>
                 <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
-                <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'btn.cancel'|trans }}</button>
+                <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'pool_manage.btn.cancel'|trans }}</button>
             {{ form_end(updatePoolDetailsForm) }}
         </div>
     </div>
@@ -274,7 +273,7 @@
                 $('#email_' + entryId).html(
                     '<form action="' + url + '" method="post">' +
                     '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
-                    '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'manage.save'|trans }}</button>' +
+                    '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'pool_manage.manage.save'|trans }}</button>' +
                     '</form>'
                 );
             }

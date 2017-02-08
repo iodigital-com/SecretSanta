@@ -110,7 +110,7 @@ class PoolController extends Controller
 
     /**
      * @Route("/delete/{listUrl}", name="pool_delete")
-     * @Template("IntractoSecretSantaBundle:Pool:delete.html.twig")
+     * @Template("IntractoSecretSantaBundle:Pool:deleted.html.twig")
      */
     public function deleteAction(Request $request, $listUrl)
     {
@@ -118,12 +118,12 @@ class PoolController extends Controller
             'delete_pool',
             $request->get('csrf_token')
         );
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('delete.phrase_to_type')));
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('pool_manage.delete.phrase_to_type')));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'error',
-                $this->get('translator')->trans('flashes.delete.not_deleted')
+                $this->get('translator')->trans('flashes.pool.not_deleted')
             );
 
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
@@ -164,7 +164,7 @@ class PoolController extends Controller
                     \IntlDateFormatter::NONE
                 );
 
-                $message = $this->get('translator')->trans('emails.created.message', [
+                $message = $this->get('translator')->trans('pool_controller.created.message', [
                     '%amount%' => $pool->getAmount(),
                     '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
                     '%location%' => $pool->getLocation(),

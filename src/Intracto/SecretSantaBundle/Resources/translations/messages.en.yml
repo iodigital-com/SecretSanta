@@ -1,3 +1,4 @@
+# base.html.twig
 base:
     meta:
         description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
@@ -6,349 +7,17 @@ base:
             title: Secret Santa
             site_name: Secret Santa
             description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
-    nav:
-        home: Home
-    privacy_policy: Privacy policy
-    have_fun: Have fun organizing your Secret Santa!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
-pool:
-    header:
-        steps:
-            title: Your party <br/><small>in <span class="accent">3 easy steps</span></small>
-            list:
-                one: List your participants
-                two: Add a message
-                three: Send!
-            get_started: Get Started!
 
-create:
-    what_is:
-        title: What is Secret Santa?
-        intro: >
-                <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer / Kris Kringle generator</strong>!
-                Organize a Secret Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your
-                own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
+# Form/{PoolType,UpdatePoolDetailsType}
+form-pool:
+    label:
+        date_party: Date of your Secret Santa party
+        location: Location of your Secret Santa party
+        amount_to_spend: Amount to spend
 
-                <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/>
-                To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
-                present to one another.</p>
-
-    add_participants: Add your participants
-    list_adminstrator: This person is a participant too.
-    add_personal_message:
-        title: Add a personal message
-        description: Add a personal message for the participants.
-    import:
-        instructions: Add multiple people at once to your event. Download <a href="%downloadPath%">this CSV template file</a> and add all names and mailaddresses of the people you want to invite to the file. When you're finished, you can drag and drop the CSV file into the field below and your friends or colleagues will be added fast and easy to your party.
-        too_many_files: Only one file can be uploaded at a time.
-        wrong_format: The file you're trying to upload does not have the required format (csv or txt).
-exclude:
-   title: Exclude
-   description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
-created:
-    title: Only 1 step to go! - Validate your participation
-    body: >
-            <p>
-                To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
-            </p>
-            <p>
-                Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
-            </p>
-            <p>
-                In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his or her duty.
-            </p>
-    warning: Warning!
-    check_spam: Don't forget to check your spam folder!
-
-deleted:
-    title: Your Secret Santa list was deleted!
-    body: >
-        <p>Thank you for using Secret Santa Organizer. And, we hope to see you again next year!</p>
-
-manage:
-    title: Your Secret Santa list
-    yes: Yes
-    not_yet: Not yet
-    edit_email: Edit e-mail
-    resend_email: Resend e-mail
-    view_entry: View entry
-    tip: Tip
-    come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
-    watch_out: Watch out
-    modify_list: Adding people to this party or removing people from this party will be only possible until %oneWeekFromEventDate%.
-    save: Save
-
-delete:
-    title: Delete my Secret Santa list
-    body: >
-        <p>
-            Are you ABSOLUTELY sure?<br>
-            <br>
-            <b>Unexpected bad things will happen if you don't read this!</b><br>
-            <br>
-            Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
-            This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
-            <br>
-            Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
-        </p>
-    phrase_to_type: delete everything
-wishlists:
-    expose:
-      title: Secret Santa Mailing Wishlists
-entry:
-    headers:
-        title: Your <span class="accent">Secret Santa party</span> details
-        date: Date
-        location: Location
-        amount: Amount
-        num_people: Number of people
-        person_created_list: Person who created this list
-    title: Your assigned buddy
-    body: >
-        <p>Hi %name%,</p>
-        <p>You are assigned as Secret Santa to give a present to:</p>
-    wishlist_from: Wishlist from %name%
-    wishlist_not_provided: %name% has not yet provided a wishlist
-    wishlist:
-        title: Your wishlist
-        description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
-    wishlist_empty: Your wishlist is empty. Add something!
-    watch_out: Watch out
-    modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
-    exposed:
-      title: Secret Santa Mailing List Matches
-      giving: This member is giving ...
-      receiving: ... a gift to this member
-poke:
-    poke: Poke
-    poke_sentence: your buddy to let him/her know their wishlist is empty.
-add_participant:
-    title: Add a new participant to your party
-    body: >
-        <p>
-            By filling in the form below, a new participant will be added to your party.<br>
-            <br>
-            The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
-        </p>
-remove_participant:
-    title: Delete this participant from your list
-    body: >
-        <p>
-            Are you ABSOLUTELY sure?<br>
-            <br>
-            Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
-            <br>
-            Somebody might have bought them a present already.<br>
-            <br>
-            If you're really sure you want delete this participant, type "<b>%phrase_to_type%</b>" below to confirm.<br>
-        </p>
-    phrase_to_type: delete this participant
-updated_party:
-    title: Update the details of your Secret Santa party
-    body: >
-        <p>
-            By filling in the form below, you can edit the details of the party you're organizing.<br>
-            <br>
-            Your participants will be notified of these changes immeadiatly.
-        </p>
-static:
-    privacy_policy:
-        title: Privacy Policy
-        body: >
-            <p>Thank you for visiting secretsantaorganizer.com created by Intracto group NV. This privacy policy tells you
-                how we use personal information collected at this site. Please read this privacy policy before using the
-                site or submitting any personal information. By using the site, you are accepting the practices described in
-                this privacy policy. These practices may be changed, but any changes will be posted and changes will only
-                apply to activities and information on a going forward, not retroactive basis. You are encouraged to review
-                the privacy policy whenever you visit the site to make sure that you understand how any personal information
-                you provide will be used.</p>
-
-            <p>Note: the privacy practices set forth in this privacy policy are for this web site only. If you link to other
-                web sites, please review the privacy policies posted at those sites.</p>
-
-            <h2>Collection of Information</h2>
-
-            <p>We collect personally identifiable information, like names and email addresses, when voluntarily submitted by
-                our visitors. The information you provide is used to fulfill your specific request.</p>
-
-            <h2>Cookie/Tracking Technology</h2>
-
-            <p>This site uses cookies present in Google Analytics for gathering anonymous information such as browser type
-                and operating system, tracking the number of visitors to the site, and understanding how visitors use the
-                site. Personal information cannot be collected via cookies and other tracking technology.</p>
-
-            <p>You can turn off the use of cookies in the settings of your browser.</p>
-
-            <h2>Distribution of Information</h2>
-
-            <p>We may share information with governmental agencies or other companies assisting us in fraud prevention or
-                investigation. We may do so when: (1) permitted or required by law; or, (2) trying to protect against or
-                prevent actual or potential fraud or unauthorized transactions; or, (3) investigating fraud which has
-                already taken place. The information is not provided to these companies for marketing purposes.</p>
-
-            <h2>Commitment to Data Security</h2>
-
-            <p>Your personally identifiable information is kept secure. Only authorized employees, agents and contractors
-                (who have agreed to keep information secure and confidential) have access to this information. All emails
-                from this site are unique to your specific request. No recurring emails or newsletters will be sent to the
-                email addresses provided.</p>
-
-            <h2>Privacy Contact Information</h2>
-
-            <p>If you have any questions, concerns, or comments about our privacy policy you may contact us using the
-                information below:<br/>
-                By e-mail: info@secretsantaorganizer.com</p>
-
-            <p>We reserve the right to make changes to this policy. Any changes to this policy will be posted.</p>
-    faq:
-        title: Frequently Asked Questions
-        body: >
-            <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
-
-            <a href="what"></a><h2>What is Secret Santa?</h2>
-            <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
-            To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
-
-            <a name="how"></a><h2>How does it work?</h2>
-            <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
-            The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
-            We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
-
-            <!--a name="exclude"></a><h2>Can I exclude combinations?</h2>
-            <p>After providing all participants, you can optionally prevent some participant combinations. For example to prevent members of the same family having to buy gifts for each other.<br><br>
-            It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p-->
-
-            <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
-            <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
-
-            <a name="reuse"></a><h2>Can I reuse a list?</h2>
-            <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.</p>
-
-            <a name="manage"></a><h2>How do I manage my party / participants?</h2>
-            <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
-
-            <a href="lost"></a><h2>I lost my activation mail.</h2>
-            <p>If you lost your activation e-mail (which contains the link to the admin page), fill in the list administrator e-mail address on <a href="http://www.secretsantaorganizer.com/forgot-link">this page</a> and we will send you the link again.</p>
-
-            <a name="changes"></a><h2>Can I add or remove people?</h2>
-            <p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event.
-            Allowing this would mess up the system and people might still be assigned to their excluded buddy, this made us to decide to prevent adding people if excluded combinations are present.</p>
-
-            <a href="email"></a><h2>Can I resend an email?</h2>
-            <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
-            If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
-
-            <a href="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
-            <p>You can request the combinations / wishlists from the list management page. But it sort of spoils the "secret" part of our Secret Santa. That's why we added indicators to all participants' buddy pages that all combinations / wishlists were exposed to the list admin when you actually performed the request :-)</p>
-
-            <a href="delete"></a><h2>Can I delete my list?</h2>
-            <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
-
-            <a name="who"></a><h2>Who are you?</h2>
-            <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
-            designers, frontenders, SEO's and marketing people.
-            Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
-            Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
-
-            <a name="privacy"></a><h2>How do you handle my data?</h2>
-            <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
-            Also, at any point in time, you can just delete your Secret Santa from the admin page.</p>
-
-            <a name="features"></a><h2>Can you add feature X?</h2>
-            <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
-            Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change.
-            For those who can code, we prefer transpiration to inspiration. In other words, we accept your PR's.</p>
-
-            <a name="opensource"></a><h2>Open source</h2>
-            <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
-            The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
-            You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
-            If you want a change or a whole new feature, just add it.</p>
-
-            <a name="ads"></a><h2>What about the ads?</h2>
-            <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project.
-            We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else.
-            By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
-
-            <a href="questions"></a><h2>Other questions</h2>
-            <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
-    report:
-        max_results: Max results
-        from: From
-        to: To
-        total_visits: Total visits
-        submit: Submit
-
-label:
-    name: Name
-    email: E-mail
-    host: Host
-    participants: Participants
-    date_party: Date of your Secret Santa party
-    amount_to_spend: Amount to spend
-    location: Location of your Secret Santa party
-    exclude: Exclude
-    confirmed: Confirmed
-    actions: Actions
-    description: Description
-    wishlist_filled: Wish List Entered
-    items: Wishlist items
-placeholder:
-    exclude: Click and choose the participants you want to exclude
-btn:
-    add_person:  Add person
-    remove_person: Remove
-    import_persons:
-        open: Add multiple people by CSV
-        do: Add to your event
-    create_event: Create your event!
-    create_new_list: Create a new Secret Santa list!
-    delete_list: Delete my Secret Santa list
-    delete_confirm: I understand the consequences, delete my Secret Santa list now
-    add_wishlist: Add item to wishlist
-    save_item: Save this item
-    update_item: Update this item
-    remove_item: Remove
-    update_wishlist: Update your wishlist
-    expose: View all the matches in this list
-    expose_wishlists:  View all participants wishlists
-    pool_update: Send party update to participants
-    add_participant: Add participant to party
-    add_participant_confirm: Add this participant
-    remove_participant_confirm: Remove this participant
-    updated_party: Update your party details
-    cancel: Cancel
-emails:
-    sender: Santa Claus
-    base:
-        title: Secret Santa by Intracto
-        footer: Have fun organizing Secret Santa!
-        created_by: Created by
-    pendingconfirmation:
-        subject: Secret Santa Validation
-        salutation: Hi %name%
-        click_button: Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
-        overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
-        lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
-        btn_validate: Validate my event
-        click_link: Please click on the link below to validate your Secret Santa mailing list.
-    secretsanta:
-        subject: Your Secret Santa
-        btn_find_out: Find out your person
-        link_find_out: Find out your randomly assigned person to give a gift to, on this url
-    wishlistchanged:
-        subject: Wishlist updated
-        salutation: Hi %name%
-        buddy_updated_wishlist: Your buddy has updated his or her wishlist.
-        click_button: Click on the button below to check out his or her suggestions.
-        btn_check_wishlist: Check wishlist
-        click_link: Click on the link below to check out his or her suggestions.
-    emptywishlistreminder:
-        subject: Your wishlist is still empty
-        updateyourlist: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
-    viewentryreminder:
-        subject: Find out who your gift buddy is
-        didyouforget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
+# PoolController
+pool_controller:
     created:
         message: |
             Hi there (NAME),
@@ -365,161 +34,542 @@ emails:
 
 
             Happy Holidays!
-    poke_buddy:
-        subject: Your buddy is waiting for your wishlist
-        message:
-            html: >
-                Dear %name%, <br/>
-                <br/>
-                Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
-                <br/>
-                Click the link below and add some stuff to your wishlist you'd like.
-            txt: >
-                Dear %name%,
 
-                Your Secret Santa buddy is waiting for you to add some items to your wishlist.
+# Pool/create.html.twig
+pool-create:
+    header:
+        steps:
+            title: Your party <br/><small>in <span class="accent">3 easy steps</span></small>
+            list:
+                one: List your participants
+                two: Add a message
+                three: Send!
+            get_started: Get Started!
 
-                Click the link below and add some stuff to your wishlist you'd like.
-    pool_update:
-        subject: Our Secret Santa party is coming soon!
-        message:
-            html: >
-                Dear %name%, <br/>
-                <br/>
-                We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.<br/>
-                <br/>
-                To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.<br/>
-                <br/>
-                Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
-            txt: >
-                Dear %name%,
+    what_is:
+        title: What is Secret Santa?
+        intro: >
+            <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer / Kris Kringle generator</strong>!
+            Organize a Secret Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your
+            own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
 
-                We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.
+            <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/>
+            To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
+            present to one another.</p>
 
-                To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.
+    add_participants: Add your participants
+    list_adminstrator: This person is a participant too.
+    add_personal_message:
+        title: Add a personal message
+        description: Add a personal message for the participants.
+    import:
+        instructions: Add multiple people at once to your event. Download <a href="%downloadPath%">this CSV template file</a> and add all names and mailaddresses of the people you want to invite to the file. When you're finished, you can drag and drop the CSV file into the field below and your friends or colleagues will be added fast and easy to your party.
+        too_many_files: Only one file can be uploaded at a time.
+        wrong_format: The file you're trying to upload does not have the required format (csv or txt).
 
-                Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
-        btn_pool_update: Check your buddy and wishlist
-    poolstatus:
-        subject: Secret Santa party status
-        message:
-            html: >
-                Dear %owner%, <br/>
-                <br/>
-                Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statusses.<br/>
-                <br/>
-                Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
-            txt: >
-                Dear %owner%,
+    btn:
+        add_person: Add person
+        remove_person: Remove
+        import_persons_open: Add multiple people by CSV
+        import_persons_do: Add to your event
+        cancel: Cancel
+        create_event: Create your event!
 
-                Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statusses.
+    label:
+        host: Host
+        email: E-mail
+        participants: Participants
 
-                Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
-        btn_poolstatus: Manage your party
-    updated_party:
-        subject: The plans have changed!
-        message:
-            html: >
-                Dear %name%,<br/>
-                <br/>
-                %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
-            txt: >
-                Dear %name%,
+# Pool/exclude.html.twig
+pool-exclude:
+    title: Exclude
+    description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
 
-                %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
-        btn_updated_party: Check your buddy and wishlist for this party
-    removed_secret_santa:
-        subject: Find out who your new Secret Santa is
-        message:
-            html: >
-                Dear %name%,<br/>
-                <br/>
-                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.<br/>
-                <br/>
-                Click the link below to find out who your new Secret Santa is.
-            text: >
-                Dear %name%,
+    placeholder_exclude: Click and choose the participants you want to exclude
 
-                You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.
+    btn:
+        create_event: Create your event!
 
-                Click the link below to find out who your new Secret Santa is.
-        btn_find_out: Find out your new person
-    forgot_link:
-        text: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
-        subject: 'Resend activation mail'
-flashes:
-    manage:
-        email_validated: >
-         <strong>Perfect!</strong><br/>Your email is now validated.<br/>
-         Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
-         <br />
-         Don't forget to confirm your own participation. We've sent you another email. Go check it out!
-    delete:
-        not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
-    resend:
-        resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
-    entry:
-        wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
-        poke_buddy: <h4>Poked</h4> We've sent out our gnomes to ask your Secret Santa to add items to the wishlist!
-        edit_email: <h4>Not saved</h4> There is an error in the email address.
-        saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
-    analytics:
-        invalid_data: <h4>Oops</h4> An error occured while requesting analytics data. Please try again.
-    forgot_manage_link:
-        success: 'We have successfully resend your activation mail'
-        error: 'An error occurred while resending the activation mail. Please try again.'
-    pool_update:
-        success: <h4>Success</h4> An update has been sent to all participants.
-    remove_participant:
-        success: <h4>Removed!</h4> Participant succesfully removed.
-        danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
-        warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
-        excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
-        self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
-        wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
-    add_participant:
-        success: <h4>Added!</h4> Participant succesfully added to your party.
-        danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
-    modify_list:
-        warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
-    wishlist:
-        empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
-        added: <h4>Added!</h4> Item succesfully added to your wishlist.
-        updated: <h4>Updated!</h4> Item succesfully updated.
-        removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
-    updated_party:
-        success: <h4>Updated!</h4> Your party details have been succesfully updated.
-        danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
-forgot_manage_link:
+    label:
+        name: Name
+        exclude: Exclude
+
+# Pool/created.html.twig
+pool-created:
+    title: Only 1 step to go! - Validate your participation
+    body: >
+        <p>
+            To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
+        </p>
+        <p>
+            Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+        </p>
+        <p>
+            In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his or her duty.
+        </p>
+    warning: Warning!
+    check_spam: Don't forget to check your spam folder!
+
+# Pool/deleted.html.twig
+pool-deleted:
+    title: Your Secret Santa list was deleted!
+    body: <p>Thank you for using Secret Santa Organizer. And, we hope to see you again next year!</p>
+    create_new_list: Create a new Secret Santa list!
+
+# Pool/forgotLink.html.twig
+pool-forgot_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
-report:
-    title: 'Report'
-    results: 'Results'
-    analytics: 'Analytics'
-    total_overview: 'Total overview'
-    all_time: 'All time'
-    parties: 'Parties'
-    participants: 'Participants'
-    total: 'Total (this season included)'
-    total_result: 'All time results'
-    season: 'Season'
-    created_parties: 'Total parties created'
-    confirmed_parties: 'Confirmed parties'
-    confirmed_parties_month: 'Confirmed parties per month'
-    confirmed_parties_total: 'Total amount of confirmed parties (this season included)'
-    invited_participants: 'Total participants invited'
-    confirmed_participants: 'Confirmed participants'
-    confirmed_participants_month: 'Confirmed participants per month'
-    confirmed_participants_total: 'Total amount of confirmed participants (this season included)'
-    average_entries: 'Average amount of participants per party'
-    unique_entries: 'Unique participants'
-    completed_wishlists: 'Amount of completed wishlists'
-    ip_usage: 'IP type of visitors (since March 2016)'
-    visitors_per_country: 'Visitors per country'
-    visitors_per_language: 'Visitors per language'
-    mobile_usage: 'Mobile/desktop'
-    top_browser: 'Top 5 browsers'
-    no_data: 'There are no data available for this season.'
-    season_info: 'Choose the season you want to get the data from. Each season begins the 1st of April and lasts until March 30.'
-buy_from_amazon: What are the most wished for items?
+
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: All Secret Santa Wishlists
+
+# Static/faq.html.twig
+static-faq:
+    title: Frequently Asked Questions
+    body: >
+        <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
+
+        <a href="what"></a><h2>What is Secret Santa?</h2>
+        <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
+        To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
+
+        <a name="how"></a><h2>How does it work?</h2>
+        <p>Create an event <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
+        The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+        We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
+
+        <!--a name="exclude"></a><h2>Can I exclude combinations?</h2>
+        <p>After providing all participants, you can optionally prevent some participant combinations. For example to prevent members of the same family having to buy gifts for each other.<br><br>
+        It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p-->
+
+        <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
+        <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
+
+        <a name="reuse"></a><h2>Can I reuse a list?</h2>
+        <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.</p>
+
+        <a name="manage"></a><h2>How do I manage my party / participants?</h2>
+        <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
+
+        <a href="lost"></a><h2>I lost my activation mail.</h2>
+        <p>If you lost your activation e-mail (which contains the link to the admin page), fill in the list administrator e-mail address on <a href="http://www.secretsantaorganizer.com/forgot-link">this page</a> and we will send you the link again.</p>
+
+        <a name="changes"></a><h2>Can I add or remove people?</h2>
+        <p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event.
+        Allowing this would mess up the system and people might still be assigned to their excluded buddy, this made us to decide to prevent adding people if excluded combinations are present.</p>
+
+        <a href="email"></a><h2>Can I resend an email?</h2>
+        <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
+        If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
+
+        <a href="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
+        <p>You can request the combinations / wishlists from the list management page. But it sort of spoils the "secret" part of our Secret Santa. That's why we added indicators to all participants' buddy pages that all combinations / wishlists were exposed to the list admin when you actually performed the request :-)</p>
+
+        <a href="delete"></a><h2>Can I delete my list?</h2>
+        <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
+
+        <a name="who"></a><h2>Who are you?</h2>
+        <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
+        designers, frontenders, SEO's and marketing people.
+        Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
+        Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
+
+        <a name="privacy"></a><h2>How do you handle my data?</h2>
+        <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
+        Also, at any point in time, you can just delete your Secret Santa from the admin page.</p>
+
+        <a name="features"></a><h2>Can you add feature X?</h2>
+        <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
+        Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change.
+        For those who can code, we prefer transpiration to inspiration. In other words, we accept your PR's.</p>
+
+        <a name="opensource"></a><h2>Open source</h2>
+        <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
+        You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
+        If you want a change or a whole new feature, just add it.</p>
+
+        <a name="ads"></a><h2>What about the ads?</h2>
+        <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project.
+        We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else.
+        By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
+
+        <a href="questions"></a><h2>Other questions</h2>
+        <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
+    create_new_list: Create a new Secret Santa list!
+
+# Helper/prototypeEntry.html.twig
+helper-prototype_entry:
+    btn:
+        remove_person: Remove
+
+# Helper/prototypeWishlist.html.twig
+helper-prototype_wishlist:
+    btn:
+        save_item: Save this item
+        update_item: Update this item
+        remove_item: Remove
+
+# Entry/exposeAll.html.twig
+entry-expose_all:
+    title: Secret Santa Mailing List Matches
+    giving: This member is giving ...
+    receiving: ... a gift to this member
+
+
+# Entry/show.html.twig
+entry_show:
+    headers:
+        title: Your <span class="accent">Secret Santa party</span> details
+        date: Date
+        location: Location
+        amount: Amount
+        num_people: Number of people
+        person_created_list: Person who created this list
+    entry:
+        title: Your assigned buddy
+        body: >
+            <p>Hi %name%,</p>
+            <p>You are assigned as Secret Santa to give a present to:</p>
+        watch_out: Watch out
+        modify_list: Adding people to this party or removing people from this party will be only possible until %oneWeekFromEventDate%.
+        wishlist_from: Wishlist from %name%
+        wishlist_not_provided: %name% has not yet provided a wishlist
+    poke:
+        poke: Poke
+        poke_sentence: your buddy to let him/her know their wishlist is empty.
+
+    buy_from_amazon: What are the most wished for items?
+
+    wishlist:
+        title: Your wishlist
+        description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
+        empty: Your wishlist is empty. Add something!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
+            added: <h4>Added!</h4> Item succesfully added to your wishlist.
+            updated: <h4>Updated!</h4> Item succesfully updated.
+            removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
+
+    label:
+        description: Description
+
+    btn:
+        add_wishlist: Add item to wishlist
+        update_item: Update this item
+        remove_item: Remove
+
+# Pool/manage.html.twig
+pool_manage:
+    headers:
+        title: Your <span class="accent">Secret Santa party</span> details
+        date: Date
+        location: Location
+        amount: Amount
+
+    manage:
+        title: Your Secret Santa list
+        yes: Yes
+        not_yet: Not yet
+        edit_email: Edit e-mail
+        resend_email: Resend e-mail
+        view_entry: View entry
+        tip: Tip
+        come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
+        watch_out: Watch out
+        modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
+        save: Save
+
+    delete:
+        title: Delete my Secret Santa list
+        body: >
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                <b>Unexpected bad things will happen if you don't read this!</b><br>
+                <br>
+                Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
+                This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
+                <br>
+                Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            </p>
+        phrase_to_type: delete everything
+
+    add_participant:
+        title: Add a new participant to your party
+        body: >
+            <p>
+                By filling in the form below, a new participant will be added to your party.<br>
+                <br>
+                The new participant will immediatly be asigned to a Secret Santa buddy and will receive an invitation by mail.<br>
+            </p>
+
+    remove_participant:
+        title: Delete this participant from your list
+        body: >
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
+                <br>
+                Somebody might have bought them a present already.<br>
+                <br>
+                If you're really sure you want delete this participant, type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            </p>
+        phrase_to_type: delete this participant
+
+    updated_party:
+        title: Update the details of your Secret Santa party
+        body: >
+            <p>
+                By filling in the form below, you can edit the details of the party you're organizing.<br>
+                <br>
+                Your participants will be notified of these changes immeadiatly.
+            </p>
+
+    btn:
+        add_participant: Add participant to party
+        add_participant_confirm: Add this participant
+        cancel: Cancel
+        delete_confirm: I understand the consequences, delete my Secret Santa list now
+        delete_list: Delete my Secret Santa list
+        expose: View all the matches in this list
+        expose_wishlists:  View all participants wishlists
+        pool_update: Send party update to participants
+        remove_participant_confirm: Remove this participant
+        updated_party: Update your party details
+
+    label:
+        name: Name
+        email: E-mail
+        confirmed: Confirmed
+        wishlist_filled: Wish List Entered
+        actions: Actions
+
+# Emails/baseEmail.html.twig
+emails-base_email:
+    sender: Santa Claus
+    title: Secret Santa by Intracto
+    footer: Have fun organizing Secret Santa!
+    created_by: Created by
+
+# Emails/emptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    subject: Your wishlist is still empty
+    update_your_list: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
+    buy_from_amazon: What are the most wished for items?
+
+    btn:
+        update_wishlist: Update your wishlist
+
+# Emails/ForgotLink.{html,txt}.twig
+emails-forgot_link:
+    title: Your Secret Santa list
+    subject: Resend activation mail
+    message:
+        html: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+        txt: >
+            Hi there,
+
+            You have requested us to resend your activation mail with the event manage link(s)
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Your Secret Santa
+    find_out: Find out your person
+
+    buy_from_amazon: What are the most wished for items?
+
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa Validation
+    salutation: Hi %name%
+    click_button: Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
+    overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
+    lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
+    btn_validate: Validate my event
+
+# Emails/pokeBuddy.{html,txt}.twig
+emails-pokeBuddy:
+    subject: Your buddy is waiting for your wishlist
+    message:
+        html: >
+            Dear %name%, <br/>
+            <br/>
+            Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
+            <br/>
+            Click the link below and add some stuff to your wishlist you'd like.
+        txt: >
+            Dear %name%,
+
+            Your Secret Santa buddy is waiting for you to add some items to your wishlist.
+
+            Click the link below and add some stuff to your wishlist you'd like.
+    update_wishlist: Update your wishlist
+
+# Emails/poolStatus.{html,txt}.twig
+emails-pool_status:
+    subject: Secret Santa party status
+    message:
+        html: >
+            Dear %owner%, <br/>
+            <br/>
+            Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statusses.<br/>
+            <br/>
+            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
+        txt: >
+            Dear %owner%,
+
+            Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statusses.
+
+            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
+
+    yes: Yes
+    not_yet: Not yet
+
+    label:
+        name: Name
+        email: E-mail
+        confirmed: Confirmed
+        wishlist_filled: Wish List Entered
+
+    btn:
+        poolstatus: Manage your party
+
+# Emails/poolUpdate.{html,txt}.twig
+emails-pool_update:
+    subject: Our Secret Santa party is coming soon!
+    message:
+        html: >
+            Dear %name%, <br/>
+            <br/>
+            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.<br/>
+            <br/>
+            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.<br/>
+            <br/>
+            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+        txt: >
+            Dear %name%,
+
+            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.
+
+            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.
+
+            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+
+    btn:
+        pool_update: Check your buddy and wishlist
+
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Find out who your new Secret Santa is
+    message:
+        html: >
+            Dear %name%,<br/>
+            <br/>
+            You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.<br/>
+            <br/>
+            Click the link below to find out who your new Secret Santa is.
+        txt: >
+            Dear %name%,
+
+            You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.
+
+            Click the link below to find out who your new Secret Santa is.
+
+    btn:
+        find_out: Find out your new person
+
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: The plans have changed!
+    message:
+        html: >
+            Dear %name%,<br/>
+            <br/>
+            %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
+        txt: >
+            Dear %name%,
+
+            %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
+
+    label:
+        date_party: Date of your Secret Santa party
+        location: Location of your Secret Santa party
+        amount_to_spend: Amount to spend
+
+    btn:
+        updated_party: Check your buddy and wishlist for this party
+
+# Emails/viewEntryReminder.{html,txt}.twig
+emails-viewEntryReminder:
+    subject: Find out who your gift buddy is
+    didYouForget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
+
+    btn:
+        find_out: Find out your new person
+
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Wishlist updated
+    salutation: Hi %name%
+    buddy_updated_wishlist: Your buddy has updated his or her wishlist.
+    click_button: Click on the button below to check out his or her suggestions.
+
+    btn:
+        check_wishlist: Check wishlist
+
+flashes:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Success</h4> An update has been sent to all participants.
+
+    # ForgotManagementURLController
+    forgot_management_url:
+        success: 'We have successfully resend your activation mail'
+        error: 'An error occurred while resending the activation mail. Please try again.'
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Perfect!</strong><br/>Your email is now validated.<br/>
+            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
+            <br />
+            Don't forget to confirm your own participation. We've sent you another email. Go check it out!
+        modify_list_warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
+        add_participant:
+            success: <h4>Added!</h4> Participant succesfully added to your party.
+            danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
+        updated_party:
+            success: <h4>Updated!</h4> Your party details have been succesfully updated.
+            danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
+
+    # PoolController
+    pool:
+        not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
+
+    # ResendEntryController
+    resend_entry:
+        resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
+
+    # PokeBuddyController
+    poke_buddy:
+        poke_buddy: <h4>Poked</h4> We've sent out our gnomes to ask your Secret Santa to add items to the wishlist!
+
+    # EntryController
+    entry:
+        wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
+        edit_email: <h4>Not saved</h4> There is an error in the email address.
+        saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
+        modify_list_warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
+        remove_participant:
+            success: <h4>Removed!</h4> Participant succesfully removed.
+            danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
+            warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
+            excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+            self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
+            wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.

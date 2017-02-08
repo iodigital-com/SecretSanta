@@ -1,9 +1,0 @@
-{% extends "IntractoSecretSantaBundle::base.html.twig" %}
-{% block main %}
-<div class="box">
-    <h1>{{ 'delete.title'|trans }}</h1>
-    {{ 'deleted.body'|trans|raw }}
-    <div>
-        <a class="btn btn-primary" href="{{ path('homepage') }}#mysanta">{{ 'btn.create_new_list'|trans }}</a>
-    </div>
-{% endblock %}

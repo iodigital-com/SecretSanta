@@ -17,9 +17,9 @@
 
 {% block main %}
     <div class="box">
-        <h1>{{ 'exclude.title'|trans }}</h1>
+        <h1>{{ 'pool-exclude.title'|trans }}</h1>
 
-        <p>{{ 'exclude.description'|trans }}</p>
+        <p>{{ 'pool-exclude.description'|trans }}</p>
         {{ form_start(form) }}
         {# Only show general validation error if there are no subform errors #}
         {% if form.entries.vars.valid %}
@@ -29,8 +29,8 @@
             <thead>
             <tr>
                 <th class="col-xs-1">#</th>
-                <th class="col-xs-3">{{ 'label.name'|trans }}</th>
-                <th class="col-xs-8">{{ 'label.exclude'|trans }}</th>
+                <th class="col-xs-3">{{ 'pool-exclude.label.name'|trans }}</th>
+                <th class="col-xs-8">{{ 'pool-exclude.label.exclude'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -39,7 +39,7 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_entries.vars.label }}</td>
                     <td>
-                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'placeholder.exclude'|trans} } ) }}
+                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'pool-exclude.placeholder_exclude'} } ) }}
                         {{ form_errors(entry.excluded_entries) }}
                     </td>
                 </tr>
@@ -48,7 +48,7 @@
         </table>
         <p>
             <button type="submit" class="btn btn-large btn-primary btn-create-event">
-                <i class="fa fa-check"></i> {{ 'btn.create_event'|trans }}
+                <i class="fa fa-check"></i> {{ 'pool-exclude.btn.create_event'|trans }}
             </button>
         </p>
         {{ form_end(form) }}

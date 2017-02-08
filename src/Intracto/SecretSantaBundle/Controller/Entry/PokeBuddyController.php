@@ -18,7 +18,7 @@ class PokeBuddyController extends Controller
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->get('translator')->trans('flashes.entry.poke_buddy')
+            $this->get('translator')->trans('flashes.poke_buddy.poke_buddy')
         );
 
         return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));

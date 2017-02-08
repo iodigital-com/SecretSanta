@@ -1,4 +1,4 @@
-{% extends "IntractoSecretSantaBundle:Emails:basemail.html.twig" %}
+{% extends "IntractoSecretSantaBundle:Emails:baseEmail.html.twig" %}
 {% block main %}
     <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
         <tr>
@@ -7,9 +7,7 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails.wishlistchanged.salutation'|trans({'%name%': secret_santa.name}) }},<br/><br/>
-                    {{ 'emails.wishlistchanged.buddy_updated_wishlist'|trans }}<br/>
-                    {{ 'emails.wishlistchanged.click_button'|trans }}
+                    {{ 'emails-viewEntryReminder.didYouForget'|trans }}
                 </span>
                 <br /> <br /><br />
             </td>
@@ -43,10 +41,8 @@
                                 </tr>
                                 <tr>
                                     <td height="40" valign="middle" style="background-color:#bd1019;">
-                                        <a href="{{ url('entry_view', { 'url': secret_santa.url, '_locale': secret_santa.pool.locale }) }}"
-                                           target="_blank" rel="noopener noreferrer"
-                                           style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails.wishlistchanged.btn_check_wishlist'|trans }}
+                                        <a href="{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
+                                            {{ 'emails-viewEntryReminder.btn.find_out'|trans }}
                                         </a>
                                     </td>
                                 </tr>

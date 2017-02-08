@@ -13,7 +13,7 @@ class WishlistController extends Controller
 {
     /**
      * @Route("/wishlists/show/{listUrl}", name="wishlist_show_all")
-     * @Template("IntractoSecretSantaBundle:Wishlist:show_all.html.twig")
+     * @Template("IntractoSecretSantaBundle:Wishlist:showAll.html.twig")
      */
     public function showAllAction($listUrl)
     {
