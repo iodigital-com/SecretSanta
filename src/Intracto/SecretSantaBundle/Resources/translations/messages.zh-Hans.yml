@@ -310,6 +310,21 @@ emails-pool_status:
 #    btn:
 #        find_out: ?
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+#    subject:
+#    message:
+#        html: ?
+#        txt: ?
+
+    label:
+        date_party: 你的秘密圣诞老人派对日期
+#        location: ?
+        amount_to_spend: 消费金额
+
+#    btn:
+#        updated_party: ?
+
 ### end of cleanup ###
 
 label:

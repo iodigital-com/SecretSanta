@@ -6,15 +6,15 @@
                 <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
             </td>
             <td width="566">
-                <p>{{ 'emails.updated_party.message.html'|trans({"%name%": entry.name, "%owner%": entry.pool.getOwnerName})|raw }}</p>
+                <p>{{ 'emails-updated_party.message.html'|trans({"%name%": entry.name, "%owner%": entry.pool.getOwnerName})|raw }}</p>
                 <table cellspacing="0" cellpadding="3" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
                     <thead>
                         <tr>
-                            <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'label.date_party'|trans }}</th>
+                            <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-updated_party.label.date_party'|trans }}</th>
                             <th style="border-bottom: 1px solid #000;">&nbsp;</th>
-                            <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'label.location'|trans }}</th>
+                            <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-updated_party.label.location'|trans }}</th>
                             <th style="border-bottom: 1px solid #000;">&nbsp;</th>
-                            <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'label.amount_to_spend'|trans }}</th>
+                            <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-updated_party.label.amount_to_spend'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +59,7 @@
                                 <tr>
                                     <td height="40" valign="middle" style="background-color:#bd1019;">
                                         <a href="{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails.updated_party.btn_updated_party'|trans|raw }}
+                                            {{ 'emails-updated_party.btn.updated_party'|trans|raw }}
                                         </a>
                                     </td>
                                 </tr>

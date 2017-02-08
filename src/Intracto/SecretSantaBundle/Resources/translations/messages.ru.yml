@@ -315,6 +315,21 @@ emails-pool_status:
 #    btn:
 #        find_out: ?
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+#    subject:
+#    message:
+#        html: ?
+#        txt: ?
+
+    label:
+        date_party: Дата проведения твоей вечеринки Тайного Санты
+#        location: ?
+        amount_to_spend: Сумма
+
+#    btn:
+#        updated_party: ?
+
 ### end of cleanup ###
 
 label:

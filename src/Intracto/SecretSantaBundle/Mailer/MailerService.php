@@ -416,7 +416,7 @@ class MailerService
     {
         $this->translator->setLocale($entry->getPool()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails.updated_party.subject'))
+            ->setSubject($this->translator->trans('emails-updated_party.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(

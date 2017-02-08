@@ -453,12 +453,33 @@ emails-removed_secret_santa:
     btn:
         find_out: Ontdek wiens nieuwe Secret Santa je bent
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: De plannen zijn gewijzigd!
+    message:
+        html: >
+            Beste %name%,<br/>
+            <br/>
+            %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
+        txt: >
+            Beste %name%,
+
+            %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
+
+    label:
+        date_party: Datum van jouw Secret Santa feest
+        location: Locatie van jouw Secret Santa feest
+        amount_to_spend: Te spenderen bedrag
+
+    btn:
+        updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
+
 ### end of cleanup ###
 
 label:
     date_party: Datum van jouw Secret Santa feest
-    amount_to_spend: Te spenderen bedrag
     location: Locatie van jouw Secret Santa feest
+    amount_to_spend: Te spenderen bedrag
     items: Gewenste verrassingen
 emails:
     wishlistchanged:
@@ -487,18 +508,6 @@ emails:
 
 
             Geniet van de feestdagen!
-    updated_party:
-        subject: De plannen zijn gewijzigd!
-        message:
-            html: >
-                Beste %name%,<br/>
-                <br/>
-                %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
-            txt: >
-                Beste %name%,
-
-                %owner% heeft enkele details aangepast voor het feestje waarvoor je bent uitgenodigd. Bekijk hieronder de nieuwe details die je vriend voor jou voorzien heeft.
-        btn_updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
 flashes:
     manage:
         email_validated: >

@@ -288,6 +288,21 @@ emails-pool_status:
 #    btn:
 #        find_out: ?
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+#    subject:
+#    message:
+#        html: ?
+#        txt: ?
+
+    label:
+        date_party: Data Twojego Przyjęcia Tajnego Mikołaja
+#        location: ?
+        amount_to_spend: Suma do wydania
+
+#    btn:
+#        updated_party: ?
+
 ### end of cleanup ###
 
 label:

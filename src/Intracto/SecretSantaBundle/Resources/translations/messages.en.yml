@@ -456,6 +456,26 @@ emails-removed_secret_santa:
         find_out: Find out your new person
 
 # Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: The plans have changed!
+    message:
+        html: >
+            Dear %name%,<br/>
+            <br/>
+            %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
+        txt: >
+            Dear %name%,
+
+            %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
+
+    label:
+        date_party: Date of your Secret Santa party
+        location: Location of your Secret Santa party
+        amount_to_spend: Amount to spend
+
+    btn:
+        updated_party: Check your buddy and wishlist for this party
+
 # Emails/viewEntryReminder.{html,txt}.twig
 # Emails/wishlistChanged.{html,txt}.twig
 
@@ -463,8 +483,8 @@ emails-removed_secret_santa:
 
 label:
     date_party: Date of your Secret Santa party
-    amount_to_spend: Amount to spend
     location: Location of your Secret Santa party
+    amount_to_spend: Amount to spend
     items: Wishlist items
 emails:
     wishlistchanged:
@@ -493,18 +513,6 @@ emails:
 
 
             Happy Holidays!
-    updated_party:
-        subject: The plans have changed!
-        message:
-            html: >
-                Dear %name%,<br/>
-                <br/>
-                %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
-            txt: >
-                Dear %name%,
-
-                %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
-        btn_updated_party: Check your buddy and wishlist for this party
 flashes:
     manage:
         email_validated: >

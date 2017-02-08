@@ -428,12 +428,33 @@ emails-removed_secret_santa:
     btn:
         find_out: Découvrez votre nouveau Père-Noël secret
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: Les plans ont changé!
+    message:
+        html: >
+            Cher(e) %owner%,<br/>
+            <br/>
+            %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Vous trouverez ci-dessous les nouveaux détails.
+        txt: >
+            Cher(e) %owner%,
+
+            %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Vous trouverez ci-dessous les nouveaux détails.
+
+    label:
+        date_party: Date de votre Secret Santa party
+        location: Lieu
+        amount_to_spend: Montant à dépenser
+
+    btn:
+        updated_party: Contr&ocirc;lez v&ocirc;tre copain ou liste de souhaits pour cette f&ecirc;te.
+
 ### end of cleanup ###
 
 label:
     date_party: Date de votre Secret Santa party
-    amount_to_spend: Montant à dépenser
     location: Lieu
+    amount_to_spend: Montant à dépenser
     items: Cadeaux souhaités
 emails:
     wishlistchanged:
@@ -462,18 +483,6 @@ emails:
 
 
             Bonnes vacances !
-    updated_party:
-        subject: Les plans ont changé!
-        message:
-            html: >
-                Cher(e) %owner%,<br/>
-                <br/>
-                %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Vous trouverez ci-dessous les nouveaux détails.
-            txt: >
-                Cher(e) %owner%,
-
-                %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Vous trouverez ci-dessous les nouveaux détails.
-        btn_updated_party: Contr&ocirc;lez v&ocirc;tre copain ou liste de souhaits pour cette f&ecirc;te.
 flashes:
     manage:
         email_validated: >

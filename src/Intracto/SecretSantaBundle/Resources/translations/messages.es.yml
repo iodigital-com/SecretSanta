@@ -382,6 +382,27 @@ emails-removed_secret_santa:
     btn:
         find_out: Descubre a tu nueva persona
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: ¡Los planes han cambiado!
+    message:
+        html: >
+            Estimado %name%,<br/>
+            <br/>
+            %owner% ha cambiado algos detalles de la fiesta a la que estas invitado. Abajo encuentras los nuevos detalles.
+        txt: >
+            Estimado %name%,
+
+            %owner% ha cambiado algos detalles de la fiesta a la que estas invitado. Abajo encuentras los nuevos detalles.
+
+    label:
+        date_party: Fecha de tu fiesta Secret Santa
+        location: Sitio de tu fiesta Secret Santa
+        amount_to_spend: Cantidad a gastar
+
+    btn:
+        updated_party: Comprueba quién es tu amigote o tu lista de deseos por esta fiesta
+
 ### end of cleanup ###
 
 entry:
@@ -392,8 +413,8 @@ entry:
 
 label:
     date_party: Fecha de tu fiesta Secret Santa
-    amount_to_spend: Cantidad a gastar
     location: Sitio de tu fiesta Secret Santa
+    amount_to_spend: Cantidad a gastar
     items: Regalos deseados
 
 emails:
@@ -423,18 +444,6 @@ emails:
 
 
             ¡Felices Fiestas!
-    updated_party:
-        subject: ¡Los planes han cambiado!
-        message:
-            html: >
-                Estimado %name%,<br/>
-                <br/>
-                %owner% ha cambiado algos detalles de la fiesta a la que estas invitado. Abajo encuentras los nuevos detalles.
-            txt: >
-                Estimado %name%,
-
-                %owner% ha cambiado algos detalles de la fiesta a la que estas invitado. Abajo encuentras los nuevos detalles.
-        btn_updated_party: Comprueba quién es tu amigote o tu lista de deseos por esta fiesta
 flashes:
     manage:
         email_validated: >

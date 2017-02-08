@@ -375,6 +375,21 @@ emails-pool_status:
 #    btn:
 #        find_out: ?
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+#    subject:
+#    message:
+#        html: ?
+#        txt: ?
+
+    label:
+        date_party: Data da sua festa de Amigo Secreto
+#        location: ?
+        amount_to_spend: Valor máximo a gastar
+
+#    btn:
+#        updated_party: ?
+
 ### end of cleanup ###
 
 label:

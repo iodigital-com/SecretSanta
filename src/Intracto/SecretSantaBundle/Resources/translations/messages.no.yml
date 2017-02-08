@@ -451,6 +451,27 @@ emails-removed_secret_santa:
     btn:
         find_out: Find out your new person
 
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: Endring i planene!
+    message:
+        html: >
+            Kjære %name%,<br/>
+            <br/>
+            %owner% har gjort noen endringer i arrangementet/festen du er invitert til. Nedenfor finner du nærmere informasjon om festen og hva som har endret seg.
+        txt: >
+            Kjære %name%,
+
+            %owner% har gjort noen endringer i arrangementet/festen du er invitert til. Nedenfor finner du nærmere informasjon om festen og hva som har endret seg.
+
+    label:
+        date_party: Dato
+        location: Sted
+        amount_to_spend: Beløp å bruke på gaven
+
+    btn:
+        updated_party: Finn din hemmelige venn of hans/hennes ønskeliste
+
 ### end of cleanup ###
 
 expose:
@@ -484,8 +505,8 @@ expose_wishlists:
 
 label:
     date_party: Dato
-    amount_to_spend: Beløp å bruke på gaven
     location: Sted
+    amount_to_spend: Beløp å bruke på gaven
     items: Ønsker på ønskelisten
 btn:
     expose_confirm: Jeg er innforstått med konsekvensene, send med listen med hemmelige nisser
@@ -534,18 +555,6 @@ emails:
                 Du har sendt inn en forespørsel på listen over kombinasjonene av alle deltagerne. Vær klar over at deltagerne kan se at du har fått tilgang til denne listen og at du kan se ønskelistene deres.
 
                 Nedenfor er en oversikt over hvem som skal gi gaver til hvem.
-    updated_party:
-        subject: Endring i planene!
-        message:
-            html: >
-                Kjære %name%,<br/>
-                <br/>
-                %owner% har gjort noen endringer i arrangementet/festen du er invitert til. Nedenfor finner du nærmere informasjon om festen og hva som har endret seg.
-            txt: >
-                Kjære %name%,
-
-                %owner% har gjort noen endringer i arrangementet/festen du er invitert til. Nedenfor finner du nærmere informasjon om festen og hva som har endret seg.
-        btn_updated_party: Finn din hemmelige venn of hans/hennes ønskeliste
 flashes:
     manage:
         email_validated: >
