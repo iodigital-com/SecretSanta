@@ -1,3 +1,4 @@
+# Form/ExcludeEntryType
 pool:
     non_unique: 不是所有词条都有一个唯一的配对。
 entry:

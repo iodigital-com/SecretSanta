@@ -1,3 +1,4 @@
+# Form/ExcludeEntryType
 pool:
     non_unique: 並非所有入口都有唯一的配對。
 entry:

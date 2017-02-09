@@ -1,3 +1,4 @@
+# Form/ExcludeEntryType
 pool:
     non_unique: Not all entries have an unique match. Try again or remove some combination from the exclude list.
 entry:

@@ -1,3 +1,4 @@
+# Form/ExcludeEntryType
 pool:
     non_unique: Chaque entrée ne dispose pas d'une correspondance unique
 entry:
