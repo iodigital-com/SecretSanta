@@ -9,9 +9,9 @@ dpkg -i percona-release_0.1-4.jessie_all.deb
 apt-get update
 
 # Install server and client
-echo "percona-server-server-5.6 percona-server-server/root_password password vagrant" | debconf-set-selections
-echo "percona-server-server-5.6 percona-server-server/root_password_again password vagrant" | debconf-set-selections
-apt-get -y install percona-server-server-5.6 percona-server-client-5.6
+echo "percona-server-server-5.7 percona-server-server/root_password password vagrant" | debconf-set-selections
+echo "percona-server-server-5.7 percona-server-server/root_password_again password vagrant" | debconf-set-selections
+apt-get -y install percona-server-server-5.7 percona-server-client-5.7
 
 # Configuration
 sed -i "s/\[mysqld\]/[mysqld]\ninnodb_file_per_table = 1/" /etc/mysql/my.cnf
