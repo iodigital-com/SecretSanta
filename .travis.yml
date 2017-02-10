@@ -12,7 +12,6 @@ services:
   - memcached
 
 php:
-  - '5.6'
   - '7.1'
 
 before_install:
