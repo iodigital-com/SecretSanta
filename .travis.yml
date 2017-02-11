@@ -9,6 +9,7 @@ env:
 
 services:
   - mysql
+  - memcached
 
 php:
   - '7.1'
