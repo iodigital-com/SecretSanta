@@ -33,8 +33,7 @@ rm -rf .git .gitignore Vagrantfile shell_provisioner
 rm -rf web/app_dev.php web/config.php
 
 # Reset permissions
-sudo chown -R www-data:www-data ../$VERSION
-sudo chmod -R ug=rwX,o= ../$VERSION
+sudo chmod -R ug=rwX,o=rX ../$VERSION
 sudo chmod -R a+rwX app/logs app/cache
 
 cd ../..
@@ -42,6 +41,7 @@ cd ../..
 # Activate latest
 sudo service apache2 stop
 ln -sfn releases/$VERSION current
+sudo service php7.1-fpm restart
 sudo service apache2 start
 
 # Cleanup old deployment, keep last 2
