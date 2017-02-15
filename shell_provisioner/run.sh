@@ -14,6 +14,7 @@ DEPENDENCIES=(
     vim
     php
     mysql
+    openssl
     apache
     phpmyadmin
     symfony
@@ -23,3 +24,4 @@ DEPENDENCIES=(
 for MODULE in ${DEPENDENCIES[@]}; do
     source ${MODULE_PATH}/${MODULE}.sh
 done
+

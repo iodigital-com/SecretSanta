@@ -4,7 +4,7 @@
 
 apt-get install -y apache2
 
-a2enmod rewrite expires headers proxy proxy_http proxy_fcgi
+a2enmod rewrite expires headers proxy proxy_http proxy_fcgi ssl
 
 a2dissite 000-default
 echo "ServerTokens Prod" >>/etc/apache2/apache2.conf

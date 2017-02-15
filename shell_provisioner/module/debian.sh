@@ -20,3 +20,6 @@ echo 127.0.0.1 mailcatcher.$APP_DOMAIN >> /etc/hosts
 # Sync package index files
 apt-get update
 apt-get install -y apt-transport-https lsb-release ca-certificates
+
+# XXX: this is a workaround to fix some install problems later with percona-toolkit and mailutils
+apt-get install mysql-common
