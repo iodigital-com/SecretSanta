@@ -23,3 +23,5 @@ apt-get install -y apt-transport-https lsb-release ca-certificates
 
 # XXX: this is a workaround to fix some install problems later with percona-toolkit and mailutils
 apt-get install mysql-common
+rm -rf /etc/mysql
+

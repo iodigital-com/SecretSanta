@@ -11,11 +11,12 @@ apt-get update
 # Install server and client
 echo "percona-server-server-5.7 percona-server-server-5.7/re-root-pass password vagrant" | debconf-set-selections
 echo "percona-server-server-5.7 percona-server-server-5.7/root-pass password vagrant" | debconf-set-selections
-DEBIAN_FRONTEND=noninteractive apt-get -y install percona-server-server-5.7 percona-server-client-5.7
+apt-get -y install percona-server-server-5.7 percona-server-client-5.7
 
 # Configuration
-sed -i "s/\[mysqld\]/[mysqld]\ninnodb_file_per_table = 1/" /etc/mysql/my.cnf
-sed -i 's/bind-address.*/bind-address\t\t= 0.0.0.0/' /etc/mysql/my.cnf
+sed -i "s/\[mysqld\]/[mysqld]\ninnodb_file_per_table = 1/" /etc/mysql/percona-server.conf.d/mysqld.cnf
+sed -i 's/bind-address.*/bind-address\t\t= 0.0.0.0/' /etc/mysql/percona-server.conf.d/mysqld.cnf
+
 service mysql restart
 
 # Add database
@@ -36,4 +37,4 @@ $MYSQLCMD "CREATE FUNCTION fnv_64 RETURNS INTEGER SONAME 'libfnv_udf.so'"
 $MYSQLCMD "CREATE FUNCTION murmur_hash RETURNS INTEGER SONAME 'libmurmur_udf.so'"
 
 # Install Percona toolkit
-#apt-get install -y percona-toolkit
+apt-get install -y percona-toolkit

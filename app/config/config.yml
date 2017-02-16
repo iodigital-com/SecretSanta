@@ -43,14 +43,14 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        server_version: 5.6
+        server_version: 5.7
         driver:   "%database_driver%"
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
         user:     "%database_user%"
         password: "%database_password%"
-        charset:  UTF8
+        charset:  utf8mb4
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
