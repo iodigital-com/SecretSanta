@@ -21,7 +21,7 @@ service mysql restart
 
 # Add database
 MYSQLCMD="mysql -uroot -pvagrant -e"
-$MYSQLCMD "CREATE DATABASE secretsanta DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
+$MYSQLCMD "CREATE DATABASE secretsanta DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
 
 $MYSQLCMD "CREATE USER secretsanta@localhost IDENTIFIED BY 'vagrant';"
 $MYSQLCMD "GRANT ALL PRIVILEGES ON secretsanta.* TO secretsanta@localhost;"
