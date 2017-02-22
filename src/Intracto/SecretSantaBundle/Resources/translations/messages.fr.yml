@@ -468,8 +468,8 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-        success: 'Nous avons bien renvoyé votre e-mail d'activation'
-        error: 'Une erreur est survenue lors du renvoi de l'e-mail d'activation. Veuillez réessayer.'
+        success: Nous avons bien renvoyé votre e-mail d'activation
+        error: Une erreur est survenue lors du renvoi de l'e-mail d'activation. Veuillez réessayer.
 
     # ManagementController
     management:
