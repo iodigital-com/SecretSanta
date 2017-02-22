@@ -13,12 +13,12 @@ DEPENDENCIES=(
     tools
     vim
     php
-    mysql
-    openssl
-    apache
-    phpmyadmin
-    symfony
-    mailcatcher
+#    mysql
+#    openssl
+#    apache
+#    phpmyadmin
+#    symfony
+#    mailcatcher
 )
 
 for MODULE in ${DEPENDENCIES[@]}; do

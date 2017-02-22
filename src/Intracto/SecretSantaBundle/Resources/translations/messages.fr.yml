@@ -21,20 +21,12 @@ pool_controller:
     created:
         message: |
             Bonjour (NAME),
-
             (ADMINISTRATOR) a créé un événement Secret Santa et vous a ajouté comme participant.
-
             Rejoignez le jeu Secret Santa et découvrez la personne à qui vous devrez offrir un cadeau en cliquant sur le bouton ci-dessous.
-
             Vous pouvez dépenser jusqu'à %amount% pour votre cadeau. Mais bien sûr, créer votre propre cadeau est permis. C'est même vivement recommandé !
-
             La Secret Santa party est prévue le %eventdate% et aura lieu à %location%. Assurez-vous d'amener votre cadeau.
-
             %message%
-
-
             Bonnes vacances !
-
 # Pool/create.html.twig
 pool-create:
     header:
@@ -50,9 +42,7 @@ pool-create:
         title: Qu'est-ce que Secret Santa ?
         intro: >
             <p>Secret Santa Organizer est un organiseur en ligne <strong>gratuit d'échange de cadeaux</strong>  ! Organisez une Secret Santa party avec vos amis, votre famille ou vos collègues. Après avoir reçu l'e-mail de Secret Santa, vous pourrez ajouter votre propre <strong>liste de souhaits</strong>, qui sera ensuite délivrée à votre Père-Noël secret</p>
-
             <p>Chaque année, autour de la période de <strong>Noël</strong>, les personnes du monde entier s'échangent des cadeaux.<br/>Afin de garder les choses intéressantes, vous pouvez assigner au hasard une personne à une autre afin qu'elles offrent un présent aux autres.</p>
-
     add_participants: Ajoutez les participants
     list_adminstrator: Cette personne est également l'administrateur.
     add_personal_message:
@@ -114,8 +104,8 @@ pool-deleted:
 
 # Pool/forgotLink.html.twig
 #pool-forgot_link:
-#    title: ?
-#    description: ?
+    title: Renvoyer l'e-mail d'activation
+    description: Renseignez l'adresse e-mail de l'administrateur de la liste et nous renverrons l'e-mail d'activation. Cela ne concerne que les listes qui se sont déroulés la semaine dernière ou qui auront lieu prochainement. (Ceci enverra uniquement le lien de la page d'administration).
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -126,59 +116,42 @@ static-faq:
     title: Questions fréquemment posées
     body: >
         <p>Ceci est une liste de questions fréquemment posées (FAQ) qui devrait vous aider à comprendre le fonctionnement de Secret Santa.</p>
-
         <a href="what"></a><h2>Qu'est-ce que Secret Santa?</h2>
         <p>Secret Santa est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis, votre famille ou vos collègues. Chaque année, durant la période de Noël, les gens du monde entier s'échangent des cadeaux.</p>
         <p>Afin de garder les choses intéressantes, vous pouvez assigner au hasard une personne à une autre afin qu'elles offrent un présent aux autres.</p>
-
         <a name="how"></a><h2>Comment ça fonctionne?</h2>
         <p>Créez un <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">évènement sur la page d'accueil</a>. Vous avez besoin d'au minimum 3 participants. Le premier participant deviendra l'administrateur de la liste. L'administrateur recevra un lien de confirmation par e-mail. Une fois votre inscription validée, votre liste Secret Santa sera brouillée et tous les participants recevront un message contenant le nom de leur copain cadeau Secret Santa. Nous demandons une confirmation afin d'empêcher les robots et trolls de gâcher votre Secret Santa party. <b>L'e-mail de validation vous fournira un lien vers le gestionnaire de l'évènement Secret Santa.</b></p>
-
         <!--a name="exclude"></a><h2>Puis-je exclure des combinaisons?</h2>
         <p>Après avoir fourni la liste de tous les participants, vous pouvez éventuellement empêcher certaines combinaisons. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.<br><br>
         Il est impossible de réutiliser la liste Secret Santa de l'année passée et d'empêcher ces combinaisons, car nous ne voyons pas un moyen d'ajouter cette fonction sans que cela ne soit confus pour les gens. Désolé.</p-->
-
         <a name="wishlist"></a><h2>Puis-je fournir une liste de souhaits?</h2>
         <p>Les participants reçoivent un lien vers une page où ils peuvent découvrir leur copain secret. Ils peuvent également ajouter leur propre liste de souhaits et voir celle de leur ami.</p>
-
         <a name="reuse"></a><h2>Puis-je réutiliser une liste?</h2>
         <p>Il est possible de réutiliser la liste de l'année passée pour en recréer une nouvelle. Chaque année, nous enverrons un e-mail contenant un lien qui vous permettra de recréer une nouvelle liste. Vous pourrez adapter cette liste selon vos envies avant de la créer.</p>
-
         <a name="manage"></a><h2>Comment puis-je gérer ma Secret Santa party et les participants?</h2>
         <p>L'e-mail de confirmation envoyé à l'administrateur contient un lien vers une page permettant de gérer la liste.</p>
-
         <a href="lost"></a><h2>J'ai perdu mon e-mail d'activation</h2>
         <p>Si vous perdez votre e-mail d'activation (contenant le lien vers la page d'administration), contactez-nous à partir de l'adresse e-mail utilisée lors de votre inscription et nous vous enverrons à nouveau le lien. Il y a une <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank" rel="noopener noreferrer">demande de fonctionnalité</a> afin d'automatiser cela.</p>
-
         <a name="changes"></a><h2>Puis-je ajouter ou retirer quelqu'un?</h2>
         <p>Il est possible d'ajouter ou retirer une personne après avoir créé votre événement. Sur votre page d'administration vous trouverez un bouton avec lequel vous pourrez retirer quelqu'un ainsi qu'un formulaire qui vous permettra d'ajouter quelqu'un.
         Exception: si l'administrateur a exclu des combinaisons avant de créer l'événement, il ne sera pas possible d'ajouter ou de retirer des participants. Si nous le permettons, on court le risque que des combinaisons exclus se produisent, c'est pour ça qu'on a decidé de ne pas permettre cette fonctionalité en ce cas.</p>
-
         <a href="email"></a><h2>Puis-je renvoyer un e-mail?</h2>
         <p>Si un participant n'a pas reçu l'e-mail contenant le nom de la personne à qui il doit offrir un cadeau, l'administrateur peut renvoyer un e-mail pour ce participant depuis la page d'administration. Vous pouvez également changer l'adresse e-mail d'un participant à partir de cette même page et lui renvoyer un e-mail.<br><br>
         Si vous ne recevez pas l'e-mail d'activation, vérifier vos courriers indésirables (SPAM). Vous devriez recevoir cet e-mail après peu de temps. Si vous n'avez toujours pas reçu l'e-mail d'activation, vous devrez alors créer à nouveau votre liste.</p>
-
         <a href="combinations"></a><h2>Puis-je voir toutes les combinaisons / listes de souhaits?</h2>
         <p>Vous pouvez demander à recevoir toutes les attributions / listes de souhaits depuis la page d'administration de votre liste. Mais cela va gâcher le secret de votre Secret Santa party. C'est pourquoi nous avons ajouté un indicateur informant les participants sur le fait que l'administrateur connaît toutes les combinaisons / listes de souhaits lorsqu'il effectue cette demande.</p>
-
         <a href="delete"></a><h2>Puis-je supprimer ma liste?</h2>
         <p>Bien sûr que vous pouvez. Rendez-vous sur la page d'administration de votre liste et utilisez l'option de suppression. Toutes les données liées à votre liste seront supprimées de notre système.</p>
-
         <a name="who"></a><h2>Qui êtes-vous?</h2>
         <p>Nous sommes une poignée de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">développeurs</a>, designers, frontenders, SEO's et marketers. Secret Santa est l'un de nos projets. Nous sommes sponsorisés par notre employeur <a href="http://www.intracto.com/" target="_blank">Intracto digital agency</a>. Notre but est de mettre en place un organiseur d'échange de cadeaux à la fois simple et pratique. Nous profitons également de ce projet pour faire des expériences. Notre objectif principal est qu'il soit utilisé par tous. Au plus il y a de monde, mieux c'est ! ;-)</p>
-
         <a name="privacy"></a><h2>Comment gérez-vous mes données?</h2>
         <p>Réponse courte, nous ne sommes absolument pas intéressés par vos données. Nous ne les utilisons pas pour autre chose. Lisez notre <a href="http://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> pour une réponse plus détaillée. Aussi, vous pouvez à tout moment supprimer votre compte Secret Santa depuis la page d'administration.</p>
-
         <a name="features"></a><h2>Pouvez-vous ajouter des fonctionnalités?</h2>
         <p>Vous avez une super idée pour une fonctionnalité ? Nous sommes tous des volontaires, alors si vous ne savez pas programmer, vous devez attendre qu'un programmeur le fasse. Veuillez créer une <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">demande sur GitHub</a> décrivant votre fonctionnalité ou changement. Pour ceux qui savent coder, nous préférons la transpiration à l'inspiration. En d'autres termes, nous acceptons vos PR's (pull request).</p>
-
         <a name="opensource"></a><h2>Open source</h2>
         <p>Chaque octet de ce site Internet est rendu Open Source sur <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Le projet est disponible sous une <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">licence ISC</a>, très permissive. Vous pouvez donc copier ce projet et, par exemple, créer votre propre Secret Santa. Ou participer à ce projet en soumettant votre contribution (pull request). Si vous souhaitez un changement ou une nouvelle fonction, ajoutez-la simplement.</p>
-
         <a name="ads"></a><h2>A propos des publicités</h2>
         <p>Nous avons des publicités Google ici et là afin de couvrir certaines de nos dépenses. Par exemple, l'hébergement, le nom de domaine, etc. Nous faisons tout nous-mêmes gratuitement et l'argent que nous collectons est réinjecté dans le projet. Il pourrait être utilisé afin d'acheter des pizzas et boissons pour l'un de nos hackdays. Ou il pourrait encore servir à payer un traducteur afin d'ajouter de nouvelles langues à notre Secret Santa Organizer. Ou d'autres choses encore. Au fait, nous recherchons toujours des traductions en russe, japonais... Si vous pouvez nous aider (gratuitement), merci de bien vouloir nous contacter.</p>
-
         <a href="questions"></a><h2>Autres questions</h2>
         <p>D'autres questions, préoccupations ou commentaires ? Contactez-nous par:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Créez une nouvelle liste Secret Santa !
@@ -223,7 +196,7 @@ entry_show:
         poke: Poke
         poke_sentence: Votre copain Secret Santa de remplir leur liste de souhaits.
 
-#    buy_from_amazon: ?
+    buy_from_amazon: Quels sont les objets les plus désirés ?
 
     wishlist:
         title: Votre liste de souhaits
@@ -232,7 +205,7 @@ entry_show:
 
     flashes:
         wishlist:
-            empty_row: <h4>Oops</h4> Veuillez supprimer la ligne vide avant de continuer.
+            empty_row: <h4>Oups</h4> Veuillez supprimer la ligne vide avant de continuer.
             added: <h4>Ajouté!</h4> L'Article a été ajouté &agrave; votre liste de souhaits avec succès.
             updated: <h4>Mis &agrave; jour!</h4> L'article a été mis &agrave; jour avec succ&egrave;s.
             removed: <h4>Supprimé!</h4> L'article a été supprimé de votre liste de souhaits avec succ&egrave;s.
@@ -288,7 +261,6 @@ pool_manage:
                 <br>
                 Le nouveau participant sera immédiatement assigné à un copain Secret Santa et recevra une invitation par e-mail.
             </p>
-
     remove_participant:
         title: Supprimez ce participant de ma liste
         body: >
@@ -303,9 +275,14 @@ pool_manage:
             </p>
         phrase_to_type: supprimer ce participant
 
-#    updated_party:
-#        title: ?
-#        body: ?
+    updated_party:
+        title: Mettez à jour les détails de votre fête Secret Santa
+        body: >
+            <p>
+                En remplissant le formulaire suivant, vous pouvez éditer les détails de la fête que vous organisez.<br>
+                <br>
+                Vos participants seront immédiatement notifiés de ces changements.
+            </p>
 
     btn:
         add_participant: Ajouter un participant à la f&ecirc;te
@@ -313,8 +290,8 @@ pool_manage:
         cancel: Annuler
         delete_confirm: J'ai compris les conséquences, supprimer ma liste Secret Santa maintenant
         delete_list: Supprimer ma liste Secret Santa
-#        expose: ?
-#        expose_wishlists: ?
+        expose: Voir les attributions de cette liste
+        expose_wishlists:  Voir toutes les listes des participants
         pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
         remove_participant_confirm: Supprimer ce participant
         updated_party: Mettre &agrave; jour les détails de ma f&ecirc;te
@@ -323,7 +300,7 @@ pool_manage:
         name: Nom
         email: E-mail
         confirmed: Confirmés
-#        wishlist_filled: ?
+        wishlist_filled: Liste de souhaits complétée
         actions: Actions
 
 # Emails/baseEmail.html.twig
@@ -337,7 +314,7 @@ emails-base_email:
 emails-emptyWishlistReminder:
     subject: Votre liste de souhaits est toujours vide
     update_your_list: Votre Secret Santa party arrive bientôt et vous n'avez pas encore mis à jour votre liste de souhaits ! Vous pouvez ajouter des choses que vous souhaiteriez.
-#    buy_from_amazon: ?
+    buy_from_amazon: Quels sont les objets les plus désirés ?
 
     btn:
         update_wishlist: Mettre à jour votre liste de souhaits
@@ -345,17 +322,19 @@ emails-emptyWishlistReminder:
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     title: Votre liste Secret Santa
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+    subject: Renvoie de l'e-mail d'activation
+    message:
+        html: 'Bonjour, <br /><br />Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.<br />'
+        txt: >
+            Bonjour,
+            Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Votre Secret Santa
     find_out: Découvrez votre personne
 
-#    buy_from_amazon: ?
+    buy_from_amazon: Quels sont les objets les plus désirés ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
@@ -378,9 +357,7 @@ emails-pokeBuddy:
             Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
         txt: >
             Cher(e) %name%,
-
             Votre copain Secret Santa est en attente de votre liste de souhaits.
-
             Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
     update_wishlist: Mettre à jour votre liste de souhaits
 
@@ -396,11 +373,8 @@ emails-pool_status:
             Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
         txt: >
             Cher(e) %owner%,
-
             Votre f&ecirc;te approche à grands pas. Afin de vous assurer que votre f&ecirc;te soit parfaite, Il serait bien d'avoir un cadeau pour chacun de vos participants. Voici un résumé de tous vos participants ainsi que de leur statut.
-
             Cliquez sur le boutton ci-dessous afin d'administrer votre f&ecirc;te.
-
     yes: Oui
     not_yet: Pas encore
 
@@ -408,7 +382,7 @@ emails-pool_status:
         name: Nom
         email: E-mail
         confirmed: Confirmés
-#        wishlist_filled: ?
+        wishlist_filled: Liste de souhaits complétée
 
     btn:
         poolstatus: Gérez votre f&ecirc;te
@@ -427,13 +401,9 @@ emails-pool_update:
             Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
         txt: >
             Cher(e) %name%,
-
             Nous esperons que vous attendez avec impatience la f&ecirc;te de %owner% qui approche. %owner% attend %participantCount% personnes &agrave; sa f&ecirc;te qui aura lieu le %date% chez/&agrave; %place% pour profiter de la joie d'offrir des cadeaux.
-
             Afin d'assurer le maximum de plaisir, il serait bien que chaque invit&eacute; se rendant &agrave; la f&ecirc;te y apporte un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.
-
             Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
-
     btn:
         pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
 
@@ -449,11 +419,8 @@ emails-removed_secret_santa:
             Cliquez sur le boutton ci-dessous afin de découvrir votre nouveau Père-Noël secret.
         txt: >
             Cher(e) %name%,
-
             Vous &ecirc;tes assigné(e) &agrave; un nouveau Père-Noël secret car %owner% a supprimé votre ancien de sa f&ecirc;te.
-
             Cliquez sur le boutton ci-dessous afin de découvrir votre nouveau Père-Noël secret.
-
     btn:
         find_out: Découvrez votre nouveau Père-Noël secret
 
@@ -467,9 +434,7 @@ emails-updated_party:
             %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Vous trouverez ci-dessous les nouveaux détails.
         txt: >
             Cher(e) %owner%,
-
             %owner% a changé quelques détails de la f&ecirc;te à laquelle vous &ecirc;tes invités. Vous trouverez ci-dessous les nouveaux détails.
-
     label:
         date_party: Date de votre Secret Santa party
         location: Lieu
@@ -502,9 +467,9 @@ flashes:
         success: <h4>Succ&egrave;s</h4> Une mise à jour a été envoyée à tous vos participants.
 
     # ForgotManagementURLController
-#    forgot_management_url:
-#        success: ?
-#        error: ?
+    forgot_management_url:
+        success: 'Nous avons bien renvoyé votre e-mail d'activation'
+        error: 'Une erreur est survenue lors du renvoi de l'e-mail d'activation. Veuillez réessayer.'
 
     # ManagementController
     management:
@@ -513,13 +478,13 @@ flashes:
             En ce moment, nos gnomes voyagent à travers l'Internet, afin de communiquer aux Pères-Noël secrets leur copain cadeau.<br/>
             <br />
             N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
-#        modify_list_warning: ?
+        modify_list_warning: <h4>Oups</h4> Il semble que votre fête a lieu dans moins d'une semaine, vous ne pouvez plus ajouter ou supprimer de participants.
         add_participant:
             success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
-            danger: <h4>Oops</h4> Une erreur s'est produite lors de l'ajout du participant. Veuillez essayer à nouveau.
+            danger: <h4>Oups</h4> Une erreur s'est produite lors de l'ajout du participant. Veuillez essayer à nouveau.
         updated_party:
             success: <h4>Mis &agrave; jour!</h4> Les détails ont été mis &agrave; jour avec succ&egrave;s.
-            danger: <h4>Oops</h4> Une erreur s'est produite lors de la mise &agrave; jour de votre f&ecirc;te. Veuillez essayer à nouveau.
+            danger: <h4>Oups</h4> Une erreur s'est produite lors de la mise &agrave; jour de votre f&ecirc;te. Veuillez essayer à nouveau.
 
     # PoolController
     pool:
@@ -538,11 +503,11 @@ flashes:
         wishlist_updated: <h4>Liste de souhaits mise à jour</h4>Nous avons envoyé nos gnomes afin qu'ils avertissent votre Père-Noël secret de vos souhaits !
         edit_email: <h4>Non enregistrée</h4> l'adresse e-mail comporte une erreur.
         saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.
-#        modify_list_warning: ?
+        modify_list_warning: <h4>Oups</h4> Il semble que votre fête a lieu dans moins d'une semaine, vous ne pouvez plus ajouter ou supprimer de participants.
         remove_participant:
             success: <h4>Supprimé!</h4> Participant supprimé avec succès.
-            danger: <h4>Oops</h4> Ce participant ne peut être supprimé, votre f&ecirc;te nécessite au moins 3 participants.
-            warning: <h4>Oops</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous supprimer. Si vous souhaitez abandonner la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer votre liste Secret Santa.
-            excluded_entries: <h4>Oops</h4> Suppression des participants impossible. Vous avez utilisé des exclusions lors de la création de cette f&ecirc;te, ce qui peut causer de sproblèmes lors de la suppression d'un participant. Cette fonctionnalit&eacute; n'est donc pas disponible pour cette f&ecirc;te.
-#            self_assigned: ?
-            wrong: <h4>Oops</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas à la phrase attendue.
+            danger: <h4>Oups</h4> Ce participant ne peut être supprimé, votre f&ecirc;te nécessite au moins 3 participants.
+            warning: <h4>Oups</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous supprimer. Si vous souhaitez abandonner la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer votre liste Secret Santa.
+            excluded_entries: <h4>Oups</h4> Suppression des participants impossible. Vous avez utilisé des exclusions lors de la création de cette f&ecirc;te, ce qui peut causer de sproblèmes lors de la suppression d'un participant. Cette fonctionnalit&eacute; n'est donc pas disponible pour cette f&ecirc;te.
+            self_assigned: <h4>Oups<h4> Ce participant ne peut être supprimé, car cela impliquerait que quelqu'un soit autoassigné.
+            wrong: <h4>Oups</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas à la phrase attendue.
