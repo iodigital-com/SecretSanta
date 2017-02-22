@@ -324,7 +324,7 @@ emails-forgot_link:
     title: Votre liste Secret Santa
     subject: Renvoie de l'e-mail d'activation
     message:
-        html: 'Bonjour, <br /><br />Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.<br />'
+        html: Bonjour, <br /><br />Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.<br />
         txt: >
             Bonjour,
             Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.
