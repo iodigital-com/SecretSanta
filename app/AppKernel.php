@@ -17,7 +17,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Intracto\SecretSantaBundle\IntractoSecretSantaBundle(),
-            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
         );
 

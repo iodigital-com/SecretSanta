@@ -2,9 +2,9 @@
 
 namespace Intracto\SecretSantaBundle\Form;
 
-use Genemu\Bundle\FormBundle\Form\JQuery\Type\DateType;
 use Intracto\SecretSantaBundle\Entity\Pool;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,12 +15,7 @@ class UpdatePoolDetailsType extends AbstractType
     {
         $builder
             ->add('eventdate', DateType::class, [
-                'widget' => 'single_text',
                 'label' => 'form-pool.label.date_party',
-                'format' => 'dd-MM-yyyy',
-                'configs' => [
-                    'minDate' => 0,
-                ],
             ])
             ->add('amount', TextType::class, ['label' => 'form-pool.label.amount_to_spend'])
             ->add('location', TextType::class, ['label' => 'form-pool.label.location'])

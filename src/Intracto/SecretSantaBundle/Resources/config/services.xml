@@ -60,5 +60,14 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="intracto_secret_santa.entry_shuffler" />
         </service>
+
+        <service id="intracto_secret_santa.twig.extension.form" class="Intracto\SecretSantaBundle\Twig\Extension\FormExtension">
+            <argument type="service" id="twig.form.renderer" />
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="intracto_secret_santa.form.extension.jquery_date_type" class="Intracto\SecretSantaBundle\Form\Extension\DateTypeExtension">
+            <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\DateType" />
+        </service>
     </services>
 </container>
