@@ -100,7 +100,7 @@ class PoolContext extends MinkContext
         $currentDate = new \DateTime();
         $eventDate = $currentDate->add(new \DateInterval('P2M'));
 
-        $this->eventDate = $eventDate->format('d-m-y');
+        $this->eventDate = $eventDate->format('d-m-Y');
     }
 
     /**
