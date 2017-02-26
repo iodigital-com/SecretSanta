@@ -409,7 +409,7 @@ emails-pokeBuddy:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
-    subject: Secret Santa fest: status
+    subject: 'Secret Santa fest: status'
     message:
         html: >
             Kjære %owner%, <br/>

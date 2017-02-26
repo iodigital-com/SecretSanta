@@ -5,14 +5,14 @@
         <h1>{{ 'pool-forgot_link.title'|trans }}</h1>
 
         <p>{{ 'pool-forgot_link.description'|trans }}</p>
-        <form method="post" {{ form_enctype(form) }} action="{{ form.vars.action }}" novalidate>
+        {{ form_start(form)}}
             {{ form_row(form._token) }}
             <div class="form-group">
                 <strong>{{ form_label(form.email) }}</strong>
                 {{ form_widget(form.email, { 'attr': {'class': 'form-control'}}) }}
                 {{ form_widget(form.submit) }}
             </div>
-        </form>
+        {{ form_end(form)}}
     </div>
 {% endblock %}
 
