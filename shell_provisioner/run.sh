@@ -13,11 +13,11 @@ DEPENDENCIES=(
     tools
     vim
     php
-#    mysql
-#    openssl
-#    apache
-#    phpmyadmin
-#    symfony
+    mysql
+    openssl
+    apache
+    phpmyadmin
+    symfony
 #    mailcatcher
 )
 

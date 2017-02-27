@@ -1,21 +1,15 @@
 #!/bin/bash
 
-# Percona server (MySQL)
-
-# Add repository
-wget https://repo.percona.com/apt/percona-release_0.1-4.jessie_all.deb
-dpkg -i percona-release_0.1-4.jessie_all.deb
-
-apt-get update
+# MariaDB server (MySQL)
 
 # Install server and client
-echo "percona-server-server-5.7 percona-server-server-5.7/re-root-pass password vagrant" | debconf-set-selections
-echo "percona-server-server-5.7 percona-server-server-5.7/root-pass password vagrant" | debconf-set-selections
-apt-get -y install percona-server-server-5.7 percona-server-client-5.7
+echo "mariadb-server-10.0 mysql-server/root_password password vagrant" | debconf-set-selections
+echo "mariadb-server-10.0 mysql-server/root_password_again password vagrant" | debconf-set-selections
+apt-get -y install mariadb-server mariadb-client
 
 # Configuration
-sed -i "s/\[mysqld\]/[mysqld]\ninnodb_file_per_table = 1/" /etc/mysql/percona-server.conf.d/mysqld.cnf
-sed -i 's/bind-address.*/bind-address\t\t= 0.0.0.0/' /etc/mysql/percona-server.conf.d/mysqld.cnf
+sed -i "s/\[mysqld\]/[mysqld]\ninnodb_file_per_table = 1/" /etc/mysql/my.cnf
+sed -i 's/bind-address.*/bind-address\t\t= 0.0.0.0/' /etc/mysql/my.cnf
 
 service mysql restart
 
@@ -30,11 +24,6 @@ $MYSQLCMD "CREATE USER root@'192.168.33.1' IDENTIFIED BY 'vagrant';"
 $MYSQLCMD "GRANT ALL PRIVILEGES ON *.* TO root@'192.168.33.1';"
 
 $MYSQLCMD "FLUSH PRIVILEGES;"
-
-# Install Percona toolkit and enable functions
-$MYSQLCMD "CREATE FUNCTION fnv1a_64 RETURNS INTEGER SONAME 'libfnv1a_udf.so'"
-$MYSQLCMD "CREATE FUNCTION fnv_64 RETURNS INTEGER SONAME 'libfnv_udf.so'"
-$MYSQLCMD "CREATE FUNCTION murmur_hash RETURNS INTEGER SONAME 'libmurmur_udf.so'"
 
 # Install Percona toolkit
 apt-get install -y percona-toolkit
