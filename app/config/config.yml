@@ -87,7 +87,7 @@ services:
             - { name: twig.extension }
 
     cache:
-        class: Doctrine\Common\Cache\ApcCache
+        class: Doctrine\Common\Cache\ApcuCache
 
     pool_repository:
         class: Doctrine\ORM\EntityRepository
