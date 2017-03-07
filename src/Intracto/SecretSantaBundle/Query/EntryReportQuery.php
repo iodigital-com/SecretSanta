@@ -354,7 +354,12 @@ class EntryReportQuery
         while ($row = $stmt->fetch()) {
             fputcsv(
                 $handle,
-                array($row['name'], $row['email'], $row['poolId'], $row['locale']),
+                [
+                    $row['name'],
+                    $row['email'],
+                    $row['poolId'],
+                    $row['locale'],
+                ],
                 ','
             );
         }
@@ -395,8 +400,7 @@ class EntryReportQuery
                     $row['poolId'],
                     $row['locale'],
                 ],
-                ',',
-                '"'
+                ','
             );
         }
 
