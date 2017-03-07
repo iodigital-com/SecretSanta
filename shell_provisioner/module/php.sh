@@ -21,9 +21,11 @@ sed -i 's/^user = www-data/user = vagrant/' /etc/php/7.1/fpm/pool.d/www.conf
 sed -i 's/^group = www-data/group = vagrant/' /etc/php/7.1/fpm/pool.d/www.conf
 
 # Install APCu
-printf "\n" | pecl install apc
+printf "\n" | pecl install apcu
+pecl install apcu_bc-beta
 
 cat << EOF >>/etc/php/7.1/mods-available/apcu.ini
+extension=apc.so
 extension=apcu.so
 EOF
 
