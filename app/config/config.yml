@@ -71,9 +71,6 @@ jms_i18n_routing:
     locales: %supported_locales%
     strategy: prefix_except_default
 
-genemu_form:
-    date: ~
-
 services:
     twig.text_extension:
         class: Twig_Extensions_Extension_Text
