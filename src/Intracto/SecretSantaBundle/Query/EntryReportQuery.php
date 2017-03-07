@@ -350,7 +350,6 @@ class EntryReportQuery
             ]
         );
 
-        // Add the data queried from database
         while ($row = $stmt->fetch()) {
             fputcsv(
                 $handle,
@@ -390,7 +389,6 @@ class EntryReportQuery
             ]
         );
 
-        // Add the data queried from database
         while ($row = $stmt->fetch()) {
             fputcsv(
                 $handle,
