@@ -31,17 +31,17 @@ class ExportMailsCommand extends ContainerAwareCommand
         switch ($userType) {
             case 'admin':
                 $entryService->fetchAdminEmailsForExport($season);
-                $output->writeln("Last season's admin emails exported to /export/admin");
+                $output->writeln("Last season's admin emails exported to /tmp");
 
                 break;
             case 'participant':
                 $entryService->fetchParticipantEmailsForExport($season);
-                $output->writeln("Last season's participant emails exported to /export/participant");
+                $output->writeln("Last season's participant emails exported to /tmp");
                 break;
             default:
                 $entryService->fetchAdminEmailsForExport($season);
                 $entryService->fetchParticipantEmailsForExport($season);
-                $output->writeln('All emails exported to /export/admin & /export/participant');
+                $output->writeln('All emails exported to /tmp');
                 break;
         }
     }

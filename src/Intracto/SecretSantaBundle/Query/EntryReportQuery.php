@@ -334,24 +334,32 @@ class EntryReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
-        return $this->dbal->executeQuery("
+        $handle = fopen('/tmp/' . date('Y-m-d-H.i.s') . '_admins.csv', 'w+');
+
+        $stmt = $this->dbal->executeQuery("
             SELECT e.name, e.email, e.poolId, p.locale
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
             AND p.sentdate < :lastDay
             AND e.poolAdmin = 1
-            GROUP BY e.name, e.email, e.poolId
-            INTO OUTFILE :location
-            FIELDS TERMINATED BY ','
-            ENCLOSED BY '\"'
-            LINES TERMINATED BY '\\n'",
+            GROUP BY e.name, e.email, e.poolId",
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => '/tmp/'.date('Y-m-d H.i.s').'_admins.csv',
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s')
             ]
         );
+
+        // Add the data queried from database
+        while ($row = $stmt->fetch()) {
+            fputcsv(
+                $handle,
+                array($row['name'], $row['email'], $row['poolId'], $row['locale']),
+                ','
+            );
+        }
+
+        fclose($handle);
     }
 
     /**
@@ -361,24 +369,38 @@ class EntryReportQuery
      */
     public function fetchParticipantEmailsForExport(Season $season)
     {
-        return $this->dbal->executeQuery("
+        $handle = fopen('/tmp/' . date('Y-m-d-H.i.s') . '_participants.csv', 'w+');
+
+        $stmt = $this->dbal->executeQuery("
             SELECT e.name, e.email, e.poolId, p.locale
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
             AND p.sentdate < :lastDay
             AND e.poolAdmin = 0
-            GROUP BY e.name, e.email, e.poolId
-            INTO OUTFILE :location
-            FIELDS TERMINATED BY ','
-            ENCLOSED BY '\"'
-            LINES TERMINATED BY '\\n'",
+            GROUP BY e.name, e.email, e.poolId",
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'location' => '/tmp/'.date('Y-m-d H.i.s').'_participants.csv',
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s')
             ]
         );
+
+        // Add the data queried from database
+        while ($row = $stmt->fetch()) {
+            fputcsv(
+                $handle,
+                [
+                    $row['name'],
+                    $row['email'],
+                    $row['poolId'],
+                    $row['locale'],
+                ],
+                ',',
+                '"'
+            );
+        }
+
+        fclose($handle);
     }
 
     /**
