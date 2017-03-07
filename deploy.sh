@@ -21,7 +21,6 @@ cp ../../shared/parameters.yml app/config
 cp ../../shared/client_secrets.json app/config
 ln -s ../../export
 composer.phar install --no-dev --optimize-autoloader
-app/console doctrine:schema:update --force --env=${SYMFONY_ENV}
 
 # Install assets
 app/console assets:install web
@@ -36,13 +35,12 @@ rm -rf web/app_dev.php web/config.php
 sudo chmod -R ug=rwX,o=rX ../$VERSION
 sudo chmod -R a+rwX app/logs app/cache
 
-cd ../..
-
 # Activate latest
-sudo service apache2 stop
+sudo service php7.1-fpm stop
+app/console doctrine:schema:update --force --env=${SYMFONY_ENV}
+cd ../..
 ln -sfn releases/$VERSION current
-sudo service php7.1-fpm restart
-sudo service apache2 start
+sudo service php7.1-fpm start
 
 # Cleanup old deployment, keep last 2
 cd releases
