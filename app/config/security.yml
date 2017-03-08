@@ -7,18 +7,10 @@ security:
             memory:
                 users:
                     adwords:  { password: %adwords_password%, roles: [ 'ROLE_ADWORDS' ] }
-                    %export_user%:  { password: %export_password%, roles: [ 'ROLE_EXPORT' ] }
 
     firewalls:
         secured_area:
             pattern: ^/
             http_basic: ~
             anonymous: ~
-        export_area:
-            pattern: ^/export/
-            http_basic: ~
-            anonymous: ~
 
-    access_control:
-        - { path: ^/export/, roles: ROLE_EXPORT }
-        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

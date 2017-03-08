@@ -41,7 +41,5 @@ parameters:
     adwords_password:  secret
     noreply_email:     no-reply@dev.secretsantaorganizer.com
     base_url:          dev.secretsantaorganizer.com
-    export_user:       export
-    export_password:   export
     ga_view_id:        ga:00000000
     router.request_context.host: '%base_url%'
