@@ -14,3 +14,4 @@ dumps
 .idea
 .vagrant
 .travis/build/behat-*
+yarn.lock
