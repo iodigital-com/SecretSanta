@@ -17,10 +17,10 @@ class DateTypeExtension extends AbstractTypeExtension
     {
         $resolver->setDefaults(array(
             'widget' => 'single_text',
-            'format' => 'dd-mm-yyyy',
+            'format' => 'dd-MM-yyyy',
             'append' => '<i class="icon-calendar"></i>',
             'start_date' => 'today',
-            'end_date' => '31/12/2100',
+            'end_date' => '31-12-2100',
             'highlight_currentdate' => true,
         ));
     }
