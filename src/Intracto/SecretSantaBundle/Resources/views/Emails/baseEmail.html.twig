@@ -8,19 +8,14 @@
             body{
                 -webkit-text-size-adjust: none;
             }
-            .button {
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: #bd1019;
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 6px;
+
+            @media only screen and (max-width: 480px),
+            only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min-device-pixel-ratio: 1.5) {
+                table[class="button"] {width: 100% !important;}
+                table[class="button"] td[class="buttonTop"] {padding: 0 !important; font-size: 1.1em !important; }
+                table[class="button"] td[class="buttonTop"] a {padding: 1em 0 1em 0 !important; display: block !important; }
+                table[class="button"] td[class="buttonBottom"] {font-size: 1.2em !important; display: block !important; }
             }
         </style>
         <!--header-->
