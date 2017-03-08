@@ -8,12 +8,21 @@
             body{
                 -webkit-text-size-adjust: none;
             }
+
+            @media only screen and (max-width: 480px),
+            only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min-device-pixel-ratio: 1.5) {
+                table[class="button"] {width: 100% !important;}
+                table[class="button"] td[class="buttonTop"] {padding: 0 !important; font-size: 1.1em !important; }
+                table[class="button"] td[class="buttonTop"] a {padding: 1em 0 1em 0 !important; display: block !important; }
+                table[class="button"] td[class="buttonBottom"] {font-size: 1.2em !important; display: block !important; }
+            }
         </style>
         <!--header-->
         <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
             <tr>
                 <td width="640">
-                    <img src="http://www.eproof.be/assets/intracto/secret-santa/header.jpg" width="640" height="146" style="display:block;" border="0" />
+                    <img src="{{ absolute_url(asset('/bundles/intractosecretsanta/img/mail/header.jpg')) }}" width="640" height="146" style="display:block;" border="0" />
                 </td>
             </tr>
         </table>
@@ -24,12 +33,12 @@
         <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
             <tr>
                 <td width="640" height="82" colspan="3">
-                    <img src="http://www.eproof.be/assets/intracto/secret-santa/footer-top.jpg" width="640" height="82" style="display:block;" border="0" />
+                    <img src="{{ absolute_url(asset('/bundles/intractosecretsanta/img/mail/footer-top.jpg')) }}" width="640" height="82" style="display:block;" border="0" />
                 </td>
             </tr>
             <tr>
                 <td width="37" height="21">
-                    <img src="http://www.eproof.be/assets/intracto/secret-santa/left-middle-footer.jpg" width="37" height="21" style="display:block;" border="0" />
+                    <img src="{{ absolute_url(asset('/bundles/intractosecretsanta/img/mail/left-middle-footer.jpg')) }}" width="37" height="21" style="display:block;" border="0" />
                 </td>
                 <td width="331" height="21">
                     <span style="font-family: Arial, Helvetica, sans-serif;color:#6e7070;line-height: 21px;background-color:#ffffff;font-size:13px;">{{ 'emails-base_email.footer'|trans }}
@@ -37,7 +46,7 @@
                     <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer" style="color:#b3141c;font-family: Arial, Helvetica, sans-serif; line-height: 21px; background-color: #ffffff;font-size:13px;text-decoration: none">Intracto digital agency</a>
                 </td>
                 <td width="272" headers="36">
-                    <img src="http://www.eproof.be/assets/intracto/secret-santa/footer-right.jpg" width="272" height="36" style="display:block;" border="0" />
+                    <img src="{{ absolute_url(asset('/bundles/intractosecretsanta/img/mail/footer-right.jpg')) }}" width="272" height="36" style="display:block;" border="0" />
                 </td>
             </tr>
         </table>

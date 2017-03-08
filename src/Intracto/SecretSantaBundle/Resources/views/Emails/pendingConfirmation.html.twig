@@ -3,7 +3,6 @@
     <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
         <tr>
             <td width="37" align="left">
-                <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
@@ -21,60 +20,26 @@
                 </span>
                 <br /> <br />
                 <br />
-            </td>
-            <td width="37" align="right">
-                <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" width="37" style="display:block;" border="0" />
-            </td>
-        </tr>
-        <tr>
-            <td width="640" colspan="3">
-                <table border="0" cellpadding="0" cellspacing="0">
+                <table class="button">
                     <tr>
-                        <td width="52" height="45" valign="top">
-                            <img src="http://www.eproof.be/assets/intracto/secret-santa/left-btn.jpg" width="52" height="45" style="display:block;" border="0" />
+                        <td align="center" width="auto" bgcolor="#bd1019" style="padding-top: 14px; padding-right: 80px; padding-bottom: 14px; padding-left: 80px;
+                        background: #bd1019; -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+                        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
+                        font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
+
+                            <a href="{{ url('pool_manage', { 'listUrl': pool.listurl }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
+                             sans-serif; vertical-align: baseline;">{{ 'emails-pendingConfirmation.btn_validate'|trans }}</a>
+
                         </td>
-                        <td height="45" valign="top">
-                            <table border="0" cellpadding="0" cellspacing="0" height="45">
-                                <tr>
-                                    <td height="1" style="line-height: 1px;background-color: #ffffff" valign="top">
-                                        <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="1" style="line-height: 1px;background-color: #a9181b" valign="top">
-                                        <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="1" style="line-height: 1px;background-color: #ea1e35" valign="top">
-                                        <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" valign="middle" style="background-color:#bd1019;">
-                                        <a href="{{ url('pool_manage', { 'listUrl': pool.listurl }) }}" target="_blank" rel="noopener noreferrer" style="font-family: Arial, Helvetica, sans-serif;background-color:#bd1019;font-size:18px;color:#ffffff;text-decoration: none;display:block;line-height: 40px;height: 40px">
-                                            {{ 'emails-pendingConfirmation.btn_validate'|trans }}
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="1" style="line-height: 1px;background-color: #d31927" valign="top">
-                                        <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="1" style="line-height: 1px;background-color: #a91721" valign="top">
-                                        <img src="http://www.eproof.be/assets/intracto/secret-santa/x.gif" height="1" style="display:block;" border="0" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td width="59" height="45" valign="top">
-                            <img src="http://www.eproof.be/assets/intracto/secret-santa/right-btn.jpg" width="59" height="45" style="display:block;" border="0" />
-                        </td>
+                    </tr>
+                    <tr>
+                        <td width="auto" style="display: block; font-size: 16px;" class="buttonBottom">&nbsp;</td>
                     </tr>
                 </table>
             </td>
+            <td width="37" align="right">
+            </td>
         </tr>
+
     </table>
 {% endblock %}
