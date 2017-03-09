@@ -109,7 +109,7 @@ class Pool
 
     /**
      * @var \DateTime
-     * 
+     *
      * @ORM\Column(name="detailsupdated_time", type="datetime", nullable=true)
      */
     private $detailsUpdatedTime;

@@ -17,7 +17,7 @@ class PoolType extends AbstractType
     {
         $builder
             ->add('message', TextareaType::class)
-            ->add('entries',  CollectionType::class, [
+            ->add('entries', CollectionType::class, [
                 'entry_type' => EntryType::class,
                 'allow_add' => true,
                 'allow_delete' => true,

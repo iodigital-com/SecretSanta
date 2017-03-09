@@ -563,4 +563,3 @@ class Entry
         $this->wishlistUpdatedTime = $wishlistUpdatedTime;
     }
 }
-

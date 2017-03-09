@@ -35,7 +35,7 @@ class PoolController extends Controller
     public function createdAction($listUrl)
     {
         $pool = $this->getPool($listUrl);
-        if (! $pool->getCreated()) {
+        if (!$pool->getCreated()) {
             return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $pool->getListurl()]));
         }
 

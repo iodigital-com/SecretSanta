@@ -68,7 +68,7 @@ class PoolContext extends MinkContext
         $i = 0;
         while ($i < $this->memberCount) {
             //TODO: use faker to get random input
-            $this->participants[] = ['name' => 'test' . $i, 'email' => 'test'.$i.'@test.com'];
+            $this->participants[] = ['name' => 'test'.$i, 'email' => 'test'.$i.'@test.com'];
 
             ++$i;
         }
@@ -89,7 +89,7 @@ class PoolContext extends MinkContext
     public function setAmount()
     {
         //TODO: replace with faker generated value
-        $this->amount = rand(10, 100) . ' Euro';
+        $this->amount = rand(10, 100).' Euro';
     }
 
     /**

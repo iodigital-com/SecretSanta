@@ -8,5 +8,4 @@ return PhpCsFixer\Config::create()
     ->setRules(array(
         '@Symfony' => true
     ))
-    ->setFinder($finder)
-    ;
+    ->setFinder($finder);

@@ -19,7 +19,7 @@ class PoolHasValidExcludesValidator extends ConstraintValidator
 
     public function validate($pool, Constraint $constraint)
     {
-        /**
+        /*
          * @var Pool
          */
         if (!$this->entryShuffler->shuffleEntries($pool)) {

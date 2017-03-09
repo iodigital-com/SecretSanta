@@ -16,12 +16,12 @@ class EntryType extends AbstractType
             ->add(
                 'name',
                 TextType::class,
-                [ 'attr' => ['data-hj-masked' => ''] ]
+                ['attr' => ['data-hj-masked' => '']]
             )
             ->add(
                 'email',
                 TextType::class,
-                [ 'attr' => ['data-hj-masked' => ''] ]
+                ['attr' => ['data-hj-masked' => '']]
             )
         ;
     }
