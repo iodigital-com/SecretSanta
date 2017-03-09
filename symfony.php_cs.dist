@@ -1,0 +1,12 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in('src/Intracto')
+    ->exclude('web');
+
+return PhpCsFixer\Config::create()
+    ->setRules(array(
+        '@Symfony' => true
+    ))
+    ->setFinder($finder)
+    ;
