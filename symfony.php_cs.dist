@@ -5,7 +5,9 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('web');
 
 return PhpCsFixer\Config::create()
-    ->setRules(array(
-        '@Symfony' => true
-    ))
+    ->setRules(
+        [
+            '@Symfony' => true,
+        ]
+    )
     ->setFinder($finder);
