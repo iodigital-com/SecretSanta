@@ -17,14 +17,14 @@ class MailerService
     public $em;
     /** @var EngineInterface */
     public $templating;
-    /** @var  TranslatorInterface */
+    /** @var TranslatorInterface */
     public $translator;
     /** @var \Symfony\Bundle\FrameworkBundle\Routing\Router */
     public $routing;
     public $noreplyEmail;
 
     /**
-     * @param \Swift_Mailer       $mailer a regular SMTP mailer, bad monitoring, cheap
+     * @param \Swift_Mailer       $mailer     a regular SMTP mailer, bad monitoring, cheap
      * @param EntityManager       $em
      * @param EngineInterface     $templating
      * @param TranslatorInterface $translator
@@ -61,13 +61,13 @@ class MailerService
             ->setBody(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:pendingConfirmation.txt.twig',
-                    [ 'pool' => $pool ]
+                    ['pool' => $pool]
                 )
             )
             ->addPart(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:pendingConfirmation.html.twig',
-                    [ 'pool' => $pool ]
+                    ['pool' => $pool]
                 ),
                 'text/html'
             );
@@ -173,7 +173,6 @@ class MailerService
                 'text/html'
             )
             ->addPart(
-
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:forgotlink.txt.twig',
                     [

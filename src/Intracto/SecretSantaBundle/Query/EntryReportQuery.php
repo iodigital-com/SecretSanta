@@ -93,7 +93,7 @@ class EntryReportQuery
         $entryChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
-            $firstDay = \DateTime::createFromFormat('Y-m-d', $year .'-04-01')->format('Y-m-d H:i:s');
+            $firstDay = \DateTime::createFromFormat('Y-m-d', $year.'-04-01')->format('Y-m-d H:i:s');
             $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()
@@ -334,19 +334,19 @@ class EntryReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
-        $handle = fopen('/tmp/' . date('Y-m-d-H.i.s') . '_admins.csv', 'w+');
+        $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
-        $stmt = $this->dbal->executeQuery("
+        $stmt = $this->dbal->executeQuery('
             SELECT e.name, e.email, e.poolId, p.locale
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
             AND p.sentdate < :lastDay
             AND e.poolAdmin = 1
-            GROUP BY e.name, e.email, e.poolId",
+            GROUP BY e.name, e.email, e.poolId',
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s')
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
             ]
         );
 
@@ -373,19 +373,19 @@ class EntryReportQuery
      */
     public function fetchParticipantEmailsForExport(Season $season)
     {
-        $handle = fopen('/tmp/' . date('Y-m-d-H.i.s') . '_participants.csv', 'w+');
+        $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
 
-        $stmt = $this->dbal->executeQuery("
+        $stmt = $this->dbal->executeQuery('
             SELECT e.name, e.email, e.poolId, p.locale
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
             AND p.sentdate < :lastDay
             AND e.poolAdmin = 0
-            GROUP BY e.name, e.email, e.poolId",
+            GROUP BY e.name, e.email, e.poolId',
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s')
+                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
             ]
         );
 

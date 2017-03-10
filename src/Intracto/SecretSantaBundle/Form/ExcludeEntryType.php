@@ -40,7 +40,6 @@ class ExcludeEntryType extends AbstractType
                 },
                 'required' => false,
             ]);
-
         });
     }
 

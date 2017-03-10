@@ -44,7 +44,7 @@ class SendEmptyWishlistReminderCommand extends ContainerAwareCommand
 
                 if ($itemCount[0]['wishlistItemCount'] == 0) {
                     $mailerService->sendWishlistReminderMail($entry);
-    
+
                     $entry->setEmptyWishlistReminderSentTime($timeNow);
                     $em->persist($entry);
                 }

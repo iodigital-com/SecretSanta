@@ -84,7 +84,7 @@ class PoolReportQuery
         $poolChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
-            $firstDay = \DateTime::createFromFormat('Y-m-d', $year .'-04-01')->format('Y-m-d H:i:s');
+            $firstDay = \DateTime::createFromFormat('Y-m-d', $year.'-04-01')->format('Y-m-d H:i:s');
             $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()

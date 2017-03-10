@@ -6,7 +6,6 @@ use SensioLabs\Behat\PageObjectExtension\PageObject\Page;
 
 class ParticipantExclude extends Page
 {
-
     public function hasExcludeHeader()
     {
         $element = $this->find('css', '.box > h1');

@@ -40,7 +40,7 @@ class SendEntryViewReminderCommand extends ContainerAwareCommand
         try {
             foreach ($needsViewReminder as $entry) {
                 $mailerService->sendEntryViewReminderMail($entry);
-    
+
                 $entry->setViewReminderSentTime($timeNow);
                 $em->persist($entry);
             }

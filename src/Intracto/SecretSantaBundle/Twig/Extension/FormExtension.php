@@ -38,7 +38,7 @@ class FormExtension extends \Twig_Extension
     }
 
     /**
-     * Render Function Form Javascript
+     * Render Function Form Javascript.
      *
      * @param FormView $view
      * @param bool     $prototype

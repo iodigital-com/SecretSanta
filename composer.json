@@ -22,7 +22,8 @@
         "jms/i18n-routing-bundle": "^2.0",
         "egulias/email-validator": "~1.2",
         "google/apiclient": "^1.1",
-        "swiftmailer/swiftmailer": "dev-utf8_email_fix as 5.4.2"
+        "swiftmailer/swiftmailer": "dev-utf8_email_fix as 5.4.2",
+        "friendsofphp/php-cs-fixer": "^2.1"
     },
     "require-dev": {
         "phpro/grumphp": "^0.8.0",

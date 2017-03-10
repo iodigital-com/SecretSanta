@@ -1,5 +1,5 @@
 parameters:
-    bin_dir: "./bin/vendor"
+    bin_dir: "./bin"
     git_dir: "."
     stop_on_failure: false
     ignore_unstaged_commits: false
@@ -8,5 +8,7 @@ parameters:
             matchers:
                 - /#([0-9]*)/
             case_insensitive: true
+        phpunit:
+            config_file: app
         phpcsfixer:
-            level: symfony
+            config: symfony.php_cs.dist

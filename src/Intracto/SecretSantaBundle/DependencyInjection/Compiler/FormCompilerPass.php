@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * FormCompilerPass
+ * FormCompilerPass.
  *
  * Adds new twig.form.resources
  */
@@ -25,7 +25,7 @@ class FormCompilerPass implements CompilerPassInterface
         $resources = $container->getParameter('twig.form.resources');
 
         foreach ($this->templates as $template) {
-            $resources[] = 'IntractoSecretSantaBundle:Form:' . $template . '_layout.html.twig';
+            $resources[] = 'IntractoSecretSantaBundle:Form:'.$template.'_layout.html.twig';
         }
 
         $container->setParameter('twig.form.resources', $resources);

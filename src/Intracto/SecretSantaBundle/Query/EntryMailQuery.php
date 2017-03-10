@@ -7,7 +7,7 @@ use Intracto\SecretSantaBundle\Entity\Entry;
 
 class EntryMailQuery
 {
-    /** @var  EntityManager */
+    /** @var EntityManager */
     private $em;
 
     /**
