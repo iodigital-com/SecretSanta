@@ -154,6 +154,9 @@ entry_show:
         amount: Количество
         num_people: Количество людей
         person_created_list: Автор списка
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Ваш получатель подарка
         body: >
@@ -197,6 +200,33 @@ pool_manage:
 #        location: ?
         amount: Количество
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Удалить мой список Тайного Санты
+
+    delete:
+        title: Удалить мой список Тайного Санты
+        body: >
+            <p>
+                Вы АБСОЛЮТНО уверены?<br>
+                <br>
+                <b>Если вы не прочтете настоящее сообщение, могут произойти неприятные неожиданности!</b><br>
+                <br>
+                Как только вы удалите ваш список Тайного Санты, пути назад не будет. Это действие НЕЛЬЗЯ отменить.<br>
+                Это действие навсегда удалит этот список Тайного Санты, всех участников из него, а также их списки желаний.<br>
+                <br>
+                Пожалуйста, введите "<b>%phrase_to_type%</b>" ниже для подтверждения.<br>
+            </p>
+        phrase_to_type: удалить все
+
+    btn:
+        cancel: Отменить
+        delete_confirm: Я понимаю последствия, удалите сейчас мой список Тайного Санты
+        delete_list: Удалить мой список Тайного Санты
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Ваш список Тайного Санты
         yes: Да
@@ -401,6 +431,7 @@ flashes:
 #        updated_party:
 #            success: ?
 #            danger: ?
+#       expired:
 
     # PoolController
     pool:
@@ -427,3 +458,4 @@ flashes:
 #            excluded_entries: ?
 #            self_assigned: ?
 #            wrong: ?
+#       expired:

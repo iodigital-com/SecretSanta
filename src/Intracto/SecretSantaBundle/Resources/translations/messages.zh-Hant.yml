@@ -149,6 +149,9 @@ entry_show:
         amount: 數量
         num_people: 人數
         person_created_list: 名單創作人
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: 你指定的朋友
         body: >
@@ -192,6 +195,34 @@ pool_manage:
 #        location: ?
         amount: 數量
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: 刪除我的秘密聖誕老人目錄
+
+    delete:
+        title: 刪除我的秘密聖誕老人目錄
+        body: >
+            <p>
+                你是否絕對肯定?<br>
+                <br>
+                <b>如果你不閱讀這個， 想不到的壞事情將會發生！</b><br>
+                <br>
+                當你刪除你的秘密聖誕老人目錄後，這是不能回頭的。這動作是不能解開的。<br>
+                這將會刪除秘密聖誕老人目錄，而所有參與者及他們的願目錄也會永久刪除。<br>
+                <br>
+                請輸入下方"<b>%phrase_to_type%</b>"去確認。<br>
+            </p>
+        phrase_to_type: 刪除所有東西
+
+    btn:
+        cancel: 取消
+        delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
+        delete_list: 刪除我的秘密聖誕老人名單
+
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: 你的秘密聖誕老人目錄
         yes: 是
@@ -396,6 +427,7 @@ flashes:
 #        updated_party:
 #            success: ?
 #            danger: ?
+#       expired:
 
     # PoolController
     pool:
@@ -422,3 +454,4 @@ flashes:
 #            excluded_entries: ?
 #            self_assigned: ?
 #            wrong: ?
+#       expired:

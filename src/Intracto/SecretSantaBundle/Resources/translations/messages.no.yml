@@ -227,6 +227,9 @@ entry_show:
         amount: Beløp
         num_people: Antall personer
         person_created_list: Administrator
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Du har fått tildelt følgende nisse
         body: >
@@ -270,6 +273,33 @@ pool_manage:
         location: Sted
         amount: Beløp
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Slett min Secret Santa-liste
+
+    delete:
+        title: Slett min Secret Santa-liste
+        body: >
+            <p>
+                Er du HELT sikker?<br>
+                <br>
+                <b>Uforutsette, forferdelige ting skjer hvis du ikke leser dette!</b><br>
+                <br>
+                Så snart du har slettet din Secret Santa-liste kan du ikke ombestemme deg. Denne handlingen kan IKKE omgjøres.<br>
+                Dette vil permanent slette din Secret Santa-liste, alle deltagerne og deres ønskelister.<br>
+                <br>
+                Vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
+            </p>
+        phrase_to_type: slett alt
+
+    btn:
+        cancel: Avbryt
+        delete_confirm: Jeg har forstått konsekvensene, slett min liste
+        delete_list: Slett min Secret Santa-liste
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Din Secret Santa-liste
         yes: Ja
@@ -543,6 +573,7 @@ flashes:
         updated_party:
             success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
             danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
+#       expired:
 
     # PoolController
     pool:
@@ -569,3 +600,4 @@ flashes:
             excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
             self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
             wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
+#       expired:

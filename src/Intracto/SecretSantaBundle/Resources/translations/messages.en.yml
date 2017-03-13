@@ -218,7 +218,6 @@ entry-expose_all:
     giving: This member is giving ...
     receiving: ... a gift to this member
 
-
 # Entry/show.html.twig
 entry_show:
     headers:
@@ -228,6 +227,9 @@ entry_show:
         amount: Amount
         num_people: Number of people
         person_created_list: Person who created this list
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Your assigned buddy
         body: >
@@ -271,6 +273,33 @@ pool_manage:
         location: Location
         amount: Amount
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Delete my Secret Santa list
+
+    delete:
+        title: Delete my Secret Santa list
+        body: >
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                <b>Unexpected bad things will happen if you don't read this!</b><br>
+                <br>
+                Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
+                This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
+                <br>
+                Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            </p>
+        phrase_to_type: delete everything
+
+    btn:
+        cancel: Cancel
+        delete_confirm: I understand the consequences, delete my Secret Santa list now
+        delete_list: Delete my Secret Santa list
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Your Secret Santa list
         yes: Yes
@@ -547,6 +576,7 @@ flashes:
         updated_party:
             success: <h4>Updated!</h4> Your party details have been succesfully updated.
             danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
+        expired: <strong>Oops</strong><br/>Your event is older than 2 years and can't be eddited anymore.<br/>
 
     # PoolController
     pool:
@@ -573,3 +603,4 @@ flashes:
             excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
             self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
             wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
+        expired: <strong>Oops</strong><br/>The event is older than 2 years and isn't available anymore.<br/>

@@ -155,6 +155,9 @@ entry_show:
         amount: Cantidad
         num_people: Número de personas
         person_created_list: Persona que creó esta lista
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Tu amigo asignado
         body: >
@@ -198,6 +201,33 @@ pool_manage:
         location: Sitio
         amount: Cantidad
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Borrar mi lista Secret Santa
+
+    delete:
+        title: Borrar mi lista Secret Santa
+        body: >
+            <p>
+                ¿Estás COMPLETAMENTE seguro?<br>
+                <br>
+                <b>¡Cosas malas inesperadas sucederán si no lees esto!</b><br>
+                <br>
+                Una vez hayas borrada tu lista Secret Santa, no hay vuelta atrás. Esta acción NO puede deshacerse.<br>
+                Esto borrará esta lista Secret Santa, todos sus participantes y sus listas de deseos permanentemente.<br>
+                <br>
+                Por favor escribe "<b>%phrase_to_type%</b>" debajo para confirmar.<br>
+            </p>
+        phrase_to_type: borrar todo
+
+    btn:
+        cancel: Cancelar
+        delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
+        delete_list: Borrar mi lista Secret Santa
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Tu lista Secret Santa
         yes: Sí
@@ -474,6 +504,7 @@ flashes:
         updated_party:
             success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
             danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
+#       expired:
 
     # PoolController
     pool:
@@ -500,3 +531,4 @@ flashes:
             excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
 #            self_assigned: ?
             wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
+#       expired:

@@ -157,6 +157,9 @@ entry_show:
         amount: Betrag
         num_people: Anzahl Teilnehmer
         person_created_list: Person, die die Liste erstellt hat
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Der Ihnen zugeordnete Partner
         body: >
@@ -200,6 +203,33 @@ pool_manage:
         location: Platz
         amount: Betrag
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Meine Secret Santa-Liste löschen
+
+    delete:
+        title: Meine Secret Santa-Liste löschen
+        body: >
+            <p>
+                Sind Sie WIRKLICH sicher?<br>
+                <br>
+                <b>Unerwartete negative Dinge werden passieren, wenn Sie dies nicht lesen!</b><br>
+                <br>
+                Es gibt kein Zurück mehr, sobald Sie Ihre Secret Santa-Liste gelöscht haben. Dieser Schritt kann nicht rückgängig gemacht werden.<br>
+                Dies löscht Ihre Secret Santa-Liste, alle Teilnehmer und deren Wunschzettel dauerhaft.<br>
+                <br>
+                Bitte geben Sie unten "<b>%phrase_to_type%</b>" ein, um zu bestätigen.<br>
+            </p>
+        phrase_to_type: alles löschen
+
+    btn:
+        cancel: Löschen
+        delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
+        delete_list: Meine Secret Santa-Liste löschen
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Ihre Secret Santa-Liste
         yes: Ja
