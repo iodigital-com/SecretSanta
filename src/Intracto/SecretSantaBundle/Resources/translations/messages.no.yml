@@ -228,6 +228,11 @@ entry_show:
         num_people: Antall personer
         person_created_list: Administrator
 
+# Entry/expired.html.twig
+entry_expired:
+    message:
+#        expired:
+
 # Entry/valid.html.twig
 entry_valid:
     entry:
@@ -297,6 +302,9 @@ pool_expired:
         cancel: Avbryt
         delete_confirm: Jeg har forstått konsekvensene, slett min liste
         delete_list: Slett min Secret Santa-liste
+
+    message:
+#        expired:
 
 # Pool/valid.html.twig
 pool_valid:
@@ -573,7 +581,6 @@ flashes:
         updated_party:
             success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
             danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
-#       expired:
 
     # PoolController
     pool:
@@ -600,4 +607,3 @@ flashes:
             excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
             self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
             wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
-#       expired:

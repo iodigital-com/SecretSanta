@@ -226,6 +226,11 @@ entry_show:
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
 
+# Entry/expired.html.twig
+entry_expired:
+    message:
+        expired: <strong>Oops</strong><br/>Het evenement is ouder dan 2 jaar en is niet meer beschikbaar.<br/>
+
 # Entry/valid.html.twig
 entry_valid:
     entry:
@@ -296,6 +301,9 @@ pool_expired:
         cancel: Annuleren
         delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
         delete_list: Verwijder mijn Secret Santa lijst
+
+    message:
+        expired: <strong>Oops</strong><br/>Je evenement is ouder dan 2 jaar en is niet meer beschikbaar.<br/>
 
 # Pool/valid.html.twig
 pool_valid:
@@ -576,7 +584,6 @@ flashes:
         updated_party:
             success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
             danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
-        expired: <strong>Oops</strong><br/>Je evenement is ouder dan 2 jaar en kan niet meer worden aangepast.<br/>
 
     # PoolController
     pool:
@@ -603,4 +610,3 @@ flashes:
             excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
 #            self_assigned: ?
             wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
-        expired: <strong>Oops</strong><br/>Het evenement is ouder dan 2 jaar en is niet meer beschikbaar.<br/>

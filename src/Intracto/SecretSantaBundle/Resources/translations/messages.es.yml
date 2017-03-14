@@ -156,6 +156,11 @@ entry_show:
         num_people: Número de personas
         person_created_list: Persona que creó esta lista
 
+# Entry/expired.html.twig
+entry_expired:
+    message:
+#        expired:
+
 # Entry/valid.html.twig
 entry_valid:
     entry:
@@ -225,6 +230,9 @@ pool_expired:
         cancel: Cancelar
         delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
         delete_list: Borrar mi lista Secret Santa
+
+    message:
+#        expired:
 
 # Pool/valid.html.twig
 pool_valid:
@@ -504,7 +512,6 @@ flashes:
         updated_party:
             success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
             danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
-#       expired:
 
     # PoolController
     pool:
@@ -531,4 +538,3 @@ flashes:
             excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
 #            self_assigned: ?
             wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
-#       expired:

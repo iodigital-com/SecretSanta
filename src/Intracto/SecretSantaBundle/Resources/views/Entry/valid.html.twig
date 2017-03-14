@@ -81,8 +81,6 @@
 
         <h1>{{ 'entry_valid.wishlist.title'|trans }}</h1>
 
-        <p>
-
         <div class="description">{{ 'entry_valid.wishlist.description'|trans|raw }}</div>
 
         <div class="box ajax-response">
@@ -99,7 +97,6 @@
                 <div>{{ 'entry_valid.flashes.wishlist.removed'|trans|raw }}</div>
             </div>
         </div>
-        <p>
             {{ form_start(form, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
             {{ form_row(form._token) }}
         <table class="entries table table-striped">
@@ -143,7 +140,7 @@
         </table>
 
         {{ form_end(form, {'render_rest': false}) }}
-        </p>
+
     </div>
 
     <div class="row text-center">
@@ -178,9 +175,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts
-    '@IntractoSecretSantaBundle/Resources/public/js/wishlist.min.js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% javascripts '@IntractoSecretSantaBundle/Resources/public/js/wishlist.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ form_javascript(form) }}
 {% endblock %}

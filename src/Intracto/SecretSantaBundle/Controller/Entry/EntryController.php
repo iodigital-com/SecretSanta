@@ -20,7 +20,7 @@ class EntryController extends Controller
      * @Route("/entry/{url}", name="entry_view")
      * @Template("IntractoSecretSantaBundle:Entry:valid.html.twig")
      */
-    public function showAction(Request $request, $url)
+    public function validAction(Request $request, $url)
     {
         $entry = $this->get('entry_repository')->findOneByUrl($url);
         if ($entry === null) {
@@ -107,11 +107,7 @@ class EntryController extends Controller
         $eventDate = date_format($entry->getPool()->getEventdate(), 'Y-m-d');
         $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
 
-        if (date_format($entry->getPool()->getEventdate(), 'Y-m-d') < date('Y-m-d', strtotime('-2 year'))) {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.entry.expired')
-            );
+        if ($entry->getPool()->getEventdate() < new \DateTime('-2 years')){
             return $this->render('IntractoSecretSantaBundle:Entry:expired.html.twig', [
                 'entry' => $entry,
             ]);

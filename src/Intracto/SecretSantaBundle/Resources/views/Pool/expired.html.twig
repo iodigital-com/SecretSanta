@@ -1,11 +1,15 @@
 {% extends "IntractoSecretSantaBundle:Pool:manage.html.twig" %}
 
 {% block main %}
+    <div class="alert alert-danger" role="alert">
+        {{ 'pool_expired.message.expired' | trans | raw }}
+    </div>
     <div class="box">
         <h1>{{ 'pool_expired.manage.title'|trans }}</h1>
 
-        <button id="btn_delete" class="btn btn-primary manage_btn"><i
-                    class="fa fa-exclamation-circle"></i> {{ 'pool_expired.btn.delete_list'|trans }}</button>
+        <button id="btn_delete" class="btn btn-primary manage_btn">
+            <i class="fa fa-exclamation-circle"></i> {{ 'pool_expired.btn.delete_list'|trans }}
+        </button>
 
         <br/><br/>
         <div id="delete-warning" class="alert alert-danger" style="display: none;">
@@ -28,7 +32,6 @@
             </form>
         </div>
 
-        </div>
     </div>
 {% endblock %}
 
@@ -45,8 +48,6 @@
                 $('#delete-warning').hide();
                 $('#btn_delete').attr('disabled', false).focus();
             });
-
         });
-
     </script>
 {% endblock %}

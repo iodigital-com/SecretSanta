@@ -1,6 +1,9 @@
 {% extends "IntractoSecretSantaBundle:Entry:show.html.twig" %}
 
 {% block main %}
+    <div class="alert alert-danger" role="alert">
+        {{ 'entry_expired.message.expired' | trans | raw }}
+    </div>
     <div class="box">
         <div class="row text-center">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

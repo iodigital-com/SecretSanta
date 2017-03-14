@@ -150,6 +150,11 @@ entry_show:
         num_people: 人數
         person_created_list: 名單創作人
 
+# Entry/expired.html.twig
+entry_expired:
+    message:
+#        expired:
+
 # Entry/valid.html.twig
 entry_valid:
     entry:
@@ -220,6 +225,8 @@ pool_expired:
         delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
         delete_list: 刪除我的秘密聖誕老人名單
 
+    message:
+#        expired:
 
 # Pool/valid.html.twig
 pool_valid:
@@ -427,7 +434,6 @@ flashes:
 #        updated_party:
 #            success: ?
 #            danger: ?
-#       expired:
 
     # PoolController
     pool:
@@ -454,4 +460,3 @@ flashes:
 #            excluded_entries: ?
 #            self_assigned: ?
 #            wrong: ?
-#       expired:
