@@ -332,12 +332,12 @@ class EntryReportQuery
      *
      * @return mixed
      */
-    public function fetchAdminEmailsForExport(Season $season)
+    public function fetchAdminEmailsForExport(Season $season, $url)
     {
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.poolId, p.locale
+            SELECT e.name, e.email, e.poolId, p.locale, p.listUrl
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
@@ -351,6 +351,7 @@ class EntryReportQuery
         );
 
         while ($row = $stmt->fetch()) {
+            $reuseurl = $url.$row['listUrl'];
             fputcsv(
                 $handle,
                 [
@@ -358,6 +359,7 @@ class EntryReportQuery
                     $row['email'],
                     $row['poolId'],
                     $row['locale'],
+                    $reuseurl,
                 ],
                 ','
             );
