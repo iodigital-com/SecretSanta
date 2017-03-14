@@ -27,17 +27,10 @@ class ExportMailsCommand extends ContainerAwareCommand
         $lastSeason = date('Y', strtotime('-1 year'));
         $season = new Season($lastSeason);
         $userType = $input->getArgument('userType');
-        $router = $this->getContainer()->get('router');
-        $url = $router->generate(
-            'pool_reuse',
-            ['listUrl' => '1'],
-            true
-        );
-        $url = substr($url, 0, -1);
 
         switch ($userType) {
             case 'admin':
-                $entryService->fetchAdminEmailsForExport($season, $url);
+                $entryService->fetchAdminEmailsForExport($season);
                 $output->writeln("Last season's admin emails exported to /tmp");
 
                 break;
@@ -46,7 +39,7 @@ class ExportMailsCommand extends ContainerAwareCommand
                 $output->writeln("Last season's participant emails exported to /tmp");
                 break;
             default:
-                $entryService->fetchAdminEmailsForExport($season, $url);
+                $entryService->fetchAdminEmailsForExport($season);
                 $entryService->fetchParticipantEmailsForExport($season);
                 $output->writeln('All emails exported to /tmp');
                 break;

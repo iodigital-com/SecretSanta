@@ -17,6 +17,7 @@
         </service>
         <service id="intracto_secret_santa.entry" class="Intracto\SecretSantaBundle\Query\EntryReportQuery">
             <argument type="service" id="database_connection"></argument>
+            <argument type="service" id="router"></argument>
             <argument type="service" id="intracto_secret_santa.pool"></argument>
             <argument type="service" id="intracto_secret_santa.featured_years"></argument>
         </service>
