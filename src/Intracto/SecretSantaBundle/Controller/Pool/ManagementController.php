@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Form\AddEntryType;
-use Intracto\SecretSantaBundle\Entity\Pool;
 use Intracto\SecretSantaBundle\Entity\Entry;
 use Intracto\SecretSantaBundle\Form\UpdatePoolDetailsType;
 
