@@ -97,8 +97,10 @@
                 <div>{{ 'entry_valid.flashes.wishlist.removed'|trans|raw }}</div>
             </div>
         </div>
-            {{ form_start(form, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
-            {{ form_row(form._token) }}
+
+        {{ form_start(form, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
+        {{ form_row(form._token) }}
+
         <table class="entries table table-striped">
             <thead>
             <tr>
