@@ -140,8 +140,8 @@ helper-prototype_wishlist:
 #    giving: ?
 #    receiving: ?
 
-# Entry/show.html.twig
-entry_show:
+# Entry/show/base.html.twig
+entry_show_base:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
         date: 日期
@@ -150,13 +150,13 @@ entry_show:
         num_people: 人數
         person_created_list: 名單創作人
 
-# Entry/expired.html.twig
-entry_expired:
-    message:
+# Entry/show/expired.html.twig
+#entry_show_expired:
+#    message:
 #        expired:
 
-# Entry/valid.html.twig
-entry_valid:
+# Entry/show/valid.html.twig
+entry_show_valid:
     entry:
         title: 你指定的朋友
         body: >
@@ -192,16 +192,16 @@ entry_valid:
 #        update_item: ?
         remove_item: 刪除這項目
 
-# Pool/manage.html.twig
-pool_manage:
+# Pool/manage/base.html.twig
+pool_manage_base:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
         date: 日期
 #        location: ?
         amount: 數量
 
-# Pool/expired.html.twig
-pool_expired:
+# Pool/manage/expired.html.twig
+pool_manage_expired:
     manage:
         title: 刪除我的秘密聖誕老人目錄
 
@@ -228,8 +228,8 @@ pool_expired:
     message:
 #        expired:
 
-# Pool/valid.html.twig
-pool_valid:
+# Pool/manage/valid.html.twig
+pool_manage_valid:
     manage:
         title: 你的秘密聖誕老人目錄
         yes: 是

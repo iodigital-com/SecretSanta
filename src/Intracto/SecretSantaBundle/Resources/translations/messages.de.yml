@@ -148,8 +148,8 @@ entry-expose_all:
     giving: Dieses Mitglied gibt....
     receiving: ... diesem Mitglied ein Geschenk
 
-# Entry/show.html.twig
-entry_show:
+# Entry/show/base.html.twig
+entry_show_base:
     headers:
         title: Ihre <span class="accent">Secret Santa-Party</span> Details
         date: Datum
@@ -158,8 +158,13 @@ entry_show:
         num_people: Anzahl Teilnehmer
         person_created_list: Person, die die Liste erstellt hat
 
-# Entry/valid.html.twig
-entry_valid:
+# Entry/show/expired.html.twig
+#entry_show_expired:
+#    message:
+#        expired:
+
+# Entry/show/valid.html.twig
+entry_show_valid:
     entry:
         title: Der Ihnen zugeordnete Partner
         body: >
@@ -195,16 +200,16 @@ entry_valid:
 #        update_item: ?
         remove_item: Diesen Gegenstand entfernen
 
-# Pool/manage.html.twig
-pool_manage:
+# Pool/manage/base.html.twig
+pool_manage_base:
     headers:
         title: Ihre <span class="accent">Secret Santa-Party</span> Details
         date: Datum
         location: Platz
         amount: Betrag
 
-# Pool/expired.html.twig
-pool_expired:
+# Pool/manage/expired.html.twig
+pool_manage_expired:
     manage:
         title: Meine Secret Santa-Liste löschen
 
@@ -228,8 +233,8 @@ pool_expired:
         delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
         delete_list: Meine Secret Santa-Liste löschen
 
-# Pool/valid.html.twig
-pool_valid:
+# Pool/manage/valid.html.twig
+pool_manage_valid:
     manage:
         title: Ihre Secret Santa-Liste
         yes: Ja

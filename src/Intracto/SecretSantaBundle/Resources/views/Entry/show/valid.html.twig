@@ -16,24 +16,24 @@
     <div class="box">
         <div class="row">
             <div class="span8">
-                <h1>{{ 'entry_valid.entry.title'|trans }}</h1>
+                <h1>{{ 'entry_show_valid.entry.title'|trans }}</h1>
 
-                {{ 'entry_valid.entry.body'|trans({'%name%': entry.name})|raw }}
+                {{ 'entry_show_valid.entry.body'|trans({'%name%': entry.name})|raw }}
 
                 <div class="yoursecretsant" data-hj-masked>
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
                 </div>
 
                 <div class="alert alert-warning">
-                    <strong>{{ 'entry_valid.entry.watch_out'|trans }}</strong> {{ 'entry_valid.entry.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
+                    <strong>{{ 'entry_show_valid.entry.watch_out'|trans }}</strong> {{ 'entry_show_valid.entry.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
                 </div>
 
                 <div class="well bottom-spacer">
-                    <h4 data-hj-masked>{{ 'entry_valid.entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
+                    <h4 data-hj-masked>{{ 'entry_show_valid.entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
                     {% if(secret_santa.wishlistitems|length == 0) %}
-                        {{ 'entry_valid.entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
-                        <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'entry_valid.poke.poke'|trans }}</a>
-                        {{ 'entry_valid.poke.poke_sentence'|trans|raw }}
+                        {{ 'entry_show_valid.entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
+                        <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'entry_show_valid.poke.poke'|trans }}</a>
+                        {{ 'entry_show_valid.poke.poke_sentence'|trans|raw }}
                     {% else %}
                         <ul class="wishlist">
                             {% for item in secret_santa.wishlistitems %}
@@ -43,7 +43,7 @@
                     {% endif %}
                     <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20"
                               target="_blank"
-                              rel="noopener noreferrer">{{ 'entry_valid.buy_from_amazon'|trans }}</a></b>
+                              rel="noopener noreferrer">{{ 'entry_show_valid.buy_from_amazon'|trans }}</a></b>
                 </div>
             </div>
         </div>
@@ -79,22 +79,22 @@
             </div>
         </div>
 
-        <h1>{{ 'entry_valid.wishlist.title'|trans }}</h1>
+        <h1>{{ 'entry_show_valid.wishlist.title'|trans }}</h1>
 
-        <div class="description">{{ 'entry_valid.wishlist.description'|trans|raw }}</div>
+        <div class="description">{{ 'entry_show_valid.wishlist.description'|trans|raw }}</div>
 
         <div class="box ajax-response">
             <div class="alert alert-warning empty" style="display:none;">
-                <div>{{ 'entry_valid.flashes.wishlist.empty_row'|trans|raw }}</div>
+                <div>{{ 'entry_show_valid.flashes.wishlist.empty_row'|trans|raw }}</div>
             </div>
             <div class="alert alert-success added" style="display:none;">
-                <div>{{ 'entry_valid.flashes.wishlist.added'|trans|raw }}</div>
+                <div>{{ 'entry_show_valid.flashes.wishlist.added'|trans|raw }}</div>
             </div>
             <div class="alert alert-success updated" style="display:none;">
-                <div>{{ 'entry_valid.flashes.wishlist.updated'|trans|raw }}</div>
+                <div>{{ 'entry_show_valid.flashes.wishlist.updated'|trans|raw }}</div>
             </div>
             <div class="alert alert-success removed" style="display:none;">
-                <div>{{ 'entry_valid.flashes.wishlist.removed'|trans|raw }}</div>
+                <div>{{ 'entry_show_valid.flashes.wishlist.removed'|trans|raw }}</div>
             </div>
         </div>
 
@@ -105,11 +105,11 @@
             <thead>
             <tr>
                 <th class="col-xs-1 entry-number-header">#</th>
-                <th class="col-xs-7 col-sm-6">{{ 'entry_valid.label.description'|trans }}</th>
+                <th class="col-xs-7 col-sm-6">{{ 'entry_show_valid.label.description'|trans }}</th>
                 <th style="text-align: right;" class="col-xs-4 col-sm-5">
                     <button type="button" class="btn btn-mini btn-success add-new-entry">
                         <i class="fa fa-plus-circle"></i> <span
-                                class="text_remove_wishlist">{{ 'entry_valid.btn.add_wishlist'|trans }}</span>
+                                class="text_remove_wishlist">{{ 'entry_show_valid.btn.add_wishlist'|trans }}</span>
                     </button>
                 </th>
             </tr>
@@ -117,7 +117,7 @@
             <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
             {% if form.wishlistItems |length == 0 %}
                 <tr class="noitems">
-                    <td colspan="3">{{ 'entry_valid.wishlist.empty'|trans }}</td>
+                    <td colspan="3">{{ 'entry_show_valid.wishlist.empty'|trans }}</td>
                 </tr>
             {% else %}
                 {% for item in form.wishlistItems %}
@@ -128,11 +128,11 @@
                         <td style="text-align: right;">
                             <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
                                 <i class="fa fa-check-circle"></i> <span
-                                        class="text_remove_wishlist">{{ 'entry_valid.btn.update_item'|trans }}</span>
+                                        class="text_remove_wishlist">{{ 'entry_show_valid.btn.update_item'|trans }}</span>
                             </button>
                             <button type="button" class="btn btn-mini btn-danger remove-entry">
                                 <i class="fa fa-times-circle"></i> <span
-                                        class="text_remove_wishlist">{{ 'entry_valid.btn.remove_item'|trans }}</span>
+                                        class="text_remove_wishlist">{{ 'entry_show_valid.btn.remove_item'|trans }}</span>
                             </button>
                         </td>
                     </tr>
