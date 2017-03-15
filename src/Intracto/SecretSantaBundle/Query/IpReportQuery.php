@@ -3,7 +3,6 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
-use Proxies\__CG__\Intracto\SecretSantaBundle\Entity\Pool;
 
 class IpReportQuery
 {

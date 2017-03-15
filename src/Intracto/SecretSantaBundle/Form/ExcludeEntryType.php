@@ -10,7 +10,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use JMS\TranslationBundle\Annotation\Ignore;
 
 class ExcludeEntryType extends AbstractType
 {
@@ -25,8 +24,6 @@ class ExcludeEntryType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'choice_label' => 'name',
-
-                /* @Ignore */
                 'label' => $me->getName(),
                 'attr' => ['data-entry' => $me->getId(), 'class' => 'js-selector-entry'],
                 'query_builder' => function (EntityRepository $er) use ($me) {
