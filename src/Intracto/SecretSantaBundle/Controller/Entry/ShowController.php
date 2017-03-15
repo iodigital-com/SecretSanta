@@ -16,7 +16,7 @@ class ShowController extends Controller
 {
     /**
      * @Route("/entry/{url}", name="entry_view")
-     * @Template("IntractoSecretSantaBundle:Entry/Show:valid.html.twig")
+     * @Template("IntractoSecretSantaBundle:Entry/show:valid.html.twig")
      */
     public function showAction(Request $request, $url)
     {
@@ -26,7 +26,7 @@ class ShowController extends Controller
         }
 
         if ($entry->getPool()->getEventdate() < new \DateTime('-2 years')) {
-            return $this->render('IntractoSecretSantaBundle:Entry/Show:expired.html.twig', [
+            return $this->render('IntractoSecretSantaBundle:Entry/show:expired.html.twig', [
                 'entry' => $entry,
             ]);
         }
