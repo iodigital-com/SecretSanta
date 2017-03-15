@@ -340,15 +340,7 @@ class EntryReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
-        $url = $this->router->generate(
-            'pool_reuse',
-            ['listUrl' => '1'],
-            true
-        );
-        
-        // URL was generated for party 1, strip the 1 to get the base URL
-        $url = substr($url, 0, -1);
-
+        $reusePoolBaseUrl = $this->getPoolReuseBaseUrl();
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
@@ -366,7 +358,6 @@ class EntryReportQuery
         );
 
         while ($row = $stmt->fetch()) {
-            $reuseurl = $url.$row['listUrl'];
             fputcsv(
                 $handle,
                 [
@@ -374,13 +365,27 @@ class EntryReportQuery
                     $row['email'],
                     $row['poolId'],
                     $row['locale'],
-                    $reuseurl,
+                    $reusePoolBaseUrl.$row['listUrl'],
                 ],
                 ','
             );
         }
 
         fclose($handle);
+    }
+
+    private function getPoolReuseBaseUrl()
+    {
+        $router = $this->getContainer()->get('router');
+
+        $url = $router->generate(
+            'pool_reuse',
+            ['listUrl' => '1'],
+            true
+        );
+
+        // URL was generated for party 1, strip the 1 to get the base URL
+        return substr($url, 0, -1);
     }
 
     /**
