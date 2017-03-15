@@ -1,0 +1,49 @@
+<h2>Analytics</h2>
+
+{% if data_pool['ip_usage'] is not empty %}
+    <div class="col-xs-12 col-md-6 report">
+        <div class="report_inside">
+            <h3>IP type of visitors (since March 2016)</h3>
+
+            <div id="ip_chart" style="width: 100%"></div>
+        </div>
+    </div>
+{% endif %}
+
+{% if google_data_pool is not empty %}
+    <div class="col-xs-12 col-md-6 report">
+        <div class="report_inside">
+            <h3>Visitors per country</h3>
+
+            <div id="country_chart" style="width: 100%"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6 report">
+        <div class="report_inside">
+            <h3>Visitors per language</h3>
+
+            <div id="language_chart" style="width: 100%"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6 report">
+        <div class="report_inside">
+            <h3>Mobile/desktop</h3>
+
+            <div id="device_chart" style="width: 100%"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6 report">
+        <div class="report_inside">
+            <h3>Top 5 browsers</h3>
+
+            <div id="browser_chart" style="width: 100%"></div>
+        </div>
+    </div>
+{% else %}
+    <div>
+        <p>There are no data available for this season.</p>
+    </div>
+{% endif %}
