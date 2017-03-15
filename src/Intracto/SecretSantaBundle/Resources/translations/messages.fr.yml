@@ -183,6 +183,14 @@ entry_show:
         amount: Montant
         num_people: Nombre de personnes
         person_created_list: Créateur de la liste
+
+# Entry/expired.html.twig
+entry_expired:
+    message:
+#        expired:
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Personne désignée
         body: >
@@ -226,6 +234,35 @@ pool_manage:
         location: Lieu
         amount: Montant
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Supprimer ma liste Secret Santa
+
+    delete:
+        title: Supprimer ma liste Secret Santa
+        body: >
+            <p>
+            Etes-vous vraiment certain ?<br>
+            <br>
+            <b>Quelque chose d'inattendu se produira si vous ne lisez pas ceci !</b><br>
+            <br>
+            Une fois que votre liste Secret Santa sera supprimée, il n'y a aucun retour en arrière possible. Cette action NE POURRA PAS être annulée.<br>
+            Cela effacera la liste Secret Santa, tous ses participants ainsi que leur liste de souhaits de façon permanente.<br>
+            <br>
+            Entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br></p>
+        phrase_to_type: Supprimer tout
+
+    btn:
+        cancel: Annuler
+        delete_confirm: J'ai compris les conséquences, supprimer ma liste Secret Santa maintenant
+        delete_list: Supprimer ma liste Secret Santa
+
+    message:
+#        expired:
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Votre liste Secret Santa
         yes: Oui
@@ -511,4 +548,3 @@ flashes:
             excluded_entries: <h4>Oups</h4> Suppression des participants impossible. Vous avez utilisé des exclusions lors de la création de cette f&ecirc;te, ce qui peut causer de sproblèmes lors de la suppression d'un participant. Cette fonctionnalit&eacute; n'est donc pas disponible pour cette f&ecirc;te.
             self_assigned: <h4>Oups<h4> Ce participant ne peut être supprimé, car cela impliquerait que quelqu'un soit autoassigné.
             wrong: <h4>Oups</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas à la phrase attendue.
-

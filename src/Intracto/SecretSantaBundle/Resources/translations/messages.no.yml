@@ -227,6 +227,14 @@ entry_show:
         amount: Beløp
         num_people: Antall personer
         person_created_list: Administrator
+
+# Entry/expired.html.twig
+entry_expired:
+    message:
+#        expired:
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Du har fått tildelt følgende nisse
         body: >
@@ -270,6 +278,36 @@ pool_manage:
         location: Sted
         amount: Beløp
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Slett min Secret Santa-liste
+
+    delete:
+        title: Slett min Secret Santa-liste
+        body: >
+            <p>
+                Er du HELT sikker?<br>
+                <br>
+                <b>Uforutsette, forferdelige ting skjer hvis du ikke leser dette!</b><br>
+                <br>
+                Så snart du har slettet din Secret Santa-liste kan du ikke ombestemme deg. Denne handlingen kan IKKE omgjøres.<br>
+                Dette vil permanent slette din Secret Santa-liste, alle deltagerne og deres ønskelister.<br>
+                <br>
+                Vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
+            </p>
+        phrase_to_type: slett alt
+
+    btn:
+        cancel: Avbryt
+        delete_confirm: Jeg har forstått konsekvensene, slett min liste
+        delete_list: Slett min Secret Santa-liste
+
+    message:
+#        expired:
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Din Secret Santa-liste
         yes: Ja

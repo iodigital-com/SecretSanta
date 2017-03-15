@@ -1,0 +1,53 @@
+{% extends "IntractoSecretSantaBundle:Pool:manage.html.twig" %}
+
+{% block main %}
+    <div class="alert alert-danger" role="alert">
+        {{ 'pool_expired.message.expired' | trans | raw }}
+    </div>
+    <div class="box">
+        <h1>{{ 'pool_expired.manage.title'|trans }}</h1>
+
+        <button id="btn_delete" class="btn btn-primary manage_btn">
+            <i class="fa fa-exclamation-circle"></i> {{ 'pool_expired.btn.delete_list'|trans }}
+        </button>
+
+        <br/><br/>
+        <div id="delete-warning" class="alert alert-danger" style="display: none;">
+            <h3>{{ 'pool_expired.delete.title'|trans }}</h3>
+
+            {% set phraseToType = 'pool_expired.delete.phrase_to_type'|trans|lower %}
+            {{ 'pool_expired.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            <br>
+            <form action="{{ path('pool_delete', { 'listUrl': pool.listUrl }) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_pool_csrf_token }}">
+                <input type="text" name="confirmation" id="delete-confirmation" autocomplete="off"
+                       onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"
+                       class="form-control">
+                <br>
+                <button class="btn btn-primary btn_confirmation_pop_up" type="submit" id="btn_delete_confirmation"
+                        disabled>
+                    {{ 'pool_expired.btn.delete_confirm'|trans }}
+                </button>
+                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'pool_expired.btn.cancel'|trans }}</button>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn_delete').click(function (e) {
+                $('#delete-warning').show();
+                $('#btn_delete').attr('disabled', true);
+                $('#delete-confirmation').focus();
+            });
+            $('#btn_delete_cancel').click(function (e) {
+                $('#delete-warning').hide();
+                $('#btn_delete').attr('disabled', false).focus();
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,277 @@
+{% extends "IntractoSecretSantaBundle:Pool:manage.html.twig" %}
+
+{% block datalayer %}
+    <script>
+        dataLayer.push({
+            'pId': '{{ pool.listurl }}',
+            'pLocation': '{{ pool.location }}',
+            'pAmount': '{{ pool.amount }}',
+            'pParticipants': '{{ pool.entries|length }}',
+            'pDate': '{{ pool.eventdate|date('Y-m-d') }}'
+        });
+    </script>
+{% endblock %}
+
+{% block main %}
+    <div class="box">
+        <h1>{{ 'pool_valid.manage.title'|trans }}</h1>
+        <table class="table table-striped mysanta" id="mysanta">
+            <thead>
+            <tr>
+                <th class="col-xs-1 entry-number-header">#</th>
+                <th class="col-xs-2">{{ 'pool_valid.label.name'|trans }}</th>
+                <th class="col-xs-3">{{ 'pool_valid.label.email'|trans }}</th>
+                <th class="col-xs-2">{{ 'pool_valid.label.confirmed'|trans }}</th>
+                <th class="col-xs-2">{{ 'pool_valid.label.wishlist_filled'|trans }}</th>
+                <th class="col-xs-2">{{ 'pool_valid.label.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entry in pool.entries %}
+                <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
+                    <td class="entry-number">{{ loop.index }}</td>
+                    <td data-hj-masked>{{ entry.name }}</td>
+                    <td id="email_{{ entry.id }}" data-hj-masked>{{ entry.email }}</td>
+                    <td class="{% if entry.viewdate %}viewed">{{ 'pool_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td class="{% if entry.wishlistItems is not empty %}viewed">{{ 'pool_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td style="text-align: right;">
+                        <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
+                             onclick="editableEmail('{{ pool.listUrl }}', {{ entry.id }});"
+                             rel="tooltip" title="{{ 'pool_valid.manage.edit_email'|trans }}" alt="{{ 'pool_valid.manage.edit_email'|trans }}"
+                             style="cursor: pointer;">
+                        {% spaceless %}
+                            <a href="{{ path('resend_entry', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
+                                <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
+                                     title="{{ 'pool_valid.manage.resend_email'|trans }}" alt="{{ 'pool_valid.manage.resend_email'|trans }}">
+                            </a>
+                        {% endspaceless %}
+                        {% if app.environment == 'dev' %}
+                            <a href="{{ path('entry_view', { 'url': entry.url }) }}" class="add-participant-link">
+                                <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
+                                     title="{{ entry.entry.name }} <{{ entry.entry.email }}>"
+                                     alt="{{ 'pool_valid.manage.view_entry'|trans }}">
+                            </a>
+                        {% endif %}
+                        <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}" {% if 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}>
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="alert alert-info">
+            <strong>{{ 'pool_valid.manage.tip'|trans }}</strong> {{ 'pool_valid.manage.come_back'|trans }}
+        </div>
+        <div class="alert alert-warning">
+            <strong>{{ 'pool_valid.manage.watch_out'|trans }}</strong> {{ 'pool_valid.manage.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
+        </div>
+        <button id="btn_delete" class="btn btn-primary manage_btn">
+            <i class="fa fa-exclamation-circle"></i> {{ 'pool_valid.btn.delete_list'|trans }}
+        </button>
+        <a href="{{ path('expose_entries', { 'listUrl': pool.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
+            <i class="fa fa-eye"></i> {{ 'pool_valid.btn.expose'|trans }}
+        </a>
+        <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': pool.listurl }) }}">
+            <i class="fa fa-eye"></i> {{ 'pool_valid.btn.expose_wishlists'|trans }}
+        </a>
+        <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': pool.listurl }) }}">
+            <i class="fa fa-envelope"></i> {{ 'pool_valid.btn.pool_update'|trans|raw }}
+        </a>
+        <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
+                {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) or 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}>
+            <i class="fa fa-plus-circle fa-inverse"></i> {{ 'pool_valid.btn.add_participant'|trans|raw }}
+        </button>
+        <button id="btn_update" class="btn btn-warning manage_btn">
+            <i class="fa fa-refresh"></i> {{ 'pool_valid.btn.updated_party'|trans|raw }}
+        </button>
+
+        <br/><br/>
+        <div id="delete-warning" class="alert alert-danger" style="display: none;">
+            <h3>{{ 'pool_valid.delete.title'|trans }}</h3>
+
+            {% set phraseToType = 'pool_valid.delete.phrase_to_type'|trans|lower %}
+            {{ 'pool_valid.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            <br>
+            <form action="{{ path('pool_delete', { 'listUrl': pool.listUrl }) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_pool_csrf_token }}">
+                <input type="text" name="confirmation" id="delete-confirmation" autocomplete="off"
+                       onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"
+                       class="form-control">
+                <br>
+                <button class="btn btn-primary btn_confirmation_pop_up" type="submit" id="btn_delete_confirmation"
+                        disabled>
+                    {{ 'pool_valid.btn.delete_confirm'|trans }}
+                </button>
+                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'pool_valid.btn.cancel'|trans }}</button>
+            </form>
+        </div>
+        <div id="add-participant" class="alert alert-success manage-page-form"
+             {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) %}style="display: block;"
+             {% else %}style="display: none"{% endif %}>
+            <h3>{{ 'pool_valid.add_participant.title'|trans|raw }}</h3>
+
+            {{ 'pool_valid.add_participant.body'|trans|raw }}
+            <br>
+            {{ form_start(addEntryForm) }}
+                {{ form_row(addEntryForm._token) }}
+                <div class="form-group {% if form_errors(addEntryForm.name) %}error{% endif %}">
+                    <strong>{{ 'pool_valid.label.name'|trans }}</strong> {{ form_widget(addEntryForm.name ,{'attr':{'class':'form-control'}}) }}
+                    {% if form_errors(addEntryForm.name) %}
+                        {% for error in addEntryForm.name.vars.errors %}
+                            <strong>{{ error.message }}</strong><br/>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group {% if form_errors(addEntryForm.email) %}error{% endif %}">
+                    <strong>{{ 'pool_valid.label.email'|trans }}</strong> {{ form_widget(addEntryForm.email ,{'attr':{'class':'form-control'}}) }}
+                    {% if form_errors(addEntryForm.email) %}
+                        {% for error in addEntryForm.email.vars.errors %}
+                            <strong>{{ error.message }}</strong><br/>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-success"
+                        id="btn_add_confirmation">{{ 'pool_valid.btn.add_participant_confirm'|trans|raw }}</button>
+                <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'pool_valid.btn.cancel'|trans }}</button>
+            {{ form_end(addEntryForm) }}
+        </div>
+
+        <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
+            <h3>{{ 'pool_valid.remove_participant.title'|trans|raw }}</h3>
+
+            {% set phraseToType = 'pool_valid.remove_participant.phrase_to_type'|trans|lower %}
+            {{ 'pool_valid.remove_participant.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            <br>
+            <form id="delete-participant-form" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
+                <input type="text" name="confirmation" id="delete-participant-confirmation" autocomplete="off"
+                       onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_remove_participant_confirmation').removeAttr('disabled');"
+                       class="form-control">
+                <br>
+                <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
+                        id="btn_remove_participant_confirmation" disabled>
+                    {{ 'pool_valid.btn.remove_participant_confirm'|trans|raw }}
+                </button>
+                <button type="reset" class="btn btn-danger btn_remove_participant_cancel"
+                        >{{ 'pool_valid.btn.cancel'|trans }}</button>
+            </form>
+        </div>
+
+        <div id="update-party-details" class="alert alert-warning manage-page-form"
+             {% if (form_errors(updatePoolDetailsForm.eventdate)) or (form_errors(updatePoolDetailsForm.amount)) or (form_errors(updatePoolDetailsForm.location)) %}style="display: block;"
+             {% else %}style="display: none"{% endif %}>
+            <h3>{{ 'pool_valid.updated_party.title'|trans }}</h3>
+
+            {{ 'pool_valid.updated_party.body'|trans|raw }}
+            <br>
+            {{ form_start(updatePoolDetailsForm) }}
+                {{ form_row(updatePoolDetailsForm._token) }}
+                <div class="form-group {% if form_errors(updatePoolDetailsForm.eventdate) %}error{% endif %}">
+                    <strong>{{ form_label(updatePoolDetailsForm.eventdate) }}</strong>
+                    {{ form_widget(updatePoolDetailsForm.eventdate, {'attr': {'class': 'form-control'}}) }}
+                    {% for error in updatePoolDetailsForm.eventdate.vars.errors %}
+                        <strong>{{ error.message }}</strong><br>
+                    {% endfor %}
+                </div>
+                <div class="form-group {% if form_errors(updatePoolDetailsForm.location) %}error{% endif %}">
+                    <strong>{{ form_label(updatePoolDetailsForm.location) }}</strong>
+                    {{ form_widget(updatePoolDetailsForm.location, {'attr': {'class': 'form-control'}}) }}
+                    {% for error in updatePoolDetailsForm.location.vars.errors %}
+                        <strong>{{ error.message }}</strong><br>
+                    {% endfor %}
+                </div>
+                <div class="form-group {% if form_errors(updatePoolDetailsForm.amount) %}error{% endif %}">
+                    <strong>{{ form_label(updatePoolDetailsForm.amount) }}</strong>
+                    {{ form_widget(updatePoolDetailsForm.amount, {'attr': {'class': 'form-control'}}) }}
+                    {% for error in updatePoolDetailsForm.amount.vars.errors %}
+                        <strong>{{ error.message }}</strong><br>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
+                <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'pool_valid.btn.cancel'|trans }}</button>
+            {{ form_end(updatePoolDetailsForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn_delete').click(function (e) {
+                $('#delete-warning').show();
+                $('#btn_delete').attr('disabled', true);
+                $('#delete-confirmation').focus();
+            });
+            $('#btn_delete_cancel').click(function (e) {
+                $('#delete-warning').hide();
+                $('#btn_delete').attr('disabled', false).focus();
+            });
+
+            $('#btn_add').click(function (e) {
+                $('#add-participant').show();
+                $('#btn_add').attr('disabled', true);
+                $('#add-participant-name').focus();
+            });
+
+            $('#btn_add_cancel').click(function (e) {
+                $('#add-participant').hide();
+                $('#btn_add').attr('disabled', false).focus();
+            });
+
+            $('#btn_update').click(function (e) {
+                $('#update-party-details').show();
+                $('#btn_update').attr('disabled', true);
+            });
+
+            $('#btn_update_cancel').click(function (e) {
+                $('#update-party-details').hide();
+                $('#btn_update').attr('disabled', false).focus();
+            });
+
+            $('.link_remove_participant').click(function(e) {
+                $('#delete-participant').show();
+                $('.link_remove_participant').attr('disabled', true);
+                $('#delete-participant-confirmation').focus();
+                var listUrl = '{{ pool.listUrl }}';
+                var entryId = $(this).data('entry');
+                attachAction(listUrl, entryId);
+            });
+
+            $('.btn_remove_participant_cancel').click(function (e) {
+                $('#delete-participant').hide();
+                $('.link_remove_participant').attr('disabled', false);
+            });
+
+            if (Modernizr.inputtypes.date == true) {
+                $("#intracto_secretsantabundle_updatepooldetailstype_eventdate").click(function (e) {
+                    $(this).datepicker({dateFormat: 'dd-mm-yy'});
+                });
+            }
+        });
+
+        function editableEmail(listUrl, entryId) {
+            var email = $('#email_' + entryId).html();
+            var url = '{{ path("entry_email_edit", { 'listUrl': 'listUrl', 'entryId': 'entryId' }) }}';
+            url = url.replace("listUrl", listUrl);
+            url = url.replace("entryId", entryId);
+            if ($('#email_' + entryId).has('form').length == 0) {
+                $('#email_' + entryId).html(
+                    '<form action="' + url + '" method="post">' +
+                    '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
+                    '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'pool_valid.manage.save'|trans }}</button>' +
+                    '</form>'
+                );
+            }
+        }
+
+        function attachAction(listUrl, entryId) {
+            var url = '{{ path('entry_remove', {'listUrl': 'listUrl', 'entryId': 'entryId'}) }}';
+            url = url.replace('listUrl', listUrl);
+            url = url.replace('entryId', entryId);
+            $('#delete-participant-form').attr('action', url);
+        }
+    </script>
+{% endblock %}

@@ -225,6 +225,14 @@ entry_show:
         amount: Bedrag
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
+
+# Entry/expired.html.twig
+entry_expired:
+    message:
+        expired: <strong>Oops</strong><br/>Het evenement is ouder dan 2 jaar en is niet meer beschikbaar.<br/>
+
+# Entry/valid.html.twig
+entry_valid:
     entry:
         title: Jouw toegewezen maatje
         body: >
@@ -268,6 +276,37 @@ pool_manage:
         location: Locatie
         amount: Bedrag
 
+# Pool/expired.html.twig
+pool_expired:
+    manage:
+        title: Verwijder mijn Secret Santa lijst
+
+    delete:
+        title: Verwijder mijn Secret Santa lijst
+        body: >
+            <p>
+            Ben je HELEMAAL zeker?<br>
+            <br>
+            <b>De zeven plagen hangen in de lucht als je dit niet leest!</b><br>
+            <br>
+            Eens je jouw Secret Santa lijst verwijderd hebt, mag je er een kruis over maken. Je KAN DEZE ACTIE NIET ongedaan maken. <br>
+
+            Je Secret Santa lijst wordt permanent verwijderd, samen met alle deelnemers en hun droomgeschenken.<br>
+
+            <br>Typ "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
+            </p>
+        phrase_to_type: alles verwijderen
+
+    btn:
+        cancel: Annuleren
+        delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
+        delete_list: Verwijder mijn Secret Santa lijst
+
+    message:
+        expired: <strong>Oops</strong><br/>Je evenement is ouder dan 2 jaar en is niet meer beschikbaar.<br/>
+
+# Pool/valid.html.twig
+pool_valid:
     manage:
         title: Jouw Secret Santa lijst
         yes: Ja

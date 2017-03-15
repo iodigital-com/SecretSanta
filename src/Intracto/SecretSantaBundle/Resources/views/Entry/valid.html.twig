@@ -1,0 +1,182 @@
+{% extends "IntractoSecretSantaBundle:Entry:show.html.twig" %}
+
+{% block datalayer %}
+    <script>
+        dataLayer.push({
+            'pId': '{{ entry.pool.listurl }}',
+            'pLocation': '{{ entry.pool.location }}',
+            'pAmount': '{{ entry.pool.amount }}',
+            'pParticipants': '{{ entry.pool.entries|length }}',
+            'pDate': '{{ entry.pool.eventdate|date('Y-m-d') }}'
+        });
+    </script>
+{% endblock %}
+
+{% block main %}
+    <div class="box">
+        <div class="row">
+            <div class="span8">
+                <h1>{{ 'entry_valid.entry.title'|trans }}</h1>
+
+                {{ 'entry_valid.entry.body'|trans({'%name%': entry.name})|raw }}
+
+                <div class="yoursecretsant" data-hj-masked>
+                    <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>{{ 'entry_valid.entry.watch_out'|trans }}</strong> {{ 'entry_valid.entry.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
+                </div>
+
+                <div class="well bottom-spacer">
+                    <h4 data-hj-masked>{{ 'entry_valid.entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
+                    {% if(secret_santa.wishlistitems|length == 0) %}
+                        {{ 'entry_valid.entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
+                        <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'entry_valid.poke.poke'|trans }}</a>
+                        {{ 'entry_valid.poke.poke_sentence'|trans|raw }}
+                    {% else %}
+                        <ul class="wishlist">
+                            {% for item in secret_santa.wishlistitems %}
+                                <li class="wishlistitem">{{ item.description|escape|linkify|raw }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20"
+                              target="_blank"
+                              rel="noopener noreferrer">{{ 'entry_valid.buy_from_amazon'|trans }}</a></b>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <div class="span4 visible-xs-inline-block">
+                <ins class="adsbygoogle"
+                     style="width:320px;height:100px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="3884561707"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="span4 visible-sm-inline-block">
+                <ins class="adsbygoogle"
+                     style="width:468px;height:60px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="8314761303"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="span4 visible-md-inline-block visible-lg-inline-block">
+                <ins class="adsbygoogle"
+                     style="width:728px;height:90px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="9791494503"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <h1>{{ 'entry_valid.wishlist.title'|trans }}</h1>
+
+        <div class="description">{{ 'entry_valid.wishlist.description'|trans|raw }}</div>
+
+        <div class="box ajax-response">
+            <div class="alert alert-warning empty" style="display:none;">
+                <div>{{ 'entry_valid.flashes.wishlist.empty_row'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success added" style="display:none;">
+                <div>{{ 'entry_valid.flashes.wishlist.added'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success updated" style="display:none;">
+                <div>{{ 'entry_valid.flashes.wishlist.updated'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success removed" style="display:none;">
+                <div>{{ 'entry_valid.flashes.wishlist.removed'|trans|raw }}</div>
+            </div>
+        </div>
+            {{ form_start(form, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
+            {{ form_row(form._token) }}
+        <table class="entries table table-striped">
+            <thead>
+            <tr>
+                <th class="col-xs-1 entry-number-header">#</th>
+                <th class="col-xs-7 col-sm-6">{{ 'entry_valid.label.description'|trans }}</th>
+                <th style="text-align: right;" class="col-xs-4 col-sm-5">
+                    <button type="button" class="btn btn-mini btn-success add-new-entry">
+                        <i class="fa fa-plus-circle"></i> <span
+                                class="text_remove_wishlist">{{ 'entry_valid.btn.add_wishlist'|trans }}</span>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
+            {% if form.wishlistItems |length == 0 %}
+                <tr class="noitems">
+                    <td colspan="3">{{ 'entry_valid.wishlist.empty'|trans }}</td>
+                </tr>
+            {% else %}
+                {% for item in form.wishlistItems %}
+                    <tr class="wishlistitem">
+                        <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span
+                                    class="rank">{{ item.rank.vars.value }}</span></td>
+                        <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
+                        <td style="text-align: right;">
+                            <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
+                                <i class="fa fa-check-circle"></i> <span
+                                        class="text_remove_wishlist">{{ 'entry_valid.btn.update_item'|trans }}</span>
+                            </button>
+                            <button type="button" class="btn btn-mini btn-danger remove-entry">
+                                <i class="fa fa-times-circle"></i> <span
+                                        class="text_remove_wishlist">{{ 'entry_valid.btn.remove_item'|trans }}</span>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+
+        {{ form_end(form, {'render_rest': false}) }}
+
+    </div>
+
+    <div class="row text-center">
+        <div class="span4 visible-xs-inline-block">
+            <ins class="adsbygoogle"
+                 style="width:320px;height:100px"
+                 data-ad-client="ca-pub-8492783089085834"
+                 data-ad-slot="3884561707"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="span4 visible-sm-inline-block">
+            <ins class="adsbygoogle"
+                 style="width:468px;height:60px"
+                 data-ad-client="ca-pub-8492783089085834"
+                 data-ad-slot="8314761303"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="span4 visible-md-inline-block visible-lg-inline-block">
+            <ins class="adsbygoogle"
+                 style="width:728px;height:90px"
+                 data-ad-client="ca-pub-8492783089085834"
+                 data-ad-slot="9791494503"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@IntractoSecretSantaBundle/Resources/public/js/wishlist.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ form_javascript(form) }}
+{% endblock %}

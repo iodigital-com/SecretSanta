@@ -18,9 +18,9 @@ class EntryController extends Controller
 {
     /**
      * @Route("/entry/{url}", name="entry_view")
-     * @Template("IntractoSecretSantaBundle:Entry:show.html.twig")
+     * @Template("IntractoSecretSantaBundle:Entry:valid.html.twig")
      */
-    public function showAction(Request $request, $url)
+    public function validAction(Request $request, $url)
     {
         $entry = $this->get('entry_repository')->findOneByUrl($url);
         if ($entry === null) {
@@ -107,6 +107,12 @@ class EntryController extends Controller
         $eventDate = date_format($entry->getPool()->getEventdate(), 'Y-m-d');
         $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
 
+        if ($entry->getPool()->getEventdate() < new \DateTime('-2 years')){
+            return $this->render('IntractoSecretSantaBundle:Entry:expired.html.twig', [
+                'entry' => $entry,
+            ]);
+        }
+
         if (!$request->isXmlHttpRequest()) {
             return [
                 'entry' => $entry,
@@ -160,7 +166,7 @@ class EntryController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('pool_manage.remove_participant.phrase_to_type')));
+        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('pool_valid.remove_participant.phrase_to_type')));
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
