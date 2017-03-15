@@ -104,11 +104,12 @@ class ManagementController extends Controller
                 if ($updatePoolDetailsForm->isValid()) {
                     $time_now = new \DateTime();
 
-                    $updatePool->setDetailsUpdated(true);
                     $updatePool->setDetailsUpdatedTime($time_now);
 
                     $this->get('doctrine.orm.entity_manager')->persist($updatePool);
                     $this->get('doctrine.orm.entity_manager')->flush();
+
+                    $this->get('intracto_secret_santa.mail')->sendPoolUpdatedMailsForPool($updatePool);
 
                     $this->get('session')->getFlashBag()->add(
                         'success',
