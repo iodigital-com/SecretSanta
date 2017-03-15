@@ -492,6 +492,4 @@
     </g>
 </svg>
 
-{#<object data="{{ asset('/bundles/intractosecretsanta/img/santa.svg') }}" type="image/svg+xml">#}
-
 </object>
