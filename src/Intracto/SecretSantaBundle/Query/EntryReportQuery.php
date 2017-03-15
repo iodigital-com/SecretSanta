@@ -3,11 +3,14 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Routing\Router;
 
 class EntryReportQuery
 {
     /** @var Connection */
     private $dbal;
+    /** @var Router */
+    private $router;
     /** @var PoolReportQuery */
     private $poolReportQuery;
     /** @var FeaturedYearsQuery */
@@ -15,15 +18,18 @@ class EntryReportQuery
 
     /**
      * @param Connection         $dbal
+     * @param Router             $router
      * @param PoolReportQuery    $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
      */
     public function __construct(
         Connection $dbal,
+        Router $router,
         PoolReportQuery $poolReportQuery,
         FeaturedYearsQuery $featuredYearsQuery
     ) {
         $this->dbal = $dbal;
+        $this->router = $router;
         $this->poolReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
@@ -334,10 +340,19 @@ class EntryReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
+        $url = $this->router->generate(
+            'pool_reuse',
+            ['listUrl' => '1'],
+            true
+        );
+        
+        // URL was generated for party 1, strip the 1 to get the base URL
+        $url = substr($url, 0, -1);
+
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.poolId, p.locale
+            SELECT e.name, e.email, e.poolId, p.locale, p.listUrl
             FROM Pool p
             JOIN Entry e ON p.id = e.poolId
             WHERE p.sentdate >= :firstDay
@@ -351,6 +366,7 @@ class EntryReportQuery
         );
 
         while ($row = $stmt->fetch()) {
+            $reuseurl = $url.$row['listUrl'];
             fputcsv(
                 $handle,
                 [
@@ -358,6 +374,7 @@ class EntryReportQuery
                     $row['email'],
                     $row['poolId'],
                     $row['locale'],
+                    $reuseurl,
                 ],
                 ','
             );
