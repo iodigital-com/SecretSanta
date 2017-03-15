@@ -14,9 +14,6 @@ use Intracto\SecretSantaBundle\Form\UpdatePoolDetailsType;
 
 class ManagementController extends Controller
 {
-    /** @var Pool */
-    private $pool;
-
     /**
      * @Route("/manage/{listUrl}", name="pool_manage")
      * @Template("IntractoSecretSantaBundle:Pool/manage:valid.html.twig")
