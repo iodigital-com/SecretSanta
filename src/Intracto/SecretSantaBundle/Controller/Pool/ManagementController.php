@@ -7,9 +7,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Intracto\SecretSantaBundle\Form\AddEntryType;
 use Intracto\SecretSantaBundle\Entity\Entry;
-use Intracto\SecretSantaBundle\Form\UpdatePoolDetailsType;
+use Intracto\SecretSantaBundle\Form\Type\AddEntryType;
+use Intracto\SecretSantaBundle\Form\Type\UpdatePoolDetailsType;
 
 class ManagementController extends Controller
 {

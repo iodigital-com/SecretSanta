@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Intracto\SecretSantaBundle\Form\ForgotLinkType;
+use Intracto\SecretSantaBundle\Form\Type\ForgotLinkType;
 
 class ForgotManagementURLController extends Controller
 {

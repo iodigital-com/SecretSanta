@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
-use Intracto\SecretSantaBundle\Form\WishlistType;
+use Intracto\SecretSantaBundle\Form\Type\WishlistType;
 
 class ShowController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Form;
+namespace Intracto\SecretSantaBundle\Form\Type;
 
 use Intracto\SecretSantaBundle\Entity\Entry;
 use Symfony\Component\Form\AbstractType;

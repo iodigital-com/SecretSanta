@@ -9,9 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
-use Intracto\SecretSantaBundle\Form\PoolExcludeEntryType;
-use Intracto\SecretSantaBundle\Form\PoolType;
 use Intracto\SecretSantaBundle\Entity\Pool;
+use Intracto\SecretSantaBundle\Form\Type\PoolExcludeEntryType;
+use Intracto\SecretSantaBundle\Form\Type\PoolType;
 
 class PoolController extends Controller
 {

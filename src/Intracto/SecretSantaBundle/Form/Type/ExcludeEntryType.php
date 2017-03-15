@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Form;
+namespace Intracto\SecretSantaBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 use Intracto\SecretSantaBundle\Entity\Entry;
