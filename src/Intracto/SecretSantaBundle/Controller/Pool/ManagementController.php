@@ -135,8 +135,6 @@ class ManagementController extends Controller
             'pool' => $pool,
             'oneWeekFromEventDate' => $oneWeekFromEventDate,
             'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
-            'expose_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_pool'),
-            'expose_pool_wishlists_csrf_token' => $this->get('security.csrf.token_manager')->getToken('expose_wishlists'),
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
         ];
     }
