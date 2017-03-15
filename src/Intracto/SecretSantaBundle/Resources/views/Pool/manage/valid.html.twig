@@ -199,6 +199,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+    {{ form_javascript(updatePoolDetailsForm) }}
     <script type="text/javascript">
         $(document).ready(function () {
             $('#btn_delete').click(function (e) {
