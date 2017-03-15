@@ -12,28 +12,23 @@ class ReportQuery
     private $ipReportQuery;
     /** @var WishlistReportQuery */
     private $wishlistReportQuery;
-    /** @var FeaturedYearsQuery */
-    private $featuredYearsQuery;
 
     /**
      * @param PoolReportQuery     $poolReportQuery
      * @param EntryReportQuery    $entryReportQuery
      * @param IpReportQuery       $ipReportQuery
      * @param WishlistReportQuery $wishlistReportQuery
-     * @param FeaturedYearsQuery  $featuredYearsQuery
      */
     public function __construct(
         PoolReportQuery $poolReportQuery,
         EntryReportQuery $entryReportQuery,
         IpReportQuery $ipReportQuery,
-        WishlistReportQuery $wishlistReportQuery,
-        FeaturedYearsQuery $featuredYearsQuery
+        WishlistReportQuery $wishlistReportQuery
     ) {
         $this->poolReportQuery = $poolReportQuery;
         $this->entryReportQuery = $entryReportQuery;
         $this->ipReportQuery = $ipReportQuery;
         $this->wishlistReportQuery = $wishlistReportQuery;
-        $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
     /**
