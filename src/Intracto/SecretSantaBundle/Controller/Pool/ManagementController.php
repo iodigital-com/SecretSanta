@@ -19,7 +19,7 @@ class ManagementController extends Controller
 
     /**
      * @Route("/manage/{listUrl}", name="pool_manage")
-     * @Template("IntractoSecretSantaBundle:Pool:valid.html.twig")
+     * @Template("IntractoSecretSantaBundle:Pool/Manage:valid.html.twig")
      */
     public function validAction(Request $request, $listUrl)
     {
@@ -51,7 +51,7 @@ class ManagementController extends Controller
         $updatePoolDetailsForm = $this->createForm(UpdatePoolDetailsType::class, $updatePool);
 
         if ($pool->getEventdate() < new \DateTime('-2 years')) {
-            return $this->render('IntractoSecretSantaBundle:Pool:expired.html.twig', [
+            return $this->render('IntractoSecretSantaBundle:Pool/Manage:expired.html.twig', [
                 'pool' => $pool,
                 'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             ]);
