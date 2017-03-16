@@ -105,10 +105,6 @@ class ManagementController extends Controller
 
             if ($updatePoolDetailsForm->isSubmitted()) {
                 if ($updatePoolDetailsForm->isValid()) {
-                    $time_now = new \DateTime();
-
-                    $updatePool->setDetailsUpdatedTime($time_now);
-
                     $this->get('doctrine.orm.entity_manager')->persist($updatePool);
                     $this->get('doctrine.orm.entity_manager')->flush();
 
