@@ -171,7 +171,6 @@ entry_show_valid:
             <p>Hi %name%,</p>
             <p>Sie wurden als Secret Santa eingeteilt, dieser Person ein Geschenk zu machen:</p>
 #        watch_out: ?
-#        modify_list: ?
         wishlist_from: Wunschzettel von %name%
         wishlist_not_provided: %name% hat noch keinen Wunschzettel geschrieben
 #    poke:
@@ -245,7 +244,6 @@ pool_manage_valid:
         tip: Hinweis
         come_back: Sie können jederzeit auf diese Seite zurückkehren, um zu überprüfen, ob alle Teilnehmer ihr Postfach kontrolliert haben.
 #        watch_out: ?
-#        modify_list: ?
         save: Speichern
 
     delete:
@@ -269,7 +267,6 @@ pool_manage_valid:
 
 #    remove_participant:
 #        title: ?
-#        phrase_to_type: ?
 #        body: ?
 
 #    updated_party:
@@ -432,7 +429,6 @@ flashes:
             Während wir hier reden, reisen unsere Wichtel durch das Internet und bringen all Ihren zukünftigen Secret-Santas deren Geschenkepartner.<br/>
             <br />
             Vergessen Sie nicht, Ihre eigene Teilnahme zu bestätigen. Wir haben Ihnen eine weitere Mail zugesandt. Überprüfen Sie dies!
-#        modify_list_warning: ?
 #        add_participant:
 #            success: ?
 #            danger: ?
@@ -457,7 +453,6 @@ flashes:
         wishlist_updated: <h4>Wunschzettel aktualisiert</h4>Wir haben unsere Wichtel losgeschickt, um Ihren Secret Santa über Ihre Wünsche zu informieren!
         edit_email: <h4>Nicht gespeichert</h4> Die E-Mail-Adresse ist fehlerhaft.
         saved_email: <h4>Gespeichert</h4> Die neue E-Mail-Adresse wurde gespeichert. Wir versenden auch diese E-Mail erneut.
-#        modify_list_warning: ?
 #        remove_participant:
 #            success: ?
 #            danger: ?

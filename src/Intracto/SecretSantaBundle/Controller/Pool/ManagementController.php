@@ -37,9 +37,6 @@ class ManagementController extends Controller
             $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($pool);
         }
 
-        $eventDate = date_format($pool->getEventdate(), 'Y-m-d');
-        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
-
         $newEntry = new Entry();
         $updatePool = $pool;
 
@@ -59,15 +56,6 @@ class ManagementController extends Controller
 
             if ($addEntryForm->isSubmitted()) {
                 if ($addEntryForm->isValid()) {
-                    if (date('Y-m-d') > $oneWeekFromEventDate) {
-                        $this->get('session')->getFlashBag()->add(
-                            'warning',
-                            $this->get('translator')->trans('flashes.management.modify_list_warning')
-                        );
-
-                        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-                    }
-
                     $newEntry->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
                     $newEntry->setPool($pool);
 
@@ -133,7 +121,6 @@ class ManagementController extends Controller
             'addEntryForm' => $addEntryForm->createView(),
             'updatePoolDetailsForm' => $updatePoolDetailsForm->createView(),
             'pool' => $pool,
-            'oneWeekFromEventDate' => $oneWeekFromEventDate,
             'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
         ];
