@@ -241,7 +241,6 @@ entry_show_valid:
             <p>Hi %name%,</p>
             <p>Du skal være hemmelig julenisse for:</p>
         watch_out: Watch out
-        modify_list: Administrator kan legge til eller slette deltagere fram til %oneWeekFromEventDate%, husk at det er en mulighet for at dette vil gi deg en ny person å være julenisse for. Det kan være lurt å vente med å kjøpe gave til du er helt sikker på hvem du får tildelt å kjøpe gave til.
         wishlist_from: Ønskeliste fra %name%
         wishlist_not_provided: %name% har ikke lagt inn sin ønskeliste ennå
     poke:
@@ -318,7 +317,6 @@ pool_manage_valid:
         tip: Tip
         come_back: Du kan alltids komme tilbake til denne siden for å sjekke at alle har undersøkt innboksen sin.
         watch_out: Watch out
-        modify_list: Å legge til eller slette deltagere fra listen er kun mulig inntil %oneWeekFromEventDate%.
         save: Lagre
 
     delete:
@@ -354,10 +352,6 @@ pool_manage_valid:
                 Å slette denne deltageren blir på permanent basis. DU kan ikke angre deg og personen denne deltageren har fått tildelt blir fjernet som kombinasjon.<br>
                 <br>
                 Noen kan ha kjøpt gaven allerede.<br>
-                <br>
-                Hvis du er helt sikker på at du vil slette denne deltageren, vennligst tast "<b>%phrase_to_type%</b>" nedenfor for å bekrefte valget ditt.<br>
-            </p>
-        phrase_to_type: slett denne nissen
 
     updated_party:
         title: Oppdater detaljer for festen
@@ -574,7 +568,6 @@ flashes:
             Smånissene og trollene våre farter over hele internettet nettopp nå for å levere invitasjonen til alle nissene på listen din.<br/>
             <br />
             Ikke glem å bekrefte din egen deltagelse. Vi har sendt deg en ny e-post. Vær så god og kast deg over den!
-        modify_list_warning: <h4>Oops</h4> Det ser ut til at arrangementet ditt skal holdes om mindre enn en uke, da er det for sent å fjerne deltagere nå!
         add_participant:
             success: <h4>Added!</h4> Deltager lagt til arrangementet.
             danger: <h4>Oops</h4> En feil oppstod da du ville legge til denne deltageren. Vennligst prøv igjen.
@@ -599,7 +592,6 @@ flashes:
         wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
         saved_email: <h4>Lagret</h4> Den nye epostadressen har blitt lagret. Vi har også sendt eposten på nytt.
-        modify_list_warning: <h4>Oops</h4> Det ser ut til at arrangementet ditt skal holdes om mindre enn en uke, da er det for sent å fjerne deltagere nå!
         remove_participant:
             success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
             danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.

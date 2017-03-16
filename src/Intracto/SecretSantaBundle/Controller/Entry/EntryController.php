@@ -53,8 +53,7 @@ class EntryController extends Controller
             $request->get('csrf_token')
         );
 
-        $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('pool_manage_valid.remove_participant.phrase_to_type')));
-        if ($correctConfirmation === false || $correctCsrfToken === false) {
+        if ($correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('flashes.entry.remove_participant.wrong')
@@ -65,17 +64,6 @@ class EntryController extends Controller
 
         $entry = $this->get('entry_repository')->find($entryId);
         $poolEntries = $entry->getPool()->getEntries();
-
-        $eventDate = date_format($entry->getPool()->getEventdate(), 'Y-m-d');
-        $oneWeekFromEventDate = date('Y-m-d', strtotime($eventDate.'- 1 week'));
-        if (date('Y-m-d') > $oneWeekFromEventDate) {
-            $this->get('session')->getFlashBag()->add(
-                'warning',
-                $this->get('translator')->trans('flashes.entry.modify_list_warning')
-            );
-
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
-        }
 
         if (count($poolEntries) <= 3) {
             $this->get('session')->getFlashBag()->add(

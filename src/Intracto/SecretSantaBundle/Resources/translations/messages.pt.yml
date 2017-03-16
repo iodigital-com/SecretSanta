@@ -226,7 +226,6 @@ entry_show_valid:
             <p>Olá %name%,</p>
             <p>Seu Amigo Secreto é:</p>
 #        watch_out: ?
-#        modify_list: ?
         wishlist_from: Lista de desejos de %name%
         wishlist_not_provided: %name% ainda não montou uma lista de desejos
 #    poke:
@@ -303,7 +302,6 @@ pool_manage_valid:
         tip: Dica
         come_back: Você sempre pode voltar para esta página para verificar se todo mundo verificou a sua caixa de entrada.
 #        watch_out: ?
-#        modify_list: ?
         save: Salvar
 
     delete:
@@ -327,7 +325,6 @@ pool_manage_valid:
 
 #    remove_participant:
 #        title: ?
-#        phrase_to_type: ?
 #        body: ?
 
 #    updated_party:
@@ -490,7 +487,6 @@ flashes:
             Neste exato momento, os nossos elfos mágicos estão a caminho para entregar um Amigo Secreto a cada um dos seus participantes!<br/>
             <br />
             Não se esqueça de confirmar sua própria participação. Te mandamos mais um e-mail. Leia-o agora!
-#        modify_list_warning: ?
 #        add_participant:
 #            success: ?
 #            danger: ?
@@ -515,7 +511,6 @@ flashes:
         wishlist_updated: <h4>Lista de desejos atualizada</h4> Mandamos os nossos elfos mágicos ir avisar quem te tirou de Amigo Secreto quais são os presentes super bacanas que você está esperando receber!
         edit_email: <h4>Não salvo</h4> Tem algo errado com o endereço e-mail.
         saved_email: <h4>Salvo</h4> O novo endereço de e-mail foi salvo. Nós também enviamos o e-mail novamente.
-#        modify_list_warning: ?
 #        remove_participant:
 #            success: ?
 #            danger: ?

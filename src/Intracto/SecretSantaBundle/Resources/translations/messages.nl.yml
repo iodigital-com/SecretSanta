@@ -239,7 +239,6 @@ entry_show_valid:
             <p>Hey %name%,</p>
             <p>Je bent toegewezen als Secret Santa aan:</p>
         watch_out: Opgelet
-        modify_list: The organisator van dit feestje kan mensen toevoegen en verwijderen tot en met %oneWeekFromEventDate%, hou er rekening mee dat dit ervoor zou kunnen zorgen dat je alsnog een ander maatje krijgt toegewezen. Misschien wacht je beter met het kopen van een cadeautje totdat je er zeker van bent dat dit effectief jouw Secret Santa maatje is.
         wishlist_from: Verlanglijst van %name%
         wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
     poke:
@@ -317,7 +316,6 @@ pool_manage_valid:
         tip: Tip
         come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
         watch_out: Opgelet
-        modify_list: Het toevoegen van deelnemers aan dit feestje of het verwijderen ervan is enkel mogelijk tot en met %oneWeekFromEventDate%.
         save: Bewaar
 
     delete:
@@ -354,10 +352,7 @@ pool_manage_valid:
                 Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddelijk verwijderd worden.<br>
                 <br>
                 Hou er ook rekening mee dat er iemand misschien al een geschenk heeft gekocht voor deze deelnemer.<br>
-                <br>
-                Als je echt zeker bent dat je deze deelnemer wilt verwijderen, typ dan "<b>%phrase_to_type%</b>" onderaan om te bevestigen.<br>
             </p>
-        phrase_to_type: verwijder deze deelnemer
 
     updated_party:
         title: Bewerk de details van jouw Secret Santa feestje
@@ -577,7 +572,6 @@ flashes:
             Onze kaboutertjes wurmen zich op dit eigenste moment doorheen het netwerk om al je toekomstige Secret Santa's een persoon te bezorgen.<br/>
             <br />
             Vergeet je eigen deelname niet te bevestigen. We hebben je nog een e-mail gestuurd. Lees 'em snel!
-#        modify_list_warning: ?
         add_participant:
             success: <h4>Toegevoegd!</h4> Deelnemer succesvol toegevoegd.
             danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het toevoegen van de deelnemer. Probeer opnieuw, alsjeblieft.
@@ -602,7 +596,6 @@ flashes:
         wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
         edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
         saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
-#        modify_list_warning: ?
         remove_participant:
             success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
             danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.

@@ -197,7 +197,6 @@ entry_show_valid:
             <p>Bonjour %name%,</p>
             <p>En tant que Père-Noël secret, vous devez distribuer un cadeau à:</p>
         watch_out: Attention
-        modify_list: L'organisateur de cette fête peut ajouter ou supprimer des personnes jusqu'à %oneWeekFromEventDate%, cela veut dire que vous pouvez encore être assigné à un autre copain Secret Santa. Peut-être qu'il serait mieux d’attendre que vous soyez sûr que votre copain actuel soit vraiment votre copain Secret Santa avant de lui acheter un cadeau.
         wishlist_from: Liste de souhaits de %name%
         wishlist_not_provided: %name% n'a pas encore publié de liste de souhaits
     poke:
@@ -273,7 +272,6 @@ pool_manage_valid:
         tip: Astuce:
         come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
         watch_out: Attention:
-        modify_list: Ajouter ou supprimer des participants à cette fête sera seulement possible jusqu'à %oneWeekFromEventDate%.
         save: Enregistrer
 
     delete:
@@ -307,10 +305,7 @@ pool_manage_valid:
                 Supprimer ce participant causera de conséquences permanentes. Il sera impossible de rétablir les attributions actuelles et le participant sera supprimé imméadiatement.<br>
                 <br>
                 Tenez compte de la possibilité que quelqu'un peut avoir déjà acheté un cadeau pour ce participant.<br>
-                <br>
-                Si vous êtes certain de vouloir supprimer ce participant, entrez svp "<b>%phrase_to_type%</b>" ci-dessous afin de confirmer.<br>
             </p>
-        phrase_to_type: supprimer ce participant
 
     updated_party:
         title: Mettez à jour les détails de votre fête Secret Santa
@@ -515,7 +510,6 @@ flashes:
             En ce moment, nos gnomes voyagent à travers l'Internet, afin de communiquer aux Pères-Noël secrets leur copain cadeau.<br/>
             <br />
             N'oubliez pas de confirmer votre participation. Nous vous avons envoyé un nouvel e-mail. Allez vérifier !
-        modify_list_warning: <h4>Oups</h4> Il semble que votre fête a lieu dans moins d'une semaine, vous ne pouvez plus ajouter ou supprimer de participants.
         add_participant:
             success: <h4>Ajouté</h4> Participant ajouté à la f&ecirc;te avec succès.
             danger: <h4>Oups</h4> Une erreur s'est produite lors de l'ajout du participant. Veuillez essayer à nouveau.
@@ -540,7 +534,6 @@ flashes:
         wishlist_updated: <h4>Liste de souhaits mise à jour</h4>Nous avons envoyé nos gnomes afin qu'ils avertissent votre Père-Noël secret de vos souhaits !
         edit_email: <h4>Non enregistrée</h4> l'adresse e-mail comporte une erreur.
         saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.
-        modify_list_warning: <h4>Oups</h4> Il semble que votre fête a lieu dans moins d'une semaine, vous ne pouvez plus ajouter ou supprimer de participants.
         remove_participant:
             success: <h4>Supprimé!</h4> Participant supprimé avec succès.
             danger: <h4>Oups</h4> Ce participant ne peut être supprimé, votre f&ecirc;te nécessite au moins 3 participants.

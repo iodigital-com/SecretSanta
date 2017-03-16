@@ -241,7 +241,6 @@ entry_show_valid:
             <p>Hi %name%,</p>
             <p>You are assigned as Secret Santa to give a present to:</p>
         watch_out: Watch out
-        modify_list: Adding people to this party or removing people from this party will be only possible until %oneWeekFromEventDate%.
         wishlist_from: Wishlist from %name%
         wishlist_not_provided: %name% has not yet provided a wishlist
     poke:
@@ -318,7 +317,6 @@ pool_manage_valid:
         tip: Tip
         come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
         watch_out: Watch out
-        modify_list: The organizer of this party can add and delete people to this party until %oneWeekFromEventDate%, keep in mind there is a chance his/her actions may cause you to get a new buddy. You might want to wait to buy your present until you're completely sure you're assigned to this buddy.
         save: Save
 
     delete:
@@ -354,10 +352,7 @@ pool_manage_valid:
                 Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
                 <br>
                 Somebody might have bought them a present already.<br>
-                <br>
-                If you're really sure you want delete this participant, type "<b>%phrase_to_type%</b>" below to confirm.<br>
             </p>
-        phrase_to_type: delete this participant
 
     updated_party:
         title: Update the details of your Secret Santa party
@@ -577,7 +572,6 @@ flashes:
             Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
             <br />
             Don't forget to confirm your own participation. We've sent you another email. Go check it out!
-        modify_list_warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
         add_participant:
             success: <h4>Added!</h4> Participant succesfully added to your party.
             danger: <h4>Oops</h4> An error occured while adding the participant. Please try again.
@@ -602,7 +596,6 @@ flashes:
         wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
         saved_email: <h4>Saved</h4> The new email address was saved. We also resent the e-mail.
-        modify_list_warning: <h4>Oops</h4> It seems your party is in less than a week, you can't add or remove participants anymore.
         remove_participant:
             success: <h4>Removed!</h4> Participant succesfully removed.
             danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.

@@ -52,7 +52,7 @@
                                      alt="{{ 'pool_manage_valid.manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
-                        <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}" {% if 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}>
+                        <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}">
                             <i class="fa fa-times"></i>
                         </button>
                     </td>
@@ -63,9 +63,6 @@
 
         <div class="alert alert-info">
             <strong>{{ 'pool_manage_valid.manage.tip'|trans }}</strong> {{ 'pool_manage_valid.manage.come_back'|trans }}
-        </div>
-        <div class="alert alert-warning">
-            <strong>{{ 'pool_manage_valid.manage.watch_out'|trans }}</strong> {{ 'pool_manage_valid.manage.modify_list'|trans({ '%oneWeekFromEventDate%': oneWeekFromEventDate|localizeddate('medium', 'none') })|raw }}
         </div>
         <button id="btn_delete" class="btn btn-primary manage_btn">
             <i class="fa fa-exclamation-circle"></i> {{ 'pool_manage_valid.btn.delete_list'|trans }}
@@ -80,7 +77,7 @@
             <i class="fa fa-envelope"></i> {{ 'pool_manage_valid.btn.pool_update'|trans|raw }}
         </a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
-                {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) or 'now'|date('Y-m-d') > oneWeekFromEventDate %}disabled{% endif %}>
+                {% if (form_errors(addEntryForm.name)) or (form_errors(addEntryForm.email)) %}disabled{% endif %}>
             <i class="fa fa-plus-circle fa-inverse"></i> {{ 'pool_manage_valid.btn.add_participant'|trans|raw }}
         </button>
         <button id="btn_update" class="btn btn-warning manage_btn">
@@ -142,21 +139,17 @@
         <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
             <h3>{{ 'pool_manage_valid.remove_participant.title'|trans|raw }}</h3>
 
-            {% set phraseToType = 'pool_manage_valid.remove_participant.phrase_to_type'|trans|lower %}
-            {{ 'pool_manage_valid.remove_participant.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            {{ 'pool_manage_valid.remove_participant.body'|trans|raw }}
             <br>
             <form id="delete-participant-form" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
-                <input type="text" name="confirmation" id="delete-participant-confirmation" autocomplete="off"
-                       onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_remove_participant_confirmation').removeAttr('disabled');"
-                       class="form-control">
-                <br>
                 <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
-                        id="btn_remove_participant_confirmation" disabled>
+                        id="btn_remove_participant_confirmation">
                     {{ 'pool_manage_valid.btn.remove_participant_confirm'|trans|raw }}
                 </button>
-                <button type="reset" class="btn btn-danger btn_remove_participant_cancel"
-                        >{{ 'pool_manage_valid.btn.cancel'|trans }}</button>
+                <button type="reset" id="btn_remove_participant_cancel" class="btn btn-danger btn_remove_participant_cancel">
+                    {{ 'pool_manage_valid.btn.cancel'|trans }}
+                </button>
             </form>
         </div>
 
@@ -236,7 +229,7 @@
             $('.link_remove_participant').click(function(e) {
                 $('#delete-participant').show();
                 $('.link_remove_participant').attr('disabled', true);
-                $('#delete-participant-confirmation').focus();
+                $('#btn_remove_participant_cancel').focus();
                 var listUrl = '{{ pool.listUrl }}';
                 var entryId = $(this).data('entry');
                 attachAction(listUrl, entryId);

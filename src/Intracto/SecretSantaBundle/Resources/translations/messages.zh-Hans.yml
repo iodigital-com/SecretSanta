@@ -163,7 +163,6 @@ entry_show_valid:
             <p>你好%name%,</p>
             <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
 #        watch_out: ?
-#        modify_list: ?
         wishlist_from: 愿望清单来自 %name%
         wishlist_not_provided: %name%尚未提供愿望清单
 #    poke:
@@ -240,7 +239,6 @@ pool_manage_valid:
         tip: 贴士
         come_back: 你可以经常回到这个页面来确认所有人已经看过他/她的邮箱。
 #        watch_out: ?
-#        modify_list: ?
         save: 保存
 
     delete:
@@ -264,7 +262,6 @@ pool_manage_valid:
 
 #    remove_participant:
 #        title: ?
-#        phrase_to_type: ?
 #        body: ?
 
 #    updated_party:
@@ -427,7 +424,6 @@ flashes:
             我们的小矮人已听从我们的号令，正漫游在网上，把礼物密友们的名字传达给所有准秘密圣诞老人们耳中。<br/>
             <br />
             不要忘记你自己也参与其中。我们已经发送另外一封邮件给你了。去查查看吧！
-#        modify_list_warning: ?
 #        add_participant:
 #            success: ?
 #            danger: ?
@@ -452,7 +448,6 @@ flashes:
         wishlist_updated: <h4>愿望清单已更新</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>未保存</h4> 电子邮箱地址出错。
         saved_email: <h4>已保存</h4> 已保存。新的电子邮箱地址已保存。我们也已重新发送电子邮件了。
-#        modify_list_warning: ?
 #        remove_participant:
 #            success: ?
 #            danger: ?
