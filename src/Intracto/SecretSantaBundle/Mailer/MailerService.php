@@ -13,7 +13,7 @@ class MailerService
 {
     /** @var \Swift_Mailer */
     public $mailer;
-    /** @var \Swift_Mailer */
+    /** @var EntityManager */
     public $em;
     /** @var EngineInterface */
     public $templating;

@@ -4,6 +4,7 @@ namespace Intracto\SecretSantaBundle\Controller\Pool;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SendPartyUpdateController extends Controller
 {
