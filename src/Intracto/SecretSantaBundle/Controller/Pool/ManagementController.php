@@ -50,7 +50,7 @@ class ManagementController extends Controller
             ]);
         }
 
-        if ($request->getMethod('POST')) {
+        if ($request->getMethod() === 'POST') {
             $addEntryForm->handleRequest($request);
             $updatePoolDetailsForm->handleRequest($request);
 

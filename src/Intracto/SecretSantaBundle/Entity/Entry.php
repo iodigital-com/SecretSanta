@@ -97,7 +97,7 @@ class Entry
     private $url;
 
     /**
-     * @var ArrayCollection
+     * @var WishlistItem[]
      *
      * @ORM\OneToMany(targetEntity="WishlistItem", mappedBy="entry", cascade={"persist", "remove"})
      * @ORM\OrderBy({"rank" = "asc"})
@@ -105,7 +105,7 @@ class Entry
     private $wishlistItems;
 
     /**
-     * @var WishlistItem
+     * @var WishlistItem[]
      */
     private $removedWishlistItems;
 
@@ -360,7 +360,7 @@ class Entry
     }
 
     /**
-     * @return WishlistItem
+     * @return WishlistItem[]
      */
     public function getWishlistItems()
     {
@@ -392,7 +392,7 @@ class Entry
     }
 
     /**
-     * @return WishlistItem
+     * @return WishlistItem[]
      */
     public function getRemovedWishlistItems()
     {
@@ -492,7 +492,7 @@ class Entry
     {
         $this->ipv4 = $ipv4;
 
-        return $ipv4;
+        return $this;
     }
 
     /**
@@ -512,7 +512,7 @@ class Entry
     {
         $this->ipv6 = $ipv6;
 
-        return $ipv6;
+        return $this;
     }
 
     /**
