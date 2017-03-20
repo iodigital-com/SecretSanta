@@ -243,9 +243,7 @@ entry_show_valid:
         watch_out: Watch out
         wishlist_from: Wishlist from %name%
         wishlist_not_provided: %name% has not yet provided a wishlist
-    poke:
-        poke: Poke
-        poke_sentence: your buddy to let him/her know their wishlist is empty.
+        message_for_wishlist: Send a message to your buddy to let him/her know their wishlist is empty.
 
     buy_from_amazon: What are the most wished for items?
 
@@ -439,24 +437,6 @@ emails-pendingConfirmation:
     lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
     btn_validate: Validate my event
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-    subject: Your buddy is waiting for your wishlist
-    message:
-        html: >
-            Dear %name%, <br/>
-            <br/>
-            Your Secret Santa buddy is waiting for you to add some items to your wishlist.<br/>
-            <br/>
-            Click the link below and add some stuff to your wishlist you'd like.
-        txt: >
-            Dear %name%,
-
-            Your Secret Santa buddy is waiting for you to add some items to your wishlist.
-
-            Click the link below and add some stuff to your wishlist you'd like.
-    update_wishlist: Update your wishlist
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
     subject: Secret Santa party status
@@ -590,6 +570,7 @@ emails-message:
 
 
           Click the link below and add some stuff to your wishlist you'd like.
+    update_wishlist: Update your wishlist
 
 flashes:
     # SendPartyUpdateController
@@ -622,10 +603,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
-
-    # PokeBuddyController
-    poke_buddy:
-        poke_buddy: <h4>Poked</h4> We've sent out our gnomes to ask your Secret Santa to add items to the wishlist!
 
     # EntryController
     entry:

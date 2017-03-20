@@ -241,9 +241,7 @@ entry_show_valid:
         watch_out: Opgelet
         wishlist_from: Verlanglijst van %name%
         wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
-    poke:
-        poke: Por
-        poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
+        message_for_wishlist: Stuur een bericht om te vragen de verlanglijst aan te vullen.
 
     buy_from_amazon: Welke geschenken worden het vaakst gekocht?
 
@@ -439,24 +437,6 @@ emails-pendingConfirmation:
     lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
     btn_validate: Valideer mijn evenement
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-    subject: Je maatje wacht op jouw verlanglijstje
-    message:
-        html: >
-            Beste %name%, <br/>
-            <br/>
-            Jouw Secret Santa maatje wacht op jouw wenslijst. <br/>
-            <br/>
-            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
-        txt: >
-            Beste %name%,
-
-            Jouw Secret Santa maatje wacht op jouw wenslijst.
-
-            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
-    update_wishlist: Update je verlanglijst
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
     subject: Status Secret Santa feestje
@@ -590,6 +570,7 @@ emails-message:
 
 
           Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wishlist!
+    update_wishlist: Pas je verlanglijst aan
 
 flashes:
     # SendPartyUpdateController
@@ -622,10 +603,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
-
-    # PokeBuddyController
-    poke_buddy:
-        poke_buddy: <h4>Gepord</h4> Onze kaboutertjes zijn onderweg naar jouw Secret Santa om te vragen naar interessante spulletjes voor op hun verlanglijstje.
 
     # EntryController
     entry:

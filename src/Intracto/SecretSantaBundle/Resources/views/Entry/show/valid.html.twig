@@ -24,12 +24,11 @@
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
                 </div>
 
-                <div class="well bottom-spacer">
+                <div class="well">
                     <h4 data-hj-masked>{{ 'entry_show_valid.entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
                     {% if(secret_santa.wishlistitems|length == 0) %}
                         {{ 'entry_show_valid.entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
-                        <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'entry_show_valid.poke.poke'|trans }}</a>
-                        {{ 'entry_show_valid.poke.poke_sentence'|trans|raw }}
+                        {{ 'entry_show_valid.entry.message_for_wishlist'|trans|raw }}
                     {% else %}
                         <ul class="wishlist">
                             {% for item in secret_santa.wishlistitems %}
@@ -42,7 +41,7 @@
                               rel="noopener noreferrer">{{ 'entry_show_valid.buy_from_amazon'|trans }}</a></b>
                 </div>
 
-                <div class="panel panel-default" id="messagePanel">
+                <div class="panel panel-default bottom-spacer" id="messagePanel">
                     <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
                         <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
                             <h3 class="panel-title">{{ 'entry_show_valid.send_message.title'|trans({'%name%': entry.entry.name}) }}</h3>

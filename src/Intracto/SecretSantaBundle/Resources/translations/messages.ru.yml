@@ -170,9 +170,7 @@ entry_show_valid:
 #        watch_out: ?
         wishlist_from: Список желаний от %name%
         wishlist_not_provided: %name% еще не предоставил свой список желаний
-#    poke:
-#        poke: ?
-#        poke_sentence: ?
+#        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
 
@@ -346,14 +344,6 @@ emails-pendingConfirmation:
     lastly: И в завершение не забудьте подтвердить ваше собственное участие! Мы также направим вам письмо, как только вы кликните кнопку подтверждения ниже.
     btn_validate: Подтвердить мое событие
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
-    update_wishlist: Обновить ваш список желаний
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
 #    subject: ?
@@ -432,6 +422,7 @@ emails-wishlistChanged:
 #    message:
 #      html: >
 #      txt: >
+#    update_wishlist:
 
 flashes:
     # SendPartyUpdateController
@@ -464,10 +455,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Отправлено повторно!</strong><br/>Письмо на адрес %email% отправлено повторно.<br/>
-
-    # PokeBuddyController
-#    poke_buddy:
-#        poke_buddy: ?
 
     # EntryController
     entry:
