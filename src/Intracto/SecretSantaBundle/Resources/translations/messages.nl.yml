@@ -267,6 +267,20 @@ entry_show_valid:
         update_item: Update dit item
         remove_item: Verwijder
 
+    send_message:
+        title: Stuur een anoniem bericht naar %name%
+        message_label: Jouw bericht
+        message_placeholder: Jouw bericht
+        warning_anonymous: Denk eraan dat dit bericht anoniem wordt verstuurd en je niet mag verklappen wie je bent! Je maatje kan niet antwoorden op je bericht, wees concreet zodat hij/zij zijn/haar wishlist kan updaten.
+        send_button: Verstuur je bericht!
+
+#MessageController
+send_message:
+    feedback:
+              success: Je email is verzonden! Onze kaboutertjes zullen hem bezorgen.
+              error: Helaas kon je bericht niet verzonden worden. Probeer later opnieuw!
+              error_in_form: Er is een fout in je email! Controleer alles en probeer opnieuw!
+
 # Pool/manage/base.html.twig
 pool_manage_base:
     headers:
@@ -554,6 +568,28 @@ emails-wishlistChanged:
 
     btn:
         check_wishlist: Bekijk verlanglijst
+
+#Emails/anonymousMessage.{html,txt}.twig
+emails-message:
+    subject: Je Secret Santa heeft je een bericht gestuurd!
+    message:
+      html: >
+          Beste %name%, <br/>
+          <br/>
+          Je Secret Santa heeft je een bericht gestuurd, je kan het hier lezen:<br/>
+          <br />
+          <strong>%message%</strong>
+          <br/>
+          Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wishlist!
+      txt: >
+          Beste %name%,
+
+          Je Secret Santa heeft je een bericht gestuurd, je kan het hier lezen:
+
+          %message%
+
+
+          Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wishlist!
 
 flashes:
     # SendPartyUpdateController

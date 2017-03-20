@@ -269,6 +269,20 @@ entry_show_valid:
         update_item: Update this item
         remove_item: Remove
 
+    send_message:
+        title: Send an anonymous message to %name%
+        message_label: Your message
+        message_placeholder: Your message
+        warning_anonymous: Remember that this message is send anonymously, and you don't want to spoil who you are! Your buddy won't be able to reply to your message, be specific so he/she is able to update his/her wishlist.
+        send_button: Send your mail!
+
+#MessageController
+send_message:
+    feedback:
+              success: Your mail has been sent! We've sent out our gnomes to deliver it!
+              error: Unfortunately we couldn't send your message. Please try again later!
+              error_in_form: There was an error with your input. Please check your input and try again!
+
 # Pool/manage/base.html.twig
 pool_manage_base:
     headers:
@@ -554,6 +568,28 @@ emails-wishlistChanged:
 
     btn:
         check_wishlist: Check wishlist
+
+#Emails/anonymousMessage.{html,txt}.twig
+emails-message:
+    subject: Your secret santa sent you a message
+    message:
+      html: >
+          Dear %name%, <br/>
+          <br/>
+          Your Secret Santa buddy has sent a message to you, you can read it here:<br/>
+          <br />
+          <strong>%message%</strong>
+          <br/>
+          Click the link below and add some stuff to your wishlist you'd like.
+      txt: >
+          Dear %name%,
+
+          Your Secret Santa buddy has sent a message to you, you can read it here:
+
+          %message%
+
+
+          Click the link below and add some stuff to your wishlist you'd like.
 
 flashes:
     # SendPartyUpdateController

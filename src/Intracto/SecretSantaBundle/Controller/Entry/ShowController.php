@@ -11,6 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\Type\WishlistType;
+use Intracto\SecretSantaBundle\Form\Type\MessageFormType;
 
 class ShowController extends Controller
 {
@@ -31,7 +32,8 @@ class ShowController extends Controller
             ]);
         }
 
-        $form = $this->createForm(WishlistType::class, $entry);
+        $wishlistForm = $this->createForm(WishlistType::class, $entry);
+        $messageForm = $this->createForm(MessageFormType::class, null, ['action' => $this->generateUrl('message_send')]);
 
         // Log visit on first access
         if ($entry->getViewdate() === null) {
@@ -54,9 +56,9 @@ class ShowController extends Controller
                 $currentWishlistItems->add($item);
             }
 
-            $form->submit($request);
+            $wishlistForm->submit($request);
 
-            if ($form->isValid()) {
+            if ($wishlistForm->isValid()) {
                 // save entries passed and check rank
                 $inOrder = true;
                 $lastRank = 0;
@@ -114,7 +116,8 @@ class ShowController extends Controller
         if (!$request->isXmlHttpRequest()) {
             return [
                 'entry' => $entry,
-                'form' => $form->createView(),
+                'wishlistForm' => $wishlistForm->createView(),
+                'messageForm' => $messageForm->createView(),
                 'secret_santa' => $secret_santa,
                 'oneWeekFromEventDate' => $oneWeekFromEventDate,
             ];

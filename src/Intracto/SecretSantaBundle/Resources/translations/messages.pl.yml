@@ -178,6 +178,20 @@ entry_show_valid:
 #        update_item: ?
         remove_item: Usuń pozycję
 
+#    send_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+#MessageController
+#send_message:
+#    feedback:
+#              success: Je email is verzonden! Onze kaboutertjes zullen hem bezorgen.
+#              error: Helaas kon je bericht niet verzonden worden. Probeer later opnieuw!
+#              error_in_form: Er is een fout in je email! Controleer alles en probeer opnieuw!
+
 # Pool/manage/base.html.twig
 pool_manage_base:
     headers:
@@ -373,6 +387,13 @@ emails-wishlistChanged:
 
     btn:
         check_wishlist: Sprawdź listę życzeń
+
+#Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject:
+#    message:
+#      html: >
+#      txt: >
 
 flashes:
     # SendPartyUpdateController

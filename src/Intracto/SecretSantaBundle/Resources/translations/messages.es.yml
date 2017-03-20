@@ -197,6 +197,20 @@ entry_show_valid:
         update_item: Actualizar este elemento
         remove_item: Quitar
 
+#    send_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+#MessageController
+#send_message:
+#    feedback:
+#              success:
+#              error:
+#              error_in_form:
+
 # Pool/manage/base.html.twig
 pool_manage_base:
     headers:
@@ -482,6 +496,13 @@ emails-wishlistChanged:
 
     btn:
         check_wishlist: Comprobar la lista de deseos
+
+#Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject:
+#    message:
+#      html: >
+#      txt: >
 
 flashes:
     # SendPartyUpdateController

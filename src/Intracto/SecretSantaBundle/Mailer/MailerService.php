@@ -457,4 +457,53 @@ class MailerService
             )
         );
     }
+
+    /**
+     * @param $recipient
+     * @param $message
+     *
+     * @return bool
+     */
+    public function sendAnonymousMessage($recipient, $message)
+    {
+        $addressee = $this->em->getRepository('IntractoSecretSantaBundle:Entry')->find($recipient);
+
+        if (count($addressee) == 0) {
+            return false;
+        }
+
+        $pool = $this->em->getRepository('IntractoSecretSantaBundle:Pool')->find($addressee->getPool());
+
+        $this->translator->setLocale($pool->getLocale());
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails-message.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
+            ->setTo($addressee->getEmail())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:anonymousMessage.html.twig',
+                    [
+                        'name' => $addressee->getName(),
+                        'message' => $message,
+                        'entry' => $addressee,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:anonymousMessage.txt.twig',
+                    [
+                        'name' => $addressee->getName(),
+                        'message' => $message,
+                        'entry' => $addressee,
+                    ]
+                ),
+                'text/plain'
+            );
+        $this->mailer->send($message);
+
+        return true;
+    }
 }
