@@ -436,7 +436,7 @@ class MailerService
         $this->translator->setLocale($recipient->getPool()->getLocale());
 
         $message = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails-message.subject'))
+            ->setSubject($this->translator->trans('emails-anonymous_message.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($recipient->getEmail())
             ->setBody(
