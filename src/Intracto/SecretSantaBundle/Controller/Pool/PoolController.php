@@ -73,7 +73,7 @@ class PoolController extends Controller
             return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
         }
 
-        $form = $this->createForm(new PoolExcludeEntryType(), $pool);
+        $form = $this->createForm(PoolExcludeEntryType::class, $pool);
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
             if ($form->isValid()) {
