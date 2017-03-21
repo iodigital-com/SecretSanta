@@ -195,18 +195,18 @@ entry_show_valid:
         remove_item: Удалить из списка
 
 #    anonymous_message:
-#        title:
-#        message_label:
-#        message_placeholder:
-#        warning_anonymous:
-#        send_button: Verstuur je bericht!
+#        title: ?
+#        message_label: ?
+#        message_placeholder: ?
+#        warning_anonymous: ?
+#        send_button: ?
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
 #    feedback:
-#        success:
-#        error:
-#        error_in_form:
+#        success: ?
+#        error: ?
+#        error_in_form: ?
 
 # Pool/manage/base.html.twig
 pool_manage_base:
