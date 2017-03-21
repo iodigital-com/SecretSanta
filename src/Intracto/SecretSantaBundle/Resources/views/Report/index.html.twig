@@ -31,4 +31,6 @@
         {% endif %}
     </div>
 {% endblock %}
-{% include 'IntractoSecretSantaBundle:Report:javascripts.html.twig' %}
+{% block javascripts %}
+    {% include 'IntractoSecretSantaBundle:Report:javascripts.html.twig' %}
+{% endblock %}

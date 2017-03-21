@@ -1,187 +1,185 @@
-{% block javascripts %}
-    {% if data_pool is not empty %}
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#select-season').on('change', function() {
-                    var url = '{{ path("report", { 'year' : "CHOICE" }) }}';
-                    window.location = url.replace('CHOICE', $(this).val());
-                });
-
-                $(window).resize(function(){
-                    drawChart();
-                });
+ {% if data_pool is not empty %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#select-season').on('change', function() {
+                var url = '{{ path("report", { 'year' : "CHOICE" }) }}';
+                window.location = url.replace('CHOICE', $(this).val());
             });
 
-            google.charts.load('current', {packages: ['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
+            $(window).resize(function(){
+                drawChart();
+            });
+        });
 
-            function drawChart() {
-                var chartOptions = {
-                    height: 300,
-                    legend: {position: 'bottom'},
-                    colors: [
-                        '#c41425',
-                        '#d31628',
-                        '#e3172b',
-                        '#e82236',
-                        '#ea3244',
-                        '#ec4152',
-                        '#ed5160',
-                        '#ef606e',
-                        '#f0707c',
-                        '#f27f8a',
-                        '#f48e98',
-                        '#f59ea6',
-                        '#f7adb4',
-                        '#f8bdc2'
-                    ],
-                    backgroundColor: { fill:'transparent' }
-                };
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
-                var analyticsChartOptions = {
-                    height: 300,
-                    chartArea: { left: 0, right:0 },
-                    legend: { alignment: 'center' },
-                    backgroundColor: { fill:'transparent' }
-                }
+        function drawChart() {
+            var chartOptions = {
+                height: 300,
+                legend: {position: 'bottom'},
+                colors: [
+                    '#c41425',
+                    '#d31628',
+                    '#e3172b',
+                    '#e82236',
+                    '#ea3244',
+                    '#ec4152',
+                    '#ed5160',
+                    '#ef606e',
+                    '#f0707c',
+                    '#f27f8a',
+                    '#f48e98',
+                    '#f59ea6',
+                    '#f7adb4',
+                    '#f8bdc2'
+                ],
+                backgroundColor: { fill:'transparent' }
+            };
 
-                {% if current_year != 'all' %}
-                var poolData = new google.visualization.DataTable();
-                poolData.addColumn('string', 'Month');
-                poolData.addColumn('number', 'Parties');
-                poolData.addRows([
-                    {% for pool in data_pool['pool_chart_data'] %}
-                    ['{{ pool['month']|date("M") }}', {{ pool['accumulatedPoolCountByMonth'] }}],
-                    {% endfor %}
-                ]);
-                var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
-                poolChart.draw(poolData, chartOptions);
-
-                var totalPoolData = new google.visualization.DataTable();
-                totalPoolData.addColumn('string', 'Month');
-                totalPoolData.addColumn('number', 'Parties');
-                totalPoolData.addRows([
-                    {% for pool in data_pool['total_pool_chart_data'] %}
-                    ['{{ pool['month']|date("M Y") }}', {{ pool['totalPoolCount'] }}],
-                    {% endfor %}
-                ]);
-                var totalPoolChart = new google.visualization.LineChart(document.getElementById('total_pool_chart'));
-                totalPoolChart.draw(totalPoolData, chartOptions);
-
-                var entryData = new google.visualization.DataTable();
-                entryData.addColumn('string', 'Month');
-                entryData.addColumn('number', 'Participants');
-                entryData.addRows([
-                    {% for entry in data_pool['entry_chart_data'] %}
-                    ['{{ entry['month']|date("M") }}', {{ entry['accumulatedEntryCountByMonth'] }}],
-                    {% endfor %}
-                ]);
-                var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
-                entryChart.draw(entryData, chartOptions);
-
-                var totalEntryData = new google.visualization.DataTable();
-                totalEntryData.addColumn('string', 'Month');
-                totalEntryData.addColumn('number', 'Participants');
-                totalEntryData.addRows([
-                    {% for entry in data_pool['total_entry_chart_data'] %}
-                    ['{{ entry['month']|date("M Y") }}', {{ entry['totalEntryCount'] }}],
-                    {% endfor %}
-                ]);
-                var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
-                totalEntryChart.draw(totalEntryData, chartOptions);
-                {% else %}
-                var poolData = new google.visualization.DataTable();
-                poolData.addColumn('string', 'Season');
-                poolData.addColumn('number', 'Parties');
-                poolData.addRows([
-                    {% for pool in data_pool['yearly_pool_chart_data'] %}
-                    {% if pool['year'] != null %}
-                    ['{{ pool['year'] }} - {{ pool['year'] + 1 }}', {{ pool['pool'][0]['accumulatedPoolCountByYear'] }}],
-                    {% endif %}
-                    {% endfor %}]);
-                var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
-                poolChart.draw(poolData, chartOptions);
-
-                var entryData = new google.visualization.DataTable();
-                entryData.addColumn('string', 'Season');
-                entryData.addColumn('number', 'Parties');
-                entryData.addRows([
-                    {% for entry in data_pool['yearly_entry_chart_data'] %}
-                    {% if entry['year'] != null %}
-                    ['{{ entry['year'] }} - {{ entry['year'] + 1 }}', {{ entry['entry'][0]['accumulatedEntryCountByYear'] }}],
-                    {% endif %}
-                    {% endfor %}
-                ]);
-                var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
-                entryChart.draw(entryData, chartOptions);
-                {% endif %}
-
-                {% if data_pool['ip_usage'] is not empty %}
-                var ipData = new google.visualization.DataTable();
-                ipData.addColumn('string', 'IP type');
-                ipData.addColumn('number', 'Percentage');
-                ipData.addRows([
-                    ['IPv4', {{ data_pool['ip_usage']['ipv4']['ipv4Count'] }}],
-                    ['IPv6', {{ data_pool['ip_usage']['ipv6']['ipv6Count'] }}]
-                ]);
-
-                var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
-                ipChart.draw(ipData, analyticsChartOptions);
-                {% endif %}
-
-                var countryData = new google.visualization.DataTable();
-                countryData.addColumn('string', 'Country');
-                countryData.addColumn('number', 'Visitors');
-                countryData.addRows([
-                    {% if google_data_pool['countries'] is defined %}
-                    {% for google in google_data_pool['countries'] %}
-                    ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
-                    {% endif %}
-                ]);
-                var countryChart = new google.visualization.PieChart(document.getElementById('country_chart'));
-                countryChart.draw(countryData, analyticsChartOptions);
-
-                var languageData = new google.visualization.DataTable();
-                languageData.addColumn('string', 'Language');
-                languageData.addColumn('number', 'Visitors');
-                languageData.addRows([
-                    {% if google_data_pool['language'] is defined %}
-                    {% for google in google_data_pool['language'] %}
-                    ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
-                    {% endif %}
-                ]);
-                var languageChart = new google.visualization.PieChart(document.getElementById('language_chart'));
-                languageChart.draw(languageData, analyticsChartOptions);
-
-                var deviceData = new google.visualization.DataTable();
-                deviceData.addColumn('string', 'Device');
-                deviceData.addColumn('number', 'Visitors');
-                deviceData.addRows([
-                    {% if google_data_pool['deviceCategory'] is defined %}
-                    {% for google in google_data_pool['deviceCategory'] %}
-                    ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
-                    {% endif %}
-                ]);
-                var deviceChart = new google.visualization.PieChart(document.getElementById('device_chart'));
-                deviceChart.draw(deviceData, analyticsChartOptions);
-
-                var browserData = new google.visualization.DataTable();
-                browserData.addColumn('string', 'Device');
-                browserData.addColumn('number', 'Visitors');
-                browserData.addRows([
-                    {% if google_data_pool['browser'] is defined %}
-                    {% for google in google_data_pool['browser'] %}
-                    ['{{ google[0] }}', {{ google[1] }}],
-                    {% endfor %}
-                    {% endif %}
-                ]);
-                var browserChart = new google.visualization.PieChart(document.getElementById('browser_chart'));
-                browserChart.draw(browserData, analyticsChartOptions);
+            var analyticsChartOptions = {
+                height: 300,
+                chartArea: { left: 0, right:0 },
+                legend: { alignment: 'center' },
+                backgroundColor: { fill:'transparent' }
             }
-        </script>
-    {% endif %}
-{% endblock %}
+
+            {% if current_year != 'all' %}
+            var poolData = new google.visualization.DataTable();
+            poolData.addColumn('string', 'Month');
+            poolData.addColumn('number', 'Parties');
+            poolData.addRows([
+                {% for pool in data_pool['pool_chart_data'] %}
+                ['{{ pool['month']|date("M") }}', {{ pool['accumulatedPoolCountByMonth'] }}],
+                {% endfor %}
+            ]);
+            var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
+            poolChart.draw(poolData, chartOptions);
+
+            var totalPoolData = new google.visualization.DataTable();
+            totalPoolData.addColumn('string', 'Month');
+            totalPoolData.addColumn('number', 'Parties');
+            totalPoolData.addRows([
+                {% for pool in data_pool['total_pool_chart_data'] %}
+                ['{{ pool['month']|date("M Y") }}', {{ pool['totalPoolCount'] }}],
+                {% endfor %}
+            ]);
+            var totalPoolChart = new google.visualization.LineChart(document.getElementById('total_pool_chart'));
+            totalPoolChart.draw(totalPoolData, chartOptions);
+
+            var entryData = new google.visualization.DataTable();
+            entryData.addColumn('string', 'Month');
+            entryData.addColumn('number', 'Participants');
+            entryData.addRows([
+                {% for entry in data_pool['entry_chart_data'] %}
+                ['{{ entry['month']|date("M") }}', {{ entry['accumulatedEntryCountByMonth'] }}],
+                {% endfor %}
+            ]);
+            var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
+            entryChart.draw(entryData, chartOptions);
+
+            var totalEntryData = new google.visualization.DataTable();
+            totalEntryData.addColumn('string', 'Month');
+            totalEntryData.addColumn('number', 'Participants');
+            totalEntryData.addRows([
+                {% for entry in data_pool['total_entry_chart_data'] %}
+                ['{{ entry['month']|date("M Y") }}', {{ entry['totalEntryCount'] }}],
+                {% endfor %}
+            ]);
+            var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
+            totalEntryChart.draw(totalEntryData, chartOptions);
+            {% else %}
+            var poolData = new google.visualization.DataTable();
+            poolData.addColumn('string', 'Season');
+            poolData.addColumn('number', 'Parties');
+            poolData.addRows([
+                {% for pool in data_pool['yearly_pool_chart_data'] %}
+                {% if pool['year'] != null %}
+                ['{{ pool['year'] }} - {{ pool['year'] + 1 }}', {{ pool['pool'][0]['accumulatedPoolCountByYear'] }}],
+                {% endif %}
+                {% endfor %}]);
+            var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
+            poolChart.draw(poolData, chartOptions);
+
+            var entryData = new google.visualization.DataTable();
+            entryData.addColumn('string', 'Season');
+            entryData.addColumn('number', 'Parties');
+            entryData.addRows([
+                {% for entry in data_pool['yearly_entry_chart_data'] %}
+                {% if entry['year'] != null %}
+                ['{{ entry['year'] }} - {{ entry['year'] + 1 }}', {{ entry['entry'][0]['accumulatedEntryCountByYear'] }}],
+                {% endif %}
+                {% endfor %}
+            ]);
+            var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
+            entryChart.draw(entryData, chartOptions);
+            {% endif %}
+
+            {% if data_pool['ip_usage'] is not empty %}
+            var ipData = new google.visualization.DataTable();
+            ipData.addColumn('string', 'IP type');
+            ipData.addColumn('number', 'Percentage');
+            ipData.addRows([
+                ['IPv4', {{ data_pool['ip_usage']['ipv4']['ipv4Count'] }}],
+                ['IPv6', {{ data_pool['ip_usage']['ipv6']['ipv6Count'] }}]
+            ]);
+
+            var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
+            ipChart.draw(ipData, analyticsChartOptions);
+            {% endif %}
+
+            var countryData = new google.visualization.DataTable();
+            countryData.addColumn('string', 'Country');
+            countryData.addColumn('number', 'Visitors');
+            countryData.addRows([
+                {% if google_data_pool['countries'] is defined %}
+                {% for google in google_data_pool['countries'] %}
+                ['{{ google[0] }}', {{ google[1] }}],
+                {% endfor %}
+                {% endif %}
+            ]);
+            var countryChart = new google.visualization.PieChart(document.getElementById('country_chart'));
+            countryChart.draw(countryData, analyticsChartOptions);
+
+            var languageData = new google.visualization.DataTable();
+            languageData.addColumn('string', 'Language');
+            languageData.addColumn('number', 'Visitors');
+            languageData.addRows([
+                {% if google_data_pool['language'] is defined %}
+                {% for google in google_data_pool['language'] %}
+                ['{{ google[0] }}', {{ google[1] }}],
+                {% endfor %}
+                {% endif %}
+            ]);
+            var languageChart = new google.visualization.PieChart(document.getElementById('language_chart'));
+            languageChart.draw(languageData, analyticsChartOptions);
+
+            var deviceData = new google.visualization.DataTable();
+            deviceData.addColumn('string', 'Device');
+            deviceData.addColumn('number', 'Visitors');
+            deviceData.addRows([
+                {% if google_data_pool['deviceCategory'] is defined %}
+                {% for google in google_data_pool['deviceCategory'] %}
+                ['{{ google[0] }}', {{ google[1] }}],
+                {% endfor %}
+                {% endif %}
+            ]);
+            var deviceChart = new google.visualization.PieChart(document.getElementById('device_chart'));
+            deviceChart.draw(deviceData, analyticsChartOptions);
+
+            var browserData = new google.visualization.DataTable();
+            browserData.addColumn('string', 'Device');
+            browserData.addColumn('number', 'Visitors');
+            browserData.addRows([
+                {% if google_data_pool['browser'] is defined %}
+                {% for google in google_data_pool['browser'] %}
+                ['{{ google[0] }}', {{ google[1] }}],
+                {% endfor %}
+                {% endif %}
+            ]);
+            var browserChart = new google.visualization.PieChart(document.getElementById('browser_chart'));
+            browserChart.draw(browserData, analyticsChartOptions);
+        }
+    </script>
+{% endif %}
