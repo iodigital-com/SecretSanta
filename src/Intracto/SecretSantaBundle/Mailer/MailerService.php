@@ -174,7 +174,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:forgotlink.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:forgotLink.txt.twig',
                     [
                         'poolLinks' => $poolLinks,
                     ]
