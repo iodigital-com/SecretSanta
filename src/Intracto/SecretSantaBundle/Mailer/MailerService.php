@@ -187,37 +187,6 @@ class MailerService
     }
 
     /**
-     * @param Entry $entry
-     */
-    public function sendPokeMailToBuddy(Entry $entry)
-    {
-        $this->translator->setLocale($entry->getPool()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails-pokeBuddy.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($entry->getEmail(), $entry->getName())
-            ->setBody(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pokeBuddy.html.twig',
-                    [
-                        'entry' => $entry,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:pokeBuddy.txt.twig',
-                    [
-                        'entry' => $entry,
-                    ]
-                ),
-                'text/plain'
-            )
-        );
-    }
-
-    /**
      * @param Pool $pool
      * @param $results
      */
@@ -456,5 +425,42 @@ class MailerService
                 'text/plain'
             )
         );
+    }
+
+    /**
+     * @param $recipient
+     * @param $message
+     */
+    public function sendAnonymousMessage($recipient, $message)
+    {
+        $this->translator->setLocale($recipient->getPool()->getLocale());
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails-message.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
+            ->setTo($recipient->getEmail())
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:anonymousMessage.html.twig',
+                    [
+                        'name' => $recipient->getName(),
+                        'message' => $message,
+                        'entry' => $recipient,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:anonymousMessage.txt.twig',
+                    [
+                        'name' => $recipient->getName(),
+                        'message' => $message,
+                        'entry' => $recipient,
+                    ]
+                ),
+                'text/plain'
+            );
+        $this->mailer->send($message);
     }
 }

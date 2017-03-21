@@ -152,9 +152,7 @@ entry_show_valid:
 #        watch_out: ?
         wishlist_from: 'Lista życzeń %name%'
         wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
-#    poke:
-#        poke: ?
-#        poke_sentence: ?
+#        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
 
@@ -177,6 +175,20 @@ entry_show_valid:
         add_wishlist: Dodaj do listy życzeń
 #        update_item: ?
         remove_item: Usuń pozycję
+
+#    anonymous_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+# ParticipantCommunicationController
+#send_message:
+#    feedback:
+#        success:
+#        error:
+#        error_in_form:
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -294,14 +306,6 @@ emails-pendingConfirmation:
     lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
     btn_validate: Zweryfikuj wydarzenie
 
-# Emails/pokeBuddy.{html,txt}.twig
-#emails-pokeBuddy:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
-#    update_wishlist: ?
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
 #    subject: ?
@@ -374,6 +378,14 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Sprawdź listę życzeń
 
+# Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject: ?
+#    message:
+#      html: ?
+#      txt: ?
+#    update_wishlist: ?
+
 flashes:
     # SendPartyUpdateController
 #    send_party_update:
@@ -401,10 +413,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: '<strong>Wysłano ponownie!</strong><br/>E-mail do %email% został ponownie wysłany.<br/>'
-
-    # PokeBuddyController
-#    poke_buddy:
-#        poke_buddy: ?
 
     # EntryController
     entry:

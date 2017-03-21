@@ -24,12 +24,11 @@
                     <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
                 </div>
 
-                <div class="well bottom-spacer">
+                <div class="well">
                     <h4 data-hj-masked>{{ 'entry_show_valid.entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
                     {% if(secret_santa.wishlistitems|length == 0) %}
                         {{ 'entry_show_valid.entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
-                        <a href="{{ path('poke_buddy', { 'url': entry.url, 'entryId': entry.entry.id }) }}">{{ 'entry_show_valid.poke.poke'|trans }}</a>
-                        {{ 'entry_show_valid.poke.poke_sentence'|trans|raw }}
+                        {{ 'entry_show_valid.entry.message_for_wishlist'|trans|raw }}
                     {% else %}
                         <ul class="wishlist">
                             {% for item in secret_santa.wishlistitems %}
@@ -40,6 +39,35 @@
                     <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20"
                               target="_blank"
                               rel="noopener noreferrer">{{ 'entry_show_valid.buy_from_amazon'|trans }}</a></b>
+                </div>
+
+                <div class="panel panel-default bottom-spacer" id="messagePanel">
+                    <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
+                        <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
+                            <h3 class="panel-title">{{ 'entry_show_valid.anonymous_message.title'|trans({'%name%': entry.entry.name}) }}</h3>
+                        </a>
+                    </div>
+                    <div id="collapsedMessage" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="alert alert-warning" role="alert" id="anonwarning">
+                                <i class="fa fa-exclamation-triangle"></i> {{ 'entry_show_valid.anonymous_message.warning_anonymous' | trans }}
+                            </div>
+                            {{ form_start(messageForm) }}
+                            <div class="form-group">
+
+                                {{ form_label(messageForm.message) }}
+                                {{ form_widget(messageForm.message, {'attr': {'class': 'form-control'}}) }}
+                                {% for error in messageForm.message.vars.errors %}
+                                    <strong>{{ error.message }}</strong><br>
+                                {% endfor %}
+                            </div>
+                            {{ form_widget(messageForm.entry, {'value': entry.url}) }}
+                            {{ form_widget(messageForm.recipient, {'value': entry.entry.id}) }}
+                            <button type="submit"
+                                    class="btn btn-default">{{ 'entry_show_valid.anonymous_message.send_button' |trans }}</button>
+                            {{ form_end(messageForm) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,8 +122,8 @@
             </div>
         </div>
 
-        {{ form_start(form, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
-        {{ form_row(form._token) }}
+        {{ form_start(wishlistForm, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
+        {{ form_row(wishlistForm._token) }}
 
         <table class="entries table table-striped">
             <thead>
@@ -110,13 +138,13 @@
                 </th>
             </tr>
             </thead>
-            <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': form.wishlistItems.vars['prototype']} %}{% endfilter %}">
-            {% if form.wishlistItems |length == 0 %}
+            <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': wishlistForm.wishlistItems.vars['prototype']} %}{% endfilter %}">
+            {% if wishlistForm.wishlistItems |length == 0 %}
                 <tr class="noitems">
                     <td colspan="3">{{ 'entry_show_valid.wishlist.empty'|trans }}</td>
                 </tr>
             {% else %}
-                {% for item in form.wishlistItems %}
+                {% for item in wishlistForm.wishlistItems %}
                     <tr class="wishlistitem">
                         <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span
                                     class="rank">{{ item.rank.vars.value }}</span></td>
@@ -137,7 +165,7 @@
             </tbody>
         </table>
 
-        {{ form_end(form, {'render_rest': false}) }}
+        {{ form_end(wishlistForm, {'render_rest': false}) }}
 
     </div>
 
@@ -174,7 +202,7 @@
 
 {% block javascripts %}
     {% javascripts '@IntractoSecretSantaBundle/Resources/public/js/wishlist.min.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    {{ form_javascript(form) }}
+    {{ form_javascript(wishlistForm) }}
 {% endblock %}

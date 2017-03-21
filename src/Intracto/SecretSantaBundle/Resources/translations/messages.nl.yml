@@ -241,9 +241,7 @@ entry_show_valid:
         watch_out: Opgelet
         wishlist_from: Verlanglijst van %name%
         wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
-    poke:
-        poke: Por
-        poke_sentence: jouw Secret Santa maatje om hem of haar te laten weten dat je wacht op een verlanglijstje.
+        message_for_wishlist: Stuur een bericht om te vragen de verlanglijst aan te vullen.
 
     buy_from_amazon: Welke geschenken worden het vaakst gekocht?
 
@@ -266,6 +264,20 @@ entry_show_valid:
         add_wishlist: Voeg item toe aan verlanglijst
         update_item: Update dit item
         remove_item: Verwijder
+
+    anonymous_message:
+        title: Stuur een anoniem bericht naar %name%
+        message_label: Jouw bericht
+        message_placeholder: Jouw bericht
+        warning_anonymous: Denk eraan dat dit bericht anoniem wordt verstuurd en je niet mag verklappen wie je bent! Je maatje kan niet antwoorden op je bericht, wees concreet zodat hij/zij zijn/haar wishlist kan updaten.
+        send_button: Verstuur je bericht!
+
+# ParticipantCommunicationController
+send_message:
+    feedback:
+        success: Je email is verzonden! Onze kaboutertjes zullen hem bezorgen.
+        error: Helaas kon je bericht niet verzonden worden. Probeer later opnieuw!
+        error_in_form: Er is een fout in je email! Controleer alles en probeer opnieuw!
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -425,24 +437,6 @@ emails-pendingConfirmation:
     lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
     btn_validate: Valideer mijn evenement
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-    subject: Je maatje wacht op jouw verlanglijstje
-    message:
-        html: >
-            Beste %name%, <br/>
-            <br/>
-            Jouw Secret Santa maatje wacht op jouw wenslijst. <br/>
-            <br/>
-            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
-        txt: >
-            Beste %name%,
-
-            Jouw Secret Santa maatje wacht op jouw wenslijst.
-
-            Klik op de onderstaande link en voeg dingen toe aan jouw wenslijst.
-    update_wishlist: Update je verlanglijst
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
     subject: Status Secret Santa feestje
@@ -555,6 +549,28 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Bekijk verlanglijst
 
+# Emails/anonymousMessage.{html,txt}.twig
+emails-message:
+    subject: Je Secret Santa heeft je een bericht gestuurd!
+    message:
+      html: >
+          Beste %name%, <br/>
+          <br/>
+          Je Secret Santa heeft je een bericht gestuurd, je kan het hier lezen:<br/>
+          <br />
+          <strong>%message%</strong>
+          <br/>
+          Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wishlist!
+      txt: >
+          Beste %name%,
+
+          Je Secret Santa heeft je een bericht gestuurd, je kan het hier lezen:
+
+          %message%
+
+          Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wishlist!
+    update_wishlist: Pas je verlanglijst aan
+
 flashes:
     # SendPartyUpdateController
     send_party_update:
@@ -586,10 +602,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
-
-    # PokeBuddyController
-    poke_buddy:
-        poke_buddy: <h4>Gepord</h4> Onze kaboutertjes zijn onderweg naar jouw Secret Santa om te vragen naar interessante spulletjes voor op hun verlanglijstje.
 
     # EntryController
     entry:

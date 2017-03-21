@@ -165,9 +165,7 @@ entry_show_valid:
 #        watch_out: ?
         wishlist_from: 愿望清单来自 %name%
         wishlist_not_provided: %name%尚未提供愿望清单
-#    poke:
-#        poke: ?
-#        poke_sentence: ?
+#        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
 
@@ -190,6 +188,20 @@ entry_show_valid:
         add_wishlist: 添加物品到愿望清单
 #        update_item: ?
         remove_item: 删除这个物品
+
+#    anonymous_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+# ParticipantCommunicationController
+#send_message:
+#    feedback:
+#        success:
+#        error:
+#        error_in_form:
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -327,14 +339,6 @@ emails-pendingConfirmation:
     lastly: 最后，别忘记你自己也参与其中！在你点击以下确认按键后，我们也将发送一封新的电子邮件给你。
     btn_validate: 确认我的活动
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
-    update_wishlist: 更新你的愿望清单
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
 #    subject: ?
@@ -407,6 +411,14 @@ emails-wishlistChanged:
     btn:
         check_wishlist: 查看愿望清单
 
+# Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject: ?
+#    message:
+#      html: ?
+#      txt: ?
+#    update_wishlist:?
+
 flashes:
     # SendPartyUpdateController
 #    send_party_update:
@@ -438,10 +450,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>已重新发送！</strong><br/>已重新发送至 %email%电子邮箱中。<br/>
-
-    # PokeBuddyController
-#    poke_buddy:
-#        poke_buddy: ?
 
     # EntryController
     entry:

@@ -228,9 +228,7 @@ entry_show_valid:
 #        watch_out: ?
         wishlist_from: Lista de desejos de %name%
         wishlist_not_provided: %name% ainda não montou uma lista de desejos
-#    poke:
-#        poke: ?
-#        poke_sentence: ?
+#        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
 
@@ -253,6 +251,20 @@ entry_show_valid:
         add_wishlist: Adicione um item a lista do Secret Santa
 #        update_item: ?
         remove_item: Eliminar este item
+
+#    anonymous_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+# ParticipantCommunicationController
+#send_message:
+#    feedback:
+#        success:
+#        error:
+#        error_in_form:
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -390,14 +402,6 @@ emails-pendingConfirmation:
     lastly: E por último, não se esqueça de sua própria participação! Seria um pouco tonto, né? Nós mandaremos um novo e-mail após você ter clicado no botão de confirmação abaixo.
     btn_validate: Validar meu evento
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
-    update_wishlist: Atualizar minha lista de desejo
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
 #    subject: ?
@@ -470,6 +474,14 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Ver a lista de desejos
 
+# Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject: ?
+#    message:
+#      html: ?
+#      txt: ?
+#    update_wishlist: ?
+
 flashes:
     # SendPartyUpdateController
 #    send_party_update:
@@ -501,10 +513,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Enviado novamente!</strong><br/>O e-mail destinado a %email% foi enviado novamente.<br/>
-
-    # PokeBuddyController
-#    poke_buddy:
-#        poke_buddy: ?
 
     # EntryController
     entry:

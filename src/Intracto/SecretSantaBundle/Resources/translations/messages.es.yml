@@ -171,9 +171,7 @@ entry_show_valid:
         watch_out: Atención
         wishlist_from: Lista de deseos de %name%
         wishlist_not_provided: %name% aún no ha facilitado una lista de deseos
-    poke:
-        poke: Empuja
-        poke_sentence: tu amigote para avisarla que su lista de deseos est&aacute; vac&iacute;a.
+#        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
 
@@ -196,6 +194,20 @@ entry_show_valid:
         add_wishlist: Añadir elemento a lista de deseos
         update_item: Actualizar este elemento
         remove_item: Quitar
+
+#    anonymous_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+# ParticipantCommunicationController
+#send_message:
+#    feedback:
+#        success:
+#        error:
+#        error_in_form:
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -353,24 +365,6 @@ emails-pendingConfirmation:
     lastly: Finalmente, ¡no olvides confirmar también tu propia participación! También te enviaremos un nuevo correo electrónico después de que hagas clic en el botón de validación de abajo.
     btn_validate: Validar mi evento
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-    subject: Tu amigote est&aacute; esperando tu lista de deseos
-    message:
-        html: >
-            Estimado %name%, <br/>
-            <br/>
-            Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.<br/>
-            <br/>
-            Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
-        txt: >
-            Estimado %name%,
-
-            Tu amigote Secret Santa est&aacute; esperando tu lista de deseos.
-
-            Haz clic en el siguiente enlace para a&ntilde;adir cosas a tu lista de deseos.
-    update_wishlist: Actualizar tu lista de deseos
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
     subject: Secret Santa fiesta status
@@ -483,6 +477,14 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Comprobar la lista de deseos
 
+# Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject: ?
+#    message:
+#      html: ?
+#      txt: ?
+#    update_wishlist: ?
+
 flashes:
     # SendPartyUpdateController
     send_party_update:
@@ -514,10 +516,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
-
-    # PokeBuddyController
-    poke_buddy:
-        poke_buddy: <h4>Empujado</h4> Nuestros gnomos est&aacute;n de camino para avisar tu amigote Secret Santa que su lista de deseos est&aacute; vac&iacute;a.
 
     # EntryController
     entry:

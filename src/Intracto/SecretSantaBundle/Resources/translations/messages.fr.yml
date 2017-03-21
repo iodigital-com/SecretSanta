@@ -199,9 +199,7 @@ entry_show_valid:
         watch_out: Attention
         wishlist_from: Liste de souhaits de %name%
         wishlist_not_provided: %name% n'a pas encore publié de liste de souhaits
-    poke:
-        poke: Poke
-        poke_sentence: Votre copain Secret Santa de remplir leur liste de souhaits.
+#        message_for_wishlist: ?
 
     buy_from_amazon: Quels sont les objets les plus désirés ?
 
@@ -224,6 +222,20 @@ entry_show_valid:
         add_wishlist: Ajouter un objet à ma liste de souhaits
         update_item: Actualiser cet object
         remove_item: Supprimer
+
+#    anonymous_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+# ParticipantCommunicationController
+#send_message:
+#    feedback:
+#        success:
+#        error:
+#        error_in_form:
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -377,22 +389,6 @@ emails-pendingConfirmation:
     lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
     btn_validate: Valider mon événement
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-    subject: Votre copain est en attente de votre liste de souhaits
-    message:
-        html: >
-            Cher(e) %name%, <br/>
-            <br/>
-            Votre copain Secret Santa est en attente de votre liste de souhaits.<br/>
-            <br/>
-            Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
-        txt: >
-            Cher(e) %name%,
-            Votre copain Secret Santa est en attente de votre liste de souhaits.
-            Cliquez sur le boutton ci-dessous afin d'ajouter des choses a votre liste de souhaits.
-    update_wishlist: Mettre à jour votre liste de souhaits
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
     subject: L'état de votre f&ecirc;te Secret Santa
@@ -493,6 +489,14 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Découvrir la liste de souhaits
 
+# Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject: ?
+#    message:
+#      html: ?
+#      txt: ?
+#    update_wishlist: ?
+
 flashes:
     # SendPartyUpdateController
     send_party_update:
@@ -524,10 +528,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Renvoyé !</strong><br/>L'e-mail à %email% a bien été renvoyé.<br/>
-
-    # PokeBuddyController
-    poke_buddy:
-        poke_buddy: <h4>Stimulé</h4> Nos gnomes sont en route pour avertir votre Père-Noël secret afin  qu'il complète sa liste de souhaits.
 
     # EntryController
     entry:

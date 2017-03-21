@@ -243,9 +243,7 @@ entry_show_valid:
         watch_out: Watch out
         wishlist_from: Ønskeliste fra %name%
         wishlist_not_provided: %name% har ikke lagt inn sin ønskeliste ennå
-    poke:
-        poke: Dytt på
-        poke_sentence: vennen din for å gjøre han/hun klar over at ønskelisten deres er tom.
+#        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
 
@@ -268,6 +266,20 @@ entry_show_valid:
         add_wishlist: Legg til i ønskelisten
         update_item: Oppdater
         remove_item: Fjern
+
+#    anonymous_message:
+#        title:
+#        message_label:
+#        message_placeholder:
+#        warning_anonymous:
+#        send_button: Verstuur je bericht!
+
+# ParticipantCommunicationController
+#send_message:
+#    feedback:
+#        success:
+#        error:
+#        error_in_form:
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -421,24 +433,6 @@ emails-pendingConfirmation:
     lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
     btn_validate: Validate my event
 
-# Emails/pokeBuddy.{html,txt}.twig
-emails-pokeBuddy:
-    subject: Julenissen venter på ønskelisten din
-    message:
-        html: >
-            Kjære %name%, <br/>
-            <br/>
-            Julenissen din venter på at du legger noen ønsker til ønskelisten din.<br/>
-            <br/>
-            Trykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
-        txt: >
-            Kjære%name%,
-
-            Julenissen din venter på at du legger noen ønsker til ønskelisten din.
-
-            rykk på linken nedenfor for å legge til noe du liker på ønskelisten din.
-    update_wishlist: Oppdater min ønskeliste
-
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
     subject: 'Secret Santa fest: status'
@@ -551,6 +545,14 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Ønskeliste
 
+# Emails/anonymousMessage.{html,txt}.twig
+#emails-message:
+#    subject: ?
+#    message:
+#      html: ?
+#      txt: ?
+#    update_wishlist: ?
+
 flashes:
     # SendPartyUpdateController
     send_party_update:
@@ -582,10 +584,6 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Sendt på nytt!</strong><br/>Eposten til %email% har blitt sendt på nytt.<br/>
-
-    # PokeBuddyController
-    poke_buddy:
-        poke_buddy: <h4>Poked</h4> Vi har sendt en smånisse til nissen din for å si at han eller hun må lage en ønskeliste!
 
     # EntryController
     entry:
