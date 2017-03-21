@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Valid;
 
 class PoolExcludeEntryType extends AbstractType
 {
@@ -29,7 +30,9 @@ class PoolExcludeEntryType extends AbstractType
             [
                 'data_class' => Pool::class,
                 'validation_groups' => ['exclude_entries'],
-                'cascade_validation' => true,
+                'constraints' => [
+                    new Valid(),
+                ],
             ]
         );
     }
