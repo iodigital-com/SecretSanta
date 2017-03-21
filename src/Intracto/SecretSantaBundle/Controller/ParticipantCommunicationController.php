@@ -31,12 +31,12 @@ class ParticipantCommunicationController extends Controller
                 $this->get('intracto_secret_santa.mail')->sendAnonymousMessage($recipient, $message);
                 $feedback = [
                         'type' => 'success',
-                        'message' => $this->get('translator')->trans('send_message.feedback.success'),
+                        'message' => $this->get('translator')->trans('participant_communication-send_message.feedback.success'),
                     ];
             } else {
                 $feedback = [
                         'type' => 'danger',
-                        'message' => $this->get('translator')->trans('send_message.feedback.error'),
+                        'message' => $this->get('translator')->trans('participant_communication-send_message.feedback.error'),
                     ];
             }
 
@@ -44,7 +44,7 @@ class ParticipantCommunicationController extends Controller
         } else {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('send_message.feedback.error_in_form')
+                $this->get('translator')->trans('participant_communication-send_message.feedback.error_in_form')
             );
         }
 

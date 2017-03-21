@@ -273,7 +273,7 @@ entry_show_valid:
         send_button: Verstuur je bericht!
 
 # ParticipantCommunicationController
-send_message:
+participant_communication-send_message:
     feedback:
         success: Je email is verzonden! Onze kaboutertjes zullen hem bezorgen.
         error: Helaas kon je bericht niet verzonden worden. Probeer later opnieuw!
@@ -550,7 +550,7 @@ emails-wishlistChanged:
         check_wishlist: Bekijk verlanglijst
 
 # Emails/anonymousMessage.{html,txt}.twig
-emails-message:
+emails-anonymous_message:
     subject: Je Secret Santa heeft je een bericht gestuurd!
     message:
       html: >

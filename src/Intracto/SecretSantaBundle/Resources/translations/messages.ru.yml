@@ -202,7 +202,7 @@ entry_show_valid:
 #        send_button: Verstuur je bericht!
 
 # ParticipantCommunicationController
-#send_message:
+#participant_communication-send_message:
 #    feedback:
 #        success:
 #        error:
@@ -417,7 +417,7 @@ emails-wishlistChanged:
         check_wishlist: Проверить список желаний
 
 # Emails/anonymousMessage.{html,txt}.twig
-#emails-message:
+#emails-anonymous_message:
 #    subject: ?
 #    message:
 #      html: ?

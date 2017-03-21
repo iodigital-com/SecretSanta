@@ -275,7 +275,7 @@ entry_show_valid:
         send_button: Send your mail!
 
 # ParticipantCommunicationController
-send_message:
+participant_communication-send_message:
     feedback:
         success: Your mail has been sent! We've sent out our gnomes to deliver it!
         error: Unfortunately we couldn't send your message. Please try again later!
@@ -550,7 +550,7 @@ emails-wishlistChanged:
         check_wishlist: Check wishlist
 
 # Emails/anonymousMessage.{html,txt}.twig
-emails-message:
+emails-anonymous_message:
     subject: Your secret santa sent you a message
     message:
       html: >
