@@ -431,7 +431,7 @@ class MailerService
      * @param $recipient
      * @param $message
      */
-    public function sendAnonymousMessage($recipient, $message)
+    public function sendAnonymousMessage(Entry $recipient, $message)
     {
         $this->translator->setLocale($recipient->getPool()->getLocale());
 
