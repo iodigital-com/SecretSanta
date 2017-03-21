@@ -1,4 +1,3 @@
-{% set emessage = message | escape %}
 {% extends "IntractoSecretSantaBundle:Emails:baseEmail.html.twig" %}
 {% block main %}
     <table width="640" border="0" cellpadding="0" cellspacing="0" align="center">
@@ -7,8 +6,7 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-message.message.html'|trans({"%name%": entry.name , "%message%" : emessage})|raw }}
-
+                    {{ 'emails-message.message.html'|trans({"%name%": entry.name , "%message%" : message | escape})|raw }}
                 </span>
                 <br/> <br/>
                 <br/> <br/>
@@ -18,10 +16,8 @@
                         background: #bd1019; -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 10px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
-
                             <a href="{{ url("entry_view", { "url": entry.url, "_locale": entry.pool.locale }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
                              sans-serif; vertical-align: baseline;">{{ 'emails-message.update_wishlist'|trans }}</a>
-
                         </td>
                     </tr>
                     <tr>

@@ -1,31 +1,34 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Entry;
+namespace Intracto\SecretSantaBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Intracto\SecretSantaBundle\Form\Type\MessageFormType;
+use Intracto\SecretSantaBundle\Form\Type\AnonymousMessageFormType;
 
-class MessageController extends Controller
+class ParticipantCommunicationController extends Controller
 {
     /**
-     * @Route("message/send", name="message_send")
+     * @Route("/participant-communication/send-message", name="participant_communication_send_message")
      * @Method("POST")
      */
-    public function sendAction(Request $request)
+    public function sendMessageAction(Request $request)
     {
-        $messageForm = $this->createForm(MessageFormType::class);
+        $messageForm = $this->createForm(AnonymousMessageFormType::class);
 
         $messageForm->handleRequest($request);
         $url = $messageForm->getData()['entry'];
         if ($messageForm->isValid()) {
             $message = $messageForm->getData()['message'];
-            $recipient = $messageForm->getData()['recipient'];
-            $url = $messageForm->getData()['entry'];
+            $recipientId = $messageForm->getData()['recipient'];
 
-            if ($this->get('intracto_secret_santa.mail')->sendAnonymousMessage($recipient, $message)) {
+            $em = $this->get('doctrine.orm.entity_manager');
+            $recipient = $em->getRepository('IntractoSecretSantaBundle:Entry')->find($recipientId);
+
+            if (count($recipient) == 1) {
+                $this->get('intracto_secret_santa.mail')->sendAnonymousMessage($recipient, $message);
                 $feedback = [
                         'type' => 'success',
                         'message' => $this->get('translator')->trans('send_message.feedback.success'),

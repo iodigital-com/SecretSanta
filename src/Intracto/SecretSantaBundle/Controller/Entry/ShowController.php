@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Intracto\SecretSantaBundle\Form\Type\WishlistType;
-use Intracto\SecretSantaBundle\Form\Type\MessageFormType;
+use Intracto\SecretSantaBundle\Form\Type\AnonymousMessageFormType;
 
 class ShowController extends Controller
 {
@@ -33,7 +33,7 @@ class ShowController extends Controller
         }
 
         $wishlistForm = $this->createForm(WishlistType::class, $entry);
-        $messageForm = $this->createForm(MessageFormType::class, null, ['action' => $this->generateUrl('message_send')]);
+        $messageForm = $this->createForm(AnonymousMessageFormType::class, null, ['action' => $this->generateUrl('participant_communication_send_message')]);
 
         // Log visit on first access
         if ($entry->getViewdate() === null) {

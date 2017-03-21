@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block main %}
- <div class="box">
+    <div class="box">
         <div class="row">
             <div class="span8">
                 <h1>{{ 'entry_show_valid.entry.title'|trans }}</h1>
@@ -44,13 +44,13 @@
                 <div class="panel panel-default bottom-spacer" id="messagePanel">
                     <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
                         <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
-                            <h3 class="panel-title">{{ 'entry_show_valid.send_message.title'|trans({'%name%': entry.entry.name}) }}</h3>
+                            <h3 class="panel-title">{{ 'entry_show_valid.anonymous_message.title'|trans({'%name%': entry.entry.name}) }}</h3>
                         </a>
                     </div>
                     <div id="collapsedMessage" class="panel-collapse collapse">
-                        <div class="panel-body"  >
+                        <div class="panel-body">
                             <div class="alert alert-warning" role="alert" id="anonwarning">
-                                <i class="fa fa-exclamation-triangle"></i> {{ 'entry_show_valid.send_message.warning_anonymous' | trans }}
+                                <i class="fa fa-exclamation-triangle"></i> {{ 'entry_show_valid.anonymous_message.warning_anonymous' | trans }}
                             </div>
                             {{ form_start(messageForm) }}
                             <div class="form-group">
@@ -63,9 +63,9 @@
                             </div>
                             {{ form_widget(messageForm.entry, {'value': entry.url}) }}
                             {{ form_widget(messageForm.recipient, {'value': entry.entry.id}) }}
-                            <button type="submit" class="btn btn-default">{{ 'entry_show_valid.send_message.send_button' |trans }}</button>
+                            <button type="submit"
+                                    class="btn btn-default">{{ 'entry_show_valid.anonymous_message.send_button' |trans }}</button>
                             {{ form_end(messageForm) }}
-
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
 
 {% block javascripts %}
     {% javascripts '@IntractoSecretSantaBundle/Resources/public/js/wishlist.min.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ form_javascript(wishlistForm) }}
 {% endblock %}

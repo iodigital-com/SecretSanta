@@ -194,19 +194,19 @@ entry_show_valid:
 #        update_item: ?
         remove_item: Удалить из списка
 
-#    send_message:
+#    anonymous_message:
 #        title:
 #        message_label:
 #        message_placeholder:
 #        warning_anonymous:
 #        send_button: Verstuur je bericht!
 
-#MessageController
+# ParticipantCommunicationController
 #send_message:
 #    feedback:
-#              success:
-#              error:
-#              error_in_form:
+#        success:
+#        error:
+#        error_in_form:
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -416,13 +416,13 @@ emails-wishlistChanged:
     btn:
         check_wishlist: Проверить список желаний
 
-#Emails/anonymousMessage.{html,txt}.twig
+# Emails/anonymousMessage.{html,txt}.twig
 #emails-message:
-#    subject:
+#    subject: ?
 #    message:
-#      html: >
-#      txt: >
-#    update_wishlist:
+#      html: ?
+#      txt: ?
+#    update_wishlist: ?
 
 flashes:
     # SendPartyUpdateController
