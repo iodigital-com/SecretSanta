@@ -49,7 +49,7 @@ class WishlistController extends Controller
             $currentWishlistItems->add($item);
         }
 
-        $wishlistForm->submit($request);
+        $wishlistForm->handleRequest($request);
 
         if ($wishlistForm->isValid()) {
             // save entries passed and check rank
