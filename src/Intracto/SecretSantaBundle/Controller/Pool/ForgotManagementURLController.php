@@ -38,7 +38,7 @@ class ForgotManagementURLController extends Controller
     public function resendAction(Request $request)
     {
         $form = $this->createForm(
-            new ForgotLinkType(),
+            ForgotLinkType::class,
             null,
             [
                 'action' => $this->generateUrl('resend_management_url'),
