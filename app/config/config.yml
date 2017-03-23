@@ -103,10 +103,10 @@ services:
         arguments:
             - IntractoSecretSantaBundle:Participant
 
-    intracto.validator.entry_has_valid_excludes:
+    intracto.validator.participant_has_valid_excludes:
         class: Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator
         tags:
-            - { name: validator.constraint_validator, alias: intracto.validator.entry_has_valid_excludes }
+            - { name: validator.constraint_validator, alias: intracto.validator.participant_has_valid_excludes }
     intracto.validator.party_has_valid_excludes:
         class: Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator
         arguments:

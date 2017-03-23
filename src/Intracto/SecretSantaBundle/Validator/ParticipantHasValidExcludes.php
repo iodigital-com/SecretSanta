@@ -13,7 +13,7 @@ class ParticipantHasValidExcludes extends Constraint
 
     public function validatedBy()
     {
-        return 'intracto.validator.entry_has_valid_excludes';
+        return 'intracto.validator.participant_has_valid_excludes';
     }
 
     public function getTargets()
