@@ -75,9 +75,11 @@ function ajaxSaveWishlist() {
 
     $('.ajax-response .empty').hide();
     var formData = $('#add_item_to_wishlist_form').serializeArray();
+    var url = $('#add_item_to_wishlist_form').attr('action')
 
     $.ajax({
         type: 'POST',
+        url: url,
         data: formData
     }, function (data) {
         if (data.responseCode == 200) {
