@@ -2,13 +2,13 @@
 
 namespace Intracto\SecretSantaBundle\Features\Context\Bootstrap;
 
-use Behat\MinkExtension\Context\MinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 use Intracto\SecretSantaBundle\Behat\Page\Homepage;
 use Intracto\SecretSantaBundle\Behat\Page\ParticipantExclude;
 use Intracto\SecretSantaBundle\Behat\Page\PoolCreated;
 use Webmozart\Assert\Assert;
 
-class PoolContext extends MinkContext
+class PoolContext extends RawMinkContext
 {
     /**
      * @var array
