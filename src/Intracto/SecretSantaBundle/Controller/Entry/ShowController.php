@@ -29,8 +29,23 @@ class ShowController extends Controller
             ]);
         }
 
-        $wishlistForm = $this->createForm(WishlistType::class, $entry, ['action' => $this->generateUrl('wishlist_update', ['url' => $entry->getUrl()])]);
-        $messageForm = $this->createForm(AnonymousMessageFormType::class, null, ['action' => $this->generateUrl('participant_communication_send_message')]);
+        $wishlistForm = $this->createForm(
+            WishlistType::class,
+            $entry,
+            [
+                'action' => $this->generateUrl(
+                    'wishlist_update',
+                    ['url' => $entry->getUrl()]
+                ),
+            ]
+        );
+        $messageForm = $this->createForm(
+            AnonymousMessageFormType::class,
+            null,
+            [
+                'action' => $this->generateUrl('participant_communication_send_message'),
+            ]
+        );
 
         // Log visit on first access
         if ($entry->getViewdate() === null) {
@@ -50,7 +65,6 @@ class ShowController extends Controller
                 'entry' => $entry,
                 'wishlistForm' => $wishlistForm->createView(),
                 'messageForm' => $messageForm->createView(),
-                'secret_santa' => $entry->getEntry(),
             ];
         }
     }

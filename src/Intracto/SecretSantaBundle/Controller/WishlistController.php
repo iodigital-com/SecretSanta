@@ -90,7 +90,6 @@ class WishlistController extends Controller
 
                 if (!$inOrder) {
                     // redirect to force refresh of form and entity
-                    //return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
                     return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
                 }
             }
@@ -102,5 +101,4 @@ class WishlistController extends Controller
             }
         }
     }
-
 }

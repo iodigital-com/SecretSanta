@@ -21,17 +21,17 @@
                 {{ 'entry_show_valid.entry.body'|trans({'%name%': entry.name})|raw }}
 
                 <div class="yoursecretsant" data-hj-masked>
-                    <span class="yourgift">{{ entry.entry.name }}</span> {{ entry.entry.email }}
+                    <span class="yourgift">{{ entry.assignedParticipant.name }}</span> {{ entry.assignedParticipant.email }}
                 </div>
 
                 <div class="well">
-                    <h4 data-hj-masked>{{ 'entry_show_valid.entry.wishlist_from'|trans({'%name%': entry.entry.name}) }}</h4>
-                    {% if(secret_santa.wishlistitems|length == 0) %}
-                        {{ 'entry_show_valid.entry.wishlist_not_provided'|trans({'%name%': entry.entry.name}) }}.
+                    <h4 data-hj-masked>{{ 'entry_show_valid.entry.wishlist_from'|trans({'%name%': entry.assignedParticipant.name}) }}</h4>
+                    {% if(entry.assignedParticipant.wishlistitems|length == 0) %}
+                        {{ 'entry_show_valid.entry.wishlist_not_provided'|trans({'%name%': entry.assignedParticipant.name}) }}.
                         {{ 'entry_show_valid.entry.message_for_wishlist'|trans|raw }}
                     {% else %}
                         <ul class="wishlist">
-                            {% for item in secret_santa.wishlistitems %}
+                            {% for item in entry.assignedParticipant.wishlistitems %}
                                 <li class="wishlistitem">{{ item.description|escape|linkify|raw }}</li>
                             {% endfor %}
                         </ul>
@@ -44,7 +44,7 @@
                 <div class="panel panel-default bottom-spacer" id="messagePanel">
                     <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
                         <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
-                            <h3 class="panel-title">{{ 'entry_show_valid.anonymous_message.title'|trans({'%name%': entry.entry.name}) }}</h3>
+                            <h3 class="panel-title">{{ 'entry_show_valid.anonymous_message.title'|trans({'%name%': entry.assignedParticipant.name}) }}</h3>
                         </a>
                     </div>
                     <div id="collapsedMessage" class="panel-collapse collapse">
@@ -62,7 +62,7 @@
                                 {% endfor %}
                             </div>
                             {{ form_widget(messageForm.entry, {'value': entry.url}) }}
-                            {{ form_widget(messageForm.recipient, {'value': entry.entry.id}) }}
+                            {{ form_widget(messageForm.recipient, {'value': entry.assignedParticipant.id}) }}
                             <button type="submit"
                                     class="btn btn-default">{{ 'entry_show_valid.anonymous_message.send_button' |trans }}</button>
                             {{ form_end(messageForm) }}

@@ -38,8 +38,26 @@ class ManagementController extends Controller
             $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($pool);
         }
 
-        $addEntryForm = $this->createForm(AddEntryType::class, new Entry(), ['action' => $this->generateUrl('pool_manage_addEntry', ['listUrl' => $listUrl])]);
-        $updatePoolDetailsForm = $this->createForm(UpdatePoolDetailsType::class, $pool, ['action' => $this->generateUrl('pool_manage_update', ['listUrl' => $listUrl])]);
+        $addEntryForm = $this->createForm(
+            AddEntryType::class,
+            new Entry(),
+            [
+                'action' => $this->generateUrl(
+                    'pool_manage_addEntry',
+                    ['listUrl' => $listUrl]
+                ),
+            ]
+        );
+        $updatePoolDetailsForm = $this->createForm(
+            UpdatePoolDetailsType::class,
+            $pool,
+            [
+                'action' => $this->generateUrl(
+                    'pool_manage_update',
+                    ['listUrl' => $listUrl]
+                ),
+            ]
+        );
 
         if ($pool->getEventdate() < new \DateTime('-2 years')) {
             return $this->render('IntractoSecretSantaBundle:Pool/manage:expired.html.twig', [

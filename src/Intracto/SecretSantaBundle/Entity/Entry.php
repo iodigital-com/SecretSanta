@@ -249,8 +249,18 @@ class Entry
 
     /**
      * @return Entry
+     *
+     * @deprecated use getAssignedParticipant()
      */
     public function getEntry()
+    {
+        return $this->entry;
+    }
+
+    /**
+     * @return Entry
+     */
+    public function getAssignedParticipant()
     {
         return $this->entry;
     }
