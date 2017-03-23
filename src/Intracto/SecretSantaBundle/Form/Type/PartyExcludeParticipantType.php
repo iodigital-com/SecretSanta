@@ -2,23 +2,23 @@
 
 namespace Intracto\SecretSantaBundle\Form\Type;
 
-use Intracto\SecretSantaBundle\Entity\Pool;
+use Intracto\SecretSantaBundle\Entity\Party;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Valid;
 
-class PoolExcludeEntryType extends AbstractType
+class PartyExcludeParticipantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add(
-                'entries',
+                'participants',
                 CollectionType::class,
                 [
-                    'entry_type' => ExcludeEntryType::class,
+                    'entry_type' => ExcludeParticipantType::class,
                     'by_reference' => false,
                 ]
             );
@@ -28,8 +28,8 @@ class PoolExcludeEntryType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => Pool::class,
-                'validation_groups' => ['exclude_entries'],
+                'data_class' => Party::class,
+                'validation_groups' => ['exclude_participants'],
                 'constraints' => [
                     new Valid(),
                 ],

@@ -9,9 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
-use Intracto\SecretSantaBundle\Entity\Pool;
-use Intracto\SecretSantaBundle\Form\Type\PoolExcludeEntryType;
-use Intracto\SecretSantaBundle\Form\Type\PoolType;
+use Intracto\SecretSantaBundle\Entity\Party;
+use Intracto\SecretSantaBundle\Form\Type\PartyExcludeParticipantType;
+use Intracto\SecretSantaBundle\Form\Type\PartyType;
 
 class PoolController extends Controller
 {
@@ -22,9 +22,9 @@ class PoolController extends Controller
      */
     public function createAction(Request $request)
     {
-        return $this->handlePoolCreation(
+        return $this->handlePartyCreation(
             $request,
-            new Pool()
+            new Party()
         );
     }
 
@@ -34,13 +34,13 @@ class PoolController extends Controller
      */
     public function createdAction($listUrl)
     {
-        $pool = $this->getPool($listUrl);
-        if (!$pool->getCreated()) {
-            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $pool->getListurl()]));
+        $party = $this->getParty($listUrl);
+        if (!$party->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $party->getListurl()]));
         }
 
         return [
-            'pool' => $pool,
+            'pool' => $party,
         ];
     }
 
@@ -52,47 +52,47 @@ class PoolController extends Controller
     {
         /** @var MailerService $mailerService */
         $mailerService = $this->get('intracto_secret_santa.mail');
-        $pool = $this->getPool($listUrl);
+        $party = $this->getParty($listUrl);
 
-        if ($pool->getCreated()) {
-            $mailerService->sendPendingConfirmationMail($pool);
+        if ($party->getCreated()) {
+            $mailerService->sendPendingConfirmationMail($party);
 
-            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
+            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $party->getListurl()]));
         }
 
-        if ($pool->getEntries()->count() <= 3) {
-            $pool->setCreated(true);
-            $this->get('doctrine.orm.entity_manager')->persist($pool);
+        if ($party->getParticipants()->count() <= 3) {
+            $party->setCreated(true);
+            $this->get('doctrine.orm.entity_manager')->persist($party);
 
-            $this->get('intracto_secret_santa.entry_service')->shuffleEntries($pool);
+            $this->get('intracto_secret_santa.participant_service')->shuffleParticipants($party);
 
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $mailerService->sendPendingConfirmationMail($pool);
+            $mailerService->sendPendingConfirmationMail($party);
 
-            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
+            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $party->getListurl()]));
         }
 
-        $form = $this->createForm(PoolExcludeEntryType::class, $pool);
+        $form = $this->createForm(PartyExcludeParticipantType::class, $party);
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                $pool->setCreated(true);
-                $this->get('doctrine.orm.entity_manager')->persist($pool);
+                $party->setCreated(true);
+                $this->get('doctrine.orm.entity_manager')->persist($party);
 
-                $this->get('intracto_secret_santa.entry_service')->shuffleEntries($pool);
+                $this->get('intracto_secret_santa.participant_service')->shuffleParticipants($party);
 
                 $this->get('doctrine.orm.entity_manager')->flush();
 
-                $mailerService->sendPendingConfirmationMail($pool);
+                $mailerService->sendPendingConfirmationMail($party);
 
-                return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $pool->getListurl()]));
+                return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $party->getListurl()]));
             }
         }
 
         return [
             'form' => $form->createView(),
-            'pool' => $pool,
+            'pool' => $party,
         ];
     }
 
@@ -102,10 +102,10 @@ class PoolController extends Controller
      */
     public function reuseAction(Request $request, $listUrl)
     {
-        $pool = $this->getPool($listUrl);
-        $pool = $pool->createNewPoolForReuse();
+        $party = $this->getParty($listUrl);
+        $party = $party->createNewPartyForReuse();
 
-        return $this->handlePoolCreation($request, $pool);
+        return $this->handlePartyCreation($request, $party);
     }
 
     /**
@@ -129,23 +129,23 @@ class PoolController extends Controller
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
-        $pool = $this->getPool($listUrl);
+        $party = $this->getParty($listUrl);
 
-        $this->get('doctrine.orm.entity_manager')->remove($pool);
+        $this->get('doctrine.orm.entity_manager')->remove($party);
         $this->get('doctrine.orm.entity_manager')->flush();
     }
 
     /**
      * @param Request $request
-     * @param Pool    $pool
+     * @param Party   $party
      *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    private function handlePoolCreation(Request $request, Pool $pool)
+    private function handlePartyCreation(Request $request, Party $party)
     {
         $form = $this->createForm(
-            PoolType::class,
-            $pool,
+            PartyType::class,
+            $party,
             [
                 'action' => $this->generateUrl('create_pool'),
             ]
@@ -154,8 +154,8 @@ class PoolController extends Controller
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                foreach ($pool->getEntries() as $entry) {
-                    $entry->setPool($pool);
+                foreach ($party->getParticipants() as $participant) {
+                    $participant->setParty($party);
                 }
 
                 $dateFormatter = \IntlDateFormatter::create(
@@ -165,20 +165,20 @@ class PoolController extends Controller
                 );
 
                 $message = $this->get('translator')->trans('pool_controller.created.message', [
-                    '%amount%' => $pool->getAmount(),
-                    '%eventdate%' => $dateFormatter->format($pool->getEventdate()->getTimestamp()),
-                    '%location%' => $pool->getLocation(),
-                    '%message%' => $pool->getMessage(),
+                    '%amount%' => $party->getAmount(),
+                    '%eventdate%' => $dateFormatter->format($party->getEventdate()->getTimestamp()),
+                    '%location%' => $party->getLocation(),
+                    '%message%' => $party->getMessage(),
                 ]);
 
-                $pool->setCreationDate(new \DateTime());
-                $pool->setMessage($message);
-                $pool->setLocale($request->getLocale());
+                $party->setCreationDate(new \DateTime());
+                $party->setMessage($message);
+                $party->setLocale($request->getLocale());
 
-                $this->get('doctrine.orm.entity_manager')->persist($pool);
+                $this->get('doctrine.orm.entity_manager')->persist($party);
                 $this->get('doctrine.orm.entity_manager')->flush();
 
-                return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $pool->getListurl()]));
+                return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $party->getListurl()]));
             }
         }
 
@@ -188,21 +188,22 @@ class PoolController extends Controller
     }
 
     /**
-     * Retrieve pool by url.
+     * Retrieve party by url.
      *
      * @param $listUrl
      *
-     * @return Pool
+     * @return Party
      *
      * @throws NotFoundHttpException
      */
-    private function getPool($listUrl)
+    private function getParty($listUrl)
     {
-        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-        if ($pool === null) {
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
+        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        if ($party === null) {
             throw new NotFoundHttpException();
         }
 
-        return $pool;
+        return $party;
     }
 }

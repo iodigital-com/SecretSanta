@@ -5,7 +5,7 @@ namespace Intracto\SecretSantaBundle\Controller\Entry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\EmailAddress;
 
 class EntryController extends Controller
@@ -15,10 +15,10 @@ class EntryController extends Controller
      */
     public function editEmailAction(Request $request, $listUrl, $entryId)
     {
-        /** @var Entry $entry */
-        $entry = $this->get('entry_repository')->find($entryId);
+        /** @var Participant $entry */
+        $entry = $this->get('participant_repository')->find($entryId);
 
-        if ($entry->getPool()->getListurl() === $listUrl) {
+        if ($entry->getParty()->getListurl() === $listUrl) {
             $emailAddress = new EmailAddress($request->request->get('email'));
             $emailAddressErrors = $this->get('validator')->validate($emailAddress);
 
@@ -62,10 +62,11 @@ class EntryController extends Controller
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
-        $entry = $this->get('entry_repository')->find($entryId);
-        $poolEntries = $entry->getPool()->getEntries();
+        /** @var Participant $participant */
+        $participant = $this->get('participant_repository')->find($entryId);
+        $participants = $participant->getParty()->getParticipants();
 
-        if (count($poolEntries) <= 3) {
+        if (count($participants) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('flashes.entry.remove_participant.danger')
@@ -74,7 +75,7 @@ class EntryController extends Controller
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
-        if ($entry->isPoolAdmin()) {
+        if ($participant->isPartyAdmin()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
                 $this->get('translator')->trans('flashes.entry.remove_participant.warning')
@@ -85,8 +86,8 @@ class EntryController extends Controller
 
         $excludeCount = 0;
 
-        foreach ($poolEntries as $poolEntry) {
-            if (count($poolEntry->getExcludedEntries()) > 0) {
+        foreach ($participants as $participant) {
+            if (count($participant->getExcludedParticipants()) > 0) {
                 ++$excludeCount;
             }
         }
@@ -100,12 +101,12 @@ class EntryController extends Controller
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
-        $secretSanta = $entry->getEntry();
-        $buddyId = $this->get('intracto_secret_santa.entry')->findBuddyByEntryId($entryId);
-        $buddy = $this->get('entry_repository')->find($buddyId[0]['id']);
+        $secretSanta = $participant->getEntry();
+        $assignedParticipantId = $this->get('intracto_secret_santa.entry')->findBuddyByEntryId($entryId);
+        $assignedParticipant = $this->get('participant_repository')->find($assignedParticipantId[0]['id']);
 
         // if A -> B -> A we can't delete B anymore or A is assigned to A
-        if ($entry->getEntry()->getEntry()->getId() === $entry->getId()) {
+        if ($participant->getEntry()->getEntry()->getId() === $participant->getId()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
                 $this->get('translator')->trans('flashes.entry.remove_participant.self_assigned')
@@ -114,14 +115,14 @@ class EntryController extends Controller
             return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
         }
 
-        $this->get('doctrine.orm.entity_manager')->remove($entry);
+        $this->get('doctrine.orm.entity_manager')->remove($participant);
         $this->get('doctrine.orm.entity_manager')->flush();
 
-        $buddy->setEntry($secretSanta);
-        $this->get('doctrine.orm.entity_manager')->persist($buddy);
+        $assignedParticipant->setEntry($secretSanta);
+        $this->get('doctrine.orm.entity_manager')->persist($assignedParticipant);
         $this->get('doctrine.orm.entity_manager')->flush();
 
-        $this->get('intracto_secret_santa.mail')->sendRemovedSecretSantaMail($buddy);
+        $this->get('intracto_secret_santa.mail')->sendRemovedSecretSantaMail($assignedParticipant);
 
         $this->get('session')->getFlashBag()->add(
             'success',

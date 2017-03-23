@@ -2,7 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Form\Type;
 
-use Intracto\SecretSantaBundle\Entity\Pool;
+use Intracto\SecretSantaBundle\Entity\Party;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,7 +25,7 @@ class UpdatePoolDetailsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Pool::class,
+            'data_class' => Party::class,
         ]);
     }
 }

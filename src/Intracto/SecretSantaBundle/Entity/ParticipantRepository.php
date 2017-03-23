@@ -4,22 +4,22 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-class EntryRepository extends EntityRepository
+class ParticipantRepository extends EntityRepository
 {
     /**
      * @param \DateTime $startDate
      *
-     * @return Entry[]
+     * @return Participant[]
      */
     public function findAfter(\DateTime $startDate)
     {
         $query = $this->_em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-            JOIN entry.pool pool
-            JOIN entry.entry peer
-            WHERE pool.sentdate >= :startDate
-              AND peer.wishlist IS NOT NULL
+            SELECT participant
+            FROM IntractoSecretSantaBundle:Participant participant
+            JOIN participant.party party
+            JOIN participant.assignedParticipant assignedParticipant
+            WHERE party.sentdate >= :startDate
+              AND assignedParticipant.wishlist IS NOT NULL
         ');
         $query->setParameter('startDate', $startDate, \Doctrine\DBAL\Types\Type::DATETIME);
 

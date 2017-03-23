@@ -7,13 +7,13 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class PoolHasValidExcludes extends Constraint
+class ParticipantHasValidExcludes extends Constraint
 {
-    public $message = 'pool.non_unique';
+    public $messageNoUniqueMatch = 'entry.non_unique';
 
     public function validatedBy()
     {
-        return 'intracto.validator.pool_has_valid_excludes';
+        return 'intracto.validator.entry_has_valid_excludes';
     }
 
     public function getTargets()

@@ -32,21 +32,25 @@ class SendEmptyWishlistReminderCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         /** @var EntityManager $em */
         $em = $container->get('doctrine')->getManager();
-        $entryMailQuery = $container->get('intracto_secret_santa.entry_mail');
+        /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $entryMailQuery */
+        $entryMailQuery = $container->get('intracto_secret_santa.participant_mail');
+        /** @var \Intracto\SecretSantaBundle\Query\WishlistMailQuery $wishlistMailQuery */
         $wishlistMailQuery = $container->get('intracto_secret_santa.wishlist_mail');
+        /** @var \Intracto\SecretSantaBundle\Mailer\MailerService $mailerService */
         $mailerService = $container->get('intracto_secret_santa.mail');
-        $emptyWishlists = $entryMailQuery->findAllToRemindOfEmptyWishlist();
+
+        $emptyWishlistsParticipant = $entryMailQuery->findAllToRemindOfEmptyWishlist();
         $timeNow = new \DateTime();
 
         try {
-            foreach ($emptyWishlists as $entry) {
-                $itemCount = $wishlistMailQuery->countWishlistItemsOfParticipant($entry);
+            foreach ($emptyWishlistsParticipant as $participant) {
+                $itemCount = $wishlistMailQuery->countWishlistItemsOfParticipant($participant);
 
                 if ($itemCount[0]['wishlistItemCount'] == 0) {
-                    $mailerService->sendWishlistReminderMail($entry);
+                    $mailerService->sendWishlistReminderMail($participant);
 
-                    $entry->setEmptyWishlistReminderSentTime($timeNow);
-                    $em->persist($entry);
+                    $participant->setEmptyWishlistReminderSentTime($timeNow);
+                    $em->persist($participant);
                 }
             }
         } catch (\Exception $e) {

@@ -20,7 +20,8 @@ class WishlistController extends Controller
      */
     public function showAllAction($listUrl)
     {
-        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
+        $pool = $this->get('party_repository')->findOneByListurl($listUrl);
         if ($pool === false) {
             throw new NotFoundHttpException();
         }
@@ -36,7 +37,8 @@ class WishlistController extends Controller
      */
     public function updateAction(Request $request, $url)
     {
-        $entry = $this->get('entry_repository')->findOneByUrl($url);
+        /** @var \Intracto\SecretSantaBundle\Entity\ParticipantRepository $entry */
+        $entry = $this->get('participant_repository')->findOneByUrl($url);
         if ($entry === null) {
             throw new NotFoundHttpException();
         }

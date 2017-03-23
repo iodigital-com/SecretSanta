@@ -2,7 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Form\Type;
 
-use Intracto\SecretSantaBundle\Entity\Pool;
+use Intracto\SecretSantaBundle\Entity\Party;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -11,14 +11,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PoolType extends AbstractType
+class PartyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('message', TextareaType::class)
-            ->add('entries', CollectionType::class, [
-                'entry_type' => EntryType::class,
+            ->add('participants', CollectionType::class, [
+                'entry_type' => ParticipantType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
@@ -38,7 +38,7 @@ class PoolType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Pool::class,
+            'data_class' => Party::class,
             'action' => '#mysanta',
             'attr' => [
                 'novalidate' => 'novalidate',

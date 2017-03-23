@@ -47,15 +47,15 @@
             <argument type="service" id="router"></argument>
             <argument>%noreply_email%</argument>
         </service>
-        <service id="intracto_secret_santa.entry_mail" class="Intracto\SecretSantaBundle\Query\EntryMailQuery">
+        <service id="intracto_secret_santa.participant_mail" class="Intracto\SecretSantaBundle\Query\ParticipantMailQuery">
             <argument type="service" id="doctrine.orm.entity_manager"></argument>
         </service>
         <service id="intracto_secret_santa.wishlist_mail" class="Intracto\SecretSantaBundle\Query\WishlistMailQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
-        <service id="intracto_secret_santa.entry_service" class="Intracto\SecretSantaBundle\Entity\EntryService">
+        <service id="intracto_secret_santa.participant_service" class="Intracto\SecretSantaBundle\Entity\ParticipantService">
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="intracto_secret_santa.entry_shuffler" />
+            <argument type="service" id="intracto_secret_santa.participant_shuffler" />
         </service>
 
         <service id="intracto_secret_santa.twig.extension.form" class="Intracto\SecretSantaBundle\Twig\Extension\FormExtension">

@@ -4,17 +4,17 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Intracto\SecretSantaBundle\Validator\PoolHasValidExcludes;
+use Intracto\SecretSantaBundle\Validator\PartyHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Table(indexes={@ORM\Index(name="listurl", columns={"listurl"}),@ORM\Index(name="dates", columns={"created", "eventdate", "sentdate"})})
- * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PoolRepository")
+ * @ORM\Table(name="party", indexes={@ORM\Index(name="list_url", columns={"list_url"}),@ORM\Index(name="dates", columns={"created", "event_date", "sent_date"})})
+ * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PartyRepository")
  * @ORM\HasLifecycleCallbacks
  *
- * @PoolHasValidExcludes(groups={"exclude_entries"})
+ * @PartyHasValidExcludes(groups={"exclude_participants"})
  */
-class Pool
+class Party
 {
     /**
      * @var int
@@ -28,7 +28,7 @@ class Pool
     /**
      * @var string
      *
-     * @ORM\Column(name="listurl", type="string", length=255)
+     * @ORM\Column(name="list_url", type="string", length=255)
      */
     private $listurl;
 
@@ -42,14 +42,14 @@ class Pool
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="creationdate", type="datetime", length=255)
+     * @ORM\Column(name="creation_date", type="datetime", length=255)
      */
     private $creationdate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="sentdate", type="datetime", length=255, nullable=true)
+     * @ORM\Column(name="sent_date", type="datetime", length=255, nullable=true)
      */
     private $sentdate;
 
@@ -57,7 +57,7 @@ class Pool
      * @var \DateTime
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="eventdate", type="datetime", length=255, nullable=true)
+     * @ORM\Column(name="event_date", type="datetime", length=255, nullable=true)
      */
     private $eventdate;
 
@@ -72,11 +72,11 @@ class Pool
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Entry", mappedBy="pool", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Participant", mappedBy="party", cascade={"persist", "remove"})
      *
      * @Assert\Valid()
      */
-    private $entries;
+    private $participants;
 
     /**
      * @var bool
@@ -102,16 +102,16 @@ class Pool
 
     public function __construct($createDefaults = true)
     {
-        $this->entries = new ArrayCollection();
+        $this->participants = new ArrayCollection();
 
         if ($createDefaults) {
-            // Create default minimum entries
+            // Create default minimum participants
             for ($i = 0; $i < 3; ++$i) {
-                $entry = new Entry();
+                $participant = new Participant();
                 if ($i === 0) {
-                    $entry->setPoolAdmin(true);
+                    $participant->setPartyAdmin(true);
                 }
-                $this->addEntry($entry);
+                $this->addParticipant($participant);
             }
         }
     }
@@ -127,7 +127,7 @@ class Pool
     /**
      * @param string $listurl
      *
-     * @return Pool
+     * @return Party
      */
     public function setListurl($listurl)
     {
@@ -147,7 +147,7 @@ class Pool
     /**
      * @param string $message
      *
-     * @return Pool
+     * @return Party
      */
     public function setMessage($message)
     {
@@ -169,7 +169,7 @@ class Pool
      */
     public function getOwnerName()
     {
-        return $this->entries->first()->getName();
+        return $this->participants->first()->getName();
     }
 
     /**
@@ -177,13 +177,13 @@ class Pool
      */
     public function getOwnerEmail()
     {
-        return $this->entries->first()->getEmail();
+        return $this->participants->first()->getEmail();
     }
 
     /**
      * @param $creationdate
      *
-     * @return Pool
+     * @return Party
      */
     public function setCreationDate($creationdate)
     {
@@ -203,7 +203,7 @@ class Pool
     /**
      * @param \DateTime $sentdate
      *
-     * @return Pool
+     * @return Party
      */
     public function setSentdate($sentdate)
     {
@@ -221,36 +221,36 @@ class Pool
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $participant
      *
-     * @return Pool
+     * @return Party
      */
-    public function addEntry(Entry $entry)
+    public function addParticipant(Participant $participant)
     {
-        $this->entries[] = $entry;
+        $this->participants[] = $participant;
 
         return $this;
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $participant
      */
-    public function removeEntry(Entry $entry)
+    public function removeParticipant(Participant $participant)
     {
-        $this->entries->removeElement($entry);
+        $this->participants->removeElement($participant);
     }
 
     /**
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Participant[]
      */
-    public function getEntries()
+    public function getParticipants()
     {
-        return $this->entries;
+        return $this->participants;
     }
 
     public function __toString()
     {
-        return 'Id: '.$this->id.' - Entries: '.$this->entries->count().' - Owner: '.$this->getOwnerName();
+        return 'Id: '.$this->id.' - Participants: '.$this->participants->count().' - Owner: '.$this->getOwnerName();
     }
 
     /**
@@ -262,29 +262,9 @@ class Pool
     }
 
     /**
-     * @param Entry $entries
-     *
-     * @return Pool
-     */
-    public function addEntrie(Entry $entries)
-    {
-        $this->entries[] = $entries;
-
-        return $this;
-    }
-
-    /**
-     * @param Entry $entries
-     */
-    public function removeEntrie(Entry $entries)
-    {
-        $this->entries->removeElement($entries);
-    }
-
-    /**
      * @param \DateTime $eventdate
      *
-     * @return Pool
+     * @return Party
      */
     public function setEventdate($eventdate)
     {
@@ -304,7 +284,7 @@ class Pool
     /**
      * @param string $amount
      *
-     * @return Pool
+     * @return Party
      */
     public function setAmount($amount)
     {
@@ -324,7 +304,7 @@ class Pool
     /**
      * @param bool $created
      *
-     * @return Pool
+     * @return Party
      */
     public function setCreated($created)
     {
@@ -344,7 +324,7 @@ class Pool
     /**
      * @param string $locale
      *
-     * @return Pool
+     * @return Party
      */
     public function setLocale($locale)
     {
@@ -377,24 +357,24 @@ class Pool
         $this->location = $location;
     }
 
-    public function createNewPoolForReuse()
+    public function createNewPartyForReuse()
     {
-        $originalPool = $this;
+        $originalParty = $this;
 
-        $pool = new self(false);
-        $pool->setAmount($originalPool->getAmount());
-        $pool->setLocation($originalPool->getLocation());
+        $party = new self(false);
+        $party->setAmount($originalParty->getAmount());
+        $party->setLocation($originalParty->getLocation());
 
-        $originalEntries = $originalPool->getEntries();
+        $originalParticipants = $originalParty->getParticipants();
 
-        foreach ($originalEntries as $originalEntry) {
-            $entry = new Entry();
-            $entry->setName($originalEntry->getName());
-            $entry->setEmail($originalEntry->getEmail());
-            $entry->setPoolAdmin($originalEntry->isPoolAdmin());
-            $pool->addEntry($entry);
+        foreach ($originalParticipants as $originalParticipant) {
+            $participant = new Participant();
+            $participant->setName($originalParticipant->getName());
+            $participant->setEmail($originalParticipant->getEmail());
+            $participant->setPartyAdmin($originalParticipant->isPartyAdmin());
+            $party->addParticipant($participant);
         }
 
-        return $pool;
+        return $party;
     }
 }

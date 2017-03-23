@@ -4,17 +4,17 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Intracto\SecretSantaBundle\Validator\EntryHasValidExcludes;
+use Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Table(indexes={@ORM\Index(name="entry_url", columns={"url"})})
- * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\EntryRepository")
+ * @ORM\Table(name="participant", indexes={@ORM\Index(name="participant_url", columns={"url"})})
+ * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\ParticipantRepository")
  * @ORM\HasLifecycleCallbacks()
  *
- * @EntryHasValidExcludes(groups={"exclude_entries"})
+ * @ParticipantHasValidExcludes(groups={"exclude_participants"})
  */
-class Entry
+class Participant
 {
     /**
      * @var int
@@ -26,12 +26,12 @@ class Entry
     private $id;
 
     /**
-     * @var Pool
+     * @var Party
      *
-     * @ORM\ManyToOne(targetEntity="Pool", inversedBy="entries")
-     * @ORM\JoinColumn(name="poolId", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Party", inversedBy="participants")
+     * @ORM\JoinColumn(name="party_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $pool;
+    private $party;
 
     /**
      * @var string
@@ -57,35 +57,35 @@ class Entry
     private $email;
 
     /**
-     * @var Entry
+     * @var Participant
      *
-     * @ORM\OneToOne(targetEntity="Entry")
-     * @ORM\JoinColumn(name="entryId", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @ORM\OneToOne(targetEntity="Participant")
+     * @ORM\JoinColumn(name="assigned_participant_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
-    private $entry;
+    private $participant;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Entry")
+     * @ORM\ManyToMany(targetEntity="Participant")
      * @ORM\JoinTable(name="exclude",
-     *      joinColumns={@ORM\JoinColumn(name="entryId", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="excludedEntryId", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="participant_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="excluded_participant_id", referencedColumnName="id")}
      *      )
      **/
-    private $excluded_entries;
+    private $excludedParticipants;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="viewdate", type="datetime", nullable=true)
+     * @ORM\Column(name="view_date", type="datetime", nullable=true)
      */
     private $viewdate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="viewreminder_sent", type="datetime", nullable=true)
+     * @ORM\Column(name="view_reminder_sent", type="datetime", nullable=true)
      */
     private $viewReminderSentTime;
 
@@ -99,7 +99,7 @@ class Entry
     /**
      * @var WishlistItem[]
      *
-     * @ORM\OneToMany(targetEntity="WishlistItem", mappedBy="entry", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="WishlistItem", mappedBy="participant", cascade={"persist", "remove"})
      * @ORM\OrderBy({"rank" = "asc"})
      */
     private $wishlistItems;
@@ -114,21 +114,21 @@ class Entry
      *
      * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
      */
-    private $wishlist_updated = false;
+    private $wishlistUpdated = false;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatewishlistreminder_sent", type="datetime", nullable=true)
+     * @ORM\Column(name="update_wishlist_reminder_sent", type="datetime", nullable=true)
      */
     private $updateWishlistReminderSentTime;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="poolAdmin", type="boolean", options={"default"=false})
+     * @ORM\Column(name="party_admin", type="boolean", options={"default"=false})
      */
-    private $poolAdmin = false;
+    private $partyAdmin = false;
 
     /**
      * @var string
@@ -147,27 +147,27 @@ class Entry
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="poolstatus_sent", type="datetime", nullable=true)
+     * @ORM\Column(name="party_status_sent", type="datetime", nullable=true)
      */
-    private $poolStatusSentTime;
+    private $partyStatusSentTime;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="emptywishlistreminder_sent", type="datetime", nullable=true)
+     * @ORM\Column(name="empty_wishlist_reminder_sent", type="datetime", nullable=true)
      */
     private $emptyWishlistReminderSentTime;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="wishlistupdated_time", type="datetime", nullable=true)
+     * @ORM\Column(name="wishlist_updated_time", type="datetime", nullable=true)
      */
     private $wishlistUpdatedTime;
 
     public function __construct()
     {
-        $this->excluded_entries = new ArrayCollection();
+        $this->excludedParticipants = new ArrayCollection();
         $this->postLoad();
     }
 
@@ -188,21 +188,21 @@ class Entry
     }
 
     /**
-     * @return Pool
+     * @return Party
      */
-    public function getPool()
+    public function getParty()
     {
-        return $this->pool;
+        return $this->party;
     }
 
     /**
-     * @param Pool $pool
+     * @param Party $party
      *
-     * @return Entry
+     * @return Participant
      */
-    public function setPool($pool)
+    public function setParty($party)
     {
-        $this->pool = $pool;
+        $this->party = $party;
 
         return $this;
     }
@@ -218,7 +218,7 @@ class Entry
     /**
      * @param string $name
      *
-     * @return Entry
+     * @return Participant
      */
     public function setName($name)
     {
@@ -238,7 +238,7 @@ class Entry
     /**
      * @param string $email
      *
-     * @return Entry
+     * @return Participant
      */
     public function setEmail($email)
     {
@@ -248,31 +248,31 @@ class Entry
     }
 
     /**
-     * @return Entry
+     * @return Participant
      *
      * @deprecated use getAssignedParticipant()
      */
-    public function getEntry()
+    public function getParticipant()
     {
-        return $this->entry;
+        return $this->participant;
     }
 
     /**
-     * @return Entry
+     * @return Participant
      */
     public function getAssignedParticipant()
     {
-        return $this->entry;
+        return $this->participant;
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $participant
      *
-     * @return Entry
+     * @return Participant
      */
-    public function setEntry($entry)
+    public function setAssignedParticipant($participant)
     {
-        $this->entry = $entry;
+        $this->participant = $participant;
 
         return $this;
     }
@@ -288,7 +288,7 @@ class Entry
     /**
      * @param \DateTime $viewdate
      *
-     * @return Entry
+     * @return Participant
      */
     public function setViewdate($viewdate)
     {
@@ -308,7 +308,7 @@ class Entry
     /**
      * @param string $url
      *
-     * @return Entry
+     * @return Participant
      */
     public function setUrl($url)
     {
@@ -322,17 +322,17 @@ class Entry
      */
     public function getWishlistUpdated()
     {
-        return $this->wishlist_updated;
+        return $this->wishlistUpdated;
     }
 
     /**
      * @param bool $wishlistUpdated
      *
-     * @return Entry
+     * @return Participant
      */
     public function setWishlistUpdated($wishlistUpdated)
     {
-        $this->wishlist_updated = $wishlistUpdated;
+        $this->wishlistUpdated = $wishlistUpdated;
 
         return $this;
     }
@@ -388,17 +388,17 @@ class Entry
     public function addWishlistItem(WishlistItem $item)
     {
         $this->removedWishlistItems->removeElement($item);
-        $item->setEntry($this);
+        $item->setParticipant($this);
         $this->wishlistItems->add($item);
-        $this->wishlist_updated = true;
+        $this->wishlistUpdated = true;
     }
 
     public function removeWishlistItem(WishlistItem $item)
     {
         $this->removedWishlistItems->add($item);
-        $item->setEntry(null);
+        $item->setParticipant(null);
         $this->wishlistItems->removeElement($item);
-        $this->wishlist_updated = true;
+        $this->wishlistUpdated = true;
     }
 
     /**
@@ -418,47 +418,47 @@ class Entry
     }
 
     /**
-     * @param Entry $excludedEntry
+     * @param Participant $excludedParticipant
      *
-     * @return Entry
+     * @return Participant
      */
-    public function addExcludedEntry(Entry $excludedEntry)
+    public function addExcludedParticipant(Participant $excludedParticipant)
     {
-        $this->excluded_entries[] = $excludedEntry;
+        $this->excludedParticipants[] = $excludedParticipant;
 
         return $this;
     }
 
     /**
-     * @param Entry $excludedEntry
+     * @param Participant $excludedParticipant
      */
-    public function removeExcludedEntrie(Entry $excludedEntry)
+    public function removeExcludedParticipant(Participant $excludedParticipant)
     {
-        $this->excluded_entries->removeElement($excludedEntry);
+        $this->excludedParticipants->removeElement($excludedParticipant);
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getExcludedEntries()
+    public function getExcludedParticipants()
     {
-        return $this->excluded_entries;
+        return $this->excludedParticipants;
     }
 
     /**
      * @return bool
      */
-    public function isPoolAdmin()
+    public function isPartyAdmin()
     {
-        return $this->poolAdmin;
+        return $this->partyAdmin;
     }
 
     /**
-     * @param bool $poolAdmin
+     * @param bool $partyAdmin
      */
-    public function setPoolAdmin($poolAdmin)
+    public function setPartyAdmin($partyAdmin)
     {
-        $this->poolAdmin = $poolAdmin;
+        $this->partyAdmin = $partyAdmin;
     }
 
     /**
@@ -496,7 +496,7 @@ class Entry
     /**
      * @param string $ipv4
      *
-     * @return Entry
+     * @return Participant
      */
     private function setIpv4($ipv4)
     {
@@ -516,7 +516,7 @@ class Entry
     /**
      * @param string $ipv6
      *
-     * @return Entry
+     * @return Participant
      */
     private function setIpv6($ipv6)
     {
@@ -528,17 +528,17 @@ class Entry
     /**
      * @return \DateTime
      */
-    public function getPoolStatusSentTime()
+    public function getPartyStatusSentTime()
     {
-        return $this->poolStatusSentTime;
+        return $this->partyStatusSentTime;
     }
 
     /**
-     * @param \DateTime $poolStatusSentTime
+     * @param \DateTime $partyStatusSentTime
      */
-    public function setPoolStatusSentTime($poolStatusSentTime)
+    public function setPartyStatusSentTime($partyStatusSentTime)
     {
-        $this->poolStatusSentTime = $poolStatusSentTime;
+        $this->partyStatusSentTime = $partyStatusSentTime;
     }
 
     /**

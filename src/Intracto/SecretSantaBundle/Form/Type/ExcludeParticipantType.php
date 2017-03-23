@@ -3,7 +3,7 @@
 namespace Intracto\SecretSantaBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
-use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\Participant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ExcludeEntryType extends AbstractType
+class ExcludeParticipantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -19,8 +19,8 @@ class ExcludeEntryType extends AbstractType
             $me = $event->getData();
             $form = $event->getForm();
 
-            $form->add('excluded_entries', EntityType::class, [
-                'class' => 'IntractoSecretSantaBundle:Entry',
+            $form->add('excluded_participants', EntityType::class, [
+                'class' => 'IntractoSecretSantaBundle:Participant',
                 'multiple' => true,
                 'expanded' => false,
                 'choice_label' => 'name',
@@ -28,10 +28,10 @@ class ExcludeEntryType extends AbstractType
                 'attr' => ['data-entry' => $me->getId(), 'class' => 'js-selector-entry'],
                 'query_builder' => function (EntityRepository $er) use ($me) {
                     return $er->createQueryBuilder('e')
-                        ->where('e.pool = :pool')
+                        ->where('e.party = :party')
                         ->andWhere('e != :me')
                         ->setParameters([
-                            'pool' => $me->getPool(),
+                            'party' => $me->getParty(),
                             'me' => $me,
                         ]);
                 },
@@ -43,7 +43,7 @@ class ExcludeEntryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Entry::class,
+            'data_class' => Participant::class,
         ]);
     }
 }

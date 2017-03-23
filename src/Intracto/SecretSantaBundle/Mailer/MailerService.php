@@ -6,8 +6,8 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Intracto\SecretSantaBundle\Entity\Entry;
-use Intracto\SecretSantaBundle\Entity\Pool;
+use Intracto\SecretSantaBundle\Entity\Participant;
+use Intracto\SecretSantaBundle\Entity\Party;
 
 class MailerService
 {
@@ -48,9 +48,9 @@ class MailerService
     }
 
     /**
-     * @param Pool $pool
+     * @param Party $pool
      */
-    public function sendPendingConfirmationMail(Pool $pool)
+    public function sendPendingConfirmationMail(Party $pool)
     {
         $this->translator->setLocale($pool->getLocale());
 
@@ -77,14 +77,14 @@ class MailerService
     /**
      * Sends out all mails for a Pool.
      *
-     * @param Pool $pool
+     * @param Party $pool
      */
-    public function sendSecretSantaMailsForPool(Pool $pool)
+    public function sendSecretSantaMailsForPool(Party $pool)
     {
         $pool->setSentdate(new \DateTime('now'));
         $this->em->flush($pool);
 
-        foreach ($pool->getEntries() as $entry) {
+        foreach ($pool->getParticipants() as $entry) {
             $this->sendSecretSantaMailForEntry($entry);
         }
     }
@@ -92,20 +92,20 @@ class MailerService
     /**
      * Sends out mail for a Entry.
      *
-     * @param Entry $entry
+     * @param Participant $entry
      */
-    public function sendSecretSantaMailForEntry(Entry $entry)
+    public function sendSecretSantaMailForEntry(Participant $entry)
     {
-        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->translator->setLocale($entry->getParty()->getLocale());
 
-        $message = $entry->getPool()->getMessage();
+        $message = $entry->getParty()->getMessage();
         $message = str_replace('(NAME)', $entry->getName(), $message);
-        $message = str_replace('(ADMINISTRATOR)', $entry->getPool()->getOwnerName(), $message);
+        $message = str_replace('(ADMINISTRATOR)', $entry->getParty()->getOwnerName(), $message);
 
         $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-participant.subject'))
-            ->setFrom($this->noreplyEmail, $entry->getPool()->getOwnerName())
-            ->setReplyTo([$entry->getPool()->getOwnerEmail() => $entry->getPool()->getOwnerName()])
+            ->setFrom($this->noreplyEmail, $entry->getParty()->getOwnerName())
+            ->setReplyTo([$entry->getParty()->getOwnerEmail() => $entry->getParty()->getOwnerName()])
             ->setTo($entry->getEmail(), $entry->getName())
             ->setBody(
                 $this->templating->render(
@@ -137,7 +137,7 @@ class MailerService
      */
     public function sendForgotManageLinkMail($email)
     {
-        $results = $this->em->getRepository('IntractoSecretSantaBundle:Pool')->findAllAdminPools($email);
+        $results = $this->em->getRepository('IntractoSecretSantaBundle:Pool')->findAllAdminParties($email);
 
         if (count($results) == 0) {
             return false;
@@ -187,23 +187,23 @@ class MailerService
     }
 
     /**
-     * @param Pool $pool
+     * @param Party $pool
      * @param $results
      */
-    public function sendPoolUpdateMailForPool(Pool $pool, $results)
+    public function sendPoolUpdateMailForPool(Party $pool, $results)
     {
-        foreach ($pool->getEntries() as $entry) {
+        foreach ($pool->getParticipants() as $entry) {
             $this->sendPoolUpdateMailForEntry($entry, $results);
         }
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $entry
      * @param $results
      */
-    public function sendPoolUpdateMailForEntry(Entry $entry, $results)
+    public function sendPoolUpdateMailForEntry(Participant $entry, $results)
     {
-        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->translator->setLocale($entry->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-pool_update.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
@@ -232,11 +232,11 @@ class MailerService
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $entry
      */
-    public function sendWishlistReminderMail(Entry $entry)
+    public function sendWishlistReminderMail(Participant $entry)
     {
-        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->translator->setLocale($entry->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-emptyWishlistReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
@@ -263,11 +263,11 @@ class MailerService
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $entry
      */
-    public function sendEntryViewReminderMail(Entry $entry)
+    public function sendEntryViewReminderMail(Participant $entry)
     {
-        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->translator->setLocale($entry->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-viewEntryReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
@@ -294,12 +294,12 @@ class MailerService
     }
 
     /**
-     * @param Entry $receiver
-     * @param Entry $entry
+     * @param Participant $receiver
+     * @param Participant $entry
      */
-    public function sendWishlistUpdatedMail(Entry $receiver, Entry $entry)
+    public function sendWishlistUpdatedMail(Participant $receiver, Participant $entry)
     {
-        $this->translator->setLocale($receiver->getPool()->getLocale());
+        $this->translator->setLocale($receiver->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
@@ -328,11 +328,11 @@ class MailerService
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $entry
      */
-    public function sendPoolStatusMail(Entry $entry)
+    public function sendPoolStatusMail(Participant $entry)
     {
-        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->translator->setLocale($entry->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-pool_status.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
@@ -341,7 +341,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:poolStatus.html.twig',
                     [
-                        'pool' => $entry->getPool(),
+                        'pool' => $entry->getParty(),
                     ]
                 ),
                 'text/html'
@@ -350,7 +350,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:poolStatus.txt.twig',
                     [
-                        'pool' => $entry->getPool(),
+                        'pool' => $entry->getParty(),
                     ]
                 ),
                 'text/plain'
@@ -359,21 +359,21 @@ class MailerService
     }
 
     /**
-     * @param Pool $pool
+     * @param Party $pool
      */
-    public function sendPoolUpdatedMailsForPool(Pool $pool)
+    public function sendPoolUpdatedMailsForPool(Party $pool)
     {
-        foreach ($pool->getEntries() as $entry) {
+        foreach ($pool->getParticipants() as $entry) {
             $this->sendPoolUpdatedMailForEntry($entry);
         }
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $entry
      */
-    public function sendPoolUpdatedMailForEntry(Entry $entry)
+    public function sendPoolUpdatedMailForEntry(Participant $entry)
     {
-        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->translator->setLocale($entry->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-updated_party.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
@@ -399,9 +399,9 @@ class MailerService
         );
     }
 
-    public function sendRemovedSecretSantaMail(Entry $entry)
+    public function sendRemovedSecretSantaMail(Participant $entry)
     {
-        $this->translator->setLocale($entry->getPool()->getLocale());
+        $this->translator->setLocale($entry->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-removed_secret_santa.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
@@ -431,9 +431,9 @@ class MailerService
      * @param $recipient
      * @param $message
      */
-    public function sendAnonymousMessage(Entry $recipient, $message)
+    public function sendAnonymousMessage(Participant $recipient, $message)
     {
-        $this->translator->setLocale($recipient->getPool()->getLocale());
+        $this->translator->setLocale($recipient->getParty()->getLocale());
 
         $message = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-anonymous_message.subject'))

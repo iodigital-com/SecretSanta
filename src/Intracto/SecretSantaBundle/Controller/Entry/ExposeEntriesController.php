@@ -15,7 +15,8 @@ class ExposeEntriesController extends Controller
      */
     public function indexAction($listUrl)
     {
-        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
+        $pool = $this->get('party_repository')->findOneByListurl($listUrl);
         if ($pool === null) {
             throw new NotFoundHttpException();
         }

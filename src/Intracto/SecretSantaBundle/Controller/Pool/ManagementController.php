@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Form\Type\AddEntryType;
 use Intracto\SecretSantaBundle\Form\Type\UpdatePoolDetailsType;
 
@@ -20,27 +20,28 @@ class ManagementController extends Controller
      */
     public function validAction(Request $request, $listUrl)
     {
-        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-        if ($pool === null) {
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        if ($party === null) {
             throw new NotFoundHttpException();
         }
 
-        if (!$pool->getCreated()) {
-            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $pool->getListurl()]));
+        if (!$party->getCreated()) {
+            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $party->getListurl()]));
         }
 
-        if ($pool->getSentdate() === null) {
+        if ($party->getSentdate() === null) {
             $this->get('session')->getFlashBag()->add(
                 'success',
                 $this->get('translator')->trans('flashes.management.email_validated')
             );
 
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($pool);
+            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($party);
         }
 
         $addEntryForm = $this->createForm(
             AddEntryType::class,
-            new Entry(),
+            new Participant(),
             [
                 'action' => $this->generateUrl(
                     'pool_manage_addEntry',
@@ -50,7 +51,7 @@ class ManagementController extends Controller
         );
         $updatePoolDetailsForm = $this->createForm(
             UpdatePoolDetailsType::class,
-            $pool,
+            $party,
             [
                 'action' => $this->generateUrl(
                     'pool_manage_update',
@@ -59,9 +60,9 @@ class ManagementController extends Controller
             ]
         );
 
-        if ($pool->getEventdate() < new \DateTime('-2 years')) {
+        if ($party->getEventdate() < new \DateTime('-2 years')) {
             return $this->render('IntractoSecretSantaBundle:Pool/manage:expired.html.twig', [
-                'pool' => $pool,
+                'pool' => $party,
                 'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             ]);
         }
@@ -69,7 +70,7 @@ class ManagementController extends Controller
         return [
             'addEntryForm' => $addEntryForm->createView(),
             'updatePoolDetailsForm' => $updatePoolDetailsForm->createView(),
-            'pool' => $pool,
+            'pool' => $party,
             'delete_pool_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
         ];
@@ -81,20 +82,21 @@ class ManagementController extends Controller
      */
     public function updateAction(Request $request, $listUrl)
     {
-        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        $party = $this->get('party_repository')->findOneByListurl($listUrl);
 
-        if ($pool === null) {
+        if ($party === null) {
             throw new NotFoundHttpException();
         }
 
-        $updatePoolDetailsForm = $this->createForm(UpdatePoolDetailsType::class, $pool);
+        $updatePoolDetailsForm = $this->createForm(UpdatePoolDetailsType::class, $party);
         $updatePoolDetailsForm->handleRequest($request);
 
         if ($updatePoolDetailsForm->isSubmitted() && $updatePoolDetailsForm->isValid()) {
-            $this->get('doctrine.orm.entity_manager')->persist($pool);
+            $this->get('doctrine.orm.entity_manager')->persist($party);
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $this->get('intracto_secret_santa.mail')->sendPoolUpdatedMailsForPool($pool);
+            $this->get('intracto_secret_santa.mail')->sendPoolUpdatedMailsForPool($party);
 
             $this->get('session')->getFlashBag()->add(
                 'success',
@@ -116,32 +118,34 @@ class ManagementController extends Controller
      */
     public function addEntryAction(Request $request, $listUrl)
     {
-        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        $party = $this->get('party_repository')->findOneByListurl($listUrl);
 
-        if ($pool === null) {
+        if ($party === null) {
             throw new NotFoundHttpException();
         }
 
-        $newEntry = new Entry();
+        $newEntry = new Participant();
         $addEntryForm = $this->createForm(AddEntryType::class, $newEntry);
         $addEntryForm->handleRequest($request);
 
         if ($addEntryForm->isSubmitted() && $addEntryForm->isValid()) {
             $newEntry->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
-            $newEntry->setPool($pool);
+            $newEntry->setParty($party);
 
             $this->get('doctrine.orm.entity_manager')->persist($newEntry);
             $this->get('doctrine.orm.entity_manager')->flush($newEntry);
 
-            $adminId = $this->get('intracto_secret_santa.entry')->findAdminIdByPoolId($pool->getId());
-            $admin = $this->get('entry_repository')->findOneById($adminId[0]['id']);
-            $adminMatch = $admin->getEntry();
+            $adminId = $this->get('intracto_secret_santa.entry')->findAdminIdByPoolId($party->getId());
+            /** @var Participant $admin */
+            $admin = $this->get('participant_repository')->findOneById($adminId[0]['id']);
+            $adminMatch = $admin->getAssignedParticipant();
 
             $admin->setEntry($newEntry);
             $this->get('doctrine.orm.entity_manager')->persist($admin);
             $this->get('doctrine.orm.entity_manager')->flush($admin);
 
-            $newEntry->setEntry($adminMatch);
+            $newEntry->setAssignedParticipant($adminMatch);
             $this->get('doctrine.orm.entity_manager')->persist($newEntry);
             $this->get('doctrine.orm.entity_manager')->flush();
 

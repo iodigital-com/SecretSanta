@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Form\Type\WishlistType;
 use Intracto\SecretSantaBundle\Form\Type\AnonymousMessageFormType;
+use Intracto\SecretSantaBundle\Entity\Participant;
 
 class ShowController extends Controller
 {
@@ -18,24 +19,25 @@ class ShowController extends Controller
      */
     public function showAction(Request $request, $url)
     {
-        $entry = $this->get('entry_repository')->findOneByUrl($url);
-        if ($entry === null) {
+        /** @var Participant $participant */
+        $participant = $this->get('participant_repository')->findOneByUrl($url);
+        if ($participant === null) {
             throw new NotFoundHttpException();
         }
 
-        if ($entry->getPool()->getEventdate() < new \DateTime('-2 years')) {
+        if ($participant->getParty()->getEventdate() < new \DateTime('-2 years')) {
             return $this->render('IntractoSecretSantaBundle:Entry/show:expired.html.twig', [
-                'entry' => $entry,
+                'entry' => $participant,
             ]);
         }
 
         $wishlistForm = $this->createForm(
             WishlistType::class,
-            $entry,
+            $participant,
             [
                 'action' => $this->generateUrl(
                     'wishlist_update',
-                    ['url' => $entry->getUrl()]
+                    ['url' => $participant->getUrl()]
                 ),
             ]
         );
@@ -48,21 +50,21 @@ class ShowController extends Controller
         );
 
         // Log visit on first access
-        if ($entry->getViewdate() === null) {
-            $entry->setViewdate(new \DateTime());
-            $this->get('doctrine.orm.entity_manager')->flush($entry);
+        if ($participant->getViewdate() === null) {
+            $participant->setViewdate(new \DateTime());
+            $this->get('doctrine.orm.entity_manager')->flush($participant);
         }
 
         // Log ip address on first access
-        if ($entry->getIp() === null) {
+        if ($participant->getIp() === null) {
             $ip = $request->getClientIp();
-            $entry->setIp($ip);
-            $this->get('doctrine.orm.entity_manager')->flush($entry);
+            $participant->setIp($ip);
+            $this->get('doctrine.orm.entity_manager')->flush($participant);
         }
 
         if (!$request->isXmlHttpRequest()) {
             return [
-                'entry' => $entry,
+                'entry' => $participant,
                 'wishlistForm' => $wishlistForm->createView(),
                 'messageForm' => $messageForm->createView(),
             ];

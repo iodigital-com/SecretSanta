@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Controller\Entry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Intracto\SecretSantaBundle\Entity\Participant;
 
 class ResendEntryController extends Controller
 {
@@ -13,20 +14,21 @@ class ResendEntryController extends Controller
      */
     public function resendAction($listUrl, $entryId)
     {
-        $entry = $this->get('entry_repository')->find($entryId);
-        if ($entry === null) {
+        /** @var Participant $participant */
+        $participant = $this->get('participant_repository')->find($entryId);
+        if ($participant === null) {
             throw new NotFoundHttpException();
         }
 
-        if ($entry->getPool()->getListUrl() !== $listUrl) {
+        if ($participant->getParty()->getListUrl() !== $listUrl) {
             throw new NotFoundHttpException();
         }
 
-        $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($entry);
+        $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($participant);
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->get('translator')->trans('flashes.resend_entry.resent', ['%email%' => $entry->getName()])
+            $this->get('translator')->trans('flashes.resend_entry.resent', ['%email%' => $participant->getName()])
         );
 
         return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));

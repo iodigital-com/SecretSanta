@@ -22,7 +22,7 @@
         <p>{{ 'pool-exclude.description'|trans }}</p>
         {{ form_start(form) }}
         {# Only show general validation error if there are no subform errors #}
-        {% if form.entries.vars.valid %}
+        {% if form.participants.vars.valid %}
             {{ form_errors(form) }}
         {% endif %}
         <table class="table table-striped">
@@ -34,13 +34,13 @@
             </tr>
             </thead>
             <tbody>
-            {% for entry in form.entries %}
-                <tr class="entry {% if form_errors(entry) or form_errors(entry.excluded_entries) %} error{% endif %}">
+            {% for entry in form.participants %}
+                <tr class="entry {% if form_errors(entry) or form_errors(entry.excluded_participants) %} error{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
-                    <td>{{ entry.excluded_entries.vars.label }}</td>
+                    <td>{{ entry.excluded_participants.vars.label }}</td>
                     <td>
-                        {{ form_widget(entry.excluded_entries, {'attr': {'placeholder': 'pool-exclude.placeholder_exclude'} } ) }}
-                        {{ form_errors(entry.excluded_entries) }}
+                        {{ form_widget(entry.excluded_participants, {'attr': {'placeholder': 'pool-exclude.placeholder_exclude'} } ) }}
+                        {{ form_errors(entry.excluded_participants) }}
                     </td>
                 </tr>
             {% endfor %}
