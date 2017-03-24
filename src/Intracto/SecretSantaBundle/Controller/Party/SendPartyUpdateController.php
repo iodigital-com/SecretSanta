@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Pool;
+namespace Intracto\SecretSantaBundle\Controller\Party;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
