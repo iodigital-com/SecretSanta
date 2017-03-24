@@ -91,7 +91,7 @@
             {% set phraseToType = 'pool_manage_valid.delete.phrase_to_type'|trans|lower %}
             {{ 'pool_manage_valid.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
             <br>
-            <form action="{{ path('pool_delete', { 'listUrl': pool.listUrl }) }}" method="post">
+            <form action="{{ path('party_delete', { 'listUrl': pool.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_pool_csrf_token }}">
                 <input type="text" name="confirmation" id="delete-confirmation" autocomplete="off"
                        onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"

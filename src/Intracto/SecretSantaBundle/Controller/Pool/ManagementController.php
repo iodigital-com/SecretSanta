@@ -27,7 +27,7 @@ class ManagementController extends Controller
         }
 
         if (!$party->getCreated()) {
-            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $party->getListurl()]));
+            return $this->redirect($this->generateUrl('party_exclude', ['listUrl' => $party->getListurl()]));
         }
 
         if ($party->getSentdate() === null) {

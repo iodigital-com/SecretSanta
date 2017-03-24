@@ -377,7 +377,7 @@ class EntryReportQuery
     private function getPoolReuseBaseUrl()
     {
         $url = $this->router->generate(
-            'pool_reuse',
+            'party_reuse',
             ['listUrl' => '1'],
             true
         );

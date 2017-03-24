@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Pool;
+namespace Intracto\SecretSantaBundle\Controller\Party;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -13,10 +13,10 @@ use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Form\Type\PartyExcludeParticipantType;
 use Intracto\SecretSantaBundle\Form\Type\PartyType;
 
-class PoolController extends Controller
+class PartyController extends Controller
 {
     /**
-     * @Route("/pool/create", name="create_pool")
+     * @Route("/party/create", name="create_party")
      * @Method("POST")
      * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
      */
@@ -29,23 +29,23 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/created/{listUrl}", name="pool_created")
+     * @Route("/created/{listUrl}", name="party_created")
      * @Template("IntractoSecretSantaBundle:Pool:created.html.twig")
      */
     public function createdAction($listUrl)
     {
         $party = $this->getParty($listUrl);
         if (!$party->getCreated()) {
-            return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $party->getListurl()]));
+            return $this->redirect($this->generateUrl('party_exclude', ['listUrl' => $party->getListurl()]));
         }
 
         return [
-            'pool' => $party,
+            'party' => $party,
         ];
     }
 
     /**
-     * @Route("/exclude/{listUrl}", name="pool_exclude")
+     * @Route("/exclude/{listUrl}", name="party_exclude")
      * @Template("IntractoSecretSantaBundle:Pool:exclude.html.twig")
      */
     public function excludeAction(Request $request, $listUrl)
@@ -57,7 +57,7 @@ class PoolController extends Controller
         if ($party->getCreated()) {
             $mailerService->sendPendingConfirmationMail($party);
 
-            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $party->getListurl()]));
+            return $this->redirect($this->generateUrl('party_created', ['listUrl' => $party->getListurl()]));
         }
 
         if ($party->getParticipants()->count() <= 3) {
@@ -70,7 +70,7 @@ class PoolController extends Controller
 
             $mailerService->sendPendingConfirmationMail($party);
 
-            return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $party->getListurl()]));
+            return $this->redirect($this->generateUrl('party_created', ['listUrl' => $party->getListurl()]));
         }
 
         $form = $this->createForm(PartyExcludeParticipantType::class, $party);
@@ -86,18 +86,18 @@ class PoolController extends Controller
 
                 $mailerService->sendPendingConfirmationMail($party);
 
-                return $this->redirect($this->generateUrl('pool_created', ['listUrl' => $party->getListurl()]));
+                return $this->redirect($this->generateUrl('party_created', ['listUrl' => $party->getListurl()]));
             }
         }
 
         return [
             'form' => $form->createView(),
-            'pool' => $party,
+            'party' => $party,
         ];
     }
 
     /**
-     * @Route("/reuse/{listUrl}", name="pool_reuse")
+     * @Route("/reuse/{listUrl}", name="party_reuse")
      * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
      */
     public function reuseAction(Request $request, $listUrl)
@@ -109,7 +109,7 @@ class PoolController extends Controller
     }
 
     /**
-     * @Route("/delete/{listUrl}", name="pool_delete")
+     * @Route("/delete/{listUrl}", name="party_delete")
      * @Template("IntractoSecretSantaBundle:Pool:deleted.html.twig")
      */
     public function deleteAction(Request $request, $listUrl)
@@ -147,7 +147,7 @@ class PoolController extends Controller
             PartyType::class,
             $party,
             [
-                'action' => $this->generateUrl('create_pool'),
+                'action' => $this->generateUrl('create_party'),
             ]
         );
 
@@ -178,7 +178,7 @@ class PoolController extends Controller
                 $this->get('doctrine.orm.entity_manager')->persist($party);
                 $this->get('doctrine.orm.entity_manager')->flush();
 
-                return $this->redirect($this->generateUrl('pool_exclude', ['listUrl' => $party->getListurl()]));
+                return $this->redirect($this->generateUrl('party_exclude', ['listUrl' => $party->getListurl()]));
             }
         }
 

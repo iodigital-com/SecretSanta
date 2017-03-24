@@ -20,7 +20,7 @@ class HomepageController extends Controller
             PartyType::class,
             new Party(),
             [
-                'action' => $this->generateUrl('create_pool'),
+                'action' => $this->generateUrl('create_party'),
             ]
         );
 

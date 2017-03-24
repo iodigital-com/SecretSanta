@@ -5,11 +5,11 @@
 {% block datalayer %}
     <script>
         dataLayer.push({
-            'pId': '{{ pool.listurl }}',
-            'pLocation': '{{ pool.location }}',
-            'pAmount': '{{ pool.amount }}',
-            'pParticipants': '{{ pool.entries|length }}',
-            'pDate': '{{ pool.eventdate|date('Y-m-d') }}',
+            'pId': '{{ party.listurl }}',
+            'pLocation': '{{ party.location }}',
+            'pAmount': '{{ party.amount }}',
+            'pParticipants': '{{ party.entries|length }}',
+            'pDate': '{{ party.eventdate|date('Y-m-d') }}',
             'event': 'createParty'
         });
     </script>
@@ -17,13 +17,13 @@
 {% block main %}
 <div class="box">
     <h1>{{ 'pool-created.title'|trans }}</h1>
-    {{ 'pool-created.body'|trans({ '%ownername%': pool.ownername, '%owneremail%': pool.owneremail })|raw }}
+    {{ 'pool-created.body'|trans({ '%ownername%': party.ownername, '%owneremail%': party.owneremail })|raw }}
 
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <div><strong>{{ 'pool-created.warning'|trans }}</strong> {{ 'pool-created.check_spam'|trans }}</div>
     </div>
 
-    {% if app.environment == 'dev' %}<a href="{{ path('pool_manage', { 'listUrl': pool.listUrl }) }}">{{ path('pool_manage', { 'listUrl': pool.listUrl }) }}</a>{% endif %}
+    {% if app.environment == 'dev' %}<a href="{{ path('pool_manage', { 'listUrl': party.listUrl }) }}">{{ path('pool_manage', { 'listUrl': party.listUrl }) }}</a>{% endif %}
 </div>
 {% endblock %}
