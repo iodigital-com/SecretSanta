@@ -39,7 +39,7 @@
                              rel="tooltip" title="{{ 'pool_manage_valid.manage.edit_email'|trans }}" alt="{{ 'pool_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;">
                         {% spaceless %}
-                            <a href="{{ path('resend_entry', { 'listUrl': party.listUrl, 'entryId': entry.id }) }}">
+                            <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': entry.id }) }}">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
                                      title="{{ 'pool_manage_valid.manage.resend_email'|trans }}" alt="{{ 'pool_manage_valid.manage.resend_email'|trans }}">
                             </a>

@@ -1,21 +1,21 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Entry;
+namespace Intracto\SecretSantaBundle\Controller\Participant;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Entity\Participant;
 
-class ResendEntryController extends Controller
+class ResendParticipantController extends Controller
 {
     /**
-     * @Route("/resend/{listUrl}/{entryId}", name="resend_entry")
+     * @Route("/resend/{listUrl}/{participantId}", name="resend_participant")
      */
-    public function resendAction($listUrl, $entryId)
+    public function resendAction($listUrl, $participantId)
     {
         /** @var Participant $participant */
-        $participant = $this->get('participant_repository')->find($entryId);
+        $participant = $this->get('participant_repository')->find($participantId);
         if ($participant === null) {
             throw new NotFoundHttpException();
         }
