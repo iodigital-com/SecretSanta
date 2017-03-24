@@ -12,7 +12,7 @@ class HomepageController extends Controller
 {
     /**
      * @Route("/", name="homepage")
-     * @Template("IntractoSecretSantaBundle:Pool:create.html.twig")
+     * @Template("IntractoSecretSantaBundle:Party:create.html.twig")
      */
     public function indexAction()
     {

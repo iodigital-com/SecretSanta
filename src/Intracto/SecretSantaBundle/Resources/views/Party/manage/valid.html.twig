@@ -1,4 +1,4 @@
-{% extends "IntractoSecretSantaBundle:Pool/manage:base.html.twig" %}
+{% extends "IntractoSecretSantaBundle:Party/manage:base.html.twig" %}
 {% block datalayer %}
     <script>
         dataLayer.push({
@@ -192,5 +192,5 @@
 {% block javascripts %}
     {{ parent() }}
     {{ form_javascript(updatePartyDetailsForm) }}
-    {% include 'IntractoSecretSantaBundle:Pool/manage:valid.js.twig' %}
+    {% include 'IntractoSecretSantaBundle:Party/manage:valid.js.twig' %}
 {% endblock %}

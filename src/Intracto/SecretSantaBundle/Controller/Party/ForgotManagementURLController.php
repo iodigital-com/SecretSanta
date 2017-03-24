@@ -13,7 +13,7 @@ class ForgotManagementURLController extends Controller
 {
     /**
      * @Route("/forgot-link", name="forgot_management_url")
-     * @Template("IntractoSecretSantaBundle:Pool:forgotLink.html.twig")
+     * @Template("IntractoSecretSantaBundle:Party:forgotLink.html.twig")
      */
     public function indexAction()
     {
@@ -33,7 +33,7 @@ class ForgotManagementURLController extends Controller
     /**
      * @Route("/resend-management-url", name="resend_management_url")
      * @Method("POST")
-     * @Template("IntractoSecretSantaBundle:Pool:forgotLink.html.twig")
+     * @Template("IntractoSecretSantaBundle:Party:forgotLink.html.twig")
      */
     public function resendAction(Request $request)
     {
