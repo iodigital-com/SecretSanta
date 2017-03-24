@@ -340,17 +340,17 @@ class EntryReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
-        $reusePoolBaseUrl = $this->getPoolReuseBaseUrl();
+        $reusePartyBaseUrl = $this->getPoolReuseBaseUrl();
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.poolId, p.locale, p.listUrl
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE p.sentdate >= :firstDay
-            AND p.sentdate < :lastDay
-            AND e.poolAdmin = 1
-            GROUP BY e.name, e.email, e.poolId',
+            SELECT e.name, e.email, e.party_id, p.locale, p.list_url
+            FROM party p
+            JOIN participant e ON p.id = e.party_id
+            WHERE p.sent_date >= :firstDay
+            AND p.sent_date < :lastDay
+            AND e.party_admin = 1
+            GROUP BY e.name, e.email, e.party_id',
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
@@ -363,9 +363,9 @@ class EntryReportQuery
                 [
                     $row['name'],
                     $row['email'],
-                    $row['poolId'],
+                    $row['party_id'],
                     $row['locale'],
-                    $reusePoolBaseUrl.$row['listUrl'],
+                    $reusePartyBaseUrl.$row['list_url'],
                 ],
                 ','
             );
@@ -396,13 +396,13 @@ class EntryReportQuery
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.poolId, p.locale
-            FROM Pool p
-            JOIN Entry e ON p.id = e.poolId
-            WHERE p.sentdate >= :firstDay
-            AND p.sentdate < :lastDay
-            AND e.poolAdmin = 0
-            GROUP BY e.name, e.email, e.poolId',
+            SELECT e.name, e.email, e.party_id, p.locale
+            FROM party p
+            JOIN participant e ON p.id = e.party_id
+            WHERE p.sent_date >= :firstDay
+            AND p.sent_date < :lastDay
+            AND e.party_admin = 0
+            GROUP BY e.name, e.email, e.party_id',
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
@@ -415,7 +415,7 @@ class EntryReportQuery
                 [
                     $row['name'],
                     $row['email'],
-                    $row['poolId'],
+                    $row['party_id'],
                     $row['locale'],
                 ],
                 ','
