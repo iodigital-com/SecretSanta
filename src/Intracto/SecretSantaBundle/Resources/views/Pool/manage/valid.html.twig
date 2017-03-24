@@ -45,7 +45,7 @@
                             </a>
                         {% endspaceless %}
                         {% if app.environment == 'dev' %}
-                            <a href="{{ path('entry_view', { 'url': entry.url }) }}" class="add-participant-link">
+                            <a href="{{ path('participant_view', { 'url': entry.url }) }}" class="add-participant-link">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
                                      title="{{ entry.assignedParticipant.name }} <{{ entry.assignedParticipant.email }}>"
                                      alt="{{ 'pool_manage_valid.manage.view_entry'|trans }}">

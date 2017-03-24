@@ -48,6 +48,6 @@ class ParticipantCommunicationController extends Controller
             );
         }
 
-        return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+        return $this->redirect($this->generateUrl('participant_view', ['url' => $url]));
     }
 }

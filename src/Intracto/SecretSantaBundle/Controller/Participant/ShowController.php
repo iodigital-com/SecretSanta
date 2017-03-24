@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Entry;
+namespace Intracto\SecretSantaBundle\Controller\Participant;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -14,7 +14,7 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 class ShowController extends Controller
 {
     /**
-     * @Route("/entry/{url}", name="entry_view")
+     * @Route("/entry/{url}", name="participant_view")
      * @Template("IntractoSecretSantaBundle:Entry/show:valid.html.twig")
      */
     public function showAction(Request $request, $url)
@@ -64,7 +64,7 @@ class ShowController extends Controller
 
         if (!$request->isXmlHttpRequest()) {
             return [
-                'entry' => $participant,
+                'participant' => $participant,
                 'wishlistForm' => $wishlistForm->createView(),
                 'messageForm' => $messageForm->createView(),
             ];

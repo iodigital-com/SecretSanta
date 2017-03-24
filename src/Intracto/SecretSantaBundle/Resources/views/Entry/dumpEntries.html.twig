@@ -8,7 +8,7 @@
 <body>
 <ul>
     {% for entry in entries %}
-        <li><a href="{{ url('entry_view', { 'url': entry.url }) }}">{{ url('entry_view', { 'url': entry.url }) }}</a></li>
+        <li><a href="{{ url('participant_view', { 'url': entry.url }) }}">{{ url('participant_view', { 'url': entry.url }) }}</a></li>
     {% endfor %}
 </ul>
 </body>
