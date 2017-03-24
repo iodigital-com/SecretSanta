@@ -11,7 +11,7 @@ class SendPartyUpdateController extends Controller
     /**
      * @Route("/send-party-update/{listUrl}", name="send_party_update")
      */
-    public function sendPoolUpdateAction($listUrl)
+    public function sendPartyUpdateAction($listUrl)
     {
         $results = $this->get('intracto_secret_santa.entry')->fetchDataForPoolUpdateMail($listUrl);
         $party = $this->get('party_repository')->findOneByListurl($listUrl);
