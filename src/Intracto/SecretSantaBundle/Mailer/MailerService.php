@@ -152,7 +152,7 @@ class MailerService
             }
 
             $poolLinks[] = [
-                'url' => $this->routing->generate('pool_manage', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
+                'url' => $this->routing->generate('party_manage', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
                 'text' => $text,
             ];
         }

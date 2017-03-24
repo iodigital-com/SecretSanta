@@ -126,7 +126,7 @@ class PartyController extends Controller
                 $this->get('translator')->trans('flashes.pool.not_deleted')
             );
 
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
         }
 
         $party = $this->getParty($listUrl);

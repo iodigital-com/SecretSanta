@@ -40,7 +40,7 @@ class EntryController extends Controller
             }
         }
 
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
     }
 
     /**
@@ -59,7 +59,7 @@ class EntryController extends Controller
                 $this->get('translator')->trans('flashes.entry.remove_participant.wrong')
             );
 
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
         }
 
         /** @var Participant $participant */
@@ -72,7 +72,7 @@ class EntryController extends Controller
                 $this->get('translator')->trans('flashes.entry.remove_participant.danger')
             );
 
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
         }
 
         if ($participant->isPartyAdmin()) {
@@ -81,7 +81,7 @@ class EntryController extends Controller
                 $this->get('translator')->trans('flashes.entry.remove_participant.warning')
             );
 
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
         }
 
         $excludeCount = 0;
@@ -98,21 +98,21 @@ class EntryController extends Controller
                 $this->get('translator')->trans('flashes.entry.remove_participant.excluded_entries')
             );
 
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
         }
 
-        $secretSanta = $participant->getEntry();
+        $secretSanta = $participant->getAssignedParticipant();
         $assignedParticipantId = $this->get('intracto_secret_santa.entry')->findBuddyByEntryId($entryId);
         $assignedParticipant = $this->get('participant_repository')->find($assignedParticipantId[0]['id']);
 
         // if A -> B -> A we can't delete B anymore or A is assigned to A
-        if ($participant->getEntry()->getEntry()->getId() === $participant->getId()) {
+        if ($participant->getAssignedParticipant()->getAssignedParticipant()->getId() === $participant->getId()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
                 $this->get('translator')->trans('flashes.entry.remove_participant.self_assigned')
             );
 
-            return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
         }
 
         $this->get('doctrine.orm.entity_manager')->remove($participant);
@@ -129,6 +129,6 @@ class EntryController extends Controller
             $this->get('translator')->trans('flashes.entry.remove_participant.success')
         );
 
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
     }
 }

@@ -10,9 +10,9 @@
     <div class="steps">
         <h2>{{ 'pool_manage_base.headers.title'|trans|raw }}</h2>
         <ul class="liststyle1">
-            <li><strong>{{ 'pool_manage_base.headers.date'|trans }} </strong> {{ pool.eventdate|localizeddate('medium', 'none') }}</li>
-            <li><strong>{{ 'pool_manage_base.headers.location'|trans }}</strong> {{ pool.location }}</li>
-            <li><strong>{{ 'pool_manage_base.headers.amount'|trans }} </strong> {{ pool.amount }}</li>
+            <li><strong>{{ 'pool_manage_base.headers.date'|trans }} </strong> {{ party.eventdate|localizeddate('medium', 'none') }}</li>
+            <li><strong>{{ 'pool_manage_base.headers.location'|trans }}</strong> {{ party.location }}</li>
+            <li><strong>{{ 'pool_manage_base.headers.amount'|trans }} </strong> {{ party.amount }}</li>
         </ul>
     </div>
 {% endblock %}

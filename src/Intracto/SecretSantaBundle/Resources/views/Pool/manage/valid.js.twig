@@ -35,7 +35,7 @@
             $('#delete-participant').show();
             $('.link_remove_participant').attr('disabled', true);
             $('#delete-participant-confirmation').focus();
-            var listUrl = '{{ pool.listUrl }}';
+            var listUrl = '{{ party.listUrl }}';
             var entryId = $(this).data('entry');
             attachAction(listUrl, entryId);
         });

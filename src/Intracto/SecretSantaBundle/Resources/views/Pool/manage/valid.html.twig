@@ -2,11 +2,11 @@
 {% block datalayer %}
     <script>
         dataLayer.push({
-            'pId': '{{ pool.listurl }}',
-            'pLocation': '{{ pool.location }}',
-            'pAmount': '{{ pool.amount }}',
-            'pParticipants': '{{ pool.participants|length }}',
-            'pDate': '{{ pool.eventdate|date('Y-m-d') }}'
+            'pId': '{{ party.listurl }}',
+            'pLocation': '{{ party.location }}',
+            'pAmount': '{{ party.amount }}',
+            'pParticipants': '{{ party.participants|length }}',
+            'pDate': '{{ party.eventdate|date('Y-m-d') }}'
         });
     </script>
 {% endblock %}
@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-            {% for entry in pool.participants %}
+            {% for entry in party.participants %}
                 <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
                     <td data-hj-masked>{{ entry.name }}</td>
@@ -35,11 +35,11 @@
                     <td class="{% if entry.wishlistItems is not empty %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
-                             onclick="editableEmail('{{ pool.listUrl }}', {{ entry.id }});"
+                             onclick="editableEmail('{{ party.listUrl }}', {{ entry.id }});"
                              rel="tooltip" title="{{ 'pool_manage_valid.manage.edit_email'|trans }}" alt="{{ 'pool_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;">
                         {% spaceless %}
-                            <a href="{{ path('resend_entry', { 'listUrl': pool.listUrl, 'entryId': entry.id }) }}">
+                            <a href="{{ path('resend_entry', { 'listUrl': party.listUrl, 'entryId': entry.id }) }}">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
                                      title="{{ 'pool_manage_valid.manage.resend_email'|trans }}" alt="{{ 'pool_manage_valid.manage.resend_email'|trans }}">
                             </a>
@@ -66,13 +66,13 @@
         <button id="btn_delete" class="btn btn-primary manage_btn">
             <i class="fa fa-exclamation-circle"></i> {{ 'pool_manage_valid.btn.delete_list'|trans }}
         </button>
-        <a href="{{ path('expose_entries', { 'listUrl': pool.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
+        <a href="{{ path('expose_entries', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
             <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose'|trans }}
         </a>
-        <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': pool.listurl }) }}">
+        <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': party.listurl }) }}">
             <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose_wishlists'|trans }}
         </a>
-        <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': pool.listurl }) }}">
+        <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
             <i class="fa fa-envelope"></i> {{ 'pool_manage_valid.btn.pool_update'|trans|raw }}
         </a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
@@ -91,8 +91,8 @@
             {% set phraseToType = 'pool_manage_valid.delete.phrase_to_type'|trans|lower %}
             {{ 'pool_manage_valid.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
             <br>
-            <form action="{{ path('party_delete', { 'listUrl': pool.listUrl }) }}" method="post">
-                <input type="hidden" name="csrf_token" value="{{ delete_pool_csrf_token }}">
+            <form action="{{ path('party_delete', { 'listUrl': party.listUrl }) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_party_csrf_token }}">
                 <input type="text" name="confirmation" id="delete-confirmation" autocomplete="off"
                        onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"
                        class="form-control">
@@ -153,44 +153,44 @@
         </div>
 
         <div id="update-party-details" class="alert alert-warning manage-page-form"
-             {% if (form_errors(updatePoolDetailsForm.eventdate)) or (form_errors(updatePoolDetailsForm.amount)) or (form_errors(updatePoolDetailsForm.location)) %}style="display: block;"
+             {% if (form_errors(updatePartyDetailsForm.eventdate)) or (form_errors(updatePartyDetailsForm.amount)) or (form_errors(updatePartyDetailsForm.location)) %}style="display: block;"
              {% else %}style="display: none"{% endif %}>
             <h3>{{ 'pool_manage_valid.updated_party.title'|trans }}</h3>
 
             {{ 'pool_manage_valid.updated_party.body'|trans|raw }}
             <br>
-            {{ form_start(updatePoolDetailsForm) }}
-                {{ form_row(updatePoolDetailsForm._token) }}
-                <div class="form-group {% if form_errors(updatePoolDetailsForm.eventdate) %}error{% endif %}">
-                    <strong>{{ form_label(updatePoolDetailsForm.eventdate) }}</strong>
-                    {{ form_widget(updatePoolDetailsForm.eventdate, {'attr': {'class': 'form-control'}}) }}
-                    {% for error in updatePoolDetailsForm.eventdate.vars.errors %}
+            {{ form_start(updatePartyDetailsForm) }}
+                {{ form_row(updatePartyDetailsForm._token) }}
+                <div class="form-group {% if form_errors(updatePartyDetailsForm.eventdate) %}error{% endif %}">
+                    <strong>{{ form_label(updatePartyDetailsForm.eventdate) }}</strong>
+                    {{ form_widget(updatePartyDetailsForm.eventdate, {'attr': {'class': 'form-control'}}) }}
+                    {% for error in updatePartyDetailsForm.eventdate.vars.errors %}
                         <strong>{{ error.message }}</strong><br>
                     {% endfor %}
                 </div>
-                <div class="form-group {% if form_errors(updatePoolDetailsForm.location) %}error{% endif %}">
-                    <strong>{{ form_label(updatePoolDetailsForm.location) }}</strong>
-                    {{ form_widget(updatePoolDetailsForm.location, {'attr': {'class': 'form-control'}}) }}
-                    {% for error in updatePoolDetailsForm.location.vars.errors %}
+                <div class="form-group {% if form_errors(updatePartyDetailsForm.location) %}error{% endif %}">
+                    <strong>{{ form_label(updatePartyDetailsForm.location) }}</strong>
+                    {{ form_widget(updatePartyDetailsForm.location, {'attr': {'class': 'form-control'}}) }}
+                    {% for error in updatePartyDetailsForm.location.vars.errors %}
                         <strong>{{ error.message }}</strong><br>
                     {% endfor %}
                 </div>
-                <div class="form-group {% if form_errors(updatePoolDetailsForm.amount) %}error{% endif %}">
-                    <strong>{{ form_label(updatePoolDetailsForm.amount) }}</strong>
-                    {{ form_widget(updatePoolDetailsForm.amount, {'attr': {'class': 'form-control'}}) }}
-                    {% for error in updatePoolDetailsForm.amount.vars.errors %}
+                <div class="form-group {% if form_errors(updatePartyDetailsForm.amount) %}error{% endif %}">
+                    <strong>{{ form_label(updatePartyDetailsForm.amount) }}</strong>
+                    {{ form_widget(updatePartyDetailsForm.amount, {'attr': {'class': 'form-control'}}) }}
+                    {% for error in updatePartyDetailsForm.amount.vars.errors %}
                         <strong>{{ error.message }}</strong><br>
                     {% endfor %}
                 </div>
                 <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
                 <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'pool_manage_valid.btn.cancel'|trans }}</button>
-            {{ form_end(updatePoolDetailsForm) }}
+            {{ form_end(updatePartyDetailsForm) }}
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {{ form_javascript(updatePoolDetailsForm) }}
+    {{ form_javascript(updatePartyDetailsForm) }}
     {% include 'IntractoSecretSantaBundle:Pool/manage:valid.js.twig' %}
 {% endblock %}

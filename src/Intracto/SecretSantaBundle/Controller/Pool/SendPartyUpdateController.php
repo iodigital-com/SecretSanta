@@ -26,6 +26,6 @@ class SendPartyUpdateController extends Controller
             $this->get('translator')->trans('flashes.send_party_update.success')
         );
 
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $party->getListurl()]));
+        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
     }
 }

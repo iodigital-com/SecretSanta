@@ -31,6 +31,6 @@ class ResendEntryController extends Controller
             $this->get('translator')->trans('flashes.resend_entry.resent', ['%email%' => $participant->getName()])
         );
 
-        return $this->redirect($this->generateUrl('pool_manage', ['listUrl' => $listUrl]));
+        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
     }
 }

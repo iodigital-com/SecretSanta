@@ -24,6 +24,6 @@
         <div><strong>{{ 'pool-created.warning'|trans }}</strong> {{ 'pool-created.check_spam'|trans }}</div>
     </div>
 
-    {% if app.environment == 'dev' %}<a href="{{ path('pool_manage', { 'listUrl': party.listUrl }) }}">{{ path('pool_manage', { 'listUrl': party.listUrl }) }}</a>{% endif %}
+    {% if app.environment == 'dev' %}<a href="{{ path('party_manage', { 'listUrl': party.listUrl }) }}">{{ path('party_manage', { 'listUrl': party.listUrl }) }}</a>{% endif %}
 </div>
 {% endblock %}
