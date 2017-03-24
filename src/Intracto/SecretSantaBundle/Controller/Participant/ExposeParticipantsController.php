@@ -11,7 +11,7 @@ class ExposeParticipantsController extends Controller
 {
     /**
      * @Route("/participants/expose/{listUrl}", name="expose_participants")
-     * @Template("IntractoSecretSantaBundle:Entry:exposeAll.html.twig")
+     * @Template("IntractoSecretSantaBundle:Participant:exposeAll.html.twig")
      */
     public function indexAction($listUrl)
     {
