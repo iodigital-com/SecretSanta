@@ -12,11 +12,11 @@
                 </tr>
             </thead>
             <tbody>
-            {% for entry in pool.entries %}
+            {% for participant in party.participants %}
                 <tr>
-                    <td>{{ entry.name }} ({{ entry.email }})</td>
+                    <td>{{ participant.name }} ({{ participant.email }})</td>
                     <td>&raquo;</td>
-                    <td>{{ entry.entry.name }} ({{ entry.entry.email }})</td>
+                    <td>{{ participant.participant.name }} ({{ participant.participant.email }})</td>
                 </tr>
             {% endfor %}
             </tbody>

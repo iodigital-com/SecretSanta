@@ -66,7 +66,7 @@
         <button id="btn_delete" class="btn btn-primary manage_btn">
             <i class="fa fa-exclamation-circle"></i> {{ 'pool_manage_valid.btn.delete_list'|trans }}
         </button>
-        <a href="{{ path('expose_entries', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
+        <a href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
             <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose'|trans }}
         </a>
         <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': party.listurl }) }}">

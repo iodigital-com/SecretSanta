@@ -1,28 +1,28 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Entry;
+namespace Intracto\SecretSantaBundle\Controller\Participant;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ExposeEntriesController extends Controller
+class ExposeParticipantsController extends Controller
 {
     /**
-     * @Route("/entries/expose/{listUrl}", name="expose_entries")
+     * @Route("/participants/expose/{listUrl}", name="expose_participants")
      * @Template("IntractoSecretSantaBundle:Entry:exposeAll.html.twig")
      */
     public function indexAction($listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
-        $pool = $this->get('party_repository')->findOneByListurl($listUrl);
-        if ($pool === null) {
+        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        if ($party === null) {
             throw new NotFoundHttpException();
         }
 
         return [
-            'pool' => $pool,
+            'party' => $party,
         ];
     }
 }
