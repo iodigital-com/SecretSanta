@@ -54,7 +54,7 @@
 
     function editableEmail(listUrl, entryId) {
         var email = $('#email_' + entryId).html();
-        var url = '{{ path("entry_email_edit", { 'listUrl': 'listUrl', 'entryId': 'entryId' }) }}';
+        var url = '{{ path("participant_email_edit", { 'listUrl': 'listUrl', 'participantId': 'entryId' }) }}';
         url = url.replace("listUrl", listUrl);
         url = url.replace("entryId", entryId);
         if ($('#email_' + entryId).has('form').length == 0) {
@@ -68,7 +68,7 @@
     }
 
     function attachAction(listUrl, entryId) {
-        var url = '{{ path('entry_remove', {'listUrl': 'listUrl', 'entryId': 'entryId'}) }}';
+        var url = '{{ path('participant_remove', {'listUrl': 'listUrl', 'participantId': 'entryId'}) }}';
         url = url.replace('listUrl', listUrl);
         url = url.replace('entryId', entryId);
         $('#delete-participant-form').attr('action', url);

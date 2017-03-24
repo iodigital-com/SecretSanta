@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Entry;
+namespace Intracto\SecretSantaBundle\Controller\Participant;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -8,17 +8,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\EmailAddress;
 
-class EntryController extends Controller
+class ParticipantController extends Controller
 {
     /**
-     * @Route("/entry/edit-email/{listUrl}/{entryId}", name="entry_email_edit")
+     * @Route("/participant/edit-email/{listUrl}/{participantId}", name="participant_email_edit")
      */
-    public function editEmailAction(Request $request, $listUrl, $entryId)
+    public function editEmailAction(Request $request, $listUrl, $participantId)
     {
-        /** @var Participant $entry */
-        $entry = $this->get('participant_repository')->find($entryId);
+        /** @var Participant $participant */
+        $participant = $this->get('participant_repository')->find($participantId);
 
-        if ($entry->getParty()->getListurl() === $listUrl) {
+        if ($participant->getParty()->getListurl() === $listUrl) {
             $emailAddress = new EmailAddress($request->request->get('email'));
             $emailAddressErrors = $this->get('validator')->validate($emailAddress);
 
@@ -28,10 +28,10 @@ class EntryController extends Controller
                     $this->get('translator')->trans('flashes.entry.edit_email')
                 );
             } else {
-                $entry->setEmail((string) $emailAddress);
-                $this->get('doctrine.orm.entity_manager')->flush($entry);
+                $participant->setEmail((string) $emailAddress);
+                $this->get('doctrine.orm.entity_manager')->flush($participant);
 
-                $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($entry);
+                $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($participant);
 
                 $this->get('session')->getFlashBag()->add(
                     'success',
@@ -44,9 +44,9 @@ class EntryController extends Controller
     }
 
     /**
-     * @Route("/entry/remove/{listUrl}/{entryId}", name="entry_remove")
+     * @Route("/participant/remove/{listUrl}/{participantId}", name="participant_remove")
      */
-    public function removeEntryFromPoolAction(Request $request, $listUrl, $entryId)
+    public function removeEntryFromPoolAction(Request $request, $listUrl, $participantId)
     {
         $correctCsrfToken = $this->isCsrfTokenValid(
             'delete_participant',
@@ -63,7 +63,7 @@ class EntryController extends Controller
         }
 
         /** @var Participant $participant */
-        $participant = $this->get('participant_repository')->find($entryId);
+        $participant = $this->get('participant_repository')->find($participantId);
         $participants = $participant->getParty()->getParticipants();
 
         if (count($participants) <= 3) {
@@ -102,7 +102,7 @@ class EntryController extends Controller
         }
 
         $secretSanta = $participant->getAssignedParticipant();
-        $assignedParticipantId = $this->get('intracto_secret_santa.entry')->findBuddyByEntryId($entryId);
+        $assignedParticipantId = $this->get('intracto_secret_santa.entry')->findBuddyByEntryId($participantId);
         $assignedParticipant = $this->get('participant_repository')->find($assignedParticipantId[0]['id']);
 
         // if A -> B -> A we can't delete B anymore or A is assigned to A
