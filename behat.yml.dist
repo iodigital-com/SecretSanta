@@ -8,11 +8,11 @@ default:
     suites:
         secretsanta:
             type: symfony_bundle
-            bundle: IntractoSecretSantaBundle
+            bundle: IntractoBehatBundle
             contexts:
                    - Behat\MinkExtension\Context\MinkContext
-                   - Intracto\SecretSantaBundle\Features\Context\Bootstrap\PoolContext
-                   - Intracto\SecretSantaBundle\Features\Context\Bootstrap\LanguageContext
+                   - Intracto\BehatBundle\Features\Context\Bootstrap\PoolContext
+                   - Intracto\BehatBundle\Features\Context\Bootstrap\LanguageContext
 
     extensions:
         Behat\MinkExtension:
@@ -54,4 +54,4 @@ default:
         SensioLabs\Behat\PageObjectExtension:
           namespaces:
             page:
-              - Intracto\SecretSantaBundle\Behat\Page
+              - Intracto\BehatBundle\Page

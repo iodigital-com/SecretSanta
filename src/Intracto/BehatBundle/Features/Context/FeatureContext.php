@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Features\Context;
+namespace Intracto\BehatBundle\Features\Context;
 
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
