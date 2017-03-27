@@ -5,7 +5,7 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-updated_party.message.html'|trans({"%name%": entry.name, "%owner%": entry.pool.getOwnerName})|raw }}</p>
+                <p>{{ 'emails-updated_party.message.html'|trans({"%name%": participant.name, "%owner%": participant.party.getOwnerName})|raw }}</p>
                 <table cellspacing="0" cellpadding="3" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
                     <thead>
                         <tr>
@@ -18,11 +18,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ entry.pool.eventdate|date('d M y') }}</td>
+                            <td>{{ participant.party.eventdate|date('d M y') }}</td>
                             <td>&nbsp;</td>
-                            <td>{{ entry.pool.location }}</td>
+                            <td>{{ participant.party.location }}</td>
                             <td>&nbsp;</td>
-                            <td>{{ entry.pool.amount }}</td>
+                            <td>{{ participant.party.amount }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -33,7 +33,7 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('participant_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
+                            <a href="{{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
                              sans-serif; vertical-align: baseline;">{{ 'emails-updated_party.btn.updated_party'|trans|raw }}</a>
 
                         </td>

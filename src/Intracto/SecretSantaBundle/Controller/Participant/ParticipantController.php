@@ -31,7 +31,7 @@ class ParticipantController extends Controller
                 $participant->setEmail((string) $emailAddress);
                 $this->get('doctrine.orm.entity_manager')->flush($participant);
 
-                $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($participant);
+                $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($participant);
 
                 $this->get('session')->getFlashBag()->add(
                     'success',
@@ -46,7 +46,7 @@ class ParticipantController extends Controller
     /**
      * @Route("/participant/remove/{listUrl}/{participantId}", name="participant_remove")
      */
-    public function removeEntryFromPoolAction(Request $request, $listUrl, $participantId)
+    public function removeParticipantFromPoolAction(Request $request, $listUrl, $participantId)
     {
         $correctCsrfToken = $this->isCsrfTokenValid(
             'delete_participant',
@@ -118,7 +118,7 @@ class ParticipantController extends Controller
         $this->get('doctrine.orm.entity_manager')->remove($participant);
         $this->get('doctrine.orm.entity_manager')->flush();
 
-        $assignedParticipant->setEntry($secretSanta);
+        $assignedParticipant->setAssignedParticipant($secretSanta);
         $this->get('doctrine.orm.entity_manager')->persist($assignedParticipant);
         $this->get('doctrine.orm.entity_manager')->flush();
 

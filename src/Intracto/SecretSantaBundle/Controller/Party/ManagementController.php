@@ -36,7 +36,7 @@ class ManagementController extends Controller
                 $this->get('translator')->trans('flashes.management.email_validated')
             );
 
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForPool($party);
+            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForParty($party);
         }
 
         $addEntryForm = $this->createForm(
@@ -141,7 +141,7 @@ class ManagementController extends Controller
             $admin = $this->get('participant_repository')->findOneById($adminId[0]['id']);
             $adminMatch = $admin->getAssignedParticipant();
 
-            $admin->setEntry($newParticipant);
+            $admin->setAssignedParticipant($newParticipant);
             $this->get('doctrine.orm.entity_manager')->persist($admin);
             $this->get('doctrine.orm.entity_manager')->flush($admin);
 
@@ -149,8 +149,8 @@ class ManagementController extends Controller
             $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($admin);
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($newParticipant);
+            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($admin);
+            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($newParticipant);
 
             $this->get('session')->getFlashBag()->add(
                 'success',

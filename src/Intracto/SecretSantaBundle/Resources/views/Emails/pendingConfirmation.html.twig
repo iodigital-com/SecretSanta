@@ -6,7 +6,7 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-pendingConfirmation.salutation'|trans({'%name%': pool.getOwnerName}) }}, <br/><br/>
+                    {{ 'emails-pendingConfirmation.salutation'|trans({'%name%': party.getOwnerName}) }}, <br/><br/>
                     {{ 'emails-pendingConfirmation.click_button'|trans }}
 
                 </span>
@@ -27,7 +27,7 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('party_manage', { 'listUrl': pool.listurl }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
+                            <a href="{{ url('party_manage', { 'listUrl': party.listurl }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
                              sans-serif; vertical-align: baseline;">{{ 'emails-pendingConfirmation.btn_validate'|trans }}</a>
 
                         </td>

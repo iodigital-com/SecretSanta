@@ -19,7 +19,7 @@ class SendPartyUpdateController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $this->get('intracto_secret_santa.mail')->sendPoolUpdateMailForPool($party, $results);
+        $this->get('intracto_secret_santa.mail')->sendPartyUpdateMailForParty($party, $results);
 
         $this->get('session')->getFlashBag()->add(
             'success',

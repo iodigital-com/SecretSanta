@@ -24,7 +24,7 @@ class ResendParticipantController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForEntry($participant);
+        $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($participant);
 
         $this->get('session')->getFlashBag()->add(
             'success',

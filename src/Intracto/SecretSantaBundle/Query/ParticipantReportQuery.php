@@ -432,36 +432,36 @@ class ParticipantReportQuery
      */
     public function fetchDataForPoolUpdateMail($listUrl)
     {
-        $pool = $this->dbal->createQueryBuilder()
+        $party = $this->dbal->createQueryBuilder()
             ->select('p.*, e.name AS adminName')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.listurl = :listurl')
-            ->andWhere('e.poolAdmin = 1')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.list_url = :listurl')
+            ->andWhere('e.party_admin = 1')
             ->setParameter(':listurl', $listUrl);
         $participantCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS participantCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.listurl = :listurl')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.list_url = :listurl')
             ->setParameter(':listurl', $listUrl);
         $wishlistCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS wishlistCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.listurl = :listurl')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.list_url = :listurl')
             ->andWhere('wishlist_updated = 1')
             ->setParameter(':listurl', $listUrl);
         $viewedCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS viewedCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolid')
-            ->where('p.listurl = :listurl')
-            ->andWhere('viewdate is not null')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.list_url = :listurl')
+            ->andWhere('view_date is not null')
             ->setParameter(':listurl', $listUrl);
 
         return [
-            'pool' => $pool->execute()->fetchAll(),
+            'party' => $party->execute()->fetchAll(),
             'participantCount' => $participantCount->execute()->fetchAll(),
             'wishlistCount' => $wishlistCount->execute()->fetchAll(),
             'viewedCount' => $viewedCount->execute()->fetchAll(),
@@ -469,34 +469,34 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param $entryId
+     * @param $participantId
      *
      * @return mixed
      */
-    public function findBuddyByEntryId($entryId)
+    public function findBuddyByEntryId($participantId)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('e.id')
-            ->from('Entry', 'e')
-            ->where('e.entryId = :entryId')
-            ->setParameter('entryId', $entryId);
+            ->select('p.id')
+            ->from('participant', 'p')
+            ->where('p.assigned_participant_id = :id')
+            ->setParameter('id', $participantId);
 
         return $query->execute()->fetchAll();
     }
 
     /**
-     * @param $poolId
+     * @param $partyId
      *
      * @return mixed
      */
-    public function findAdminIdByPoolId($poolId)
+    public function findAdminIdByPoolId($partyId)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('e.id')
-            ->from('Entry', 'e')
-            ->where('e.poolId = :poolId')
-            ->andWhere('e.poolAdmin = 1')
-            ->setParameter('poolId', $poolId);
+            ->select('p.id')
+            ->from('participant', 'p')
+            ->where('p.party_id = :partyId')
+            ->andWhere('p.party_admin = 1')
+            ->setParameter('partyId', $partyId);
 
         return $query->execute()->fetchAll();
     }

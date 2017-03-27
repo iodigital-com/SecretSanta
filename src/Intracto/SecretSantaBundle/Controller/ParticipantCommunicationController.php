@@ -25,7 +25,7 @@ class ParticipantCommunicationController extends Controller
             $recipientId = $messageForm->getData()['recipient'];
 
             $em = $this->get('doctrine.orm.entity_manager');
-            $recipient = $em->getRepository('IntractoSecretSantaBundle:Entry')->find($recipientId);
+            $recipient = $em->getRepository('IntractoSecretSantaBundle:Participant')->find($recipientId);
 
             if (count($recipient) == 1) {
                 $this->get('intracto_secret_santa.mail')->sendAnonymousMessage($recipient, $message);
