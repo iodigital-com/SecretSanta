@@ -3,11 +3,11 @@
 {% block main %}
     <div class="box">
         <h1>{{ 'wishlist-show_all.title'|trans }}</h1>
-            {% for entry in pool.entries %}
-                <h3>{{ entry.name }}</h3>
-                    {% if entry.wishlistitems|length > 0 %}
+            {% for participant in party.participants %}
+                <h3>{{ participant.name }}</h3>
+                    {% if participant.wishlistitems|length > 0 %}
                         <ul class="list-group">
-                            {% for item in entry.wishlistitems %}
+                            {% for item in participant.wishlistitems %}
                                 <li class="list-group-item">
                                     {{ item.description|escape|linkify|raw }}
                                 </li>
