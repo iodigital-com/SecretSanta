@@ -9,8 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Entity\Participant;
-use Intracto\SecretSantaBundle\Form\Type\AddEntryType;
-use Intracto\SecretSantaBundle\Form\Type\UpdatePoolDetailsType;
+use Intracto\SecretSantaBundle\Form\Type\AddParticipantType;
+use Intracto\SecretSantaBundle\Form\Type\UpdatePartyDetailsType;
 
 class ManagementController extends Controller
 {
@@ -39,8 +39,8 @@ class ManagementController extends Controller
             $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForParty($party);
         }
 
-        $addEntryForm = $this->createForm(
-            AddEntryType::class,
+        $addParticipantForm = $this->createForm(
+            AddParticipantType::class,
             new Participant(),
             [
                 'action' => $this->generateUrl(
@@ -49,8 +49,8 @@ class ManagementController extends Controller
                 ),
             ]
         );
-        $updatePoolDetailsForm = $this->createForm(
-            UpdatePoolDetailsType::class,
+        $updatePartyDetailsForm = $this->createForm(
+            UpdatePartyDetailsType::class,
             $party,
             [
                 'action' => $this->generateUrl(
@@ -68,8 +68,8 @@ class ManagementController extends Controller
         }
 
         return [
-            'addEntryForm' => $addEntryForm->createView(),
-            'updatePartyDetailsForm' => $updatePoolDetailsForm->createView(),
+            'addParticipantForm' => $addParticipantForm->createView(),
+            'updatePartyDetailsForm' => $updatePartyDetailsForm->createView(),
             'party' => $party,
             'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
@@ -89,7 +89,7 @@ class ManagementController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $updatePartyDetailsForm = $this->createForm(UpdatePoolDetailsType::class, $party);
+        $updatePartyDetailsForm = $this->createForm(UpdatePartyDetailsType::class, $party);
         $updatePartyDetailsForm->handleRequest($request);
 
         if ($updatePartyDetailsForm->isSubmitted() && $updatePartyDetailsForm->isValid()) {
@@ -126,7 +126,7 @@ class ManagementController extends Controller
         }
 
         $newParticipant = new Participant();
-        $addParticipantForm = $this->createForm(AddEntryType::class, $newParticipant);
+        $addParticipantForm = $this->createForm(AddParticipantType::class, $newParticipant);
         $addParticipantForm->handleRequest($request);
 
         if ($addParticipantForm->isSubmitted() && $addParticipantForm->isValid()) {
