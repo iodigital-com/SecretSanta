@@ -5,7 +5,7 @@ namespace Intracto\SecretSantaBundle\Query;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Routing\Router;
 
-class EntryReportQuery
+class ParticipantReportQuery
 {
     /** @var Connection */
     private $dbal;

@@ -5,7 +5,7 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-pool_status.message.html'|trans({'%owner%': pool.getOwnerName})|raw }}</p>
+                <p>{{ 'emails-pool_status.message.html'|trans({'%owner%': party.getOwnerName})|raw }}</p>
                 <table cellspacing="0" cellpadding="3" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
                     <thead>
                     <tr>
@@ -16,12 +16,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for entry in pool.entries %}
+                    {% for participant in party.participants %}
                         <tr>
-                            <td>{{ entry.name }}</td>
-                            <td>{{ entry.email }}</td>
-                            <td>{% if entry.viewdate %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
-                            <td>{% if entry.wishlistItems is not empty %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
+                            <td>{{ participant.name }}</td>
+                            <td>{{ participant.email }}</td>
+                            <td>{% if participant.viewdate %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
+                            <td>{% if participant.wishlistItems is not empty %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -34,7 +34,7 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('party_manage', { 'listUrl': pool.listurl }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
+                            <a href="{{ url('party_manage', { 'listUrl': party.listurl }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
                              sans-serif; vertical-align: baseline;">{{ 'emails-pool_status.btn.poolstatus'|trans }}</a>
 
                         </td>

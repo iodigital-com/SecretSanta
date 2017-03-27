@@ -1,4 +1,4 @@
 {{ 'emails-emptyWishlistReminder.update_your_list'|trans }}
 
 {{ 'emails-emptyWishlistReminder.btn.update_wishlist'|trans }}:
-{{ url('participant_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}
+{{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}

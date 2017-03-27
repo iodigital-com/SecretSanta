@@ -6,7 +6,7 @@ class ReportQuery
 {
     /** @var PoolReportQuery */
     private $poolReportQuery;
-    /** @var EntryReportQuery */
+    /** @var ParticipantReportQuery */
     private $entryReportQuery;
     /** @var IpReportQuery */
     private $ipReportQuery;
@@ -15,13 +15,13 @@ class ReportQuery
 
     /**
      * @param PoolReportQuery     $poolReportQuery
-     * @param EntryReportQuery    $entryReportQuery
+     * @param ParticipantReportQuery    $entryReportQuery
      * @param IpReportQuery       $ipReportQuery
      * @param WishlistReportQuery $wishlistReportQuery
      */
     public function __construct(
         PoolReportQuery $poolReportQuery,
-        EntryReportQuery $entryReportQuery,
+        ParticipantReportQuery $entryReportQuery,
         IpReportQuery $ipReportQuery,
         WishlistReportQuery $wishlistReportQuery
     ) {

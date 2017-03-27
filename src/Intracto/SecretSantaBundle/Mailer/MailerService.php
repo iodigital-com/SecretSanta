@@ -232,20 +232,20 @@ class MailerService
     }
 
     /**
-     * @param Participant $entry
+     * @param Participant $participant
      */
-    public function sendWishlistReminderMail(Participant $entry)
+    public function sendWishlistReminderMail(Participant $participant)
     {
-        $this->translator->setLocale($entry->getParty()->getLocale());
+        $this->translator->setLocale($participant->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-emptyWishlistReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($entry->getEmail(), $entry->getName())
+            ->setTo($participant->getEmail(), $participant->getName())
             ->setBody(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:emptyWishlistReminder.html.twig',
                     [
-                        'entry' => $entry,
+                        'participant' => $participant,
                     ]
                 ),
                 'text/html'
@@ -254,7 +254,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:emptyWishlistReminder.txt.twig',
                     [
-                        'entry' => $entry,
+                        'participant' => $participant,
                     ]
                 ),
                 'text/plain'
@@ -263,20 +263,20 @@ class MailerService
     }
 
     /**
-     * @param Participant $entry
+     * @param Participant $participant
      */
-    public function sendEntryViewReminderMail(Participant $entry)
+    public function sendEntryViewReminderMail(Participant $participant)
     {
-        $this->translator->setLocale($entry->getParty()->getLocale());
+        $this->translator->setLocale($participant->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-viewEntryReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($entry->getEmail(), $entry->getName())
+            ->setTo($participant->getEmail(), $participant->getName())
             ->setBody(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:viewEntryReminder.html.twig',
                     [
-                        'entry' => $entry,
+                        'participant' => $participant,
                     ]
                 ),
                 'text/html'
@@ -285,7 +285,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:viewEntryReminder.txt.twig',
                     [
-                        'entry' => $entry,
+                        'participant' => $participant,
                     ]
                 ),
                 'text/plain'
@@ -295,21 +295,21 @@ class MailerService
 
     /**
      * @param Participant $receiver
-     * @param Participant $entry
+     * @param Participant $participant
      */
-    public function sendWishlistUpdatedMail(Participant $receiver, Participant $entry)
+    public function sendWishlistUpdatedMail(Participant $receiver, Participant $participant)
     {
         $this->translator->setLocale($receiver->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($entry->getEmail(), $entry->getName())
+            ->setTo($participant->getEmail(), $participant->getName())
             ->setBody(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:wishlistChanged.html.twig',
                     [
-                        'entry' => $receiver,
-                        'secret_santa' => $entry,
+                        'participant' => $receiver,
+                        'secret_santa' => $participant,
                     ]
                 ),
                 'text/html'
@@ -318,8 +318,8 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:wishlistChanged.txt.twig',
                     [
-                        'entry' => $receiver,
-                        'secret_santa' => $entry,
+                        'participant' => $receiver,
+                        'secret_santa' => $participant,
                     ]
                 ),
                 'text/plain'
@@ -328,20 +328,20 @@ class MailerService
     }
 
     /**
-     * @param Participant $entry
+     * @param Participant $participant
      */
-    public function sendPoolStatusMail(Participant $entry)
+    public function sendPartyStatusMail(Participant $participant)
     {
-        $this->translator->setLocale($entry->getParty()->getLocale());
+        $this->translator->setLocale($participant->getParty()->getLocale());
         $this->mailer->send(\Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-pool_status.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($entry->getEmail(), $entry->getName())
+            ->setTo($participant->getEmail(), $participant->getName())
             ->setBody(
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:poolStatus.html.twig',
                     [
-                        'pool' => $entry->getParty(),
+                        'party' => $participant->getParty(),
                     ]
                 ),
                 'text/html'
@@ -350,7 +350,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:poolStatus.txt.twig',
                     [
-                        'pool' => $entry->getParty(),
+                        'party' => $participant->getParty(),
                     ]
                 ),
                 'text/plain'

@@ -33,16 +33,16 @@ class ParticipantMailQuery
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
 
         $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-              JOIN entry.pool pool
-            WHERE entry.wishlist_updated = 0
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-              AND (entry.wishlistUpdatedTime IS NULL OR entry.wishlistUpdatedTime < :oneHourAgo)
-              AND (entry.emptyWishlistReminderSentTime IS NULL OR entry.emptyWishlistReminderSentTime < :oneWeekAgo)
+            SELECT participant
+            FROM IntractoSecretSantaBundle:Participant participant
+              JOIN participant.party party
+            WHERE participant.wishlistUpdated = 0
+              AND party.created = 1
+              AND party.eventdate > :today
+              AND party.eventdate < :sixWeeksFromNow
+              AND party.sentdate < :twoWeeksAgo
+              AND (participant.wishlistUpdatedTime IS NULL OR participant.wishlistUpdatedTime < :oneHourAgo)
+              AND (participant.emptyWishlistReminderSentTime IS NULL OR participant.emptyWishlistReminderSentTime < :oneWeekAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
@@ -69,15 +69,15 @@ class ParticipantMailQuery
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
 
         $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-              JOIN entry.pool pool
-            WHERE entry.viewdate IS NULL
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-              AND (entry.viewReminderSentTime IS NULL OR entry.viewReminderSentTime < :oneWeekAgo)
+            SELECT participant
+            FROM IntractoSecretSantaBundle:Participant participant
+              JOIN participant.party party
+            WHERE participant.viewdate IS NULL
+              AND party.created = 1
+              AND party.eventdate > :today
+              AND party.eventdate < :sixWeeksFromNow
+              AND party.sentdate < :twoWeeksAgo
+              AND (participant.viewReminderSentTime IS NULL OR participant.viewReminderSentTime < :oneWeekAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
@@ -100,17 +100,17 @@ class ParticipantMailQuery
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
 
         $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-              JOIN entry.pool pool
-              JOIN entry.entry peer
-            WHERE peer.wishlist_updated = 1
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-              AND (entry.wishlistUpdatedTime IS NULL OR entry.wishlistUpdatedTime < :oneHourAgo)
-              AND (entry.updateWishlistReminderSentTime IS NULL OR entry.updateWishlistReminderSentTime < :oneDayAgo)
+            SELECT participant
+            FROM IntractoSecretSantaBundle:Participant participant
+              JOIN participant.party party
+              JOIN participant.participant peer
+            WHERE peer.wishlistUpdated = 1
+              AND party.created = 1
+              AND party.eventdate > :today
+              AND party.eventdate < :sixWeeksFromNow
+              AND party.sentdate < :twoWeeksAgo
+              AND (participant.wishlistUpdatedTime IS NULL OR participant.wishlistUpdatedTime < :oneHourAgo)
+              AND (participant.updateWishlistReminderSentTime IS NULL OR participant.updateWishlistReminderSentTime < :oneDayAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
@@ -125,7 +125,7 @@ class ParticipantMailQuery
     /**
      * @return array
      */
-    public function findAllAdminsForPoolStatusMail()
+    public function findAllAdminsForPartyStatusMail()
     {
         $today = new \DateTime();
         $oneWeekAgo = new \DateTime('now - 1 week');
@@ -133,16 +133,16 @@ class ParticipantMailQuery
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
 
         $query = $this->em->createQuery('
-            SELECT entry
-            FROM IntractoSecretSantaBundle:Entry entry
-              JOIN entry.pool pool
-            WHERE entry.poolAdmin = 1
-              AND entry.url IS NOT NULL
-              AND pool.created = 1
-              AND pool.eventdate > :today
-              AND pool.eventdate < :sixWeeksFromNow
-              AND pool.sentdate < :twoWeeksAgo
-              AND (entry.poolStatusSentTime IS NULL OR entry.poolStatusSentTime < :oneWeekAgo)
+            SELECT participant
+            FROM IntractoSecretSantaBundle:Participant participant
+              JOIN participant.party party
+            WHERE participant.partyAdmin = 1
+              AND participant.url IS NOT NULL
+              AND party.created = 1
+              AND party.eventdate > :today
+              AND party.eventdate < :sixWeeksFromNow
+              AND party.sentdate < :twoWeeksAgo
+              AND (participant.partyStatusSentTime IS NULL OR participant.partyStatusSentTime < :oneWeekAgo)
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);

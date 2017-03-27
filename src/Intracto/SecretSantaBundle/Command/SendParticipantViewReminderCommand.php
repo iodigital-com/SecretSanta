@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManager;
 
-class SendPoolStatusCommand extends ContainerAwareCommand
+class SendParticipantViewReminderCommand extends ContainerAwareCommand
 {
     /**
      * Configure the command options.
@@ -15,8 +15,8 @@ class SendPoolStatusCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('intracto:sendPoolStatusMails')
-            ->setDescription('Send pool status mail to admins');
+            ->setName('intracto:sendParticipantViewReminderMails')
+            ->setDescription('Send reminder to participants to confirm their presence at the party');
     }
 
     /**
@@ -32,18 +32,18 @@ class SendPoolStatusCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         /** @var EntityManager $em */
         $em = $container->get('doctrine')->getManager();
-        /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $entryMailQuery */
-        $entryMailQuery = $container->get('intracto_secret_santa.participant_mail');
+        /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $participantMailQuery */
+        $participantMailQuery = $container->get('intracto_secret_santa.participant_mail');
         $mailerService = $container->get('intracto_secret_santa.mail');
-        $partyAdmins = $entryMailQuery->findAllAdminsForPoolStatusMail();
+        $needsViewReminder = $participantMailQuery->findAllToRemindToViewEntry();
         $timeNow = new \DateTime();
 
         try {
-            foreach ($partyAdmins as $poolAdmin) {
-                $mailerService->sendPoolStatusMail($poolAdmin);
+            foreach ($needsViewReminder as $participant) {
+                $mailerService->sendEntryViewReminderMail($participant);
 
-                $poolAdmin->setPoolStatusSentTime($timeNow);
-                $em->persist($poolAdmin);
+                $participant->setViewReminderSentTime($timeNow);
+                $em->persist($participant);
             }
 
             $em->flush();

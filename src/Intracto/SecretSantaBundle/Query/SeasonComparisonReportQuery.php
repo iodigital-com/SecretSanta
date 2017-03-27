@@ -6,19 +6,19 @@ class SeasonComparisonReportQuery
 {
     /** @var PoolReportQuery */
     private $poolReportQuery;
-    /** @var EntryReportQuery */
+    /** @var ParticipantReportQuery */
     private $entryReportQuery;
     /** @var WishlistReportQuery */
     private $wishlistReportQuery;
 
     /**
      * @param PoolReportQuery     $poolReportQuery
-     * @param EntryReportQuery    $entryReportQuery
+     * @param ParticipantReportQuery    $entryReportQuery
      * @param WishlistReportQuery $wishlistReportQuery
      */
     public function __construct(
         PoolReportQuery $poolReportQuery,
-        EntryReportQuery $entryReportQuery,
+        ParticipantReportQuery $entryReportQuery,
         WishlistReportQuery $wishlistReportQuery
     ) {
         $this->poolReportQuery = $poolReportQuery;

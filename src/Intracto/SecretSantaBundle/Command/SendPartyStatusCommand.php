@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManager;
 
-class SendEntryViewReminderCommand extends ContainerAwareCommand
+class SendPartyStatusCommand extends ContainerAwareCommand
 {
     /**
      * Configure the command options.
@@ -15,8 +15,8 @@ class SendEntryViewReminderCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('intracto:sendEntryViewReminderMails')
-            ->setDescription('Send reminder to participants to confirm their presence at the party');
+            ->setName('intracto:sendPartyStatusMails')
+            ->setDescription('Send party status mail to admins');
     }
 
     /**
@@ -32,18 +32,18 @@ class SendEntryViewReminderCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         /** @var EntityManager $em */
         $em = $container->get('doctrine')->getManager();
-        /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $entryMailQuery */
-        $entryMailQuery = $container->get('intracto_secret_santa.participant_mail');
+        /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $participantMailQuery */
+        $participantMailQuery = $container->get('intracto_secret_santa.participant_mail');
         $mailerService = $container->get('intracto_secret_santa.mail');
-        $needsViewReminder = $entryMailQuery->findAllToRemindToViewEntry();
+        $partyAdmins = $participantMailQuery->findAllAdminsForPartyStatusMail();
         $timeNow = new \DateTime();
 
         try {
-            foreach ($needsViewReminder as $entry) {
-                $mailerService->sendEntryViewReminderMail($entry);
+            foreach ($partyAdmins as $partyAdmin) {
+                $mailerService->sendPartyStatusMail($partyAdmin);
 
-                $entry->setViewReminderSentTime($timeNow);
-                $em->persist($entry);
+                $partyAdmin->setPartyStatusSentTime($timeNow);
+                $em->persist($partyAdmin);
             }
 
             $em->flush();

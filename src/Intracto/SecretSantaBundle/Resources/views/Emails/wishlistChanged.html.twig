@@ -18,7 +18,7 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('participant_view', { 'url': secret_santa.url, '_locale': secret_santa.pool.locale }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
+                            <a href="{{ url('participant_view', { 'url': secret_santa.url, '_locale': secret_santa.party.locale }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
                              sans-serif; vertical-align: baseline;">{{ 'emails-wishlistChanged.btn.check_wishlist'|trans }}</a>
 
                         </td>

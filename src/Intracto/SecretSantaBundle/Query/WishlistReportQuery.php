@@ -8,14 +8,14 @@ class WishlistReportQuery
 {
     /** @var Connection */
     private $dbal;
-    /** @var EntryReportQuery */
+    /** @var ParticipantReportQuery */
     private $entryReportQuery;
 
     /**
      * @param Connection       $dbal
-     * @param EntryReportQuery $entryReportQuery
+     * @param ParticipantReportQuery $entryReportQuery
      */
-    public function __construct(Connection $dbal, EntryReportQuery $entryReportQuery)
+    public function __construct(Connection $dbal, ParticipantReportQuery $entryReportQuery)
     {
         $this->dbal = $dbal;
         $this->entryReportQuery = $entryReportQuery;
