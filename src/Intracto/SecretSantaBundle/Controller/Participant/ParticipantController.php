@@ -86,8 +86,8 @@ class ParticipantController extends Controller
 
         $excludeCount = 0;
 
-        foreach ($participants as $participant) {
-            if (count($participant->getExcludedParticipants()) > 0) {
+        foreach ($participants as $user) {
+            if (count($user->getExcludedParticipants()) > 0) {
                 ++$excludeCount;
             }
         }
