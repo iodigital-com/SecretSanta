@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td>Total participants invited:</td>
-                <td>{{ data_pool['entries'][0]['entryCount'] }}</td>
+                <td>{{ data_pool['participants'] }}</td>
                 {% if difference_data_pool is defined and difference_data_pool is not empty %}
                     {% if difference_data_pool['entry_count_difference'] > 0 %}
                         <td class="positive">+ {{ difference_data_pool['entry_count_difference'] }}</td>

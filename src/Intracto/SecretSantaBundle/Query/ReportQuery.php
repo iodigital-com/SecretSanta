@@ -14,10 +14,10 @@ class ReportQuery
     private $wishlistReportQuery;
 
     /**
-     * @param PartyReportQuery     $poolReportQuery
-     * @param ParticipantReportQuery    $participantReportQuery
-     * @param IpReportQuery       $ipReportQuery
-     * @param WishlistReportQuery $wishlistReportQuery
+     * @param PartyReportQuery       $poolReportQuery
+     * @param ParticipantReportQuery $participantReportQuery
+     * @param IpReportQuery          $ipReportQuery
+     * @param WishlistReportQuery    $wishlistReportQuery
      */
     public function __construct(
         PartyReportQuery $poolReportQuery,
@@ -42,7 +42,7 @@ class ReportQuery
 
         $report = [
             'pools' => $this->poolReportQuery->countParties($season),
-            'entries' => $this->participantReportQuery->countParticipants($season),
+            'participants' => $this->participantReportQuery->countParticipants($season),
             'confirmed_entries' => $this->participantReportQuery->countConfirmedParticipants($season),
             'distinct_entries' => $this->participantReportQuery->countDistinctEntries($season),
             'entry_average' => $this->participantReportQuery->calculateAverageParticipantsPerParty($season),

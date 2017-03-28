@@ -19,7 +19,7 @@ class ParticipantReportQuery
     /**
      * @param Connection         $dbal
      * @param Router             $router
-     * @param PartyReportQuery    $poolReportQuery
+     * @param PartyReportQuery   $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
      */
     public function __construct(
@@ -198,10 +198,10 @@ class ParticipantReportQuery
         try {
             $participantCountSeason2 = $this->countParticipants($season2);
         } catch (\Exception $e) {
-            return $participantCountSeason1[0]['entryCount'];
+            return $participantCountSeason1;
         }
 
-        return $participantCountSeason1[0]['entryCount'] - $participantCountSeason2[0]['entryCount'];
+        return $participantCountSeason1 - $participantCountSeason2;
     }
 
     /**
@@ -212,7 +212,7 @@ class ParticipantReportQuery
     public function countParticipants(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS entryCount')
+            ->select('count(p.id) AS participant_count')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date >= :firstDay')
@@ -220,7 +220,9 @@ class ParticipantReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        $participantCount = $query->execute()->fetchAll();
+
+        return $participantCount[0]['participant_count'];
     }
 
     /**
@@ -323,11 +325,11 @@ class ParticipantReportQuery
      */
     public function calculateAverageParticipantsPerParty(Season $season)
     {
-        $parties = $this->partyReportQuery->countParties($season);
-        $participants = $this->countParticipants($season);
+        $partyCount = $this->partyReportQuery->countParties($season);
+        $participantCount = $this->countParticipants($season);
 
-        if ($parties[0]['poolCount'] != 0 || $participants[0]['entryCount'] != 0) {
-            return implode($participants[0]) / implode($parties[0]);
+        if ($partyCount[0]['poolCount'] !== 0 || $participantCount !== 0) {
+            return $participantCount / implode($partyCount[0]);
         }
 
         throw new NoResultException();

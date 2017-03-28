@@ -9,16 +9,16 @@ class WishlistReportQuery
     /** @var Connection */
     private $dbal;
     /** @var ParticipantReportQuery */
-    private $entryReportQuery;
+    private $participantReportQuery;
 
     /**
-     * @param Connection       $dbal
-     * @param ParticipantReportQuery $entryReportQuery
+     * @param Connection             $dbal
+     * @param ParticipantReportQuery $participantReportQuery
      */
-    public function __construct(Connection $dbal, ParticipantReportQuery $entryReportQuery)
+    public function __construct(Connection $dbal, ParticipantReportQuery $participantReportQuery)
     {
         $this->dbal = $dbal;
-        $this->entryReportQuery = $entryReportQuery;
+        $this->participantReportQuery = $participantReportQuery;
     }
 
     /**
@@ -28,14 +28,14 @@ class WishlistReportQuery
      */
     public function calculateCompletedWishlists(Season $season)
     {
-        $wishlists = $this->countWishlists($season);
-        $entries = $this->entryReportQuery->countParticipants($season);
+        $wishlistCount = $this->countWishlists($season);
+        $participantCount = $this->participantReportQuery->countParticipants($season);
 
-        if ($entries[0]['entryCount'] != 0) {
-            return (implode($wishlists[0]) / implode($entries[0])) * 100;
+        if ($participantCount === 0) {
+            throw new NoResultException();
         }
 
-        throw new NoResultException();
+        return (implode($wishlistCount[0]) / $participantCount) * 100;
     }
 
     /**
@@ -66,10 +66,10 @@ class WishlistReportQuery
     public function calculateCompletedWishlistsUntilDate(\DateTime $date)
     {
         $totalWishlists = $this->countAllWishlistsUntilDate($date);
-        $totalEntries = $this->entryReportQuery->countAllParticipantsUntilDate($date);
+        $totalParticipants = $this->participantReportQuery->countAllParticipantsUntilDate($date);
 
-        if ($totalEntries[0]['totalEntryCount'] != 0) {
-            return (implode($totalWishlists[0]) / implode($totalEntries[0])) * 100;
+        if ($totalParticipants[0]['totalEntryCount'] != 0) {
+            return (implode($totalWishlists[0]) / implode($totalParticipants[0])) * 100;
         }
 
         throw new NoResultException();
