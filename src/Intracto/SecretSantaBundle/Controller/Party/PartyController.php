@@ -22,7 +22,6 @@ class PartyController extends Controller
      */
     public function createAction(Request $request)
     {
-        throw new \Exception('whoops');
         return $this->handlePartyCreation(
             $request,
             new Party()
