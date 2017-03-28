@@ -16,7 +16,7 @@ class ExposeParticipantsController extends Controller
     public function indexAction($listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
-        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === null) {
             throw new NotFoundHttpException();
         }

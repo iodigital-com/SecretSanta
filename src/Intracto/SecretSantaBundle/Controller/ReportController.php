@@ -14,10 +14,14 @@ class ReportController extends Controller
      */
     public function indexAction($year)
     {
-        $analyticsQuery = $this->get('intracto_secret_santa.analytics');
-        $report = $this->get('intracto_secret_santa.report');
-        $comparison = $this->get('intracto_secret_santa.season_comparison');
-        $featuredYears = $this->get('intracto_secret_santa.featured_years')->getFeaturedYears();
+        /** @var \Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery $googleAnalyticsQuery */
+        $googleAnalyticsQuery = $this->get('intracto_secret_santa.query.google_analytics');
+        /** @var \Intracto\SecretSantaBundle\Query\ReportQuery $reportQuery */
+        $reportQuery = $this->get('intracto_secret_santa.query.report');
+        /** @var \Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery $seasonComparisonReportQuery */
+        $seasonComparisonReportQuery = $this->get('intracto_secret_santa.query.season_comparison_report');
+        /** @var \Intracto\SecretSantaBundle\Query\FeaturedYearsQuery $featuredYearsQuery */
+        $featuredYearsQuery = $this->get('intracto_secret_santa.query.featured_years_report')->getFeaturedYears();
 
         if ($reportQueryResult = $this->get('cache')->fetch('data'.$year)) {
             $cache = unserialize($reportQueryResult);
@@ -38,9 +42,9 @@ class ReportController extends Controller
 
         try {
             if ($year != 'all') {
-                $dataPool = $report->getPartyReport($year);
+                $dataPool = $reportQuery->getPartyReport($year);
             } else {
-                $dataPool = $report->getPartyReport();
+                $dataPool = $reportQuery->getPartyReport();
             }
         } catch (\Exception $e) {
             $dataPool = [];
@@ -48,9 +52,9 @@ class ReportController extends Controller
 
         try {
             if ($year != 'all') {
-                $googleDataPool = $analyticsQuery->getAnalyticsReport($year);
+                $googleDataPool = $googleAnalyticsQuery->getAnalyticsReport($year);
             } else {
-                $googleDataPool = $analyticsQuery->getAnalyticsReport();
+                $googleDataPool = $googleAnalyticsQuery->getAnalyticsReport();
             }
         } catch (\Exception $e) {
             $googleDataPool = [];
@@ -58,7 +62,7 @@ class ReportController extends Controller
 
         try {
             if ($year != 'all') {
-                $differenceDataPool = $comparison->getComparison($year);
+                $differenceDataPool = $seasonComparisonReportQuery->getComparison($year);
             }
         } catch (\Exception $e) {
             $differenceDataPool = [];
@@ -67,7 +71,7 @@ class ReportController extends Controller
         $data = [
             'current_year' => $year,
             'data_pool' => $dataPool,
-            'featured_years' => $featuredYears,
+            'featured_years' => $featuredYearsQuery,
             'google_data_pool' => $googleDataPool,
         ];
 
@@ -75,10 +79,10 @@ class ReportController extends Controller
             $data['difference_data_pool'] = $differenceDataPool;
         }
 
-        end($featuredYears['featured_years']);
-        $lastKey = key($featuredYears['featured_years']);
+        end($featuredYearsQuery['featured_years']);
+        $lastKey = key($featuredYearsQuery['featured_years']);
 
-        if ($year == 'all' || $year == $featuredYears['featured_years'][$lastKey]) {
+        if ($year == 'all' || $year == $featuredYearsQuery['featured_years'][$lastKey]) {
             $this->get('cache')->save('data'.$year, serialize($data), 24 * 60 * 60);
 
             return $data;

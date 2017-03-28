@@ -20,7 +20,7 @@ class ShowController extends Controller
     public function showAction(Request $request, $url)
     {
         /** @var Participant $participant */
-        $participant = $this->get('participant_repository')->findOneByUrl($url);
+        $participant = $this->get('intracto_secret_santa.repository.participant')->findOneByUrl($url);
         if ($participant === null) {
             throw new NotFoundHttpException();
         }

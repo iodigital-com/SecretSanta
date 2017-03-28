@@ -33,8 +33,8 @@ class SendWishlistUpdatedCommand extends ContainerAwareCommand
         /** @var EntityManager $em */
         $em = $container->get('doctrine')->getManager();
         /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $participantMailQuery */
-        $participantMailQuery = $container->get('intracto_secret_santa.participant_mail');
-        $mailerService = $container->get('intracto_secret_santa.mail');
+        $participantMailQuery = $container->get('intracto_secret_santa.query.participant_mailer');
+        $mailerService = $container->get('intracto_secret_santa.mailer');
         $secret_santas = $participantMailQuery->findAllToRemindOfUpdatedWishlist();
         $timeNow = new \DateTime();
 

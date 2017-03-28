@@ -15,7 +15,7 @@ class ResendParticipantController extends Controller
     public function resendAction($listUrl, $participantId)
     {
         /** @var Participant $participant */
-        $participant = $this->get('participant_repository')->find($participantId);
+        $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
         if ($participant === null) {
             throw new NotFoundHttpException();
         }
@@ -24,7 +24,7 @@ class ResendParticipantController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($participant);
+        $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
 
         $this->get('session')->getFlashBag()->add(
             'success',

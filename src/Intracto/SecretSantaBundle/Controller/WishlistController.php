@@ -21,7 +21,7 @@ class WishlistController extends Controller
     public function showAllAction($listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
-        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === false) {
             throw new NotFoundHttpException();
         }
@@ -38,7 +38,7 @@ class WishlistController extends Controller
     public function updateAction(Request $request, $url)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\ParticipantRepository $participant */
-        $participant = $this->get('participant_repository')->findOneByUrl($url);
+        $participant = $this->get('intracto_secret_santa.repository.participant')->findOneByUrl($url);
         if ($participant === null) {
             throw new NotFoundHttpException();
         }

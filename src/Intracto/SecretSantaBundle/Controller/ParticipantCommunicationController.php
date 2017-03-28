@@ -28,7 +28,7 @@ class ParticipantCommunicationController extends Controller
             $recipient = $em->getRepository('IntractoSecretSantaBundle:Participant')->find($recipientId);
 
             if (count($recipient) == 1) {
-                $this->get('intracto_secret_santa.mail')->sendAnonymousMessage($recipient, $message);
+                $this->get('intracto_secret_santa.mailer')->sendAnonymousMessage($recipient, $message);
                 $feedback = [
                         'type' => 'success',
                         'message' => $this->get('translator')->trans('participant_communication-send_message.feedback.success'),

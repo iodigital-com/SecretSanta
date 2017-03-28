@@ -13,7 +13,7 @@ class PartyHasValidExcludes extends Constraint
 
     public function validatedBy()
     {
-        return 'intracto.validator.party_has_valid_excludes';
+        return 'intracto_secret_santa.validator.party_has_valid_excludes';
     }
 
     public function getTargets()

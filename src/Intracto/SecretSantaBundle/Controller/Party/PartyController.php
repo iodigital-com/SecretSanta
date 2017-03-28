@@ -51,7 +51,7 @@ class PartyController extends Controller
     public function excludeAction(Request $request, $listUrl)
     {
         /** @var MailerService $mailerService */
-        $mailerService = $this->get('intracto_secret_santa.mail');
+        $mailerService = $this->get('intracto_secret_santa.mailer');
         $party = $this->getParty($listUrl);
 
         if ($party->getCreated()) {
@@ -64,7 +64,7 @@ class PartyController extends Controller
             $party->setCreated(true);
             $this->get('doctrine.orm.entity_manager')->persist($party);
 
-            $this->get('intracto_secret_santa.participant_service')->shuffleParticipants($party);
+            $this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
 
             $this->get('doctrine.orm.entity_manager')->flush();
 
@@ -80,7 +80,7 @@ class PartyController extends Controller
                 $party->setCreated(true);
                 $this->get('doctrine.orm.entity_manager')->persist($party);
 
-                $this->get('intracto_secret_santa.participant_service')->shuffleParticipants($party);
+                $this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
 
                 $this->get('doctrine.orm.entity_manager')->flush();
 
@@ -199,7 +199,7 @@ class PartyController extends Controller
     private function getParty($listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
-        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === null) {
             throw new NotFoundHttpException();
         }

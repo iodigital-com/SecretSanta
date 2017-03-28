@@ -21,7 +21,7 @@ class ManagementController extends Controller
     public function validAction(Request $request, $listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
-        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === null) {
             throw new NotFoundHttpException();
         }
@@ -36,7 +36,7 @@ class ManagementController extends Controller
                 $this->get('translator')->trans('flashes.management.email_validated')
             );
 
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailsForParty($party);
+            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailsForParty($party);
         }
 
         $addParticipantForm = $this->createForm(
@@ -83,7 +83,7 @@ class ManagementController extends Controller
     public function updateAction(Request $request, $listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
-        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
 
         if ($party === null) {
             throw new NotFoundHttpException();
@@ -96,7 +96,7 @@ class ManagementController extends Controller
             $this->get('doctrine.orm.entity_manager')->persist($party);
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $this->get('intracto_secret_santa.mail')->sendPartyUpdatedMailsForParty($party);
+            $this->get('intracto_secret_santa.mailer')->sendPartyUpdatedMailsForParty($party);
 
             $this->get('session')->getFlashBag()->add(
                 'success',
@@ -119,7 +119,7 @@ class ManagementController extends Controller
     public function addParticipantAction(Request $request, $listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
-        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
 
         if ($party === null) {
             throw new NotFoundHttpException();
@@ -138,7 +138,7 @@ class ManagementController extends Controller
 
             $adminId = $this->get('intracto_secret_santa.query.participant_report')->findAdminIdByPartyId($party->getId());
             /** @var Participant $admin */
-            $admin = $this->get('participant_repository')->findOneById($adminId[0]['id']);
+            $admin = $this->get('intracto_secret_santa.repository.participant')->findOneById($adminId[0]['id']);
             $adminMatch = $admin->getAssignedParticipant();
 
             $admin->setAssignedParticipant($newParticipant);
@@ -149,8 +149,8 @@ class ManagementController extends Controller
             $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($admin);
-            $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($newParticipant);
+            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($admin);
+            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($newParticipant);
 
             $this->get('session')->getFlashBag()->add(
                 'success',

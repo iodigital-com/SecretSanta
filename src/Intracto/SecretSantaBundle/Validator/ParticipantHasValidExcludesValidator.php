@@ -6,7 +6,7 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class EntryHasValidExcludesValidator extends ConstraintValidator
+class ParticipantHasValidExcludesValidator extends ConstraintValidator
 {
     /**
      * @param Participant $participant

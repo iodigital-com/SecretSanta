@@ -4,94 +4,98 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="intracto_secret_santa.report" class="Intracto\SecretSantaBundle\Query\ReportQuery">
-            <argument type="service" id="intracto_secret_santa.party"></argument>
+        <!-- Queries -->
+        <service id="intracto_secret_santa.query.report" class="Intracto\SecretSantaBundle\Query\ReportQuery">
+            <argument type="service" id="intracto_secret_santa.query.party_report"></argument>
             <argument type="service" id="intracto_secret_santa.query.participant_report"></argument>
-            <argument type="service" id="intracto_secret_santa.ip"></argument>
-            <argument type="service" id="intracto_secret_santa.wishlist"></argument>
+            <argument type="service" id="intracto_secret_santa.query.ip_report"></argument>
+            <argument type="service" id="intracto_secret_santa.query.wishlist_report"></argument>
         </service>
-        <service id="intracto_secret_santa.party" class="Intracto\SecretSantaBundle\Query\PartyReportQuery">
+        <service id="intracto_secret_santa.query.party_report" class="Intracto\SecretSantaBundle\Query\PartyReportQuery">
             <argument type="service" id="database_connection"></argument>
-            <argument type="service" id="intracto_secret_santa.featured_years"></argument>
+            <argument type="service" id="intracto_secret_santa.query.featured_years_report"></argument>
         </service>
         <service id="intracto_secret_santa.query.participant_report" class="Intracto\SecretSantaBundle\Query\ParticipantReportQuery">
             <argument type="service" id="database_connection"></argument>
             <argument type="service" id="router"></argument>
-            <argument type="service" id="intracto_secret_santa.party"></argument>
-            <argument type="service" id="intracto_secret_santa.featured_years"></argument>
+            <argument type="service" id="intracto_secret_santa.query.party_report"></argument>
+            <argument type="service" id="intracto_secret_santa.query.featured_years_report"></argument>
         </service>
-        <service id="intracto_secret_santa.ip" class="Intracto\SecretSantaBundle\Query\IpReportQuery">
+        <service id="intracto_secret_santa.query.ip_report" class="Intracto\SecretSantaBundle\Query\IpReportQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
-        <service id="intracto_secret_santa.wishlist" class="Intracto\SecretSantaBundle\Query\WishlistReportQuery">
+        <service id="intracto_secret_santa.query.wishlist_report" class="Intracto\SecretSantaBundle\Query\WishlistReportQuery">
             <argument type="service" id="database_connection"></argument>
             <argument type="service" id="intracto_secret_santa.query.participant_report"></argument>
         </service>
-        <service id="intracto_secret_santa.featured_years" class="Intracto\SecretSantaBundle\Query\FeaturedYearsQuery">
+        <service id="intracto_secret_santa.query.featured_years_report" class="Intracto\SecretSantaBundle\Query\FeaturedYearsQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
-        <service id="intracto_secret_santa.analytics" class="Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery">
+        <service id="intracto_secret_santa.query.google_analytics" class="Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery">
             <argument>%ga_view_id%</argument>
             <argument>%kernel.root_dir%/config/client_secrets.json</argument>
         </service>
-        <service id="intracto_secret_santa.season_comparison" class="Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery">
-            <argument type="service" id="intracto_secret_santa.party"></argument>
+        <service id="intracto_secret_santa.query.season_comparison_report" class="Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery">
+            <argument type="service" id="intracto_secret_santa.query.party_report"></argument>
             <argument type="service" id="intracto_secret_santa.query.participant_report"></argument>
-            <argument type="service" id="intracto_secret_santa.wishlist"></argument>
+            <argument type="service" id="intracto_secret_santa.query.wishlist_report"></argument>
         </service>
-        <service id="intracto_secret_santa.mail" class="Intracto\SecretSantaBundle\Mailer\MailerService">
+        <service id="intracto_secret_santa.query.participant_mail" class="Intracto\SecretSantaBundle\Query\ParticipantMailQuery">
+            <argument type="service" id="doctrine.orm.entity_manager"></argument>
+        </service>
+        <service id="intracto_secret_santa.query.wishlist_mail" class="Intracto\SecretSantaBundle\Query\WishlistMailQuery">
+            <argument type="service" id="database_connection"></argument>
+        </service>
+
+        <!-- Repositories -->
+        <service id="intracto_secret_santa.repository.party" class="Doctrine\ORM\EntityRepository">
+            <factory service="doctrine.orm.entity_manager" method="getRepository" />
+            <argument>IntractoSecretSantaBundle:Party</argument>
+        </service>
+        <service id="intracto_secret_santa.repository.participant" class="Doctrine\ORM\EntityRepository">
+            <factory service="doctrine.orm.entity_manager" method="getRepository" />
+            <argument>IntractoSecretSantaBundle:Participant</argument>
+        </service>
+
+        <!-- Services -->
+        <service id="intracto_secret_santa.service.participant" class="Intracto\SecretSantaBundle\Entity\ParticipantService">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="intracto_secret_santa.service.participant_shuffler" />
+        </service>
+        <service id="intracto_secret_santa.service.export" class="Intracto\SecretSantaBundle\Service\ExportService" />
+        <service id="intracto_secret_santa.service.participant_shuffler" class="Intracto\SecretSantaBundle\Entity\ParticipantShuffler" />
+
+        <!-- Twig -->
+        <service id="intracto_secret_santa.twig.extension.form" class="Intracto\SecretSantaBundle\Twig\Extension\FormExtension">
+            <argument type="service" id="twig.form.renderer" />
+            <tag name="twig.extension" />
+        </service>
+        <service id="intracto_secret_santa.twig.linkify_extension" class="Intracto\SecretSantaBundle\Twig\LinkifyExtension">
+            <tag name="twig.extension" />
+        </service>
+
+        <!-- Form -->
+        <service id="intracto_secret_santa.form.extension.jquery_date_type" class="Intracto\SecretSantaBundle\Form\Extension\DateTypeExtension">
+            <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\DateType" />
+        </service>
+
+        <!-- Validators -->
+        <service id="intracto_secret_santa.validator.participant_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludesValidator">
+            <tag name="validator.constraint_validator" alias="intracto_secret_santa.validator.participant_has_valid_excludes" />
+        </service>
+        <service id="intracto_secret_santa.validator.party_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator">
+            <argument type="service" id="intracto_secret_santa.service.participant_shuffler" />
+            <tag name="validator.constraint_validator" alias="intracto_secret_santa.validator.party_has_valid_excludes" />
+        </service>
+
+        <!-- Mailer -->
+        <service id="intracto_secret_santa.mailer" class="Intracto\SecretSantaBundle\Mailer\MailerService">
             <argument type="service" id="mailer"></argument>
             <argument type="service" id="doctrine.orm.entity_manager"></argument>
             <argument type="service" id="templating"></argument>
             <argument type="service" id="translator"></argument>
             <argument type="service" id="router"></argument>
             <argument>%noreply_email%</argument>
-        </service>
-        <service id="intracto_secret_santa.participant_mail" class="Intracto\SecretSantaBundle\Query\ParticipantMailQuery">
-            <argument type="service" id="doctrine.orm.entity_manager"></argument>
-        </service>
-        <service id="intracto_secret_santa.wishlist_mail" class="Intracto\SecretSantaBundle\Query\WishlistMailQuery">
-            <argument type="service" id="database_connection"></argument>
-        </service>
-        <service id="intracto_secret_santa.participant_service" class="Intracto\SecretSantaBundle\Entity\ParticipantService">
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="intracto_secret_santa.participant_shuffler" />
-        </service>
-
-        <service id="intracto_secret_santa.twig.extension.form" class="Intracto\SecretSantaBundle\Twig\Extension\FormExtension">
-            <argument type="service" id="twig.form.renderer" />
-            <tag name="twig.extension" />
-        </service>
-
-        <service id="intracto_secret_santa.form.extension.jquery_date_type" class="Intracto\SecretSantaBundle\Form\Extension\DateTypeExtension">
-            <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\DateType" />
-        </service>
-
-        <service id="party_repository" class="Doctrine\ORM\EntityRepository">
-            <factory service="doctrine.orm.entity_manager" method="getRepository" />
-            <argument>IntractoSecretSantaBundle:Party</argument>
-        </service>
-
-        <service id="participant_repository" class="Doctrine\ORM\EntityRepository">
-            <factory service="doctrine.orm.entity_manager" method="getRepository" />
-            <argument>IntractoSecretSantaBundle:Participant</argument>
-        </service>
-
-        <service id="intracto_secret_santa.participant_shuffler" class="Intracto\SecretSantaBundle\Entity\ParticipantShuffler" />
-
-        <service id="intracto_secret_santa.service.export" class="Intracto\SecretSantaBundle\Service\ExportService" />
-
-        <service id="intracto.twig.linkify_extension" class="Intracto\SecretSantaBundle\Twig\LinkifyExtension">
-            <tag name="twig.extension" />
-        </service>
-
-        <service id="intracto.validator.participant_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator">
-            <tag name="validator.constraint_validator" alias="intracto.validator.participant_has_valid_excludes" />
-        </service>
-
-        <service id="intracto.validator.party_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator">
-            <argument type="service" id="intracto_secret_santa.participant_shuffler" />
-            <tag name="validator.constraint_validator" alias="intracto.validator.party_has_valid_excludes" />
         </service>
     </services>
 </container>

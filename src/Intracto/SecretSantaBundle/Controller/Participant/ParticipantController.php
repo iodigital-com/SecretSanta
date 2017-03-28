@@ -16,7 +16,7 @@ class ParticipantController extends Controller
     public function editEmailAction(Request $request, $listUrl, $participantId)
     {
         /** @var Participant $participant */
-        $participant = $this->get('participant_repository')->find($participantId);
+        $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
 
         if ($participant->getParty()->getListurl() === $listUrl) {
             $emailAddress = new EmailAddress($request->request->get('email'));
@@ -31,7 +31,7 @@ class ParticipantController extends Controller
                 $participant->setEmail((string) $emailAddress);
                 $this->get('doctrine.orm.entity_manager')->flush($participant);
 
-                $this->get('intracto_secret_santa.mail')->sendSecretSantaMailForParticipant($participant);
+                $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
 
                 $this->get('session')->getFlashBag()->add(
                     'success',
@@ -63,7 +63,7 @@ class ParticipantController extends Controller
         }
 
         /** @var Participant $participant */
-        $participant = $this->get('participant_repository')->find($participantId);
+        $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
         $participants = $participant->getParty()->getParticipants();
 
         if (count($participants) <= 3) {
@@ -103,7 +103,7 @@ class ParticipantController extends Controller
 
         $secretSanta = $participant->getAssignedParticipant();
         $assignedParticipantId = $this->get('intracto_secret_santa.query.participant_report')->findBuddyByParticipantId($participantId);
-        $assignedParticipant = $this->get('participant_repository')->find($assignedParticipantId[0]['id']);
+        $assignedParticipant = $this->get('intracto_secret_santa.repository.participant')->find($assignedParticipantId[0]['id']);
 
         // if A -> B -> A we can't delete B anymore or A is assigned to A
         if ($participant->getAssignedParticipant()->getAssignedParticipant()->getId() === $participant->getId()) {
@@ -122,7 +122,7 @@ class ParticipantController extends Controller
         $this->get('doctrine.orm.entity_manager')->persist($assignedParticipant);
         $this->get('doctrine.orm.entity_manager')->flush();
 
-        $this->get('intracto_secret_santa.mail')->sendRemovedSecretSantaMail($assignedParticipant);
+        $this->get('intracto_secret_santa.mailer')->sendRemovedSecretSantaMail($assignedParticipant);
 
         $this->get('session')->getFlashBag()->add(
             'success',
