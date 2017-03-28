@@ -23,6 +23,6 @@ class AnonymousMessageFormType extends AbstractType
                 ],
              ])
              ->add('recipient', HiddenType::class)
-             ->add('entry', HiddenType::class);
+             ->add('participant', HiddenType::class);
     }
 }

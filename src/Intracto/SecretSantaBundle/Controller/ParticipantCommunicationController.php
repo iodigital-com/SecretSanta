@@ -19,7 +19,7 @@ class ParticipantCommunicationController extends Controller
         $messageForm = $this->createForm(AnonymousMessageFormType::class);
 
         $messageForm->handleRequest($request);
-        $url = $messageForm->getData()['entry'];
+        $url = $messageForm->getData()['participant'];
         if ($messageForm->isValid()) {
             $message = $messageForm->getData()['message'];
             $recipientId = $messageForm->getData()['recipient'];
