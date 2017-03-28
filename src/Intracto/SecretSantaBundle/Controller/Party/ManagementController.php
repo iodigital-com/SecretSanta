@@ -136,7 +136,7 @@ class ManagementController extends Controller
             $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
             $this->get('doctrine.orm.entity_manager')->flush($newParticipant);
 
-            $adminId = $this->get('intracto_secret_santa.entry')->findAdminIdByPartyId($party->getId());
+            $adminId = $this->get('intracto_secret_santa.participant')->findAdminIdByPartyId($party->getId());
             /** @var Participant $admin */
             $admin = $this->get('participant_repository')->findOneById($adminId[0]['id']);
             $adminMatch = $admin->getAssignedParticipant();

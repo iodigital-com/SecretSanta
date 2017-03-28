@@ -24,7 +24,7 @@ class ExportMailsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var \Intracto\SecretSantaBundle\Query\ParticipantReportQuery $ParticipantReportQuery */
-        $participantReportQuery = $this->getContainer()->get('intracto_secret_santa.entry');
+        $participantReportQuery = $this->getContainer()->get('intracto_secret_santa.participant');
         $lastSeason = date('Y', strtotime('-1 year'));
         $season = new Season($lastSeason);
         $userType = $input->getArgument('userType');
