@@ -1,11 +1,11 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Features\Context\Bootstrap;
+namespace Intracto\BehatBundle\Features\Context\Bootstrap;
 
 use Behat\MinkExtension\Context\RawMinkContext;
-use Intracto\SecretSantaBundle\Behat\Page\Homepage;
-use Intracto\SecretSantaBundle\Behat\Page\ParticipantExclude;
-use Intracto\SecretSantaBundle\Behat\Page\PoolCreated;
+use Intracto\BehatBundle\Page\Homepage;
+use Intracto\BehatBundle\Page\ParticipantExclude;
+use Intracto\BehatBundle\Page\PoolCreated;
 use Webmozart\Assert\Assert;
 
 class PoolContext extends RawMinkContext
