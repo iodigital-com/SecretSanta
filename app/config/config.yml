@@ -119,3 +119,10 @@ services:
 
     intracto_secret_santa.service.export:
         class: Intracto\SecretSantaBundle\Service\ExportService
+
+    app.exception_listener:
+        class: Intracto\SecretSantaBundle\EventListener\RequestInfoLogger
+        arguments: ["@logger", "@request_stack"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
