@@ -24,9 +24,4 @@ class LinkifyExtension extends \Twig_Extension
             $html
         );
     }
-
-    public function getName()
-    {
-        return 'linkify_extension';
-    }
 }

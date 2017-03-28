@@ -51,12 +51,4 @@ class FormExtension extends \Twig_Extension
 
         return $this->renderer->searchAndRenderBlock($view, $block);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'intracto_secret_santa.twig.extension.form';
-    }
 }
