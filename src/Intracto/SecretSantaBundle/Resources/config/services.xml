@@ -6,7 +6,7 @@
     <services>
         <service id="intracto_secret_santa.report" class="Intracto\SecretSantaBundle\Query\ReportQuery">
             <argument type="service" id="intracto_secret_santa.party"></argument>
-            <argument type="service" id="intracto_secret_santa.participant"></argument>
+            <argument type="service" id="intracto_secret_santa.query.participant_report"></argument>
             <argument type="service" id="intracto_secret_santa.ip"></argument>
             <argument type="service" id="intracto_secret_santa.wishlist"></argument>
         </service>
@@ -14,7 +14,7 @@
             <argument type="service" id="database_connection"></argument>
             <argument type="service" id="intracto_secret_santa.featured_years"></argument>
         </service>
-        <service id="intracto_secret_santa.participant" class="Intracto\SecretSantaBundle\Query\ParticipantReportQuery">
+        <service id="intracto_secret_santa.query.participant_report" class="Intracto\SecretSantaBundle\Query\ParticipantReportQuery">
             <argument type="service" id="database_connection"></argument>
             <argument type="service" id="router"></argument>
             <argument type="service" id="intracto_secret_santa.party"></argument>
@@ -25,7 +25,7 @@
         </service>
         <service id="intracto_secret_santa.wishlist" class="Intracto\SecretSantaBundle\Query\WishlistReportQuery">
             <argument type="service" id="database_connection"></argument>
-            <argument type="service" id="intracto_secret_santa.participant"></argument>
+            <argument type="service" id="intracto_secret_santa.query.participant_report"></argument>
         </service>
         <service id="intracto_secret_santa.featured_years" class="Intracto\SecretSantaBundle\Query\FeaturedYearsQuery">
             <argument type="service" id="database_connection"></argument>
@@ -36,7 +36,7 @@
         </service>
         <service id="intracto_secret_santa.season_comparison" class="Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery">
             <argument type="service" id="intracto_secret_santa.party"></argument>
-            <argument type="service" id="intracto_secret_santa.participant"></argument>
+            <argument type="service" id="intracto_secret_santa.query.participant_report"></argument>
             <argument type="service" id="intracto_secret_santa.wishlist"></argument>
         </service>
         <service id="intracto_secret_santa.mail" class="Intracto\SecretSantaBundle\Mailer\MailerService">

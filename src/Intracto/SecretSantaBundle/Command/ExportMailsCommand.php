@@ -23,8 +23,8 @@ class ExportMailsCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var \Intracto\SecretSantaBundle\Query\ParticipantReportQuery $ParticipantReportQuery */
-        $participantReportQuery = $this->getContainer()->get('intracto_secret_santa.participant');
+        /** @var \Intracto\SecretSantaBundle\Query\ParticipantReportQuery $participantReportQuery */
+        $participantReportQuery = $this->getContainer()->get('intracto_secret_santa.query.participant_report');
         $lastSeason = date('Y', strtotime('-1 year'));
         $season = new Season($lastSeason);
         $userType = $input->getArgument('userType');
@@ -33,7 +33,6 @@ class ExportMailsCommand extends ContainerAwareCommand
             case 'admin':
                 $participantReportQuery->fetchAdminEmailsForExport($season);
                 $output->writeln("Last season's admin emails exported to /tmp");
-
                 break;
             case 'participant':
                 $participantReportQuery->fetchParticipantEmailsForExport($season);

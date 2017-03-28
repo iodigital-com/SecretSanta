@@ -13,7 +13,7 @@ class SendPartyUpdateController extends Controller
      */
     public function sendPartyUpdateAction($listUrl)
     {
-        $results = $this->get('intracto_secret_santa.participant')->fetchDataForPartyUpdateMail($listUrl);
+        $results = $this->get('intracto_secret_santa.query.participant_report')->fetchDataForPartyUpdateMail($listUrl);
         $party = $this->get('party_repository')->findOneByListurl($listUrl);
         if ($party === null) {
             throw new NotFoundHttpException();

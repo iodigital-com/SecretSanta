@@ -102,7 +102,7 @@ class ParticipantController extends Controller
         }
 
         $secretSanta = $participant->getAssignedParticipant();
-        $assignedParticipantId = $this->get('intracto_secret_santa.participant')->findBuddyByParticipantId($participantId);
+        $assignedParticipantId = $this->get('intracto_secret_santa.query.participant_report')->findBuddyByParticipantId($participantId);
         $assignedParticipant = $this->get('participant_repository')->find($assignedParticipantId[0]['id']);
 
         // if A -> B -> A we can't delete B anymore or A is assigned to A
