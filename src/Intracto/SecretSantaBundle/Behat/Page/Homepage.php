@@ -41,9 +41,9 @@ class Homepage extends Page
             }
         }
 
-        $this->find('css', '#pool_eventdate')->setValue($eventDate);
-        $this->find('css', '#pool_location')->setValue($location);
-        $this->find('css', '#pool_amount')->setValue($amount);
+        $this->find('css', '#party_eventdate')->setValue($eventDate);
+        $this->find('css', '#party_location')->setValue($location);
+        $this->find('css', '#party_amount')->setValue($amount);
 
         $this->find('css', '.btn-create-event')->click();
 
