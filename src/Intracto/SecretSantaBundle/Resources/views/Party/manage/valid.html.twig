@@ -26,32 +26,32 @@
                 </tr>
             </thead>
             <tbody>
-            {% for entry in party.participants %}
+            {% for participant in party.participants %}
                 <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
-                    <td data-hj-masked>{{ entry.name }}</td>
-                    <td id="email_{{ entry.id }}" data-hj-masked>{{ entry.email }}</td>
-                    <td class="{% if entry.viewdate %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
-                    <td class="{% if entry.wishlistItems is not empty %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td data-hj-masked>{{ participant.name }}</td>
+                    <td id="email_{{ participant.id }}" data-hj-masked>{{ participant.email }}</td>
+                    <td class="{% if participant.viewdate %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
-                             onclick="editableEmail('{{ party.listUrl }}', {{ entry.id }});"
+                             onclick="editableEmail('{{ party.listUrl }}', {{ participant.id }});"
                              rel="tooltip" title="{{ 'pool_manage_valid.manage.edit_email'|trans }}" alt="{{ 'pool_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;">
                         {% spaceless %}
-                            <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': entry.id }) }}">
+                            <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': participant.id }) }}">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
                                      title="{{ 'pool_manage_valid.manage.resend_email'|trans }}" alt="{{ 'pool_manage_valid.manage.resend_email'|trans }}">
                             </a>
                         {% endspaceless %}
                         {% if app.environment == 'dev' %}
-                            <a href="{{ path('participant_view', { 'url': entry.url }) }}" class="add-participant-link">
+                            <a href="{{ path('participant_view', { 'url': participant.url }) }}" class="add-participant-link">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
-                                     title="{{ entry.assignedParticipant.name }} <{{ entry.assignedParticipant.email }}>"
+                                     title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
                                      alt="{{ 'pool_manage_valid.manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
-                        <button class="btn btn-mini link_remove_participant" data-entry="{{ entry.id }}">
+                        <button class="btn btn-mini link_remove_participant" data-entry="{{ participant.id }}">
                             <i class="fa fa-times"></i>
                         </button>
                     </td>

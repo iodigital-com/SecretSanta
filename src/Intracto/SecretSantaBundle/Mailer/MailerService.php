@@ -361,10 +361,10 @@ class MailerService
     /**
      * @param Party $party
      */
-    public function sendPoolUpdatedMailsForPool(Party $party)
+    public function sendPartyUpdatedMailsForParty(Party $party)
     {
-        foreach ($party->getParticipants() as $entry) {
-            $this->sendPartyUpdatedMailForParticipant($entry);
+        foreach ($party->getParticipants() as $participant) {
+            $this->sendPartyUpdatedMailForParticipant($participant);
         }
     }
 

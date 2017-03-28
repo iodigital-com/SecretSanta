@@ -96,7 +96,7 @@ class ManagementController extends Controller
             $this->get('doctrine.orm.entity_manager')->persist($party);
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $this->get('intracto_secret_santa.mail')->sendPoolUpdatedMailsForPool($party);
+            $this->get('intracto_secret_santa.mail')->sendPartyUpdatedMailsForParty($party);
 
             $this->get('session')->getFlashBag()->add(
                 'success',

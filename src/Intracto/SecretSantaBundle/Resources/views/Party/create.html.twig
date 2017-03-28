@@ -62,17 +62,17 @@
                     <tbody data-prototype="{% filter escape %}
                     {% include 'IntractoSecretSantaBundle:Helpers:prototypeEntry.html.twig' with
                     {'entry': form.participants.vars['prototype']} %}{% endfilter %}">
-                    {% for entry in form.participants %}
-                        <tr class="entry {% if entry.vars.data.partyAdmin %}owner
+                    {% for participant in form.participants %}
+                        <tr class="entry {% if participant.vars.data.partyAdmin %}owner
                         {% else %}not-owner{% endif %}
-                        {% if form_errors(entry.name) or form_errors(entry.email) %} error{% endif %}">
+                        {% if form_errors(participant.name) or form_errors(participant.email) %} error{% endif %}">
                             <td class="entry-number">{{ loop.index }}</td>
-                            <td {% if form_errors(entry.name) %}class="error"
-                                    {% endif %}>{{ form_widget(entry.name, {'attr': {'class': 'entry-name form-control'} }) }}</td>
-                            <td {% if form_errors(entry.email) %}class="error"
-                                    {% endif %}>{{ form_widget(entry.email, {'attr': {'class': 'entry-mail form-control'} }) }}</td>
+                            <td {% if form_errors(participant.name) %}class="error"
+                                    {% endif %}>{{ form_widget(participant.name, {'attr': {'class': 'entry-name form-control'} }) }}</td>
+                            <td {% if form_errors(participant.email) %}class="error"
+                                    {% endif %}>{{ form_widget(participant.email, {'attr': {'class': 'entry-mail form-control'} }) }}</td>
                             <td style="text-align: right;">
-                                {% if entry.vars.data.partyAdmin %}
+                                {% if participant.vars.data.partyAdmin %}
                                     <small>{{ 'pool-create.list_adminstrator'|trans }}</small>
                                 {% else %}
                                     <button type="button" class="btn btn-mini btn-danger remove-entry disabled">

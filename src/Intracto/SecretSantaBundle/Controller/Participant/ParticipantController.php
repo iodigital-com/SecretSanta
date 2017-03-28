@@ -46,7 +46,7 @@ class ParticipantController extends Controller
     /**
      * @Route("/participant/remove/{listUrl}/{participantId}", name="participant_remove")
      */
-    public function removeParticipantFromPoolAction(Request $request, $listUrl, $participantId)
+    public function removeParticipantFromPartyAction(Request $request, $listUrl, $participantId)
     {
         $correctCsrfToken = $this->isCsrfTokenValid(
             'delete_participant',
