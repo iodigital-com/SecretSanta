@@ -1,28 +1,33 @@
 <?php
 
-namespace Intracto/SecretSantaBundle;
+namespace Intracto\SecretSantaBundle\EventListener;
 
 use Monolog\Logger;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class RequestInfoLogger
 {
     /** @var \Monolog\Logger */
     private $logger;
     /** @var \Symfony\Component\HttpFoundation\Request */
-    private $request;
+    private $requestStack;
 
-    public function __construct(Logger $logger, Request $request)
+    public function __construct(Logger $logger, RequestStack $requestStack)
     {
         $this->logger = $logger;
-        $this->request = $request;
+        $this->requestStack = $requestStack;
     }
 
     public function onKernelException()
     {
         if (PHP_SAPI !== 'cli') {
-            $this->logger->debug('GET values ' . serialize($this->request->query->all()));
-            $this->logger->debug('POST values ' . serialize($this->request->request->all()));
+<<<<<<< Updated upstream
+            $this->logger->debug('GET values ' . serialize($this->requestStack->getMasterRequest()->query->all()));
+            $this->logger->debug('POST values ' . serialize($this->requestStack->getMasterRequest()->request->all()));
+=======
+            $this->logger->debug('GET values '.serialize($this->requestStack->getMasterRequest()->query->all()));
+            $this->logger->debug('POST values '.serialize($this->requestStack->getMasterRequest()->request->all()));
+>>>>>>> Stashed changes
         }
     }
 }

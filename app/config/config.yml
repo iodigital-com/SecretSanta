@@ -122,8 +122,7 @@ services:
 
     app.exception_listener:
         class: Intracto\SecretSantaBundle\EventListener\RequestInfoLogger
-        arguments: ["@logger", "@request"]
-        scope: request
+        arguments: ["@logger", "@request_stack"]
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
 
