@@ -51,13 +51,13 @@ class ReportQuery
             'pool_chart_data' => $this->poolReportQuery->queryDataForMonthlyPartyChart($season),
             'entry_chart_data' => $this->participantReportQuery->queryDataForMonthlyParticipantChart($season),
             'yearly_pool_chart_data' => $this->poolReportQuery->queryDataForYearlyPartyChart(),
-            'yearly_entry_chart_data' => $this->participantReportQuery->queryDataForYearlyEntryChart(),
+            'yearly_entry_chart_data' => $this->participantReportQuery->queryDataForYearlyParticipantChart(),
         ];
 
         if ($year) {
             $report['total_pools'] = $this->poolReportQuery->countAllPartiesUntilDate($season->getEnd());
             $report['total_entries'] = $this->participantReportQuery->countAllParticipantsUntilDate($season->getEnd());
-            $report['total_confirmed_entries'] = $this->participantReportQuery->countConfirmedEntriesUntilDate($season->getEnd());
+            $report['total_confirmed_entries'] = $this->participantReportQuery->countConfirmedParticipantsUntilDate($season->getEnd());
             $report['total_entry_average'] = $this->participantReportQuery->calculateAverageParticipantsPerPartyUntilDate($season->getEnd());
             $report['total_wishlist_average'] = $this->wishlistReportQuery->calculateCompletedWishlistsUntilDate($season->getEnd());
             $report['total_distinct_entries'] = $this->participantReportQuery->countDistinctParticipantsUntilDate($season->getEnd());
