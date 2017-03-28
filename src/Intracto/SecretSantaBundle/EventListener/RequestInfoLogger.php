@@ -21,13 +21,8 @@ class RequestInfoLogger
     public function onKernelException()
     {
         if (PHP_SAPI !== 'cli') {
-<<<<<<< Updated upstream
-            $this->logger->debug('GET values ' . serialize($this->requestStack->getMasterRequest()->query->all()));
-            $this->logger->debug('POST values ' . serialize($this->requestStack->getMasterRequest()->request->all()));
-=======
             $this->logger->debug('GET values '.serialize($this->requestStack->getMasterRequest()->query->all()));
             $this->logger->debug('POST values '.serialize($this->requestStack->getMasterRequest()->request->all()));
->>>>>>> Stashed changes
         }
     }
 }
