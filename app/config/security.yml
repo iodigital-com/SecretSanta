@@ -6,7 +6,7 @@ security:
         in_memory:
             memory:
                 users:
-                    adwords:  { password: %adwords_password%, roles: [ 'ROLE_ADWORDS' ] }
+                    adwords:  { password: "%adwords_password%", roles: [ 'ROLE_ADWORDS' ] }
 
     firewalls:
         secured_area:

@@ -24,8 +24,8 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:
-        supported_locales:  %supported_locales%
-        locale_names:  %locale_names%
+        supported_locales:  "%supported_locales%"
+        locale_names:  "%locale_names%"
 
 # Assetic Configuration
 assetic:
@@ -68,7 +68,7 @@ swiftmailer:
 
 jms_i18n_routing:
     default_locale: "%locale%"
-    locales: %supported_locales%
+    locales: "%supported_locales%"
     strategy: prefix_except_default
 
 services:
@@ -76,53 +76,17 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - name: twig.extension
+
     twig.intl_extension:
         class: Twig_Extensions_Extension_Intl
-        tags:
-            - { name: twig.extension }
-
-    intracto.twig.linkify_extension:
-        class: Intracto\SecretSantaBundle\Twig\LinkifyExtension
         tags:
             - { name: twig.extension }
 
     cache:
         class: Doctrine\Common\Cache\ApcuCache
 
-    party_repository:
-        class: Doctrine\ORM\EntityRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments:
-            - IntractoSecretSantaBundle:Party
-
-    participant_repository:
-        class: Doctrine\ORM\EntityRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments:
-            - IntractoSecretSantaBundle:Participant
-
-    intracto.validator.participant_has_valid_excludes:
-        class: Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator
-        tags:
-            - { name: validator.constraint_validator, alias: intracto.validator.participant_has_valid_excludes }
-    intracto.validator.party_has_valid_excludes:
-        class: Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator
-        arguments:
-            - @intracto_secret_santa.participant_shuffler
-        tags:
-            - { name: validator.constraint_validator, alias: intracto.validator.party_has_valid_excludes }
-
-    intracto_secret_santa.participant_shuffler:
-        class: Intracto\SecretSantaBundle\Entity\ParticipantShuffler
-
-    intracto_secret_santa.service.export:
-        class: Intracto\SecretSantaBundle\Service\ExportService
-
     app.exception_listener:
         class: Intracto\SecretSantaBundle\EventListener\RequestInfoLogger
         arguments: ["@logger", "@request_stack"]
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
-

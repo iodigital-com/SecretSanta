@@ -66,5 +66,32 @@
         <service id="intracto_secret_santa.form.extension.jquery_date_type" class="Intracto\SecretSantaBundle\Form\Extension\DateTypeExtension">
             <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\DateType" />
         </service>
+
+        <service id="party_repository" class="Doctrine\ORM\EntityRepository">
+            <factory service="doctrine.orm.entity_manager" method="getRepository" />
+            <argument>IntractoSecretSantaBundle:Party</argument>
+        </service>
+
+        <service id="participant_repository" class="Doctrine\ORM\EntityRepository">
+            <factory service="doctrine.orm.entity_manager" method="getRepository" />
+            <argument>IntractoSecretSantaBundle:Participant</argument>
+        </service>
+
+        <service id="intracto_secret_santa.participant_shuffler" class="Intracto\SecretSantaBundle\Entity\ParticipantShuffler" />
+
+        <service id="intracto_secret_santa.service.export" class="Intracto\SecretSantaBundle\Service\ExportService" />
+
+        <service id="intracto.twig.linkify_extension" class="Intracto\SecretSantaBundle\Twig\LinkifyExtension">
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="intracto.validator.participant_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator">
+            <tag name="validator.constraint_validator" alias="intracto.validator.participant_has_valid_excludes" />
+        </service>
+
+        <service id="intracto.validator.party_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator">
+            <argument type="service" id="intracto_secret_santa.participant_shuffler" />
+            <tag name="validator.constraint_validator" alias="intracto.validator.party_has_valid_excludes" />
+        </service>
     </services>
 </container>
