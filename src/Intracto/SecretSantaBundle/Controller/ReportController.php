@@ -38,9 +38,9 @@ class ReportController extends Controller
 
         try {
             if ($year != 'all') {
-                $dataPool = $report->getPoolReport($year);
+                $dataPool = $report->getPartyReport($year);
             } else {
-                $dataPool = $report->getPoolReport();
+                $dataPool = $report->getPartyReport();
             }
         } catch (\Exception $e) {
             $dataPool = [];

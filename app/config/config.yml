@@ -89,33 +89,33 @@ services:
     cache:
         class: Doctrine\Common\Cache\ApcuCache
 
-    pool_repository:
+    party_repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
-            - IntractoSecretSantaBundle:Pool
+            - IntractoSecretSantaBundle:Party
 
-    entry_repository:
+    participant_repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
-            - IntractoSecretSantaBundle:Entry
+            - IntractoSecretSantaBundle:Participant
 
-    intracto.validator.entry_has_valid_excludes:
+    intracto.validator.participant_has_valid_excludes:
         class: Intracto\SecretSantaBundle\Validator\EntryHasValidExcludesValidator
         tags:
-            - { name: validator.constraint_validator, alias: intracto.validator.entry_has_valid_excludes }
-    intracto.validator.pool_has_valid_excludes:
-        class: Intracto\SecretSantaBundle\Validator\PoolHasValidExcludesValidator
+            - { name: validator.constraint_validator, alias: intracto.validator.participant_has_valid_excludes }
+    intracto.validator.party_has_valid_excludes:
+        class: Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator
         arguments:
-            - @intracto_secret_santa.entry_shuffler
+            - @intracto_secret_santa.participant_shuffler
         tags:
-            - { name: validator.constraint_validator, alias: intracto.validator.pool_has_valid_excludes }
+            - { name: validator.constraint_validator, alias: intracto.validator.party_has_valid_excludes }
 
-    intracto_secret_santa.entry_shuffler:
-        class: Intracto\SecretSantaBundle\Entity\EntryShuffler
+    intracto_secret_santa.participant_shuffler:
+        class: Intracto\SecretSantaBundle\Entity\ParticipantShuffler
 
     intracto_secret_santa.service.export:
         class: Intracto\SecretSantaBundle\Service\ExportService

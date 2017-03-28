@@ -23,24 +23,25 @@ class ExportMailsCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $entryService = $this->getContainer()->get('intracto_secret_santa.entry');
+        /** @var \Intracto\SecretSantaBundle\Query\ParticipantReportQuery $ParticipantReportQuery */
+        $participantReportQuery = $this->getContainer()->get('intracto_secret_santa.participant');
         $lastSeason = date('Y', strtotime('-1 year'));
         $season = new Season($lastSeason);
         $userType = $input->getArgument('userType');
 
         switch ($userType) {
             case 'admin':
-                $entryService->fetchAdminEmailsForExport($season);
+                $participantReportQuery->fetchAdminEmailsForExport($season);
                 $output->writeln("Last season's admin emails exported to /tmp");
 
                 break;
             case 'participant':
-                $entryService->fetchParticipantEmailsForExport($season);
+                $participantReportQuery->fetchParticipantEmailsForExport($season);
                 $output->writeln("Last season's participant emails exported to /tmp");
                 break;
             default:
-                $entryService->fetchAdminEmailsForExport($season);
-                $entryService->fetchParticipantEmailsForExport($season);
+                $participantReportQuery->fetchAdminEmailsForExport($season);
+                $participantReportQuery->fetchParticipantEmailsForExport($season);
                 $output->writeln('All emails exported to /tmp');
                 break;
         }

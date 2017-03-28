@@ -3,7 +3,7 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
-use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\Participant;
 
 class WishlistMailQuery
 {
@@ -16,15 +16,15 @@ class WishlistMailQuery
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $participant
      */
-    public function countWishlistItemsOfParticipant(Entry $entry)
+    public function countWishlistItemsOfParticipant(Participant $participant)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(w.id) AS wishlistItemCount')
-            ->from('WishlistItem', 'w')
-            ->where('w.entry_id = :entryId')
-            ->setParameter('entryId', $entry->getId());
+            ->from('wishlist_item', 'w')
+            ->where('w.participant_id = :participantId')
+            ->setParameter('participantId', $participant->getId());
 
         return $query->execute()->fetchAll();
     }

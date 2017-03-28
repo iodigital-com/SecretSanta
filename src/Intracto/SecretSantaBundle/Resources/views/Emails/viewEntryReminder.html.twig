@@ -16,13 +16,13 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('entry_view', { 'url': entry.url, '_locale': entry.pool.locale }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
+                            <a href="{{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
                              sans-serif; vertical-align: baseline;">{{ 'emails-viewEntryReminder.btn.find_out'|trans }}</a>
 
                         </td>
                     </tr>
                     <tr>
-                        <td width="auto" style="display: block; font-size: 16px;" class="buttonBottom">&nbsp;</td>
+                        <td width="auto" style="display: block; font-size: 16px;" class="buttonBottom">&nbsp;</td>party
                     </tr>
                 </table>
             </td>

@@ -5,7 +5,7 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table()
+ * @ORM\Table(name="wishlist_item")
  * @ORM\Entity
  */
 class WishlistItem
@@ -20,11 +20,11 @@ class WishlistItem
     private $id;
 
     /**
-     * @var Entry
+     * @var Participant
      *
-     * @ORM\ManyToOne(targetEntity="Entry", inversedBy="wishlistItems")
+     * @ORM\ManyToOne(targetEntity="Participant", inversedBy="wishlistItems")
      */
-    private $entry;
+    private $participant;
 
     /**
      * @var string
@@ -116,18 +116,18 @@ class WishlistItem
     }
 
     /**
-     * @return Entry
+     * @return Participant
      */
-    public function getEntry()
+    public function getParticipant()
     {
-        return $this->entry;
+        return $this->participant;
     }
 
     /**
-     * @param Entry $entry
+     * @param Participant $participant
      */
-    public function setEntry($entry)
+    public function setParticipant($participant)
     {
-        $this->entry = $entry;
+        $this->participant = $participant;
     }
 }

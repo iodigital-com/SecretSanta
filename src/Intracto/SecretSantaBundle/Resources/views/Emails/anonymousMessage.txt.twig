@@ -1,3 +1,3 @@
-{{ 'emails-anonymous_message.message.txt'|trans({"%name%": entry.name , "%message%" : message | escape })|raw }}<br>
-{{ url("entry_view", { "url": entry.url, "_locale": entry.pool.locale }) }}
+{{ 'emails-anonymous_message.message.txt'|trans({"%name%": participant.name , "%message%" : message | escape })|raw }}<br>
+{{ url("participant_view", { "url": participant.url, "_locale": participant.party.locale }) }}
 

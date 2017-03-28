@@ -2,7 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Form\Type;
 
-use Intracto\SecretSantaBundle\Entity\Entry;
+use Intracto\SecretSantaBundle\Entity\Participant;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +24,7 @@ class WishlistType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => Entry::class,
+                'data_class' => Participant::class,
             ]
         );
     }

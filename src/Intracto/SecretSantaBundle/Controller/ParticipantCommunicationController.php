@@ -19,13 +19,13 @@ class ParticipantCommunicationController extends Controller
         $messageForm = $this->createForm(AnonymousMessageFormType::class);
 
         $messageForm->handleRequest($request);
-        $url = $messageForm->getData()['entry'];
+        $url = $messageForm->getData()['participant'];
         if ($messageForm->isValid()) {
             $message = $messageForm->getData()['message'];
             $recipientId = $messageForm->getData()['recipient'];
 
             $em = $this->get('doctrine.orm.entity_manager');
-            $recipient = $em->getRepository('IntractoSecretSantaBundle:Entry')->find($recipientId);
+            $recipient = $em->getRepository('IntractoSecretSantaBundle:Participant')->find($recipientId);
 
             if (count($recipient) == 1) {
                 $this->get('intracto_secret_santa.mail')->sendAnonymousMessage($recipient, $message);
@@ -48,6 +48,6 @@ class ParticipantCommunicationController extends Controller
             );
         }
 
-        return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+        return $this->redirect($this->generateUrl('participant_view', ['url' => $url]));
     }
 }

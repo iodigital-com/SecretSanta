@@ -20,13 +20,14 @@ class WishlistController extends Controller
      */
     public function showAllAction($listUrl)
     {
-        $pool = $this->get('pool_repository')->findOneByListurl($listUrl);
-        if ($pool === false) {
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        $party = $this->get('party_repository')->findOneByListurl($listUrl);
+        if ($party === false) {
             throw new NotFoundHttpException();
         }
 
         return [
-            'pool' => $pool,
+            'party' => $party,
         ];
     }
 
@@ -36,16 +37,17 @@ class WishlistController extends Controller
      */
     public function updateAction(Request $request, $url)
     {
-        $entry = $this->get('entry_repository')->findOneByUrl($url);
-        if ($entry === null) {
+        /** @var \Intracto\SecretSantaBundle\Entity\ParticipantRepository $participant */
+        $participant = $this->get('participant_repository')->findOneByUrl($url);
+        if ($participant === null) {
             throw new NotFoundHttpException();
         }
-        $wishlistForm = $this->createForm(WishlistType::class, $entry);
+        $wishlistForm = $this->createForm(WishlistType::class, $participant);
 
         // get current items to compare against items later on
         $currentWishlistItems = new ArrayCollection();
         /** @var WishlistItem $item */
-        foreach ($entry->getWishlistItems() as $item) {
+        foreach ($participant->getWishlistItems() as $item) {
             $currentWishlistItems->add($item);
         }
 
@@ -55,10 +57,10 @@ class WishlistController extends Controller
             // save entries passed and check rank
             $inOrder = true;
             $lastRank = 0;
-            $newWishlistItems = $entry->getWishlistItems();
+            $newWishlistItems = $participant->getWishlistItems();
 
             foreach ($newWishlistItems as $item) {
-                $item->setEntry($entry);
+                $item->setParticipant($participant);
                 $this->get('doctrine.orm.entity_manager')->persist($item);
                 // keep track of rank
                 if ($item->getRank() < $lastRank) {
@@ -74,23 +76,23 @@ class WishlistController extends Controller
                 }
             }
 
-            // For now assume that a save of entry means the list has changed
+            // For now assume that a save of participant means the list has changed
             $time_now = new \DateTime();
-            $entry->setWishlistUpdated(true);
-            $entry->setWishlistUpdatedTime($time_now);
+            $participant->setWishlistUpdated(true);
+            $participant->setWishlistUpdatedTime($time_now);
 
-            $this->get('doctrine.orm.entity_manager')->persist($entry);
+            $this->get('doctrine.orm.entity_manager')->persist($participant);
             $this->get('doctrine.orm.entity_manager')->flush();
 
             if (!$request->isXmlHttpRequest()) {
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    $this->get('translator')->trans('flashes.entry.wishlist_updated')
+                    $this->get('translator')->trans('flashes.participant.wishlist_updated')
                 );
 
                 if (!$inOrder) {
                     // redirect to force refresh of form and entity
-                    return $this->redirect($this->generateUrl('entry_view', ['url' => $url]));
+                    return $this->redirect($this->generateUrl('participant_view', ['url' => $url]));
                 }
             }
 

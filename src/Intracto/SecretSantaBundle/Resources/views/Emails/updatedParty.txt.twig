@@ -1,10 +1,10 @@
-{{ 'emails-updated_party.message.txt'|trans({'%name%': entry.name, '%owner%': entry.pool.getOwnerName}) }}
+{{ 'emails-updated_party.message.txt'|trans({'%name%': participant.name, '%owner%': participant.party.getOwnerName}) }}
 
 {{ 'emails-updated_party.label.date_party'|trans }} >>
 {{ 'emails-updated_party.label.location'|trans }} >>
 {{ 'emails-updated_party.label.amount_to_spend'|trans }}
 
-{{ entry.pool.eventdate|date('d M y') }} >> {{ entry.pool.location }} >> {{ entry.pool.amount }}
+{{ participant.party.eventdate|date('d M y') }} >> {{ participant.party.location }} >> {{ participant.party.amount }}
 
 {{ 'emails-updated_party.btn.updated_party'|trans|raw }}:
-{{ url("entry_view", { "url": entry.url, "_locale": entry.pool.locale }) }}
+{{ url("participant_view", { "url": participant.url, "_locale": participant.party.locale }) }}

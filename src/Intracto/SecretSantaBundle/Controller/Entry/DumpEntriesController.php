@@ -20,7 +20,7 @@ class DumpEntriesController extends Controller
         $startCrawling->sub(new \DateInterval('P4M'));
 
         return [
-            'entries' => $this->get('entry_repository')->findAfter($startCrawling),
+            'entries' => $this->get('participant_repository')->findAfter($startCrawling),
         ];
     }
 }

@@ -1,0 +1,16 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+{% block metadata %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+{% block header %}
+    <div class="steps">
+        <h2>{{ 'entry_show_base.headers.title'|trans|raw }}</h2>
+        <ul class="liststyle1">
+            <li><strong>{{ 'entry_show_base.headers.date'|trans }} </strong> {{ participant.party.eventdate|localizeddate('medium', 'none') }}</li>
+            <li><strong>{{ 'entry_show_base.headers.location'|trans }}</strong> {{ participant.party.location }}</li>
+            <li><strong>{{ 'entry_show_base.headers.amount'|trans }} </strong> {{ participant.party.amount }}</li>
+            <li><strong>{{ 'entry_show_base.headers.num_people'|trans }} </strong> {{ participant.party.participants|length }}</li>
+            <li><strong>{{ 'entry_show_base.headers.person_created_list'|trans }} </strong> <span data-hj-masked>{{ participant.party.participants|first.email }}</span>
+        </ul>
+    </div>
+{% endblock %}
