@@ -29,7 +29,7 @@ class WishlistReportQuery
     public function calculateCompletedWishlists(Season $season)
     {
         $wishlists = $this->countWishlists($season);
-        $entries = $this->entryReportQuery->countEntries($season);
+        $entries = $this->entryReportQuery->countParticipants($season);
 
         if ($entries[0]['entryCount'] != 0) {
             return (implode($wishlists[0]) / implode($entries[0])) * 100;
@@ -47,10 +47,10 @@ class WishlistReportQuery
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS wishlistCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
             ->andWhere('e.wishlist_updated = TRUE')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
@@ -66,7 +66,7 @@ class WishlistReportQuery
     public function calculateCompletedWishlistsUntilDate(\DateTime $date)
     {
         $totalWishlists = $this->countAllWishlistsUntilDate($date);
-        $totalEntries = $this->entryReportQuery->countAllEntriesUntilDate($date);
+        $totalEntries = $this->entryReportQuery->countAllParticipantsUntilDate($date);
 
         if ($totalEntries[0]['totalEntryCount'] != 0) {
             return (implode($totalWishlists[0]) / implode($totalEntries[0])) * 100;
@@ -84,9 +84,9 @@ class WishlistReportQuery
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS totalWishlistCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate < :lastDay')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date < :lastDay')
             ->andWhere('e.wishlist_updated = TRUE')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 

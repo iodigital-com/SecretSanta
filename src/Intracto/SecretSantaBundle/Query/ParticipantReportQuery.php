@@ -11,26 +11,26 @@ class ParticipantReportQuery
     private $dbal;
     /** @var Router */
     private $router;
-    /** @var PoolReportQuery */
-    private $poolReportQuery;
+    /** @var PartyReportQuery */
+    private $partyReportQuery;
     /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
 
     /**
      * @param Connection         $dbal
      * @param Router             $router
-     * @param PoolReportQuery    $poolReportQuery
+     * @param PartyReportQuery    $poolReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
      */
     public function __construct(
         Connection $dbal,
         Router $router,
-        PoolReportQuery $poolReportQuery,
+        PartyReportQuery $poolReportQuery,
         FeaturedYearsQuery $featuredYearsQuery
     ) {
         $this->dbal = $dbal;
         $this->router = $router;
-        $this->poolReportQuery = $poolReportQuery;
+        $this->partyReportQuery = $poolReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
@@ -39,14 +39,14 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function countConfirmedEntriesUntilDate(\DateTime $date)
+    public function countConfirmedParticipantsUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS confirmedEntryCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate < :lastDay')
-            ->andWhere('e.viewdate IS NOT NULL')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date < :lastDay')
+            ->andWhere('e.view_date IS NOT NULL')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
@@ -57,13 +57,13 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function countDistinctEntriesUntilDate(\DateTime $date)
+    public function countDistinctParticipantsUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(distinct e.email) AS distinctEntryCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate < :lastDay')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date < :lastDay')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
@@ -74,16 +74,16 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function queryDataForMonthlyEntryChart(Season $season)
+    public function queryDataForMonthlyParticipantChart(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS accumulatedEntryCountByMonth, p.sentdate AS month')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->groupBy('month(p.sentdate)')
-            ->orderBy('month(p.sentdate) < 4, month(p.sentdate)')
+            ->select('count(p.id) AS accumulatedEntryCountByMonth, p.sent_date AS month')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
+            ->groupBy('month(p.sent_date)')
+            ->orderBy('month(p.sent_date) < 4, month(p.sent_date)')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
@@ -93,10 +93,10 @@ class ParticipantReportQuery
     /**
      * @return array
      */
-    public function queryDataForYearlyEntryChart()
+    public function queryDataForYearlyParticipantChart()
     {
         $featuredYears = $this->featuredYearsQuery->getFeaturedYears();
-        $entryChartData = [];
+        $participantChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
             $firstDay = \DateTime::createFromFormat('Y-m-d', $year.'-04-01')->format('Y-m-d H:i:s');
@@ -104,11 +104,11 @@ class ParticipantReportQuery
 
             $query = $this->dbal->createQueryBuilder()
                 ->select('count(p.id) AS accumulatedEntryCountByYear')
-                ->from('Pool', 'p')
-                ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-                ->where('p.sentdate IS NOT NULL')
-                ->andWhere('p.sentdate >= :firstDay')
-                ->andWhere('p.sentdate < :lastDay')
+                ->from('party', 'p')
+                ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+                ->where('p.sent_date IS NOT NULL')
+                ->andWhere('p.sent_date >= :firstDay')
+                ->andWhere('p.sent_date < :lastDay')
                 ->setParameter('firstDay', $firstDay)
                 ->setParameter('lastDay', $lastDay);
 
@@ -119,10 +119,10 @@ class ParticipantReportQuery
                 'entry' => $chartData,
             ];
 
-            array_push($entryChartData, $entry);
+            array_push($participantChartData, $entry);
         }
 
-        return $entryChartData;
+        return $participantChartData;
     }
 
     /**
@@ -130,26 +130,26 @@ class ParticipantReportQuery
      *
      * @return array
      */
-    public function queryDataForEntryChartUntilDate(\DateTime $date)
+    public function queryDataForParticipantChartUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS totalEntryCount, p.sentdate AS month')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate < :lastDay')
-            ->groupBy('year(p.sentdate), month(p.sentdate)')
+            ->select('count(p.id) AS totalEntryCount, p.sent_date AS month')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date < :lastDay')
+            ->groupBy('year(p.sent_date), month(p.sent_date)')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        $totalEntryChartData = $query->execute()->fetchAll();
+        $totalParticipantChartData = $query->execute()->fetchAll();
 
         $accumulatedEntryCounter = 0;
 
-        foreach ($totalEntryChartData as &$entryCount) {
+        foreach ($totalParticipantChartData as &$entryCount) {
             $accumulatedEntryCounter += $entryCount['totalEntryCount'];
             $entryCount['totalEntryCount'] = $accumulatedEntryCounter;
         }
 
-        return $totalEntryChartData;
+        return $totalParticipantChartData;
     }
 
     /**
@@ -157,13 +157,13 @@ class ParticipantReportQuery
      *
      * @return float
      */
-    public function calculateAverageEntriesPerPoolUntilDate(\DateTime $date)
+    public function calculateAverageParticipantsPerPartyUntilDate(\DateTime $date)
     {
-        $totalPools = $this->poolReportQuery->countAllPoolsUntilDate($date);
-        $totalEntries = $this->countAllEntriesUntilDate($date);
+        $totalParties = $this->partyReportQuery->countAllPartiesUntilDate($date);
+        $totalParticipants = $this->countAllParticipantsUntilDate($date);
 
-        if ($totalPools[0]['poolCount'] != 0) {
-            return implode($totalEntries[0]) / implode($totalPools[0]);
+        if ($totalParties[0]['poolCount'] != 0) {
+            return implode($totalParticipants[0]) / implode($totalParties[0]);
         }
 
         throw new NoResultException();
@@ -174,13 +174,13 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function countAllEntriesUntilDate(\DateTime $date)
+    public function countAllParticipantsUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS totalEntryCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate < :lastDay')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date < :lastDay')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
@@ -192,16 +192,16 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function calculateEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    public function calculateParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
-        $entryCountSeason1 = $this->countEntries($season1);
+        $participantCountSeason1 = $this->countParticipants($season1);
         try {
-            $entryCountSeason2 = $this->countEntries($season2);
+            $participantCountSeason2 = $this->countParticipants($season2);
         } catch (\Exception $e) {
-            return $entryCountSeason1[0]['entryCount'];
+            return $participantCountSeason1[0]['entryCount'];
         }
 
-        return $entryCountSeason1[0]['entryCount'] - $entryCountSeason2[0]['entryCount'];
+        return $participantCountSeason1[0]['entryCount'] - $participantCountSeason2[0]['entryCount'];
     }
 
     /**
@@ -209,14 +209,14 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function countEntries(Season $season)
+    public function countParticipants(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS entryCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
@@ -229,16 +229,16 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function calculateConfirmedEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    public function calculateConfirmedParticipantsCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
-        $confirmedEntryCountSeason1 = $this->countConfirmedEntries($season1);
+        $confirmedParticipantCountSeason1 = $this->countConfirmedParticipants($season1);
         try {
-            $confirmedEntryCountSeason2 = $this->countConfirmedEntries($season2);
+            $confirmedParticipantCountSeason2 = $this->countConfirmedParticipants($season2);
         } catch (\Exception $e) {
-            return $confirmedEntryCountSeason1[0]['confirmedEntryCount'];
+            return $confirmedParticipantCountSeason1[0]['confirmedEntryCount'];
         }
 
-        return $confirmedEntryCountSeason1[0]['confirmedEntryCount'] - $confirmedEntryCountSeason2[0]['confirmedEntryCount'];
+        return $confirmedParticipantCountSeason1[0]['confirmedEntryCount'] - $confirmedParticipantCountSeason2[0]['confirmedEntryCount'];
     }
 
     /**
@@ -246,15 +246,15 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function countConfirmedEntries(Season $season)
+    public function countConfirmedParticipants(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS confirmedEntryCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->andWhere('e.viewdate IS NOT NULL')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
+            ->andWhere('e.view_date IS NOT NULL')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
@@ -267,16 +267,16 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function calculateDistinctEntryCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
-        $distinctEntryCountSeason1 = $this->countDistinctEntries($season1);
+        $distinctParticipantCountSeason1 = $this->countDistinctEntries($season1);
         try {
-            $distinctEntryCountSeason2 = $this->countDistinctEntries($season2);
+            $distinctParticipantCountSeason2 = $this->countDistinctEntries($season2);
         } catch (\Exception $e) {
-            return $distinctEntryCountSeason1[0]['distinctEntryCount'];
+            return $distinctParticipantCountSeason1[0]['distinctEntryCount'];
         }
 
-        return $distinctEntryCountSeason1[0]['distinctEntryCount'] - $distinctEntryCountSeason2[0]['distinctEntryCount'];
+        return $distinctParticipantCountSeason1[0]['distinctEntryCount'] - $distinctParticipantCountSeason2[0]['distinctEntryCount'];
     }
 
     /**
@@ -288,8 +288,8 @@ class ParticipantReportQuery
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(distinct e.email) AS distinctEntryCount')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sentdate >= :firstDay')
             ->andWhere('p.sentdate < :lastDay')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
@@ -304,11 +304,11 @@ class ParticipantReportQuery
      *
      * @return float
      */
-    public function calculateAverageEntriesPerPoolBetweenSeasons(Season $season1, Season $season2)
+    public function calculateAverageParticipantsPerPartyBetweenSeasons(Season $season1, Season $season2)
     {
-        $averageSeason1 = $this->calculateAverageEntriesPerPool($season1);
+        $averageSeason1 = $this->calculateAverageParticipantsPerParty($season1);
         try {
-            $averageSeason2 = $this->calculateAverageEntriesPerPool($season2);
+            $averageSeason2 = $this->calculateAverageParticipantsPerParty($season2);
         } catch (\Exception $e) {
             return $averageSeason1;
         }
@@ -321,13 +321,13 @@ class ParticipantReportQuery
      *
      * @return float
      */
-    public function calculateAverageEntriesPerPool(Season $season)
+    public function calculateAverageParticipantsPerParty(Season $season)
     {
-        $pools = $this->poolReportQuery->countPools($season);
-        $entries = $this->countEntries($season);
+        $parties = $this->partyReportQuery->countParties($season);
+        $participants = $this->countParticipants($season);
 
-        if ($pools[0]['poolCount'] != 0 || $entries[0]['entryCount'] != 0) {
-            return implode($entries[0]) / implode($pools[0]);
+        if ($parties[0]['poolCount'] != 0 || $participants[0]['entryCount'] != 0) {
+            return implode($participants[0]) / implode($parties[0]);
         }
 
         throw new NoResultException();
@@ -340,7 +340,7 @@ class ParticipantReportQuery
      */
     public function fetchAdminEmailsForExport(Season $season)
     {
-        $reusePartyBaseUrl = $this->getPoolReuseBaseUrl();
+        $reusePartyBaseUrl = $this->getPartyReuseBaseUrl();
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
@@ -374,7 +374,7 @@ class ParticipantReportQuery
         fclose($handle);
     }
 
-    private function getPoolReuseBaseUrl()
+    private function getPartyReuseBaseUrl()
     {
         $url = $this->router->generate(
             'party_reuse',
@@ -430,7 +430,7 @@ class ParticipantReportQuery
      *
      * @return array
      */
-    public function fetchDataForPoolUpdateMail($listUrl)
+    public function fetchDataForPartyUpdateMail($listUrl)
     {
         $party = $this->dbal->createQueryBuilder()
             ->select('p.*, e.name AS adminName')
@@ -473,7 +473,7 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function findBuddyByEntryId($participantId)
+    public function findBuddyByParticipantId($participantId)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('p.id')
@@ -489,7 +489,7 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function findAdminIdByPoolId($partyId)
+    public function findAdminIdByPartyId($partyId)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('p.id')

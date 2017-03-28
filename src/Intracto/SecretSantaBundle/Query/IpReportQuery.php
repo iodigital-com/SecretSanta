@@ -46,11 +46,11 @@ class IpReportQuery
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(e.ipv4) AS ipv4Count')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('e.ipv4 IS NOT NULL')
-            ->andWhere('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
+            ->andWhere('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
@@ -66,11 +66,11 @@ class IpReportQuery
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(e.ipv6) AS ipv6Count')
-            ->from('Pool', 'p')
-            ->innerJoin('p', 'Entry', 'e', 'p.id = e.poolId')
+            ->from('party', 'p')
+            ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('e.ipv6 IS NOT NULL')
-            ->andWhere('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
+            ->andWhere('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 

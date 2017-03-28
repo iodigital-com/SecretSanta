@@ -23,10 +23,10 @@ class FeaturedYearsQuery
     public function getFeaturedYears()
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('distinct(year(p.sentdate)) AS featured_year')
-            ->from('Pool', 'p')
-            ->where('year(p.sentdate) IS NOT NULL')
-            ->orderBy('year(p.sentdate)', 'DESC');
+            ->select('distinct(year(p.sent_date)) AS featured_year')
+            ->from('party', 'p')
+            ->where('year(p.sent_date) IS NOT NULL')
+            ->orderBy('year(p.sent_date)', 'DESC');
 
         $yearsQuery = $query->execute()->fetchAll();
 

@@ -4,7 +4,7 @@ namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\DBAL\Connection;
 
-class PoolReportQuery
+class PartyReportQuery
 {
     /** @var Connection */
     private $dbal;
@@ -26,13 +26,13 @@ class PoolReportQuery
      *
      * @return mixed
      */
-    public function countPools(Season $season)
+    public function countParties(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS poolCount')
-            ->from('Pool', 'p')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
+            ->from('party', 'p')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
@@ -44,12 +44,12 @@ class PoolReportQuery
      *
      * @return mixed
      */
-    public function countAllPoolsUntilDate(\DateTime $date)
+    public function countAllPartiesUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS poolCount')
-            ->from('Pool', 'p')
-            ->where('p.sentdate < :lastDay')
+            ->from('party', 'p')
+            ->where('p.sent_date < :lastDay')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
@@ -60,15 +60,15 @@ class PoolReportQuery
      *
      * @return mixed
      */
-    public function queryDataForMonthlyPoolChart(Season $season)
+    public function queryDataForMonthlyPartyChart(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS accumulatedPoolCountByMonth, p.sentdate AS month')
-            ->from('Pool', 'p')
-            ->where('p.sentdate >= :firstDay')
-            ->andWhere('p.sentdate < :lastDay')
-            ->groupBy('month(p.sentdate)')
-            ->orderBy('month(p.sentdate) < 4, month(p.sentdate)')
+            ->select('count(p.id) AS accumulatedPoolCountByMonth, p.sent_date AS month')
+            ->from('party', 'p')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
+            ->groupBy('month(p.sent_date)')
+            ->orderBy('month(p.sent_date) < 4, month(p.sent_date)')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
@@ -78,10 +78,10 @@ class PoolReportQuery
     /**
      * @return array
      */
-    public function queryDataForYearlyPoolChart()
+    public function queryDataForYearlyPartyChart()
     {
         $featuredYears = $this->featuredYearsQuery->getFeaturedYears();
-        $poolChartData = [];
+        $partyChartData = [];
 
         foreach ($featuredYears['featured_years'] as $year) {
             $firstDay = \DateTime::createFromFormat('Y-m-d', $year.'-04-01')->format('Y-m-d H:i:s');
@@ -89,10 +89,10 @@ class PoolReportQuery
 
             $query = $this->dbal->createQueryBuilder()
                 ->select('count(p.id) AS accumulatedPoolCountByYear')
-                ->from('Pool', 'p')
-                ->where('p.sentdate IS NOT NULL')
-                ->andWhere('p.sentdate >= :firstDay')
-                ->andWhere('p.sentdate < :lastDay')
+                ->from('party', 'p')
+                ->where('p.sent_date IS NOT NULL')
+                ->andWhere('p.sent_date >= :firstDay')
+                ->andWhere('p.sent_date < :lastDay')
                 ->setParameter('firstDay', $firstDay)
                 ->setParameter('lastDay', $lastDay);
 
@@ -103,10 +103,10 @@ class PoolReportQuery
                 'pool' => $chartData,
             ];
 
-            array_push($poolChartData, $pool);
+            array_push($partyChartData, $pool);
         }
 
-        return $poolChartData;
+        return $partyChartData;
     }
 
     /**
@@ -114,25 +114,25 @@ class PoolReportQuery
      *
      * @return mixed
      */
-    public function queryDataForPoolChartUntilDate(\DateTime $date)
+    public function queryDataForPartyChartUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS totalPoolCount, p.sentdate AS month')
-            ->from('Pool', 'p')
-            ->where('p.sentdate < :lastDay')
-            ->groupBy('year(p.sentdate), month(p.sentdate)')
+            ->select('count(p.id) AS totalPoolCount, p.sent_date AS month')
+            ->from('party', 'p')
+            ->where('p.sent_date < :lastDay')
+            ->groupBy('year(p.sent_date), month(p.sent_date)')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        $totalPoolChartData = $query->execute()->fetchAll();
+        $totalPartyChartData = $query->execute()->fetchAll();
 
         $accumulatedPoolCounter = 0;
 
-        foreach ($totalPoolChartData as &$poolCount) {
-            $accumulatedPoolCounter += $poolCount['totalPoolCount'];
-            $poolCount['totalPoolCount'] = $accumulatedPoolCounter;
+        foreach ($totalPartyChartData as &$partyCount) {
+            $accumulatedPoolCounter += $partyCount['totalPoolCount'];
+            $partyCount['totalPoolCount'] = $accumulatedPoolCounter;
         }
 
-        return $totalPoolChartData;
+        return $totalPartyChartData;
     }
 
     /**
@@ -141,15 +141,15 @@ class PoolReportQuery
      *
      * @return mixed
      */
-    public function calculatePoolCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    public function calculatePartyCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
-        $poolCountSeason1 = $this->countPools($season1);
+        $partyCountSeason1 = $this->countParties($season1);
         try {
-            $poolCountSeason2 = $this->countPools($season2);
+            $partyCountSeason2 = $this->countParties($season2);
         } catch (\Exception $e) {
-            return $poolCountSeason1[0]['poolCount'];
+            return $partyCountSeason1[0]['poolCount'];
         }
 
-        return $poolCountSeason1[0]['poolCount'] - $poolCountSeason2[0]['poolCount'];
+        return $partyCountSeason1[0]['poolCount'] - $partyCountSeason2[0]['poolCount'];
     }
 }
