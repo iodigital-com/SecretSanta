@@ -34,6 +34,7 @@ class PartyController extends Controller
      */
     public function createdAction($listUrl)
     {
+        $party = $this->getParty($listUrl);
         if (!$party->getCreated()) {
             return $this->redirect($this->generateUrl('party_exclude', ['listUrl' => $party->getListurl()]));
         }
