@@ -5,8 +5,9 @@ namespace Intracto\SecretSantaBundle\Tests;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\ParticipantShuffler;
 use Intracto\SecretSantaBundle\Entity\Party;
+use PHPUnit\Framework\TestCase;
 
-class ParticipantShufflerTest extends \PHPUnit_Framework_TestCase
+class ParticipantShufflerTest extends TestCase
 {
     // Simple pool with simple excludes
     public function testParticipantShufflerCase1()

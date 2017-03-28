@@ -3,8 +3,9 @@
 namespace Intracto\SecretSantaBundle\Tests\Twig;
 
 use Intracto\SecretSantaBundle\Twig\LinkifyExtension;
+use PHPUnit\Framework\TestCase;
 
-class LinkifyExtensionTest extends \PHPUnit_Framework_TestCase
+class LinkifyExtensionTest extends TestCase
 {
     /**
      * @test
