@@ -26,6 +26,18 @@ class LinkifyExtensionTest extends TestCase
                 'test',
             ],
             [
+                'test.com',
+                'test.com',
+            ],
+            [
+                'ww.test.com',
+                'ww.test.com',
+            ],
+            [
+                'www.test.com',
+                '<a href="http://www.test.com" target="_blank" rel="noopener noreferrer">www.test.com</a>',
+            ],
+            [
                 'http://test',
                 '<a href="http://test" target="_blank" rel="noopener noreferrer">http://test</a>',
             ],
@@ -40,6 +52,14 @@ class LinkifyExtensionTest extends TestCase
             [
                 'a http://www.costumecraze.com/XMAS166.html b',
                 'a <a href="http://www.costumecraze.com/XMAS166.html" target="_blank" rel="noopener noreferrer">http://www.costumecraze.com/XMAS166.html</a> b',
+            ],
+            [
+                'https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card.',
+                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card</a>.'
+            ],
+            [
+                'https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!',
+                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!</a>'
             ],
             [
                 'a http://www.amazon.co.uk/Love-Curses-VINYL-Reigning-Sound/dp/B002D6EXRK/ref=sr_1_9?s=music&ie=UTF8&qid=1384346660&sr=1-9&keywords=reigning+sound b',
