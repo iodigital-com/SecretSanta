@@ -48,7 +48,7 @@
     ],
     "scripts": {
         "travis-build": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
         ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
