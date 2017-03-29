@@ -18,15 +18,15 @@ class LinkifyExtension extends \Twig_Extension
             return $html;
         }
 
-        //Selects all urls starting with ://
-        $html =  preg_replace(
+        // Selects all urls starting with ://
+        $html = preg_replace(
             '~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/=!\?,]~',
             '<a href="\\0" target="_blank" rel="noopener noreferrer">\\0</a>',
             $html
         );
 
-        //Selects all urls starting with www. but do not start with ://
-        $html =  preg_replace(
+        // Selects all urls starting with www. but do not start with ://
+        $html = preg_replace(
             '~(?<!://)www.[^<>[:space:]]+[[:alnum:]/=!\?,]~',
             '<a href="http://\\0" target="_blank" rel="noopener noreferrer">\\0</a>',
             $html
