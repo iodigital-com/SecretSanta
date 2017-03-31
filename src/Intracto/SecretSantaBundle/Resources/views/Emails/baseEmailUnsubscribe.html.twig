@@ -1,0 +1,7 @@
+{% extends "IntractoSecretSantaBundle:Emails:baseEmail.html.twig" %}
+{% block unsubscribe %}
+    <p style="text-align: center; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
+        {{ 'emails-base_email_unsubscribe.unsubscribe' | trans }}
+        <a href="{{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}">{{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }}</a>
+    </p>
+{% endblock %}

@@ -24,7 +24,7 @@ class MailerService
     public $noreplyEmail;
 
     /**
-     * @param \Swift_Mailer       $mailer     a regular SMTP mailer, bad monitoring, cheap
+     * @param \Swift_Mailer       $mailer             a regular SMTP mailer, bad monitoring, cheap
      * @param EntityManager       $em
      * @param EngineInterface     $templating
      * @param TranslatorInterface $translator
@@ -193,7 +193,9 @@ class MailerService
     public function sendPartyUpdateMailForParty(Party $party, $results)
     {
         foreach ($party->getParticipants() as $participant) {
-            $this->sendPartyUpdateMailForParticipant($participant, $results);
+            if ($participant->isSubscribed()) {
+                $this->sendPartyUpdateMailForParticipant($participant, $results);
+            }
         }
     }
 
@@ -364,7 +366,9 @@ class MailerService
     public function sendPartyUpdatedMailsForParty(Party $party)
     {
         foreach ($party->getParticipants() as $participant) {
-            $this->sendPartyUpdatedMailForParticipant($participant);
+            if ($participant->isSubscribed()) {
+                $this->sendPartyUpdatedMailForParticipant($participant);
+            }
         }
     }
 

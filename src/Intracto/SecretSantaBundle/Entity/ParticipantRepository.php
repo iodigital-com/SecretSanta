@@ -25,4 +25,21 @@ class ParticipantRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * @Param String $email
+     *
+     * @Return Participant[]
+     */
+    public function findAllByEmail($email)
+    {
+        $query = $this->_em->createQuery('
+            SELECT participant
+            FROM IntractoSecretSantaBundle:Participant participant
+            WHERE participant.email LIKE :email
+        ');
+        $query->setParameter('email', $email);
+
+        return $query->getResult();
+    }
 }

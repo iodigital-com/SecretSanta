@@ -237,6 +237,17 @@ entry_show_valid:
 #        error: ?
 #        error_in_form: ?
 
+# Participant/unsubscribe.html.twih
+#participant_unsubscribe:
+#    title:
+#    unsubscribe_all_label:
+#    unsubscribe_confirm_btn:
+#    unsubscribe_for:
+#    info_confirmation:
+#    feedback:
+#        success:
+#        error:
+
 # Pool/manage/base.html.twig
 pool_manage_base:
     headers:
@@ -353,6 +364,11 @@ emails-base_email:
     title: Secret Santa par Intracto
     footer: Bon amusement pour votre Secret Santa party!
     created_by: Créé par
+
+# Emails/baseEmailUnsubscribe.html.twig
+#emails-base_email_unsubscribe:
+#    unsubscribe:
+#    unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:

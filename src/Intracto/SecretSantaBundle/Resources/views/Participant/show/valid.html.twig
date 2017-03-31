@@ -28,7 +28,9 @@
                     <h4 data-hj-masked>{{ 'entry_show_valid.entry.wishlist_from'|trans({'%name%': participant.assignedParticipant.name}) }}</h4>
                     {% if(participant.assignedParticipant.wishlistitems|length == 0) %}
                         {{ 'entry_show_valid.entry.wishlist_not_provided'|trans({'%name%': participant.assignedParticipant.name}) }}.
-                        {{ 'entry_show_valid.entry.message_for_wishlist'|trans|raw }}
+                        {% if(participant.assignedParticipant.isSubscribed == true) %}
+                            {{ 'entry_show_valid.entry.message_for_wishlist'|trans|raw }}
+                        {% endif %}
                     {% else %}
                         <ul class="wishlist">
                             {% for item in participant.assignedParticipant.wishlistitems %}
@@ -40,35 +42,36 @@
                               target="_blank"
                               rel="noopener noreferrer">{{ 'entry_show_valid.buy_from_amazon'|trans }}</a></b>
                 </div>
+                {% if(participant.assignedParticipant.isSubscribed == true) %}
+                    <div class="panel panel-default bottom-spacer" id="messagePanel">
+                        <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
+                            <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
+                                <h3 class="panel-title">{{ 'entry_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }}</h3>
+                            </a>
+                        </div>
+                        <div id="collapsedMessage" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="alert alert-warning" role="alert" id="anonwarning">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ 'entry_show_valid.anonymous_message.warning_anonymous' | trans }}
+                                </div>
+                                {{ form_start(messageForm) }}
+                                <div class="form-group">
 
-                <div class="panel panel-default bottom-spacer" id="messagePanel">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
-                        <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
-                            <h3 class="panel-title">{{ 'entry_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }}</h3>
-                        </a>
-                    </div>
-                    <div id="collapsedMessage" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="alert alert-warning" role="alert" id="anonwarning">
-                                <i class="fa fa-exclamation-triangle"></i> {{ 'entry_show_valid.anonymous_message.warning_anonymous' | trans }}
+                                    {{ form_label(messageForm.message) }}
+                                    {{ form_widget(messageForm.message, {'attr': {'class': 'form-control'}}) }}
+                                    {% for error in messageForm.message.vars.errors %}
+                                        <strong>{{ error.message }}</strong><br>
+                                    {% endfor %}
+                                </div>
+                                {{ form_widget(messageForm.participant, {'value': participant.url}) }}
+                                {{ form_widget(messageForm.recipient, {'value': participant.assignedParticipant.id}) }}
+                                <button type="submit"
+                                        class="btn btn-default">{{ 'entry_show_valid.anonymous_message.send_button' |trans }}</button>
+                                {{ form_end(messageForm) }}
                             </div>
-                            {{ form_start(messageForm) }}
-                            <div class="form-group">
-
-                                {{ form_label(messageForm.message) }}
-                                {{ form_widget(messageForm.message, {'attr': {'class': 'form-control'}}) }}
-                                {% for error in messageForm.message.vars.errors %}
-                                    <strong>{{ error.message }}</strong><br>
-                                {% endfor %}
-                            </div>
-                            {{ form_widget(messageForm.participant, {'value': participant.url}) }}
-                            {{ form_widget(messageForm.recipient, {'value': participant.assignedParticipant.id}) }}
-                            <button type="submit"
-                                    class="btn btn-default">{{ 'entry_show_valid.anonymous_message.send_button' |trans }}</button>
-                            {{ form_end(messageForm) }}
                         </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
 

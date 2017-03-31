@@ -64,6 +64,10 @@
         </service>
         <service id="intracto_secret_santa.service.export" class="Intracto\SecretSantaBundle\Service\ExportService" />
         <service id="intracto_secret_santa.service.participant_shuffler" class="Intracto\SecretSantaBundle\Entity\ParticipantShuffler" />
+        <service id="intracto_secret_santa.service.unsubscribe" class="Intracto\SecretSantaBundle\Service\UnsubscribeService" >
+            <argument type="service" id="doctrine.orm.entity_manager"></argument>
+            <argument type="service" id="router"></argument>
+        </service>
 
         <!-- Twig -->
         <service id="intracto_secret_santa.twig.extension.form" class="Intracto\SecretSantaBundle\Twig\Extension\FormExtension">

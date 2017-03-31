@@ -165,6 +165,13 @@ class Participant
      */
     private $wishlistUpdatedTime;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="subscribed_for_updates", type="boolean", options={"default"=true})
+     */
+    private $subscribedForUpdates = true;
+
     public function __construct()
     {
         $this->excludedParticipants = new ArrayCollection();
@@ -571,5 +578,20 @@ class Participant
     public function setWishlistUpdatedTime($wishlistUpdatedTime)
     {
         $this->wishlistUpdatedTime = $wishlistUpdatedTime;
+    }
+
+    public function unsubscribe()
+    {
+        $this->subscribedForUpdates = false;
+    }
+
+    public function subscribe()
+    {
+        $this->subscribedForUpdates = true;
+    }
+
+    public function isSubscribed()
+    {
+        return $this->subscribedForUpdates;
     }
 }
