@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Mailer;
 
 use Doctrine\ORM\EntityManager;
+use Intracto\SecretSantaBundle\Service\UnsubscribeService;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -21,6 +22,8 @@ class MailerService
     public $translator;
     /** @var \Symfony\Bundle\FrameworkBundle\Routing\Router */
     public $routing;
+    /** @var UnsubscribeService */
+    public $unsubscribeService;
     public $noreplyEmail;
 
     /**
@@ -29,6 +32,7 @@ class MailerService
      * @param EngineInterface     $templating
      * @param TranslatorInterface $translator
      * @param Router              $routing
+     * @param UnsubscribeService  $unsubscribeService
      * @param $noreplyEmail
      */
     public function __construct(
@@ -37,6 +41,7 @@ class MailerService
         EngineInterface $templating,
         TranslatorInterface $translator,
         Router $routing,
+        UnsubscribeService $unsubscribeService,
         $noreplyEmail
     ) {
         $this->mailer = $mailer;
@@ -44,6 +49,7 @@ class MailerService
         $this->templating = $templating;
         $this->translator = $translator;
         $this->routing = $routing;
+        $this->unsubscribeService = $unsubscribeService;
         $this->noreplyEmail = $noreplyEmail;
     }
 
@@ -127,6 +133,7 @@ class MailerService
                 ),
                 'text/plain'
             );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
@@ -206,7 +213,7 @@ class MailerService
     public function sendPartyUpdateMailForParticipant(Participant $participant, $results)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-pool_update.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -229,8 +236,9 @@ class MailerService
                     ]
                 ),
                 'text/plain'
-            )
-        );
+            );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
+        $this->mailer->send($mail);
     }
 
     /**
@@ -239,7 +247,7 @@ class MailerService
     public function sendWishlistReminderMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-emptyWishlistReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -260,8 +268,9 @@ class MailerService
                     ]
                 ),
                 'text/plain'
-            )
-        );
+            );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
+        $this->mailer->send($mail);
     }
 
     /**
@@ -270,7 +279,7 @@ class MailerService
     public function sendEntryViewReminderMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-viewEntryReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -291,8 +300,9 @@ class MailerService
                     ]
                 ),
                 'text/plain'
-            )
-        );
+            );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
+        $this->mailer->send($mail);
     }
 
     /**
@@ -302,7 +312,7 @@ class MailerService
     public function sendWishlistUpdatedMail(Participant $receiver, Participant $participant)
     {
         $this->translator->setLocale($receiver->getParty()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -325,8 +335,9 @@ class MailerService
                     ]
                 ),
                 'text/plain'
-            )
-        );
+            );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
+        $this->mailer->send($mail);
     }
 
     /**
@@ -335,7 +346,7 @@ class MailerService
     public function sendPartyStatusMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-pool_status.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -356,8 +367,9 @@ class MailerService
                     ]
                 ),
                 'text/plain'
-            )
-        );
+            );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
+        $this->mailer->send($mail);
     }
 
     /**
@@ -378,7 +390,7 @@ class MailerService
     public function sendPartyUpdatedMailForParticipant(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-updated_party.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -399,14 +411,15 @@ class MailerService
                     ]
                 ),
                 'text/plain'
-            )
-        );
+            );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
+        $this->mailer->send($mail);
     }
 
     public function sendRemovedSecretSantaMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $this->mailer->send(\Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-removed_secret_santa.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -427,8 +440,9 @@ class MailerService
                     ]
                 ),
                 'text/plain'
-            )
-        );
+            );
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
+        $this->mailer->send($mail);
     }
 
     /**
@@ -439,7 +453,7 @@ class MailerService
     {
         $this->translator->setLocale($recipient->getParty()->getLocale());
 
-        $message = \Swift_Message::newInstance()
+        $mail = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-anonymous_message.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($recipient->getEmail())
@@ -463,6 +477,7 @@ class MailerService
                 ),
                 'text/plain'
             );
-        $this->mailer->send($message);
+        $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($recipient));
+        $this->mailer->send($mail);
     }
 }

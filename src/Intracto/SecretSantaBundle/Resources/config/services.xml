@@ -99,6 +99,7 @@
             <argument type="service" id="templating"></argument>
             <argument type="service" id="translator"></argument>
             <argument type="service" id="router"></argument>
+            <argument type="service" id="intracto_secret_santa.service.unsubscribe"></argument>
             <argument>%noreply_email%</argument>
         </service>
     </services>

@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Service;
 
 use Intracto\SecretSantaBundle\Entity\Participant;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Doctrine\ORM\EntityManager;
@@ -51,9 +52,11 @@ class UnsubscribeService
      * @param Participant $participant
      *
      * @return string
+     *
+     * Creates a link that can be used in the List-Unsubscribe header
      */
     public function getUnsubscribeLink(Participant $participant)
     {
-        return $this->router->generate('unsubscribe_confirm', ['url' => $participant->getUrl()]);
+        return "<" . $this->router->generate('unsubscribe_confirm', ['url' => $participant->getUrl()], UrlGeneratorInterface::ABSOLUTE_URL) . ">";
     }
 }
