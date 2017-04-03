@@ -305,7 +305,7 @@ emails-pendingConfirmation:
     overview_page: Wkrótce zobaczysz stronę, gdzie będziesz mógł śledzić wszystkich Twoich uczestników odkrywających osoby, które mają obdarować. Dowiesz się z niej kiedy lista będzie kompletna.
     lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
 #    come_back:
-    btn_validate: Zweryfikuj wydarzenie
+#    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

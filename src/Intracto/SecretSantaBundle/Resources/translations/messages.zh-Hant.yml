@@ -338,7 +338,7 @@ emails-pendingConfirmation:
     overview_page: 在新創作的概要你將能了解/記錄所有你的用戶尋找他們的秘密聖誕老人 禮物夥伴。這樣可知道名單何時完成。
     lastly: 最後，別忘記你的個人參與。當你點擊下方的確認/批准按鈕後，我們將會傳送一封新電郵給你。
 #    come_back:
-    btn_validate: 確認我的事件
+#    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

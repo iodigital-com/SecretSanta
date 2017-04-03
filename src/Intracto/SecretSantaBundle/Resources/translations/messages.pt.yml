@@ -401,7 +401,7 @@ emails-pendingConfirmation:
     overview_page: Na (recentemente montada) página de visão geral há sempre um resumo de quem já sabe quem é seu Amigo Secreto. Assim, você fica sabendo quando a lista estiver completa.
     lastly: E por último, não se esqueça de sua própria participação! Seria um pouco tonto, né? Nós mandaremos um novo e-mail após você ter clicado no botão de confirmação abaixo.
 #    come_back:
-    btn_validate: Validar meu evento
+#    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

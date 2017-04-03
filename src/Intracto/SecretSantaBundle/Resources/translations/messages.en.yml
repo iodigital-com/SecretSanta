@@ -436,7 +436,7 @@ emails-pendingConfirmation:
     overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
     lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
     come_back: You can always come back to this mail if you need the link to your manage page.
-    btn_validate: Go to the manage page
+    btn_goto_manage: Go to the manage page
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

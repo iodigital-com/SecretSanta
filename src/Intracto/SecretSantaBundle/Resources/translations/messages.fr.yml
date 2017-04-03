@@ -388,7 +388,7 @@ emails-pendingConfirmation:
     overview_page: Sur la page de présentation nouvellement créée, vous serez en mesure de garder une trace de tous les utilisateurs découvrant leur ami cadeau Secret Santa. Mais aussi d'être informé une fois que la liste sera complète.
     lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
 #    come_back:
-    btn_validate: Valider mon événement
+#    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

@@ -436,7 +436,7 @@ emails-pendingConfirmation:
     overview_page: Op de net aangemaakte overzichtspagina kan je dan op de hoogte blijven van welke gebruikers al te weten zijn gekomen voor wie ze Secret Santa mogen spelen. Zo weet je wanneer je lijst volledig is.
     lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
     come_back: Je kan altijd terugkomen naar deze email als je de link naar je beheerpagina nodig hebt.
-    btn_validate: Ga naar de beheerpagina
+    btn_goto_manage: Ga naar de beheerpagina
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

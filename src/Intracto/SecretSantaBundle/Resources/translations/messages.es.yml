@@ -364,7 +364,7 @@ emails-pendingConfirmation:
     overview_page: En la página de resumen recién creada podrás seguir a todos tus usuarios que han descubierto sus amigos del regalo Secret Santa. Por lo tanto, sabrás cuándo está completa la lista.
     lastly: Finalmente, ¡no olvides confirmar también tu propia participación! También te enviaremos un nuevo correo electrónico después de que hagas clic en el botón de validación de abajo.
 #    come_back:
-    btn_validate: Validar mi evento
+#    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

@@ -432,7 +432,7 @@ emails-pendingConfirmation:
     overview_page: På administrasjonssiden kan du få oversikt over alle deltagerne, og se hvem som har åpnet e-posten. Dermed vet du når listen er fullført!
     lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
 #    come_back:
-    btn_validate: Validate my event
+#    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
