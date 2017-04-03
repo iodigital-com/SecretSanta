@@ -21,7 +21,7 @@ class ParticipantIsNotBlacklistedValidator extends ConstraintValidator
      */
     public function validate($email, Constraint $constraint)
     {
-        $repository = $this->em->getRepository('IntractoSecretSantaBundle:BlacklistItem');
+        $repository = $this->em->getRepository('IntractoSecretSantaBundle:BlacklistEmail');
         $results = $repository->createQueryBuilder('b')
             ->where('b.email = :email')
             ->setParameter('email', $email)

@@ -2,7 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Service;
 
-use Intracto\SecretSantaBundle\Entity\BlacklistItem;
+use Intracto\SecretSantaBundle\Entity\BlacklistEmail;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Router;
@@ -66,17 +66,14 @@ class UnsubscribeService
     {
         // Unsubscribe participant from emails, with flag true for all parties.
         $this->unsubscribe($participant, true);
-        $blacklist = new BlacklistItem();
-        $blacklist->setIp($ip);
-        $blacklist->setEmail($participant->getEmail());
-        $blacklist->setDate(new \DateTime());
+        $blacklist = new BlacklistEmail($participant->getEmail(), $ip, new \DateTime());
         $this->em->persist($blacklist);
         $this->em->flush();
     }
 
     public function isBlacklisted(Participant $participant)
     {
-        $repository = $this->em->getRepository('IntractoSecretSantaBundle:BlacklistItem');
+        $repository = $this->em->getRepository('IntractoSecretSantaBundle:BlacklistEmail');
         $results = $repository->createQueryBuilder('b')
             ->where('b.email = :email')
             ->setParameter('email', $participant->getEmail())

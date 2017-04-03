@@ -291,7 +291,7 @@ participant_unsubscribe:
                         Als je niet meer wilt meedoen aan het feestje contacteer je best de beheerder van het feestje en vraag je hem/haar om je te verwijderen.<br/>
                         Je kan nog steeds emails ontvangen van andere feestjes waar je nu aan meedoet, tenzij je de checkbox hieronder aanvinkt.
     blacklist_warning: >
-                       <strong>Waarschuwing!</strong> Wanneer je je emailadres op de blacklist plaats zal je in de toekomst niet meer kunnen worden uitgenodigd voor een fesstje! Gebruik deze functie enkel als je vermoed dat iemand je mail verkeerd gebruikt!
+                       <strong>Waarschuwing!</strong> Wanneer je je emailadres op de blacklist plaatst zal je in de toekomst niet meer kunnen worden uitgenodigd voor een fesstje! Gebruik deze functie enkel als je vermoed dat iemand je mail verkeerd gebruikt!
     feedback:
        success: Je bent succesvol uitgeschreven!
        error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!

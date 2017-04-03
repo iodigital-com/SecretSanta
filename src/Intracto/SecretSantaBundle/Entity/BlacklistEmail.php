@@ -5,10 +5,10 @@ namespace Intracto\SecretSantaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="blacklist_item")
+ * @ORM\Table(name="blacklist_email")
  * @ORM\Entity
  */
-class BlacklistItem
+class BlacklistEmail
 {
     /**
      * @var int
@@ -48,6 +48,20 @@ class BlacklistItem
     private $date;
 
     /**
+     * BlacklistEmail constructor.
+     *
+     * @param string    $email
+     * @param string    $ip
+     * @param \DateTime $date
+     */
+    public function __construct($email, $ip, \DateTime $date)
+    {
+        $this->setIp($ip);
+        $this->setEmail($email);
+        $this->setDate($date);
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -58,13 +72,13 @@ class BlacklistItem
     /**
      * @param int $id
      */
-    public function setId($id)
+    private function setId($id)
     {
         $this->id = $id;
     }
 
     /**
-     * @return email
+     * @return string
      */
     public function getEmail()
     {
@@ -72,9 +86,9 @@ class BlacklistItem
     }
 
     /**
-     * @param email $email
+     * @param string $email
      */
-    public function setEmail($email)
+    private function setEmail($email)
     {
         $this->email = $email;
     }
@@ -94,7 +108,7 @@ class BlacklistItem
     /**
      * @param string $ip
      */
-    public function setIp($ip)
+    private function setIp($ip)
     {
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $this->setIpv4($ip);
@@ -114,7 +128,7 @@ class BlacklistItem
     /**
      * @param \DateTime $date
      */
-    public function setDate($date)
+    private function setDate($date)
     {
         $this->date = $date;
     }
@@ -130,7 +144,7 @@ class BlacklistItem
     /**
      * @param string $ipv4
      */
-    public function setIpv4($ipv4)
+    private function setIpv4($ipv4)
     {
         $this->ipv4 = $ipv4;
     }
@@ -146,7 +160,7 @@ class BlacklistItem
     /**
      * @param string $ipv6
      */
-    public function setIpv6($ipv6)
+    private function setIpv6($ipv6)
     {
         $this->ipv6 = $ipv6;
     }
