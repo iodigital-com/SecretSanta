@@ -342,7 +342,8 @@ emails-pendingConfirmation:
     click_button: Bitte klicken Sie auf den untenstehenden Button, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.  Dies veranlasst unsere Wichtel dazu, Ihre vorher geschriebene persönliche Nachricht an alle Ihre Teilnehmer zu versenden.
     overview_page: Auf der neu-entworfenen Übersichtsseite können Sie dann nachvollziehen, wie Ihre Teilnehmer deren Secret Santa-Partner entdecken. So wissen Sie, wann die Liste komplett ist.
     lastly: Vergessen Sie am Ende nicht, Ihre eigene Teilnahme auch zu bestätigen. Auch Sie bekommen eine neue E-Mail, nachdem Sie den untenstehenden Button angeklickt haben.
-    btn_validate: Mein Ereignis bestätigen
+#    come_back:
+#    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:

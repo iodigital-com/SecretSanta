@@ -435,7 +435,8 @@ emails-pendingConfirmation:
     click_button: Klik op onderstaande knop om je Secret Santa mailinglijst te valideren. Dan krijgen onze kaboutertjes automatisch een emmer water in hun gezicht gegooid. Als ze wakker zijn brengen ze jouw eerder opgestelde persoonlijke boodschap tot bij alle deelnemers.
     overview_page: Op de net aangemaakte overzichtspagina kan je dan op de hoogte blijven van welke gebruikers al te weten zijn gekomen voor wie ze Secret Santa mogen spelen. Zo weet je wanneer je lijst volledig is.
     lastly: En als laatste, vergeet je eigen deelname niet te bevestigen! Dat zou een beetje dom zijn, niet? We sturen je ook een nieuwe e-mail nadat je op onderstaande bevestigingsknop hebt geklikt.
-    btn_validate: Valideer mijn evenement
+    come_back: Je kan altijd terugkomen naar deze email als je de link naar je beheerpagina nodig hebt.
+    btn_goto_manage: Ga naar de beheerpagina
 
 # Emails/poolStatus.{html,txt}.twig
 emails-pool_status:
