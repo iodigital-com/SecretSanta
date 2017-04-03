@@ -3,3 +3,4 @@ pool:
     non_unique: Nie wszystkie wpisy mają wyjątkowy mecz.
 entry:
     non_unique: Nie znaleziono wyjątkowy mecz "%name%"
+#    blacklisted:

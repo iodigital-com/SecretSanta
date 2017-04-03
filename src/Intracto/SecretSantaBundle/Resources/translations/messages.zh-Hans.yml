@@ -207,9 +207,11 @@ entry_show_valid:
 #participant_unsubscribe:
 #    title:
 #    unsubscribe_all_label:
+#    unsubscribe_blacklist:
 #    unsubscribe_confirm_btn:
 #    unsubscribe_for:
 #    info_confirmation:
+#    blacklist_warning:
 #    feedback:
 #        success:
 #        error:
@@ -466,6 +468,7 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>已重新发送！</strong><br/>已重新发送至 %email%电子邮箱中。<br/>
+#        blacklisted:
 
     # EntryController
     entry:

@@ -212,9 +212,11 @@ entry_show_valid:
 #participant_unsubscribe:
 #    title:
 #    unsubscribe_all_label:
+#    unsubscribe_blacklist:
 #    unsubscribe_confirm_btn:
 #    unsubscribe_for:
 #    info_confirmation:
+#    blacklist_warning:
 #    feedback:
 #        success:
 #        error:
@@ -471,6 +473,7 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Отправлено повторно!</strong><br/>Письмо на адрес %email% отправлено повторно.<br/>
+#        blacklisted:
 
     # EntryController
     entry:

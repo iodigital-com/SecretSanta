@@ -270,9 +270,11 @@ entry_show_valid:
 #participant_unsubscribe:
 #    title:
 #    unsubscribe_all_label:
+#    unsubscribe_blacklist:
 #    unsubscribe_confirm_btn:
 #    unsubscribe_for:
 #    info_confirmation:
+#    blacklist_warning:
 #    feedback:
 #        success:
 #        error:
@@ -529,6 +531,7 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Enviado novamente!</strong><br/>O e-mail destinado a %email% foi enviado novamente.<br/>
+#        blacklisted:
 
     # EntryController
     entry:

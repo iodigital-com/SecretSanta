@@ -3,4 +3,4 @@ pool:
     non_unique: Oei! Niet alle deelnemers hebben een unieke match. Probeer het opnieuw of verwijder enkele combinaties uit de uitsluiting
 entry:
     non_unique: Sorry, geen unieke match gevonden voor"%name%"
-
+    blacklisted: De eigenaar van dit e-mailadres heeft zijn/haar email adres op de blacklist gezet, en wil niet meer worden uitgenodigd!

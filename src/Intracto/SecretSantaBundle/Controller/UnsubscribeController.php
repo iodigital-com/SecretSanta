@@ -55,11 +55,19 @@ class UnsubscribeController extends Controller
         if ($unsubscribeForm->isValid()) {
             $participant = $this->get('intracto_secret_santa.repository.participant')->findOneByUrl($url);
             $allParties = $unsubscribeForm->getData()['allParties'];
+            $blacklist = $unsubscribeForm->getData()['blacklist'];
 
-            $this->get('intracto_secret_santa.service.unsubscribe')->unsubscribe($participant, $allParties);
+            if ($blacklist) {
+                $ip = $request->getClientIp();
+                $this->get('intracto_secret_santa.service.unsubscribe')->blacklist($participant, $ip);
+            } else {
+                $this->get('intracto_secret_santa.service.unsubscribe')->unsubscribe($participant, $allParties);
+            }
+
             $this->addFlash('success', $this->get('translator')->trans('participant_unsubscribe.feedback.success'));
         } else {
             $this->addFlash('danger', $this->get('translator')->trans('participant_unsubscribe.feedback.error'));
+
             return $this->redirect($this->generateUrl('unsubscribe_confirm', ['url' => $url]));
         }
 

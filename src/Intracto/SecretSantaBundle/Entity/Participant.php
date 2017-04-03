@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
+use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
 
 /**
  * @ORM\Table(name="participant", indexes={@ORM\Index(name="participant_url", columns={"url"})})
@@ -53,6 +54,7 @@ class Participant
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
      * )
+     * @ParticipantIsNotBlacklisted()
      */
     private $email;
 

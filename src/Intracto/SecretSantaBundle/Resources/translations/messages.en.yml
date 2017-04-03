@@ -285,12 +285,15 @@ participant_communication-send_message:
 participant_unsubscribe:
     title: Unsubscribe from emails
     unsubscribe_all_label: Mark this checkbox if you also want to unsubscribe from all other parties where you currently are participating
+    unsubscribe_blacklist: "Blacklist me: Prevent users from inviting me in the future"
     unsubscribe_confirm_btn: Unsubscribe
     unsubscribe_for: Your are unsubscribing from emails for the Secret Santa party on %date%, at/in %location%.
     info_confirmation: >
                         <strong>Are you sure?</strong> When you unsubscribe we won't send you mails anymore about this party, <strong>but you will still participate in the party</strong>.
                         When you don't want to participate anymore, you should ask your party admin to remove you from the party.<br/>
                         You might receive mails from other parties where you are participating, unless you mark the checkbox below.
+    blacklist_warning: >
+                       <strong>Caution!</strong> When you blacklist your email adress you won't be able to join any Secret Santa party in the future! Only use this function if you think someone is misusing your email!
     feedback:
         success: You have successfully unsubscribed!
         error: There was an error when unsubscribing, please try again!
@@ -621,6 +624,7 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
+        blacklisted: <strong>Oops.. We couldn't send the email!</strong> This person has blacklisted his/her email, and doesn't want to receive mails anymore.
 
     # EntryController
     entry:

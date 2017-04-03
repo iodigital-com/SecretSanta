@@ -283,15 +283,18 @@ participant_communication-send_message:
 participant_unsubscribe:
     title: Uitschrijven voor emails
     unsubscribe_all_label: Vink dit aans als je, je ook wenst uit te schrijven voor emails van andere feestjes
+    unsubscribe_blacklist: "Zet me op de blacklist: Zorg ervoor dat ik niet meer kan worden uitgenodigd in de toekomst"
     unsubscribe_confirm_btn: Uitschrijven
     unsubscribe_for: Je bent je aan het uitschrijven voor emails van het feestje op %date%, te %location%.
     info_confirmation: >
                         <strong>Ben je zeker?</strong> Wanneer je, je uitschrijft krijg je geen emails meer, <strong>maar je zal nog steeds deelnemen aan het feestje</strong>.
                         Als je niet meer wilt meedoen aan het feestje contacteer je best de beheerder van het feestje en vraag je hem/haar om je te verwijderen.<br/>
                         Je kan nog steeds emails ontvangen van andere feestjes waar je nu aan meedoet, tenzij je de checkbox hieronder aanvinkt.
-    feedback:
-        success: Je bent succesvol uitgeschreven!
-        error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!
+   blacklist_warning: >
+                       <strong>Waarschuwing!</strong> Wanneer je je emailadres op de blacklist plaats zal je in de toekomst niet meer kunnen worden uitgenodigd voor een fesstje! Gebruik deze functie enkel als je vermoed dat iemand je mail verkeerd gebruikt!
+   feedback:
+       success: Je bent succesvol uitgeschreven!
+       error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!
 
 # Pool/manage/base.html.twig
 pool_manage_base:
@@ -626,6 +629,7 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
+        blacklisted: <strong>Oeps.. We kunnen de email niet versturen!</strong> Deze persoon heeft zijn email op de blacklist laten plaatsen, en wilt geen emails meer ontvangen.
 
     # EntryController
     entry:

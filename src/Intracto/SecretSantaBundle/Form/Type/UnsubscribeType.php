@@ -14,6 +14,10 @@ class UnsubscribeType extends AbstractType
             ->add('allParties', CheckboxType::class, [
                 'label' => 'participant_unsubscribe.unsubscribe_all_label',
                 'required' => false,
+            ])
+            ->add('blacklist', CheckboxType::class, [
+                'label' => 'participant_unsubscribe.unsubscribe_blacklist',
+                'required' => false,
             ]);
     }
 }
