@@ -304,6 +304,7 @@ emails-pendingConfirmation:
     click_button: Kliknij w przycisk poniżej aby zweryfikować Twoją listę mailingową Tajnego Mikołaja. To spowoduje, że nasze skrzaty roześlą wiadomość którą wcześniej napisałeś do wszystkich uczestników.
     overview_page: Wkrótce zobaczysz stronę, gdzie będziesz mógł śledzić wszystkich Twoich uczestników odkrywających osoby, które mają obdarować. Dowiesz się z niej kiedy lista będzie kompletna.
     lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
+#    come_back:
     btn_validate: Zweryfikuj wydarzenie
 
 # Emails/poolStatus.{html,txt}.twig

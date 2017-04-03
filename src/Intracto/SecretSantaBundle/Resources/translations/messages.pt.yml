@@ -400,6 +400,7 @@ emails-pendingConfirmation:
     click_button: Clique abaixo para validar a sua lista de correspondência do Secret Santa. Isso irá acordar os nossos elfos mágicos jogando um balde de água nas carinhas inocentes deles. Assim que acordarem, eles irão levar a sua mensagem pessoal para todos os participantes.
     overview_page: Na (recentemente montada) página de visão geral há sempre um resumo de quem já sabe quem é seu Amigo Secreto. Assim, você fica sabendo quando a lista estiver completa.
     lastly: E por último, não se esqueça de sua própria participação! Seria um pouco tonto, né? Nós mandaremos um novo e-mail após você ter clicado no botão de confirmação abaixo.
+#    come_back:
     btn_validate: Validar meu evento
 
 # Emails/poolStatus.{html,txt}.twig

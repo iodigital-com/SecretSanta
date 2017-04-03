@@ -337,6 +337,7 @@ emails-pendingConfirmation:
     click_button: 请点击以下按键确认你的秘密圣诞老人邮件名单。这将使我们的小矮人提早将你创建的私人信息发送到你所有参与人员手上。
     overview_page: 在最新创建的总结情况页面中，你将可以持续跟踪你所有参与人员查看自己的秘密圣诞老人礼物密友情况。从而知道什么时候所有参与人员已全部查看。
     lastly: 最后，别忘记你自己也参与其中！在你点击以下确认按键后，我们也将发送一封新的电子邮件给你。
+#    come_back:
     btn_validate: 确认我的活动
 
 # Emails/poolStatus.{html,txt}.twig
