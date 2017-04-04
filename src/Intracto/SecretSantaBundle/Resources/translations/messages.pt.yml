@@ -113,6 +113,7 @@ pool-deleted:
 #pool-forgot_link:
 #    title: ?
 #    description: ?
+#    info_reuse:
 
 # Party/getReuseUrl.html.twig
 #get-reuse_link:

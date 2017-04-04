@@ -106,6 +106,7 @@ pool-deleted:
 pool-forgot_link:
     title: Renvoyer l'e-mail d'activation
     description: Renseignez l'adresse e-mail de l'administrateur de la liste et nous renverrons l'e-mail d'activation. Cela ne concerne que les listes qui se sont déroulés la semaine dernière ou qui auront lieu prochainement. (Ceci enverra uniquement le lien de la page d'administration).
+#    info_reuse:
 
 # Party/getReuseUrl.html.twig
 #get-reuse_link:
@@ -541,7 +542,7 @@ flashes:
     # ForgotManagementURLController
     forgot_management_url:
         success: Nous avons bien renvoyé votre e-mail d'activation
-        error: Une erreur est survenue lors du renvoi de l'e-mail d'activation. Veuillez réessayer.
+#        error:
 
     # ManagementController
     management:

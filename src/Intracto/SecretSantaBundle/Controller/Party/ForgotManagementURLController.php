@@ -54,7 +54,7 @@ class ForgotManagementURLController extends Controller
                 ];
             } else {
                 $feedback = [
-                    'type' => 'error',
+                    'type' => 'danger',
                     'message' => $this->get('translator')->trans('flashes.forgot_management_url.error'),
                 ];
             }

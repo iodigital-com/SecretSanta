@@ -120,6 +120,7 @@ pool-deleted:
 pool-forgot_link:
     title: Send bekreftelsesepost på nytt
     description: Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)
+#    info_reuse:
 
 # Party/getReuseUrl.html.twig
 #get-reuse_link:
@@ -597,7 +598,7 @@ flashes:
     # ForgotManagementURLController
     forgot_management_url:
         success: 'Vi har sendt en smånisse med en ny bekreftelsesepost til deg'
-        error: 'En feil inntraff mens din bekreftelsesepost ble sendt. Vennligst prøv igjen.'
+  #      error: ''
 
     # ManagementController
     management:

@@ -120,6 +120,7 @@ pool-deleted:
 pool-forgot_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
+    info_reuse: 'If you want to create a party, based on a previous party, you can request a list of your previous parties <a href="%reusepath%">here</a>'
 
 # Party/getReuseUrl.html.twig
 get-reuse_link:
@@ -622,7 +623,7 @@ flashes:
     # ForgotManagementURLController
     forgot_management_url:
         success: 'We have successfully resend your activation mail'
-        error: 'An error occurred while resending the activation mail. Please try again.'
+        error: "We couldn't find any parties... Make sure that the email is the same one as the one you used when creating the party!"
 
     # ManagementController
     management:

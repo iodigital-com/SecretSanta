@@ -5,6 +5,7 @@
         <h1>{{ 'pool-forgot_link.title'|trans }}</h1>
 
         <p>{{ 'pool-forgot_link.description'|trans }}</p>
+        <p>{{ 'pool-forgot_link.info_reuse'|trans({'%reusepath%': path('request_reuse_url')}) | raw }}
         {{ form_start(form)}}
             {{ form_row(form._token) }}
             <div class="form-group">

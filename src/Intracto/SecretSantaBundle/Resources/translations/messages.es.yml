@@ -112,6 +112,7 @@ pool-deleted:
     title: ¡Tu lista Secret Santa fue borrada!
     body: <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
     create_new_list: ¡Crear una nueva lista Secret Santa!
+#    info_reuse:
 
 # Pool/forgotLink.html.twig
 pool-forgot_link:
@@ -529,7 +530,7 @@ flashes:
     # ForgotManagementURLController
     forgot_management_url:
         success: 'Hemos enviado exitosamente reenviado su correo de activación.'
-        error: 'Se produjo un error durante la transmisión del correo de activación. Por favor, inténtalo de nuevo.'
+#        error:
 
     # ManagementController
     management:
