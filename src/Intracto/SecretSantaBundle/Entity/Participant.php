@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
+use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
 
 /**
  * @ORM\Table(name="participant", indexes={@ORM\Index(name="participant_url", columns={"url"})})
@@ -53,6 +54,7 @@ class Participant
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
      * )
+     * @ParticipantIsNotBlacklisted()
      */
     private $email;
 
@@ -164,6 +166,13 @@ class Participant
      * @ORM\Column(name="wishlist_updated_time", type="datetime", nullable=true)
      */
     private $wishlistUpdatedTime;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="subscribed_for_updates", type="boolean", options={"default"=true})
+     */
+    private $subscribedForUpdates = true;
 
     public function __construct()
     {
@@ -571,5 +580,20 @@ class Participant
     public function setWishlistUpdatedTime($wishlistUpdatedTime)
     {
         $this->wishlistUpdatedTime = $wishlistUpdatedTime;
+    }
+
+    public function unsubscribe()
+    {
+        $this->subscribedForUpdates = false;
+    }
+
+    public function subscribe()
+    {
+        $this->subscribedForUpdates = true;
+    }
+
+    public function isSubscribed()
+    {
+        return $this->subscribedForUpdates;
     }
 }

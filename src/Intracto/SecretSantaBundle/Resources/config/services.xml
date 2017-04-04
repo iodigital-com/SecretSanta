@@ -64,6 +64,10 @@
         </service>
         <service id="intracto_secret_santa.service.export" class="Intracto\SecretSantaBundle\Service\ExportService" />
         <service id="intracto_secret_santa.service.participant_shuffler" class="Intracto\SecretSantaBundle\Entity\ParticipantShuffler" />
+        <service id="intracto_secret_santa.service.unsubscribe" class="Intracto\SecretSantaBundle\Service\UnsubscribeService" >
+            <argument type="service" id="doctrine.orm.entity_manager"></argument>
+            <argument type="service" id="router"></argument>
+        </service>
 
         <!-- Twig -->
         <service id="intracto_secret_santa.twig.extension.form" class="Intracto\SecretSantaBundle\Twig\Extension\FormExtension">
@@ -87,6 +91,10 @@
             <argument type="service" id="intracto_secret_santa.service.participant_shuffler" />
             <tag name="validator.constraint_validator" alias="intracto_secret_santa.validator.party_has_valid_excludes" />
         </service>
+        <service id="intracto_secret_santa.validator.participant_is_not_blacklisted" class="Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklistedValidator">
+            <argument type="service" id="doctrine.orm.default_entity_manager" />
+            <tag name="validator.constraint_validator" alias="intracto_secret_santa.validator.participant_is_not_blacklisted" />
+        </service>
 
         <!-- Mailer -->
         <service id="intracto_secret_santa.mailer" class="Intracto\SecretSantaBundle\Mailer\MailerService">
@@ -95,6 +103,7 @@
             <argument type="service" id="templating"></argument>
             <argument type="service" id="translator"></argument>
             <argument type="service" id="router"></argument>
+            <argument type="service" id="intracto_secret_santa.service.unsubscribe"></argument>
             <argument>%noreply_email%</argument>
         </service>
     </services>

@@ -281,6 +281,19 @@ entry_show_valid:
 #        error: ?
 #        error_in_form: ?
 
+# Participant/unsubscribe.html.twih
+#participant_unsubscribe:
+#    title:
+#    unsubscribe_all_label:
+#    unsubscribe_blacklist:
+#    unsubscribe_confirm_btn:
+#    unsubscribe_for:
+#    info_confirmation:
+#    blacklist_warning:
+#    feedback:
+#        success:
+#        error:
+
 # Pool/manage/base.html.twig
 pool_manage_base:
     headers:
@@ -399,6 +412,11 @@ emails-base_email:
     title: Hemmelig-nisse
     footer: Kos deg med å arrangere Secret Santa!
     created_by: Laget av
+
+# Emails/baseEmailUnsubscribe.html.twig
+#emails-base_email_unsubscribe:
+#    unsubscribe:
+#    unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -585,6 +603,7 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Sendt på nytt!</strong><br/>Eposten til %email% har blitt sendt på nytt.<br/>
+#        blacklisted:
 
     # EntryController
     entry:

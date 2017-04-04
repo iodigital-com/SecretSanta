@@ -1,0 +1,35 @@
+{% extends "IntractoSecretSantaBundle::base.html.twig" %}
+
+{% block main %}
+    <div class="box">
+        <h1>{{ 'participant_unsubscribe.title' | trans}}</h1>
+        <p>{{ 'participant_unsubscribe.unsubscribe_for' | trans({'%date%': party.eventDate |date("d/m/Y") ,  '%location%': party.location}) }}</p>
+        <div class="alert alert-warning" role="alert">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            {{ 'participant_unsubscribe.info_confirmation' | trans | raw}}
+        </div>
+
+        {{ form_start(unsubscribeForm) }}
+        <div class="form-group">
+            {{ form_widget(unsubscribeForm.allParties) }}
+            {{ form_label(unsubscribeForm.allParties) }}
+        </div>
+        <div class="alert alert-danger"  id="blacklistAlert" role="alert" style="display: none;">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            {{ 'participant_unsubscribe.blacklist_warning' | trans | raw}}
+        </div>
+        <div class="form-group">
+            {{ form_widget(unsubscribeForm.blacklist) }}
+            {{ form_label(unsubscribeForm.blacklist) }}
+        </div>
+        <button type="submit" class="btn btn-default">{{ 'participant_unsubscribe.unsubscribe_confirm_btn' |trans }}</button>
+        {{ form_end(unsubscribeForm) }}
+    </div>
+{% endblock main %}
+{% block javascripts%}
+    <script type="text/javascript">
+        $('#unsubscribe_blacklist').change(function(){
+            $('#blacklistAlert').toggle();
+        });
+    </script>
+{% endblock javascripts %}

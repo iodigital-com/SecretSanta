@@ -2,3 +2,5 @@
 
 {{ 'emails-viewEntryReminder.btn.find_out'|trans }}:
 {{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}
+
+{{ 'emails-base_email_unsubscribe.unsubscribe' | trans }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }} {{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}

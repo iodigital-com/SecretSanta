@@ -43,6 +43,7 @@ class ParticipantMailQuery
               AND party.sentdate < :twoWeeksAgo
               AND (participant.wishlistUpdatedTime IS NULL OR participant.wishlistUpdatedTime < :oneHourAgo)
               AND (participant.emptyWishlistReminderSentTime IS NULL OR participant.emptyWishlistReminderSentTime < :oneWeekAgo)
+              AND participant.isSubscribed = 1
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
@@ -78,6 +79,7 @@ class ParticipantMailQuery
               AND party.eventdate < :sixWeeksFromNow
               AND party.sentdate < :twoWeeksAgo
               AND (participant.viewReminderSentTime IS NULL OR participant.viewReminderSentTime < :oneWeekAgo)
+              AND participant.isSubscribed = 1
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
@@ -111,6 +113,7 @@ class ParticipantMailQuery
               AND party.sentdate < :twoWeeksAgo
               AND (participant.wishlistUpdatedTime IS NULL OR participant.wishlistUpdatedTime < :oneHourAgo)
               AND (participant.updateWishlistReminderSentTime IS NULL OR participant.updateWishlistReminderSentTime < :oneDayAgo)
+              AND participant.isSubscribed = 1
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
@@ -143,6 +146,7 @@ class ParticipantMailQuery
               AND party.eventdate < :sixWeeksFromNow
               AND party.sentdate < :twoWeeksAgo
               AND (participant.partyStatusSentTime IS NULL OR participant.partyStatusSentTime < :oneWeekAgo)
+              AND participant.isSubscribed = 1
         ');
 
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);

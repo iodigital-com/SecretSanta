@@ -281,6 +281,23 @@ participant_communication-send_message:
         error: Unfortunately we couldn't send your message. Please try again later!
         error_in_form: There was an error with your input. Please check your input and try again!
 
+# Participant/unsubscribe.html.twih
+participant_unsubscribe:
+    title: Unsubscribe from emails
+    unsubscribe_all_label: Mark this checkbox if you also want to unsubscribe from all other parties where you currently are participating
+    unsubscribe_blacklist: "Blacklist me: Prevent users from inviting me in the future"
+    unsubscribe_confirm_btn: Unsubscribe
+    unsubscribe_for: Your are unsubscribing from emails for the Secret Santa party on %date%, at/in %location%.
+    info_confirmation: >
+                        <strong>Are you sure?</strong> When you unsubscribe we won't send you mails anymore about this party, <strong>but you will still participate in the party</strong>.
+                        When you don't want to participate anymore, you should ask your party admin to remove you from the party.<br/>
+                        You might receive mails from other parties where you are participating, unless you mark the checkbox below.
+    blacklist_warning: >
+                       <strong>Caution!</strong> When you blacklist your email adress you won't be able to join any Secret Santa party in the future! Only use this function if you think someone is misusing your email!
+    feedback:
+        success: You have successfully unsubscribed!
+        error: There was an error when unsubscribing, please try again!
+
 # Pool/manage/base.html.twig
 pool_manage_base:
     headers:
@@ -400,6 +417,11 @@ emails-base_email:
     title: Secret Santa by Intracto
     footer: Have fun organizing Secret Santa!
     created_by: Created by
+
+# Emails/baseEmailUnsubscribe.html.twig
+emails-base_email_unsubscribe:
+    unsubscribe: If you don't want to receive mails in the future, you can
+    unsubscribe_link: unsubscribe here
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -603,6 +625,7 @@ flashes:
     # ResendEntryController
     resend_entry:
         resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
+        blacklisted: <strong>Oops.. We couldn't send the email!</strong> This person has blacklisted his/her email, and doesn't want to receive mails anymore.
 
     # EntryController
     entry:

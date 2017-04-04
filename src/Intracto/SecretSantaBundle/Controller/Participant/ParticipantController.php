@@ -122,7 +122,9 @@ class ParticipantController extends Controller
         $this->get('doctrine.orm.entity_manager')->persist($assignedParticipant);
         $this->get('doctrine.orm.entity_manager')->flush();
 
-        $this->get('intracto_secret_santa.mailer')->sendRemovedSecretSantaMail($assignedParticipant);
+        if ($assignedParticipant->isSubscribed()) {
+            $this->get('intracto_secret_santa.mailer')->sendRemovedSecretSantaMail($assignedParticipant);
+        }
 
         $this->get('session')->getFlashBag()->add(
             'success',
