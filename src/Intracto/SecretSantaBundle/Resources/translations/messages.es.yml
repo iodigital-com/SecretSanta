@@ -118,6 +118,13 @@ pool-forgot_link:
     title: Reenviar el correo de activación
     description: Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.
 
+# Party/getReuseUrl.html.twig
+#get-reuse_link:
+#    title:
+#    description:
+#    form:
+#        submit-btn:
+
 # Wishlist/showAll.html.twig
 wishlist-show_all:
     title: Secret Santa Listas de deseos
@@ -367,6 +374,16 @@ emails-forgot_link:
 
             tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.
 
+# Emails/reuseLink.{html,txt}.twig
+#emails-reuse_link:
+#    title:
+#    subject:
+#    party_title:
+#    at:
+#    message:
+#        html:
+#        txt:
+
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Tu Secret Santa
@@ -549,3 +566,8 @@ flashes:
             excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
 #            self_assigned: ?
             wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
+
+    # ReuseController
+#    reuse_controller:
+#        success:
+#        error:

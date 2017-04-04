@@ -194,6 +194,60 @@ class MailerService
     }
 
     /**
+     * @param $email
+     *
+     * @return bool
+     */
+    public function sendReuseLinksMail($email)
+    {
+        $results = $this->em->getRepository('IntractoSecretSantaBundle:Party')->findPartiesToReuse($email);
+
+        if (count($results) == 0) {
+            return false;
+        }
+
+        $partyLinks = [];
+        foreach ($results as $result) {
+            if ($result['eventdate'] instanceof \DateTime) {
+                $text = $result['eventdate']->format('d/m/Y').' ';
+            }
+            $text .= $this->translator->trans('emails-reuse_link.at') . ' ' . $result['location'];
+            $partyLinks[] = [
+                'url' => $this->routing->generate('party_reuse', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
+                'text' => $text,
+            ];
+        }
+
+        $this->translator->setLocale($results[0]['locale']);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($this->translator->trans('emails-reuse_link.subject'))
+            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
+            ->setTo($email)
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:reuseLink.html.twig',
+                    [
+                        'partyLinks' => $partyLinks,
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:reuseLink.txt.twig',
+                    [
+                        'partyLinks' => $partyLinks,
+                    ]
+                ),
+                'text/plain'
+            );
+        $this->mailer->send($message);
+
+        return true;
+    }
+
+    /**
      * @param Party $party
      * @param $results
      */

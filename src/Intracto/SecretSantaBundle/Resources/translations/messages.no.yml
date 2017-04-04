@@ -121,6 +121,13 @@ pool-forgot_link:
     title: Send bekreftelsesepost på nytt
     description: Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)
 
+# Party/getReuseUrl.html.twig
+#get-reuse_link:
+#    title:
+#    description:
+#    form:
+#        submit-btn:
+
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
 #    title: ?
@@ -435,6 +442,16 @@ emails-forgot_link:
 #        html: ?
 #        txt: ?
 
+# Emails/reuseLink.{html,txt}.twig
+#emails-reuse_link:
+#    title:
+#    subject:
+#    party_title:
+#    at:
+#    message:
+#        html:
+#        txt:
+
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Din hemmelige nisse
@@ -617,3 +634,8 @@ flashes:
             excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
             self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
             wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
+
+    # ReuseController
+#    reuse_controller:
+#        success:
+#        error:

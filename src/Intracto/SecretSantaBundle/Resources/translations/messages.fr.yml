@@ -107,6 +107,13 @@ pool-forgot_link:
     title: Renvoyer l'e-mail d'activation
     description: Renseignez l'adresse e-mail de l'administrateur de la liste et nous renverrons l'e-mail d'activation. Cela ne concerne que les listes qui se sont déroulés la semaine dernière ou qui auront lieu prochainement. (Ceci enverra uniquement le lien de la page d'administration).
 
+# Party/getReuseUrl.html.twig
+#get-reuse_link:
+#    title:
+#    description:
+#    form:
+#        submit-btn:
+
 # Wishlist/showAll.html.twig
 wishlist-show_all:
     title: Listes de souhaits Secret Santa
@@ -391,6 +398,16 @@ emails-forgot_link:
             Bonjour,
             Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.
 
+# Emails/ForgotLink.{html,txt}.twig
+#emails-reuse_link:
+#    title:
+#    subject:
+#    party_title:
+#    at:
+#    message:
+#        html:
+#        txt:
+
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Votre Secret Santa
@@ -561,3 +578,8 @@ flashes:
             excluded_entries: <h4>Oups</h4> Suppression des participants impossible. Vous avez utilisé des exclusions lors de la création de cette f&ecirc;te, ce qui peut causer de sproblèmes lors de la suppression d'un participant. Cette fonctionnalit&eacute; n'est donc pas disponible pour cette f&ecirc;te.
             self_assigned: <h4>Oups<h4> Ce participant ne peut être supprimé, car cela impliquerait que quelqu'un soit autoassigné.
             wrong: <h4>Oups</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas à la phrase attendue.
+
+    # ReuseController
+#    reuse_controller:
+#        success:
+#        error:
