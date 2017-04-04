@@ -2,7 +2,7 @@
 {% block main %}
     <div class="box">
         <h2>{{ 'static-faq.title'|trans }}</h2>
-        {{ 'static-faq.body'|trans|raw }}
+        {{ 'static-faq.body'|trans({'%requestReuseLink%': path('request_reuse_url')})|raw }}
 
         <p><a href="{{ url('homepage') }}" class="btn btn-large btn-primary">{{ 'static-faq.create_new_list'|trans }}</a>
         </p>
