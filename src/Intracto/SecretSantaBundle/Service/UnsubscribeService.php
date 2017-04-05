@@ -79,10 +79,7 @@ class UnsubscribeService
             ->setParameter('email', $participant->getEmail())
             ->getQuery()
             ->getResult();
-        if (count($results) > 0) {
-            return true;
-        }
 
-        return false;
+        return count($results) > 0;
     }
 }
