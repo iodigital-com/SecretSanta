@@ -60,7 +60,7 @@ class UnsubscribeService
 
     /**
      * @param Participant $participant
-     * @param Sting       $ip
+     * @param string      $ip
      */
     public function blacklist(Participant $participant, $ip)
     {

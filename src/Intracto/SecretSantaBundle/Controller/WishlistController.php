@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
+use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -20,7 +21,7 @@ class WishlistController extends Controller
      */
     public function showAllAction($listUrl)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
         $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === false) {
             throw new NotFoundHttpException();
@@ -37,7 +38,7 @@ class WishlistController extends Controller
      */
     public function updateAction(Request $request, $url)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\ParticipantRepository $participant */
+        /** @var \Intracto\SecretSantaBundle\Entity\Participant $participant */
         $participant = $this->get('intracto_secret_santa.repository.participant')->findOneByUrl($url);
         if ($participant === null) {
             throw new NotFoundHttpException();

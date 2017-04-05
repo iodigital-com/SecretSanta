@@ -20,7 +20,7 @@ class ResendParticipantController extends Controller
             throw new NotFoundHttpException();
         }
 
-        if ($participant->getParty()->getListUrl() !== $listUrl) {
+        if ($participant->getParty()->getListurl() !== $listUrl) {
             throw new NotFoundHttpException();
         }
 

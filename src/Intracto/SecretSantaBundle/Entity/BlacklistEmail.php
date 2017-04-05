@@ -20,7 +20,7 @@ class BlacklistEmail
     private $id;
 
     /**
-     * @var email
+     * @var string
      *
      * @ORM\Column(name="email", type="text", nullable=false)
      */
