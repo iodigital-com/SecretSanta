@@ -20,7 +20,7 @@ class ManagementController extends Controller
      */
     public function validAction(Request $request, $listUrl)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
         $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === null) {
             throw new NotFoundHttpException();
@@ -82,7 +82,7 @@ class ManagementController extends Controller
      */
     public function updateAction(Request $request, $listUrl)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
         $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
 
         if ($party === null) {
@@ -118,7 +118,7 @@ class ManagementController extends Controller
      */
     public function addParticipantAction(Request $request, $listUrl)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
+        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
         $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
 
         if ($party === null) {

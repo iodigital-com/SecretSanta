@@ -2,17 +2,17 @@
 
 namespace Intracto\SecretSantaBundle\EventListener;
 
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class RequestInfoLogger
 {
-    /** @var \Monolog\Logger */
+    /** @var LoggerInterface */
     private $logger;
-    /** @var \Symfony\Component\HttpFoundation\Request */
+    /** @var \Symfony\Component\HttpFoundation\RequestStack */
     private $requestStack;
 
-    public function __construct(Logger $logger, RequestStack $requestStack)
+    public function __construct(LoggerInterface $logger, RequestStack $requestStack)
     {
         $this->logger = $logger;
         $this->requestStack = $requestStack;

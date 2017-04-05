@@ -241,7 +241,7 @@ class Party
     }
 
     /**
-     * @return Participant[]
+     * @return Participant[]|ArrayCollection
      */
     public function getParticipants()
     {
