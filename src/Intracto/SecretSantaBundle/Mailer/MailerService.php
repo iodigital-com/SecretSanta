@@ -364,6 +364,7 @@ class MailerService
                     'IntractoSecretSantaBundle:Emails:poolStatus.txt.twig',
                     [
                         'party' => $participant->getParty(),
+                        'admin' => $participant,
                     ]
                 ),
                 'text/plain'
