@@ -72,18 +72,19 @@ pool-create:
 #        participants: ?
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: 排除
     description: 在這個目錄下，你好隨意阻止一些參與者組合。例如，防止來自同一家庭成員互相送禮物。
-
+#    information:
     placeholder_exclude: 點擊及選擇你想排除的參與者
-
     btn:
-        create_event: 創造你的項目!
-
+#        start_party:
+#        cancel:
     label:
         name: 名字
         exclude: 排除?
+    feedback:
+#       not_enough:
 
 # Pool/created.html.twig
 pool-created:
@@ -304,6 +305,8 @@ pool_manage_valid:
 #        pool_update: ?
 #        remove_participant_confirm: ?
 #        updated_party: ?
+#        start_party:
+#        start_party_with_excludes:
 
     label:
         name: 名字
@@ -459,6 +462,9 @@ flashes:
 #            success: ?
 #            danger: ?
 #        updated_party:
+#            success: ?
+#            danger: ?
+#        start_party:
 #            success: ?
 #            danger: ?
 

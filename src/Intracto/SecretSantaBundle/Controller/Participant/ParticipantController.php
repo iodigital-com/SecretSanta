@@ -31,7 +31,9 @@ class ParticipantController extends Controller
                 $participant->setEmail((string) $emailAddress);
                 $this->get('doctrine.orm.entity_manager')->flush($participant);
 
-                $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
+                if ($participant->getParty()->getCreated()) {
+                    $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
+                }
 
                 $this->get('session')->getFlashBag()->add(
                     'success',
@@ -101,29 +103,34 @@ class ParticipantController extends Controller
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
         }
 
-        $secretSanta = $participant->getAssignedParticipant();
-        $assignedParticipantId = $this->get('intracto_secret_santa.query.participant_report')->findBuddyByParticipantId($participantId);
-        $assignedParticipant = $this->get('intracto_secret_santa.repository.participant')->find($assignedParticipantId[0]['id']);
+        if ($participant->getParty()->getCreated()) {
+            $secretSanta = $participant->getAssignedParticipant();
+            $assignedParticipantId = $this->get('intracto_secret_santa.query.participant_report')->findBuddyByParticipantId($participantId);
+            $assignedParticipant = $this->get('intracto_secret_santa.repository.participant')->find($assignedParticipantId[0]['id']);
 
-        // if A -> B -> A we can't delete B anymore or A is assigned to A
-        if ($participant->getAssignedParticipant()->getAssignedParticipant()->getId() === $participant->getId()) {
-            $this->get('session')->getFlashBag()->add(
-                'warning',
-                $this->get('translator')->trans('flashes.entry.remove_participant.self_assigned')
-            );
+            // if A -> B -> A we can't delete B anymore or A is assigned to A
+            if ($participant->getAssignedParticipant()->getAssignedParticipant()->getId() === $participant->getId()) {
+                $this->get('session')->getFlashBag()->add(
+                    'warning',
+                    $this->get('translator')->trans('flashes.entry.remove_participant.self_assigned')
+                );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
-        }
+                return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+            }
 
-        $this->get('doctrine.orm.entity_manager')->remove($participant);
-        $this->get('doctrine.orm.entity_manager')->flush();
+            $this->get('doctrine.orm.entity_manager')->remove($participant);
+            $this->get('doctrine.orm.entity_manager')->flush();
 
-        $assignedParticipant->setAssignedParticipant($secretSanta);
-        $this->get('doctrine.orm.entity_manager')->persist($assignedParticipant);
-        $this->get('doctrine.orm.entity_manager')->flush();
+            $assignedParticipant->setAssignedParticipant($secretSanta);
+            $this->get('doctrine.orm.entity_manager')->persist($assignedParticipant);
+            $this->get('doctrine.orm.entity_manager')->flush();
 
-        if ($assignedParticipant->isSubscribed()) {
-            $this->get('intracto_secret_santa.mailer')->sendRemovedSecretSantaMail($assignedParticipant);
+            if ($assignedParticipant->isSubscribed()) {
+                $this->get('intracto_secret_santa.mailer')->sendRemovedSecretSantaMail($assignedParticipant);
+            }
+        } else {
+            $this->get('doctrine.orm.entity_manager')->remove($participant);
+            $this->get('doctrine.orm.entity_manager')->flush();
         }
 
         $this->get('session')->getFlashBag()->add(

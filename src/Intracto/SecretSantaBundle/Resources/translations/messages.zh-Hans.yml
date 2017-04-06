@@ -72,18 +72,19 @@ pool-create:
 #        participants: ?
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: 排除
     description: 在这名单里你可以随意防止一些参与人员的组合配对。例如防止同一家庭成员之间不得不买礼物给对方。
-
+#    information:
     placeholder_exclude: 点击选择你想要排除的参与人员
-
     btn:
-        create_event: 创建你的礼物交换活动！
-
+#        start_party:
+#        cancel:
     label:
         name: 名字
         exclude: 排除
+    feedback:
+#       not_enough:
 
 # Pool/created.html.twig
 pool-created:
@@ -304,6 +305,8 @@ pool_manage_valid:
 #        pool_update: ?
 #        remove_participant_confirm: ?
 #        updated_party: ?
+#        start_party:
+#        start_party_with_excludes:
 
     label:
         name: 名字
@@ -459,6 +462,9 @@ flashes:
 #            success: ?
 #            danger: ?
 #        updated_party:
+#            success: ?
+#            danger: ?
+#        start_party:
 #            success: ?
 #            danger: ?
 

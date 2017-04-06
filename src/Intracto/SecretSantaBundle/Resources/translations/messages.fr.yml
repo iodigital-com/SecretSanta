@@ -67,18 +67,19 @@ pool-create:
         participants: Participants
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Exclure
     description: Avec cette liste, vous pouvez éventuellement éviter certaines combinaisons entre les membres. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.
-
+#    information:
     placeholder_exclude: Cliquez et sélectionnez les partipants que vous désirez exclure
-
     btn:
-        create_event: Créez votre événement
-
+#        start_party:
+#        cancel:
     label:
         name: Nom
         exclude: Exclure
+    feedback:
+#       not_enough:
 
 # Pool/created.html.twig
 pool-created:
@@ -352,6 +353,8 @@ pool_manage_valid:
         pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
         remove_participant_confirm: Supprimer ce participant
         updated_party: Mettre &agrave; jour les détails de ma f&ecirc;te
+#        start_party:
+#        start_party_with_excludes:
 
     label:
         name: Nom
@@ -539,6 +542,9 @@ flashes:
         updated_party:
             success: <h4>Mis &agrave; jour!</h4> Les détails ont été mis &agrave; jour avec succ&egrave;s.
             danger: <h4>Oups</h4> Une erreur s'est produite lors de la mise &agrave; jour de votre f&ecirc;te. Veuillez essayer à nouveau.
+#        start_party:
+#            success: ?
+#            danger: ?
 
     # PoolController
     pool:

@@ -81,18 +81,19 @@ pool-create:
         participants: Participants
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Exclude
     description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
-
+    information: When you use excludes it might be possible that some users can't be removed anymore from the party. You can still add participants, but you won't be able to change the excludes anymore.
     placeholder_exclude: Click and choose the participants you want to exclude
-
     btn:
-        create_event: Create your event!
-
+        start_party: Start your party!
+        cancel: Cancel
     label:
         name: Name
         exclude: Exclude
+    feedback:
+        not_enough: Your party needs at least 4 participants to use excludes!
 
 # Pool/created.html.twig
 pool-created:
@@ -403,6 +404,8 @@ pool_manage_valid:
         pool_update: Send party update to participants
         remove_participant_confirm: Remove this participant
         updated_party: Update your party details
+        start_party: Start your party
+        start_party_with_excludes: Start your party with excludes
 
     label:
         name: Name
@@ -617,6 +620,9 @@ flashes:
         updated_party:
             success: <h4>Updated!</h4> Your party details have been succesfully updated.
             danger: <h4>Oops</h4> An error has occured while updating your party. Please try again.
+        start_party:
+            success: We started your party, and we've sent out the mails!
+            danger: There was an error starting your party, please try again!
 
     # PoolController
     pool:

@@ -38,13 +38,15 @@
                              onclick="editableEmail('{{ party.listUrl }}', {{ participant.id }});"
                              rel="tooltip" title="{{ 'pool_manage_valid.manage.edit_email'|trans }}" alt="{{ 'pool_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;">
-                        {% spaceless %}
-                            <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': participant.id }) }}">
-                                <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
-                                     title="{{ 'pool_manage_valid.manage.resend_email'|trans }}" alt="{{ 'pool_manage_valid.manage.resend_email'|trans }}">
-                            </a>
-                        {% endspaceless %}
-                        {% if app.environment == 'dev' %}
+                        {% if party.created %}
+                            {% spaceless %}
+                                <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': participant.id }) }}">
+                                    <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
+                                         title="{{ 'pool_manage_valid.manage.resend_email'|trans }}" alt="{{ 'pool_manage_valid.manage.resend_email'|trans }}">
+                                </a>
+                            {% endspaceless %}
+                        {% endif %}
+                        {% if app.environment == 'dev' and participant.assignedParticipant != null %}
                             <a href="{{ path('participant_view', { 'url': participant.url }) }}" class="add-participant-link">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
                                      title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
@@ -59,22 +61,23 @@
             {% endfor %}
             </tbody>
         </table>
-
         <div class="alert alert-info">
             <strong>{{ 'pool_manage_valid.manage.tip'|trans }}</strong> {{ 'pool_manage_valid.manage.come_back'|trans }}
         </div>
+        {% if not party.created  %}
+            <a href="{{ path('party_manage_start', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link">
+                <i class="fa fa-play"></i> {{ 'pool_manage_valid.btn.start_party'|trans }}
+            </a>
+            {% if party.participants | length >3 %}
+                <a href="{{ path('party_exclude', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link manage_btn_middle">
+                    <i class="fa fa-play"></i> {{ 'pool_manage_valid.btn.start_party_with_excludes'|trans }}
+                </a>
+            {% endif %}
+        {% endif %}
+        <div class="clearfix"></div>
         <button id="btn_delete" class="btn btn-primary manage_btn">
             <i class="fa fa-exclamation-circle"></i> {{ 'pool_manage_valid.btn.delete_list'|trans }}
         </button>
-        <a href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
-            <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose'|trans }}
-        </a>
-        <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': party.listurl }) }}">
-            <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose_wishlists'|trans }}
-        </a>
-        <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
-            <i class="fa fa-envelope"></i> {{ 'pool_manage_valid.btn.pool_update'|trans|raw }}
-        </a>
         <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
                 {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}disabled{% endif %}>
             <i class="fa fa-plus-circle fa-inverse"></i> {{ 'pool_manage_valid.btn.add_participant'|trans|raw }}
@@ -82,7 +85,17 @@
         <button id="btn_update" class="btn btn-warning manage_btn">
             <i class="fa fa-refresh"></i> {{ 'pool_manage_valid.btn.updated_party'|trans|raw }}
         </button>
-
+        {% if party.created %}
+            <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
+                <i class="fa fa-envelope"></i> {{ 'pool_manage_valid.btn.pool_update'|trans|raw }}
+            </a>
+            <a href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
+                <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose'|trans }}
+            </a>
+            <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': party.listurl }) }}">
+                <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose_wishlists'|trans }}
+            </a>
+        {% endif %}
         <br/><br/>
 
         <div id="delete-warning" class="alert alert-danger" style="display: none;">

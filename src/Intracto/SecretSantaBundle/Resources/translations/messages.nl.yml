@@ -79,18 +79,19 @@ pool-create:
         participants: Deelnemers
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Uitsluiten
     description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
-
+    information: Wanneer je gebruik maakt van excludes kan je geen gebruikers meer verwijderen van het feestje. Je kan nog steeds deelnemers toevoegen, maar je zal de excludes niet meer kunnen wijzigen.
     placeholder_exclude: Klik en kies de deelnemers die je wilt uitsluiten
-
     btn:
-        create_event: Maak je evenement aan!
-
+        start_party: Start je feestje!
+        cancel: Annuleren
     label:
         name: Naam
         exclude: Uitsluiten
+    feedback:
+        not_enough: Je feestje moet minimaal 4 deelnemers hebben voordat je excludes kan gebruiken!
 
 # Pool/created.html.twig
 pool-created:
@@ -403,6 +404,9 @@ pool_manage_valid:
         pool_update: Verstuur update naar alle deelnemers
         remove_participant_confirm: Verwijder deze deelnemer
         updated_party: Bewerk de details van dit feestje
+        start_party: Start je feestje
+        start_party_with_excludes: Start je feestje met excludes
+
 
     label:
         name: Naam
@@ -622,6 +626,9 @@ flashes:
         updated_party:
             success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
             danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
+        start_party:
+            success: We hebben je feestje gestart, en de deelnemers op de hoogte gebracht via email!
+            danger: Er is een fout opgetreden tijdens het starten van je feestje, probeer alsjeblieft opnieuw!
 
     # PoolController
     pool:

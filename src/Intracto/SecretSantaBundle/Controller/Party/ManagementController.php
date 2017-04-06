@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Party;
 
+use Intracto\SecretSantaBundle\Entity\Party;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Form\Type\AddParticipantType;
 use Intracto\SecretSantaBundle\Form\Type\UpdatePartyDetailsType;
+use Intracto\SecretSantaBundle\Form\Type\PartyExcludeParticipantType;
 
 class ManagementController extends Controller
 {
@@ -96,7 +98,9 @@ class ManagementController extends Controller
             $this->get('doctrine.orm.entity_manager')->persist($party);
             $this->get('doctrine.orm.entity_manager')->flush();
 
-            $this->get('intracto_secret_santa.mailer')->sendPartyUpdatedMailsForParty($party);
+            if ($party->getCreated()) {
+                $this->get('intracto_secret_santa.mailer')->sendPartyUpdatedMailsForParty($party);
+            }
 
             $this->get('session')->getFlashBag()->add(
                 'success',
@@ -130,27 +134,35 @@ class ManagementController extends Controller
         $addParticipantForm->handleRequest($request);
 
         if ($addParticipantForm->isSubmitted() && $addParticipantForm->isValid()) {
-            $newParticipant->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
             $newParticipant->setParty($party);
 
-            $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
-            $this->get('doctrine.orm.entity_manager')->flush($newParticipant);
+            if ($party->getCreated()) {
+                $newParticipant->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
+                $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
+                $this->get('doctrine.orm.entity_manager')->flush($newParticipant);
 
-            $adminId = $this->get('intracto_secret_santa.query.participant_report')->findAdminIdByPartyId($party->getId());
-            /** @var Participant $admin */
-            $admin = $this->get('intracto_secret_santa.repository.participant')->findOneById($adminId[0]['id']);
-            $adminMatch = $admin->getAssignedParticipant();
+                $adminId = $this->get('intracto_secret_santa.query.participant_report')->findAdminIdByPartyId($party->getId());
+                /** @var Participant $admin */
+                $admin = $this->get('intracto_secret_santa.repository.participant')->findOneById($adminId[0]['id']);
+                $adminMatch = $admin->getAssignedParticipant();
 
-            $admin->setAssignedParticipant($newParticipant);
-            $this->get('doctrine.orm.entity_manager')->persist($admin);
-            $this->get('doctrine.orm.entity_manager')->flush($admin);
+                $this->get('doctrine.orm.entity_manager')->persist($admin);
+                $this->get('doctrine.orm.entity_manager')->flush($admin);
 
-            $newParticipant->setAssignedParticipant($adminMatch);
-            $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
-            $this->get('doctrine.orm.entity_manager')->flush();
+                $admin->setAssignedParticipant($newParticipant);
+                $this->get('doctrine.orm.entity_manager')->persist($admin);
+                $this->get('doctrine.orm.entity_manager')->flush($admin);
 
-            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($admin);
-            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($newParticipant);
+                $newParticipant->setAssignedParticipant($adminMatch);
+                $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
+                $this->get('doctrine.orm.entity_manager')->flush();
+
+                $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($admin);
+                $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($newParticipant);
+            } else {
+                $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
+                $this->get('doctrine.orm.entity_manager')->flush();
+            }
 
             $this->get('session')->getFlashBag()->add(
                 'success',
@@ -164,5 +176,91 @@ class ManagementController extends Controller
         }
 
         return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+    }
+
+    /**
+     * @Route("/manage/start/{listUrl}", name="party_manage_start")
+     * @Method("GET")
+     */
+    public function startParty($listUrl)
+    {
+        /** @var Party $party */
+        $party = $this->getParty($listUrl);
+
+        if ($party->getCreated() || $party->getParticipants()->count() < 3) {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->get('translator')->trans('flashes.management.start_party.danger')
+            );
+
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
+        }
+
+        $mailerService = $this->get('intracto_secret_santa.mailer');
+
+        $party->setCreated(true);
+        $this->get('doctrine.orm.entity_manager')->persist($party);
+
+        $this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
+
+        $this->get('doctrine.orm.entity_manager')->flush();
+
+        $mailerService->sendSecretSantaMailsForParty($party);
+
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            $this->get('translator')->trans('flashes.management.start_party.success')
+        );
+
+        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
+    }
+
+    /**
+     * @Route("/exclude/{listUrl}", name="party_exclude")
+     * @Template("IntractoSecretSantaBundle:Party:exclude.html.twig")
+     */
+    public function excludeAction(Request $request, $listUrl)
+    {
+        /** @var MailerService $mailerService */
+        $party = $this->getParty($listUrl);
+
+        if (count($party->getParticipants()) <= 3) {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->get('translator')->trans('party_manage-exclude.feedback.not_enough')
+            );
+
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
+        }
+
+        $form = $this->createForm(PartyExcludeParticipantType::class, $party);
+        if ('POST' === $request->getMethod()) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $this->get('doctrine.orm.entity_manager')->persist($party);
+
+                //$this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
+
+                $this->get('doctrine.orm.entity_manager')->flush();
+
+                return $this->redirect($this->generateUrl('party_manage_start', ['listUrl' => $party->getListurl()]));
+            }
+        }
+
+        return [
+            'form' => $form->createView(),
+            'party' => $party,
+        ];
+    }
+
+    private function getParty($listUrl)
+    {
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
+        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
+        if ($party === null) {
+            throw new NotFoundHttpException();
+        }
+
+        return $party;
     }
 }

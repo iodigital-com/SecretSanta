@@ -81,18 +81,19 @@ pool-create:
         participants: Deltagere
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Eksluder kombinasjoner
     description: Med denne listen kan du helt valgfritt forhindre enkelte kombinasjoner av deltagerne. For eksempel kan du unngå at familiemedlemmer kjøper gaver til hverandre.
-
+#    information:
     placeholder_exclude: Klikk og velg deltagere du vil ekskludere fra listen
-
     btn:
-        create_event: Opprett arrangement!
-
+#        start_party:
+#        cancel:
     label:
         name: Navn
         exclude: Ekskluder
+    feedback:
+#       not_enough:
 
 # Pool/created.html.twig
 pool-created:
@@ -398,6 +399,8 @@ pool_manage_valid:
         pool_update: Send party update to participants
         remove_participant_confirm: Fjern denne deltageren
         updated_party: Oppdater detaljer for ditt arrangement
+#        start_party:
+#        start_party_with_excludes:
 
     label:
         name: Navn
@@ -595,6 +598,9 @@ flashes:
         updated_party:
             success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
             danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
+#        start_party:
+#            success: ?
+#            danger: ?
 
     # PoolController
     pool:
