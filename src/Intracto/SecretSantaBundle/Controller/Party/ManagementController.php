@@ -23,23 +23,7 @@ class ManagementController extends Controller
     public function validAction(Request $request, $listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
-        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
-        if ($party === null) {
-            throw new NotFoundHttpException();
-        }
-
-        if (!$party->getCreated()) {
-            return $this->redirect($this->generateUrl('party_exclude', ['listUrl' => $party->getListurl()]));
-        }
-
-        if ($party->getSentdate() === null) {
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.management.email_validated')
-            );
-
-            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailsForParty($party);
-        }
+        $party = $this->getParty($listUrl);
 
         $addParticipantForm = $this->createForm(
             AddParticipantType::class,
@@ -85,11 +69,7 @@ class ManagementController extends Controller
     public function updateAction(Request $request, $listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
-        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
-
-        if ($party === null) {
-            throw new NotFoundHttpException();
-        }
+        $party = $this->getParty($listUrl);
 
         $updatePartyDetailsForm = $this->createForm(UpdatePartyDetailsType::class, $party);
         $updatePartyDetailsForm->handleRequest($request);
@@ -123,11 +103,7 @@ class ManagementController extends Controller
     public function addParticipantAction(Request $request, $listUrl)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
-        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
-
-        if ($party === null) {
-            throw new NotFoundHttpException();
-        }
+        $party = $this->getParty($listUrl);
 
         $newParticipant = new Participant();
         $addParticipantForm = $this->createForm(AddParticipantType::class, $newParticipant);
