@@ -486,7 +486,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Wunschzettel aktualisiert</h4>Wir haben unsere Wichtel losgeschickt, um Ihren Secret Santa über Ihre Wünsche zu informieren!
         edit_email: <h4>Nicht gespeichert</h4> Die E-Mail-Adresse ist fehlerhaft.
-        saved_email: <h4>Gespeichert</h4> Die neue E-Mail-Adresse wurde gespeichert. Wir versenden auch diese E-Mail erneut.
+#        updated_participant:
+#        updated_participant_resent:
 #        remove_participant:
 #            success: ?
 #            danger: ?

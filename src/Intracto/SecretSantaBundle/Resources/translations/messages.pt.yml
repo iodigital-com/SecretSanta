@@ -544,7 +544,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Lista de desejos atualizada</h4> Mandamos os nossos elfos mágicos ir avisar quem te tirou de Amigo Secreto quais são os presentes super bacanas que você está esperando receber!
         edit_email: <h4>Não salvo</h4> Tem algo errado com o endereço e-mail.
-        saved_email: <h4>Salvo</h4> O novo endereço de e-mail foi salvo. Nós também enviamos o e-mail novamente.
+#        updated_participant:
+#        updated_participant_resent:
 #        remove_participant:
 #            success: ?
 #            danger: ?

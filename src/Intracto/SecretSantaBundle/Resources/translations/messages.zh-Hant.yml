@@ -481,7 +481,8 @@ flashes:
     entry:
         wishlist_updated: <h4>願望單已更新</h4>我們已送出我們的精靈去通知你的秘密聖誕老人關於你的願望!
         edit_email: <h4>並沒儲存</h4>這裡有電郵地址錯誤。
-        saved_email: <h4>儲存</h4> 新的電郵地址已儲存。我們亦重新傳送電郵。
+#        updated_participant:
+#        updated_participant_resent:
 #        remove_participant:
 #            success: ?
 #            danger: ?

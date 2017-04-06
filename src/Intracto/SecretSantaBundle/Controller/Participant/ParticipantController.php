@@ -11,34 +11,41 @@ use Intracto\SecretSantaBundle\Entity\EmailAddress;
 class ParticipantController extends Controller
 {
     /**
-     * @Route("/participant/edit-email/{listUrl}/{participantId}", name="participant_email_edit")
+     * @Route("/participant/edit/{listUrl}/{participantId}", name="participant_edit")
      */
-    public function editEmailAction(Request $request, $listUrl, $participantId)
+    public function editParticipantAction(Request $request, $listUrl, $participantId)
     {
         /** @var Participant $participant */
         $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
 
         if ($participant->getParty()->getListurl() === $listUrl) {
+            $name = $request->request->get('name');
             $emailAddress = new EmailAddress($request->request->get('email'));
             $emailAddressErrors = $this->get('validator')->validate($emailAddress);
 
             if (count($emailAddressErrors) > 0) {
                 $this->get('session')->getFlashBag()->add(
-                    'error',
+                    'danger',
                     $this->get('translator')->trans('flashes.entry.edit_email')
                 );
             } else {
+                $orriginalEmail = $participant->getEmail();
                 $participant->setEmail((string) $emailAddress);
+                $participant->setName((string) $name);
                 $this->get('doctrine.orm.entity_manager')->flush($participant);
 
-                if ($participant->getParty()->getCreated()) {
+                if ($orriginalEmail != $participant->getEmail() && $participant->getParty()->getCreated()) {
                     $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        $this->get('translator')->trans('flashes.entry.updated_participant_resent')
+                    );
+                } else {
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        $this->get('translator')->trans('flashes.entry.updated_participant')
+                    );
                 }
-
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    $this->get('translator')->trans('flashes.entry.saved_email')
-                );
             }
         }
 

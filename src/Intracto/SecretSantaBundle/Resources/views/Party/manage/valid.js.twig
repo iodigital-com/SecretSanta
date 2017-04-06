@@ -52,19 +52,31 @@
         }
     });
 
-    function editableEmail(listUrl, entryId) {
+    function editParticipant(listUrl, entryId) {
         var email = $('#email_' + entryId).html();
-        var url = '{{ path("participant_email_edit", { 'listUrl': 'listUrl', 'participantId': 'entryId' }) }}';
+        var name = $('#name_' + entryId).html();
+        var url = '{{ path("participant_edit", { 'listUrl': 'listUrl', 'participantId': 'entryId' }) }}';
         url = url.replace("listUrl", listUrl);
         url = url.replace("entryId", entryId);
         if ($('#email_' + entryId).has('form').length == 0) {
+            $('#name_' + entryId).html(
+                '<input type="text" id="input_name_' + entryId + '" class="form-control input_edit_email" name="name" value="' + name + '" data-hj-masked>'
+            );
             $('#email_' + entryId).html(
-                '<form action="' + url + '" method="post">' +
-                '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
-                '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'pool_manage_valid.manage.save'|trans }}</button>' +
+                '<form id ="form_' + entryId + '" action="' + url + '" method="post">' +
+                '<input type="text" id="input_email_' + entryId + '" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
+                '<button class="btn btn-small btn-primary" onclick="submitEditForm(' + entryId + ')"><i class="fa fa-check"></i> {{ 'pool_manage_valid.manage.save'|trans }}</button>'+
                 '</form>'
             );
         }
+    }
+
+    function submitEditForm(entryId) {
+            $('#form_' + entryId).append($('#input_name_' + entryId));
+            $('#form_' + entryId).hide();
+            $('#name_' + entryId).html('<i class="fa fa-spinner fa-spin "></i>');
+            $(document.body).append($('#form_' + entryId));
+            $('#form_' + entryId).submit();
     }
 
     function attachAction(listUrl, entryId) {

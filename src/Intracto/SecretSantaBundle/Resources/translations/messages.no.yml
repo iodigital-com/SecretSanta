@@ -615,7 +615,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
-        saved_email: <h4>Lagret</h4> Den nye epostadressen har blitt lagret. Vi har også sendt eposten på nytt.
+#        updated_participant:
+#        updated_participant_resent:
         remove_participant:
             success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
             danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.

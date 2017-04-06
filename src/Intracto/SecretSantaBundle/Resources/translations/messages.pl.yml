@@ -444,7 +444,8 @@ flashes:
     entry:
         wishlist_updated: '<h4>Lista życzeń zaktualizowana</h4> Wysłaliśmy nasze skrzaty aby poinformowały Tajnego Mikołaja o twoich życzeniach!'
         edit_email: '<h4>Nie zapisano</h4> Występuje błąd w adresie email.'
-        saved_email: '<h4>Zapisano</h4> Nowy adres email został zapisany. Ponownie wysłaliśmy e-mail.'
+#        updated_participant:
+#        updated_participant_resent:
 #        remove_participant:
 #            success: ?
 #            danger: ?

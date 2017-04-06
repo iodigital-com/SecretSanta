@@ -29,13 +29,13 @@
             {% for participant in party.participants %}
                 <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="entry-number">{{ loop.index }}</td>
-                    <td data-hj-masked>{{ participant.name }}</td>
+                    <td id="name_{{ participant.id }}" data-hj-masked>{{ participant.name }}</td>
                     <td id="email_{{ participant.id }}" data-hj-masked>{{ participant.email }}</td>
                     <td class="{% if participant.viewdate %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
-                             onclick="editableEmail('{{ party.listUrl }}', {{ participant.id }});"
+                             onclick="editParticipant('{{ party.listUrl }}', {{ participant.id }});"
                              rel="tooltip" title="{{ 'pool_manage_valid.manage.edit_email'|trans }}" alt="{{ 'pool_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;">
                         {% if party.created %}

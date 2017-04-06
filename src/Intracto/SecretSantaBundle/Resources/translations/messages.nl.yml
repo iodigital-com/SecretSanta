@@ -643,7 +643,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
         edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
-        saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
+        updated_participant: <h4>Aangepast!</h4> We hebben de details van de gebruiker aangepast!
+        updated_participant_resent: <h4>Aangepast!</h4> We hebben de details van de gebruiker aangepast! Omdat je het email adres hebt aangepast, en het feestje al gestart is, hebben we de email naar deze persoon opnieuw verzonden.
         remove_participant:
             success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
             danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.

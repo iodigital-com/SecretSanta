@@ -559,7 +559,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Liste de souhaits mise à jour</h4>Nous avons envoyé nos gnomes afin qu'ils avertissent votre Père-Noël secret de vos souhaits !
         edit_email: <h4>Non enregistrée</h4> l'adresse e-mail comporte une erreur.
-        saved_email: <h4>Enregistrée</h4> La nouvelle adresse e-mail a été enregistrée. Nous avons également renvoyé l'e-mail.
+#        updated_participant:
+#        updated_participant_resent:
         remove_participant:
             success: <h4>Supprimé!</h4> Participant supprimé avec succès.
             danger: <h4>Oups</h4> Ce participant ne peut être supprimé, votre f&ecirc;te nécessite au moins 3 participants.

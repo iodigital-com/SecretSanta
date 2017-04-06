@@ -547,7 +547,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
         edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
-        saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
+#        updated_participant:
+#        updated_participant_resent:
         remove_participant:
             success: <h4>¡Expulsado!</h4> Participante expulsado de éxito.
             danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.

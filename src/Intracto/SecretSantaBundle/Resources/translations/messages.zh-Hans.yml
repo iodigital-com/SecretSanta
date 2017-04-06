@@ -481,7 +481,8 @@ flashes:
     entry:
         wishlist_updated: <h4>愿望清单已更新</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>未保存</h4> 电子邮箱地址出错。
-        saved_email: <h4>已保存</h4> 已保存。新的电子邮箱地址已保存。我们也已重新发送电子邮件了。
+#        updated_participant:
+#        updated_participant_resent:
 #        remove_participant:
 #            success: ?
 #            danger: ?
