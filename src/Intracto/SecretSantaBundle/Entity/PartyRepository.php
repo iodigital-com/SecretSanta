@@ -25,7 +25,8 @@ class PartyRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findPartiesToReuse($email){
+    public function findPartiesToReuse($email)
+    {
         $qb = $this->_em->createQueryBuilder();
         $qb->addSelect('party.eventdate')
             ->addSelect('party.listurl')
@@ -40,6 +41,7 @@ class PartyRepository extends EntityRepository
                 'email' => $email,
                 'date' => new \DateTime('-2 year'),
             ]);
+
         return $qb->getQuery()->getResult();
     }
 }

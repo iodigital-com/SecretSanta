@@ -52,6 +52,7 @@ class ReuseController extends Controller
 
             $this->addFlash($feedback['type'], $feedback['message']);
         }
+
         return $this->redirect($this->generateUrl('request_reuse_url'));
     }
 }
