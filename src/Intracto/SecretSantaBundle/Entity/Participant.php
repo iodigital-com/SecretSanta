@@ -87,6 +87,13 @@ class Participant
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="open_email_date", type="datetime", nullable=true)
+     */
+    private $openEmailDate;
+
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="view_reminder_sent", type="datetime", nullable=true)
      */
     private $viewReminderSentTime;
@@ -596,4 +603,21 @@ class Participant
     {
         return $this->subscribedForUpdates;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getOpenEmailDate()
+    {
+        return $this->openEmailDate;
+    }
+
+    /**
+     * @param \DateTime $openEmailDate
+     */
+    public function setOpenEmailDate($openEmailDate)
+    {
+        $this->openEmailDate = $openEmailDate;
+    }
+
 }

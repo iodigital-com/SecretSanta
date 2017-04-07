@@ -77,6 +77,10 @@
         <service id="intracto_secret_santa.twig.linkify_extension" class="Intracto\SecretSantaBundle\Twig\LinkifyExtension">
             <tag name="twig.extension" />
         </service>
+        <service id="intracto_secret_santa.twig.mailstatus_extension" class="Intracto\SecretSantaBundle\Twig\MailStatusExtension">
+            <tag name="twig.extension" />
+            <argument type="service" id="translator"></argument>
+        </service>
 
         <!-- Form -->
         <service id="intracto_secret_santa.form.extension.jquery_date_type" class="Intracto\SecretSantaBundle\Form\Extension\DateTypeExtension">

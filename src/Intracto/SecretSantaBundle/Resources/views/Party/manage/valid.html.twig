@@ -33,7 +33,7 @@
                     <td class="participant-number">{{ loop.index }}</td>
                     <td id="name_{{ participant.id }}" data-hj-masked>{{ participant.name }}</td>
                     <td id="email_{{ participant.id }}" data-hj-masked>{{ participant.email }}</td>
-                    <td class="{% if participant.viewdate %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td>{{ participant|mailstatus|raw }}</td>
                     <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"

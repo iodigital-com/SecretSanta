@@ -415,7 +415,7 @@ party_manage_valid:
     label:
         name: Naam
         email: E-mail
-        confirmed: Bevestigd
+        confirmed: Mail status
         wishlist_filled: Wish List Ingevuld
         actions: Acties
 
@@ -652,6 +652,13 @@ emails-anonymous_message:
 
           Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wishlist!
     update_wishlist: Pas je verlanglijst aan
+
+# MailStatusExtension
+mail_status_extension:
+    unknown: Onbekend
+    opened: Mail geopend
+    viewed: Feestje bekeken
+    not_started: Feestje nog niet begonnen
 
 flashes:
     # SendPartyUpdateController

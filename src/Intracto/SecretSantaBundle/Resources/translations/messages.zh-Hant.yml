@@ -456,6 +456,13 @@ emails-wishlistChanged:
 #      txt: ?
 #    update_wishlist: ?
 
+# MailStatusExtension
+#mail_status_extension:
+#    unknown:
+#    opened:
+#    viewed:
+#    not_started:
+
 flashes:
     # SendPartyUpdateController
 #    send_party_update:
