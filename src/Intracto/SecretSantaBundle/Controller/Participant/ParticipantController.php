@@ -2,32 +2,40 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
+use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\EmailAddress;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ParticipantController extends Controller
 {
     /**
-     * @Route("/participant/edit/{listUrl}/{participantId}", name="participant_edit")
+     * @Route("/participant/edit", name="participant_edit")
      */
-    public function editParticipantAction(Request $request, $listUrl, $participantId)
+    public function editParticipantAction(Request $request)
     {
+        $name = $request->request->get('name');
+        $emailAddress = new EmailAddress($request->request->get('email'));
+        $participantId = $request->request->get('participantId');
+        $listUrl = $request->request->get('listUrl');
+
         /** @var Participant $participant */
         $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
 
         if ($participant->getParty()->getListurl() === $listUrl) {
-            $name = $request->request->get('name');
-            $emailAddress = new EmailAddress($request->request->get('email'));
             $emailAddressErrors = $this->get('validator')->validate($emailAddress);
-
-            if (count($emailAddressErrors) > 0) {
-                $this->get('session')->getFlashBag()->add(
-                    'danger',
-                    $this->get('translator')->trans('flashes.entry.edit_email')
-                );
+            $blacklisted = $this->get('validator')->validate($emailAddress, new ParticipantIsNotBlacklisted());
+            if ((count($emailAddressErrors) + count($blacklisted)) > 0 ) {
+                $return = [
+                    'responseCode' => 400,
+                    'message' => [
+                        'type' => 'danger',
+                        'message' => $this->get('translator')->trans('flashes.entry.edit_email'),
+                        ],
+                    ];
             } else {
                 $orriginalEmail = $participant->getEmail();
                 $participant->setEmail((string) $emailAddress);
@@ -36,20 +44,21 @@ class ParticipantController extends Controller
 
                 if ($orriginalEmail != $participant->getEmail() && $participant->getParty()->getCreated()) {
                     $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
-                    $this->get('session')->getFlashBag()->add(
-                        'success',
-                        $this->get('translator')->trans('flashes.entry.updated_participant_resent')
-                    );
+                    $message = $this->get('translator')->trans('flashes.entry.updated_participant_resent');
                 } else {
-                    $this->get('session')->getFlashBag()->add(
-                        'success',
-                        $this->get('translator')->trans('flashes.entry.updated_participant')
-                    );
+                    $message = $this->get('translator')->trans('flashes.entry.updated_participant');
                 }
+                $return = [
+                    'responseCode' => 200,
+                    'message' => [
+                        'type' => 'success',
+                        'message' => $message
+                    ]
+                ];
             }
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+        return new JsonResponse($return);
     }
 
     /**
