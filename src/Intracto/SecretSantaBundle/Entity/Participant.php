@@ -181,6 +181,13 @@ class Participant
      */
     private $subscribedForUpdates = true;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="email_did_bounce", type="boolean", options={"default"=false})
+     */
+    private $emailDidBounce = false;
+
     public function __construct()
     {
         $this->excludedParticipants = new ArrayCollection();
@@ -620,4 +627,19 @@ class Participant
         $this->openEmailDate = $openEmailDate;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEmailDidBounce()
+    {
+        return $this->emailDidBounce;
+    }
+
+    /**
+     * @param mixed $emailDidBounce
+     */
+    public function setEmailDidBounce($emailDidBounce)
+    {
+        $this->emailDidBounce = $emailDidBounce;
+    }
 }

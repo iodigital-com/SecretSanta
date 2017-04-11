@@ -470,6 +470,7 @@ emails-wishlistChanged:
 #    opened:
 #    viewed:
 #    not_started:
+#    bounced:
 
 flashes:
     # SendPartyUpdateController
