@@ -118,9 +118,10 @@ pool-deleted:
     create_new_list: Create a new Secret Santa list!
 
 # Pool/forgotLink.html.twig
-pool-forgot_link:
-    title: 'Resend activation mail'
-    description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
+party-forgot_link:
+    title: 'Request overview of my parties'
+    description: 'Fill in your email address and we will sent you an email with all the parties you have created and the parties where you are participating in. We only list the parties taking place in the future.'
+    submit_btn: Send me an overview
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -437,14 +438,23 @@ emails-emptyWishlistReminder:
 
 # Emails/ForgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Your Secret Santa list
-    subject: Resend activation mail
+    subject: Overview of my parties
+    participating_in: You are participating in the following parties:
+    created_these: You've created these parties:
+    table_labels:
+        date: Date
+        location: Location
+        link: Link
+        txt: The party on %date%, at/in %location%
+    btn:
+        party_link: Go to this party
+        manage_link: Manage this party
     message:
-        html: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+        html: 'Hi there, <br /><br />You have requested us to send an overview of all the parties you need to know about. These parties are all the parties you have created or where you are participating in, taking place in the future:<br />'
         txt: >
             Hi there,
 
-            You have requested us to resend your activation mail with the event manage link(s)
+            You have requested us to send an overview of all the parties you need to know about. These parties are all the parties you have created or where you are participating in, taking place in the future:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -604,8 +614,8 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-        success: 'We have successfully resend your activation mail'
-        error: 'An error occurred while resending the activation mail. Please try again.'
+        success: 'We have successfully sent you an overview!'
+        error: 'An error occurred while sending the email. Check your email address and please try again.'
 
     # ManagementController
     management:

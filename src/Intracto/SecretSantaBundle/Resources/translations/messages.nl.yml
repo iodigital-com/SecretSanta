@@ -115,10 +115,11 @@ pool-deleted:
     body: <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar!</p>
     create_new_list: Stel een nieuwe Secret Santa lijst op!
 
-# Pool/forgotLink.html.twig
-pool-forgot_link:
-    title: Activatie mail opnieuw verzenden
-    description: Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)
+# Party/forgotLink.html.twig
+party-forgot_link:
+    title: Overzicht van feestjes aanvraagen
+    description: Vul hier jouw emailadres in en we sturen je een overzicht van alle feestjes die je hebt gemaakt of waar je aan meedoet. We lijsten wel enkel de feestjes in de toekomst op.
+    submit_btn: Stuur me een overzicht
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -443,14 +444,25 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Jouw Secret Santa lijst
-    subject: Activatie mail opnieuw verzenden
+    subject: Overzicht van je feestjes
+    participating_in: Je neemt deel aan:
+    created_these: Je creëerde volgende feesjtes:
+    table_labels:
+        date: Datum
+        location: Locatie
+        link: Link
+        txt: Het feestje op %date%, te %location
+    btn:
+        party_link: Feestje bekijken
+        manage_link: Feestje beheren
     message:
-        html: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
-        txt: >
-            Hallo,
+        html: 'Hey, <br /><br />Je hebt ons gevraagd een overzicht te sturen van jouw feestjes. Deze feestjes zijn alle feestjes die jij beheert en/of de feestjes waar jij aan meedoet, die plaatsvinden in de toekomst.<br />'
 
-            U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden
+        txt: >
+            Hey,
+
+            Je hebt ons gevraagd een overzicht te sturen van jouw feestjes. Deze feestjes zijn alle feestjes die jij beheert en/of de feestjes waar jij aan meedoet, die plaatsvinden in de toekomst.
+
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -610,8 +622,8 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-        success: 'De activatie mail is succesvol opnieuw verstuurd!'
-        error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
+        success: 'We hebben je een email gestuurd met een overzicht van je feestjes!'
+        error: 'Er is een fout opgetreden tijdens het versturen van de mail. Probeer nogmaals.'
 
     # ManagementController
     management:

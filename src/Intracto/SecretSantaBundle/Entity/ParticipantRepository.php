@@ -42,4 +42,30 @@ class ParticipantRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Return all the participants, which are not admin, the event is in the future or past week, and participant is already assigned to a participant.
+     *
+     * @Param String $email
+     *
+     * @Return Participant[]
+     */
+    public function findAllParticipantsForForgotEmail($email)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->addSelect('participant')
+            ->from('IntractoSecretSantaBundle:Participant', 'participant')
+            ->join('participant.party', 'party')
+            ->andWhere('participant.partyAdmin = false')
+            ->andWhere('participant.email = :email')
+            ->andWhere('party.eventdate >= :date')
+            ->andWhere('participant.url IS NOT NULL')
+            ->orderBy('party.eventdate', 'ASC')
+            ->setParameters([
+                'email' => $email,
+                'date' => new \DateTime('-1 week'),
+            ]);
+
+        return $qb->getQuery()->getResult();
+    }
 }

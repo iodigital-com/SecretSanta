@@ -142,29 +142,47 @@ class MailerService
      *
      * @return bool
      */
-    public function sendForgotManageLinkMail($email)
+    public function sendForgotLinkMail($email)
     {
-        $results = $this->em->getRepository('IntractoSecretSantaBundle:Party')->findAllAdminParties($email);
+        $participatingIn = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAllParticipantsForForgotEmail($email);
+        $adminOf = $this->em->getRepository('IntractoSecretSantaBundle:Party')->findAllAdminParties($email);
 
-        if (count($results) == 0) {
+        if (count($adminOf) == 0 && count($participatingIn) == 0) {
             return false;
         }
 
-        $partyLinks = [];
-        foreach ($results as $result) {
-            $text = $this->translator->trans('emails-forgot_link.title');
-
+        $manageLinks = [];
+        foreach ($adminOf as $result) {
+            $date = '';
             if ($result['eventdate'] instanceof \DateTime) {
-                $text .= ' ('.$result['eventdate']->format('d/m/Y').')';
+                $date = $result['eventdate']->format('d/m/Y');
             }
-
-            $partyLinks[] = [
+            $manageLinks[] = [
                 'url' => $this->routing->generate('party_manage', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
-                'text' => $text,
+                'date' => $date,
+                'location' => $result['location'],
             ];
         }
 
-        $this->translator->setLocale($results[0]['locale']);
+        $participantLinks = [];
+        foreach ($participatingIn as $participant) {
+            $date = '';
+            if ($participant->getParty()->getEventDate() instanceof \DateTime) {
+                $date = $participant->getParty()->getEventDate()->format('d/m/Y');
+            }
+
+            $participantLinks[] = [
+                'url' => $this->routing->generate('participant_view', ['url' => $participant->getUrl()], Router::ABSOLUTE_URL),
+                'date' => $date,
+                'location' => $participant->getParty()->getLocation(),
+            ];
+        }
+
+        if (count($adminOf)) {
+            $this->translator->setLocale($adminOf[0]['locale']);
+        } else {
+            $this->translator->setLocale($participatingIn[0]->getParty()->getLocale());
+        }
 
         $message = \Swift_Message::newInstance()
             ->setSubject($this->translator->trans('emails-forgot_link.subject'))
@@ -174,7 +192,8 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:forgotLink.html.twig',
                     [
-                        'partyLinks' => $partyLinks,
+                        'manageLinks' => $manageLinks,
+                        'participantLinks' => $participantLinks,
                     ]
                 ),
                 'text/html'
@@ -183,7 +202,8 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:forgotLink.txt.twig',
                     [
-                        'partyLinks' => $partyLinks,
+                        'manageLinks' => $manageLinks,
+                        'participantLinks' => $participantLinks,
                     ]
                 ),
                 'text/plain'

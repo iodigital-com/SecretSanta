@@ -117,10 +117,11 @@ pool-deleted:
     body: <p>Takk for at du bruker Secret Santa Organizer. Vi håper å se deg igjen til neste år!</p>
     create_new_list: Opprett en ny Secret Santa-liste!
 
-# Pool/forgotLink.html.twig
-pool-forgot_link:
-    title: Send bekreftelsesepost på nytt
-    description: Skriv inn administrators epostadresse og vi sender en ny e-post med bekreftelse og link. Det fungerer kun for arrangement som ble opprettet den siste uken, eller som skal holdes i nærmeste framtid. (Dette sender kun en link til admin-siden)
+# Party/forgotLink.html.twig
+party-forgot_link:
+#    title:
+#    description:
+#    submit_btn: ?
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
@@ -432,8 +433,17 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Din Secret Santa-liste
-#    subject: ?
+#    subject:
+#    participating_in:
+#    created_these:
+#    table_labels:
+#        date:
+#        location:
+#        link:
+#        txt:
+#    btn:
+#        party_link:
+#        manage_link:
 #    message:
 #        html: ?
 #        txt: ?
@@ -582,8 +592,8 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-        success: 'Vi har sendt en smånisse med en ny bekreftelsesepost til deg'
-        error: 'En feil inntraff mens din bekreftelsesepost ble sendt. Vennligst prøv igjen.'
+#        success: 'Vi har sendt en smånisse med en ny bekreftelsesepost til deg'
+#        error: 'En feil inntraff mens din bekreftelsesepost ble sendt. Vennligst prøv igjen.'
 
     # ManagementController
     management:

@@ -1,4 +1,15 @@
-{{ 'emails-forgot_link.message.txt'|trans|raw }}<br>
-{% for link in partyLinks %}
-    <a href="{{ link.url }}">link.text</a>
+{{ 'emails-forgot_link.message.txt'|trans|raw }}
+
+{% if participantLinks|length > 0 %}
+{{ 'emails-forgot_link.participating_in'|trans }}
+{% for link in participantLinks %}
+    {{ 'emails-forgot_link.table_labels.txt'|trans({'%location%': link.location, '%date%': link.date}) }}: {{ link.url }}
 {% endfor %}
+{% endif %}
+
+{% if manageLinks|length > 0 %}
+{{ 'emails-forgot_link.created_these'|trans }}
+{% for link in manageLinks %}
+    {{ 'emails-forgot_link.table_labels.txt'|trans({'%location%': link.location, '%date%': link.date}) }}: {{ link.url }}
+{% endfor %}
+{% endif %}

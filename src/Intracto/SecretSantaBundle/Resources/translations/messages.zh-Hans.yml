@@ -108,10 +108,11 @@ pool-deleted:
     body: <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
     create_new_list: 创建一个新的秘密圣诞老人名单！
 
-# Pool/forgotLink.html.twig
-#pool-forgot_link:
+# Party/forgotLink.html.twig
+#party-forgot_link:
 #    title: ?
 #    description: ?
+#    submit_btn: ?
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
@@ -338,8 +339,17 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: 你的秘密圣诞老人名单
-#    subject: ?
+#    subject:
+#    participating_in:
+#    created_these:
+#    table_labels:
+#        date:
+#        location:
+#        link:
+#        txt:
+#    btn:
+#        party_link:
+#        manage_link:
 #    message:
 #        html: ?
 #        txt: ?

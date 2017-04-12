@@ -103,10 +103,11 @@ pool-deleted:
     body: <p>Merci d'avoir utilisé Secret Santa Organize. Et nous espérons vous revoir l'année prochaine !</p>
     create_new_list: Créez une nouvelle liste Secret Santa !
 
-# Pool/forgotLink.html.twig
-pool-forgot_link:
-    title: Renvoyer l'e-mail d'activation
-    description: Renseignez l'adresse e-mail de l'administrateur de la liste et nous renverrons l'e-mail d'activation. Cela ne concerne que les listes qui se sont déroulés la semaine dernière ou qui auront lieu prochainement. (Ceci enverra uniquement le lien de la page d'administration).
+# Party/forgotLink.html.twig
+party-forgot_link:
+#    title:
+#    description:
+#    submit_btn: ?
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -386,13 +387,20 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Votre liste Secret Santa
-    subject: Renvoie de l'e-mail d'activation
-    message:
-        html: Bonjour, <br /><br />Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.<br />
-        txt: >
-            Bonjour,
-            Vous nous avez demandé de renvoyer votre e-mail d'activation avec le(s) lien(s) pour la gestion de l'événement.
+#    subject:
+#    participating_in:
+#    created_these:
+#    table_labels:
+#        date:
+#        location:
+#        link:
+#        txt:
+#    btn:
+#        party_link:
+#        manage_link:
+#    message:
+#        html: ?
+#        txt: ?
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -526,8 +534,8 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-        success: Nous avons bien renvoyé votre e-mail d'activation
-        error: Une erreur est survenue lors du renvoi de l'e-mail d'activation. Veuillez réessayer.
+#        success:
+#        error:
 
     # ManagementController
     management:

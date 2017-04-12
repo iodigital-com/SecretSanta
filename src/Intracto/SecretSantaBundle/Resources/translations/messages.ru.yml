@@ -113,10 +113,11 @@ pool-deleted:
     body: <p>Благодарим вас за использование сервиса Тайного Санты. Надеемся увидеть вас в следующем году!</p>
     create_new_list: Создать новый список Тайного Санты!
 
-# Pool/forgotLink.html.twig
-#pool-forgot_link:
+# Party/forgotLink.html.twig
+#party-forgot_link:
 #    title: ?
 #    description: ?
+#    submit_btn: ?
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
@@ -343,8 +344,17 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Ваш список Тайного Санты
-#    subject: ?
+#    subject:
+#    participating_in:
+#    created_these:
+#    table_labels:
+#        date:
+#        location:
+#        link:
+#        txt:
+#    btn:
+#        party_link:
+#        manage_link:
 #    message:
 #        html: ?
 #        txt: ?
