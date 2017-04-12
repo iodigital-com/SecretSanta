@@ -25,10 +25,7 @@
         "jms/i18n-routing-bundle": "^2.0",
         "egulias/email-validator": "~1.2",
         "google/apiclient": "^1.1",
-        "swiftmailer/swiftmailer": "dev-utf8_email_fix as 5.4.2",
-        "friendsofphp/php-cs-fixer": "^2.1",
-        "phpro/grumphp": "^0.11.4",
-        "phpstan/phpstan": "^0.6.4"
+        "swiftmailer/swiftmailer": "dev-utf8_email_fix as 5.4.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.5|^6.0",
@@ -42,7 +39,10 @@
         "friends-of-behat/performance-extension": "^1.0",
         "lakion/mink-debug-extension": "^1.2",
         "sensiolabs/behat-page-object-extension": "^2.0",
-        "webmozart/assert": "^1.1"
+        "webmozart/assert": "^1.1",
+        "friendsofphp/php-cs-fixer": "^2.2",
+        "phpro/grumphp": "^0.11.4",
+        "phpstan/phpstan": "^0.6.4"
     },
     "repositories": [
         {
