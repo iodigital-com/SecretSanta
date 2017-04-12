@@ -12,9 +12,9 @@ class SeasonComparisonReportQuery
     private $wishlistReportQuery;
 
     /**
-     * @param PartyReportQuery     $poolReportQuery
-     * @param ParticipantReportQuery    $participantReportQuery
-     * @param WishlistReportQuery $wishlistReportQuery
+     * @param PartyReportQuery       $poolReportQuery
+     * @param ParticipantReportQuery $participantReportQuery
+     * @param WishlistReportQuery    $wishlistReportQuery
      */
     public function __construct(
         PartyReportQuery $poolReportQuery,

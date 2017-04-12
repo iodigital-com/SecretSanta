@@ -37,7 +37,7 @@ class LanguageContext extends RawMinkContext
 
         Assert::true(
             $selected == $arg1,
-            'The site has not been changed to the language ' .$arg1
+            'The site has not been changed to the language '.$arg1
         );
     }
 }

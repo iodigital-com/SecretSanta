@@ -55,11 +55,11 @@ class LinkifyExtensionTest extends TestCase
             ],
             [
                 'https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card.',
-                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card</a>.'
+                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card</a>.',
             ],
             [
                 'https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!',
-                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!</a>'
+                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!</a>',
             ],
             [
                 'a http://www.amazon.co.uk/Love-Curses-VINYL-Reigning-Sound/dp/B002D6EXRK/ref=sr_1_9?s=music&ie=UTF8&qid=1384346660&sr=1-9&keywords=reigning+sound b',
