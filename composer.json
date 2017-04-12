@@ -6,6 +6,9 @@
     "autoload": {
         "psr-0": { "Intracto": "src/" }
     },
+    "autoload-dev": {
+        "psr-0": { "Intracto": "src/" }
+    },
     "require": {
         "php": "^7.0",
         "symfony/symfony": "^2.8",
@@ -23,10 +26,11 @@
         "egulias/email-validator": "~1.2",
         "google/apiclient": "^1.1",
         "swiftmailer/swiftmailer": "dev-utf8_email_fix as 5.4.2",
-        "friendsofphp/php-cs-fixer": "^2.1"
+        "friendsofphp/php-cs-fixer": "^2.1",
+        "phpro/grumphp": "^0.11.4",
+        "phpstan/phpstan": "^0.6.4"
     },
     "require-dev": {
-        "phpro/grumphp": "^0.8.0",
         "phpunit/phpunit": "^5.5|^6.0",
         "behat/behat": "^3.2",
         "behat/mink": "^1.7",

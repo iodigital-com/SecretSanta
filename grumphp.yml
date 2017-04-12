@@ -10,5 +10,8 @@ parameters:
             case_insensitive: true
         phpunit:
             config_file: app
-        phpcsfixer:
+        phpstan:
+            triggered_by: ['php']
+            level: 0
+        phpcsfixer2:
             config: symfony.php_cs.dist
