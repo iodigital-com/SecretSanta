@@ -71,21 +71,6 @@ pool-create:
         email: 電郵
 #        participants: ?
 
-# Pool/exclude.html.twig
-party_manage-exclude:
-    title: 排除
-    description: 在這個目錄下，你好隨意阻止一些參與者組合。例如，防止來自同一家庭成員互相送禮物。
-#    information:
-    placeholder_exclude: 點擊及選擇你想排除的參與者
-    btn:
-#        start_party:
-#        cancel:
-    label:
-        name: 名字
-        exclude: 排除?
-    feedback:
-#       not_enough:
-
 # Pool/created.html.twig
 pool-created:
     title: 只需一步，確認你的參與
@@ -254,7 +239,7 @@ pool_manage_expired:
 #        expired:
 
 # Pool/manage/valid.html.twig
-pool_manage_valid:
+party_manage_valid:
     manage:
         title: 你的秘密聖誕老人目錄
         yes: 是
@@ -306,14 +291,23 @@ pool_manage_valid:
 #        remove_participant_confirm: ?
 #        updated_party: ?
 #        start_party:
-#        start_party_with_excludes:
-
     label:
         name: 名字
         email: 電郵
         confirmed: 確認
 #        wishlist_filled: ?
         actions: 行動
+
+#    excludes:
+#        title:
+#        btn:
+#        description:
+#        information:
+#        placeholder_exclude:
+#        not_enough:
+#        label:
+#            name:
+#            exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -467,6 +461,8 @@ flashes:
 #        start_party:
 #            success: ?
 #            danger: ?
+#        excludes:
+#             success:
 
     # PoolController
     pool:
@@ -489,4 +485,5 @@ flashes:
 #            warning: ?
 #            excluded_entries: ?
 #            self_assigned: ?
+#            not_enough_for_exclude:
 #            wrong: ?

@@ -76,21 +76,6 @@ pool-create:
         email: Электронная почта
         participants: участников
 
-# Pool/exclude.html.twig
-party_manage-exclude:
-    title: Исключить:
-    description: Список позволит вам на ваш выбор предотвратить нежелательные комбинации получателей и дарителей. Например, это поможет членам одной семьи не выбирать подарки друг для друга.
-#    information:
-    placeholder_exclude: Кликните для выбора участников, которых вы хотели бы исключить
-    btn:
-#        start_party:
-#        cancel:
-    label:
-        name: Имя
-        exclude: Исключить
-    feedback:
-#       not_enough:
-
 # Pool/created.html.twig
 pool-created:
     title: Один шаг до начала! - Подтвердите ваше участие
@@ -259,7 +244,7 @@ pool_manage_expired:
 #        expired:
 
 # Pool/manage/valid.html.twig
-pool_manage_valid:
+party_manage_valid:
     manage:
         title: Ваш список Тайного Санты
         yes: Да
@@ -311,7 +296,6 @@ pool_manage_valid:
 #        remove_participant_confirm: ?
 #        updated_party: ?
 #        start_party:
-#        start_party_with_excludes:
 
     label:
         name: Имя
@@ -326,6 +310,17 @@ emails-base_email:
     title: Тайный Санта от Intracto
     footer: Желаем вам получить массу удовольствия от организации вечеринки Тайного Санты!
     created_by: Создано
+
+#    excludes:
+#        title:
+#        btn:
+#        description:
+#        information:
+#        placeholder_exclude:
+#        not_enough:
+#        label:
+#            name:
+#            exclude:
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
@@ -472,6 +467,8 @@ flashes:
 #        start_party:
 #            success: ?
 #            danger: ?
+#        excludes:
+#            success:
 
     # PoolController
     pool:
@@ -494,4 +491,5 @@ flashes:
 #            warning: ?
 #            excluded_entries: ?
 #            self_assigned: ?
+#            not_enough_for_exclude:
 #            wrong: ?

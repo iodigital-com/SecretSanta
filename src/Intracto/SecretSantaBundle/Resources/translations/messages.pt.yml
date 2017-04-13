@@ -73,21 +73,6 @@ pool-create:
         email: E-mail
         participants: Participantes
 
-# Pool/exclude.html.twig
-party_manage-exclude:
-    title: Excluir
-    description: Com essa lista, você tem a opção de prevenir algumas combinações indesejadas. Por exemplo, para evitar que os membros de uma mesma família troque presentes apenas entre si.
-#    information:
-    placeholder_exclude: Clique e escolha os participantes a excluir
-    btn:
-#        start_party:
-#        cancel:
-    label:
-        name: Nome
-        exclude: Excluir
-    feedback:
-#       not_enough:
-
 # Pool/created.html.twig
 pool-created:
     title: Só mais 1 etapa! - Validar a sua participação
@@ -317,7 +302,7 @@ pool_manage_expired:
 #        expired:
 
 # Pool/manage/valid.html.twig
-pool_manage_valid:
+party_manage_valid:
     manage:
         title: Sua lista Secret Santa
         yes: Sim
@@ -369,7 +354,6 @@ pool_manage_valid:
 #        remove_participant_confirm: ?
 #        updated_party: ?
 #        start_party:
-#        start_party_with_excludes:
 
     label:
         name: Nome
@@ -377,6 +361,17 @@ pool_manage_valid:
         confirmed: Confirmado
 #        wishlist_filled: ?
         actions: Ações
+
+#    excludes:
+#        title:
+#        btn:
+#        description:
+#        information:
+#        placeholder_exclude:
+#        not_enough:
+#        label:
+#            name:
+#            exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -530,6 +525,8 @@ flashes:
 #        start_party:
 #            success: ?
 #            danger: ?
+#        excludes:
+#            success:
 
     # PoolController
     pool:
@@ -552,4 +549,5 @@ flashes:
 #            warning: ?
 #            excluded_entries: ?
 #            self_assigned: ?
+#            not_enough_for_exclude:
 #            wrong: ?

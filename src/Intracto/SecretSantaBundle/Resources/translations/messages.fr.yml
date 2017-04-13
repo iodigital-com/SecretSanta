@@ -66,21 +66,6 @@ pool-create:
         email: E-mail
         participants: Participants
 
-# Pool/exclude.html.twig
-party_manage-exclude:
-    title: Exclure
-    description: Avec cette liste, vous pouvez éventuellement éviter certaines combinaisons entre les membres. Pour éviter par exemple que les membres d'une même famille achètent des cadeaux pour chacun.
-#    information:
-    placeholder_exclude: Cliquez et sélectionnez les partipants que vous désirez exclure
-    btn:
-#        start_party:
-#        cancel:
-    label:
-        name: Nom
-        exclude: Exclure
-    feedback:
-#       not_enough:
-
 # Pool/created.html.twig
 pool-created:
     title: Plus qu'une étape ! - Validez votre participation
@@ -287,7 +272,7 @@ pool_manage_expired:
 #        expired:
 
 # Pool/manage/valid.html.twig
-pool_manage_valid:
+party_manage_valid:
     manage:
         title: Votre liste Secret Santa
         yes: Oui
@@ -354,7 +339,6 @@ pool_manage_valid:
         remove_participant_confirm: Supprimer ce participant
         updated_party: Mettre &agrave; jour les détails de ma f&ecirc;te
 #        start_party:
-#        start_party_with_excludes:
 
     label:
         name: Nom
@@ -362,6 +346,17 @@ pool_manage_valid:
         confirmed: Confirmés
         wishlist_filled: Liste de souhaits complétée
         actions: Actions
+
+#    excludes:
+#        title:
+#        btn:
+#        description:
+#        information:
+#        placeholder_exclude:
+#        not_enough:
+#        label:
+#            name:
+#            exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -545,6 +540,8 @@ flashes:
 #        start_party:
 #            success: ?
 #            danger: ?
+#        excludes:
+#            success:
 
     # PoolController
     pool:
@@ -567,4 +564,5 @@ flashes:
             warning: <h4>Oups</h4> Vous &ecirc; l'organisateur de la f&ecirc;te, vous ne pouvez pas vous supprimer. Si vous souhaitez abandonner la f&ecirc;te, cliquez-vous sur le boutton ci-dessous pour supprimer votre liste Secret Santa.
             excluded_entries: <h4>Oups</h4> Suppression des participants impossible. Vous avez utilisé des exclusions lors de la création de cette f&ecirc;te, ce qui peut causer de sproblèmes lors de la suppression d'un participant. Cette fonctionnalit&eacute; n'est donc pas disponible pour cette f&ecirc;te.
             self_assigned: <h4>Oups<h4> Ce participant ne peut être supprimé, car cela impliquerait que quelqu'un soit autoassigné.
+#            not_enough_for_exclude:
             wrong: <h4>Oups</h4> Tout porte à croire que votre phrase de confirmation ne correspond pas à la phrase attendue.
