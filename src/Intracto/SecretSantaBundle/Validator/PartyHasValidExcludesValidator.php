@@ -16,9 +16,9 @@ class PartyHasValidExcludesValidator extends ConstraintValidator
         $this->participantShuffler = $participantShuffler;
     }
 
-    public function validate($pool, Constraint $constraint)
+    public function validate($party, Constraint $constraint)
     {
-        if (!$this->participantShuffler->shuffleParticipants($pool)) {
+        if (!$this->participantShuffler->shuffleParticipants($party)) {
             $this->context->buildViolation($constraint->message)
                 ->atPath('entries')
                 ->addViolation();

@@ -10,14 +10,14 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
 
 # Form/{PoolType,UpdatePoolDetailsType}
-form-pool:
+form-party:
     label:
         date_party: Dato
         location: Sted
         amount_to_spend: Beløp å bruke på gaven
 
 # PoolController
-pool_controller:
+party_controller:
     created:
         message: |
             Ho ho ho (NAME),
@@ -36,7 +36,7 @@ pool_controller:
             God førjulstid!
 
 # Pool/create.html.twig
-pool-create:
+party-create:
     header:
         steps:
             title: Ditt selskap <br/><small>in <span class="accent">3 enkle steg</span></small>
@@ -81,7 +81,7 @@ pool-create:
         participants: Deltagere
 
 # Pool/created.html.twig
-pool-created:
+party-created:
     title: Bare 1 trinn igjen! - Bekreft din deltagelse
     body: >
         <p>
@@ -97,7 +97,7 @@ pool-created:
     check_spam: Ikke glem å sjekke søppelposten!
 
 # Pool/deleted.html.twig
-pool-deleted:
+party-deleted:
     title: Din Secret Santa-liste ble slettet!
     body: <p>Takk for at du bruker Secret Santa Organizer. Vi håper å se deg igjen til neste år!</p>
     create_new_list: Opprett en ny Secret Santa-liste!
@@ -290,7 +290,7 @@ entry_show_valid:
 #        error:
 
 # Pool/manage/base.html.twig
-pool_manage_base:
+party_manage_base:
     headers:
         title: Ditt<span class="accent">Secret Santa-selskap</span> med detaljer
         date: Date
@@ -298,7 +298,7 @@ pool_manage_base:
         amount: Beløp
 
 # Pool/manage/expired.html.twig
-pool_manage_expired:
+party_manage_expired:
     manage:
         title: Slett min Secret Santa-liste
 
@@ -390,7 +390,7 @@ party_manage_valid:
         delete_list: Slett min Secret Santa-liste
         expose: Send meg alle kombinasjonene
         expose_wishlists: Send meg alle ønskelistene
-        pool_update: Send party update to participants
+        party_update: Send party update to participants
         remove_participant_confirm: Fjern denne deltageren
         updated_party: Oppdater detaljer for ditt arrangement
 #        start_party:
@@ -479,7 +479,7 @@ emails-pendingConfirmation:
 #    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
-emails-pool_status:
+emails-party_status:
     subject: 'Secret Santa fest: status'
     message:
         html: >
@@ -508,7 +508,7 @@ emails-pool_status:
         poolstatus: Administrer ditt arrangement
 
 # Emails/poolUpdate.{html,txt}.twig
-emails-pool_update:
+emails-party_update:
     subject: Nissefesten vår nærmer seg!
     message:
         html: >
@@ -529,7 +529,7 @@ emails-pool_update:
             Se om den du skal gi gave til har laget ønskeliste ved å trykke på linken nedenfor, og bli med på morroa!
 
     btn:
-        pool_update: Check your buddy and wishlist
+        party_update: Check your buddy and wishlist
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:

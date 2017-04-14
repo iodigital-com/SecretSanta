@@ -10,14 +10,14 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
 
 # Form/{PoolType,UpdatePoolDetailsType}
-form-pool:
+form-party:
     label:
         date_party: Datum van jouw Secret Santa feest
         location: Locatie van jouw Secret Santa feest
         amount_to_spend: Te spenderen bedrag
 
 # PoolController
-pool_controller:
+party_controller:
     created:
         message: |
             Hey (NAME),
@@ -36,7 +36,7 @@ pool_controller:
             Geniet van de feestdagen!
 
 # Pool/create.html.twig
-pool-create:
+party-create:
     header:
         steps:
             title: Jouw feest <br><small>in <span class="accent">3 eenvoudige stappen</span></small>
@@ -79,7 +79,7 @@ pool-create:
         participants: Deelnemers
 
 # Pool/created.html.twig
-pool-created:
+party-created:
     title: Nog 1 stapje te gaan! - Valideer je deelname
     body: >
         <p>
@@ -95,7 +95,7 @@ pool-created:
     check_spam: Vergeet je spamfolder niet te checken!
 
 # Pool/deleted.html.twig
-pool-deleted:
+party-deleted:
     title: Je Secret Santa lijst werd verwijderd!
     body: <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar!</p>
     create_new_list: Stel een nieuwe Secret Santa lijst op!
@@ -303,7 +303,7 @@ participant_unsubscribe:
        error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!
 
 # Pool/manage/base.html.twig
-pool_manage_base:
+party_manage_base:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
         date: Datum
@@ -311,7 +311,7 @@ pool_manage_base:
         amount: Bedrag
 
 # Pool/manage/expired.html.twig
-pool_manage_expired:
+party_manage_expired:
     manage:
         title: Verwijder mijn Secret Santa lijst
 
@@ -406,7 +406,7 @@ party_manage_valid:
         delete_list: Verwijder mijn Secret Santa lijst
         expose: Bekijk alle koppelingen in deze lijst
         expose_wishlists: Bekijk alle verlanglijstjes
-        pool_update: Verstuur update naar alle deelnemers
+        party_update: Verstuur update naar alle deelnemers
         remove_participant_confirm: Verwijder deze deelnemer
         updated_party: Bewerk de details van dit feestje
         start_party: Start je feestje
@@ -519,7 +519,7 @@ emails-pendingConfirmation:
     btn_goto_manage: Ga naar de beheerpagina
 
 # Emails/poolStatus.{html,txt}.twig
-emails-pool_status:
+emails-party_status:
     subject: Status Secret Santa feestje
     message:
         html: >
@@ -548,7 +548,7 @@ emails-pool_status:
         poolstatus: Beheer jouw feestje
 
 # Emails/poolUpdate.{html,txt}.twig
-emails-pool_update:
+emails-party_update:
     subject: Ons Secret Santa feestje komt eraan!
     message:
         html: >
@@ -569,7 +569,7 @@ emails-pool_update:
             Klik op de onderstaande link om te checken hoe je maatje ervoor staat en onderneem actie indien nodig om ook hen te overtuigen om deel te nemen. Hoe meer zielen, hoe meer vreugd!
 
     btn:
-        pool_update: Check wie je maatje is en vul je wenslijst in
+        party_update: Check wie je maatje is en vul je wenslijst in
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:

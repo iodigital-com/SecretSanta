@@ -19,18 +19,18 @@ class ParticipantReportQuery
     /**
      * @param Connection         $dbal
      * @param Router             $router
-     * @param PartyReportQuery   $poolReportQuery
+     * @param PartyReportQuery   $partyReportQuery
      * @param FeaturedYearsQuery $featuredYearsQuery
      */
     public function __construct(
         Connection $dbal,
         Router $router,
-        PartyReportQuery $poolReportQuery,
+        PartyReportQuery $partyReportQuery,
         FeaturedYearsQuery $featuredYearsQuery
     ) {
         $this->dbal = $dbal;
         $this->router = $router;
-        $this->partyReportQuery = $poolReportQuery;
+        $this->partyReportQuery = $partyReportQuery;
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
@@ -162,7 +162,7 @@ class ParticipantReportQuery
         $totalParties = $this->partyReportQuery->countAllPartiesUntilDate($date);
         $totalParticipants = $this->countAllParticipantsUntilDate($date);
 
-        if ($totalParties[0]['poolCount'] != 0) {
+        if ($totalParties[0]['partyCount'] != 0) {
             return implode($totalParticipants[0]) / implode($totalParties[0]);
         }
 
@@ -328,7 +328,7 @@ class ParticipantReportQuery
         $partyCount = $this->partyReportQuery->countParties($season);
         $participantCount = $this->countParticipants($season);
 
-        if ($partyCount[0]['poolCount'] !== 0 || $participantCount !== 0) {
+        if ($partyCount[0]['partyCount'] !== 0 || $participantCount !== 0) {
             return $participantCount / implode($partyCount[0]);
         }
 

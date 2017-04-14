@@ -11,7 +11,7 @@ default:
             bundle: IntractoBehatBundle
             contexts:
                    - Behat\MinkExtension\Context\MinkContext
-                   - Intracto\BehatBundle\Features\Context\Bootstrap\PoolContext
+                   - Intracto\BehatBundle\Features\Context\Bootstrap\PartyContext
                    - Intracto\BehatBundle\Features\Context\Bootstrap\LanguageContext
 
     extensions:

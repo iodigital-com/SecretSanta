@@ -10,14 +10,14 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
 
 # Form/{PoolType,UpdatePoolDetailsType}
-form-pool:
+form-party:
     label:
         date_party: 秘密聖誕老人派對日期
 #        location: ?
         amount_to_spend: 費用
 
 # PoolController
-pool_controller:
+party_controller:
     created:
         message: |
             (NAME)你好，
@@ -36,7 +36,7 @@ pool_controller:
             祝你假期愉快！
 
 # Pool/create.html.twig
-pool-create:
+party-create:
     header:
         steps:
             title: 交換禮物的<span class="accent">3個簡單步驟</span>
@@ -72,7 +72,7 @@ pool-create:
 #        participants: ?
 
 # Pool/created.html.twig
-pool-created:
+party-created:
     title: 只需一步，確認你的參與
     body: >
         <p>
@@ -88,7 +88,7 @@ pool-created:
     check_spam: 別忘記去檢查你的垃圾文件夾！
 
 # Pool/deleted.html.twig
-pool-deleted:
+party-deleted:
     title: 你的秘密聖誕老人 目錄已被刪除
     body: <p>多謝你使用秘密聖誕老人 組織者，希望出年再見到你！</p>
     create_new_list: 創造新的秘密聖誕老人名單!
@@ -212,7 +212,7 @@ entry_show_valid:
 #        error:
 
 # Pool/manage/base.html.twig
-pool_manage_base:
+party_manage_base:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
         date: 日期
@@ -220,7 +220,7 @@ pool_manage_base:
         amount: 數量
 
 # Pool/manage/expired.html.twig
-pool_manage_expired:
+party_manage_expired:
     manage:
         title: 刪除我的秘密聖誕老人目錄
 
@@ -296,7 +296,7 @@ party_manage_valid:
         delete_list: 刪除我的秘密聖誕老人名單
 #        expose: ?
 #        expose_wishlists: ?
-#        pool_update: ?
+#        party_update: ?
 #        remove_participant_confirm: ?
 #        updated_party: ?
 #        start_party:
@@ -384,7 +384,7 @@ emails-pendingConfirmation:
 #    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
-emails-pool_status:
+emails-party_status:
 #    subject: ?
 #    message:
 #        html: ?
@@ -403,14 +403,14 @@ emails-pool_status:
 #        poolstatus: ?
 
 # Emails/poolUpdate.{html,txt}.twig
-#emails-pool_update:
+#emails-party_update:
 #    subject:
 #    message:
 #        html: ?
 #        txt: ?
 
 #    btn:
-#        pool_update:
+#        party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:

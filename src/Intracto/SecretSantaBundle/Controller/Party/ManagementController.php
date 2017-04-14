@@ -50,7 +50,7 @@ class ManagementController extends Controller
         if ($party->getEventdate() < new \DateTime('-2 years')) {
             return $this->render('IntractoSecretSantaBundle:Party/manage:expired.html.twig', [
                 'party' => $party,
-                'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
+                'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_party'),
             ]);
         }
         if ($excludeForm === null) {
@@ -65,7 +65,7 @@ class ManagementController extends Controller
             'addParticipantForm' => $addParticipantForm->createView(),
             'updatePartyDetailsForm' => $updatePartyDetailsForm->createView(),
             'party' => $party,
-            'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
+            'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_party'),
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
             'excludeForm' => $excludeForm->createView(),
         ];
@@ -237,7 +237,7 @@ class ManagementController extends Controller
 
     private function getParty($listUrl)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
         $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === null) {
             throw new NotFoundHttpException();

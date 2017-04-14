@@ -5,14 +5,14 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-pool_status.message.html'|trans({'%owner%': party.getOwnerName})|raw }}</p>
+                <p>{{ 'emails-party_status.message.html'|trans({'%owner%': party.getOwnerName})|raw }}</p>
                 <table cellspacing="0" cellpadding="3" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
                     <thead>
                     <tr>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.name'|trans }}</th>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.email'|trans }}</th>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.confirmed'|trans }}</th>
-                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-pool_status.label.wishlist_filled'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-party_status.label.name'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-party_status.label.email'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-party_status.label.confirmed'|trans }}</th>
+                        <th style="border-bottom: 1px solid #000; text-align: left;">{{ 'emails-party_status.label.wishlist_filled'|trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -20,8 +20,8 @@
                         <tr>
                             <td>{{ participant.name }}</td>
                             <td>{{ participant.email }}</td>
-                            <td>{% if participant.viewdate %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
-                            <td>{% if participant.wishlistItems is not empty %}{{ 'emails-pool_status.yes'|trans }}{% else %}{{ 'emails-pool_status.not_yet'|trans }}{% endif %}</td>
+                            <td>{% if participant.viewdate %}{{ 'emails-party_status.yes'|trans }}{% else %}{{ 'emails-party_status.not_yet'|trans }}{% endif %}</td>
+                            <td>{% if participant.wishlistItems is not empty %}{{ 'emails-party_status.yes'|trans }}{% else %}{{ 'emails-party_status.not_yet'|trans }}{% endif %}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -35,7 +35,7 @@
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
                             <a href="{{ url('party_manage', { 'listUrl': party.listurl }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
-                             sans-serif; vertical-align: baseline;">{{ 'emails-pool_status.btn.poolstatus'|trans }}</a>
+                             sans-serif; vertical-align: baseline;">{{ 'emails-party_status.btn.partystatus'|trans }}</a>
 
                         </td>
                     </tr>

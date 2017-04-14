@@ -1,5 +1,5 @@
 # Form/ExcludeEntryType
-pool:
+party:
     non_unique: Nie wszystkie wpisy mają wyjątkowy mecz.
 entry:
     non_unique: Nie znaleziono wyjątkowy mecz "%name%"

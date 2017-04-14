@@ -10,14 +10,14 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
 
 # Form/{PoolType,UpdatePoolDetailsType}
-form-pool:
+form-party:
     label:
         date_party: Data Twojego Przyjęcia Tajnego Mikołaja
 #        location: ?
         amount_to_spend: Suma do wydania
 
 # PoolController
-pool_controller:
+party_controller:
     created:
         message: |
             Witaj (NAME),
@@ -35,7 +35,7 @@ pool_controller:
             Wesołych Świąt!
 
 # Pool/create.html.twig
-pool-create:
+party-create:
     header:
         steps:
             title: Twoja strona <br/> <small> w <span class="accent">trzech prostych krokach</span>'</small>
@@ -70,14 +70,14 @@ pool-create:
         participants: Uczestników
 
 # Pool/created.html.twig
-pool-created:
+party-created:
     title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
     body: '<p>Aby powstrzymać trolle przed zrujnowaniem Twojego Przyjęcia Tajnego Mikołaja potrzebujemy znać <b>%ownername%</b> organizatora listy aby zweryfikować jego uczestnictwo. Wysłaliśmy mail do <b>%owneremail%</b> z kolejnymi informacjami.</p><p>Po weryfikacji Twoja lista Tajnego Mikołaja zostanie wymieszana i uczestnicy otrzymają Twoją wiadomość wraz z imieniem osoby do obdarowania.</p><p>W wiadomości weryfikacyjnej organizator listy znajdzie link, który umożliwi mu śledzenie aktywności pozostałych uczestników, którzy mają już przypisane osoby do obdarowania. To daje pewność, że każdy Tajny Mikołaj wie co ma robić.</p>'
     warning: Uwaga!
     check_spam: Nie zapomnij sprawdzić folderu spam!
 
 # Pool/deleted.html.twig
-pool-deleted:
+party-deleted:
     title: Lista Tajnego Mikołaja została usunięta!
     body: <p>Dziękujemy za skorzystanie z Tajnego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>
     create_new_list: Stwórz nową listę Tajnego Mikołaja!
@@ -199,7 +199,7 @@ entry_show_valid:
 #        error:
 
 # Pool/manage/base.html.twig
-pool_manage_base:
+party_manage_base:
     headers:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
@@ -207,7 +207,7 @@ pool_manage_base:
         amount: Ilość
 
 # Pool/manage/expired.html.twig
-pool_manage_expired:
+party_manage_expired:
     manage:
         title: Usuń moją listę Tajnego Mikołaja
 
@@ -263,7 +263,7 @@ party_manage_valid:
         delete_list: Usuń moją listę Tajnego Mikołaja
 #        expose: ?
 #        expose_wishlists: ?
-#        pool_update: ?
+#        party_update: ?
 #        remove_participant_confirm: ?
 #        updated_party: ?
 #        start_party:
@@ -352,7 +352,7 @@ emails-pendingConfirmation:
 #    btn_goto_manage:
 
 # Emails/poolStatus.{html,txt}.twig
-emails-pool_status:
+emails-party_status:
 #    subject: ?
 #    message:
 #        html: ?
@@ -371,14 +371,14 @@ emails-pool_status:
 #        poolstatus: ?
 
 # Emails/poolUpdate.{html,txt}.twig
-#emails-pool_update:
+#emails-party_update:
 #    subject:
 #    message:
 #        html: ?
 #        txt: ?
 
 #    btn:
-#        pool_update:
+#        party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:

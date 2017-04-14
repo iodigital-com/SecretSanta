@@ -15,10 +15,10 @@ class UpdatePartyDetailsType extends AbstractType
     {
         $builder
             ->add('eventdate', DateType::class, [
-                'label' => 'form-pool.label.date_party',
+                'label' => 'form-party.label.date_party',
             ])
-            ->add('amount', TextType::class, ['label' => 'form-pool.label.amount_to_spend'])
-            ->add('location', TextType::class, ['label' => 'form-pool.label.location'])
+            ->add('amount', TextType::class, ['label' => 'form-party.label.amount_to_spend'])
+            ->add('location', TextType::class, ['label' => 'form-party.label.location'])
         ;
     }
 

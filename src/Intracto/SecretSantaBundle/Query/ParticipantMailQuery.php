@@ -19,7 +19,7 @@ class ParticipantMailQuery
     }
 
     /**
-     * Find all entries that have an empty wishlist in Pools which were sent out
+     * Find all entries that have an empty wishlist in Parties which were sent out
      * more than two weeks ago and the party date is max six weeks in the future.
      *
      * @return Participant[]|array
@@ -56,7 +56,7 @@ class ParticipantMailQuery
     }
 
     /**
-     * Find all entries that haven't been watched yet in Pools which were sent
+     * Find all entries that haven't been watched yet in Parties which were sent
      * out more than two weeks ago and the party date is max six weeks in the
      * future.
      *

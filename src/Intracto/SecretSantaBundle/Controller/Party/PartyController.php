@@ -58,7 +58,7 @@ class PartyController extends Controller
     public function deleteAction(Request $request, $listUrl)
     {
         $correctCsrfToken = $this->isCsrfTokenValid(
-            'delete_pool',
+            'delete_party',
             $request->get('csrf_token')
         );
         $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('party_manage_valid.delete.phrase_to_type')));
@@ -66,7 +66,7 @@ class PartyController extends Controller
         if ($correctConfirmation === false || $correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'error',
-                $this->get('translator')->trans('flashes.pool.not_deleted')
+                $this->get('translator')->trans('flashes.party.not_deleted')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
@@ -107,7 +107,7 @@ class PartyController extends Controller
                     \IntlDateFormatter::NONE
                 );
 
-                $message = $this->get('translator')->trans('pool_controller.created.message', [
+                $message = $this->get('translator')->trans('party_controller.created.message', [
                     '%amount%' => $party->getAmount(),
                     '%eventdate%' => $dateFormatter->format($party->getEventdate()->getTimestamp()),
                     '%location%' => $party->getLocation(),
@@ -143,7 +143,7 @@ class PartyController extends Controller
      */
     private function getParty($listUrl)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $pool */
+        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
         $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
         if ($party === null) {
             throw new NotFoundHttpException();
