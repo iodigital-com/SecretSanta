@@ -124,9 +124,11 @@ static-faq:
         De lijstbeheerder zal een bevestigingmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
         We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
-        <!--a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
-        <p>Als je een evenement aanmaakt, kan je - nadat je alle deelnemers hebt ingegeven - optioneel een aantal combinaties uitsluiten. Bijvoorbeeld, als je niet wil dat deelnemers van het zelfde gezin voor elkaar geschenken moeten kopen.<br><br>
-        Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p-->
+        <a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
+        <p>Het is mogelijk bepaalde combinaties uit te sluiten, bijvoorbeeld als je niet wil dat deelnemers van hetzelfde gezin voor elkaar geschenken moeten kopen. Deze kunnen worden ingesteld als je feestje 4 of meer
+        deelnemers heeft en je feestje nog niet gestart is. Als dat zo is vind je op de beheer pagina een balk met titel 'Bepaalde combinaties uitlsuiten', als je daarop klikt krijg je een formulier om deze instellingen aan te passen.
+        Dit kan steeds worden gewijzigd, zolang je feestje niet gestart is. <br><br>
+        Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p>
 
         <a name="wishlist"></a><h2>Kan ik een verlanglijst maken?</h2>
         <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst opstellen en ook de verlanglijst van hun geheime persoon bekijken.</p>
