@@ -153,8 +153,9 @@ static-faq:
         <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
         <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
 
-        <a href="lost"></a><h2>Ik ben mijn bevestigingsmail kwijt.</h2>
-        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> het mailadres van de lijstbeheerder in en we sturen je een mail met de beheer link.</p>
+        <a href="lost"></a><h2>Ik ben mijn bevestigingsmail / link naar het feestje kwijt.</h2>
+        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> jouw mailadres in en we sturen je een mail met een
+        overzicht van alle feestjes waaraan je meedoet en/of die je hebt aangemaakt.</p>
 
         <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
         <p>Je kan deelnemers toevoegen of verwijderen na het aanmaken van je evenement. Op de beheerpagina kan je een knop vinden om deelnemers te verwijderen en is er een formulier waarmee een deelnemer toegevoegd kan worden.

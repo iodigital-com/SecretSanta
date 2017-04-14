@@ -155,8 +155,9 @@ static-faq:
         <a name="manage"></a><h2>How do I manage my party / participants?</h2>
         <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
 
-        <a href="lost"></a><h2>I lost my activation mail.</h2>
-        <p>If you lost your activation e-mail (which contains the link to the admin page), fill in the list administrator e-mail address on <a href="http://www.secretsantaorganizer.com/forgot-link">this page</a> and we will send you the link again.</p>
+        <a href="lost"></a><h2>I lost my activation mail / url to the party.</h2>
+        <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="http://www.secretsantaorganizer.com/forgot-link">this page</a> and we will send you
+        an overview of all the parties where you are participating in and/or the parties you have created.</p>
 
         <a name="changes"></a><h2>Can I add or remove people?</h2>
         <p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event.
