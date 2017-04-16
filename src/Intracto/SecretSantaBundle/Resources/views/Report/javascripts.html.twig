@@ -133,8 +133,8 @@
             countryData.addColumn('string', 'Country');
             countryData.addColumn('number', 'Visitors');
             countryData.addRows([
-                {% if google_party_data['countries'] is defined %}
-                {% for google in google_party_data['countries'] %}
+                {% if google_data['countries'] is defined %}
+                {% for google in google_data['countries'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}
@@ -146,8 +146,8 @@
             languageData.addColumn('string', 'Language');
             languageData.addColumn('number', 'Visitors');
             languageData.addRows([
-                {% if google_party_data['language'] is defined %}
-                {% for google in google_party_data['language'] %}
+                {% if google_data['language'] is defined %}
+                {% for google in google_data['language'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}
@@ -159,8 +159,8 @@
             deviceData.addColumn('string', 'Device');
             deviceData.addColumn('number', 'Visitors');
             deviceData.addRows([
-                {% if google_party_data['deviceCategory'] is defined %}
-                {% for google in google_party_data['deviceCategory'] %}
+                {% if google_data['deviceCategory'] is defined %}
+                {% for google in google_data['deviceCategory'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}
@@ -172,8 +172,8 @@
             browserData.addColumn('string', 'Device');
             browserData.addColumn('number', 'Visitors');
             browserData.addRows([
-                {% if google_party_data['browser'] is defined %}
-                {% for google in google_party_data['browser'] %}
+                {% if google_data['browser'] is defined %}
+                {% for google in google_data['browser'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}

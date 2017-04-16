@@ -30,7 +30,7 @@ class ReportController extends Controller
                 'current_year' => $year,
                 'party_data' => $cache['party_data'],
                 'featured_years' => $cache['featured_years'],
-                'google_party_data' => $cache['google_party_data'],
+                'google_data' => $cache['google_data'],
             ];
 
             if (isset($cache['difference_party_data'])) {
@@ -72,7 +72,7 @@ class ReportController extends Controller
             'current_year' => $year,
             'party_data' => $partyData,
             'featured_years' => $featuredYearsQuery,
-            'google_party_data' => $googlePartyData,
+            'google_data' => $googlePartyData,
         ];
 
         if (isset($differencePartyData)) {

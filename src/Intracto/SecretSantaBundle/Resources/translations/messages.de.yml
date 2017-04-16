@@ -406,7 +406,7 @@ emails-party_status:
 #        wishlist_filled: ?
 
 #    btn:
-#        poolstatus: ?
+#        partystatus: ?
 
 # Emails/poolUpdate.{html,txt}.twig
 #emails-party_update:
