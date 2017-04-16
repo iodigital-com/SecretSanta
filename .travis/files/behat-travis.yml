@@ -9,3 +9,8 @@ default:
             directory: .travis/build
             clean_start: false
             screenshot: true
+
+        Behat\Symfony2Extension:
+            kernel:
+                env: test_travis
+                debug: false
