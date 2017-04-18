@@ -2,10 +2,9 @@
 
 {% block main %}
     <div class="box">
-        <h1>{{ 'party-forgot_link.title'|trans }}</h1>
+        <h1>{{ 'party-get_reuse_url.title'|trans }}</h1>
 
-        <p>{{ 'party-forgot_link.description'|trans }}</p>
-
+        <p>{{ 'party-get_reuse_url.description'|trans }}</p>
         {{ form_start(form)}}
             {{ form_row(form._token) }}
             <div class="form-group">
@@ -16,8 +15,3 @@
         {{ form_end(form)}}
     </div>
 {% endblock %}
-
-{% block javascripts %}
-
-{% endblock %}
-

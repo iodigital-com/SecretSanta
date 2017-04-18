@@ -102,6 +102,14 @@ pool-deleted:
 #    title: ?
 #    description: ?
 #    submit_btn: ?
+#    info_reuse:
+
+# Party/getReuseUrl.html.twig
+#party-get_reuse_url:
+#    title:
+#    description:
+#    form:
+#        submit-btn:
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
@@ -321,6 +329,16 @@ emails-forgot_link:
 #        html: ?
 #        txt: ?
 
+# Emails/reuseLink.{html,txt}.twig
+#emails-reuse_link:
+#    title:
+#    subject:
+#    party_title:
+#    at:
+#    message:
+#        html:
+#        txt:
+
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Twój Tajny Mikołaj
@@ -463,3 +481,8 @@ flashes:
 #            excluded_entries: ?
 #            self_assigned: ?
 #            wrong: ?
+
+    # ReuseController
+#    reuse:
+#        success:
+#        error:

@@ -119,9 +119,17 @@ pool-deleted:
 
 # Party/forgotLink.html.twig
 party-forgot_link:
+#    title: ?
+#    description: ?
+#    submit_btn: ?
+#    info_reuse: ?
+
+# Party/getReuseUrl.html.twig
+#party-get_reuse_url:
 #    title:
 #    description:
-#    submit_btn: ?
+#    form:
+#        submit-btn:
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
@@ -448,6 +456,16 @@ emails-forgot_link:
 #        html: ?
 #        txt: ?
 
+# Emails/reuseLink.{html,txt}.twig
+#emails-reuse_link:
+#    title:
+#    subject:
+#    party_title:
+#    at:
+#    message:
+#        html:
+#        txt:
+
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Din hemmelige nisse
@@ -592,8 +610,8 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-#        success: 'Vi har sendt en smånisse med en ny bekreftelsesepost til deg'
-#        error: 'En feil inntraff mens din bekreftelsesepost ble sendt. Vennligst prøv igjen.'
+#        success: ?
+#        error: ?
 
     # ManagementController
     management:
@@ -634,3 +652,8 @@ flashes:
             excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
             self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
             wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
+
+    # ReuseController
+#    reuse:
+#        success:
+#        error:
