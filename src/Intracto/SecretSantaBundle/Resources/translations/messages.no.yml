@@ -123,7 +123,7 @@ pool-forgot_link:
 #    info_reuse:
 
 # Party/getReuseUrl.html.twig
-#get-reuse_link:
+#party-get_reuse_url:
 #    title:
 #    description:
 #    form:
@@ -637,6 +637,6 @@ flashes:
             wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
 
     # ReuseController
-#    reuse_controller:
+#    reuse:
 #        success:
 #        error:

@@ -18,7 +18,7 @@ class ReuseController extends Controller
      */
     public function showRequestAction()
     {
-        $form = $this->createForm(RequestReuseUrlType::class, null,[
+        $form = $this->createForm(RequestReuseUrlType::class, null, [
             'action' => $this->generateUrl('send_reuse_url'),
         ]);
 
@@ -38,15 +38,16 @@ class ReuseController extends Controller
 
         $form->handleRequest($request);
         if ($form->isValid()) {
-            if ($this->get('intracto_secret_santa.mailer')->sendReuseLinksMail($form->getData()['email'])) {
+            $reuseLinksMailSent = $this->get('intracto_secret_santa.mailer')->sendReuseLinksMail($form->getData()['email']);
+            if ($reuseLinksMailSent) {
                 $feedback = [
                     'type' => 'success',
-                    'message' => $this->get('translator')->trans('flashes.reuse_controller.success'),
+                    'message' => $this->get('translator')->trans('flashes.reuse.success'),
                 ];
             } else {
                 $feedback = [
                     'type' => 'danger',
-                    'message' => $this->get('translator')->trans('flashes.reuse_controller.error'),
+                    'message' => $this->get('translator')->trans('flashes.reuse.error'),
                 ];
             }
 

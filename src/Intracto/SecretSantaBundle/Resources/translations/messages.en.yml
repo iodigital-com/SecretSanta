@@ -123,7 +123,7 @@ pool-forgot_link:
     info_reuse: 'If you want to create a party, based on a previous party, you can request a list of your previous parties <a href="%reusepath%">here</a>'
 
 # Party/getReuseUrl.html.twig
-get-reuse_link:
+party-get_reuse_url:
     title: 'Reuse party'
     description: 'Fill in your email address and we will send an overview of the parties you have made the past 2 years, and a link to reuse them. This only works for the parties you have created.'
     form:
@@ -663,6 +663,6 @@ flashes:
             wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
 
     # ReuseController
-    reuse_controller:
+    reuse:
         success: 'We have successfully send the email!'
         error: "We couldn't find any parties, it might be possible that your parties are older than 2 years, or no parties linked to this email."

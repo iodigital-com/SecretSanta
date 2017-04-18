@@ -121,7 +121,7 @@ pool-forgot_link:
     info_reuse: 'Als je een feestje wilt aanmaken, gebasseerd op een oud feestje, en een lijst van je vorige feestjes wilt opvragen met een link, <a href="%reusepath%">klik dan hier</a>'
 
 # Party/getReuseUrl.html.twig
-get-reuse_link:
+party-get_reuse_url:
     title: Feestjes hergebruiken
     description: 'Vul je email in en we sturen je een berichtje met een overzicht van de feestjes die jij hebt gemaakt de voorbije 2 jaar. We hangen er telkens een link aan om ze te hergebruiken. Dit werkt enkel voor feestjes die jij hebt gemaakt!'
     form:
@@ -687,6 +687,6 @@ flashes:
             wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
 
     # ReuseController
-    reuse_controller:
+    reuse:
         success: 'We hebben je mail verzonden!'
         error: 'We konden geen feestjes vinden, het kan zijn dat je feestjes ouder zijn dan 2 jaar, of dat er geen feestjes zijn gelinkt aan dit emailadres.'

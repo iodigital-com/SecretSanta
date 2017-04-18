@@ -120,7 +120,7 @@ pool-forgot_link:
     description: Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.
 
 # Party/getReuseUrl.html.twig
-#get-reuse_link:
+#party-get_reuse_url:
 #    title:
 #    description:
 #    form:
@@ -569,6 +569,6 @@ flashes:
             wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
 
     # ReuseController
-#    reuse_controller:
+#    reuse:
 #        success:
 #        error:

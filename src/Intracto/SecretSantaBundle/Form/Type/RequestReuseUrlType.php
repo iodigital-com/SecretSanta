@@ -24,7 +24,7 @@ class RequestReuseUrlType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-large btn-primary btn-create-event'],
-                'label' => 'get-reuse_link.form.submit-btn',
+                'label' => 'party-get_reuse_url.form.submit-btn',
             ])
         ;
     }

@@ -114,7 +114,7 @@ pool-deleted:
 #    info_reuse:
 
 # Party/getReuseUrl.html.twig
-#get-reuse_link:
+#party-get_reuse_url:
 #    title:
 #    description:
 #    form:
@@ -503,6 +503,6 @@ flashes:
 #            wrong: ?
 
     # ReuseController
-#    reuse_controller:
+#    reuse:
 #        success:
 #        error:
