@@ -128,7 +128,7 @@ static-faq:
         Om het voor iedereen wat spannender te maken, kan je mensen willekeurig toewijzen om voor elkaar geschenkjes te kopen.</p>
 
         <a name="how"></a><h2>Hoe werkt het?</h2>
-        <p>Maak een evenement aan op de <a href="http://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
+        <p>Maak een evenement aan op de <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
         De lijstbeheerder zal een bevestigingmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
         We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
@@ -151,13 +151,13 @@ static-faq:
 
         <a name="reuse"></a><h2>Kan ik een lijst hergebruiken?</h2>
         <p>Het is mogelijk om de lijst van het voorgaande jaar te hergebruiken voor de lijst van dit jaar. Elk jaar zullen we e-mails versturen die in een link bevatten waarmee jouw lijst hergebruikt kan worden. Deze lijst kan je zelf nog naar jouw wensen aanpassen vooraleer je het nieuwe evenement aanmaakt.
-        Je kan <a href="http://www.secretsantaorganizer.com/reuse" target="_blank" rel="noopener noreferrer">hier</a> ook een email genereren met al je feestjes die je de voorbije 2 jaar hebt aangemaakt, samen met een link om ze te hergebruiken.</p>
+        Je kan <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">hier</a> ook een email genereren met al je feestjes die je de voorbije 2 jaar hebt aangemaakt, samen met een link om ze te hergebruiken.</p>
 
         <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
         <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
 
         <a href="lost"></a><h2>Ik ben mijn bevestigingsmail / link naar het feestje kwijt.</h2>
-        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> jouw mailadres in en we sturen je een mail met een
+        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="%requestForgotEmail%">deze pagina</a> jouw mailadres in en we sturen je een mail met een
         overzicht van alle feestjes waaraan je meedoet en/of die je hebt aangemaakt.</p>
 
         <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
@@ -181,7 +181,7 @@ static-faq:
         Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
 
         <a name="privacy"></a><h2>Wat doen jullie met mijn gegevens?</h2>
-        <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="http://www.secretsantaorganizer.com/nl/privacy-policy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord.
+        <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="https://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord.
         Vergeet niet dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheerpagina.</p>
 
         <a name="features"></a><h2>Kan je feature X toevoegen?</h2>
