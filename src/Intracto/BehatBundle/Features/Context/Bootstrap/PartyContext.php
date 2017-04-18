@@ -28,7 +28,7 @@ class PartyContext extends RawMinkContext
     /**
      * @var string
      */
-    private $eventDate;
+    private $partyDate;
 
     /**
      * @var int
@@ -59,7 +59,7 @@ class PartyContext extends RawMinkContext
     }
 
     /**
-     * @When /^(?:|I) create an event with (?P<memberCount>[0-9]+) participants$/
+     * @When /^(?:|I) create a party with (?P<memberCount>[0-9]+) participants$/
      */
     public function setupParty($memberCount)
     {
@@ -93,22 +93,22 @@ class PartyContext extends RawMinkContext
     }
 
     /**
-     * @When /^(?:|I) choose an event date in the future$/
+     * @When /^(?:|I) choose a party date in the future$/
      */
-    public function setEventDate()
+    public function setPartyDate()
     {
         $currentDate = new \DateTime();
-        $eventDate = $currentDate->add(new \DateInterval('P2M'));
+        $partyDate = $currentDate->add(new \DateInterval('P2M'));
 
-        $this->eventDate = $eventDate->format('d-m-Y');
+        $this->partyDate = $partyDate->format('d-m-Y');
     }
 
     /**
      * @When /^(?:|I) create the party$/
      */
-    public function createEvent()
+    public function createParty()
     {
-        $resultPage = $this->homepage->createEvent($this->participants, $this->location, $this->amount, $this->eventDate);
+        $resultPage = $this->homepage->createParty($this->participants, $this->location, $this->amount, $this->partyDate);
 
         if ($this->memberCount > 3) {
             $this->participantExcludePage = $resultPage;
