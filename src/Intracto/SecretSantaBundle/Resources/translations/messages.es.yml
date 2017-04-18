@@ -112,11 +112,19 @@ pool-deleted:
     title: ¡Tu lista Secret Santa fue borrada!
     body: <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
     create_new_list: ¡Crear una nueva lista Secret Santa!
+#    info_reuse:
 
 # Pool/forgotLink.html.twig
 pool-forgot_link:
     title: Reenviar el correo de activación
     description: Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.
+
+# Party/getReuseUrl.html.twig
+#get-reuse_link:
+#    title:
+#    description:
+#    form:
+#        submit-btn:
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -367,6 +375,16 @@ emails-forgot_link:
 
             tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.
 
+# Emails/reuseLink.{html,txt}.twig
+#emails-reuse_link:
+#    title:
+#    subject:
+#    party_title:
+#    at:
+#    message:
+#        html:
+#        txt:
+
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Tu Secret Santa
@@ -512,7 +530,7 @@ flashes:
     # ForgotManagementURLController
     forgot_management_url:
         success: 'Hemos enviado exitosamente reenviado su correo de activación.'
-        error: 'Se produjo un error durante la transmisión del correo de activación. Por favor, inténtalo de nuevo.'
+#        error:
 
     # ManagementController
     management:
@@ -549,3 +567,8 @@ flashes:
             excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
 #            self_assigned: ?
             wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
+
+    # ReuseController
+#    reuse_controller:
+#        success:
+#        error:

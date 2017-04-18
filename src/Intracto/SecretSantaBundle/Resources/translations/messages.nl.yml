@@ -118,6 +118,14 @@ pool-deleted:
 pool-forgot_link:
     title: Activatie mail opnieuw verzenden
     description: Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)
+    info_reuse: 'Als je een feestje wilt aanmaken, gebasseerd op een oud feestje, en een lijst van je vorige feestjes wilt opvragen met een link, <a href="%reusepath%">klik dan hier</a>'
+
+# Party/getReuseUrl.html.twig
+get-reuse_link:
+    title: Feestjes hergebruiken
+    description: 'Vul je email in en we sturen je een berichtje met een overzicht van de feestjes die jij hebt gemaakt de voorbije 2 jaar. We hangen er telkens een link aan om ze te hergebruiken. Dit werkt enkel voor feestjes die jij hebt gemaakt!'
+    form:
+        submit-btn: Email versturen!
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -145,8 +153,17 @@ static-faq:
         <a name="wishlist"></a><h2>Kan ik een verlanglijst maken?</h2>
         <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst opstellen en ook de verlanglijst van hun geheime persoon bekijken.</p>
 
+        <a name="anonymous_message"></a><h2>Wat als mijn maatje geen verlanglijst heeft ingegeven?</h2>
+        <p>Als je maatje geen verlanglijst heeft opgegeven of niet helemaal duidelijk was over bepaalde items op zijn verlanglijst, dan kan je een berichtje naar hem/haar sturen.
+        Op de pagina waar je kan zien wie je maatje is, heb je ook een formulier om een berichtje te versturen. Klik op "Verstuur anoniem bericht naar X" en het formulier komt tevoorschijn!
+        Vergeet niet dat je niet mag vertellen wie je bent!</p>
+
+        <a name="anonymous_message"></a><h3>Ik krijg niet de mogelijkheid om een bericht te sturen?</h3>
+        <p>Als je maatje zich heeft uitgeschreven voor emails kunnen we helaas geen mails meer sturen naar hem/haar.</p>
+
         <a name="reuse"></a><h2>Kan ik een lijst hergebruiken?</h2>
-        <p>Het is mogelijk om de lijst van het voorgaande jaar te hergebruiken voor de lijst van dit jaar. Elk jaar zullen we e-mails versturen die in een link bevatten waarmee jouw lijst hergebruikt kan worden. Deze lijst kan je zelf nog naar jouw wensen aanpassen vooraleer je het nieuwe evenement aanmaakt.</p>
+        <p>Het is mogelijk om de lijst van het voorgaande jaar te hergebruiken voor de lijst van dit jaar. Elk jaar zullen we e-mails versturen die in een link bevatten waarmee jouw lijst hergebruikt kan worden. Deze lijst kan je zelf nog naar jouw wensen aanpassen vooraleer je het nieuwe evenement aanmaakt.
+        Je kan <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">hier</a> ook een email genereren met al je feestjes die je de voorbije 2 jaar hebt aangemaakt, samen met een link om ze te hergebruiken.</p>
 
         <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
         <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
@@ -435,7 +452,31 @@ emails-emptyWishlistReminder:
     buy_from_amazon: Welke geschenken worden het vaakst gekocht?
 
     btn:
-        update_wishlist: Zapisz listę życzeń
+        update_wishlist: Pas je wishlist aan!
+
+# Emails/reuseLink.{html,txt}.twig
+emails-reuse_link:
+    title: Link om je feestje te hergebruiken
+    subject: Hergebruik je Secret Santa feestje
+    party_title: Feestje
+    at: te/in
+    message:
+        html: 'Hey, <br /><br />Je hebt ons gevraagd een email te sturen met een overzicht van je feestjes. Hier vind je de feestjes die je hebt gemaakt de voorbije 2 jaar, met een link om ze te hergebruiken.<br />'
+        txt: >
+            Hey,
+
+            Je hebt ons gevraagd een email te sturen met een overzicht van je feestjes. Hier vind je de feestjes die je hebt gemaakt de voorbije 2 jaar, met een link om ze te hergebruiken.
+
+# Emails/ForgotLink.{html,txt}.twig
+emails-forgot_link:
+    title: Your Secret Santa list
+    subject: Resend activation mail
+    message:
+        html: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
+        txt: >
+            Hi there,
+
+            You have requested us to resend your activation mail with the event manage link(s)
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
@@ -607,7 +648,7 @@ flashes:
     # ForgotManagementURLController
     forgot_management_url:
         success: 'De activatie mail is succesvol opnieuw verstuurd!'
-        error: 'Er is een fout opgetreden tijdens het versturen van de activatie mail. Probeer nogmaals.'
+        error: 'We konden geen feestjes vinden... Controleer of je dezelfde email hebt ingegven, als diegene die je hebt gebruikt om het feestje aan te maken.'
 
     # ManagementController
     management:
@@ -644,3 +685,8 @@ flashes:
             excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
 #            self_assigned: ?
             wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
+
+    # ReuseController
+    reuse_controller:
+        success: 'We hebben je mail verzonden!'
+        error: 'We konden geen feestjes vinden, het kan zijn dat je feestjes ouder zijn dan 2 jaar, of dat er geen feestjes zijn gelinkt aan dit emailadres.'

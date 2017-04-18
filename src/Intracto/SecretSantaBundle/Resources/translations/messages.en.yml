@@ -120,6 +120,14 @@ pool-deleted:
 pool-forgot_link:
     title: 'Resend activation mail'
     description: 'Fill in the email address of the pool owner and we will resend the activation email. It only works for pools which took place in the past week or will be held in the future. (This will only send the admin page link)'
+    info_reuse: 'If you want to create a party, based on a previous party, you can request a list of your previous parties <a href="%reusepath%">here</a>'
+
+# Party/getReuseUrl.html.twig
+get-reuse_link:
+    title: 'Reuse party'
+    description: 'Fill in your email address and we will send an overview of the parties you have made the past 2 years, and a link to reuse them. This only works for the parties you have created.'
+    form:
+        submit-btn: 'Send email'
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -148,7 +156,8 @@ static-faq:
         <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
 
         <a name="reuse"></a><h2>Can I reuse a list?</h2>
-        <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.</p>
+        <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.
+        You can also generate an email <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">here</a>, containing all the parties you made during the past 2 years together with a link to reuse them.</p>
 
         <a name="manage"></a><h2>How do I manage my party / participants?</h2>
         <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
@@ -443,6 +452,19 @@ emails-forgot_link:
 
             You have requested us to resend your activation mail with the event manage link(s)
 
+# Emails/reuseLink.{html,txt}.twig
+emails-reuse_link:
+    title: Link to reuse your Secret Santa party
+    subject: Reuse secret santa party
+    party_title: Party
+    at: at/in
+    message:
+        html: 'Hi there, <br /><br />You have requested us to send an email with links to reuse your previous parties. Here you can find the parties you created the past 2 years, with a link to reuse them.<br />'
+        txt: >
+            Hi there,
+
+            You have requested us to send an email with links to reuse your previous parties. Here you can find the parties you created the past 2 years, with a link to reuse them.
+
 # Emails/participant.{html,txt}.twig
 emails-participant:
     subject: Your Secret Santa
@@ -602,7 +624,7 @@ flashes:
     # ForgotManagementURLController
     forgot_management_url:
         success: 'We have successfully resend your activation mail'
-        error: 'An error occurred while resending the activation mail. Please try again.'
+        error: "We couldn't find any parties... Make sure that the email is the same one as the one you used when creating the party!"
 
     # ManagementController
     management:
@@ -639,3 +661,8 @@ flashes:
             excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
             self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
             wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
+
+    # ReuseController
+    reuse_controller:
+        success: 'We have successfully send the email!'
+        error: "We couldn't find any parties, it might be possible that your parties are older than 2 years, or no parties linked to this email."
