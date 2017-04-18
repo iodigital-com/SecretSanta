@@ -1,6 +1,6 @@
 <h2>Analytics</h2>
 
-{% if data_pool['ip_usage'] is not empty %}
+{% if party_data['ip_usage'] is not empty %}
     <div class="col-xs-12 col-md-6 report">
         <div class="report_inside">
             <h3>IP type of visitors (since March 2016)</h3>
@@ -10,7 +10,7 @@
     </div>
 {% endif %}
 
-{% if google_data_pool is not empty %}
+{% if google_data is not empty %}
     <div class="col-xs-12 col-md-6 report">
         <div class="report_inside">
             <h3>Visitors per country</h3>

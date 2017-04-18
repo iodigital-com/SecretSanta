@@ -1,4 +1,4 @@
- {% if data_pool is not empty %}
+ {% if party_data is not empty %}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -46,33 +46,33 @@
             }
 
             {% if current_year != 'all' %}
-            var poolData = new google.visualization.DataTable();
-            poolData.addColumn('string', 'Month');
-            poolData.addColumn('number', 'Parties');
-            poolData.addRows([
-                {% for pool in data_pool['pool_chart_data'] %}
-                ['{{ pool['month']|date("M") }}', {{ pool['accumulatedPoolCountByMonth'] }}],
+            var partyData = new google.visualization.DataTable();
+            partyData.addColumn('string', 'Month');
+            partyData.addColumn('number', 'Parties');
+            partyData.addRows([
+                {% for party in party_data['party_chart_data'] %}
+                ['{{ party['month']|date("M") }}', {{ party['accumulatedPartyCountByMonth'] }}],
                 {% endfor %}
             ]);
-            var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
-            poolChart.draw(poolData, chartOptions);
+            var partyChart = new google.visualization.ColumnChart(document.getElementById('party_chart'));
+            partyChart.draw(partyData, chartOptions);
 
-            var totalPoolData = new google.visualization.DataTable();
-            totalPoolData.addColumn('string', 'Month');
-            totalPoolData.addColumn('number', 'Parties');
-            totalPoolData.addRows([
-                {% for pool in data_pool['total_pool_chart_data'] %}
-                ['{{ pool['month']|date("M Y") }}', {{ pool['totalPoolCount'] }}],
+            var totalParyData = new google.visualization.DataTable();
+            totalParyData.addColumn('string', 'Month');
+            totalParyData.addColumn('number', 'Parties');
+            totalParyData.addRows([
+                {% for party in party_data['total_party_chart_data'] %}
+                ['{{ party['month']|date("M Y") }}', {{ party['totalPartyCount'] }}],
                 {% endfor %}
             ]);
-            var totalPoolChart = new google.visualization.LineChart(document.getElementById('total_pool_chart'));
-            totalPoolChart.draw(totalPoolData, chartOptions);
+            var totalPartyChart = new google.visualization.LineChart(document.getElementById('total_party_chart'));
+            totalPartyChart.draw(totalParyData, chartOptions);
 
             var entryData = new google.visualization.DataTable();
             entryData.addColumn('string', 'Month');
             entryData.addColumn('number', 'Participants');
             entryData.addRows([
-                {% for entry in data_pool['entry_chart_data'] %}
+                {% for entry in party_data['entry_chart_data'] %}
                 ['{{ entry['month']|date("M") }}', {{ entry['accumulatedEntryCountByMonth'] }}],
                 {% endfor %}
             ]);
@@ -83,30 +83,30 @@
             totalEntryData.addColumn('string', 'Month');
             totalEntryData.addColumn('number', 'Participants');
             totalEntryData.addRows([
-                {% for entry in data_pool['total_entry_chart_data'] %}
+                {% for entry in party_data['total_entry_chart_data'] %}
                 ['{{ entry['month']|date("M Y") }}', {{ entry['totalEntryCount'] }}],
                 {% endfor %}
             ]);
             var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
             totalEntryChart.draw(totalEntryData, chartOptions);
             {% else %}
-            var poolData = new google.visualization.DataTable();
-            poolData.addColumn('string', 'Season');
-            poolData.addColumn('number', 'Parties');
-            poolData.addRows([
-                {% for pool in data_pool['yearly_pool_chart_data'] %}
-                {% if pool['year'] != null %}
-                ['{{ pool['year'] }} - {{ pool['year'] + 1 }}', {{ pool['pool'][0]['accumulatedPoolCountByYear'] }}],
+            var partyData = new google.visualization.DataTable();
+            partyData.addColumn('string', 'Season');
+            partyData.addColumn('number', 'Parties');
+            partyData.addRows([
+                {% for party in party_data['yearly_party_chart_data'] %}
+                {% if party['year'] != null %}
+                ['{{ party['year'] }} - {{ party['year'] + 1 }}', {{ party['party'][0]['accumulatedPartyCountByYear'] }}],
                 {% endif %}
                 {% endfor %}]);
-            var poolChart = new google.visualization.ColumnChart(document.getElementById('pool_chart'));
-            poolChart.draw(poolData, chartOptions);
+            var partyChart = new google.visualization.ColumnChart(document.getElementById('party_chart'));
+            partyChart.draw(partyData, chartOptions);
 
             var entryData = new google.visualization.DataTable();
             entryData.addColumn('string', 'Season');
             entryData.addColumn('number', 'Parties');
             entryData.addRows([
-                {% for entry in data_pool['yearly_entry_chart_data'] %}
+                {% for entry in party_data['yearly_entry_chart_data'] %}
                 {% if entry['year'] != null %}
                 ['{{ entry['year'] }} - {{ entry['year'] + 1 }}', {{ entry['entry'][0]['accumulatedEntryCountByYear'] }}],
                 {% endif %}
@@ -116,13 +116,13 @@
             entryChart.draw(entryData, chartOptions);
             {% endif %}
 
-            {% if data_pool['ip_usage'] is not empty %}
+            {% if party_data['ip_usage'] is not empty %}
             var ipData = new google.visualization.DataTable();
             ipData.addColumn('string', 'IP type');
             ipData.addColumn('number', 'Percentage');
             ipData.addRows([
-                ['IPv4', {{ data_pool['ip_usage']['ipv4']['ipv4Count'] }}],
-                ['IPv6', {{ data_pool['ip_usage']['ipv6']['ipv6Count'] }}]
+                ['IPv4', {{ party_data['ip_usage']['ipv4']['ipv4Count'] }}],
+                ['IPv6', {{ party_data['ip_usage']['ipv6']['ipv6Count'] }}]
             ]);
 
             var ipChart = new google.visualization.PieChart(document.getElementById('ip_chart'));
@@ -133,8 +133,8 @@
             countryData.addColumn('string', 'Country');
             countryData.addColumn('number', 'Visitors');
             countryData.addRows([
-                {% if google_data_pool['countries'] is defined %}
-                {% for google in google_data_pool['countries'] %}
+                {% if google_data['countries'] is defined %}
+                {% for google in google_data['countries'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}
@@ -146,8 +146,8 @@
             languageData.addColumn('string', 'Language');
             languageData.addColumn('number', 'Visitors');
             languageData.addRows([
-                {% if google_data_pool['language'] is defined %}
-                {% for google in google_data_pool['language'] %}
+                {% if google_data['language'] is defined %}
+                {% for google in google_data['language'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}
@@ -159,8 +159,8 @@
             deviceData.addColumn('string', 'Device');
             deviceData.addColumn('number', 'Visitors');
             deviceData.addRows([
-                {% if google_data_pool['deviceCategory'] is defined %}
-                {% for google in google_data_pool['deviceCategory'] %}
+                {% if google_data['deviceCategory'] is defined %}
+                {% for google in google_data['deviceCategory'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}
@@ -172,8 +172,8 @@
             browserData.addColumn('string', 'Device');
             browserData.addColumn('number', 'Visitors');
             browserData.addRows([
-                {% if google_data_pool['browser'] is defined %}
-                {% for google in google_data_pool['browser'] %}
+                {% if google_data['browser'] is defined %}
+                {% for google in google_data['browser'] %}
                 ['{{ google[0] }}', {{ google[1] }}],
                 {% endfor %}
                 {% endif %}

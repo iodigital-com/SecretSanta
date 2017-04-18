@@ -9,7 +9,7 @@ function addNewEntry(collectionHolder) {
     var number_of_entries = collectionHolder.children().length; // Note, owner is not counted as entry
     var newFormHtml = prototype.replace(/__name__/g, number_of_entries).replace(/__entrycount__/g, number_of_entries + 1);
 
-    // Add new entry to pool with animation
+    // Add new entry to party with animation
     var newForm = $(newFormHtml);
     collectionHolder.append(newForm);
     newForm.show(300);

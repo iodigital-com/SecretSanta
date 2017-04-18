@@ -50,7 +50,7 @@ class Homepage extends Page
         if (count($participants) > 3) {
             return $this->getPage('Participant Exclude');
         } else {
-            return $this->getPage('Pool Created');
+            return $this->getPage('Party Created');
         }
     }
 }

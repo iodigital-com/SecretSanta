@@ -3,11 +3,11 @@
 {% block datalayer %}
     <script>
         dataLayer.push({
-            'pId': '{{ participant.pool.listurl }}',
-            'pLocation': '{{ participant.pool.location }}',
-            'pAmount': '{{ participant.pool.amount }}',
-            'pParticipants': '{{ participant.pool.entries|length }}',
-            'pDate': '{{ participant.pool.eventdate|date('Y-m-d') }}'
+            'pId': '{{ participant.party.listurl }}',
+            'pLocation': '{{ participant.party.location }}',
+            'pAmount': '{{ participant.party.amount }}',
+            'pParticipants': '{{ participant.party.entries|length }}',
+            'pDate': '{{ participant.party.eventdate|date('Y-m-d') }}'
         });
     </script>
 {% endblock %}

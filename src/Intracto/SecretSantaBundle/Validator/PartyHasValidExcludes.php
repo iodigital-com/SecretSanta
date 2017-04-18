@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class PartyHasValidExcludes extends Constraint
 {
-    public $message = 'pool.non_unique';
+    public $message = 'party.non_unique';
 
     public function validatedBy()
     {

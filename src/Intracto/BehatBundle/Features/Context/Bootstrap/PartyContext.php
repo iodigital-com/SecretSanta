@@ -5,10 +5,10 @@ namespace Intracto\BehatBundle\Features\Context\Bootstrap;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Intracto\BehatBundle\Page\Homepage;
 use Intracto\BehatBundle\Page\ParticipantExclude;
-use Intracto\BehatBundle\Page\PoolCreated;
+use Intracto\BehatBundle\Page\PartyCreated;
 use Webmozart\Assert\Assert;
 
-class PoolContext extends RawMinkContext
+class PartyContext extends RawMinkContext
 {
     /**
      * @var array
@@ -46,9 +46,9 @@ class PoolContext extends RawMinkContext
     private $participantExcludePage;
 
     /**
-     * @var PoolCreated
+     * @var PartyCreated
      */
-    private $poolCreatedPage;
+    private $partyCreatedPage;
 
     /**
      * @param Homepage $homepage
@@ -61,7 +61,7 @@ class PoolContext extends RawMinkContext
     /**
      * @When /^(?:|I) create an event with (?P<memberCount>[0-9]+) participants$/
      */
-    public function setupPool($memberCount)
+    public function setupParty($memberCount)
     {
         $this->memberCount = $memberCount;
 
@@ -113,7 +113,7 @@ class PoolContext extends RawMinkContext
         if ($this->memberCount > 3) {
             $this->participantExcludePage = $resultPage;
         } else {
-            $this->poolCreatedPage = $resultPage;
+            $this->partyCreatedPage = $resultPage;
         }
     }
 
@@ -123,7 +123,7 @@ class PoolContext extends RawMinkContext
     public function confirmationPage()
     {
         Assert::true(
-            $this->poolCreatedPage->hasConfirmationHeader(),
+            $this->partyCreatedPage->hasConfirmationHeader(),
             'The confirmaton text could not be found on the page'
         );
     }
@@ -142,8 +142,8 @@ class PoolContext extends RawMinkContext
     /**
      * @When /^(?:|I) confirm the excludes and create the party$/
      */
-    public function confirmExcludesCreatePool()
+    public function confirmExcludesCreateParty()
     {
-        $this->poolCreatedPage = $this->participantExcludePage->confirmExcludes();
+        $this->partyCreatedPage = $this->participantExcludePage->confirmExcludes();
     }
 }

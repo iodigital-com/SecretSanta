@@ -9,15 +9,15 @@ base:
             description: ¡Secret Santa Organizer es un organizador de intercambio de regalos gratis en línea! Organiza una fiesta Secret Santa con amigos, familia o incluso compañeros y añade tu lista de deseos.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">¿Necesitas ayuda? ¿Tienes preguntas? ¡Lee las Preguntas Frecuentes!</a>
 
-# Form/{PoolType,UpdatePoolDetailsType}
-form-pool:
+# Form/{PartyType,UpdatePartyDetailsType}
+form-party:
     label:
         date_party: Fecha de tu fiesta Secret Santa
         location: Sitio de tu fiesta Secret Santa
         amount_to_spend: Cantidad a gastar
 
-# PoolController
-pool_controller:
+# PartyController
+party_controller:
     created:
         message: |
             Hola (NAME),
@@ -35,8 +35,8 @@ pool_controller:
 
             ¡Felices Fiestas!
 
-# Pool/create.html.twig
-pool-create:
+# Party/create.html.twig
+party-create:
     header:
         steps:
             title: Tu fiesta <br/><small>en <span class="accent">3 sencillos pasos </span></small>
@@ -77,8 +77,8 @@ pool-create:
         email: Correo electrónico
         participants: Participantes
 
-# Pool/created.html.twig
-pool-created:
+# Party/created.html.twig
+party-created:
     title: ¡Sólo 1 paso para terminar! – Valida tu participación
     body: >
         <p>
@@ -93,8 +93,8 @@ pool-created:
     warning: ¡Advertencia!
     check_spam: ¡No olvides comprobar tu carpeta de correo no deseado!
 
-# Pool/deleted.html.twig
-pool-deleted:
+# Party/deleted.html.twig
+party-deleted:
     title: ¡Tu lista Secret Santa fue borrada!
     body: <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
     create_new_list: ¡Crear una nueva lista Secret Santa!
@@ -217,16 +217,16 @@ entry_show_valid:
 #        success:
 #        error:
 
-# Pool/manage/base.html.twig
-pool_manage_base:
+# Party/manage/base.html.twig
+party_manage_base:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
         date: Fecha
         location: Sitio
         amount: Cantidad
 
-# Pool/manage/expired.html.twig
-pool_manage_expired:
+# Party/manage/expired.html.twig
+party_manage_expired:
     manage:
         title: Borrar mi lista Secret Santa
 
@@ -253,7 +253,7 @@ pool_manage_expired:
     message:
 #        expired:
 
-# Pool/manage/valid.html.twig
+# Party/manage/valid.html.twig
 party_manage_valid:
     manage:
         title: Tu lista Secret Santa
@@ -319,7 +319,7 @@ party_manage_valid:
         delete_list: Borrar mi lista Secret Santa
 #        expose: ?
 #        expose_wishlists: ?
-        pool_update: Envia una actualizaci&oacute;n a los participantes
+        party_update: Envia una actualizaci&oacute;n a los participantes
         remove_participant_confirm: Expulsar este participante
         updated_party: Adaptar los detalles de la fiesta
 #        start_party:
@@ -407,8 +407,8 @@ emails-pendingConfirmation:
 #    come_back:
 #    btn_goto_manage:
 
-# Emails/poolStatus.{html,txt}.twig
-emails-pool_status:
+# Emails/partyStatus.{html,txt}.twig
+emails-party_status:
     subject: Secret Santa fiesta status
     message:
         html: >
@@ -434,10 +434,10 @@ emails-pool_status:
         wishlist_filled: Lista de deseos insertado
 
     btn:
-        poolstatus: Gestiona tu fiesta
+        partystatus: Gestiona tu fiesta
 
-# Emails/poolUpdate.{html,txt}.twig
-emails-pool_update:
+# Emails/partyUpdate.{html,txt}.twig
+emails-party_update:
     subject: Nuestra fiesta Secret Santa se acerca!
     message:
         html: >
@@ -458,7 +458,7 @@ emails-pool_update:
             Haz clic en el siguente enlace para comprobar como est&aacute; tu amigote y hace gestiones para activarlo a pasar a la acci&oacute;n. ¡Eramos pocos y pari&oacute; mi abuela, no cab&iacute;amos al fuego y entr&oacute; nuestro abuelo!
 
     btn:
-        pool_update: Comprueba quién es tu amigote o tu lista de deseos.
+        party_update: Comprueba quién es tu amigote o tu lista de deseos.
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
@@ -556,8 +556,8 @@ flashes:
 #        excludes:
 #            success:
 
-    # PoolController
-    pool:
+    # PartyController
+    party:
         not_deleted: <h4>No borrado</h4> La confirmación era incorrecta.
 
     # ResendEntryController

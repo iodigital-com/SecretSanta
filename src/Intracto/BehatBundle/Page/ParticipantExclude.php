@@ -26,6 +26,6 @@ class ParticipantExclude extends Page
     {
         $this->find('css', '.btn-create-event')->click();
 
-        return $this->getPage('Pool Created');
+        return $this->getPage('Party Created');
     }
 }

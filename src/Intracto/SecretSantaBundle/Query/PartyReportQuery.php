@@ -29,7 +29,7 @@ class PartyReportQuery
     public function countParties(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS poolCount')
+            ->select('count(p.id) AS partyCount')
             ->from('party', 'p')
             ->where('p.sent_date >= :firstDay')
             ->andWhere('p.sent_date < :lastDay')
@@ -47,7 +47,7 @@ class PartyReportQuery
     public function countAllPartiesUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS poolCount')
+            ->select('count(p.id) AS partyCount')
             ->from('party', 'p')
             ->where('p.sent_date < :lastDay')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
@@ -63,7 +63,7 @@ class PartyReportQuery
     public function queryDataForMonthlyPartyChart(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS accumulatedPoolCountByMonth, p.sent_date AS month')
+            ->select('count(p.id) AS accumulatedPartyCountByMonth, p.sent_date AS month')
             ->from('party', 'p')
             ->where('p.sent_date >= :firstDay')
             ->andWhere('p.sent_date < :lastDay')
@@ -88,7 +88,7 @@ class PartyReportQuery
             $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()
-                ->select('count(p.id) AS accumulatedPoolCountByYear')
+                ->select('count(p.id) AS accumulatedPartyCountByYear')
                 ->from('party', 'p')
                 ->where('p.sent_date IS NOT NULL')
                 ->andWhere('p.sent_date >= :firstDay')
@@ -98,12 +98,12 @@ class PartyReportQuery
 
             $chartData = $query->execute()->fetchAll();
 
-            $pool = [
+            $party = [
                 'year' => $year,
-                'pool' => $chartData,
+                'party' => $chartData,
             ];
 
-            array_push($partyChartData, $pool);
+            array_push($partyChartData, $party);
         }
 
         return $partyChartData;
@@ -117,7 +117,7 @@ class PartyReportQuery
     public function queryDataForPartyChartUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS totalPoolCount, p.sent_date AS month')
+            ->select('count(p.id) AS totalPartyCount, p.sent_date AS month')
             ->from('party', 'p')
             ->where('p.sent_date < :lastDay')
             ->groupBy('year(p.sent_date), month(p.sent_date)')
@@ -125,11 +125,11 @@ class PartyReportQuery
 
         $totalPartyChartData = $query->execute()->fetchAll();
 
-        $accumulatedPoolCounter = 0;
+        $accumulatedPartyCounter = 0;
 
         foreach ($totalPartyChartData as &$partyCount) {
-            $accumulatedPoolCounter += $partyCount['totalPoolCount'];
-            $partyCount['totalPoolCount'] = $accumulatedPoolCounter;
+            $accumulatedPartyCounter += $partyCount['totalPartyCount'];
+            $partyCount['totalPartyCount'] = $accumulatedPartyCounter;
         }
 
         return $totalPartyChartData;
@@ -147,9 +147,9 @@ class PartyReportQuery
         try {
             $partyCountSeason2 = $this->countParties($season2);
         } catch (\Exception $e) {
-            return $partyCountSeason1[0]['poolCount'];
+            return $partyCountSeason1[0]['partyCount'];
         }
 
-        return $partyCountSeason1[0]['poolCount'] - $partyCountSeason2[0]['poolCount'];
+        return $partyCountSeason1[0]['partyCount'] - $partyCountSeason2[0]['partyCount'];
     }
 }

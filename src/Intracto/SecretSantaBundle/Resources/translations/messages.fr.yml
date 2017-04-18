@@ -9,15 +9,15 @@ base:
             description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Besoin d'aide ? Des questions ? Consultez la FAQ !</a>
 
-# Form/{PoolType,UpdatePoolDetailsType}
-form-pool:
+# Form/{PartyType,UpdatePartyDetailsType}
+form-party:
     label:
         date_party: Date de votre Secret Santa party
         location: Lieu
         amount_to_spend: Montant à dépenser
 
-# PoolController
-pool_controller:
+# PartyController
+party_controller:
     created:
         message: |
             Bonjour (NAME),
@@ -27,8 +27,8 @@ pool_controller:
             La Secret Santa party est prévue le %eventdate% et aura lieu à %location%. Assurez-vous d'amener votre cadeau.
             %message%
             Bonnes vacances !
-# Pool/create.html.twig
-pool-create:
+# Party/create.html.twig
+party-create:
     header:
         steps:
             title: Votre fête <br/><small>en<span class="accent"> 3 étapes</span></small>
@@ -66,8 +66,8 @@ pool-create:
         email: E-mail
         participants: Participants
 
-# Pool/created.html.twig
-pool-created:
+# Party/created.html.twig
+party-created:
     title: Plus qu'une étape ! - Validez votre participation
     body: >
         <p>
@@ -82,8 +82,8 @@ pool-created:
     warning: Attention !
     check_spam: N'oubliez pas de vérifier votre dossier Spam !
 
-# Pool/deleted.html.twig
-pool-deleted:
+# Party/deleted.html.twig
+party-deleted:
     title: Votre liste Secret Santa a été supprimée !
     body: <p>Merci d'avoir utilisé Secret Santa Organize. Et nous espérons vous revoir l'année prochaine !</p>
     create_new_list: Créez une nouvelle liste Secret Santa !
@@ -245,16 +245,16 @@ entry_show_valid:
 #        success:
 #        error:
 
-# Pool/manage/base.html.twig
-pool_manage_base:
+# Party/manage/base.html.twig
+party_manage_base:
     headers:
         title: Détails de votre <span class="accent">Secret Santa party</span>
         date: Date
         location: Lieu
         amount: Montant
 
-# Pool/manage/expired.html.twig
-pool_manage_expired:
+# Party/manage/expired.html.twig
+party_manage_expired:
     manage:
         title: Supprimer ma liste Secret Santa
 
@@ -280,7 +280,7 @@ pool_manage_expired:
     message:
 #        expired:
 
-# Pool/manage/valid.html.twig
+# Party/manage/valid.html.twig
 party_manage_valid:
     manage:
         title: Votre liste Secret Santa
@@ -344,7 +344,7 @@ party_manage_valid:
         delete_list: Supprimer ma liste Secret Santa
         expose: Voir les attributions de cette liste
         expose_wishlists:  Voir toutes les listes des participants
-        pool_update: Envoyer une mise &agrave; jour &agrave; tous les participants
+        party_update: Envoyer une mise &agrave; jour &agrave; tous les participants
         remove_participant_confirm: Supprimer ce participant
         updated_party: Mettre &agrave; jour les détails de ma f&ecirc;te
 #        start_party:
@@ -432,8 +432,8 @@ emails-pendingConfirmation:
 #    come_back:
 #    btn_goto_manage:
 
-# Emails/poolStatus.{html,txt}.twig
-emails-pool_status:
+# Emails/partyStatus.{html,txt}.twig
+emails-party_status:
     subject: L'état de votre f&ecirc;te Secret Santa
     message:
         html: >
@@ -456,10 +456,10 @@ emails-pool_status:
         wishlist_filled: Liste de souhaits complétée
 
     btn:
-        poolstatus: Gérez votre f&ecirc;te
+        partystatus: Gérez votre f&ecirc;te
 
-# Emails/poolUpdate.{html,txt}.twig
-emails-pool_update:
+# Emails/partyUpdate.{html,txt}.twig
+emails-party_update:
     subject: Votre f&ecirc;te Secret Santa approche
     message:
         html: >
@@ -476,7 +476,7 @@ emails-pool_update:
             Afin d'assurer le maximum de plaisir, il serait bien que chaque invit&eacute; se rendant &agrave; la f&ecirc;te y apporte un cadeau. Jusqu'&agrave; pr&eacute;sent %viewedCount% personnes ont ouvert leur invitation et %wishlistCount% ont rempli leur liste de souhaits.
             Cliquez sur le boutton ci-dessous afin de vérifier o&ugrave; en est votre copain et passez &agrave; l'action si n&eacute;cessaire, pour qu'il prenne part &agrave; la f&ecirc;te. Plus on est de fous, plus on rit!
     btn:
-        pool_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
+        party_update: Contr&ocirc;le v&ocirc;tre copain ou liste de souhaits.
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
@@ -569,8 +569,8 @@ flashes:
 #        excludes:
 #            success:
 
-    # PoolController
-    pool:
+    # PartyController
+    party:
         not_deleted: <h4>Non supprimée</h4> La confirmation était incorrect.
 
     # ResendEntryController

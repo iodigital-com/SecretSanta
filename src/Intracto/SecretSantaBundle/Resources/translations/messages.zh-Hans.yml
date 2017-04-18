@@ -9,15 +9,15 @@ base:
             description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
 
-# Form/{PoolType,UpdatePoolDetailsType}
-form-pool:
+# Form/{PartyType,UpdatePartyDetailsType}
+form-party:
     label:
         date_party: 你的秘密圣诞老人派对日期
 #        location: ?
         amount_to_spend: 消费金额
 
-# PoolController
-pool_controller:
+# PartyController
+party_controller:
     created:
         message: |
             你好(NAME),
@@ -35,8 +35,8 @@ pool_controller:
 
             节日快乐！
 
-# Pool/create.html.twig
-pool-create:
+# Party/create.html.twig
+party-create:
     header:
         steps:
             title: 简单<span class="accent">三步</span>完成你的礼物交换活动
@@ -71,8 +71,8 @@ pool-create:
         email: 电子邮箱
 #        participants: ?
 
-# Pool/created.html.twig
-pool-created:
+# Party/created.html.twig
+party-created:
     title: 仅此一步！确认你的参与人员
     body: >
         <p>
@@ -87,8 +87,8 @@ pool-created:
     warning: 提示
     check_spam: 不要忘记检查你的垃圾邮件文件夹！
 
-# Pool/deleted.html.twig
-pool-deleted:
+# Party/deleted.html.twig
+party-deleted:
     title: 不要忘记检查你的垃圾邮件文件夹！
     body: <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
     create_new_list: 创建一个新的秘密圣诞老人名单！
@@ -211,16 +211,16 @@ entry_show_valid:
 #        success:
 #        error:
 
-# Pool/manage/base.html.twig
-pool_manage_base:
+# Party/manage/base.html.twig
+party_manage_base:
     headers:
         title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
         date: 日期
 #        location: ?
         amount: 数量
 
-# Pool/manage/expired.html.twig
-pool_manage_expired:
+# Party/manage/expired.html.twig
+party_manage_expired:
     manage:
         title: 删除我的秘密圣诞老人名单
 
@@ -247,7 +247,7 @@ pool_manage_expired:
     message:
 #        expired:
 
-# Pool/manage/valid.html.twig
+# Party/manage/valid.html.twig
 party_manage_valid:
     manage:
         title: 你的秘密圣诞老人名单
@@ -296,7 +296,7 @@ party_manage_valid:
         delete_list: 删除我的秘密圣诞老人名单
 #        expose: ?
 #        expose_wishlists: ?
-#        pool_update: ?
+#        party_update: ?
 #        remove_participant_confirm: ?
 #        updated_party: ?
 #        start_party:
@@ -384,8 +384,8 @@ emails-pendingConfirmation:
 #    come_back:
 #    btn_goto_manage:
 
-# Emails/poolStatus.{html,txt}.twig
-emails-pool_status:
+# Emails/partyStatus.{html,txt}.twig
+emails-party_status:
 #    subject: ?
 #    message:
 #        html: ?
@@ -401,17 +401,17 @@ emails-pool_status:
 #        wishlist_filled: ?
 
 #    btn:
-#        poolstatus: ?
+#        partystatus: ?
 
-# Emails/poolUpdate.{html,txt}.twig
-#emails-pool_update:
+# Emails/partyUpdate.{html,txt}.twig
+#emails-party_update:
 #    subject:
 #    message:
 #        html: ?
 #        txt: ?
 
 #    btn:
-#        pool_update:
+#        party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
@@ -493,8 +493,8 @@ flashes:
 #        excludes:
 #            success:
 
-    # PoolController
-    pool:
+    # PartyController
+    party:
         not_deleted: <h4>未能删除</h4>这个确认不正确。
 
     # ResendEntryController

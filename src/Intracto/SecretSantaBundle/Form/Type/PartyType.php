@@ -24,13 +24,13 @@ class PartyType extends AbstractType
                 'by_reference' => false,
             ])
             ->add('eventdate', DateType::class, [
-                'label' => 'form-pool.label.date_party',
+                'label' => 'form-party.label.date_party',
             ])
             ->add('amount', TextType::class, [
-                'label' => 'form-pool.label.amount_to_spend',
+                'label' => 'form-party.label.amount_to_spend',
             ])
             ->add('location', TextType::class, [
-                'label' => 'form-pool.label.location',
+                'label' => 'form-party.label.location',
             ])
         ;
     }

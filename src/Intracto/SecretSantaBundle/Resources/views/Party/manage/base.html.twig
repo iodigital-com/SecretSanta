@@ -8,12 +8,12 @@
 
 {% block header %}
     <div class="steps">
-        <h2>{{ 'pool_manage_base.headers.title'|trans|raw }}</h2>
+        <h2>{{ 'party_manage_base.headers.title'|trans|raw }}</h2>
         <div id="partyDetails">
             <ul class="liststyle1">
-                <li><strong>{{ 'pool_manage_base.headers.date'|trans }} </strong> {{ party.eventdate|localizeddate('medium', 'none') }}</li>
-                <li><strong>{{ 'pool_manage_base.headers.location'|trans }}</strong> {{ party.location }}</li>
-                <li><strong>{{ 'pool_manage_base.headers.amount'|trans }} </strong> {{ party.amount }}</li>
+                <li><strong>{{ 'party_manage_base.headers.date'|trans }} </strong> {{ party.eventdate|localizeddate('medium', 'none') }}</li>
+                <li><strong>{{ 'party_manage_base.headers.location'|trans }}</strong> {{ party.location }}</li>
+                <li><strong>{{ 'party_manage_base.headers.amount'|trans }} </strong> {{ party.amount }}</li>
             </ul>
         </div>
     </div>

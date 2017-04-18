@@ -5,7 +5,7 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-pool_update.message.html'|trans({'%name%': participant.name, '%owner%': results['party'][0]['adminName'], '%date%': results['party'][0]['event_date']|date('Y-m-d'), '%place%': results['party'][0]['location'], '%participantCount%': results['participantCount'][0]['participantCount'], '%viewedCount%': results['viewedCount'][0]['viewedCount'], '%wishlistCount%': results['wishlistCount'][0]['wishlistCount'] })|raw }}</p>
+                <p>{{ 'emails-party_update.message.html'|trans({'%name%': participant.name, '%owner%': results['party'][0]['adminName'], '%date%': results['party'][0]['event_date']|date('Y-m-d'), '%place%': results['party'][0]['location'], '%participantCount%': results['participantCount'][0]['participantCount'], '%viewedCount%': results['viewedCount'][0]['viewedCount'], '%wishlistCount%': results['wishlistCount'][0]['wishlistCount'] })|raw }}</p>
                 <table class="button">
                     <tr>
                         <td align="center" width="auto" bgcolor="#bd1019" style="padding-top: 14px; padding-right: 80px; padding-bottom: 14px; padding-left: 80px;
@@ -14,7 +14,7 @@
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
                             <a href="{{ url('participant_view', { 'url': participant.url }) }}" style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,
-                             sans-serif; vertical-align: baseline;">{{ 'emails-pool_update.btn.pool_update'|trans|raw }}</a>
+                             sans-serif; vertical-align: baseline;">{{ 'emails-party_update.btn.party_update'|trans|raw }}</a>
 
                         </td>
                     </tr>

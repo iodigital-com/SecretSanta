@@ -28,13 +28,13 @@ class ReportController extends Controller
 
             $data = [
                 'current_year' => $year,
-                'data_pool' => $cache['data_pool'],
+                'party_data' => $cache['party_data'],
                 'featured_years' => $cache['featured_years'],
-                'google_data_pool' => $cache['google_data_pool'],
+                'google_data' => $cache['google_data'],
             ];
 
-            if (isset($cache['difference_data_pool'])) {
-                $data['difference_data_pool'] = $cache['difference_data_pool'];
+            if (isset($cache['difference_party_data'])) {
+                $data['difference_party_data'] = $cache['difference_party_data'];
             }
 
             return $data;
@@ -42,41 +42,41 @@ class ReportController extends Controller
 
         try {
             if ($year != 'all') {
-                $dataPool = $reportQuery->getPartyReport($year);
+                $partyData = $reportQuery->getPartyReport($year);
             } else {
-                $dataPool = $reportQuery->getPartyReport();
+                $partyData = $reportQuery->getPartyReport();
             }
         } catch (\Exception $e) {
-            $dataPool = [];
+            $partyData = [];
         }
 
         try {
             if ($year != 'all') {
-                $googleDataPool = $googleAnalyticsQuery->getAnalyticsReport($year);
+                $googlePartyData = $googleAnalyticsQuery->getAnalyticsReport($year);
             } else {
-                $googleDataPool = $googleAnalyticsQuery->getAnalyticsReport();
+                $googlePartyData = $googleAnalyticsQuery->getAnalyticsReport();
             }
         } catch (\Exception $e) {
-            $googleDataPool = [];
+            $googlePartyData = [];
         }
 
         try {
             if ($year != 'all') {
-                $differenceDataPool = $seasonComparisonReportQuery->getComparison($year);
+                $differencePartyData = $seasonComparisonReportQuery->getComparison($year);
             }
         } catch (\Exception $e) {
-            $differenceDataPool = [];
+            $differencePartyData = [];
         }
 
         $data = [
             'current_year' => $year,
-            'data_pool' => $dataPool,
+            'party_data' => $partyData,
             'featured_years' => $featuredYearsQuery,
-            'google_data_pool' => $googleDataPool,
+            'google_data' => $googlePartyData,
         ];
 
-        if (isset($differenceDataPool)) {
-            $data['difference_data_pool'] = $differenceDataPool;
+        if (isset($differencePartyData)) {
+            $data['difference_party_data'] = $differencePartyData;
         }
 
         end($featuredYearsQuery['featured_years']);

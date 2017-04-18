@@ -179,7 +179,7 @@
 
         {% if party.created %}
             <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
-                <i class="fa fa-envelope"></i> {{ 'party_manage_valid.btn.pool_update'|trans|raw }}
+                <i class="fa fa-envelope"></i> {{ 'party_manage_valid.btn.party_update'|trans|raw }}
             </a>
             <a href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
                 <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose'|trans }}

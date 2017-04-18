@@ -288,12 +288,12 @@ class MailerService
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails-pool_update.subject'))
+            ->setSubject($this->translator->trans('emails-party_update.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolUpdate.html.twig',
+                    'IntractoSecretSantaBundle:Emails:partyUpdate.html.twig',
                     [
                         'participant' => $participant,
                         'results' => $results,
@@ -303,7 +303,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolUpdate.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:partyUpdate.txt.twig',
                     [
                         'participant' => $participant,
                         'results' => $results,
@@ -421,12 +421,12 @@ class MailerService
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails-pool_status.subject'))
+            ->setSubject($this->translator->trans('emails-party_status.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolStatus.html.twig',
+                    'IntractoSecretSantaBundle:Emails:partyStatus.html.twig',
                     [
                         'party' => $participant->getParty(),
                     ]
@@ -435,7 +435,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:poolStatus.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:partyStatus.txt.twig',
                     [
                         'party' => $participant->getParty(),
                         'admin' => $participant,

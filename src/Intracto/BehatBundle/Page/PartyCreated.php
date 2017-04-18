@@ -4,7 +4,7 @@ namespace Intracto\BehatBundle\Page;
 
 use SensioLabs\Behat\PageObjectExtension\PageObject\Page;
 
-class PoolCreated extends Page
+class PartyCreated extends Page
 {
     public function hasConfirmationHeader()
     {
