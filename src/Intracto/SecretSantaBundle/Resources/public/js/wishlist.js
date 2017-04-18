@@ -81,10 +81,6 @@ function ajaxSaveWishlist() {
         type: 'POST',
         url: url,
         data: formData
-    }, function (data) {
-        if (data.responseCode == 200) {
-            console.log('Succes!');
-        }
     });
 }
 

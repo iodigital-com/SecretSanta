@@ -104,7 +104,7 @@ class PoolContext extends RawMinkContext
     }
 
     /**
-     * @When /^(?:|I) create the event$/
+     * @When /^(?:|I) create the party$/
      */
     public function createEvent()
     {

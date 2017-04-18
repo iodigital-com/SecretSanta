@@ -146,7 +146,7 @@ static-faq:
 
         <a name="reuse"></a><h2>Can I reuse a list?</h2>
         <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.
-        You can also generate an email <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">here</a>, containing all the parties you made during the past 2 years together with a link to reuse them.</p>
+        You can also generate an email <a href="http://www.secretsantaorganizer.com/reuse" target="_blank" rel="noopener noreferrer">here</a>, containing all the parties you made during the past 2 years together with a link to reuse them.</p>
 
         <a name="manage"></a><h2>How do I manage my party / participants?</h2>
         <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
