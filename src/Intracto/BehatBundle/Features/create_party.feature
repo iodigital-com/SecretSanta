@@ -9,3 +9,4 @@ Feature: Create a new party
   And I choose the amount to spend
   When I create the party
   Then I should get a confirmation
+  And the Secret Santa Validation mail should be sent to test0@test.com
