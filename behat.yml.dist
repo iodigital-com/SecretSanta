@@ -11,12 +11,15 @@ default:
             bundle: IntractoBehatBundle
             contexts:
                    - Behat\MinkExtension\Context\MinkContext
+                   - Intracto\BehatBundle\Features\Context\FeatureContext
+                   - Intracto\BehatBundle\Features\Context\EmailContext
                    - Intracto\BehatBundle\Features\Context\Bootstrap\PartyContext
                    - Intracto\BehatBundle\Features\Context\Bootstrap\LanguageContext
+                   - Intracto\BehatBundle\Features\Context\Bootstrap\PartyManagementContext
 
     extensions:
         Behat\MinkExtension:
-            base_url: 'http://dev.secretsantaorganizer.com/'
+            base_url: 'http://dev.secretsantaorganizer.com/app_test.php/'
             default_session: symfony
             javascript_session: chrome
             sessions:
@@ -41,7 +44,7 @@ default:
 
         Behat\Symfony2Extension:
             kernel:
-                env: test_travis
+                env: test
                 debug: false
 
         Lakion\Behat\MinkDebugExtension:

@@ -108,13 +108,7 @@ class PartyContext extends RawMinkContext
      */
     public function createParty()
     {
-        $resultPage = $this->homepage->createParty($this->participants, $this->location, $this->amount, $this->partyDate);
-
-        if ($this->memberCount > 3) {
-            $this->participantExcludePage = $resultPage;
-        } else {
-            $this->partyCreatedPage = $resultPage;
-        }
+        $this->partyCreatedPage = $this->homepage->createParty($this->participants, $this->location, $this->amount, $this->partyDate);
     }
 
     /**

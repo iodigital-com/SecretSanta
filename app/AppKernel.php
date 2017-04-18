@@ -18,13 +18,13 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Intracto\SecretSantaBundle\IntractoSecretSantaBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
-            new Intracto\BehatBundle\IntractoBehatBundle(),
         );
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        if (in_array($this->getEnvironment(), array('dev', 'test', 'test_travis'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Intracto\BehatBundle\IntractoBehatBundle();
         }
 
         return $bundles;

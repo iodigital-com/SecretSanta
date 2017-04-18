@@ -15,8 +15,8 @@ class ParticipantShuffler
      */
     public function shuffleParticipants(Party $party)
     {
-        if ($this->matchedExcludes) {
-            return $this->matchedExcludes;
+        if (isset($this->matchedExcludes[spl_object_hash($party)])) {
+            return $this->matchedExcludes[spl_object_hash($party)];
         }
 
         return $this->shuffleTillMatch($party);
@@ -35,7 +35,7 @@ class ParticipantShuffler
         while (microtime(true) < $timeToStop) {
             $set = $this->shuffleArray($participants);
             if ($this->checkValidMatch($participants, $set)) {
-                $this->matchedExcludes = $set;
+                $this->matchedExcludes[spl_object_hash($party)] = $set;
 
                 return $set;
             }

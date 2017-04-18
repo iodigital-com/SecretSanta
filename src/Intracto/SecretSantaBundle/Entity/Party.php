@@ -114,6 +114,9 @@ class Party
                 $this->addParticipant($participant);
             }
         }
+
+        $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->creationdate = new \DateTime();
     }
 
     /**
@@ -251,14 +254,6 @@ class Party
     public function __toString()
     {
         return 'Id: '.$this->id.' - Participants: '.$this->participants->count().' - Owner: '.$this->getOwnerName();
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function generateListurl()
-    {
-        $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
     /**
