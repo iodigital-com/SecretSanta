@@ -8,9 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Intracto\SecretSantaBundle\Entity\Party;
-use Intracto\SecretSantaBundle\Form\Type\PartyExcludeParticipantType;
 use Intracto\SecretSantaBundle\Form\Type\PartyType;
 
 class PartyController extends Controller
@@ -35,63 +33,8 @@ class PartyController extends Controller
     public function createdAction($listUrl)
     {
         $party = $this->getParty($listUrl);
-        if (!$party->getCreated()) {
-            return $this->redirect($this->generateUrl('party_exclude', ['listUrl' => $party->getListurl()]));
-        }
 
         return [
-            'party' => $party,
-        ];
-    }
-
-    /**
-     * @Route("/exclude/{listUrl}", name="party_exclude")
-     * @Template("IntractoSecretSantaBundle:Party:exclude.html.twig")
-     */
-    public function excludeAction(Request $request, $listUrl)
-    {
-        /** @var MailerService $mailerService */
-        $mailerService = $this->get('intracto_secret_santa.mailer');
-        $party = $this->getParty($listUrl);
-
-        if ($party->getCreated()) {
-            $mailerService->sendPendingConfirmationMail($party);
-
-            return $this->redirect($this->generateUrl('party_created', ['listUrl' => $party->getListurl()]));
-        }
-
-        if ($party->getParticipants()->count() <= 3) {
-            $party->setCreated(true);
-            $this->get('doctrine.orm.entity_manager')->persist($party);
-
-            $this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
-
-            $this->get('doctrine.orm.entity_manager')->flush();
-
-            $mailerService->sendPendingConfirmationMail($party);
-
-            return $this->redirect($this->generateUrl('party_created', ['listUrl' => $party->getListurl()]));
-        }
-
-        $form = $this->createForm(PartyExcludeParticipantType::class, $party);
-        if ('POST' === $request->getMethod()) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $party->setCreated(true);
-                $this->get('doctrine.orm.entity_manager')->persist($party);
-
-                $this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
-
-                $this->get('doctrine.orm.entity_manager')->flush();
-
-                $mailerService->sendPendingConfirmationMail($party);
-
-                return $this->redirect($this->generateUrl('party_created', ['listUrl' => $party->getListurl()]));
-            }
-        }
-
-        return [
-            'form' => $form->createView(),
             'party' => $party,
         ];
     }
@@ -178,7 +121,9 @@ class PartyController extends Controller
                 $this->get('doctrine.orm.entity_manager')->persist($party);
                 $this->get('doctrine.orm.entity_manager')->flush();
 
-                return $this->redirect($this->generateUrl('party_exclude', ['listUrl' => $party->getListurl()]));
+                $this->get('intracto_secret_santa.mailer')->sendPendingConfirmationMail($party);
+
+                return $this->redirect($this->generateUrl('party_created', ['listUrl' => $party->getListurl()]));
             }
         }
 

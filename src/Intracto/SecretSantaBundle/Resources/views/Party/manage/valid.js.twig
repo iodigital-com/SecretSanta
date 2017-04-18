@@ -52,19 +52,58 @@
         }
     });
 
-    function editableEmail(listUrl, entryId) {
+    function editParticipant(listUrl, entryId) {
         var email = $('#email_' + entryId).html();
-        var url = '{{ path("participant_email_edit", { 'listUrl': 'listUrl', 'participantId': 'entryId' }) }}';
+        var name = $('#name_' + entryId).html();
+        var url = '{{ path("participant_edit", { 'listUrl': 'listUrl', 'participantId': 'entryId' }) }}';
         url = url.replace("listUrl", listUrl);
         url = url.replace("entryId", entryId);
         if ($('#email_' + entryId).has('form').length == 0) {
-            $('#email_' + entryId).html(
-                '<form action="' + url + '" method="post">' +
-                '<input type="text" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
-                '<button class="btn btn-small btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'pool_manage_valid.manage.save'|trans }}</button>' +
-                '</form>'
-            );
+            makeEditForm(entryId, listUrl, name, email);
         }
+    }
+
+    function submitEditForm(listUrl,participantId) {
+        var url = '{{ path("participant_edit") }}';
+        var name = $('#input_name_' + participantId).val();
+        var email = $('#input_email_' + participantId).val();
+        $('#input_name_' + participantId).prop('disabled', true);
+        $('#input_email_' + participantId).prop('disabled', true);
+        $('#submit_btn_' + participantId).prop('disabled', true);
+        $('#submit_btn_' + participantId).html('<i class="fa fa-spinner fa-spin"></i>');
+        $("#alertspan").html('');
+        var data = {
+            listUrl: listUrl,
+            participantId: participantId,
+            name: name,
+            email: email,
+        }
+        console.log(data);
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+        }).done(function( data ) {
+            console.log(data);
+            if(data.responseCode == 200){
+                $("#alertspan").html('<div class="alert alert-'+ data.message.type +'" role="alert">'+ data.message.message +'</div>');
+                $('#name_' + participantId).html(name);
+                $('#email_' + participantId).html(email);
+            } else {
+                $("#alertspan").html('<div class="alert alert-'+ data.message.type +'" role="alert">'+ data.message.message +'</div>');
+                makeEditForm(participantId, listUrl, name, email);
+            }
+        });
+    }
+
+    function makeEditForm(participantId, listUrl, name, email){
+        $('#name_' + participantId).html(
+            '<input type="text" id="input_name_' + participantId + '" class="form-control input_edit_email" name="name" value="' + name + '" data-hj-masked>'
+        );
+        $('#email_' + participantId).html(
+            '<input type="text" id="input_email_' + participantId + '" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
+            '<button class="btn btn-small btn-primary" id="submit_btn_' + participantId + '" onclick="submitEditForm( \'' + listUrl + '\', ' + participantId + ')"><i class="fa fa-check"></i> {{ 'pool_manage_valid.manage.save'|trans }}</button>'
+        );
     }
 
     function attachAction(listUrl, entryId) {

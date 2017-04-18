@@ -17,19 +17,17 @@ class ParticipantHasValidExcludesValidator extends ConstraintValidator
         $party = $participant->getParty();
         //should be at least 2 possible entries remaining to choose from, -1 for itself
         if ($party->getParticipants()->count() < $participant->getExcludedParticipants()->count() + 3) {
-            $this->context->addViolationAt(
-                'excluded_participants',
-                $constraint->messageNoUniqueMatch,
-                ['%name%' => $participant->getName()]
-            );
+            $this->context->buildViolation($constraint->messageNoUniqueMatch)
+                ->atPath('exclude_participants')
+                ->setParameter('%name%', $participant->getName())
+                ->addViolation();
         }
         //Should not be necessary but you never know eyy..
         if ($participant->getExcludedParticipants()->contains($participant)) {
-            $this->context->addViolationAt(
-                'excluded_participants',
-                '%name% can not exclude itself',
-                ['%name%' => $participant->getName()]
-            );
+            $this->context->buildViolation('%name% can not exclude itself')
+                ->atPath('exclude_participants')
+                ->setParameter('%name%', $participant->getName())
+                ->addViolation();
         }
     }
 }

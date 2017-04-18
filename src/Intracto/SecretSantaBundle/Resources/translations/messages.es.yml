@@ -78,18 +78,19 @@ pool-create:
         participants: Participantes
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Excluye
     description: Con esta lista puedes evitar, opcionalmente, algunas combinaciones de participantes. Por ejemplo, evitar que miembros de la misma familia tengan que comprar regalos los unos para los otros.
-
+#    information:
     placeholder_exclude: Hacer clic y elegir los participantes que se quiere excluir
-
     btn:
-        create_event: ¡Crear tu evento!
-
+#        start_party:
+#        cancel:
     label:
         name: Nombre
         exclude: Excluir
+    feedback:
+#       not_enough:
 
 # Pool/created.html.twig
 pool-created:
@@ -335,6 +336,8 @@ pool_manage_valid:
         pool_update: Envia una actualizaci&oacute;n a los participantes
         remove_participant_confirm: Expulsar este participante
         updated_party: Adaptar los detalles de la fiesta
+#        start_party:
+#        start_party_with_excludes:
 
     label:
         name: Nombre
@@ -545,6 +548,9 @@ flashes:
         updated_party:
             success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
             danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
+#        start_party:
+#            success: ?
+#            danger: ?
 
     # PoolController
     pool:
@@ -559,7 +565,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
         edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
-        saved_email: <h4>Guardado</h4> Se guardó la nueva dirección de correo electrónico. También reenviamos el correo electrónico.
+#        updated_participant:
+#        updated_participant_resent:
         remove_participant:
             success: <h4>¡Expulsado!</h4> Participante expulsado de éxito.
             danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.

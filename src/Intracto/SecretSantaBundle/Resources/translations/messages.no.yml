@@ -81,18 +81,19 @@ pool-create:
         participants: Deltagere
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Eksluder kombinasjoner
     description: Med denne listen kan du helt valgfritt forhindre enkelte kombinasjoner av deltagerne. For eksempel kan du unngå at familiemedlemmer kjøper gaver til hverandre.
-
+#    information:
     placeholder_exclude: Klikk og velg deltagere du vil ekskludere fra listen
-
     btn:
-        create_event: Opprett arrangement!
-
+#        start_party:
+#        cancel:
     label:
         name: Navn
         exclude: Ekskluder
+    feedback:
+#       not_enough:
 
 # Pool/created.html.twig
 pool-created:
@@ -406,6 +407,8 @@ pool_manage_valid:
         pool_update: Send party update to participants
         remove_participant_confirm: Fjern denne deltageren
         updated_party: Oppdater detaljer for ditt arrangement
+#        start_party:
+#        start_party_with_excludes:
 
     label:
         name: Navn
@@ -613,6 +616,9 @@ flashes:
         updated_party:
             success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
             danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
+#        start_party:
+#            success: ?
+#            danger: ?
 
     # PoolController
     pool:
@@ -627,7 +633,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
-        saved_email: <h4>Lagret</h4> Den nye epostadressen har blitt lagret. Vi har også sendt eposten på nytt.
+#        updated_participant:
+#        updated_participant_resent:
         remove_participant:
             success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
             danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.

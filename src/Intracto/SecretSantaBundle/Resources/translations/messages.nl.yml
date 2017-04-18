@@ -79,18 +79,19 @@ pool-create:
         participants: Deelnemers
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Uitsluiten
     description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
-
+    information: Wanneer je gebruik maakt van excludes kan je geen gebruikers meer verwijderen van het feestje. Je kan nog steeds deelnemers toevoegen, maar je zal de excludes niet meer kunnen wijzigen.
     placeholder_exclude: Klik en kies de deelnemers die je wilt uitsluiten
-
     btn:
-        create_event: Maak je evenement aan!
-
+        start_party: Start je feestje!
+        cancel: Annuleren
     label:
         name: Naam
         exclude: Uitsluiten
+    feedback:
+        not_enough: Je feestje moet minimaal 4 deelnemers hebben voordat je excludes kan gebruiken!
 
 # Pool/created.html.twig
 pool-created:
@@ -420,6 +421,9 @@ pool_manage_valid:
         pool_update: Verstuur update naar alle deelnemers
         remove_participant_confirm: Verwijder deze deelnemer
         updated_party: Bewerk de details van dit feestje
+        start_party: Start je feestje
+        start_party_with_excludes: Start je feestje met excludes
+
 
     label:
         name: Naam
@@ -663,6 +667,9 @@ flashes:
         updated_party:
             success: <h4>Updated!</h4> De details van jouw feestje zijn succesvol opgeslagen.
             danger: <h4>Oops</h4> Er heeft zich een fout voorgedaan bij het bijwerken van jouw feestje. Probeer opnieuw, alsjeblieft.
+        start_party:
+            success: We hebben je feestje gestart, en de deelnemers op de hoogte gebracht via email!
+            danger: Er is een fout opgetreden tijdens het starten van je feestje, probeer alsjeblieft opnieuw!
 
     # PoolController
     pool:
@@ -677,7 +684,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
         edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
-        saved_email: <h4>Bewaard</h4> Het nieuwe e-mailadres werd bewaard. We hebben ook de e-mail opnieuw verstuurd.
+        updated_participant: <h4>Aangepast!</h4> We hebben de details van de gebruiker aangepast!
+        updated_participant_resent: <h4>Aangepast!</h4> We hebben de details van de gebruiker aangepast! Omdat je het email adres hebt aangepast, en het feestje al gestart is, hebben we de email naar deze persoon opnieuw verzonden.
         remove_participant:
             success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
             danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.

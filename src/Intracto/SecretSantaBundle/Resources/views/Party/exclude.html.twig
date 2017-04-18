@@ -17,9 +17,14 @@
 
 {% block main %}
     <div class="box">
-        <h1>{{ 'pool-exclude.title'|trans }}</h1>
+        <h1>{{ 'party_manage-exclude.title'|trans }}</h1>
 
-        <p>{{ 'pool-exclude.description'|trans }}</p>
+        <p>{{ 'party_manage-exclude.description'|trans }}</p>
+
+        <div class="alert alert-info" role="alert">
+            <i class="fa fa-info-circle"></i> {{ 'party_manage-exclude.information' | trans }}
+        </div>
+
         {{ form_start(form) }}
         {# Only show general validation error if there are no subform errors #}
         {% if form.participants.vars.valid %}
@@ -29,8 +34,8 @@
             <thead>
             <tr>
                 <th class="col-xs-1">#</th>
-                <th class="col-xs-3">{{ 'pool-exclude.label.name'|trans }}</th>
-                <th class="col-xs-8">{{ 'pool-exclude.label.exclude'|trans }}</th>
+                <th class="col-xs-3">{{ 'party_manage-exclude.label.name'|trans }}</th>
+                <th class="col-xs-8">{{ 'party_manage-exclude.label.exclude'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -39,7 +44,7 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td>{{ entry.excluded_participants.vars.label }}</td>
                     <td>
-                        {{ form_widget(entry.excluded_participants, {'attr': {'placeholder': 'pool-exclude.placeholder_exclude'} } ) }}
+                        {{ form_widget(entry.excluded_participants, {'attr': {'placeholder': 'party_manage-exclude.placeholder_exclude'} } ) }}
                         {{ form_errors(entry.excluded_participants) }}
                     </td>
                 </tr>
@@ -47,8 +52,11 @@
             </tbody>
         </table>
         <p>
-            <button type="submit" class="btn btn-large btn-primary btn-create-event">
-                <i class="fa fa-check"></i> {{ 'pool-exclude.btn.create_event'|trans }}
+            <a href="{{ path('party_manage', {'listUrl' : party.listUrl}) }}" class="btn btn-large btn-danger btn-create-event">
+                {{ 'party_manage-exclude.btn.cancel'|trans }}
+            </a>
+            <button type="submit" class="btn btn-large btn-success btn-create-event">
+                <i class="fa fa-play"></i> {{ 'party_manage-exclude.btn.start_party'|trans }}
             </button>
         </p>
         {{ form_end(form) }}

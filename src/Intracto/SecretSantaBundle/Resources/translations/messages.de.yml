@@ -80,18 +80,19 @@ pool-create:
         participants: Teilnehmer
 
 # Pool/exclude.html.twig
-pool-exclude:
+party_manage-exclude:
     title: Ausschlieβen
     description: Mit dieser Liste können Sie auch Kombinationen von Teilnehmern ausschließen. o können Sie zum Beispiel verhindern, dass Mitglieder derselben Familie Geschenke füreinander kaufen solle.
-
+#    information
     placeholder_exclude: Um den Teilnehmer auszuwählen, der ausgeschlossen werden soll, klicken Sie auf dessen Namen.
-
     btn:
-        create_event: Erstellen Sie Ihr Ereignis!
-
+#        start_party:
+        cancel: Stornieren
     label:
         name: Name
         exclude: Ausschließen
+    feedback:
+#        not_enough:
 
 # Pool/created.html.twig
 pool-created:
@@ -317,6 +318,8 @@ pool_manage_valid:
 #        pool_update: ?
 #        remove_participant_confirm: ?
 #        updated_party: ?
+#        start_party:
+#        start_party_with_excludes:
 
     label:
         name: Name
@@ -484,6 +487,9 @@ flashes:
 #        updated_party:
 #            success: ?
 #            danger: ?
+#        start_party:
+#            success: ?
+#            danger: ?
 
     # PoolController
     pool:
@@ -498,7 +504,8 @@ flashes:
     entry:
         wishlist_updated: <h4>Wunschzettel aktualisiert</h4>Wir haben unsere Wichtel losgeschickt, um Ihren Secret Santa über Ihre Wünsche zu informieren!
         edit_email: <h4>Nicht gespeichert</h4> Die E-Mail-Adresse ist fehlerhaft.
-        saved_email: <h4>Gespeichert</h4> Die neue E-Mail-Adresse wurde gespeichert. Wir versenden auch diese E-Mail erneut.
+#        updated_participant:
+#        updated_participant_resent:
 #        remove_participant:
 #            success: ?
 #            danger: ?
