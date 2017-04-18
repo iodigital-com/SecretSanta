@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Entity\Participant;
@@ -20,7 +21,7 @@ class ManagementController extends Controller
      * @Route("/manage/{listUrl}", name="party_manage")
      * @Template("IntractoSecretSantaBundle:Party/manage:valid.html.twig")
      */
-    public function validAction(Request $request, $listUrl)
+    public function validAction($listUrl, Form $excludeForm = null)
     {
         /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
         $party = $this->getParty($listUrl);
@@ -52,6 +53,13 @@ class ManagementController extends Controller
                 'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             ]);
         }
+        if ($excludeForm == null) {
+            $excludeForm = $this->createForm(PartyExcludeParticipantType::class, $party,
+                [
+                    'action' => $this->generateUrl('party_exclude', ['listUrl' => $listUrl]),
+                ]
+            );
+        }
 
         return [
             'addParticipantForm' => $addParticipantForm->createView(),
@@ -59,6 +67,7 @@ class ManagementController extends Controller
             'party' => $party,
             'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
+            'excludeForm' => $excludeForm->createView(),
         ];
     }
 
@@ -193,7 +202,6 @@ class ManagementController extends Controller
 
     /**
      * @Route("/exclude/{listUrl}", name="party_exclude")
-     * @Template("IntractoSecretSantaBundle:Party:exclude.html.twig")
      */
     public function excludeAction(Request $request, $listUrl)
     {
@@ -203,7 +211,7 @@ class ManagementController extends Controller
         if (count($party->getParticipants()) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('party_manage-exclude.feedback.not_enough')
+                $this->get('translator')->trans('party_manage_valid.excludes.not_enough')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
@@ -214,19 +222,17 @@ class ManagementController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $this->get('doctrine.orm.entity_manager')->persist($party);
-
-                //$this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
-
                 $this->get('doctrine.orm.entity_manager')->flush();
-
-                return $this->redirect($this->generateUrl('party_manage_start', ['listUrl' => $party->getListurl()]));
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    $this->get('translator')->trans('flashes.management.excludes.success')
+                );
+            } else {
+                return $this->forward('IntractoSecretSantaBundle:Party/Management:valid', array('listUrl' => $listUrl, 'excludeForm' => $form));
             }
         }
 
-        return [
-            'form' => $form->createView(),
-            'party' => $party,
-        ];
+        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
     }
 
     private function getParty($listUrl)

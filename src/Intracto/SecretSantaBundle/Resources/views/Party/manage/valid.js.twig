@@ -50,6 +50,10 @@
                 $(this).datepicker({dateFormat: 'dd-mm-yy'});
             });
         }
+
+        {% if excludeForm.vars.errors |length %}
+            showExcludeErrors();
+        {% endif %}
     });
 
     function editParticipant(listUrl, entryId) {
@@ -102,7 +106,7 @@
         );
         $('#email_' + participantId).html(
             '<input type="text" id="input_email_' + participantId + '" class="form-control input_edit_email" name="email" value="' + email + '" data-hj-masked>&nbsp;' +
-            '<button class="btn btn-small btn-primary" id="submit_btn_' + participantId + '" onclick="submitEditForm( \'' + listUrl + '\', ' + participantId + ')"><i class="fa fa-check"></i> {{ 'pool_manage_valid.manage.save'|trans }}</button>'
+            '<button class="btn btn-small btn-primary" id="submit_btn_' + participantId + '" onclick="submitEditForm( \'' + listUrl + '\', ' + participantId + ')"><i class="fa fa-check"></i> {{ 'party_manage_valid.manage.save'|trans }}</button>'
         );
     }
 
@@ -111,5 +115,12 @@
         url = url.replace('listUrl', listUrl);
         url = url.replace('entryId', entryId);
         $('#delete-participant-form').attr('action', url);
+    }
+
+    function showExcludeErrors() {
+        $('#collapsedMessage').collapse('show');
+        $('html, body').animate({
+            scrollTop: $("#collapsedMessage").offset().top
+        }, 2000);
     }
 </script>

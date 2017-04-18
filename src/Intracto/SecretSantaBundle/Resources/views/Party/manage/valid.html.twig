@@ -14,16 +14,17 @@
 {% block main %}
     <div class="box">
         <span id="alertspan"></span>
-        <h1>{{ 'pool_manage_valid.manage.title'|trans }}</h1>
-        <table class="table table-striped mysanta" id="mysanta">
+        <h1>{{ 'party_manage_valid.manage.title'|trans }}</h1>
+
+        <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;">
             <thead>
                 <tr>
                     <th class="col-xs-1 entry-number-header">#</th>
-                    <th class="col-xs-2">{{ 'pool_manage_valid.label.name'|trans }}</th>
-                    <th class="col-xs-3">{{ 'pool_manage_valid.label.email'|trans }}</th>
-                    <th class="col-xs-2">{{ 'pool_manage_valid.label.confirmed'|trans }}</th>
-                    <th class="col-xs-2">{{ 'pool_manage_valid.label.wishlist_filled'|trans }}</th>
-                    <th class="col-xs-2">{{ 'pool_manage_valid.label.actions'|trans }}</th>
+                    <th class="col-xs-2">{{ 'party_manage_valid.label.name'|trans }}</th>
+                    <th class="col-xs-3">{{ 'party_manage_valid.label.email'|trans }}</th>
+                    <th class="col-xs-2">{{ 'party_manage_valid.label.confirmed'|trans }}</th>
+                    <th class="col-xs-2">{{ 'party_manage_valid.label.wishlist_filled'|trans }}</th>
+                    <th class="col-xs-2">{{ 'party_manage_valid.label.actions'|trans }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,18 +33,18 @@
                     <td class="entry-number">{{ loop.index }}</td>
                     <td id="name_{{ participant.id }}" data-hj-masked>{{ participant.name }}</td>
                     <td id="email_{{ participant.id }}" data-hj-masked>{{ participant.email }}</td>
-                    <td class="{% if participant.viewdate %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
-                    <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'pool_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'pool_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td class="{% if participant.viewdate %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
                              onclick="editParticipant('{{ party.listUrl }}', {{ participant.id }});"
-                             rel="tooltip" title="{{ 'pool_manage_valid.manage.edit_email'|trans }}" alt="{{ 'pool_manage_valid.manage.edit_email'|trans }}"
+                             rel="tooltip" title="{{ 'party_manage_valid.manage.edit_email'|trans }}" alt="{{ 'party_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;">
                         {% if party.created %}
                             {% spaceless %}
                                 <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': participant.id }) }}">
                                     <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
-                                         title="{{ 'pool_manage_valid.manage.resend_email'|trans }}" alt="{{ 'pool_manage_valid.manage.resend_email'|trans }}">
+                                         title="{{ 'party_manage_valid.manage.resend_email'|trans }}" alt="{{ 'party_manage_valid.manage.resend_email'|trans }}">
                                 </a>
                             {% endspaceless %}
                         {% endif %}
@@ -51,7 +52,7 @@
                             <a href="{{ path('participant_view', { 'url': participant.url }) }}" class="add-participant-link">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
                                      title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
-                                     alt="{{ 'pool_manage_valid.manage.view_entry'|trans }}">
+                                     alt="{{ 'party_manage_valid.manage.view_entry'|trans }}">
                             </a>
                         {% endif %}
                         <button class="btn btn-mini link_remove_participant" data-entry="{{ participant.id }}">
@@ -62,48 +63,142 @@
             {% endfor %}
             </tbody>
         </table>
-        <div class="alert alert-info">
-            <strong>{{ 'pool_manage_valid.manage.tip'|trans }}</strong> {{ 'pool_manage_valid.manage.come_back'|trans }}
-        </div>
-        {% if not party.created  %}
-            <a href="{{ path('party_manage_start', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link">
-                <i class="fa fa-play"></i> {{ 'pool_manage_valid.btn.start_party'|trans }}
-            </a>
-            {% if party.participants | length >3 %}
-                <a href="{{ path('party_exclude', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link manage_btn_middle">
-                    <i class="fa fa-play"></i> {{ 'pool_manage_valid.btn.start_party_with_excludes'|trans }}
-                </a>
-            {% endif %}
-        {% endif %}
-        <div class="clearfix"></div>
-        <button id="btn_delete" class="btn btn-primary manage_btn">
-            <i class="fa fa-exclamation-circle"></i> {{ 'pool_manage_valid.btn.delete_list'|trans }}
-        </button>
-        <button id="btn_add" class="btn btn-success manage_btn manage_btn_middle"
+        <button id="btn_add" class="btn btn-success manage_btn" style="float: right; margin-bottom: 35px;"
                 {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}disabled{% endif %}>
-            <i class="fa fa-plus-circle fa-inverse"></i> {{ 'pool_manage_valid.btn.add_participant'|trans|raw }}
+            <i class="fa fa-plus-circle fa-inverse"></i> {{ 'party_manage_valid.btn.add_participant'|trans|raw }}
         </button>
-        <button id="btn_update" class="btn btn-warning manage_btn">
-            <i class="fa fa-refresh"></i> {{ 'pool_manage_valid.btn.updated_party'|trans|raw }}
-        </button>
+        <div class="clearfix"></div>
+        <div id="add-participant" class="alert alert-success manage-page-form"
+             {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}style="display: block;"
+             {% else %}style="display: none"{% endif %}>
+            <h3>{{ 'party_manage_valid.add_participant.title'|trans|raw }}</h3>
+
+            {{ 'party_manage_valid.add_participant.body'|trans|raw }}
+            <br>
+            {{ form_start(addParticipantForm) }}
+            {{ form_row(addParticipantForm._token) }}
+            <div class="form-group {% if form_errors(addParticipantForm.name) %}error{% endif %}">
+                <strong>{{ 'party_manage_valid.label.name'|trans }}</strong> {{ form_widget(addParticipantForm.name ,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(addParticipantForm.name) %}addParticipantForm
+                    {% for error in addParticipantForm.name.vars.errors %}
+                        <strong>{{ error.message }}</strong><br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group {% if form_errors(addParticipantForm.email) %}error{% endif %}">
+                <strong>{{ 'party_manage_valid.label.email'|trans }}</strong> {{ form_widget(addParticipantForm.email ,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(addParticipantForm.email) %}
+                    {% for error in addParticipantForm.email.vars.errors %}
+                        <strong>{{ error.message }}</strong><br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-success"
+                    id="btn_add_confirmation">{{ 'party_manage_valid.btn.add_participant_confirm'|trans|raw }}</button>
+            <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+            {{ form_end(addParticipantForm) }}
+        </div>
+        <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
+            <h3>{{ 'party_manage_valid.remove_participant.title'|trans|raw }}</h3>
+
+            {{ 'party_manage_valid.remove_participant.body'|trans|raw }}
+            <br>
+            <form id="delete-participant-form" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
+                <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
+                        id="btn_remove_participant_confirmation">
+                    {{ 'party_manage_valid.btn.remove_participant_confirm'|trans|raw }}
+                </button>
+                <button type="reset" id="btn_remove_participant_cancel" class="btn btn-danger btn_remove_participant_cancel">
+                    {{ 'party_manage_valid.btn.cancel'|trans }}
+                </button>
+            </form>
+        </div>
+        <div class="alert alert-info">
+            <strong>{{ 'party_manage_valid.manage.tip'|trans }}</strong> {{ 'party_manage_valid.manage.come_back'|trans }}
+        </div>
+
+        {% if not party.created and party.participants | length >3  %}
+            <div class="panel panel-default" id="messagePanel">
+                <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
+                    <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
+                        <h3 class="panel-title">{{ 'party_manage_valid.excludes.title' | trans }}</h3>
+                    </a>
+                </div>
+                <div id="collapsedMessage" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>{{ 'party_manage_valid.excludes.description'|trans }}</p>
+
+                        <div class="alert alert-info" role="alert">
+                            <i class="fa fa-info-circle"></i> {{ 'party_manage_valid.excludes.information' | trans }}
+                        </div>
+                        {{ form_start(excludeForm) }}
+                        {# Only show general validation error if there are no subform errors #}
+                        {% if excludeForm.participants.vars.valid and  excludeForm.vars.errors | length %}
+                            <div class="alert alert-danger" role="alert">{{ form_errors(excludeForm) }}</div>
+                        {% endif %}
+                        <table class="table table-striped" style="margin-bottom: 5px;">
+                            <thead>
+                            <tr>
+                                <th class="col-xs-1">#</th>
+                                <th class="col-xs-3">{{ 'party_manage_valid.excludes.label.name'|trans }}</th>
+                                <th class="col-xs-8">{{ 'party_manage_valid.excludes.label.exclude'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for entry in excludeForm.participants %}
+                                <tr class="entry {% if form_errors(entry) or form_errors(entry.excluded_participants) %} error{% endif %}">
+                                    <td class="entry-number">{{ loop.index }}</td>
+                                    <td>{{ entry.excluded_participants.vars.label }}</td>
+                                    <td>
+                                        {{ form_widget(entry.excluded_participants, {'attr': {'placeholder': 'party_manage_valid.excludes.placeholder_exclude'} } ) }}
+                                        {{ form_errors(entry.excluded_participants) }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <p>
+                            <button type="submit" class="btn btn-large btn-success btn-create-event">
+                                <i class="fa fa-save"></i> {{ 'party_manage_valid.excludes.btn'|trans }}
+                            </button>
+                        </p>
+                        {{ form_end(excludeForm) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if not party.created %}
+            <a href="{{ path('party_manage_start', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link">
+                <i class="fa fa-play"></i> {{ 'party_manage_valid.btn.start_party'|trans }}
+            </a>
+        {% endif %}
+
+        <div class="clearfix"></div>
+
         {% if party.created %}
             <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
-                <i class="fa fa-envelope"></i> {{ 'pool_manage_valid.btn.pool_update'|trans|raw }}
+                <i class="fa fa-envelope"></i> {{ 'party_manage_valid.btn.pool_update'|trans|raw }}
             </a>
             <a href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
-                <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose'|trans }}
+                <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose'|trans }}
             </a>
             <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': party.listurl }) }}">
-                <i class="fa fa-eye"></i> {{ 'pool_manage_valid.btn.expose_wishlists'|trans }}
+                <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose_wishlists'|trans }}
             </a>
         {% endif %}
+
+        <button id="btn_update" class="btn btn-warning manage_btn text-center">
+            <i class="fa fa-pencil"></i> {{ 'party_manage_valid.btn.updated_party'|trans|raw }}
+        </button>
+
         <br/><br/>
-
         <div id="delete-warning" class="alert alert-danger" style="display: none;">
-            <h3>{{ 'pool_manage_valid.delete.title'|trans }}</h3>
+            <h3>{{ 'party_manage_valid.delete.title'|trans }}</h3>
 
-            {% set phraseToType = 'pool_manage_valid.delete.phrase_to_type'|trans|lower %}
-            {{ 'pool_manage_valid.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            {% set phraseToType = 'party_manage_valid.delete.phrase_to_type'|trans|lower %}
+            {{ 'party_manage_valid.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
             <br>
             <form action="{{ path('party_delete', { 'listUrl': party.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_party_csrf_token }}">
@@ -113,65 +208,18 @@
                 <br>
                 <button class="btn btn-primary btn_confirmation_pop_up" type="submit" id="btn_delete_confirmation"
                         disabled>
-                    {{ 'pool_manage_valid.btn.delete_confirm'|trans }}
+                    {{ 'party_manage_valid.btn.delete_confirm'|trans }}
                 </button>
-                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'pool_manage_valid.btn.cancel'|trans }}</button>
-            </form>
-        </div>
-        <div id="add-participant" class="alert alert-success manage-page-form"
-             {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}style="display: block;"
-             {% else %}style="display: none"{% endif %}>
-            <h3>{{ 'pool_manage_valid.add_participant.title'|trans|raw }}</h3>
-
-            {{ 'pool_manage_valid.add_participant.body'|trans|raw }}
-            <br>
-            {{ form_start(addParticipantForm) }}
-                {{ form_row(addParticipantForm._token) }}
-                <div class="form-group {% if form_errors(addParticipantForm.name) %}error{% endif %}">
-                    <strong>{{ 'pool_manage_valid.label.name'|trans }}</strong> {{ form_widget(addParticipantForm.name ,{'attr':{'class':'form-control'}}) }}
-                    {% if form_errors(addParticipantForm.name) %}addParticipantForm
-                        {% for error in addParticipantForm.name.vars.errors %}
-                            <strong>{{ error.message }}</strong><br/>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div class="form-group {% if form_errors(addParticipantForm.email) %}error{% endif %}">
-                    <strong>{{ 'pool_manage_valid.label.email'|trans }}</strong> {{ form_widget(addParticipantForm.email ,{'attr':{'class':'form-control'}}) }}
-                    {% if form_errors(addParticipantForm.email) %}
-                        {% for error in addParticipantForm.email.vars.errors %}
-                            <strong>{{ error.message }}</strong><br/>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <button type="submit" class="btn btn-success"
-                        id="btn_add_confirmation">{{ 'pool_manage_valid.btn.add_participant_confirm'|trans|raw }}</button>
-                <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'pool_manage_valid.btn.cancel'|trans }}</button>
-            {{ form_end(addParticipantForm) }}
-        </div>
-
-        <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
-            <h3>{{ 'pool_manage_valid.remove_participant.title'|trans|raw }}</h3>
-
-            {{ 'pool_manage_valid.remove_participant.body'|trans|raw }}
-            <br>
-            <form id="delete-participant-form" method="post">
-                <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
-                <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
-                        id="btn_remove_participant_confirmation">
-                    {{ 'pool_manage_valid.btn.remove_participant_confirm'|trans|raw }}
-                </button>
-                <button type="reset" id="btn_remove_participant_cancel" class="btn btn-danger btn_remove_participant_cancel">
-                    {{ 'pool_manage_valid.btn.cancel'|trans }}
-                </button>
+                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
             </form>
         </div>
 
         <div id="update-party-details" class="alert alert-warning manage-page-form"
              {% if (form_errors(updatePartyDetailsForm.eventdate)) or (form_errors(updatePartyDetailsForm.amount)) or (form_errors(updatePartyDetailsForm.location)) %}style="display: block;"
              {% else %}style="display: none"{% endif %}>
-            <h3>{{ 'pool_manage_valid.updated_party.title'|trans }}</h3>
+            <h3>{{ 'party_manage_valid.updated_party.title'|trans }}</h3>
 
-            {{ 'pool_manage_valid.updated_party.body'|trans|raw }}
+            {{ 'party_manage_valid.updated_party.body'|trans|raw }}
             <br>
             {{ form_start(updatePartyDetailsForm) }}
                 {{ form_row(updatePartyDetailsForm._token) }}
@@ -197,9 +245,11 @@
                     {% endfor %}
                 </div>
                 <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
-                <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'pool_manage_valid.btn.cancel'|trans }}</button>
+                <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
             {{ form_end(updatePartyDetailsForm) }}
         </div>
+        <div class="clearfix bottom-spacer"></div>
+        <div class="text-center"><a href="#delete-confirmation" id="btn_delete" style="color: #555555; font-size: 13px;"> <i class="fa fa-trash-o"></i> {{ 'party_manage_valid.btn.delete_list'|trans }}</a></div>
     </div>
 {% endblock %}
 
@@ -207,4 +257,14 @@
     {{ parent() }}
     {{ form_javascript(updatePartyDetailsForm) }}
     {% include 'IntractoSecretSantaBundle:Party/manage:valid.js.twig' %}
+    <script src="{{ asset('/select2/select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-selector-entry').select2();
+        })
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('/select2/select2.css') }}" rel="stylesheet" media="screen">
 {% endblock %}

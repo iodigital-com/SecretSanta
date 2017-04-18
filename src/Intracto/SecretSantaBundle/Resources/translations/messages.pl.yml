@@ -69,21 +69,6 @@ pool-create:
         email: E-mail
         participants: Uczestników
 
-# Pool/exclude.html.twig
-party_manage-exclude:
-    title: Wyłącz
-    description: Ta lista może potencjalnie wykluczyć pewne kombinacje uczestników. Na przykład uniemożliwić członkom tej samej rodziny wymianę prezentów między sobą.
-#    information:
-    placeholder_exclude: Kliknij i wybierz uczestników, których chcesz wykluczyć
-    btn:
-#        start_party:
-#        cancel:
-    label:
-        name: Imię
-        exclude: Wyłącz
-    feedback:
-#       not_enough:
-
 # Pool/created.html.twig
 pool-created:
     title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
@@ -240,7 +225,7 @@ pool_manage_expired:
 #        expired:
 
 # Pool/manage/valid.html.twig
-pool_manage_valid:
+party_manage_valid:
     manage:
         title: Twoja lista Tajnego Mikołaja
         yes: true
@@ -282,7 +267,6 @@ pool_manage_valid:
 #        remove_participant_confirm: ?
 #        updated_party: ?
 #        start_party:
-#        start_party_with_excludes:
 
     label:
         name: Imię
@@ -290,6 +274,17 @@ pool_manage_valid:
         confirmed: Potwierdzony
 #        wishlist_filled: ?
         actions: Akcje
+
+#    excludes:
+#        title:
+#        btn:
+#        description:
+#        information:
+#        placeholder_exclude:
+#        not_enough:
+#        label:
+#            name:
+#            exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -458,6 +453,8 @@ flashes:
 #        start_party:
 #            success: ?
 #            danger: ?
+#        excludes:
+#            success:
 
     # PoolController
     pool:
@@ -480,6 +477,7 @@ flashes:
 #            warning: ?
 #            excluded_entries: ?
 #            self_assigned: ?
+#            not_enough_for_exclude:
 #            wrong: ?
 
     # ReuseController

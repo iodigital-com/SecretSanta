@@ -28,7 +28,7 @@ class ParticipantController extends Controller
         if ($participant->getParty()->getListurl() === $listUrl) {
             $emailAddressErrors = $this->get('validator')->validate($emailAddress);
             $blacklisted = $this->get('validator')->validate($emailAddress, new ParticipantIsNotBlacklisted());
-            if ((count($emailAddressErrors) + count($blacklisted)) > 0 ) {
+            if ((count($emailAddressErrors) + count($blacklisted)) > 0) {
                 $return = [
                     'responseCode' => 400,
                     'message' => [
@@ -52,8 +52,8 @@ class ParticipantController extends Controller
                     'responseCode' => 200,
                     'message' => [
                         'type' => 'success',
-                        'message' => $message
-                    ]
+                        'message' => $message,
+                    ],
                 ];
             }
         }
@@ -110,10 +110,19 @@ class ParticipantController extends Controller
             }
         }
 
-        if ($excludeCount > 0) {
+        if ($excludeCount > 0 && $participant->getParty()->getCreated()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
                 $this->get('translator')->trans('flashes.entry.remove_participant.excluded_entries')
+            );
+
+            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+        }
+
+        if ($excludeCount > 0 && count($participants) == 4) {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->get('translator')->trans('flashes.entry.remove_participant.not_enough_for_exclude')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));

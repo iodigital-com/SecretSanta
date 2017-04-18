@@ -78,21 +78,6 @@ pool-create:
         email: E-mail
         participants: Deelnemers
 
-# Pool/exclude.html.twig
-party_manage-exclude:
-    title: Uitsluiten
-    description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
-    information: Wanneer je gebruik maakt van excludes kan je geen gebruikers meer verwijderen van het feestje. Je kan nog steeds deelnemers toevoegen, maar je zal de excludes niet meer kunnen wijzigen.
-    placeholder_exclude: Klik en kies de deelnemers die je wilt uitsluiten
-    btn:
-        start_party: Start je feestje!
-        cancel: Annuleren
-    label:
-        name: Naam
-        exclude: Uitsluiten
-    feedback:
-        not_enough: Je feestje moet minimaal 4 deelnemers hebben voordat je excludes kan gebruiken!
-
 # Pool/created.html.twig
 pool-created:
     title: Nog 1 stapje te gaan! - Valideer je deelname
@@ -147,9 +132,11 @@ static-faq:
         De lijstbeheerder zal een bevestigingmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
         We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
-        <!--a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
-        <p>Als je een evenement aanmaakt, kan je - nadat je alle deelnemers hebt ingegeven - optioneel een aantal combinaties uitsluiten. Bijvoorbeeld, als je niet wil dat deelnemers van het zelfde gezin voor elkaar geschenken moeten kopen.<br><br>
-        Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p-->
+        <a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
+        <p>Het is mogelijk bepaalde combinaties uit te sluiten, bijvoorbeeld als je niet wil dat deelnemers van hetzelfde gezin voor elkaar geschenken moeten kopen. Deze kunnen worden ingesteld als je feestje 4 of meer
+        deelnemers heeft en je feestje nog niet gestart is. Als dat zo is vind je op de beheer pagina een balk met titel 'Bepaalde combinaties uitlsuiten', als je daarop klikt krijg je een formulier om deze instellingen aan te passen.
+        Dit kan steeds worden gewijzigd, zolang je feestje niet gestart is. <br><br>
+        Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p>
 
         <a name="wishlist"></a><h2>Kan ik een verlanglijst maken?</h2>
         <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst opstellen en ook de verlanglijst van hun geheime persoon bekijken.</p>
@@ -353,7 +340,7 @@ pool_manage_expired:
         expired: <strong>Oops</strong><br/>Je evenement is ouder dan 2 jaar en is niet meer beschikbaar.<br/>
 
 # Pool/manage/valid.html.twig
-pool_manage_valid:
+party_manage_valid:
     manage:
         title: Jouw Secret Santa lijst
         yes: Ja
@@ -423,8 +410,6 @@ pool_manage_valid:
         remove_participant_confirm: Verwijder deze deelnemer
         updated_party: Bewerk de details van dit feestje
         start_party: Start je feestje
-        start_party_with_excludes: Start je feestje met excludes
-
 
     label:
         name: Naam
@@ -432,6 +417,17 @@ pool_manage_valid:
         confirmed: Bevestigd
         wishlist_filled: Wish List Ingevuld
         actions: Acties
+
+    excludes:
+        title: Bepaalde combinaties uitlsuiten
+        btn: Opslaan
+        description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
+        information: Wanneer je gebruik maakt van excludes kan je geen gebruikers meer verwijderen van het feestje eens je je feestjes start. Je kan nog steeds deelnemers toevoegen, maar je zal de excludes niet meer kunnen wijzigen vanaf het moment dat je feestjes is gestart.
+        placeholder_exclude: Klik en kies de deelnemers die je wilt uitsluiten
+        not_enough: Je feestje moet minimaal 4 deelnemers hebben voor je excludes kan configureren!
+        label:
+            name: Naam
+            exclude: Uitsluiten voor
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -682,6 +678,8 @@ flashes:
         start_party:
             success: We hebben je feestje gestart, en de deelnemers op de hoogte gebracht via email!
             danger: Er is een fout opgetreden tijdens het starten van je feestje, probeer alsjeblieft opnieuw!
+        excludes:
+            success: De excludes werden opgeslagen.
 
     # PoolController
     pool:
@@ -704,6 +702,7 @@ flashes:
             warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
             excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
 #            self_assigned: ?
+            not_enough_for_exclude: <h4>Oeps</h4> Je hebt excludes geconfigureerd, maar omdat je minimaal 4 deelnemers moet hebben om dit te kunnen gebruiken zal je eerst je excludes moeten verwijderen of er voor zorgen dat je steeds minimaal 4 deelnemers hebt.
             wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
 
     # ReuseController

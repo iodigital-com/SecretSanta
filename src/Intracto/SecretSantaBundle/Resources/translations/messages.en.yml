@@ -80,21 +80,6 @@ pool-create:
         email: E-mail
         participants: Participants
 
-# Pool/exclude.html.twig
-party_manage-exclude:
-    title: Exclude
-    description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
-    information: When you use excludes it might be possible that some users can't be removed anymore from the party. You can still add participants, but you won't be able to change the excludes anymore.
-    placeholder_exclude: Click and choose the participants you want to exclude
-    btn:
-        start_party: Start your party!
-        cancel: Cancel
-    label:
-        name: Name
-        exclude: Exclude
-    feedback:
-        not_enough: Your party needs at least 4 participants to use excludes!
-
 # Pool/created.html.twig
 pool-created:
     title: Only 1 step to go! - Validate your participation
@@ -150,9 +135,11 @@ static-faq:
         The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
         We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
 
-        <!--a name="exclude"></a><h2>Can I exclude combinations?</h2>
-        <p>After providing all participants, you can optionally prevent some participant combinations. For example to prevent members of the same family having to buy gifts for each other.<br><br>
-        It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p-->
+        <a name="exclude"></a><h2>Can I exclude combinations?</h2>
+        <p>It is possible to excludee some combintations, for example to prevent members of the same family having to buy gifts for each other. Excludes can be configured if your party has 4 participants or more
+        and as long as your party is not started. If these conditions are met, you will see a box called 'Exclude certain combinations' on the manage page. Clicking on this box wil open it, and make it possible to edit your excludes.
+        These can be edited at any time, as long as your party isn't started.<br><br>
+        It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
 
         <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
         <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
@@ -347,7 +334,7 @@ pool_manage_expired:
         expired: <strong>Oops</strong><br/>Your event is older than 2 years and can't be eddited anymore.<br/>
 
 # Pool/manage/valid.html.twig
-pool_manage_valid:
+party_manage_valid:
     manage:
         title: Your Secret Santa list
         yes: Yes
@@ -416,7 +403,6 @@ pool_manage_valid:
         remove_participant_confirm: Remove this participant
         updated_party: Update your party details
         start_party: Start your party
-        start_party_with_excludes: Start your party with excludes
 
     label:
         name: Name
@@ -424,6 +410,17 @@ pool_manage_valid:
         confirmed: Confirmed
         wishlist_filled: Wish List Entered
         actions: Actions
+
+    excludes:
+        title: Exclude certain combinations
+        btn: Save excludes
+        description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
+        information: When using excludes, it might be possible once you start the party that you can't remove participants anymore. You also won't be able to change the excludes once you start the party!
+        placeholder_exclude: Click and choose the participants you want to exclude
+        not_enough: Your party needs at least 4 participants to use excludes!
+        label:
+            name: Name
+            exclude: Exclude
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -656,6 +653,8 @@ flashes:
         start_party:
             success: We started your party, and we've sent out the mails!
             danger: There was an error starting your party, please try again!
+        excludes:
+            success: The excludes have been saved!
 
     # PoolController
     pool:
@@ -677,6 +676,7 @@ flashes:
             danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
             warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
             excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+            not_enough_for_exclude: <h4>Oops</h4> You have configured excludes, but since you need a minimum of 4 participants before you can use excludes, you should first remove the excludes, or make sure you keep a minimum of 4 participants!
             self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
             wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
 
