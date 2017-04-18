@@ -70,14 +70,6 @@ class BlacklistEmail
     }
 
     /**
-     * @param int $id
-     */
-    private function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @return string
      */
     public function getEmail()

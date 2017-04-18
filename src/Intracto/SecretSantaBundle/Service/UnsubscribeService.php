@@ -31,7 +31,7 @@ class UnsubscribeService
      * @param Participant $participant
      * @param bool        $fromAllParties
      */
-    public function unsubscribe($participant, $fromAllParties)
+    public function unsubscribe(Participant $participant, bool $fromAllParties)
     {
         if ($fromAllParties) {
             $participants = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAllByEmail($participant->getEmail());
@@ -62,7 +62,7 @@ class UnsubscribeService
      * @param Participant $participant
      * @param string      $ip
      */
-    public function blacklist(Participant $participant, $ip)
+    public function blacklist(Participant $participant, string $ip)
     {
         // Unsubscribe participant from emails, with flag true for all parties.
         $this->unsubscribe($participant, true);

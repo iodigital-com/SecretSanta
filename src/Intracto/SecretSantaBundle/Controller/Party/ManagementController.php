@@ -53,7 +53,7 @@ class ManagementController extends Controller
                 'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_pool'),
             ]);
         }
-        if ($excludeForm == null) {
+        if ($excludeForm === null) {
             $excludeForm = $this->createForm(PartyExcludeParticipantType::class, $party,
                 [
                     'action' => $this->generateUrl('party_exclude', ['listUrl' => $listUrl]),
@@ -167,7 +167,7 @@ class ManagementController extends Controller
      * @Route("/manage/start/{listUrl}", name="party_manage_start")
      * @Method("GET")
      */
-    public function startParty($listUrl)
+    public function startPartyAction($listUrl)
     {
         /** @var Party $party */
         $party = $this->getParty($listUrl);
