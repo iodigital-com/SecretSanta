@@ -9,14 +9,14 @@ base:
             description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
 
-# Form/{PoolType,UpdatePoolDetailsType}
+# Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: 秘密聖誕老人派對日期
 #        location: ?
         amount_to_spend: 費用
 
-# PoolController
+# PartyController
 party_controller:
     created:
         message: |
@@ -35,7 +35,7 @@ party_controller:
 
             祝你假期愉快！
 
-# Pool/create.html.twig
+# Party/create.html.twig
 party-create:
     header:
         steps:
@@ -71,7 +71,7 @@ party-create:
         email: 電郵
 #        participants: ?
 
-# Pool/created.html.twig
+# Party/created.html.twig
 party-created:
     title: 只需一步，確認你的參與
     body: >
@@ -87,7 +87,7 @@ party-created:
     warning: 警告！
     check_spam: 別忘記去檢查你的垃圾文件夾！
 
-# Pool/deleted.html.twig
+# Party/deleted.html.twig
 party-deleted:
     title: 你的秘密聖誕老人 目錄已被刪除
     body: <p>多謝你使用秘密聖誕老人 組織者，希望出年再見到你！</p>
@@ -211,7 +211,7 @@ entry_show_valid:
 #        success:
 #        error:
 
-# Pool/manage/base.html.twig
+# Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
@@ -219,7 +219,7 @@ party_manage_base:
 #        location: ?
         amount: 數量
 
-# Pool/manage/expired.html.twig
+# Party/manage/expired.html.twig
 party_manage_expired:
     manage:
         title: 刪除我的秘密聖誕老人目錄
@@ -247,7 +247,7 @@ party_manage_expired:
     message:
 #        expired:
 
-# Pool/manage/valid.html.twig
+# Party/manage/valid.html.twig
 party_manage_valid:
     manage:
         title: 你的秘密聖誕老人目錄
@@ -383,7 +383,7 @@ emails-pendingConfirmation:
 #    come_back:
 #    btn_goto_manage:
 
-# Emails/poolStatus.{html,txt}.twig
+# Emails/partyStatus.{html,txt}.twig
 emails-party_status:
 #    subject: ?
 #    message:
@@ -400,9 +400,9 @@ emails-party_status:
 #        wishlist_filled: ?
 
 #    btn:
-#        poolstatus: ?
+#        partystatus: ?
 
-# Emails/poolUpdate.{html,txt}.twig
+# Emails/partyUpdate.{html,txt}.twig
 #emails-party_update:
 #    subject:
 #    message:
@@ -492,8 +492,8 @@ flashes:
 #        excludes:
 #             success:
 
-    # PoolController
-    pool:
+    # PartyController
+    party:
         not_deleted: <h4>並非已刪除</h4>該確認是不正確。
 
     # ResendEntryController

@@ -9,14 +9,14 @@ base:
             description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
 
-# Form/{PoolType,UpdatePoolDetailsType}
+# Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: 你的秘密圣诞老人派对日期
 #        location: ?
         amount_to_spend: 消费金额
 
-# PoolController
+# PartyController
 party_controller:
     created:
         message: |
@@ -35,7 +35,7 @@ party_controller:
 
             节日快乐！
 
-# Pool/create.html.twig
+# Party/create.html.twig
 party-create:
     header:
         steps:
@@ -71,7 +71,7 @@ party-create:
         email: 电子邮箱
 #        participants: ?
 
-# Pool/created.html.twig
+# Party/created.html.twig
 party-created:
     title: 仅此一步！确认你的参与人员
     body: >
@@ -87,7 +87,7 @@ party-created:
     warning: 提示
     check_spam: 不要忘记检查你的垃圾邮件文件夹！
 
-# Pool/deleted.html.twig
+# Party/deleted.html.twig
 party-deleted:
     title: 不要忘记检查你的垃圾邮件文件夹！
     body: <p>谢谢使用秘密圣诞老人组织机构。与此同时，我们希望下一年再见！</p>
@@ -211,7 +211,7 @@ entry_show_valid:
 #        success:
 #        error:
 
-# Pool/manage/base.html.twig
+# Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
@@ -219,7 +219,7 @@ party_manage_base:
 #        location: ?
         amount: 数量
 
-# Pool/manage/expired.html.twig
+# Party/manage/expired.html.twig
 party_manage_expired:
     manage:
         title: 删除我的秘密圣诞老人名单
@@ -247,7 +247,7 @@ party_manage_expired:
     message:
 #        expired:
 
-# Pool/manage/valid.html.twig
+# Party/manage/valid.html.twig
 party_manage_valid:
     manage:
         title: 你的秘密圣诞老人名单
@@ -384,7 +384,7 @@ emails-pendingConfirmation:
 #    come_back:
 #    btn_goto_manage:
 
-# Emails/poolStatus.{html,txt}.twig
+# Emails/partyStatus.{html,txt}.twig
 emails-party_status:
 #    subject: ?
 #    message:
@@ -401,9 +401,9 @@ emails-party_status:
 #        wishlist_filled: ?
 
 #    btn:
-#        poolstatus: ?
+#        partystatus: ?
 
-# Emails/poolUpdate.{html,txt}.twig
+# Emails/partyUpdate.{html,txt}.twig
 #emails-party_update:
 #    subject:
 #    message:
@@ -493,8 +493,8 @@ flashes:
 #        excludes:
 #            success:
 
-    # PoolController
-    pool:
+    # PartyController
+    party:
         not_deleted: <h4>未能删除</h4>这个确认不正确。
 
     # ResendEntryController

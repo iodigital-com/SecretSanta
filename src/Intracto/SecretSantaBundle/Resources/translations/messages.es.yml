@@ -9,14 +9,14 @@ base:
             description: ¡Secret Santa Organizer es un organizador de intercambio de regalos gratis en línea! Organiza una fiesta Secret Santa con amigos, familia o incluso compañeros y añade tu lista de deseos.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">¿Necesitas ayuda? ¿Tienes preguntas? ¡Lee las Preguntas Frecuentes!</a>
 
-# Form/{PoolType,UpdatePoolDetailsType}
+# Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: Fecha de tu fiesta Secret Santa
         location: Sitio de tu fiesta Secret Santa
         amount_to_spend: Cantidad a gastar
 
-# PoolController
+# PartyController
 party_controller:
     created:
         message: |
@@ -35,7 +35,7 @@ party_controller:
 
             ¡Felices Fiestas!
 
-# Pool/create.html.twig
+# Party/create.html.twig
 party-create:
     header:
         steps:
@@ -77,7 +77,7 @@ party-create:
         email: Correo electrónico
         participants: Participantes
 
-# Pool/created.html.twig
+# Party/created.html.twig
 party-created:
     title: ¡Sólo 1 paso para terminar! – Valida tu participación
     body: >
@@ -93,7 +93,7 @@ party-created:
     warning: ¡Advertencia!
     check_spam: ¡No olvides comprobar tu carpeta de correo no deseado!
 
-# Pool/deleted.html.twig
+# Party/deleted.html.twig
 party-deleted:
     title: ¡Tu lista Secret Santa fue borrada!
     body: <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
@@ -217,7 +217,7 @@ entry_show_valid:
 #        success:
 #        error:
 
-# Pool/manage/base.html.twig
+# Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
@@ -225,7 +225,7 @@ party_manage_base:
         location: Sitio
         amount: Cantidad
 
-# Pool/manage/expired.html.twig
+# Party/manage/expired.html.twig
 party_manage_expired:
     manage:
         title: Borrar mi lista Secret Santa
@@ -253,7 +253,7 @@ party_manage_expired:
     message:
 #        expired:
 
-# Pool/manage/valid.html.twig
+# Party/manage/valid.html.twig
 party_manage_valid:
     manage:
         title: Tu lista Secret Santa
@@ -407,7 +407,7 @@ emails-pendingConfirmation:
 #    come_back:
 #    btn_goto_manage:
 
-# Emails/poolStatus.{html,txt}.twig
+# Emails/partyStatus.{html,txt}.twig
 emails-party_status:
     subject: Secret Santa fiesta status
     message:
@@ -434,9 +434,9 @@ emails-party_status:
         wishlist_filled: Lista de deseos insertado
 
     btn:
-        poolstatus: Gestiona tu fiesta
+        partystatus: Gestiona tu fiesta
 
-# Emails/poolUpdate.{html,txt}.twig
+# Emails/partyUpdate.{html,txt}.twig
 emails-party_update:
     subject: Nuestra fiesta Secret Santa se acerca!
     message:
@@ -556,8 +556,8 @@ flashes:
 #        excludes:
 #            success:
 
-    # PoolController
-    pool:
+    # PartyController
+    party:
         not_deleted: <h4>No borrado</h4> La confirmación era incorrecta.
 
     # ResendEntryController

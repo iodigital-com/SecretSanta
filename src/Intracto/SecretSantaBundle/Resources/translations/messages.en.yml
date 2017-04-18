@@ -9,14 +9,14 @@ base:
             description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
 
-# Form/{PoolType,UpdatePoolDetailsType}
+# Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: Date of your Secret Santa party
         location: Location of your Secret Santa party
         amount_to_spend: Amount to spend
 
-# PoolController
+# PartyController
 party_controller:
     created:
         message: |
@@ -35,7 +35,7 @@ party_controller:
 
             Happy Holidays!
 
-# Pool/create.html.twig
+# Party/create.html.twig
 party-create:
     header:
         steps:
@@ -80,7 +80,7 @@ party-create:
         email: E-mail
         participants: Participants
 
-# Pool/created.html.twig
+# Party/created.html.twig
 party-created:
     title: Only 1 step to go! - Validate your participation
     body: >
@@ -96,13 +96,13 @@ party-created:
     warning: Warning!
     check_spam: Don't forget to check your spam folder!
 
-# Pool/deleted.html.twig
+# Party/deleted.html.twig
 party-deleted:
     title: Your Secret Santa list was deleted!
     body: <p>Thank you for using Secret Santa Organizer. And, we hope to see you again next year!</p>
     create_new_list: Create a new Secret Santa list!
 
-# Pool/forgotLink.html.twig
+# Party/forgotLink.html.twig
 party-forgot_link:
     title: 'Request overview of my parties'
     description: 'Fill in your email address and we will sent you an email with all the parties you have created and the parties where you are participating in. We only list the parties taking place in the future.'
@@ -297,7 +297,7 @@ participant_unsubscribe:
         success: You have successfully unsubscribed!
         error: There was an error when unsubscribing, please try again!
 
-# Pool/manage/base.html.twig
+# Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details
@@ -305,7 +305,7 @@ party_manage_base:
         location: Location
         amount: Amount
 
-# Pool/manage/expired.html.twig
+# Party/manage/expired.html.twig
 party_manage_expired:
     manage:
         title: Delete my Secret Santa list
@@ -333,7 +333,7 @@ party_manage_expired:
     message:
         expired: <strong>Oops</strong><br/>Your event is older than 2 years and can't be eddited anymore.<br/>
 
-# Pool/manage/valid.html.twig
+# Party/manage/valid.html.twig
 party_manage_valid:
     manage:
         title: Your Secret Santa list
@@ -493,7 +493,7 @@ emails-pendingConfirmation:
     come_back: You can always come back to this mail if you need the link to your manage page.
     btn_goto_manage: Go to the manage page
 
-# Emails/poolStatus.{html,txt}.twig
+# Emails/partyStatus.{html,txt}.twig
 emails-party_status:
     subject: Secret Santa party status
     message:
@@ -502,13 +502,13 @@ emails-party_status:
             <br/>
             Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statusses.<br/>
             <br/>
-            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
+            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your party.
         txt: >
             Dear %owner%,
 
             Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statusses.
 
-            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your pool.
+            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your party.
 
     yes: Yes
     not_yet: Not yet
@@ -520,9 +520,9 @@ emails-party_status:
         wishlist_filled: Wish List Entered
 
     btn:
-        poolstatus: Manage your party
+        partystatus: Manage your party
 
-# Emails/poolUpdate.{html,txt}.twig
+# Emails/partyUpdate.{html,txt}.twig
 emails-party_update:
     subject: Our Secret Santa party is coming soon!
     message:
@@ -656,8 +656,8 @@ flashes:
         excludes:
             success: The excludes have been saved!
 
-    # PoolController
-    pool:
+    # PartyController
+    party:
         not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
 
     # ResendEntryController
