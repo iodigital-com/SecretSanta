@@ -12,7 +12,7 @@ class Homepage extends Page
         'Participant table rows' => ['css' => '.entries.table > tbody > tr.entry'],
     ];
 
-    public function createEvent($participants, $location, $amount, $eventDate)
+    public function createParty($participants, $location, $amount, $eventDate)
     {
         if (count($participants) > 3) {
             //We need to add extra lines to the participant form
@@ -47,10 +47,6 @@ class Homepage extends Page
 
         $this->find('css', '.btn-create-event')->click();
 
-        if (count($participants) > 3) {
-            return $this->getPage('Participant Exclude');
-        } else {
-            return $this->getPage('Party Created');
-        }
+        return $this->getPage('Party Created');
     }
 }
