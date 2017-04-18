@@ -24,7 +24,7 @@ class ForgotLinkType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-large btn-primary btn-create-event'],
-                'label' => 'pool_manage_valid.manage.resend_email',
+                'label' => 'party-forgot_link.submit_btn',
             ])
         ;
     }

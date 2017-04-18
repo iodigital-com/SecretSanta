@@ -116,18 +116,19 @@ pool-deleted:
     body: <p>Vielen Dank, dass Sie den Secret Santa-Organizer benutzt haben. Wir hoffen, Sie nächstes Jahr wieder begrüßen zu dürfen!</p>
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
-# Pool/forgotLink.html.twig
-#pool-forgot_link:
+# Party/forgotLink.html.twig
+#party-forgot_link:
 #    title: ?
 #    description: ?
-#    info_reuse:
+#    submit_btn: ?
+#    info_reuse: ?
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title:
-#    description:
+#    title: ?
+#    description: ?
 #    form:
-#        submit-btn:
+#        submit-btn: ?
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
@@ -351,8 +352,17 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Ihre Secret Santa-Liste
-#    subject: ?
+#    subject:
+#    participating_in:
+#    created_these:
+#    table_labels:
+#        date:
+#        location:
+#        link:
+#        txt:
+#    btn:
+#        party_link:
+#        manage_link:
 #    message:
 #        html: ?
 #        txt: ?

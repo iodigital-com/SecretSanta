@@ -115,11 +115,11 @@ pool-deleted:
     body: <p>Bedankt voor het gebruik van de Secret Santa Organizer. Tot volgend jaar!</p>
     create_new_list: Stel een nieuwe Secret Santa lijst op!
 
-# Pool/forgotLink.html.twig
-pool-forgot_link:
-    title: Activatie mail opnieuw verzenden
-    description: Vul hier het emailadres van de eigenaar van het evenement in en wij versturen de activatie mail opnieuw. Dit is alleen mogelijk voor feestjes die plaatsvonden in de voorbije week of nog moeten plaatsvinden. (Hiermee wordt alleen de beheerpagina link gestuurd)
-    info_reuse: 'Als je een feestje wilt aanmaken, gebasseerd op een oud feestje, en een lijst van je vorige feestjes wilt opvragen met een link, <a href="%reusepath%">klik dan hier</a>'
+# Party/forgotLink.html.twig
+party-forgot_link:
+    title: Overzicht van feestjes aanvraagen
+    description: Vul hier jouw emailadres in en we sturen je een overzicht van alle feestjes die je hebt gemaakt of waar je aan meedoet. We lijsten wel enkel de feestjes in de toekomst op.
+    submit_btn: Stuur me een overzicht
 
 # Party/getReuseUrl.html.twig
 party-get_reuse_url:
@@ -169,8 +169,9 @@ static-faq:
         <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
         <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
 
-        <a href="lost"></a><h2>Ik ben mijn bevestigingsmail kwijt.</h2>
-        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> het mailadres van de lijstbeheerder in en we sturen je een mail met de beheer link.</p>
+        <a href="lost"></a><h2>Ik ben mijn bevestigingsmail / link naar het feestje kwijt.</h2>
+        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="http://www.secretsantaorganizer.com/forgot-link">deze pagina</a> jouw mailadres in en we sturen je een mail met een
+        overzicht van alle feestjes waaraan je meedoet en/of die je hebt aangemaakt.</p>
 
         <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
         <p>Je kan deelnemers toevoegen of verwijderen na het aanmaken van je evenement. Op de beheerpagina kan je een knop vinden om deelnemers te verwijderen en is er een formulier waarmee een deelnemer toegevoegd kan worden.
@@ -484,14 +485,25 @@ emails-forgot_link:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Jouw Secret Santa lijst
-    subject: Activatie mail opnieuw verzenden
+    subject: Overzicht van je feestjes
+    participating_in: Je neemt deel aan:
+    created_these: Je creëerde volgende feesjtes:
+    table_labels:
+        date: Datum
+        location: Locatie
+        link: Link
+        txt: Het feestje op %date%, te %location
+    btn:
+        party_link: Feestje bekijken
+        manage_link: Feestje beheren
     message:
-        html: 'Hallo, <br /><br />U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden<br />'
-        txt: >
-            Hallo,
+        html: 'Hey, <br /><br />Je hebt ons gevraagd een overzicht te sturen van jouw feestjes. Deze feestjes zijn alle feestjes die jij beheert en/of de feestjes waar jij aan meedoet, die plaatsvinden in de toekomst.<br />'
 
-            U heeft ons gevraagd om de activatie mail met de link(s) naar de beheerpagina opnieuw te verzenden
+        txt: >
+            Hey,
+
+            Je hebt ons gevraagd een overzicht te sturen van jouw feestjes. Deze feestjes zijn alle feestjes die jij beheert en/of de feestjes waar jij aan meedoet, die plaatsvinden in de toekomst.
+
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -651,8 +663,8 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-        success: 'De activatie mail is succesvol opnieuw verstuurd!'
-        error: 'We konden geen feestjes vinden... Controleer of je dezelfde email hebt ingegven, als diegene die je hebt gebruikt om het feestje aan te maken.'
+        success: 'We hebben je een email gestuurd met een overzicht van je feestjes!'
+        error: 'Er is een fout opgetreden tijdens het versturen van de mail. Probeer nogmaals.'
 
     # ManagementController
     management:

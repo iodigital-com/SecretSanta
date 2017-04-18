@@ -97,10 +97,11 @@ pool-deleted:
     body: <p>Dziękujemy za skorzystanie z Tajnego Mikołaja. Mamy nadzieję, że spotkamy się ponownie w przyszłym roku!</p>
     create_new_list: Stwórz nową listę Tajnego Mikołaja!
 
-# Pool/forgotLink.html.twig
-#pool-forgot_link:
+# Party/forgotLink.html.twig
+#party-forgot_link:
 #    title: ?
 #    description: ?
+#    submit_btn: ?
 #    info_reuse:
 
 # Party/getReuseUrl.html.twig
@@ -313,8 +314,17 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Twoja lista Tajnego Mikołaja
-#    subject:?
+#    subject:
+#    participating_in:
+#    created_these:
+#    table_labels:
+#        date:
+#        location:
+#        link:
+#        txt:
+#    btn:
+#        party_link:
+#        manage_link:
 #    message:
 #        html: ?
 #        txt: ?

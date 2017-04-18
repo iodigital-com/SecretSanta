@@ -115,10 +115,11 @@ pool-deleted:
     create_new_list: ¡Crear una nueva lista Secret Santa!
 #    info_reuse:
 
-# Pool/forgotLink.html.twig
-pool-forgot_link:
-    title: Reenviar el correo de activación
-    description: Introduzca la dirección de email del propietario y reenviamos el correo de activación. Sólo funciona para grupos de evento que tuvieron lugar esta semana o que tendrán lugar en el futuro.
+# Party/forgotLink.html.twig
+party-forgot_link:
+#    title:
+#    description:
+#    submit_btn: ?
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
@@ -369,14 +370,20 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-    title: Tu lista Secret Santa
-    subject: Reenviar el correo de activación
-    message:
-        html: 'Hola, <br><br>tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.<br>'
-        txt: >
-            Hola,
-
-            tú nos has pedido a reenviar tu correo de activación con el enlace para ajustar tu evento.
+#    subject:
+#    participating_in:
+#    created_these:
+#    table_labels:
+#        date:
+#        location:
+#        link:
+#        txt:
+#    btn:
+#        party_link:
+#        manage_link:
+#    message:
+#        html: ?
+#        txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
@@ -532,7 +539,7 @@ flashes:
 
     # ForgotManagementURLController
     forgot_management_url:
-        success: 'Hemos enviado exitosamente reenviado su correo de activación.'
+#        success:
 #        error:
 
     # ManagementController

@@ -12,11 +12,13 @@ class PartyRepository extends EntityRepository
         $qb->addSelect('party.listurl')
             ->addSelect('party.eventdate')
             ->addSelect('party.locale')
+            ->addSelect('party.location')
             ->from('IntractoSecretSantaBundle:Party', 'party')
             ->join('party.participants', 'participants')
             ->andWhere('participants.partyAdmin = true')
             ->andWhere('participants.email = :email')
             ->andWhere('party.eventdate >= :date')
+            ->orderBy('party.eventdate', 'ASC')
             ->setParameters([
                 'email' => $email,
                 'date' => new \DateTime('-1 week'),
