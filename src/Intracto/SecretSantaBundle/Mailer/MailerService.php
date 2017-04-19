@@ -104,10 +104,8 @@ class MailerService
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
 
-        // Functionality has been updated on the 19th of April 2017
-        // Since that day, only the custom message (The message admins can provide when creating the party) is saved in the database, and not the whole email.
-        // Therefore we have to check if the party is created before 19th of April, in that case we don't have to wrap the mail since it's stored wrapped in the database.
-        // Otherwise, we still need to wrap this email.
+        // We wrap the admin's message into our own message and from 19/apr/2017 we no longer save
+        // our own message in the DB. Don't wrap older parties here to prevent the message from occuring twice.
         if ($participant->getParty()->getCreationDate() < new \DateTime('2017-04-20')) {
             $message = $participant->getParty()->getMessage();
         } else {

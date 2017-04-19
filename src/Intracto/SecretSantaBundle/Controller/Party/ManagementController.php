@@ -47,9 +47,8 @@ class ManagementController extends Controller
             ]
         );
 
-        // Functionality has been added on the 19th of April 2017
-        // Since that day, only the custom message (The message admins can provide when creating the party) is saved in the database, and not the whole email.
-        // Therefore only parties created after the 19th of April 2017 are able to use this functionality, to prevent users from editing the whole email.
+        // We wrap the admin's message into our own message and from 19/apr/2017 we no longer save
+        // our own message in the DB. We don't support older parties to prevent the message from occuring twice.
         if ($party->getCreated() || $party->getCreationDate() < new \DateTime('2017-04-20')) {
             $updatePartyDetailsForm->remove('message');
         }
