@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Intracto\SecretSantaBundle\IntractoSecretSantaBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new \Bugsnag\BugsnagBundle\BugsnagBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test', 'test_travis'))) {
