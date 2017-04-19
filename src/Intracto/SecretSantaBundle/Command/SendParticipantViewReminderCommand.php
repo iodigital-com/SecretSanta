@@ -35,12 +35,12 @@ class SendParticipantViewReminderCommand extends ContainerAwareCommand
         /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $participantMailQuery */
         $participantMailQuery = $container->get('intracto_secret_santa.query.participant_mail');
         $mailerService = $container->get('intracto_secret_santa.mailer');
-        $needsViewReminder = $participantMailQuery->findAllToRemindToViewEntry();
+        $needsViewReminder = $participantMailQuery->findAllToRemindToViewParticipant();
         $timeNow = new \DateTime();
 
         try {
             foreach ($needsViewReminder as $participant) {
-                $mailerService->sendEntryViewReminderMail($participant);
+                $mailerService->sendParticipantViewReminderMail($participant);
 
                 $participant->setViewReminderSentTime($timeNow);
                 $em->persist($participant);

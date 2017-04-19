@@ -32,25 +32,25 @@
                 <td>Total participants invited:</td>
                 <td>{{ party_data['participants'] }}</td>
                 {% if difference_party_data is defined and difference_party_data is not empty %}
-                    {% if difference_party_data['entry_count_difference'] > 0 %}
-                        <td class="positive">+ {{ difference_party_data['entry_count_difference'] }}</td>
-                    {% elseif difference_party_data['entry_count_difference'] == 0 %}
+                    {% if difference_party_data['participant_count_difference'] > 0 %}
+                        <td class="positive">+ {{ difference_party_data['participant_count_difference'] }}</td>
+                    {% elseif difference_party_data['participant_count_difference'] == 0 %}
                         <td>0</td>
                     {% else %}
-                        <td class="negative">{{ difference_party_data['entry_count_difference'] }}</td>
+                        <td class="negative">{{ difference_party_data['participant_count_difference'] }}</td>
                     {% endif %}
                 {% endif %}
             </tr>
             <tr>
                 <td>Confirmed participants:</td>
-                <td>{{ party_data['confirmed_participants'][0]['confirmedEntryCount'] }}</td>
+                <td>{{ party_data['confirmed_participants'][0]['confirmedParticipantCount'] }}</td>
                 {% if difference_party_data is defined and difference_party_data is not empty %}
-                    {% if difference_party_data['confirmed_entry_count_difference'] > 0 %}
-                        <td class="positive">+ {{ difference_party_data['confirmed_entry_count_difference'] }}</td>
-                    {% elseif difference_party_data['confirmed_entry_count_difference'] == 0 %}
+                    {% if difference_party_data['confirmed_participant_count_difference'] > 0 %}
+                        <td class="positive">+ {{ difference_party_data['confirmed_participant_count_difference'] }}</td>
+                    {% elseif difference_party_data['confirmed_participant_count_difference'] == 0 %}
                         <td>0</td>
                     {% else %}
-                        <td class="negative">{{ difference_party_data['confirmed_entry_count_difference'] }}</td>
+                        <td class="negative">{{ difference_party_data['confirmed_participant_count_difference'] }}</td>
                     {% endif %}
                 {% endif %}
             </tr>
@@ -58,25 +58,25 @@
                 <td>Average amount of participants per party:</td>
                 <td>{{ party_data['participant_average']|round }}</td>
                 {% if difference_party_data is defined and difference_party_data is not empty %}
-                    {% if difference_party_data['average_entries_difference']|round > 0 %}
-                        <td class="positive">+ {{ difference_party_data['average_entries_difference']|round }}</td>
-                    {% elseif difference_party_data['average_entries_difference']|round == 0 %}
+                    {% if difference_party_data['average_participants_difference']|round > 0 %}
+                        <td class="positive">+ {{ difference_party_data['average_participants_difference']|round }}</td>
+                    {% elseif difference_party_data['average_participants_difference']|round == 0 %}
                         <td>0</td>
                     {% else %}
-                        <td class="negative">{{ difference_party_data['average_entries_difference']|round }}</td>
+                        <td class="negative">{{ difference_party_data['average_participants_difference']|round }}</td>
                     {% endif %}
                 {% endif %}
             </tr>
             <tr>
                 <td>Unique participants:</td>
-                <td>{{ party_data['distinct_participants'][0]['distinctEntryCount'] }}</td>
+                <td>{{ party_data['distinct_participants'][0]['distinctParticipantCount'] }}</td>
                 {% if difference_party_data is defined and difference_party_data is not empty %}
-                    {% if difference_party_data['distinct_entry_count_difference'] > 0 %}
-                        <td class="positive">+ {{ difference_party_data['distinct_entry_count_difference'] }}</td>
-                    {% elseif difference_party_data['distinct_entry_count_difference'] == 0 %}
+                    {% if difference_party_data['distinct_participant_count_difference'] > 0 %}
+                        <td class="positive">+ {{ difference_party_data['distinct_participant_count_difference'] }}</td>
+                    {% elseif difference_party_data['distinct_participant_count_difference'] == 0 %}
                         <td>0</td>
                     {% else %}
-                        <td class="negative">{{ difference_party_data['distinct_entry_count_difference'] }}</td>
+                        <td class="negative">{{ difference_party_data['distinct_participant_count_difference'] }}</td>
                     {% endif %}
                 {% endif %}
             </tr>
@@ -112,11 +112,11 @@
                 </tr>
                 <tr>
                     <td>Total participants invited:</td>
-                    <td>{{ party_data['total_entries'][0]['totalEntryCount'] }}</td>
+                    <td>{{ party_data['total_participants'][0]['totalParticipantCount'] }}</td>
                 </tr>
                 <tr>
                     <td>Confirmed participants:</td>
-                    <td>{{ party_data['total_confirmed_participants'][0]['confirmedEntryCount'] }}</td>
+                    <td>{{ party_data['total_confirmed_participants'][0]['confirmedParticipantCount'] }}</td>
                 </tr>
                 <tr>
                     <td>Average amount of participants per party:</td>
@@ -124,7 +124,7 @@
                 </tr>
                 <tr>
                     <td>Unique participants:</td>
-                    <td>{{ party_data['total_distinct_participants'][0]['distinctEntryCount'] }}</td>
+                    <td>{{ party_data['total_distinct_participants'][0]['distinctParticipantCount'] }}</td>
                 </tr>
                 <tr>
                     <td>Amount of completed wishlists:</td>
@@ -151,14 +151,14 @@
         <div class="report_inside">
             <h3>Confirmed participants per month</h3>
 
-            <div id="entry_chart" style="width: 100%"></div>
+            <div id="participant_chart" style="width: 100%"></div>
         </div>
     </div>
     <div class="col-xs-12 col-md-6 report">
         <div class="report_inside">
             <h3>Total amount of confirmed participants (this season included)</h3>
 
-            <div id="total_entry_chart" style="width: 100%"></div>
+            <div id="total_participant_chart" style="width: 100%"></div>
         </div>
     </div>
 {% else %}
@@ -173,7 +173,7 @@
         <div class="report_inside">
             <h3>Total participants invited</h3>
 
-            <div id="entry_chart" style="width: 100%"></div>
+            <div id="participant_chart" style="width: 100%"></div>
         </div>
     </div>
 {% endif %}

@@ -117,8 +117,8 @@ static-faq:
 #    body: ?
     create_new_list: 創造新的秘密聖誕老人名單!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: 去掉這人
 
@@ -129,14 +129,14 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: 刪除這項目
 
-# Entry/exposeAll.html.twig
-#entry-expose_all:
+# Participant/exposeAll.html.twig
+#participant-expose_all:
 #    title: ?
 #    giving: ?
 #    receiving: ?
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
         date: 日期
@@ -145,14 +145,14 @@ entry_show_base:
         num_people: 人數
         person_created_list: 名單創作人
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: 你指定的朋友
         body: >
             <p>你好%name%,</p>
@@ -255,7 +255,7 @@ party_manage_valid:
         not_yet: 還未
         edit_email: 編輯電郵
         resend_email: 重發電郵
-        view_entry: 查看登入
+        view_participant: 查看登入
         tip: 提示
         come_back: 你可經常回到這頁去確定每一個人已查看他們的郵箱。
 #        watch_out: ?
@@ -437,8 +437,8 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: 找出誰是你的禮物朋友
     didYouForget: 你是否忘記我們的秘密聖誕老人派對？你仍未查看誰是你的禮物朋友!
 
@@ -496,13 +496,13 @@ flashes:
     party:
         not_deleted: <h4>並非已刪除</h4>該確認是不正確。
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>重新傳送！</strong><br/>電郵到%email%已被重新傳送。<br/>
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>願望單已更新</h4>我們已送出我們的精靈去通知你的秘密聖誕老人關於你的願望!
         edit_email: <h4>並沒儲存</h4>這裡有電郵地址錯誤。
 #        updated_participant:
@@ -511,7 +511,7 @@ flashes:
 #            success: ?
 #            danger: ?
 #            warning: ?
-#            excluded_entries: ?
+#            excluded_participants: ?
 #            self_assigned: ?
 #            not_enough_for_exclude:
 #            wrong: ?

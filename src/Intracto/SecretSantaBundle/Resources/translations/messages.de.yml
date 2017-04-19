@@ -125,8 +125,8 @@ static-faq:
 #    body: ?
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: entfernen
 
@@ -137,14 +137,14 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: Diesen Gegenstand entfernen
 
-# Entry/exposeAll.html.twig
-entry-expose_all:
+# Participant/exposeAll.html.twig
+participant-expose_all:
     title: Treffer des Secret Santa-Mail-Verteilers
     giving: Dieses Mitglied gibt....
     receiving: ... diesem Mitglied ein Geschenk
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: Ihre <span class="accent">Secret Santa-Party</span> Details
         date: Datum
@@ -153,14 +153,14 @@ entry_show_base:
         num_people: Anzahl Teilnehmer
         person_created_list: Person, die die Liste erstellt hat
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Der Ihnen zugeordnete Partner
         body: >
             <p>Hi %name%,</p>
@@ -260,7 +260,7 @@ party_manage_valid:
         not_yet: Noch nicht
         edit_email: E-Mail bearbeiten
         resend_email: E-Mail neu senden
-        view_entry: Eintrag anzeigen
+        view_participant: Eintrag anzeigen
         tip: Hinweis
         come_back: Sie können jederzeit auf diese Seite zurückkehren, um zu überprüfen, ob alle Teilnehmer ihr Postfach kontrolliert haben.
 #        watch_out: ?
@@ -443,8 +443,8 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Finden Sie heraus, wer Ihr Geschenkepartner ist
     didYouForget: Haben Sie Ihre Secret Santa-Party vergessen? Sie haben noch nicht nachgesehen, wer Ihr Geschenkpartner ist!
 
@@ -502,13 +502,13 @@ flashes:
     party:
         not_deleted: <h4>Nicht gelöscht</h4> Die Bestätigung war nicht korrekt.
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>Neu versendet!</strong><br/>Die E-Mail an %email% wurde neu versendet.<br/>
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>Wunschzettel aktualisiert</h4>Wir haben unsere Wichtel losgeschickt, um Ihren Secret Santa über Ihre Wünsche zu informieren!
         edit_email: <h4>Nicht gespeichert</h4> Die E-Mail-Adresse ist fehlerhaft.
 #        updated_participant:
@@ -517,7 +517,7 @@ flashes:
 #            success: ?
 #            danger: ?
 #            warning: ?
-#            excluded_entries: ?
+#            excluded_participants: ?
 #            self_assigned: ?
 #            not_enough_for_exclude:
 #            wrong: ?

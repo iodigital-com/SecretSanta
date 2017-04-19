@@ -33,7 +33,7 @@ class ParticipantController extends Controller
                     'responseCode' => 400,
                     'message' => [
                         'type' => 'danger',
-                        'message' => $this->get('translator')->trans('flashes.entry.edit_email'),
+                        'message' => $this->get('translator')->trans('flashes.participant.edit_email'),
                         ],
                     ];
             } else {
@@ -44,9 +44,9 @@ class ParticipantController extends Controller
 
                 if ($orriginalEmail != $participant->getEmail() && $participant->getParty()->getCreated()) {
                     $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
-                    $message = $this->get('translator')->trans('flashes.entry.updated_participant_resent');
+                    $message = $this->get('translator')->trans('flashes.participant.updated_participant_resent');
                 } else {
-                    $message = $this->get('translator')->trans('flashes.entry.updated_participant');
+                    $message = $this->get('translator')->trans('flashes.participant.updated_participant');
                 }
                 $return = [
                     'responseCode' => 200,
@@ -74,7 +74,7 @@ class ParticipantController extends Controller
         if ($correctCsrfToken === false) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('flashes.entry.remove_participant.wrong')
+                $this->get('translator')->trans('flashes.participant.remove_participant.wrong')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
@@ -87,7 +87,7 @@ class ParticipantController extends Controller
         if (count($participants) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('flashes.entry.remove_participant.danger')
+                $this->get('translator')->trans('flashes.participant.remove_participant.danger')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
@@ -96,7 +96,7 @@ class ParticipantController extends Controller
         if ($participant->isPartyAdmin()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
-                $this->get('translator')->trans('flashes.entry.remove_participant.warning')
+                $this->get('translator')->trans('flashes.participant.remove_participant.warning')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
@@ -113,7 +113,7 @@ class ParticipantController extends Controller
         if ($excludeCount > 0 && $participant->getParty()->getCreated()) {
             $this->get('session')->getFlashBag()->add(
                 'warning',
-                $this->get('translator')->trans('flashes.entry.remove_participant.excluded_entries')
+                $this->get('translator')->trans('flashes.participant.remove_participant.excluded_participants')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
@@ -122,7 +122,7 @@ class ParticipantController extends Controller
         if ($excludeCount > 0 && count($participants) == 4) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('flashes.entry.remove_participant.not_enough_for_exclude')
+                $this->get('translator')->trans('flashes.participant.remove_participant.not_enough_for_exclude')
             );
 
             return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
@@ -137,7 +137,7 @@ class ParticipantController extends Controller
             if ($participant->getAssignedParticipant()->getAssignedParticipant()->getId() === $participant->getId()) {
                 $this->get('session')->getFlashBag()->add(
                     'warning',
-                    $this->get('translator')->trans('flashes.entry.remove_participant.self_assigned')
+                    $this->get('translator')->trans('flashes.participant.remove_participant.self_assigned')
                 );
 
                 return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
@@ -160,7 +160,7 @@ class ParticipantController extends Controller
 
         $this->get('session')->getFlashBag()->add(
             'success',
-            $this->get('translator')->trans('flashes.entry.remove_participant.success')
+            $this->get('translator')->trans('flashes.participant.remove_participant.success')
         );
 
         return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));

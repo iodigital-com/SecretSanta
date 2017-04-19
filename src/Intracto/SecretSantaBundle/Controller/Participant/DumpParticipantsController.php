@@ -1,16 +1,16 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Entry;
+namespace Intracto\SecretSantaBundle\Controller\Participant;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DumpEntriesController extends Controller
+class DumpParticipantsController extends Controller
 {
     /**
-     * @Route("/dump-entries", name="dump_entries")
-     * @Template("IntractoSecretSantaBundle:Entry:dumpEntries.html.twig")
+     * @Route("/dump-participants", name="dump_participants")
+     * @Template("IntractoSecretSantaBundle:Participant:dumpParticipants.html.twig")
      */
     public function dumpAction()
     {
@@ -20,7 +20,7 @@ class DumpEntriesController extends Controller
         $startCrawling->sub(new \DateInterval('P4M'));
 
         return [
-            'entries' => $this->get('intracto_secret_santa.repository.participant')->findAfter($startCrawling),
+            'participants' => $this->get('intracto_secret_santa.repository.participant')->findAfter($startCrawling),
         ];
     }
 }

@@ -199,8 +199,8 @@ static-faq:
         <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Create a new Secret Santa list!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: Remove
 
@@ -211,14 +211,14 @@ helper-prototype_wishlist:
         update_item: Update this item
         remove_item: Remove
 
-# Entry/exposeAll.html.twig
-entry-expose_all:
+# Participant/exposeAll.html.twig
+participant-expose_all:
     title: Secret Santa Mailing List Matches
     giving: This member is giving ...
     receiving: ... a gift to this member
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: Your <span class="accent">Secret Santa party</span> details
         date: Date
@@ -227,14 +227,14 @@ entry_show_base:
         num_people: Number of people
         person_created_list: Person who created this list
 
-# Entry/show/expired.html.twig
-entry_show_expired:
+# Participant/show/expired.html.twig
+participant_show_expired:
     message:
         expired: <strong>Oops</strong><br/>The event is older than 2 years and can't be eddited anymore.<br/>
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Your assigned buddy
         body: >
             <p>Hi %name%,</p>
@@ -341,7 +341,7 @@ party_manage_valid:
         not_yet: Not yet
         edit_email: Edit e-mail
         resend_email: Resend e-mail
-        view_entry: View entry
+        view_participant: View participant
         tip: Tip
         come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
         watch_out: Watch out
@@ -587,8 +587,8 @@ emails-updated_party:
     btn:
         updated_party: Check your buddy and wishlist for this party
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Find out who your gift buddy is
     didYouForget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
 
@@ -660,13 +660,13 @@ flashes:
     party:
         not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
         blacklisted: <strong>Oops.. We couldn't send the email!</strong> This person has blacklisted his/her email, and doesn't want to receive mails anymore.
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
         updated_participant: <h4>Saved</h4> We have updated the details of the participant!
@@ -675,7 +675,7 @@ flashes:
             success: <h4>Removed!</h4> Participant succesfully removed.
             danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
             warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
-            excluded_entries: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+            excluded_participants: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
             not_enough_for_exclude: <h4>Oops</h4> You have configured excludes, but since you need a minimum of 4 participants before you can use excludes, you should first remove the excludes, or make sure you keep a minimum of 4 participants!
             self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
             wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.

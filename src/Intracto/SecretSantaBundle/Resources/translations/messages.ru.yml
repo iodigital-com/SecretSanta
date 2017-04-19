@@ -122,8 +122,8 @@ static-faq:
 #    body: ?
     create_new_list: Создать новый список Тайного Санты!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: Удалить
 
@@ -134,14 +134,14 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: Удалить из списка
 
-# Entry/exposeAll.html.twig
-entry-expose_all:
+# Participant/exposeAll.html.twig
+participant-expose_all:
     title: Пары из списка Тайного Санты
     giving: Это участник готовит подарок...
     receiving: ... для этого участника
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты
         date: Дата
@@ -150,14 +150,14 @@ entry_show_base:
         num_people: Количество людей
         person_created_list: Автор списка
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Ваш получатель подарка
         body: >
             <p>Привет! %name%,</p>
@@ -260,7 +260,7 @@ party_manage_valid:
         not_yet: Еще нет
         edit_email: Редактировать письмо
         resend_email: Отправить письмо повторно
-        view_entry: Просмотреть запись
+        view_participant: Просмотреть запись
         tip: Совет
         come_back: Вы всегда можете вернуться на эту страницу и убедиться, что каждый адресат проверил свой почтовый ящик.
 #        watch_out: ?
@@ -443,8 +443,8 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Узнайте, кто ваш получатель подарка
     didYouForget: Вы не забыли о вечеринке Тайного Санты? Вы еще не проверили, кто будет вашим получателем подарка!
 
@@ -502,13 +502,13 @@ flashes:
     party:
         not_deleted: <h4>Не удалено</h4> При подтверждении произошла ошибка.
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>Отправлено повторно!</strong><br/>Письмо на адрес %email% отправлено повторно.<br/>
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>Список желаний обновлен</h4>Мы отправили наших гномов сообщить вашему Тайному Санте, что вы изменили список желаний!
         edit_email: <h4>Не сохранено</h4> Ошибка в написании электронного адреса.
 #        updated_participant:
@@ -517,7 +517,7 @@ flashes:
 #            success: ?
 #            danger: ?
 #            warning: ?
-#            excluded_entries: ?
+#            excluded_participants: ?
 #            self_assigned: ?
 #            not_enough_for_exclude:
 #            wrong: ?

@@ -55,7 +55,7 @@ class WishlistController extends Controller
         $wishlistForm->handleRequest($request);
 
         if ($wishlistForm->isValid()) {
-            // save entries passed and check rank
+            // save participants passed and check rank
             $inOrder = true;
             $lastRank = 0;
             $newWishlistItems = $participant->getWishlistItems();
@@ -70,7 +70,7 @@ class WishlistController extends Controller
                 $lastRank = $item->getRank();
             }
 
-            // remove entries not passed
+            // remove participants not passed
             foreach ($currentWishlistItems as $item) {
                 if (!$newWishlistItems->contains($item)) {
                     $this->get('doctrine.orm.entity_manager')->remove($item);

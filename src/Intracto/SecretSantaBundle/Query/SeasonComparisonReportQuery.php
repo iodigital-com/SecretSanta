@@ -38,10 +38,10 @@ class SeasonComparisonReportQuery
 
         return [
             'party_count_difference' => $this->partyReportQuery->calculatePartyCountDifferenceBetweenSeasons($season1, $season2),
-            'entry_count_difference' => $this->participantReportQuery->calculateParticipantCountDifferenceBetweenSeasons($season1, $season2),
-            'confirmed_entry_count_difference' => $this->participantReportQuery->calculateConfirmedParticipantsCountDifferenceBetweenSeasons($season1, $season2),
-            'distinct_entry_count_difference' => $this->participantReportQuery->calculateDistinctParticipantCountDifferenceBetweenSeasons($season1, $season2),
-            'average_entries_difference' => $this->participantReportQuery->calculateAverageParticipantsPerPartyBetweenSeasons($season1, $season2),
+            'participant_count_difference' => $this->participantReportQuery->calculateParticipantCountDifferenceBetweenSeasons($season1, $season2),
+            'confirmed_participant_count_difference' => $this->participantReportQuery->calculateConfirmedParticipantsCountDifferenceBetweenSeasons($season1, $season2),
+            'distinct_participant_count_difference' => $this->participantReportQuery->calculateDistinctParticipantCountDifferenceBetweenSeasons($season1, $season2),
+            'average_participants_difference' => $this->participantReportQuery->calculateAverageParticipantsPerPartyBetweenSeasons($season1, $season2),
             'average_wishlist_difference' => $this->wishlistReportQuery->calculateCompletedWishlistDifferenceBetweenSeasons($season1, $season2),
         ];
     }

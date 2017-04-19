@@ -1,6 +1,6 @@
-# Form/ExcludeEntryType
+# Form/ExcludeParticipantType
 party:
     non_unique: Nie wszystkie wpisy mają wyjątkowy mecz.
-entry:
+participant:
     non_unique: Nie znaleziono wyjątkowy mecz "%name%"
 #    blacklisted:

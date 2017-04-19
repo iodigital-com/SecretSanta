@@ -350,16 +350,16 @@ class MailerService
     /**
      * @param Participant $participant
      */
-    public function sendEntryViewReminderMail(Participant $participant)
+    public function sendParticipantViewReminderMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = \Swift_Message::newInstance()
-            ->setSubject($this->translator->trans('emails-viewEntryReminder.subject'))
+            ->setSubject($this->translator->trans('emails-viewParticipantReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
             ->setBody(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:viewEntryReminder.html.twig',
+                    'IntractoSecretSantaBundle:Emails:viewParticipantReminder.html.twig',
                     [
                         'participant' => $participant,
                     ]
@@ -368,7 +368,7 @@ class MailerService
             )
             ->addPart(
                 $this->templating->render(
-                    'IntractoSecretSantaBundle:Emails:viewEntryReminder.txt.twig',
+                    'IntractoSecretSantaBundle:Emails:viewParticipantReminder.txt.twig',
                     [
                         'participant' => $participant,
                     ]

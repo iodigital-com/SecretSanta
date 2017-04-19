@@ -28,7 +28,7 @@ class ParticipantIsNotBlacklistedValidator extends ConstraintValidator
             ->getQuery()
             ->getResult();
         if (count($results) > 0) {
-            $this->context->buildViolation('entry.blacklisted')->addViolation();
+            $this->context->buildViolation('participant.blacklisted')->addViolation();
         }
     }
 }

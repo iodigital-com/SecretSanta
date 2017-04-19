@@ -25,7 +25,7 @@ class ExcludeParticipantType extends AbstractType
                 'expanded' => false,
                 'choice_label' => 'name',
                 'label' => $me->getName(),
-                'attr' => ['data-entry' => $me->getId(), 'class' => 'js-selector-entry'],
+                'attr' => ['data-participant' => $me->getId(), 'class' => 'js-selector-participant'],
                 'query_builder' => function (EntityRepository $er) use ($me) {
                     return $er->createQueryBuilder('e')
                         ->where('e.party = :party')

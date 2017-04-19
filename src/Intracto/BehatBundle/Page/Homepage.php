@@ -8,8 +8,8 @@ class Homepage extends Page
 {
     //TODO: use inline elements instead of $this->find()
     protected $elements = [
-        'Button extra participant' => ['css' => '.add-btn-create.add-new-entry'],
-        'Participant table rows' => ['css' => '.entries.table > tbody > tr.entry'],
+        'Button extra participant' => ['css' => '.add-btn-create.add-new-participant'],
+        'Participant table rows' => ['css' => '.participants.table > tbody > tr.participant'],
     ];
 
     public function createParty($participants, $location, $amount, $eventDate)
@@ -19,23 +19,23 @@ class Homepage extends Page
             $extraLineCount = count($participants) - 3;
 
             while ($extraLineCount > 0) {
-                $this->find('css', '.add-btn-create.add-new-entry')->click();
+                $this->find('css', '.add-btn-create.add-new-participant')->click();
 
                 --$extraLineCount;
             }
         }
 
-        $tableRows = $this->findAll('css', '.entries.table > tbody > tr.entry');
+        $tableRows = $this->findAll('css', '.participants.table > tbody > tr.participant');
 
         $i = 0;
         foreach ($tableRows as $tableRow) {
             /* @var $tableRow \Behat\Mink\Element\NodeElement */
-            $entryName = $tableRow->find('css', '.entry-name');
-            $entryMail = $tableRow->find('css', '.entry-mail');
+            $participantName = $tableRow->find('css', '.participant-name');
+            $participantMail = $tableRow->find('css', '.participant-mail');
 
-            if ($entryName) {
-                $entryName->setValue($participants[$i]['name']);
-                $entryMail->setValue($participants[$i]['email']);
+            if ($participantName) {
+                $participantName->setValue($participants[$i]['name']);
+                $participantMail->setValue($participants[$i]['email']);
 
                 ++$i;
             }

@@ -6,7 +6,7 @@
             'pId': '{{ participant.party.listurl }}',
             'pLocation': '{{ participant.party.location }}',
             'pAmount': '{{ participant.party.amount }}',
-            'pParticipants': '{{ participant.party.entries|length }}',
+            'pParticipants': '{{ participant.party.participants|length }}',
             'pDate': '{{ participant.party.eventdate|date('Y-m-d') }}'
         });
     </script>
@@ -16,20 +16,20 @@
     <div class="box">
         <div class="row">
             <div class="span8">
-                <h1>{{ 'entry_show_valid.entry.title'|trans }}</h1>
+                <h1>{{ 'participant_show_valid.participant.title'|trans }}</h1>
 
-                {{ 'entry_show_valid.entry.body'|trans({'%name%': participant.name})|raw }}
+                {{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name})|raw }}
 
                 <div class="yoursecretsant" data-hj-masked>
                     <span class="yourgift">{{ participant.assignedParticipant.name }}</span> {{ participant.assignedParticipant.email }}
                 </div>
 
                 <div class="well">
-                    <h4 data-hj-masked>{{ 'entry_show_valid.entry.wishlist_from'|trans({'%name%': participant.assignedParticipant.name}) }}</h4>
+                    <h4 data-hj-masked>{{ 'participant_show_valid.participant.wishlist_from'|trans({'%name%': participant.assignedParticipant.name}) }}</h4>
                     {% if(participant.assignedParticipant.wishlistitems|length == 0) %}
-                        {{ 'entry_show_valid.entry.wishlist_not_provided'|trans({'%name%': participant.assignedParticipant.name}) }}.
+                        {{ 'participant_show_valid.participant.wishlist_not_provided'|trans({'%name%': participant.assignedParticipant.name}) }}.
                         {% if(participant.assignedParticipant.isSubscribed == true) %}
-                            {{ 'entry_show_valid.entry.message_for_wishlist'|trans|raw }}
+                            {{ 'participant_show_valid.participant.message_for_wishlist'|trans|raw }}
                         {% endif %}
                     {% else %}
                         <ul class="wishlist">
@@ -40,19 +40,19 @@
                     {% endif %}
                     <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20"
                               target="_blank"
-                              rel="noopener noreferrer">{{ 'entry_show_valid.buy_from_amazon'|trans }}</a></b>
+                              rel="noopener noreferrer">{{ 'participant_show_valid.buy_from_amazon'|trans }}</a></b>
                 </div>
                 {% if(participant.assignedParticipant.isSubscribed == true) %}
                     <div class="panel panel-default bottom-spacer" id="messagePanel">
                         <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
                             <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
-                                <h3 class="panel-title">{{ 'entry_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }}</h3>
+                                <h3 class="panel-title">{{ 'participant_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }}</h3>
                             </a>
                         </div>
                         <div id="collapsedMessage" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div class="alert alert-warning" role="alert" id="anonwarning">
-                                    <i class="fa fa-exclamation-triangle"></i> {{ 'entry_show_valid.anonymous_message.warning_anonymous' | trans }}
+                                    <i class="fa fa-exclamation-triangle"></i> {{ 'participant_show_valid.anonymous_message.warning_anonymous' | trans }}
                                 </div>
                                 {{ form_start(messageForm) }}
                                 <div class="form-group">
@@ -66,7 +66,7 @@
                                 {{ form_widget(messageForm.participant, {'value': participant.url}) }}
                                 {{ form_widget(messageForm.recipient, {'value': participant.assignedParticipant.id}) }}
                                 <button type="submit"
-                                        class="btn btn-default">{{ 'entry_show_valid.anonymous_message.send_button' |trans }}</button>
+                                        class="btn btn-default">{{ 'participant_show_valid.anonymous_message.send_button' |trans }}</button>
                                 {{ form_end(messageForm) }}
                             </div>
                         </div>
@@ -106,37 +106,37 @@
             </div>
         </div>
 
-        <h1>{{ 'entry_show_valid.wishlist.title'|trans }}</h1>
+        <h1>{{ 'participant_show_valid.wishlist.title'|trans }}</h1>
 
-        <div class="description">{{ 'entry_show_valid.wishlist.description'|trans|raw }}</div>
+        <div class="description">{{ 'participant_show_valid.wishlist.description'|trans|raw }}</div>
 
         <div class="box ajax-response">
             <div class="alert alert-warning empty" style="display:none;">
-                <div>{{ 'entry_show_valid.flashes.wishlist.empty_row'|trans|raw }}</div>
+                <div>{{ 'participant_show_valid.flashes.wishlist.empty_row'|trans|raw }}</div>
             </div>
             <div class="alert alert-success added" style="display:none;">
-                <div>{{ 'entry_show_valid.flashes.wishlist.added'|trans|raw }}</div>
+                <div>{{ 'participant_show_valid.flashes.wishlist.added'|trans|raw }}</div>
             </div>
             <div class="alert alert-success updated" style="display:none;">
-                <div>{{ 'entry_show_valid.flashes.wishlist.updated'|trans|raw }}</div>
+                <div>{{ 'participant_show_valid.flashes.wishlist.updated'|trans|raw }}</div>
             </div>
             <div class="alert alert-success removed" style="display:none;">
-                <div>{{ 'entry_show_valid.flashes.wishlist.removed'|trans|raw }}</div>
+                <div>{{ 'participant_show_valid.flashes.wishlist.removed'|trans|raw }}</div>
             </div>
         </div>
 
         {{ form_start(wishlistForm, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
         {{ form_row(wishlistForm._token) }}
 
-        <table class="entries table table-striped">
+        <table class="participants table table-striped">
             <thead>
             <tr>
-                <th class="col-xs-1 entry-number-header">#</th>
-                <th class="col-xs-7 col-sm-6">{{ 'entry_show_valid.label.description'|trans }}</th>
+                <th class="col-xs-1 participant-number-header">#</th>
+                <th class="col-xs-7 col-sm-6">{{ 'participant_show_valid.label.description'|trans }}</th>
                 <th style="text-align: right;" class="col-xs-4 col-sm-5">
-                    <button type="button" class="btn btn-mini btn-success add-new-entry">
+                    <button type="button" class="btn btn-mini btn-success add-new-participant">
                         <i class="fa fa-plus-circle"></i> <span
-                                class="text_remove_wishlist">{{ 'entry_show_valid.btn.add_wishlist'|trans }}</span>
+                                class="text_remove_wishlist">{{ 'participant_show_valid.btn.add_wishlist'|trans }}</span>
                     </button>
                 </th>
             </tr>
@@ -144,7 +144,7 @@
             <tbody data-prototype="{% filter escape %}{% include 'IntractoSecretSantaBundle:Helpers:prototypeWishlist.html.twig' with {'item': wishlistForm.wishlistItems.vars['prototype']} %}{% endfilter %}">
             {% if wishlistForm.wishlistItems |length == 0 %}
                 <tr class="noitems">
-                    <td colspan="3">{{ 'entry_show_valid.wishlist.empty'|trans }}</td>
+                    <td colspan="3">{{ 'participant_show_valid.wishlist.empty'|trans }}</td>
                 </tr>
             {% else %}
                 {% for item in wishlistForm.wishlistItems %}
@@ -153,13 +153,13 @@
                                     class="rank">{{ item.rank.vars.value }}</span></td>
                         <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
                         <td style="text-align: right;">
-                            <button type="submit" class="btn btn-mini btn-success update-entry" style="display: none">
+                            <button type="submit" class="btn btn-mini btn-success update-participant" style="display: none">
                                 <i class="fa fa-check-circle"></i> <span
-                                        class="text_remove_wishlist">{{ 'entry_show_valid.btn.update_item'|trans }}</span>
+                                        class="text_remove_wishlist">{{ 'participant_show_valid.btn.update_item'|trans }}</span>
                             </button>
-                            <button type="button" class="btn btn-mini btn-danger remove-entry">
+                            <button type="button" class="btn btn-mini btn-danger remove-participant">
                                 <i class="fa fa-times-circle"></i> <span
-                                        class="text_remove_wishlist">{{ 'entry_show_valid.btn.remove_item'|trans }}</span>
+                                        class="text_remove_wishlist">{{ 'participant_show_valid.btn.remove_item'|trans }}</span>
                             </button>
                         </td>
                     </tr>

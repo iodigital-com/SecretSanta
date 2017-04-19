@@ -204,8 +204,8 @@ static-faq:
         <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via e-mail:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Stel een nieuwe Secret Santa lijst op!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: verwijderen
 
@@ -216,14 +216,14 @@ helper-prototype_wishlist:
         update_item: Update dit item
         remove_item: Verwijder
 
-# Entry/exposeAll.html.twig
-entry-expose_all:
+# Participant/exposeAll.html.twig
+participant-expose_all:
     title: Secret Santa Mailinglijst Koppelingen
     giving: Dit lid geeft ...
     receiving: ... een cadeau aan dit lid
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
         date: Datum
@@ -232,14 +232,14 @@ entry_show_base:
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
 
-# Entry/show/expired.html.twig
-entry_show_expired:
+# Participant/show/expired.html.twig
+participant_show_expired:
     message:
         expired: <strong>Oops</strong><br/>Het evenement is ouder dan 2 jaar en is niet meer beschikbaar.<br/>
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Jouw toegewezen maatje
         body: >
             <p>Hey %name%,</p>
@@ -347,7 +347,7 @@ party_manage_valid:
         not_yet: Nog niet
         edit_email: E-mail aanpassen
         resend_email: E-mail nogmaals verzenden
-        view_entry: Deelnemer bekijken
+        view_participant: Deelnemer bekijken
         tip: Tip
         come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
         watch_out: Opgelet
@@ -612,8 +612,8 @@ emails-updated_party:
     btn:
         updated_party: Check wie je maatje is en vul je wenslijst in voor dit feestje
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Ontdek wiens Secret Santa je bent
     didYouForget: Ben je onze Secret Santa party vergeten? Je bent nog niet gaan kijken wiens Secret Santa je bent!
 
@@ -685,13 +685,13 @@ flashes:
     party:
         not_deleted: <h4>Niet verwijderd</h4> De bevestiging verliep foutief.
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>Opnieuw verstuurd!</strong><br/>De e-mail aan %email% werd opnieuw verstuurd.<br/>
         blacklisted: <strong>Oeps.. We kunnen de email niet versturen!</strong> Deze persoon heeft zijn email op de blacklist laten plaatsen, en wilt geen emails meer ontvangen.
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>Verlanglijst geüpdatet</h4>We hebben onze kaboutertjes op pad gestuurd om jouw Secret Santa te vertellen op welke cadeau's je vurig hoopt!
         edit_email: <h4>Niet bewaard</h4> Er is wat fout met het e-mailadres.
         updated_participant: <h4>Aangepast!</h4> We hebben de details van de gebruiker aangepast!
@@ -700,7 +700,7 @@ flashes:
             success: <h4>Verwijderd!</h4> Deelnemer succesvol verwijderd.
             danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
             warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
-            excluded_entries: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
+            excluded_participants: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
 #            self_assigned: ?
             not_enough_for_exclude: <h4>Oeps</h4> Je hebt excludes geconfigureerd, maar omdat je minimaal 4 deelnemers moet hebben om dit te kunnen gebruiken zal je eerst je excludes moeten verwijderen of er voor zorgen dat je steeds minimaal 4 deelnemers hebt.
             wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.

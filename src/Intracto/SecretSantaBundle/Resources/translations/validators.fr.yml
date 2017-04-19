@@ -1,6 +1,6 @@
-# Form/ExcludeEntryType
+# Form/ExcludeParticipantType
 party:
     non_unique: Tous les participants ne disposent pas d'une attribution unique. Essayez à nouveau ou retirez une combinaison de la liste des exclusions. 
-entry:
+participant:
     non_unique: Aucune correspondance unique trouv&eacute;e pour "%name%"
 #    blacklisted:

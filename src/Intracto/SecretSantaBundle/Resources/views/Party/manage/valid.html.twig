@@ -19,7 +19,7 @@
         <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;">
             <thead>
                 <tr>
-                    <th class="col-xs-1 entry-number-header">#</th>
+                    <th class="col-xs-1 participant-number-header">#</th>
                     <th class="col-xs-2">{{ 'party_manage_valid.label.name'|trans }}</th>
                     <th class="col-xs-3">{{ 'party_manage_valid.label.email'|trans }}</th>
                     <th class="col-xs-2">{{ 'party_manage_valid.label.confirmed'|trans }}</th>
@@ -29,8 +29,8 @@
             </thead>
             <tbody>
             {% for participant in party.participants %}
-                <tr class="entry {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
-                    <td class="entry-number">{{ loop.index }}</td>
+                <tr class="participant {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
+                    <td class="participant-number">{{ loop.index }}</td>
                     <td id="name_{{ participant.id }}" data-hj-masked>{{ participant.name }}</td>
                     <td id="email_{{ participant.id }}" data-hj-masked>{{ participant.email }}</td>
                     <td class="{% if participant.viewdate %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
@@ -52,10 +52,10 @@
                             <a href="{{ path('participant_view', { 'url': participant.url }) }}" class="add-participant-link">
                                 <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
                                      title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
-                                     alt="{{ 'party_manage_valid.manage.view_entry'|trans }}">
+                                     alt="{{ 'party_manage_valid.manage.view_participant'|trans }}">
                             </a>
                         {% endif %}
-                        <button class="btn btn-mini link_remove_participant" data-entry="{{ participant.id }}">
+                        <button class="btn btn-mini link_remove_participant" data-participant="{{ participant.id }}">
                             <i class="fa fa-times"></i>
                         </button>
                     </td>
@@ -146,13 +146,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for entry in excludeForm.participants %}
-                                <tr class="entry {% if form_errors(entry) or form_errors(entry.excluded_participants) %} error{% endif %}">
-                                    <td class="entry-number">{{ loop.index }}</td>
-                                    <td>{{ entry.excluded_participants.vars.label }}</td>
+                            {% for participant in excludeForm.participants %}
+                                <tr class="participant {% if form_errors(participant) or form_errors(participant.excluded_participants) %} error{% endif %}">
+                                    <td class="participant-number">{{ loop.index }}</td>
+                                    <td>{{ participant.excluded_participants.vars.label }}</td>
                                     <td>
-                                        {{ form_widget(entry.excluded_participants, {'attr': {'placeholder': 'party_manage_valid.excludes.placeholder_exclude'} } ) }}
-                                        {{ form_errors(entry.excluded_participants) }}
+                                        {{ form_widget(participant.excluded_participants, {'attr': {'placeholder': 'party_manage_valid.excludes.placeholder_exclude'} } ) }}
+                                        {{ form_errors(participant.excluded_participants) }}
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -260,7 +260,7 @@
     <script src="{{ asset('/select2/select2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('.js-selector-entry').select2();
+            $('.js-selector-participant').select2();
         })
     </script>
 {% endblock %}

@@ -195,8 +195,8 @@ static-faq:
         <p>Har du andre spørsmål, bekymringer, eller kommentarer? Kontakt oss per e-post:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Opprett en ny Secret Santa-liste!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: Fjern
 
@@ -207,14 +207,14 @@ helper-prototype_wishlist:
         update_item: Oppdater
         remove_item: Fjern
 
-# Entry/exposeAll.html.twig
-#entry-expose_all:
+# Participant/exposeAll.html.twig
+#participant-expose_all:
 #    title: ?
 #    giving: ?
 #    receiving: ?
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: Ditt<span class="accent">Secret Santa-selskap</span> med detaljer
         date: Date
@@ -223,14 +223,14 @@ entry_show_base:
         num_people: Antall personer
         person_created_list: Administrator
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Du har fått tildelt følgende nisse
         body: >
             <p>Hi %name%,</p>
@@ -333,7 +333,7 @@ party_manage_valid:
         not_yet: Ikke ennå
         edit_email: Rediger e-posten
         resend_email: Sen e-post på nytt
-        view_entry: Se listen
+        view_participant: Se listen
         tip: Tip
         come_back: Du kan alltids komme tilbake til denne siden for å sjekke at alle har undersøkt innboksen sin.
         watch_out: Watch out
@@ -572,8 +572,8 @@ emails-updated_party:
     btn:
         updated_party: Finn din hemmelige venn of hans/hennes ønskeliste
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Finn ut hvem din nisse er
     didYouForget: Har du glemt hemmelig-nisse festen? Du har ikke sett hvem du skalk være nisse for ennå!
 
@@ -631,13 +631,13 @@ flashes:
     party:
         not_deleted: <h4>Ikke slettet</h4> Bekreftelsen var ikke korrekt.
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>Sendt på nytt!</strong><br/>Eposten til %email% har blitt sendt på nytt.<br/>
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
 #        updated_participant:
@@ -646,7 +646,7 @@ flashes:
             success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
             danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.
             warning: <h4>Oops</h4> Du er administrator for dette arrangementet, du kan ikke slette deg selv. Hvis du ikke vil delta, trykk på linken nedenfor eller slett listen din.
-            excluded_entries: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
+            excluded_participants: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
             self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
 #            not_enough_for_exclude:
             wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.

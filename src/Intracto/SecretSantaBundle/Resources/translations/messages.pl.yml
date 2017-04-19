@@ -106,8 +106,8 @@ static-faq:
 #    body: ?
     create_new_list: Stwórz nową listę Tajnego Mikołaja!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: Usuń osobę
 
@@ -118,14 +118,14 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: Usuń pozycję
 
-# Entry/exposeAll.html.twig
-entry-expose_all:
+# Participant/exposeAll.html.twig
+participant-expose_all:
     title: Dopasowania na liście Tajnych Mikołajów
     giving: Ten uczestnik podaruje...
     receiving: ... prezent dla tego uczestnika
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
@@ -134,14 +134,14 @@ entry_show_base:
         num_people: Liczba osób
         person_created_list: Osoba która utworzyła tę listę
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Osoba, którą masz obdarować
         body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
 #        watch_out: ?
@@ -232,7 +232,7 @@ party_manage_valid:
         not_yet: Jeszcze nie
         edit_email: Edytuj e-mail
         resend_email: Wyślij ponownie e-mail
-        view_entry: Zobacz wpis
+        view_participant: Zobacz wpis
         tip: Wskazówka
         come_back: Możesz zawsze wrócić na tę stronę aby upewnić się, że wszyscy przeczytali wiadomość.
 #        watch_out: ?
@@ -405,8 +405,8 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Dowiedz się, kim jest osoba, którą masz obdarować
     didYouForget: Zapomniałeś o naszym Przyjęciu Tajnego Mikołaja? Nie sprawdziłeś(aś) kim jest osoba, którą masz obdarować!
 
@@ -460,13 +460,13 @@ flashes:
     party:
         not_deleted: '<h4>Nie usunięto</h4> Nie odnotowano prawidłowego potwierdzenia.'
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: '<strong>Wysłano ponownie!</strong><br/>E-mail do %email% został ponownie wysłany.<br/>'
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: '<h4>Lista życzeń zaktualizowana</h4> Wysłaliśmy nasze skrzaty aby poinformowały Tajnego Mikołaja o twoich życzeniach!'
         edit_email: '<h4>Nie zapisano</h4> Występuje błąd w adresie email.'
 #        updated_participant:
@@ -475,7 +475,7 @@ flashes:
 #            success: ?
 #            danger: ?
 #            warning: ?
-#            excluded_entries: ?
+#            excluded_participants: ?
 #            self_assigned: ?
 #            not_enough_for_exclude:
 #            wrong: ?

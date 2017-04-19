@@ -1,19 +1,19 @@
-function addNewEntry(collectionHolder, email, name) {
-    // Get entry prototype as defined in attribute data-prototype
+function addNewParticipant(collectionHolder, email, name) {
+    // Get participant prototype as defined in attribute data-prototype
     var prototype = collectionHolder.attr('data-prototype');
-    // Adjust entry prototype for correct naming
-    var number_of_entries = collectionHolder.children().length - 1; // Note, owner is not counted as entry
+    // Adjust participant prototype for correct naming
+    var number_of_participants = collectionHolder.children().length - 1; // Note, owner is not counted as participant
     var newFormHtml = prototype.replace(/__name__/g,
-        number_of_entries).replace(/__entrycount__/g,
-        number_of_entries + 1);
-    // Add new entry to party with animation
+        number_of_participants).replace(/__participantcount__/g,
+        number_of_participants + 1);
+    // Add new participant to party with animation
     var newForm = $(newFormHtml);
     collectionHolder.append(newForm);
 
     if ( (typeof(email)!=='undefined') && (typeof(name)!=='undefined') ) {
         // email and name provided, fill in the blanks
-        $(newForm).find('.entry-mail').attr('value', email);
-        $(newForm).find('.entry-name').attr('value', name);
+        $(newForm).find('.participant-mail').attr('value', email);
+        $(newForm).find('.participant-name').attr('value', name);
         newForm.show();
     } else {
         newForm.show(300);
@@ -22,46 +22,46 @@ function addNewEntry(collectionHolder, email, name) {
     // Handle delete button events
     bindDeleteButtonEvents();
     // Remove disabled state on delete-buttons
-    $('.remove-entry').removeClass('disabled');
+    $('.remove-participant').removeClass('disabled');
 }
 function bindDeleteButtonEvents() {
     // Loop over all delete buttons
-    $('button.remove-entry').each(function (i) {
+    $('button.remove-participant').each(function (i) {
         // Remove any previously binded event
         $(this).off('click');
         // Bind event
         $(this).click(function (e) {
             e.preventDefault();
-            $('table tr.entry.not-owner:gt(' + i + ')').each(function (j) {
+            $('table tr.participant.not-owner:gt(' + i + ')').each(function (j) {
                 // Move values from next row to current row
-                var next_row_name = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-name').val();
-                var next_row_mail = $('table tr.entry.not-owner:eq(' + (i + j + 1) + ') input.entry-mail').val();
-                $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-name').val(next_row_name);
-                $('table tr.entry.not-owner:eq(' + (i + j) + ') input.entry-mail').val(next_row_mail);
+                var next_row_name = $('table tr.participant.not-owner:eq(' + (i + j + 1) + ') input.participant-name').val();
+                var next_row_mail = $('table tr.participant.not-owner:eq(' + (i + j + 1) + ') input.participant-mail').val();
+                $('table tr.participant.not-owner:eq(' + (i + j) + ') input.participant-name').val(next_row_name);
+                $('table tr.participant.not-owner:eq(' + (i + j) + ') input.participant-mail').val(next_row_mail);
             });
             // Delete last row
-            $('table tr.entry.not-owner:last').remove();
-            // Remove delete events when deletable entries < 3
-            if ($('table tr.entry.not-owner').length < 3) {
-                $('table tr.entry.not-owner button.remove-entry').addClass('disabled');
-                $('table tr.entry.not-owner button.remove-entry').off('click');
+            $('table tr.participant.not-owner:last').remove();
+            // Remove delete events when deletable participants < 3
+            if ($('table tr.participant.not-owner').length < 3) {
+                $('table tr.participant.not-owner button.remove-participant').addClass('disabled');
+                $('table tr.participant.not-owner button.remove-participant').off('click');
             }
         });
     });
 }
 /* Variables */
-var collectionHolder = $('table.entries tbody');
+var collectionHolder = $('table.participants tbody');
 /* Document Ready */
 jQuery(document).ready(function () {
-    //Add eventlistener on add-new-entry button
-    $('.add-new-entry').click(function (e) {
+    //Add eventlistener on add-new-participant button
+    $('.add-new-participant').click(function (e) {
         e.preventDefault();
-        addNewEntry(collectionHolder);
+        addNewParticipant(collectionHolder);
     });
-    // If form has more then 3 entries, provide delete functionality
-    if ($('table tr.entry').length > 3) {
+    // If form has more then 3 participants, provide delete functionality
+    if ($('table tr.participant').length > 3) {
         bindDeleteButtonEvents();
-        $('.remove-entry').removeClass('disabled');
+        $('.remove-participant').removeClass('disabled');
     }
     // Add smooth scroll
     $('a.btn-started').click(function () {
