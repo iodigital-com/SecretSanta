@@ -86,10 +86,11 @@ party-created:
             Om te voorkomen dat ongewenste gasten je Secret Santa party verknallen, moet lijstbeheerder <b>%ownername%</b> iedere deelname valideren. We hebben <b>%owneremail%</b> een mailtje gestuurd met verdere instructies.
         </p>
         <p>
-            Eens de deelnemerslijst is goedgekeurd, wordt hij door elkaar gegooid en krijgen alle gebruikers jouw boodschap en de naam van de persoon voor wie ze een geschenk moeten kopen.
+            Eens je feestje gevalideerd is, kan je nog wijzigingen doorvoeren, mensen toevoegen of verwijderen en bepaalde combinaties uitsluiten (als je feestje 4 of meer deelenemers heeft). Wanneer je klaar bent met configureren, kan je feestje starten.
+            Op dat moment zullen we iederen matchen en een email verzenden met alle informatie die ze nodig hebben, samen met een link om te ontdekken voor wie ze een cadeautje moeten kopen.
         </p>
         <p>
-            In de validatiemail vindt de lijstbeheerder ook een link om iedereen die al weet voor wie hij of zij iets moet kopen op te volgen. Zo weet de organisator zeker dat iedere Secret Santa zich van zijn of haar zware taak bewust is.
+            De link die je vindt in de validatie mail kan je steeds gebruiken om terug naar de beheer pagina te gaan. Eens je feestje begonnen is, kan je daar ook kijken wie zijn mail heeft geopend en geklikt heeft op de link om te kijken voor wie ze moeten kopen.
         </p>
     warning: Let op!
     check_spam: Vergeet je spamfolder niet te checken!

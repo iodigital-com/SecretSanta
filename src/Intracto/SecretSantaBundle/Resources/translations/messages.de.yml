@@ -82,16 +82,7 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: Nur noch ein Schritt! - Bestätigen Sie Ihre Teilnahme
-    body: >
-        <p>
-            Um zu verhindern, dass Bots oder Trolle die Secret Santa-Party ruinieren, fordert der Listen-Organizer, <b>%ownername%</b> dass alle Teilnehmer ihre Teilnahme bestätigen. Wir haben Ihnen eine Mail mit <b>%owneremail%</b> weiteren Informationen zugesandt.
-        </p>
-        <p>
-            Sobald Ihre Secret Santa-Liste bestätigt ist, wird sie verschlüsselt und alle Teilnehmer empfangen Ihre Nachricht und den Namen Ihres Secret Santa-Geschenkepartners.
-        </p>
-        <p>
-            In der Bestätigungs-E-Mail befindet sich auch ein Link, mit dessen Hilfe der Listen-Organizer nachvollziehen kann, welcher Teilnehmer bereits seinen Geschenkepartner gefunden hat. Stellen Sie sicher, dass jeder Secret Santa-Teilnehmer seine Pflichten kennt.
-        </p>
+#    body: ?
     warning: Vorsicht!
     check_spam: Vergessen Sie nicht, Ihren Spam-Ordner zu kontrollieren!
 
