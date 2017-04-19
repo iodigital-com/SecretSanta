@@ -380,10 +380,9 @@ party_manage_valid:
 
     remove_participant:
         title: Verwijder deze deelnemer uit je lijst
-        body: >
+        body: <p>Weet je het ECHT zeker?</p>
+        party_started: >
             <p>
-                Weet je het ECHT zeker?<br>
-                <br>
                 Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddelijk verwijderd worden.<br>
                 <br>
                 Hou er ook rekening mee dat er iemand misschien al een geschenk heeft gekocht voor deze deelnemer.<br>

@@ -365,13 +365,13 @@ party_manage_valid:
 
     remove_participant:
         title: Slett denne deltageren fra listen
+        party_started: <p>Er du HELT sikker?</p>
         body: >
             <p>
-                Er du HELT sikker?<br>
-                <br>
                 Å slette denne deltageren blir på permanent basis. DU kan ikke angre deg og personen denne deltageren har fått tildelt blir fjernet som kombinasjon.<br>
                 <br>
                 Noen kan ha kjøpt gaven allerede.<br>
+            </p>
 
     updated_party:
         title: Oppdater detaljer for festen
