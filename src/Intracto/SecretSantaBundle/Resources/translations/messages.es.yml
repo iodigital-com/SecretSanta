@@ -293,10 +293,9 @@ party_manage_valid:
 
     remove_participant:
         title: Expulsar este participante de mi lista
-        body: >
+        body: <p>¿Estás COMPLETAMENTE seguro?</p>
+        party_started: >
             <p>
-                ¿Estás COMPLETAMENTE seguro?<br>
-                <br>
                 Expulsar este participante causa consecuencias permanentes. No es possible de recuperar las atribuciones actuales y el participante serà borrado inmediatamente.<br>
                 <br>
                 Tiene en cuente que alguien ya puede ha comprado un regalo por este participante.<br>

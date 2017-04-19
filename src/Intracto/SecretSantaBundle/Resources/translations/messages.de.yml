@@ -288,6 +288,7 @@ party_manage_valid:
 #    remove_participant:
 #        title: ?
 #        body: ?
+#        party_started: ?
 
 #    updated_party:
 #        title: ?

@@ -318,10 +318,9 @@ party_manage_valid:
             </p>
     remove_participant:
         title: Supprimez ce participant de ma liste
-        body: >
+        body: <p>Etes-vous ABSOLUMENT certain ?</p>
+        party_started: >
             <p>
-                Etes-vous ABSOLUMENT certain ?<br>
-                <br>
                 Supprimer ce participant causera de conséquences permanentes. Il sera impossible de rétablir les attributions actuelles et le participant sera supprimé imméadiatement.<br>
                 <br>
                 Tenez compte de la possibilité que quelqu'un peut avoir déjà acheté un cadeau pour ce participant.<br>

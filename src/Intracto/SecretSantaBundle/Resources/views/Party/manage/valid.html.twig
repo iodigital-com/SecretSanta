@@ -102,6 +102,9 @@
             <h3>{{ 'party_manage_valid.remove_participant.title'|trans|raw }}</h3>
 
             {{ 'party_manage_valid.remove_participant.body'|trans|raw }}
+            {% if party.created %}
+                {{ 'party_manage_valid.remove_participant.party_started'|trans|raw }}
+            {% endif %}
             <br>
             <form id="delete-participant-form" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
@@ -114,9 +117,12 @@
                 </button>
             </form>
         </div>
-        <div class="alert alert-info">
-            <strong>{{ 'party_manage_valid.manage.tip'|trans }}</strong> {{ 'party_manage_valid.manage.come_back'|trans }}
-        </div>
+
+        {% if party.created %}
+            <div class="alert alert-info">
+                <strong>{{ 'party_manage_valid.manage.tip'|trans }}</strong> {{ 'party_manage_valid.manage.come_back'|trans }}
+            </div>
+        {% endif %}
 
         {% if not party.created and party.participants | length >3  %}
             <div class="panel panel-default" id="messagePanel">

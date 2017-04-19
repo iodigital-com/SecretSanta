@@ -373,10 +373,9 @@ party_manage_valid:
 
     remove_participant:
         title: Delete this participant from your list
-        body: >
+        body: <p>Are you ABSOLUTELY sure?</p>
+        party_started: >
             <p>
-                Are you ABSOLUTELY sure?<br>
-                <br>
                 Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immeadiatly.<br>
                 <br>
                 Somebody might have bought them a present already.<br>
