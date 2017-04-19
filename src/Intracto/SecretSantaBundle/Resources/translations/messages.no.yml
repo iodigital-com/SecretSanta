@@ -15,6 +15,7 @@ form-party:
         date_party: Dato
         location: Sted
         amount_to_spend: Beløp å bruke på gaven
+#        message:
 
 # PartyController
 party_controller:

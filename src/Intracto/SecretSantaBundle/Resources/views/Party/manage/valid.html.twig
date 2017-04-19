@@ -250,6 +250,15 @@
                         <strong>{{ error.message }}</strong><br>
                     {% endfor %}
                 </div>
+                {% if updatePartyDetailsForm.message is defined %}
+                    <div class="form-group {% if form_errors(updatePartyDetailsForm.message) %}error{% endif %}">
+                        <strong>{{ form_label(updatePartyDetailsForm.message) }}</strong>
+                        {{ form_widget(updatePartyDetailsForm.message, {'attr': {'class': 'form-control'}}) }}
+                        {% for error in updatePartyDetailsForm.message.vars.errors %}
+                            <strong>{{ error.message }}</strong><br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
                 <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
             {{ form_end(updatePartyDetailsForm) }}

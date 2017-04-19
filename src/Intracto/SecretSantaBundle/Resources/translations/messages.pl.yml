@@ -15,6 +15,7 @@ form-party:
         date_party: Data Twojego Przyjęcia Tajnego Mikołaja
 #        location: ?
         amount_to_spend: Suma do wydania
+#        message:
 
 # PartyController
 party_controller:

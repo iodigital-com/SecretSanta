@@ -15,6 +15,7 @@ form-party:
         date_party: Дата проведения твоей вечеринки Тайного Санты
 #        location: ?
         amount_to_spend: Сумма
+#        message:
 
 # PartyController
 party_controller:

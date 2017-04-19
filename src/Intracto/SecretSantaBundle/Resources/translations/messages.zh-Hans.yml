@@ -15,6 +15,7 @@ form-party:
         date_party: 你的秘密圣诞老人派对日期
 #        location: ?
         amount_to_spend: 消费金额
+#        message:
 
 # PartyController
 party_controller:

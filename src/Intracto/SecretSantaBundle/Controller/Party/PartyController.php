@@ -101,21 +101,7 @@ class PartyController extends Controller
                     $participant->setParty($party);
                 }
 
-                $dateFormatter = \IntlDateFormatter::create(
-                    $request->getLocale(),
-                    \IntlDateFormatter::MEDIUM,
-                    \IntlDateFormatter::NONE
-                );
-
-                $message = $this->get('translator')->trans('party_controller.created.message', [
-                    '%amount%' => $party->getAmount(),
-                    '%eventdate%' => $dateFormatter->format($party->getEventdate()->getTimestamp()),
-                    '%location%' => $party->getLocation(),
-                    '%message%' => $party->getMessage(),
-                ]);
-
                 $party->setCreationDate(new \DateTime());
-                $party->setMessage($message);
                 $party->setLocale($request->getLocale());
 
                 $this->get('doctrine.orm.entity_manager')->persist($party);
