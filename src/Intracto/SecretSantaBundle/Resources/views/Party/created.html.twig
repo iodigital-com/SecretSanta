@@ -8,7 +8,7 @@
             'pId': '{{ party.listurl }}',
             'pLocation': '{{ party.location }}',
             'pAmount': '{{ party.amount }}',
-            'pParticipants': '{{ party.entries|length }}',
+            'pParticipants': '{{ party.participants|length }}',
             'pDate': '{{ party.eventdate|date('Y-m-d') }}',
             'event': 'createParty'
         });

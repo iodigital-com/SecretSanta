@@ -133,18 +133,18 @@ a.btn {
     margin-top: 1px;
 }
 
-table.entries {
+table.participants {
     table-layout: fixed;
 }
 
-table.entries input {
+table.participants input {
     height: 28px;
     line-height: 28px;
     padding: 0;
     padding-left: 6px;
 }
 
-table.entries button {
+table.participants button {
     margin-bottom: 3px;
 }
 
@@ -314,11 +314,11 @@ input.span12, textarea.span12, .uneditable-input.span12 {
     min-width: 197px;
 }
 
-.entry .viewed {
+.participant .viewed {
     color: #090;
 }
 
-.entry .not_viewed {
+.participant .not_viewed {
     color: #900;
 }
 
@@ -444,11 +444,11 @@ ul.form-errors {
     display: table;
 }
 
-.row-import-entries {
+.row-import-participants {
     display: none;
 }
 
-.add-import-entry-data {
+.add-import-participant-data {
     width: 100%;
     height: 100px;
 }

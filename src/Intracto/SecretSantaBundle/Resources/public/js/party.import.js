@@ -1,5 +1,5 @@
 /* Variables */
-var collectionHolder = $('table.entries tbody');
+var collectionHolder = $('table.participants tbody');
 var dropImportCSV = document.getElementById('importCSV');
 var errorImportCSV = document.getElementById('errorImportCSV');
 var warningImportCSV = document.getElementById('warningImportCSV');
@@ -7,10 +7,10 @@ var warningImportCSV = document.getElementById('warningImportCSV');
 /* Document Ready */
 jQuery(document).ready(function () {
 
-    //Add eventlistener on add-new-entry button
-    $('.add-import-entry').click(function (e) {
+    //Add eventlistener on add-new-participant button
+    $('.add-import-participant').click(function (e) {
         e.preventDefault();
-        $('.row-import-entries').show(300);
+        $('.row-import-participants').show(300);
     });
 
     $('.btn-import-cancel').click(function (e) {
@@ -18,62 +18,62 @@ jQuery(document).ready(function () {
         $('#importCSV').val('');
         $('#errorImportCSV').hide();
         $('#warningImportCSV').hide();
-        $('.row-import-entries').hide(300);
+        $('.row-import-participants').hide(300);
     });
 
-    $('.add-import-entry-do').click(function (e) {
+    $('.add-import-participant-do').click(function (e) {
         e.preventDefault();
 
-        var entries = $.csv.toArrays($('.add-import-entry-data').val(), {
+        var participants = $.csv.toArrays($('.add-import-participant-data').val(), {
             headers: false,
             seperator: ',',
             delimiter: '"'
         });
 
-        if (typeof(entries[0]) === 'undefined') {
+        if (typeof(participants[0]) === 'undefined') {
             return;
         }
 
-        if (entries[0][1].indexOf('@') == -1) {
-            entries.splice(0, 1);
+        if (participants[0][1].indexOf('@') == -1) {
+            participants.splice(0, 1);
         }
 
         var added = 0;
         var lookForEmpty = true;
-        for (var entry in entries) {
+        for (var participant in participants) {
 
             var email = '';
             var name = '';
 
-            for (var field in entries[entry]) {
+            for (var field in participants[participant]) {
                 // very basic check, can/should probably be done some other way
                 // check if this is an e-mailaddress
-                if (email == '' && entries[entry][field].indexOf('@') != -1) {
-                    email = entries[entry][field];
+                if (email == '' && participants[participant][field].indexOf('@') != -1) {
+                    email = participants[participant][field];
                 } else {
                     // either e-mail already found, or no @ sign found
-                    name = entries[entry][field];
+                    name = participants[participant][field];
                 }
             }
 
             if (email != '') {
                 if (name == '') name = email;
 
-                // check to see if list contains empty entries
+                // check to see if list contains empty participants
                 if (lookForEmpty) {
                     // if so, use them, otherwise add new
-                    elem = $(collectionHolder).find('.entry-name[value=""],.entry-name:not([value])');
+                    elem = $(collectionHolder).find('.participant-name[value=""],.participant-name:not([value])');
                     if (elem.length > 0) {
                         row = $(elem[0]).parent().parent();
-                        $(row).find('.entry-name').attr('value', name);
-                        $(row).find('.entry-mail').attr('value', email);
+                        $(row).find('.participant-name').attr('value', name);
+                        $(row).find('.participant-mail').attr('value', email);
                     } else {
                         // prevent lookup on next iteration
                         lookForEmpty = false;
-                        addNewEntry(collectionHolder, email, name);
+                        addNewParticipant(collectionHolder, email, name);
                     }
                 } else {
-                    addNewEntry(collectionHolder, email, name);
+                    addNewParticipant(collectionHolder, email, name);
                 }
                 added++;
             }
@@ -81,13 +81,13 @@ jQuery(document).ready(function () {
         }
 
         if (added > 0) {
-            $('.add-import-entry-data').val('');
-            $('.row-import-entries').hide(300);
+            $('.add-import-participant-data').val('');
+            $('.row-import-participants').hide(300);
         }
 
     });
 
-    $('.add-import-entry-data').change(function () {
+    $('.add-import-participant-data').change(function () {
         // replace tab and ; delimiter with ,
         data = $(this).val().replace(/\t/g, ",").replace(/;/g, ",");
         if (data != $(this).text()) {

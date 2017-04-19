@@ -27,14 +27,14 @@ class ResendParticipantController extends Controller
         if ($this->get('intracto_secret_santa.service.unsubscribe')->isBlacklisted($participant)) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
-                $this->get('translator')->trans('flashes.resend_entry.blacklisted')
+                $this->get('translator')->trans('flashes.resend_participant.blacklisted')
             );
         } else {
             $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
 
             $this->get('session')->getFlashBag()->add(
                 'success',
-                $this->get('translator')->trans('flashes.resend_entry.resent', ['%email%' => $participant->getName()])
+                $this->get('translator')->trans('flashes.resend_participant.resent', ['%email%' => $participant->getName()])
             );
         }
 

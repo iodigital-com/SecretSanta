@@ -1,15 +1,15 @@
-function addNewEntry(collectionHolder) {
+function addNewParticipant(collectionHolder) {
 
     // remove .noitems if present
     $('.noitems').remove();
 
-    // Get entry prototype as defined in attribute data-prototype
+    // Get participant prototype as defined in attribute data-prototype
     var prototype = collectionHolder.attr('data-prototype');
-    // Adjust entry prototype for correct naming
-    var number_of_entries = collectionHolder.children().length; // Note, owner is not counted as entry
-    var newFormHtml = prototype.replace(/__name__/g, number_of_entries).replace(/__entrycount__/g, number_of_entries + 1);
+    // Adjust participant prototype for correct naming
+    var number_of_participants = collectionHolder.children().length; // Note, owner is not counted as participant
+    var newFormHtml = prototype.replace(/__name__/g, number_of_participants).replace(/__participantcount__/g, number_of_participants + 1);
 
-    // Add new entry to party with animation
+    // Add new participant to party with animation
     var newForm = $(newFormHtml);
     collectionHolder.append(newForm);
     newForm.show(300);
@@ -18,7 +18,7 @@ function addNewEntry(collectionHolder) {
     bindDeleteButtonEvents();
 
     // Remove disabled state on delete-buttons
-    $('.remove-entry').removeClass('disabled');
+    $('.remove-participant').removeClass('disabled');
 
     // reset ranks
     resetRanks();
@@ -27,7 +27,7 @@ function addNewEntry(collectionHolder) {
 
 function bindDeleteButtonEvents() {
     // Loop over all delete buttons
-    $('button.remove-entry').each(function (i) {
+    $('button.remove-participant').each(function (i) {
         // Remove any previously binded event
         $(this).off('click');
 
@@ -37,7 +37,7 @@ function bindDeleteButtonEvents() {
 
             if ($(this).parents("tr.wishlistitem").hasClass('new-row')) {
                 $(this).parents("tr.wishlistitem").remove();
-                $('.add-new-entry').show();
+                $('.add-new-participant').show();
             }
 
             var newRowValue = $('.new-row .wishlistitem-description').val();
@@ -59,7 +59,7 @@ function bindDeleteButtonEvents() {
 }
 
 function resetRanks() {
-    $('table.entries tbody tr').each(function (i) {
+    $('table.participants tbody tr').each(function (i) {
         $(this).find('td input[type="hidden"]').val(i + 1);
         $(this).find('td span.rank').text(i + 1);
     });
@@ -85,21 +85,21 @@ function ajaxSaveWishlist() {
 }
 
 /* Variables */
-var collectionHolder = $('table.entries tbody');
+var collectionHolder = $('table.participants tbody');
 
 /* Document Ready */
 jQuery(document).ready(function () {
 
-    //Add eventlistener on add-new-entry button
-    $('.add-new-entry').click(function (e) {
+    //Add eventlistener on add-new-participant button
+    $('.add-new-participant').click(function (e) {
         e.preventDefault();
 
-        $('.add-new-entry').hide();
+        $('.add-new-participant').hide();
 
-        addNewEntry(collectionHolder);
+        addNewParticipant(collectionHolder);
     });
 
-    $('.update-entry').click(function (e) {
+    $('.update-participant').click(function (e) {
         e.preventDefault();
 
         $(this).hide();
@@ -115,31 +115,31 @@ jQuery(document).ready(function () {
         var submitButton = $(this).find('button[type=submit]');
         submitButton.hide();
 
-        $('.add-new-entry').hide();
+        $('.add-new-participant').hide();
         $('.ajax-response').children().hide();
         $('.ajax-response .added').show();
         $('tr.wishlistitem').removeClass('new-row');
 
         ajaxSaveWishlist();
-        addNewEntry(collectionHolder);
+        addNewParticipant(collectionHolder);
     });
 
     $('.wishlistitem').on('keydown', '.wishlistitem-description', function () {
-        $(this).closest('.wishlistitem').find('button.update-entry').show();
+        $(this).closest('.wishlistitem').find('button.update-participant').show();
     });
 
     bindDeleteButtonEvents();
-    $('.remove-entry').removeClass('disabled');
+    $('.remove-participant').removeClass('disabled');
 
     // sortable
-    $("table.entries tbody").sortable({
+    $("table.participants tbody").sortable({
         stop: function () {
             resetRanks();
             ajaxSaveWishlist();
         }
     });
 
-    $('table.entries tbody').bind('click.sortable mousedown.sortable', function (ev) {
+    $('table.participants tbody').bind('click.sortable mousedown.sortable', function (ev) {
         ev.target.focus();
     });
 

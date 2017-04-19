@@ -36,8 +36,8 @@
             $('.link_remove_participant').attr('disabled', true);
             $('#delete-participant-confirmation').focus();
             var listUrl = '{{ party.listUrl }}';
-            var entryId = $(this).data('entry');
-            attachAction(listUrl, entryId);
+            var participantId = $(this).data('participant');
+            attachAction(listUrl, participantId);
         });
 
         $('.btn_remove_participant_cancel').click(function (e) {
@@ -56,14 +56,14 @@
         {% endif %}
     });
 
-    function editParticipant(listUrl, entryId) {
-        var email = $('#email_' + entryId).html();
-        var name = $('#name_' + entryId).html();
-        var url = '{{ path("participant_edit", { 'listUrl': 'listUrl', 'participantId': 'entryId' }) }}';
+    function editParticipant(listUrl, participantId) {
+        var email = $('#email_' + participantId).html();
+        var name = $('#name_' + participantId).html();
+        var url = '{{ path("participant_edit", { 'listUrl': 'listUrl', 'participantId': 'participantId' }) }}';
         url = url.replace("listUrl", listUrl);
-        url = url.replace("entryId", entryId);
-        if ($('#email_' + entryId).has('form').length == 0) {
-            makeEditForm(entryId, listUrl, name, email);
+        url = url.replace("participantId", participantId);
+        if ($('#email_' + participantId).has('form').length == 0) {
+            makeEditForm(participantId, listUrl, name, email);
         }
     }
 
@@ -108,10 +108,10 @@
         );
     }
 
-    function attachAction(listUrl, entryId) {
-        var url = '{{ path('participant_remove', {'listUrl': 'listUrl', 'participantId': 'entryId'}) }}';
+    function attachAction(listUrl, participantId) {
+        var url = '{{ path('participant_remove', {'listUrl': 'listUrl', 'participantId': 'participantId'}) }}';
         url = url.replace('listUrl', listUrl);
-        url = url.replace('entryId', entryId);
+        url = url.replace('participantId', participantId);
         $('#delete-participant-form').attr('action', url);
     }
 

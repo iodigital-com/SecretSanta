@@ -117,8 +117,8 @@ static-faq:
 #    body: ?
     create_new_list: 创建一个新的秘密圣诞老人名单！
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: 删除此人员
 
@@ -129,14 +129,14 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: 删除这个物品
 
-# Entry/exposeAll.html.twig
-#entry-expose_all:
+# Participant/exposeAll.html.twig
+#participant-expose_all:
 #    title: ?
 #    giving: ?
 #    receiving: ?
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: 你的<span class="accent">秘密圣诞老人派对</span>详细信息
         date: 日期
@@ -145,14 +145,14 @@ entry_show_base:
         num_people: 人员数目
         person_created_list: 名单创建者
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: 你的分配密友
         body: >
             <p>你好%name%,</p>
@@ -255,7 +255,7 @@ party_manage_valid:
         not_yet: 尚未
         edit_email: 编辑电子邮件
         resend_email: 再次发送电子邮件
-        view_entry: 查看词条
+        view_participant: 查看词条
         tip: 贴士
         come_back: 你可以经常回到这个页面来确认所有人已经看过他/她的邮箱。
 #        watch_out: ?
@@ -438,8 +438,8 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: 查看谁是你的礼物密友
     didYouForget: 你忘记秘密圣诞老人派对了吗？你还没查看谁是你的礼物密友呢！
 
@@ -497,13 +497,13 @@ flashes:
     party:
         not_deleted: <h4>未能删除</h4>这个确认不正确。
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>已重新发送！</strong><br/>已重新发送至 %email%电子邮箱中。<br/>
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>愿望清单已更新</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
         edit_email: <h4>未保存</h4> 电子邮箱地址出错。
 #        updated_participant:
@@ -512,7 +512,7 @@ flashes:
 #            success: ?
 #            danger: ?
 #            warning: ?
-#            excluded_entries: ?
+#            excluded_participants: ?
 #            self_assigned: ?
 #            not_enough_for_exclude:
 #            wrong: ?

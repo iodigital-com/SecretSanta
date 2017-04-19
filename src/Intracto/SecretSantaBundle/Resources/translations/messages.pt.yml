@@ -180,8 +180,8 @@ static-faq:
         <p>Se você tiver qualquer outra pergunta, sugestão ou reclamações, apenas entre em contato conosco por e-mail:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Montar uma nova lista do Secret Santa!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: Eliminar esta pessoa
 
@@ -192,14 +192,14 @@ helper-prototype_wishlist:
 #        update_item: ?
         remove_item: Eliminar este item
 
-# Entry/exposeAll.html.twig
-entry-expose_all:
+# Participant/exposeAll.html.twig
+participant-expose_all:
       title: Combinações do Amigo Secreto
       giving:  Este participante é o Papai Noel de ...
 #      receiving: ?
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: Detalhes da sua <span class="accent">festa Secret Santa</span>
         date: Data
@@ -208,14 +208,14 @@ entry_show_base:
         num_people: Número de participantes
         person_created_list: Proprietário desta lista
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Seu Amigo Secreto
         body: >
             <p>Olá %name%,</p>
@@ -318,7 +318,7 @@ party_manage_valid:
         not_yet: Ainda não
         edit_email: Modificar e-mail
         resend_email: Reenviar o e-mail
-        view_entry: Ver perfil do participante
+        view_participant: Ver perfil do participante
         tip: Dica
         come_back: Você sempre pode voltar para esta página para verificar se todo mundo verificou a sua caixa de entrada.
 #        watch_out: ?
@@ -501,8 +501,8 @@ emails-updated_party:
 #    btn:
 #        updated_party: ?
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Descubra quem é seu Amigo Secreto
     didYouForget: Você, por acaso, se esqueceu da nossa brincadeira? Você ainda não foi ver quem é seu Amigo Secreto!
 
@@ -560,13 +560,13 @@ flashes:
     party:
         not_deleted: <h4>Não eliminado</h4> A confirmação não deu certo.
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>Enviado novamente!</strong><br/>O e-mail destinado a %email% foi enviado novamente.<br/>
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>Lista de desejos atualizada</h4> Mandamos os nossos elfos mágicos ir avisar quem te tirou de Amigo Secreto quais são os presentes super bacanas que você está esperando receber!
         edit_email: <h4>Não salvo</h4> Tem algo errado com o endereço e-mail.
 #        updated_participant:
@@ -575,7 +575,7 @@ flashes:
 #            success: ?
 #            danger: ?
 #            warning: ?
-#            excluded_entries: ?
+#            excluded_participants: ?
 #            self_assigned: ?
 #            not_enough_for_exclude:
 #            wrong: ?

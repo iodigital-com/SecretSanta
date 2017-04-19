@@ -14,7 +14,7 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 class ShowController extends Controller
 {
     /**
-     * @Route("/entry/{url}", name="participant_view")
+     * @Route("/participant/{url}", name="participant_view")
      * @Template("IntractoSecretSantaBundle:Participant/show:valid.html.twig")
      */
     public function showAction(Request $request, $url)

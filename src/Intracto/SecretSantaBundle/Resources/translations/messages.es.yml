@@ -123,8 +123,8 @@ static-faq:
 #    body: ?
     create_new_list: ¡Crear una nueva lista Secret Santa!
 
-# Helper/prototypeEntry.html.twig
-helper-prototype_entry:
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
     btn:
         remove_person: Quitar esta persona
 
@@ -135,14 +135,14 @@ helper-prototype_wishlist:
         update_item: Actualizar este elemento
         remove_item: Quitar
 
-# Entry/exposeAll.html.twig
-entry-expose_all:
+# Participant/exposeAll.html.twig
+participant-expose_all:
     title: Secret Santa Mailing List Matches
     giving: This member is giving ...
     receiving: ... a gift to this member
 
-# Entry/show/base.html.twig
-entry_show_base:
+# Participant/show/base.html.twig
+participant_show_base:
     headers:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
         date: Fecha
@@ -151,14 +151,14 @@ entry_show_base:
         num_people: Número de personas
         person_created_list: Persona que creó esta lista
 
-# Entry/show/expired.html.twig
-#entry_show_expired:
+# Participant/show/expired.html.twig
+#participant_show_expired:
 #    message:
 #        expired:
 
-# Entry/show/valid.html.twig
-entry_show_valid:
-    entry:
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
         title: Tu amigo asignado
         body: >
             <p>Hola %name%,</p>
@@ -261,7 +261,7 @@ party_manage_valid:
         not_yet: Aún no
         edit_email: Editar correo electrónico
         resend_email: Volver a enviar correo electrónico
-        view_entry: Ver entrada
+        view_participant: Ver entrada
         tip: Consejo
         come_back: Siempre puedes volver a esta página para asegurarte de que todo el mundo ha comprobado su buzón de correo electrónico.
         watch_out: Atención
@@ -501,8 +501,8 @@ emails-updated_party:
     btn:
         updated_party: Comprueba quién es tu amigote o tu lista de deseos por esta fiesta
 
-# Emails/viewEntryReminder.{html,txt}.twig
-emails-viewEntryReminder:
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
     subject: Descubrir quién es tu amigo del regalo
     didYouForget: ¿Olvidaste nuestra fiesta Secret Santa? ¡Aún no has comprobado tu amigo del regalo!
 
@@ -560,13 +560,13 @@ flashes:
     party:
         not_deleted: <h4>No borrado</h4> La confirmación era incorrecta.
 
-    # ResendEntryController
-    resend_entry:
+    # ResendParticipantController
+    resend_participant:
         resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
 #        blacklisted:
 
-    # EntryController
-    entry:
+    # ParticipantController
+    participant:
         wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
         edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
 #        updated_participant:
@@ -575,7 +575,7 @@ flashes:
             success: <h4>¡Expulsado!</h4> Participante expulsado de éxito.
             danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.
             warning: <h4>Oops</h4> Organizas la fiesta, no puedes expulsarte. Si quieres dejar la fiesta, haz clic en el enlace abajo para borrar la lista Secret Santa.
-            excluded_entries: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
+            excluded_participants: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
 #            self_assigned: ?
 #            not_enough_for_exclude:
             wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.

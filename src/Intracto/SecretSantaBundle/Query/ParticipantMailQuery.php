@@ -19,7 +19,7 @@ class ParticipantMailQuery
     }
 
     /**
-     * Find all entries that have an empty wishlist in Parties which were sent out
+     * Find all participants that have an empty wishlist in Parties which were sent out
      * more than two weeks ago and the party date is max six weeks in the future.
      *
      * @return Participant[]|array
@@ -56,13 +56,13 @@ class ParticipantMailQuery
     }
 
     /**
-     * Find all entries that haven't been watched yet in Parties which were sent
+     * Find all participants that haven't been watched yet in Parties which were sent
      * out more than two weeks ago and the party date is max six weeks in the
      * future.
      *
      * @return Participant[]|array
      */
-    public function findAllToRemindToViewEntry()
+    public function findAllToRemindToViewParticipant()
     {
         $today = new \DateTime();
         $oneWeekAgo = new \DateTime('now - 1 week');

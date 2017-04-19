@@ -1,6 +1,6 @@
-# Form/ExcludeEntryType
+# Form/ExcludeParticipantType
 party:
-    non_unique: Not all entries have an unique match. Try again or remove some combination from the exclude list.
-entry:
+    non_unique: Not all participants have an unique match. Try again or remove some combination from the exclude list.
+participant:
     non_unique: No unique match found for "%name%"
 #    blacklisted:

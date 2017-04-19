@@ -15,7 +15,7 @@ class ParticipantHasValidExcludesValidator extends ConstraintValidator
     public function validate($participant, Constraint $constraint)
     {
         $party = $participant->getParty();
-        //should be at least 2 possible entries remaining to choose from, -1 for itself
+        //should be at least 2 possible participants remaining to choose from, -1 for itself
         if ($party->getParticipants()->count() < $participant->getExcludedParticipants()->count() + 3) {
             $this->context->buildViolation($constraint->messageNoUniqueMatch)
                 ->atPath('exclude_participants')

@@ -68,7 +68,7 @@ class WishlistReportQuery
         $totalWishlists = $this->countAllWishlistsUntilDate($date);
         $totalParticipants = $this->participantReportQuery->countAllParticipantsUntilDate($date);
 
-        if ($totalParticipants[0]['totalEntryCount'] != 0) {
+        if ($totalParticipants[0]['totalParticipantCount'] != 0) {
             return (implode($totalWishlists[0]) / implode($totalParticipants[0])) * 100;
         }
 

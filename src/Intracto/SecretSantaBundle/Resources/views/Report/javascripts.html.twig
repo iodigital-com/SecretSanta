@@ -68,27 +68,27 @@
             var totalPartyChart = new google.visualization.LineChart(document.getElementById('total_party_chart'));
             totalPartyChart.draw(totalParyData, chartOptions);
 
-            var entryData = new google.visualization.DataTable();
-            entryData.addColumn('string', 'Month');
-            entryData.addColumn('number', 'Participants');
-            entryData.addRows([
-                {% for entry in party_data['entry_chart_data'] %}
-                ['{{ entry['month']|date("M") }}', {{ entry['accumulatedEntryCountByMonth'] }}],
+            var participantData = new google.visualization.DataTable();
+            participantData.addColumn('string', 'Month');
+            participantData.addColumn('number', 'Participants');
+            participantData.addRows([
+                {% for participant in party_data['participant_chart_data'] %}
+                ['{{ participant['month']|date("M") }}', {{ participant['accumulatedParticipantCountByMonth'] }}],
                 {% endfor %}
             ]);
-            var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
-            entryChart.draw(entryData, chartOptions);
+            var participantChart = new google.visualization.ColumnChart(document.getElementById('participant_chart'));
+            participantChart.draw(participantData, chartOptions);
 
-            var totalEntryData = new google.visualization.DataTable();
-            totalEntryData.addColumn('string', 'Month');
-            totalEntryData.addColumn('number', 'Participants');
-            totalEntryData.addRows([
-                {% for entry in party_data['total_entry_chart_data'] %}
-                ['{{ entry['month']|date("M Y") }}', {{ entry['totalEntryCount'] }}],
+            var totalparticipantData = new google.visualization.DataTable();
+            totalparticipantData.addColumn('string', 'Month');
+            totalparticipantData.addColumn('number', 'Participants');
+            totalparticipantData.addRows([
+                {% for particiant in party_data['total_participant_chart_data'] %}
+                ['{{ particiant['month']|date("M Y") }}', {{ particiant['totalParticipantCount'] }}],
                 {% endfor %}
             ]);
-            var totalEntryChart = new google.visualization.LineChart(document.getElementById('total_entry_chart'));
-            totalEntryChart.draw(totalEntryData, chartOptions);
+            var totalParticipantChart = new google.visualization.LineChart(document.getElementById('total_participant_chart'));
+            totalParticipantChart.draw(totalparticipantData, chartOptions);
             {% else %}
             var partyData = new google.visualization.DataTable();
             partyData.addColumn('string', 'Season');
@@ -102,18 +102,18 @@
             var partyChart = new google.visualization.ColumnChart(document.getElementById('party_chart'));
             partyChart.draw(partyData, chartOptions);
 
-            var entryData = new google.visualization.DataTable();
-            entryData.addColumn('string', 'Season');
-            entryData.addColumn('number', 'Parties');
-            entryData.addRows([
-                {% for entry in party_data['yearly_entry_chart_data'] %}
-                {% if entry['year'] != null %}
-                ['{{ entry['year'] }} - {{ entry['year'] + 1 }}', {{ entry['entry'][0]['accumulatedEntryCountByYear'] }}],
+            var participantData = new google.visualization.DataTable();
+            participantData.addColumn('string', 'Season');
+            participantData.addColumn('number', 'Parties');
+            participantData.addRows([
+                {% for participant in party_data['yearly_participant_chart_data'] %}
+                {% if participant['year'] != null %}
+                ['{{ participant['year'] }} - {{ participant['year'] + 1 }}', {{ participant['participant'][0]['accumulatedParticipantCountByYear'] }}],
                 {% endif %}
                 {% endfor %}
             ]);
-            var entryChart = new google.visualization.ColumnChart(document.getElementById('entry_chart'));
-            entryChart.draw(entryData, chartOptions);
+            var participantChart = new google.visualization.ColumnChart(document.getElementById('participant_chart'));
+            participantChart.draw(participantData, chartOptions);
             {% endif %}
 
             {% if party_data['ip_usage'] is not empty %}

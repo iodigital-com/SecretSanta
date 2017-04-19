@@ -1,0 +1,9 @@
+<tr style='display: none' class="participant not-owner">
+    <td class="participant-number">__participantcount__</td>
+    <td>{{ form_widget(participant.name, {'attr': {'class': 'participant-name form-control error'} }) }}</td>
+    <td>{{ form_widget(participant.email, {'attr': {'class': 'participant-mail form-control error'} }) }}</td>
+    <td style="text-align: right;">
+        <button type="button" class="btn btn-mini btn-danger remove-participant">
+            <i class="fa fa-times-circle fa-inverse"></i> <i class="text_remove">{{ 'helper-prototype_participant.btn.remove_person'|trans }}</i>
+    </td>
+</tr>

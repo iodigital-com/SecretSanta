@@ -42,7 +42,7 @@ class ParticipantReportQuery
     public function countConfirmedParticipantsUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS confirmedEntryCount')
+            ->select('count(p.id) AS confirmedParticipantCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date < :lastDay')
@@ -60,7 +60,7 @@ class ParticipantReportQuery
     public function countDistinctParticipantsUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(distinct e.email) AS distinctEntryCount')
+            ->select('count(distinct e.email) AS distinctParticipantCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date < :lastDay')
@@ -77,7 +77,7 @@ class ParticipantReportQuery
     public function queryDataForMonthlyParticipantChart(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS accumulatedEntryCountByMonth, p.sent_date AS month')
+            ->select('count(p.id) AS accumulatedParticipantCountByMonth, p.sent_date AS month')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date >= :firstDay')
@@ -103,7 +103,7 @@ class ParticipantReportQuery
             $lastDay = \DateTime::createFromFormat('Y-m-d', $year + 1 .'-04-01')->format('Y-m-d H:i:s');
 
             $query = $this->dbal->createQueryBuilder()
-                ->select('count(p.id) AS accumulatedEntryCountByYear')
+                ->select('count(p.id) AS accumulatedParticipantCountByYear')
                 ->from('party', 'p')
                 ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
                 ->where('p.sent_date IS NOT NULL')
@@ -114,12 +114,12 @@ class ParticipantReportQuery
 
             $chartData = $query->execute()->fetchAll();
 
-            $entry = [
+            $participant = [
                 'year' => $year,
-                'entry' => $chartData,
+                'participant' => $chartData,
             ];
 
-            array_push($participantChartData, $entry);
+            array_push($participantChartData, $participant);
         }
 
         return $participantChartData;
@@ -133,7 +133,7 @@ class ParticipantReportQuery
     public function queryDataForParticipantChartUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS totalEntryCount, p.sent_date AS month')
+            ->select('count(p.id) AS totalParticipantCount, p.sent_date AS month')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date < :lastDay')
@@ -142,11 +142,11 @@ class ParticipantReportQuery
 
         $totalParticipantChartData = $query->execute()->fetchAll();
 
-        $accumulatedEntryCounter = 0;
+        $accumulatedParticipantCounter = 0;
 
-        foreach ($totalParticipantChartData as &$entryCount) {
-            $accumulatedEntryCounter += $entryCount['totalEntryCount'];
-            $entryCount['totalEntryCount'] = $accumulatedEntryCounter;
+        foreach ($totalParticipantChartData as &$participantCount) {
+            $accumulatedParticipantCounter += $participantCount['totalParticipantCount'];
+            $participantCount['totalParticipantCount'] = $accumulatedParticipantCounter;
         }
 
         return $totalParticipantChartData;
@@ -177,7 +177,7 @@ class ParticipantReportQuery
     public function countAllParticipantsUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS totalEntryCount')
+            ->select('count(p.id) AS totalParticipantCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date < :lastDay')
@@ -237,10 +237,10 @@ class ParticipantReportQuery
         try {
             $confirmedParticipantCountSeason2 = $this->countConfirmedParticipants($season2);
         } catch (\Exception $e) {
-            return $confirmedParticipantCountSeason1[0]['confirmedEntryCount'];
+            return $confirmedParticipantCountSeason1[0]['confirmedParticipantCount'];
         }
 
-        return $confirmedParticipantCountSeason1[0]['confirmedEntryCount'] - $confirmedParticipantCountSeason2[0]['confirmedEntryCount'];
+        return $confirmedParticipantCountSeason1[0]['confirmedParticipantCount'] - $confirmedParticipantCountSeason2[0]['confirmedParticipantCount'];
     }
 
     /**
@@ -251,7 +251,7 @@ class ParticipantReportQuery
     public function countConfirmedParticipants(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(p.id) AS confirmedEntryCount')
+            ->select('count(p.id) AS confirmedParticipantCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date >= :firstDay')
@@ -271,14 +271,14 @@ class ParticipantReportQuery
      */
     public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
-        $distinctParticipantCountSeason1 = $this->countDistinctEntries($season1);
+        $distinctParticipantCountSeason1 = $this->countDistinctParticipants($season1);
         try {
-            $distinctParticipantCountSeason2 = $this->countDistinctEntries($season2);
+            $distinctParticipantCountSeason2 = $this->countDistinctParticipants($season2);
         } catch (\Exception $e) {
-            return $distinctParticipantCountSeason1[0]['distinctEntryCount'];
+            return $distinctParticipantCountSeason1[0]['distinctParticipantCount'];
         }
 
-        return $distinctParticipantCountSeason1[0]['distinctEntryCount'] - $distinctParticipantCountSeason2[0]['distinctEntryCount'];
+        return $distinctParticipantCountSeason1[0]['distinctParticipantCount'] - $distinctParticipantCountSeason2[0]['distinctParticipantCount'];
     }
 
     /**
@@ -286,10 +286,10 @@ class ParticipantReportQuery
      *
      * @return mixed
      */
-    public function countDistinctEntries(Season $season)
+    public function countDistinctParticipants(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
-            ->select('count(distinct e.email) AS distinctEntryCount')
+            ->select('count(distinct e.email) AS distinctParticipantCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date >= :firstDay')

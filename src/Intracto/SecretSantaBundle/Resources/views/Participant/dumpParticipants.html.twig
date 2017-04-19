@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dump participants</title>
+</head>
+<body>
+<ul>
+    {% for participant in participants %}
+        <li><a href="{{ url('participant_view', { 'url': participant.url }) }}">{{ url('participant_view', { 'url': participant.url }) }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
