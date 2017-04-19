@@ -42,9 +42,8 @@ function bindDeleteButtonEvents() {
 
             var newRowValue = $('.new-row .wishlistitem-description').val();
             if (typeof newRowValue != 'undefined' && newRowValue == '') {
-                $('.ajax-response .empty').show();
-
-                return false;
+                $('.new-row').remove();
+                $('.add-new-participant').show();
             }
 
             $('.ajax-response').children().hide();
