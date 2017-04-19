@@ -52,7 +52,7 @@ class ManagementController extends Controller
         if ($party->getCreated() || $party->getCreationDate() < new \DateTime('2017-04-20')) {
             $updatePartyDetailsForm->remove('message');
         }
-        
+
         if ($party->getEventdate() < new \DateTime('-2 years')) {
             return $this->render('IntractoSecretSantaBundle:Party/manage:expired.html.twig', [
                 'party' => $party,
