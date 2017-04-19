@@ -54,7 +54,7 @@ class WishlistController extends Controller
 
         $wishlistForm->handleRequest($request);
 
-        if (! $wishlistForm->isValid()) {
+        if (!$wishlistForm->isValid()) {
             $return = ['responseCode' => 400, 'message' => 'Form invalid!'];
 
             return new JsonResponse($return);
