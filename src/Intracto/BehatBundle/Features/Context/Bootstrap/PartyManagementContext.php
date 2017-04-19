@@ -2,7 +2,6 @@
 
 namespace Intracto\BehatBundle\Features\Context\Bootstrap;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Intracto\BehatBundle\Features\Context\FeatureContext;
 use Webmozart\Assert\Assert;
 
