@@ -10,7 +10,7 @@ class PartyManagementContext extends FeatureContext
     /**
      * @Given /^(?:|I) am on the party management page$/
      */
-    public function GoToPartyManagementPage()
+    public function goToPartyManagementPage()
     {
         $path = $this->getContainer()->get('router')->generate('party_manage', ['listUrl' => FeatureContext::PARTY_URL_TOKEN]);
         $this->visitPath($path);
