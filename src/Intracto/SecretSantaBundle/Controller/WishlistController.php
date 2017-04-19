@@ -54,54 +54,58 @@ class WishlistController extends Controller
 
         $wishlistForm->handleRequest($request);
 
-        if ($wishlistForm->isValid()) {
-            // save participants passed and check rank
-            $inOrder = true;
-            $lastRank = 0;
-            $newWishlistItems = $participant->getWishlistItems();
+        if (!$wishlistForm->isValid()) {
+            $return = ['responseCode' => 400, 'message' => 'Form invalid!'];
 
-            foreach ($newWishlistItems as $item) {
-                $item->setParticipant($participant);
-                $this->get('doctrine.orm.entity_manager')->persist($item);
-                // keep track of rank
-                if ($item->getRank() < $lastRank) {
-                    $inOrder = false;
-                }
-                $lastRank = $item->getRank();
+            return new JsonResponse($return);
+        }
+
+        // save participants passed and check rank
+        $inOrder = true;
+        $lastRank = 0;
+        $newWishlistItems = $participant->getWishlistItems();
+
+        foreach ($newWishlistItems as $item) {
+            $item->setParticipant($participant);
+            $this->get('doctrine.orm.entity_manager')->persist($item);
+            // keep track of rank
+            if ($item->getRank() < $lastRank) {
+                $inOrder = false;
             }
+            $lastRank = $item->getRank();
+        }
 
-            // remove participants not passed
-            foreach ($currentWishlistItems as $item) {
-                if (!$newWishlistItems->contains($item)) {
-                    $this->get('doctrine.orm.entity_manager')->remove($item);
-                }
+        // remove participants not passed
+        foreach ($currentWishlistItems as $item) {
+            if (!$newWishlistItems->contains($item)) {
+                $this->get('doctrine.orm.entity_manager')->remove($item);
             }
+        }
 
-            // For now assume that a save of participant means the list has changed
-            $time_now = new \DateTime();
-            $participant->setWishlistUpdated(true);
-            $participant->setWishlistUpdatedTime($time_now);
+        // For now assume that a save of participant means the list has changed
+        $time_now = new \DateTime();
+        $participant->setWishlistUpdated(true);
+        $participant->setWishlistUpdatedTime($time_now);
 
-            $this->get('doctrine.orm.entity_manager')->persist($participant);
-            $this->get('doctrine.orm.entity_manager')->flush();
+        $this->get('doctrine.orm.entity_manager')->persist($participant);
+        $this->get('doctrine.orm.entity_manager')->flush();
 
-            if (!$request->isXmlHttpRequest()) {
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    $this->get('translator')->trans('flashes.participant.wishlist_updated')
-                );
+        if (!$request->isXmlHttpRequest()) {
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('flashes.participant.wishlist_updated')
+            );
 
-                if (!$inOrder) {
-                    // redirect to force refresh of form and entity
-                    return $this->redirect($this->generateUrl('participant_view', ['url' => $url]));
-                }
+            if (!$inOrder) {
+                // redirect to force refresh of form and entity
+                return $this->redirect($this->generateUrl('participant_view', ['url' => $url]));
             }
+        }
 
-            if ($request->isXmlHttpRequest()) {
-                $return = ['responseCode' => 200, 'message' => 'Added!'];
+        if ($request->isXmlHttpRequest()) {
+            $return = ['responseCode' => 200, 'message' => 'Added!'];
 
-                return new JsonResponse($return);
-            }
+            return new JsonResponse($return);
         }
     }
 }
