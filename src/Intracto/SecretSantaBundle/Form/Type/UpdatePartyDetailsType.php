@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Form\Type;
 use Intracto\SecretSantaBundle\Entity\Party;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,6 +20,7 @@ class UpdatePartyDetailsType extends AbstractType
             ])
             ->add('amount', TextType::class, ['label' => 'form-party.label.amount_to_spend'])
             ->add('location', TextType::class, ['label' => 'form-party.label.location'])
+            ->add('message', TextareaType::class, ['label' => 'form-party.label.message'])
         ;
     }
 

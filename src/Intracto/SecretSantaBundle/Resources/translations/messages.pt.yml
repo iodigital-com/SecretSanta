@@ -15,6 +15,7 @@ form-party:
         date_party: Data da sua festa de Amigo Secreto
 #        location: ?
         amount_to_spend: Valor máximo a gastar
+#        message:
 
 # PartyController
 party_controller:

@@ -15,6 +15,7 @@ form-party:
         date_party: Datum van jouw Secret Santa feest
         location: Locatie van jouw Secret Santa feest
         amount_to_spend: Te spenderen bedrag
+        message: Extra bericht in email
 
 # PartyController
 party_controller:

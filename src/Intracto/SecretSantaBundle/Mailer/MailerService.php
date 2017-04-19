@@ -104,7 +104,27 @@ class MailerService
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
 
-        $message = $participant->getParty()->getMessage();
+        // Functionality has been updated on the 19th of April 2017
+        // Since that day, only the custom message (The message admins can provide when creating the party) is saved in the database, and not the whole email.
+        // Therefore we have to check if the party is created before 19th of April, in that case we don't have to wrap the mail since it's stored wrapped in the database.
+        // Otherwise, we still need to wrap this email.
+        if ($participant->getParty()->getCreationDate() < new \DateTime('2017-04-20')) {
+            $message = $participant->getParty()->getMessage();
+        } else {
+            $dateFormatter = \IntlDateFormatter::create(
+                $participant->getParty()->getLocale(),
+                \IntlDateFormatter::MEDIUM,
+                \IntlDateFormatter::NONE
+            );
+
+            $message = $this->translator->trans('party_controller.created.message', [
+                '%amount%' => $participant->getParty()->getAmount(),
+                '%eventdate%' => $dateFormatter->format($participant->getParty()->getEventdate()->getTimestamp()),
+                '%location%' => $participant->getParty()->getLocation(),
+                '%message%' => $participant->getParty()->getMessage(),
+            ]);
+        }
+
         $message = str_replace('(NAME)', $participant->getName(), $message);
         $message = str_replace('(ADMINISTRATOR)', $participant->getParty()->getOwnerName(), $message);
 
@@ -231,7 +251,7 @@ class MailerService
             if ($result['eventdate'] instanceof \DateTime) {
                 $text = $result['eventdate']->format('d/m/Y').' ';
             }
-            $text .= $this->translator->trans('emails-reuse_link.at') . ' ' . $result['location'];
+            $text .= $this->translator->trans('emails-reuse_link.at').' '.$result['location'];
             $partyLinks[] = [
                 'url' => $this->routing->generate('party_reuse', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
                 'text' => $text,
