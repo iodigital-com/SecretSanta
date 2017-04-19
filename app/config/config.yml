@@ -71,6 +71,11 @@ jms_i18n_routing:
     locales: "%supported_locales%"
     strategy: prefix_except_default
 
+bugsnag:
+    api_key: "%bugsnag_api_key%"
+    notify_release_stages:
+            - production
+
 services:
     twig.text_extension:
         class: Twig_Extensions_Extension_Text
