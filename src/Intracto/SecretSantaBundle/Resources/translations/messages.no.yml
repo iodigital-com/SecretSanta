@@ -83,16 +83,7 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: Bare 1 trinn igjen! - Bekreft din deltagelse
-    body: >
-        <p>
-            For å unngå at roboter eller troll ødelegger hemmelig-venn selskapet ditt må liste-organisatoren <b>%ownername%</b> bekrefte hans eller hennes deltagelse. Vi har sendt en epost til <b>%owneremail%</b> med et par intstrukser.
-        </p>
-        <p>
-            Så snart den er bekreftet, vil din "Secret Santa" liste mikses og alle deltagerne får tilsendt meldingen fra deg samt navnet på den de skal kjøpe gave til.
-        </p>
-        <p>
-            I e-posten som må bekreftes vil administratoren også få en link for å kunne holde seg oppdatert på alle deltagerne i Secret Santa-listen som allerede har funnet ut hvem de skal gi gave til. Sånn er du sikker på at alle nissene er klar over sin plikt.
-        </p>
+#    body: ?
     warning: Warning!
     check_spam: Ikke glem å sjekke søppelposten!
 

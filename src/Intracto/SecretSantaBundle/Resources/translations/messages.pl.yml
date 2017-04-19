@@ -72,7 +72,7 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
-    body: '<p>Aby powstrzymać trolle przed zrujnowaniem Twojego Przyjęcia Tajnego Mikołaja potrzebujemy znać <b>%ownername%</b> organizatora listy aby zweryfikować jego uczestnictwo. Wysłaliśmy mail do <b>%owneremail%</b> z kolejnymi informacjami.</p><p>Po weryfikacji Twoja lista Tajnego Mikołaja zostanie wymieszana i uczestnicy otrzymają Twoją wiadomość wraz z imieniem osoby do obdarowania.</p><p>W wiadomości weryfikacyjnej organizator listy znajdzie link, który umożliwi mu śledzenie aktywności pozostałych uczestników, którzy mają już przypisane osoby do obdarowania. To daje pewność, że każdy Tajny Mikołaj wie co ma robić.</p>'
+#    body: ?
     warning: Uwaga!
     check_spam: Nie zapomnij sprawdzić folderu spam!
 

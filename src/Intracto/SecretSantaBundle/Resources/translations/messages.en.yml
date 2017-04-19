@@ -88,10 +88,11 @@ party-created:
             To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
         </p>
         <p>
-            Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+            Once validated, you will be able to make changes to your party, add or remove particiapnts and configure excludes (if your party has 4 participants or more). Once you are ready configuring your party, you can start your party.
+            At that point we will match everyone, and send them an email containing all info they need, together with a link to find out their buddy.
         </p>
         <p>
-            In the validation e-mail the list organizer will also find a link to keep track of all users in their Secret Santa list who've already found out their gift buddy. Making sure every Secret Santa knows his or her duty.
+            You can always use the link in the validation e-mail to go to the manage page. Once the party is started, you will be able to see if the participants have opened their mail, and clicked the link the find out who their buddy is.
         </p>
     warning: Warning!
     check_spam: Don't forget to check your spam folder!
