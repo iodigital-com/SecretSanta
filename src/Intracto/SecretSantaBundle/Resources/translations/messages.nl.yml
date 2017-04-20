@@ -159,7 +159,7 @@ static-faq:
         <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
 
         <a href="lost"></a><h2>Ik ben mijn bevestigingsmail / link naar het feestje kwijt.</h2>
-        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="%requestForgotEmail%">deze pagina</a> jouw mailadres in en we sturen je een mail met een
+        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="%requestForgotLink%">deze pagina</a> jouw mailadres in en we sturen je een mail met een
         overzicht van alle feestjes waaraan je meedoet en/of die je hebt aangemaakt.</p>
 
         <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
@@ -658,8 +658,8 @@ flashes:
     send_party_update:
         success: <h4>Succes</h4> Alle deelnemers hebben een update over het feestje ontvangen.
 
-    # ForgotManagementURLController
-    forgot_management_url:
+    # ForgotURLController
+    forgot_url:
         success: 'We hebben je een email gestuurd met een overzicht van je feestjes!'
         error: 'Er is een fout opgetreden tijdens het versturen van de mail. Probeer nogmaals.'
 

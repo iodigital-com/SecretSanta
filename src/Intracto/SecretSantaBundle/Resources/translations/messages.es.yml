@@ -523,8 +523,8 @@ flashes:
     send_party_update:
         success: <h4>Éxito</h4> Todos los participantes han recibido una actualizaci&oacute;n sobre la fiesta.
 
-    # ForgotManagementURLController
-    forgot_management_url:
+    # ForgotURLController
+    forgot_url:
 #        success:
 #        error:
 
