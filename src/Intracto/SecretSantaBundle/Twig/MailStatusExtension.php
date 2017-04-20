@@ -28,8 +28,8 @@ class MailStatusExtension extends \Twig_Extension
 
     public function mailstatusFilter(Participant $participant)
     {
-        if($participant->getParty()->getCreated()){
-            switch (true){
+        if ($participant->getParty()->getCreated()) {
+            switch (true) {
                 case $participant->getViewdate() != null:
                     $status = $this->translator->trans('mail_status_extension.viewed');
                     $icon = 'fa-check';
