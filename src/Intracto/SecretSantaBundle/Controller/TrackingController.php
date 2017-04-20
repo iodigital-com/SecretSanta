@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Intracto\SecretSantaBundle\Response\TransparentPixelResponse;
@@ -20,10 +19,12 @@ class TrackingController extends Controller
         $dispatcher = $this->get('event_dispatcher');
         $dispatcher->addListener(KernelEvents::TERMINATE,
             function (KernelEvent $event) use ($participantId) {
-                /**@var Participant $participant*/
+                /** @var Participant $participant */
                 $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
-                $participant->setOpenEmailDate(new \DateTime());
-                $this->get('doctrine.orm.default_entity_manager')->flush($participant);
+                if ($participant != null) {
+                    $participant->setOpenEmailDate(new \DateTime());
+                    $this->get('doctrine.orm.default_entity_manager')->flush($participant);
+                }
             }
         );
 
