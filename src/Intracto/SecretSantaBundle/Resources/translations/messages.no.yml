@@ -141,7 +141,7 @@ static-faq:
         <p>Bekreftelsen sendes til administratoren, og den inneholder også link til en administrasjonsside hvor du kan gjøre endringer.</p>
 
         <a href="lost"></a><h2>Jeg mistet bekreftelseseposten.</h2>
-        <p>Hvis du har mistet e-posten med bekreftelseslinken i (som også inneholder linken til administrasjonssiden), skriv inn administratorens e-post <a href="%requestForgotEmail%">her</a> og vi sender deg linken på nytt.</p>
+        <p>Hvis du har mistet e-posten med bekreftelseslinken i (som også inneholder linken til administrasjonssiden), skriv inn administratorens e-post <a href="%requestForgotLink%">her</a> og vi sender deg linken på nytt.</p>
 
         <a name="changes"></a><h2>Kan jeg legge til eller fjerne personer fra listen?</h2>
         <p>Du kan legge til eller fjerne personer etter arrangementet er opprettet. På admin-siden finner du en slett-knapp og et skjema for å legge til nye personer. Det er bare én hake ved det: Du kan ikke gjøre dette dersom administrator har forhindret enkelte kombinasjoner av personer før arrangementet ble opprettet.
@@ -595,8 +595,8 @@ flashes:
     send_party_update:
         success: <h4>Sukksess!</h4> Alle oppfateringer har blitt sendt til deltagerne på listen din.
 
-    # ForgotManagementURLController
-    forgot_management_url:
+    # ForgotURLController
+    forgot_url:
 #        success: ?
 #        error: ?
 

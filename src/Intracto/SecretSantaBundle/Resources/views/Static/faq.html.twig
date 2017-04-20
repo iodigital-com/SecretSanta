@@ -4,7 +4,7 @@
         <h2>{{ 'static-faq.title'|trans }}</h2>
         {{ 'static-faq.body'|trans(
             {
-                '%requestForgotLink%': path('forgot_management_url'),
+                '%requestForgotLink%': path('forgot_url'),
                 '%requestReuseLink%': path('request_reuse_url'),
             }
         )|raw }}

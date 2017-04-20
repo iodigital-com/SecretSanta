@@ -461,8 +461,8 @@ flashes:
 #    send_party_update:
 #        success: ?
 
-    # ForgotManagementURLController
-#    forgot_management_url:
+    # ForgotURLController
+#    forgot_url:
 #        success: ?
 #        error: ?
 

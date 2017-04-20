@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Controller\Party;
+namespace Intracto\SecretSantaBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -9,10 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Intracto\SecretSantaBundle\Form\Type\ForgotLinkType;
 
-class ForgotManagementURLController extends Controller
+class ForgotURLController extends Controller
 {
     /**
-     * @Route("/forgot-link", name="forgot_management_url")
+     * @Route("/forgot-link", name="forgot_url")
      * @Template("IntractoSecretSantaBundle:Party:forgotLink.html.twig")
      */
     public function indexAction()
@@ -21,7 +21,7 @@ class ForgotManagementURLController extends Controller
             ForgotLinkType::class,
             null,
             [
-                'action' => $this->generateUrl('resend_management_url'),
+                'action' => $this->generateUrl('resend_url'),
             ]
         );
 
@@ -31,7 +31,7 @@ class ForgotManagementURLController extends Controller
     }
 
     /**
-     * @Route("/resend-management-url", name="resend_management_url")
+     * @Route("/resend-management-url", name="resend_url")
      * @Method("POST")
      * @Template("IntractoSecretSantaBundle:Party:forgotLink.html.twig")
      */
@@ -41,7 +41,7 @@ class ForgotManagementURLController extends Controller
             ForgotLinkType::class,
             null,
             [
-                'action' => $this->generateUrl('resend_management_url'),
+                'action' => $this->generateUrl('resend_url'),
             ]
         );
 
@@ -50,12 +50,12 @@ class ForgotManagementURLController extends Controller
             if ($this->get('intracto_secret_santa.mailer')->sendForgotLinkMail($form->getData()['email'])) {
                 $feedback = [
                     'type' => 'success',
-                    'message' => $this->get('translator')->trans('flashes.forgot_management_url.success'),
+                    'message' => $this->get('translator')->trans('flashes.forgot_url.success'),
                 ];
             } else {
                 $feedback = [
                     'type' => 'danger',
-                    'message' => $this->get('translator')->trans('flashes.forgot_management_url.error'),
+                    'message' => $this->get('translator')->trans('flashes.forgot_url.error'),
                 ];
             }
 

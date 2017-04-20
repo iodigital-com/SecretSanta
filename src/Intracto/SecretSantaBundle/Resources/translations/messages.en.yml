@@ -154,7 +154,7 @@ static-faq:
         <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
 
         <a href="lost"></a><h2>I lost my activation mail / url to the party.</h2>
-        <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="%requestForgotEmail%">this page</a> and we will send you
+        <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="%requestForgotLink%">this page</a> and we will send you
         an overview of all the parties where you are participating in and/or the parties you have created.</p>
 
         <a name="changes"></a><h2>Can I add or remove people?</h2>
@@ -633,8 +633,8 @@ flashes:
     send_party_update:
         success: <h4>Success</h4> An update has been sent to all participants.
 
-    # ForgotManagementURLController
-    forgot_management_url:
+    # ForgotURLController
+    forgot_url:
         success: 'We have successfully sent you an overview!'
         error: 'An error occurred while sending the email. Check your email address and please try again.'
 

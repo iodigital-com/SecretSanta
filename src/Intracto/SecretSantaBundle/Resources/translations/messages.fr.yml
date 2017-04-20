@@ -536,8 +536,8 @@ flashes:
     send_party_update:
         success: <h4>Succ&egrave;s</h4> Une mise à jour a été envoyée à tous vos participants.
 
-    # ForgotManagementURLController
-    forgot_management_url:
+    # ForgotURLController
+    forgot_url:
 #        success:
 #        error:
 
