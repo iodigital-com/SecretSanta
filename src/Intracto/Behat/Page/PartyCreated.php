@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\BehatBundle\Page;
+namespace Intracto\Behat\Page;
 
 use SensioLabs\Behat\PageObjectExtension\PageObject\Page;
 

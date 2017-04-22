@@ -7,15 +7,17 @@ default:
 
     suites:
         secretsanta:
-            type: symfony_bundle
-            bundle: IntractoBehatBundle
+            paths:    [ "%paths.base%/src/Intracto/Behat/Features" ]
             contexts:
                    - Behat\MinkExtension\Context\MinkContext
-                   - Intracto\BehatBundle\Features\Context\FeatureContext
-                   - Intracto\BehatBundle\Features\Context\EmailContext
-                   - Intracto\BehatBundle\Features\Context\Bootstrap\PartyContext
-                   - Intracto\BehatBundle\Features\Context\Bootstrap\LanguageContext
-                   - Intracto\BehatBundle\Features\Context\Bootstrap\PartyManagementContext
+                   - Intracto\Behat\Features\Context\FeatureContext
+                   - Intracto\Behat\Features\Context\EmailContext
+                   - Intracto\Behat\Features\Context\Bootstrap\PartyContext
+                   - Intracto\Behat\Features\Context\Bootstrap\LanguageContext
+                   - Intracto\Behat\Features\Context\Bootstrap\CommonPartyManagementContext
+                   - Intracto\Behat\Features\Context\Bootstrap\ParticipantContext
+                   - Intracto\Behat\Features\Context\Bootstrap\UnstartedPartyManagementContext
+                   - Intracto\Behat\Features\Context\Bootstrap\StartedPartyManagementContext
 
     extensions:
         Behat\MinkExtension:
@@ -57,4 +59,4 @@ default:
         SensioLabs\Behat\PageObjectExtension:
           namespaces:
             page:
-              - Intracto\BehatBundle\Page
+              - Intracto\Behat\Page

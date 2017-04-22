@@ -1,12 +1,13 @@
 <?php
 
-namespace Intracto\BehatBundle\Features\Context;
+namespace Intracto\Behat\Features\Context;
 
 use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\File;
+use Webmozart\Assert\Assert;
 
 class EmailContext extends RawMinkContext
 {
@@ -111,5 +112,15 @@ class EmailContext extends RawMinkContext
         }
 
         throw new \LogicException(sprintf('The "%s" was not sent', $expectedSubject));
+    }
+
+    /**
+     * TODO: check how to implement double rules (the second @given is not recognized correclty in a feature)
+     * @Given /^there should have been (\d+) send emails$/
+     * @Given /^there should have been (\d+) send email$/
+     */
+    public function thereShouldHaveBeenSendEmails($nrOfEmails)
+    {
+        Assert::eq($this->getSpooledEmails()->count(), $nrOfEmails, 'Not all or no emails have been send');
     }
 }

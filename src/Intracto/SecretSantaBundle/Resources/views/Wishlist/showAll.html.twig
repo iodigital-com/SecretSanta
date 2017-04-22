@@ -4,9 +4,9 @@
     <div class="box">
         <h1>{{ 'wishlist-show_all.title'|trans }}</h1>
             {% for participant in party.participants %}
-                <h3>{{ participant.name }}</h3>
+                <h3 class="participant-name">{{ participant.name }}</h3>
                     {% if participant.wishlistitems|length > 0 %}
-                        <ul class="list-group">
+                        <ul class="list-group wishlist">
                             {% for item in participant.wishlistitems %}
                                 <li class="list-group-item">
                                     {{ item.description|escape|linkify|raw }}
@@ -14,7 +14,7 @@
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <p>--</p>
+                        <p class="wishlist">--</p>
                     {% endif %}
             {% endfor %}
         </div>

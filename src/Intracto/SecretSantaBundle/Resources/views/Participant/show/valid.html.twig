@@ -15,7 +15,7 @@
 {% block main %}
     <div class="box">
         <div class="row">
-            <div class="span8">
+            <div class="span8 my-secretsanta">
                 <h1>{{ 'participant_show_valid.participant.title'|trans }}</h1>
 
                 {{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name})|raw }}
@@ -65,7 +65,8 @@
                                 </div>
                                 {{ form_widget(messageForm.participant, {'value': participant.url}) }}
                                 {{ form_widget(messageForm.recipient, {'value': participant.assignedParticipant.id}) }}
-                                <button type="submit"
+                                <button id="btn_send_anon_message"
+                                        type="submit"
                                         class="btn btn-default">{{ 'participant_show_valid.anonymous_message.send_button' |trans }}</button>
                                 {{ form_end(messageForm) }}
                             </div>

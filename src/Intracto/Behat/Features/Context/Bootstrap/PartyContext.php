@@ -1,11 +1,11 @@
 <?php
 
-namespace Intracto\BehatBundle\Features\Context\Bootstrap;
+namespace Intracto\Behat\Features\Context\Bootstrap;
 
 use Behat\MinkExtension\Context\RawMinkContext;
-use Intracto\BehatBundle\Page\Homepage;
-use Intracto\BehatBundle\Page\ParticipantExclude;
-use Intracto\BehatBundle\Page\PartyCreated;
+use Intracto\Behat\Page\Homepage;
+use Intracto\Behat\Page\ParticipantExclude;
+use Intracto\Behat\Page\PartyCreated;
 use Webmozart\Assert\Assert;
 
 class PartyContext extends RawMinkContext

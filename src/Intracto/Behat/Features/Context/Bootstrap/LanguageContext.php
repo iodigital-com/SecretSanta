@@ -1,6 +1,6 @@
 <?php
 
-namespace Intracto\BehatBundle\Features\Context\Bootstrap;
+namespace Intracto\Behat\Features\Context\Bootstrap;
 
 use Behat\MinkExtension\Context\RawMinkContext;
 use Webmozart\Assert\Assert;
