@@ -2,11 +2,10 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
-use Intracto\SecretSantaBundle\Query\BounceQuery;
+use Nette\Utils\DateTime;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Doctrine\ORM\EntityManager;
 
 class GetBouncedMailsCommand extends ContainerAwareCommand
 {
@@ -19,18 +18,16 @@ class GetBouncedMailsCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var EntityManager $em */
-        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
-        $bounces = $this->getContainer()->get('doctrine')->getRepository('IntractoSecretSantaBundle:Bounce')->findAll();
-        $participantRepository = $this->getContainer()->get('doctrine')->getRepository('IntractoSecretSantaBundle:Participant');
-        foreach ($bounces as $bounce){
-            $participant = $participantRepository->findBounced($bounce);
-            if (! is_null($participant) ){
-                $participant->setEmailDidBounce(true);
-                $em->persist($participant);
+        $bounceQuery = $this->getContainer()->get('intracto_secret_santa.query.bounce');
+        $bounces = $bounceQuery->getBounces();
+        foreach ($bounces as $bounce) {
+            $date = new DateTime($bounce['date']);
+            $id = $bounceQuery->findBouncedParticipantId($bounce['email'], $date);
+            if ($id) {
+                $id = intval($id);
+                $bounceQuery->markParticipantEmailAsBounced($id);
             }
-            $em->remove($bounce);
+            $bounceQuery->removeBounce($bounce['id']);
         }
-        $em->flush();
     }
 }

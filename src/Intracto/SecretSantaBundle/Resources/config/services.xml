@@ -46,6 +46,9 @@
         <service id="intracto_secret_santa.query.wishlist_mail" class="Intracto\SecretSantaBundle\Query\WishlistMailQuery">
             <argument type="service" id="database_connection"></argument>
         </service>
+        <service id="intracto_secret_santa.query.bounce" class="Intracto\SecretSantaBundle\Query\BounceQuery">
+            <argument type="service" id="database_connection"></argument>
+        </service>
 
         <!-- Repositories -->
         <service id="intracto_secret_santa.repository.party" class="Doctrine\ORM\EntityRepository">
