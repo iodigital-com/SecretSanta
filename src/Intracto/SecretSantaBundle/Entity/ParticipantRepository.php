@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
 class ParticipantRepository extends EntityRepository
 {
@@ -67,5 +68,28 @@ class ParticipantRepository extends EntityRepository
             ]);
 
         return $qb->getQuery()->getResult();
+    }
+
+     /**
+     * @param Bounce $bounce
+     *
+     * @return Participant
+     */
+    public function findBounced(Bounce $bounce){
+        $sql = "SELECT p.* FROM participant p
+                WHERE (p.email = :email)
+                AND (p.invitation_sent_date IS NOT NULL)
+                AND (p.invitation_sent_date <= :bouncedate)
+                AND datediff(p.invitation_sent_date, :bouncedate) < 2
+                ORDER BY ABS( TIMESTAMPDIFF(SECOND,:bouncedate, p.invitation_sent_date ) ) ASC
+                LIMIT 0,1";
+
+        $rsm = new ResultSetMappingBuilder($this->_em);
+        $rsm->addRootEntityFromClassMetadata('Intracto\SecretSantaBundle\Entity\Participant', 'p');
+        $query = $this->_em->createNativeQuery($sql,$rsm);
+        $query->setParameter('email',$bounce->getEmail());
+        $query->setParameter('bouncedate',$bounce->getDate(), \Doctrine\DBAL\Types\Type::DATETIME);
+
+        return $query->getOneOrNullResult();
     }
 }

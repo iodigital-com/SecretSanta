@@ -123,6 +123,9 @@ class MailerService
             ]);
         }
 
+        $participant->setInvitationSentDate(new \DateTime('now'));
+        $this->em->flush($participant);
+
         $message = str_replace('(NAME)', $participant->getName(), $message);
         $message = str_replace('(ADMINISTRATOR)', $participant->getParty()->getOwnerName(), $message);
 
