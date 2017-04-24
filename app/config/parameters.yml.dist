@@ -43,4 +43,3 @@ parameters:
     base_url:          dev.secretsantaorganizer.com
     ga_view_id:        ga:00000000
     router.request_context.host: '%base_url%'
-    bugsnag_api_key: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
