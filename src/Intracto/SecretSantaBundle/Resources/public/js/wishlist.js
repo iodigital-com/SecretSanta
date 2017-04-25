@@ -90,7 +90,7 @@ function ajaxSaveWishlist() {
 }
 
 /* Variables */
-var collectionHolder = $('table.participants tbody');
+var collectionHolder = $('table.wishlist-items tbody');
 
 /* Document Ready */
 jQuery(document).ready(function () {

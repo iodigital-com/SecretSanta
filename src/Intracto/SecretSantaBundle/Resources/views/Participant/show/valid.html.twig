@@ -76,36 +76,38 @@
             </div>
         </div>
 
-        <div class="row text-center">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <div class="span4 visible-xs-inline-block">
-                <ins class="adsbygoogle"
-                     style="width:320px;height:100px"
-                     data-ad-client="ca-pub-8492783089085834"
-                     data-ad-slot="3884561707"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+        {% if app.environment not in ['test', 'test_travis'] %}
+            <div class="row text-center">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <div class="span4 visible-xs-inline-block">
+                    <ins class="adsbygoogle"
+                         style="width:320px;height:100px"
+                         data-ad-client="ca-pub-8492783089085834"
+                         data-ad-slot="3884561707"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="span4 visible-sm-inline-block">
+                    <ins class="adsbygoogle"
+                         style="width:468px;height:60px"
+                         data-ad-client="ca-pub-8492783089085834"
+                         data-ad-slot="8314761303"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="span4 visible-md-inline-block visible-lg-inline-block">
+                    <ins class="adsbygoogle"
+                         style="width:728px;height:90px"
+                         data-ad-client="ca-pub-8492783089085834"
+                         data-ad-slot="9791494503"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
             </div>
-            <div class="span4 visible-sm-inline-block">
-                <ins class="adsbygoogle"
-                     style="width:468px;height:60px"
-                     data-ad-client="ca-pub-8492783089085834"
-                     data-ad-slot="8314761303"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-            <div class="span4 visible-md-inline-block visible-lg-inline-block">
-                <ins class="adsbygoogle"
-                     style="width:728px;height:90px"
-                     data-ad-client="ca-pub-8492783089085834"
-                     data-ad-slot="9791494503"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </div>
+        {% endif %}
 
         <h1>{{ 'participant_show_valid.wishlist.title'|trans }}</h1>
 
@@ -128,7 +130,7 @@
 
         {{ form_start(wishlistForm, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
 
-        <table class="participants table table-striped">
+        <table class="wishlist-items table table-striped">
             <thead>
             <tr>
                 <th class="col-xs-1 participant-number-header">#</th>
@@ -172,38 +174,41 @@
 
     </div>
 
-    <div class="row text-center">
-        <div class="span4 visible-xs-inline-block">
-            <ins class="adsbygoogle"
-                 style="width:320px;height:100px"
-                 data-ad-client="ca-pub-8492783089085834"
-                 data-ad-slot="3884561707"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+    {% if app.environment not in ['test', 'test_travis'] %}
+        <div class="row text-center">
+            <div class="span4 visible-xs-inline-block">
+                <ins class="adsbygoogle"
+                     style="width:320px;height:100px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="3884561707"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="span4 visible-sm-inline-block">
+                <ins class="adsbygoogle"
+                     style="width:468px;height:60px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="8314761303"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="span4 visible-md-inline-block visible-lg-inline-block">
+                <ins class="adsbygoogle"
+                     style="width:728px;height:90px"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="9791494503"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </div>
-        <div class="span4 visible-sm-inline-block">
-            <ins class="adsbygoogle"
-                 style="width:468px;height:60px"
-                 data-ad-client="ca-pub-8492783089085834"
-                 data-ad-slot="8314761303"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-        <div class="span4 visible-md-inline-block visible-lg-inline-block">
-            <ins class="adsbygoogle"
-                 style="width:728px;height:90px"
-                 data-ad-client="ca-pub-8492783089085834"
-                 data-ad-slot="9791494503"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-    </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     {% javascripts '@IntractoSecretSantaBundle/Resources/public/js/wishlist.min.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

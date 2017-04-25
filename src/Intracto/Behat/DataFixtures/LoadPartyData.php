@@ -50,6 +50,17 @@ class LoadPartyData implements FixtureInterface
                 $participant->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
             }
 
+            if ($i === 1) {
+                $wishlistItem = new WishlistItem();
+
+                $wishlistItem
+                    ->setDescription('Item 1')
+                    ->setRank(1)
+                    ->setParticipant($participant);
+
+                $participant->setWishlistItems([$wishlistItem]);
+            }
+
             if ($i === 2) {
                 // Add a item to the second participants wishlist
                 $wishlistItem = new WishlistItem();
