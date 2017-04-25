@@ -9,7 +9,6 @@ class MailStatusExtension extends \Twig_Extension
 {
     private $translator;
 
-
     /**
      * @param TranslatorInterface $translator
      */
@@ -51,8 +50,6 @@ class MailStatusExtension extends \Twig_Extension
             $type = 'muted';
         }
 
-
-
-        return '<span class="text-'.$type.'"><i class="fa ' . $icon . '" aria-hidden="true"></i> ' . $status . '</span>';
+        return '<span class="text-'.$type.'"><i class="fa '.$icon.'" aria-hidden="true"></i> '.$status.'</span>';
     }
 }
