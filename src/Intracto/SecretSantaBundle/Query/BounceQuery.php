@@ -27,7 +27,7 @@ class BounceQuery
 
     /**
      * @param string $email
-     * @Param Date $date
+     * @Param \DateTime $date
      *
      * @return mixed
      */

@@ -3,7 +3,6 @@
 namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Nette\Utils\DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -190,7 +189,7 @@ class Participant
     private $emailDidBounce = false;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      *
      * @ORM\Column(name="invitation_sent_date", type="datetime", nullable=true)
      */
@@ -652,7 +651,7 @@ class Participant
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getInvitationSentDate()
     {
@@ -660,7 +659,7 @@ class Participant
     }
 
     /**
-     * @param DateTime $invitationSentDate
+     * @param \DateTime $invitationSentDate
      */
     public function setInvitationSentDate($invitationSentDate)
     {
