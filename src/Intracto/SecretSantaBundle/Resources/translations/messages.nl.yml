@@ -118,6 +118,7 @@ party-get_reuse_url:
 # Wishlist/showAll.html.twig
 wishlist-show_all:
     title: Secret Santa Mailinglijst verlanglijsten
+    back: Terug naar de beheerpagina
 
 # Static/faq.html.twig
 static-faq:
@@ -223,6 +224,7 @@ participant-expose_all:
     title: Secret Santa Mailinglijst Koppelingen
     giving: Dit lid geeft ...
     receiving: ... een cadeau aan dit lid
+    back: Terug naar beheerpagina
 
 # Participant/show/base.html.twig
 participant_show_base:

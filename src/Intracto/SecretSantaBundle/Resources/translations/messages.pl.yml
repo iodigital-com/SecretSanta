@@ -100,6 +100,7 @@ party-deleted:
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
 #    title: ?
+#    back:
 
 # Static/faq.html.twig
 static-faq:
@@ -124,6 +125,7 @@ participant-expose_all:
     title: Dopasowania na liście Tajnych Mikołajów
     giving: Ten uczestnik podaruje...
     receiving: ... prezent dla tego uczestnika
+#    back:
 
 # Participant/show/base.html.twig
 participant_show_base:

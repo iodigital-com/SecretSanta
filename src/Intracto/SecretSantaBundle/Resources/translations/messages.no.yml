@@ -111,6 +111,7 @@ party-forgot_link:
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
 #    title: ?
+#    back:
 
 # Static/faq.html.twig
 static-faq:
@@ -204,6 +205,7 @@ helper-prototype_wishlist:
 #    title: ?
 #    giving: ?
 #    receiving: ?
+#    back:
 
 # Participant/show/base.html.twig
 participant_show_base:
