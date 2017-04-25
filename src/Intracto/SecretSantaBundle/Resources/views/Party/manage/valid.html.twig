@@ -31,7 +31,7 @@
             {% for participant in party.participants %}
                 <tr class="participant {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="participant-number">{{ loop.index }}</td>
-                    <td id="name_{{ participant.id }}" data-hj-masked>{{ participant.name }}</td>
+                    <td id="name_{{ participant.id }}" class="participant-name" data-hj-masked>{{ participant.name }}</td>
                     <td id="email_{{ participant.id }}" data-hj-masked>{{ participant.email }}</td>
                     <td class="{% if participant.viewdate %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
@@ -39,10 +39,14 @@
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
                              onclick="editParticipant('{{ party.listUrl }}', {{ participant.id }});"
                              rel="tooltip" title="{{ 'party_manage_valid.manage.edit_email'|trans }}" alt="{{ 'party_manage_valid.manage.edit_email'|trans }}"
-                             style="cursor: pointer;">
+                             style="cursor: pointer;"
+                             class="participant-edit-icon"
+                        >
                         {% if party.created %}
                             {% spaceless %}
-                                <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': participant.id }) }}">
+                                <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': participant.id }) }}"
+                                   class="btn-participant-resend"
+                                >
                                     <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
                                          title="{{ 'party_manage_valid.manage.resend_email'|trans }}" alt="{{ 'party_manage_valid.manage.resend_email'|trans }}">
                                 </a>
@@ -176,7 +180,7 @@
         {% endif %}
 
         {% if not party.created %}
-            <a href="{{ path('party_manage_start', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link">
+            <a href="{{ path('party_manage_start', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link btn-create-party">
                 <i class="fa fa-play"></i> {{ 'party_manage_valid.btn.start_party'|trans }}
             </a>
         {% endif %}
@@ -184,10 +188,10 @@
         <div class="clearfix"></div>
 
         {% if party.created %}
-            <a class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
+            <a id="btn_send_party_update" class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
                 <i class="fa fa-envelope"></i> {{ 'party_manage_valid.btn.party_update'|trans|raw }}
             </a>
-            <a href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
+            <a id="btn_expose_matches" href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
                 <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose'|trans }}
             </a>
             <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': party.listurl }) }}">

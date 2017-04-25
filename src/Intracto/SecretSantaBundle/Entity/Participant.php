@@ -387,7 +387,7 @@ class Participant
     }
 
     /**
-     * @param WishlistItem $wishlistItems
+     * @param WishlistItem[] $wishlistItems
      */
     public function setWishlistItems($wishlistItems)
     {
