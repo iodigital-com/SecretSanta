@@ -97,6 +97,7 @@ party-forgot_link:
 # Wishlist/showAll.html.twig
 wishlist-show_all:
     title: Listes de souhaits Secret Santa
+#    back:
 
 # Static/faq.html.twig
 static-faq:
@@ -160,6 +161,7 @@ participant-expose_all:
     title: Liste des attributions Secret Santa
     giving: Ce membre donne ...
     receiving: ... un cadeau à ce membre
+#    back:
 
 # Participant/show/base.html.twig
 participant_show_base:

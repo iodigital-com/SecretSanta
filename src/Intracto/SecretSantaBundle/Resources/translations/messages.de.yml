@@ -110,6 +110,7 @@ party-deleted:
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
 #    title: ?
+#    back:
 
 # Static/faq.html.twig
 static-faq:
@@ -134,6 +135,7 @@ participant-expose_all:
     title: Treffer des Secret Santa-Mail-Verteilers
     giving: Dieses Mitglied gibt....
     receiving: ... diesem Mitglied ein Geschenk
+#    back:
 
 # Participant/show/base.html.twig
 participant_show_base:

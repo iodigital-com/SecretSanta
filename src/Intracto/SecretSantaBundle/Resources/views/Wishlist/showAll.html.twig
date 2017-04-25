@@ -2,6 +2,7 @@
 
 {% block main %}
     <div class="box">
+        <a href="{{ path('party_manage', {'listUrl': party.listurl}) }}" ><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ 'wishlist-show_all.back'|trans }}</a>
         <h1>{{ 'wishlist-show_all.title'|trans }}</h1>
             {% for participant in party.participants %}
                 <h3 class="participant-name">{{ participant.name }}</h3>

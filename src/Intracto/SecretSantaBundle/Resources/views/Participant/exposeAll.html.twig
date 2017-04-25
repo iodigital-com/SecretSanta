@@ -2,6 +2,7 @@
 
 {% block main %}
     <div class="box">
+        <a href="{{ path('party_manage', {'listUrl': party.listurl}) }}" ><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ 'participant-expose_all.back'|trans }}</a>
         <h1>{{ 'participant-expose_all.title'|trans }}</h1>
         <table id="all_matches" cellspacing="0" cellpadding="3" class="table table-striped table-hover mysanta">
             <thead>
