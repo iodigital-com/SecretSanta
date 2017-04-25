@@ -19,7 +19,7 @@ class LoadPartyData implements FixtureInterface
 
     private function loadStartedParty(ObjectManager $manager)
     {
-        //Party started by the administrator
+        // Party started by the administrator
         $party = new Party(false);
 
         $party->setListurl(FeatureContext::STARTED_PARTY_URL_TOKEN);
@@ -51,7 +51,7 @@ class LoadPartyData implements FixtureInterface
             }
 
             if ($i === 2) {
-                //Add a item to the second participants wishlist
+                // Add a item to the second participants wishlist
                 $wishlistItem = new WishlistItem();
 
                 $wishlistItem
@@ -81,7 +81,7 @@ class LoadPartyData implements FixtureInterface
 
     private function loadCreatedParty(ObjectManager $manager)
     {
-        //Party created by the administrator but not started yet
+        // Party created by the administrator but not started yet
         $party = new Party(false);
 
         $party->setListurl(FeatureContext::CREATED_PARTY_URL_TOKEN);
