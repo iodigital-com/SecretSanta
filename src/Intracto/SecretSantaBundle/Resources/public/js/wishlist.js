@@ -46,10 +46,18 @@ function bindDeleteButtonEvents() {
                 $('.add-new-participant').show();
             }
 
+            // Temporary workaround
+            // When trying to remove the last wishlist item, the form is send empty, and can't be saved.
+            // Therefore we currently save the last wishlistitem as an empty item. This should be fixed in the future.
+            if ($('.wishlistitem-description').length == 1){
+                $('.wishlistitem-description').val('');
+            } else {
+                $(this).parents("tr.wishlistitem").remove();
+            }
+
             $('.ajax-response').children().hide();
             $('.ajax-response .empty').hide();
             $('.ajax-response .removed').show();
-            $(this).parents("tr.wishlistitem").remove();
 
             resetRanks();
             ajaxSaveWishlist();
