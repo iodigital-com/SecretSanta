@@ -410,7 +410,7 @@ party_manage_valid:
     label:
         name: Name
         email: E-mail
-        confirmed: Confirmed
+        confirmed: Email status
         wishlist_filled: Wish List Entered
         actions: Actions
 
@@ -629,6 +629,13 @@ emails-anonymous_message:
 
           Click the link below and add some stuff to your wishlist you'd like.
     update_wishlist: Update your wishlist
+
+# MailStatusExtension
+mail_status_extension:
+    unknown: Unknown
+    opened: Opened email
+    viewed: Viewed party
+    not_started: Party not started
 
 flashes:
     # SendPartyUpdateController
