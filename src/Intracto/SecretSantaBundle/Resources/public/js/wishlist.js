@@ -46,9 +46,7 @@ function bindDeleteButtonEvents() {
                 $('.add-new-participant').show();
             }
 
-            // Temporary workaround
-            // When trying to remove the last wishlist item, the form is send empty, and can't be saved.
-            // Therefore we currently save the last wishlistitem as an empty item. This should be fixed in the future.
+            // XXX: last item can't be removed because an empty form can't be saved. This is a workaround
             if ($('.wishlistitem-description').length == 1){
                 $('.wishlistitem-description').val('');
             } else {
