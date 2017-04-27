@@ -636,6 +636,7 @@ mail_status_extension:
     opened: Opened email
     viewed: Viewed party
     not_started: Party not started
+    bounced: Email not delivered!
 
 flashes:
     # SendPartyUpdateController

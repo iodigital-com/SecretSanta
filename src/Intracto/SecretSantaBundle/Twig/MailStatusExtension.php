@@ -39,6 +39,11 @@ class MailStatusExtension extends \Twig_Extension
                     $icon = 'fa-eye';
                     $type = 'warning';
                     break;
+                case $participant->getEmailDidBounce():
+                    $status = $this->translator->trans('mail_status_extension.bounced');
+                    $icon = 'fa-exclamation-triangle';
+                    $type = 'danger';
+                    break;
                 default:
                     $status = $this->translator->trans('mail_status_extension.unknown');
                     $icon = 'fa-question';

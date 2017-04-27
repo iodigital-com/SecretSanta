@@ -181,6 +181,20 @@ class Participant
      */
     private $subscribedForUpdates = true;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="email_did_bounce", type="boolean", options={"default"=false})
+     */
+    private $emailDidBounce = false;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="invitation_sent_date", type="datetime", nullable=true)
+     */
+    private $invitationSentDate;
+
     public function __construct()
     {
         $this->excludedParticipants = new ArrayCollection();
@@ -620,4 +634,35 @@ class Participant
         $this->openEmailDate = $openEmailDate;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEmailDidBounce()
+    {
+        return $this->emailDidBounce;
+    }
+
+    /**
+     * @param mixed $emailDidBounce
+     */
+    public function setEmailDidBounce($emailDidBounce)
+    {
+        $this->emailDidBounce = $emailDidBounce;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getInvitationSentDate()
+    {
+        return $this->invitationSentDate;
+    }
+
+    /**
+     * @param \DateTime $invitationSentDate
+     */
+    public function setInvitationSentDate($invitationSentDate)
+    {
+        $this->invitationSentDate = $invitationSentDate;
+    }
 }

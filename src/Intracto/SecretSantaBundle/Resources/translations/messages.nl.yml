@@ -661,6 +661,7 @@ mail_status_extension:
     opened: Mail geopend
     viewed: Feestje bekeken
     not_started: Feestje nog niet begonnen
+    bounced: Mail is niet bezorgd!
 
 flashes:
     # SendPartyUpdateController
