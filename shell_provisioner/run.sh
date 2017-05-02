@@ -19,6 +19,7 @@ DEPENDENCIES=(
     phpmyadmin
     symfony
     mailcatcher
+    rsyslogd
 )
 
 for MODULE in ${DEPENDENCIES[@]}; do

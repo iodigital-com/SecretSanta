@@ -25,5 +25,8 @@ $MYSQLCMD "GRANT ALL PRIVILEGES ON *.* TO root@'192.168.33.1';"
 
 $MYSQLCMD "FLUSH PRIVILEGES;"
 
+# Install postfix bounces table
+mysql -uroot -pvagrant secretsanta < $CONFIG_PATH/postfix_bounce.sql
+
 # Install Percona toolkit
 apt-get install -y percona-toolkit
