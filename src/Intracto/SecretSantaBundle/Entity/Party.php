@@ -2,101 +2,57 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Intracto\SecretSantaBundle\Validator\PartyHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Table(name="party", indexes={@ORM\Index(name="list_url", columns={"list_url"}),@ORM\Index(name="dates", columns={"created", "event_date", "sent_date"})})
- * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\PartyRepository")
- * @ORM\HasLifecycleCallbacks
- *
  * @PartyHasValidExcludes(groups={"exclude_participants"})
  */
 class Party
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="list_url", type="string", length=255)
-     */
+    /** @var string */
     private $listurl;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="message", type="text", nullable=true)
-     */
+    /** @var string */
     private $message;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="creation_date", type="datetime", length=255)
-     */
+    /** @var \DateTime */
     private $creationdate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="sent_date", type="datetime", length=255, nullable=true)
-     */
+    /** @var \DateTime */
     private $sentdate;
 
     /**
      * @var \DateTime
-     *
      * @Assert\NotBlank()
-     * @ORM\Column(name="event_date", type="datetime", length=255, nullable=true)
      */
     private $eventdate;
 
     /**
      * @var string
-     *
      * @Assert\NotBlank()
-     * @ORM\Column(name="amount", type="string", length=255, nullable=true)
      */
     private $amount;
 
     /**
      * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Participant", mappedBy="party", cascade={"persist", "remove"})
-     *
      * @Assert\Valid()
      */
     private $participants;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="created", type="boolean")
-     */
+    /** @var bool */
     private $created = false;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="locale", type="string", length=7)
-     */
+    /** @var string */
     private $locale = 'en';
 
     /**
      * @var string
-     *
      * @Assert\NotBlank()
-     * @ORM\Column(name="location", type="string", length=255, nullable=true)
      */
     private $location;
 

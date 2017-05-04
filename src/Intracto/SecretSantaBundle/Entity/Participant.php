@@ -2,52 +2,30 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
+use Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludes;
 use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
 
 /**
- * @ORM\Table(name="participant", indexes={@ORM\Index(name="participant_url", columns={"url"})})
- * @ORM\Entity(repositoryClass="Intracto\SecretSantaBundle\Entity\ParticipantRepository")
- * @ORM\HasLifecycleCallbacks()
- *
  * @ParticipantHasValidExcludes(groups={"exclude_participants"})
  */
 class Participant
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var Party
-     *
-     * @ORM\ManyToOne(targetEntity="Party", inversedBy="participants")
-     * @ORM\JoinColumn(name="party_id", referencedColumnName="id", onDelete="CASCADE")
-     */
+    /** @var Party */
     private $party;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     *
      * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     *
      * @Assert\NotBlank()
      * @Assert\Email(
      *     strict=true,
@@ -58,155 +36,63 @@ class Participant
      */
     private $email;
 
-    /**
-     * @var Participant
-     *
-     * @ORM\OneToOne(targetEntity="Participant")
-     * @ORM\JoinColumn(name="assigned_participant_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
-     */
+    /** @var Participant */
     private $participant;
 
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Participant")
-     * @ORM\JoinTable(name="exclude",
-     *      joinColumns={@ORM\JoinColumn(name="participant_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="excluded_participant_id", referencedColumnName="id")}
-     *      )
-     **/
+    /** @var ArrayCollection */
     private $excludedParticipants;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="view_date", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $viewdate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="open_email_date", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $openEmailDate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="view_reminder_sent", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $viewReminderSentTime;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * @var WishlistItem[]
-     *
-     * @ORM\OneToMany(targetEntity="WishlistItem", mappedBy="participant", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"rank" = "asc"})
-     */
+    /** @var WishlistItem[] */
     private $wishlistItems;
 
-    /**
-     * @var WishlistItem[]
-     */
-    private $removedWishlistItems;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="wishlist_updated", type="boolean", nullable=true)
-     */
+    /** @var bool */
     private $wishlistUpdated = false;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="update_wishlist_reminder_sent", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $updateWishlistReminderSentTime;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="party_admin", type="boolean", options={"default"=false})
-     */
+    /** @var bool */
     private $partyAdmin = false;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ipv4", type="string", nullable=true)
-     */
+    /** @var string */
     private $ipv4;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ipv6", type="string", nullable=true)
-     */
+    /** @var string */
     private $ipv6;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="party_status_sent", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $partyStatusSentTime;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="empty_wishlist_reminder_sent", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $emptyWishlistReminderSentTime;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="wishlist_updated_time", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $wishlistUpdatedTime;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="subscribed_for_updates", type="boolean", options={"default"=true})
-     */
+    /** @var bool */
     private $subscribedForUpdates = true;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="email_did_bounce", type="boolean", options={"default"=false})
-     */
+    /** @var bool */
     private $emailDidBounce = false;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="invitation_sent_date", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $invitationSentDate;
 
     public function __construct()
     {
         $this->excludedParticipants = new ArrayCollection();
-        $this->postLoad();
-    }
-
-    /**
-     * @ORM\PostLoad
-     */
-    public function postLoad()
-    {
-        $this->removedWishlistItems = new ArrayCollection();
     }
 
     /**
@@ -413,38 +299,6 @@ class Participant
     public function setWishlistItems($wishlistItems)
     {
         $this->wishlistItems = $wishlistItems;
-    }
-
-    public function addWishlistItem(WishlistItem $item)
-    {
-        $this->removedWishlistItems->removeElement($item);
-        $item->setParticipant($this);
-        $this->wishlistItems->add($item);
-        $this->wishlistUpdated = true;
-    }
-
-    public function removeWishlistItem(WishlistItem $item)
-    {
-        $this->removedWishlistItems->add($item);
-        $item->setParticipant(null);
-        $this->wishlistItems->removeElement($item);
-        $this->wishlistUpdated = true;
-    }
-
-    /**
-     * @return WishlistItem[]
-     */
-    public function getRemovedWishlistItems()
-    {
-        return $this->removedWishlistItems;
-    }
-
-    /**
-     * @param WishlistItem $removedWishlistItems
-     */
-    public function setRemovedWishlistItems($removedWishlistItems)
-    {
-        $this->removedWishlistItems = $removedWishlistItems;
     }
 
     /**

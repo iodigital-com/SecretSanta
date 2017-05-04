@@ -2,54 +2,24 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Table(name="wishlist_item")
- * @ORM\Entity
- */
 class WishlistItem
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var Participant
-     *
-     * @ORM\ManyToOne(targetEntity="Participant", inversedBy="wishlistItems")
-     */
+    /** @var Participant */
     private $participant;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
+    /** @var string */
     private $description;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     */
+    /** @var string */
     private $image;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="rank", type="integer", nullable=true)
-     */
+    /** @var int */
     private $rank;
 
-    /**
-     * @return int
-     */
+    /** @return int */
     public function getId()
     {
         return $this->id;

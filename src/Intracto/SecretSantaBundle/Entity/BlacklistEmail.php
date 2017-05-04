@@ -2,49 +2,21 @@
 
 namespace Intracto\SecretSantaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Table(name="blacklist_email")
- * @ORM\Entity
- */
 class BlacklistEmail
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="text", nullable=false)
-     */
+    /** @var string */
     private $email;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ipv4", type="string", nullable=true)
-     */
+    /** @var string */
     private $ipv4;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ipv6", type="string", nullable=true)
-     */
+    /** @var string */
     private $ipv6;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
-     */
+    /** @var \DateTime */
     private $date;
 
     /**
