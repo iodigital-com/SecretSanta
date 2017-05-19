@@ -158,7 +158,7 @@ participant_show_valid:
             <p>Тайный Санта назначил тебе получателя подарка:</p>
 #        watch_out: ?
         wishlist_from: Список желаний от %name%
-        wishlist_not_provided: %name% еще не предоставил свой список желаний
+        wishlist_not_provided: '%name% еще не предоставил свой список желаний'
 #        message_for_wishlist: ?
 
 #    buy_from_amazon: ?

@@ -245,7 +245,7 @@ participant_show_valid:
             <p>You are assigned as Secret Santa to give a present to:</p>
         watch_out: Watch out
         wishlist_from: Wishlist from %name%
-        wishlist_not_provided: %name% has not yet provided a wishlist
+        wishlist_not_provided: '%name% has not yet provided a wishlist'
         message_for_wishlist: Send a message to your buddy to let him/her know their wishlist is empty.
 
     buy_from_amazon: What are the most wished for items?

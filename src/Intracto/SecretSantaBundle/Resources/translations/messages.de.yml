@@ -161,7 +161,7 @@ participant_show_valid:
             <p>Sie wurden als Secret Santa eingeteilt, dieser Person ein Geschenk zu machen:</p>
 #        watch_out: ?
         wishlist_from: Wunschzettel von %name%
-        wishlist_not_provided: %name% hat noch keinen Wunschzettel geschrieben
+        wishlist_not_provided: '%name% hat noch keinen Wunschzettel geschrieben'
 #        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
