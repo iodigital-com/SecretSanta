@@ -26,7 +26,7 @@ phpunit -c app/phpunit.xml.dist --coverage-text || exit $?
 phpenv config-rm xdebug.ini
 
 # Run webserver
-app/console server:run 127.0.0.1:8080 --env=test_travis --router=app/config/router_test_travis.php --no-debug > $TRAVIS_BUILD_DIR/webserver.log 2>&1 &
+app/console server:run 127.0.0.1:8080 --env=test_travis --router=app/config/router_test_travis.php --no-debug --quiet > /dev/null 2>&1 &
 
 # Run behat tests
 bin/behat --strict -f progress || exit $?
