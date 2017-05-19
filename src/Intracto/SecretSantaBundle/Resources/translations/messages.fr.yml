@@ -283,9 +283,9 @@ party_manage_valid:
         edit_email: Modifier l'e-mail
         resend_email: Renvoyer l'e-mail
         view_participant: Voir l'entrée
-        tip: Astuce:
+        tip: 'Astuce:'
         come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
-        watch_out: Attention:
+        watch_out: 'Attention:'
         save: Enregistrer
 
     delete:

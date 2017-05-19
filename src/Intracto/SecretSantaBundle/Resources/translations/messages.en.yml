@@ -449,8 +449,8 @@ emails-emptyWishlistReminder:
 # Emails/ForgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Overview of my parties
-    participating_in: You are participating in the following parties:
-    created_these: You've created these parties:
+    participating_in: 'You are participating in the following parties:'
+    created_these: 'You''ve created these parties:'
     table_labels:
         date: Date
         location: Location

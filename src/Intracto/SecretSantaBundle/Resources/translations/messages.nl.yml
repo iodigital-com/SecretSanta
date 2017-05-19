@@ -474,8 +474,8 @@ emails-reuse_link:
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Overzicht van je feestjes
-    participating_in: Je neemt deel aan:
-    created_these: Je creëerde volgende feesjtes:
+    participating_in: 'Je neemt deel aan:'
+    created_these: 'Je creëerde volgende feestjes:'
     table_labels:
         date: Datum
         location: Locatie

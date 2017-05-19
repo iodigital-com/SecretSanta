@@ -77,7 +77,7 @@ party-create:
 
     label:
         host: Administrator
-        email: E-Mail:
+        email: 'E-Mail:'
         participants: Teilnehmer
 
 # Party/created.html.twig
@@ -303,7 +303,7 @@ party_manage_valid:
 
     label:
         name: Name
-        email: E-Mail:
+        email: 'E-Mail:'
         confirmed: Bestätigt
 #        wishlist_filled: ?
         actions: Aktionen
