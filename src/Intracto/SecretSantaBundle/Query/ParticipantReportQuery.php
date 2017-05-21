@@ -119,7 +119,7 @@ class ParticipantReportQuery
                 'participant' => $chartData,
             ];
 
-            array_push($participantChartData, $participant);
+            $participantChartData[] = $participant;
         }
 
         return $participantChartData;
