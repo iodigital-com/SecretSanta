@@ -250,7 +250,7 @@ participant_show_valid:
             <p>Je bent toegewezen als Secret Santa aan:</p>
         watch_out: Opgelet
         wishlist_from: Verlanglijst van %name%
-        wishlist_not_provided: %name% heeft nog geen verlanglijst opgesteld
+        wishlist_not_provided: '%name% heeft nog geen verlanglijst opgesteld'
         message_for_wishlist: Stuur een bericht om te vragen de verlanglijst aan te vullen.
 
     buy_from_amazon: Welke geschenken worden het vaakst gekocht?
@@ -471,22 +471,11 @@ emails-reuse_link:
 
             Je hebt ons gevraagd een email te sturen met een overzicht van je feestjes. Hier vind je de feestjes die je hebt gemaakt de voorbije 2 jaar, met een link om ze te hergebruiken.
 
-# Emails/ForgotLink.{html,txt}.twig
-emails-forgot_link:
-    title: Your Secret Santa list
-    subject: Resend activation mail
-    message:
-        html: 'Hi there, <br /><br />You have requested us to resend your activation mail with the event manage link(s)<br />'
-        txt: >
-            Hi there,
-
-            You have requested us to resend your activation mail with the event manage link(s)
-
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Overzicht van je feestjes
-    participating_in: Je neemt deel aan:
-    created_these: Je creëerde volgende feesjtes:
+    participating_in: 'Je neemt deel aan:'
+    created_these: 'Je creëerde volgende feestjes:'
     table_labels:
         date: Datum
         location: Locatie

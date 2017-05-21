@@ -216,7 +216,7 @@ participant_show_valid:
             <p>Seu Amigo Secreto é:</p>
 #        watch_out: ?
         wishlist_from: Lista de desejos de %name%
-        wishlist_not_provided: %name% ainda não montou uma lista de desejos
+        wishlist_not_provided: '%name% ainda não montou uma lista de desejos'
 #        message_for_wishlist: ?
 
 #    buy_from_amazon: ?

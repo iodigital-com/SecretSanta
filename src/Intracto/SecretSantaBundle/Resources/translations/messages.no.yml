@@ -231,7 +231,7 @@ participant_show_valid:
             <p>Du skal være hemmelig julenisse for:</p>
         watch_out: Watch out
         wishlist_from: Ønskeliste fra %name%
-        wishlist_not_provided: %name% har ikke lagt inn sin ønskeliste ennå
+        wishlist_not_provided: '%name% har ikke lagt inn sin ønskeliste ennå'
 #        message_for_wishlist: ?
 
 #    buy_from_amazon: ?

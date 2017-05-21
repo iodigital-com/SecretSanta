@@ -187,7 +187,7 @@ participant_show_valid:
             <p>En tant que Père-Noël secret, vous devez distribuer un cadeau à:</p>
         watch_out: Attention
         wishlist_from: Liste de souhaits de %name%
-        wishlist_not_provided: %name% n'a pas encore publié de liste de souhaits
+        wishlist_not_provided: '%name% n''a pas encore publié de liste de souhaits'
 #        message_for_wishlist: ?
 
     buy_from_amazon: Quels sont les objets les plus désirés ?
@@ -283,9 +283,9 @@ party_manage_valid:
         edit_email: Modifier l'e-mail
         resend_email: Renvoyer l'e-mail
         view_participant: Voir l'entrée
-        tip: Astuce:
+        tip: 'Astuce:'
         come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.
-        watch_out: Attention:
+        watch_out: 'Attention:'
         save: Enregistrer
 
     delete:

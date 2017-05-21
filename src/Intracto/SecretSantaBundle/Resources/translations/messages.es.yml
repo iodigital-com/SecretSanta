@@ -159,7 +159,7 @@ participant_show_valid:
             <p>Se te ha asignado como Secret Santa para entregar un regalo a:</p>
         watch_out: Atención
         wishlist_from: Lista de deseos de %name%
-        wishlist_not_provided: %name% aún no ha facilitado una lista de deseos
+        wishlist_not_provided: '%name% aún no ha facilitado una lista de deseos'
 #        message_for_wishlist: ?
 
 #    buy_from_amazon: ?
