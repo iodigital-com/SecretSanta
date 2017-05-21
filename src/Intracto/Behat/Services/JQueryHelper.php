@@ -24,8 +24,7 @@ abstract class JQueryHelper
 JS;
         try {
             $session->executeScript($function);
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
             throw new \Exception(sprintf('ScrollIntoView failed: "%s"', $e->getMessage()));
         }
     }

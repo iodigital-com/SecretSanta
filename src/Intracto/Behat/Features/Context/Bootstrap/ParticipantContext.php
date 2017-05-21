@@ -2,7 +2,6 @@
 
 namespace Intracto\Behat\Features\Context\Bootstrap;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Mink\Element\NodeElement;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelDictionary;

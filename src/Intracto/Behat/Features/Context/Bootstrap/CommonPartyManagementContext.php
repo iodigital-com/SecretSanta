@@ -2,10 +2,8 @@
 
 namespace Intracto\Behat\Features\Context\Bootstrap;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelDictionary;
-use Intracto\Behat\Features\Context\FeatureContext;
 use Intracto\Behat\Services\JQueryHelper;
 use Webmozart\Assert\Assert;
 
@@ -39,9 +37,14 @@ class CommonPartyManagementContext extends RawMinkContext
 
     /**
      * @Given /^I should see a (?P<type>[^"]*) message$/
+     * @Given /^I should see an (?P<type>[^"]*) message$/
      */
     public function iShouldSeeAWarning($type)
     {
+        if ($type === 'error') {
+            $type = 'danger';
+        }
+
         $node = $this->getSession()->getPage()->find('css', sprintf('.box > .alert-%s', $type));
 
         Assert::true(null !== $node);
@@ -126,7 +129,6 @@ class CommonPartyManagementContext extends RawMinkContext
         $this->getSession()->getPage()->find('css', '#add_participant_email')->setValue('test6@test.com');
 
         $this->getSession()->getPage()->find('css', '#btn_add_confirmation')->click();
-
     }
 
     /**
