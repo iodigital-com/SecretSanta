@@ -60,7 +60,7 @@ class MailerService
     {
         $this->translator->setLocale($party->getLocale());
 
-        $message = \Swift_Message::newInstance()
+        $message = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-pendingConfirmation.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($party->getOwnerEmail())
@@ -129,7 +129,7 @@ class MailerService
         $message = str_replace('(NAME)', $participant->getName(), $message);
         $message = str_replace('(ADMINISTRATOR)', $participant->getParty()->getOwnerName(), $message);
 
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-participant.subject'))
             ->setFrom($this->noreplyEmail, $participant->getParty()->getOwnerName())
             ->setReplyTo([$participant->getParty()->getOwnerEmail() => $participant->getParty()->getOwnerName()])
@@ -205,7 +205,7 @@ class MailerService
             $this->translator->setLocale($participatingIn[0]->getParty()->getLocale());
         }
 
-        $message = \Swift_Message::newInstance()
+        $message = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-forgot_link.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($email)
@@ -261,7 +261,7 @@ class MailerService
 
         $this->translator->setLocale($results[0]['locale']);
 
-        $message = \Swift_Message::newInstance()
+        $message = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-reuse_link.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($email)
@@ -308,7 +308,7 @@ class MailerService
     public function sendPartyUpdateMailForParticipant(Participant $participant, $results)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-party_update.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -342,7 +342,7 @@ class MailerService
     public function sendWishlistReminderMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-emptyWishlistReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -374,7 +374,7 @@ class MailerService
     public function sendParticipantViewReminderMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-viewParticipantReminder.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -407,7 +407,7 @@ class MailerService
     public function sendWishlistUpdatedMail(Participant $receiver, Participant $participant)
     {
         $this->translator->setLocale($receiver->getParty()->getLocale());
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -441,7 +441,7 @@ class MailerService
     public function sendPartyStatusMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-party_status.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -486,7 +486,7 @@ class MailerService
     public function sendPartyUpdatedMailForParticipant(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-updated_party.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -515,7 +515,7 @@ class MailerService
     public function sendRemovedSecretSantaMail(Participant $participant)
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-removed_secret_santa.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($participant->getEmail(), $participant->getName())
@@ -549,7 +549,7 @@ class MailerService
     {
         $this->translator->setLocale($recipient->getParty()->getLocale());
 
-        $mail = \Swift_Message::newInstance()
+        $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-anonymous_message.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
             ->setTo($recipient->getEmail())
