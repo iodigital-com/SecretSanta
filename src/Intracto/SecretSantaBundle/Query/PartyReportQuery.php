@@ -103,7 +103,7 @@ class PartyReportQuery
                 'party' => $chartData,
             ];
 
-            array_push($partyChartData, $party);
+            $partyChartData[] = $party;
         }
 
         return $partyChartData;

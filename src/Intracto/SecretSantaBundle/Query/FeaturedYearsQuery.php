@@ -37,7 +37,7 @@ class FeaturedYearsQuery
             $dateNow = new \DateTime();
 
             if ($dateNow >= $checkDate) {
-                array_push($featuredYears, $f['featured_year']);
+                $featuredYears[] = $f['featured_year'];
             }
         }
 

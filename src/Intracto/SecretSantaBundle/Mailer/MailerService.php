@@ -126,8 +126,11 @@ class MailerService
         $participant->setInvitationSentDate(new \DateTime('now'));
         $this->em->flush($participant);
 
-        $message = str_replace('(NAME)', $participant->getName(), $message);
-        $message = str_replace('(ADMINISTRATOR)', $participant->getParty()->getOwnerName(), $message);
+        $message = str_replace(
+            ['(NAME)', '(ADMINISTRATOR)'],
+            [$participant->getName(), $participant->getParty()->getOwnerName()],
+            $message
+        );
 
         $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-participant.subject'))
