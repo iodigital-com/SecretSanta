@@ -34,9 +34,10 @@ class UnsubscribeService
     public function unsubscribe(Participant $participant, bool $fromAllParties)
     {
         if ($fromAllParties) {
+            /** @var Participant[] $participants */
             $participants = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAllByEmail($participant->getEmail());
-            foreach ($participants as $participant) {
-                $participant->unsubscribe();
+            foreach ($participants as $p) {
+                $p->unsubscribe();
                 $this->em->persist($participant);
             }
         } else {
