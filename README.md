@@ -52,6 +52,8 @@ Run the tests with:
 phpunit.phar -c app
 ```
 
+[Writing and running Behat tests is documented here.](https://github.com/Intracto/SecretSanta/blob/master/docs/behat.md)
+
 Note, don't worry if you see the shell provisioning print a lot of red lines. It all works fine.
 
 Building the frontend:
