@@ -14,7 +14,7 @@
         <field name="email" column="email" type="text" nullable="false"/>
         <field name="ipv4" column="ipv4" type="string" nullable="true"/>
         <field name="ipv6" column="ipv6" type="string" nullable="true"/>
-        <field name="date" column="date" type="datetime" nullable="true"/>
+        <field name="date" column="date_blacklisted" type="datetime" nullable="true"/>
 
     </entity>
 
