@@ -20,7 +20,7 @@ cd releases/$VERSION
 cp ../../shared/parameters.yml app/config
 cp ../../shared/client_secrets.json app/config
 ln -s ../../export
-composer.phar install --no-dev --optimize-autoloader
+composer.phar install --no-dev --optimize-autoloader --classmap-authoritative
 
 # Install assets
 app/console assets:install web
