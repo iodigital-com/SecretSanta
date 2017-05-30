@@ -44,7 +44,7 @@
 
         <one-to-many field="wishlistItems" target-entity="WishlistItem" mapped-by="participant">
             <order-by>
-                <order-by-field name="rank" direction="ASC" />
+                <order-by-field name="rank" direction="ASC"/>
             </order-by>
             <cascade>
                 <cascade-persist/>

@@ -8,13 +8,13 @@
     <entity name="Intracto\SecretSantaBundle\Entity\BlacklistEmail" table="blacklist_email">
 
         <id name="id" type="integer">
-            <generator strategy="AUTO" />
+            <generator strategy="AUTO"/>
         </id>
 
-        <field name="email" column="email" type="text" nullable="false" />
-        <field name="ipv4" column="ipv4" type="string" nullable="true" />
-        <field name="ipv6" column="ipv6" type="string" nullable="true" />
-        <field name="date" column="date" type="datetime" nullable="true" /> <!-- @todo: rename. Date is a no-go -->
+        <field name="email" column="email" type="text" nullable="false"/>
+        <field name="ipv4" column="ipv4" type="string" nullable="true"/>
+        <field name="ipv6" column="ipv6" type="string" nullable="true"/>
+        <field name="date" column="date" type="datetime" nullable="true"/>
 
     </entity>
 
