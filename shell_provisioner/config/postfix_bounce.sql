@@ -6,3 +6,4 @@ CREATE TABLE `bounce` (
 
   PRIMARY KEY (`id`)
 );
+
