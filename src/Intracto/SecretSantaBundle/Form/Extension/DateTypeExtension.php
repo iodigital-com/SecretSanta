@@ -33,7 +33,7 @@ class DateTypeExtension extends AbstractTypeExtension
         // Adds a custom block prefix
         array_splice(
             $view->vars['block_prefixes'],
-            array_search('date', $view->vars['block_prefixes']),
+            array_search('date', $view->vars['block_prefixes'], true),
             0,
             'intracto_secret_santa_jquerydatepicker'
         );

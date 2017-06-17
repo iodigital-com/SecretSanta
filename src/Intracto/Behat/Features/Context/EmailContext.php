@@ -93,7 +93,7 @@ class EmailContext extends RawMinkContext
 
                 // check the recipients
                 $recipients = array_keys($message->getTo());
-                if (!in_array($email, $recipients)) {
+                if (!in_array($email, $recipients, true)) {
                     continue;
                 }
                 // check if this is the correct message type
