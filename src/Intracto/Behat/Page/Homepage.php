@@ -6,12 +6,6 @@ use SensioLabs\Behat\PageObjectExtension\PageObject\Page;
 
 class Homepage extends Page
 {
-    //TODO: use inline elements instead of $this->find()
-    protected $elements = [
-        'Button extra participant' => ['css' => '.add-btn-create.add-new-participant'],
-        'Participant table rows' => ['css' => '.participants.table > tbody > tr.participant'],
-    ];
-
     public function createParty($participants, $location, $amount, $eventDate)
     {
         if (count($participants) > 3) {
