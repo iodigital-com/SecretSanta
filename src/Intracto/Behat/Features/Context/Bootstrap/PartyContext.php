@@ -67,7 +67,6 @@ class PartyContext extends RawMinkContext
 
         $i = 0;
         while ($i < $this->memberCount) {
-            //TODO: use faker to get random input
             $this->participants[] = ['name' => 'test'.$i, 'email' => 'test'.$i.'@test.com'];
 
             ++$i;
@@ -79,7 +78,6 @@ class PartyContext extends RawMinkContext
      */
     public function setLocation()
     {
-        //TODO: replace with faker generated value
         $this->location = 'Intracto';
     }
 
@@ -88,7 +86,6 @@ class PartyContext extends RawMinkContext
      */
     public function setAmount()
     {
-        //TODO: replace with faker generated value
         $this->amount = rand(10, 100).' Euro';
     }
 

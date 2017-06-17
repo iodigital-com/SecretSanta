@@ -16,10 +16,6 @@ class PartyCreated extends Page
 
         $headerText = $element->getText();
 
-        if (stristr($headerText, 'Validate your participation')) {
-            return true;
-        }
-
-        return false;
+        return false !== stripos($headerText, 'Validate your participation');
     }
 }

@@ -15,11 +15,8 @@ class ParticipantExclude extends Page
         }
 
         $headerText = $element->getText();
-        if (stristr($headerText, 'Exclude')) {
-            return true;
-        }
 
-        return false;
+        return false !== stripos($headerText, 'Exclude');
     }
 
     public function confirmExcludes()
