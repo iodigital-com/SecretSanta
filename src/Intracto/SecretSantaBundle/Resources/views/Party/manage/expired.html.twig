@@ -19,7 +19,7 @@
             {% set phraseToType = 'party_manage_expired.delete.phrase_to_type'|trans|lower %}
             {{ 'party_manage_expired.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
             <br>
-            <form action="{{ path('party_delete', { 'listUrl': party.listUrl }) }}" method="post">
+            <form action="{{ path('party_delete', { 'listurl': party.listUrl }) }}" method="post">
                 <input type="hidden" name="csrf_token" value="{{ delete_party_csrf_token }}">
                 <input type="text" name="confirmation" id="delete-confirmation" autocomplete="off"
                        onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"

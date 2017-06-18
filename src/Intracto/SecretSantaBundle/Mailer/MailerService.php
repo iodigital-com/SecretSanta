@@ -257,7 +257,7 @@ class MailerService
             }
             $text .= $this->translator->trans('emails-reuse_link.at').' '.$result['location'];
             $partyLinks[] = [
-                'url' => $this->routing->generate('party_reuse', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
+                'url' => $this->routing->generate('party_reuse', ['listurl' => $result['listurl']], Router::ABSOLUTE_URL),
                 'text' => $text,
             ];
         }
