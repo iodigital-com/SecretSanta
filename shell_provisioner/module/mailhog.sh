@@ -9,7 +9,7 @@ echo "postfix postfix/myhostname string ${APP_DOMAIN}" | debconf-set-selections
 echo "postfix postfix/destinations string '${APP_DOMAIN}, localhost'" | debconf-set-selections
 echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
 
-apt-get install -y postfix postfix-pcre mailutils
+apt-get install -y postfix postfix-pcre
 
 cat << EOF >>/etc/postfix/main.cf
 
