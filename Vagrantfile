@@ -11,7 +11,7 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define :secretsanta do |secretsanta_config|
-        secretsanta_config.vm.box = "Intracto/Debian8"
+        secretsanta_config.vm.box = "Intracto/Debian9"
         secretsanta_config.vm.provider "virtualbox" do |v|
             # show a display for easy debugging
             v.gui = false
@@ -22,9 +22,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             # Allow symlinks on the shared folder
             v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
         end
-
-        # allow external connections to the machine
-        #secretsanta_config.vm.network "forwarded_port", guest: 80, host: 8888
 
         # Shared folder over NFS unless Windows
         if OS.windows?

@@ -2,7 +2,8 @@
 
 # rsyslogd
 
-echo "rsyslog-mysql rsyslog-mysql/dbconfig-install boolean true" | debconf-set-selections
+echo "rsyslog-mysql rsyslog-mysql/dbconfig-install boolean false" | debconf-set-selections
+rsyslog-mysql
 apt-get -y install rsyslog-mysql
 
 cat $CONFIG_PATH/rsyslogd/postfix.conf > /etc/rsyslog.d/postfix.conf

@@ -3,8 +3,8 @@
 # MariaDB server (MySQL)
 
 # Install server and client
-echo "mariadb-server-10.0 mysql-server/root_password password vagrant" | debconf-set-selections
-echo "mariadb-server-10.0 mysql-server/root_password_again password vagrant" | debconf-set-selections
+echo "mariadb-server-10.1 mysql-server/root_password password vagrant" | debconf-set-selections
+echo "mariadb-server-10.1 mysql-server/root_password_again password vagrant" | debconf-set-selections
 apt-get -y install mariadb-server mariadb-client
 
 # Configuration
@@ -20,8 +20,8 @@ $MYSQLCMD "CREATE DATABASE secretsanta DEFAULT CHARACTER SET utf8mb4 COLLATE utf
 $MYSQLCMD "CREATE USER secretsanta@localhost IDENTIFIED BY 'vagrant';"
 $MYSQLCMD "GRANT ALL PRIVILEGES ON secretsanta.* TO secretsanta@localhost;"
 
-$MYSQLCMD "CREATE USER root@'192.168.33.1' IDENTIFIED BY 'vagrant';"
-$MYSQLCMD "GRANT ALL PRIVILEGES ON *.* TO root@'192.168.33.1';"
+$MYSQLCMD "CREATE USER root@'%' IDENTIFIED BY 'vagrant';"
+$MYSQLCMD "GRANT ALL PRIVILEGES ON *.* TO root@'%';"
 
 $MYSQLCMD "FLUSH PRIVILEGES;"
 
@@ -30,3 +30,4 @@ mysql -uroot -pvagrant secretsanta < $CONFIG_PATH/postfix_bounce.sql
 
 # Install Percona toolkit
 apt-get install -y percona-toolkit
+
