@@ -2,6 +2,6 @@
 {% block unsubscribe %}
     <p style="text-align: center; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
         {{ 'emails-base_email_unsubscribe.unsubscribe' | trans }}
-        <a href="{{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}">{{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }}</a>
+        <a href="{{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=unsubscribe">{{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }}</a>
     </p>
 {% endblock %}
