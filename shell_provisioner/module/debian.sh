@@ -15,7 +15,7 @@ echo "PS1='[\[\033[00;34m\]\u@secretsanta DEV \[\033[00;31m\]\w$(__git_ps1)\[\03
 # Host file
 echo 127.0.0.1 $APP_DOMAIN >> /etc/hosts
 echo 127.0.0.1 phpmyadmin.$APP_DOMAIN >> /etc/hosts
-echo 127.0.0.1 mailcatcher.$APP_DOMAIN >> /etc/hosts
+echo 127.0.0.1 mails.$APP_DOMAIN >> /etc/hosts
 
 # Sync package index files
 apt-get update

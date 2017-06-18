@@ -28,7 +28,7 @@ Add these records to your own ```/etc/hosts``` file:
 
 ```
 192.168.33.50 dev.secretsantaorganizer.com
-192.168.33.50 mailcatcher.dev.secretsantaorganizer.com
+192.168.33.50 mails.dev.secretsantaorganizer.com
 192.168.33.50 phpmyadmin.dev.secretsantaorganizer.com
 ```
 
@@ -39,9 +39,9 @@ Browse to http://dev.secretsantaorganizer.com/app_dev.php to see the project hom
 If you need root in the box, use ```sudo -i``` or password ```vagrant```.
 
 All mails on the system are intercepted, regardless sender and receiver, and are delivered locally. You can access
-these mails from the URL ```/roundcube```.
+these mails from the URL ```mails.dev.secretsantaorganizer.com```.
 
-There is access to the MySQL database from URL ```/phpmyadmin```, or with a remote connection.
+There is access to the MySQL database from URL ```phpmyadmin.dev.secretsantaorganizer.com```, or with a remote connection.
 Login with user ```root```, password ```vagrant```.
 
 Xdebug remote debugging is enabled. Configure your PhpStorm so you can step debug the code.
