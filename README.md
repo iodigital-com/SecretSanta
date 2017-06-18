@@ -42,7 +42,7 @@ All mails on the system are intercepted, regardless sender and receiver, and are
 these mails from the URL ```mails.dev.secretsantaorganizer.com```.
 
 There is access to the MySQL database from URL ```phpmyadmin.dev.secretsantaorganizer.com```, or with a remote connection.
-Login with user ```root```, password ```vagrant```.
+Login with user ```secretsanta```, password ```vagrant```.
 
 Xdebug remote debugging is enabled. Configure your PhpStorm so you can step debug the code.
 
