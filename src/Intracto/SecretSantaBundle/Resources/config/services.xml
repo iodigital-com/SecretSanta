@@ -95,6 +95,11 @@
             <argument type="service" id="doctrine.orm.default_entity_manager" />
             <argument type="service" id="intracto_secret_santa.mailer" />
         </service>
+        <service id="intracto_secret_santa.form_handler.unsubcribe" class="Intracto\SecretSantaBundle\Form\Handler\UnsubscribeFormHandler">
+            <argument type="service" id="translator" />
+            <argument type="service" id="session" />
+            <argument type="service" id="intracto_secret_santa.service.unsubscribe" />
+        </service>
 
         <!-- Validators -->
         <service id="intracto_secret_santa.validator.participant_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludesValidator">

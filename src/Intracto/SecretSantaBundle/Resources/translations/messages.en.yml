@@ -300,6 +300,7 @@ participant_unsubscribe:
     feedback:
         success: You have successfully unsubscribed!
         error: There was an error when unsubscribing, please try again!
+        error_atleast_one_option: Choose at least one unsubscribe option.
 
 # Party/manage/base.html.twig
 party_manage_base:

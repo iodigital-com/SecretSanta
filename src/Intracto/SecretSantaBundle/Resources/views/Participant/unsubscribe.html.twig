@@ -22,7 +22,7 @@
             {{ form_widget(unsubscribeForm.blacklist) }}
             {{ form_label(unsubscribeForm.blacklist) }}
         </div>
-        <button type="submit" class="btn btn-default">{{ 'participant_unsubscribe.unsubscribe_confirm_btn' |trans }}</button>
+        <button type="submit" id="unsubscribe_button" class="btn btn-default">{{ 'participant_unsubscribe.unsubscribe_confirm_btn' |trans }}</button>
         {{ form_end(unsubscribeForm) }}
     </div>
 {% endblock main %}
