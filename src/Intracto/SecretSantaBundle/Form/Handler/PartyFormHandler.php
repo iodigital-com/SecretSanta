@@ -50,7 +50,7 @@ class PartyFormHandler
             return false;
         }
 
-        //Save party
+        // Save party
         foreach ($party->getParticipants() as $participant) {
             $participant->setParty($party);
         }
