@@ -380,7 +380,7 @@ class ParticipantReportQuery
     {
         $url = $this->router->generate(
             'party_reuse',
-            ['listUrl' => '1'],
+            ['listurl' => '1'],
             true
         );
 

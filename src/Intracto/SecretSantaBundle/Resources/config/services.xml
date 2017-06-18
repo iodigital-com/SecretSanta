@@ -90,6 +90,12 @@
             <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\DateType" />
         </service>
 
+        <!-- Form handlers -->
+        <service id="intracto_secret_santa.form_handler.party" class="Intracto\SecretSantaBundle\Form\Handler\PartyFormHandler">
+            <argument type="service" id="doctrine.orm.default_entity_manager" />
+            <argument type="service" id="intracto_secret_santa.mailer" />
+        </service>
+
         <!-- Validators -->
         <service id="intracto_secret_santa.validator.participant_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludesValidator">
             <tag name="validator.constraint_validator" alias="intracto_secret_santa.validator.participant_has_valid_excludes" />
