@@ -6,7 +6,7 @@
 wget -O- https://packages.sury.org/php/apt.gpg | apt-key add -
 
 cat << EOF >/etc/apt/sources.list.d/sury.list
-deb https://packages.sury.org/php/ jessie main
+deb https://packages.sury.org/php/ stretch main
 EOF
 
 # Sync package index files
@@ -24,7 +24,6 @@ sed -i 's/^group = www-data/group = vagrant/' /etc/php/7.1/fpm/pool.d/www.conf
 printf "\n" | pecl install apcu
 
 cat << EOF >>/etc/php/7.1/mods-available/apcu.ini
-extension=apc.so
 extension=apcu.so
 EOF
 

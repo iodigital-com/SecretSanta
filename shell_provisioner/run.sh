@@ -18,7 +18,7 @@ DEPENDENCIES=(
     apache
     phpmyadmin
     symfony
-    mailcatcher
+    mailhog
     rsyslogd
 )
 
