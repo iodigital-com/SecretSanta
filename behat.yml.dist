@@ -20,6 +20,7 @@ default:
                    - Intracto\Behat\Features\Context\Bootstrap\StartedPartyManagementContext
                    - Intracto\Behat\Features\Context\Bootstrap\ResendPartyInfoContext
                    - Intracto\Behat\Features\Context\Bootstrap\ReusePartyLinkContext
+                   - Intracto\Behat\Features\Context\Bootstrap\UnsubscribeContext
 
     extensions:
         Behat\MinkExtension:

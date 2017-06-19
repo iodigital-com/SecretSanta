@@ -305,6 +305,7 @@ participant_unsubscribe:
     feedback:
        success: Je bent succesvol uitgeschreven!
        error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!
+       error_atleast_one_option: Kies minstens 1 uitschrijf mogelijkheid.
 
 # Party/manage/base.html.twig
 party_manage_base:
