@@ -182,7 +182,7 @@ class MailerService
                 $date = $result['eventdate']->format('d/m/Y');
             }
             $manageLinks[] = [
-                'url' => $this->routing->generate('party_manage', ['listUrl' => $result['listurl']], Router::ABSOLUTE_URL),
+                'url' => $this->routing->generate('party_manage', ['listurl' => $result['listurl']], Router::ABSOLUTE_URL),
                 'date' => $date,
                 'location' => $result['location'],
             ];

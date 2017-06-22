@@ -18,21 +18,18 @@ use Intracto\SecretSantaBundle\Form\Type\PartyExcludeParticipantType;
 class ManagementController extends Controller
 {
     /**
-     * @Route("/manage/{listUrl}", name="party_manage")
+     * @Route("/manage/{listurl}", name="party_manage")
      * @Template("IntractoSecretSantaBundle:Party/manage:valid.html.twig")
      */
-    public function validAction($listUrl, Form $excludeForm = null)
+    public function validAction(Party $party, Form $excludeForm = null)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
-        $party = $this->getParty($listUrl);
-
         $addParticipantForm = $this->createForm(
             AddParticipantType::class,
             new Participant(),
             [
                 'action' => $this->generateUrl(
                     'party_manage_addParticipant',
-                    ['listUrl' => $listUrl]
+                    ['listurl' => $party->getListurl()]
                 ),
             ]
         );
@@ -42,7 +39,7 @@ class ManagementController extends Controller
             [
                 'action' => $this->generateUrl(
                     'party_manage_update',
-                    ['listUrl' => $listUrl]
+                    ['listurl' => $party->getListurl()]
                 ),
             ]
         );
@@ -62,7 +59,7 @@ class ManagementController extends Controller
         if ($excludeForm === null) {
             $excludeForm = $this->createForm(PartyExcludeParticipantType::class, $party,
                 [
-                    'action' => $this->generateUrl('party_exclude', ['listUrl' => $listUrl]),
+                    'action' => $this->generateUrl('party_exclude', ['listurl' => $party->getListurl()]),
                 ]
             );
         }
@@ -78,14 +75,11 @@ class ManagementController extends Controller
     }
 
     /**
-     * @Route("/manage/update/{listUrl}", name="party_manage_update")
+     * @Route("/manage/update/{listurl}", name="party_manage_update")
      * @Method("POST")
      */
-    public function updateAction(Request $request, $listUrl)
+    public function updateAction(Request $request, Party $party)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
-        $party = $this->getParty($listUrl);
-
         $updatePartyDetailsForm = $this->createForm(UpdatePartyDetailsType::class, $party);
         $updatePartyDetailsForm->handleRequest($request);
 
@@ -108,18 +102,15 @@ class ManagementController extends Controller
             );
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
     }
 
     /**
-     * @Route("/manage/addParticipant/{listUrl}", name="party_manage_addParticipant")
+     * @Route("/manage/addParticipant/{listurl}", name="party_manage_addParticipant")
      * @Method("POST")
      */
-    public function addParticipantAction(Request $request, $listUrl)
+    public function addParticipantAction(Request $request, Party $party)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
-        $party = $this->getParty($listUrl);
-
         $newParticipant = new Participant();
         $addParticipantForm = $this->createForm(AddParticipantType::class, $newParticipant);
         $addParticipantForm->handleRequest($request);
@@ -166,25 +157,22 @@ class ManagementController extends Controller
             );
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
     }
 
     /**
-     * @Route("/manage/start/{listUrl}", name="party_manage_start")
+     * @Route("/manage/start/{listurl}", name="party_manage_start")
      * @Method("GET")
      */
-    public function startPartyAction($listUrl)
+    public function startPartyAction(Party $party)
     {
-        /** @var Party $party */
-        $party = $this->getParty($listUrl);
-
         if ($party->getCreated() || $party->getParticipants()->count() < 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('flashes.management.start_party.danger')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
         }
 
         $mailerService = $this->get('intracto_secret_santa.mailer');
@@ -203,24 +191,21 @@ class ManagementController extends Controller
             $this->get('translator')->trans('flashes.management.start_party.success')
         );
 
-        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
+        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
     }
 
     /**
-     * @Route("/exclude/{listUrl}", name="party_exclude")
+     * @Route("/exclude/{listurl}", name="party_exclude")
      */
-    public function excludeAction(Request $request, $listUrl)
+    public function excludeAction(Request $request, Party $party)
     {
-        /** @var MailerService $mailerService */
-        $party = $this->getParty($listUrl);
-
         if (count($party->getParticipants()) <= 3) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('party_manage_valid.excludes.not_enough')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
         }
 
         $form = $this->createForm(PartyExcludeParticipantType::class, $party);
@@ -234,21 +219,10 @@ class ManagementController extends Controller
                     $this->get('translator')->trans('flashes.management.excludes.success')
                 );
             } else {
-                return $this->forward('IntractoSecretSantaBundle:Party/Management:valid', array('listUrl' => $listUrl, 'excludeForm' => $form));
+                return $this->forward('IntractoSecretSantaBundle:Party/Management:valid', array('listurl' => $party->getListurl(), 'excludeForm' => $form));
             }
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
-    }
-
-    private function getParty($listUrl)
-    {
-        /** @var \Intracto\SecretSantaBundle\Entity\PartyRepository $party */
-        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
-        if ($party === null) {
-            throw new NotFoundHttpException();
-        }
-
-        return $party;
+        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
     }
 }

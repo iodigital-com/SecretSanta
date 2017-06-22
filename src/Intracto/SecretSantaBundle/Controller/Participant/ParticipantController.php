@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
 use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ class ParticipantController extends Controller
         $name = $request->request->get('name');
         $emailAddress = new EmailAddress($request->request->get('email'));
         $participantId = $request->request->get('participantId');
-        $listUrl = $request->request->get('listUrl');
+        $listUrl = $request->request->get('listurl');
 
         /** @var Participant $participant */
         $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
@@ -62,9 +63,10 @@ class ParticipantController extends Controller
     }
 
     /**
-     * @Route("/participant/remove/{listUrl}/{participantId}", name="participant_remove")
+     * @Route("/participant/remove/{listurl}/{participantId}", name="participant_remove")
+     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
      */
-    public function removeParticipantFromPartyAction(Request $request, $listUrl, $participantId)
+    public function removeParticipantFromPartyAction(Request $request, $listurl, Participant $participant)
     {
         $correctCsrfToken = $this->isCsrfTokenValid(
             'delete_participant',
@@ -77,11 +79,9 @@ class ParticipantController extends Controller
                 $this->get('translator')->trans('flashes.participant.remove_participant.wrong')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
         }
 
-        /** @var Participant $participant */
-        $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
         $participants = $participant->getParty()->getParticipants();
 
         if (count($participants) <= 3) {
@@ -90,7 +90,7 @@ class ParticipantController extends Controller
                 $this->get('translator')->trans('flashes.participant.remove_participant.danger')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
         }
 
         if ($participant->isPartyAdmin()) {
@@ -99,7 +99,7 @@ class ParticipantController extends Controller
                 $this->get('translator')->trans('flashes.participant.remove_participant.warning')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
         }
 
         $excludeCount = 0;
@@ -116,7 +116,7 @@ class ParticipantController extends Controller
                 $this->get('translator')->trans('flashes.participant.remove_participant.excluded_participants')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
         }
 
         if ($excludeCount > 0 && count($participants) == 4) {
@@ -125,12 +125,12 @@ class ParticipantController extends Controller
                 $this->get('translator')->trans('flashes.participant.remove_participant.not_enough_for_exclude')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
         }
 
         if ($participant->getParty()->getCreated()) {
             $secretSanta = $participant->getAssignedParticipant();
-            $assignedParticipantId = $this->get('intracto_secret_santa.query.participant_report')->findBuddyByParticipantId($participantId);
+            $assignedParticipantId = $this->get('intracto_secret_santa.query.participant_report')->findBuddyByParticipantId($participant->getId());
             $assignedParticipant = $this->get('intracto_secret_santa.repository.participant')->find($assignedParticipantId[0]['id']);
 
             // if A -> B -> A we can't delete B anymore or A is assigned to A
@@ -140,7 +140,7 @@ class ParticipantController extends Controller
                     $this->get('translator')->trans('flashes.participant.remove_participant.self_assigned')
                 );
 
-                return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+                return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
             }
 
             $this->get('doctrine.orm.entity_manager')->remove($participant);
@@ -163,6 +163,6 @@ class ParticipantController extends Controller
             $this->get('translator')->trans('flashes.participant.remove_participant.success')
         );
 
-        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
     }
 }

@@ -24,6 +24,6 @@
         <div><strong>{{ 'party-created.warning'|trans }}</strong> {{ 'party-created.check_spam'|trans }}</div>
     </div>
 
-    {% if app.environment == 'dev' %}<a href="{{ path('party_manage', { 'listUrl': party.listUrl }) }}">{{ path('party_manage', { 'listUrl': party.listUrl }) }}</a>{% endif %}
+    {% if app.environment == 'dev' %}<a href="{{ path('party_manage', { 'listurl': party.listUrl }) }}">{{ path('party_manage', { 'listurl': party.listUrl }) }}</a>{% endif %}
 </div>
 {% endblock %}

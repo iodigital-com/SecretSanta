@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -10,17 +11,12 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 class ResendParticipantController extends Controller
 {
     /**
-     * @Route("/resend/{listUrl}/{participantId}", name="resend_participant")
+     * @Route("/resend/{listurl}/{participantId}", name="resend_participant")
+     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
      */
-    public function resendAction($listUrl, $participantId)
+    public function resendAction($listurl, Participant $participant)
     {
-        /** @var Participant $participant */
-        $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
-        if ($participant === null) {
-            throw new NotFoundHttpException();
-        }
-
-        if ($participant->getParty()->getListurl() !== $listUrl) {
+        if ($participant->getParty()->getListurl() !== $listurl) {
             throw new NotFoundHttpException();
         }
 
@@ -38,6 +34,6 @@ class ResendParticipantController extends Controller
             );
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $listUrl]));
+        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
     }
 }

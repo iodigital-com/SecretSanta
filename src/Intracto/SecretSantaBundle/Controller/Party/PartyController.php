@@ -63,7 +63,7 @@ class PartyController extends Controller
                 $this->get('translator')->trans('flashes.party.not_deleted')
             );
 
-            return $this->redirect($this->generateUrl('party_manage', ['listUrl' => $party->getListurl()]));
+            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
         }
 
         $this->get('doctrine.orm.entity_manager')->remove($party);

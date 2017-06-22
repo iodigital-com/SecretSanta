@@ -13,6 +13,6 @@
 {% endfor %}
 
 {{ 'emails-party_status.btn.partystatus'|trans }}:
-{{ url('party_manage', { 'listUrl': party.listurl }) }}
+{{ url('party_manage', { 'listurl': party.listurl }) }}
 
 {{ 'emails-base_email_unsubscribe.unsubscribe' | trans }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }} {{ url('unsubscribe_confirm', { 'url': admin.url, '_locale': admin.party.locale }) }}
