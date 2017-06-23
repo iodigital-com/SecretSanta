@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller;
 
@@ -14,46 +15,20 @@ class ReuseController extends Controller
     /**
      * @Route("/reuse", name="request_reuse_url")
      * @Template("IntractoSecretSantaBundle:Party:getReuseUrl.html.twig")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showRequestAction()
+    public function showRequestAction(Request $request)
     {
-        $form = $this->createForm(RequestReuseUrlType::class, null, [
-            'action' => $this->generateUrl('send_reuse_url'),
-        ]);
+        $form = $this->createForm(RequestReuseUrlType::class);
+
+        $handler = $this->get('intracto_secret_santa.form_handler.reuse');
+
+        if ($handler->handle($form, $request)) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
 
         return [
             'form' => $form->createView(),
         ];
-    }
-
-    /**
-     * @Route("/reuse", name="send_reuse_url")
-     * @Template("IntractoSecretSantaBundle:Party:getReuseUrl.html.twig")
-     * @Method("POST")
-     */
-    public function sendReuseUrlAction(Request $request)
-    {
-        $form = $this->createForm(RequestReuseUrlType::class, null);
-
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $reuseLinksMailSent = $this->get('intracto_secret_santa.mailer')->sendReuseLinksMail($form->getData()['email']);
-            if ($reuseLinksMailSent) {
-                $feedback = [
-                    'type' => 'success',
-                    'message' => $this->get('translator')->trans('flashes.reuse.success'),
-                ];
-            } else {
-                $feedback = [
-                    'type' => 'danger',
-                    'message' => $this->get('translator')->trans('flashes.reuse.error'),
-                ];
-            }
-
-            $this->addFlash($feedback['type'], $feedback['message']);
-        }
-
-        return $this->redirect($this->generateUrl('request_reuse_url'));
     }
 }

@@ -100,6 +100,16 @@
             <argument type="service" id="session" />
             <argument type="service" id="intracto_secret_santa.service.unsubscribe" />
         </service>
+        <service id="intracto_secret_santa.form_handler.forgot_url" class="Intracto\SecretSantaBundle\Form\Handler\ForgotUrlFormHandler">
+            <argument type="service" id="translator" />
+            <argument type="service" id="session" />
+            <argument type="service" id="intracto_secret_santa.mailer" />
+        </service>
+        <service id="intracto_secret_santa.form_handler.reuse" class="Intracto\SecretSantaBundle\Form\Handler\ReuseFormHandler">
+            <argument type="service" id="translator" />
+            <argument type="service" id="session" />
+            <argument type="service" id="intracto_secret_santa.mailer" />
+        </service>
 
         <!-- Validators -->
         <service id="intracto_secret_santa.validator.participant_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludesValidator">
