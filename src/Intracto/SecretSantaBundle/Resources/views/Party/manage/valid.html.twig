@@ -44,7 +44,7 @@
                         >
                         {% if party.created %}
                             {% spaceless %}
-                                <a href="{{ path('resend_participant', { 'listUrl': party.listUrl, 'participantId': participant.id }) }}"
+                                <a href="{{ path('resend_participant', { 'listurl': party.listUrl, 'participantId': participant.id }) }}"
                                    class="btn-participant-resend"
                                 >
                                     <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
@@ -180,7 +180,7 @@
         {% endif %}
 
         {% if not party.created %}
-            <a href="{{ path('party_manage_start', { 'listUrl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link btn-create-party">
+            <a href="{{ path('party_manage_start', { 'listurl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link btn-create-party">
                 <i class="fa fa-play"></i> {{ 'party_manage_valid.btn.start_party'|trans }}
             </a>
         {% endif %}
@@ -188,13 +188,13 @@
         <div class="clearfix"></div>
 
         {% if party.created %}
-            <a id="btn_send_party_update" class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listUrl': party.listurl }) }}">
+            <a id="btn_send_party_update" class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listurl': party.listurl }) }}">
                 <i class="fa fa-envelope"></i> {{ 'party_manage_valid.btn.party_update'|trans|raw }}
             </a>
-            <a id="btn_expose_matches" href="{{ path('expose_participants', { 'listUrl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
+            <a id="btn_expose_matches" href="{{ path('expose_participants', { 'listurl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
                 <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose'|trans }}
             </a>
-            <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listUrl': party.listurl }) }}">
+            <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'listurl': party.listurl }) }}">
                 <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose_wishlists'|trans }}
             </a>
         {% endif %}

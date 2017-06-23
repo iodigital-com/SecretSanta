@@ -2,6 +2,8 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
+use Intracto\SecretSantaBundle\Entity\Participant;
+use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -16,17 +18,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class WishlistController extends Controller
 {
     /**
-     * @Route("/wishlists/show/{listUrl}", name="wishlist_show_all")
+     * @Route("/wishlists/show/{listurl}", name="wishlist_show_all")
      * @Template("IntractoSecretSantaBundle:Wishlist:showAll.html.twig")
      */
-    public function showAllAction($listUrl)
+    public function showAllAction(Party $party)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\Party $party */
-        $party = $this->get('intracto_secret_santa.repository.party')->findOneByListurl($listUrl);
-        if ($party === false) {
-            throw new NotFoundHttpException();
-        }
-
         return [
             'party' => $party,
         ];
@@ -36,13 +32,8 @@ class WishlistController extends Controller
      * @Route("/wishlist/update/{url}", name="wishlist_update")
      * @Method("POST")
      */
-    public function updateAction(Request $request, $url)
+    public function updateAction(Request $request, Participant $participant)
     {
-        /** @var \Intracto\SecretSantaBundle\Entity\Participant $participant */
-        $participant = $this->get('intracto_secret_santa.repository.participant')->findOneByUrl($url);
-        if ($participant === null) {
-            throw new NotFoundHttpException();
-        }
         $wishlistForm = $this->createForm(WishlistType::class, $participant);
 
         // get current items to compare against items later on
@@ -98,7 +89,7 @@ class WishlistController extends Controller
 
             if (!$inOrder) {
                 // redirect to force refresh of form and entity
-                return $this->redirect($this->generateUrl('participant_view', ['url' => $url]));
+                return $this->redirect($this->generateUrl('participant_view', ['url' => $participant->getUrl()]));
             }
         }
 

@@ -15,7 +15,7 @@ class UnstartedPartyManagementContext extends RawMinkContext
      */
     public function goToPartyManagementPage()
     {
-        $path = $this->getContainer()->get('router')->generate('party_manage', ['listUrl' => FeatureContext::CREATED_PARTY_URL_TOKEN]);
+        $path = $this->getContainer()->get('router')->generate('party_manage', ['listurl' => FeatureContext::CREATED_PARTY_URL_TOKEN]);
         $this->visitPath($path);
     }
 

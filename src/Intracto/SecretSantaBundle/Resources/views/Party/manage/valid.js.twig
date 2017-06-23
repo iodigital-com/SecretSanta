@@ -59,7 +59,7 @@
     function editParticipant(listUrl, participantId) {
         var email = $('#email_' + participantId).html();
         var name = $('#name_' + participantId).html();
-        var url = '{{ path("participant_edit", { 'listUrl': 'listUrl', 'participantId': 'participantId' }) }}';
+        var url = '{{ path("participant_edit", { 'listurl': 'listUrl', 'participantId': 'participantId' }) }}';
         url = url.replace("listUrl", listUrl);
         url = url.replace("participantId", participantId);
         if ($('#email_' + participantId).has('form').length == 0) {
@@ -77,7 +77,7 @@
         $('#submit_btn_' + participantId).html('<i class="fa fa-spinner fa-spin"></i>');
         $("#alertspan").html('');
         var data = {
-            listUrl: listUrl,
+            listurl: listUrl,
             participantId: participantId,
             name: name,
             email: email,
@@ -109,7 +109,7 @@
     }
 
     function attachAction(listUrl, participantId) {
-        var url = '{{ path('participant_remove', {'listUrl': 'listUrl', 'participantId': 'participantId'}) }}';
+        var url = '{{ path('participant_remove', {'listurl': 'listUrl', 'participantId': 'participantId'}) }}';
         url = url.replace('listUrl', listUrl);
         url = url.replace('participantId', participantId);
         $('#delete-participant-form').attr('action', url);
