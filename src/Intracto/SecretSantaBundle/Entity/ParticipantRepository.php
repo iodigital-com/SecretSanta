@@ -68,4 +68,26 @@ class ParticipantRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * Get the admin of a party by party Id
+     *
+     * @param int $partyId
+     *
+     * @return Participant
+     */
+    public function findAdminByPartyId(int $partyId) : Participant
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->addSelect('participant')
+            ->from('IntractoSecretSantaBundle:Participant', 'participant')
+            ->join('participant.party', 'party')
+            ->andWhere('participant.partyAdmin = true')
+            ->andWhere('party.id = :partyId')
+            ->setParameters([
+                'partyId' => $partyId,
+            ]);
+
+        return $qb->getQuery()->getSingleResult();
+    }
 }

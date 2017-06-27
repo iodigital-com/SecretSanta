@@ -485,21 +485,4 @@ class ParticipantReportQuery
 
         return $query->execute()->fetchAll();
     }
-
-    /**
-     * @param $partyId
-     *
-     * @return mixed
-     */
-    public function findAdminIdByPartyId($partyId)
-    {
-        $query = $this->dbal->createQueryBuilder()
-            ->select('p.id')
-            ->from('participant', 'p')
-            ->where('p.party_id = :partyId')
-            ->andWhere('p.party_admin = 1')
-            ->setParameter('partyId', $partyId);
-
-        return $query->execute()->fetchAll();
-    }
 }
