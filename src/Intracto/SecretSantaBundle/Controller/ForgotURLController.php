@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller;
 
@@ -14,52 +15,16 @@ class ForgotURLController extends Controller
     /**
      * @Route("/forgot-link", name="forgot_url")
      * @Template("IntractoSecretSantaBundle:Party:forgotLink.html.twig")
+     * @Method({"GET", "POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $form = $this->createForm(
-            ForgotLinkType::class,
-            null,
-            [
-                'action' => $this->generateUrl('resend_url'),
-            ]
-        );
+        $form = $this->createForm(ForgotLinkType::class);
 
-        return [
-            'form' => $form->createView(),
-        ];
-    }
+        $handler = $this->get('intracto_secret_santa.form_handler.forgot_url');
 
-    /**
-     * @Route("/resend-management-url", name="resend_url")
-     * @Method("POST")
-     * @Template("IntractoSecretSantaBundle:Party:forgotLink.html.twig")
-     */
-    public function resendAction(Request $request)
-    {
-        $form = $this->createForm(
-            ForgotLinkType::class,
-            null,
-            [
-                'action' => $this->generateUrl('resend_url'),
-            ]
-        );
-
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            if ($this->get('intracto_secret_santa.mailer')->sendForgotLinkMail($form->getData()['email'])) {
-                $feedback = [
-                    'type' => 'success',
-                    'message' => $this->get('translator')->trans('flashes.forgot_url.success'),
-                ];
-            } else {
-                $feedback = [
-                    'type' => 'danger',
-                    'message' => $this->get('translator')->trans('flashes.forgot_url.error'),
-                ];
-            }
-
-            $this->addFlash($feedback['type'], $feedback['message']);
+        if ($handler->handle($form, $request)) {
+            return $this->redirect($this->generateUrl('homepage'));
         }
 
         return [
