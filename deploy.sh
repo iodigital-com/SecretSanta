@@ -1,7 +1,7 @@
 #!/bin/bash
 
-set -o xtrace # print commands
-set -e # exit on error
+set -x # xtrace: print commands
+set -e # errexit: exit on error
 
 PROJECT_HOME=/var/www/secretsanta
 VERSION=`date +"%Y%m%d%H%M%S"`
