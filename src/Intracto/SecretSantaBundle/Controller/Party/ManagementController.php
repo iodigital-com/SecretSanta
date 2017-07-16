@@ -126,30 +126,17 @@ class ManagementController extends Controller
      */
     public function startPartyAction(Party $party)
     {
-        if ($party->getCreated() || $party->getParticipants()->count() < 3) {
+        if ($this->get('intracto_secret_santa.service.party')->startParty($party)) {
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('flashes.management.start_party.success')
+            );
+        } else {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('flashes.management.start_party.danger')
             );
-
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
         }
-
-        $mailerService = $this->get('intracto_secret_santa.mailer');
-
-        $party->setCreated(true);
-        $this->get('doctrine.orm.entity_manager')->persist($party);
-
-        $this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
-
-        $this->get('doctrine.orm.entity_manager')->flush();
-
-        $mailerService->sendSecretSantaMailsForParty($party);
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $this->get('translator')->trans('flashes.management.start_party.success')
-        );
 
         return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
     }

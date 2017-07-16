@@ -65,6 +65,11 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="intracto_secret_santa.service.participant_shuffler" />
         </service>
+        <service id="intracto_secret_santa.service.party" class="Intracto\SecretSantaBundle\Service\PartyService">
+            <argument type="service" id="intracto_secret_santa.mailer" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="intracto_secret_santa.service.participant" />
+        </service>
         <service id="intracto_secret_santa.service.export" class="Intracto\SecretSantaBundle\Service\ExportService" />
         <service id="intracto_secret_santa.service.participant_shuffler" class="Intracto\SecretSantaBundle\Entity\ParticipantShuffler" />
         <service id="intracto_secret_santa.service.unsubscribe" class="Intracto\SecretSantaBundle\Service\UnsubscribeService" >

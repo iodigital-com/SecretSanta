@@ -1,0 +1,52 @@
+<?php
+declare(strict_types=1);
+
+namespace Intracto\SecretSantaBundle\Service;
+
+use Doctrine\ORM\EntityManager;
+use Intracto\SecretSantaBundle\Entity\ParticipantService;
+use Intracto\SecretSantaBundle\Entity\Party;
+use Intracto\SecretSantaBundle\Mailer\MailerService;
+
+class PartyService
+{
+    /**
+     * @var MailerService
+     */
+    private $mailerService;
+
+    /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
+     * @var ParticipantService
+     */
+    private $participantService;
+
+    public function __construct(MailerService $mailerService, EntityManager $em, ParticipantService $participantService)
+    {
+        $this->mailerService = $mailerService;
+        $this->em = $em;
+        $this->participantService = $participantService;
+    }
+
+    public function startParty(Party $party) : bool
+    {
+        if ($party->getCreated() || $party->getParticipants()->count() < 3) {
+            return false;
+        }
+
+        $party->setCreated(true);
+        $this->em->persist($party);
+
+        $this->participantService->shuffleParticipants($party);
+
+        $this->em->flush();
+
+        $this->mailerService->sendSecretSantaMailsForParty($party);
+
+        return true;
+    }
+}
