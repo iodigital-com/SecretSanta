@@ -111,51 +111,11 @@ class ManagementController extends Controller
      */
     public function addParticipantAction(Request $request, Party $party)
     {
-        $newParticipant = new Participant();
-        $addParticipantForm = $this->createForm(AddParticipantType::class, $newParticipant);
-        $addParticipantForm->handleRequest($request);
+        $addParticipantForm = $this->createForm(AddParticipantType::class, new Participant());
 
-        if ($addParticipantForm->isSubmitted() && $addParticipantForm->isValid()) {
-            $newParticipant->setParty($party);
+        $handler = $this->get('intract_secret_santa.form_handler.add_participant');
 
-            if ($party->getCreated()) {
-                $newParticipant->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
-                $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
-                $this->get('doctrine.orm.entity_manager')->flush($newParticipant);
-
-                $adminId = $this->get('intracto_secret_santa.query.participant_report')->findAdminIdByPartyId($party->getId());
-                /** @var Participant $admin */
-                $admin = $this->get('intracto_secret_santa.repository.participant')->findOneById($adminId[0]['id']);
-                $adminMatch = $admin->getAssignedParticipant();
-
-                $this->get('doctrine.orm.entity_manager')->persist($admin);
-                $this->get('doctrine.orm.entity_manager')->flush($admin);
-
-                $admin->setAssignedParticipant($newParticipant);
-                $this->get('doctrine.orm.entity_manager')->persist($admin);
-                $this->get('doctrine.orm.entity_manager')->flush($admin);
-
-                $newParticipant->setAssignedParticipant($adminMatch);
-                $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
-                $this->get('doctrine.orm.entity_manager')->flush();
-
-                $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($admin);
-                $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($newParticipant);
-            } else {
-                $this->get('doctrine.orm.entity_manager')->persist($newParticipant);
-                $this->get('doctrine.orm.entity_manager')->flush();
-            }
-
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.management.add_participant.success')
-            );
-        } else {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.management.add_participant.danger')
-            );
-        }
+        $handler->handle($addParticipantForm, $request, $party);
 
         return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
     }
@@ -166,30 +126,17 @@ class ManagementController extends Controller
      */
     public function startPartyAction(Party $party)
     {
-        if ($party->getCreated() || $party->getParticipants()->count() < 3) {
+        if ($this->get('intracto_secret_santa.service.party')->startParty($party)) {
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('flashes.management.start_party.success')
+            );
+        } else {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('flashes.management.start_party.danger')
             );
-
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
         }
-
-        $mailerService = $this->get('intracto_secret_santa.mailer');
-
-        $party->setCreated(true);
-        $this->get('doctrine.orm.entity_manager')->persist($party);
-
-        $this->get('intracto_secret_santa.service.participant')->shuffleParticipants($party);
-
-        $this->get('doctrine.orm.entity_manager')->flush();
-
-        $mailerService->sendSecretSantaMailsForParty($party);
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $this->get('translator')->trans('flashes.management.start_party.success')
-        );
 
         return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
     }
