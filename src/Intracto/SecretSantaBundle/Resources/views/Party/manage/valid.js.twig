@@ -68,7 +68,9 @@
     }
 
     function submitEditForm(listUrl,participantId) {
-        var url = '{{ path("participant_edit") }}';
+        var url = '{{ path("participant_edit", { 'listurl': 'listUrl', 'participantId': 'participantId' }) }}';
+        url = url.replace("listUrl", listUrl);
+        url = url.replace("participantId", participantId);
         var name = $('#input_name_' + participantId).val();
         var email = $('#input_email_' + participantId).val();
         $('#input_name_' + participantId).prop('disabled', true);
@@ -76,24 +78,23 @@
         $('#submit_btn_' + participantId).prop('disabled', true);
         $('#submit_btn_' + participantId).html('<i class="fa fa-spinner fa-spin"></i>');
         $("#alertspan").html('');
-        var data = {
-            listurl: listUrl,
-            participantId: participantId,
-            name: name,
-            email: email,
-        }
+
         $.ajax({
             type: 'POST',
             url: url,
-            data: data,
-        }).done(function( data ) {
-            if(data.responseCode == 200){
-                $("#alertspan").html('<div class="alert alert-'+ data.message.type +'" role="alert">'+ data.message.message +'</div>');
-                $('#name_' + participantId).html(name);
-                $('#email_' + participantId).html(email);
-            } else {
-                $("#alertspan").html('<div class="alert alert-'+ data.message.type +'" role="alert">'+ data.message.message +'</div>');
-                makeEditForm(participantId, listUrl, name, email);
+            data: {
+                name: name,
+                email: email
+            },
+            success: function(data){
+                if (data.success) {
+                    $("#alertspan").html('<div class="alert alert-success" role="alert">' + data.message + '</div>');
+                    $('#name_' + participantId).html(name);
+                    $('#email_' + participantId).html(email);
+                } else {
+                    $("#alertspan").html('<div class="alert alert-danger" role="alert">'+ data.message +'</div>');
+                    makeEditForm(participantId, listUrl, name, email);
+                }
             }
         });
     }

@@ -3,6 +3,8 @@
 namespace Intracto\SecretSantaBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
+use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ParticipantService
 {
@@ -17,13 +19,15 @@ class ParticipantService
     public $participantShuffler;
 
     /**
-     * @param EntityManager       $em
-     * @param ParticipantShuffler $participantShuffler
+     * @var ValidatorInterface
      */
-    public function __construct(EntityManager $em, ParticipantShuffler $participantShuffler)
+    private $validator;
+
+    public function __construct(EntityManager $em, ParticipantShuffler $participantShuffler, ValidatorInterface $validator)
     {
         $this->em = $em;
         $this->participantShuffler = $participantShuffler;
+        $this->validator = $validator;
     }
 
     /**
@@ -48,6 +52,28 @@ class ParticipantService
             $this->em->persist($participant);
         }
 
+        $this->em->flush();
+    }
+
+    public function validateEmail(string $email) : bool
+    {
+        $emailAddress = new EmailAddress($email);
+
+        $emailAddressErrors = $this->validator->validate($emailAddress);
+        $blacklisted = $this->validator->validate($emailAddress, new ParticipantIsNotBlacklisted());
+        if ((count($emailAddressErrors) > 0 || count($blacklisted)) > 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function editParticipant(Participant $participant, string $name, string $email)
+    {
+        $participant->setEmail($email);
+        $participant->setName($name);
+
+        $this->em->persist($participant);
         $this->em->flush();
     }
 }

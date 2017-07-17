@@ -2,64 +2,44 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
-use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Intracto\SecretSantaBundle\Entity\Participant;
-use Intracto\SecretSantaBundle\Entity\EmailAddress;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ParticipantController extends Controller
 {
     /**
-     * @Route("/participant/edit", name="participant_edit")
+     * @Route("/participant/edit/{listurl}/{participantId}", name="participant_edit")
+     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
+     * @Method("POST")
      */
-    public function editParticipantAction(Request $request)
+    public function editParticipantAction(Request $request, string $listurl, Participant $participant)
     {
         $name = $request->request->get('name');
-        $emailAddress = new EmailAddress($request->request->get('email'));
-        $participantId = $request->request->get('participantId');
-        $listUrl = $request->request->get('listurl');
+        $email = $request->request->get('email');
 
-        /** @var Participant $participant */
-        $participant = $this->get('intracto_secret_santa.repository.participant')->find($participantId);
-
-        if ($participant->getParty()->getListurl() === $listUrl) {
-            $emailAddressErrors = $this->get('validator')->validate($emailAddress);
-            $blacklisted = $this->get('validator')->validate($emailAddress, new ParticipantIsNotBlacklisted());
-            if ((count($emailAddressErrors) + count($blacklisted)) > 0) {
-                $return = [
-                    'responseCode' => 400,
-                    'message' => [
-                        'type' => 'danger',
-                        'message' => $this->get('translator')->trans('flashes.participant.edit_email'),
-                        ],
-                    ];
-            } else {
-                $orriginalEmail = $participant->getEmail();
-                $participant->setEmail((string) $emailAddress);
-                $participant->setName((string) $name);
-                $this->get('doctrine.orm.entity_manager')->flush($participant);
-
-                if ($orriginalEmail != $participant->getEmail() && $participant->getParty()->getCreated()) {
-                    $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
-                    $message = $this->get('translator')->trans('flashes.participant.updated_participant_resent');
-                } else {
-                    $message = $this->get('translator')->trans('flashes.participant.updated_participant');
-                }
-                $return = [
-                    'responseCode' => 200,
-                    'message' => [
-                        'type' => 'success',
-                        'message' => $message,
-                    ],
-                ];
-            }
+        if ($participant->getParty()->getListurl() !== $listurl) {
+            $this->createNotFoundException(sprintf('Party with listurl "%s" is not found.', $listurl));
         }
 
-        return new JsonResponse($return);
+        if (!$this->get('intracto_secret_santa.service.participant')->validateEmail($email)) {
+            return new JsonResponse(['success' => false, 'message' => $this->get('translator')->trans('flashes.participant.edit_email')]);
+        }
+
+        $orriginalEmail = $participant->getEmail();
+        $this->get('intracto_secret_santa.service.participant')->editParticipant($participant, $name, $email);
+
+        $message = $this->get('translator')->trans('flashes.participant.updated_participant');
+        if ($orriginalEmail !== $participant->getEmail() && $participant->getParty()->getCreated()) {
+            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
+            $message = $this->get('translator')->trans('flashes.participant.updated_participant_resent');
+        }
+
+        return new JsonResponse(['success' => true, 'message' => $message]);
     }
 
     /**
@@ -68,12 +48,7 @@ class ParticipantController extends Controller
      */
     public function removeParticipantFromPartyAction(Request $request, $listurl, Participant $participant)
     {
-        $correctCsrfToken = $this->isCsrfTokenValid(
-            'delete_participant',
-            $request->get('csrf_token')
-        );
-
-        if ($correctCsrfToken === false) {
+        if (false === $this->isCsrfTokenValid('delete_participant', $request->get('csrf_token'))) {
             $this->get('session')->getFlashBag()->add(
                 'danger',
                 $this->get('translator')->trans('flashes.participant.remove_participant.wrong')
