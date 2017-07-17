@@ -54,6 +54,7 @@ class ParticipantContext extends RawMinkContext
         $this->getSession()->getPage()->find('css', '#messagePanel')->click();
 
         JQueryHelper::scrollIntoView($this->getSession(), 'collapsedMessage');
+        JQueryHelper::scrollIntoView($this->getSession(), 'anonymous_message_form_message');
 
         $this->getSession()->getPage()->find('css', '#anonymous_message_form_message')->setValue('Test message');
 
@@ -123,5 +124,33 @@ class ParticipantContext extends RawMinkContext
         }
 
         Assert::true($itemFound, 'Wishlist item is not found');
+    }
+
+    /**
+     * @When /^I drag wishlist item "([^"]*)" to the top$/
+     */
+    public function iDragWishlistItemToTop($wishlistItem)
+    {
+        try {
+            $this->getSession()->executeScript('$("table.wishlist-items > tbody").prepend($("table.wishlist-items > tbody > tr").find(\'td:nth-child(2) > input[value="'.$wishlistItem.'"]\').parent().parent());');
+            $this->getSession()->executeScript('resetRanks();');
+            $this->getSession()->executeScript('ajaxSaveWishlist();');
+        } catch (\Exception $e) {
+            throw new \Exception(sprintf('Drag element to top failed: "%s"', $e->getMessage()));
+        }
+
+        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
+    }
+
+    /**
+     * @Then /^wishlist item "([^"]*)" should be on the top position$/
+     */
+    public function wishlistItemShouldBeOnPosition($expectedWishlistItem)
+    {
+        $itemRow = $this->getSession()->getPage()->find('css', 'table.wishlist-items > tbody > tr:first-child');
+
+        $currentValue = $itemRow->find('css', 'td:nth-child(2) > input')->getValue();
+
+        Assert::true($currentValue === $expectedWishlistItem, 'Wishlist item was not dragged to the top');
     }
 }
