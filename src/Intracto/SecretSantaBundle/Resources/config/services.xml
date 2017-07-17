@@ -64,6 +64,7 @@
         <service id="intracto_secret_santa.service.participant" class="Intracto\SecretSantaBundle\Entity\ParticipantService">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="intracto_secret_santa.service.participant_shuffler" />
+            <argument type="service" id="validator"/>
         </service>
         <service id="intracto_secret_santa.service.party" class="Intracto\SecretSantaBundle\Service\PartyService">
             <argument type="service" id="intracto_secret_santa.mailer" />

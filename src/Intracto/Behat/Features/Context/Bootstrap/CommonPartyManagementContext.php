@@ -26,6 +26,20 @@ class CommonPartyManagementContext extends RawMinkContext
     }
 
     /**
+     * @Given /^I edit the first participant email to ([^"]*)$/
+     */
+    public function iEditTheFirstParticipantEmail($email)
+    {
+        $this->getSession()->getPage()->find('css', '#mysanta > tbody > tr.participant.owner .participant-edit-icon')->click();
+
+        $this->getSession()->getPage()->find('css', '#mysanta > tbody > tr.participant.owner .input_edit_email')->setValue($email);
+
+        $this->getSession()->getPage()->find('css', '#mysanta > tbody > tr.participant.owner .save-edit')->click();
+
+        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
+    }
+
+    /**
      * @Then /^the name of the first participant should be ([^"]*)$/
      */
     public function theFirstParticipantNameShouldBeAdmin($expectedParticipantName)
@@ -33,6 +47,16 @@ class CommonPartyManagementContext extends RawMinkContext
         $participantName = $this->getSession()->getPage()->find('css', '#mysanta > tbody > tr:first-child > td.participant-name')->getText();
         
         Assert::eq($participantName, $expectedParticipantName, 'Participant name was not changed');
+    }
+
+    /**
+     * @Then /^the email address of the first participant should be ([^"]*)$/
+     */
+    public function theFirstParticipantEmailShouldBeChanged($expectedParticipantEmail)
+    {
+        $participantEmail = $this->getSession()->getPage()->find('css', '#mysanta > tbody > tr:first-child > td.participant-email')->getText();
+
+        Assert::eq($participantEmail, $expectedParticipantEmail, 'Participant email was not changed');
     }
 
     /**
