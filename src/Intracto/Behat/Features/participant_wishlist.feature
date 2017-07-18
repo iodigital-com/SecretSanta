@@ -26,4 +26,10 @@ Feature: Manage a wishlist
     And I remove an item from my wishlist
     Then I should see a success message
     When I reload the page
-    Then I should have 0 items on my wishlist
+    Then I should have 1 items on my wishlist
+
+  Scenario: As a participant I want to rearange items to my wishlist
+    Given I am on a participant page
+    When I drag wishlist item "Item 2" to the top
+    When I reload the page
+    Then wishlist item "Item 2" should be on the top position

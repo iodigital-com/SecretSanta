@@ -64,7 +64,7 @@ function bindDeleteButtonEvents() {
 }
 
 function resetRanks() {
-    $('table.participants tbody tr').each(function (i) {
+    $('table.wishlist-items tbody tr').each(function (i) {
         $(this).find('td input[type="hidden"]').val(i + 1);
         $(this).find('td span.rank').text(i + 1);
     });
@@ -137,14 +137,14 @@ jQuery(document).ready(function () {
     $('.remove-participant').removeClass('disabled');
 
     // sortable
-    $("table.participants tbody").sortable({
+    $("table.wishlist-items tbody").sortable({
         stop: function () {
             resetRanks();
             ajaxSaveWishlist();
         }
     });
 
-    $('table.participants tbody').bind('click.sortable mousedown.sortable', function (ev) {
+    $('table.wishlist-items tbody').bind('click.sortable mousedown.sortable', function (ev) {
         ev.target.focus();
     });
 

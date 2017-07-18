@@ -58,7 +58,14 @@ class LoadPartyData implements FixtureInterface
                     ->setRank(1)
                     ->setParticipant($participant);
 
-                $participant->setWishlistItems([$wishlistItem]);
+                $wishlistItem2 = new WishlistItem();
+
+                $wishlistItem2
+                    ->setDescription('Item 2')
+                    ->setRank(2)
+                    ->setParticipant($participant);
+
+                $participant->setWishlistItems([$wishlistItem, $wishlistItem2]);
             }
 
             if ($i === 2) {

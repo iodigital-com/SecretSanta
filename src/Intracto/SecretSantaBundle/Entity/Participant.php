@@ -286,7 +286,7 @@ class Participant
     }
 
     /**
-     * @return WishlistItem[]
+     * @return ArrayCollection|WishlistItem[]
      */
     public function getWishlistItems()
     {
