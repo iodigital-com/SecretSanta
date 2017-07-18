@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,6 +12,7 @@ class DumpParticipantsController extends Controller
     /**
      * @Route("/dump-participants", name="dump_participants")
      * @Template("IntractoSecretSantaBundle:Participant:dumpParticipants.html.twig")
+     * @Method("GET")
      */
     public function dumpAction()
     {

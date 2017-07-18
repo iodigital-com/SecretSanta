@@ -15,8 +15,8 @@ class PartyController extends Controller
 {
     /**
      * @Route("/party/create", name="create_party")
-     * @Method("POST")
      * @Template("IntractoSecretSantaBundle:Party:create.html.twig")
+     * @Method("POST")
      */
     public function createAction(Request $request)
     {
@@ -26,6 +26,7 @@ class PartyController extends Controller
     /**
      * @Route("/created/{listurl}", name="party_created")
      * @Template("IntractoSecretSantaBundle:Party:created.html.twig")
+     * @Method("GET")
      */
     public function createdAction(Party $party)
     {
@@ -37,6 +38,7 @@ class PartyController extends Controller
     /**
      * @Route("/reuse/{listurl}", name="party_reuse")
      * @Template("IntractoSecretSantaBundle:Party:create.html.twig")
+     * @Method("GET")
      */
     public function reuseAction(Request $request, Party $party)
     {
@@ -48,6 +50,7 @@ class PartyController extends Controller
     /**
      * @Route("/delete/{listurl}", name="party_delete")
      * @Template("IntractoSecretSantaBundle:Party:deleted.html.twig")
+     * @Method("POST")
      */
     public function deleteAction(Request $request, Party $party)
     {

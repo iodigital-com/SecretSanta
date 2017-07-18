@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,6 +14,7 @@ class ResendParticipantController extends Controller
     /**
      * @Route("/resend/{listurl}/{participantId}", name="resend_participant")
      * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
+     * @Method("GET")
      */
     public function resendAction($listurl, Participant $participant)
     {

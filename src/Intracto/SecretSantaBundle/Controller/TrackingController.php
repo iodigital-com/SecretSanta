@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Controller;
 
 use Intracto\SecretSantaBundle\Entity\Participant;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ class TrackingController extends Controller
 {
     /**
      * @Route("email/{participantUrl}.gif", name="mailopen_tracker")
+     * @Method("GET")
      */
     public function trackEmailAction($participantUrl)
     {

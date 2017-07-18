@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,6 +17,7 @@ class ShowController extends Controller
     /**
      * @Route("/participant/{url}", name="participant_view")
      * @Template("IntractoSecretSantaBundle:Participant/show:valid.html.twig")
+     * @Method("GET")
      */
     public function showAction(Request $request, Participant $participant)
     {
