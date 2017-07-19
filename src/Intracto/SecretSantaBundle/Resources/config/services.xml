@@ -125,6 +125,12 @@
         <service id="intracto_secret_santa.form_handler.wishlist" class="Intracto\SecretSantaBundle\Form\Handler\WishlistFormHandler">
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
+        <service id="intract_secret_santa.form_handler.send_message" class="Intracto\SecretSantaBundle\Form\Handler\SendMessageFormHandler">
+            <argument type="service" id="session"/>
+            <argument type="service" id="translator"/>
+            <argument type="service" id="doctrine.orm.default_entity_manager"/>
+            <argument type="service" id="intracto_secret_santa.mailer"/>
+        </service>
 
         <!-- Validators -->
         <service id="intracto_secret_santa.validator.participant_has_valid_excludes" class="Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludesValidator">
