@@ -45,6 +45,7 @@ class ParticipantController extends Controller
     /**
      * @Route("/participant/remove/{listurl}/{participantId}", name="participant_remove")
      * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
+     * @Method("POST")
      */
     public function removeParticipantFromPartyAction(Request $request, $listurl, Participant $participant)
     {

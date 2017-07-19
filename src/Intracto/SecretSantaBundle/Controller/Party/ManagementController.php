@@ -20,6 +20,7 @@ class ManagementController extends Controller
     /**
      * @Route("/manage/{listurl}", name="party_manage")
      * @Template("IntractoSecretSantaBundle:Party/manage:valid.html.twig")
+     * @Method("GET")
      */
     public function validAction(Party $party, Form $excludeForm = null)
     {
@@ -143,6 +144,7 @@ class ManagementController extends Controller
 
     /**
      * @Route("/exclude/{listurl}", name="party_exclude")
+     * @Method("POST")
      */
     public function excludeAction(Request $request, Party $party)
     {

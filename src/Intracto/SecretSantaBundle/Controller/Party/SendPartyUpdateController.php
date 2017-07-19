@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Controller\Party;
 
 use Intracto\SecretSantaBundle\Entity\Party;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -11,6 +12,7 @@ class SendPartyUpdateController extends Controller
 {
     /**
      * @Route("/send-party-update/{listurl}", name="send_party_update")
+     * @Method("GET")
      */
     public function sendPartyUpdateAction(Party $party)
     {
