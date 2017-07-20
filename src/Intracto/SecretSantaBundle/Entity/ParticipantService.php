@@ -76,4 +76,19 @@ class ParticipantService
         $this->em->persist($participant);
         $this->em->flush();
     }
+
+    public function logFirstAccess(Participant $participant, string $ip)
+    {
+        if ($participant->getViewdate() === null) {
+            $participant->setViewdate(new \DateTime());
+
+            $this->em->flush($participant);
+        }
+
+        if ($participant->getIp() === null) {
+            $participant->setIp($ip);
+
+            $this->em->flush($participant);
+        }
+    }
 }

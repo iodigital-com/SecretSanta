@@ -20,8 +20,14 @@ class UpdatePartyDetailsType extends AbstractType
             ])
             ->add('amount', TextType::class, ['label' => 'form-party.label.amount_to_spend'])
             ->add('location', TextType::class, ['label' => 'form-party.label.location'])
-            ->add('message', TextareaType::class, ['label' => 'form-party.label.message'])
         ;
+
+        // We wrap the admin's message into our own message and from 19/apr/2017 we no longer save
+        // our own message in the DB. We don't support older parties to prevent the message from occuring twice.
+        $party = $builder->getData();
+        if ($party->getCreated() || $party->getCreationDate() > new \DateTime('2017-04-20')) {
+            $builder->add('message', TextareaType::class, ['label' => 'form-party.label.message']);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

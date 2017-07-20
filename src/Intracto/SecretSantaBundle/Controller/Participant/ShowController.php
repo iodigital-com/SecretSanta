@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
@@ -27,43 +28,19 @@ class ShowController extends Controller
             ]);
         }
 
-        $wishlistForm = $this->createForm(
-            WishlistType::class,
-            $participant,
-            [
-                'action' => $this->generateUrl(
-                    'wishlist_update',
-                    ['url' => $participant->getUrl()]
-                ),
-            ]
-        );
-        $messageForm = $this->createForm(
-            AnonymousMessageFormType::class,
-            null,
-            [
-                'action' => $this->generateUrl('participant_communication_send_message'),
-            ]
-        );
+        $wishlistForm = $this->createForm(WishlistType::class, $participant, [
+            'action' => $this->generateUrl('wishlist_update', ['url' => $participant->getUrl()]),
+        ]);
+        $messageForm = $this->createForm(AnonymousMessageFormType::class, null, [
+            'action' => $this->generateUrl('participant_communication_send_message'),
+        ]);
 
-        // Log visit on first access
-        if ($participant->getViewdate() === null) {
-            $participant->setViewdate(new \DateTime());
-            $this->get('doctrine.orm.entity_manager')->flush($participant);
-        }
+        $this->get('intracto_secret_santa.service.participant')->logFirstAccess($participant, $request->getClientIp());
 
-        // Log ip address on first access
-        if ($participant->getIp() === null) {
-            $ip = $request->getClientIp();
-            $participant->setIp($ip);
-            $this->get('doctrine.orm.entity_manager')->flush($participant);
-        }
-
-        if (!$request->isXmlHttpRequest()) {
-            return [
-                'participant' => $participant,
-                'wishlistForm' => $wishlistForm->createView(),
-                'messageForm' => $messageForm->createView(),
-            ];
-        }
+        return [
+            'participant' => $participant,
+            'wishlistForm' => $wishlistForm->createView(),
+            'messageForm' => $messageForm->createView(),
+        ];
     }
 }

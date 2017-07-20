@@ -24,45 +24,24 @@ class ManagementController extends Controller
      */
     public function validAction(Party $party, Form $excludeForm = null)
     {
-        $addParticipantForm = $this->createForm(
-            AddParticipantType::class,
-            new Participant(),
-            [
-                'action' => $this->generateUrl(
-                    'party_manage_addParticipant',
-                    ['listurl' => $party->getListurl()]
-                ),
-            ]
-        );
-        $updatePartyDetailsForm = $this->createForm(
-            UpdatePartyDetailsType::class,
-            $party,
-            [
-                'action' => $this->generateUrl(
-                    'party_manage_update',
-                    ['listurl' => $party->getListurl()]
-                ),
-            ]
-        );
-
-        // We wrap the admin's message into our own message and from 19/apr/2017 we no longer save
-        // our own message in the DB. We don't support older parties to prevent the message from occuring twice.
-        if ($party->getCreated() || $party->getCreationDate() < new \DateTime('2017-04-20')) {
-            $updatePartyDetailsForm->remove('message');
-        }
-
         if ($party->getEventdate() < new \DateTime('-2 years')) {
             return $this->render('IntractoSecretSantaBundle:Party/manage:expired.html.twig', [
                 'party' => $party,
                 'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_party'),
             ]);
         }
+
+        $addParticipantForm = $this->createForm(AddParticipantType::class, new Participant(), [
+            'action' => $this->generateUrl('party_manage_addParticipant', ['listurl' => $party->getListurl()]),
+        ]);
+        $updatePartyDetailsForm = $this->createForm(UpdatePartyDetailsType::class, $party, [
+            'action' => $this->generateUrl('party_manage_update', ['listurl' => $party->getListurl()]),
+        ]);
+
         if ($excludeForm === null) {
-            $excludeForm = $this->createForm(PartyExcludeParticipantType::class, $party,
-                [
-                    'action' => $this->generateUrl('party_exclude', ['listurl' => $party->getListurl()]),
-                ]
-            );
+            $excludeForm = $this->createForm(PartyExcludeParticipantType::class, $party, [
+                'action' => $this->generateUrl('party_exclude', ['listurl' => $party->getListurl()]),
+            ]);
         }
 
         return [
