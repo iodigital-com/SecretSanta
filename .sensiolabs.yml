@@ -1,0 +1,12 @@
+global_exclude_dirs:
+    - vendor
+    - Tests
+    - web/select2
+    - src/Intracto/SecretSantaBundle/Resources/public/css/bootstrap3
+
+exclude_patterns:
+    - app/check.php
+    - app/SymfonyRequirements.php
+    - web/config.php
+    - web/app_*.php
+    - app/config/router_test_travis.php
