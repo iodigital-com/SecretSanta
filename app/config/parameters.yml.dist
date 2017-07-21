@@ -37,7 +37,7 @@ parameters:
         de: Deutsch
         no: Norsk
 
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            dq52qfQOMhxIlXnkwp62PVEpyxMisj653LzWGfR4
     adwords_password:  secret
     noreply_email:     no-reply@dev.secretsantaorganizer.com
     base_url:          dev.secretsantaorganizer.com
