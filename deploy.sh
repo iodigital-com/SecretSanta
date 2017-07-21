@@ -29,7 +29,7 @@ cp ../../shared/yandex_* web
 
 # Cleanup
 rm -rf .git .gitignore Vagrantfile shell_provisioner
-rm -rf web/app_{dev,test,test_travis}.php web/config.php
+rm -rf web/app_{dev,test,test_travis}.php
 
 # Reset permissions
 sudo chmod -R ug=rwX,o=rX ../$VERSION
