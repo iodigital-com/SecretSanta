@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Form\Handler;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\WishlistItem;
 use Symfony\Component\Form\FormInterface;
@@ -17,7 +18,7 @@ class WishlistFormHandler
      */
     private $em;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }

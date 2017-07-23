@@ -4,12 +4,14 @@ declare(strict_types=1);
 namespace Intracto\SecretSantaBundle\Form\Handler;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class AddParticipantFormHandler
@@ -39,7 +41,7 @@ class AddParticipantFormHandler
      * @param Session             $session
      * @param EntityManager       $em
      */
-    public function __construct(TranslatorInterface $translator, Session $session, EntityManager $em, MailerService $mailerService)
+    public function __construct(TranslatorInterface $translator, SessionInterface $session, EntityManagerInterface $em, MailerService $mailerService)
     {
         $this->translator = $translator;
         $this->session = $session;

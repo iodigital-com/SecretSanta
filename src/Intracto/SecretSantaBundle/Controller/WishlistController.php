@@ -5,15 +5,16 @@ namespace Intracto\SecretSantaBundle\Controller;
 
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\Party;
+use Intracto\SecretSantaBundle\Form\Handler\WishlistFormHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Intracto\SecretSantaBundle\Form\Type\WishlistType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class WishlistController extends Controller
+class WishlistController extends AbstractController
 {
     /**
      * @Route("/wishlists/show/{listurl}", name="wishlist_show_all")
@@ -29,11 +30,10 @@ class WishlistController extends Controller
      * @Route("/wishlist/update/{url}", name="wishlist_update")
      * @Method("POST")
      */
-    public function updateAction(Request $request, Participant $participant) : JsonResponse
+    public function updateAction(Request $request, Participant $participant, WishlistFormHandler $handler) : JsonResponse
     {
         $wishlistForm = $this->createForm(WishlistType::class, $participant);
 
-        $handler = $this->get('intracto_secret_santa.form_handler.wishlist');
         if ($handler->handle($wishlistForm, $request)) {
             return new JsonResponse(['success' => true, 'message' => 'Added!']);
         }

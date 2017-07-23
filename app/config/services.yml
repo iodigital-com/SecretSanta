@@ -1,0 +1,58 @@
+imports:
+    - { resource: legacy_aliases.yml }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Intracto\SecretSantaBundle\:
+        resource: '../../src/Intracto/SecretSantaBundle/{Command,EventListener,Form/Handler,Mailer,Query,Service,Twig}'
+#        resource: '../../src/Intracto/SecretSantaBundle/*'
+        exclude: '../../src/Intracto/SecretSantaBundle/{Entity,Tests,Query/GaParameters.php,Query/NoResultException.php}'
+
+    Intracto\SecretSantaBundle\Controller\:
+        resource: '../../src/Intracto/SecretSantaBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    Intracto\SecretSantaBundle\Mailer\MailerService:
+        arguments:
+            $noreplyEmail: '%noreply_email%'
+
+    Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery:
+        arguments:
+            $viewId: '%ga_view_id%'
+            $clientSecret: '%kernel.root_dir%/config/client_secrets.json'
+
+    Intracto\SecretSantaBundle\Form\Extension\DateTypeExtension:
+        tags:
+          - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
+
+    Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludesValidator:
+        tags:
+          - { name: validator.constraint_validator, alias: intracto_secret_santa.validator.participant_has_valid_excludes }
+
+    Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator:
+        tags:
+          - { name: validator.constraint_validator, alias: intracto_secret_santa.validator.party_has_valid_excludes }
+
+    Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklistedValidator:
+        tags:
+          - { name: validator.constraint_validator, alias: intracto_secret_santa.validator.participant_is_not_blacklisted }
+
+    Twig\Extensions\TextExtension:
+        tags:
+            - name: twig.extension
+
+    Twig\Extensions\IntlExtension:
+        tags:
+            - { name: twig.extension }
+
+    cache:
+        class: Doctrine\Common\Cache\ApcuCache
+
+    Intracto\SecretSantaBundle\EventListener\RequestInfoLogger:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }

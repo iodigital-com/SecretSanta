@@ -3,14 +3,32 @@ declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
+use Intracto\SecretSantaBundle\Mailer\MailerService;
+use Intracto\SecretSantaBundle\Service\UnsubscribeService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Intracto\SecretSantaBundle\Entity\Participant;
+use Symfony\Component\Translation\TranslatorInterface;
 
-class ResendParticipantController extends Controller
+class ResendParticipantController extends AbstractController
 {
+    private $unsubscribeService;
+    private $translator;
+    private $mailerService;
+
+    public function __construct(
+        UnsubscribeService $unsubscribeService,
+        TranslatorInterface $translator,
+        MailerService $mailerService
+    )
+    {
+        $this->unsubscribeService = $unsubscribeService;
+        $this->translator = $translator;
+        $this->mailerService = $mailerService;
+    }
+
     /**
      * @Route("/resend/{listurl}/{participantId}", name="resend_participant")
      * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
@@ -22,12 +40,12 @@ class ResendParticipantController extends Controller
             $this->createNotFoundException();
         }
 
-        if ($this->get('intracto_secret_santa.service.unsubscribe')->isBlacklisted($participant)) {
-            $this->addFlash('danger', $this->get('translator')->trans('flashes.resend_participant.blacklisted'));
+        if ($this->unsubscribeService->isBlacklisted($participant)) {
+            $this->addFlash('danger', $this->translator->trans('flashes.resend_participant.blacklisted'));
         } else {
-            $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
+            $this->mailerService->sendSecretSantaMailForParticipant($participant);
 
-            $this->addFlash('success', $this->get('translator')->trans('flashes.resend_participant.resent', ['%email%' => $participant->getName()]));
+            $this->addFlash('success', $this->translator->trans('flashes.resend_participant.resent', ['%email%' => $participant->getName()]));
         }
 
         return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);

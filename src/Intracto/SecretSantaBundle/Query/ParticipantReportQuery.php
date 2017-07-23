@@ -2,8 +2,9 @@
 
 namespace Intracto\SecretSantaBundle\Query;
 
-use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Driver\Connection;
 use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
 class ParticipantReportQuery
 {
@@ -24,7 +25,7 @@ class ParticipantReportQuery
      */
     public function __construct(
         Connection $dbal,
-        Router $router,
+        RouterInterface $router,
         PartyReportQuery $partyReportQuery,
         FeaturedYearsQuery $featuredYearsQuery
     ) {

@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace Intracto\SecretSantaBundle\Service;
 
 use Doctrine\ORM\EntityManager;
-use Intracto\SecretSantaBundle\Entity\ParticipantService;
+use Doctrine\ORM\EntityManagerInterface;
+use Intracto\SecretSantaBundle\Service\ParticipantService;
 use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
 
@@ -25,7 +26,7 @@ class PartyService
      */
     private $participantService;
 
-    public function __construct(MailerService $mailerService, EntityManager $em, ParticipantService $participantService)
+    public function __construct(MailerService $mailerService, EntityManagerInterface $em, ParticipantService $participantService)
     {
         $this->mailerService = $mailerService;
         $this->em = $em;

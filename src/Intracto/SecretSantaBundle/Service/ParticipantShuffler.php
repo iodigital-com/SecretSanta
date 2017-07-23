@@ -1,6 +1,8 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Entity;
+namespace Intracto\SecretSantaBundle\Service;
+
+use Intracto\SecretSantaBundle\Entity\Party;
 
 class ParticipantShuffler
 {

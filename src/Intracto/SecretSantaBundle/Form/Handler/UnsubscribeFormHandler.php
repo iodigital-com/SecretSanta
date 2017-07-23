@@ -8,6 +8,7 @@ use Intracto\SecretSantaBundle\Service\UnsubscribeService;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class UnsubscribeFormHandler
@@ -32,7 +33,7 @@ class UnsubscribeFormHandler
      * @param Session             $session
      * @param UnsubscribeService  $unsubscribeService
      */
-    public function __construct(TranslatorInterface $translator, Session $session, UnsubscribeService $unsubscribeService)
+    public function __construct(TranslatorInterface $translator, SessionInterface $session, UnsubscribeService $unsubscribeService)
     {
         $this->translator = $translator;
         $this->session = $session;

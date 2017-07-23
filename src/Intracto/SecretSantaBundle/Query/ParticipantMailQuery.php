@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Query;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Entity\Participant;
 
 class ParticipantMailQuery
@@ -13,7 +14,7 @@ class ParticipantMailQuery
     /**
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }

@@ -2,7 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Validator;
 
-use Intracto\SecretSantaBundle\Entity\ParticipantShuffler;
+use Intracto\SecretSantaBundle\Service\ParticipantShuffler;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
