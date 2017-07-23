@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller;
 
@@ -23,7 +24,7 @@ class UnsubscribeController extends Controller
         $handler = $this->get('intracto_secret_santa.form_handler.unsubcribe');
 
         if ($handler->handle($form, $request, $participant)) {
-            return $this->redirect($this->generateUrl('homepage'));
+            return $this->redirectToRoute('homepage');
         }
 
         return [

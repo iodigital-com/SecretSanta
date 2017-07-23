@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Party;
 
@@ -6,7 +7,6 @@ use Intracto\SecretSantaBundle\Entity\Party;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SendPartyUpdateController extends Controller
 {
@@ -20,11 +20,8 @@ class SendPartyUpdateController extends Controller
 
         $this->get('intracto_secret_santa.mailer')->sendPartyUpdateMailForParty($party, $results);
 
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $this->get('translator')->trans('flashes.send_party_update.success')
-        );
+        $this->addFlash('success', $this->get('translator')->trans('flashes.send_party_update.success'));
 
-        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
+        return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
     }
 }

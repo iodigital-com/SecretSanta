@@ -24,7 +24,7 @@ class ForgotURLController extends Controller
         $handler = $this->get('intracto_secret_santa.form_handler.forgot_url');
 
         if ($handler->handle($form, $request)) {
-            return $this->redirect($this->generateUrl('homepage'));
+            return $this->redirectToRoute('homepage');
         }
 
         return [

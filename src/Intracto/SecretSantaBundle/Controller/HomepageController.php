@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller;
 
@@ -18,13 +19,9 @@ class HomepageController extends Controller
      */
     public function indexAction()
     {
-        $partyForm = $this->createForm(
-            PartyType::class,
-            new Party(),
-            [
-                'action' => $this->generateUrl('create_party'),
-            ]
-        );
+        $partyForm = $this->createForm(PartyType::class, new Party(), [
+            'action' => $this->generateUrl('create_party'),
+        ]);
 
         return [
             'form' => $partyForm->createView(),

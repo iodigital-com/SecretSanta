@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Party;
 
@@ -54,23 +55,17 @@ class PartyController extends Controller
      */
     public function deleteAction(Request $request, Party $party)
     {
-        $correctCsrfToken = $this->isCsrfTokenValid(
-            'delete_party',
-            $request->get('csrf_token')
-        );
+        $correctCsrfToken = $this->isCsrfTokenValid('delete_party', $request->get('csrf_token'));
         $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($this->get('translator')->trans('party_manage_valid.delete.phrase_to_type')));
 
         if ($correctConfirmation === false || $correctCsrfToken === false) {
-            $this->get('session')->getFlashBag()->add(
-                'error',
-                $this->get('translator')->trans('flashes.party.not_deleted')
-            );
+            $this->addFlash('error', $this->get('translator')->trans('flashes.party.not_deleted'));
 
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
+            return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
         }
 
-        $this->get('doctrine.orm.entity_manager')->remove($party);
-        $this->get('doctrine.orm.entity_manager')->flush();
+        $this->getDoctrine()->getManager()->remove($party);
+        $this->getDoctrine()->getManager()->flush();
     }
 
     /**
@@ -89,9 +84,7 @@ class PartyController extends Controller
         $handler = $this->get('intracto_secret_santa.form_handler.party');
 
         if ($handler->handle($form, $request)) {
-            return $this->redirect(
-                $this->generateUrl('party_created', ['listurl' => $party->getListurl()])
-            );
+            return $this->redirectToRoute('party_created', ['listurl' => $party->getListurl()]);
         }
 
         return [
