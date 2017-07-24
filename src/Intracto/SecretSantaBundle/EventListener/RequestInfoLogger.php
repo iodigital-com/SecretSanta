@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\EventListener;
 
 use Psr\Log\LoggerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\KernelEvents;
 
-class RequestInfoLogger
+class RequestInfoLogger implements EventSubscriberInterface
 {
     /** @var LoggerInterface */
     private $logger;
@@ -24,5 +27,15 @@ class RequestInfoLogger
             $this->logger->debug('GET values '.serialize($this->requestStack->getMasterRequest()->query->all()));
             $this->logger->debug('POST values '.serialize($this->requestStack->getMasterRequest()->request->all()));
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            KernelEvents::EXCEPTION => 'onKernelException',
+        ];
     }
 }

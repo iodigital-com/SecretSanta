@@ -8,9 +8,9 @@ services:
         public: false
 
     Intracto\SecretSantaBundle\:
-        resource: '../../src/Intracto/SecretSantaBundle/{Command,EventListener,Form/Handler,Mailer,Query,Service,Twig}'
+        resource: '../../src/Intracto/SecretSantaBundle/{Command,EventListener,Form/Handler,Mailer,Query,Service,Twig,Validator}'
 #        resource: '../../src/Intracto/SecretSantaBundle/*'
-        exclude: '../../src/Intracto/SecretSantaBundle/{Entity,Tests,Query/GaParameters.php,Query/NoResultException.php}'
+        exclude: '../../src/Intracto/SecretSantaBundle/{Entity,Tests,Query/GaParameters.php,Query/NoResultException.php,Resources}'
 
     Intracto\SecretSantaBundle\Controller\:
         resource: '../../src/Intracto/SecretSantaBundle/Controller'
@@ -52,7 +52,3 @@ services:
 
     cache:
         class: Doctrine\Common\Cache\ApcuCache
-
-    Intracto\SecretSantaBundle\EventListener\RequestInfoLogger:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }
