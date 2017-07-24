@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
@@ -50,32 +51,23 @@ class ParticipantController extends Controller
     public function removeParticipantFromPartyAction(Request $request, $listurl, Participant $participant)
     {
         if (false === $this->isCsrfTokenValid('delete_participant', $request->get('csrf_token'))) {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.participant.remove_participant.wrong')
-            );
+            $this->addFlash('danger', $this->get('translator')->trans('flashes.participant.remove_participant.wrong'));
 
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
+            return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
         }
 
         $participants = $participant->getParty()->getParticipants();
 
         if (count($participants) <= 3) {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.participant.remove_participant.danger')
-            );
+            $this->addFlash('danger', $this->get('translator')->trans('flashes.participant.remove_participant.danger'));
 
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
+            return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
         }
 
         if ($participant->isPartyAdmin()) {
-            $this->get('session')->getFlashBag()->add(
-                'warning',
-                $this->get('translator')->trans('flashes.participant.remove_participant.warning')
-            );
+            $this->addFlash('warning', $this->get('translator')->trans('flashes.participant.remove_participant.warning'));
 
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
+            return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
         }
 
         $excludeCount = 0;
@@ -87,21 +79,15 @@ class ParticipantController extends Controller
         }
 
         if ($excludeCount > 0 && $participant->getParty()->getCreated()) {
-            $this->get('session')->getFlashBag()->add(
-                'warning',
-                $this->get('translator')->trans('flashes.participant.remove_participant.excluded_participants')
-            );
+            $this->addFlash('warning', $this->get('translator')->trans('flashes.participant.remove_participant.excluded_participants'));
 
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
+            return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
         }
 
         if ($excludeCount > 0 && count($participants) == 4) {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.participant.remove_participant.not_enough_for_exclude')
-            );
+            $this->addFlash('danger', $this->get('translator')->trans('flashes.participant.remove_participant.not_enough_for_exclude'));
 
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
+            return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
         }
 
         if ($participant->getParty()->getCreated()) {
@@ -111,34 +97,28 @@ class ParticipantController extends Controller
 
             // if A -> B -> A we can't delete B anymore or A is assigned to A
             if ($participant->getAssignedParticipant()->getAssignedParticipant()->getId() === $participant->getId()) {
-                $this->get('session')->getFlashBag()->add(
-                    'warning',
-                    $this->get('translator')->trans('flashes.participant.remove_participant.self_assigned')
-                );
+                $this->addFlash('warning', $this->get('translator')->trans('flashes.participant.remove_participant.self_assigned'));
 
-                return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
+                return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
             }
 
-            $this->get('doctrine.orm.entity_manager')->remove($participant);
-            $this->get('doctrine.orm.entity_manager')->flush();
+            $this->getDoctrine()->getManager()->remove($participant);
+            $this->getDoctrine()->getManager()->flush();
 
             $assignedParticipant->setAssignedParticipant($secretSanta);
-            $this->get('doctrine.orm.entity_manager')->persist($assignedParticipant);
-            $this->get('doctrine.orm.entity_manager')->flush();
+            $this->getDoctrine()->getManager()->persist($assignedParticipant);
+            $this->getDoctrine()->getManager()->flush();
 
             if ($assignedParticipant->isSubscribed()) {
                 $this->get('intracto_secret_santa.mailer')->sendRemovedSecretSantaMail($assignedParticipant);
             }
         } else {
-            $this->get('doctrine.orm.entity_manager')->remove($participant);
-            $this->get('doctrine.orm.entity_manager')->flush();
+            $this->getDoctrine()->getManager()->remove($participant);
+            $this->getDoctrine()->getManager()->flush();
         }
 
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $this->get('translator')->trans('flashes.participant.remove_participant.success')
-        );
+        $this->addFlash('success', $this->get('translator')->trans('flashes.participant.remove_participant.success'));
 
-        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $listurl]));
+        return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Party;
 
@@ -9,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Form\Type\AddParticipantType;
 use Intracto\SecretSantaBundle\Form\Type\UpdatePartyDetailsType;
@@ -64,25 +64,19 @@ class ManagementController extends Controller
         $updatePartyDetailsForm->handleRequest($request);
 
         if ($updatePartyDetailsForm->isSubmitted() && $updatePartyDetailsForm->isValid()) {
-            $this->get('doctrine.orm.entity_manager')->persist($party);
-            $this->get('doctrine.orm.entity_manager')->flush();
+            $this->getDoctrine()->getManager()->persist($party);
+            $this->getDoctrine()->getManager()->flush();
 
             if ($party->getCreated()) {
                 $this->get('intracto_secret_santa.mailer')->sendPartyUpdatedMailsForParty($party);
             }
 
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.management.updated_party.success')
-            );
+            $this->addFlash('success', $this->get('translator')->trans('flashes.management.updated_party.success'));
         } else {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.management.updated_party.danger')
-            );
+            $this->addFlash('danger', $this->get('translator')->trans('flashes.management.updated_party.danger'));
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
+        return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
     }
 
     /**
@@ -97,7 +91,7 @@ class ManagementController extends Controller
 
         $handler->handle($addParticipantForm, $request, $party);
 
-        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
+        return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
     }
 
     /**
@@ -107,18 +101,12 @@ class ManagementController extends Controller
     public function startPartyAction(Party $party)
     {
         if ($this->get('intracto_secret_santa.service.party')->startParty($party)) {
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('flashes.management.start_party.success')
-            );
+            $this->addFlash('success', $this->get('translator')->trans('flashes.management.start_party.success'));
         } else {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('flashes.management.start_party.danger')
-            );
+            $this->addFlash('danger', $this->get('translator')->trans('flashes.management.start_party.danger'));
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
+        return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
     }
 
     /**
@@ -128,29 +116,24 @@ class ManagementController extends Controller
     public function excludeAction(Request $request, Party $party)
     {
         if (count($party->getParticipants()) <= 3) {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->get('translator')->trans('party_manage_valid.excludes.not_enough')
-            );
+            $this->addFlash('danger', $this->get('translator')->trans('party_manage_valid.excludes.not_enough'));
 
-            return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
+            return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
         }
 
         $form = $this->createForm(PartyExcludeParticipantType::class, $party);
         if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                $this->get('doctrine.orm.entity_manager')->persist($party);
-                $this->get('doctrine.orm.entity_manager')->flush();
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    $this->get('translator')->trans('flashes.management.excludes.success')
-                );
+                $this->getDoctrine()->getManager()->persist($party);
+                $this->getDoctrine()->getManager()->flush();
+
+                $this->addFlash('success', $this->get('translator')->trans('flashes.management.excludes.success'));
             } else {
                 return $this->forward('IntractoSecretSantaBundle:Party/Management:valid', array('listurl' => $party->getListurl(), 'excludeForm' => $form));
             }
         }
 
-        return $this->redirect($this->generateUrl('party_manage', ['listurl' => $party->getListurl()]));
+        return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
     }
 }

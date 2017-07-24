@@ -24,7 +24,7 @@ class ReuseController extends Controller
         $handler = $this->get('intracto_secret_santa.form_handler.reuse');
 
         if ($handler->handle($form, $request)) {
-            return $this->redirect($this->generateUrl('homepage'));
+            return $this->redirectToRoute('homepage');
         }
 
         return [
