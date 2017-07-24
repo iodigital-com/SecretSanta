@@ -60,23 +60,3 @@ jms_i18n_routing:
     default_locale: "%locale%"
     locales: "%supported_locales%"
     strategy: prefix_except_default
-
-#services:
-#    twig.text_extension:
-#        class: Twig_Extensions_Extension_Text
-#        tags:
-#            - name: twig.extension
-#
-#    twig.intl_extension:
-#        class: Twig_Extensions_Extension_Intl
-#        tags:
-#            - { name: twig.extension }
-#
-#    cache:
-#        class: Doctrine\Common\Cache\ApcuCache
-#
-#    app.exception_listener:
-#        class: Intracto\SecretSantaBundle\EventListener\RequestInfoLogger
-#        arguments: ["@logger", "@request_stack"]
-#        tags:
-#            - { name: kernel.event_listener, event: kernel.exception }

@@ -4,7 +4,9 @@ namespace Intracto\SecretSantaBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Intracto\SecretSantaBundle\Entity\EmailAddress;
 use Intracto\SecretSantaBundle\Entity\Participant;
+use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 

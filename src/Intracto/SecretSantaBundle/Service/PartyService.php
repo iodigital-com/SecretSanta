@@ -5,7 +5,6 @@ namespace Intracto\SecretSantaBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Intracto\SecretSantaBundle\Service\ParticipantService;
 use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
 

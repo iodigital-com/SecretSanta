@@ -6,22 +6,14 @@ services:
     intracto_secret_santa.service.participant_shuffler: '@Intracto\SecretSantaBundle\Service\ParticipantShuffler'
     intracto_secret_santa.service.unsubscribe: '@Intracto\SecretSantaBundle\Service\UnsubscribeService'
 
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    intracto_secret_santa.query.report: '@intracto_secret_santa.query.report'
-#    <service id="intracto_secret_santa.query.report" class="Intracto\SecretSantaBundle\Query\ReportQuery">
-#    <service id="intracto_secret_santa.query.party_report" class="Intracto\SecretSantaBundle\Query\PartyReportQuery">
-#    <service id="intracto_secret_santa.query.participant_report" class="Intracto\SecretSantaBundle\Query\ParticipantReportQuery">
-#    <service id="intracto_secret_santa.query.ip_report" class="Intracto\SecretSantaBundle\Query\IpReportQuery">
-#    <service id="intracto_secret_santa.query.wishlist_report" class="Intracto\SecretSantaBundle\Query\WishlistReportQuery">
-#    <service id="intracto_secret_santa.query.featured_years_report" class="Intracto\SecretSantaBundle\Query\FeaturedYearsQuery">
-#    <service id="intracto_secret_santa.query.google_analytics" class="Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery">
-#    <service id="intracto_secret_santa.query.season_comparison_report" class="Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery">
-#    <service id="intracto_secret_santa.query.participant_mail" class="Intracto\SecretSantaBundle\Query\ParticipantMailQuery">
-#    <service id="intracto_secret_santa.query.wishlist_mail" class="Intracto\SecretSantaBundle\Query\WishlistMailQuery">
-#    <service id="intracto_secret_santa.query.bounce" class="Intracto\SecretSantaBundle\Query\BounceQuery">
+    intracto_secret_santa.query.report: '@Intracto\SecretSantaBundle\Query\ReportQuery'
+    intracto_secret_santa.query.party_report: '@Intracto\SecretSantaBundle\Query\PartyReportQuery'
+    intracto_secret_santa.query.participant_report: '@Intracto\SecretSantaBundle\Query\ParticipantReportQuery'
+    intracto_secret_santa.query.ip_report: '@Intracto\SecretSantaBundle\Query\IpReportQuery'
+    intracto_secret_santa.query.wishlist_report: '@Intracto\SecretSantaBundle\Query\WishlistReportQuery'
+    intracto_secret_santa.query.featured_years_report: '@Intracto\SecretSantaBundle\Query\FeaturedYearsQuery'
+    intracto_secret_santa.query.google_analytics: '@Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery'
+    intracto_secret_santa.query.season_comparison_report: '@Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery'
+    intracto_secret_santa.query.participant_mail: '@Intracto\SecretSantaBundle\Query\ParticipantMailQuery'
+    intracto_secret_santa.query.wishlist_mail: '@Intracto\SecretSantaBundle\Query\WishlistMailQuery'
+    intracto_secret_santa.query.bounce: '@Intracto\SecretSantaBundle\Query\BounceQuery'
