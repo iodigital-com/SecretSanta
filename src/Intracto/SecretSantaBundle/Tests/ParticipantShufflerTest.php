@@ -3,8 +3,8 @@
 namespace Intracto\SecretSantaBundle\Tests;
 
 use Intracto\SecretSantaBundle\Entity\Participant;
-use Intracto\SecretSantaBundle\Entity\ParticipantShuffler;
 use Intracto\SecretSantaBundle\Entity\Party;
+use Intracto\SecretSantaBundle\Service\ParticipantShuffler;
 use PHPUnit\Framework\TestCase;
 
 class ParticipantShufflerTest extends TestCase
