@@ -8,7 +8,7 @@ This test suite uses google chrome to run the behat features. To run the tests l
 Start selenium with the google chrome webdriver
 
 ```bash
-bin/selenium-server-standalone -Dwebdriver.chrome.driver=/path/to/chromedriver
+PATH="/path/to/chromedriver:$PATH" bin/selenium-server-standalone
 ```
 
 Start the behat suite

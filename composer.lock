@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecc4b78aa1c861691b970138f9e8d413",
+    "content-hash": "aea027e53454affe036063d0a8dad0e5",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -5346,16 +5346,16 @@
         },
         {
             "name": "se/selenium-server-standalone",
-            "version": "v2.53.1",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sveneisenschmidt/selenium-server-standalone.git",
-                "reference": "ef4eea9c99efb9c0e3084e9cae625662ccd43361"
+                "reference": "86da4447676b2dfd00688ac43db102cf831682af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sveneisenschmidt/selenium-server-standalone/zipball/ef4eea9c99efb9c0e3084e9cae625662ccd43361",
-                "reference": "ef4eea9c99efb9c0e3084e9cae625662ccd43361",
+                "url": "https://api.github.com/repos/sveneisenschmidt/selenium-server-standalone/zipball/86da4447676b2dfd00688ac43db102cf831682af",
+                "reference": "86da4447676b2dfd00688ac43db102cf831682af",
                 "shasum": ""
             },
             "require-dev": {
@@ -5381,7 +5381,7 @@
                 "selenium",
                 "testing"
             ],
-            "time": "2016-07-01T14:16:52+00:00"
+            "time": "2017-04-27T11:26:21+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
