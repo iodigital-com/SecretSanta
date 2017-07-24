@@ -1,5 +1,5 @@
 {
-  "name": "IntractoAdminBundle",
+  "name": "Intracto/SecretSanta",
   "version": "1.0.0",
   "private": true,
   "main": "gulpfile.js",

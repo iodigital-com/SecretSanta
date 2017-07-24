@@ -16,12 +16,12 @@ var onError = function(err) {
 /* Watch for scss changes and compile 'styles' task */
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch('./scss/**/*.scss', ['sass']);
+    gulp.watch('./src/Intracto/SecretSantaBundle/Resources/public/scss/**/*.scss', ['sass']);
 });
 
 gulp.task('sass', function() {
 
-    var styles = gulp.src('./scss/**/*.scss')
+    var styles = gulp.src('./src/Intracto/SecretSantaBundle/Resources/public/scss/**/*.scss')
         .pipe(plumber({
             errorHandler: onError
         }))
@@ -31,25 +31,25 @@ gulp.task('sass', function() {
             cascade: false
         }))
         .pipe(livereload())
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./src/Intracto/SecretSantaBundle/Resources/public/css'));
 });
 
 gulp.task('uglify', function() {
-    gulp.src(['./js/*.js', '!./js/*.min.js'])
+    gulp.src(['./src/Intracto/SecretSantaBundle/Resources/public/js/*.js', '!./src/Intracto/SecretSantaBundle/Resources/public/js/*.min.js'])
         .pipe(uglify())
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./js'));
+        .pipe(gulp.dest('./src/Intracto/SecretSantaBundle/Resources/public/js'));
 });
 
 gulp.task('minifyCSS', function () {
-    gulp.src(['./css/*.css', '!./css/*.min.css', '!./css/main.css'])
+    gulp.src(['./src/Intracto/SecretSantaBundle/Resources/public/css/*.css', '!./src/Intracto/SecretSantaBundle/Resources/public/css/*.min.css', '!./src/Intracto/SecretSantaBundle/Resources/public/css/main.css'])
         .pipe(minifyCSS())
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./src/Intracto/SecretSantaBundle/Resources/public/css'));
 });
 
 gulp.task('build', [
