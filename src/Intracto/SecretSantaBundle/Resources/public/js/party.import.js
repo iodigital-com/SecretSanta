@@ -1,3 +1,6 @@
+require('jquery-csv');
+var createModule = require('./party.create');
+
 /* Variables */
 var collectionHolder = $('table.participants tbody');
 var dropImportCSV = document.getElementById('importCSV');
@@ -70,10 +73,10 @@ jQuery(document).ready(function () {
                     } else {
                         // prevent lookup on next iteration
                         lookForEmpty = false;
-                        addNewParticipant(collectionHolder, email, name);
+                        createModule.addNewParticipant(collectionHolder, email, name);
                     }
                 } else {
-                    addNewParticipant(collectionHolder, email, name);
+                    createModule.addNewParticipant(collectionHolder, email, name);
                 }
                 added++;
             }

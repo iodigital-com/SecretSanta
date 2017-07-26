@@ -32,5 +32,6 @@
     </div>
 {% endblock %}
 {% block javascripts %}
+    {{ parent() }}
     {% include 'IntractoSecretSantaBundle:Report:javascripts.html.twig' %}
 {% endblock %}

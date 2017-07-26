@@ -17,17 +17,9 @@
               href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"/>
     {% endfor %}
 
-    {% stylesheets
-    'bundles/intractosecretsanta/css/bootstrap3/bootstrap.min.css'
-    'bundles/intractosecretsanta/css/font-awesome/css/font-awesome.min.css'
-    'bundles/intractosecretsanta/css/jquery-ui.min.css'
-    'bundles/intractosecretsanta/css/jquery-ui.theme.min.css'
-    'bundles/intractosecretsanta/css/main.css'
-    'bundles/intractosecretsanta/css/update.min.css'
-    'bundles/intractosecretsanta/css/mediaqueries.min.css'
-    filter='cssrewrite' %}
-    <link href="{{ asset_url }}" rel="stylesheet" media="screen"/>
-    {% endstylesheets %}
+    <link href="{{ asset('build/css/main.css') }}" rel="stylesheet" media="screen"/>
+    <link href="{{ asset('build/css/update.css') }}" rel="stylesheet" media="screen"/>
+    <link href="{{ asset('build/css/mediaqueries.css') }}" rel="stylesheet" media="screen"/>
     {% block stylesheets %}{% endblock %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css" />
     <style>
@@ -130,15 +122,10 @@
     </div>
 </div>
 
-{% javascripts
-'@IntractoSecretSantaBundle/Resources/public/js/modernizr.custom.min.js'
-'@IntractoSecretSantaBundle/Resources/public/js/jquery-3.2.0.min.js'
-'@IntractoSecretSantaBundle/Resources/public/js/jquery-ui-1.12.4.min.js'
-'@IntractoSecretSantaBundle/Resources/public/js/secretsanta.min.js'
-'@IntractoSecretSantaBundle/Resources/public/js/bootstrap.min.js'
-%}
-<script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('build/manifest.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/vendor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/secretsanta.js') }}"></script>
+{% endblock %}
 </body>
 </html>
