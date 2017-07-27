@@ -2,6 +2,7 @@
 
 namespace Intracto\Behat\Features\Context\Bootstrap;
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Intracto\Behat\Page\Homepage;
 use Intracto\Behat\Page\ParticipantExclude;
@@ -136,5 +137,37 @@ class PartyContext extends RawMinkContext
     public function confirmExcludesCreateParty()
     {
         $this->partyCreatedPage = $this->participantExcludePage->confirmExcludes();
+    }
+
+    /**
+     * @Given /^I add a csv of data for (\d+) participants$/
+     */
+    public function iAddACsvOfDataForParticipants($participantCount)
+    {
+        if ($participantCount <= 0) {
+            throw new \LogicException('Invalid participant count');
+        }
+
+        $i = 0;
+        $csvData = "Name,Mailaddress\r\n";
+        while ($participantCount >= 0) {
+            $csvData .= "test{$i},test{$i}@test.com\r\n";
+            ++$i;
+            --$participantCount;
+        }
+
+        $this->getSession()->getPage()->find('css', 'button.add-import-participant')->click();
+        $this->getSession()->getPage()->find('css', 'textarea#importCSV')->setValue($csvData);
+        $this->getSession()->getPage()->find('css', 'button.add-import-participant-do')->click();
+    }
+
+    /**
+     * @Then /^I should have a form with (\d+) participants$/
+     */
+    public function iShouldHaveAFormWithParticipants($expectedParticipantCount)
+    {
+        $nodes = $this->getSession()->getPage()->findAll('table.participants > tbody > tr.participant');
+
+        Assert::eq(count($nodes), $expectedParticipantCount, 'Incorrect participant count');
     }
 }
