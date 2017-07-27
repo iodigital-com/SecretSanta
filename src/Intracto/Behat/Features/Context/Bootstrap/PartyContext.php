@@ -2,75 +2,50 @@
 
 namespace Intracto\Behat\Features\Context\Bootstrap;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\MinkExtension\Context\RawMinkContext;
-use Intracto\Behat\Page\Homepage;
-use Intracto\Behat\Page\ParticipantExclude;
-use Intracto\Behat\Page\PartyCreated;
+use Intracto\Behat\Services\JQueryHelper;
 use Webmozart\Assert\Assert;
 
 class PartyContext extends RawMinkContext
 {
     /**
-     * @var array
-     */
-    private $participants;
-
-    /**
-     * @var string
-     */
-    private $location;
-
-    /**
-     * @var string
-     */
-    private $amount;
-
-    /**
-     * @var string
-     */
-    private $partyDate;
-
-    /**
-     * @var int
-     */
-    private $memberCount;
-
-    /**
-     * @var Homepage
-     */
-    private $homepage;
-
-    /**
-     * @var ParticipantExclude
-     */
-    private $participantExcludePage;
-
-    /**
-     * @var PartyCreated
-     */
-    private $partyCreatedPage;
-
-    /**
-     * @param Homepage $homepage
-     */
-    public function __construct(Homepage $homepage)
-    {
-        $this->homepage = $homepage;
-    }
-
-    /**
      * @When /^(?:|I) create a party with (?P<memberCount>[0-9]+) participants$/
      */
     public function setupParty($memberCount)
     {
-        $this->memberCount = $memberCount;
-
         $i = 0;
-        while ($i < $this->memberCount) {
-            $this->participants[] = ['name' => 'test'.$i, 'email' => 'test'.$i.'@test.com'];
+        $participants = [];
+        while ($i < $memberCount) {
+            $participants[] = ['name' => 'test'.$i, 'email' => 'test'.$i.'@test.com'];
 
             ++$i;
+        }
+
+        if (count($participants) > 3) {
+            //We need to add extra lines to the participant form
+            $extraLineCount = count($participants) - 3;
+
+            while ($extraLineCount > 0) {
+                $this->getSession()->getPage()->find('css', '.add-btn-create.add-new-participant')->click();
+
+                --$extraLineCount;
+            }
+        }
+
+        $tableRows = $this->getSession()->getPage()->findAll('css', '.participants.table > tbody > tr.participant');
+
+        $i = 0;
+        foreach ($tableRows as $tableRow) {
+            /* @var $tableRow \Behat\Mink\Element\NodeElement */
+            $participantName = $tableRow->find('css', '.participant-name');
+            $participantMail = $tableRow->find('css', '.participant-mail');
+
+            if ($participantName) {
+                $participantName->setValue($participants[$i]['name']);
+                $participantMail->setValue($participants[$i]['email']);
+
+                ++$i;
+            }
         }
     }
 
@@ -79,7 +54,7 @@ class PartyContext extends RawMinkContext
      */
     public function setLocation()
     {
-        $this->location = 'Intracto';
+        $this->getSession()->getPage()->find('css', '#party_location')->setValue('Intracto');
     }
 
     /**
@@ -87,7 +62,7 @@ class PartyContext extends RawMinkContext
      */
     public function setAmount()
     {
-        $this->amount = rand(10, 100).' Euro';
+        $this->getSession()->getPage()->find('css', '#party_amount')->setValue('10 Euro');
     }
 
     /**
@@ -98,7 +73,7 @@ class PartyContext extends RawMinkContext
         $currentDate = new \DateTime();
         $partyDate = $currentDate->add(new \DateInterval('P2M'));
 
-        $this->partyDate = $partyDate->format('d-m-Y');
+        $this->getSession()->getPage()->find('css', '#party_eventdate')->setValue($partyDate->format('d-m-Y'));
     }
 
     /**
@@ -106,7 +81,7 @@ class PartyContext extends RawMinkContext
      */
     public function createParty()
     {
-        $this->partyCreatedPage = $this->homepage->createParty($this->participants, $this->location, $this->amount, $this->partyDate);
+        $this->getSession()->getPage()->find('css', '.btn-create-event')->click();
     }
 
     /**
@@ -114,29 +89,9 @@ class PartyContext extends RawMinkContext
      */
     public function confirmationPage()
     {
-        Assert::true(
-            $this->partyCreatedPage->hasConfirmationHeader(),
-            'The confirmaton text could not be found on the page'
-        );
-    }
+        $element = $this->getSession()->getPage()->find('css', '.box > h1');
 
-    /**
-     * @Then /^(?:|I) should be able to exclude participant combinations$/
-     */
-    public function excludePage()
-    {
-        Assert::true(
-            $this->participantExcludePage->hasExcludeHeader(),
-            'The exclude header could not be found on the page'
-        );
-    }
-
-    /**
-     * @When /^(?:|I) confirm the excludes and create the party$/
-     */
-    public function confirmExcludesCreateParty()
-    {
-        $this->partyCreatedPage = $this->participantExcludePage->confirmExcludes();
+        Assert::eq($element->getText(), 'Only 1 step to go! - Validate your participation', 'The confirmaton text could not be found on the page');
     }
 
     /**
@@ -150,13 +105,16 @@ class PartyContext extends RawMinkContext
 
         $i = 0;
         $csvData = "Name,Mailaddress\r\n";
-        while ($participantCount >= 0) {
+        while ($participantCount > 0) {
             $csvData .= "test{$i},test{$i}@test.com\r\n";
             ++$i;
             --$participantCount;
         }
 
         $this->getSession()->getPage()->find('css', 'button.add-import-participant')->click();
+
+        JQueryHelper::scrollIntoView($this->getSession(), 'importCSV');
+
         $this->getSession()->getPage()->find('css', 'textarea#importCSV')->setValue($csvData);
         $this->getSession()->getPage()->find('css', 'button.add-import-participant-do')->click();
     }
@@ -166,8 +124,8 @@ class PartyContext extends RawMinkContext
      */
     public function iShouldHaveAFormWithParticipants($expectedParticipantCount)
     {
-        $nodes = $this->getSession()->getPage()->findAll('table.participants > tbody > tr.participant');
+        $nodes = $this->getSession()->getPage()->findAll('css', 'table.participants > tbody > tr.participant');
 
-        Assert::eq(count($nodes), $expectedParticipantCount, 'Incorrect participant count');
+        Assert::eq(count($nodes), $expectedParticipantCount, 'Incorrect participant count ' . count($nodes));
     }
 }

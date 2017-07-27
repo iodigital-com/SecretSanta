@@ -112,13 +112,15 @@
                     </button>
                 </p>
             {{ form_end(form) }}
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-8492783089085834"
-                 data-ad-slot="2437486509"
-                 data-ad-format="auto"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            {% if app.environment not in ['test', 'test_travis'] %}
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="2437486509"
+                     data-ad-format="auto"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            {% endif %}
         </div>
 
         {% include 'IntractoSecretSantaBundle:Party:createCopy.html.twig' %}
