@@ -8,8 +8,7 @@ services:
         public: false
 
     Intracto\SecretSantaBundle\:
-        resource: '../../src/Intracto/SecretSantaBundle/{Command,EventListener,Form/Handler,Mailer,Query,Service,Twig,Validator}'
-#        resource: '../../src/Intracto/SecretSantaBundle/*'
+        resource: '../../src/Intracto/SecretSantaBundle/*'
         exclude: '../../src/Intracto/SecretSantaBundle/{Entity,Tests,Query/GaParameters.php,Query/NoResultException.php,Resources}'
 
     Intracto\SecretSantaBundle\Controller\:
@@ -30,25 +29,8 @@ services:
         tags:
           - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
 
-    Intracto\SecretSantaBundle\Validator\ParticipantHasValidExcludesValidator:
-        tags:
-          - { name: validator.constraint_validator, alias: intracto_secret_santa.validator.participant_has_valid_excludes }
-
-    Intracto\SecretSantaBundle\Validator\PartyHasValidExcludesValidator:
-        tags:
-          - { name: validator.constraint_validator, alias: intracto_secret_santa.validator.party_has_valid_excludes }
-
-    Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklistedValidator:
-        tags:
-          - { name: validator.constraint_validator, alias: intracto_secret_santa.validator.participant_is_not_blacklisted }
-
-    Twig\Extensions\TextExtension:
-        tags:
-            - name: twig.extension
-
-    Twig\Extensions\IntlExtension:
-        tags:
-            - { name: twig.extension }
-
     cache:
         class: Doctrine\Common\Cache\ApcuCache
+
+    Twig\Extensions\TextExtension: ~
+    Twig\Extensions\IntlExtension: ~
