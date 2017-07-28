@@ -58,8 +58,3 @@ default:
             screenshot: false
 
         FriendsOfBehat\PerformanceExtension: ~
-
-        SensioLabs\Behat\PageObjectExtension:
-          namespaces:
-            page:
-              - Intracto\Behat\Page

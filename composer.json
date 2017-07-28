@@ -37,7 +37,6 @@
         "se/selenium-server-standalone": "^3.4",
         "friends-of-behat/performance-extension": "^1.0",
         "lakion/mink-debug-extension": "^1.2",
-        "sensiolabs/behat-page-object-extension": "^2.0",
         "webmozart/assert": "^1.1",
         "friendsofphp/php-cs-fixer": "^2.2",
         "phpro/grumphp": "^0.11.4",
