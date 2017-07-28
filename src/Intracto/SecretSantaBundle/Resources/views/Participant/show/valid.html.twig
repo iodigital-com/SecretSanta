@@ -209,8 +209,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts '@IntractoSecretSantaBundle/Resources/public/js/wishlist.min.js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script type="text/javascript" src="{{ asset('build/js/wishlist.js') }}"></script>
     {{ form_javascript(wishlistForm) }}
 {% endblock %}

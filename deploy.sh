@@ -24,7 +24,6 @@ composer.phar install --no-dev --classmap-authoritative
 
 # Install assets
 app/console assets:install web
-app/console assetic:dump --env=${SYMFONY_ENV} --no-debug
 cp ../../shared/yandex_* web
 
 # Cleanup

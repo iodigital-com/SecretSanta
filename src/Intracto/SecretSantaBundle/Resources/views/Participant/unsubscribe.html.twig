@@ -27,6 +27,7 @@
     </div>
 {% endblock main %}
 {% block javascripts%}
+    {{ parent() }}
     <script type="text/javascript">
         $('#unsubscribe_blacklist').change(function(){
             $('#blacklistAlert').toggle();

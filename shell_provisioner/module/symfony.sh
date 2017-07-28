@@ -16,6 +16,5 @@ composer.phar install
 
 php app/console doctrine:schema:create
 php app/console assets:install
-php app/console assetic:dump
 
 cd -

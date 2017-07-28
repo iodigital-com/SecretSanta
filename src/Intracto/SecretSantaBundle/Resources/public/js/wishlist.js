@@ -1,3 +1,6 @@
+require('jquery-ui/ui/widgets/sortable');
+require('jquery-ui/ui/disable-selection');
+
 function addNewParticipant(collectionHolder) {
 
     // remove .noitems if present

@@ -1,0 +1,22 @@
+{
+  "name": "SecretSanta",
+  "private": true,
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.11.0",
+    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery-csv": "^0.8.3",
+    "jquery-smooth-scroll": "^2.2.0",
+    "jquery-ui": "^1.12.1",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6"
+  },
+  "scripts": {
+    "dev-server": "./node_modules/.bin/encore dev-server",
+    "dev": "./node_modules/.bin/encore dev",
+    "watch": "./node_modules/.bin/encore dev --watch",
+    "build": "./node_modules/.bin/encore production"
+  }
+}

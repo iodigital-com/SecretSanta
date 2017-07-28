@@ -7,4 +7,3 @@ app/console doctrine:schema:update --force --env=test_travis || exit $?
 
 echo "Setting the web assets up"
 app/console assets:install --env=test_travis --no-debug -vvv || exit $?
-app/console assetic:dump --env=test_travis --no-debug || exit $?

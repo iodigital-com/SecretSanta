@@ -127,13 +127,9 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-    {% javascripts
-        '@IntractoSecretSantaBundle/Resources/public/js/jquery.smooth-scroll.min.js'
-        '@IntractoSecretSantaBundle/Resources/public/js/jquery.csv-0.71.min.js'
-        '@IntractoSecretSantaBundle/Resources/public/js/party.create.min.js'
-        '@IntractoSecretSantaBundle/Resources/public/js/party.import.min.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('build/js/party.create.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/party.import.js') }}"></script>
     {{ form_javascript(form) }}
     <script type="text/javascript">
         if (Modernizr.inputtypes.date == true) {

@@ -133,8 +133,7 @@ class ParticipantContext extends RawMinkContext
     {
         try {
             $this->getSession()->executeScript('$("table.wishlist-items > tbody").prepend($("table.wishlist-items > tbody > tr").find(\'td:nth-child(2) > input[value="'.$wishlistItem.'"]\').parent().parent());');
-            $this->getSession()->executeScript('resetRanks();');
-            $this->getSession()->executeScript('ajaxSaveWishlist();');
+            $this->getSession()->executeScript('$("table.wishlist-items > tbody").sortable(\'option\', \'stop\')();');
         } catch (\Exception $e) {
             throw new \Exception(sprintf('Drag element to top failed: "%s"', $e->getMessage()));
         }

@@ -1,3 +1,9 @@
+require('jquery-smooth-scroll');
+
+exports.addNewParticipant = function(collectionHolder, email, name) {
+    addNewParticipant(collectionHolder, email, name);
+};
+
 function addNewParticipant(collectionHolder, email, name) {
     // Get participant prototype as defined in attribute data-prototype
     var prototype = collectionHolder.attr('data-prototype');
