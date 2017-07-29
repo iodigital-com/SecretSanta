@@ -56,9 +56,6 @@ phpunit.phar -c app
 
 Note, don't worry if you see the shell provisioning print a lot of red lines. It all works fine.
 
-Building the frontend:
+## Documentation
 
-```
-cd /vagrant/src/Intracto/SecretSantaBundle/Resources/public
-gulp build
-```
+See our [docs section](docs/README.md) for information about behat, assets, ...
