@@ -27,8 +27,8 @@ Encore
 
     .addStyleEntry('css/main', [
         './src/Intracto/SecretSantaBundle/Resources/public/scss/main.scss',
-        './src/Intracto/SecretSantaBundle/Resources/public/css/jquery-ui.min.css',
-        './src/Intracto/SecretSantaBundle/Resources/public/css/jquery-ui.theme.min.css'
+        'jquery-ui/themes/base/core.css',
+        'jquery-ui/themes/base/sortable.css',
     ])
 
     .addStyleEntry('css/update', './src/Intracto/SecretSantaBundle/Resources/public/css/update.css')
