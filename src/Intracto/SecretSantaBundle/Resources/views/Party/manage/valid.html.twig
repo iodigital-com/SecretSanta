@@ -16,7 +16,10 @@
         <span id="alertspan"></span>
         <h1>{{ 'party_manage_valid.manage.title'|trans }}</h1>
 
-        <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;">
+        <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;"
+               data-editurl="{{ path("participant_edit", { 'listurl': 'listUrl', 'participantId': 'participantId' }) }}"
+               data-save-btn-text="{{ 'party_manage_valid.manage.save'|trans }}"
+        >
             <thead>
                 <tr>
                     <th class="col-xs-1 participant-number-header">#</th>
@@ -37,7 +40,7 @@
                     <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
-                             onclick="editParticipant('{{ party.listUrl }}', {{ participant.id }});"
+                             data-listurl="{{ party.listUrl }}" data-participant-id="{{ participant.id }}"
                              rel="tooltip" title="{{ 'party_manage_valid.manage.edit_email'|trans }}" alt="{{ 'party_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;"
                              class="participant-edit-icon"
@@ -59,7 +62,7 @@
                                      alt="{{ 'party_manage_valid.manage.view_participant'|trans }}">
                             </a>
                         {% endif %}
-                        <button class="btn btn-mini link_remove_participant" data-participant="{{ participant.id }}">
+                        <button class="btn btn-mini link_remove_participant" data-participant="{{ participant.id }}" data-listurl="{{ party.listurl }}">
                             <i class="fa fa-times"></i>
                         </button>
                     </td>
@@ -110,7 +113,7 @@
                 {{ 'party_manage_valid.remove_participant.party_started'|trans|raw }}
             {% endif %}
             <br>
-            <form id="delete-participant-form" method="post">
+            <form id="delete-participant-form" method="post" data-action="{{ path('participant_remove', {'listurl': 'listUrl', 'participantId': 'participantId'}) }}">
                 <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
                 <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
                         id="btn_remove_participant_confirmation">
@@ -275,12 +278,14 @@
 {% block javascripts %}
     {{ parent() }}
     {{ form_javascript(updatePartyDetailsForm) }}
-    {% include 'IntractoSecretSantaBundle:Party/manage:valid.js.twig' %}
     <script src="{{ asset('/select2/select2.min.js') }}"></script>
-    <script>
+    <script type="text/javascript" src="{{ asset('build/js/party.manage.js') }}"></script>
+    <script type="text/javascript">
         $(document).ready(function () {
-            $('.js-selector-participant').select2();
-        })
+            {% if excludeForm.vars.errors |length %}
+                showExcludeErrors();
+            {% endif %}
+        });
     </script>
 {% endblock %}
 
