@@ -29,6 +29,18 @@ services:
         tags:
           - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
 
+    Intracto\SecretSantaBundle\Entity\PartyRepository:
+        class: Doctrine\ORM\EntityRepository
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments:
+            - 'IntractoSecretSantaBundle:Party'
+
+    Intracto\SecretSantaBundle\Entity\ParticipantRepository:
+        class: Doctrine\ORM\EntityRepository
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments:
+            - 'IntractoSecretSantaBundle:Participant'
+
     cache:
         class: Doctrine\Common\Cache\ApcuCache
 
