@@ -2,9 +2,6 @@ services:
     intracto_secret_santa.mailer: '@Intracto\SecretSantaBundle\Mailer\MailerService'
     intracto_secret_santa.service.participant: '@Intracto\SecretSantaBundle\Service\ParticipantService'
     intracto_secret_santa.service.party: '@Intracto\SecretSantaBundle\Service\PartyService'
-    intracto_secret_santa.service.export: '@Intracto\SecretSantaBundle\Service\ExportService'
-    intracto_secret_santa.service.participant_shuffler: '@Intracto\SecretSantaBundle\Service\ParticipantShuffler'
-    intracto_secret_santa.service.unsubscribe: '@Intracto\SecretSantaBundle\Service\UnsubscribeService'
 
     intracto_secret_santa.query.report: '@Intracto\SecretSantaBundle\Query\ReportQuery'
     intracto_secret_santa.query.party_report: '@Intracto\SecretSantaBundle\Query\PartyReportQuery'
