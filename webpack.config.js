@@ -22,13 +22,15 @@ Encore
     .addEntry('js/party.create', './src/Intracto/SecretSantaBundle/Resources/public/js/party.create.js')
     .addEntry('js/party.import', './src/Intracto/SecretSantaBundle/Resources/public/js/party.import.js')
 
+    .addEntry('js/party.manage', './src/Intracto/SecretSantaBundle/Resources/public/js/party.manage.js')
+
     .addEntry('js/secretsanta', './src/Intracto/SecretSantaBundle/Resources/public/js/secretsanta.js')
     .addEntry('js/wishlist', './src/Intracto/SecretSantaBundle/Resources/public/js/wishlist.js')
 
     .addStyleEntry('css/main', [
         './src/Intracto/SecretSantaBundle/Resources/public/scss/main.scss',
-        './src/Intracto/SecretSantaBundle/Resources/public/css/jquery-ui.min.css',
-        './src/Intracto/SecretSantaBundle/Resources/public/css/jquery-ui.theme.min.css'
+        'jquery-ui/themes/base/core.css',
+        'jquery-ui/themes/base/sortable.css',
     ])
 
     .addStyleEntry('css/update', './src/Intracto/SecretSantaBundle/Resources/public/css/update.css')
