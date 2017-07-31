@@ -2,7 +2,7 @@
   "name": "SecretSanta",
   "private": true,
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.11.0",
+    "@symfony/webpack-encore": "^0.12.0",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
