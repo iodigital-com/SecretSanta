@@ -3,9 +3,8 @@
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
 {% block stylesheets %}
-    {% stylesheets 'bundles/intractosecretsanta/css/report.min.css' %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
-    {% endstylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/report.css') }}" type="text/css"/>
 {% endblock stylesheets %}
 {% block main %}
     <div class="box">
