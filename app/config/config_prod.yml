@@ -25,6 +25,6 @@ monolog:
         swift:
             type:       swift_mailer
             from_email: "%noreply_email%"
-            to_email:   tom.vanlooy@intracto.com
+            to_email:   info@secretsantaorganizer.com
             subject:    "Secretsanata: An Error Occurred!"
             level:      debug
