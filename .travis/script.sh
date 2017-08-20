@@ -22,7 +22,7 @@ PATH=$PATH:$BUILD_CACHE_DIR bin/selenium-server-standalone > $TRAVIS_BUILD_DIR/s
 
 # Run phpunit tests (Temporary re-enable xdebug to generate coverage report)
 phpenv config-add ~/xdebug.ini
-phpunit -c app/phpunit.xml.dist --coverage-text || exit $?
+bin/phpunit -c app/phpunit.xml.dist --coverage-text || exit $?
 phpenv config-rm xdebug.ini
 
 # Run webserver
