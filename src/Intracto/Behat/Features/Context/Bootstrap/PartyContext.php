@@ -81,6 +81,8 @@ class PartyContext extends RawMinkContext
      */
     public function createParty()
     {
+        JQueryHelper::scrollIntoView($this->getSession(), 'create-party-btn');
+
         $this->getSession()->getPage()->find('css', '.btn-create-event')->click();
     }
 
