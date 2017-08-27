@@ -41,8 +41,6 @@ services:
         arguments:
             - 'IntractoSecretSantaBundle:Participant'
 
-    cache:
-        class: Doctrine\Common\Cache\ApcuCache
-
+    Doctrine\Common\Cache\ApcuCache: ~
     Twig\Extensions\TextExtension: ~
     Twig\Extensions\IntlExtension: ~

@@ -17,3 +17,5 @@ services:
 
     intracto_secret_santa.repository.party: '@Intracto\SecretSantaBundle\Entity\PartyRepository'
     intracto_secret_santa.repository.participant: '@Intracto\SecretSantaBundle\Entity\ParticipantRepository'
+
+    cache: '@Doctrine\Common\Cache\ApcuCache'
