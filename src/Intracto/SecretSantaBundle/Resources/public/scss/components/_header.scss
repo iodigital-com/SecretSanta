@@ -5,7 +5,7 @@
 .header {
   background: #97c1bd;
   position: relative;
-  min-height: 315px;
+  min-height: 190px;
   @extend .clearfix;
 
   .container {
@@ -15,7 +15,7 @@
 }
 
 #header {
-  height: 373px;
+  height: 190px;
   margin-bottom: 70px;
 }
 
@@ -84,8 +84,7 @@
 }
 
 .header__logo {
-  padding: 40px 0;
-  padding-bottom: 24px;
+  padding: 14px 0 24px;
 }
 
 a.btn-started {

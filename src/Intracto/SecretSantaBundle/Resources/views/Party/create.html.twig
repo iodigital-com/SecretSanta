@@ -1,22 +1,24 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 
-{% block header %}
-    <div class="steps">
-        <h2>{{ 'party-create.header.steps.title'|trans|raw }}</h2>
-        <ul class="liststyle1">
-            <li><span class="icon-steps">1</span> {{ 'party-create.header.steps.list.one'|trans }}</li>
-            <li><span class="icon-steps">2</span> {{ 'party-create.header.steps.list.two'|trans }}</li>
-            <li><span class="icon-steps">3</span> {{ 'party-create.header.steps.list.three'|trans }}</li>
-        </ul>
-        <div class="text-center">
-            <a href="#mysanta" class="btn-started">{{ 'party-create.header.steps.get_started'|trans }}</a>
-        </div>
-    </div>
-{% endblock %}
 {% block main %}
-    <div class="box">
-        <h2>{{ 'party-create.what_is.title'|trans }}</h2>
-        {{ 'party-create.what_is.intro'|trans|raw }}
+    <div class="intro">
+        <div class="col-xs-12 col-md-8">
+            <h2>{{ 'party-create.what_is.title'|trans }}</h2>
+            {{ 'party-create.what_is.intro'|trans|raw }}
+        </div>
+        <div class="col-md-4 hidden-sm hidden-xs">
+            <div class="steps">
+                <h2>{{ 'party-create.header.steps.title'|trans|raw }}</h2>
+                <ul class="liststyle1">
+                    <li><span class="icon-steps">1</span> {{ 'party-create.header.steps.list.one'|trans }}</li>
+                    <li><span class="icon-steps">2</span> {{ 'party-create.header.steps.list.two'|trans }}</li>
+                    <li><span class="icon-steps">3</span> {{ 'party-create.header.steps.list.three'|trans }}</li>
+                </ul>
+                <div class="text-center">
+                    <a href="#mysanta" class="btn-started">{{ 'party-create.header.steps.get_started'|trans }}</a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="content-container" id="mysanta">
         <div class="santa-content">
