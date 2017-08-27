@@ -2,13 +2,34 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
+use Doctrine\ORM\EntityManagerInterface;
+use Intracto\SecretSantaBundle\Mailer\MailerService;
+use Intracto\SecretSantaBundle\Query\ParticipantMailQuery;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManager;
 
-class SendParticipantViewReminderCommand extends ContainerAwareCommand
+class SendParticipantViewReminderCommand extends Command
 {
+    private $em;
+    private $participantMailQuery;
+    private $mailerService;
+
+    public function __construct(
+        EntityManagerInterface $em,
+        ParticipantMailQuery $participantMailQuery,
+        MailerService $mailerService
+    )
+    {
+        $this->em = $em;
+        $this->participantMailQuery = $participantMailQuery;
+        $this->mailerService = $mailerService;
+
+        parent::__construct();
+    }
+
     /**
      * Configure the command options.
      */
@@ -29,28 +50,22 @@ class SendParticipantViewReminderCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $container = $this->getContainer();
-        /** @var EntityManager $em */
-        $em = $container->get('doctrine')->getManager();
-        /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $participantMailQuery */
-        $participantMailQuery = $container->get('intracto_secret_santa.query.participant_mail');
-        $mailerService = $container->get('intracto_secret_santa.mailer');
-        $needsViewReminder = $participantMailQuery->findAllToRemindToViewParticipant();
+        $needsViewReminder = $this->participantMailQuery->findAllToRemindToViewParticipant();
         $timeNow = new \DateTime();
 
         try {
             foreach ($needsViewReminder as $participant) {
-                $mailerService->sendParticipantViewReminderMail($participant);
+                $this->mailerService->sendParticipantViewReminderMail($participant);
 
                 $participant->setViewReminderSentTime($timeNow);
-                $em->persist($participant);
+                $this->em->persist($participant);
             }
 
-            $em->flush();
+            $this->em->flush();
         } catch (\Exception $e) {
             throw $e;
         } finally {
-            $em->flush();
+            $this->em->flush();
         }
     }
 }

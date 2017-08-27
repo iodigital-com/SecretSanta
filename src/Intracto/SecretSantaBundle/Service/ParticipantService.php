@@ -1,8 +1,12 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Entity;
+namespace Intracto\SecretSantaBundle\Service;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Intracto\SecretSantaBundle\Entity\EmailAddress;
+use Intracto\SecretSantaBundle\Entity\Participant;
+use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -23,7 +27,7 @@ class ParticipantService
      */
     private $validator;
 
-    public function __construct(EntityManager $em, ParticipantShuffler $participantShuffler, ValidatorInterface $validator)
+    public function __construct(EntityManagerInterface $em, ParticipantShuffler $participantShuffler, ValidatorInterface $validator)
     {
         $this->em = $em;
         $this->participantShuffler = $participantShuffler;

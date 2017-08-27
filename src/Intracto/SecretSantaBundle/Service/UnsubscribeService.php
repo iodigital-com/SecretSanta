@@ -2,11 +2,13 @@
 
 namespace Intracto\SecretSantaBundle\Service;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Entity\BlacklistEmail;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Router;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Routing\RouterInterface;
 
 class UnsubscribeService
 {
@@ -15,14 +17,7 @@ class UnsubscribeService
     /** @var Router */
     public $router;
 
-    /**
-     * @param EntityManager $em
-     * @param Router        $router
-     */
-    public function __construct(
-        EntityManager $em,
-        Router $router
-    ) {
+    public function __construct(EntityManagerInterface $em, RouterInterface $router) {
         $this->em = $em;
         $this->router = $router;
     }

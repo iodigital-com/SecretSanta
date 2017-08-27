@@ -7,9 +7,9 @@ use Intracto\SecretSantaBundle\Entity\Party;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ExposeParticipantsController extends Controller
+class ExposeParticipantsController extends AbstractController
 {
     /**
      * @Route("/participants/expose/{listurl}", name="expose_participants")

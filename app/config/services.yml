@@ -1,0 +1,48 @@
+imports:
+    - { resource: legacy_aliases.yml }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Intracto\SecretSantaBundle\:
+        resource: '../../src/Intracto/SecretSantaBundle/*'
+        exclude: '../../src/Intracto/SecretSantaBundle/{Entity,Tests,Query/GaParameters.php,Query/NoResultException.php,Resources}'
+
+    Intracto\SecretSantaBundle\Controller\:
+        resource: '../../src/Intracto/SecretSantaBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    Intracto\SecretSantaBundle\Mailer\MailerService:
+        arguments:
+            $noreplyEmail: '%noreply_email%'
+
+    Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery:
+        arguments:
+            $viewId: '%ga_view_id%'
+            $clientSecret: '%kernel.root_dir%/config/client_secrets.json'
+
+    Intracto\SecretSantaBundle\Form\Extension\DateTypeExtension:
+        tags:
+          - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
+
+    Intracto\SecretSantaBundle\Entity\PartyRepository:
+        class: Doctrine\ORM\EntityRepository
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments:
+            - 'IntractoSecretSantaBundle:Party'
+
+    Intracto\SecretSantaBundle\Entity\ParticipantRepository:
+        class: Doctrine\ORM\EntityRepository
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments:
+            - 'IntractoSecretSantaBundle:Participant'
+
+    cache:
+        class: Doctrine\Common\Cache\ApcuCache
+
+    Twig\Extensions\TextExtension: ~
+    Twig\Extensions\IntlExtension: ~

@@ -2,7 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Query;
 
-use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Driver\Connection;
 use Intracto\SecretSantaBundle\Entity\Participant;
 
 class WishlistMailQuery

@@ -6,11 +6,11 @@ namespace Intracto\SecretSantaBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Intracto\SecretSantaBundle\Form\Type\PartyType;
 use Intracto\SecretSantaBundle\Entity\Party;
 
-class HomepageController extends Controller
+class HomepageController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")

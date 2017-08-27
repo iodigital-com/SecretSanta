@@ -90,6 +90,8 @@ class ParticipantController extends Controller
             return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
         }
 
+        $em = $this->getDoctrine()->getManager();
+
         if ($participant->getParty()->getCreated()) {
             $secretSanta = $participant->getAssignedParticipant();
             $assignedParticipantId = $this->get('intracto_secret_santa.query.participant_report')->findBuddyByParticipantId($participant->getId());
@@ -102,19 +104,19 @@ class ParticipantController extends Controller
                 return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
             }
 
-            $this->getDoctrine()->getManager()->remove($participant);
-            $this->getDoctrine()->getManager()->flush();
+            $em->remove($participant);
+            $em->flush();
 
             $assignedParticipant->setAssignedParticipant($secretSanta);
-            $this->getDoctrine()->getManager()->persist($assignedParticipant);
-            $this->getDoctrine()->getManager()->flush();
+            $em->persist($assignedParticipant);
+            $em->flush();
 
             if ($assignedParticipant->isSubscribed()) {
                 $this->get('intracto_secret_santa.mailer')->sendRemovedSecretSantaMail($assignedParticipant);
             }
         } else {
-            $this->getDoctrine()->getManager()->remove($participant);
-            $this->getDoctrine()->getManager()->flush();
+            $em->remove($participant);
+            $em->flush();
         }
 
         $this->addFlash('success', $this->get('translator')->trans('flashes.participant.remove_participant.success'));

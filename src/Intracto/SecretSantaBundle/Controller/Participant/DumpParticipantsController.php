@@ -3,19 +3,20 @@ declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
+use Intracto\SecretSantaBundle\Entity\ParticipantRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class DumpParticipantsController extends Controller
+class DumpParticipantsController extends AbstractController
 {
     /**
      * @Route("/dump-participants", name="dump_participants")
      * @Template("IntractoSecretSantaBundle:Participant:dumpParticipants.html.twig")
      * @Method("GET")
      */
-    public function dumpAction()
+    public function dumpAction(ParticipantRepository $repository)
     {
         $this->denyAccessUnlessGranted('ROLE_ADWORDS');
 
@@ -23,7 +24,7 @@ class DumpParticipantsController extends Controller
         $startCrawling->sub(new \DateInterval('P4M'));
 
         return [
-            'participants' => $this->get('intracto_secret_santa.repository.participant')->findAfter($startCrawling),
+            'participants' => $repository->findAfter($startCrawling),
         ];
     }
 }

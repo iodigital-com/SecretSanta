@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Intracto\SecretSantaBundle\Controller\Party;
 
 use Intracto\SecretSantaBundle\Entity\Party;
+use Intracto\SecretSantaBundle\Form\Handler\AddParticipantFormHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -83,11 +84,9 @@ class ManagementController extends Controller
      * @Route("/manage/addParticipant/{listurl}", name="party_manage_addParticipant")
      * @Method("POST")
      */
-    public function addParticipantAction(Request $request, Party $party)
+    public function addParticipantAction(Request $request, Party $party, AddParticipantFormHandler $handler)
     {
         $addParticipantForm = $this->createForm(AddParticipantType::class, new Participant());
-
-        $handler = $this->get('intract_secret_santa.form_handler.add_participant');
 
         $handler->handle($addParticipantForm, $request, $party);
 

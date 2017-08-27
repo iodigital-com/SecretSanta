@@ -3,7 +3,9 @@
 namespace Intracto\SecretSantaBundle\Mailer;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Service\UnsubscribeService;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -37,10 +39,10 @@ class MailerService
      */
     public function __construct(
         \Swift_Mailer $mailer,
-        EntityManager $em,
+        EntityManagerInterface $em,
         EngineInterface $templating,
         TranslatorInterface $translator,
-        Router $routing,
+        RouterInterface $routing,
         UnsubscribeService $unsubscribeService,
         $noreplyEmail
     ) {

@@ -1,0 +1,19 @@
+services:
+    intracto_secret_santa.mailer: '@Intracto\SecretSantaBundle\Mailer\MailerService'
+    intracto_secret_santa.service.participant: '@Intracto\SecretSantaBundle\Service\ParticipantService'
+    intracto_secret_santa.service.party: '@Intracto\SecretSantaBundle\Service\PartyService'
+
+    intracto_secret_santa.query.report: '@Intracto\SecretSantaBundle\Query\ReportQuery'
+    intracto_secret_santa.query.party_report: '@Intracto\SecretSantaBundle\Query\PartyReportQuery'
+    intracto_secret_santa.query.participant_report: '@Intracto\SecretSantaBundle\Query\ParticipantReportQuery'
+    intracto_secret_santa.query.ip_report: '@Intracto\SecretSantaBundle\Query\IpReportQuery'
+    intracto_secret_santa.query.wishlist_report: '@Intracto\SecretSantaBundle\Query\WishlistReportQuery'
+    intracto_secret_santa.query.featured_years_report: '@Intracto\SecretSantaBundle\Query\FeaturedYearsQuery'
+    intracto_secret_santa.query.google_analytics: '@Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery'
+    intracto_secret_santa.query.season_comparison_report: '@Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery'
+    intracto_secret_santa.query.participant_mail: '@Intracto\SecretSantaBundle\Query\ParticipantMailQuery'
+    intracto_secret_santa.query.wishlist_mail: '@Intracto\SecretSantaBundle\Query\WishlistMailQuery'
+    intracto_secret_santa.query.bounce: '@Intracto\SecretSantaBundle\Query\BounceQuery'
+
+    intracto_secret_santa.repository.party: '@Intracto\SecretSantaBundle\Entity\PartyRepository'
+    intracto_secret_santa.repository.participant: '@Intracto\SecretSantaBundle\Entity\ParticipantRepository'

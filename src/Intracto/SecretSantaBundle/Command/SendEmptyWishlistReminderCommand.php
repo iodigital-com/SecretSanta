@@ -2,13 +2,38 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
+use Doctrine\ORM\EntityManagerInterface;
+use Intracto\SecretSantaBundle\Mailer\MailerService;
+use Intracto\SecretSantaBundle\Query\ParticipantMailQuery;
+use Intracto\SecretSantaBundle\Query\WishlistMailQuery;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManager;
 
-class SendEmptyWishlistReminderCommand extends ContainerAwareCommand
+class SendEmptyWishlistReminderCommand extends Command
 {
+    private $em;
+    private $participantMailQuery;
+    private $wishlistMailQuery;
+    private $mailerService;
+
+    public function __construct(
+        EntityManagerInterface $em,
+        ParticipantMailQuery $participantMailQuery,
+        WishlistMailQuery $wishlistMailQuery,
+        MailerService $mailerService
+    )
+    {
+        $this->em = $em;
+        $this->participantMailQuery = $participantMailQuery;
+        $this->wishlistMailQuery = $wishlistMailQuery;
+        $this->mailerService = $mailerService;
+
+        parent::__construct();
+    }
+
     /**
      * Configure the command options.
      */
@@ -29,34 +54,24 @@ class SendEmptyWishlistReminderCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $container = $this->getContainer();
-        /** @var EntityManager $em */
-        $em = $container->get('doctrine')->getManager();
-        /** @var \Intracto\SecretSantaBundle\Query\ParticipantMailQuery $participantMailQuery */
-        $participantMailQuery = $container->get('intracto_secret_santa.query.participant_mail');
-        /** @var \Intracto\SecretSantaBundle\Query\WishlistMailQuery $wishlistMailQuery */
-        $wishlistMailQuery = $container->get('intracto_secret_santa.query.wishlist_mail');
-        /** @var \Intracto\SecretSantaBundle\Mailer\MailerService $mailerService */
-        $mailerService = $container->get('intracto_secret_santa.mailer');
-
-        $emptyWishlistsParticipant = $participantMailQuery->findAllToRemindOfEmptyWishlist();
+        $emptyWishlistsParticipant = $this->participantMailQuery->findAllToRemindOfEmptyWishlist();
         $timeNow = new \DateTime();
 
         try {
             foreach ($emptyWishlistsParticipant as $participant) {
-                $itemCount = $wishlistMailQuery->countWishlistItemsOfParticipant($participant);
+                $itemCount = $this->wishlistMailQuery->countWishlistItemsOfParticipant($participant);
 
                 if ($itemCount[0]['wishlistItemCount'] == 0) {
-                    $mailerService->sendWishlistReminderMail($participant);
+                    $this->mailerService->sendWishlistReminderMail($participant);
 
                     $participant->setEmptyWishlistReminderSentTime($timeNow);
-                    $em->persist($participant);
+                    $this->em->persist($participant);
                 }
             }
         } catch (\Exception $e) {
             throw $e;
         } finally {
-            $em->flush();
+            $this->em->flush();
         }
     }
 }

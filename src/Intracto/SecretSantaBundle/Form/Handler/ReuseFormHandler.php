@@ -7,6 +7,7 @@ use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class ReuseFormHandler
@@ -31,7 +32,7 @@ class ReuseFormHandler
      * @param Session             $session
      * @param MailerService       $mailer
      */
-    public function __construct(TranslatorInterface $translator, Session $session, MailerService $mailer)
+    public function __construct(TranslatorInterface $translator, SessionInterface $session, MailerService $mailer)
     {
         $this->translator = $translator;
         $this->session = $session;
