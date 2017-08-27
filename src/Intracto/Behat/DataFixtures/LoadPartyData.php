@@ -31,6 +31,7 @@ class LoadPartyData implements FixtureInterface
         $party->setLocation('Test');
         $party->setMessage('Test message');
         $party->setCreated(true);
+        $party->setSentdate(new \DateTime());
 
         /** @var Participant[] $participants */
         $participants = [];
