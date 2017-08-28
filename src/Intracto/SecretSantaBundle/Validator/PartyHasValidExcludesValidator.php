@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Validator;
 
+use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Service\ParticipantShuffler;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -18,6 +19,11 @@ class PartyHasValidExcludesValidator extends ConstraintValidator
 
     public function validate($party, Constraint $constraint)
     {
+        //TODO: workaround for validator being applied to form and field (field == participant entity)
+        if (!$party instanceof Party) {
+            return;
+        }
+
         if (!$this->participantShuffler->shuffleParticipants($party)) {
             $this->context->buildViolation($constraint->message)
                 ->atPath('participants')
