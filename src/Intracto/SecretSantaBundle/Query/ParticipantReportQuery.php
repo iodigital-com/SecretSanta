@@ -347,7 +347,7 @@ class ParticipantReportQuery
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.party_id, p.locale, p.list_url
+            SELECT e.name, e.email, e.party_id, e.url, p.locale, p.list_url
             FROM party p
             JOIN participant e ON p.id = e.party_id
             WHERE p.sent_date >= :firstDay
