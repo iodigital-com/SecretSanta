@@ -367,6 +367,7 @@ class ParticipantReportQuery
                     $row['name'],
                     $row['email'],
                     $row['party_id'],
+                    $row['url'],
                     $row['locale'],
                     $reusePartyBaseUrl.$row['list_url'],
                 ],
@@ -419,6 +420,7 @@ class ParticipantReportQuery
                     $row['name'],
                     $row['email'],
                     $row['party_id'],
+                    $row['url'],
                     $row['locale'],
                 ],
                 ','
