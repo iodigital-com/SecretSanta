@@ -347,7 +347,7 @@ class ParticipantReportQuery
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.party_id, p.locale, p.list_url, p.subscribed_for_updates
+            SELECT e.name, e.email, e.party_id, p.locale, p.list_url, e.subscribed_for_updates
             FROM party p
             JOIN participant e ON p.id = e.party_id
             WHERE p.sent_date >= :firstDay
@@ -399,7 +399,7 @@ class ParticipantReportQuery
         $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
 
         $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.party_id, p.locale, p.subscribed_for_updates
+            SELECT e.name, e.email, e.party_id, p.locale, e.subscribed_for_updates
             FROM party p
             JOIN participant e ON p.id = e.party_id
             WHERE p.sent_date >= :firstDay
