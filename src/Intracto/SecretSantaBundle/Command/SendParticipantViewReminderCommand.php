@@ -5,11 +5,9 @@ namespace Intracto\SecretSantaBundle\Command;
 use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Intracto\SecretSantaBundle\Query\ParticipantMailQuery;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Doctrine\ORM\EntityManager;
 
 class SendParticipantViewReminderCommand extends Command
 {

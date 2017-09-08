@@ -170,6 +170,7 @@ class MailerService
      */
     public function sendForgotLinkMail($email)
     {
+        /** @var Participant[] $participatingIn */
         $participatingIn = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAllParticipantsForForgotEmail($email);
         $adminOf = $this->em->getRepository('IntractoSecretSantaBundle:Party')->findAllAdminParties($email);
 
@@ -253,6 +254,7 @@ class MailerService
         }
 
         $partyLinks = [];
+        $text = '';
         foreach ($results as $result) {
             if ($result['eventdate'] instanceof \DateTime) {
                 $text = $result['eventdate']->format('d/m/Y').' ';

@@ -8,7 +8,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Intracto\SecretSantaBundle\Query\Season;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
 class ExportMailsCommand extends Command
 {

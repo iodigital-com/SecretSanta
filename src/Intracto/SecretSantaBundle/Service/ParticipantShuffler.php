@@ -2,6 +2,7 @@
 
 namespace Intracto\SecretSantaBundle\Service;
 
+use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\Party;
 
 class ParticipantShuffler
@@ -54,6 +55,7 @@ class ParticipantShuffler
      */
     private function checkValidMatch($participants, $shuffled)
     {
+        /** @var Participant[] $participants */
         foreach ($participants as $key => $participant) {
             $possibleMatch = $shuffled[$key];
             if ($participant === $possibleMatch || $participant->getExcludedParticipants()->contains($possibleMatch)) {
