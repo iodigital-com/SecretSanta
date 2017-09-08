@@ -50,6 +50,10 @@
         width: 100px;
         font-size: 1.2em;
     }
+
+    .title-row h1 {
+        margin-top: 10px;
+    }
 }
 
 @media only screen and (max-width: 480px) {

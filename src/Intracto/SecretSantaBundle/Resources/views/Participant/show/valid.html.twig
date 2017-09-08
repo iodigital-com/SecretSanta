@@ -15,7 +15,7 @@
 {% block main %}
     <div class="box">
         <div class="row participant-title-row">
-            <div class="col-md-5">
+            <div class="col-xs-12 col-md-5">
                 <h1>{{ 'participant_show_valid.participant.title'|trans }}</h1>
 
                 {{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name})|raw }}
@@ -24,7 +24,7 @@
                     <span class="yourgift">{{ participant.assignedParticipant.name }}</span> {{ participant.assignedParticipant.email }}
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 hidden-sm hidden-xs">
                 <div class="party-info pull-right">
                     <h2>{{ 'participant_show_base.headers.title'|trans|raw }}</h2>
                     <div id="partyDetails">
