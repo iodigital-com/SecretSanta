@@ -13,8 +13,25 @@
 
 {% block main %}
     <div class="box">
+        <div class="row title-row">
+            <div class="col-xs-12  col-md-5">
+                <h1>{{ 'party_manage_valid.manage.title'|trans }}</h1>
+            </div>
+            <div class="col-md-7 hidden-xs">
+                <div class="party-info pull-right">
+                    <h2>{{ 'party_manage_base.headers.title'|trans|raw }}</h2>
+                    <div id="partyDetails">
+                        <ul class="liststyle1">
+                            <li class="party-date"><strong>{{ 'party_manage_base.headers.date'|trans }} </strong> {{ party.eventdate|localizeddate('medium', 'none') }}</li>
+                            <li class="party-location"><strong>{{ 'party_manage_base.headers.location'|trans }}</strong> {{ party.location }}</li>
+                            <li class="party-amount"><strong>{{ 'party_manage_base.headers.amount'|trans }} </strong> {{ party.amount }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <span id="alertspan"></span>
-        <h1>{{ 'party_manage_valid.manage.title'|trans }}</h1>
 
         <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;"
                data-editurl="{{ path("participant_edit", { 'listurl': 'listUrl', 'participantId': 'participantId' }) }}"

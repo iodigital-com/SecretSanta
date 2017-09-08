@@ -33,20 +33,20 @@
 }
 
 /** liststyle **/
-ul.liststyle1 {
+.steps ul.liststyle1 {
     margin: 0px 0px 16px 0px;
     padding: 0px;
     border-bottom: 1px solid #e8e8e8;
 }
 
-ul.liststyle1 li {
+.steps ul.liststyle1 li {
     margin: 0px 0px 12px 0px;
     padding: 0px;
     list-style: none;
     line-height: 29px;
 }
 
-ul.liststyle1 li .icon-steps {
+.steps ul.liststyle1 li .icon-steps {
     display: inline-block;
     height: 29px;
     line-height: 29px;
@@ -92,9 +92,13 @@ h2 {
 
 }
 
-#header h2 {
+#header h2, .steps h2, .party-info h2 {
     font-size: 1.7em;
-    margin: 0px 0px 20px 0px;
+    margin: 0 0 20px 0;
+}
+
+.intro h2 {
+    margin: 0 0 20px 0;
 }
 
 p {
@@ -251,14 +255,16 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 }
 
 #header {
-    height: 372px;
+    height: 190px;
 }
 
 .steps {
-    background: url(../img/steps.png) no-repeat left top;
     padding: 25px 20px 20px 20px;
     width: 289px;
-    height: 310px;
+    height: 270px;
+    border: 1px solid #e4e2e2;
+    background-color: #f6f6f6;
+    border-radius: 5px;
 }
 
 .steps ul.liststyle1 li {
@@ -267,7 +273,8 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 
 .content-container {
     background: url(../img/content-container.png) no-repeat center top;
-    padding: 200px 0px 0px 0px;
+    padding: 200px 0 0 0;
+    margin-top: 280px;
 }
 
 .box {
@@ -418,6 +425,10 @@ ul.form-errors {
     margin: 0;
 }
 
+.mobile__lang__selection {
+    padding: 10px 0 10px 0;
+}
+
 .select-secret-santa select {
     background-color: #fff;
     border: 2px solid #99C2C1;
@@ -510,4 +521,53 @@ ul.form-errors {
 
 .manage-page-form .form-group {
     margin-top: 5px;
+}
+
+.party-info {
+    padding: 20px 20px 20px 20px;
+    width: 400px;
+    height: 180px;
+    border: 1px solid #e4e2e2;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+}
+
+.party-info ul.liststyle1 {
+    margin: 0 0 16px 0;
+    padding: 0;
+}
+
+.party-info ul.liststyle1 li {
+    margin: 0 0 12px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.party-info ul.liststyle1 li:last-child {
+    margin: 0;
+}
+
+.title-row {
+    margin-bottom: 10px;
+}
+
+.title-row h1 {
+    margin-top: 150px;
+}
+
+.participant-title-row {
+    margin-bottom: 20px;
+}
+
+.participant-title-row .party-info {
+    padding: 25px 20px 20px 20px;
+    width: 400px;
+    height: auto;
+    border: 1px solid #e4e2e2;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+}
+
+.participant-title-row .party-info ul.liststyle1 {
+    margin: 0;
 }

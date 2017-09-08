@@ -6,17 +6,6 @@
 
 {% block datalayer %}{% endblock %}
 
-{% block header %}
-    <div class="steps">
-        <h2>{{ 'party_manage_base.headers.title'|trans|raw }}</h2>
-        <div id="partyDetails">
-            <ul class="liststyle1">
-                <li class="party-date"><strong>{{ 'party_manage_base.headers.date'|trans }} </strong> {{ party.eventdate|localizeddate('medium', 'none') }}</li>
-                <li class="party-location"><strong>{{ 'party_manage_base.headers.location'|trans }}</strong> {{ party.location }}</li>
-                <li class="party-amount"><strong>{{ 'party_manage_base.headers.amount'|trans }} </strong> {{ party.amount }}</li>
-            </ul>
-        </div>
-    </div>
-{% endblock %}
+{% block header %}{% endblock %}
 
 {% block box %}{% endblock %}

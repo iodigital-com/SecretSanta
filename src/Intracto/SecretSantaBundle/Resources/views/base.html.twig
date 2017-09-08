@@ -63,9 +63,6 @@
 <div id="header" class="header">
     <div class="container">
         <div class="header__left" onclick="window.location='{{ url('homepage') }}'">
-            <div class="header__logo">
-                <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo"/>
-            </div>
             <div class="header__santa clearfix">
                 {% include "IntractoSecretSantaBundle:Common:headerSvg.html.twig" %}
             </div>
@@ -79,6 +76,9 @@
                         </option>
                     {% endfor %}
                 </select>
+            </div>
+            <div class="header__logo">
+                <img src="{{ asset('/bundles/intractosecretsanta/img/logo.png') }}" alt="Secret santa logo"/>
             </div>
             {% block header %}{% endblock %}
         </div>
@@ -100,7 +100,7 @@
             </div>
         {% endfor %}
         {% block mobile_lang %}
-            <div class="box">
+            <div class="visible-xs-*">
                 <div class="select-secret-santa mobile__lang__selection pull-right">
                     <select>
                         {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
