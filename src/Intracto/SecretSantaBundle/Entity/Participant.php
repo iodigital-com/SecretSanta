@@ -72,6 +72,15 @@ class Participant
     /** @var string */
     private $ipv6;
 
+    /** @var string */
+    private $geoCountry;
+
+    /** @var string */
+    private $geoProvince;
+
+    /** @var string */
+    private $geoCity;
+
     /** @var \DateTime */
     private $partyStatusSentTime;
 
@@ -405,6 +414,66 @@ class Participant
     private function setIpv6($ipv6)
     {
         $this->ipv6 = $ipv6;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGeoCountry()
+    {
+        return $this->geoCountry;
+    }
+
+    /**
+     * @param string $geoCountry
+     *
+     * @return Participant
+     */
+    public function setGeoCountry($geoCountry)
+    {
+        $this->geoCountry = $geoCountry;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGeoProvince()
+    {
+        return $this->geoProvince;
+    }
+
+    /**
+     * @param string $geoProvince
+     *
+     * @return Participant
+     */
+    public function setGeoProvince($geoProvince)
+    {
+        $this->geoProvince = $geoProvince;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGeoCity()
+    {
+        return $this->geoCity;
+    }
+
+    /**
+     * @param string $geoCity
+     *
+     * @return Participant
+     */
+    public function setGeoCity($geoCity)
+    {
+        $this->geoCity = $geoCity;
 
         return $this;
     }

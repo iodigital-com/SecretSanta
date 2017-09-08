@@ -61,6 +61,9 @@
         </field>
         <field name="ipv4" column="ipv4" type="string" nullable="true"/>
         <field name="ipv6" column="ipv6" type="string" nullable="true"/>
+        <field name="geoCountry" column="geo_country" type="string" nullable="true"/>
+        <field name="geoProvince" column="geo_province" type="string" nullable="true"/>
+        <field name="geoCity" column="geo_city" type="string" nullable="true"/>
         <field name="partyStatusSentTime" column="party_status_sent" type="datetime" nullable="true"/>
         <field name="emptyWishlistReminderSentTime" column="empty_wishlist_reminder_sent" type="datetime" nullable="true"/>
         <field name="wishlistUpdatedTime" column="wishlist_updated_time" type="datetime" nullable="true"/>
