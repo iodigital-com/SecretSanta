@@ -90,4 +90,26 @@ class ParticipantRepository extends EntityRepository
 
         return $qb->getQuery()->getSingleResult();
     }
+
+    /**
+     * @param int $limit
+     *
+     * @return Participant[]
+     */
+    public function findAllParticipantsWithoutGeoInfo(int $limit = 0): array
+    {
+        $query = $this->_em->createQuery('
+            SELECT participant
+            FROM IntractoSecretSantaBundle:Participant participant
+            WHERE participant.geoCountry IS NULL
+              AND (participant.ipv4 IS NOT NULL
+               OR participant.ipv4 IS NOT NULL)
+        ');
+
+        if ($limit > 0) {
+            $query->setMaxResults($limit);
+        }
+
+        return $query->getResult();
+    }
 }
