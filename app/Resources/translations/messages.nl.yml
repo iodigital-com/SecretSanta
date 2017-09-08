@@ -230,9 +230,9 @@ participant-expose_all:
 participant_show_base:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
-        date: Datum
-        location: Locatie
-        amount: Bedrag
+        date: Datum van jouw feest
+        location: Locatie van jouw feest
+        amount: Te spenderen bedrag
         num_people: Aantal mensen
         person_created_list: Persoon die deze lijst samenstelde
 
@@ -311,9 +311,9 @@ participant_unsubscribe:
 party_manage_base:
     headers:
         title: Jouw <span class="accent">Secret Santa party</span> details
-        date: Datum
-        location: Locatie
-        amount: Bedrag
+        date: Datum van jouw feest
+        location: Locatie van jouw feest
+        amount: Te spenderen bedrag
 
 # Party/manage/expired.html.twig
 party_manage_expired:

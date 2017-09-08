@@ -141,7 +141,7 @@ participant_show_base:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
         date: Fecha
         location: Sitio
-        amount: Cantidad
+        amount: Cantidad a gastar
         num_people: Número de personas
         person_created_list: Persona que creó esta lista
 
@@ -217,7 +217,7 @@ party_manage_base:
         title: Tus datos de la <span class="accent">fiesta Secret Santa</span>
         date: Fecha
         location: Sitio
-        amount: Cantidad
+        amount: Cantidad a gastar
 
 # Party/manage/expired.html.twig
 party_manage_expired:

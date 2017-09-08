@@ -142,8 +142,8 @@ participant_show_base:
     headers:
         title: Ihre <span class="accent">Secret Santa-Party</span> Details
         date: Datum
-        location: Platz
-        amount: Betrag
+        location: Platz von Ihrer Party
+        amount: Auszugebender Betrag
         num_people: Anzahl Teilnehmer
         person_created_list: Person, die die Liste erstellt hat
 
@@ -218,8 +218,8 @@ party_manage_base:
     headers:
         title: Ihre <span class="accent">Secret Santa-Party</span> Details
         date: Datum
-        location: Platz
-        amount: Betrag
+        location: Platz von Ihrer Party
+        amount: Auszugebender Betrag
 
 # Party/manage/expired.html.twig
 party_manage_expired:
