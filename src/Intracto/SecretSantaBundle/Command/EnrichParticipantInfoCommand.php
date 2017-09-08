@@ -16,11 +16,17 @@ class EnrichParticipantInfoCommand extends Command
     private $participantRepository;
     /** @var EntityManagerInterface */
     private $em;
+    /** @var string */
+    private $geoIpDbPath;
 
-    public function __construct(ParticipantRepository $participantRepository, EntityManagerInterface $em)
-    {
+    public function __construct(
+        ParticipantRepository $participantRepository,
+        EntityManagerInterface $em,
+        string $geoIpDbPath
+    ) {
         $this->participantRepository = $participantRepository;
         $this->em = $em;
+        $this->geoIpDbPath = $geoIpDbPath;
 
         parent::__construct();
     }
@@ -34,25 +40,29 @@ class EnrichParticipantInfoCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // Get the database at http://dev.maxmind.com/geoip/geoip2/geolite2/
-        $reader = new Reader('/usr/local/share/GeoIP/GeoLite2-City.mmdb');
+        $batchSize = 10000;
+        $reader = new Reader($this->geoIpDbPath);
 
-        foreach ($this->participantRepository->findAllParticipantsWithoutGeoInfo(100000) as $participant) {
-            try {
-                $geoInformation = $reader->city($participant->getIp());
+        $participants = $this->participantRepository->findAllParticipantsWithoutGeoInfo($batchSize);
+        while (count($participants) > 0) {
+            foreach ($participants as $participant) {
+                try {
+                    $geoInformation = $reader->city($participant->getIp());
 
-                $participant->setGeoCountry($geoInformation->country->isoCode);
-                $participant->setGeoProvince($geoInformation->mostSpecificSubdivision->isoCode);
-                $participant->setGeoCity($geoInformation->city->name);
-            } catch (AddressNotFoundException $ex) {
-                $participant->setGeoCountry('');
-                $participant->setGeoProvince('');
-                $participant->setGeoCity('');
+                    $participant->setGeoCountry($geoInformation->country->isoCode);
+                    $participant->setGeoProvince($geoInformation->mostSpecificSubdivision->isoCode);
+                    $participant->setGeoCity($geoInformation->city->name);
+                } catch (AddressNotFoundException $ex) {
+                    $participant->setGeoCountry('');
+                    $participant->setGeoProvince('');
+                    $participant->setGeoCity('');
+                }
+
+                $this->em->persist($participant);
             }
 
-            $this->em->persist($participant);
+            $this->em->flush();
+            $participants = $this->participantRepository->findAllParticipantsWithoutGeoInfo($batchSize);
         }
-
-        $this->em->flush();
     }
 }
