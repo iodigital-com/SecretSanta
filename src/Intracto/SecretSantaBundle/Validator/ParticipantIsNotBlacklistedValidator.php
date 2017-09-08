@@ -5,7 +5,6 @@ namespace Intracto\SecretSantaBundle\Validator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use Doctrine\ORM\EntityManager;
 
 class ParticipantIsNotBlacklistedValidator extends ConstraintValidator
 {

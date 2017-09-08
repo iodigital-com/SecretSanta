@@ -71,6 +71,7 @@ class AddParticipantFormHandler
 
             $this->em->persist($newParticipant);
 
+            /** @var Participant $admin */
             $admin = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAdminByPartyId($party->getId());
 
             $adminMatch = $admin->getAssignedParticipant();

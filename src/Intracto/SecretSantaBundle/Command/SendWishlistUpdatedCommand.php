@@ -3,13 +3,12 @@
 namespace Intracto\SecretSantaBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Mailer\MailerService;
 use Intracto\SecretSantaBundle\Query\ParticipantMailQuery;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Doctrine\ORM\EntityManager;
 
 class SendWishlistUpdatedCommand extends Command
 {
@@ -50,14 +49,15 @@ class SendWishlistUpdatedCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $secret_santas = $this->participantMailQuery->findAllToRemindOfUpdatedWishlist();
+        /** @var Participant[] $secretSantas */
+        $secretSantas = $this->participantMailQuery->findAllToRemindOfUpdatedWishlist();
         $timeNow = new \DateTime();
 
         try {
-            foreach ($secret_santas as $secret_santa) {
-                $receiver = $secret_santa->getAssignedParticipant();
+            foreach ($secretSantas as $secretSanta) {
+                $receiver = $secretSanta->getAssignedParticipant();
 
-                $this->mailerService->sendWishlistUpdatedMail($receiver, $secret_santa);
+                $this->mailerService->sendWishlistUpdatedMail($receiver, $secretSanta);
 
                 $receiver->setWishlistUpdated(false);
                 $receiver->setUpdateWishlistReminderSentTime($timeNow);
