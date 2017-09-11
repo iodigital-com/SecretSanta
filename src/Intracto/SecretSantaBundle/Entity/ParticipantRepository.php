@@ -103,7 +103,7 @@ class ParticipantRepository extends EntityRepository
             FROM IntractoSecretSantaBundle:Participant participant
             WHERE participant.geoCountry IS NULL
               AND (participant.ipv4 IS NOT NULL
-               OR participant.ipv4 IS NOT NULL)
+               OR participant.ipv6 IS NOT NULL)
         ');
 
         if ($limit > 0) {
