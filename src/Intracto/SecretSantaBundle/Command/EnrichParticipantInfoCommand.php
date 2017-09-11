@@ -40,7 +40,7 @@ class EnrichParticipantInfoCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $batchSize = 10000;
+        $batchSize = 1000;
         $reader = new Reader($this->geoIpDbPath);
 
         $participants = $this->participantRepository->findAllParticipantsWithoutGeoInfo($batchSize);
@@ -53,6 +53,10 @@ class EnrichParticipantInfoCommand extends Command
                     $participant->setGeoProvince($geoInformation->mostSpecificSubdivision->isoCode);
                     $participant->setGeoCity($geoInformation->city->name);
                 } catch (AddressNotFoundException $ex) {
+                    $participant->setGeoCountry('');
+                }
+
+                if (empty($participant->getGeoCountry())) {
                     $participant->setGeoCountry('');
                     $participant->setGeoProvince('');
                     $participant->setGeoCity('');
