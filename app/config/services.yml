@@ -45,6 +45,10 @@ services:
         arguments:
             $geoIpDbPath: '%geo_ip_db_path%'
 
+    Intracto\SecretSantaBundle\Service\ParticipantService:
+        arguments:
+            $geoIpDbPath: '%geo_ip_db_path%'
+
     Doctrine\Common\Cache\ApcuCache: ~
     Twig\Extensions\TextExtension: ~
     Twig\Extensions\IntlExtension: ~

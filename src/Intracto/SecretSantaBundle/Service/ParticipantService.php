@@ -9,29 +9,30 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Entity\Party;
 use Intracto\SecretSantaBundle\Validator\ParticipantIsNotBlacklisted;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use GeoIp2\Database\Reader;
+use GeoIp2\Exception\AddressNotFoundException;
 
 class ParticipantService
 {
-    /**
-     * @var EntityManager
-     */
+    /** @var EntityManager */
     public $em;
-
-    /**
-     * @var ParticipantShuffler
-     */
+    /** @var ParticipantShuffler */
     public $participantShuffler;
-
-    /**
-     * @var ValidatorInterface
-     */
+    /** @var ValidatorInterface */
     private $validator;
+    /** @var string */
+    private $geoIpDbPath;
 
-    public function __construct(EntityManagerInterface $em, ParticipantShuffler $participantShuffler, ValidatorInterface $validator)
-    {
+    public function __construct(
+        EntityManagerInterface $em,
+        ParticipantShuffler $participantShuffler,
+        ValidatorInterface $validator,
+        $geoIpDbPath
+    ) {
         $this->em = $em;
         $this->participantShuffler = $participantShuffler;
         $this->validator = $validator;
+        $this->geoIpDbPath = $geoIpDbPath;
     }
 
     /**
@@ -91,6 +92,23 @@ class ParticipantService
 
         if ($participant->getIp() === null) {
             $participant->setIp($ip);
+
+            $reader = new Reader($this->geoIpDbPath);
+            try {
+                $geoInformation = $reader->city($participant->getIp());
+
+                $participant->setGeoCountry($geoInformation->country->isoCode);
+                $participant->setGeoProvince($geoInformation->mostSpecificSubdivision->isoCode);
+                $participant->setGeoCity($geoInformation->city->name);
+            } catch (AddressNotFoundException $ex) {
+                $participant->setGeoCountry('');
+            }
+
+            if (empty($participant->getGeoCountry())) {
+                $participant->setGeoCountry('');
+                $participant->setGeoProvince('');
+                $participant->setGeoCity('');
+            }
 
             $this->em->flush($participant);
         }

@@ -55,9 +55,22 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20"
-                              target="_blank"
-                              rel="noopener noreferrer">{{ 'participant_show_valid.buy_from_amazon'|trans }}</a></b>
+                    <br><br>
+                    {% if participant.geoCountry == 'NL' or app.request.locale == 'nl' %}
+                        <a href="https://partnerprogramma.bol.com/click/click?p=1&t=url&s=50354&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fm%2Fvoordeel%2Fcadeaus%2Findex.html&name=Cadeautips"
+                           target="_blank" rel="noopener noreferrer">Op zoek naar een cadeautje?</a><br>
+                    {% endif %}
+                    {% if participant.geoCountry == 'UK' %}
+                        <a href="http://amzn.to/2wOLi4U"
+                           target="_blank" rel="noopener noreferrer">No inspirantion? Get a gift card!</a><br>
+                    {% endif %}
+                    {% if participant.geoCountry == 'US' %}
+                        <a href="http://amzn.to/2xicUlW"
+                           target="_blank" rel="noopener noreferrer">No inspirantion? Get a gift card!</a><br>
+                    {% endif %}
+                    <a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20"
+                       target="_blank" rel="noopener noreferrer">{{ 'participant_show_valid.buy_from_amazon'|trans }}</a>
+                    </ul>
                 </div>
                 {% if(participant.assignedParticipant.isSubscribed == true) %}
                     <div class="panel panel-default bottom-spacer" id="messagePanel">
