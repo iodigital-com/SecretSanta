@@ -41,14 +41,6 @@
         </div>
         <div class="row">
             <div class="span8 my-secretsanta">
-                {#<h1>{{ 'participant_show_valid.participant.title'|trans }}</h1>#}
-
-                {#{{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name})|raw }}#}
-
-                {#<div class="yoursecretsant" data-hj-masked>#}
-                    {#<span class="yourgift">{{ participant.assignedParticipant.name }}</span> {{ participant.assignedParticipant.email }}#}
-                {#</div>#}
-
                 <div class="well">
                     <h4 data-hj-masked>{{ 'participant_show_valid.participant.wishlist_from'|trans({'%name%': participant.assignedParticipant.name}) }}</h4>
                     {% if(participant.assignedParticipant.wishlistitems|length == 0) %}
