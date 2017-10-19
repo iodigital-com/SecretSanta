@@ -4,6 +4,7 @@ imports:
 parameters:
     database_user: root
     database_password: ''
+    geo_ip_db_path: /home/travis/.build-cache/GeoLite2-City.mmdb
 
 framework:
     test: ~
