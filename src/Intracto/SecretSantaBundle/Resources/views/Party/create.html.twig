@@ -3,7 +3,7 @@
 {% block main %}
     <div class="intro">
         <div class="col-xs-12 col-sm-8 col-md-8">
-            <h2>{{ 'party-create.what_is.title'|trans }}</h2>
+            <h1>{{ 'party-create.what_is.title'|trans }}</h1>
             {{ 'party-create.what_is.intro'|trans|raw }}
         </div>
         <div class="col-sm-4 col-md-4 hidden-xs">
@@ -22,7 +22,7 @@
     </div>
     <div class="content-container" id="mysanta">
         <div class="santa-content">
-            <h1>{{ 'party-create.add_participants'|trans }}</h1>
+            <h2>{{ 'party-create.add_participants'|trans }}</h2>
             {{ form_start(form) }}
                 {{ form_row(form._token) }}
                 <div class="toplabels">
@@ -103,11 +103,18 @@
                         </button>
                     </div>
                 </div>
-                <h1>{{ 'party-create.add_personal_message.title'|trans }}</h1>
+                <h2>{{ 'party-create.add_personal_message.title'|trans }}</h2>
                 {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
                 <div class="description">
                     {{ 'party-create.add_personal_message.description'|trans }}
                 </div>
+
+                <br/>
+                <div class="confirmation{% if form_errors(form.confirmed) %}-error{% endif %}">
+                    {{ form_widget(form.confirmed) }}
+                    {{ form_label(form.confirmed) }}
+                </div>
+
                 <p>
                     <button type="submit" class="btn btn-large btn-primary btn-create-event" id="create-party-btn">
                         <i class="fa fa-check"></i> {{ 'party-create.btn.create_event'|trans }}
@@ -142,12 +149,12 @@
         }
         $(document).ready(function () {
             $(".owner").after(
-                    '<tr>' +
-                    '<th class="col-xs-1 participant-number-header">#</th>' +
-                    '<th class="col-xs-3 col-md-4">{{ "party-create.label.participants"|trans }}</th>' +
-                    '<th class="col-xs-3 col-md-4">{{ "party-create.label.email"|trans }}</th>' +
-                    '<th style="text-align: right;" class="col-xs-4">  </th> ' +
-                    '</tr>'
+                '<tr>' +
+                '<th class="col-xs-1 participant-number-header">#</th>' +
+                '<th class="col-xs-3 col-md-4">{{ "party-create.label.participants"|trans }}</th>' +
+                '<th class="col-xs-3 col-md-4">{{ "party-create.label.email"|trans }}</th>' +
+                '<th style="text-align: right;" class="col-xs-4">  </th> ' +
+                '</tr>'
             );
         });
     </script>

@@ -16,6 +16,7 @@ form-party:
         location: Locatie van jouw Secret Santa feest
         amount_to_spend: Te spenderen bedrag
         message: Extra bericht in email
+        confirmed: Ja, ik opt-in en heb toestemming om de email adressen van de deelnemers te gebruiken voor Secret Santa
 
 # PartyController
 party_controller:

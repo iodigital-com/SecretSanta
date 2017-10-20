@@ -56,6 +56,12 @@ class Party
      */
     private $location;
 
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    private $confirmed;
+
     public function __construct($createDefaults = true)
     {
         $this->participants = new ArrayCollection();
@@ -306,6 +312,22 @@ class Party
     public function setLocation($location)
     {
         $this->location = $location;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * @param bool $confirmed
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
     }
 
     public function createNewPartyForReuse()

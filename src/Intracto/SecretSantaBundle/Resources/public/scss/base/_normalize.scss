@@ -411,3 +411,11 @@ td,
 th {
   padding: 0;
 }
+
+div.confirmation label {
+  font-weight: normal;
+}
+
+div.confirmation-error label {
+  color: #cf706c;
+}
