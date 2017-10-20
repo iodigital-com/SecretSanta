@@ -6,7 +6,8 @@ Feature: Create a new party
     When I create a party with 5 participants
     And I choose a party date in the future
     And I choose a location
-    And I choose the amount to spend
+	And I choose the amount to spend
+    And I confirm the opt-in
     When I create the party
     Then I should get a confirmation
     And the Secret Santa Validation mail should be sent to test0@test.com
@@ -19,6 +20,7 @@ Feature: Create a new party
     And I choose the amount to spend
     And I add a csv of data for 6 participants
     Then I should have a form with 6 participants
-    When I create the party
+    When I confirm the opt-in
+    And I create the party
     Then I should get a confirmation
     And the Secret Santa Validation mail should be sent to test0@test.com
