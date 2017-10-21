@@ -2,8 +2,8 @@
 
 namespace Intracto\SecretSantaBundle\Twig\Extension;
 
+use Symfony\Component\Form\FormRendererInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Bridge\Twig\Form\TwigRendererInterface;
 
 class FormExtension extends \Twig_Extension
 {
@@ -16,9 +16,9 @@ class FormExtension extends \Twig_Extension
     public $renderer;
 
     /**
-     * @param TwigRendererInterface $renderer
+     * @param FormRendererInterface $renderer
      */
-    public function __construct(TwigRendererInterface $renderer)
+    public function __construct(FormRendererInterface $renderer)
     {
         $this->renderer = $renderer;
     }
