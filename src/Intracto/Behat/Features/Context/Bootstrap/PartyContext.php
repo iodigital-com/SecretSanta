@@ -74,6 +74,14 @@ class PartyContext extends RawMinkContext
         $partyDate = $currentDate->add(new \DateInterval('P2M'));
 
         $this->getSession()->getPage()->find('css', '#party_eventdate')->setValue($partyDate->format('d-m-Y'));
+	}
+
+    /**
+     * @When /^(?:|I) confirm the opt-in$/
+     */
+    public function confirmTheOptIn()
+    {
+        $this->getSession()->getPage()->find('css', '#party_confirmed')->check();
     }
 
     /**

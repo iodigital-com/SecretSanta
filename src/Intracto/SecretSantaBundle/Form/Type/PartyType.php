@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -31,6 +32,9 @@ class PartyType extends AbstractType
             ])
             ->add('location', TextType::class, [
                 'label' => 'form-party.label.location',
+            ])
+            ->add('confirmed', CheckboxType::class, [
+                'label' => 'form-party.label.confirmed',
             ])
         ;
     }

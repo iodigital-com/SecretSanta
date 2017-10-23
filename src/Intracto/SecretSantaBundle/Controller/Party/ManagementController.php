@@ -61,6 +61,7 @@ class ManagementController extends Controller
      */
     public function updateAction(Request $request, Party $party)
     {
+        $party->setConfirmed(true);
         $updatePartyDetailsForm = $this->createForm(UpdatePartyDetailsType::class, $party);
         $updatePartyDetailsForm->handleRequest($request);
 
