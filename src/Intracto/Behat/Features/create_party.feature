@@ -6,7 +6,7 @@ Feature: Create a new party
     When I create a party with 5 participants
     And I choose a party date in the future
     And I choose a location
-	And I choose the amount to spend
+    And I choose the amount to spend
     And I confirm the opt-in
     When I create the party
     Then I should get a confirmation
