@@ -350,17 +350,27 @@ class ParticipantReportQuery
             SELECT e.name, e.email, e.party_id, e.url, p.locale, p.list_url
             FROM party p
             JOIN participant e ON p.id = e.party_id
+            LEFT OUTER JOIN blacklist_email b ON b.email = e.email
             WHERE p.sent_date >= :firstDay
             AND p.sent_date < :lastDay
             AND e.party_admin = 1
-            GROUP BY e.name, e.email, e.party_id',
+            AND e.subscribed_for_updates = 1
+            AND b.id is null
+            GROUP BY e.name, e.email, e.party_id
+            ORDER BY p.id DESC',
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
             ]
         );
 
+        $foundAddress = [];
         while ($row = $stmt->fetch()) {
+            if (in_array($row['email'], $foundAddress)) {
+                continue;
+            }
+            $foundAddress[] = $row['email'];
+
             fputcsv(
                 $handle,
                 [
@@ -403,17 +413,27 @@ class ParticipantReportQuery
             SELECT e.name, e.email, e.party_id, e.url, p.locale
             FROM party p
             JOIN participant e ON p.id = e.party_id
+            LEFT OUTER JOIN blacklist_email b ON b.email = e.email
             WHERE p.sent_date >= :firstDay
             AND p.sent_date < :lastDay
             AND e.party_admin = 0
-            GROUP BY e.name, e.email, e.party_id',
+            AND e.subscribed_for_updates = 1
+            AND b.id is null
+            GROUP BY e.name, e.email, e.party_id
+            ORDER BY p.id DESC',
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
             ]
         );
 
+        $foundAddress = [];
         while ($row = $stmt->fetch()) {
+            if (in_array($row['email'], $foundAddress)) {
+                continue;
+            }
+            $foundAddress[] = $row['email'];
+
             fputcsv(
                 $handle,
                 [
