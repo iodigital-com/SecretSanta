@@ -16,6 +16,7 @@ form-party:
         location: Lieu
         amount_to_spend: Montant à dépenser
 #        message:
+        confirmed: Oui, j’ai l’autorisation d’utiliser l’adresse e-mail des participants pour Secret Santa
 
 # PartyController
 party_controller:
