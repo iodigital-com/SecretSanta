@@ -18,10 +18,13 @@ class PartyController extends AbstractController
     /**
      * @Route("/party/create", name="create_party")
      * @Template("IntractoSecretSantaBundle:Party:create.html.twig")
-     * @Method("POST")
      */
     public function createAction(Request $request, PartyFormHandler $handler)
     {
+        if ($request->getMethod() != 'POST') {
+            return $this->redirectToRoute('homepage');
+        }
+
         return $this->handlePartyCreation($request, new Party(), $handler);
     }
 
