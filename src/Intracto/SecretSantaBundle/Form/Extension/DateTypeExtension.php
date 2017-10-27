@@ -17,7 +17,7 @@ class DateTypeExtension extends AbstractTypeExtension
     {
         $resolver->setDefaults(array(
             'widget' => 'single_text',
-            'format' => 'dd-MM-yyyy',
+            'format' => 'dd-mm-yyyy',
             'append' => '<i class="icon-calendar"></i>',
             'start_date' => 'today',
             'end_date' => '31-12-2100',
