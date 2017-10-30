@@ -18,6 +18,7 @@ class DateTypeExtension extends AbstractTypeExtension
         $resolver->setDefaults(array(
             'widget' => 'single_text',
             'format' => 'dd-MM-yyyy',
+            'js_date_format' => 'dd-mm-yyyy',
             'append' => '<i class="icon-calendar"></i>',
             'start_date' => 'today',
             'end_date' => '31-12-2100',
@@ -47,7 +48,7 @@ class DateTypeExtension extends AbstractTypeExtension
         $view->vars['type'] = 'text';
 
         $view->vars = array_replace($view->vars, array(
-            'format' => $options['format'],
+            'js_date_format' => $options['js_date_format'],
             'start_date' => $options['start_date'],
             'end_date' => $options['end_date'],
             'highlight_currentdate' => $options['highlight_currentdate'],
