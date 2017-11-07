@@ -58,6 +58,7 @@ swiftmailer:
         mandrill:
             transport: "%mandrill_transport%"
             host:      "%mandrill_host%"
+            port:      "%mandrill_port%"
             username:  "%mandrill_user%"
             password:  "%mandrill_password%"
             spool:     { type: memory }

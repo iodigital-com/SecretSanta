@@ -13,6 +13,7 @@ parameters:
 
     mandrill_transport:  smtp
     mandrill_host:       localhost
+    mandrill_port:       25
     mandrill_user:       ~
     mandrill_password:   ~
 
