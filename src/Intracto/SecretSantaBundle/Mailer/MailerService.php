@@ -594,7 +594,7 @@ class MailerService
         // https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wfname=capsub&productkey=edfsmsbl3&ccsid=635688189955348624&wa=wsignin1.0
         // Other people have the same issue https://www.maikel.pro/blog/en-your-own-mailserver-postfixdovecot-but/
         // A solution that works is using Mandrill as a relay for these domains. Hotmail is our 2nd largest recipient (after Gmail) so we can't ignore it
-        $mailTo = current($mail->getTo());
+        $mailTo = key($mail->getTo());
         if (strpos($mailTo, '@hotmail.') !== false ||
             strpos($mailTo, '@live.') !== false ||
             strpos($mailTo, '@msn.') !== false ||
