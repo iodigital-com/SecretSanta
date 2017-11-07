@@ -2,7 +2,6 @@
 
 namespace Intracto\SecretSantaBundle\Mailer;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Service\UnsubscribeService;
 use Symfony\Component\Routing\RouterInterface;
@@ -16,7 +15,9 @@ class MailerService
 {
     /** @var \Swift_Mailer */
     public $mailer;
-    /** @var EntityManager */
+    /** @var \Swift_Mailer */
+    public $mandrill;
+    /** @var EntityManagerInterface */
     public $em;
     /** @var EngineInterface */
     public $templating;
@@ -29,16 +30,18 @@ class MailerService
     public $noreplyEmail;
 
     /**
-     * @param \Swift_Mailer       $mailer             a regular SMTP mailer, bad monitoring, cheap
-     * @param EntityManager       $em
-     * @param EngineInterface     $templating
-     * @param TranslatorInterface $translator
-     * @param Router              $routing
-     * @param UnsubscribeService  $unsubscribeService
+     * @param \Swift_Mailer          $mailer             a regular SMTP mailer, bad monitoring, cheap
+     * @param \Swift_Mailer          $mandrill           mandrill SMTP mailer, good monitoring, expensive
+     * @param EntityManagerInterface $em
+     * @param EngineInterface        $templating
+     * @param TranslatorInterface    $translator
+     * @param RouterInterface        $routing
+     * @param UnsubscribeService     $unsubscribeService
      * @param $noreplyEmail
      */
     public function __construct(
         \Swift_Mailer $mailer,
+        \Swift_Mailer $mandrill,
         EntityManagerInterface $em,
         EngineInterface $templating,
         TranslatorInterface $translator,
@@ -47,6 +50,7 @@ class MailerService
         $noreplyEmail
     ) {
         $this->mailer = $mailer;
+        $this->mandrill = $mandrill;
         $this->em = $em;
         $this->templating = $templating;
         $this->translator = $translator;
@@ -58,7 +62,7 @@ class MailerService
     /**
      * @param Party $party
      */
-    public function sendPendingConfirmationMail(Party $party)
+    public function sendPendingConfirmationMail(Party $party): void
     {
         $this->translator->setLocale($party->getLocale());
 
@@ -79,7 +83,7 @@ class MailerService
                 ),
                 'text/html'
             );
-        $this->mailer->send($message);
+        $this->sendMail($message);
     }
 
     /**
@@ -87,7 +91,7 @@ class MailerService
      *
      * @param Party $party
      */
-    public function sendSecretSantaMailsForParty(Party $party)
+    public function sendSecretSantaMailsForParty(Party $party): void
     {
         $party->setSentdate(new \DateTime('now'));
         $this->em->flush($party);
@@ -102,7 +106,7 @@ class MailerService
      *
      * @param Participant $participant
      */
-    public function sendSecretSantaMailForParticipant(Participant $participant)
+    public function sendSecretSantaMailForParticipant(Participant $participant): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
 
@@ -160,7 +164,7 @@ class MailerService
                 'text/plain'
             );
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
-        $this->mailer->send($mail);
+        $this->sendMail($mail);
     }
 
     /**
@@ -168,13 +172,13 @@ class MailerService
      *
      * @return bool
      */
-    public function sendForgotLinkMail($email)
+    public function sendForgotLinkMail($email): bool
     {
         /** @var Participant[] $participatingIn */
         $participatingIn = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAllParticipantsForForgotEmail($email);
         $adminOf = $this->em->getRepository('IntractoSecretSantaBundle:Party')->findAllAdminParties($email);
 
-        if (count($adminOf) == 0 && count($participatingIn) == 0) {
+        if (count($adminOf) === 0 && count($participatingIn) === 0) {
             return false;
         }
 
@@ -194,8 +198,8 @@ class MailerService
         $participantLinks = [];
         foreach ($participatingIn as $participant) {
             $date = '';
-            if ($participant->getParty()->getEventDate() instanceof \DateTime) {
-                $date = $participant->getParty()->getEventDate()->format('d/m/Y');
+            if ($participant->getParty()->getEventdate() instanceof \DateTime) {
+                $date = $participant->getParty()->getEventdate()->format('d/m/Y');
             }
 
             $participantLinks[] = [
@@ -235,7 +239,7 @@ class MailerService
                 ),
                 'text/plain'
             );
-        $this->mailer->send($message);
+        $this->sendMail($message);
 
         return true;
     }
@@ -245,11 +249,11 @@ class MailerService
      *
      * @return bool
      */
-    public function sendReuseLinksMail($email)
+    public function sendReuseLinksMail($email): bool
     {
         $results = $this->em->getRepository('IntractoSecretSantaBundle:Party')->findPartiesToReuse($email);
 
-        if (count($results) == 0) {
+        if (count($results) === 0) {
             return false;
         }
 
@@ -290,7 +294,7 @@ class MailerService
                 ),
                 'text/plain'
             );
-        $this->mailer->send($message);
+        $this->sendMail($message);
 
         return true;
     }
@@ -299,7 +303,7 @@ class MailerService
      * @param Party $party
      * @param $results
      */
-    public function sendPartyUpdateMailForParty(Party $party, $results)
+    public function sendPartyUpdateMailForParty(Party $party, $results): void
     {
         foreach ($party->getParticipants() as $participant) {
             if ($participant->isSubscribed()) {
@@ -312,7 +316,7 @@ class MailerService
      * @param Participant $participant
      * @param $results
      */
-    public function sendPartyUpdateMailForParticipant(Participant $participant, $results)
+    public function sendPartyUpdateMailForParticipant(Participant $participant, $results): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -340,13 +344,13 @@ class MailerService
                 'text/plain'
             );
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
-        $this->mailer->send($mail);
+        $this->sendMail($mail);
     }
 
     /**
      * @param Participant $participant
      */
-    public function sendWishlistReminderMail(Participant $participant)
+    public function sendWishlistReminderMail(Participant $participant): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -378,7 +382,7 @@ class MailerService
     /**
      * @param Participant $participant
      */
-    public function sendParticipantViewReminderMail(Participant $participant)
+    public function sendParticipantViewReminderMail(Participant $participant): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -411,7 +415,7 @@ class MailerService
      * @param Participant $receiver
      * @param Participant $participant
      */
-    public function sendWishlistUpdatedMail(Participant $receiver, Participant $participant)
+    public function sendWishlistUpdatedMail(Participant $receiver, Participant $participant): void
     {
         $this->translator->setLocale($receiver->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -445,7 +449,7 @@ class MailerService
     /**
      * @param Participant $participant
      */
-    public function sendPartyStatusMail(Participant $participant)
+    public function sendPartyStatusMail(Participant $participant): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -478,7 +482,7 @@ class MailerService
     /**
      * @param Party $party
      */
-    public function sendPartyUpdatedMailsForParty(Party $party)
+    public function sendPartyUpdatedMailsForParty(Party $party): void
     {
         foreach ($party->getParticipants() as $participant) {
             if ($participant->isSubscribed()) {
@@ -490,7 +494,7 @@ class MailerService
     /**
      * @param Participant $participant
      */
-    public function sendPartyUpdatedMailForParticipant(Participant $participant)
+    public function sendPartyUpdatedMailForParticipant(Participant $participant): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -516,10 +520,10 @@ class MailerService
                 'text/plain'
             );
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
-        $this->mailer->send($mail);
+        $this->sendMail($mail);
     }
 
-    public function sendRemovedSecretSantaMail(Participant $participant)
+    public function sendRemovedSecretSantaMail(Participant $participant): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -545,14 +549,14 @@ class MailerService
                 'text/plain'
             );
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
-        $this->mailer->send($mail);
+        $this->sendMail($mail);
     }
 
     /**
      * @param $recipient
      * @param $message
      */
-    public function sendAnonymousMessage(Participant $recipient, $message)
+    public function sendAnonymousMessage(Participant $recipient, $message): void
     {
         $this->translator->setLocale($recipient->getParty()->getLocale());
 
@@ -581,6 +585,25 @@ class MailerService
                 'text/plain'
             );
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($recipient));
-        $this->mailer->send($mail);
+        $this->sendMail($mail);
+    }
+
+    private function sendMail(\Swift_Message $mail): void
+    {
+        // Requesting a delisting from Hotmail does not work. They just accept our email and filter it (not delivered to spam folder).
+        // https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wfname=capsub&productkey=edfsmsbl3&ccsid=635688189955348624&wa=wsignin1.0
+        // Other people have the same issue https://www.maikel.pro/blog/en-your-own-mailserver-postfixdovecot-but/
+        // A solution that works is using Mandrill as a relay for these domains. Hotmail is our 2nd largest recipient (after Gmail) so we can't ignore it
+        $mailTo = current($mail->getTo());
+        if (strpos($mailTo, '@hotmail.') !== false ||
+            strpos($mailTo, '@live.') !== false ||
+            strpos($mailTo, '@msn.') !== false ||
+            strpos($mailTo, '@outlook.') !== false ||
+            strpos($mailTo, '@windowslive.') !== false
+        ) {
+            $this->mandrill->send($mail);
+        } else {
+            $this->mailer->send($mail);
+        }
     }
 }
