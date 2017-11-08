@@ -590,6 +590,10 @@ class MailerService
 
     private function sendMail(\Swift_Message $mail): void
     {
+        $this->mailer->send($mail);
+
+        return;
+
         // Requesting a delisting from Hotmail does not work. They just accept our email and filter it (not delivered to spam folder).
         // https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wfname=capsub&productkey=edfsmsbl3&ccsid=635688189955348624&wa=wsignin1.0
         // Other people have the same issue https://www.maikel.pro/blog/en-your-own-mailserver-postfixdovecot-but/
