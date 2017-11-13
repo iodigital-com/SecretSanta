@@ -139,8 +139,8 @@ participant_show_base:
     headers:
         title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты
         date: Дата
-#        location: ?
-        amount: Количество
+        location: Место проведения
+        amount: Сколько денег тратить на подарок
         num_people: Количество людей
         person_created_list: Автор списка
 
