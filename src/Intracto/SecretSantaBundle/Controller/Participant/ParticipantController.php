@@ -14,8 +14,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ParticipantController extends Controller
 {
     /**
-     * @Route("/participant/edit/{listurl}/{participantId}", name="participant_edit")
-     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
+     * @Route("/participant/edit/{listurl}/{participantUrl}", name="participant_edit")
+     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"mapping": {"participantUrl": "url"}})
      * @Method("POST")
      */
     public function editParticipantAction(Request $request, string $listurl, Participant $participant)
@@ -24,7 +24,7 @@ class ParticipantController extends Controller
         $email = $request->request->get('email');
 
         if ($participant->getParty()->getListurl() !== $listurl) {
-            $this->createNotFoundException(sprintf('Party with listurl "%s" is not found.', $listurl));
+            throw $this->createNotFoundException(sprintf('Party with listurl "%s" is not found.', $listurl));
         }
 
         if (!$this->get('intracto_secret_santa.service.participant')->validateEmail($email)) {
@@ -44,8 +44,8 @@ class ParticipantController extends Controller
     }
 
     /**
-     * @Route("/participant/remove/{listurl}/{participantId}", name="participant_remove")
-     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
+     * @Route("/participant/remove/{listurl}/{participantUrl}", name="participant_remove")
+     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"mapping": {"participantUrl": "url"}})
      * @Method("POST")
      */
     public function removeParticipantFromPartyAction(Request $request, $listurl, Participant $participant)
@@ -54,6 +54,10 @@ class ParticipantController extends Controller
             $this->addFlash('danger', $this->get('translator')->trans('flashes.participant.remove_participant.wrong'));
 
             return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
+        }
+
+        if ($participant->getParty()->getListurl() !== $listurl) {
+            throw $this->createNotFoundException(sprintf('Party with listurl "%s" is not found.', $listurl));
         }
 
         $participants = $participant->getParty()->getParticipants();

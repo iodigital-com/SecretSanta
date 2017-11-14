@@ -34,7 +34,7 @@
         <span id="alertspan"></span>
 
         <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;"
-               data-editurl="{{ path("participant_edit", { 'listurl': 'listUrl', 'participantId': 'participantId' }) }}"
+               data-editurl="{{ path("participant_edit", { 'listurl': 'listUrl', 'participantUrl': 'participantUrl' }) }}"
                data-save-btn-text="{{ 'party_manage_valid.manage.save'|trans }}"
         >
             <thead>
@@ -51,20 +51,20 @@
             {% for participant in party.participants %}
                 <tr class="participant {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="participant-number">{{ loop.index }}</td>
-                    <td id="name_{{ participant.id }}" class="participant-name" data-hj-masked>{{ participant.name }}</td>
-                    <td id="email_{{ participant.id }}" class="participant-email" data-hj-masked>{{ participant.email }}</td>
+                    <td id="name_{{ participant.url }}" class="participant-name" data-hj-masked>{{ participant.name }}</td>
+                    <td id="email_{{ participant.url }}" class="participant-email" data-hj-masked>{{ participant.email }}</td>
                     <td>{{ participant|mailstatus|raw }}</td>
                     <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: right;">
                         <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
-                             data-listurl="{{ party.listUrl }}" data-participant-id="{{ participant.id }}"
+                             data-listurl="{{ party.listUrl }}" data-participant-url="{{ participant.url }}"
                              rel="tooltip" title="{{ 'party_manage_valid.manage.edit_email'|trans }}" alt="{{ 'party_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;"
                              class="participant-edit-icon"
                         >
                         {% if party.created %}
                             {% spaceless %}
-                                <a href="{{ path('resend_participant', { 'listurl': party.listUrl, 'participantId': participant.id }) }}"
+                                <a href="{{ path('resend_participant', { 'listurl': party.listUrl, 'participantUrl': participant.url }) }}"
                                    class="btn-participant-resend"
                                 >
                                     <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
@@ -79,7 +79,7 @@
                                      alt="{{ 'party_manage_valid.manage.view_participant'|trans }}">
                             </a>
                         {% endif %}
-                        <button class="btn btn-mini link_remove_participant" data-participant="{{ participant.id }}" data-listurl="{{ party.listurl }}">
+                        <button class="btn btn-mini link_remove_participant" data-participant="{{ participant.url }}" data-listurl="{{ party.listurl }}">
                             <i class="fa fa-times"></i>
                         </button>
                     </td>
@@ -130,7 +130,7 @@
                 {{ 'party_manage_valid.remove_participant.party_started'|trans|raw }}
             {% endif %}
             <br>
-            <form id="delete-participant-form" method="post" data-action="{{ path('participant_remove', {'listurl': 'listUrl', 'participantId': 'participantId'}) }}">
+            <form id="delete-participant-form" method="post" data-action="{{ path('participant_remove', {'listurl': 'listUrl', 'participantUrl': 'participantUrl'}) }}">
                 <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
                 <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
                         id="btn_remove_participant_confirmation">

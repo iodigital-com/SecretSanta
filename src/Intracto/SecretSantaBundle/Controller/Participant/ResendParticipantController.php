@@ -30,14 +30,14 @@ class ResendParticipantController extends AbstractController
     }
 
     /**
-     * @Route("/resend/{listurl}/{participantId}", name="resend_participant")
-     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"id" = "participantId"})
+     * @Route("/resend/{listurl}/{participantUrl}", name="resend_participant")
+     * @ParamConverter("participant", class="IntractoSecretSantaBundle:Participant", options={"mapping": {"participantUrl": "url"}})
      * @Method("GET")
      */
     public function resendAction($listurl, Participant $participant)
     {
         if ($participant->getParty()->getListurl() !== $listurl) {
-            $this->createNotFoundException();
+            throw $this->createNotFoundException();
         }
 
         if ($this->unsubscribeService->isBlacklisted($participant)) {
