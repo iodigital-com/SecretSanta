@@ -31,11 +31,11 @@ class ParticipantController extends Controller
             return new JsonResponse(['success' => false, 'message' => $this->get('translator')->trans('flashes.participant.edit_email')]);
         }
 
-        $orriginalEmail = $participant->getEmail();
+        $originalEmail = $participant->getEmail();
         $this->get('intracto_secret_santa.service.participant')->editParticipant($participant, $name, $email);
 
         $message = $this->get('translator')->trans('flashes.participant.updated_participant');
-        if ($orriginalEmail !== $participant->getEmail() && $participant->getParty()->getCreated()) {
+        if ($originalEmail !== $participant->getEmail() && $participant->getParty()->getCreated()) {
             $this->get('intracto_secret_santa.mailer')->sendSecretSantaMailForParticipant($participant);
             $message = $this->get('translator')->trans('flashes.participant.updated_participant_resent');
         }
