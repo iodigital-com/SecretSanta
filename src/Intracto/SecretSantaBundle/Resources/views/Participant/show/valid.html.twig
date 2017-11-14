@@ -1,17 +1,5 @@
 {% extends "IntractoSecretSantaBundle:Participant/show:base.html.twig" %}
 
-{% block datalayer %}
-    <script>
-        dataLayer.push({
-            'pId': '{{ participant.party.listurl }}',
-            'pLocation': '{{ participant.party.location }}',
-            'pAmount': '{{ participant.party.amount }}',
-            'pParticipants': '{{ participant.party.participants|length }}',
-            'pDate': '{{ participant.party.eventdate|date('Y-m-d') }}'
-        });
-    </script>
-{% endblock %}
-
 {% block main %}
     <div class="box">
         <div class="row participant-title-row">
