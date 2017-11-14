@@ -43,17 +43,16 @@ class SendMessageFormHandler
         }
 
         $message = $form->getData()['message'];
-        $recipientId = $form->getData()['recipient'];
+        $senderId = $form->getData()['participant'];
 
-        $recipient = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->find($recipientId);
-
-        if (null === $recipient) {
+        $sender = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findOneBy(['url' => $senderId]);
+        if (null === $sender) {
             $this->session->getFlashBag()->add('danger', $this->translator->trans('participant_communication-send_message.feedback.error'));
 
             return false;
         }
 
-        $this->mailerService->sendAnonymousMessage($recipient, $message);
+        $this->mailerService->sendAnonymousMessage($sender->getAssignedParticipant(), $message);
 
         $this->session->getFlashBag()->add('success', $this->translator->trans('participant_communication-send_message.feedback.success'));
 

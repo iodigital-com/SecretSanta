@@ -22,7 +22,6 @@ class AnonymousMessageFormType extends AbstractType
                     'placeholder' => 'participant_show_valid.anonymous_message.message_placeholder',
                 ],
              ])
-             ->add('recipient', HiddenType::class)
              ->add('participant', HiddenType::class);
     }
 }
