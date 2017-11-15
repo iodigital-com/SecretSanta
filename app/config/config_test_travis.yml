@@ -6,6 +6,10 @@ parameters:
     database_password: ''
     geo_ip_db_path: /home/travis/.build-cache/GeoLite2-City.mmdb
 
+services:
+    swiftmailer.mailer.mailer: '@swiftmailer.mailer'
+    swiftmailer.mailer.mandrill: '@swiftmailer.mailer'
+
 framework:
     test: ~
     session:
@@ -14,6 +18,10 @@ framework:
 swiftmailer:
     disable_delivery: true
     logging: true
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
     spool:
         type: file
         path: "%kernel.cache_dir%/spool"
