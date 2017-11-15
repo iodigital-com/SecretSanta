@@ -51,8 +51,7 @@ class ParticipantService
 
         foreach ($party->getParticipants() as $key => $participant) {
             $match = $shuffled[$key];
-            $participant->setAssignedParticipant($match)
-                ->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
+            $participant->setAssignedParticipant($match);
 
             $this->em->persist($participant);
         }
