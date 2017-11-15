@@ -168,7 +168,7 @@ static-faq:
         If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
 
         <a href="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
-        <p>You can request the combinations / wishlists from the list management page. But it sort of spoils the "secret" part of our Secret Santa. That's why we added indicators to all participants' buddy pages that all combinations / wishlists were exposed to the list admin when you actually performed the request :-)</p>
+        <p>You can optionally see the combinations and wishlists on the management page. There are buttons for that, you won't see this by default. If you want to share this information with all the participants you will have to share the URL yourself.</p>
 
         <a href="delete"></a><h2>Can I delete my list?</h2>
         <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
