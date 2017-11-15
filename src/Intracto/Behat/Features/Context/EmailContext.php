@@ -23,7 +23,7 @@ class EmailContext extends RawMinkContext
         if (!file_exists($this->getSpoolDir()) && !is_dir($this->getSpoolDir())) {
             return;
         }
-        
+
         $filesystem = new Filesystem();
         $finder = $this->getSpooledEmails();
 
