@@ -12,12 +12,16 @@ use GeoIp2\Exception\AddressNotFoundException;
 
 class FixParticipantUrlCommand extends Command
 {
+    /** @var ParticipantRepository */
+    private $participantRepository;
     /** @var EntityManagerInterface */
     private $em;
 
     public function __construct(
+        ParticipantRepository $participantRepository,
         EntityManagerInterface $em
     ) {
+        $this->participantRepository = $participantRepository;
         $this->em = $em;
 
         parent::__construct();
