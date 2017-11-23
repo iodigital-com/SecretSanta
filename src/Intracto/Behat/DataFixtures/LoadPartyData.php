@@ -47,8 +47,6 @@ class LoadPartyData implements FixtureInterface
 
             if ($i === 1) {
                 $participant->setUrl(FeatureContext::PARTICIPANT_URL_TOKEN);
-            } else {
-                $participant->setUrl(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
             }
 
             if ($i === 1) {

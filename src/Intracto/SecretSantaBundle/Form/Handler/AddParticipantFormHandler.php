@@ -67,8 +67,6 @@ class AddParticipantFormHandler
         $newParticipant->setParty($party);
 
         if ($party->getCreated()) {
-            $newParticipant->setUrl(base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36));
-
             $this->em->persist($newParticipant);
 
             /** @var Participant $admin */
