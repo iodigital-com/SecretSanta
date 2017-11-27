@@ -9,6 +9,7 @@
 
         <indexes>
             <index name="participant_url" columns="url"/>
+            <index name="participant_email" columns="email"/>
         </indexes>
 
         <id name="id" type="integer">
