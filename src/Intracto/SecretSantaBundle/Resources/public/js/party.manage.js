@@ -74,7 +74,7 @@ function editParticipant(listUrl, participantUrl) {
     var url = $('table#mysanta').data('editurl');
     url = url.replace("listUrl", listUrl);
     url = url.replace("participantUrl", participantUrl);
-    if ($('#email_' + participantUrl).has('form').length == 0) {
+    if ($('#email_' + participantUrl).has('input').length == 0) {
         makeEditForm(participantUrl, listUrl, name, email);
     }
 }
