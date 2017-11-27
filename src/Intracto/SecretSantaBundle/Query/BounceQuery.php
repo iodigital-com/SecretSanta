@@ -36,7 +36,7 @@ class BounceQuery
         $query = $this->dbal->createQueryBuilder()
             ->select('id')
             ->from('participant')
-            ->where('email LIKE :email')
+            ->where('email = :email')
             ->andWhere('invitation_sent_date IS NOT NULL')
             ->andWhere('invitation_sent_date <= :bouncedate')
             ->andWhere('datediff(invitation_sent_date, :bouncedate) < 2')

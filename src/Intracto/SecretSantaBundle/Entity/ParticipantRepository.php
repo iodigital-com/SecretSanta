@@ -36,7 +36,7 @@ class ParticipantRepository extends EntityRepository
         $query = $this->_em->createQuery('
             SELECT participant
             FROM IntractoSecretSantaBundle:Participant participant
-            WHERE participant.email LIKE :email
+            WHERE participant.email = :email
         ');
         $query->setParameter('email', $email);
 
