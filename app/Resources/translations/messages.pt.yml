@@ -13,9 +13,10 @@ base:
 form-party:
     label:
         date_party: Data da sua festa de Amigo Secreto
-#        location: ?
+        location: Local da sua festa
         amount_to_spend: Valor máximo a gastar
-#        message:
+        message: Mensagem adicional no e-mail
+        confirmed: Sim, tenho permissão para utilizar os e-mails dos participantes
 
 # PartyController
 party_controller:
@@ -70,7 +71,7 @@ party-create:
         create_event: Criar um evento!
 
     label:
-#        host: ?
+        host: Organizador
         email: E-mail
         participants: Participantes
 
@@ -102,9 +103,9 @@ party-deleted:
 #        submit-btn:
 
 # Wishlist/showAll.html.twig
-#wishlist-show_all:
-#    title: ?
-#    back:
+wishlist-show_all:
+    title: Todas as Listas de Presentes
+    back: Voltar a gerenciar a página
 
 # Static/faq.html.twig
 static-faq:
@@ -189,15 +190,15 @@ helper-prototype_wishlist:
 participant-expose_all:
     title: Combinações do Amigo Secreto
     giving:  Este participante é o Papai Noel de ...
-#    receiving: ?
-#    back:
+    receiving: ... um presente para este membro
+    back: Voltar a gerenciar a página
 
 # Participant/show/base.html.twig
 participant_show_base:
     headers:
         title: Detalhes da sua <span class="accent">festa Secret Santa</span>
         date: Data
-#        location: ?
+        location: Licalização da festa
         amount: Valor
         num_people: Número de participantes
         person_created_list: Proprietário desta lista
@@ -214,39 +215,39 @@ participant_show_valid:
         body: >
             <p>Olá %name%,</p>
             <p>Seu Amigo Secreto é:</p>
-#        watch_out: ?
+        watch_out: Cuidado
         wishlist_from: Lista de desejos de %name%
         wishlist_not_provided: '%name% ainda não montou uma lista de desejos'
-#        message_for_wishlist: ?
+        message_for_wishlist: Envie uma mensagem para seu amigo para lembrá-lo(a) que sua lista de desejos está vazia.
 
-#    buy_from_amazon: ?
+    buy_from_amazon: Quais são os itens mais desejados?
 
     wishlist:
         title: Sua lista de desejos
         description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
         empty: A sua lista de desejos está vazia. Adicione algo!
 
-#    flashes:
-#        wishlist:
-#            empty_row: ?
-#            added: ?
-#            updated: ?
-#            removed: ?
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
+            added: <h4>Adicionado!</h4> O item foi adicionado a sua lista de desejos.
+            updated: <h4>Updated!</h4> Item succesfully updated.
+            removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
 
     label:
         description: Descrição
 
     btn:
         add_wishlist: Adicione um item a lista do Secret Santa
-#        update_item: ?
+        update_item: Atualizar este item
         remove_item: Eliminar este item
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button:  ?
+    anonymous_message:
+        title: Enviar uma mensagem anônima para %name%
+        message_label: Sua mensagem
+        message_placeholder: Sua mensagem
+        warning_anonymous: Lembre-se que esta mensagem é enviada anonimamente e você não quer que descubram quem você é! Seu amigo não poderá responder sua mensagem, seja específico para ele conseguir atualizar sua lista de desejos.
+        send_button: Envie sua mensagem!
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
@@ -273,7 +274,7 @@ party_manage_base:
     headers:
         title: Detalhes da sua <span class="accent">festa Secret Santa</span>
         date: Data
-#        location: ?
+        location: Localização da festa
         amount: Valor
 
 # Party/manage/expired.html.twig
@@ -347,23 +348,23 @@ party_manage_valid:
 #        body: ?
 
     btn:
-#        add_participant: ?
-#        add_participant_confirm: ?
+        add_participant: Adicionar Participante
+        add_participant_confirm: Adicionar este participante
         cancel: Cancelar
-        delete_confirm: Eu entendo as consequências, elimine minha lista do Secret Santa
-        delete_list: Eliminar minha lista do Secret Santa
-#        expose: ?
-#        expose_wishlists: ?
-#        party_update: ?
-#        remove_participant_confirm: ?
-#        updated_party: ?
-#        start_party:
+        delete_confirm: Eu entendo as consequências, exclua meu Secret Santa
+        delete_list: Excluir meu Secret Santa
+        expose: Visualizar todos as combinações nesta lista
+        expose_wishlists:  Visualizar a lista de desejo de todos os participantes
+        party_update: Enviar atualização da festa aos participantes
+        remove_participant_confirm: Excluir este participante
+        updated_party: Atualizar os detalhes da festa
+        start_party: Iniciar a festa
 
     label:
         name: Nome
         email: E-mail
         confirmed: Confirmado
-#        wishlist_filled: ?
+        wishlist_filled: Lista de desejos criada
         actions: Ações
 
 #    excludes:
@@ -439,8 +440,8 @@ emails-pendingConfirmation:
     click_button: Clique abaixo para validar a sua lista de correspondência do Secret Santa. Isso irá acordar os nossos elfos mágicos jogando um balde de água nas carinhas inocentes deles. Assim que acordarem, eles irão levar a sua mensagem pessoal para todos os participantes.
     overview_page: Na (recentemente montada) página de visão geral há sempre um resumo de quem já sabe quem é seu Amigo Secreto. Assim, você fica sabendo quando a lista estiver completa.
     lastly: E por último, não se esqueça de sua própria participação! Seria um pouco tonto, né? Nós mandaremos um novo e-mail após você ter clicado no botão de confirmação abaixo.
-#    come_back:
-#    btn_goto_manage:
+    come_back: You can always come back to this mail if you need the link to your manage page.
+    btn_goto_manage: Go to the manage page
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
@@ -462,14 +463,29 @@ emails-party_status:
 #        partystatus: ?
 
 # Emails/partyUpdate.{html,txt}.twig
-#emails-party_update:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+emails-party_update:
+    subject: Nossa festa de amigo secreto está chegando!
+    message:
+        html: >
+            Oi %name%, <br/>
+            <br/>
 
-#    btn:
-#        party_update:
+            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.<br/>
+            <br/>
+            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.<br/>
+            <br/>
+            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+        txt: >
+            Oi %name%,
+
+            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.
+
+            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.
+
+            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+
+    btn:
+        party_update: Veja seu amigo e sua lista de presentes
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
@@ -515,20 +531,34 @@ emails-wishlistChanged:
         check_wishlist: Ver a lista de desejos
 
 # Emails/anonymousMessage.{html,txt}.twig
-#emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
-#    update_wishlist: ?
+emails-anonymous_message:
+    subject: Seu amigo secreto lhe enviou um e-mail
+    message:
+      html: >
+          Oi %name%, <br/>
+          <br/>
+          Seu amigo secreto enviou um e-mail pra você. Você pode ler aqui:<br/>
+          <br />
+          <strong>%message%</strong>
+          <br/>
+          Clique no link abaixo para adicionar algo que você queira para sua lista de desejos.
+      txt: >
+          Oi %name%,
+
+          Seu amigo secreto enviou um e-mail pra você. Você pode ler aqui:
+
+          %message%
+
+          Clique no link abaixo para adicionar algo que você queira para sua lista de desejos.
+    update_wishlist: Atualizar sua lista de desejos
 
 # MailStatusExtension
-#mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+mail_status_extension:
+    unknown: Desconhecido
+    opened: E-mail aberto
+    viewed: Visualisou a festa
+    not_started: Festa não iniciada
+    bounced: E-mail não recebido!
 
 flashes:
     # SendPartyUpdateController
