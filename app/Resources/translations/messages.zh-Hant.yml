@@ -16,6 +16,7 @@ form-party:
 #        location: ?
         amount_to_spend: 費用
 #        message:
+#        confirmed:
 
 # PartyController
 party_controller:

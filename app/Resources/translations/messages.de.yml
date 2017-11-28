@@ -16,6 +16,7 @@ form-party:
         location: Platz von Ihrer Secret Santa-Party
         amount_to_spend: Auszugebender Betrag
 #        message:
+#        confirmed:
 
 # PartyController
 party_controller:
