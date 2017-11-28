@@ -9,7 +9,7 @@
                 {{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name})|raw }}
 
                 <div class="yoursecretsant" data-hj-masked>
-                    <span class="yourgift">{{ participant.assignedParticipant.name }}</span> {{ participant.assignedParticipant.email }}
+                    <span class="yourgift">{{ participant.assignedParticipant.name }}</span>
                 </div>
             </div>
             <div class="col-sm-7 col-md-7 hidden-xs">
@@ -21,7 +21,7 @@
                             <li><strong>{{ 'participant_show_base.headers.location'|trans }}: </strong> {{ participant.party.location }}</li>
                             <li><strong>{{ 'participant_show_base.headers.amount'|trans }}: </strong> {{ participant.party.amount }}</li>
                             <li><strong>{{ 'participant_show_base.headers.num_people'|trans }}: </strong> {{ participant.party.participants|length }}</li>
-                            <li><strong>{{ 'participant_show_base.headers.person_created_list'|trans }}: </strong> <span data-hj-masked>{{ participant.party.participants|first.email }}</span>
+                            <li><strong>{{ 'participant_show_base.headers.person_created_list'|trans }}: </strong> <span data-hj-masked>{{ participant.party.participants|first.name }} ({{ participant.party.participants|first.email }})</span>
                         </ul>
                     </div>
                 </div>
