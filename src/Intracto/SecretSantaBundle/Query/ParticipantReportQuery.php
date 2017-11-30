@@ -2,7 +2,9 @@
 
 namespace Intracto\SecretSantaBundle\Query;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -350,38 +352,42 @@ class ParticipantReportQuery
             $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
         }
 
-        $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.party_id, e.url, p.locale, p.list_url
-            FROM party p
-            JOIN participant e ON p.id = e.party_id
-            LEFT OUTER JOIN blacklist_email b ON b.email = e.email
-            WHERE p.sent_date >= :firstDay
-            AND p.sent_date < :lastDay
-            AND e.party_admin = :admin
-            AND e.subscribed_for_updates = 1
-            AND b.id is null
-            /* when there are duplicate emails, fetch only the one with the highest sent_date */
-            AND p.sent_date = (SELECT max(p2.sent_date) 
-                FROM party p2
-                JOIN participant e2 ON p2.id = e2.party_id
-                LEFT OUTER JOIN blacklist_email b2 ON b2.email = e2.email
-                WHERE p2.sent_date >= :firstDay
-                AND p2.sent_date < :lastDay
-                AND e2.party_admin = :admin
-                AND e2.subscribed_for_updates = 1
-                AND b2.id is null
-                and e2.email = e.email
-            )
-            GROUP BY e.email /*filter duplicates in same party */
-            ORDER BY p.id DESC',
-            [
-                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-                'admin' => ($admin ? 1 : 0),
-            ]
-        );
+        /** @var QueryBuilder $subQuery */
+        $subQuery = $this->dbal->createQueryBuilder();
+        $subQuery->select('max(p2.sent_date)')
+            ->from('party', 'p2')
+            ->join('p2', 'participant', 'e2', 'p2.id = e2.party_id')
+            ->leftJoin('e2', 'blacklist_email', 'b2', 'b2.email = e2.email')
+            ->where('p2.sent_date >= :firstDay')
+            ->andWhere('p2.sent_date < :lastDay')
+            ->andWhere('e2.party_admin = :admin')
+            ->andWhere('e2.subscribed_for_updates = 1')
+            ->andWhere('b2.id is null')
+            ->andWhere('e2.email = e.email');
 
-        while ($row = $stmt->fetch()) {
+        /** @var QueryBuilder $qb */
+        $qb = $this->dbal->createQueryBuilder();
+
+        /* when there are duplicate emails, fetch only the one with the highest sent_date */
+        $qb->select('e.name, e.email, e.party_id, e.url, p.locale, p.list_url')
+            ->from('party', 'p')
+            ->join('p', 'participant', 'e', 'p.id = e.party_id')
+            ->leftJoin('e', 'blacklist_email', 'b', 'b.email = e.email')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
+            ->andWhere('e.party_admin = :admin')
+            ->andWhere('e.subscribed_for_updates = 1')
+            ->andWhere('b.id is null')
+            ->andWhere("p.sent_date = ({$subQuery->getSQL()})")
+            ->groupBy('e.email') /*filter duplicates in same party */
+            ->orderBy('p.id', Criteria::DESC)
+            ->setParameter(':firstDay', $season->getStart()->format('Y-m-d 00:00:00'))
+            ->setParameter(':lastDay', $season->getEnd()->format('Y-m-d 00:00:00'))
+            ->setParameter(':admin', ($admin ? 1 : 0));
+
+        $result = $qb->execute()->fetchAll();
+
+        foreach ($result as $row) {
             $export = [
                 $row['name'],
                 $row['email'],
