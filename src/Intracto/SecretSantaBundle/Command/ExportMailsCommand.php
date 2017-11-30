@@ -16,7 +16,6 @@ class ExportMailsCommand extends Command
     public function __construct(ParticipantReportQuery $participantReportQuery)
     {
         $this->participantReportQuery = $participantReportQuery;
-
         parent::__construct();
     }
 
@@ -39,16 +38,16 @@ class ExportMailsCommand extends Command
 
         switch ($userType) {
             case 'admin':
-                $this->participantReportQuery->fetchAdminEmailsForExport($season);
+                $this->participantReportQuery->fetchMailsForExport($season, true);
                 $output->writeln("Last season's admin emails exported to /tmp");
                 break;
             case 'participant':
-                $this->participantReportQuery->fetchParticipantEmailsForExport($season);
+                $this->participantReportQuery->fetchMailsForExport($season, false);
                 $output->writeln("Last season's participant emails exported to /tmp");
                 break;
             default:
-                $this->participantReportQuery->fetchAdminEmailsForExport($season);
-                $this->participantReportQuery->fetchParticipantEmailsForExport($season);
+                $this->participantReportQuery->fetchMailsForExport($season, true);
+                $this->participantReportQuery->fetchMailsForExport($season, false);
                 $output->writeln('All emails exported to /tmp');
                 break;
         }
