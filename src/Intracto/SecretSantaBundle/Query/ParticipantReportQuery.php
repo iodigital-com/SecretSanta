@@ -339,21 +339,19 @@ class ParticipantReportQuery
     }
 
     /**
+     * Fetch mails.
+     *
      * @param Season $season
-     * @param bool   $admin
+     * @param bool   $isAdmin
+     *
+     * @return iterable
      */
-    public function fetchMailsForExport(Season $season, bool $admin)
+    public function fetchMailsForExport(Season $season, bool $isAdmin)
     {
-        $reusePartyBaseUrl = $this->getPartyReuseBaseUrl();
-
-        if (true === $admin) {
-            $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
-        } else {
-            $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
-        }
-
         /** @var QueryBuilder $subQuery */
         $subQuery = $this->dbal->createQueryBuilder();
+
+        /* when there are duplicate emails, fetch only the one with the highest sent_date */
         $subQuery->select('max(p2.sent_date)')
             ->from('party', 'p2')
             ->join('p2', 'participant', 'e2', 'p2.id = e2.party_id')
@@ -368,7 +366,6 @@ class ParticipantReportQuery
         /** @var QueryBuilder $qb */
         $qb = $this->dbal->createQueryBuilder();
 
-        /* when there are duplicate emails, fetch only the one with the highest sent_date */
         $qb->select('e.name, e.email, e.party_id, e.url, p.locale, p.list_url')
             ->from('party', 'p')
             ->join('p', 'participant', 'e', 'p.id = e.party_id')
@@ -381,45 +378,13 @@ class ParticipantReportQuery
             ->andWhere("p.sent_date = ({$subQuery->getSQL()})")
             ->groupBy('e.email') /*filter duplicates in same party */
             ->orderBy('p.id', Criteria::DESC)
-            ->setParameter(':firstDay', $season->getStart()->format('Y-m-d 00:00:00'))
-            ->setParameter(':lastDay', $season->getEnd()->format('Y-m-d 00:00:00'))
-            ->setParameter(':admin', ($admin ? 1 : 0));
+            ->setParameter(':firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter(':lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
+            ->setParameter(':admin', ($isAdmin ? 1 : 0));
 
         $result = $qb->execute()->fetchAll();
 
-        foreach ($result as $row) {
-            $export = [
-                $row['name'],
-                $row['email'],
-                $row['party_id'],
-                $row['url'],
-                $row['locale'],
-            ];
-
-            if ($admin) {
-                $export[] = $reusePartyBaseUrl.$row['list_url'];
-            }
-
-            fputcsv(
-                $handle,
-                $export,
-                ','
-            );
-        }
-
-        fclose($handle);
-    }
-
-    private function getPartyReuseBaseUrl()
-    {
-        $url = $this->router->generate(
-            'party_reuse',
-            ['listurl' => '1'],
-            true
-        );
-
-        // URL was generated for party 1, strip the 1 to get the base URL
-        return substr($url, 0, -1);
+        return $result;
     }
 
     /**

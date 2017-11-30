@@ -2,35 +2,99 @@
 
 namespace Intracto\SecretSantaBundle\Service;
 
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use Intracto\SecretSantaBundle\Query\ParticipantReportQuery;
+use Intracto\SecretSantaBundle\Query\Season;
+use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * Class ExportService.
+ */
 class ExportService
 {
     /**
-     * @param array  $data
-     * @param string $seperator
-     * @param string $enclosure
-     *
-     * @return StreamedResponse
+     * @var ParticipantReportQuery
      */
-    public function exportCSV($data, $filename = 'export.csv', $seperator = ';', $enclosure = '"')
+    private $participantReportQuery;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    /**
+     * ExportService constructor.
+     *
+     * @param ParticipantReportQuery $participantReportQuery
+     * @param RouterInterface        $router
+     */
+    public function __construct(
+        ParticipantReportQuery $participantReportQuery,
+        RouterInterface $router
+    ) {
+        $this->participantReportQuery = $participantReportQuery;
+        $this->router = $router;
+    }
+
+    /**
+     * @param Season $season
+     * @param bool   $isAdmin
+     */
+    public function export(Season $season, bool $isAdmin = false)
     {
-        $response = new StreamedResponse(function () use ($data, $seperator, $enclosure) {
-            $handle = fopen('php://output', 'r+');
+        $result = $this->participantReportQuery->fetchMailsForExport($season, $isAdmin);
 
-            //Write header
-            fputcsv($handle, array_keys($data[0]), $seperator, $enclosure);
+        $reusePartyBaseUrl = $this->getPartyReuseBaseUrl();
+        $handle = fopen($this->getOutputLocation($isAdmin), 'w+');
 
-            foreach ($data as $i => $row) {
-                fputcsv($handle, $row, $seperator, $enclosure);
+        foreach ($result as $row) {
+            $export = [
+                $row['name'],
+                $row['email'],
+                $row['party_id'],
+                $row['url'],
+                $row['locale'],
+            ];
+
+            if ($isAdmin) {
+                $export[] = $reusePartyBaseUrl.$row['list_url'];
             }
 
-            fclose($handle);
-        });
+            fputcsv(
+                $handle,
+                $export,
+                ','
+            );
+        }
 
-        $response->headers->set('Content-Type', 'application/force-download');
-        $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', $filename));
+        fclose($handle);
+    }
 
-        return $response;
+    /**
+     * @param bool $isAdmin
+     *
+     * @return string
+     */
+    private function getOutputLocation(bool $isAdmin): string
+    {
+        if ($isAdmin) {
+            return '/tmp/'.date('Y-m-d-H.i.s').'_admins.csv';
+        }
+
+        return '/tmp/'.date('Y-m-d-H.i.s').'_participants.csv';
+    }
+
+    /**
+     * @return string
+     */
+    private function getPartyReuseBaseUrl(): string
+    {
+        $url = $this->router->generate(
+            'party_reuse',
+            ['listurl' => '1'],
+            true
+        );
+
+        // URL was generated for party 1, strip the 1 to get the base URL
+        return substr($url, 0, -1);
     }
 }
