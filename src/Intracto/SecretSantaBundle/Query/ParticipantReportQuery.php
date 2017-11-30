@@ -338,13 +338,17 @@ class ParticipantReportQuery
 
     /**
      * @param Season $season
-     *
-     * @return mixed
+     * @param bool   $admin
      */
-    public function fetchAdminEmailsForExport(Season $season)
+    public function fetchMailsForExport(Season $season, bool $admin)
     {
         $reusePartyBaseUrl = $this->getPartyReuseBaseUrl();
-        $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
+
+        if (true === $admin) {
+            $handle = fopen('/vagrant/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
+        } else {
+            $handle = fopen('/vagrant/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
+        }
 
         $stmt = $this->dbal->executeQuery('
             SELECT e.name, e.email, e.party_id, e.url, p.locale, p.list_url
@@ -353,7 +357,7 @@ class ParticipantReportQuery
             LEFT OUTER JOIN blacklist_email b ON b.email = e.email
             WHERE p.sent_date >= :firstDay
             AND p.sent_date < :lastDay
-            AND e.party_admin = 1
+            AND e.party_admin = :admin
             AND e.subscribed_for_updates = 1
             AND b.id is null
             /* when there are duplicate emails, fetch only the one with the highest sent_date */
@@ -363,7 +367,7 @@ class ParticipantReportQuery
                 LEFT OUTER JOIN blacklist_email b2 ON b2.email = e2.email
                 WHERE p2.sent_date >= :firstDay
                 AND p2.sent_date < :lastDay
-                AND e2.party_admin = 1
+                AND e2.party_admin = :admin
                 AND e2.subscribed_for_updates = 1
                 AND b2.id is null
                 and e2.email = e.email
@@ -373,20 +377,26 @@ class ParticipantReportQuery
             [
                 'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
                 'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
+                'admin' => ($admin ? 1 : 0),
             ]
         );
 
         while ($row = $stmt->fetch()) {
+            $export = [
+                $row['name'],
+                $row['email'],
+                $row['party_id'],
+                $row['url'],
+                $row['locale'],
+            ];
+
+            if ($admin) {
+                $export[] = $reusePartyBaseUrl.$row['list_url'];
+            }
+
             fputcsv(
                 $handle,
-                [
-                    $row['name'],
-                    $row['email'],
-                    $row['party_id'],
-                    $row['url'],
-                    $row['locale'],
-                    $reusePartyBaseUrl.$row['list_url'],
-                ],
+                $export,
                 ','
             );
         }
@@ -404,63 +414,6 @@ class ParticipantReportQuery
 
         // URL was generated for party 1, strip the 1 to get the base URL
         return substr($url, 0, -1);
-    }
-
-    /**
-     * @param Season $season
-     *
-     * @return mixed
-     */
-    public function fetchParticipantEmailsForExport(Season $season)
-    {
-        $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
-
-        $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.party_id, e.url, p.locale
-            FROM party p
-            JOIN participant e ON p.id = e.party_id
-            LEFT OUTER JOIN blacklist_email b ON b.email = e.email
-            WHERE p.sent_date >= :firstDay
-            AND p.sent_date < :lastDay
-            AND e.party_admin = 0
-            AND e.subscribed_for_updates = 1
-            AND b.id is null
-            /* when there are duplicate emails, fetch only the one with the highest sent_date */
-            and p.sent_date = (SELECT max(p2.sent_date) 
-                FROM party p2
-                JOIN participant e2 ON p2.id = e2.party_id
-                LEFT OUTER JOIN blacklist_email b2 ON b2.email = e2.email
-                WHERE p2.sent_date >= :firstDay
-                AND p2.sent_date < :lastDay
-                AND e2.party_admin = 0
-                AND e2.subscribed_for_updates = 1
-                AND b2.id is null        
-                and e2.email = e.email
-            )
-            GROUP BY e.email /*filter duplicates in same party */
-            ORDER BY p.id DESC
-            ',
-            [
-                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-            ]
-        );
-
-        while ($row = $stmt->fetch()) {
-            fputcsv(
-                $handle,
-                [
-                    $row['name'],
-                    $row['email'],
-                    $row['party_id'],
-                    $row['url'],
-                    $row['locale'],
-                ],
-                ','
-            );
-        }
-
-        fclose($handle);
     }
 
     /**
