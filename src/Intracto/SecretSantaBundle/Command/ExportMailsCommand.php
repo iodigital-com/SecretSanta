@@ -2,24 +2,37 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
-use Intracto\SecretSantaBundle\Query\ParticipantReportQuery;
+use Intracto\SecretSantaBundle\Service\ExportService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Intracto\SecretSantaBundle\Query\Season;
 
+/**
+ * Class ExportMailsCommand.
+ */
 class ExportMailsCommand extends Command
 {
-    private $participantReportQuery;
+    /**
+     * @var ExportService
+     */
+    private $exportService;
 
-    public function __construct(ParticipantReportQuery $participantReportQuery)
+    /**
+     * ExportMailsCommand constructor.
+     *
+     * @param ExportService $exportService
+     */
+    public function __construct(ExportService $exportService)
     {
-        $this->participantReportQuery = $participantReportQuery;
-
         parent::__construct();
+        $this->exportService = $exportService;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -31,6 +44,9 @@ class ExportMailsCommand extends Command
             );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $lastSeason = date('Y', strtotime('-1 year'));
@@ -39,16 +55,16 @@ class ExportMailsCommand extends Command
 
         switch ($userType) {
             case 'admin':
-                $this->participantReportQuery->fetchAdminEmailsForExport($season);
+                $this->exportService->export($season, true);
                 $output->writeln("Last season's admin emails exported to /tmp");
                 break;
             case 'participant':
-                $this->participantReportQuery->fetchParticipantEmailsForExport($season);
+                $this->exportService->export($season, false);
                 $output->writeln("Last season's participant emails exported to /tmp");
                 break;
             default:
-                $this->participantReportQuery->fetchAdminEmailsForExport($season);
-                $this->participantReportQuery->fetchParticipantEmailsForExport($season);
+                $this->exportService->export($season, true);
+                $this->exportService->export($season, false);
                 $output->writeln('All emails exported to /tmp');
                 break;
         }

@@ -2,7 +2,9 @@
 
 namespace Intracto\SecretSantaBundle\Query;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -337,117 +339,52 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season
+     * Fetch mails.
      *
-     * @return mixed
-     */
-    public function fetchAdminEmailsForExport(Season $season)
-    {
-        $reusePartyBaseUrl = $this->getPartyReuseBaseUrl();
-        $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_admins.csv', 'w+');
-
-        $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.party_id, e.url, p.locale, p.list_url
-            FROM party p
-            JOIN participant e ON p.id = e.party_id
-            LEFT OUTER JOIN blacklist_email b ON b.email = e.email
-            WHERE p.sent_date >= :firstDay
-            AND p.sent_date < :lastDay
-            AND e.party_admin = 1
-            AND e.subscribed_for_updates = 1
-            AND b.id is null
-            GROUP BY e.name, e.email, e.party_id
-            ORDER BY p.id DESC',
-            [
-                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-            ]
-        );
-
-        $foundAddress = [];
-        while ($row = $stmt->fetch()) {
-            if (in_array($row['email'], $foundAddress)) {
-                continue;
-            }
-            $foundAddress[] = $row['email'];
-
-            fputcsv(
-                $handle,
-                [
-                    $row['name'],
-                    $row['email'],
-                    $row['party_id'],
-                    $row['url'],
-                    $row['locale'],
-                    $reusePartyBaseUrl.$row['list_url'],
-                ],
-                ','
-            );
-        }
-
-        fclose($handle);
-    }
-
-    private function getPartyReuseBaseUrl()
-    {
-        $url = $this->router->generate(
-            'party_reuse',
-            ['listurl' => '1'],
-            true
-        );
-
-        // URL was generated for party 1, strip the 1 to get the base URL
-        return substr($url, 0, -1);
-    }
-
-    /**
      * @param Season $season
+     * @param bool   $isAdmin
      *
-     * @return mixed
+     * @return iterable
      */
-    public function fetchParticipantEmailsForExport(Season $season)
+    public function fetchMailsForExport(Season $season, bool $isAdmin)
     {
-        $handle = fopen('/tmp/'.date('Y-m-d-H.i.s').'_participants.csv', 'w+');
+        /** @var QueryBuilder $subQuery */
+        $subQuery = $this->dbal->createQueryBuilder();
 
-        $stmt = $this->dbal->executeQuery('
-            SELECT e.name, e.email, e.party_id, e.url, p.locale
-            FROM party p
-            JOIN participant e ON p.id = e.party_id
-            LEFT OUTER JOIN blacklist_email b ON b.email = e.email
-            WHERE p.sent_date >= :firstDay
-            AND p.sent_date < :lastDay
-            AND e.party_admin = 0
-            AND e.subscribed_for_updates = 1
-            AND b.id is null
-            GROUP BY e.name, e.email, e.party_id
-            ORDER BY p.id DESC',
-            [
-                'firstDay' => $season->getStart()->format('Y-m-d H:i:s'),
-                'lastDay' => $season->getEnd()->format('Y-m-d H:i:s'),
-            ]
-        );
+        /* when there are duplicate emails, fetch only the one with the highest sent_date */
+        $subQuery->select('max(p2.sent_date)')
+            ->from('party', 'p2')
+            ->join('p2', 'participant', 'e2', 'p2.id = e2.party_id')
+            ->leftJoin('e2', 'blacklist_email', 'b2', 'b2.email = e2.email')
+            ->where('p2.sent_date >= :firstDay')
+            ->andWhere('p2.sent_date < :lastDay')
+            ->andWhere('e2.party_admin = :admin')
+            ->andWhere('e2.subscribed_for_updates = 1')
+            ->andWhere('b2.id is null')
+            ->andWhere('e2.email = e.email');
 
-        $foundAddress = [];
-        while ($row = $stmt->fetch()) {
-            if (in_array($row['email'], $foundAddress)) {
-                continue;
-            }
-            $foundAddress[] = $row['email'];
+        /** @var QueryBuilder $qb */
+        $qb = $this->dbal->createQueryBuilder();
 
-            fputcsv(
-                $handle,
-                [
-                    $row['name'],
-                    $row['email'],
-                    $row['party_id'],
-                    $row['url'],
-                    $row['locale'],
-                ],
-                ','
-            );
-        }
+        $qb->select('e.name, e.email, e.party_id, e.url, p.locale, p.list_url')
+            ->from('party', 'p')
+            ->join('p', 'participant', 'e', 'p.id = e.party_id')
+            ->leftJoin('e', 'blacklist_email', 'b', 'b.email = e.email')
+            ->where('p.sent_date >= :firstDay')
+            ->andWhere('p.sent_date < :lastDay')
+            ->andWhere('e.party_admin = :admin')
+            ->andWhere('e.subscribed_for_updates = 1')
+            ->andWhere('b.id is null')
+            ->andWhere("p.sent_date = ({$subQuery->getSQL()})")
+            ->groupBy('e.email') /*filter duplicates in same party */
+            ->orderBy('p.id', Criteria::DESC)
+            ->setParameter(':firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter(':lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
+            ->setParameter(':admin', ($isAdmin ? 1 : 0));
 
-        fclose($handle);
+        $result = $qb->execute()->fetchAll();
+
+        return $result;
     }
 
     /**
