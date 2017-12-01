@@ -5,6 +5,10 @@ body {
   }
 }
 
+.intro div {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 .wrapper {
   max-width: $wrapper;
   margin: 0 auto;
