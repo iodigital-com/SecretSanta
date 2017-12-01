@@ -9,9 +9,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Intracto\SecretSantaBundle\Query\Season;
 
-/**
- * Class ExportMailsCommand.
- */
 class ExportMailsCommand extends Command
 {
     /**
@@ -20,8 +17,6 @@ class ExportMailsCommand extends Command
     private $exportService;
 
     /**
-     * ExportMailsCommand constructor.
-     *
      * @param ExportService $exportService
      */
     public function __construct(ExportService $exportService)

@@ -339,8 +339,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * Fetch mails.
-     *
      * @param Season $season
      * @param bool   $isAdmin
      *

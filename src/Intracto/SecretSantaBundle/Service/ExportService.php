@@ -6,9 +6,6 @@ use Intracto\SecretSantaBundle\Query\ParticipantReportQuery;
 use Intracto\SecretSantaBundle\Query\Season;
 use Symfony\Component\Routing\RouterInterface;
 
-/**
- * Class ExportService.
- */
 class ExportService
 {
     /**
@@ -22,8 +19,6 @@ class ExportService
     private $router;
 
     /**
-     * ExportService constructor.
-     *
      * @param ParticipantReportQuery $participantReportQuery
      * @param RouterInterface        $router
      */
