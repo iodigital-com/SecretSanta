@@ -171,7 +171,7 @@ static-faq:
         <p>You can optionally see the combinations and wishlists on the management page. There are buttons for that, you won't see this by default. If you want to share this information with all the participants you will have to share the URL yourself.</p>
 
         <a href="delete"></a><h2>Can I delete my list?</h2>
-        <p>Sure you can, go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
+        <p>Sure you can. Just go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
 
         <a name="who"></a><h2>Who are you?</h2>
         <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
@@ -181,17 +181,17 @@ static-faq:
 
         <a name="privacy"></a><h2>How do you handle my data?</h2>
         <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
-        Also, at any point in time, you can just delete your Secret Santa from the admin page.</p>
+        Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
 
         <a name="features"></a><h2>Can you add feature X?</h2>
         <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
         Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change.
-        For those who can code, we prefer transpiration to inspiration. In other words, we accept your PR's.</p>
+        For those who can code, we prefer transpiration to inspiration. In other words, we accept your PRs.</p>
 
         <a name="opensource"></a><h2>Open source</h2>
         <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
         The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
-        You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
+        You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PRs).
         If you want a change or a whole new feature, just add it.</p>
 
         <a name="ads"></a><h2>What about the ads?</h2>
@@ -235,7 +235,7 @@ participant_show_base:
 # Participant/show/expired.html.twig
 participant_show_expired:
     message:
-        expired: <strong>Oops</strong><br/>The event is older than 2 years and can't be eddited anymore.<br/>
+        expired: <strong>Oops</strong><br/>The event is older than 2 years and can't be edited anymore.<br/>
 
 # Participant/show/valid.html.twig
 participant_show_valid:
@@ -349,7 +349,7 @@ party_manage_valid:
         resend_email: Resend e-mail
         view_participant: View participant
         tip: Tip
-        come_back: You can always come back to this page to make sure everybody has checked his or her mailbox.
+        come_back: You can always come back to this page to make sure everybody has checked their mailbox.
         watch_out: Watch out
         save: Save
 
@@ -362,7 +362,7 @@ party_manage_valid:
                 <b>Unexpected bad things will happen if you don't read this!</b><br>
                 <br>
                 Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
-                This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
+                This will delete this Secret Santa list, all its participants and their wishlists permanently.<br>
                 <br>
                 Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
             </p>
