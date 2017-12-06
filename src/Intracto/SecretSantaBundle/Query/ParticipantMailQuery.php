@@ -99,7 +99,6 @@ class ParticipantMailQuery
         $today = new \DateTime();
         $oneHourAgo = new \DateTime('now - 1 hour');
         $oneDayAgo = new \DateTime('now - 1 day');
-        $twoWeeksAgo = new \DateTime('now - 2 weeks');
         $sixWeeksFromNow = new \DateTime('now + 6 weeks');
 
         $query = $this->em->createQuery('
@@ -111,7 +110,6 @@ class ParticipantMailQuery
               AND party.created = 1
               AND party.eventdate > :today
               AND party.eventdate < :sixWeeksFromNow
-              AND party.sentdate < :twoWeeksAgo
               AND (participant.wishlistUpdatedTime IS NULL OR participant.wishlistUpdatedTime < :oneHourAgo)
               AND (participant.updateWishlistReminderSentTime IS NULL OR participant.updateWishlistReminderSentTime < :oneDayAgo)
               AND participant.subscribedForUpdates = 1
@@ -120,7 +118,6 @@ class ParticipantMailQuery
         $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('oneHourAgo', $oneHourAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('oneDayAgo', $oneDayAgo, \Doctrine\DBAL\Types\Type::DATETIME);
-        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME);
         $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME);
 
         return $query->getResult();
