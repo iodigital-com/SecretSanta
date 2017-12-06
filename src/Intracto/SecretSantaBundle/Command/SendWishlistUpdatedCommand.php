@@ -20,8 +20,7 @@ class SendWishlistUpdatedCommand extends Command
         EntityManagerInterface $em,
         ParticipantMailQuery $participantMailQuery,
         MailerService $mailerService
-    )
-    {
+    ) {
         $this->em = $em;
         $this->participantMailQuery = $participantMailQuery;
         $this->mailerService = $mailerService;
