@@ -231,8 +231,8 @@ participant_show_valid:
         wishlist:
             empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
             added: <h4>Adicionado!</h4> O item foi adicionado a sua lista de desejos.
-            updated: <h4>Updated!</h4> Item succesfully updated.
-            removed: <h4>Deleted!</h4> Item succesfully removed from your wishlist.
+            updated: <h4>Updated!</h4> Item atualizado com sucesso.
+            removed: <h4>Deleted!</h4> Item removido com sucesso da sua lista de desejos.
 
     label:
         description: Descrição
@@ -250,24 +250,26 @@ participant_show_valid:
         send_button: Envie sua mensagem!
 
 # ParticipantCommunicationController
-#participant_communication-send_message:
-#    feedback:
-#        success: ?
-#        error: ?
-#        error_in_form: ?
-
+participant_communication-send_message:
+    feedback:
+        success: Seu email foi enviado! Enviamos nossos gnomos para entregá-lo!
+        error: Infelizmente nós não conseguimos enviar sua mensagem. Por favor tente novamente mais tarde!
+        error_in_form: Existe algum erro na sua entrada. Por favor verifique sua entrada e tente novamente! 
 # Participant/unsubscribe.html.twih
-#participant_unsubscribe:
-#    title:
-#    unsubscribe_all_label:
-#    unsubscribe_blacklist:
-#    unsubscribe_confirm_btn:
-#    unsubscribe_for:
-#    info_confirmation:
-#    blacklist_warning:
-#    feedback:
-#        success:
-#        error:
+participant_unsubscribe:
+    title: Cancelar a subscrição de emails
+    unsubscribe_all_label: Marque esse checkbox caso você queira cancelar a subscrição de todas as festas que você está participando
+    unsubscribe_blacklist: "Me coloque no blacklist: Previna que usuários me convidem no futuro"
+    unsubscribe_confirm_btn: Cancelar Subscrição
+    unsubscribe_for: Você está cancelando a subscrição para a festa Secret Santa do dia %date%, no/em %location%
+    info_confirmation: >
+                        <strong>Você tem certeza?</strong> Quando você cancelar a subscrição nós não enviaremos mais emails sobre essa festa, <strong>mas você ainda vai participar da festa</strong>.
+                        Quando você não quer mais participar da festa, você deve pedir ao administrador da festa para te remover da festa.<br/>
+                        Você ainda pode receber emails de outras festas que você está participando, a não ser que você marque o checkbox abaixo.
+    blacklist_warning: <strong>Atenção!</strong> Quando você blacklistar seu email você não conseguirá mais participar de qualquer festa Secret Santa no futuro! Apenas use esta função caso você ache que alguém está fazendo mau uso do seu email!
+    feedback:
+        success: Você cancelou a subscrição com sucesso!
+        error: Houbve um erro no cancelamento, por favor tente novamente!
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -440,7 +442,7 @@ emails-pendingConfirmation:
     click_button: Clique abaixo para validar a sua lista de correspondência do Secret Santa. Isso irá acordar os nossos elfos mágicos jogando um balde de água nas carinhas inocentes deles. Assim que acordarem, eles irão levar a sua mensagem pessoal para todos os participantes.
     overview_page: Na (recentemente montada) página de visão geral há sempre um resumo de quem já sabe quem é seu Amigo Secreto. Assim, você fica sabendo quando a lista estiver completa.
     lastly: E por último, não se esqueça de sua própria participação! Seria um pouco tonto, né? Nós mandaremos um novo e-mail após você ter clicado no botão de confirmação abaixo.
-    come_back: You can always come back to this mail if you need the link to your manage page.
+    come_back: Você sempre pode voltar para esse email caso você precise do link para página de gerenciamento.
     btn_goto_manage: Go to the manage page
 
 # Emails/partyStatus.{html,txt}.twig
