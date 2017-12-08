@@ -28,6 +28,8 @@ class MailerService
     /** @var UnsubscribeService */
     public $unsubscribeService;
     public $noreplyEmail;
+    /** @var CheckMailDomainService */
+    private $checkMailDomainService;
 
     /**
      * @param \Swift_Mailer          $mailer             a regular SMTP mailer, bad monitoring, cheap
@@ -47,7 +49,8 @@ class MailerService
         TranslatorInterface $translator,
         RouterInterface $routing,
         UnsubscribeService $unsubscribeService,
-        $noreplyEmail
+        $noreplyEmail,
+        CheckMailDomainService $checkMailDomainService
     ) {
         $this->mailer = $mailer;
         $this->mandrill = $mandrill;
@@ -57,6 +60,7 @@ class MailerService
         $this->routing = $routing;
         $this->unsubscribeService = $unsubscribeService;
         $this->noreplyEmail = $noreplyEmail;
+        $this->checkMailDomainService = $checkMailDomainService;
     }
 
     /**
@@ -595,12 +599,8 @@ class MailerService
         // Other people have the same issue https://www.maikel.pro/blog/en-your-own-mailserver-postfixdovecot-but/
         // A solution that works is using Mandrill as a relay for these domains. Hotmail is our 2nd largest recipient (after Gmail) so we can't ignore it
         $mailTo = key($mail->getTo());
-        if (strpos($mailTo, '@hotmail.') !== false ||
-            strpos($mailTo, '@live.') !== false ||
-            strpos($mailTo, '@msn.') !== false ||
-            strpos($mailTo, '@outlook.') !== false ||
-            strpos($mailTo, '@windowslive.') !== false
-        ) {
+
+        if ($this->checkMailDomainService->isBlacklistedAddress($mailTo)) {
             $this->mandrill->send($mail);
         } else {
             $this->mailer->send($mail);
