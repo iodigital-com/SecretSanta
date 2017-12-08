@@ -410,7 +410,7 @@ class ParticipantReportQuery
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
-            ->andWhere('wishlist_updated = 1')
+            ->andWhere('wishlist_updated_time IS NOT NULL')
             ->setParameter(':listurl', $listUrl);
         $viewedCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS viewedCount')
