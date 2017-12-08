@@ -51,7 +51,7 @@ class WishlistReportQuery
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date >= :firstDay')
             ->andWhere('p.sent_date < :lastDay')
-            ->andWhere('e.wishlist_updated = TRUE')
+            ->andWhere('wishlist_updated_time IS NOT NULL')
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
@@ -87,7 +87,7 @@ class WishlistReportQuery
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.sent_date < :lastDay')
-            ->andWhere('e.wishlist_updated = TRUE')
+            ->andWhere('wishlist_updated_time IS NOT NULL')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
         return $query->execute()->fetchAll();
