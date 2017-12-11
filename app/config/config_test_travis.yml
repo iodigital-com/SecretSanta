@@ -26,10 +26,6 @@ swiftmailer:
         type: file
         path: "%kernel.cache_dir%/spool"
 
-doctrine:
-    dbal:
-        dbname: "%database_name%_test"
-
 monolog:
     handlers:
         main:
@@ -38,6 +34,8 @@ monolog:
             level: error
 
 doctrine:
+    dbal:
+        dbname: "%database_name%_test"
     orm:
         entity_managers:
             default:
