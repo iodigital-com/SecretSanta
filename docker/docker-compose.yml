@@ -12,7 +12,9 @@ services:
     - ./apache2/logs:/usr/local/apache2/logs
     - ..:/usr/local/apache2/htdocs
   santa-php:
-    image: "php:7.1-fpm"
+    image: "php:7.1-fpm-alpine"
+    volumes:
+    - ..:/usr/local/apache2/htdocs
   santa-db:
     image: "mysql:5.7"
   santa-mailhog:
