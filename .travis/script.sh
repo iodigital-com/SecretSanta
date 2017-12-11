@@ -16,6 +16,18 @@ if [ ! -f $BUILD_CACHE_DIR/chromedriver ]; then
     mv chromedriver $BUILD_CACHE_DIR
 fi
 
+# this checks that the YAML config files contain no syntax errors
+app/console lint:yaml app/config || exit $?
+# this checks that the Twig template files contain no syntax errors
+app/console lint:twig app/Resources/TwigBundle || exit $?
+app/console lint:twig src/Intracto/SecretSantaBundle/Resources/views || exit $?
+# this checks that the application doesn't use dependencies with known security vulnerabilities
+app/console security:check --end-point=http://security.sensiolabs.org/check_lock || exit $?
+# this checks that the composer.json and composer.lock files are valid
+composer validate --strict || exit $?
+# this checks that Doctrine's mapping configurations are valid
+app/console doctrine:schema:validate --skip-sync -vvv --no-interaction || exit $?
+
 # Run Selenium with ChromeDriver
 echo "Start selenium"
 PATH=$PATH:$BUILD_CACHE_DIR bin/selenium-server-standalone > $TRAVIS_BUILD_DIR/selenium.log 2>&1 &
