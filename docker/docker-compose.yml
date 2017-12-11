@@ -26,6 +26,8 @@ services:
       MYSQL_PASSWORD: secretsanta
     volumes:
     - ./mysql:/var/lib/mysql
-#  santa-mailhog:
-#    image: "mailhog/mailhog"
+  santa-mailhog:
+    image: "mailhog/mailhog"
+    ports:
+    - "8025:8025"
 
