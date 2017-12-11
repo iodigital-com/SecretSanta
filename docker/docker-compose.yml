@@ -5,6 +5,12 @@ services:
     ports:
     - "80:80"
     - "443:443"
+    volumes:
+    - ./apache2/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    - ./apache2/conf/server.crt:/usr/local/apache2/conf/server.crt
+    - ./apache2/conf/server.key:/usr/local/apache2/conf/server.key
+    - ./apache2/logs:/usr/local/apache2/logs
+    - ..:/usr/local/apache2/htdocs
   santa-php:
     image: "php:7.1-fpm"
   santa-db:
