@@ -1,0 +1,14 @@
+version: '3'
+services:
+  santa-web:
+    image: "httpd:2.4"
+    ports:
+    - "80:80"
+    - "443:443"
+  santa-php:
+    image: "php:7.1-fpm"
+  santa-db:
+    image: "mysql:5.7"
+  santa-mailhog:
+    image: "mailhog/mailhog"
+
