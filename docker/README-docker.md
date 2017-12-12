@@ -3,12 +3,13 @@ Docker setup for SecretSanta
 This is a docker-compose setup you can use to run the SecretSanta stack on docker instead of vagrant.
 
 Keep in mind:
-------
+-------------
 - no phpMyAdmin
 - xdebug untested, feel free to do so and let us know ;)
 - mails are only sent when using app_dev.php 
 
-Usage:  
+Getting started:
+----------------
 To start the docker environment, simly issue the following command.
 
 ```
