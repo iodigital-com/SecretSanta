@@ -10,7 +10,7 @@ Keep in mind:
 
 Getting started:
 ----------------
-To start the docker environment, simly issue the following command.
+To start the docker environment, simply issue the following command.
 
 ```
 > docker-compose -d up
