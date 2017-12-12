@@ -10,8 +10,8 @@ chromium-browser --version
 
 # Download and configure ChromeDriver
 if [ ! -f $BUILD_CACHE_DIR/chromedriver ]; then
-    # Using ChromeDriver 2.31 which supports Chrome 58-60, we're using Chromium 59
-    curl http://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip > chromedriver.zip
+    # Using ChromeDriver 2.33 which supports Chrome 60-62, we're using Chromium 60
+    curl http://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip > chromedriver.zip
     unzip chromedriver.zip
     mv chromedriver $BUILD_CACHE_DIR
 fi
