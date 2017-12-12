@@ -10,7 +10,7 @@ openssl req -x509 -days 7300 -nodes -newkey rsa:2048 \
   -extensions subject_alt_name \
   -keyout dev.secretsantaorganizer.com.key \
   -out dev.secretsantaorganizer.com.pem \
-  -subj '/C=BE/ST=Antwerp/L=Herentals/O=Secret Santa/OU=Developmetn/CN=dev.secretsantaorganizer.com/emailAddress=domainmaster@dev.secretsantaorganizer.com'
+  -subj '/C=BE/ST=Antwerp/L=Herentals/O=Secret Santa/OU=Development/CN=dev.secretsantaorganizer.com/emailAddress=domainmaster@dev.secretsantaorganizer.com'
 
 mv dev.secretsantaorganizer.com.key /etc/ssl/private
 mv dev.secretsantaorganizer.com.pem /etc/ssl/certs
