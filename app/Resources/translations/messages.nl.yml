@@ -160,6 +160,9 @@ static-faq:
         <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
         <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
 
+        <a name="odd"></a><h2>Werkt Secret Santa ook met een oneven aantal deelnemers?</h2>
+        <p>Ja. Het maakt niet uit of je feestje bestaat uit een even of oneven aantal deelnemers. Het is namelijk niet zo dat als persoon A is toegekend aan persoon B dat persoon B ook is toegekend aan persoon A. Secret Santa gebruikt een macro om zeker te zijn dat iedereen op de lijst is toegekend aan iemand anders van de lijst. Dit werkt willekeurig. Voorbeeld: als John, Caroline en Steve zijn toegevoegd aan een feestje, dan kan John toegekend zijn aan Steve. Steve kan toegekend zijn aan Caroline. Caroline kan toegekend zijn aan John.</p>
+
         <a href="lost"></a><h2>Ik ben mijn bevestigingsmail / link naar het feestje kwijt.</h2>
         <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="%requestForgotLink%">deze pagina</a> jouw mailadres in en we sturen je een mail met een
         overzicht van alle feestjes waaraan je meedoet en/of die je hebt aangemaakt.</p>
