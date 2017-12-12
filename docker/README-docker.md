@@ -4,6 +4,7 @@ This is a docker-compose setup you can use to run the SecretSanta stack on docke
 
 Keep in mind:
 ------
+- no phpMyAdmin
 - xdebug untested, feel free to do so and let us know ;)
 - mails are only sent when using app_dev.php 
 
