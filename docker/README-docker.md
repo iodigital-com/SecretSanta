@@ -4,8 +4,8 @@ This is a docker-compose setup you can use to run the SecretSanta stack on docke
 
 Keep in mind:
 ------
-- xdebug untested
-- mail not arriving at mailhog
+- xdebug untested, feel free to do so and let us know ;)
+- mails are only sent when using app_dev.php 
 
 Usage:  
 To start the docker environment, simly issue the following command.
@@ -48,7 +48,7 @@ Ports:
 - 443, HTTPS, santa-web
 - 8025, HTTP, santa-mailhog
 
-Internally, the containers are able to connect on other ports as well (eg. MySQL). If for some reason you need to connect to these ports directly from your machine, you need to add the ports to the ports section of the container in the docker-compse.yml file and restart your environment.
+Internally the containers are able to connect on other ports as well (eg. MySQL). If you need to connect to these ports directly from your machine, you need to add the ports to the ports section of the container in the docker-compse.yml file and restart your environment.
 
 If for any reason you want to shell into a running container, you can use docker-exec to do so. Most containers have either /bin/sh or /bin/bash available.
 ***
