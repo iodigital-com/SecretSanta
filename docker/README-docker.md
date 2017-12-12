@@ -41,7 +41,14 @@ You will need to create the schema through app/console. You can do this throught
 docker-compose exec santa-php php /usr/local/apache2/htdocs/app/console doctrine:schema:create
 ***
 
-Done! You can now connect to the app on your docker machine on https.
+Done! You can now connect to the app on your docker machine on one of the exposed ports. If you're running on Linux, or using the native Docker for Windows, this is probably just on your localhost. If you're running docker on Mac or Windows through Docker toolbox, the default IP address of the docker machine is 192.168.99.100.
+
+Ports:
+- 80, HTTP, santa-web
+- 443, HTTPS, santa-web
+- 8025, HTTP, santa-mailhog
+
+Internally, the containers are able to connect on other ports as well (eg. MySQL). If for some reason you need to connect to these ports directly from your machine, you need to add the ports to the ports section of the container in the docker-compse.yml file and restart your environment.
 
 If for any reason you want to shell into a running container, you can use docker-exec to do so. Most containers have either /bin/sh or /bin/bash available.
 ***
