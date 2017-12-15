@@ -88,8 +88,8 @@ party-created:
             Om te voorkomen dat ongewenste gasten je Secret Santa party verknallen, moet lijstbeheerder <b>%ownername%</b> iedere deelname valideren. We hebben <b>%owneremail%</b> een mailtje gestuurd met verdere instructies.
         </p>
         <p>
-            Eens je feestje gevalideerd is, kan je nog wijzigingen doorvoeren, mensen toevoegen of verwijderen en bepaalde combinaties uitsluiten (als je feestje 4 of meer deelenemers heeft). Wanneer je klaar bent met configureren, kan je feestje starten.
-            Op dat moment zullen we iederen matchen en een email verzenden met alle informatie die ze nodig hebben, samen met een link om te ontdekken voor wie ze een cadeautje moeten kopen.
+            Eens je feestje gevalideerd is, kan je nog wijzigingen doorvoeren, mensen toevoegen of verwijderen en bepaalde combinaties uitsluiten (als je feestje 4 of meer deelnemers heeft). Wanneer je klaar bent met configureren, kan je feestje starten.
+            Op dat moment zullen we iedereen matchen en een email verzenden met alle informatie die ze nodig hebben, samen met een link om te ontdekken voor wie ze een cadeautje moeten kopen.
         </p>
         <p>
             De link die je vindt in de validatie mail kan je steeds gebruiken om terug naar de beheer pagina te gaan. Eens je feestje begonnen is, kan je daar ook kijken wie zijn mail heeft geopend en geklikt heeft op de link om te kijken voor wie ze moeten kopen.
@@ -105,7 +105,7 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 party-forgot_link:
-    title: Overzicht van feestjes aanvraagen
+    title: Overzicht van feestjes aanvragen
     description: Vul hier jouw emailadres in en we sturen je een overzicht van alle feestjes die je hebt gemaakt of waar je aan meedoet. We lijsten wel enkel de feestjes in de toekomst op.
     submit_btn: Stuur me een overzicht
 
@@ -133,7 +133,7 @@ static-faq:
 
         <a name="how"></a><h2>Hoe werkt het?</h2>
         <p>Maak een evenement aan op de <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
-        De lijstbeheerder zal een bevestigingmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
+        De lijstbeheerder zal een bevestigingsmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
         We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
         <a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
@@ -203,7 +203,7 @@ static-faq:
         Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
 
         <a name="ads"></a><h2>Hoe zit het met die advertenties?</h2>
-        <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domainnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project.
+        <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domeinnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project.
         Zo hebben we eurolingers voor pizza en drank op onze hackdays maar ook voor professionele vertalers waarmee we dan weer verder de wereld veroveren met Secret Santa Organizer.
         We zoeken trouwens nog Russische, Indische, Japanse, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
 
@@ -283,7 +283,7 @@ participant_show_valid:
         title: Stuur een anoniem bericht naar %name%
         message_label: Jouw bericht
         message_placeholder: Jouw bericht
-        warning_anonymous: Denk eraan dat dit bericht anoniem wordt verstuurd en je niet mag verklappen wie je bent! Je maatje kan niet antwoorden op je bericht, wees concreet zodat hij/zij zijn/haar wishlist kan updaten.
+        warning_anonymous: Denk eraan dat dit bericht anoniem wordt verstuurd en je niet mag verklappen wie je bent! Je maatje kan niet antwoorden op je bericht, wees concreet zodat hij/zij zijn/haar wenslijst kan updaten.
         send_button: Verstuur je bericht!
 
 # ParticipantCommunicationController
@@ -305,7 +305,7 @@ participant_unsubscribe:
                         Als je niet meer wilt meedoen aan het feestje contacteer je best de beheerder van het feestje en vraag je hem/haar om je te verwijderen.<br/>
                         Je kan nog steeds emails ontvangen van andere feestjes waar je nu aan meedoet, tenzij je de checkbox hieronder aanvinkt.
     blacklist_warning: >
-                       <strong>Waarschuwing!</strong> Wanneer je je emailadres op de blacklist plaatst zal je in de toekomst niet meer kunnen worden uitgenodigd voor een fesstje! Gebruik deze functie enkel als je vermoed dat iemand je mail verkeerd gebruikt!
+                       <strong>Waarschuwing!</strong> Wanneer je je emailadres op de blacklist plaatst zal je in de toekomst niet meer kunnen worden uitgenodigd voor een feestje! Gebruik deze functie enkel als je vermoed dat iemand je mail verkeerd gebruikt!
     feedback:
        success: Je bent succesvol uitgeschreven!
        error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!
@@ -392,7 +392,7 @@ party_manage_valid:
         body: <p>Weet je het ECHT zeker?</p>
         party_started: >
             <p>
-                Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddelijk verwijderd worden.<br>
+                Het verwijderen van deze deelnemer heeft permanente gevolgen. Het is niet mogelijk om de huidige matches te herstellen en de deelnemer zal onmiddellijk verwijderd worden.<br>
                 <br>
                 Hou er ook rekening mee dat er iemand misschien al een geschenk heeft gekocht voor deze deelnemer.<br>
             </p>
@@ -401,9 +401,9 @@ party_manage_valid:
         title: Bewerk de details van jouw Secret Santa feestje
         body: >
             <p>
-                Door het onderstande formulier in te vullen, kan je de details van het feestje dat je organiseert bewerken.<br>
+                Door het onderstaande formulier in te vullen, kan je de details van het feestje dat je organiseert bewerken.<br>
                 <br>
-                Jouw deelnemers zullen onmiddelijk op de hoogte gebracht worden van deze veranderingen.
+                Jouw deelnemers zullen onmiddellijk op de hoogte gebracht worden van deze veranderingen.
             </p>
 
     btn:
@@ -423,11 +423,11 @@ party_manage_valid:
         name: Naam
         email: E-mail
         confirmed: Mail status
-        wishlist_filled: Wish List Ingevuld
+        wishlist_filled: Wenslijst Ingevuld
         actions: Acties
 
     excludes:
-        title: Bepaalde combinaties uitlsuiten
+        title: Bepaalde combinaties uitsluiten
         btn: Opslaan
         description: Via deze lijst kan je optioneel voorkomen dat bepaalde deelnemers elkaar toegewezen krijgen. Bijvoorbeeld om te vermijden dat leden van hetzelfde gezin voor elkaar geschenken moeten kopen.
         information: Wanneer je gebruik maakt van excludes kan je geen gebruikers meer verwijderen van het feestje eens je je feestjes start. Je kan nog steeds deelnemers toevoegen, maar je zal de excludes niet meer kunnen wijzigen vanaf het moment dat je feestjes is gestart.
@@ -638,7 +638,7 @@ emails-anonymous_message:
           <br />
           <strong>%message%</strong>
           <br/>
-          Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wishlist!
+          Klik op de link hier beneden om je lijst te bekijken, en zaken toe te voegen aan je wenslijst!
       txt: >
           Beste %name%,
 
