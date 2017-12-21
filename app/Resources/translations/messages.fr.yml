@@ -105,7 +105,7 @@ static-faq:
     title: Questions fréquemment posées
     body: >
         <p>Ceci est une liste de questions fréquemment posées (FAQ) qui devrait vous aider à comprendre le fonctionnement de Secret Santa.</p>
-        <a href="what"></a><h2>Qu'est-ce que Secret Santa?</h2>
+        <a name="what"></a><h2>Qu'est-ce que Secret Santa?</h2>
         <p>Secret Santa est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis, votre famille ou vos collègues. Chaque année, durant la période de Noël, les gens du monde entier s'échangent des cadeaux.</p>
         <p>Afin de garder les choses intéressantes, vous pouvez assigner au hasard une personne à une autre afin qu'elles offrent un présent aux autres.</p>
         <a name="how"></a><h2>Comment ça fonctionne?</h2>
@@ -124,12 +124,12 @@ static-faq:
         <a name="changes"></a><h2>Puis-je ajouter ou retirer quelqu'un?</h2>
         <p>Il est possible d'ajouter ou retirer une personne après avoir créé votre événement. Sur votre page d'administration vous trouverez un bouton avec lequel vous pourrez retirer quelqu'un ainsi qu'un formulaire qui vous permettra d'ajouter quelqu'un.
         Exception: si l'administrateur a exclu des combinaisons avant de créer l'événement, il ne sera pas possible d'ajouter ou de retirer des participants. Si nous le permettons, on court le risque que des combinaisons exclus se produisent, c'est pour ça qu'on a decidé de ne pas permettre cette fonctionalité en ce cas.</p>
-        <a href="email"></a><h2>Puis-je renvoyer un e-mail?</h2>
+        <a name="email"></a><h2>Puis-je renvoyer un e-mail?</h2>
         <p>Si un participant n'a pas reçu l'e-mail contenant le nom de la personne à qui il doit offrir un cadeau, l'administrateur peut renvoyer un e-mail pour ce participant depuis la page d'administration. Vous pouvez également changer l'adresse e-mail d'un participant à partir de cette même page et lui renvoyer un e-mail.<br><br>
         Si vous ne recevez pas l'e-mail d'activation, vérifier vos courriers indésirables (SPAM). Vous devriez recevoir cet e-mail après peu de temps. Si vous n'avez toujours pas reçu l'e-mail d'activation, vous devrez alors créer à nouveau votre liste.</p>
-        <a href="combinations"></a><h2>Puis-je voir toutes les combinaisons / listes de souhaits?</h2>
+        <a name="combinations"></a><h2>Puis-je voir toutes les combinaisons / listes de souhaits?</h2>
         <p>Vous pouvez demander à recevoir toutes les attributions / listes de souhaits depuis la page d'administration de votre liste. Mais cela va gâcher le secret de votre Secret Santa party. C'est pourquoi nous avons ajouté un indicateur informant les participants sur le fait que l'administrateur connaît toutes les combinaisons / listes de souhaits lorsqu'il effectue cette demande.</p>
-        <a href="delete"></a><h2>Puis-je supprimer ma liste?</h2>
+        <a name="delete"></a><h2>Puis-je supprimer ma liste?</h2>
         <p>Bien sûr que vous pouvez. Rendez-vous sur la page d'administration de votre liste et utilisez l'option de suppression. Toutes les données liées à votre liste seront supprimées de notre système.</p>
         <a name="who"></a><h2>Qui êtes-vous?</h2>
         <p>Nous sommes une poignée de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">développeurs</a>, designers, frontenders, SEO's et marketers. Secret Santa est l'un de nos projets. Nous sommes sponsorisés par notre employeur <a href="http://www.intracto.com/" target="_blank">Intracto digital agency</a>. Notre but est de mettre en place un organiseur d'échange de cadeaux à la fois simple et pratique. Nous profitons également de ce projet pour faire des expériences. Notre objectif principal est qu'il soit utilisé par tous. Au plus il y a de monde, mieux c'est ! ;-)</p>
@@ -141,7 +141,7 @@ static-faq:
         <p>Chaque octet de ce site Internet est rendu Open Source sur <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Le projet est disponible sous une <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">licence ISC</a>, très permissive. Vous pouvez donc copier ce projet et, par exemple, créer votre propre Secret Santa. Ou participer à ce projet en soumettant votre contribution (pull request). Si vous souhaitez un changement ou une nouvelle fonction, ajoutez-la simplement.</p>
         <a name="ads"></a><h2>A propos des publicités</h2>
         <p>Nous avons des publicités Google ici et là afin de couvrir certaines de nos dépenses. Par exemple, l'hébergement, le nom de domaine, etc. Nous faisons tout nous-mêmes gratuitement et l'argent que nous collectons est réinjecté dans le projet. Il pourrait être utilisé afin d'acheter des pizzas et boissons pour l'un de nos hackdays. Ou il pourrait encore servir à payer un traducteur afin d'ajouter de nouvelles langues à notre Secret Santa Organizer. Ou d'autres choses encore. Au fait, nous recherchons toujours des traductions en russe, japonais... Si vous pouvez nous aider (gratuitement), merci de bien vouloir nous contacter.</p>
-        <a href="questions"></a><h2>Autres questions</h2>
+        <a name="questions"></a><h2>Autres questions</h2>
         <p>D'autres questions, préoccupations ou commentaires ? Contactez-nous par:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Créez une nouvelle liste Secret Santa !
 

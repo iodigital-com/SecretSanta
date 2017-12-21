@@ -130,7 +130,7 @@ static-faq:
     body: >
         <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
 
-        <a href="what"></a><h2>What is Secret Santa?</h2>
+        <a name="what"></a><h2>What is Secret Santa?</h2>
         <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
         To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
 
@@ -155,10 +155,10 @@ static-faq:
         <a name="manage"></a><h2>How do I manage my party / participants?</h2>
         <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
 
-        <a name="wishlist"></a><h2>Does it work with an odd number of participants?</h2>
+        <a name="odd"></a><h2>Does it work with an odd number of participants?</h2>
         <p>Yes. It doesn't matter if your party consists of an even or an odd number of participants. It is no guarantee that if person A was assigned to person B that person B is also assigned to person A. Secret Santa uses a macro to make sure everybody on the list is assigned to someone else from the list. This works randomly. For example: if John, Caroline and Steve have been added to a party, John can be assigned to Steve, Steve can be assigned to Caroline and Caroline can be assigned to John.</p>
 
-        <a href="lost"></a><h2>I lost my activation mail / url to the party.</h2>
+        <a name="lost"></a><h2>I lost my activation mail / url to the party.</h2>
         <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="%requestForgotLink%">this page</a> and we will send you
         an overview of all the parties where you are participating in and/or the parties you have created.</p>
 
@@ -166,14 +166,14 @@ static-faq:
         <p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event.
         Allowing this would mess up the system and people might still be assigned to their excluded buddy, this made us to decide to prevent adding people if excluded combinations are present.</p>
 
-        <a href="email"></a><h2>Can I resend an email?</h2>
+        <a name="email"></a><h2>Can I resend an email?</h2>
         <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
         If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
 
-        <a href="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
+        <a name="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
         <p>You can optionally see the combinations and wishlists on the management page. There are buttons for that, you won't see this by default. If you want to share this information with all the participants you will have to share the URL yourself.</p>
 
-        <a href="delete"></a><h2>Can I delete my list?</h2>
+        <a name="delete"></a><h2>Can I delete my list?</h2>
         <p>Sure you can. Just go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
 
         <a name="who"></a><h2>Who are you?</h2>
@@ -202,7 +202,7 @@ static-faq:
         We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else.
         By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
 
-        <a href="questions"></a><h2>Other questions</h2>
+        <a name="questions"></a><h2>Other questions</h2>
         <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Create a new Secret Santa list!
 
