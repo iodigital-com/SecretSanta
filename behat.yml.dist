@@ -57,5 +57,3 @@ default:
             directory: .travis/build
             clean_start: false
             screenshot: false
-
-        FriendsOfBehat\PerformanceExtension: ~
