@@ -58,7 +58,7 @@ party-create:
             <p>Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.<br/> Om het voor iedereen wat spannender te maken, kan je mensen <strong>willekeurig toewijzen</strong> om voor elkaar geschenkjes te kopen.</p>
 
     add_participants: Voeg je deelnemers toe
-    list_adminstrator: Deze persoon is ook jouw lijstbeheerder
+    list_adminstrator: Deze persoon is zelf ook deelnemer
     add_personal_message:
         title: Voeg een persoonlijke boodschap toe
         description: Voeg een persoonlijke boodschap voor de deelnemers toe
