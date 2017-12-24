@@ -40,7 +40,7 @@ Now change your parameters.yml file to point to the correct endpoints:
 -- host: santa-mailhog
 -- port: 1025
 
-You will need to create the schema through app/console. You can do this throught the santa-php container. 
+You will need to create the schema through bin/console. You can do this throught the santa-php container. 
 
 ```
 > docker-compose exec santa-php php /usr/local/apache2/htdocs/app/console doctrine:schema:create

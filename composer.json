@@ -4,10 +4,10 @@
     "type": "project",
     "description": "Secret santa is the #1 online gift exchange organizer.",
     "autoload": {
-        "psr-0": { "Intracto": "src/" }
-    },
-    "autoload-dev": {
-        "psr-0": { "Intracto": "src/" }
+        "psr-4": {
+            "Intracto\\": "src/Intracto/"
+        },
+        "classmap": ["app/AppKernel.php", "app/AppCache.php"]
     },
     "require": {
         "php": "^7.0",
@@ -61,13 +61,15 @@
         ]
     },
     "config": {
-        "bin-dir": "bin",
         "sort-packages": true
     },
     "minimum-stability": "stable",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
+        "symfony-var-dir": "var",
+        "symfony-bin-dir": "bin",
+        "symfony-tests-dir": "tests",
         "symfony-assets-install": "hard",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
