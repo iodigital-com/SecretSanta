@@ -120,7 +120,7 @@ static-faq:
     body: >
         <p>Nedenfor følger en liste med ofte stilte spørsmål (FAQ) om hvordan Secret Santa fungerer.</p>
 
-        <a href="what"></a><h2>Hva er Secret Santa?</h2>
+        <a name="what"></a><h2>Hva er Secret Santa?</h2>
         <p>Et gratis online "hemmelig venn" program for å organisere gaveutveksling! Arranger et juleselskap med "hemmelig venn"/Secret Santa med venner, familie eller kolleger. HVert år rundt juletider, over hele verden, gir man hverandre gaver.
         For å gjøre ting mer interessant kan du tildele andre en tilfeldig "venn" eller "nisse" å gi presanger til.</p>
 
@@ -142,21 +142,21 @@ static-faq:
         <a name="manage"></a><h2>Hvordan holder jeg oversikt over festen/deltagerne?</h2>
         <p>Bekreftelsen sendes til administratoren, og den inneholder også link til en administrasjonsside hvor du kan gjøre endringer.</p>
 
-        <a href="lost"></a><h2>Jeg mistet bekreftelseseposten.</h2>
+        <a name="lost"></a><h2>Jeg mistet bekreftelseseposten.</h2>
         <p>Hvis du har mistet e-posten med bekreftelseslinken i (som også inneholder linken til administrasjonssiden), skriv inn administratorens e-post <a href="%requestForgotLink%">her</a> og vi sender deg linken på nytt.</p>
 
         <a name="changes"></a><h2>Kan jeg legge til eller fjerne personer fra listen?</h2>
         <p>Du kan legge til eller fjerne personer etter arrangementet er opprettet. På admin-siden finner du en slett-knapp og et skjema for å legge til nye personer. Det er bare én hake ved det: Du kan ikke gjøre dette dersom administrator har forhindret enkelte kombinasjoner av personer før arrangementet ble opprettet.
         Dette fordi det skaper unødvendig mye krøll i systemet, og det gjør det i tillegg vanskelig å legge til nye personer.</p>
 
-        <a href="email"></a><h2>Kan jeg sende eposter på nytt?</h2>
+        <a name="email"></a><h2>Kan jeg sende eposter på nytt?</h2>
         <p>Hvis en deltager ikke mottok e-posten første gangen, kan administrator sende en ny e-post til denne personen. Du kan også endre deltagernes epostadresser på den samme siden og sende e-posten på nytt til denne adressen.<br><br>
         Hvis du ikke mottok e-posten med link til å bekrefte arrangementet, sjekk søppelpost i innboksen din. Du skal ha mottat e-posten innen et par minutter. Har du fortsatt ikke mottat denne eposten, må du dessverre opprette en ny liste.</p>
 
-        <a href="combinations"></a><h2>Kan jeg få oversikt over kombinasjoner/ønskelister?</h2>
+        <a name="combinations"></a><h2>Kan jeg få oversikt over kombinasjoner/ønskelister?</h2>
         <p>Du kan hente kombinasjonen av nisser/ønskelister fra admin-siden. Men det ødelegger på en måte poenget med "hemmelig nisse". Derfor har vi lagt til en indikator til alle deltagerne som viser når kombinasjonen av nisser/ønskelister har blitt hentet av administrator :-)</p>
 
-        <a href="delete"></a><h2>Kan jeg slette listen min?</h2>
+        <a name="delete"></a><h2>Kan jeg slette listen min?</h2>
         <p>Selvfølgelig, bare gå til admin-siden og velg slett-knappen. All informasjon fra din liste vil bli slettet fra våre systemer.</p>
 
         <a name="who"></a><h2>Hvem er dere?</h2>
@@ -185,7 +185,7 @@ static-faq:
         Innimellom hender det selvfølgelig at vi spanderer pizza og drinker på koderne våre. Eller vi får profesjonelle oversettere til å oversette nettsiden til andre språk. Eller vi bruker pengene på noe annet.
         Forresten, vi ser fortsatt etter noen til å oversette nettsiden til russisk, japansk, indisk.... Hvis du vil hjelpe oss med dette (gratis), vennligst kontakt oss!</p>
 
-        <a href="questions"></a><h2>Andre spørsmål?</h2>
+        <a name="questions"></a><h2>Andre spørsmål?</h2>
         <p>Har du andre spørsmål, bekymringer, eller kommentarer? Kontakt oss per e-post:<br/>info@secretsantaorganizer.com</p>
     create_new_list: Opprett en ny Secret Santa-liste!
 
