@@ -17,28 +17,28 @@ if [ ! -f $BUILD_CACHE_DIR/chromedriver ]; then
 fi
 
 # this checks that the YAML config files contain no syntax errors
-app/console lint:yaml app/config || exit $?
+bin/console lint:yaml app/config || exit $?
 # this checks that the Twig template files contain no syntax errors
-app/console lint:twig app/Resources/TwigBundle || exit $?
-app/console lint:twig src/Intracto/SecretSantaBundle/Resources/views || exit $?
+bin/console lint:twig app/Resources/TwigBundle || exit $?
+bin/console lint:twig src/Intracto/SecretSantaBundle/Resources/views || exit $?
 # this checks that the application doesn't use dependencies with known security vulnerabilities
-app/console security:check --end-point=http://security.sensiolabs.org/check_lock || exit $?
+bin/console security:check --end-point=http://security.sensiolabs.org/check_lock || exit $?
 # this checks that the composer.json and composer.lock files are valid
 composer validate --strict || exit $?
 # this checks that Doctrine's mapping configurations are valid
-app/console doctrine:schema:validate --skip-sync -vvv --no-interaction || exit $?
+bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction || exit $?
 
 # Run Selenium with ChromeDriver
 echo "Start selenium"
-PATH=$PATH:$BUILD_CACHE_DIR bin/selenium-server-standalone > $TRAVIS_BUILD_DIR/selenium.log 2>&1 &
+PATH=$PATH:$BUILD_CACHE_DIR vendor/bin/selenium-server-standalone > $TRAVIS_BUILD_DIR/selenium.log 2>&1 &
 
 # Run phpunit tests (Temporary re-enable xdebug to generate coverage report)
 phpenv config-add ~/xdebug.ini
-bin/phpunit -c app/phpunit.xml.dist --coverage-text || exit $?
+vendor/bin/phpunit -c phpunit.xml.dist --coverage-text || exit $?
 phpenv config-rm xdebug.ini
 
 # Run webserver
-app/console server:run 127.0.0.1:8080 --env=test_travis --router=app/config/router_test_travis.php --no-debug --quiet > /dev/null 2>&1 &
+bin/console server:run 127.0.0.1:8080 --env=test_travis --router=app/config/router_test_travis.php --no-debug --quiet > /dev/null 2>&1 &
 
 # Run behat tests
-bin/behat --strict -f progress || exit $?
+vendor/bin/behat --strict -f progress || exit $?

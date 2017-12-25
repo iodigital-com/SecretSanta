@@ -54,3 +54,5 @@ services:
     Doctrine\Common\Cache\ApcuCache: ~
     Twig\Extensions\TextExtension: ~
     Twig\Extensions\IntlExtension: ~
+    
+    Symfony\Component\Form\FormRendererInterface: '@twig.form.renderer'

@@ -22,7 +22,7 @@ cp ../../shared/client_secrets.json app/config
 composer.phar install --no-dev --classmap-authoritative
 
 # Install assets
-app/console assets:install web
+bin/console assets:install web
 cp ../../shared/yandex_* web
 
 # Cleanup
@@ -35,7 +35,7 @@ sudo chmod -R a+rwX app/logs app/cache
 
 # Activate latest
 sudo service php7.1-fpm stop
-app/console doctrine:schema:update --force --env=${SYMFONY_ENV}
+bin/console doctrine:schema:update --force --env=${SYMFONY_ENV}
 cd ../..
 ln -sfn releases/$VERSION current
 sudo service php7.1-fpm start

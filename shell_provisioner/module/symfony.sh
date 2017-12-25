@@ -14,7 +14,7 @@ ln -s /vagrant/app/logs /home/vagrant/logs
 # Composer
 composer.phar install
 
-php app/console doctrine:schema:create
-php app/console assets:install
+php bin/console doctrine:schema:create
+php bin/console assets:install
 
 cd -
