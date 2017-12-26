@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class WishlistController extends AbstractController
 {
     /**
-     * @Route("/wishlists/show/{listurl}", name="wishlist_show_all")
+     * @Route("/wishlists/show/{wishlistsurl}", name="wishlist_show_all")
      * @Template("IntractoSecretSantaBundle:Wishlist:showAll.html.twig")
      * @Method("GET")
      */

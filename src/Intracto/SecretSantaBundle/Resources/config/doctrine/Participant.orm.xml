@@ -41,7 +41,7 @@
         <field name="viewdate" column="view_date" type="datetime" nullable="true"/>
         <field name="openEmailDate" column="open_email_date" type="datetime" nullable="true"/>
         <field name="viewReminderSentTime" column="view_reminder_sent" type="datetime" nullable="true"/>
-        <field name="url" column="url" type="string" length="255" nullable="true"/>
+        <field name="url" column="url" type="string" length="50" unique="true"/>
 
         <one-to-many field="wishlistItems" target-entity="WishlistItem" mapped-by="participant">
             <order-by>

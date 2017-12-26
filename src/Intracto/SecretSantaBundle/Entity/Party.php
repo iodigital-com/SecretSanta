@@ -17,6 +17,12 @@ class Party
     /** @var string */
     private $listurl;
 
+    /**
+     * The URL that is used to expose the wishlists for all participants of the party
+     * @var string
+     */
+    private $wishlistsurl;
+
     /** @var string */
     private $message;
 
@@ -78,6 +84,7 @@ class Party
         }
 
         $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->wishlistsurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
         $this->creationdate = new \DateTime();
     }
 
@@ -107,6 +114,26 @@ class Party
     public function getListurl()
     {
         return $this->listurl;
+    }
+
+    /**
+     * @param string $wishlistsurl
+     *
+     * @return Party
+     */
+    public function setWishlistsurl($wishlistsurl)
+    {
+        $this->wishlistsurl = $wishlistsurl;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWishlistsurl()
+    {
+        return $this->wishlistsurl;
     }
 
     /**
