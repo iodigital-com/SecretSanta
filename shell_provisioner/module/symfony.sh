@@ -2,10 +2,12 @@
 
 cd /vagrant
 
+# Download GeoIP database
+mkdir /usr/local/share/GeoIP
 curl http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz > /tmp/geolite.tar.gz
-tar -xvzf /tmp/geolite.tar.gz --strip=1 -C /tmp
-mv /tmp/GeoLite2-City.mmdb /usr/local/share/GeoIP
+tar xzf /tmp/geolite.tar.gz --strip=1 -C /usr/local/share/GeoIP GeoLite2-City_20171205/GeoLite2-City.mmdb
 
+# Prepare Symfony
 if [ ! -f app/config/parameters.yml ]; then
     cp app/config/parameters.yml.dist app/config/parameters.yml
 fi
