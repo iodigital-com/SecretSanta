@@ -415,6 +415,15 @@ emails-base_email:
     footer: Kos deg med å arrangere Secret Santa!
     created_by: Laget av
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+#    title: ?
+    date: Date
+    location: Sted
+    amount: Beløp
+    num_people: Antall personer
+    person_created_list: Administrator
+
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
 #    unsubscribe:

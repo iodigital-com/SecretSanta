@@ -444,6 +444,15 @@ emails-base_email:
     footer: Veel plezier met het organiseren van Secret Santa!
     created_by: Aangemaakt door
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+    title: Details van je feestje
+    date: Datum van jouw feest
+    location: Locatie van jouw feest
+    amount: Te spenderen bedrag
+    num_people: Aantal mensen
+    person_created_list: Persoon die deze lijst samenstelde
+
 # Emails/baseEmailUnsubscribe.html.twig
 emails-base_email_unsubscribe:
     unsubscribe: Als je in de toekomst geen emails meer wilt ontvangen, dan kan je

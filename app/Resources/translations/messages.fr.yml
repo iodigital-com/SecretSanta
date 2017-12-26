@@ -370,6 +370,15 @@ emails-base_email:
     footer: Bon amusement pour votre Secret Santa party!
     created_by: Créé par
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+    title: Détails de votre party
+    date: Date
+    location: Lieu
+    amount: Montant à dépenser
+    num_people: Nombre de personnes
+    person_created_list: Créateur de la liste
+
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
 #    unsubscribe:

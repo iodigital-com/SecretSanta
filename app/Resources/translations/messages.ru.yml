@@ -316,6 +316,15 @@ emails-base_email:
     footer: Желаем вам получить массу удовольствия от организации вечеринки Тайного Санты!
     created_by: Создано
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+#    title: ?
+    date: Дата
+    location: Место проведения
+    amount: Сколько денег тратить на подарок
+    num_people: Количество людей
+    person_created_list: Автор списка
+
 #    excludes:
 #        title:
 #        btn:
