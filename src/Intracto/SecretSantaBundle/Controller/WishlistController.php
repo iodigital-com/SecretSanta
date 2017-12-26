@@ -32,7 +32,7 @@ class WishlistController extends AbstractController
      */
     public function updateAction(Request $request, Participant $participant, WishlistFormHandler $handler) : JsonResponse
     {
-        $wishlistForm = $this->createForm(WishlistType::class, $participant);
+        $wishlistForm = $this->createForm(WishlistType::class, $participant, ['validation_groups' => 'WishlistItem']);
 
         if ($handler->handle($wishlistForm, $request)) {
             return new JsonResponse(['success' => true, 'message' => 'Added!']);
