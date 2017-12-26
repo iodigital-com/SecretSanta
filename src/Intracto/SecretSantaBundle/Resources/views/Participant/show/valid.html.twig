@@ -31,9 +31,9 @@
             <div class="span8 my-secretsanta">
                 <div class="well">
                     <h4 data-hj-masked>{{ 'participant_show_valid.participant.wishlist_from'|trans({'%name%': participant.assignedParticipant.name}) }}</h4>
-                    {% if(participant.assignedParticipant.wishlistitems|length == 0) %}
+                    {% if participant.assignedParticipant.wishlistitems|length == 0 %}
                         {{ 'participant_show_valid.participant.wishlist_not_provided'|trans({'%name%': participant.assignedParticipant.name}) }}.
-                        {% if(participant.assignedParticipant.isSubscribed == true) %}
+                        {% if participant.assignedParticipant.isSubscribed == true %}
                             {{ 'participant_show_valid.participant.message_for_wishlist'|trans|raw }}
                         {% endif %}
                     {% else %}
@@ -60,7 +60,7 @@
                        target="_blank" rel="noopener noreferrer">{{ 'participant_show_valid.buy_from_amazon'|trans }}</a>
                     </ul>
                 </div>
-                {% if(participant.assignedParticipant.isSubscribed == true) %}
+                {% if participant.assignedParticipant.isSubscribed == true %}
                     <div class="panel panel-default bottom-spacer" id="messagePanel">
                         <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
                             <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">

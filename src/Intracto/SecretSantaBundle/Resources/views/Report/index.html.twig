@@ -11,9 +11,9 @@
         <h1>Report</h1>
         <div class="select-secret-santa">
             <select name="year" id="select-season">
-                <option {% if(current_year == "all") %} selected="selected" {% endif %} value="all">All time</option>
+                <option {% if current_year == "all" %} selected="selected" {% endif %} value="all">All time</option>
                 {% for year in featured_years['featured_years'] %}
-                    <option value="{{ year }}" {% if(current_year == year) %} selected="selected" {% endif %}>{{ year }} - {{ year+1 }} </option>
+                    <option value="{{ year }}" {% if current_year == year %} selected="selected" {% endif %}>{{ year }} - {{ year+1 }} </option>
                 {% endfor %}
             </select>
         </div>
