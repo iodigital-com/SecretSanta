@@ -323,6 +323,15 @@ emails-base_email:
     footer: 組織秘密聖誕老人時感到有趣！
     created_by: 由
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+#    title: ?
+    date: 日期
+#    location: ?
+    amount: 數量
+    num_people: 人數
+    person_created_list: 名單創作人
+
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
 #    unsubscribe:

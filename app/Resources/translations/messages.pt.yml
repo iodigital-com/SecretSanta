@@ -389,6 +389,15 @@ emails-base_email:
     footer: Divirta-se organizando seu Amigo Secreto!
     created_by: Criado por
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+#    title: ?
+    date: Data
+    location: Licalização da festa
+    amount: Valor
+    num_people: Número de participantes
+    person_created_list: Proprietário desta lista
+
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
 #    unsubscribe:

@@ -439,6 +439,15 @@ emails-base_email:
     footer: Have fun organizing Secret Santa!
     created_by: Created by
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+    title: Party details
+    date: Date of your party
+    location: Location of your party
+    amount: Amount to spend
+    num_people: Number of people
+    person_created_list: Person who created this list
+
 # Emails/baseEmailUnsubscribe.html.twig
 emails-base_email_unsubscribe:
     unsubscribe: If you don't want to receive mails in the future, you can

@@ -324,6 +324,15 @@ emails-base_email:
     footer: 好好享受规划你的秘密圣诞老人吧！
     created_by: 创建者为
 
+# This header block is re-used in multiple emails
+emails-base_email_header:
+#    title: ?
+    date: 日期
+#    location: ?
+    amount: 数量
+    num_people: 人员数目
+    person_created_list: 名单创建者
+
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
 #    unsubscribe:
