@@ -31,7 +31,7 @@ rm -rf web/app_{dev,test,test_travis}.php web/config.php
 
 # Reset permissions
 sudo chmod -R ug=rwX,o=rX ../$VERSION
-sudo chmod -R a+rwX app/logs app/cache
+sudo chmod -R a+rwX var/logs var/cache
 
 # Activate latest
 sudo service php7.1-fpm stop
