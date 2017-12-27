@@ -17,7 +17,7 @@
         </id>
 
         <field name="listurl" column="list_url" type="string" length="50" unique="true"/>
-        <field name="wishlistsurl" column="wishlists_url" type="string" length="50"/> <!-- Todo after intracto:fix:missing_party_wishlists: unique="true" -->
+        <field name="wishlistsurl" column="wishlists_url" type="string" length="50" unique="true"/>
         <field name="message" column="message" type="text" nullable="true"/>
         <field name="creationdate" column="creation_date" type="datetime"/>
         <field name="sentdate" column="sent_date" type="datetime" nullable="true"/>
