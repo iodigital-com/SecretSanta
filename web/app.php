@@ -4,7 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 umask(0007);
 
-$loader = require __DIR__.'/../app/autoload.php';
+$loader = require __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/../app/AppKernel.php';
 
 $kernel = new AppKernel('prod', false);
