@@ -23,7 +23,7 @@ class LoadPartyData implements FixtureInterface
         $party = new Party(false);
 
         $party->setListurl(FeatureContext::STARTED_PARTY_URL_TOKEN);
-        $party->setWishlistsurl(FeatureContext::CREATED_PARTY_WISHLISTS_URL_TOKEN);
+        $party->setWishlistsurl(FeatureContext::STARTED_PARTY_WISHLISTS_URL_TOKEN);
         $party->setAmount(100);
 
         $eventDate = (new \DateTime())->add(new \DateInterval('P2M'));
