@@ -15,7 +15,7 @@ services:
     intracto_secret_santa.query.wishlist_mail: '@Intracto\SecretSantaBundle\Query\WishlistMailQuery'
     intracto_secret_santa.query.bounce: '@Intracto\SecretSantaBundle\Query\BounceQuery'
 
-    intracto_secret_santa.repository.party: '@Intracto\SecretSantaBundle\Entity\PartyRepository'
-    intracto_secret_santa.repository.participant: '@Intracto\SecretSantaBundle\Entity\ParticipantRepository'
+    intracto_secret_santa.repository.party: '@Intracto\SecretSantaBundle\Repository\PartyRepository'
+    intracto_secret_santa.repository.participant: '@Intracto\SecretSantaBundle\Repository\ParticipantRepository'
 
     cache: '@Doctrine\Common\Cache\ApcuCache'

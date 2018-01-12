@@ -1,11 +1,18 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Entity;
+namespace Intracto\SecretSantaBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
+use Intracto\SecretSantaBundle\Entity\Party;
 
-class PartyRepository extends EntityRepository
+class PartyRepository extends ServiceEntityRepository
 {
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Party::class);
+    }
+
     public function findAllAdminParties($email)
     {
         $qb = $this->_em->createQueryBuilder();

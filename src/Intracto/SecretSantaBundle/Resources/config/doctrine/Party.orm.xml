@@ -5,7 +5,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
 
-    <entity name="Intracto\SecretSantaBundle\Entity\Party" table="party" repository-class="Intracto\SecretSantaBundle\Entity\PartyRepository">
+    <entity name="Intracto\SecretSantaBundle\Entity\Party" table="party" repository-class="Intracto\SecretSantaBundle\Repository\PartyRepository">
 
         <indexes>
             <index name="list_url" columns="list_url"/>

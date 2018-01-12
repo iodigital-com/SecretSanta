@@ -6,6 +6,8 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+        bind:
+            $geoIpDbPath: '%geo_ip_db_path%'
 
     Intracto\SecretSantaBundle\:
         resource: '../../src/Intracto/SecretSantaBundle/*'
@@ -31,28 +33,8 @@ services:
         tags:
           - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
 
-    Intracto\SecretSantaBundle\Entity\PartyRepository:
-        class: Doctrine\ORM\EntityRepository
-        factory: doctrine.orm.entity_manager:getRepository
-        arguments:
-            - 'IntractoSecretSantaBundle:Party'
-
-    Intracto\SecretSantaBundle\Entity\ParticipantRepository:
-        class: Doctrine\ORM\EntityRepository
-        factory: doctrine.orm.entity_manager:getRepository
-        arguments:
-            - 'IntractoSecretSantaBundle:Participant'
-
-    Intracto\SecretSantaBundle\Command\EnrichParticipantInfoCommand:
-        arguments:
-            $geoIpDbPath: '%geo_ip_db_path%'
-
-    Intracto\SecretSantaBundle\Service\ParticipantService:
-        arguments:
-            $geoIpDbPath: '%geo_ip_db_path%'
-
     Doctrine\Common\Cache\ApcuCache: ~
     Twig\Extensions\TextExtension: ~
     Twig\Extensions\IntlExtension: ~
-    
+
     Symfony\Component\Form\FormRendererInterface: '@twig.form.renderer'
