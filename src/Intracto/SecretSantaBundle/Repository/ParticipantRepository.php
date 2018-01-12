@@ -1,11 +1,18 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Entity;
+namespace Intracto\SecretSantaBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
+use Intracto\SecretSantaBundle\Entity\Participant;
 
-class ParticipantRepository extends EntityRepository
+class ParticipantRepository extends ServiceEntityRepository
 {
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Participant::class);
+    }
+
     /**
      * @param \DateTime $startDate
      *

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
 
-use Intracto\SecretSantaBundle\Entity\ParticipantRepository;
+use Intracto\SecretSantaBundle\Repository\ParticipantRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

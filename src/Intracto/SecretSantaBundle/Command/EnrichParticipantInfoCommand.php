@@ -6,7 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Intracto\SecretSantaBundle\Entity\ParticipantRepository;
+use Intracto\SecretSantaBundle\Repository\ParticipantRepository;
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
 
