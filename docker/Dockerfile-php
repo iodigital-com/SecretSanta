@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.2-fpm-alpine
 RUN apk add --no-cache git mysql-client curl autoconf && \
     apk add --no-cache --virtual build-dependencies icu-dev libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf
 RUN docker-php-ext-install pdo pdo_mysql bcmath
