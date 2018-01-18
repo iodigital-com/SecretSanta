@@ -34,11 +34,11 @@ sudo chmod -R ug=rwX,o=rX ../$VERSION
 sudo chmod -R a+rwX var/logs var/cache
 
 # Activate latest
-sudo service php7.1-fpm stop
+sudo service php7.2-fpm stop
 bin/console doctrine:schema:update --force --env=${SYMFONY_ENV}
 cd ../..
 ln -sfn releases/$VERSION current
-sudo service php7.1-fpm start
+sudo service php7.2-fpm start
 
 # Cleanup old deployment, keep last 2
 cd releases

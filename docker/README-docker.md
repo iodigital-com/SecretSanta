@@ -27,7 +27,7 @@ The next time you start your environment, it will use the already present contai
 
 Included containers:
 - santa-web (httpd:2.4)
-- santa-php (php:7.1-fpm-alpine)
+- santa-php (php:7.2-fpm-alpine)
 - santa-db (mysql:5.7)
 - santa-mailhog (mailhog/mailhog)
 

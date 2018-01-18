@@ -20,21 +20,29 @@ service postfix restart
 
 # MailHog
 
-apt-get install -y supervisor
+wget -O /usr/local/bin/mailhog https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
+chmod +x /usr/local/bin/mailhog
 
-wget -O /usr/bin/mailhog https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
-chmod +x /usr/bin/mailhog
+cat << EOF >/lib/systemd/system/mailhog.service
+[Unit]
+Description=Mailhog SMTP
 
-cat << EOF >/etc/supervisor/conf.d/mailhog.conf
-[program:maildev]
-command=/usr/bin/mailhog
-autostart=true
-autorestart=true
-stderr_logfile=/var/log/mailhog.err.log
-stdout_logfile=/var/log/mailhog.out.log
+[Service]
+User=mailhog
+Group=mailhog
+WorkingDirectory=/home/mailhog
+Restart=always
+ExecStart=/usr/local/bin/mailhog -api-bind-addr 127.0.0.1:8025 -ui-bind-addr 127.0.0.1:8025 -smtp-bind-addr 127.0.0.1:1025
+
+[Install]
+WantedBy=multi-user.target
 EOF
 
-service supervisor restart
+# don't run stuff as root
+useradd mailhog -s /bin/false -m
+
+systemctl enable mailhog
+systemctl start mailhog
 
 # Add Apache vhost
 a2enmod proxy_wstunnel
