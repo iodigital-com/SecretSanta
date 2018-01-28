@@ -13,8 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SendEmptyWishlistReminderCommand extends Command
 {
     private $em;
+
     private $participantMailQuery;
+
     private $wishlistMailQuery;
+
     private $mailerService;
 
     public function __construct(
@@ -22,8 +25,7 @@ class SendEmptyWishlistReminderCommand extends Command
         ParticipantMailQuery $participantMailQuery,
         WishlistMailQuery $wishlistMailQuery,
         MailerService $mailerService
-    )
-    {
+    ) {
         $this->em = $em;
         $this->participantMailQuery = $participantMailQuery;
         $this->wishlistMailQuery = $wishlistMailQuery;

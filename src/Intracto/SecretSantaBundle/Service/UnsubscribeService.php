@@ -14,10 +14,12 @@ class UnsubscribeService
 {
     /** @var EntityManager */
     public $em;
+
     /** @var Router */
     public $router;
 
-    public function __construct(EntityManagerInterface $em, RouterInterface $router) {
+    public function __construct(EntityManagerInterface $em, RouterInterface $router)
+    {
         $this->em = $em;
         $this->router = $router;
     }

@@ -74,7 +74,7 @@ class PartyContext extends RawMinkContext
         $partyDate = $currentDate->add(new \DateInterval('P2M'));
 
         $this->getSession()->getPage()->find('css', '#party_eventdate')->setValue($partyDate->format('d-m-Y'));
-	}
+    }
 
     /**
      * @When /^(?:|I) confirm the opt-in$/
@@ -138,6 +138,6 @@ class PartyContext extends RawMinkContext
     {
         $nodes = $this->getSession()->getPage()->findAll('css', 'table.participants > tbody > tr.participant');
 
-        Assert::eq(count($nodes), $expectedParticipantCount, 'Incorrect participant count ' . count($nodes));
+        Assert::eq(count($nodes), $expectedParticipantCount, 'Incorrect participant count '.count($nodes));
     }
 }

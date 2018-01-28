@@ -15,19 +15,27 @@ class MailerService
 {
     /** @var \Swift_Mailer */
     public $mailer;
+
     /** @var \Swift_Mailer */
     public $mandrill;
+
     /** @var EntityManagerInterface */
     public $em;
+
     /** @var EngineInterface */
     public $templating;
+
     /** @var TranslatorInterface */
     public $translator;
+
     /** @var \Symfony\Bundle\FrameworkBundle\Routing\Router */
     public $routing;
+
     /** @var UnsubscribeService */
     public $unsubscribeService;
+
     public $noreplyEmail;
+
     /** @var CheckMailDomainService */
     private $checkMailDomainService;
 

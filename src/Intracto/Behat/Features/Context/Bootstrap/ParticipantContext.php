@@ -119,6 +119,7 @@ class ParticipantContext extends RawMinkContext
 
             if ($currentValue === $expectedItemName) {
                 $itemFound = true;
+
                 break;
             }
         }

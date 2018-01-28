@@ -14,8 +14,10 @@ class EnrichParticipantInfoCommand extends Command
 {
     /** @var ParticipantRepository */
     private $participantRepository;
+
     /** @var EntityManagerInterface */
     private $em;
+
     /** @var string */
     private $geoIpDbPath;
 

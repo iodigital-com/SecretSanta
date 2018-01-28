@@ -22,6 +22,7 @@ abstract class JQueryHelper
   elem.scrollIntoView(false);
 })()
 JS;
+
         try {
             $session->executeScript($function);
         } catch (\Exception $e) {

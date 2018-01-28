@@ -77,13 +77,13 @@ class ParticipantRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get the admin of a party by party Id
+     * Get the admin of a party by party Id.
      *
      * @param int $partyId
      *
      * @return Participant
      */
-    public function findAdminByPartyId(int $partyId) : Participant
+    public function findAdminByPartyId(int $partyId): Participant
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->addSelect('participant')

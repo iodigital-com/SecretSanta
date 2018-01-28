@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller;
@@ -37,6 +38,7 @@ class TrackingController extends Controller
         $response->headers->addCacheControlDirective('no-cache', true);
         $response->headers->addCacheControlDirective('must-revalidate', true);
         $response->setPrivate();
+
         return $response;
     }
 }

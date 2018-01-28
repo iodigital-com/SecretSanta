@@ -12,10 +12,13 @@ class ParticipantReportQuery
 {
     /** @var Connection */
     private $dbal;
+
     /** @var Router */
     private $router;
+
     /** @var PartyReportQuery */
     private $partyReportQuery;
+
     /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
 
@@ -198,6 +201,7 @@ class ParticipantReportQuery
     public function calculateParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $participantCountSeason1 = $this->countParticipants($season1);
+
         try {
             $participantCountSeason2 = $this->countParticipants($season2);
         } catch (\Exception $e) {
@@ -237,6 +241,7 @@ class ParticipantReportQuery
     public function calculateConfirmedParticipantsCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $confirmedParticipantCountSeason1 = $this->countConfirmedParticipants($season1);
+
         try {
             $confirmedParticipantCountSeason2 = $this->countConfirmedParticipants($season2);
         } catch (\Exception $e) {
@@ -275,6 +280,7 @@ class ParticipantReportQuery
     public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $distinctParticipantCountSeason1 = $this->countDistinctParticipants($season1);
+
         try {
             $distinctParticipantCountSeason2 = $this->countDistinctParticipants($season2);
         } catch (\Exception $e) {
@@ -312,6 +318,7 @@ class ParticipantReportQuery
     public function calculateAverageParticipantsPerPartyBetweenSeasons(Season $season1, Season $season2)
     {
         $averageSeason1 = $this->calculateAverageParticipantsPerParty($season1);
+
         try {
             $averageSeason2 = $this->calculateAverageParticipantsPerParty($season2);
         } catch (\Exception $e) {

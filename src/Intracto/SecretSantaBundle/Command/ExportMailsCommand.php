@@ -52,15 +52,18 @@ class ExportMailsCommand extends Command
             case 'admin':
                 $this->exportService->export($season, true);
                 $output->writeln("Last season's admin emails exported to /tmp");
+
                 break;
             case 'participant':
                 $this->exportService->export($season, false);
                 $output->writeln("Last season's participant emails exported to /tmp");
+
                 break;
             default:
                 $this->exportService->export($season, true);
                 $this->exportService->export($season, false);
                 $output->writeln('All emails exported to /tmp');
+
                 break;
         }
     }

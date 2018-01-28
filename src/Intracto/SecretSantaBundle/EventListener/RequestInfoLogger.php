@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\EventListener;
@@ -12,6 +13,7 @@ class RequestInfoLogger implements EventSubscriberInterface
 {
     /** @var LoggerInterface */
     private $logger;
+
     /** @var \Symfony\Component\HttpFoundation\RequestStack */
     private $requestStack;
 

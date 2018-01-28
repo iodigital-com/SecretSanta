@@ -5,6 +5,7 @@ namespace Intracto\SecretSantaBundle\Query;
 class Season
 {
     private $start;
+
     private $end;
 
     /**

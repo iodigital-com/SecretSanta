@@ -316,7 +316,7 @@ class Participant
      *
      * @return Participant
      */
-    public function addExcludedParticipant(Participant $excludedParticipant)
+    public function addExcludedParticipant(self $excludedParticipant)
     {
         $this->excludedParticipants[] = $excludedParticipant;
 
@@ -326,7 +326,7 @@ class Participant
     /**
      * @param Participant $excludedParticipant
      */
-    public function removeExcludedParticipant(Participant $excludedParticipant)
+    public function removeExcludedParticipant(self $excludedParticipant)
     {
         $this->excludedParticipants->removeElement($excludedParticipant);
     }

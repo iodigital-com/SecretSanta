@@ -5,9 +5,13 @@ namespace Intracto\SecretSantaBundle\Query;
 class GaParameters
 {
     private $analytics;
+
     private $viewId;
+
     private $start;
+
     private $end;
+
     private $metrics;
 
     public function __construct($analytics, $viewId, $start, $end, $metrics)

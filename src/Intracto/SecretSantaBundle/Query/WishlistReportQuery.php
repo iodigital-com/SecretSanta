@@ -8,6 +8,7 @@ class WishlistReportQuery
 {
     /** @var Connection */
     private $dbal;
+
     /** @var ParticipantReportQuery */
     private $participantReportQuery;
 
@@ -102,6 +103,7 @@ class WishlistReportQuery
     public function calculateCompletedWishlistDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $completedWishlistsSeason1 = $this->calculateCompletedWishlists($season1);
+
         try {
             $completedWishlistsSeason2 = $this->calculateCompletedWishlists($season2);
         } catch (\Exception $e) {
