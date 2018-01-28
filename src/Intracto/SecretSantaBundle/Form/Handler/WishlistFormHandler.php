@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Form\Handler;
@@ -23,7 +24,7 @@ class WishlistFormHandler
         $this->em = $em;
     }
 
-    public function handle(FormInterface $form, Request $request) : bool
+    public function handle(FormInterface $form, Request $request): bool
     {
         /** @var Participant $participant */
         $participant = $form->getData();
@@ -52,7 +53,7 @@ class WishlistFormHandler
         return true;
     }
 
-    private function extractCurrentWishlistItems(Participant $participant) : ArrayCollection
+    private function extractCurrentWishlistItems(Participant $participant): ArrayCollection
     {
         $currentWishlistItems = new ArrayCollection();
 

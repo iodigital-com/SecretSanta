@@ -13,7 +13,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SendWishlistUpdatedCommand extends Command
 {
     private $em;
+
     private $participantMailQuery;
+
     private $mailerService;
 
     public function __construct(

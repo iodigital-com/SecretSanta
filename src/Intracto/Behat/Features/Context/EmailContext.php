@@ -14,7 +14,7 @@ class EmailContext extends RawMinkContext
     use KernelDictionary;
 
     /**
-     * We need to purge the spool between each scenario
+     * We need to purge the spool between each scenario.
      *
      * @BeforeScenario
      */
@@ -65,6 +65,7 @@ class EmailContext extends RawMinkContext
 
     /**
      * @Then /^the (?P<expectedSubject>[^"]+) mail should be sent to (?P<email>[^"]+)$/
+     *
      * @throws \Exception
      */
     public function theMailShouldBeSentTo($expectedSubject, $email)
@@ -115,7 +116,8 @@ class EmailContext extends RawMinkContext
     }
 
     /**
-     * TODO: check how to implement double rules (the second @given is not recognized correclty in a feature)
+     * TODO: check how to implement double rules (the second @given is not recognized correclty in a feature).
+     *
      * @Given /^there should have been (\d+) send emails$/
      * @Given /^there should have been (\d+) send email$/
      */

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller\Participant;
@@ -15,15 +16,16 @@ use Symfony\Component\Translation\TranslatorInterface;
 class ResendParticipantController extends AbstractController
 {
     private $unsubscribeService;
+
     private $translator;
+
     private $mailerService;
 
     public function __construct(
         UnsubscribeService $unsubscribeService,
         TranslatorInterface $translator,
         MailerService $mailerService
-    )
-    {
+    ) {
         $this->unsubscribeService = $unsubscribeService;
         $this->translator = $translator;
         $this->mailerService = $mailerService;

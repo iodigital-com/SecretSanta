@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Form\Handler;
@@ -45,7 +46,7 @@ class ForgotUrlFormHandler
      *
      * @return bool
      */
-    public function handle(FormInterface $form, Request $request) : bool
+    public function handle(FormInterface $form, Request $request): bool
     {
         if (!$request->isMethod('POST')) {
             return false;

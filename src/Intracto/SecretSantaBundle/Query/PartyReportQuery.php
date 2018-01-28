@@ -8,6 +8,7 @@ class PartyReportQuery
 {
     /** @var Connection */
     private $dbal;
+
     /** @var FeaturedYearsQuery */
     private $featuredYearsQuery;
 
@@ -144,6 +145,7 @@ class PartyReportQuery
     public function calculatePartyCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $partyCountSeason1 = $this->countParties($season1);
+
         try {
             $partyCountSeason2 = $this->countParties($season2);
         } catch (\Exception $e) {

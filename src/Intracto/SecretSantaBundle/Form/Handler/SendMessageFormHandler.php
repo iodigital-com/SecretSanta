@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Form\Handler;
@@ -34,7 +35,7 @@ class SendMessageFormHandler
         $this->mailerService = $mailerService;
     }
 
-    public function handle(FormInterface $form, Request $request) : bool
+    public function handle(FormInterface $form, Request $request): bool
     {
         if (!$form->handleRequest($request)->isValid()) {
             $this->session->getFlashBag()->add('danger', $this->translator->trans('participant_communication-send_message.feedback.error_in_form'));

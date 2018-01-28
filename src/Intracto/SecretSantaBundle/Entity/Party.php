@@ -18,7 +18,8 @@ class Party
     private $listurl;
 
     /**
-     * The URL that is used to expose the wishlists for all participants of the party
+     * The URL that is used to expose the wishlists for all participants of the party.
+     *
      * @var string
      */
     private $wishlistsurl;

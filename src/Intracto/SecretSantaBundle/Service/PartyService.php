@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Service;
@@ -32,7 +33,7 @@ class PartyService
         $this->participantService = $participantService;
     }
 
-    public function startParty(Party $party) : bool
+    public function startParty(Party $party): bool
     {
         if ($party->getCreated() || $party->getParticipants()->count() < 3) {
             return false;

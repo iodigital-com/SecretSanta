@@ -16,10 +16,13 @@ class ParticipantService
 {
     /** @var EntityManager */
     public $em;
+
     /** @var ParticipantShuffler */
     public $participantShuffler;
+
     /** @var ValidatorInterface */
     private $validator;
+
     /** @var string */
     private $geoIpDbPath;
 
@@ -59,7 +62,7 @@ class ParticipantService
         $this->em->flush();
     }
 
-    public function validateEmail(string $email) : bool
+    public function validateEmail(string $email): bool
     {
         $emailAddress = new EmailAddress($email);
 
@@ -93,6 +96,7 @@ class ParticipantService
             $participant->setIp($ip);
 
             $reader = new Reader($this->geoIpDbPath);
+
             try {
                 $geoInformation = $reader->city($participant->getIp());
 

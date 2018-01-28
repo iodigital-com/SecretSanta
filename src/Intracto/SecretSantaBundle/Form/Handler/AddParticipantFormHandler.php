@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Form\Handler;
@@ -49,7 +50,7 @@ class AddParticipantFormHandler
         $this->mailer = $mailerService;
     }
 
-    public function handle(FormInterface $form, Request $request, Party $party) : void
+    public function handle(FormInterface $form, Request $request, Party $party): void
     {
         /** @var Participant $newParticipant */
         $newParticipant = $form->getData();

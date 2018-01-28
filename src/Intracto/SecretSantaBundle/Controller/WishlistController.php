@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Intracto\SecretSantaBundle\Controller;
@@ -21,7 +22,7 @@ class WishlistController extends AbstractController
      * @Template("IntractoSecretSantaBundle:Wishlist:showAll.html.twig")
      * @Method("GET")
      */
-    public function showAllAction(Party $party) : array
+    public function showAllAction(Party $party): array
     {
         return ['party' => $party];
     }
@@ -30,7 +31,7 @@ class WishlistController extends AbstractController
      * @Route("/wishlist/update/{url}", name="wishlist_update")
      * @Method("POST")
      */
-    public function updateAction(Request $request, Participant $participant, WishlistFormHandler $handler) : JsonResponse
+    public function updateAction(Request $request, Participant $participant, WishlistFormHandler $handler): JsonResponse
     {
         $wishlistForm = $this->createForm(WishlistType::class, $participant, ['validation_groups' => 'WishlistItem']);
 

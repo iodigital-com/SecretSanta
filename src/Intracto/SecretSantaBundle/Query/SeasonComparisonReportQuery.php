@@ -6,8 +6,10 @@ class SeasonComparisonReportQuery
 {
     /** @var PartyReportQuery */
     private $partyReportQuery;
+
     /** @var ParticipantReportQuery */
     private $participantReportQuery;
+
     /** @var WishlistReportQuery */
     private $wishlistReportQuery;
 

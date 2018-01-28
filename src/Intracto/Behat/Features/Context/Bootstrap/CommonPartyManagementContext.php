@@ -45,7 +45,7 @@ class CommonPartyManagementContext extends RawMinkContext
     public function theFirstParticipantNameShouldBeAdmin($expectedParticipantName)
     {
         $participantName = $this->getSession()->getPage()->find('css', '#mysanta > tbody > tr:first-child > td.participant-name')->getText();
-        
+
         Assert::eq($participantName, $expectedParticipantName, 'Participant name was not changed');
     }
 

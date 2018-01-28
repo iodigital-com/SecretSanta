@@ -6,10 +6,13 @@ class ReportQuery
 {
     /** @var PartyReportQuery */
     private $partyReportQuery;
+
     /** @var ParticipantReportQuery */
     private $participantReportQuery;
+
     /** @var IpReportQuery */
     private $ipReportQuery;
+
     /** @var WishlistReportQuery */
     private $wishlistReportQuery;
 

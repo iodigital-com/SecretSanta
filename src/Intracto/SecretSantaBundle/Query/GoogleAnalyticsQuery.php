@@ -8,6 +8,7 @@ use Google_Service_Analytics;
 class GoogleAnalyticsQuery
 {
     private $viewId;
+
     private $clientSecret;
 
     public function __construct($viewId, $clientSecret)
