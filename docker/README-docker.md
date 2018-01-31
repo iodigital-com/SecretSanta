@@ -13,7 +13,7 @@ Getting started:
 To start the docker environment, simply issue the following command.
 
 ```
-> docker-compose -d up
+> docker-compose up -d
 ```
 
 This will bring up the different containers. The first time you bring up the environment, they are pulled from Docker Hub. The PHP container will need to be build due to the use of PHP modules (like PDO) that are not shipped with the default PHP container.
