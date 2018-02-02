@@ -10,7 +10,7 @@
         "classmap": ["app/AppKernel.php", "app/AppCache.php"]
     },
     "require": {
-        "php": "^7.0",
+        "php": "^7.1",
         "symfony/symfony": "^3.4",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
@@ -27,7 +27,7 @@
         "geoip2/geoip2": "^2.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.5|^6.0",
+        "phpunit/phpunit": "^7.0",
         "behat/behat": "^3.2",
         "behat/mink": "^1.7",
         "behat/mink-browserkit-driver": "^1.3",
