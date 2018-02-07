@@ -183,7 +183,7 @@ static-faq:
         Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
 
         <a name="privacy"></a><h2>How do you handle my data?</h2>
-        <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://www.secretsantaorganizer.com/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
+        <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
         Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
 
         <a name="features"></a><h2>Can you add feature X?</h2>

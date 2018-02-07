@@ -3,7 +3,7 @@ intracto_secret_santa:
     type:     annotation
     prefix:   /
 
-privacy-policy:
+privacy:
     path: /privacy
     defaults:
         _controller:  FrameworkBundle:Template:template
