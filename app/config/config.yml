@@ -21,6 +21,8 @@ framework:
     session:
         name: secretsanta
         save_path:  null
+        cookie_secure: true
+        cookie_httponly: true
     assets:
         # feature is supported in Symfony 3.3 and higher
         json_manifest_path: '%kernel.project_dir%/web/build/manifest.json'
