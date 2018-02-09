@@ -2,7 +2,7 @@
 
 function printAction {
     if [ "$DBG" != 1 ]; then
-        let DOTS=40-${#1}
+        let DOTS=50-${#1}
         echo -n "$1 " >&2
         printf '%0.s.' $(seq $DOTS) >&2
         echo -n " " >&2
