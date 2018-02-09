@@ -79,4 +79,5 @@ ls -1 | sort -r | tail -n +3 | xargs sudo rm -rf
 cd ..
 printOk
 
-echo SecretSanta version $VERSION is deployed!
+echo SecretSanta version $VERSION is deployed! >&2
+
