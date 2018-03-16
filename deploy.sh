@@ -22,6 +22,7 @@ if [ "$DBG" = 1 ]; then
 else
     exec > /dev/null
 fi
+set -e # errexit: exit on error
 
 PROJECT_HOME=/var/www/secretsanta
 VERSION=`date +"%Y%m%d%H%M%S"`
