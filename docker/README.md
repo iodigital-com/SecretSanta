@@ -32,26 +32,28 @@ Included containers:
 - santa-mailhog (mailhog/mailhog)
 
 Now change your parameters.yml file to point to the correct endpoints:
-- database
--- host: santa-db
--- user: secretsanta
--- database: secretsanta
-- mailers
--- host: santa-mailhog
--- port: 1025
-
+```
+parameters:
+  database_host: santa-db
+  mandrill_host: santa-mailhog
+  mandrill_port: 1025
+```
 You will need to create the schema through bin/console. You can do this throught the santa-php container. 
 
 ```
-> docker-compose exec santa-php php /usr/local/apache2/htdocs/app/console doctrine:schema:create
+> docker-compose exec santa-php php /usr/local/apache2/htdocs/bin/console doctrine:schema:create
 ```
 
-Done! You can now connect to the app on your docker machine on one of the exposed ports. If you're running on Linux, or using the native Docker for Windows, this is probably just on your localhost. If you're running docker on Mac or Windows through Docker toolbox, the default IP address of the docker machine is 192.168.99.100.
-
-Ports:
-- 80, HTTP, santa-web
-- 443, HTTPS, santa-web
-- 8025, HTTP, santa-mailhog
+Finally, you need to add dev.secretsantaorganizer.com to your own ```/etc/hosts``` or ```C:\Windows\System32\drivers\etc\hosts``` file.
+If you're using native docker, this is 127.0.0.1.
+```
+127.0.0.1 dev.secretsantaorganizer.com
+```
+If you're running docker on Mac or Windows through Docker toolbox, the default IP address of the docker machine is 192.168.99.100. 
+```
+192.168.99.100 dev.secretsantaorganizer.com
+```
+Done! You can now connect to the app through https://dev.secretsantaorganizer.com, and to mailhog on http://dev.secretsantaorganizer.com:8025. 
 
 Internally the containers are able to connect on other ports as well (eg. MySQL). If you need to connect to these ports directly from your machine, you need to add the ports to the ports section of the container in the docker-compse.yml file and restart your environment.
 
