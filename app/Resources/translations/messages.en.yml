@@ -698,5 +698,5 @@ flashes:
 
     # ReuseController
     reuse:
-        success: 'We have successfully send the email!'
+        success: 'We have successfully sent the email!'
         error: "We couldn't find any parties, it might be possible that your parties are older than 2 years, or no parties linked to this email."
