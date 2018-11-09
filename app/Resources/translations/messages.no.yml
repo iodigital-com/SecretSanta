@@ -186,7 +186,7 @@ static-faq:
         Forresten, vi ser fortsatt etter noen til å oversette nettsiden til russisk, japansk, indisk.... Hvis du vil hjelpe oss med dette (gratis), vennligst kontakt oss!</p>
 
         <a name="questions"></a><h2>Andre spørsmål?</h2>
-        <p>Har du andre spørsmål, bekymringer, eller kommentarer? Kontakt oss per e-post:<br/>info@secretsantaorganizer.com</p>
+        <p>Har du andre spørsmål, bekymringer, eller kommentarer? <a href="%contactLink%" target="_blank" rel="noopener noreferrer">Kontakt oss</a>.
     create_new_list: Opprett en ny Secret Santa-liste!
 
 # Helper/prototypeParticipant.html.twig
@@ -658,3 +658,27 @@ flashes:
 #    reuse:
 #        success:
 #        error:
+
+    #ContactController
+#    contact:
+#        success:
+#
+# Emails/contact.{html,txt}.twig
+#emails-contact:
+#    subject:
+#    message:
+#        html:
+#        txt:
+#
+# Form/{ContactType}
+#form-contact:
+#    label:
+#        email:
+#        name:
+#        message:
+#        submit:
+#
+# Static/faq.html.twig
+#static-contact:
+#    title:
+#    body:

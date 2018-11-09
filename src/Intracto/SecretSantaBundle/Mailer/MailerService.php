@@ -3,6 +3,7 @@
 namespace Intracto\SecretSantaBundle\Mailer;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Intracto\SecretSantaBundle\Model\ContactSubmission;
 use Intracto\SecretSantaBundle\Service\UnsubscribeService;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -39,6 +40,9 @@ class MailerService
     /** @var CheckMailDomainService */
     private $checkMailDomainService;
 
+    /** @var string $contactEmail */
+    public $contactEmail;
+
     /**
      * @param \Swift_Mailer          $mailer             a regular SMTP mailer, bad monitoring, cheap
      * @param \Swift_Mailer          $mandrill           mandrill SMTP mailer, good monitoring, expensive
@@ -58,7 +62,8 @@ class MailerService
         RouterInterface $routing,
         UnsubscribeService $unsubscribeService,
         $noreplyEmail,
-        CheckMailDomainService $checkMailDomainService
+        CheckMailDomainService $checkMailDomainService,
+        $contactEmail
     ) {
         $this->mailer = $mailer;
         $this->mandrill = $mandrill;
@@ -69,6 +74,7 @@ class MailerService
         $this->unsubscribeService = $unsubscribeService;
         $this->noreplyEmail = $noreplyEmail;
         $this->checkMailDomainService = $checkMailDomainService;
+        $this->contactEmail = $contactEmail;
     }
 
     /**
@@ -357,6 +363,40 @@ class MailerService
             );
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->sendMail($mail);
+    }
+
+    /**
+     * @param ContactSubmission $contactSubmission
+     * @return boolean
+     */
+    public function sendContactFormEmail(ContactSubmission $contactSubmission)
+    {
+        $this->translator->setLocale('nl');
+        $mail = (new \Swift_Message())
+            ->setSubject($this->translator->trans('emails-contact.subject'))
+            ->setFrom($contactSubmission->getEmail(), $contactSubmission->getName())
+            ->setTo($this->contactEmail)
+            ->setBody(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:contact.html.twig',
+                    [
+                        'submission' => $contactSubmission
+                    ]
+                ),
+                'text/html'
+            )
+            ->addPart(
+                $this->templating->render(
+                    'IntractoSecretSantaBundle:Emails:contact.txt.twig',
+                    [
+                        'submission' => $contactSubmission
+                    ]
+                ),
+                'text/plain'
+            );
+        $this->sendMail($mail);
+
+        return true;
     }
 
     /**

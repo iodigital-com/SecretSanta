@@ -144,7 +144,7 @@ static-faq:
         <a name="ads"></a><h2>A propos des publicités</h2>
         <p>Nous avons des publicités Google ici et là afin de couvrir certaines de nos dépenses. Par exemple, l'hébergement, le nom de domaine, etc. Nous faisons tout nous-mêmes gratuitement et l'argent que nous collectons est réinjecté dans le projet. Il pourrait être utilisé afin d'acheter des pizzas et boissons pour l'un de nos hackdays. Ou il pourrait encore servir à payer un traducteur afin d'ajouter de nouvelles langues à notre Secret Santa Organizer. Ou d'autres choses encore. Au fait, nous recherchons toujours des traductions en russe, japonais... Si vous pouvez nous aider (gratuitement), merci de bien vouloir nous contacter.</p>
         <a name="questions"></a><h2>Autres questions</h2>
-        <p>D'autres questions, préoccupations ou commentaires ? Contactez-nous par:<br/>info@secretsantaorganizer.com</p>
+        <p>D'autres questions, préoccupations ou commentaires ? <a href="%contactLink%" target="_blank" rel="noopener noreferrer">Contactez-nous</a>.
     create_new_list: Créez une nouvelle liste Secret Santa !
 
 # Helper/prototypeParticipant.html.twig
@@ -601,3 +601,27 @@ flashes:
 #    reuse:
 #        success:
 #        error:
+
+    #ContactController
+#    contact:
+#        success:
+#
+# Emails/contact.{html,txt}.twig
+#emails-contact:
+#    subject:
+#    message:
+#        html:
+#        txt:
+#
+# Form/{ContactType}
+#form-contact:
+#    label:
+#        email:
+#        name:
+#        message:
+#        submit:
+#
+# Static/faq.html.twig
+#static-contact:
+#    title:
+#    body:
