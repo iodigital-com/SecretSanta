@@ -29,11 +29,11 @@ class SeasonComparisonReportQuery
     }
 
     /**
-     * @param $year
+     * @param int $year
      *
      * @return array
      */
-    public function getComparison($year)
+    public function getComparison(int $year)
     {
         $season1 = new Season($year);
         $season2 = new Season($year - 1);

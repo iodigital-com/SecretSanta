@@ -46,7 +46,7 @@ class EnrichParticipantInfoCommand extends Command
         $reader = new Reader($this->geoIpDbPath);
 
         $participants = $this->participantRepository->findAllParticipantsWithoutGeoInfo($batchSize);
-        while (count($participants) > 0) {
+        while (\count($participants) > 0) {
             foreach ($participants as $participant) {
                 try {
                     $geoInformation = $reader->city($participant->getIp());

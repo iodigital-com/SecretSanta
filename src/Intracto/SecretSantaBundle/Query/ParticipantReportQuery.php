@@ -393,11 +393,11 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param $listUrl
+     * @param string $listUrl
      *
      * @return array
      */
-    public function fetchDataForPartyUpdateMail($listUrl)
+    public function fetchDataForPartyUpdateMail(string $listUrl)
     {
         $party = $this->dbal->createQueryBuilder()
             ->select('p.*, e.name AS adminName')
@@ -436,11 +436,11 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param $participantId
+     * @param int $participantId
      *
      * @return mixed
      */
-    public function findBuddyByParticipantId($participantId)
+    public function findBuddyByParticipantId(int $participantId)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('p.id')
