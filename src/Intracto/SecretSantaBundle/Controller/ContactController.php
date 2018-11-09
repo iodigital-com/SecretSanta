@@ -17,7 +17,7 @@ class ContactController extends Controller
      * @Template("IntractoSecretSantaBundle:Static:contact.html.twig")
      * @Method({"GET", "POST"})
      *
-     * @param Request $request
+     * @param Request            $request
      * @param ContactFormHandler $handler
      */
     public function indexAction(Request $request, ContactFormHandler $handler)
