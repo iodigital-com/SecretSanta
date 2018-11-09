@@ -367,7 +367,8 @@ class MailerService
 
     /**
      * @param ContactSubmission $contactSubmission
-     * @return boolean
+     *
+     * @return bool
      */
     public function sendContactFormEmail(ContactSubmission $contactSubmission)
     {
@@ -380,7 +381,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:contact.html.twig',
                     [
-                        'submission' => $contactSubmission
+                        'submission' => $contactSubmission,
                     ]
                 ),
                 'text/html'
@@ -389,7 +390,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:contact.txt.twig',
                     [
-                        'submission' => $contactSubmission
+                        'submission' => $contactSubmission,
                     ]
                 ),
                 'text/plain'
