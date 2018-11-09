@@ -525,3 +525,27 @@ flashes:
 #    reuse:
 #        success:
 #        error:
+
+    #ContactController
+#    contact:
+#        success:
+#
+# Emails/contact.{html,txt}.twig
+#emails-contact:
+#    subject:
+#    message:
+#        html:
+#        txt:
+#
+# Form/{ContactType}
+#form-contact:
+#    label:
+#        email:
+#        name:
+#        message:
+#        submit:
+#
+# Static/faq.html.twig
+#static-contact:
+#    title:
+#    body:

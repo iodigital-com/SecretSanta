@@ -203,7 +203,7 @@ static-faq:
         By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
 
         <a name="questions"></a><h2>Other questions</h2>
-        <p>Any other questions, concerns, or comments? Contact us by e-mail:<br/>info@secretsantaorganizer.com</p>
+        <p>Any other questions, concerns, or comments? Contact us via the <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contact form</a>.
     create_new_list: Create a new Secret Santa list!
 
 # Helper/prototypeParticipant.html.twig
@@ -700,3 +700,38 @@ flashes:
     reuse:
         success: 'We have successfully sent the email!'
         error: "We couldn't find any parties, it might be possible that your parties are older than 2 years, or no parties linked to this email."
+
+    #ContactController
+    contact:
+        success: 'We have received your request and will come back to you as soon as possible!'
+
+# Emails/contact.{html,txt}.twig
+emails-contact:
+    subject: New message the Secret Santa contact form
+    message:
+        html: >
+            Dear,<br>
+            <br>
+            %name% has used the Secret Santa contact form to send a message. Message:<br/>
+            <br/>
+            %message%<br/>
+            <br/>
+        txt: >
+            Dear,
+
+            %name% has used the Secret Santa contact form to send a message. Message:
+            %message%
+
+
+# Form/{ContactType}
+form-contact:
+    label:
+        email: Your email
+        name: Your name
+        message: Your message
+        submit: Submit
+
+# Static/faq.html.twig
+static-contact:
+    title: Contact us
+    body: Any other questions, concerns, or comments? Contact us via the contact form:

@@ -171,7 +171,7 @@ static-faq:
         Aliás, ainda estamos buscando tradutores voluntários para termos Secret Santas em Russo, Indiano, Japonês... Se você quiser nos ajudar (de graça) ou conhece alguém que pode, por favor, entre em contato.</p>
 
         <a name="questions"></a><h2>Outras perguntas</h2>
-        <p>Se você tiver qualquer outra pergunta, sugestão ou reclamações, apenas entre em contato conosco por e-mail:<br/>info@secretsantaorganizer.com</p>
+        <p>Se você tiver qualquer outra pergunta, sugestão ou reclamações, apenas entre em <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contato conosco</a>.
     create_new_list: Montar uma nova lista do Secret Santa!
 
 # Helper/prototypeParticipant.html.twig
@@ -619,3 +619,27 @@ flashes:
 #    reuse:
 #        success:
 #        error:
+
+    #ContactController
+#    contact:
+#        success:
+#
+# Emails/contact.{html,txt}.twig
+#emails-contact:
+#    subject:
+#    message:
+#        html:
+#        txt:
+#
+# Form/{ContactType}
+#form-contact:
+#    label:
+#        email:
+#        name:
+#        message:
+#        submit:
+#
+# Static/faq.html.twig
+#static-contact:
+#    title:
+#    body:

@@ -208,7 +208,7 @@ static-faq:
         We zoeken trouwens nog Russische, Indische, Japanse, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
 
         <a name="questions"></a><h2>Andere vragen</h2>
-        <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via e-mail:<br/>info@secretsantaorganizer.com</p>
+        <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via ons <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contact formulier</a>.
     create_new_list: Stel een nieuwe Secret Santa lijst op!
 
 # Helper/prototypeParticipant.html.twig
@@ -714,3 +714,37 @@ flashes:
     reuse:
         success: 'We hebben je mail verzonden!'
         error: 'We konden geen feestjes vinden, het kan zijn dat je feestjes ouder zijn dan 2 jaar, of dat er geen feestjes zijn gelinkt aan dit emailadres.'
+
+    #ContactController
+    contact:
+        success: 'We hebben je vraag succesvol verstuurd! We nemen zo snel mogelijk contact met  je op!'
+
+# Emails/contact.{html,txt}.twig
+emails-contact:
+    subject: Nieuw bericht via contactformulier Secret Santa
+    message:
+        html: >
+            Beste,<br>
+            <br>
+            %name% heeft gebruik gemaakt van het contactfomulier om een bericht te sturen. Bericht:<br/>
+            <br/>
+            %message%<br/>
+            <br/>
+        txt: >
+            Beste,
+
+            %name% heeft gebruik gemaakt van het contactfomulier om een bericht te sturen. Bericht:
+            %message%
+
+# Form/{ContactType}
+form-contact:
+    label:
+        email: Uw E-mail adres
+        name: Uw naam
+        message: Uw Bericht
+        submit: Verzenden
+
+# Static/faq.html.twig
+static-contact:
+    title: Contacteer ons
+    body: Heb je vragen, bedenkingen of opmerkingen? Contacteer ons dan via het volgende contactfomulier:

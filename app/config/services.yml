@@ -23,6 +23,7 @@ services:
             $mailer: '@swiftmailer.mailer.mailer'
             $mandrill: '@swiftmailer.mailer.mandrill'
             $noreplyEmail: '%noreply_email%'
+            $contactEmail: '%contact_email%'
 
     Intracto\SecretSantaBundle\Query\GoogleAnalyticsQuery:
         arguments:
