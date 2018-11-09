@@ -8,6 +8,8 @@ base:
             site_name: Secret Santa
             description: Secret Santa Organizer er et gratis program som lar deg organisere gavebytter! Arranger en hemmelig nisse fest med venner, familie eller kolleger og legg til din egen ønskeliste.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
+#    privacy_policy:
+#    cookie_policy:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

@@ -8,6 +8,8 @@ base:
             site_name:  秘密聖誕老人
             description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
+#    privacy_policy:
+#    cookie_policy:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

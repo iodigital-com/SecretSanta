@@ -14,3 +14,9 @@ faq:
     defaults:
         _controller:  FrameworkBundle:Template:template
         template:     'IntractoSecretSantaBundle:Static:faq.html.twig'
+
+cookie:
+    path: /cookie
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     'IntractoSecretSantaBundle:Static:cookiePolicy.html.twig'
