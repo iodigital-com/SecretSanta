@@ -8,6 +8,8 @@ base:
             site_name: Secret Santa
             description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
+    privacy_policy: Privacy Policy
+    cookie_policy: Cookie Policy
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

@@ -8,6 +8,8 @@ base:
             site_name: Secret Santa
             description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
+#    privacy_policy:
+#    cookie_policy:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

@@ -8,6 +8,8 @@ base:
             site_name: 秘密圣诞老人
             description: 秘密圣诞老人组织者是一个免费的在线秘密圣诞老人礼物交换的组织机构！和朋友们，家人甚至你的同事们一起组织策划一个秘密圣诞老人派对和你们的愿望清单。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
+#    privacy_policy:
+#    cookie_policy:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

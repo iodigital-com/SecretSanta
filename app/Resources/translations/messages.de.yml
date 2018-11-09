@@ -8,6 +8,8 @@ base:
             site_name: Secret Santa
             description: Secret Santa Organizer ist ein kostenloses Online-Programm zum Organisieren des Secret Santa-Geschenketauschs. Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen und fügen Sie einen Wunschzettel zu.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
+#    privacy_policy:
+#    cookie_policy:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

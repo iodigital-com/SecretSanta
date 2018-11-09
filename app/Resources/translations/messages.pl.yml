@@ -8,6 +8,8 @@ base:
             site_name: Tajny Mikołaj
             description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
+#    privacy_policy:
+#    cookie_policy:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

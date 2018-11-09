@@ -117,6 +117,10 @@
         {% block footer %}
             <div id="footer-santa" class="clearfix">
                 {{ 'base.need_help'|trans({'%FAQ%': path('faq')})|raw }}
+                <div class="legal-links">
+                    <a href="{{ path('privacy') }}">{{ 'base.privacy_policy'|trans }}</a>
+                    <a href="{{ path('cookie') }}">{{ 'base.cookie_policy'|trans }}</a>
+                </div>
             </div>
         {% endblock %}
     </div>

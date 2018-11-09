@@ -8,6 +8,8 @@ base:
             site_name: Secret Santa
             description: Secret Santa Organizer est un organiseur en ligne gratuit d'échange de cadeaux ! Organisez une Secret Santa party avec vos amis et publiez vos souhaits.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Besoin d'aide ? Des questions ? Consultez la FAQ !</a>
+#    privacy_policy:
+#    cookie_policy:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:

@@ -13,3 +13,11 @@ body {
   max-width: $wrapper;
   margin: 0 auto;
 }
+
+.legal-links{
+  font-size: 70%;
+
+  a {
+    padding-right: 5px;
+  }
+}
