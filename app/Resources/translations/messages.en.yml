@@ -280,7 +280,7 @@ participant_show_valid:
         title: Send an anonymous message to %name%
         message_label: Your message
         message_placeholder: Your message
-        warning_anonymous: Remember that this message is send anonymously, and you don't want to spoil who you are! Your buddy won't be able to reply to your message, be specific so he/she is able to update his/her wishlist.
+        warning_anonymous: Remember that this message is sent anonymously, and you don't want to spoil who you are! Your buddy won't be able to reply to your message, be specific so he/she is able to update his/her wishlist.
         send_button: Send your mail!
 
 # ParticipantCommunicationController
