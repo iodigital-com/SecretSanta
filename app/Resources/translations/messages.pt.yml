@@ -483,19 +483,19 @@ emails-party_update:
             Oi %name%, <br/>
             <br/>
 
-            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.<br/>
+            Nós esperamos que você esteja animado para a festa de %owner% que está chegando logo. %owner% está esperando %participantCount% pessoas na festa dia %date% em %place% para curtir a alegria de dar presentes.br/>
             <br/>
-            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.<br/>
+            Para alcançar a maior alegria, seria ótimo se todo convidado atendesse à festa e trouxesse um presente. Até agora %viewedCount% abriram seus convites e %wishlistCount% deles fizeram uma lista de desejos.<br/>
             <br/>
-            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+            Certifique-se de conferir o seu amigo no link abaixo e fazer ele se mexer caso necessário. Quanto mais melhor!
         txt: >
             Oi %name%,
 
-            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.
+            Nós esperamos que você esteja animado para a festa de %owner% que está chegando logo. %owner% está esperando %participantCount% pessoas na festa dia %date% em %place% para curtir a alegria de dar presentes.
 
-            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.
+            Para alcançar a maior alegria, seria ótimo se todo convidado atendesse à festa e trouxesse um presente. Até agora %viewedCount% abriram seus convites e %wishlistCount% deles fizeram uma lista de desejos.
 
-            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+            Certifique-se de conferir o seu amigo no link abaixo e fazer ele se mexer caso necessário. Quanto mais melhor!
 
     btn:
         party_update: Veja seu amigo e sua lista de presentes
