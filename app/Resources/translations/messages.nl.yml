@@ -4,9 +4,9 @@ base:
         description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijstje naar vrienden, familie,..
         title: Secret Santa Online geschenkuitwisselings organizer!
         og:
-            title: Secret Santa
+            title: Organiseer je kerstfeestje
             site_name: Secret Santa
-            description: Regel gratis je geschenkuitwisseling online met Secret Santa Organizer! Geen gedoe meer met 'namen trekken'. Stuur je verlanglijst naar vrienden, familie,..
+            description: Met deze handige Secret Santa tool!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
     privacy_policy: Privacy Policy
     cookie_policy: Cookie Policy
