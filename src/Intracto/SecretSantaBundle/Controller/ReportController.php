@@ -17,6 +17,14 @@ class ReportController extends Controller
      */
     public function indexAction(string $year)
     {
+
+        if ('all' !== $year) {
+
+            if (false === strtotime($year)) {
+                $year = date('Y');
+            }
+        }
+
         /** @var ExportReportQueriesService $exportReportQueriesService */
         $exportReportQueriesService = $this->get('intracto_secret_santa.service.export_report_queries');
 

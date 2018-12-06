@@ -49,6 +49,8 @@ class ExportReportQueriesService
      */
     public function getReportQuery(string $year)
     {
+
+
         $filename = $this->getExportLocation($year).'/report.json';
 
         $handle = fopen($filename, 'r');
