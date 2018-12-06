@@ -2,6 +2,7 @@ services:
     intracto_secret_santa.mailer: '@Intracto\SecretSantaBundle\Mailer\MailerService'
     intracto_secret_santa.service.participant: '@Intracto\SecretSantaBundle\Service\ParticipantService'
     intracto_secret_santa.service.party: '@Intracto\SecretSantaBundle\Service\PartyService'
+    intracto_secret_santa.service.export_report_queries:  '@Intracto\SecretSantaBundle\Service\ExportReportQueriesService'
 
     intracto_secret_santa.query.report: '@Intracto\SecretSantaBundle\Query\ReportQuery'
     intracto_secret_santa.query.party_report: '@Intracto\SecretSantaBundle\Query\PartyReportQuery'
@@ -17,5 +18,6 @@ services:
 
     intracto_secret_santa.repository.party: '@Intracto\SecretSantaBundle\Repository\PartyRepository'
     intracto_secret_santa.repository.participant: '@Intracto\SecretSantaBundle\Repository\ParticipantRepository'
+
 
     cache: '@Doctrine\Common\Cache\ApcuCache'

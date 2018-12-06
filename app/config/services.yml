@@ -8,6 +8,7 @@ services:
         public: false
         bind:
             $geoIpDbPath: '%geo_ip_db_path%'
+            $reportCachePath: '%kernel.project_dir%/var/report_cache'
 
     Intracto\SecretSantaBundle\:
         resource: '../../src/Intracto/SecretSantaBundle/*'
