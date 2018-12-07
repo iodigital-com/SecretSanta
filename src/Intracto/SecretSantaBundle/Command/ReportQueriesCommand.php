@@ -22,8 +22,6 @@ class ReportQueriesCommand extends Command
     private $exportReportQueriesService;
 
     /**
-     * ReportQueriesCommand constructor.
-     *
      * @param ReportQueriesService       $reportQueriesService
      * @param ExportReportQueriesService $exportReportQueriesService
      */
