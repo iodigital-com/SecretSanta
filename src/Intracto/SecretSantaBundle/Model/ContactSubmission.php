@@ -29,6 +29,12 @@ class ContactSubmission
     private $message;
 
     /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    private $recaptchaToken;
+
+    /**
      * @return string
      */
     public function getName()
@@ -74,5 +80,21 @@ class ContactSubmission
     public function setMessage($message)
     {
         $this->message = $message;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRecaptchaToken()
+    {
+        return $this->recaptchaToken;
+    }
+
+    /**
+     * @param string $recaptchaToken
+     */
+    public function setRecaptchaToken(string $recaptchaToken)
+    {
+        $this->recaptchaToken = $recaptchaToken;
     }
 }
