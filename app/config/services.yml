@@ -8,7 +8,11 @@ services:
         public: false
         bind:
             $geoIpDbPath: '%geo_ip_db_path%'
+<<<<<<< HEAD
             $reportCachePath: '%kernel.project_dir%/var/report_cache'
+=======
+            $recaptchaSecret: '%kernel.root_dir%/config/recaptcha_secrets.json'
+>>>>>>> SANTA-99: keys in jsonfile
 
     Intracto\SecretSantaBundle\:
         resource: '../../src/Intracto/SecretSantaBundle/*'
