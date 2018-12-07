@@ -2,12 +2,12 @@
 
 namespace Intracto\SecretSantaBundle\Command;
 
-use Intracto\SecretSantaBundle\Service\ExportReportQueriesService;
-use Intracto\SecretSantaBundle\Service\ReportQueriesService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Intracto\SecretSantaBundle\Service\ExportReportQueriesService;
+use Intracto\SecretSantaBundle\Service\ReportQueriesService;
 
 class ReportQueriesCommand extends Command
 {
