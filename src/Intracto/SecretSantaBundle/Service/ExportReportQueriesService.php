@@ -2,13 +2,8 @@
 
 namespace Intracto\SecretSantaBundle\Service;
 
-use Intracto\SecretSantaBundle\Query\ParticipantReportQuery;
-use Intracto\SecretSantaBundle\Query\Season;
-use Symfony\Component\Routing\RouterInterface;
-
 class ExportReportQueriesService
 {
-
     /** @var string */
     private $reportCachePath;
 
@@ -65,5 +60,4 @@ class ExportReportQueriesService
     {
         return $this->reportCachePath.'/'.$directory;
     }
-
 }

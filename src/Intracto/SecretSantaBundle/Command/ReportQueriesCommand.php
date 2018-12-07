@@ -3,7 +3,6 @@
 namespace Intracto\SecretSantaBundle\Command;
 
 use Intracto\SecretSantaBundle\Service\ExportReportQueriesService;
-use Intracto\SecretSantaBundle\Service\ExportService;
 use Intracto\SecretSantaBundle\Service\ReportQueriesService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,14 +11,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ReportQueriesCommand extends Command
 {
-
     /**
-     * @var ReportQueriesService $reportQueriesService
+     * @var ReportQueriesService
      */
     private $reportQueriesService;
 
     /**
-     * @var ExportReportQueriesService $exportReportQueriesService
+     * @var ExportReportQueriesService
      */
     private $exportReportQueriesService;
 
@@ -59,11 +57,9 @@ class ReportQueriesCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $year = $input->getArgument('year');
 
         if ('all' !== $year) {
-
             if (false === strtotime($year)) {
                 $year = date('Y');
             }

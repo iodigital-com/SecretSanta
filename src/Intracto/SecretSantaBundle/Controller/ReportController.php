@@ -17,9 +17,7 @@ class ReportController extends Controller
      */
     public function indexAction(string $year)
     {
-
         if ('all' !== $year) {
-
             if (false === strtotime($year)) {
                 $year = date('Y');
             }
@@ -30,5 +28,4 @@ class ReportController extends Controller
 
         return $exportReportQueriesService->getReportQuery($year);
     }
-
 }
