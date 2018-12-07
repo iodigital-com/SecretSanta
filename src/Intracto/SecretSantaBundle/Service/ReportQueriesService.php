@@ -49,7 +49,6 @@ class ReportQueriesService
      */
     public function getReportResults(string $year): array
     {
-
         try {
             if ('all' !== $year) {
                 $partyData = $this->reportQuery->getPartyReport($year);

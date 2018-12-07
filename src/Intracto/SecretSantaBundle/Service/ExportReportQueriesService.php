@@ -17,9 +17,8 @@ class ExportReportQueriesService
      *
      * @param string $reportCachePath
      */
-    public function __construct(
-        string $reportCachePath
-    ) {
+    public function __construct(string $reportCachePath)
+    {
         $this->reportCachePath = $reportCachePath;
     }
 
@@ -29,7 +28,6 @@ class ExportReportQueriesService
      */
     public function export(array $data, string $year): void
     {
-
         $filename = $this->getExportLocation($year).'/report.json';
         $dirname = \dirname($filename);
 
@@ -49,8 +47,6 @@ class ExportReportQueriesService
      */
     public function getReportQuery(string $year)
     {
-
-
         $filename = $this->getExportLocation($year).'/report.json';
 
         $handle = fopen($filename, 'r');
