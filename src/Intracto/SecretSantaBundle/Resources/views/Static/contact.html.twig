@@ -4,6 +4,21 @@
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
 
+{% block javascripts %}
+
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LcCY38UAAAAAJi1PNBQMLiG5-jdyejrpaVhVzPe', {action: 'contact'}).then(function (token) {
+                document.querySelector('.js-recaptchaToken').value = token;
+            });
+        });
+    </script>
+    <script src="{{ asset('build/manifest.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/vendor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/secretsanta.js') }}"></script>
+{% endblock %}
+
+
 {% block main %}
     <div class="box">
         <h1>{{ 'static-contact.title'|trans }}</h1>
