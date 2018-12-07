@@ -8,8 +8,6 @@ class ExportReportQueriesService
     private $reportCachePath;
 
     /**
-     * ExportReportQueriesService constructor.
-     *
      * @param string $reportCachePath
      */
     public function __construct(string $reportCachePath)
