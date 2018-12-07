@@ -9,7 +9,6 @@ use Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery;
 
 class ReportQueriesService
 {
-
     /** @var GoogleAnalyticsQuery $googleAnalyticsQuery */
     private $googleAnalyticsQuery;
 
@@ -92,5 +91,4 @@ class ReportQueriesService
 
         return $data;
     }
-
 }
