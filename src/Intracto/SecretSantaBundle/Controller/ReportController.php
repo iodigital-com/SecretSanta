@@ -2,11 +2,11 @@
 
 namespace Intracto\SecretSantaBundle\Controller;
 
-use Intracto\SecretSantaBundle\Service\ExportReportQueriesService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Intracto\SecretSantaBundle\Service\ExportReportQueriesService;
 
 class ReportController extends Controller
 {
@@ -17,14 +17,14 @@ class ReportController extends Controller
      */
     public function indexAction(string $year)
     {
+        /** @var ExportReportQueriesService $exportReportQueriesService */
+        $exportReportQueriesService = $this->get('intracto_secret_santa.service.export_report_queries');
+
         if ('all' !== $year) {
             if (false === strtotime($year)) {
                 $year = date('Y');
             }
         }
-
-        /** @var ExportReportQueriesService $exportReportQueriesService */
-        $exportReportQueriesService = $this->get('intracto_secret_santa.service.export_report_queries');
 
         return $exportReportQueriesService->getReportQuery($year);
     }
