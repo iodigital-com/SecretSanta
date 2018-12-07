@@ -22,8 +22,6 @@ class ReportQueriesService
     private $featuredYearsQuery;
 
     /**
-     * ReportQueriesService constructor.
-     *
      * @param GoogleAnalyticsQuery        $googleAnalyticsQuery
      * @param ReportQuery                 $reportQuery
      * @param SeasonComparisonReportQuery $seasonComparisonReportQuery
