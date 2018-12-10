@@ -35,8 +35,8 @@
 
 {% block headScripts %}
     {{ parent() }}
-    <script src='https://www.google.com/recaptcha/api.js?render=6LcCY38UAAAAAJi1PNBQMLiG5-jdyejrpaVhVzPe'></script>
-{% endblock %}
+    <script src='https://www.google.com/recaptcha/api.js?render={{ getRecaptchaSecrets().key }}'></script>
+{% endblock headScripts %}
 
 {% block javascripts %}
     {{ parent() }}
