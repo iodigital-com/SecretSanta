@@ -10,6 +10,8 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
 #    privacy_policy:
 #    cookie_policy:
+#    bug_bounty:
+
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
