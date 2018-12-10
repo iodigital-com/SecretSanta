@@ -1,5 +1,11 @@
 {{ 'emails-party_status.message.txt'|trans({'%owner%': party.getOwnerName}) }}
 
+{{ 'emails-base_email_header.title'|trans }}:
+
+* {{ 'emails-base_email_header.date'|trans }}: {{ party.eventdate|localizeddate('medium', 'none') }}
+* {{ 'emails-base_email_header.location'|trans }}: {{ party.location }}
+* {{ 'emails-base_email_header.amount'|trans }}: {{ party.amount }}
+
 {{ 'emails-party_status.label.name'|trans }} >>
 {{ 'emails-party_status.label.email'|trans }} >>
 {{ 'emails-party_status.label.confirmed'|trans }} >>

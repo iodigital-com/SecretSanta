@@ -7,7 +7,15 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-emptyWishlistReminder.update_your_list'|trans }}
+                    <p>{{ 'emails-emptyWishlistReminder.update_your_list'|trans }}</p>
+                    <p>{{ 'emails-base_email_header.title'|trans }}:</p>
+                    <ul>
+                        <li><strong>{{ 'emails-base_email_header.date'|trans }}: </strong> {{ participant.party.eventdate|localizeddate('medium', 'none') }}
+                        <li><strong>{{ 'emails-base_email_header.location'|trans }}: </strong> {{ participant.party.location }}
+                        <li><strong>{{ 'emails-base_email_header.amount'|trans }}: </strong> {{ participant.party.amount }}
+                        <li><strong>{{ 'emails-base_email_header.num_people'|trans }}: </strong> {{ participant.party.participants|length }}
+                        <li><strong>{{ 'emails-base_email_header.person_created_list'|trans }}: </strong> {{ participant.party.participants|first.name }} ({{ participant.party.participants|first.email }})
+                    </ul>
                 </span>
                 <br><b><a href="https://www.amazon.com/gp/most-wished-for/ref=zg_mw_unv_mov_0_mov_1&tag=secretsanta0e-20" target="_blank" rel="noopener noreferrer">{{ 'emails-emptyWishlistReminder.buy_from_amazon'|trans }}</a></b>
                 <br /> <br /><br />
