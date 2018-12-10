@@ -150,9 +150,9 @@
 
         {% if not party.created and party.participants | length >3 %}
             <div class="panel panel-default" id="messagePanel">
-                <a data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
+                <button class="js-secret-message-toggle" data-toggle="collapse" data-href="#collapsedMessage" data-parent="#messagePanel">
                     <h3 class="panel-title">{{ 'party_manage_valid.excludes.title' | trans }}</h3>
-                </a>
+                </button>
                 <div id="collapsedMessage" class="panel-collapse collapse">
                     <div class="panel-body">
                         <p>{{ 'party_manage_valid.excludes.description'|trans }}</p>
