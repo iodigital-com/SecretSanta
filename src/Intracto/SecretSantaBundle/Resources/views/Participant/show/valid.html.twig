@@ -27,9 +27,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="span8 my-secretsanta">
-                <div class="well">
+        <div class="my-secretsanta">
+            <div class="card mb-4">
+                <div class="card-body">
                     <h4 data-hj-masked>{{ 'participant_show_valid.participant.wishlist_from'|trans({'%name%': participant.assignedParticipant.name}) }}</h4>
                     {% if participant.assignedParticipant.wishlistitems|length == 0 %}
                         {{ 'participant_show_valid.participant.wishlist_not_provided'|trans({'%name%': participant.assignedParticipant.name}) }}.
@@ -60,37 +60,35 @@
                        target="_blank" rel="noopener noreferrer">{{ 'participant_show_valid.buy_from_amazon'|trans }}</a>
                     </ul>
                 </div>
-                {% if participant.assignedParticipant.isSubscribed == true %}
-                    <div class="panel panel-default bottom-spacer" id="messagePanel">
-                        <div class="panel-heading" data-toggle="collapse" href="#collapsedMessage">
-                            <a data-toggle="collapse" data-toggle="collapse" href="#collapsedMessage" data-parent="#messagePanel">
-                                <h3 class="panel-title">{{ 'participant_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }}</h3>
-                            </a>
-                        </div>
-                        <div id="collapsedMessage" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="alert alert-warning" role="alert" id="anonwarning">
-                                    <i class="fa fa-exclamation-triangle"></i> {{ 'participant_show_valid.anonymous_message.warning_anonymous' | trans }}
-                                </div>
-                                {{ form_start(messageForm) }}
-                                <div class="form-group">
-
-                                    {{ form_label(messageForm.message) }}
-                                    {{ form_widget(messageForm.message, {'attr': {'class': 'form-control'}}) }}
-                                    {% for error in messageForm.message.vars.errors %}
-                                        <strong>{{ error.message }}</strong><br>
-                                    {% endfor %}
-                                </div>
-                                {{ form_widget(messageForm.participant, {'value': participant.url}) }}
-                                <button id="btn_send_anon_message"
-                                        type="submit"
-                                        class="btn btn-default">{{ 'participant_show_valid.anonymous_message.send_button' |trans }}</button>
-                                {{ form_end(messageForm) }}
+            </div>
+            {% if participant.assignedParticipant.isSubscribed == true %}
+                <div class="panel panel-default bottom-spacer" id="messagePanel">
+                    <button class="btn btn-light mb-3" type="button" data-toggle="collapse" data-target="#collapsedMessage">
+                        {{ 'participant_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }} ↓
+                    </button>
+                    <div id="collapsedMessage" class="card collapse">
+                        <div class="card-body">
+                            <div class="alert alert-warning" role="alert" id="anonwarning">
+                                <i class="fa fa-exclamation-triangle"></i> {{ 'participant_show_valid.anonymous_message.warning_anonymous' | trans }}
                             </div>
+                            {{ form_start(messageForm) }}
+                            <div class="form-group">
+
+                                {{ form_label(messageForm.message) }}
+                                {{ form_widget(messageForm.message, {'attr': {'class': 'form-control'}}) }}
+                                {% for error in messageForm.message.vars.errors %}
+                                    <strong>{{ error.message }}</strong><br>
+                                {% endfor %}
+                            </div>
+                            {{ form_widget(messageForm.participant, {'value': participant.url}) }}
+                            <button id="btn_send_anon_message"
+                                    type="submit"
+                                    class="btn btn-primary">{{ 'participant_show_valid.anonymous_message.send_button' |trans }}</button>
+                            {{ form_end(messageForm) }}
                         </div>
                     </div>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         </div>
 
         {% if app.environment not in ['test', 'test_travis'] %}
@@ -130,7 +128,7 @@
 
         <div class="description">{{ 'participant_show_valid.wishlist.description'|trans|raw }}</div>
 
-        <div class="box ajax-response">
+        <div class="box ajax-response mt-4">
             <div class="alert alert-warning empty" style="display:none;">
                 <div>{{ 'participant_show_valid.flashes.wishlist.empty_row'|trans|raw }}</div>
             </div>
@@ -150,9 +148,9 @@
         <table class="wishlist-items table table-striped">
             <thead>
             <tr>
-                <th class="col-xs-1 participant-number-header">#</th>
-                <th class="col-xs-7 col-sm-6">{{ 'participant_show_valid.label.description'|trans }}</th>
-                <th style="text-align: right;" class="col-xs-4 col-sm-5">
+                <th class="participant-number-header">#</th>
+                <th>{{ 'participant_show_valid.label.description'|trans }}</th>
+                <th style="text-align: right;">
                     <button type="button" class="btn btn-mini btn-success add-new-participant">
                         <i class="fa fa-plus-circle"></i> <span
                                 class="text_remove_wishlist">{{ 'participant_show_valid.btn.add_wishlist'|trans }}</span>
@@ -170,7 +168,7 @@
                     <tr class="wishlistitem">
                         <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span
                                     class="rank">{{ item.rank.vars.value }}</span></td>
-                        <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'wishlistitem-description'} }) }}</td>
+                        <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'form-control wishlistitem-description'} }) }}</td>
                         <td style="text-align: right;">
                             <button type="submit" class="btn btn-mini btn-success update-participant" style="display: none">
                                 <i class="fa fa-check-circle"></i> <span

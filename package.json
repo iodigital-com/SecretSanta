@@ -3,8 +3,7 @@
   "private": true,
   "devDependencies": {
     "@symfony/webpack-encore": "^0.13.0",
-    "bootstrap": "^3.3.7",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap": "^4.1.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "jquery-csv": "^0.8.3",
@@ -18,5 +17,8 @@
     "dev": "./node_modules/.bin/encore dev",
     "watch": "./node_modules/.bin/encore dev --watch",
     "build": "./node_modules/.bin/encore production"
+  },
+  "dependencies": {
+    "popper.js": "^1.14.6"
   }
 }
