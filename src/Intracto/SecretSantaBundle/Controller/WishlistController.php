@@ -22,9 +22,19 @@ class WishlistController extends AbstractController
      * @Template("IntractoSecretSantaBundle:Wishlist:showAll.html.twig")
      * @Method("GET")
      */
-    public function showAllAction(Party $party): array
+    public function showAllAction(Request $request, Party $party): array
     {
-        return ['party' => $party];
+        $admin = false;
+
+        $referrer = $request->headers->get('referer');
+        if ($referrer && preg_match("/\/manage\/[[:alnum:]]{31}/", $referrer)) {
+            $admin = true;
+        }
+
+        return [
+            'party' => $party,
+            'admin' => $admin,
+        ];
     }
 
     /**
