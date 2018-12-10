@@ -20,3 +20,9 @@ cookie:
     defaults:
         _controller:  FrameworkBundle:Template:template
         template:     'IntractoSecretSantaBundle:Static:cookiePolicy.html.twig'
+
+bugbounty:
+    path: /bugbounty
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     'IntractoSecretSantaBundle:Static:bugbounty.html.twig'
