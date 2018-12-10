@@ -47,7 +47,9 @@ printAction "Composer install"
 composer.phar install --no-dev --classmap-authoritative ${Q}
 printOk
 
-# Todo: add yarn && yarn build
+printAction "Building frontend"
+yarn && yarn build
+printOk
 
 printAction "Install assets"
 bin/console assets:install web ${Q}
