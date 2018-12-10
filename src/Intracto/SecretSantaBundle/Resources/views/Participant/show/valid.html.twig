@@ -63,7 +63,7 @@
             </div>
             {% if participant.assignedParticipant.isSubscribed == true %}
                 <div class="panel panel-default bottom-spacer" id="messagePanel">
-                    <button class="btn btn-light mb-3" type="button" data-toggle="collapse" data-target="#collapsedMessage">
+                    <button class="js-secret-message-toggle btn btn-light mb-3" type="button" data-toggle="collapse" data-target="#collapsedMessage">
                         {{ 'participant_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }} ↓
                     </button>
                     <div id="collapsedMessage" class="card collapse">

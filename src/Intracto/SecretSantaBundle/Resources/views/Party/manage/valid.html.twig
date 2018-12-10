@@ -149,12 +149,12 @@
         {% endif %}
 
         {% if not party.created and party.participants | length >3 %}
-            <div class="panel panel-default" id="messagePanel">
-                <button class="js-secret-message-toggle" data-toggle="collapse" data-href="#collapsedMessage" data-parent="#messagePanel">
-                    <h3 class="panel-title">{{ 'party_manage_valid.excludes.title' | trans }}</h3>
+            <div class="panel panel-default mb-3" id="messagePanel">
+                <button class="btn btn-light fullwidth" data-toggle="collapse" data-target="#collapsedMessage" data-parent="#messagePanel">
+                    {{ 'party_manage_valid.excludes.title' | trans }}
                 </button>
-                <div id="collapsedMessage" class="panel-collapse collapse">
-                    <div class="panel-body">
+                <div id="collapsedMessage" class="card collapse mt-3">
+                    <div class="card-body">
                         <p>{{ 'party_manage_valid.excludes.description'|trans }}</p>
 
                         <div class="alert alert-info" role="alert">
@@ -165,7 +165,7 @@
                         {% if excludeForm.participants.vars.valid and  excludeForm.vars.errors | length %}
                             <div class="alert alert-danger" role="alert">{{ form_errors(excludeForm) }}</div>
                         {% endif %}
-                        <table class="table table-striped" style="margin-bottom: 5px;">
+                        <table class="table table-striped" style="table-layout: fixed">
                             <thead>
                             <tr>
                                 <th class="col-xs-1">#</th>
@@ -179,8 +179,10 @@
                                     <td class="participant-number">{{ loop.index }}</td>
                                     <td>{{ participant.excluded_participants.vars.label }}</td>
                                     <td>
-                                        {{ form_widget(participant.excluded_participants, {'attr': {'placeholder': 'party_manage_valid.excludes.placeholder_exclude'} } ) }}
-                                        {{ form_errors(participant.excluded_participants) }}
+                                        <div>
+                                            {{ form_widget(participant.excluded_participants, {'attr': {'placeholder': 'party_manage_valid.excludes.placeholder_exclude'} } ) }}
+                                            {{ form_errors(participant.excluded_participants) }}
+                                        </div>
                                     </td>
                                 </tr>
                             {% endfor %}
