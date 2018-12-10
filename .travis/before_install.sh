@@ -14,5 +14,7 @@ if [ ! -f $BUILD_CACHE_DIR/GeoLite2-City.mmdb ]; then
     mv GeoLite2-City.mmdb $BUILD_CACHE_DIR
 fi
 
+cp app/config/recaptcha_secrets.json.dist app/config/recaptcha_secrets.json
+
 # Update composer to the latest stable release as the build env version is outdated
 composer self-update --stable || exit $?
