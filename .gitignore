@@ -1,3 +1,4 @@
+.idea
 /.web-server-pid
 app/config/client_secrets.json
 /app/config/parameters.yml
