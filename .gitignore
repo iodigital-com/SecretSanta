@@ -1,7 +1,7 @@
 /.web-server-pid
 app/config/client_secrets.json
 /app/config/parameters.yml
-/build/
+/web/build/
 /phpunit.xml
 /var/
 !var/cache/.gitkeep
