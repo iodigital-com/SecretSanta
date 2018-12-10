@@ -12,7 +12,6 @@ base:
     cookie_policy: Cookie Policy
 #    bug_bounty:
 
-
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
