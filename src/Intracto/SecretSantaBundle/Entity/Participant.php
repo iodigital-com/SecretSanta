@@ -148,7 +148,7 @@ class Participant
      */
     public function setName($name)
     {
-        $this->name = preg_replace('/[^[:alnum:][:space:]]/u', '', $name);
+        $this->name = preg_replace('/[^[:alnum:][:space:][\-_]]/u', '', $name);
 
         return $this;
     }
