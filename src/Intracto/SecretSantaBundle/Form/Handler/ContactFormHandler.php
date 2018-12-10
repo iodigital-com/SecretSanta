@@ -69,11 +69,9 @@ class ContactFormHandler
         $result = $this->recaptcha->validateRecaptchaToken($data->getRecaptchaToken());
 
         // Client succeed recaptcha validation.
-        if ($result['success']) {
-            if ($this->mailer->sendContactFormEmail($data)) {
-                $this->translator->setLocale($request->getLocale());
-                $this->session->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
-            }
+        if ($result['success'] && $this->mailer->sendContactFormEmail($data)) {
+            $this->translator->setLocale($request->getLocale());
+            $this->session->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
         }
 
         return true;

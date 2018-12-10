@@ -1,5 +1,6 @@
 // webpack.config.js
 var Encore = require('@symfony/webpack-encore');
+var path = require('path');
 
 Encore
     .setOutputPath('web/build/')
@@ -42,5 +43,12 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
 ;
 
-// export the final configuration
-module.exports = Encore.getWebpackConfig();
+var config = Encore.getWebpackConfig();
+
+config.resolve = {
+    alias: {
+        AppConfig: path.resolve(__dirname, 'app/config/'),
+    }
+};
+
+module.exports = config;

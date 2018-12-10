@@ -21,7 +21,7 @@
     <link href="{{ asset('build/css/update.css') }}" rel="stylesheet" media="screen"/>
     <link href="{{ asset('build/css/mediaqueries.css') }}" rel="stylesheet" media="screen"/>
     {% block stylesheets %}{% endblock %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css"/>
     <style>
         table.participants input {
             margin-bottom: 0;
@@ -49,7 +49,7 @@
                 style="display:none;visibility:hidden"></iframe>
     </noscript>
 
-    {% block headScripts %} {% endblock %}
+    {% block headScripts %} {% endblock headScripts %}
 
     <script>
         (function (w, d, s, l, i) {
