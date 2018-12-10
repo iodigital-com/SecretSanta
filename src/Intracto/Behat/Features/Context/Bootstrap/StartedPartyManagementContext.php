@@ -69,6 +69,8 @@ class StartedPartyManagementContext extends RawMinkContext
      */
     public function iShouldSeeParticipantsWithTheirWishlists($expectedParticipantCount)
     {
+        $this->getSession()->wait(5000);
+
         $participants = $this->getSession()->getPage()->findAll('css', '.container h3.participant-name');
         $wistlists = $this->getSession()->getPage()->findAll('css', '.container .wishlist');
 
