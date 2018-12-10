@@ -101,7 +101,7 @@
         {% endfor %}
         {% block mobile_lang %}
             <div class="visible-xs-*">
-                <div class="select-secret-santa mobile__lang__selection pull-right">
+                <div class="select-secret-santa mobile__lang__selection pl-3 pr-3">
                     <select>
                         {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
                             <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
