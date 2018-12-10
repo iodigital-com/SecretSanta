@@ -41,6 +41,7 @@ cd releases/${VERSION}
 
 cp ../../shared/parameters.yml app/config
 cp ../../shared/client_secrets.json app/config
+cp ../../shared/recaptcha_secrets.json app/config
 printOk
 
 printAction "Composer install"
