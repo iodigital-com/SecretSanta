@@ -10,9 +10,7 @@ class RecaptchaExtension extends \Twig_Extension
     public function __construct(string $recaptchaSecret)
     {
         $this->captchaSecrets = json_decode(file_get_contents($recaptchaSecret), true);
-
     }
-
 
     public function getFunctions()
     {
