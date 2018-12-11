@@ -259,6 +259,8 @@ party_manage_valid:
         not_yet: Aún no
         edit_email: Editar correo electrónico
         resend_email: Volver a enviar correo electrónico
+        copy_clipboard: Copiar enlace personal al portapapeles
+        copied_clipboard: El enlace de la invitación fue <br/> copiado en tu portapapeles!
         view_participant: Ver entrada
         tip: Consejo
         come_back: Siempre puedes volver a esta página para asegurarte de que todo el mundo ha comprobado su buzón de correo electrónico.

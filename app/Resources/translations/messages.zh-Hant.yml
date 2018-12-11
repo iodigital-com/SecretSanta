@@ -156,6 +156,8 @@ participant_show_valid:
             <p>你好%name%,</p>
             <p>你已被選派成為秘密聖誕老人去送禮物給:</p>
 #        watch_out: ?
+        copy_clipboard: 將個人鏈接複製到剪貼板
+        copied_clipboard: 邀請鏈接已復製到剪貼板！
         wishlist_from: '%name%從願望名單'
         wishlist_not_provided: 願望名單還未有提供%name%
 #        message_for_wishlist: ?

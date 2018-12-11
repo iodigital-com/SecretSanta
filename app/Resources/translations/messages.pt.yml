@@ -219,6 +219,8 @@ participant_show_valid:
             <p>Olá %name%,</p>
             <p>Seu Amigo Secreto é:</p>
         watch_out: Cuidado
+        copy_clipboard: Copiar link pessoal para a área de transferência
+        copied_clipboard: O link do convite foi copiado para a sua área de transferência!
         wishlist_from: Lista de desejos de %name%
         wishlist_not_provided: '%name% ainda não montou uma lista de desejos'
         message_for_wishlist: Envie uma mensagem para seu amigo para lembrá-lo(a) que sua lista de desejos está vazia.

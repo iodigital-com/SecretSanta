@@ -230,6 +230,8 @@ participant_show_base:
 participant_show_valid:
     participant:
         title: Du har fått tildelt følgende nisse
+        copy_clipboard: Kopier personlig lenke til utklippstavlen
+        copied_clipboard: Invitasjonslenken ble kopiert til utklippstavlen din!
         body: >
             <p>Hi %name%,</p>
             <p>Du skal være hemmelig julenisse for:</p>

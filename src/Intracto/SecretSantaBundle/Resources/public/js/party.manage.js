@@ -60,7 +60,6 @@ $(document).ready(function () {
         submitEditForm($(this).data('listurl'), $(this).data('participant-url'));
     });
 });
-
 function showExcludeErrors() {
     $('#collapsedMessage').collapse('show');
     $('html, body').animate({

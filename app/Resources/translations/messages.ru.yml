@@ -161,6 +161,8 @@ participant_show_valid:
             <p>Привет! %name%,</p>
             <p>Тайный Санта назначил тебе получателя подарка:</p>
 #        watch_out: ?
+        copy_clipboard: Скопировать персональную ссылку в буфер обмена
+        copied_clipboard: Ссылка на приглашение была скопирована в ваш буфер обмена!
         wishlist_from: Список желаний от %name%
         wishlist_not_provided: '%name% еще не предоставил свой список желаний'
 #        message_for_wishlist: ?

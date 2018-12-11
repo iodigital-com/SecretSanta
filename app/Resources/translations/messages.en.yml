@@ -353,6 +353,8 @@ party_manage_valid:
         not_yet: Not yet
         edit_email: Edit e-mail
         resend_email: Resend e-mail
+        copy_clipboard: Copy personal link to clipboard
+        copied_clipboard: The invitation link was<br/>copied to your clipboard!
         view_participant: View participant
         tip: Tip
         come_back: You can always come back to this page to make sure everybody has checked their mailbox.

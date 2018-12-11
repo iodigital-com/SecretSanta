@@ -152,6 +152,8 @@ participant_show_valid:
         title: Osoba, którą masz obdarować
         body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
 #        watch_out: ?
+        copy_clipboard: Skopiuj osobisty link do schowka
+        copied_clipboard: Link do zaproszenia został skopiowany do schowka!
         wishlist_from: 'Lista życzeń %name%'
         wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
 #        message_for_wishlist: ?
