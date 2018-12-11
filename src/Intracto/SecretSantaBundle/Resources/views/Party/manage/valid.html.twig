@@ -55,32 +55,36 @@
                     <td id="email_{{ participant.url }}" class="participant-email" data-hj-masked>{{ participant.email }}</td>
                     <td>{{ participant|mailstatus|raw }}</td>
                     <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
-                    <td style="text-align: right;">
-                        <img src="{{ asset('bundles/intractosecretsanta/img/edit.png') }}"
+                    <td style="text-align: left;" class="party-actions">
+                        {% if party.created %}
+                            <div class="copy-link-participant">
+                                <div class="link clipboardcopy" onclick="copyToClipboard('{{ participant.url }}',this)">
+                                    <i class="fa fa-clipboard" alt="{{ 'party_manage_valid.manage.copy_clipboard'|trans }}" title="{{ 'party_manage_valid.manage.copy_clipboard'|trans }}"></i>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <i class="fa fa-fw fa-pencil participant-edit-icon"
                              data-listurl="{{ party.listUrl }}" data-participant-url="{{ participant.url }}"
                              rel="tooltip" title="{{ 'party_manage_valid.manage.edit_email'|trans }}" alt="{{ 'party_manage_valid.manage.edit_email'|trans }}"
                              style="cursor: pointer;"
-                             class="participant-edit-icon"
-                        >
+                        ></i>
                         {% if party.created %}
                             {% spaceless %}
                                 <a href="{{ path('resend_participant', { 'listurl': party.listUrl, 'participantUrl': participant.url }) }}"
                                    class="btn-participant-resend"
                                 >
-                                    <img src="{{ asset('bundles/intractosecretsanta/img/envelope.png') }}" rel="tooltip"
-                                         title="{{ 'party_manage_valid.manage.resend_email'|trans }}" alt="{{ 'party_manage_valid.manage.resend_email'|trans }}">
+                                    <i class="fa fa-fw fa-envelope" title="{{ 'party_manage_valid.manage.resend_email'|trans }}" alt="{{ 'party_manage_valid.manage.resend_email'|trans }}"></i>
                                 </a>
                             {% endspaceless %}
                         {% endif %}
                         {% if app.environment == 'dev' and participant.assignedParticipant != null %}
                             <a href="{{ path('participant_view', { 'url': participant.url }) }}" class="add-participant-link">
-                                <img src="{{ asset('bundles/intractosecretsanta/img/view.png') }}" rel="tooltip"
-                                     title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
-                                     alt="{{ 'party_manage_valid.manage.view_participant'|trans }}">
+                                <i class="fa fa-fw fa-eye" title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
+                                   alt="{{ 'party_manage_valid.manage.view_participant'|trans }}"></i>
                             </a>
                         {% endif %}
                         <button class="btn btn-mini link_remove_participant" data-participant="{{ participant.url }}" data-listurl="{{ party.listurl }}">
-                            <i class="fa fa-times"></i>
+                            <i class="fa fa-fw fa-times"></i>
                         </button>
                     </td>
                 </tr>
@@ -290,6 +294,7 @@
         <div class="clearfix bottom-spacer"></div>
         <div class="text-center"><a href="#delete-confirmation" id="btn_delete" style="color: #555555; font-size: 13px;"> <i class="fa fa-trash-o"></i> {{ 'party_manage_valid.btn.delete_list'|trans }}</a></div>
     </div>
+    <div class="clipboard-notification">{{ 'party_manage_valid.manage.copied_clipboard'|trans }}</div>
 {% endblock %}
 
 {% block javascripts %}

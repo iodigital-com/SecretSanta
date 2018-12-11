@@ -256,6 +256,8 @@ party_manage_valid:
         yes: Ja
         not_yet: Noch nicht
         edit_email: E-Mail bearbeiten
+        copy_clipboard: Kopiere den persönlichen Link in die Zwischenablage
+        copied_clipboard: Der Einladungslink wurde <br> in Ihre Zwischenablage kopiert!
         resend_email: E-Mail neu senden
         view_participant: Eintrag anzeigen
         tip: Hinweis

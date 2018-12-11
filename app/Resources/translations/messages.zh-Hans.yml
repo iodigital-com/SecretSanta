@@ -154,7 +154,9 @@ participant_show_valid:
         body: >
             <p>你好%name%,</p>
             <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
-#        watch_out: ?
+#       watch_out: ?
+        copy_clipboard: 將個人鏈接複製到剪貼板
+        copied_clipboard: 邀請鏈接已復製到剪貼板！
         wishlist_from: 愿望清单来自 %name%
         wishlist_not_provided: '%name%尚未提供愿望清单'
 #        message_for_wishlist: ?

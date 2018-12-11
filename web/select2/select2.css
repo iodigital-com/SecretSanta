@@ -730,3 +730,35 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
         background-position: 100% -21px !important;
     }
 }
+.copy-link-participant{
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    width:20px;
+    height:20px;
+    text-align: center;
+    cursor: pointer;
+}
+.copy-link-participant span{}
+.clipboard-notification{
+    position:fixed;
+    top:10px;
+    left:50%;
+    margin-left:-100px;
+    width:200px;
+    padding:10px 15px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    display: none;
+    background:rgba(0,0,0,0.75);
+    color:#fff;
+    text-align: center;
+    font-size:11px;
+    line-height:18px;
+}
+.party-actions,
+.party-actions a{color:#333;font-size:12px;line-height:20px;}
+.party-actions a{margin-left:4px;margin-right:4px;}
+.party-actions a:hover,
+.party-actions i:hover{color:#777;}

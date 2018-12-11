@@ -358,6 +358,8 @@ party_manage_valid:
         not_yet: Nog niet
         edit_email: E-mail aanpassen
         resend_email: E-mail nogmaals verzenden
+        copy_clipboard: Kopieer de persoonlijke link naar het klembord
+        copied_clipboard: De uitnodigingslink is <br/> gekopieerd naar je klembord!
         view_participant: Deelnemer bekijken
         tip: Tip
         come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.

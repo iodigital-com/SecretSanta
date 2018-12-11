@@ -130,6 +130,20 @@
     <script src="{{ asset('build/manifest.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/js/vendor.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/js/secretsanta.js') }}"></script>
+    <script type="text/javascript">
+            function copyToClipboard(url,obj) {
+                var fullurl = 'https://www.secretsantaorganizer.com/participant/'+url+'?utm_source=notification_clipboard&utm_medium=organiser&utm_campaign=participant_invite';
+                var $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(fullurl).select();
+                document.execCommand("copy");
+                $temp.remove();
+                $('.clipboard-notification').fadeIn(300);
+                setTimeout(function(){
+                    $('.clipboard-notification').fadeOut(300);
+                },4000);
+            }
+    </script>
 {% endblock %}
 </body>
 </html>

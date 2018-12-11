@@ -190,6 +190,8 @@ participant_show_valid:
         body: >
             <p>Bonjour %name%,</p>
             <p>En tant que Père-Noël secret, vous devez distribuer un cadeau à:</p>
+        copy_clipboard: Copier le lien personnel dans le presse-papier
+        copied_clipboard: Le lien d'invitation a été copié dans votre presse-papiers!
         watch_out: Attention
         wishlist_from: Liste de souhaits de %name%
         wishlist_not_provided: '%name% n''a pas encore publié de liste de souhaits'
