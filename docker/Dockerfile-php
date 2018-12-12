@@ -1,7 +1,7 @@
 FROM php:7.2-fpm-alpine
-RUN apk add --no-cache git mysql-client curl autoconf && \
+RUN apk add --no-cache git mysql-client curl autoconf icu-libs && \
     apk add --no-cache --virtual build-dependencies icu-dev libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf
-RUN docker-php-ext-install pdo pdo_mysql bcmath
+RUN docker-php-ext-install pdo pdo_mysql bcmath intl
 RUN docker-php-source extract \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
