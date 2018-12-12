@@ -72,7 +72,7 @@
                 <select>
                     {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
                         <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
-                            {{ locale_names[supported_locale|replace({'-': '_'})] }}
+                            {{ locale_names[supported_locale] }}
                         </option>
                     {% endfor %}
                 </select>
@@ -105,7 +105,7 @@
                     <select>
                         {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
                             <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
-                                {{ locale_names[supported_locale|replace({'-': '_'})] }}
+                                {{ locale_names[supported_locale] }}
                             </option>
                         {% endfor %}
                     </select>
