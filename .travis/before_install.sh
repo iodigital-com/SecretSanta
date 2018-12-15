@@ -2,8 +2,8 @@
 
 echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
-cp /home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
-phpenv config-rm xdebug.ini || exit $? # Disable XDebug
+#cp /home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
+#phpenv config-rm xdebug.ini || exit $? # Disable XDebug
 mkdir -p \"${BUILD_CACHE_DIR}\" || exit $? # Create build cache directory
 
 # Download and configure geoip db
