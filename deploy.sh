@@ -48,6 +48,10 @@ printAction "Composer install"
 composer.phar install --no-dev --classmap-authoritative ${Q}
 printOk
 
+printAction "Building frontend"
+yarn && yarn build
+printOk
+
 printAction "Install assets"
 bin/console assets:install web ${Q}
 cp ../../shared/yandex_* web
