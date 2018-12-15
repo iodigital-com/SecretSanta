@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+#echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 #cp /home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
 #phpenv config-rm xdebug.ini || exit $? # Disable XDebug
