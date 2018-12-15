@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-#echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+apt install -y libmemcached-dev
+git clone https://github.com/php-memcached-dev/php-memcached.git
+cd php-memcached
+phpize
+./configure
+make
+make install
+echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 #cp /home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
 #phpenv config-rm xdebug.ini || exit $? # Disable XDebug
