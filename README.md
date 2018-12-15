@@ -16,7 +16,7 @@ git clone git@github.com:Intracto/SecretSanta.git
 cd SecretSanta
 ```
 
-Install VirtualBox 5.0.24 and Vagrant 1.8.7 (or more recent).
+Install VirtualBox 5.2.18 and Vagrant 2.0.4 (or more recent).
 
 ```
 vagrant up
