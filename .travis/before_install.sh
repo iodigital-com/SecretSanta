@@ -17,4 +17,4 @@ fi
 cp app/config/recaptcha_secrets.json.dist app/config/recaptcha_secrets.json
 
 # Update composer to the latest stable release as the build env version is outdated
-composer self-update --stable || exit $?
+composer self-update --stable --ignore-platform-reqs || exit $?
