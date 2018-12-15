@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-apt install -y libmemcached-dev
+sudo apt install -y libmemcached-dev
 git clone https://github.com/php-memcached-dev/php-memcached.git
 cd php-memcached
 phpize
 ./configure
 make
-make install
+sudo make install
 echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 #cp /home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
