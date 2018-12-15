@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-sudo apt install -y libmemcached-dev
+#sudo apt install -y libmemcached-dev
 git clone https://github.com/php-memcached-dev/php-memcached.git
 cd php-memcached
 phpize
-./configure
+./configure --disable-memcached-sasl
 make
 sudo make install
 echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
