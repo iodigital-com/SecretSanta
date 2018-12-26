@@ -1,7 +1,7 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 
 {% block main %}
-    <div class="intro">
+    <div class="intro row align-items-center">
         <div class="col-xs-12 col-sm-8 col-md-8">
             <h1>{{ 'party-create.what_is.title'|trans }}</h1>
             {{ 'party-create.what_is.intro'|trans|raw }}
@@ -10,9 +10,9 @@
             <div class="steps">
                 <h2>{{ 'party-create.header.steps.title'|trans|raw }}</h2>
                 <ul class="liststyle1">
-                    <li><span class="icon-steps">1</span> {{ 'party-create.header.steps.list.one'|trans }}</li>
-                    <li><span class="icon-steps">2</span> {{ 'party-create.header.steps.list.two'|trans }}</li>
-                    <li><span class="icon-steps">3</span> {{ 'party-create.header.steps.list.three'|trans }}</li>
+                    <li class="mb-2"><span class="icon-steps">1</span> {{ 'party-create.header.steps.list.one'|trans }}</li>
+                    <li class="mb-2"><span class="icon-steps">2</span> {{ 'party-create.header.steps.list.two'|trans }}</li>
+                    <li class="mb-3"><span class="icon-steps">3</span> {{ 'party-create.header.steps.list.three'|trans }}</li>
                 </ul>
                 <div class="text-center">
                     <a href="#mysanta" class="btn-started">{{ 'party-create.header.steps.get_started'|trans }}</a>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="content-container" id="mysanta">
-        <div class="santa-content">
+        <div class="santa-content mb-5">
             <h2>{{ 'party-create.add_participants'|trans }}</h2>
             {{ form_start(form) }}
                 {{ form_row(form._token) }}
@@ -43,9 +43,9 @@
                 <table class="participants table table-striped mysanta">
                     <thead>
                     <tr>
-                        <th class="col-xs-1 participant-number-header">#</th>
-                        <th class="col-xs-4 col-md-4">{{ 'party-create.label.host'|trans }}</th>
-                        <th class="col-xs-4 col-md-4">{{ 'party-create.label.email'|trans }}</th>
+                        <th class="participant-number-header">#</th>
+                        <th>{{ 'party-create.label.host'|trans }}</th>
+                        <th>{{ 'party-create.label.email'|trans }}</th>
                         <th style="text-align: right;" class="col-xs-3"></th>
                     </tr>
                     </thead>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <h2>{{ 'party-create.add_personal_message.title'|trans }}</h2>
-                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'field span12'} }) }}<br/>
+                {{ form_widget(form.message, {'attr': {'rows': '8', 'class': 'form-control field span12'} }) }}<br/>
                 <div class="description">
                     {{ 'party-create.add_personal_message.description'|trans }}
                 </div>
@@ -150,10 +150,10 @@
         $(document).ready(function () {
             $(".owner").after(
                 '<tr>' +
-                '<th class="col-xs-1 participant-number-header">#</th>' +
-                '<th class="col-xs-3 col-md-4">{{ "party-create.label.participants"|trans }}</th>' +
-                '<th class="col-xs-3 col-md-4">{{ "party-create.label.email"|trans }}</th>' +
-                '<th style="text-align: right;" class="col-xs-4">  </th> ' +
+                '<th class="participant-number-header">#</th>' +
+                '<th>{{ "party-create.label.participants"|trans }}</th>' +
+                '<th>{{ "party-create.label.email"|trans }}</th>' +
+                '<th style="text-align: right;" class="">  </th> ' +
                 '</tr>'
             );
         });

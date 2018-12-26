@@ -51,7 +51,7 @@ class ParticipantContext extends RawMinkContext
      */
     public function iSendASecretMessage()
     {
-        $this->getSession()->getPage()->find('css', '#messagePanel')->click();
+        $this->getSession()->getPage()->find('css', '.js-secret-message-toggle')->click();
 
         JQueryHelper::scrollIntoView($this->getSession(), 'collapsedMessage');
         JQueryHelper::scrollIntoView($this->getSession(), 'anonymous_message_form_message');
