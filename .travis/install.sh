@@ -6,3 +6,7 @@ composer install --no-interaction --no-scripts --prefer-dist --classmap-authorit
 
 echo "Warming up dependencies"
 composer run-script travis-build --no-interaction || exit $?
+
+echo "building frontend"
+yarn
+yarn build
