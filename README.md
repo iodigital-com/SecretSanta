@@ -32,7 +32,15 @@ cd /vagrant
 composer.phar install
 yarn
 yarn build
-touch app/config/recaptcha_secrets.json
+
+cat << EOF >app/config/recaptcha_secrets.json
+{
+    "key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "secret_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "action": "contact",
+    "threshold": 0.5
+}
+EOF
 ```
 
 Add these records to your own ```/etc/hosts``` file:
