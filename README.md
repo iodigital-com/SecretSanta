@@ -43,6 +43,9 @@ cat << EOF >app/config/recaptcha_secrets.json
 EOF
 ```
 
+Download the GeoIP DB at (https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz)[https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz]
+and put this file in ```/usr/local/share/GeoIP/GeoLite2-City.mmdb```.
+
 Add these records to your own ```/etc/hosts``` file:
 
 ```

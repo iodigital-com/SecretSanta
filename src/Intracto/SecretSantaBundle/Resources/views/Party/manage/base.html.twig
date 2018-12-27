@@ -9,3 +9,25 @@
 {% block header %}{% endblock %}
 
 {% block box %}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        function copyToClipboard(url, obj) {
+            var fullurl = 'https://' + window.location.hostname;
+            if (window.location.hostname.substring(0, 4) == 'dev.') {
+                fullurl += '/app_dev.php';
+            }
+            fullurl += '/participant/' + url + '?utm_source=notification_clipboard&utm_medium=organiser&utm_campaign=participant_invite';
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(fullurl).select();
+            document.execCommand("copy");
+            $temp.remove();
+            $('.clipboard-notification').fadeIn(300);
+            setTimeout(function () {
+                $('.clipboard-notification').fadeOut(300);
+            }, 4000);
+        }
+    </script>
+{% endblock %}

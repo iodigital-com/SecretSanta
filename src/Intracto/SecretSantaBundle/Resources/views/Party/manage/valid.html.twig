@@ -294,7 +294,7 @@
         <div class="clearfix bottom-spacer"></div>
         <div class="text-center"><a href="#delete-confirmation" id="btn_delete" style="color: #555555; font-size: 13px;"> <i class="fa fa-trash-o"></i> {{ 'party_manage_valid.btn.delete_list'|trans }}</a></div>
     </div>
-    <div class="clipboard-notification">{{ 'party_manage_valid.manage.copied_clipboard'|trans }}</div>
+    <div class="clipboard-notification">{{ 'party_manage_valid.manage.copied_clipboard'|trans|raw }}</div>
 {% endblock %}
 
 {% block javascripts %}
