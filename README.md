@@ -24,6 +24,17 @@ Install VirtualBox 5.0.24 and Vagrant 1.8.7 (or more recent).
 vagrant up
 ```
 
+Prepare site:
+
+```
+vagrant ssh
+cd /vagrant
+composer.phar install
+yarn
+yarn build
+touch app/config/recaptcha_secrets.json
+```
+
 Add these records to your own ```/etc/hosts``` file:
 
 ```

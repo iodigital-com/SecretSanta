@@ -18,6 +18,7 @@ DEPENDENCIES=(
     apache
     phpmyadmin
     symfony
+    yarn
     mailhog
     rsyslogd
 )
