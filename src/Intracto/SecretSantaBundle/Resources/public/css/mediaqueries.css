@@ -1,17 +1,12 @@
 @media only screen and (max-width: 801px) {
     body {
         background: none;
-        font-size: 1.3em;
     }
 
     .wrapper {
         background: url(../img/header-bgipad.jpg) repeat-x left top;
         background-size: 100%;
         padding: 235px 0px 0px 0px;
-    }
-
-    .container {
-        padding: 0px;
     }
 
     #header {
@@ -25,10 +20,6 @@
 
     input, textarea, .uneditable-input {
         width: 100%;
-    }
-
-    .box, .santa-content {
-        padding: 0px 30px;
     }
 
     #footer-santa {
@@ -48,7 +39,6 @@
 
     .lang__selection select {
         width: 100px;
-        font-size: 1.2em;
     }
 
     .title-row h1 {
@@ -59,17 +49,12 @@
 @media only screen and (max-width: 480px) {
     body {
         background: none;
-        font-size: 1.3em;
     }
 
     .wrapper {
         background: url(../img/header-bgiphone.jpg) repeat-x left top;
         background-size: 100%;
         padding: 150px 0px 0px 0px;
-    }
-
-    .container {
-        padding: 0px;
     }
 
     #header {
@@ -87,10 +72,6 @@
 
     input, textarea, .uneditable-input {
         width: 100%;
-    }
-
-    .box, .santa-content {
-        padding: 0px 15px;
     }
 
     .table th, .table td {

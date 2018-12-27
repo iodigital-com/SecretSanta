@@ -2,11 +2,6 @@
  * (when using span4 class)
  */
 .row {
-  @media (max-width: 801px) {
-    margin: 0 auto;
-    margin-left: 0;
-  }
-
   .span4 {
     @media (max-width: 1000px) {
       box-sizing: border-box;
