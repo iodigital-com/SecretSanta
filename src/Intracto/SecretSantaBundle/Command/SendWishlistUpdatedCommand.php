@@ -58,7 +58,7 @@ class SendWishlistUpdatedCommand extends Command
             foreach ($secretSantas as $secretSanta) {
                 $receiver = $secretSanta->getAssignedParticipant();
 
-                $this->mailerService->sendWishlistUpdatedMail($receiver, $secretSanta);
+                $this->mailerService->sendWishlistUpdatedMail($secretSanta);
 
                 $receiver->setWishlistUpdated(false);
                 $receiver->setUpdateWishlistReminderSentTime($timeNow);

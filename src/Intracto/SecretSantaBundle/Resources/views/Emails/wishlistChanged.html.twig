@@ -6,7 +6,7 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-wishlistChanged.salutation'|trans({'%name%': secret_santa.name}) }},<br/><br/>
+                    {{ 'emails-wishlistChanged.salutation'|trans({'%name%': participant.name}) }},<br/><br/>
                     {{ 'emails-wishlistChanged.buddy_updated_wishlist'|trans }}<br/>
                     {{ 'emails-wishlistChanged.click_button'|trans }}<br/>
                     <p>{{ 'emails-base_email_header.title'|trans }}:</p>
@@ -26,7 +26,7 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('participant_view', { 'url': secret_santa.url, '_locale': secret_santa.party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=wishlist_updated"
+                            <a href="{{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=wishlist_updated"
                                style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,sans-serif; vertical-align: baseline;"
                             >
                                 {{ 'emails-wishlistChanged.btn.check_wishlist'|trans }}

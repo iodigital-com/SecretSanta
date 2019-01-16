@@ -465,10 +465,9 @@ class MailerService
     }
 
     /**
-     * @param Participant $receiver
      * @param Participant $participant
      */
-    public function sendWishlistUpdatedMail(Participant $receiver, Participant $participant): void
+    public function sendWishlistUpdatedMail(Participant $participant): void
     {
         $this->translator->setLocale($receiver->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -479,8 +478,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:wishlistChanged.html.twig',
                     [
-                        'participant' => $receiver,
-                        'secret_santa' => $participant,
+                        'participant' => $participant,
                     ]
                 ),
                 'text/html'
@@ -489,8 +487,7 @@ class MailerService
                 $this->templating->render(
                     'IntractoSecretSantaBundle:Emails:wishlistChanged.txt.twig',
                     [
-                        'participant' => $receiver,
-                        'secret_santa' => $participant,
+                        'participant' => $participant,
                     ]
                 ),
                 'text/plain'
