@@ -51,7 +51,9 @@ class MailerService
      * @param TranslatorInterface    $translator
      * @param RouterInterface        $routing
      * @param UnsubscribeService     $unsubscribeService
-     * @param $noreplyEmail
+     * @param string                 $noreplyEmail
+     * @param CheckMailDomainService $checkMailDomainService,
+     * @param string                 $contactEmail
      */
     public function __construct(
         \Swift_Mailer $mailer,
@@ -112,7 +114,8 @@ class MailerService
     public function sendSecretSantaMailsForParty(Party $party): void
     {
         $party->setSentdate(new \DateTime('now'));
-        $this->em->flush($party);
+        $this->em->persist($party);
+        $this->em->flush();
 
         foreach ($party->getParticipants() as $participant) {
             $this->sendSecretSantaMailForParticipant($participant);
@@ -148,7 +151,8 @@ class MailerService
         }
 
         $participant->setInvitationSentDate(new \DateTime('now'));
-        $this->em->flush($participant);
+        $this->em->persist($participant);
+        $this->em->flush();
 
         $message = str_replace(
             ['(NAME)', '(ADMINISTRATOR)'],
@@ -186,11 +190,11 @@ class MailerService
     }
 
     /**
-     * @param $email
+     * @param string $email
      *
      * @return bool
      */
-    public function sendForgotLinkMail($email): bool
+    public function sendForgotLinkMail(string $email): bool
     {
         /** @var Participant[] $participatingIn */
         $participatingIn = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAllParticipantsForForgotEmail($email);
@@ -263,11 +267,11 @@ class MailerService
     }
 
     /**
-     * @param $email
+     * @param string $email
      *
      * @return bool
      */
-    public function sendReuseLinksMail($email): bool
+    public function sendReuseLinksMail(string $email): bool
     {
         $results = $this->em->getRepository('IntractoSecretSantaBundle:Party')->findPartiesToReuse($email);
 
@@ -319,9 +323,9 @@ class MailerService
 
     /**
      * @param Party $party
-     * @param $results
+     * @param array $results
      */
-    public function sendPartyUpdateMailForParty(Party $party, $results): void
+    public function sendPartyUpdateMailForParty(Party $party, array $results): void
     {
         foreach ($party->getParticipants() as $participant) {
             if ($participant->isSubscribed()) {
@@ -332,9 +336,9 @@ class MailerService
 
     /**
      * @param Participant $participant
-     * @param $results
+     * @param array $results
      */
-    public function sendPartyUpdateMailForParticipant(Participant $participant, $results): void
+    public function sendPartyUpdateMailForParticipant(Participant $participant, array $results): void
     {
         $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
@@ -603,10 +607,10 @@ class MailerService
     }
 
     /**
-     * @param $recipient
-     * @param $message
+     * @param Participant $recipient
+     * @param string $message
      */
-    public function sendAnonymousMessage(Participant $recipient, $message): void
+    public function sendAnonymousMessage(Participant $recipient, string $message): void
     {
         $this->translator->setLocale($recipient->getParty()->getLocale());
 

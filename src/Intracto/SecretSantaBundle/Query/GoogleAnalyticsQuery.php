@@ -18,21 +18,23 @@ class GoogleAnalyticsQuery
     }
 
     /**
-     * @param null $year
+     * @param int|null $year
      *
      * @return array
      *
      * @throws \Google_Exception
      */
-    public function getAnalyticsReport($year = null)
+    public function getAnalyticsReport(?int $year = null)
     {
         $season = new Season($year);
 
         $client = new Google_Client();
         $credentials = $client->loadServiceAccountJson($this->clientSecret, 'https://www.googleapis.com/auth/analytics.readonly');
         $client->setAssertionCredentials($credentials);
-        if ($client->getAuth()->isAccessTokenExpired()) {
-            $client->getAuth()->refreshTokenWithAssertion();
+        /** @var \Google_Auth_OAuth2 $auth */
+        $auth = $client->getAuth();
+        if ($auth->isAccessTokenExpired()) {
+            $auth->refreshTokenWithAssertion();
         }
 
         $analytics = new Google_Service_Analytics($client);

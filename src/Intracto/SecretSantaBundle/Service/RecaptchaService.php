@@ -6,7 +6,7 @@ use ReCaptcha\ReCaptcha;
 
 class RecaptchaService
 {
-    /** @var string */
+    /** @var \stdClass */
     private $recaptchaSecret;
 
     /**
