@@ -469,7 +469,7 @@ class MailerService
      */
     public function sendWishlistUpdatedMail(Participant $participant): void
     {
-        $this->translator->setLocale($receiver->getParty()->getLocale());
+        $this->translator->setLocale($participant->getParty()->getLocale());
         $mail = (new \Swift_Message())
             ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
             ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
