@@ -17,21 +17,18 @@ class BounceQuery
         $this->dbal = $dbal;
     }
 
-    public function getBounces()
+    public function getBounces(): array
     {
-        $sql = 'SELECT * FROM bounce';
-        $query = $this->dbal->query($sql);
-
-        return $query->fetchAll();
+        return $this->dbal->fetchAll('SELECT * FROM bounce');
     }
 
     /**
      * @param string $email
-     * @Param \DateTime $date
+     * @param \DateTime $date
      *
      * @return mixed
      */
-    public function findBouncedParticipantId($email, $date)
+    public function findBouncedParticipantId(string $email, \DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('id')
@@ -49,9 +46,9 @@ class BounceQuery
     }
 
     /**
-     * @param $id
+     * @param int $id
      */
-    public function markParticipantEmailAsBounced($id)
+    public function markParticipantEmailAsBounced(int $id)
     {
         $query = $this->dbal->createQueryBuilder()
             ->update('participant')
@@ -63,9 +60,9 @@ class BounceQuery
     }
 
     /**
-     * @param $id
+     * @param int $id
      */
-    public function removeBounce($id)
+    public function removeBounce(int $id)
     {
         $this->dbal->delete('bounce', array('id' => $id));
     }

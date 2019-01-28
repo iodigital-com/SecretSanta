@@ -48,12 +48,12 @@ class ParticipantShuffler
     }
 
     /**
-     * @param $participants
-     * @param $shuffled
+     * @param Participant[] $participants
+     * @param Participant[] $shuffled
      *
      * @return bool
      */
-    private function checkValidMatch($participants, $shuffled)
+    private function checkValidMatch(array $participants, array $shuffled): bool
     {
         /** @var Participant[] $participants */
         foreach ($participants as $key => $participant) {
@@ -67,11 +67,11 @@ class ParticipantShuffler
     }
 
     /**
-     * @param $list
+     * @param Participant[] $list
      *
      * @return mixed
      */
-    private function shuffleArray($list)
+    private function shuffleArray(array $list)
     {
         shuffle($list);
 

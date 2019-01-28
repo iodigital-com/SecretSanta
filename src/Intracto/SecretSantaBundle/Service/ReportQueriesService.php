@@ -58,7 +58,7 @@ class ReportQueriesService
 
         try {
             if ('all' !== $year) {
-                $googlePartyData = $this->googleAnalyticsQuery->getAnalyticsReport($year);
+                $googlePartyData = $this->googleAnalyticsQuery->getAnalyticsReport((int) $year);
             } else {
                 $googlePartyData = $this->googleAnalyticsQuery->getAnalyticsReport();
             }

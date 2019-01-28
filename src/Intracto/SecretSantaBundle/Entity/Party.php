@@ -174,11 +174,11 @@ class Party
     }
 
     /**
-     * @param $creationdate
+     * @param \DateTime $creationdate
      *
      * @return Party
      */
-    public function setCreationDate($creationdate)
+    public function setCreationDate(\DateTime $creationdate)
     {
         $this->creationdate = $creationdate;
 
