@@ -9,9 +9,9 @@ class Season
     private $end;
 
     /**
-     * @param null $year
+     * @param int|null $year
      */
-    public function __construct($year = null)
+    public function __construct(?int $year = null)
     {
         $this->start = \DateTime::createFromFormat('Y-m-d', '2006-04-01');
         $this->end = new \DateTime();

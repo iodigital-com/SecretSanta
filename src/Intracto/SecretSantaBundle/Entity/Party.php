@@ -84,8 +84,8 @@ class Party
             }
         }
 
-        $this->listurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
-        $this->wishlistsurl = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->listurl = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
+        $this->wishlistsurl = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
         $this->creationdate = new \DateTime();
     }
 
@@ -347,15 +347,15 @@ class Party
      */
     public function getConfirmed()
     {
-        return $this->confirmed;
+        return (bool) $this->confirmed;
     }
 
     /**
      * @param bool $confirmed
      */
-    public function setConfirmed($confirmed)
+    public function setConfirmed(bool $confirmed)
     {
-        $this->confirmed = $confirmed;
+        $this->confirmed = (string) $confirmed;
     }
 
     public function createNewPartyForReuse()
