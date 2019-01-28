@@ -53,7 +53,7 @@ class CheckMailDomainService
             }
         }
 
-        return (bool) $blacklisted;
+        return $blacklisted;
     }
 
     /**

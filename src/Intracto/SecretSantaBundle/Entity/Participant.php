@@ -101,7 +101,7 @@ class Participant
 
     public function __construct()
     {
-        $this->url = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->url = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
         $this->excludedParticipants = new ArrayCollection();
     }
 

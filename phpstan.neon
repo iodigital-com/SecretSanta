@@ -4,6 +4,9 @@ parameters:
         - '#Call to an undefined method Doctrine\\Common\\Persistence\\ObjectRepository::#'  
         - '#Access to an undefined property Symfony\\Component\\Validator\\Constraint::#'
         - '#Call to an undefined method object::#'
+        - '#Doctrine\\ORM\\EntityManager\) does not accept Doctrine\\ORM\\EntityManagerInterface#'
+        - '#Symfony\\Component\\HttpFoundation\\Session\\Session\) does not accept Symfony\\Component\\HttpFoundation\\Session\\SessionInterface#'
+        - '#Routing\\Router\) does not accept Symfony\\Component\\Routing\\RouterInterface#'
     excludes_analyse:
         - %currentWorkingDirectory%/src/Intracto/Behat/Features/Context/*
 

@@ -35,11 +35,11 @@ class ReportQuery
     }
 
     /**
-     * @param null $year
+     * @param int|null $year
      *
      * @return array
      */
-    public function getPartyReport($year = null)
+    public function getPartyReport(?int $year = null)
     {
         $season = new Season($year);
 
