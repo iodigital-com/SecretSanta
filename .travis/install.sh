@@ -7,7 +7,7 @@ echo "Warming up dependencies"
 composer run-script travis-build --no-interaction || exit $?
 
 echo "building frontend"
-cat << EOF >app/config/client_secrets.json
+cat << EOF >app/config/recaptcha_secrets.json
 {
     "key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "secret_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
