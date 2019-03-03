@@ -5,7 +5,7 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-party_status.message.html'|trans({'%owner%': party.getOwnerName})|raw }}</p>
+                <p>{{ 'emails-party_status.message.html'|trans({'%owner%': party.getOwnerName|escape})|raw }}</p>
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
                     <p>{{ 'emails-base_email_header.title'|trans }}:</p>
                     <ul>
