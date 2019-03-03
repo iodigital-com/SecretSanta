@@ -22,7 +22,7 @@ bin/console lint:yaml app/config || exit $?
 bin/console lint:twig app/Resources/TwigBundle || exit $?
 bin/console lint:twig src/Intracto/SecretSantaBundle/Resources/views || exit $?
 # this checks that the application doesn't use dependencies with known security vulnerabilities
-bin/console security:check --end-point=http://security.sensiolabs.org/check_lock || exit $?
+bin/console security:check || exit $?
 # this checks that the composer.json and composer.lock files are valid
 composer validate --strict || exit $?
 # this checks that Doctrine's mapping configurations are valid
