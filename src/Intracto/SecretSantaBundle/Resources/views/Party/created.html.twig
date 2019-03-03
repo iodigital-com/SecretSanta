@@ -17,7 +17,7 @@
 {% block main %}
 <div class="box">
     <h1>{{ 'party-created.title'|trans }}</h1>
-    {{ 'party-created.body'|trans({ '%ownername%': party.ownername, '%owneremail%': party.owneremail })|raw }}
+    {{ 'party-created.body'|trans({ '%ownername%': party.ownername|escape, '%owneremail%': party.owneremail|escape })|raw }}
 
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">×</button>

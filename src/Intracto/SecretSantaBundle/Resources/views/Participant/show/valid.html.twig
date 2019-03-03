@@ -6,7 +6,7 @@
             <div class="col-xs-12 col-sm-5 col-md-5">
                 <h1>{{ 'participant_show_valid.participant.title'|trans }}</h1>
 
-                {{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name})|raw }}
+                {{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name|escape})|raw }}
 
                 <div class="yoursecretsant" data-hj-masked>
                     <span class="yourgift">{{ participant.assignedParticipant.name }}</span>

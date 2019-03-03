@@ -5,7 +5,7 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-updated_party.message.html'|trans({"%name%": participant.name, "%owner%": participant.party.getOwnerName})|raw }}</p>
+                <p>{{ 'emails-updated_party.message.html'|trans({"%name%": participant.name|escape, "%owner%": participant.party.getOwnerName|escape})|raw }}</p>
                 <table cellspacing="0" cellpadding="3" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
                     <thead>
                         <tr>
