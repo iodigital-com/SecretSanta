@@ -82,6 +82,7 @@ party-create:
         host: Beheerder
         email: E-mail
         participants: Deelnemers
+    party_was_hashed: Feestje niet meer beschikbaar voor re-use i.v.m. GDPR.
 
 # Party/created.html.twig
 party-created:
@@ -366,6 +367,8 @@ party_manage_valid:
         come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
         watch_out: Opgelet
         save: Bewaar
+        name_anonymized: Geanonimiseerd
+        email_anonymized: Geanonimiseerd
 
     delete:
         title: Verwijder mijn Secret Santa lijst

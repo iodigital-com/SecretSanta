@@ -18,10 +18,23 @@ class UnsubscribeService
     /** @var Router */
     public $router;
 
-    public function __construct(EntityManagerInterface $em, RouterInterface $router)
-    {
+    /** @var HashService $hashService */
+    private $hashService;
+
+    /**
+     * UnsubscribeService constructor.
+     * @param EntityManagerInterface $em
+     * @param RouterInterface $router
+     * @param HashService $hashService
+     */
+    public function __construct(
+        EntityManagerInterface $em,
+        RouterInterface $router,
+        HashService $hashService
+    ) {
         $this->em = $em;
         $this->router = $router;
+        $this->hashService = $hashService;
     }
 
     /**
@@ -64,17 +77,19 @@ class UnsubscribeService
     {
         // Unsubscribe participant from emails, with flag true for all parties.
         $this->unsubscribe($participant, true);
-        $blacklist = new BlacklistEmail($participant->getEmail(), $ip, new \DateTime());
+        $hashedMail = $this->hashService->hashEmail($participant->getEmail());
+        $blacklist = new BlacklistEmail($hashedMail, $ip, new \DateTime());
         $this->em->persist($blacklist);
         $this->em->flush();
     }
 
-    public function isBlacklisted(Participant $participant)
+    public function isBlacklisted(Participant $participant): bool
     {
+        $hashedMail = $this->hashService->hashEmail($participant->getEmail());
         $repository = $this->em->getRepository('IntractoSecretSantaBundle:BlacklistEmail');
         $results = $repository->createQueryBuilder('b')
             ->where('b.email = :email')
-            ->setParameter('email', $participant->getEmail())
+            ->setParameter('email', $hashedMail)
             ->getQuery()
             ->getResult();
 

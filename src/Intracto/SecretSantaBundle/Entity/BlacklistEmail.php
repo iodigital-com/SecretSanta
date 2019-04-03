@@ -22,14 +22,14 @@ class BlacklistEmail
     /**
      * BlacklistEmail constructor.
      *
-     * @param string    $email
-     * @param string    $ip
+     * @param $hashedEmail
+     * @param string $ip
      * @param \DateTime $date
      */
-    public function __construct($email, $ip, \DateTime $date)
+    public function __construct($hashedEmail, $ip, \DateTime $date)
     {
         $this->setIp($ip);
-        $this->setEmail($email);
+        $this->setEmail($hashedEmail);
         $this->setDate($date);
     }
 
@@ -52,7 +52,7 @@ class BlacklistEmail
     /**
      * @param string $email
      */
-    private function setEmail($email)
+    public function setEmail($email)
     {
         $this->email = $email;
     }

@@ -79,6 +79,7 @@
             </options>
         </field>
         <field name="invitationSentDate" column="invitation_sent_date" type="datetime" nullable="true"/>
+        <field name="isHashed" column="is_hashed" type="boolean"/>
 
     </entity>
 
