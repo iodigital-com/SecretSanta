@@ -369,6 +369,9 @@ class Party
         $originalParticipants = $originalParty->getParticipants();
 
         foreach ($originalParticipants as $originalParticipant) {
+            if ($originalParticipant->isHashed()){
+                continue;
+            }
             $participant = new Participant();
             $participant->setName($originalParticipant->getName());
             $participant->setEmail($originalParticipant->getEmail());

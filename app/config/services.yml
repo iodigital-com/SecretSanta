@@ -10,6 +10,7 @@ services:
             $geoIpDbPath: '%geo_ip_db_path%'
             $reportCachePath: '%kernel.project_dir%/var/report_cache'
             $recaptchaSecret: '%kernel.root_dir%/config/recaptcha_secrets.json'
+            $salt: '%salt%'
 
     Intracto\SecretSantaBundle\:
         resource: '../../src/Intracto/SecretSantaBundle/*'

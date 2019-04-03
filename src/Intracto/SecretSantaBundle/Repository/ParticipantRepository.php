@@ -119,21 +119,4 @@ class ParticipantRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
-
-    public function countNonAdminParticipantsParticipatedOneYearAgo()
-    {
-        $oneYearAgo = new \DateTime();
-        $oneYearAgo->sub(new \DateInterval('P1Y'));
-
-        $qb = $this->_em->createQueryBuilder();
-        $qb
-            ->select('count(participant.id)')
-            ->from('IntractoSecretSantaBundle:Participant','participant')
-            ->join('participant.party', 'party')
-            ->setParameter('event_date', $oneYearAgo->format('Y-m-d H:i:s'), \Doctrine\DBAL\Types\Type::DATETIME)
-        ;
-
-
-        return $qb->getQuery()->getSingleScalarResult();
-    }
 }

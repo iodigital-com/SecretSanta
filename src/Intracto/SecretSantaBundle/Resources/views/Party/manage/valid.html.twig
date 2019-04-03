@@ -51,8 +51,20 @@
             {% for participant in party.participants %}
                 <tr class="participant {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
                     <td class="participant-number">{{ loop.index }}</td>
-                    <td id="name_{{ participant.url }}" class="participant-name" data-hj-masked>{{ participant.name }}</td>
-                    <td id="email_{{ participant.url }}" class="participant-email" data-hj-masked>{{ participant.email }}</td>
+                    <td id="name_{{ participant.url }}" class="participant-name" data-hj-masked>
+                        {% if participant.ishashed %}
+                            {{ 'party_manage_valid.manage.name_anonymized'|trans }}
+                        {% else %}
+                            {{ participant.name }}
+                        {% endif %}
+                    </td>
+                    <td id="email_{{ participant.url }}" class="participant-email" data-hj-masked>
+                        {% if participant.ishashed %}
+                            {{ 'party_manage_valid.manage.email_anonymized'|trans }}
+                        {% else %}
+                            {{ participant.email }}
+                        {% endif %}
+                    </td>
                     <td>{{ participant|mailstatus|raw }}</td>
                     <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
                     <td style="text-align: left;" class="party-actions">

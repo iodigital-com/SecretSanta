@@ -99,6 +99,9 @@ class Participant
     /** @var \DateTime */
     private $invitationSentDate;
 
+    /** @var bool $isHashed */
+    private $isHashed = false;
+
     public function __construct()
     {
         $this->url = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
@@ -588,5 +591,21 @@ class Participant
     public function setInvitationSentDate($invitationSentDate)
     {
         $this->invitationSentDate = $invitationSentDate;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHashed(): bool
+    {
+        return $this->isHashed;
+    }
+
+    /**
+     * @param bool $isHashed
+     */
+    public function setIsHashed(bool $isHashed): void
+    {
+        $this->isHashed = $isHashed;
     }
 }

@@ -50,7 +50,10 @@ class PartyController extends AbstractController
     {
         $party = $party->createNewPartyForReuse();
 
-        return $this->handlePartyCreation($request, $party, $handler);
+        $data = $this->handlePartyCreation($request, $party, $handler);
+
+
+        return $data;
     }
 
     /**
