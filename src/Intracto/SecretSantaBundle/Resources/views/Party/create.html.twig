@@ -22,8 +22,15 @@
     </div>
     <div class="content-container" id="mysanta">
         <div class="santa-content mb-5">
-            <h2>{{ 'party-create.add_participants'|trans }}</h2>
-            {#<p>{{ 'party-create.party_was_hashed'|trans }}</p>#}
+            {% if countHashed is defined and countHashed > 0 %}
+                {% if originalAmountOfParticipants == countHashed %}
+                    <h2 class="text-danger">{{ 'party-create.party_was_completely_hashed'|trans }}</h2>
+                {% else %}
+                    <h2 class="text-danger">{{ 'party-create.party_was_hashed'|trans }}</h2>
+                {% endif %}
+            {% else %}
+                <h2>{{ 'party-create.add_participants'|trans }}</h2>
+            {% endif %}
             {{ form_start(form) }}
                 {{ form_row(form._token) }}
                 <div class="toplabels">
