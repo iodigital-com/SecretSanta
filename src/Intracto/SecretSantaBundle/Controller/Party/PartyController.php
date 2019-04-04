@@ -48,10 +48,12 @@ class PartyController extends AbstractController
      */
     public function reuseAction(Request $request, Party $party, PartyFormHandler $handler)
     {
-        $party = $party->createNewPartyForReuse();
+        $originalAmountOfParticipants = $party->getParticipants()->count();
+        list($party, $countHashed) = $party->createNewPartyForReuse();
 
         $data = $this->handlePartyCreation($request, $party, $handler);
-
+        $data['countHashed'] = $countHashed;
+        $data['originalAmountOfParticipants'] = $originalAmountOfParticipants;
 
         return $data;
     }

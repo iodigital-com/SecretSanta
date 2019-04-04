@@ -82,7 +82,8 @@ party-create:
         host: Beheerder
         email: E-mail
         participants: Deelnemers
-    party_was_hashed: Feestje niet meer beschikbaar voor re-use i.v.m. GDPR.
+    party_was_hashed: Er zijn enkele deelnemers niet meer beschikbaar vanwege privacy overwegingen
+    party_was_completely_hashed: Er zijn geen deelnemers meer beschikbaar vanwege privacy overwegingen
 
 # Party/created.html.twig
 party-created:

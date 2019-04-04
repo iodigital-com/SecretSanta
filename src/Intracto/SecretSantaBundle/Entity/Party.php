@@ -74,14 +74,7 @@ class Party
         $this->participants = new ArrayCollection();
 
         if ($createDefaults) {
-            // Create default minimum participants
-            for ($i = 0; $i < 3; ++$i) {
-                $participant = new Participant();
-                if ($i === 0) {
-                    $participant->setPartyAdmin(true);
-                }
-                $this->addParticipant($participant);
-            }
+            $this->addEmptyParticipants($this);
         }
 
         $this->listurl = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
@@ -358,9 +351,14 @@ class Party
         $this->confirmed = (string) $confirmed;
     }
 
+    /**
+     * @return array
+     */
     public function createNewPartyForReuse()
     {
         $originalParty = $this;
+        $countHashed = 0;
+        $adminIsHashed = false;
 
         $party = new self(false);
         $party->setAmount($originalParty->getAmount());
@@ -370,8 +368,17 @@ class Party
 
         foreach ($originalParticipants as $originalParticipant) {
             if ($originalParticipant->isHashed()){
+                $countHashed++;
+                if ($originalParticipant->isPartyAdmin()){
+                    $adminIsHashed = true;
+                }
                 continue;
             }
+
+            if ($adminIsHashed){
+                continue;
+            }
+
             $participant = new Participant();
             $participant->setName($originalParticipant->getName());
             $participant->setEmail($originalParticipant->getEmail());
@@ -379,6 +386,32 @@ class Party
             $party->addParticipant($participant);
         }
 
-        return $party;
+        $countParticipants = $party->getParticipants()->count();
+
+        // When the admin is hashed, we will create a new empty list
+        if ($adminIsHashed){
+            $countParticipants = 0;
+            $countHashed = $originalParticipants->count();
+        }
+
+        $this->addEmptyParticipants($party, $countParticipants);
+
+        return[$party, $countHashed];
+    }
+
+    /**
+     * @param Party $party
+     * @param int $startParticipantsAmount
+     */
+    protected function addEmptyParticipants(Party $party, $startParticipantsAmount = 0): void
+    {
+        // Create default minimum participants
+        for ($i = $startParticipantsAmount; $i < 3; ++$i) {
+            $participant = new Participant();
+            if ($i === 0) {
+                $participant->setPartyAdmin(true);
+            }
+            $party->addParticipant($participant);
+        }
     }
 }
