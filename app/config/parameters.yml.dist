@@ -45,6 +45,7 @@ parameters:
         no: Norsk
 
     secret:            ThisTokenIsNotSoSecretChangeIt
+    salt:              ThisIsNotSoSecretSalt
     adwords_password:  secret
     noreply_email:     no-reply@dev.secretsantaorganizer.com
     base_url:          dev.secretsantaorganizer.com
