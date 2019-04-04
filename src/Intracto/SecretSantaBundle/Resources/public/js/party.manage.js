@@ -98,16 +98,31 @@ function submitEditForm(listUrl,participantUrl) {
             email: email
         },
         success: function(data){
+            name = escape(name);
+            email = escape(email);
+
             if (data.success) {
-                $("#alertspan").html('<div class="alert alert-success" role="alert">' + data.message + '</div>');
+                $("#alertspan").html('<div class="alert alert-success" role="alert">' + escape(data.message) + '</div>');
                 $('#name_' + participantUrl).html(name);
                 $('#email_' + participantUrl).html(email);
             } else {
-                $("#alertspan").html('<div class="alert alert-danger" role="alert">'+ data.message +'</div>');
+                $("#alertspan").html('<div class="alert alert-danger" role="alert">'+ escape(data.message) +'</div>');
                 makeEditForm(participantUrl, listUrl, name, email);
             }
         }
     });
+}
+
+function escape(input) {
+    let map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+
+    return input.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
 
 function makeEditForm(participantUrl, listUrl, name, email){

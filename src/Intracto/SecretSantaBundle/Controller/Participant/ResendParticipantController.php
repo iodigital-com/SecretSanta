@@ -47,7 +47,8 @@ class ResendParticipantController extends AbstractController
         } else {
             $this->mailerService->sendSecretSantaMailForParticipant($participant);
 
-            $this->addFlash('success', $this->translator->trans('flashes.resend_participant.resent', ['%email%' => $participant->getName()]));
+            $name = htmlspecialchars($participant->getName(), ENT_QUOTES);
+            $this->addFlash('success', $this->translator->trans('flashes.resend_participant.resent', ['%email%' => $name]));
         }
 
         return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
