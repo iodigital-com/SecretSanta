@@ -28,6 +28,10 @@ class ParticipantController extends Controller
             throw $this->createNotFoundException(sprintf('Party with listurl "%s" is not found.', $listurl));
         }
 
+        if ($participant->isHashed()) {
+            throw $this->createNotFoundException('Participant not found');
+        }
+
         if (!$this->get('intracto_secret_santa.service.participant')->validateEmail($email)) {
             return new JsonResponse(['success' => false, 'message' => $this->get('translator')->trans('flashes.participant.edit_email')]);
         }
