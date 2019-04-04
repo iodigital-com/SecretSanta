@@ -23,7 +23,7 @@ class BlacklistEmail
      * BlacklistEmail constructor.
      *
      * @param $hashedEmail
-     * @param string $ip
+     * @param string    $ip
      * @param \DateTime $date
      */
     public function __construct($hashedEmail, $ip, \DateTime $date)

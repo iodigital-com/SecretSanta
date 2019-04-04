@@ -367,15 +367,16 @@ class Party
         $originalParticipants = $originalParty->getParticipants();
 
         foreach ($originalParticipants as $originalParticipant) {
-            if ($originalParticipant->isHashed()){
-                $countHashed++;
-                if ($originalParticipant->isPartyAdmin()){
+            if ($originalParticipant->isHashed()) {
+                ++$countHashed;
+                if ($originalParticipant->isPartyAdmin()) {
                     $adminIsHashed = true;
                 }
+
                 continue;
             }
 
-            if ($adminIsHashed){
+            if ($adminIsHashed) {
                 continue;
             }
 
@@ -389,7 +390,7 @@ class Party
         $countParticipants = $party->getParticipants()->count();
 
         // When the admin is hashed, we will create a new empty list
-        if ($adminIsHashed){
+        if ($adminIsHashed) {
             $countParticipants = 0;
             $countHashed = $originalParticipants->count();
         }
@@ -401,9 +402,9 @@ class Party
 
     /**
      * @param Party $party
-     * @param int $startParticipantsAmount
+     * @param int   $startParticipantsAmount
      */
-    protected function addEmptyParticipants(Party $party, $startParticipantsAmount = 0): void
+    protected function addEmptyParticipants(self $party, $startParticipantsAmount = 0): void
     {
         // Create default minimum participants
         for ($i = $startParticipantsAmount; $i < 3; ++$i) {

@@ -15,8 +15,9 @@ class ParticipantIsNotBlacklistedValidator extends ConstraintValidator
 
     /**
      * ParticipantIsNotBlacklistedValidator constructor.
+     *
      * @param EntityManagerInterface $em
-     * @param HashService $hashService
+     * @param HashService            $hashService
      */
     public function __construct(
         EntityManagerInterface $em,
