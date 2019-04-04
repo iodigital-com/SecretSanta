@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Intracto\SecretSantaBundle\Service;
-
 
 class HashService
 {
@@ -10,10 +8,10 @@ class HashService
 
     /**
      * HashService constructor.
+     *
      * @param string $salt
      */
-    public function __construct
-    (
+    public function __construct(
         string $salt
     ) {
         $this->salt = $salt;
@@ -21,7 +19,7 @@ class HashService
 
     public function hashString($string): string
     {
-        return sha1($string . $this->salt);
+        return sha1($string.$this->salt);
     }
 
     public function hashEmail($email): string
@@ -33,6 +31,7 @@ class HashService
     {
         $needle = '@example.com';
         $length = strlen($needle);
-        return (substr($email, -$length) === $needle);
+
+        return substr($email, -$length) === $needle;
     }
 }

@@ -3,7 +3,6 @@
 namespace Intracto\SecretSantaBundle\Command;
 
 use Intracto\SecretSantaBundle\Entity\BlacklistEmail;
-use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Service\HashService;
 use Symfony\Component\Console\Command\Command;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,7 +41,7 @@ class HashBlacklistCommand extends Command
         /** @var BlacklistEmail $blacklistedMail */
         foreach ($blacklistedMails as $blacklistedMail) {
             $email = $blacklistedMail->getEmail();
-            if ($this->hashService->isAlreadyHashed($email)){
+            if ($this->hashService->isAlreadyHashed($email)) {
                 continue;
             }
             $hashedEmail = $this->hashService->hashEmail($email);

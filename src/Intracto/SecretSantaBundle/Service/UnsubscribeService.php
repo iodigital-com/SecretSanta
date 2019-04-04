@@ -23,9 +23,10 @@ class UnsubscribeService
 
     /**
      * UnsubscribeService constructor.
+     *
      * @param EntityManagerInterface $em
-     * @param RouterInterface $router
-     * @param HashService $hashService
+     * @param RouterInterface        $router
+     * @param HashService            $hashService
      */
     public function __construct(
         EntityManagerInterface $em,

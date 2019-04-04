@@ -65,7 +65,7 @@ class HashOldDataCommand extends Command
             // Hash all unsubscribed
             $unSubscribed = (!$participant->isSubscribed());
 
-            if ($isBlackListed || $nonAdmin || $unSubscribed){
+            if ($isBlackListed || $nonAdmin || $unSubscribed) {
                 $this->hashParticipant($participant);
             }
         }
@@ -76,7 +76,7 @@ class HashOldDataCommand extends Command
      */
     protected function hashParticipant(Participant $participant): void
     {
-        if ($participant->isHashed()){
+        if ($participant->isHashed()) {
             return;
         }
 
