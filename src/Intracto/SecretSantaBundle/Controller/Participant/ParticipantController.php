@@ -41,7 +41,7 @@ class ParticipantController extends Controller
             $message = $this->get('translator')->trans('flashes.participant.updated_participant_resent');
         }
 
-        return new JsonResponse(['success' => true, 'message' => $message]);
+        return new JsonResponse(['success' => true, 'message' => html_entity_decode($message)]);
     }
 
     /**
