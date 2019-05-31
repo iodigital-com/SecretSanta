@@ -21,8 +21,8 @@ class ParticipantController extends Controller
      */
     public function editParticipantAction(Request $request, string $listurl, Participant $participant)
     {
-        $name = $request->request->get('name');
-        $email = $request->request->get('email');
+        $name = htmlspecialchars($request->request->get('name'), ENT_QUOTES);
+        $email = htmlspecialchars($request->request->get('email'), ENT_QUOTES);
 
         if ($participant->getParty()->getListurl() !== $listurl) {
             throw $this->createNotFoundException(sprintf('Party with listurl "%s" is not found.', $listurl));
@@ -41,7 +41,7 @@ class ParticipantController extends Controller
             $message = $this->get('translator')->trans('flashes.participant.updated_participant_resent');
         }
 
-        return new JsonResponse(['success' => true, 'message' => html_entity_decode($message)]);
+        return new JsonResponse(['success' => true, 'message' => html_entity_decode($message), 'name' => $name, 'email' => $email]);
     }
 
     /**
