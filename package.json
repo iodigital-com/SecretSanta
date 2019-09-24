@@ -19,7 +19,6 @@
     "build": "./node_modules/.bin/encore production"
   },
   "dependencies": {
-    "popper.js": "^1.15.0",
-    "url-parse": ">=1.4.3"
+    "popper.js": "^1.15.0"
   }
 }
