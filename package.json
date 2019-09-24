@@ -19,8 +19,7 @@
     "build": "./node_modules/.bin/encore production"
   },
   "dependencies": {
-    "macaddress": "0.2.9",
     "popper.js": "^1.15.0",
-    "querystringify": "^2.0.0"
+    "url-parse": ">=1.4.3"
   }
 }
