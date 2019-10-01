@@ -55,6 +55,7 @@ printOk
 printAction "Install assets"
 bin/console assets:install web ${Q}
 cp ../../shared/yandex_* web
+cp ../../shared/ads.txt web
 printOk
 
 printAction "Cleanup files and setting permissions"
