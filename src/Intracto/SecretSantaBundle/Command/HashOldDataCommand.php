@@ -27,6 +27,12 @@ class HashOldDataCommand extends Command
         EntityManagerInterface $em,
         HashService $hashService
     ) {
+        $em
+            ->getConnection()
+            ->getConfiguration()
+            ->setSQLLogger(null)
+        ;
+
         $this->participantRepository = $participantRepository;
         $this->em = $em;
         $this->hashService = $hashService;
@@ -43,14 +49,24 @@ class HashOldDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $participants = $this->participantRepository->findAll();
         $blackListRepository = $this->em->getRepository(BlacklistEmail::class);
 
+        $qb = $this->em->createQueryBuilder();
+        $qb->select('p')
+           ->from('IntractoSecretSantaBundle:Participant', 'p')
+           ->where('p.id > :id')
+           ->setParameter('id', 0)
+           ->setMaxResults(1);
+
         /** @var Participant $participant */
-        foreach ($participants as $participant) {
-            $oneYearAgo = new \DateTime();
-            $oneYearAgo->setTime(0, 0);
-            $oneYearAgo->sub(new \DateInterval('P1Y'));
+        $participant = $qb->getQuery()->getResult();
+
+        while (! empty($participant)) {
+            $participant = current($participant);
+
+            $twoYearsAgo = new \DateTime();
+            $twoYearsAgo->setTime(0, 0);
+            $twoYearsAgo->sub(new \DateInterval('P2Y'));
 
             // Check if blacklisted
             $hashedEmail = $this->hashService->hashEmail($participant->getEmail());
@@ -60,7 +76,7 @@ class HashOldDataCommand extends Command
             $isBlackListed = (null !== $blackListedMail);
 
             // Hash non-admin if party was one year ago.
-            $nonAdmin = (!$participant->isPartyAdmin() && $participant->getParty()->getEventdate() <= $oneYearAgo);
+            $nonAdmin = (!$participant->isPartyAdmin() && $participant->getParty()->getEventdate() <= $twoYearsAgo);
 
             // Hash all unsubscribed
             $unSubscribed = (!$participant->isSubscribed());
@@ -68,6 +84,18 @@ class HashOldDataCommand extends Command
             if ($isBlackListed || $nonAdmin || $unSubscribed) {
                 $this->hashParticipant($participant);
             }
+
+            $qb = $this->em->createQueryBuilder();
+            $qb->select('p')
+               ->from('IntractoSecretSantaBundle:Participant', 'p')
+               ->where('p.id > :id')
+               ->setParameter('id', $participant->getId())
+               ->setMaxResults(1);
+
+            /** @var Participant $participant */
+            $participant = $qb->getQuery()->getResult();
+
+            echo '.';
         }
     }
 
