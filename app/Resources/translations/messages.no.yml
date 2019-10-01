@@ -240,8 +240,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% har ikke lagt inn sin ønskeliste ennå'
 #        message_for_wishlist: ?
 
-#    buy_from_amazon: ?
-
     wishlist:
         title: Din ønskeliste
         description: For å hjelpe din julenisse med å handle gave til deg, kan du skrive inn din ønskeliste her. Våre troll og smånisser vil sende ønskelisten til julenissen din. Du kan omarrangere på listen din ved å dra og slippe ønskene dine.
@@ -438,7 +436,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: Ønskelisten din er fortsatt tom!
     update_your_list: Din hemmelige nisse-fest nærmer seg, og du har fortsatt ikke skrevet ønskeliste til nissen! Legg til noen ting du ønsker deg da vel.
-#    buy_from_amazon: ?
 
     btn:
         update_wishlist: Oppdater min ønskeliste
@@ -474,8 +471,6 @@ emails-forgot_link:
 emails-participant:
     subject: Din hemmelige nisse
     find_out: Finn ut hvem du skal gi gave til
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

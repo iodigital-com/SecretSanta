@@ -162,8 +162,6 @@ participant_show_valid:
         wishlist_not_provided: '%name%尚未提供愿望清单'
 #        message_for_wishlist: ?
 
-#    buy_from_amazon: ?
-
     wishlist:
         title: 你的愿望清单
         description: 你可以在这留下一个愿望清单，以帮助你的秘密圣诞老人。我们的小矮人将会把这个传达到你的秘密圣诞老人那。你可以拖动项目条对物品进行重新排序。
@@ -345,7 +343,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: 你的愿望清单仍然为空
     update_your_list: 你的秘密圣诞老人派对将近，你还没有更新你的愿望清单呢！你可能想要去添加点你喜欢的东西。
-#    buy_from_amazon: ?
 
     btn:
         update_wishlist: 更新你的愿望清单
@@ -381,8 +378,6 @@ emails-forgot_link:
 emails-participant:
     subject: 你的秘密圣诞老人
     find_out: 查看你的人员
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

@@ -198,8 +198,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% n''a pas encore publié de liste de souhaits'
 #        message_for_wishlist: ?
 
-    buy_from_amazon: Quels sont les objets les plus désirés ?
-
     wishlist:
         title: Votre liste de souhaits
         description: Afin d'aider votre Père-Noël secret, vous pouvez laisser une liste de souhaits ici. Nos gnomes prendront soin de la communiquer à votre Père-Noël secret. Vous pouvez réorganiser la liste en faisant glisser les éléments.
@@ -393,7 +391,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: Votre liste de souhaits est toujours vide
     update_your_list: Votre Secret Santa party arrive bientôt et vous n'avez pas encore mis à jour votre liste de souhaits ! Vous pouvez ajouter des choses que vous souhaiteriez.
-    buy_from_amazon: Quels sont les objets les plus désirés ?
 
     btn:
         update_wishlist: Mettre à jour votre liste de souhaits
@@ -429,8 +426,6 @@ emails-forgot_link:
 emails-participant:
     subject: Votre Secret Santa
     find_out: Découvrez votre personne
-
-    buy_from_amazon: Quels sont les objets les plus désirés ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

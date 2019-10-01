@@ -167,8 +167,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% еще не предоставил свой список желаний'
 #        message_for_wishlist: ?
 
-#    buy_from_amazon: ?
-
     wishlist:
         title: Твой список желаний
         description: Чтобы помочь твоему Тайному Санте, ты можешь оставить список желаний здесь. Наши гномы позаботятся о том, чтобы он попал к твоему Тайному Санте. Ты можешь изменить список, перетащив предметы на нужные места.
@@ -350,7 +348,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: Твой список желаний все еще пуст.
     update_your_list: Дата проведения вашей вечеринки Тайного Санты все ближе, а вы все еще не обновили ваш список желаний! Может быть, вы хотите добавить что-нибудь, от чего бы не отказались?
-#    buy_from_amazon: ?
 
     btn:
         update_wishlist: Обновить ваш список желаний
@@ -386,8 +383,6 @@ emails-forgot_link:
 emails-participant:
     subject: Ваш Тайный Санта
     find_out: Найдите вашего получателя подарка
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

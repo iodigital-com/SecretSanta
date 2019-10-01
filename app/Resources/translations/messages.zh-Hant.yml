@@ -162,8 +162,6 @@ participant_show_valid:
         wishlist_not_provided: 願望名單還未有提供%name%
 #        message_for_wishlist: ?
 
-#    buy_from_amazon: ?
-
     wishlist:
         title: 你的願望名單
         description: 你可留下願望名單在這裡去協助你的秘密聖誕老人。我們的精靈會小心傳遞願望名單到秘密聖誕老人。拉著項目，你可重新整理名單。
@@ -344,7 +342,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: 你的願望單仍是空的
     update_your_list: 你的秘密聖誕老人派對將至，你仍未更新你的願望單！你可以把你想要的東西加入去。
-#    buy_from_amazon: ?
 
     btn:
         update_wishlist: 更新你的願望單
@@ -380,8 +377,6 @@ emails-forgot_link:
 emails-participant:
     subject: 你的秘密聖誕老人
     find_out: 找出你的人
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

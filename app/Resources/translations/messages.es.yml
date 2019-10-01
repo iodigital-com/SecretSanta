@@ -166,8 +166,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% aún no ha facilitado una lista de deseos'
 #        message_for_wishlist: ?
 
-#    buy_from_amazon: ?
-
     wishlist:
         title: Tu lista de deseos
         description: Para ayudar a tu Secret Santa, puedes dejar una lista de deseos aquí. Nuestros gnomos se encargarán de comunicársela a tu Secret Santa. Puedes reordenar la lista moviendo los elementos hacia el lugar adecuado.
@@ -366,7 +364,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: Tu lista de deseos aún sigue vacía
     update_your_list: ¡Tu fiesta Secret Santa está cerca y aún no has actualizado tu lista de deseos! Podrías añadir aquello que te gustaría tener.
-#    buy_from_amazon: ?
 
     btn:
         update_wishlist: Actualizar tu lista de deseos
@@ -402,8 +399,6 @@ emails-forgot_link:
 emails-participant:
     subject: Tu Secret Santa
     find_out: Descubre a tu persona
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

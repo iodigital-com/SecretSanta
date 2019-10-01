@@ -54,18 +54,6 @@ class LinkifyExtensionTest extends TestCase
                 'a <a href="http://www.costumecraze.com/XMAS166.html" target="_blank" rel="noopener noreferrer">http://www.costumecraze.com/XMAS166.html</a> b',
             ],
             [
-                'https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card.',
-                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/keywords=gift+card</a>.',
-            ],
-            [
-                'https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!',
-                '<a href="https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!" target="_blank" rel="noopener noreferrer">https://www.amazon.com/Amazon-1-US-Email-eGift-Card/dp/B004LLIKVU/ref=sr_1_1?s=gift-cards&ie=UTF8&qid=1490789563&?=!</a>',
-            ],
-            [
-                'a http://www.amazon.co.uk/Love-Curses-VINYL-Reigning-Sound/dp/B002D6EXRK/ref=sr_1_9?s=music&ie=UTF8&qid=1384346660&sr=1-9&keywords=reigning+sound b',
-                'a <a href="http://www.amazon.co.uk/Love-Curses-VINYL-Reigning-Sound/dp/B002D6EXRK/ref=sr_1_9?s=music&ie=UTF8&qid=1384346660&sr=1-9&keywords=reigning+sound" target="_blank" rel="noopener noreferrer">http://www.amazon.co.uk/Love-Curses-VINYL-Reigning-Sound/dp/B002D6EXRK/ref=sr_1_9?s=music&ie=UTF8&qid=1384346660&sr=1-9&keywords=reigning+sound</a> b',
-            ],
-            [
                 '<p><a href="http://www.paddypallin.com.au/osprey-quantum-daypack.html">http://www.paddypallin.com.au/osprey-quantum-daypack.html</a></p>
 <p><a href="http://www.wildearth.com.au/buy/black-wolf-meridian-30l-adventure-daypack-chilli">http://www.wildearth.com.au/buy/black-wolf-meridian-30l-adventure-daypack-chilli</a></p>
 <p><a href="http://www.drjays.com/shop/P1604911/the-north-face/recon-backpack.html">http://www.drjays.com/shop/P1604911/the-north-face/recon-backpack.html</a></p>

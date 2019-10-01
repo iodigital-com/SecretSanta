@@ -260,8 +260,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% heeft nog geen verlanglijst opgesteld'
         message_for_wishlist: Stuur een bericht om te vragen de verlanglijst aan te vullen.
 
-    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
-
     wishlist:
         title: Jouw verlanglijstje
         description: Om je Secret Santa een handje te helpen, kan je jouw verlanglijst hier opstellen. Onze kaboutertjes zullen je zware lijst tot bij hem of haar brengen. Je kan de lijst opnieuw sorteren door items te verslepen.
@@ -472,7 +470,6 @@ emails-base_email_unsubscribe:
 emails-emptyWishlistReminder:
     subject: Je verlanglijst is nog leeg
     update_your_list: Jouw Secret Santa party komt dichtbij en je hebt je verlanglijst nog niet ingevuld! Je kan je secret santa best wat suggesties geven.
-    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
 
     btn:
         update_wishlist: Pas je wishlist aan!
@@ -516,8 +513,6 @@ emails-forgot_link:
 emails-participant:
     subject: Jouw Secret Santa
     find_out: Ontdek wiens Secret Santa je bent
-
-    buy_from_amazon: Welke geschenken worden het vaakst gekocht?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

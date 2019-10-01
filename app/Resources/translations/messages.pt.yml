@@ -225,8 +225,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% ainda não montou uma lista de desejos'
         message_for_wishlist: Envie uma mensagem para seu amigo para lembrá-lo(a) que sua lista de desejos está vazia.
 
-    buy_from_amazon: Quais são os itens mais desejados?
-
     wishlist:
         title: Sua lista de desejos
         description: Para ajudar o seu Amigo Secreto, você pode montar aqui a sua lista de desejos. Os nossos elfos mágicos levam a sua lista bem pesadinha a ele ou ela. Você pode reorganizar a lista arrastando os itens.
@@ -410,7 +408,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: Sua lista de desejos ainda está vazia!
     update_your_list: A revelação do seu Amigo Secreto está chegando e você ainda não atualizou sua lista de desejos! Facilite a vida de quem te tirou de amigo secreto e arraste algumas das coisas que você gostaria de ganhar para a sua lista!
-#    buy_from_amazon: ?
 
     btn:
         update_wishlist: Atualizar minha lista de desejos
@@ -446,8 +443,6 @@ emails-forgot_link:
 emails-participant:
     subject: Seu Amigo Secreto
     find_out: Descubra quem é seu Amigo Secreto
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

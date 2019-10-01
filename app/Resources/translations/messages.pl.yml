@@ -158,8 +158,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
 #        message_for_wishlist: ?
 
-#    buy_from_amazon: ?
-
     wishlist:
         title: Twoja lista życzeń
         description: Aby pomóc Tajnemu Mikołajowi możesz zostawić tu listę życzeń. Nasze skrzaty przekażą wszystko Tajnemu Mikołajowi. Możesz zmienić kolejność rzeczy na liście przenosząc je z miejsca na miejsce.
@@ -321,7 +319,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: Twoja lista życzeń jest nadal pusta
     update_your_list: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
-#    buy_from_amazon: ?
 
 #    btn:
 #        update_wishlist: ?
@@ -357,8 +354,6 @@ emails-forgot_link:
 emails-participant:
     subject: Twój Tajny Mikołaj
     find_out: Dowiedz się kim jest Twoja osoba
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

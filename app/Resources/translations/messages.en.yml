@@ -255,8 +255,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% has not yet provided a wishlist'
         message_for_wishlist: Send a message to your buddy to let him/her know their wishlist is empty.
 
-    buy_from_amazon: What are the most wished for items?
-
     wishlist:
         title: Your wishlist
         description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
@@ -460,7 +458,6 @@ emails-base_email_unsubscribe:
 emails-emptyWishlistReminder:
     subject: Your wishlist is still empty
     update_your_list: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
-    buy_from_amazon: What are the most wished for items?
 
     btn:
         update_wishlist: Update your wishlist
@@ -502,8 +499,6 @@ emails-reuse_link:
 emails-participant:
     subject: Your Secret Santa
     find_out: Find out your person
-
-    buy_from_amazon: What are the most wished for items?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:

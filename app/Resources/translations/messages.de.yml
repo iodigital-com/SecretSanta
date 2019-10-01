@@ -168,8 +168,6 @@ participant_show_valid:
         wishlist_not_provided: '%name% hat noch keinen Wunschzettel geschrieben'
 #        message_for_wishlist: ?
 
-#    buy_from_amazon: ?
-
     wishlist:
         title: Ihr Wunschzettel
         description: Um Ihrem Secret Santa zu helfen, können Sie hier einen Wunschzettel hinterlegen. Unsere Wichtel kümmern sich darum, diese Ihrem Secret Santa mitzuteilen. Sie können die Liste neu sortieren, indem Sie die Bestandteile an deren Platz ziehen.
@@ -350,7 +348,6 @@ emails-base_email_header:
 emails-emptyWishlistReminder:
     subject: Ihr Wunschzettel ist immer noch leer.
     update_your_list: Ihre Secret Santa-Party rückt näher und Sie haben Ihren Wunschzettel noch nicht aktualisiert! Vielleicht möchten Sie noch Dinge hinzufügen, die Sie mögen.
-#    buy_from_amazon: ?
 
     btn:
         update_wishlist: Aktualisieren Sie Ihren Wunschzettel
@@ -386,8 +383,6 @@ emails-forgot_link:
 emails-participant:
     subject: Ihr Secret Santa
     find_out: Finden Sie Ihren Partner
-
-#    buy_from_amazon: ?
 
 # Emails/pendingConfirmation.{html,txt}.twig
 emails-pendingConfirmation:
