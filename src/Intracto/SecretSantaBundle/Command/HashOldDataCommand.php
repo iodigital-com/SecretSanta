@@ -62,7 +62,7 @@ class HashOldDataCommand extends Command
         /** @var Participant[] $participants */
         $participants = $qb->getQuery()->getResult();
 
-        while (! empty($participants)) {
+        while (!empty($participants)) {
             foreach ($participants as $participant) {
                 $twoYearsAgo = new \DateTime();
                 $twoYearsAgo->setTime(0, 0);

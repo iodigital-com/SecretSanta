@@ -44,15 +44,15 @@ class MailerService
     public $contactEmail;
 
     /**
-     * @param \Swift_Mailer          $mailer             a regular SMTP mailer, bad monitoring, cheap
-     * @param \Swift_Mailer          $mandrill           mandrill SMTP mailer, good monitoring, expensive
+     * @param \Swift_Mailer          $mailer                 a regular SMTP mailer, bad monitoring, cheap
+     * @param \Swift_Mailer          $mandrill               mandrill SMTP mailer, good monitoring, expensive
      * @param EntityManagerInterface $em
      * @param EngineInterface        $templating
      * @param TranslatorInterface    $translator
      * @param RouterInterface        $routing
      * @param UnsubscribeService     $unsubscribeService
      * @param string                 $noreplyEmail
-     * @param CheckMailDomainService $checkMailDomainService,
+     * @param CheckMailDomainService $checkMailDomainService
      * @param string                 $contactEmail
      */
     public function __construct(
@@ -336,7 +336,7 @@ class MailerService
 
     /**
      * @param Participant $participant
-     * @param array $results
+     * @param array       $results
      */
     public function sendPartyUpdateMailForParticipant(Participant $participant, array $results): void
     {
@@ -608,7 +608,7 @@ class MailerService
 
     /**
      * @param Participant $recipient
-     * @param string $message
+     * @param string      $message
      */
     public function sendAnonymousMessage(Participant $recipient, string $message): void
     {
