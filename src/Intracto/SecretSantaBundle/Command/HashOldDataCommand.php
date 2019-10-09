@@ -51,12 +51,14 @@ class HashOldDataCommand extends Command
     {
         $blackListRepository = $this->em->getRepository(BlacklistEmail::class);
 
+        $nextId = 0;
+
         $qb = $this->em->createQueryBuilder();
         $qb->select('p')
            ->from('IntractoSecretSantaBundle:Participant', 'p')
            ->where('p.id > :id')
            ->andWhere('p.isHashed = false')
-           ->setParameter('id', 0)
+           ->setParameter('id', $nextId)
            ->setMaxResults(10000);
 
         /** @var Participant[] $participants */
@@ -64,6 +66,7 @@ class HashOldDataCommand extends Command
 
         while (!empty($participants)) {
             foreach ($participants as $participant) {
+                $nextId = $participant->getId();
                 $twoYearsAgo = new \DateTime();
                 $twoYearsAgo->setTime(0, 0);
                 $twoYearsAgo->sub(new \DateInterval('P2Y'));
@@ -95,11 +98,11 @@ class HashOldDataCommand extends Command
                ->from('IntractoSecretSantaBundle:Participant', 'p')
                ->where('p.id > :id')
                ->andWhere('p.isHashed = false')
-               ->setParameter('id', $participant->getId())
+               ->setParameter('id', $nextId)
                ->setMaxResults(10000);
 
             /** @var Participant $participant */
-            $participant = $qb->getQuery()->getResult();
+            $participants = $qb->getQuery()->getResult();
         }
 
         $this->em->flush();
