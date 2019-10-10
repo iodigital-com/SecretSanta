@@ -45,7 +45,7 @@ cp ../../shared/recaptcha_secrets.json app/config
 printOk
 
 printAction "Composer install"
-composer.phar install --no-dev --classmap-authoritative ${Q}
+../../shared/composer.phar install --no-dev --classmap-authoritative ${Q}
 printOk
 
 printAction "Building frontend"
