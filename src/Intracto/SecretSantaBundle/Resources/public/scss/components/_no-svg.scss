@@ -1,7 +1,7 @@
 /* If svg rendering is not supported by the outdated browser, show fallback header image instead */
 html.no-svg {
   #header {
-    background: url(../img/header-bg.jpg) no-repeat center top;
+    background: url(~@/img/header-bg.jpg) no-repeat center top;
   }
   .header__santa, .header__logo {
     display: none;

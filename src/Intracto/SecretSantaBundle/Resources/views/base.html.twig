@@ -131,8 +131,9 @@
 </div>
 
 {% block javascripts %}
-    <script src="{{ asset('build/manifest.js') }}"></script>
+    <script src="{{ asset('build/runtime.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/js/vendor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/modernizr.custom.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/js/secretsanta.js') }}"></script>
 {% endblock %}
 </body>

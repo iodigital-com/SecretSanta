@@ -13,13 +13,10 @@ Encore
 
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
+    .enableSingleRuntimeChunk()
 
-    .autoProvideVariables({
-        "window.jQuery": "jquery"
-    })
-
-    .createSharedEntry('js/vendor', ['jquery', 'bootstrap', './src/Intracto/SecretSantaBundle/Resources/public/js/modernizr.custom.min.js'])
-
+    .createSharedEntry('js/vendor', './src/Intracto/SecretSantaBundle/Resources/public/js/vendors.js')
+    .addEntry('js/modernizr.custom', './src/Intracto/SecretSantaBundle/Resources/public/js/modernizr.custom.min.js')
     .addEntry('js/party.create', './src/Intracto/SecretSantaBundle/Resources/public/js/party.create.js')
     .addEntry('js/party.import', './src/Intracto/SecretSantaBundle/Resources/public/js/party.import.js')
 
@@ -47,6 +44,7 @@ var config = Encore.getWebpackConfig();
 
 config.resolve = {
     alias: {
+        '@': path.resolve(__dirname, 'src/Intracto/SecretSantaBundle/Resources/public/'),
         AppConfig: path.resolve(__dirname, 'app/config/'),
     }
 };
