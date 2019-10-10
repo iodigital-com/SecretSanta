@@ -15,7 +15,7 @@ class DateTypeExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'widget' => 'single_text',
             'format' => 'dd-MM-yyyy',
             'js_date_format' => 'dd-mm-yyyy',
@@ -23,7 +23,7 @@ class DateTypeExtension extends AbstractTypeExtension
             'start_date' => 'today',
             'end_date' => '31-12-2100',
             'highlight_currentdate' => true,
-        ));
+        ]);
     }
 
     /**
@@ -47,12 +47,12 @@ class DateTypeExtension extends AbstractTypeExtension
     {
         $view->vars['type'] = 'text';
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'js_date_format' => $options['js_date_format'],
             'start_date' => $options['start_date'],
             'end_date' => $options['end_date'],
             'highlight_currentdate' => $options['highlight_currentdate'],
-        ));
+        ]);
     }
 
     /**

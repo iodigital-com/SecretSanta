@@ -20,3 +20,4 @@ echo 127.0.0.1 mails.$APP_DOMAIN >> /etc/hosts
 # Sync package index files
 apt-get update
 apt-get install -y apt-transport-https lsb-release ca-certificates
+apt-get dist-upgrade

@@ -12,9 +12,11 @@
     {% block metadata %}{% endblock %}
     <title>{% block title %}{{ 'base.meta.title'|trans }}{% endblock %}</title>
 
-    {% for supported_locale in supported_locales if app.request.get('_route_params') is not null and supported_locale != app.request.get('_locale') %}
-        <link rel="alternate" hreflang="{{ supported_locale }}"
-              href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"/>
+    {% for supported_locale in supported_locales %}
+        {% if app.request.get('_route_params') is not null and supported_locale != app.request.get('_locale') %}
+            <link rel="alternate" hreflang="{{ supported_locale }}"
+                  href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"/>
+        {% endif %}
     {% endfor %}
 
     <link href="{{ asset('build/css/main.css') }}" rel="stylesheet" media="screen"/>
@@ -73,10 +75,12 @@
         <div class="header__right">
             <div class="lang__selection">
                 <select>
-                    {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
-                        <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
-                            {{ locale_names[supported_locale|replace({'-': '_'})] }}
-                        </option>
+                    {% for supported_locale in supported_locales %}
+                        {% if app.request.get('_route_params') is not null %}
+                            <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
+                                {{ locale_names[supported_locale|replace({'-': '_'})] }}
+                            </option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -106,10 +110,12 @@
             <div class="visible-xs-*">
                 <div class="select-secret-santa mobile__lang__selection pl-3 pr-3">
                     <select>
-                        {% for supported_locale in supported_locales if app.request.get('_route_params') is not null %}
-                            <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
-                                {{ locale_names[supported_locale|replace({'-': '_'})] }}
-                            </option>
+                        {% for supported_locale in supported_locales %}
+                            {% if app.request.get('_route_params') is not null %}
+                                <option value="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': supported_locale})) }}"{% if supported_locale == app.request.get('_locale') %} selected{% endif %}>
+                                    {{ locale_names[supported_locale|replace({'-': '_'})] }}
+                                </option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </div>

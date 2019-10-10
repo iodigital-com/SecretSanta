@@ -64,6 +64,6 @@ class BounceQuery
      */
     public function removeBounce(int $id)
     {
-        $this->dbal->delete('bounce', array('id' => $id));
+        $this->dbal->delete('bounce', ['id' => $id]);
     }
 }

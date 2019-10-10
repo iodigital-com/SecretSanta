@@ -2,26 +2,27 @@
 
 namespace Intracto\SecretSantaBundle\Twig;
 
-use Intracto\SecretSantaBundle\Entity\Participant;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 use Symfony\Component\Translation\TranslatorInterface;
+use Intracto\SecretSantaBundle\Entity\Participant;
 
-class MailStatusExtension extends \Twig_Extension
+class MailStatusExtension extends AbstractExtension
 {
     private $translator;
 
     /**
      * @param TranslatorInterface $translator
      */
-    public function __construct(
-        TranslatorInterface $translator
-    ) {
+    public function __construct(TranslatorInterface $translator)
+    {
         $this->translator = $translator;
     }
 
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('mailstatus', [$this, 'mailstatusFilter']),
+            new TwigFilter('mailstatus', [$this, 'mailstatusFilter']),
         ];
     }
 

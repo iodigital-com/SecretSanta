@@ -16,7 +16,7 @@ git clone git@github.com:Intracto/SecretSanta.git
 cd SecretSanta
 ```
 
-Install VirtualBox 5.2.18 and Vagrant 2.0.4 (or more recent).
+Install VirtualBox 6.0.12 and Vagrant 2.2.5 (or more recent).
 
 ```
 vagrant up
@@ -69,12 +69,10 @@ Xdebug remote debugging is enabled. Configure your PhpStorm so you can step debu
 Run the tests with:
 
 ```
-phpunit.phar -c app
+./bin/phpunit
 ```
 
 [Writing and running Behat tests is documented here.](https://github.com/Intracto/SecretSanta/blob/master/docs/behat.md)
-
-Note, don't worry if you see the shell provisioning print a lot of red lines. It all works fine.
 
 ## Documentation
 

@@ -3,8 +3,8 @@
 # MariaDB server (MySQL)
 
 # Install server and client
-echo "mariadb-server-10.1 mysql-server/root_password password vagrant" | debconf-set-selections
-echo "mariadb-server-10.1 mysql-server/root_password_again password vagrant" | debconf-set-selections
+echo "mariadb-server-10.3 mysql-server/root_password password vagrant" | debconf-set-selections
+echo "mariadb-server-10.3 mysql-server/root_password_again password vagrant" | debconf-set-selections
 apt-get -y install mariadb-server mariadb-client
 
 # Configuration

@@ -7,10 +7,16 @@ phpize
 ./configure --disable-memcached-sasl
 make
 sudo make install
-echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+echo "extension = memcached" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
-cp /home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
-phpenv config-rm xdebug.ini || exit $? # Disable XDebug
+git clone https://github.com/xdebug/xdebug
+cd xdebug
+phpize
+./configure
+make
+make install
+echo "zend_extension = xdebug" > ~/xdebug.ini
+
 mkdir -p \"${BUILD_CACHE_DIR}\" || exit $? # Create build cache directory
 
 # Download and configure geoip db

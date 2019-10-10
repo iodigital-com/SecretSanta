@@ -131,7 +131,7 @@ class ManagementController extends Controller
 
                 $this->addFlash('success', $this->get('translator')->trans('flashes.management.excludes.success'));
             } else {
-                return $this->forward('IntractoSecretSantaBundle:Party/Management:valid', array('listurl' => $party->getListurl(), 'excludeForm' => $form));
+                return $this->forward('IntractoSecretSantaBundle:Party/Management:valid', ['listurl' => $party->getListurl(), 'excludeForm' => $form]);
             }
         }
 

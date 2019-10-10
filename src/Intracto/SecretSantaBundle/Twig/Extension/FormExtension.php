@@ -2,10 +2,13 @@
 
 namespace Intracto\SecretSantaBundle\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 use Symfony\Component\Form\FormRendererInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode;
 
-class FormExtension extends \Twig_Extension
+class FormExtension extends AbstractExtension
 {
     /**
      * This property is public so that it can be accessed directly from compiled
@@ -28,13 +31,16 @@ class FormExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('form_javascript', array($this, 'renderJavascript'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('form_stylesheet', null, array(
-                'is_safe' => array('html'),
-                'node_class' => 'Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode',
-            )),
-        );
+        return [
+            new TwigFunction('form_javascript',
+                [$this, 'renderJavascript'],
+                ['is_safe' => ['html']]
+            ),
+            new TwigFunction('form_stylesheet', null, [
+                'is_safe' => ['html'],
+                'node_class' => SearchAndRenderBlockNode::class,
+            ]),
+        ];
     }
 
     /**
