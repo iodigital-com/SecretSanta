@@ -67,7 +67,7 @@ sudo chmod -R a+rwX var/logs var/cache
 printOk
 
 printAction "Stopping FPM"
-sudo service php7.2-fpm stop
+sudo service php7-4-fpm stop
 printOk
 printAction "Running doctrine schema update"
 bin/console doctrine:schema:update --force --env=${SYMFONY_ENV} ${Q}
@@ -77,7 +77,7 @@ printAction "Activate new version"
 ln -sfn releases/${VERSION} current
 printOk
 printAction "Starting FPM"
-sudo service php7.2-fpm start
+sudo service php7.4-fpm start
 printOk
 
 printAction "Cleanup old versions, keep last 2"
