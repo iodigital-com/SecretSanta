@@ -5,7 +5,7 @@ This is a docker-compose setup you can use to run the SecretSanta stack on docke
 Keep in mind:
 -------------
 - no phpMyAdmin
-- xdebug untested, feel free to do so and let us know ;)
+- no xdebug (no release for 7.4 yet)
 - mails are only sent when using app_dev.php 
 
 Getting started:
@@ -27,8 +27,8 @@ The next time you start your environment, it will use the already present contai
 
 Included containers:
 - santa-web (httpd:2.4)
-- santa-php (php:7.2-fpm-alpine)
-- santa-db (mysql:5.7)
+- santa-php (php:7.4.0RC3-fpm-alpine)
+- santa-db (mariadb:10.3)
 - santa-mailhog (mailhog/mailhog)
 
 Now change your parameters.yml file to point to the correct endpoints:

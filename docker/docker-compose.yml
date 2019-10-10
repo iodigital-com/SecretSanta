@@ -18,7 +18,7 @@ services:
     volumes:
     - ..:/usr/local/apache2/htdocs
   santa-db:
-    image: "mysql:5.7"
+    image: "mariadb:10.3"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: secretsanta
