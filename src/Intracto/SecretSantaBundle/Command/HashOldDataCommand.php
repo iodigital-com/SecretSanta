@@ -91,7 +91,7 @@ class HashOldDataCommand extends Command
 
             $this->em->flush();
 
-            echo '[next id = ' . $nextId . ']';
+            echo '[next id = '.$nextId.']';
 
             $qb = $this->em->createQueryBuilder();
             $qb->select('p')
