@@ -13,7 +13,8 @@ services:
   - memcached
 
 php:
-  - '7.3'
+  - '7.4snapshot'
+  #- 'nightly' # PHP 8.0
 
 before_install:
   - .travis/before_install.sh

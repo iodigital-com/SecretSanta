@@ -57,9 +57,9 @@
                         <th style="text-align: right;" class="col-xs-3"></th>
                     </tr>
                     </thead>
-                    <tbody data-prototype="{% filter escape %}
+                    <tbody data-prototype="{% apply escape %}
                     {% include 'IntractoSecretSantaBundle:Helpers:prototypeParticipant.html.twig' with
-                    {'participant': form.participants.vars['prototype']} %}{% endfilter %}">
+                    {'participant': form.participants.vars['prototype']} %}{% endapply %}">
                     {% for participant in form.participants %}
                         <tr class="participant {% if participant.vars.data.partyAdmin %}owner
                         {% else %}not-owner{% endif %}

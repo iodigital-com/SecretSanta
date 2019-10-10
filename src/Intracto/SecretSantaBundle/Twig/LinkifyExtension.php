@@ -2,12 +2,15 @@
 
 namespace Intracto\SecretSantaBundle\Twig;
 
-class LinkifyExtension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
+class LinkifyExtension extends AbstractExtension
 {
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('linkify', [$this, 'linkifyFilter']),
+            new TwigFilter('linkify', [$this, 'linkifyFilter']),
         ];
     }
 

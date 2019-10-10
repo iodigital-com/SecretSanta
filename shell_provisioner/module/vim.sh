@@ -5,6 +5,7 @@
 apt-get install -y vim
 
 cat << EOF >/etc/vim/vimrc.local
+let skip_defaults_vim=1
 syntax on
 set expandtab
 set tabstop=4

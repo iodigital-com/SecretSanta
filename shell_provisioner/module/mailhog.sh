@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Remove Exim (default Debian)
-apt-get remove -y exim4 exim4-base exim4-config exim4-daemon-light
-
 # Postfix
 echo "postfix postfix/mailname string ${APP_DOMAIN}" | debconf-set-selections
 echo "postfix postfix/myhostname string ${APP_DOMAIN}" | debconf-set-selections
@@ -20,7 +17,7 @@ service postfix restart
 
 # MailHog
 
-wget -O /usr/local/bin/mailhog https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
+wget -qO /usr/local/bin/mailhog https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
 chmod +x /usr/local/bin/mailhog
 
 cat << EOF >/lib/systemd/system/mailhog.service

@@ -1,9 +1,9 @@
 {% block form_javascript %}
-    {% spaceless %}
+    {% apply spaceless %}
         {% for child in form %}
             {{ form_javascript(child) }}
         {% endfor %}
-    {% endspaceless %}
+    {% endapply %}
 {% endblock form_javascript %}
 
 {% block intracto_secret_santa_jquerydatepicker_javascript %}

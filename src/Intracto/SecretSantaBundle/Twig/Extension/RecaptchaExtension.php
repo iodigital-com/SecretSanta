@@ -2,7 +2,10 @@
 
 namespace Intracto\SecretSantaBundle\Twig\Extension;
 
-class RecaptchaExtension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
+class RecaptchaExtension extends AbstractExtension
 {
     /** @var array */
     private $captchaSecrets;
@@ -15,7 +18,7 @@ class RecaptchaExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('getRecaptchaSecrets', [$this, 'getRecaptchaSecrets']),
+            new TwigFunction('getRecaptchaSecrets', [$this, 'getRecaptchaSecrets']),
         ];
     }
 
