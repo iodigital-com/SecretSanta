@@ -10,6 +10,7 @@ class CheckMailDomainService
         '@msn.',
         '@outlook.',
         '@windowslive.',
+        '@yahoo.',
     ];
 
     private $blacklistedMxRecords = [
