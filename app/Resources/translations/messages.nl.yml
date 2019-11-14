@@ -261,6 +261,7 @@ participant_show_valid:
         wishlist_from: Verlanglijst van %name%
         wishlist_not_provided: '%name% heeft nog geen verlanglijst opgesteld'
         message_for_wishlist: Stuur een bericht om te vragen de verlanglijst aan te vullen.
+        find_gift: Op zoek naar een cadeautje?
 
     wishlist:
         title: Jouw verlanglijstje
