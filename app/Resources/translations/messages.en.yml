@@ -254,6 +254,7 @@ participant_show_valid:
         wishlist_from: Wishlist from %name%
         wishlist_not_provided: '%name% has not yet provided a wishlist'
         message_for_wishlist: Send a message to your buddy to let him/her know their wishlist is empty.
+        find_gift: Looking for a gift?
 
     wishlist:
         title: Your wishlist

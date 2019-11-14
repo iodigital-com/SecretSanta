@@ -74,7 +74,17 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: Plus qu'une étape ! - Validez votre participation
-#    body: ?
+    body: >
+        <p>
+            Pour empêcher les robots ou les trolls de gâcher le Secret Santa, nous avons besoin que <b>%ownername%</b> valide la liste. Nous vous avons envoyé un e-mail à <b>%owneremail%</b> avec plus d'information.
+        </p>
+        <p>
+            Une fois validé, vous pourrez apporter des modifications à votre Secret Santa, ajouter ou supprimer des participants et configurer des exclusions (si votre Secret Santa compte 4 participants ou plus). Une fois que vous êtes prêt à configurer votre fête, vous pouvez commencer votre fête.
+             À ce stade, nous allons associer tout le monde et leur envoyer un e-mail contenant toutes les informations dont ils ont besoin, ainsi qu'un lien pour connaître leur copain.
+        </p>
+        <p>
+            Vous pouvez toujours utiliser le lien dans l'e-mail de validation pour accéder à la page de gestion. Une fois la fête commencée, vous pourrez voir si les participants ont ouvert leur e-mail et cliqué sur le lien pour savoir qui est leur copain.
+        </p>
     warning: Attention !
     check_spam: N'oubliez pas de vérifier votre dossier Spam !
 
@@ -196,7 +206,8 @@ participant_show_valid:
         watch_out: Attention
         wishlist_from: Liste de souhaits de %name%
         wishlist_not_provided: '%name% n''a pas encore publié de liste de souhaits'
-#        message_for_wishlist: ?
+        message_for_wishlist: Envoie un message à votre ami pour l’informer que sa liste de souhaits est vide.
+        find_gift: Vous cherchez un cadeau ?
 
     wishlist:
         title: Votre liste de souhaits
@@ -211,19 +222,19 @@ participant_show_valid:
             removed: <h4>Supprimé!</h4> L'article a été supprimé de votre liste de souhaits avec succ&egrave;s.
 
     label:
-        description: Déscription
+        description: Description
 
     btn:
         add_wishlist: Ajouter un objet à ma liste de souhaits
         update_item: Actualiser cet object
         remove_item: Supprimer
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button: ?
+    anonymous_message:
+        title: Envoie un message anonyme à %name%
+        message_label: Ton message
+        message_placeholder: Ton message
+        warning_anonymous: Rappelez-vous que ce message est envoyé anonymement et que vous ne voulez pas gâcher la surprise ! Votre copain ne pourra pas répondre à votre message, soyez précis afin qu'il puisse mettre à jour sa liste de souhaits.
+        send_button: Envoie ton e-mail !
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
@@ -345,8 +356,8 @@ party_manage_valid:
         expose_wishlists:  Voir toutes les listes des participants
         party_update: Envoyer une mise &agrave; jour &agrave; tous les participants
         remove_participant_confirm: Supprimer ce participant
-        updated_party: Mettre &agrave; jour les détails de ma f&ecirc;te
-#        start_party:
+        updated_party: Mettre à jour la fête
+        start_party: Commencer la fête
 
     label:
         name: Nom
@@ -355,16 +366,16 @@ party_manage_valid:
         wishlist_filled: Liste de souhaits complétée
         actions: Actions
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+    excludes:
+        title: Exclure certaines combinaisons
+        btn: Enregistrer les combinaisons
+        description: Avec cette liste, vous pouvez éventuellement empêcher certaines combinaisons de participants. Par exemple, pour empêcher les membres de la même famille d’acheter des cadeaux les uns aux autres.
+        information: Lorsque vous utilisez les combinaisons, il est possible que vous ne puissiez plus supprimer les participants une fois que vous avez démarré la fête. Vous ne pourrez pas non plus changer les combinaisons une fois la fête commencée!
+        placeholder_exclude: Choisir le(s) participant(s) à exclure
+        not_enough: Votre Secret Santa doit avoir au moins 4 participants pour utiliser les exclusions !
+        label:
+            name: Nom
+            exclude: Exclure
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -375,7 +386,7 @@ emails-base_email:
 
 # This header block is re-used in multiple emails
 emails-base_email_header:
-    title: Détails de votre party
+    title: Détails de votre fête
     date: Date
     location: Lieu
     amount: Montant à dépenser
@@ -434,8 +445,8 @@ emails-pendingConfirmation:
     click_button: Merci de bien vouloir cliquer sur le bouton ci-dessous afin de valider votre liste de diffusion Secret Santa. Cela réveillera nos gnomes afin qu'ils envoient le message personnel que vous avez créé précédemment à tous les participants.
     overview_page: Sur la page de présentation nouvellement créée, vous serez en mesure de garder une trace de tous les utilisateurs découvrant leur ami cadeau Secret Santa. Mais aussi d'être informé une fois que la liste sera complète.
     lastly: Et enfin, n'oubliez pas de confirmer votre propre participation ! Nous vous enverrons également un nouvel e-mail lorsque vous aurez cliqué sur le bouton de validation ci-dessous.
-#    come_back:
-#    btn_goto_manage:
+    come_back: Vous pouvez toujours revenir à cet e-mail si vous avez besoin du lien vers votre page de gestion.
+    btn_goto_manage: Aller à la page de gestion
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
@@ -538,20 +549,34 @@ emails-wishlistChanged:
         check_wishlist: Découvrir la liste de souhaits
 
 # Emails/anonymousMessage.{html,txt}.twig
-#emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
+emails-anonymous_message:
+    subject: Ton secret santa ta envoyé un message
+    message:
+      html: >
+        Cher/Chère %name%, <br/>
+        <br/>
+          Ton copain secret t'a envoyé un message :<br/>
+        <br />
+        <strong>%message%</strong>
+        <br/>
+          Clique sur le lien en dessous et ajoute des choses à ta liste de souhaits si tu le souhaites.
+      txt: >
+        Cher/Chère %name%,
+
+        Ton copain secret t'a envoyé un message :
+
+        %message%
+
+        Clique sur le lien en dessous et ajoute des choses à ta liste de souhaits si tu le souhaites.
 #    update_wishlist: ?
 
 # MailStatusExtension
-#mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+mail_status_extension:
+    unknown: Inconnue
+    opened: Ouvert
+    viewed: Vue
+    not_started: Non démarré
+    bounced: Relancé
 
 flashes:
     # SendPartyUpdateController
