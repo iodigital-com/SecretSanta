@@ -1,4 +1,4 @@
-.PHONY: all
+.PHONY: all deploy deploy-debug db-backup
 .RECIPEPREFIX = |
 
 all:
