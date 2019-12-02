@@ -263,10 +263,18 @@ input.span12, textarea.span12, .uneditable-input.span12 {
 
 #footer-santa {
     background: url(../img/footer-bg.png) no-repeat right top;
-    padding: 65px 0px 35px 0px;
+    padding-top: 65px;
+    padding-bottom: 35px;
     text-align: center;
     font-size: 1.2em;
     color: #6E6E6E;
+}
+
+@media (min-width: 801px) {
+    #footer-santa{
+        padding-left: 170px;
+        padding-right: 170px;
+    }
 }
 
 .copyright {
