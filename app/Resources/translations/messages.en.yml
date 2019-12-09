@@ -547,7 +547,7 @@ emails-party_update:
         html: >
             Dear %name%, <br/>
             <br/>
-            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.<br/>
+            We hope you're getting excited about %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.<br/>
             <br/>
             To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.<br/>
             <br/>
@@ -555,7 +555,7 @@ emails-party_update:
         txt: >
             Dear %name%,
 
-            We hope you're getting excited for %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.
+            We hope you're getting excited about %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.
 
             To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.
 
