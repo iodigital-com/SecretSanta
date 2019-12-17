@@ -1,12 +1,12 @@
 # base.html.twig
 base:
     meta:
-        description: Το Secret Santa Organizer είναι ένα online δωρεάν εργαλείο για ανταλλαγή δώρων μέσω Secret Santa! Δημιουργήστε Secret Santa με τους φίλους σας, με την οικογένεια σας ή ακόμα και του συναδέλφους σας και φτιάξε και wishlist για τα δώρα σας.
+        description: Το Secret Santa Organizer είναι ένα online δωρεάν εργαλείο για την δημιουργία event για ανταλλαγή δώρων μέσω Secret Santa! Δημιουργήστε Secret Santa με τους φίλους σας, με την οικογένεια σας ή ακόμα και του συναδέλφους σας και φτιάξε και wishlist για τα δώρα σας.
         title: Secret Santa Online gift exchange organizer & generator!
         og:
             title: Secret Santa
             site_name: Secret Santa
-            description: Το Secret Santa Organizer είναι ένα online δωρεάν εργαλείο για ανταλλαγή δώρων μέσω Secret Santa! Δημιουργήστε Secret Santa με τους φίλους σας, με την οικογένεια σας ή ακόμα και του συναδέλφους σας και φτιάξε και wishlist για τα δώρα σας.
+            description: Το Secret Santa Organizer είναι ένα online δωρεάν εργαλείο για την δημιουργία event για ανταλλαγή δώρων μέσω Secret Santa! Δημιουργήστε Secret Santa με τους φίλους σας, με την οικογένεια σας ή ακόμα και του συναδέλφους σας και φτιάξε και wishlist για τα δώρα σας.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Χρειάζεστε βοήθεια; Έχετε κάποια ερώτηση; Διαβάστε το FAQ!</a>
     privacy_policy: Πολιτική Απορρήτου
     cookie_policy: Πολιτική Cookie
@@ -15,30 +15,26 @@ base:
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
-        date_party: Date of your Secret Santa party
-        location: Location of your Secret Santa party
-        amount_to_spend: Amount to spend
-        message: Additional message in email
-        confirmed: Yes, I have permission to use the participant's e-mail addresses for Secret Santa
+        date_party: Ημερομηνία του πάρτυ της ανταλλαγής των δώρων.
+        location: Μέρος που θα γίνει η ανταλλαγή των δώρων.
+        amount_to_spend: Όριο κόστους δώρου.
+        message: Προσωπικό μήνυμα στο email.
+        confirmed: Ναι, έχω την συγκατάθεση για να χρησιμοποιήσω τα email των συμμετεχόντων για τον Secret Santa.
 
 # PartyController
 party_controller:
     created:
         message: |
-            Hi there (NAME),
-
-            (ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.
-
-            Join the Secret Santa fun and find out who your gift buddy is by clicking the button below.
-
-            You can spend up to %amount% for your gift.
-
-            The Secret Santa party is planned %eventdate% and will take place at/in %location%. Be sure to bring your gift!
+            Γειά σου (NAME),
+            Ο/η (ADMINISTRATOR) δημιούργησε μια λίστα Secret Santa και σε πρόσθεσε ως συμμετέχοντα.
+            Πάρε μέρος στον Secret Santa και δες σε ποιον έτυχε να κάνεις το δώρο σου πατώντας στο κουμπί παρακάτω.
+            Πρέπει να ξοδέψεις έως %amount% για το δώρο που θα πάρεις.
+            Το πάρτυ για την ανταλλαγή θα γίνει %eventdate% στο %location%. Μην ξεχάσεις να φέρεις το δώρο σου!
 
             %message%
 
 
-            Happy Holidays!
+            Χρόνια Πολλά!
 
 # Party/create.html.twig
 party-create:
