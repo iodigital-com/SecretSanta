@@ -40,12 +40,12 @@ party_controller:
 party-create:
     header:
         steps:
-            title: Your party <br/><small>in <span class="accent">3 easy steps</span></small>
+            title: Το πάρτυ σου <br/><small>σε <span class="accent">3 απλά βήματα</span></small>
             list:
-                one: List your participants
-                two: Add a message
-                three: Send!
-            get_started: Get Started!
+                one: Πρόσθεσε του συμμετέχοντες
+                two: Το μήνυμά σου
+                three: Και αποστολή!
+            get_started: Ξεκινάμε!
 
     what_is:
         title: What is Secret Santa?
@@ -58,32 +58,32 @@ party-create:
             To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
             present to one another.</p>
 
-    add_participants: Add your participants
-    list_adminstrator: This person is a participant too.
+    add_participants: Προσθήκη συμμετεχόντων
+    list_adminstrator: Ο διαχειριστής της λίστας συμμετέχει επίσης.
     add_personal_message:
-        title: Add a personal message
-        description: Add a personal message for the participants.
+        title: Προσθήκη μηνύματος
+        description: Προσθέστε το δικό σας μήνυμα προς τους συμμετέχοντες.
     import:
         instructions: Add multiple people at once to your event. Download <a href="%downloadPath%">this CSV template file</a> and add all names and mailaddresses of the people you want to invite to the file. When you're finished, you can drag and drop the CSV file into the field below and your friends or colleagues will be added fast and easy to your party.
         too_many_files: Only one file can be uploaded at a time.
         wrong_format: The file you're trying to upload does not have the required format (csv or txt).
 
     btn:
-        add_person: Add person
-        remove_person: Remove
-        import_persons_open: Add multiple people by CSV
-        import_persons_do: Add to your event
-        cancel: Cancel
-        create_event: Create your event!
+        add_person: Προσθήκη Ατόμου
+        remove_person: Αφαίρεση
+        import_persons_open: Προσθήκγ πολλαπλών μέσω CSV
+        import_persons_do: Προσθήκη στη λίστα
+        cancel: Ακύρωση
+        create_event: Δημιουργία λίστας!
 
     label:
-        host: Host
+        host: Δημιουργός
         email: E-mail
-        participants: Participants
+        participants: Συμμετέχοντες
 
 # Party/created.html.twig
 party-created:
-    title: Only 1 step to go! - Validate your participation
+    title: Ένα βήμα έμεινε μόνο! - Επιβεβαιώστε την συμμετοχή σας
     body: >
         <p>
             To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
