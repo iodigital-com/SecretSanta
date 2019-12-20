@@ -13,7 +13,7 @@ services:
   - memcached
 
 php:
-  - '7.4snapshot'
+  - '7.4'
   #- 'nightly' # PHP 8.0
 
 before_install:
