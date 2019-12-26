@@ -69,7 +69,7 @@ Xdebug remote debugging is enabled. Configure your PhpStorm so you can step debu
 Run the tests with:
 
 ```
-./bin/phpunit
+composer phpunit
 ```
 
 [Writing and running Behat tests is documented here.](https://github.com/Intracto/SecretSanta/blob/master/docs/behat.md)
