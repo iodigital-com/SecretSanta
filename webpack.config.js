@@ -8,6 +8,13 @@ Encore
 
     .cleanupOutputBeforeBuild()
 
+    // See https://symfony.com/doc/current/frontend/encore/typescript.html
+    .enableTypeScriptLoader()
+    // optionally enable forked type script for faster builds
+    // https://www.npmjs.com/package/fork-ts-checker-webpack-plugin
+    // requires that you have a tsconfig.json file that is setup correctly.
+    .enableForkedTypeScriptTypesChecking()
+
     .enableSassLoader()
     .enableVersioning()
 

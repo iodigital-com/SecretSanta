@@ -5,12 +5,15 @@
     "@symfony/webpack-encore": "^0.28.0",
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
+    "fork-ts-checker-webpack-plugin": "^0.4.1",
     "jquery": "^3.4.1",
     "jquery-csv": "^1.0.5",
     "jquery-smooth-scroll": "^2.2.0",
     "jquery-ui": "^1.12.1",
     "node-sass": "^4.12.0",
-    "sass-loader": "^7.0.1"
+    "sass-loader": "^7.0.1",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "dev-server": "encore dev-server",
