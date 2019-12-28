@@ -3,7 +3,12 @@
   "private": true,
   "devDependencies": {
     "@symfony/webpack-encore": "^0.28.0",
-    "bootstrap": "^4.3.1",
+    "@types/bootstrap": "^4.3.1",
+    "@types/grecaptcha": "^3.0.0",
+    "@types/jquery": "^3.3.31",
+    "@types/jqueryui": "^1.12.10",
+    "@types/modernizr": "^3.5.3",
+    "@types/select2": "^4.0.48",
     "font-awesome": "^4.7.0",
     "fork-ts-checker-webpack-plugin": "^0.4.1",
     "jquery": "^3.4.1",
@@ -22,6 +27,7 @@
     "build": "encore production"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "popper.js": "^1.15.0"
   }
 }

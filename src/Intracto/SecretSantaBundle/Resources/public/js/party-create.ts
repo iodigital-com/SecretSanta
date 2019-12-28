@@ -1,17 +1,13 @@
-require('jquery-smooth-scroll');
+import 'jquery-smooth-scroll';
 
-exports.addNewParticipant = function(collectionHolder, email, name) {
-    addNewParticipant(collectionHolder, email, name);
-};
-
-function addNewParticipant(collectionHolder, email, name) {
+export function addNewParticipant(collectionHolder: JQuery, email?: string, name?: string) {
     // Get participant prototype as defined in attribute data-prototype
-    var prototype = collectionHolder.attr('data-prototype');
+    var prototype = collectionHolder.attr('data-prototype') || '';
     // Adjust participant prototype for correct naming
     var number_of_participants = collectionHolder.children().length - 1; // Note, owner is not counted as participant
     var newFormHtml = prototype.replace(/__name__/g,
-        number_of_participants).replace(/__participantcount__/g,
-        number_of_participants + 1);
+        number_of_participants.toString()).replace(/__participantcount__/g,
+        (number_of_participants + 1).toString());
     // Add new participant to party with animation
     var newForm = $(newFormHtml);
     collectionHolder.append(newForm);
@@ -40,8 +36,8 @@ function bindDeleteButtonEvents() {
             e.preventDefault();
             $('table tr.participant.not-owner:gt(' + i + ')').each(function (j) {
                 // Move values from next row to current row
-                var next_row_name = $('table tr.participant.not-owner:eq(' + (i + j + 1) + ') input.participant-name').val();
-                var next_row_mail = $('table tr.participant.not-owner:eq(' + (i + j + 1) + ') input.participant-mail').val();
+                var next_row_name = $('table tr.participant.not-owner:eq(' + (i + j + 1) + ') input.participant-name').val() || '';
+                var next_row_mail = $('table tr.participant.not-owner:eq(' + (i + j + 1) + ') input.participant-mail').val() || '';
                 $('table tr.participant.not-owner:eq(' + (i + j) + ') input.participant-name').val(next_row_name);
                 $('table tr.participant.not-owner:eq(' + (i + j) + ') input.participant-mail').val(next_row_mail);
             });
@@ -58,7 +54,7 @@ function bindDeleteButtonEvents() {
 /* Variables */
 var collectionHolder = $('table.participants tbody');
 /* Document Ready */
-jQuery(document).ready(function () {
+$(document).ready(function () {
     //Add eventlistener on add-new-participant button
     $('.add-new-participant').click(function (e) {
         e.preventDefault();

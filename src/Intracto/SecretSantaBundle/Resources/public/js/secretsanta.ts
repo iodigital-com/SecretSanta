@@ -1,14 +1,14 @@
 // require jQuery normally
-const $ = require('jquery');
+const jquery = require('jquery');
 
 // create global $ and jQuery variables
-global.$ = global.jQuery = $;
+(global as any).$ = (global as any).jQuery = jquery;
 
 $(document).ready(function() {
     $('.lang__selection select').on('change', changeLanguage);
     $('.mobile__lang__selection select').on('change', changeLanguage);
 });
 
-function changeLanguage(e) {
-    window.location = $(this).val();
+function changeLanguage(this: HTMLSelectElement) {
+    window.location.href = $(this).val() as string;
 }

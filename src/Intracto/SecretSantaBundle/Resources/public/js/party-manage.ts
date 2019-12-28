@@ -1,38 +1,38 @@
 $(document).ready(function () {
     $('#btn_delete').click(function (e) {
         $('#delete-warning').show();
-        $('#btn_delete').attr('disabled', true);
+        $('#btn_delete').attr('disabled', 'disabled');
         $('#delete-confirmation').focus();
     });
     $('#btn_delete_cancel').click(function (e) {
         $('#delete-warning').hide();
-        $('#btn_delete').attr('disabled', false).focus();
+        $('#btn_delete').attr('disabled', null).focus();
     });
 
     $('#btn_add').click(function (e) {
         $('#add-participant').show();
-        $('#btn_add').attr('disabled', true);
+        $('#btn_add').attr('disabled', 'disabled');
         $('#add-participant-name').focus();
     });
 
     $('#btn_add_cancel').click(function (e) {
         $('#add-participant').hide();
-        $('#btn_add').attr('disabled', false).focus();
+        $('#btn_add').attr('disabled', null).focus();
     });
 
     $('#btn_update').click(function (e) {
         $('#update-party-details').show();
-        $('#btn_update').attr('disabled', true);
+        $('#btn_update').attr('disabled', 'disabled');
     });
 
     $('#btn_update_cancel').click(function (e) {
         $('#update-party-details').hide();
-        $('#btn_update').attr('disabled', false).focus();
+        $('#btn_update').attr('disabled', null).focus();
     });
 
     $('.link_remove_participant').click(function (e) {
         $('#delete-participant').show();
-        $('.link_remove_participant').attr('disabled', true);
+        $('.link_remove_participant').attr('disabled', 'disabled');
         $('#delete-participant-confirmation').focus();
         var listUrl = $(this).data('listurl');
         var participantUrl = $(this).data('participant');
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
     $('.btn_remove_participant_cancel').click(function (e) {
         $('#delete-participant').hide();
-        $('.link_remove_participant').attr('disabled', false);
+        $('.link_remove_participant').attr('disabled', null);
     });
 
     if (Modernizr.inputtypes.date == true) {
@@ -63,11 +63,11 @@ $(document).ready(function () {
 function showExcludeErrors() {
     $('#collapsedMessage').collapse('show');
     $('html, body').animate({
-        scrollTop: $("#collapsedMessage").offset().top
+        scrollTop: $("#collapsedMessage").offset()!.top
     }, 2000);
 }
 
-function editParticipant(listUrl, participantUrl) {
+function editParticipant(listUrl: string, participantUrl: string) {
     var email = $('#email_' + participantUrl).html();
     var name = $('#name_' + participantUrl).html();
     var url = $('table#mysanta').data('editurl');
@@ -78,7 +78,7 @@ function editParticipant(listUrl, participantUrl) {
     }
 }
 
-function submitEditForm(listUrl,participantUrl) {
+function submitEditForm(listUrl: string,participantUrl: string) {
     var url = $('table#mysanta').data('editurl');
     url = url.replace("listUrl", listUrl);
     url = url.replace("participantUrl", participantUrl);
@@ -110,7 +110,7 @@ function submitEditForm(listUrl,participantUrl) {
     });
 }
 
-function makeEditForm(participantUrl, listUrl, name, email){
+function makeEditForm(participantUrl: string, listUrl: string, name: string, email: string){
     var saveBtnText = $('table#mysanta').data('save-btn-text');
     $('#name_' + participantUrl).html(
         '<input type="text" id="input_name_' + participantUrl + '" class="form-control input_edit_name" name="name" value="' + name + '" data-hj-masked>'
@@ -121,7 +121,7 @@ function makeEditForm(participantUrl, listUrl, name, email){
     );
 }
 
-function attachAction(listUrl, participantUrl) {
+function attachAction(listUrl: string, participantUrl: string) {
     var url = $('form#delete-participant-form').data('action');
     url = url.replace('listUrl', listUrl);
     url = url.replace('participantUrl', participantUrl);

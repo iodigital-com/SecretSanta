@@ -1,16 +1,21 @@
-require('jquery-ui/ui/widgets/sortable');
-require('jquery-ui/ui/disable-selection');
+import 'jquery-ui/ui/widgets/sortable';
+import 'jquery-ui/ui/disable-selection';
 
-function addNewParticipant(collectionHolder) {
+function addNewParticipant(collectionHolder: JQuery<HTMLElement>) {
 
     // remove .noitems if present
     $('.noitems').remove();
 
     // Get participant prototype as defined in attribute data-prototype
     var prototype = collectionHolder.attr('data-prototype');
+    if(!prototype){
+        throw new TypeError('Invalid property value for "data-prototype".');
+    }
     // Adjust participant prototype for correct naming
     var number_of_participants = collectionHolder.children().length; // Note, owner is not counted as participant
-    var newFormHtml = prototype.replace(/__name__/g, number_of_participants).replace(/__participantcount__/g, number_of_participants + 1);
+    var newFormHtml = prototype
+        .replace(/__name__/g, number_of_participants.toString())
+        .replace(/__participantcount__/g, (number_of_participants + 1).toString());
 
     // Add new participant to party with animation
     var newForm = $(newFormHtml);

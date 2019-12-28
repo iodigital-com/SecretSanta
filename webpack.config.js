@@ -24,15 +24,15 @@ Encore
 
     .createSharedEntry('js/vendor', './src/Intracto/SecretSantaBundle/Resources/public/js/vendors.js')
     .addEntry('js/modernizr.custom', './src/Intracto/SecretSantaBundle/Resources/public/js/modernizr.custom.min.js')
-    .addEntry('js/party.create', './src/Intracto/SecretSantaBundle/Resources/public/js/party.create.js')
-    .addEntry('js/party.import', './src/Intracto/SecretSantaBundle/Resources/public/js/party.import.js')
+    .addEntry('js/party.create', './src/Intracto/SecretSantaBundle/Resources/public/js/party-create.ts')
+    .addEntry('js/party.import', './src/Intracto/SecretSantaBundle/Resources/public/js/party-import.ts')
 
-    .addEntry('js/party.manage', './src/Intracto/SecretSantaBundle/Resources/public/js/party.manage.js')
+    .addEntry('js/party.manage', './src/Intracto/SecretSantaBundle/Resources/public/js/party-manage.ts')
 
-    .addEntry('js/secretsanta', './src/Intracto/SecretSantaBundle/Resources/public/js/secretsanta.js')
-    .addEntry('js/wishlist', './src/Intracto/SecretSantaBundle/Resources/public/js/wishlist.js')
+    .addEntry('js/secretsanta', './src/Intracto/SecretSantaBundle/Resources/public/js/secretsanta.ts')
+    .addEntry('js/wishlist', './src/Intracto/SecretSantaBundle/Resources/public/js/wishlist.ts')
 
-    .addEntry('js/recaptcha', './src/Intracto/SecretSantaBundle/Resources/public/js/recaptcha.js')
+    .addEntry('js/recaptcha', './src/Intracto/SecretSantaBundle/Resources/public/js/recaptcha.ts')
 
     .addStyleEntry('css/main', [
         './src/Intracto/SecretSantaBundle/Resources/public/scss/main.scss',
@@ -49,8 +49,11 @@ Encore
 
 var config = Encore.getWebpackConfig();
 
+// Merge custom resolve options with those set by Webpack-Encore
 config.resolve = {
+    ...config.resolve,
     alias: {
+        ...config.resolve.alias,
         '@': path.resolve(__dirname, 'src/Intracto/SecretSantaBundle/Resources/public/'),
         AppConfig: path.resolve(__dirname, 'app/config/'),
     }
