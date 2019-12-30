@@ -68,6 +68,10 @@
 
     /* Other */
     "resolveJsonModule": true,                /* Allow imports of JSON files */
-    "skipLibCheck": true                      /* Ignore TS errors in node__modules */
-  }
+    "skipLibCheck": true                      /* Ignore TS errors in node_modules */
+  },
+  "exclude": [
+    "./web/**",
+    "./vendor/**",
+  ]
 }
