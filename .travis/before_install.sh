@@ -15,7 +15,10 @@ phpize
 ./configure
 make
 make install
-echo "zend_extension = xdebug" > ~/xdebug.ini
+cat << EOF >~/xdebug.ini
+zend_extension = xdebug
+xdebug.coverage_enable=On
+EOF
 
 mkdir -p \"${BUILD_CACHE_DIR}\" || exit $? # Create build cache directory
 
