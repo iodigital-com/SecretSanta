@@ -383,6 +383,13 @@ party_manage_valid:
                 <br>
                 The new participant will immediately be assigned to a Secret Santa buddy and will receive an invitation by mail.<br>
             </p>
+        started_warning: >
+            <p>
+                <strong>Warning: The participants have already been matched!</strong>
+                <br>
+                If there are still participants that have not yet seen their match, we will use one of them to match to the new participant.
+                If everyone has already seen their match, the new participant will be assigned to you and he/she will be assigned your match.
+            </p>
 
     remove_participant:
         title: Delete this participant from your list

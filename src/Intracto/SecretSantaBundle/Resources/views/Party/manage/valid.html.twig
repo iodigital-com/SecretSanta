@@ -116,6 +116,7 @@
             <h3>{{ 'party_manage_valid.add_participant.title'|trans|raw }}</h3>
 
             {{ 'party_manage_valid.add_participant.body'|trans|raw }}
+            {% if party.created %}{{ 'party_manage_valid.add_participant.started_warning'|trans|raw }}{% endif %}
             <br>
             {{ form_start(addParticipantForm) }}
             {{ form_row(addParticipantForm._token) }}

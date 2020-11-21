@@ -394,7 +394,13 @@ party_manage_valid:
                 <br>
                 De nieuwe deelnemer zal meteen een Secret Santa maatje toegewezen krijgen en een uitnodiging ontvangen via mail.<br>
             </p>
-
+        started_warning: >
+            <p>
+                <strong>Opgelet: De deelnemers zijn reeds toegewezen!</strong>
+                <br>
+                Als er nog deelnemers zijn die hun match niet hebben bekeken, dan zullen we die gebruiken om de nieuwe deelnemer aan toe te kennen.
+                Als iedereen zijn match al heeft bekeken, dan zal de nieuwe deelnemer aan jou worden toegekend en zal die jouw match toegekend krijgen.
+            </p>
     remove_participant:
         title: Verwijder deze deelnemer uit je lijst
         body: <p>Weet je het ECHT zeker?</p>
