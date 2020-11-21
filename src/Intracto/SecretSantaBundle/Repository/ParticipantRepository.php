@@ -139,10 +139,10 @@ class ParticipantRepository extends ServiceEntityRepository
                 'partyId' => $partyId,
             ]);
 
-        foreach($qb->getQuery()->execute() as $result) {
+        foreach ($qb->getQuery()->execute() as $result) {
             return $result;
         }
-        return null;
 
+        return null;
     }
 }
