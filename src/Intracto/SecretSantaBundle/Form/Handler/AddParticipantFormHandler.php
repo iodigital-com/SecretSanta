@@ -93,7 +93,6 @@ class AddParticipantFormHandler
             // Flush all changes
             $this->em->flush();
 
-            $this->mailer->sendSecretSantaMailForParticipant($linkParticipant);
             $this->mailer->sendSecretSantaMailForParticipant($newParticipant);
         } else {
             $this->em->persist($newParticipant);
