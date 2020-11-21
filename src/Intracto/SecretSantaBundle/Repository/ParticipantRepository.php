@@ -119,4 +119,30 @@ class ParticipantRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Get a participant of a party that hasn't retrieved their match yet.
+     *
+     * @param int $partyId
+     *
+     * @return Participant|null
+     */
+    public function findOneUnseenByPartyId(int $partyId): ?Participant
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->addSelect('participant')
+            ->from('IntractoSecretSantaBundle:Participant', 'participant')
+            ->join('participant.party', 'party')
+            ->andWhere('participant.viewdate IS NULL')
+            ->andWhere('party.id = :partyId')
+            ->setParameters([
+                'partyId' => $partyId,
+            ]);
+
+        foreach($qb->getQuery()->execute() as $result) {
+            return $result;
+        }
+        return null;
+
+    }
 }
