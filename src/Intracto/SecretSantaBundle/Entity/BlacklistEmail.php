@@ -22,7 +22,7 @@ class BlacklistEmail
         return $this->id;
     }
 
-    public function getEmail(): email
+    public function getEmail(): string
     {
         return $this->email;
     }
