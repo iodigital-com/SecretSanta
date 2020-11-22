@@ -9,7 +9,7 @@ apt-get update
 apt-get install -y yarn
 
 # Install Node.js second as dependency for Yarn
-curl -sL https://deb.nodesource.com/setup_10.x | bash -
+curl -sL https://deb.nodesource.com/setup_12.x | bash -
 apt-get install -y nodejs
 
 # Install module dependencies
