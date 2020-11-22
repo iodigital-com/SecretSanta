@@ -16,8 +16,7 @@
         </many-to-one>
 
         <field name="description" column="description" type="text" nullable="true"/>
-        <field name="image" column="image" type="string" nullable="true"/>
-        <field name="rank" column="rank" type="integer" nullable="true"/>
+        <field name="rank" column="rank_id" type="integer" nullable="true"/>
 
     </entity>
 

@@ -7,7 +7,6 @@ class WishlistItem
     private ?int $id = null;
     private Participant $participant;
     private string $description;
-    private string $image;
     private int $rank;
 
     public function getId(): ?int
@@ -18,7 +17,6 @@ class WishlistItem
     public function setDescription(string $description): self
     {
         $this->description = $description;
-        $this->image = '';
 
         return $this;
     }
@@ -26,18 +24,6 @@ class WishlistItem
     public function getDescription(): string
     {
         return $this->description;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getImage(): string
-    {
-        return $this->image;
     }
 
     public function setRank(int $rank): self

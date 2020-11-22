@@ -15,8 +15,7 @@ class WishlistItemType extends AbstractType
     {
         $builder
             ->add('rank', HiddenType::class)
-            ->add('description', TextType::class)
-            ->add('image');
+            ->add('description', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
