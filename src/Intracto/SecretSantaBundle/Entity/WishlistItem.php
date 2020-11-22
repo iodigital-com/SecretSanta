@@ -6,7 +6,7 @@ class WishlistItem
 {
     private ?int $id = null;
     private Participant $participant;
-    private string $description = '';
+    private ?string $description = '';
     private int $rank = 0;
 
     public function getId(): ?int
@@ -26,7 +26,7 @@ class WishlistItem
 
     public function getDescription(): string
     {
-        return $this->description;
+        return (string) $this->description;
     }
 
     public function setRank(int $rank): self
