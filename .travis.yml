@@ -1,5 +1,5 @@
 sudo: false
-dist: focal
+dist: bionic
 
 language: php
 
