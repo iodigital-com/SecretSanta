@@ -20,7 +20,7 @@ class LanguageContext extends RawMinkContext
     /**
      * @Then /^I should see the site in ([^"]*)$/
      */
-    public function iShouldSeeTheSiteIn(string $arg1): bool
+    public function iShouldSeeTheSiteIn(string $arg1): void
     {
         $selected = trim($this->getSession()->getPage()
                 ->find('css', '.lang__selection select option:selected')
