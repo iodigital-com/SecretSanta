@@ -20,7 +20,10 @@ class ParticipantIsNotBlacklistedValidator extends ConstraintValidator
         $this->hashService = $hashService;
     }
 
-    public function validate(string $email, Constraint $constraint)
+    /**
+     * @param string $email
+     */
+    public function validate($email, Constraint $constraint)
     {
         $email = $this->hashService->hashEmail($email);
         $repository = $this->em->getRepository('IntractoSecretSantaBundle:BlacklistEmail');

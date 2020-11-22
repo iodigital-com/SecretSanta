@@ -8,7 +8,10 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class ParticipantHasValidExcludesValidator extends ConstraintValidator
 {
-    public function validate(Participant $participant, Constraint $constraint)
+    /**
+     * @param Participant $participant
+     */
+    public function validate($participant, Constraint $constraint)
     {
         $party = $participant->getParty();
         //should be at least 2 possible participants remaining to choose from, -1 for itself
