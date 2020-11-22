@@ -4,13 +4,13 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 class WishlistItem
 {
-    private int $id;
+    private ?int $id = null;
     private Participant $participant;
     private string $description;
     private string $image;
     private int $rank;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
