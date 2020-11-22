@@ -23,6 +23,7 @@ DEPENDENCIES=(
     yarn
     mailhog
     rsyslogd
+    geoip
 )
 
 for MODULE in ${DEPENDENCIES[@]}; do

@@ -23,6 +23,12 @@ EOF
 
 mkdir -p \"${BUILD_CACHE_DIR}\" || exit $? # Create build cache directory
 
+# Download and configure geoip db (if you know where to download this in a proper way, please let me know)
+if [ ! -f $BUILD_CACHE_DIR/GeoLite2-City.mmdb ]; then
+    curl https://www.secretsantaorganizer.com/GeoLite2-City.mmdb > GeoLite2-City.mmdb
+    mv GeoLite2-City.mmdb $BUILD_CACHE_DIR
+fi
+
 cp app/config/recaptcha_secrets.json.dist app/config/recaptcha_secrets.json
 
 # Update composer to the latest stable release as the build env version is outdated

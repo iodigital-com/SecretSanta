@@ -115,8 +115,12 @@ class Party
         return $this->wishlistsurl;
     }
 
-    public function setMessage(string $message): Party
+    public function setMessage(?string $message): Party
     {
+        if (null === $message) {
+            $message = '';
+        }
+
         $this->message = $message;
 
         return $this;
@@ -269,8 +273,12 @@ class Party
         return $this->location;
     }
 
-    public function setLocation(string $location)
+    public function setLocation(?string $location)
     {
+        if (null === $location) {
+            $location = '';
+        }
+
         $this->location = $location;
     }
 
