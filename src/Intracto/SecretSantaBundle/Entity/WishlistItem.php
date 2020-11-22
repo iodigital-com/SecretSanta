@@ -18,6 +18,7 @@ class WishlistItem
     public function setDescription(string $description): self
     {
         $this->description = $description;
+        $this->image = '';
 
         return $this;
     }
