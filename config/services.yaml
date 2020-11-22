@@ -1,0 +1,84 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    supported_locales:
+        - en
+        - es
+        - fr
+        - de
+        - nl
+        - pl
+        - pt
+        - ru
+        - zh-Hans
+        - zh-Hant
+        - no
+    locale_names:
+        en: English
+        nl: Nederlands
+        fr: Français
+        pt: Português
+        zh-Hans: 简体中文
+        zh-Hant: 繁體中文
+        pl: Polskie
+        ru: Русский
+        es: Español
+        de: Deutsch
+        no: Norsk
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $geoIpDbPath: '%env(GEO_IP_DB_PATH)%'
+            $reportCachePath: '%kernel.project_dir%/var/report_cache'
+            $recaptchaSecret: '%kernel.project_dir%/config/recaptcha_secrets.json'
+            $salt: '%env(APP_SALT)%'
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Mailer\MailerService:
+        arguments:
+            $mailer: '@swiftmailer.mailer.standard_mailer'
+            $mandrill: '@swiftmailer.mailer.mandrill_mailer'
+            $noreplyEmail: '%env(NOREPLY_EMAIL)%'
+            $contactEmail: '%env(CONTACT_EMAIL)%'
+
+    App\Query\GoogleAnalyticsQuery:
+        arguments:
+            $viewId: '%env(GA_VIEW_ID)%'
+            $clientSecret: '%kernel.project_dir%/config/client_secrets.json'
+
+    App\Form\Extension\DateTypeExtension:
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
+
+    Symfony\Component\Form\FormRendererInterface:
+        alias: 'twig.form.renderer'
+        public: true
+
+    Twig\Extensions\TextExtension: ~
+    Twig\Extensions\IntlExtension: ~

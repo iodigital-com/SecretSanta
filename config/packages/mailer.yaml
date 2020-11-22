@@ -1,0 +1,5 @@
+framework:
+    mailer:
+        transports:
+            mailer: '%env(MAILER_DSN)%'
+            mandrill: '%env(MANDRILL_DSN)%'

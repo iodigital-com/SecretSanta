@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block metadata %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block main %}
+    <div class="box">
+        <h1>{{ 'static-contact.title'|trans }}</h1>
+        <p>{{ 'static-contact.body'|trans }}</p>
+        <div class="santa-content">
+            {{ form_start(form) }}
+            {{ form_row(form._token) }}
+            <div class="form-group {% if form_errors(form.name) %}error{% endif %}">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name, { 'attr': { 'class': 'form-control' }}) }}
+                {{ form_errors(form.name) }}
+            </div>
+            <div class="form-group {% if form_errors(form.email) %}has-error{% endif %}">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email, { 'attr': { 'class': 'form-control' }}) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div class="form-group {% if form_errors(form.message) %}error{% endif %}">
+                {{ form_label(form.message) }}
+                {{ form_widget(form.message, { 'attr': { 'class': 'form-control' }}) }}
+                {{ form_errors(form.message) }}
+            </div>
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-large btn-primary'}}) }}
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block headScripts %}
+    {{ parent() }}
+    <script src='https://www.google.com/recaptcha/api.js?render={{ getRecaptchaSecrets().key }}'></script>
+{% endblock headScripts %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('build/js/recaptcha.js') }}"></script>
+{% endblock %}

@@ -7,30 +7,30 @@ default:
 
     suites:
         secretsanta:
-            paths:    [ "%paths.base%/src/Intracto/Behat/Features" ]
+            paths:    [ "%paths.base%/features" ]
             contexts:
                    - Behat\MinkExtension\Context\MinkContext
-                   - Intracto\Behat\Features\Context\FeatureContext
-                   - Intracto\Behat\Features\Context\EmailContext
-                   - Intracto\Behat\Features\Context\Bootstrap\PartyContext
-                   - Intracto\Behat\Features\Context\Bootstrap\LanguageContext
-                   - Intracto\Behat\Features\Context\Bootstrap\CommonPartyManagementContext
-                   - Intracto\Behat\Features\Context\Bootstrap\ParticipantContext
-                   - Intracto\Behat\Features\Context\Bootstrap\UnstartedPartyManagementContext
-                   - Intracto\Behat\Features\Context\Bootstrap\StartedPartyManagementContext
-                   - Intracto\Behat\Features\Context\Bootstrap\ReportContext
-                   - Intracto\Behat\Features\Context\Bootstrap\ResendPartyInfoContext
-                   - Intracto\Behat\Features\Context\Bootstrap\ReusePartyLinkContext
-                   - Intracto\Behat\Features\Context\Bootstrap\UnsubscribeContext
+                   - App\Tests\Behat\FeatureContext
+                   - App\Tests\Behat\EmailContext
+                   - App\Tests\Behat\Bootstrap\PartyContext
+                   - App\Tests\Behat\Bootstrap\LanguageContext
+                   - App\Tests\Behat\Bootstrap\CommonPartyManagementContext
+                   - App\Tests\Behat\Bootstrap\ParticipantContext
+                   - App\Tests\Behat\Bootstrap\UnstartedPartyManagementContext
+                   - App\Tests\Behat\Bootstrap\StartedPartyManagementContext
+                   - App\Tests\Behat\Bootstrap\ReportContext
+                   - App\Tests\Behat\Bootstrap\ResendPartyInfoContext
+                   - App\Tests\Behat\Bootstrap\ReusePartyLinkContext
+                   - App\Tests\Behat\Bootstrap\UnsubscribeContext
 
     extensions:
         Behat\MinkExtension:
-            base_url: 'http://dev.secretsantaorganizer.com/app_test.php/'
+            base_url: 'https://127.0.0.1:8000'
             default_session: symfony
             javascript_session: chrome
             sessions:
                 symfony:
-                    symfony2: ~
+                    symfony: ~
                 chrome:
                     selenium2:
                         browser: chrome
@@ -43,15 +43,21 @@ default:
                                     - 'start-fullscreen'
                                     - 'start-maximized'
                                     - 'no-sandbox'
+                                    - 'headless'
+                                    - 'disable-gpu'
+                                    - 'ignore-certificate-errors'
+                                    - 'window-size=1920,1080'
                 firefox:
                     selenium2:
                         browser: firefox
             show_auto: false
 
-        Behat\Symfony2Extension:
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
             kernel:
-                bootstrap: vendor/autoload.php
-                env: test
+                path: src/Kernel.php
+                class: App\Kernel
+                environment: test
                 debug: false
 
         Lakion\Behat\MinkDebugExtension:

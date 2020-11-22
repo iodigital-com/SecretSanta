@@ -1,32 +1,46 @@
 {
     "name": "intracto/secretsanta",
-    "license": "MIT",
+    "description": "The number one online gift exchange organizer.",
     "type": "project",
-    "description": "Secret santa is the #1 online gift exchange organizer.",
-    "autoload": {
-        "psr-4": {
-            "Intracto\\": "src/Intracto/"
-        },
-        "classmap": ["app/AppKernel.php", "app/AppCache.php"]
-    },
+    "license": "proprietary",
     "require": {
-        "php": "^7.2",
-        "doctrine/doctrine-bundle": "^1.6",
-        "doctrine/orm": "^2.5",
+        "php": "^7.4",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "composer/package-versions-deprecated": "1.11.99.*",
+        "doctrine/doctrine-bundle": "^2.2",
+        "doctrine/orm": "^2.7",
         "geoip2/geoip2": "^2.6",
-        "google/apiclient": "^1.1",
+        "google/apiclient": "^2.6",
         "google/recaptcha": "^1.2",
-        "incenteev/composer-parameter-handler": "~2.0",
-        "jms/i18n-routing-bundle": "^2.0",
-        "sensio/distribution-bundle": "^5.0",
-        "sensio/framework-extra-bundle": "^3.0.2",
-        "sensio/generator-bundle": "^3.0",
-        "monolog/monolog": "^1.0",
+        "jms/i18n-routing-bundle": "^3.0",
+        "phpdocumentor/reflection-docblock": "^5.2",
+        "sensio/framework-extra-bundle": "^5.1",
+        "symfony/asset": "4.4.*",
+        "symfony/console": "4.4.*",
+        "symfony/dotenv": "4.4.*",
+        "symfony/expression-language": "4.4.*",
+        "symfony/flex": "^1.3.1",
+        "symfony/form": "4.4.*",
+        "symfony/framework-bundle": "4.4.*",
+        "symfony/http-client": "4.4.*",
+        "symfony/intl": "4.4.*",
+        "symfony/mailer": "4.4.*",
         "symfony/monolog-bundle": "^3.1",
-        "symfony/swiftmailer-bundle": "^3.0",
-        "symfony/symfony": "^3.4",
-        "symfony/web-server-bundle": "^3.3",
-        "twig/extensions": "^1.3"
+        "symfony/process": "4.4.*",
+        "symfony/property-access": "4.4.*",
+        "symfony/property-info": "4.4.*",
+        "symfony/security-bundle": "4.4.*",
+        "symfony/serializer": "4.4.*",
+        "symfony/swiftmailer-bundle": "^3.5",
+        "symfony/translation": "4.4.*",
+        "symfony/twig-bundle": "^4.4",
+        "symfony/validator": "4.4.*",
+        "symfony/web-link": "4.4.*",
+        "symfony/yaml": "4.4.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.1",
+        "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
         "behat/behat": "^3.2",
@@ -34,49 +48,78 @@
         "behat/mink-browserkit-driver": "^1.3",
         "behat/mink-extension": "^2.2",
         "behat/mink-selenium2-driver": "^1.3",
-        "behat/symfony2-extension": "^2.1",
-        "doctrine/data-fixtures": "^1.2",
-        "doctrine/doctrine-fixtures-bundle": "^2.3",
+        "doctrine/data-fixtures": "^1.4",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "friends-of-behat/symfony-extension": "^2.0",
         "lakion/mink-debug-extension": "^1.2",
         "phpunit/phpunit": "^7",
         "roave/security-advisories": "dev-master",
         "se/selenium-server-standalone": "3.4.*",
+        "symfony/browser-kit": "^4.4",
+        "symfony/css-selector": "^4.4",
+        "symfony/debug-bundle": "^4.4",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^5.1",
+        "symfony/stopwatch": "^4.4",
+        "symfony/var-dumper": "^4.4",
+        "symfony/web-profiler-bundle": "^4.4",
         "webmozart/assert": "^1.1"
     },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\Behat\\": "tests/Behat"
+        }
+    },
+    "replace": {
+        "paragonie/random_compat": "2.*",
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php56": "*"
+    },
     "scripts": {
-        "travis-build": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
         "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "@auto-scripts"
         ],
         "deploy": "ssh secretsanta@secretsantaorganizer.com 'bash -s' < deploy.sh",
         "deploy-debug": "ssh secretsanta@secretsantaorganizer.com 'export DBG=1; bash -s' < deploy.sh",
         "db-backup": "vagrant ssh -c 'mysqldump -uroot -pvagrant secretsanta | gzip > /vagrant/dumps/database.sql.gz'",
-        "phpunit": "phpunit"
+        "phpunit": "phpunit",
+        "behat": [
+            "bin/console doctrine:database:create --if-not-exists --env=test",
+            "bin/console doctrine:schema:update --force --env=test",
+            "symfony server:ca:install --no-interaction",
+            "APP_ENV=test symfony server:start -d --no-interaction",
+            "vendor/bin/behat",
+            "symfony server:stop"
+        ]
     },
-    "config": {
-        "sort-packages": true
+    "conflict": {
+        "symfony/symfony": "*"
     },
-    "minimum-stability": "stable",
     "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web",
-        "symfony-var-dir": "var",
-        "symfony-bin-dir": "bin",
-        "symfony-tests-dir": "tests",
-        "symfony-assets-install": "hard",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
+        "symfony": {
+            "allow-contrib": false,
+            "require": "4.4.*"
         }
     }
 }

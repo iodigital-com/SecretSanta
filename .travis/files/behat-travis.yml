@@ -3,14 +3,14 @@ imports: ["behat.yml.dist"]
 default:
     extensions:
         Behat\MinkExtension:
-            base_url: 'http://localhost:8080/app_test_travis.php/'
+            base_url: 'https://127.0.0.1:8000'
 
         Lakion\Behat\MinkDebugExtension:
             directory: .travis/build
             clean_start: false
             screenshot: true
 
-        Behat\Symfony2Extension:
+        FriendsOfBehat\SymfonyExtension:
             kernel:
-                env: test_travis
+                environment: test
                 debug: false

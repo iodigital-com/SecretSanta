@@ -1,0 +1,24 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+    csrf_protection: true
+    http_method_override: true
+
+    translator: { fallback: "%locale%" }
+    default_locale:  "%locale%"
+
+    # Enables session support. Note that the session will ONLY be started if you read or write from it.
+    # Remove or comment this section to explicitly disable session support.
+    session:
+        handler_id: null
+        name: secretsanta
+        cookie_secure: auto
+        cookie_httponly: true
+        cookie_samesite: lax
+
+    assets:
+        # feature is supported in Symfony 3.3 and higher
+        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+
+    php_errors:
+        log: true
