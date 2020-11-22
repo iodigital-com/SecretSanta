@@ -110,10 +110,6 @@ class ParticipantRepository extends ServiceEntityRepository
 
     /**
      * Get a participant of a party that hasn't retrieved their match yet.
-     *
-     * @param int $partyId
-     *
-     * @return Participant|null
      */
     public function findOneUnseenByPartyId(int $partyId): ?Participant
     {
