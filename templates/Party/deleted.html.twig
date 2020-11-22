@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+{% block main %}
+<div class="box">
+    <h1>{{ 'party-deleted.title'|trans }}</h1>
+    {{ 'party-deleted.body'|trans|raw }}
+    <div>
+        <a class="btn btn-primary" href="{{ path('homepage') }}#mysanta">{{ 'party-deleted.create_new_list'|trans }}</a>
+    </div>
+</div>
+{% endblock %}

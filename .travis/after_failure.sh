@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 vendor/bin/upload-textfiles "${TRAVIS_BUILD_DIR}/*.log"
-vendor/bin/upload-textfiles "app/logs/test_travis.log"
+vendor/bin/upload-textfiles "var/log/test.log"
 
 echo "Uploading behat failed step screenshots..."
 

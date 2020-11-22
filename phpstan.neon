@@ -8,5 +8,5 @@ parameters:
         - '#Symfony\\Component\\HttpFoundation\\Session\\Session\) does not accept Symfony\\Component\\HttpFoundation\\Session\\SessionInterface#'
         - '#Routing\\Router\) does not accept Symfony\\Component\\Routing\\RouterInterface#'
     excludes_analyse:
-        - %currentWorkingDirectory%/src/Intracto/Behat/Features/Context/*
+        - %currentWorkingDirectory%/src/Features/Context/*
 

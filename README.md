@@ -31,7 +31,7 @@ composer.phar install
 yarn
 yarn build
 
-cat << EOF >app/config/recaptcha_secrets.json
+cat << EOF >config/recaptcha_secrets.json
 {
     "key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "secret_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -41,9 +41,6 @@ cat << EOF >app/config/recaptcha_secrets.json
 EOF
 ```
 
-Download the GeoIP DB at (https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz)[https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz]
-and put this file in ```/usr/local/share/GeoIP/GeoLite2-City.mmdb```.
-
 Add these records to your own ```/etc/hosts``` file:
 
 ```
@@ -52,7 +49,7 @@ Add these records to your own ```/etc/hosts``` file:
 192.168.33.50 phpmyadmin.dev.secretsantaorganizer.com
 ```
 
-Browse to http://dev.secretsantaorganizer.com/app_dev.php to see the project homepage.
+Browse to http://dev.secretsantaorganizer.com to see the project homepage.
 
 ## Extra info
 
