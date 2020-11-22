@@ -14,8 +14,11 @@ class WishlistItem
         return $this->id;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
+        if (null === $description) {
+            $description = '';
+        }
         $this->description = $description;
 
         return $this;
