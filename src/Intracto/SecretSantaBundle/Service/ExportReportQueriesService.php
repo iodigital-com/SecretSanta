@@ -4,21 +4,13 @@ namespace Intracto\SecretSantaBundle\Service;
 
 class ExportReportQueriesService
 {
-    /** @var string */
-    private $reportCachePath;
+    private string $reportCachePath;
 
-    /**
-     * @param string $reportCachePath
-     */
     public function __construct(string $reportCachePath)
     {
         $this->reportCachePath = $reportCachePath;
     }
 
-    /**
-     * @param array  $data
-     * @param string $year
-     */
     public function export(array $data, string $year): void
     {
         $filename = $this->getExportLocation($year).'/report.json';
@@ -34,8 +26,6 @@ class ExportReportQueriesService
     }
 
     /**
-     * @param string $year
-     *
      * @return mixed
      */
     public function getReportQuery(string $year)
@@ -49,11 +39,6 @@ class ExportReportQueriesService
         return $read;
     }
 
-    /**
-     * @param string $directory
-     *
-     * @return string
-     */
     private function getExportLocation(string $directory): string
     {
         return $this->reportCachePath.'/'.$directory;

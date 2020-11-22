@@ -4,13 +4,9 @@ namespace Intracto\SecretSantaBundle\Query;
 
 class Season
 {
-    private $start;
+    private \DateTime $start;
+    private \DateTime $end;
 
-    private $end;
-
-    /**
-     * @param int|null $year
-     */
     public function __construct(?int $year = null)
     {
         $this->start = \DateTime::createFromFormat('Y-m-d', '2006-04-01');
@@ -22,18 +18,12 @@ class Season
         }
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getStart()
+    public function getStart(): \DateTime
     {
         return $this->start;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getEnd()
+    public function getEnd(): \DateTime
     {
         return $this->end;
     }

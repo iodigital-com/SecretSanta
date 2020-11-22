@@ -6,28 +6,16 @@ use Doctrine\DBAL\Driver\Connection;
 
 class WishlistReportQuery
 {
-    /** @var Connection */
-    private $dbal;
+    private Connection $dbal;
+    private ParticipantReportQuery $participantReportQuery;
 
-    /** @var ParticipantReportQuery */
-    private $participantReportQuery;
-
-    /**
-     * @param Connection             $dbal
-     * @param ParticipantReportQuery $participantReportQuery
-     */
     public function __construct(Connection $dbal, ParticipantReportQuery $participantReportQuery)
     {
         $this->dbal = $dbal;
         $this->participantReportQuery = $participantReportQuery;
     }
 
-    /**
-     * @param Season $season
-     *
-     * @return float
-     */
-    public function calculateCompletedWishlists(Season $season)
+    public function calculateCompletedWishlists(Season $season): float
     {
         $wishlistCount = $this->countWishlists($season);
         $participantCount = $this->participantReportQuery->countParticipants($season);
@@ -40,8 +28,6 @@ class WishlistReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     private function countWishlists(Season $season)
@@ -59,12 +45,7 @@ class WishlistReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @param \DateTime $date
-     *
-     * @return float
-     */
-    public function calculateCompletedWishlistsUntilDate(\DateTime $date)
+    public function calculateCompletedWishlistsUntilDate(\DateTime $date): float
     {
         $totalWishlists = $this->countAllWishlistsUntilDate($date);
         $totalParticipants = $this->participantReportQuery->countAllParticipantsUntilDate($date);
@@ -77,8 +58,6 @@ class WishlistReportQuery
     }
 
     /**
-     * @param \DateTime $date
-     *
      * @return mixed
      */
     private function countAllWishlistsUntilDate(\DateTime $date)
@@ -94,13 +73,7 @@ class WishlistReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @param Season $season1
-     * @param Season $season2
-     *
-     * @return float
-     */
-    public function calculateCompletedWishlistDifferenceBetweenSeasons(Season $season1, Season $season2)
+    public function calculateCompletedWishlistDifferenceBetweenSeasons(Season $season1, Season $season2): float
     {
         $completedWishlistsSeason1 = $this->calculateCompletedWishlists($season1);
 

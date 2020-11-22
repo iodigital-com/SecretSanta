@@ -5,17 +5,12 @@ namespace Intracto\Behat\Features\Context\Bootstrap;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Webmozart\Assert\Assert;
 
-/**
- * Class LanguageContext.
- */
 class LanguageContext extends RawMinkContext
 {
     /**
      * @When /^I click on language selector and I choose ([^"]*)$/
-     *
-     * @param string $arg1
      */
-    public function iClickOnLanguageSelectorAndIChooseLanguage(string $arg1)
+    public function iClickOnLanguageSelectorAndIChooseLanguage(string $arg1): void
     {
         $this->getSession()->getPage()
             ->find('css', '.lang__selection select')
@@ -24,12 +19,8 @@ class LanguageContext extends RawMinkContext
 
     /**
      * @Then /^I should see the site in ([^"]*)$/
-     *
-     * @param string $arg1
-     *
-     * @return bool
      */
-    public function iShouldSeeTheSiteIn(string $arg1)
+    public function iShouldSeeTheSiteIn(string $arg1): bool
     {
         $selected = trim($this->getSession()->getPage()
                 ->find('css', '.lang__selection select option:selected')

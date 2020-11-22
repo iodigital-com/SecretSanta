@@ -12,11 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SendWishlistUpdatedCommand extends Command
 {
-    private $em;
-
-    private $participantMailQuery;
-
-    private $mailerService;
+    private EntityManagerInterface $em;
+    private ParticipantMailQuery $participantMailQuery;
+    private MailerService $mailerService;
 
     public function __construct(
         EntityManagerInterface $em,
@@ -31,7 +29,7 @@ class SendWishlistUpdatedCommand extends Command
     }
 
     /**
-     * Configure the command options.
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -41,12 +39,7 @@ class SendWishlistUpdatedCommand extends Command
     }
 
     /**
-     * Execute the command.
-     *
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
-     * @return int|null
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -71,5 +64,7 @@ class SendWishlistUpdatedCommand extends Command
         } finally {
             $this->em->flush();
         }
+
+        return 0;
     }
 }

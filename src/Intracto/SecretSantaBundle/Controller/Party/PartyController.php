@@ -82,9 +82,6 @@ class PartyController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @param Party   $party
-     *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     private function handlePartyCreation(Request $request, Party $party, PartyFormHandler $handler)

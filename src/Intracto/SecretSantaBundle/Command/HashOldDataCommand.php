@@ -13,14 +13,9 @@ use Intracto\SecretSantaBundle\Repository\ParticipantRepository;
 
 class HashOldDataCommand extends Command
 {
-    /** @var ParticipantRepository */
-    private $participantRepository;
-
-    /** @var EntityManagerInterface */
-    private $em;
-
-    /** @var HashService $hashService */
-    private $hashService;
+    private ParticipantRepository $participantRepository;
+    private EntityManagerInterface $em;
+    private HashService $hashService;
 
     public function __construct(
         ParticipantRepository $participantRepository,
@@ -40,6 +35,9 @@ class HashOldDataCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -47,6 +45,9 @@ class HashOldDataCommand extends Command
             ->setDescription('Hash (old) participants.');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $blackListRepository = $this->em->getRepository(BlacklistEmail::class);
@@ -106,11 +107,10 @@ class HashOldDataCommand extends Command
         }
 
         $this->em->flush();
+
+        return 0;
     }
 
-    /**
-     * @param Participant $participant
-     */
     protected function hashParticipant(Participant $participant): void
     {
         if ($participant->isHashed()) {

@@ -9,11 +9,8 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 
 class MailStatusExtension extends AbstractExtension
 {
-    private $translator;
+    private TranslatorInterface $translator;
 
-    /**
-     * @param TranslatorInterface $translator
-     */
     public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
@@ -26,7 +23,7 @@ class MailStatusExtension extends AbstractExtension
         ];
     }
 
-    public function mailstatusFilter(Participant $participant)
+    public function mailstatusFilter(Participant $participant): string
     {
         if ($participant->getParty()->getCreated()) {
             switch (true) {

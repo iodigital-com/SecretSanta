@@ -14,26 +14,10 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class UnsubscribeFormHandler
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
+    private Session $session;
+    private UnsubscribeService $unsubscribeService;
 
-    /**
-     * @var Session
-     */
-    private $session;
-
-    /**
-     * @var UnsubscribeService
-     */
-    private $unsubscribeService;
-
-    /**
-     * @param TranslatorInterface $translator
-     * @param Session             $session
-     * @param UnsubscribeService  $unsubscribeService
-     */
     public function __construct(TranslatorInterface $translator, SessionInterface $session, UnsubscribeService $unsubscribeService)
     {
         $this->translator = $translator;
@@ -41,13 +25,6 @@ class UnsubscribeFormHandler
         $this->unsubscribeService = $unsubscribeService;
     }
 
-    /**
-     * @param FormInterface $form
-     * @param Request       $request
-     * @param Participant   $participant
-     *
-     * @return bool
-     */
     public function handle(FormInterface $form, Request $request, Participant $participant): bool
     {
         if (!$request->isMethod('POST')) {

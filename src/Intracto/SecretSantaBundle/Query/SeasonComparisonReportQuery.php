@@ -4,20 +4,10 @@ namespace Intracto\SecretSantaBundle\Query;
 
 class SeasonComparisonReportQuery
 {
-    /** @var PartyReportQuery */
-    private $partyReportQuery;
+    private PartyReportQuery $partyReportQuery;
+    private ParticipantReportQuery $participantReportQuery;
+    private WishlistReportQuery $wishlistReportQuery;
 
-    /** @var ParticipantReportQuery */
-    private $participantReportQuery;
-
-    /** @var WishlistReportQuery */
-    private $wishlistReportQuery;
-
-    /**
-     * @param PartyReportQuery       $partyReportQuery
-     * @param ParticipantReportQuery $participantReportQuery
-     * @param WishlistReportQuery    $wishlistReportQuery
-     */
     public function __construct(
         PartyReportQuery $partyReportQuery,
         ParticipantReportQuery $participantReportQuery,
@@ -28,12 +18,7 @@ class SeasonComparisonReportQuery
         $this->wishlistReportQuery = $wishlistReportQuery;
     }
 
-    /**
-     * @param int $year
-     *
-     * @return array
-     */
-    public function getComparison(int $year)
+    public function getComparison(int $year): array
     {
         $season1 = new Season($year);
         $season2 = new Season($year - 1);

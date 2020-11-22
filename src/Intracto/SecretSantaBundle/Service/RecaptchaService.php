@@ -9,19 +9,11 @@ class RecaptchaService
     /** @var \stdClass */
     private $recaptchaSecret;
 
-    /**
-     * @param string $recaptchaSecret
-     */
     public function __construct(string $recaptchaSecret)
     {
         $this->recaptchaSecret = json_decode(file_get_contents($recaptchaSecret));
     }
 
-    /**
-     * @param string $token
-     *
-     * @return array
-     */
     public function validateRecaptchaToken(string $token): array
     {
         $recaptcha = new ReCaptcha($this->recaptchaSecret->secret_key);

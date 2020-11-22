@@ -7,17 +7,13 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 
 class WishlistMailQuery
 {
-    /** @var Connection */
-    private $dbal;
+    private Connection $dbal;
 
     public function __construct(Connection $dbal)
     {
         $this->dbal = $dbal;
     }
 
-    /**
-     * @param Participant $participant
-     */
     public function countWishlistItemsOfParticipant(Participant $participant)
     {
         $query = $this->dbal->createQueryBuilder()

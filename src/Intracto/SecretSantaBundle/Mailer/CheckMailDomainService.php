@@ -17,11 +17,6 @@ class CheckMailDomainService
         'mail.protection.outlook.com',
     ];
 
-    /**
-     * @param string $emailAddress
-     *
-     * @return bool
-     */
     public function isBlacklistedAddress(string $emailAddress): bool
     {
         if ($this->isBlacklistedDomain($emailAddress) || $this->isBlacklistedMxRecord($emailAddress)) {
@@ -31,11 +26,6 @@ class CheckMailDomainService
         return false;
     }
 
-    /**
-     * @param string $emailAddress
-     *
-     * @return bool
-     */
     private function isBlacklistedMxRecord(string $emailAddress): bool
     {
         $blacklisted = false;
@@ -57,11 +47,6 @@ class CheckMailDomainService
         return $blacklisted;
     }
 
-    /**
-     * @param string $emailAddress
-     *
-     * @return bool
-     */
     private function isBlacklistedDomain(string $emailAddress): bool
     {
         foreach ($this->blackListedDomains as $blackListedDomain) {

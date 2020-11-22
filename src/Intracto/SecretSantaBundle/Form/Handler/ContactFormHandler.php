@@ -15,30 +15,11 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class ContactFormHandler
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
+    private Session $session;
+    private MailerService $mailer;
+    private RecaptchaService $recaptcha;
 
-    /**
-     * @var Session
-     */
-    private $session;
-
-    /**
-     * @var MailerService
-     */
-    private $mailer;
-
-    /** @var RecaptchaService */
-    private $recaptcha;
-
-    /**
-     * @param TranslatorInterface $translator
-     * @param SessionInterface    $session
-     * @param MailerService       $mailer
-     * @param RecaptchaService    $recaptchaService
-     */
     public function __construct(TranslatorInterface $translator, SessionInterface $session, MailerService $mailer, RecaptchaService $recaptchaService)
     {
         $this->translator = $translator;
@@ -47,12 +28,6 @@ class ContactFormHandler
         $this->recaptcha = $recaptchaService;
     }
 
-    /**
-     * @param FormInterface $form
-     * @param Request       $request
-     *
-     * @return bool
-     */
     public function handle(FormInterface $form, Request $request): bool
     {
         if (!$request->isMethod('POST')) {

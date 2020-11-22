@@ -10,17 +10,12 @@ use Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode;
 
 class FormExtension extends AbstractExtension
 {
-    /**
+    /*
      * This property is public so that it can be accessed directly from compiled
      * templates without having to call a getter, which slightly decreases performance.
-     *
-     * @var \Symfony\Component\Form\FormRendererInterface
      */
-    public $renderer;
+    public FormRendererInterface $renderer;
 
-    /**
-     * @param FormRendererInterface $renderer
-     */
     public function __construct(FormRendererInterface $renderer)
     {
         $this->renderer = $renderer;
@@ -45,13 +40,8 @@ class FormExtension extends AbstractExtension
 
     /**
      * Render Function Form Javascript.
-     *
-     * @param FormView $view
-     * @param bool     $prototype
-     *
-     * @return string
      */
-    public function renderJavascript(FormView $view, $prototype = false)
+    public function renderJavascript(FormView $view, $prototype = false): string
     {
         $block = $prototype ? 'javascript_prototype' : 'javascript';
 

@@ -14,8 +14,6 @@ class ParticipantRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param \DateTime $startDate
-     *
      * @return Participant[]
      */
     public function findAfter(\DateTime $startDate)
@@ -34,11 +32,9 @@ class ParticipantRepository extends ServiceEntityRepository
     }
 
     /**
-     * @Param String $email
-     *
      * @Return Participant[]
      */
-    public function findAllByEmail($email)
+    public function findAllByEmail(string $email)
     {
         $query = $this->_em->createQuery('
             SELECT participant
@@ -53,11 +49,9 @@ class ParticipantRepository extends ServiceEntityRepository
     /**
      * Return all the participants, which are not admin, the event is in the future or past week, and participant is already assigned to a participant.
      *
-     * @Param String $email
-     *
      * @Return Participant[]
      */
-    public function findAllParticipantsForForgotEmail($email)
+    public function findAllParticipantsForForgotEmail(string $email)
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->addSelect('participant')
@@ -78,10 +72,6 @@ class ParticipantRepository extends ServiceEntityRepository
 
     /**
      * Get the admin of a party by party Id.
-     *
-     * @param int $partyId
-     *
-     * @return Participant
      */
     public function findAdminByPartyId(int $partyId): Participant
     {
@@ -99,8 +89,6 @@ class ParticipantRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param int $limit
-     *
      * @return Participant[]
      */
     public function findAllParticipantsWithoutGeoInfo(int $limit = 0): array

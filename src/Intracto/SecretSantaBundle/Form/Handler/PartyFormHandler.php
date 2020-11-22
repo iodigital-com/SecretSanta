@@ -12,32 +12,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PartyFormHandler
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
+    private MailerService $mailer;
 
-    /**
-     * @var MailerService
-     */
-    private $mailer;
-
-    /**
-     * @param EntityManagerInterface $em
-     * @param MailerService          $mailer
-     */
     public function __construct(EntityManagerInterface $em, MailerService $mailer)
     {
         $this->em = $em;
         $this->mailer = $mailer;
     }
 
-    /**
-     * @param FormInterface $form
-     * @param Request       $request
-     *
-     * @return bool
-     */
     public function handle(FormInterface $form, Request $request): bool
     {
         /** @var Party $party */

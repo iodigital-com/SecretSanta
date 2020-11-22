@@ -6,21 +6,14 @@ use Doctrine\DBAL\Driver\Connection;
 
 class FeaturedYearsQuery
 {
-    /** @var Connection */
-    private $dbal;
+    private Connection $dbal;
 
-    /**
-     * @param Connection $dbal
-     */
     public function __construct(Connection $dbal)
     {
         $this->dbal = $dbal;
     }
 
-    /**
-     * @return array
-     */
-    public function getFeaturedYears()
+    public function getFeaturedYears(): array
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('distinct(year(p.sent_date)) AS featured_year')

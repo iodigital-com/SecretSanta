@@ -6,23 +6,14 @@ use Doctrine\DBAL\Driver\Connection;
 
 class IpReportQuery
 {
-    /** @var Connection */
-    private $dbal;
+    private Connection $dbal;
 
-    /**
-     * @param Connection $dbal
-     */
     public function __construct(Connection $dbal)
     {
         $this->dbal = $dbal;
     }
 
-    /**
-     * @param Season $season
-     *
-     * @return array
-     */
-    public function calculateIpUsage(Season $season)
+    public function calculateIpUsage(Season $season): array
     {
         $ipv4 = $this->queryIpv4Records($season);
         $ipv6 = $this->queryIpv6Records($season);
@@ -37,12 +28,7 @@ class IpReportQuery
         ];
     }
 
-    /**
-     * @param Season $season
-     *
-     * @return mixed
-     */
-    private function queryIpv4Records(Season $season)
+    private function queryIpv4Records(Season $season): array
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(e.ipv4) AS ipv4Count')
@@ -58,8 +44,6 @@ class IpReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     private function queryIpv6Records(Season $season)

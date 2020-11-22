@@ -6,28 +6,15 @@ use Doctrine\ORM\EntityManagerInterface;
 use Intracto\SecretSantaBundle\Entity\BlacklistEmail;
 use Intracto\SecretSantaBundle\Entity\Participant;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Routing\Router;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Routing\RouterInterface;
 
 class UnsubscribeService
 {
-    /** @var EntityManager */
-    public $em;
+    public EntityManager $em;
+    public RouterInterface $router;
+    private HashService $hashService;
 
-    /** @var Router */
-    public $router;
-
-    /** @var HashService $hashService */
-    private $hashService;
-
-    /**
-     * UnsubscribeService constructor.
-     *
-     * @param EntityManagerInterface $em
-     * @param RouterInterface        $router
-     * @param HashService            $hashService
-     */
     public function __construct(
         EntityManagerInterface $em,
         RouterInterface $router,
@@ -38,10 +25,6 @@ class UnsubscribeService
         $this->hashService = $hashService;
     }
 
-    /**
-     * @param Participant $participant
-     * @param bool        $fromAllParties
-     */
     public function unsubscribe(Participant $participant, bool $fromAllParties)
     {
         if ($fromAllParties) {
@@ -59,21 +42,13 @@ class UnsubscribeService
     }
 
     /**
-     * @param Participant $participant
-     *
-     * @return string
-     *
-     * Creates a link that can be used in the List-Unsubscribe header
+     * Creates a link that can be used in the List-Unsubscribe header.
      */
-    public function getUnsubscribeLink(Participant $participant)
+    public function getUnsubscribeLink(Participant $participant): string
     {
         return '<'.$this->router->generate('unsubscribe_confirm', ['url' => $participant->getUrl()], UrlGeneratorInterface::ABSOLUTE_URL).'>';
     }
 
-    /**
-     * @param Participant $participant
-     * @param string      $ip
-     */
     public function blacklist(Participant $participant, string $ip)
     {
         // Unsubscribe participant from emails, with flag true for all parties.

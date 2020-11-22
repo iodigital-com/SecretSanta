@@ -99,7 +99,7 @@ class Participant
     /** @var \DateTime */
     private $invitationSentDate;
 
-    /** @var bool $isHashed */
+    /** @var bool */
     private $isHashed = false;
 
     public function __construct()
@@ -522,10 +522,7 @@ class Participant
         return $this->wishlistUpdatedTime;
     }
 
-    /**
-     * @param \DateTime $wishlistUpdatedTime
-     */
-    public function setWishlistUpdatedTime($wishlistUpdatedTime)
+    public function setWishlistUpdatedTime(\DateTime $wishlistUpdatedTime)
     {
         $this->wishlistUpdatedTime = $wishlistUpdatedTime;
     }
@@ -577,33 +574,21 @@ class Participant
         $this->emailDidBounce = $emailDidBounce;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getInvitationSentDate()
+    public function getInvitationSentDate(): \DateTime
     {
         return $this->invitationSentDate;
     }
 
-    /**
-     * @param \DateTime $invitationSentDate
-     */
-    public function setInvitationSentDate($invitationSentDate)
+    public function setInvitationSentDate(\DateTime $invitationSentDate)
     {
         $this->invitationSentDate = $invitationSentDate;
     }
 
-    /**
-     * @return bool
-     */
     public function isHashed(): bool
     {
         return $this->isHashed;
     }
 
-    /**
-     * @param bool $isHashed
-     */
     public function setIsHashed(bool $isHashed): void
     {
         $this->isHashed = $isHashed;

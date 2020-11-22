@@ -4,24 +4,11 @@ namespace Intracto\SecretSantaBundle\Query;
 
 class ReportQuery
 {
-    /** @var PartyReportQuery */
-    private $partyReportQuery;
+    private PartyReportQuery $partyReportQuery;
+    private ParticipantReportQuery $participantReportQuery;
+    private IpReportQuery $ipReportQuery;
+    private WishlistReportQuery $wishlistReportQuery;
 
-    /** @var ParticipantReportQuery */
-    private $participantReportQuery;
-
-    /** @var IpReportQuery */
-    private $ipReportQuery;
-
-    /** @var WishlistReportQuery */
-    private $wishlistReportQuery;
-
-    /**
-     * @param PartyReportQuery       $partyReportQuery
-     * @param ParticipantReportQuery $participantReportQuery
-     * @param IpReportQuery          $ipReportQuery
-     * @param WishlistReportQuery    $wishlistReportQuery
-     */
     public function __construct(
         PartyReportQuery $partyReportQuery,
         ParticipantReportQuery $participantReportQuery,
@@ -34,12 +21,7 @@ class ReportQuery
         $this->wishlistReportQuery = $wishlistReportQuery;
     }
 
-    /**
-     * @param int|null $year
-     *
-     * @return array
-     */
-    public function getPartyReport(?int $year = null)
+    public function getPartyReport(?int $year = null): array
     {
         $season = new Season($year);
 

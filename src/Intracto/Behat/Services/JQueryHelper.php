@@ -6,9 +6,6 @@ use Behat\Mink\Session;
 
 abstract class JQueryHelper
 {
-    /**
-     * @param Session $session
-     */
     public static function waitForAsynchronousActionsToFinish(Session $session)
     {
         $session->wait(5000, '0 === jQuery.active');
@@ -17,11 +14,11 @@ abstract class JQueryHelper
     public static function scrollIntoView(Session $session, $elementId)
     {
         $function = <<<JS
-(function(){
-  var elem = document.getElementById("$elementId");
-  elem.scrollIntoView(false);
-})()
-JS;
+            (function(){
+              var elem = document.getElementById("$elementId");
+              elem.scrollIntoView(false);
+            })()
+            JS;
 
         try {
             $session->executeScript($function);

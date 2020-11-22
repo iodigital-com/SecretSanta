@@ -12,8 +12,6 @@ class ParticipantShuffler
     private $matchedExcludes;
 
     /**
-     * @param Party $party
-     *
      * @return array|bool
      */
     public function shuffleParticipants(Party $party)
@@ -26,8 +24,6 @@ class ParticipantShuffler
     }
 
     /**
-     * @param Party $party
-     *
      * @return array|bool
      */
     private function shuffleTillMatch(Party $party)
@@ -50,8 +46,6 @@ class ParticipantShuffler
     /**
      * @param Participant[] $participants
      * @param Participant[] $shuffled
-     *
-     * @return bool
      */
     private function checkValidMatch(array $participants, array $shuffled): bool
     {

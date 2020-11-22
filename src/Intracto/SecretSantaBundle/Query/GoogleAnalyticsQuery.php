@@ -8,7 +8,6 @@ use Google_Service_Analytics;
 class GoogleAnalyticsQuery
 {
     private $viewId;
-
     private $clientSecret;
 
     public function __construct($viewId, $clientSecret)
@@ -18,13 +17,9 @@ class GoogleAnalyticsQuery
     }
 
     /**
-     * @param int|null $year
-     *
-     * @return array
-     *
      * @throws \Google_Exception
      */
-    public function getAnalyticsReport(?int $year = null)
+    public function getAnalyticsReport(?int $year = null): array
     {
         $season = new Season($year);
 
@@ -54,8 +49,6 @@ class GoogleAnalyticsQuery
     }
 
     /**
-     * @param GaParameters $gaParameters
-     *
      * @return mixed
      */
     public function getTopCountries(GaParameters $gaParameters)
@@ -73,8 +66,6 @@ class GoogleAnalyticsQuery
     }
 
     /**
-     * @param GaParameters $gaParameters
-     *
      * @return mixed
      */
     public function getTopLanguages(GaParameters $gaParameters)
@@ -122,8 +113,6 @@ class GoogleAnalyticsQuery
     }
 
     /**
-     * @param GaParameters $gaParameters
-     *
      * @return mixed
      */
     public function getDeviceCategory(GaParameters $gaParameters)
@@ -140,8 +129,6 @@ class GoogleAnalyticsQuery
     }
 
     /**
-     * @param GaParameters $gaParameters
-     *
      * @return mixed
      */
     public function getBrowsers(GaParameters $gaParameters)

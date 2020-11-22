@@ -4,63 +4,35 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 class BlacklistEmail
 {
-    /** @var int */
-    private $id;
+    private int $id;
+    private string $email;
+    private string $ipv4;
+    private string $ipv6;
+    private \DateTime $date;
 
-    /** @var string */
-    private $email;
-
-    /** @var string */
-    private $ipv4;
-
-    /** @var string */
-    private $ipv6;
-
-    /** @var \DateTime */
-    private $date;
-
-    /**
-     * BlacklistEmail constructor.
-     *
-     * @param $hashedEmail
-     * @param string    $ip
-     * @param \DateTime $date
-     */
-    public function __construct($hashedEmail, $ip, \DateTime $date)
+    public function __construct(string $hashedEmail, string $ip, \DateTime $date)
     {
         $this->setIp($ip);
         $this->setEmail($hashedEmail);
         $this->setDate($date);
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmail()
+    public function getEmail(): email
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
 
-    /**
-     * @return string
-     */
-    public function getIp()
+    public function getIp(): string
     {
         if ($this->getIpv4() !== null) {
             return $this->getIpv4();
@@ -69,10 +41,7 @@ class BlacklistEmail
         return $this->getIpv6();
     }
 
-    /**
-     * @param string $ip
-     */
-    private function setIp($ip)
+    private function setIp(string $ip)
     {
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $this->setIpv4($ip);
@@ -81,50 +50,32 @@ class BlacklistEmail
         }
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getDate()
+    public function getDate(): \DateTime
     {
         return $this->date;
     }
 
-    /**
-     * @param \DateTime $date
-     */
-    private function setDate($date)
+    private function setDate(\DateTime $date)
     {
         $this->date = $date;
     }
 
-    /**
-     * @return string
-     */
-    public function getIpv4()
+    public function getIpv4(): string
     {
         return $this->ipv4;
     }
 
-    /**
-     * @param string $ipv4
-     */
-    private function setIpv4($ipv4)
+    private function setIpv4(string $ipv4)
     {
         $this->ipv4 = $ipv4;
     }
 
-    /**
-     * @return string
-     */
-    public function getIpv6()
+    public function getIpv6(): string
     {
         return $this->ipv6;
     }
 
-    /**
-     * @param string $ipv6
-     */
-    private function setIpv6($ipv6)
+    private function setIpv6(string $ipv6)
     {
         $this->ipv6 = $ipv6;
     }

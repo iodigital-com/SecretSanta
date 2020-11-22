@@ -14,17 +14,10 @@ use GeoIp2\Exception\AddressNotFoundException;
 
 class ParticipantService
 {
-    /** @var EntityManager */
-    public $em;
-
-    /** @var ParticipantShuffler */
-    public $participantShuffler;
-
-    /** @var ValidatorInterface */
-    private $validator;
-
-    /** @var string */
-    private $geoIpDbPath;
+    public EntityManager $em;
+    public ParticipantShuffler $participantShuffler;
+    private ValidatorInterface $validator;
+    private string $geoIpDbPath;
 
     public function __construct(
         EntityManagerInterface $em,
@@ -40,12 +33,8 @@ class ParticipantService
 
     /**
      * Shuffles all participants for party and save result to each participant.
-     *
-     * @param Party $party
-     *
-     * @return bool
      */
-    public function shuffleParticipants(Party $party)
+    public function shuffleParticipants(Party $party): bool
     {
         // Validator should already have shuffled it.
         if (!$shuffled = $this->participantShuffler->shuffleParticipants($party)) {
@@ -60,6 +49,8 @@ class ParticipantService
         }
 
         $this->em->flush();
+
+        return true;
     }
 
     public function validateEmail(string $email): bool

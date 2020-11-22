@@ -11,11 +11,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SendParticipantViewReminderCommand extends Command
 {
-    private $em;
-
-    private $participantMailQuery;
-
-    private $mailerService;
+    private EntityManagerInterface $em;
+    private ParticipantMailQuery $participantMailQuery;
+    private MailerService $mailerService;
 
     public function __construct(
         EntityManagerInterface $em,
@@ -30,7 +28,7 @@ class SendParticipantViewReminderCommand extends Command
     }
 
     /**
-     * Configure the command options.
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -40,12 +38,7 @@ class SendParticipantViewReminderCommand extends Command
     }
 
     /**
-     * Execute the command.
-     *
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
-     * @return int|null
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -66,5 +59,7 @@ class SendParticipantViewReminderCommand extends Command
         } finally {
             $this->em->flush();
         }
+
+        return 0;
     }
 }

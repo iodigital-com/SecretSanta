@@ -4,99 +4,59 @@ namespace Intracto\SecretSantaBundle\Entity;
 
 class WishlistItem
 {
-    /** @var int */
-    private $id;
+    private int $id;
+    private Participant $participant;
+    private string $description;
+    private string $image;
+    private int $rank;
 
-    /** @var Participant */
-    private $participant;
-
-    /** @var string */
-    private $description;
-
-    /** @var string */
-    private $image;
-
-    /** @var int */
-    private $rank;
-
-    /** @return int */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @param string $description
-     *
-     * @return WishlistItem
-     */
-    public function setDescription($description)
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $image
-     *
-     * @return WishlistItem
-     */
-    public function setImage($image)
+    public function setImage(string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getImage()
+    public function getImage(): string
     {
         return $this->image;
     }
 
-    /**
-     * @param int $rank
-     *
-     * @return WishlistItem
-     */
-    public function setRank($rank)
+    public function setRank(int $rank): self
     {
         $this->rank = $rank;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getRank()
+    public function getRank(): int
     {
         return $this->rank;
     }
 
-    /**
-     * @return Participant
-     */
-    public function getParticipant()
+    public function getParticipant(): Participant
     {
         return $this->participant;
     }
 
-    /**
-     * @param Participant $participant
-     */
-    public function setParticipant($participant)
+    public function setParticipant(Participant $participant): void
     {
         $this->participant = $participant;
     }

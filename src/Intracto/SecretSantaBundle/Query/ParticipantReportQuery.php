@@ -5,29 +5,15 @@ namespace Intracto\SecretSantaBundle\Query;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 
 class ParticipantReportQuery
 {
-    /** @var Connection */
-    private $dbal;
+    private Connection $dbal;
+    private RouterInterface $router;
+    private PartyReportQuery $partyReportQuery;
+    private FeaturedYearsQuery $featuredYearsQuery;
 
-    /** @var Router */
-    private $router;
-
-    /** @var PartyReportQuery */
-    private $partyReportQuery;
-
-    /** @var FeaturedYearsQuery */
-    private $featuredYearsQuery;
-
-    /**
-     * @param Connection         $dbal
-     * @param Router             $router
-     * @param PartyReportQuery   $partyReportQuery
-     * @param FeaturedYearsQuery $featuredYearsQuery
-     */
     public function __construct(
         Connection $dbal,
         RouterInterface $router,
@@ -41,8 +27,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param \DateTime $date
-     *
      * @return mixed
      */
     public function countConfirmedParticipantsUntilDate(\DateTime $date)
@@ -59,8 +43,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param \DateTime $date
-     *
      * @return mixed
      */
     public function countDistinctParticipantsUntilDate(\DateTime $date)
@@ -76,8 +58,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     public function queryDataForMonthlyParticipantChart(Season $season)
@@ -96,10 +76,7 @@ class ParticipantReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @return array
-     */
-    public function queryDataForYearlyParticipantChart()
+    public function queryDataForYearlyParticipantChart(): array
     {
         $featuredYears = $this->featuredYearsQuery->getFeaturedYears();
         $participantChartData = [];
@@ -131,12 +108,7 @@ class ParticipantReportQuery
         return $participantChartData;
     }
 
-    /**
-     * @param \DateTime $date
-     *
-     * @return array
-     */
-    public function queryDataForParticipantChartUntilDate(\DateTime $date)
+    public function queryDataForParticipantChartUntilDate(\DateTime $date): array
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS totalParticipantCount, p.sent_date AS month')
@@ -158,12 +130,7 @@ class ParticipantReportQuery
         return $totalParticipantChartData;
     }
 
-    /**
-     * @param \DateTime $date
-     *
-     * @return float
-     */
-    public function calculateAverageParticipantsPerPartyUntilDate(\DateTime $date)
+    public function calculateAverageParticipantsPerPartyUntilDate(\DateTime $date): float
     {
         $totalParties = $this->partyReportQuery->countAllPartiesUntilDate($date);
         $totalParticipants = $this->countAllParticipantsUntilDate($date);
@@ -176,8 +143,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param \DateTime $date
-     *
      * @return mixed
      */
     public function countAllParticipantsUntilDate(\DateTime $date)
@@ -193,9 +158,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season1
-     * @param Season $season2
-     *
      * @return mixed
      */
     public function calculateParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
@@ -212,8 +174,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     public function countParticipants(Season $season)
@@ -233,9 +193,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season1
-     * @param Season $season2
-     *
      * @return mixed
      */
     public function calculateConfirmedParticipantsCountDifferenceBetweenSeasons(Season $season1, Season $season2)
@@ -252,8 +209,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     public function countConfirmedParticipants(Season $season)
@@ -272,9 +227,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season1
-     * @param Season $season2
-     *
      * @return mixed
      */
     public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
@@ -291,8 +243,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     public function countDistinctParticipants(Season $season)
@@ -309,13 +259,7 @@ class ParticipantReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @param Season $season1
-     * @param Season $season2
-     *
-     * @return float
-     */
-    public function calculateAverageParticipantsPerPartyBetweenSeasons(Season $season1, Season $season2)
+    public function calculateAverageParticipantsPerPartyBetweenSeasons(Season $season1, Season $season2): float
     {
         $averageSeason1 = $this->calculateAverageParticipantsPerParty($season1);
 
@@ -328,12 +272,7 @@ class ParticipantReportQuery
         return $averageSeason1 - $averageSeason2;
     }
 
-    /**
-     * @param Season $season
-     *
-     * @return float
-     */
-    public function calculateAverageParticipantsPerParty(Season $season)
+    public function calculateAverageParticipantsPerParty(Season $season): float
     {
         $partyCount = $this->partyReportQuery->countParties($season);
         $participantCount = $this->countParticipants($season);
@@ -346,9 +285,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param Season $season
-     * @param bool   $isAdmin
-     *
      * @return iterable
      */
     public function fetchMailsForExport(Season $season, bool $isAdmin)
@@ -392,12 +328,7 @@ class ParticipantReportQuery
         return $result;
     }
 
-    /**
-     * @param string $listUrl
-     *
-     * @return array
-     */
-    public function fetchDataForPartyUpdateMail(string $listUrl)
+    public function fetchDataForPartyUpdateMail(string $listUrl): array
     {
         $party = $this->dbal->createQueryBuilder()
             ->select('p.*, e.name AS adminName')
@@ -436,8 +367,6 @@ class ParticipantReportQuery
     }
 
     /**
-     * @param int $participantId
-     *
      * @return mixed
      */
     public function findBuddyByParticipantId(int $participantId)

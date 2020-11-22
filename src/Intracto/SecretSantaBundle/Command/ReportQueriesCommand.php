@@ -11,20 +11,9 @@ use Intracto\SecretSantaBundle\Service\ReportQueriesService;
 
 class ReportQueriesCommand extends Command
 {
-    /**
-     * @var ReportQueriesService
-     */
-    private $reportQueriesService;
+    private ReportQueriesService $reportQueriesService;
+    private ExportReportQueriesService $exportReportQueriesService;
 
-    /**
-     * @var ExportReportQueriesService
-     */
-    private $exportReportQueriesService;
-
-    /**
-     * @param ReportQueriesService       $reportQueriesService
-     * @param ExportReportQueriesService $exportReportQueriesService
-     */
     public function __construct(ReportQueriesService $reportQueriesService, ExportReportQueriesService $exportReportQueriesService)
     {
         parent::__construct();
@@ -48,10 +37,7 @@ class ReportQueriesCommand extends Command
     }
 
     /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
-     * @return int|null|void
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -64,5 +50,7 @@ class ReportQueriesCommand extends Command
         }
 
         $this->exportReportQueriesService->export($this->reportQueriesService->getReportResults($year), $year);
+
+        return 0;
     }
 }

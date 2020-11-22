@@ -17,31 +17,11 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class AddParticipantFormHandler
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
+    private Session $session;
+    private EntityManager $em;
+    private MailerService $mailer;
 
-    /**
-     * @var Session
-     */
-    private $session;
-
-    /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
-     * @var MailerService
-     */
-    private $mailer;
-
-    /**
-     * @param TranslatorInterface $translator
-     * @param Session             $session
-     * @param EntityManager       $em
-     */
     public function __construct(TranslatorInterface $translator, SessionInterface $session, EntityManagerInterface $em, MailerService $mailerService)
     {
         $this->translator = $translator;

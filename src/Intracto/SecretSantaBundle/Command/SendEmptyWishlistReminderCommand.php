@@ -12,13 +12,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SendEmptyWishlistReminderCommand extends Command
 {
-    private $em;
-
-    private $participantMailQuery;
-
-    private $wishlistMailQuery;
-
-    private $mailerService;
+    private EntityManagerInterface $em;
+    private ParticipantMailQuery $participantMailQuery;
+    private WishlistMailQuery $wishlistMailQuery;
+    private MailerService $mailerService;
 
     public function __construct(
         EntityManagerInterface $em,
@@ -35,7 +32,7 @@ class SendEmptyWishlistReminderCommand extends Command
     }
 
     /**
-     * Configure the command options.
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -45,12 +42,7 @@ class SendEmptyWishlistReminderCommand extends Command
     }
 
     /**
-     * Execute the command.
-     *
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
-     * @return int|null
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -73,5 +65,7 @@ class SendEmptyWishlistReminderCommand extends Command
         } finally {
             $this->em->flush();
         }
+
+        return 0;
     }
 }

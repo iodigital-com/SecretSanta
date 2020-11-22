@@ -7,8 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class EmailAddress
 {
     /**
-     * @var string
-     *
      * @Assert\NotBlank()
      * @Assert\Email(
      *     strict=true,
@@ -16,9 +14,9 @@ class EmailAddress
      *     checkMX = true
      * )
      */
-    private $emailAddress;
+    private string $emailAddress;
 
-    public function __construct($emailAddress)
+    public function __construct(string $emailAddress)
     {
         $this->emailAddress = $emailAddress;
     }

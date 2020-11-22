@@ -6,16 +6,9 @@ use Doctrine\DBAL\Driver\Connection;
 
 class PartyReportQuery
 {
-    /** @var Connection */
-    private $dbal;
+    private Connection $dbal;
+    private FeaturedYearsQuery $featuredYearsQuery;
 
-    /** @var FeaturedYearsQuery */
-    private $featuredYearsQuery;
-
-    /**
-     * @param Connection         $dbal
-     * @param FeaturedYearsQuery $featuredYearsQuery
-     */
     public function __construct(Connection $dbal, FeaturedYearsQuery $featuredYearsQuery)
     {
         $this->dbal = $dbal;
@@ -23,8 +16,6 @@ class PartyReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     public function countParties(Season $season)
@@ -41,8 +32,6 @@ class PartyReportQuery
     }
 
     /**
-     * @param \DateTime $date
-     *
      * @return mixed
      */
     public function countAllPartiesUntilDate(\DateTime $date)
@@ -57,8 +46,6 @@ class PartyReportQuery
     }
 
     /**
-     * @param Season $season
-     *
      * @return mixed
      */
     public function queryDataForMonthlyPartyChart(Season $season)
@@ -76,10 +63,7 @@ class PartyReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @return array
-     */
-    public function queryDataForYearlyPartyChart()
+    public function queryDataForYearlyPartyChart(): array
     {
         $featuredYears = $this->featuredYearsQuery->getFeaturedYears();
         $partyChartData = [];
@@ -111,8 +95,6 @@ class PartyReportQuery
     }
 
     /**
-     * @param \DateTime $date
-     *
      * @return mixed
      */
     public function queryDataForPartyChartUntilDate(\DateTime $date)
@@ -137,9 +119,6 @@ class PartyReportQuery
     }
 
     /**
-     * @param Season $season1
-     * @param Season $season2
-     *
      * @return mixed
      */
     public function calculatePartyCountDifferenceBetweenSeasons(Season $season1, Season $season2)

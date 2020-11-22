@@ -13,26 +13,10 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class ReuseFormHandler
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
+    private Session $session;
+    private MailerService $mailer;
 
-    /**
-     * @var Session
-     */
-    private $session;
-
-    /**
-     * @var MailerService
-     */
-    private $mailer;
-
-    /**
-     * @param TranslatorInterface $translator
-     * @param Session             $session
-     * @param MailerService       $mailer
-     */
     public function __construct(TranslatorInterface $translator, SessionInterface $session, MailerService $mailer)
     {
         $this->translator = $translator;
@@ -40,12 +24,6 @@ class ReuseFormHandler
         $this->mailer = $mailer;
     }
 
-    /**
-     * @param FormInterface $form
-     * @param Request       $request
-     *
-     * @return bool
-     */
     public function handle(FormInterface $form, Request $request): bool
     {
         if (!$request->isMethod('POST')) {

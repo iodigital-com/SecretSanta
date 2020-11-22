@@ -11,11 +11,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class HashBlacklistCommand extends Command
 {
-    /** @var EntityManagerInterface */
-    private $em;
-
-    /** @var HashService $hashService */
-    private $hashService;
+    private EntityManagerInterface $em;
+    private HashService $hashService;
 
     public function __construct(
         EntityManagerInterface $em,
@@ -27,6 +24,9 @@ class HashBlacklistCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -34,6 +34,9 @@ class HashBlacklistCommand extends Command
             ->setDescription('Hash black listed mail addresses.');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $blacklistedMails = $this->em->getRepository(BlacklistEmail::class)->findAll();
@@ -48,5 +51,7 @@ class HashBlacklistCommand extends Command
             $blacklistedMail->setEmail($hashedEmail);
             $this->em->flush();
         }
+
+        return 0;
     }
 }

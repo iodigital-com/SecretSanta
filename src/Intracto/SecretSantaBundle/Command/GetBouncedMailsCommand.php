@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GetBouncedMailsCommand extends Command
 {
-    private $bounceQuery;
+    private BounceQuery $bounceQuery;
 
     public function __construct(BounceQuery $bounceQuery)
     {
@@ -18,6 +18,9 @@ class GetBouncedMailsCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -25,6 +28,9 @@ class GetBouncedMailsCommand extends Command
             ->setDescription('Get bounced emails');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $bounces = $this->bounceQuery->getBounces();
@@ -37,5 +43,7 @@ class GetBouncedMailsCommand extends Command
             }
             $this->bounceQuery->removeBounce($bounce['id']);
         }
+
+        return 0;
     }
 }

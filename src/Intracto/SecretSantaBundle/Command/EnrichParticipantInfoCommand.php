@@ -12,14 +12,9 @@ use GeoIp2\Exception\AddressNotFoundException;
 
 class EnrichParticipantInfoCommand extends Command
 {
-    /** @var ParticipantRepository */
-    private $participantRepository;
-
-    /** @var EntityManagerInterface */
-    private $em;
-
-    /** @var string */
-    private $geoIpDbPath;
+    private ParticipantRepository $participantRepository;
+    private EntityManagerInterface $em;
+    private string $geoIpDbPath;
 
     public function __construct(
         ParticipantRepository $participantRepository,
@@ -33,6 +28,9 @@ class EnrichParticipantInfoCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -40,6 +38,9 @@ class EnrichParticipantInfoCommand extends Command
             ->setDescription('Enrich the participant information');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $batchSize = 1000;
@@ -70,5 +71,7 @@ class EnrichParticipantInfoCommand extends Command
             $this->em->flush();
             $participants = $this->participantRepository->findAllParticipantsWithoutGeoInfo($batchSize);
         }
+
+        return 0;
     }
 }

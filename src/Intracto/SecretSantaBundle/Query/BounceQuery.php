@@ -6,12 +6,8 @@ use Doctrine\DBAL\Driver\Connection;
 
 class BounceQuery
 {
-    /** @var Connection */
-    private $dbal;
+    private Connection $dbal;
 
-    /**
-     * @param Connection $dbal
-     */
     public function __construct(Connection $dbal)
     {
         $this->dbal = $dbal;
@@ -23,9 +19,6 @@ class BounceQuery
     }
 
     /**
-     * @param string    $email
-     * @param \DateTime $date
-     *
      * @return mixed
      */
     public function findBouncedParticipantId(string $email, \DateTime $date)
@@ -45,10 +38,7 @@ class BounceQuery
         return $query->execute()->fetchColumn();
     }
 
-    /**
-     * @param int $id
-     */
-    public function markParticipantEmailAsBounced(int $id)
+    public function markParticipantEmailAsBounced(int $id): void
     {
         $query = $this->dbal->createQueryBuilder()
             ->update('participant')
@@ -59,10 +49,7 @@ class BounceQuery
         $query->execute();
     }
 
-    /**
-     * @param int $id
-     */
-    public function removeBounce(int $id)
+    public function removeBounce(int $id): void
     {
         $this->dbal->delete('bounce', ['id' => $id]);
     }

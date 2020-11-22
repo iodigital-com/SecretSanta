@@ -8,20 +8,9 @@ use Symfony\Component\Routing\RouterInterface;
 
 class ExportService
 {
-    /**
-     * @var ParticipantReportQuery
-     */
-    private $participantReportQuery;
+    private ParticipantReportQuery $participantReportQuery;
+    private RouterInterface $router;
 
-    /**
-     * @var RouterInterface
-     */
-    private $router;
-
-    /**
-     * @param ParticipantReportQuery $participantReportQuery
-     * @param RouterInterface        $router
-     */
     public function __construct(
         ParticipantReportQuery $participantReportQuery,
         RouterInterface $router
@@ -30,10 +19,6 @@ class ExportService
         $this->router = $router;
     }
 
-    /**
-     * @param Season $season
-     * @param bool   $isAdmin
-     */
     public function export(Season $season, bool $isAdmin = false)
     {
         $result = $this->participantReportQuery->fetchMailsForExport($season, $isAdmin);
@@ -64,11 +49,6 @@ class ExportService
         fclose($handle);
     }
 
-    /**
-     * @param bool $isAdmin
-     *
-     * @return string
-     */
     private function getOutputLocation(bool $isAdmin): string
     {
         if ($isAdmin) {
@@ -78,9 +58,6 @@ class ExportService
         return '/tmp/'.date('Y-m-d-H.i.s').'_participants.csv';
     }
 
-    /**
-     * @return string
-     */
     private function getPartyReuseBaseUrl(): string
     {
         $url = $this->router->generate(

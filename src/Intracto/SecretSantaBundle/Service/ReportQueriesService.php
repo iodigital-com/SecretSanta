@@ -9,24 +9,11 @@ use Intracto\SecretSantaBundle\Query\SeasonComparisonReportQuery;
 
 class ReportQueriesService
 {
-    /** @var GoogleAnalyticsQuery $googleAnalyticsQuery */
-    private $googleAnalyticsQuery;
+    private GoogleAnalyticsQuery $googleAnalyticsQuery;
+    private ReportQuery $reportQuery;
+    private SeasonComparisonReportQuery $seasonComparisonReportQuery;
+    private FeaturedYearsQuery $featuredYearsQuery;
 
-    /** @var ReportQuery $reportQuery */
-    private $reportQuery;
-
-    /** @var SeasonComparisonReportQuery $seasonComparisonReportQuery */
-    private $seasonComparisonReportQuery;
-
-    /** @var FeaturedYearsQuery $featuredYearsQuery */
-    private $featuredYearsQuery;
-
-    /**
-     * @param GoogleAnalyticsQuery        $googleAnalyticsQuery
-     * @param ReportQuery                 $reportQuery
-     * @param SeasonComparisonReportQuery $seasonComparisonReportQuery
-     * @param FeaturedYearsQuery          $featuredYearsQuery
-     */
     public function __construct(
         GoogleAnalyticsQuery $googleAnalyticsQuery,
         ReportQuery $reportQuery,
@@ -39,11 +26,6 @@ class ReportQueriesService
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
-    /**
-     * @param string $year
-     *
-     * @return array
-     */
     public function getReportResults(string $year): array
     {
         try {
