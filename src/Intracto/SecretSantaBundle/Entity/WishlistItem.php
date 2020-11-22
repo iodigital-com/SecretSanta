@@ -6,7 +6,7 @@ class WishlistItem
 {
     private ?int $id = null;
     private Participant $participant;
-    private string $description = 0;
+    private string $description = '';
     private int $rank = 0;
 
     public function getId(): ?int
