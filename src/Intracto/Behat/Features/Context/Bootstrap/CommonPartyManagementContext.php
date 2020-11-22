@@ -150,7 +150,7 @@ class CommonPartyManagementContext extends RawMinkContext
         JQueryHelper::scrollIntoView($this->getSession(), 'add-participant');
 
         $this->getSession()->getPage()->find('css', '#add_participant_name')->setValue('test6');
-        $this->getSession()->getPage()->find('css', '#add_participant_email')->setValue('test6@test.com');
+        $this->getSession()->getPage()->find('css', '#add_participant_email')->setValue('test6@example.com');
 
         $this->getSession()->getPage()->find('css', '#btn_add_confirmation')->click();
     }

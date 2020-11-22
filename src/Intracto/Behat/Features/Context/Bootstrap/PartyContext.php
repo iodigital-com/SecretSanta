@@ -16,7 +16,7 @@ class PartyContext extends RawMinkContext
         $i = 0;
         $participants = [];
         while ($i < $memberCount) {
-            $participants[] = ['name' => 'test'.$i, 'email' => 'test'.$i.'@test.com'];
+            $participants[] = ['name' => 'test'.$i, 'email' => 'test'.$i.'@example.com'];
 
             ++$i;
         }
@@ -118,7 +118,7 @@ class PartyContext extends RawMinkContext
         $i = 0;
         $csvData = "Name,Mailaddress\r\n";
         while ($participantCount > 0) {
-            $csvData .= "test{$i},test{$i}@test.com\r\n";
+            $csvData .= "test{$i},test{$i}@example.com\r\n";
             ++$i;
             --$participantCount;
         }

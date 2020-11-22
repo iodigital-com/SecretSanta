@@ -30,18 +30,18 @@ Feature: Manage an unstarted party
 
   Scenario: I want to edit the email address of the first participant
     Given I am on the party management page
-    And I edit the first participant email to new_test1@test.com
+    And I edit the first participant email to new_test1@example.com
     Then I should see a success message
     And there should have been 0 send email
     When I refresh the page
-    Then the email address of the first participant should be new_test1@test.com
+    Then the email address of the first participant should be new_test1@example.com
 
   Scenario: I want to edit the email address of the first participant to an invalid email address
     Given I am on the party management page
     And I edit the first participant email to example@localhost
     Then I should see a error message
     When I refresh the page
-    Then the email address of the first participant should be test1@test.com
+    Then the email address of the first participant should be test1@example.com
 
   Scenario: I should be able to update the party details
     Given I am on the party management page

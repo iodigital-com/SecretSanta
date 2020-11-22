@@ -10,7 +10,7 @@ Feature: Create a new party
     And I confirm the opt-in
     When I create the party
     Then I should get a confirmation
-    And the Secret Santa Validation mail should be sent to test0@test.com
+    And the Secret Santa Validation mail should be sent to test0@example.com
 
   @javascript
   Scenario: I want to create a party with a csv of participant data
@@ -23,4 +23,4 @@ Feature: Create a new party
     When I confirm the opt-in
     And I create the party
     Then I should get a confirmation
-    And the Secret Santa Validation mail should be sent to test0@test.com
+    And the Secret Santa Validation mail should be sent to test0@example.com
