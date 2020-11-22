@@ -50,22 +50,29 @@ class AddParticipantFormHandler
         if ($party->getCreated()) {
             $this->em->persist($newParticipant);
 
-            /** @var Participant $admin */
-            $admin = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAdminByPartyId($party->getId());
+            /**
+             * Find participant that hasn't retrieved match yet. If none found, use admin.
+             *
+             * @var Participant|null $linkParticipant
+             */
+            $linkParticipant = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findOneUnseenByPartyId($party->getId());
+            if ($linkParticipant === null) {
+                // use party admin instead
+                $linkParticipant = $this->em->getRepository('IntractoSecretSantaBundle:Participant')->findAdminByPartyId($party->getId());
+            }
 
-            $adminMatch = $admin->getAssignedParticipant();
-            $admin->setAssignedParticipant($newParticipant);
+            $linkMatch = $linkParticipant->getAssignedParticipant();
+            $linkParticipant->setAssignedParticipant($newParticipant);
 
-            $this->em->persist($admin);
+            $this->em->persist($linkParticipant);
             $this->em->flush();
 
-            $newParticipant->setAssignedParticipant($adminMatch);
+            $newParticipant->setAssignedParticipant($linkMatch);
             $this->em->persist($newParticipant);
 
             // Flush all changes
             $this->em->flush();
 
-            $this->mailer->sendSecretSantaMailForParticipant($admin);
             $this->mailer->sendSecretSantaMailForParticipant($newParticipant);
         } else {
             $this->em->persist($newParticipant);
