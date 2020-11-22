@@ -21,12 +21,11 @@ sed -i "s#;date.timezone =#date.timezone = ${TIMEZONE}#" /etc/php/7.4/fpm/php.in
 sed -i 's/^user = www-data/user = vagrant/' /etc/php/7.4/fpm/pool.d/www.conf
 sed -i 's/^group = www-data/group = vagrant/' /etc/php/7.4/fpm/pool.d/www.conf
 
-cat << EOF >>/etc/php/7.4/mods-available/apcu.ini
-extension=apcu.so
-EOF
+# Configure apc
+find /etc/php/7.4 -name 25-apcu_bc.ini -delete
 
 # Configure xdebug
-cat << EOF >>/etc/php/7.4/mods-available/xdebug.ini
+cat << EOF >/etc/php/7.4/mods-available/xdebug.ini
 zend_extension=xdebug
 xdebug.remote_enable=1
 xdebug.remote_autostart=1

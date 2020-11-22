@@ -24,8 +24,7 @@ class Party
      */
     private $wishlistsurl;
 
-    /** @var string */
-    private $message;
+    private string $message;
 
     /** @var \DateTime */
     private $creationdate;
@@ -80,6 +79,8 @@ class Party
         $this->listurl = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
         $this->wishlistsurl = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
         $this->creationdate = new \DateTime();
+        $this->message = '';
+        $this->location = '';
     }
 
     /**
