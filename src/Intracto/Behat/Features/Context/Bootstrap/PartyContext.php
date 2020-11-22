@@ -22,11 +22,11 @@ class PartyContext extends RawMinkContext
         }
 
         if (count($participants) > 3) {
-            //We need to add extra lines to the participant form
+            // We need to add extra lines to the participant form
             $extraLineCount = count($participants) - 3;
 
             while ($extraLineCount > 0) {
-                $this->getSession()->getPage()->find('css', '.add-btn-create.add-new-participant')->click();
+                $this->getSession()->getPage()->find('css', 'button.add-new-participant')->click();
 
                 --$extraLineCount;
             }
