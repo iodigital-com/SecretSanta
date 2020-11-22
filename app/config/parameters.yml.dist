@@ -51,7 +51,7 @@ parameters:
     base_url:          dev.secretsantaorganizer.com
     ga_view_id:        ga:00000000
     router.request_context.host: '%base_url%'
-    contact_email: ~
+    contact_email:     info@dev.secretsantaorganizer.com
 
     # Get the database at http://dev.maxmind.com/geoip/geoip2/geolite2/
     geo_ip_db_path: /usr/local/share/GeoIP/GeoLite2-City.mmdb
