@@ -101,7 +101,7 @@ class PartyContext extends RawMinkContext
      */
     public function confirmationPage()
     {
-        $element = $this->getSession()->getPage()->find('css', '.box > h1');
+        $element = $this->getSession()->getPage()->find('css', 'div.box > h1');
 
         Assert::eq($element->getText(), 'Only 1 step to go! - Validate your participation', 'The confirmaton text could not be found on the page');
     }
