@@ -24,7 +24,7 @@ class Party
      */
     private $wishlistsurl;
 
-    private string $message;
+    private ?string $message = '';
 
     /** @var \DateTime */
     private $creationdate;
@@ -128,7 +128,7 @@ class Party
 
     public function getMessage(): string
     {
-        return $this->message;
+        return (string) $this->message;
     }
 
     public function getOwnerName(): string
