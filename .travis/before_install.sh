@@ -11,6 +11,7 @@ echo "extension = memcached" >> ~/.phpenv/versions/$(phpenv version-name)/etc/co
 
 git clone https://github.com/xdebug/xdebug
 cd xdebug
+git checkout origin/xdebug_2_9 -b 2.9
 phpize
 ./configure
 make
