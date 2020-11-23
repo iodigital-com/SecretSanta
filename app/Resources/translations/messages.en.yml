@@ -133,7 +133,7 @@ wishlist-show_all:
     title: All Secret Santa Wishlists
     back: Back to manage page
 
-# Static/faq.html.twigd
+# Static/faq.html.twig
 static-faq:
     title: Frequently Asked Questions
     body: >
