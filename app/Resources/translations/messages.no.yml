@@ -61,6 +61,11 @@ party-create:
             <p>Hele året rundt <strong>Christmas</strong> utveksler folk over hele verden gaver.<br/>
             For å gjøre ting mer spennende kan du <strong>fordele, helt tilfeldig,</strong> hvem som skal
             gi hverandre gaver.</p>
+        title_2: Hvordan fungerer det?
+        intro_2: >
+            <p>Opprett et arrangement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b>
+                    Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til.
+                    Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
 
     add_participants: Legge til deltagere
     list_adminstrator: Denne personen er også en deltager.
@@ -130,7 +135,7 @@ static-faq:
         <a name="how"></a><h2>Hvordan fungerer det?</h2>
         <p>Opprett et arrangement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b>
         Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til.
-        Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden.</b>.</p>
+        Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
 
         <!--a name="exclude"></a><h2>Kan jeg forhindre enkelte kombinasjoner?</h2>
         <p>Når alle deltagerne er lagt til listen, kan du forhindre enkelte kombinasjoner av nisser. For eksempel kan du forhindre at familiemedlemmer gir gaver til hverandre.<br><br>

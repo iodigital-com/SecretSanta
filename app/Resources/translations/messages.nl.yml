@@ -59,6 +59,11 @@ party-create:
             kan je je eigen <strong>verlanglijst</strong> toevoegen, die sturen wij dan door naar jouw Secret Santa.</p>
 
             <p>Ieder jaar wisselen mensen tijdens de kerstperiode wereldwijd geschenken uit.<br/> Om het voor iedereen wat spannender te maken, kan je mensen <strong>willekeurig toewijzen</strong> om voor elkaar geschenkjes te kopen.</p>
+        title_2: Hoe werkt het?
+        intro_2: >
+            <p>Maak een evenement aan op de <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
+            De lijstbeheerder zal een bevestigingsmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
+            We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
     add_participants: Voeg je deelnemers toe
     list_adminstrator: Deze persoon is zelf ook deelnemer

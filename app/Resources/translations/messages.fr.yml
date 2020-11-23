@@ -48,6 +48,16 @@ party-create:
         intro: >
             <p>Secret Santa Organizer est un organiseur en ligne <strong>gratuit d'échange de cadeaux</strong>  ! Organisez une Secret Santa party avec vos amis, votre famille ou vos collègues. Après avoir reçu l'e-mail de Secret Santa, vous pourrez ajouter votre propre <strong>liste de souhaits</strong>, qui sera ensuite délivrée à votre Père-Noël secret</p>
             <p>Chaque année, autour de la période de <strong>Noël</strong>, les personnes du monde entier s'échangent des cadeaux.<br/>Afin de garder les choses intéressantes, vous pouvez assigner au hasard une personne à une autre afin qu'elles offrent un présent aux autres.</p>
+
+        title_2: Comment ça fonctionne?
+        intro_2: >
+            <p>Créez un <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">évènement
+            sur la page d'accueil</a>. Vous avez besoin d'au minimum 3 participants. Le premier participant deviendra l'administrateur
+            de la liste. L'administrateur recevra un lien de confirmation par e-mail. Une fois votre inscription validée,
+            votre liste Secret Santa sera brouillée et tous les participants recevront un message contenant le nom de leur
+            copain cadeau Secret Santa. Nous demandons une confirmation afin d'empêcher les robots et trolls de gâcher votre
+            Secret Santa party. <b>L'e-mail de validation vous fournira un lien vers le gestionnaire de l'évènement Secret Santa.</b></p>
+
     add_participants: Ajoutez les participants
     list_adminstrator: Cette personne est également l'administrateur.
     add_personal_message:

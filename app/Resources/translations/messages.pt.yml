@@ -58,6 +58,16 @@ party-create:
         intro: >
             <p>É um <strong>organizador de troca de presentes</strong> online <strong>gratuito</strong>! Organize uma festa com Amigo Oculto com seus amigos, sua família ou até com seus colegas. Após ter recebido um e-mail do Secret Santa Organizer, você pode adicionar sua própria <strong>lista de desejos</strong>, que será encaminhada para o seu Secret Santa.</p>
             <p>Todos os anos, pessoas no mundo inteiro trocam presentes durante o período de Natal.<br/> Para deixar esse momento ainda mais memorável, você pode fazer com que <strong>pessoas escolhidas arbitrariamente</strong> comprem presentes umas para as outras.</p>
+        title_2: Como funciona?
+        intro_2: >
+            <p>Basta criar um evento <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">
+            na página inicial</a>. Você precisa de, no mínimo, 3 participantes, <b>sendo o primeiro participante também o
+            proprietário e operador do evento e lista.</b> O operador da lista irá receber o link de confirmação por e-mail,
+            no qual ele precisará clicar para validar o evento. Uma vez validado, os nomes que estão na lista do seu Secret
+            Santa será sorteado e todos os participantes receberão a mensagem que você escreveu para eles junto com o nome
+            do amigo para o qual eles deves comprar um presente, ou seja, seu Amigo Secreto. Essa confirmação é necessária
+            para evitar que hóspedes indesejáveis ou trols estraguem a brincadeira do Secret Santa. <b>O e-mail de validação
+            irá gerar um link para o proprietário do evento</b>.</p>
 
     add_participants: Adicione os participantes
     list_adminstrator: Esta pessoa também é um operador da lista.
@@ -121,7 +131,7 @@ static-faq:
         <p>Todos os anos, pessoas no mundo inteiro trocam presentes durante o período de Natal.<br/> Para deixar esse momento ainda mais memorável, você pode fazer com que <strong>pessoas escolhidas arbitrariamente</strong> comprem presentes umas para as outras.</p>
 
         <a name="how"></a><h2>Como funciona?</h2>
-        <p>Basta criar um evento <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">na página inicial</a>. Você precisa de, no mínimo, 3 participantes, <b>sendo o primeiro participante também o proprietário e operador do evento e lista.</b> O operador da lista irá receber o link de confirmação por e-mail, no qual ele precisará clicar para validar o evento. Uma vez validado, os nomes que estão na lista do seu Secret Santa será sorteado e todos os participantes receberão a mensagem que você escreveu para eles junto com o nome do amigo para o qual eles deves comprar um presente, ou seja, seu Amigo Secreto. Essa confirmação é necessária para evitar que hóspedes indesejáveis ou trols estraguem a brincadeira do Secret Santa. <b>O e-mail de validação irá gerar um link para o proprietário do evento.</b>.</p>
+        <p>Basta criar um evento <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">na página inicial</a>. Você precisa de, no mínimo, 3 participantes, <b>sendo o primeiro participante também o proprietário e operador do evento e lista.</b> O operador da lista irá receber o link de confirmação por e-mail, no qual ele precisará clicar para validar o evento. Uma vez validado, os nomes que estão na lista do seu Secret Santa será sorteado e todos os participantes receberão a mensagem que você escreveu para eles junto com o nome do amigo para o qual eles deves comprar um presente, ou seja, seu Amigo Secreto. Essa confirmação é necessária para evitar que hóspedes indesejáveis ou trols estraguem a brincadeira do Secret Santa. <b>O e-mail de validação irá gerar um link para o proprietário do evento</b>.</p>
 
         <!--a name="exclude"></a><h2>Posso excluir combinações?</h2>
         <p>Depois de dar os nomes de todos os participantes, você tem a opção de prevenir algumas combinações. Por exemplo, para evitar que membros de uma mesma família comprem presentes um para o outro.<br><br>Não é possível reutilizar automaticamente uma lista de combinações do Secret Santa de anos anteriores. Nós não conseguimos encontrar um meio de salvar essas listas sem criar uma grande confusão nas pessoas, e pedimos desculpas por isso.</p-->
