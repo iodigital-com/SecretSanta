@@ -1,5 +1,32 @@
 {% extends "IntractoSecretSantaBundle::base.html.twig" %}
 
+{% block metadata %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is Secret Santa?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts. To keep things interesting though, you can randomly assign persons to each other to give a present to one another."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How does it work?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Create a party on the homepage. You need at least 3 participants, the first participant being the list administrator. The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. The validation e-mail will provide a link to the Secret Santa event manager."
+                    }
+                }
+            ]
+        }
+    </script>
+{% endblock %}
+
 {% block main %}
     <div class="intro row align-items-center">
         <div class="col-xs-12 col-sm-8 col-md-8">
