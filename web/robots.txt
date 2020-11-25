@@ -4,6 +4,7 @@
 User-agent: *
 Disallow: /manage/
 Disallow: /entry/
+Disallow: /unsubscribe/
 Disallow: /report/
 Disallow: /503.html
 
