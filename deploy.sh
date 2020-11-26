@@ -56,6 +56,7 @@ printAction "Install assets"
 bin/console assets:install web ${Q}
 cp ../../shared/yandex_* web
 cp ../../shared/ads.txt web
+cp ../../shared/GeoLite2-City.mmdb web
 printOk
 
 printAction "Cleanup files and setting permissions"
