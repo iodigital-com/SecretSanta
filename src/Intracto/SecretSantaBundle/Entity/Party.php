@@ -68,6 +68,12 @@ class Party
      */
     private $confirmed;
 
+    /** @var string */
+    private $joinurl = '';
+
+    /** @var int */
+    private $joinmode = 0;
+
     public function __construct($createDefaults = true)
     {
         $this->participants = new ArrayCollection();
@@ -81,6 +87,7 @@ class Party
         $this->creationdate = new \DateTime();
         $this->message = '';
         $this->location = '';
+        $this->joinurl = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
     }
 
     /**
@@ -290,6 +297,26 @@ class Party
     public function setConfirmed(bool $confirmed)
     {
         $this->confirmed = (string) $confirmed;
+    }
+
+    public function getJoinurl(): string
+    {
+        return $this->joinurl;
+    }
+
+    public function setJoinurl(string $joinurl): void
+    {
+        $this->joinurl = $joinurl;
+    }
+
+    public function getJoinmode(): int
+    {
+        return $this->joinmode;
+    }
+
+    public function setJoinmode(int $joinmode): void
+    {
+        $this->joinmode = $joinmode;
     }
 
     /**

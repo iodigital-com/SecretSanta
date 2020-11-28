@@ -10,6 +10,7 @@
         <indexes>
             <index name="list_url" columns="list_url"/>
             <index name="dates" columns="created,event_date,sent_date"/>
+            <index name="join_url" columns="join_url"/>
         </indexes>
 
         <id name="id" type="integer">
@@ -34,6 +35,9 @@
         <field name="created" column="created" type="boolean"/>
         <field name="locale" column="locale" type="string" length="7"/>
         <field name="location" column="location" type="string" length="255" nullable="true"/>
+
+        <field name="joinurl" column="join_url" type="string" length="50" unique="true"/>
+        <field name="joinmode" column="join_mode" type="integer"/>
     </entity>
 
 </doctrine-mapping>
