@@ -109,6 +109,9 @@
                 {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}disabled{% endif %}>
             <i class="fa fa-plus-circle fa-inverse"></i> {{ 'party_manage_valid.btn.add_participant'|trans|raw }}
         </button>
+        <button id="btn_join" class="btn btn-info manage_btn" style="float: right; margin-bottom: 35px;" {% if party.created %}disabled{% endif %}>
+            <i class="fa fa-link fa-inverse"></i> {{ 'party_manage_valid.btn.join_mode'|trans|raw }}
+        </button>
         <div class="clearfix"></div>
         <div id="add-participant" class="alert alert-success manage-page-form"
              {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}style="display: block;"
@@ -159,6 +162,36 @@
                     {{ 'party_manage_valid.btn.cancel'|trans }}
                 </button>
             </form>
+        </div>
+        <div class="clearfix"></div>
+        <div id="join-mode" class="alert alert-success manage-page-form" style="display: none">
+            <h3>{{ 'party_manage_valid.join_mode.title'|trans|raw }}</h3>
+
+            {{ 'party_manage_valid.join_mode.body'|trans|raw }}
+
+            <br>
+            {{ form_start(setJoinModeForm) }}
+            {{ form_row(setJoinModeForm._token) }}
+
+            <div class="form-group">
+                <strong>{{ 'party_manage_valid.label.join_mode'|trans }}</strong> {{ form_widget(setJoinModeForm.join_mode ,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(setJoinModeForm.join_mode) %}setJoinModeForm
+                    {% for error in setJoinModeForm.name.vars.errors %}
+                        <strong>{{ error.message }}</strong><br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <strong>{{ 'party_manage_valid.label.join_url'|trans }}</strong> <input type="text" disabled="disabled" value="{% if party.joinurl is null %}{{'party_manage_valid.join_mode.reset_unset'|trans }}{% else %}{{ party.joinurl }}{% endif %}" class="form-control">
+            </div>
+            <div class="form-group">
+                <strong>{{ 'party_manage_valid.label.reset'|trans }}</strong> <input type="checkbox" name="reset" value="1" class="form-check-inline"/>
+                <p>{{ 'party_manage_valid.join_mode.reset_body'|trans }}</p>
+            </div>
+            <button type="submit" class="btn btn-success"
+                    id="btn_joinmode_confirmation">{{ 'party_manage_valid.btn.join_mode_confirm'|trans|raw }}</button>
+            <button type="reset" class="btn btn-success" id="btn_joinmode_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+            {{ form_end(setJoinModeForm) }}
         </div>
 
         {% if party.created %}
