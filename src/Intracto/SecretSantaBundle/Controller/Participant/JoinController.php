@@ -61,5 +61,4 @@ class JoinController extends AbstractController
             'form' => null,
         ];
     }
-
 }
