@@ -467,6 +467,34 @@ party_manage_valid:
             name: Name
             exclude: Exclude
 
+party_join:
+    title: Join the party!
+    description: >
+        <p>
+            With the link you were given, you can add yourself to this Secret Santa party!
+            Please review the party details below, and fill out the form if you want to participate.
+            If you have questions regarding the party, please contact the person who created this party.
+        </p>
+    joined: >
+        <p>
+            We have added you to the party!
+            <br />Note that you will not receive your match until the party is started.
+            If you have any questions regarding the party or want to change your info, you must contact the person who created this party!
+        </p>
+    invalid: >
+        <p>
+            The link you have used is not valid. There could be several reasons for this
+            <ul>
+                <li>The party does not exists, or has been deleted.</li>
+                <li>The creator of the party has disabled or reset the link.</li>
+                <li>The party has already been started.</li>
+            </ul>
+            Please contact the person that sent you the link. He or she might still be able to add you to the party manually!
+        <p/>
+
+    btn:
+        join_confirm: Join party
+
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Santa Claus
