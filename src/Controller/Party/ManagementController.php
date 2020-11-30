@@ -6,6 +6,7 @@ namespace App\Controller\Party;
 
 use App\Entity\Party;
 use App\Form\Handler\AddParticipantFormHandler;
+use App\Form\Type\SetJoinModeType;
 use App\Mailer\MailerService;
 use App\Service\PartyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -50,6 +51,9 @@ class ManagementController extends AbstractController
         $updatePartyDetailsForm = $this->createForm(UpdatePartyDetailsType::class, $party, [
             'action' => $this->generateUrl('party_manage_update', ['listurl' => $party->getListurl()]),
         ]);
+        $setJoinModeForm = $this->createForm(SetJoinModeType::class, $party, [
+            'action' => $this->generateUrl('party_manage_joinmode', ['listurl' => $party->getListurl()]),
+        ]);
 
         if ($excludeForm === null) {
             $excludeForm = $this->createForm(PartyExcludeParticipantType::class, $party, [
@@ -64,6 +68,7 @@ class ManagementController extends AbstractController
             'delete_party_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_party'),
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
             'excludeForm' => $excludeForm->createView(),
+            'setJoinModeForm' => $setJoinModeForm->createView(),
         ];
     }
 
@@ -140,6 +145,33 @@ class ManagementController extends AbstractController
             } else {
                 return $this->forward(ManagementController::class.':valid', ['listurl' => $party->getListurl(), 'excludeForm' => $form]);
             }
+        }
+
+        return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
+    }
+
+    /**
+     * @Route("/manage/joinmode/{listurl}", name="party_manage_joinmode", methods={"POST"})
+     */
+    public function joinModeAction(Request $request, Party $party)
+    {
+        $party->setConfirmed(true);
+        $setJoinModeForm = $this->createForm(SetJoinModeType::class, $party, []);
+        $setJoinModeForm->handleRequest($request);
+
+        if ($setJoinModeForm->isSubmitted() && $setJoinModeForm->isValid()) {
+
+            if (($party->getJoinmode() == 1 && $party->getJoinurl() === null) || $request->request->get('reset', 0) == '1') {
+                // generate join URL
+                $party->setJoinurl(base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36));
+            }
+
+            $this->getDoctrine()->getManager()->persist($party);
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', $this->get('translator')->trans('flashes.management.join_mode.success'));
+        } else {
+            $this->addFlash('danger', $this->get('translator')->trans('flashes.management.join_mode.danger'));
         }
 
         return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
