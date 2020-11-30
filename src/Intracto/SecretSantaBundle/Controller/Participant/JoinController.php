@@ -8,12 +8,10 @@ use Intracto\SecretSantaBundle\Entity\Participant;
 use Intracto\SecretSantaBundle\Form\Type\AddParticipantType;
 use Intracto\SecretSantaBundle\Repository\PartyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Intracto\SecretSantaBundle\Entity\Party;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class JoinController extends AbstractController
 {
@@ -39,7 +37,7 @@ class JoinController extends AbstractController
                 $newParticipant->setParty($party);
                 $this->getDoctrine()->getManager()->persist($newParticipant);
                 $this->getDoctrine()->getManager()->flush();
-                return $this->redirectToRoute('join_party_joined', [ 'joinurl' => $party->getJoinurl() ]);
+                return $this->redirectToRoute('join_party_joined', ['joinurl' => $party->getJoinurl()]);
             }
         }
 
