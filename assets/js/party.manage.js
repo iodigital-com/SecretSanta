@@ -44,6 +44,11 @@ $(document).ready(function () {
         $('.link_remove_participant').attr('disabled', false);
     });
 
+    $('#btn_join').click(function (e) {
+        $('#join-mode').show();
+        $('#btn_join').attr('disabled', true);
+    });
+
     if (Modernizr.inputtypes.date == true) {
         $("#intracto_secretsantabundle_updatepartydetailstype_eventdate").click(function (e) {
             $(this).datepicker({dateFormat: 'dd-mm-yy'});

@@ -416,6 +416,21 @@ party_manage_valid:
                 Your participants will be notified of these changes immediately.
             </p>
 
+    join_mode:
+        title: Join by link settings
+        body: >
+            <p>
+                Instead of manually adding people, you can allow people to join your party by sharing a link.
+                <br />When you start the party, people aren't able to join anymore (but you can still add them manually).
+            </p>
+        mode:
+            no: No, do not allow people to join by link
+            yes: Yes, allow anyone with the link to join my party
+        reset_body: >
+            By checking this checkbox, a new link will be generated. People will not be able to join with the old link anymore.
+            Use this when the current link has been shared with people that are not supposed to be able to join.
+        reset_unset: Enable join by link to generate a link.
+
     btn:
         add_participant: Add participant to party
         add_participant_confirm: Add this participant
@@ -428,6 +443,8 @@ party_manage_valid:
         remove_participant_confirm: Remove this participant
         updated_party: Update your party details
         start_party: Start your party
+        join_mode: Join by link
+        join_mode_confirm: Set join mode
 
     label:
         name: Name
@@ -435,6 +452,9 @@ party_manage_valid:
         confirmed: Email status
         wishlist_filled: Wish List Entered
         actions: Actions
+        join_mode: Allow join by link
+        join_url: Share this URL with your friends
+        reset: Reset join URL
 
     excludes:
         title: Exclude certain combinations
