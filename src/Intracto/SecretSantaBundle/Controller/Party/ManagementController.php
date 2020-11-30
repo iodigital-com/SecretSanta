@@ -154,7 +154,6 @@ class ManagementController extends Controller
         $setJoinModeForm->handleRequest($request);
 
         if ($setJoinModeForm->isSubmitted() && $setJoinModeForm->isValid()) {
-
             if (($party->getJoinmode() == 1 && $party->getJoinurl() === null) || $request->request->get('reset', 0) == '1') {
                 // generate join URL
                 $party->setJoinurl(base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36));
