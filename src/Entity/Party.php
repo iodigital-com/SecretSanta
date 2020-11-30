@@ -68,8 +68,8 @@ class Party
      */
     private $confirmed;
 
-    /** @var string */
-    private $joinurl = '';
+    /** @var ?string */
+    private $joinurl;
 
     /** @var int */
     private $joinmode = 0;
@@ -299,12 +299,12 @@ class Party
         $this->confirmed = (string) $confirmed;
     }
 
-    public function getJoinurl(): string
+    public function getJoinurl(): ?string
     {
         return $this->joinurl;
     }
 
-    public function setJoinurl(string $joinurl): void
+    public function setJoinurl(?string $joinurl): void
     {
         $this->joinurl = $joinurl;
     }
