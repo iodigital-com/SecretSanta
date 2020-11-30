@@ -1,0 +1,66 @@
+{% extends "IntractoSecretSantaBundle:Participant/show:base.html.twig" %}
+
+{% block main %}
+    <div class="box">
+        <div class="row participant-title-row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h1>{{ 'party_join.title'|trans }}</h1>
+
+                {% if party is not null %}
+
+                    {{ 'party_join.description'|trans|raw }}
+
+                    {% if form is null %}
+                        <div class="alert alert-success">
+                            {{ 'party_join.joined'|trans|raw }}
+                        </div>
+                    {% endif %}
+
+                    <div class="party-info">
+                        <h2>{{ 'participant_show_base.headers.title'|trans|raw }}</h2>
+                        <div id="partyDetails">
+                            <ul class="liststyle1">
+                                <li><strong>{{ 'participant_show_base.headers.date'|trans }}: </strong> {{ party.eventdate|localizeddate('medium', 'none') }}</li>
+                                <li><strong>{{ 'participant_show_base.headers.location'|trans }}: </strong> {{ party.location }}</li>
+                                <li><strong>{{ 'participant_show_base.headers.amount'|trans }}: </strong> {{ party.amount }}</li>
+                                <li><strong>{{ 'participant_show_base.headers.person_created_list'|trans }}: </strong> <span data-hj-masked>{{ party.participants|first.name }} ({{ party.participants|first.email }})</span>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {% if form is not null %}
+                        {{ form_start(form) }}
+                        {{ form_row(form._token) }}
+                        <div class="form-group {% if form_errors(form.name) %}error{% endif %}">
+                            <strong>{{ 'party_manage_valid.label.name'|trans }}</strong> {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
+                            {% if form_errors(form.name) %}
+                                {% for error in form.name.vars.errors %}
+                                    <strong>{{ error.message }}</strong><br/>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-group {% if form_errors(form.email) %}error{% endif %}">
+                            <strong>{{ 'party_manage_valid.label.email'|trans }}</strong> {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
+                            {% if form_errors(form.email) %}
+                                {% for error in form.email.vars.errors %}
+                                    <strong>{{ error.message }}</strong><br/>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-success"
+                                id="btn_add_confirmation">{{ 'party_join.btn.join_confirm'|trans|raw }}</button>
+                        <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+                        {{ form_end(form) }}
+                    {% endif %}
+                {% else %}
+                    <div class="alert alert-danger">
+                        {{ 'party_join.invalid'|trans|raw }}
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
