@@ -182,7 +182,7 @@
                 {% endif %}
             </div>
             <div class="form-group">
-                <strong>{{ 'party_manage_valid.label.join_url'|trans }}</strong> <input type="text" disabled="disabled" value="{% if party.joinurl is null %}{{'party_manage_valid.join_mode.reset_unset'|trans }}{% else %}{{ party.joinurl }}{% endif %}" class="form-control">
+                <strong>{{ 'party_manage_valid.label.join_url'|trans }}</strong> <input type="text" disabled="disabled" value="{% if party.joinurl is null %}{{'party_manage_valid.join_mode.reset_unset'|trans }}{% else %}{{ absolute_url(path('join_party', {joinurl: party.joinurl})) }}{% endif %}" class="form-control">
             </div>
             <div class="form-group">
                 <strong>{{ 'party_manage_valid.label.reset'|trans }}</strong> <input type="checkbox" name="reset" value="1" class="form-check-inline"/>
