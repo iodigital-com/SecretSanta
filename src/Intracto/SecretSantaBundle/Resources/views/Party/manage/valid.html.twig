@@ -164,7 +164,7 @@
             </form>
         </div>
         <div class="clearfix"></div>
-        <div id="join-mode" class="alert alert-success manage-page-form" style="display: none">
+        <div id="join-mode" class="alert alert-info manage-page-form" style="display: none">
             <h3>{{ 'party_manage_valid.join_mode.title'|trans|raw }}</h3>
 
             {{ 'party_manage_valid.join_mode.body'|trans|raw }}
@@ -188,9 +188,9 @@
                 <strong>{{ 'party_manage_valid.label.reset'|trans }}</strong> <input type="checkbox" name="reset" value="1" class="form-check-inline"/>
                 <p>{{ 'party_manage_valid.join_mode.reset_body'|trans }}</p>
             </div>
-            <button type="submit" class="btn btn-success"
+            <button type="submit" class="btn btn-info"
                     id="btn_joinmode_confirmation">{{ 'party_manage_valid.btn.join_mode_confirm'|trans|raw }}</button>
-            <button type="reset" class="btn btn-success" id="btn_joinmode_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+            <button type="reset" class="btn btn-info" id="btn_joinmode_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
             {{ form_end(setJoinModeForm) }}
         </div>
 
