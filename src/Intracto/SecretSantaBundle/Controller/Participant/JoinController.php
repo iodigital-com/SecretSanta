@@ -21,7 +21,6 @@ class JoinController extends AbstractController
      */
     public function joinAction(Request $request, string $joinurl, PartyRepository $partyRepository)
     {
-
         /** @var Party $party */
         $party = $partyRepository->findOneBy(['joinurl' => $joinurl, 'joinmode' => 1, 'created' => 0]);
 
@@ -37,6 +36,7 @@ class JoinController extends AbstractController
                 $newParticipant->setParty($party);
                 $this->getDoctrine()->getManager()->persist($newParticipant);
                 $this->getDoctrine()->getManager()->flush();
+
                 return $this->redirectToRoute('join_party_joined', ['joinurl' => $party->getJoinurl()]);
             }
         }
@@ -45,7 +45,6 @@ class JoinController extends AbstractController
             'party' => $party,
             'form' => isset($addParticipantForm) ? $addParticipantForm->createView() : null,
         ];
-
     }
 
     /**
