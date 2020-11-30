@@ -18,7 +18,7 @@ class SetJoinModeType extends AbstractType
                 ChoiceType::class,
                 [
                     'attr' => ['data-hj-masked' => ''],
-                    'choices' => [ 'party_manage_valid.join_mode.mode.no' => '0', 'party_manage_valid.join_mode.mode.yes' => '1'],
+                    'choices' => ['party_manage_valid.join_mode.mode.no' => '0', 'party_manage_valid.join_mode.mode.yes' => '1'],
                     'expanded' => true,
                     'multiple' => false,
                 ]
