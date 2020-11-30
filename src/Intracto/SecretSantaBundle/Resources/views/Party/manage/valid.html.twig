@@ -125,7 +125,7 @@
             {{ form_row(addParticipantForm._token) }}
             <div class="form-group {% if form_errors(addParticipantForm.name) %}error{% endif %}">
                 <strong>{{ 'party_manage_valid.label.name'|trans }}</strong> {{ form_widget(addParticipantForm.name ,{'attr':{'class':'form-control'}}) }}
-                {% if form_errors(addParticipantForm.name) %}addParticipantForm
+                {% if form_errors(addParticipantForm.name) %}
                     {% for error in addParticipantForm.name.vars.errors %}
                         <strong>{{ error.message }}</strong><br/>
                     {% endfor %}
