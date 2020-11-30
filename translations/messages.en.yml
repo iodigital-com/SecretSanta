@@ -734,6 +734,9 @@ flashes:
         add_participant:
             success: <h4>Added!</h4> Participant successfully added to your party.
             danger: <h4>Oops</h4> An error occurred while adding the participant. Please try again.
+        join_mode:
+            success: <h4>Updated!</h4> The join by link settings have been successfully updated.
+            danger: <h4>Oops</h4> An error has occurred while updating the join by link settings. Please try again.
         updated_party:
             success: <h4>Updated!</h4> Your party details have been successfully updated.
             danger: <h4>Oops</h4> An error has occurred while updating your party. Please try again.
