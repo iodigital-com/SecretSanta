@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Intracto\SecretSantaBundle\Controller\Participant;
+namespace App\Controller\Participant;
 
-use Intracto\SecretSantaBundle\Entity\Participant;
-use Intracto\SecretSantaBundle\Form\Type\AddParticipantType;
-use Intracto\SecretSantaBundle\Repository\PartyRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use App\Entity\Participant;
+use App\Entity\Party;
+use App\Form\Type\AddParticipantType;
+use App\Repository\PartyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Intracto\SecretSantaBundle\Entity\Party;
+use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class JoinController extends AbstractController
 {
