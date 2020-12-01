@@ -168,9 +168,9 @@ class ManagementController extends AbstractController
             $this->getDoctrine()->getManager()->persist($party);
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', $this->get('translator')->trans('flashes.management.join_mode.success'));
+            $this->addFlash('success', $this->translator->trans('flashes.management.join_mode.success'));
         } else {
-            $this->addFlash('danger', $this->get('translator')->trans('flashes.management.join_mode.danger'));
+            $this->addFlash('danger', $this->translator->trans('flashes.management.join_mode.danger'));
         }
 
         return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
