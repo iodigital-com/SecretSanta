@@ -1,4 +1,4 @@
-{% extends "IntractoSecretSantaBundle:Participant/show:base.html.twig" %}
+{% extends "Participant/show/base.html.twig" %}
 
 {% block main %}
     <div class="box">
@@ -20,7 +20,7 @@
                         <h2>{{ 'participant_show_base.headers.title'|trans|raw }}</h2>
                         <div id="partyDetails">
                             <ul class="liststyle1">
-                                <li><strong>{{ 'participant_show_base.headers.date'|trans }}: </strong> {{ party.eventdate|localizeddate('medium', 'none') }}</li>
+                                <li><strong>{{ 'participant_show_base.headers.date'|trans }}: </strong> {{ party.eventdate|format_datetime('medium', 'none') }}</li>
                                 <li><strong>{{ 'participant_show_base.headers.location'|trans }}: </strong> {{ party.location }}</li>
                                 <li><strong>{{ 'participant_show_base.headers.amount'|trans }}: </strong> {{ party.amount }}</li>
                                 <li><strong>{{ 'participant_show_base.headers.person_created_list'|trans }}: </strong> <span data-hj-masked>{{ party.participants|first.name }} ({{ party.participants|first.email }})</span>
