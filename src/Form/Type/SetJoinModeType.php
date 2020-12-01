@@ -1,8 +1,8 @@
 <?php
 
-namespace Intracto\SecretSantaBundle\Form\Type;
+namespace App\Form\Type;
 
-use Intracto\SecretSantaBundle\Entity\Party;
+use App\Entity\Party;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
