@@ -49,7 +49,7 @@ class JoinController extends AbstractController
 
     /**
      * @Route("/joined/{joinurl}", name="join_party_joined")
-     * @Template("IntractoSecretSantaBundle:Participant:show/join.html.twig")
+     * @Template("Participant/show/join.html.twig")
      */
     public function joinedAction(string $joinurl, PartyRepository $partyRepository)
     {
