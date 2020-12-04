@@ -32,13 +32,15 @@
                 <br /> <br /><br />
                 <p>{{ 'party-create.what_is.title'|trans }}</p>
                 <p>{{ 'party-create.what_is.intro'|trans|raw }}</p>
+
+                <br /> <br /><br />
+                <a href="https://smebe.lnk.to/ChristmassongsEC/spotify" rel="noopener noreferrer" target="_blank">
+                    <img src="{{ absolute_url(asset('/sony2020.jpg')) }}" width="50%">
+                </a>
             </td>
             <td width="37" align="right">
             </td>
         </tr>
     </table>
-    <a href="https://smebe.lnk.to/ChristmassongsEC/spotify" rel="noopener noreferrer" target="_blank">
-        <img src="{{ absolute_url(asset('/sony2020.jpg')) }}" width="50%">
-    </a>
     <img src="{{ url('mailopen_tracker', { 'participantUrl': participant.url }) }}" alt="pixel" />
 {% endblock %}
