@@ -12,31 +12,31 @@ EOF
 # Sync package index files
 apt-get update
 
-apt-get -y install php7.4-cli php7.4-fpm php7.4-dev php7.4-xml php7.4-intl php7.4-mysql php7.4-mbstring php7.4-curl \
+apt-get -y install php8.0-cli php8.0-fpm php8.0-dev php8.0-xml php8.0-intl php8.0-mysql php8.0-mbstring php8.0-curl \
     php-apcu php-xdebug
 
 # PHP config
-sed -i "s#;date.timezone =#date.timezone = ${TIMEZONE}#" /etc/php/7.4/cli/php.ini
-sed -i "s#;date.timezone =#date.timezone = ${TIMEZONE}#" /etc/php/7.4/fpm/php.ini
-sed -i 's/^user = www-data/user = vagrant/' /etc/php/7.4/fpm/pool.d/www.conf
-sed -i 's/^group = www-data/group = vagrant/' /etc/php/7.4/fpm/pool.d/www.conf
+sed -i "s#;date.timezone =#date.timezone = ${TIMEZONE}#" /etc/php/8.0/cli/php.ini
+sed -i "s#;date.timezone =#date.timezone = ${TIMEZONE}#" /etc/php/8.0/fpm/php.ini
+sed -i 's/^user = www-data/user = vagrant/' /etc/php/8.0/fpm/pool.d/www.conf
+sed -i 's/^group = www-data/group = vagrant/' /etc/php/8.0/fpm/pool.d/www.conf
 
 # Configure apc
-find /etc/php/7.4 -name 25-apcu_bc.ini -delete
+find /etc/php/8.0 -name 25-apcu_bc.ini -delete
 
 # Configure xdebug
-cat << EOF >/etc/php/7.4/mods-available/xdebug.ini
+cat << EOF >/etc/php/8.0/mods-available/xdebug.ini
 zend_extension=xdebug
-xdebug.remote_enable=1
-xdebug.remote_autostart=1
-xdebug.remote_host=192.168.33.1
+xdebug.mode=debug
+xdebug.start_with_request=1
+xdebug.client_host=192.168.33.1
 xdebug.max_nesting_level=256
 ; xdebug.profiler_enable=1
 ; xdebug.profiler_output_dir=/vagrant/dumps
 EOF
 
 # Reload FPM
-service php7.4-fpm restart
+service php8.0-fpm restart
 
 # composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin
