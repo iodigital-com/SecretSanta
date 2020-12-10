@@ -64,7 +64,7 @@ html {
 }
 
 body {
-    font-family: 'OpenSansRegular';
+    font-family: 'OpenSansRegular',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     color: #333333;
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'straitregular';
+    font-family: 'straitregular',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
 h1 {
@@ -119,7 +119,7 @@ a.btn {
 .add-btn-create {
     font-size: 0.9em;
     padding: 5px 13px;
-    font-family: 'OpenSansBold';
+    font-family: 'OpenSansBold',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     float: left;
     margin-left: 10px;
 }
@@ -388,7 +388,7 @@ ul.form-errors {
     font-weight: normal;
     padding: 4px 18px;
     padding-right: 30px;
-    font-family: 'straitregular';
+    font-family: 'straitregular',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     width: 90%;
 }
 
@@ -424,7 +424,7 @@ ul.form-errors {
     color: #99C2C1;
     font-weight: normal;
     padding: 4px 18px;
-    font-family: 'straitregular';
+    font-family: 'straitregular',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     width: 100%;
     font-size: 14px;
 }
