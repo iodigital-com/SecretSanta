@@ -167,6 +167,9 @@ static-faq:
         <a name="odd"></a><h2>Does it work with an odd number of participants?</h2>
         <p>Yes. It doesn't matter if your party consists of an even or an odd number of participants. It is no guarantee that if person A was assigned to person B that person B is also assigned to person A. Secret Santa uses a macro to make sure everybody on the list is assigned to someone else from the list. This works randomly. For example: if John, Caroline and Steve have been added to a party, John can be assigned to Steve, Steve can be assigned to Caroline and Caroline can be assigned to John.</p>
 
+        <a name="limit"></a><h2>Is there a limit on the amount of participants?</h2>
+        <p>No, there isn't. But, it's a good idea to add them using the CSV option.</p>
+
         <a name="lost"></a><h2>I lost my activation mail / url to the party.</h2>
         <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="%requestForgotLink%">this page</a> and we will send you
         an overview of all the parties where you are participating in and/or the parties you have created.</p>
