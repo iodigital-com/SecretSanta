@@ -57,11 +57,15 @@ party-create:
             <p>這是<strong>個免</strong>費網上交換禮物組織者。與朋友、家人、甚至同事組織秘密聖誕老人派對。在收到電郵後，你可以加入你個人的願望單，而願望單會交付到你的秘密聖誕老人。</p>
             <p>每年世界各地的人都會在<strong>聖誕時份</strong>交換禮物。為令事情感到有趣，你可隨意指派兩邊的人互相交換禮物。</p>
 
+#	title_2: ?
+#	intro_2: ?
+
     add_participants: 加入你的參加者
     list_adminstrator: 這人是你的名單管理者。
     add_personal_message:
         title: 加入個人信息
         description: 為參加者加入個人信息。
+#     import: ?
 
     btn:
         add_person: 加入人士
@@ -161,6 +165,7 @@ participant_show_valid:
         wishlist_from: '%name%從願望名單'
         wishlist_not_provided: 願望名單還未有提供%name%
 #        message_for_wishlist: ?
+#	 find_gift: ?
 
     wishlist:
         title: 你的願望名單
@@ -208,6 +213,7 @@ participant_show_valid:
 #    feedback:
 #        success:
 #        error:
+#	 error_atleast_one_option: ?
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -277,6 +283,7 @@ party_manage_valid:
 #    add_participant:
 #        title: ?
 #        body: ?
+#	 started_warning: ?
 
 #    remove_participant:
 #        title: ?

@@ -32,6 +32,7 @@ party_controller:
             La Secret Santa party est prévue le %eventdate% et aura lieu à %location%. Assurez-vous d'amener votre cadeau.
             %message%
             Bonnes vacances !
+
 # Party/create.html.twig
 party-create:
     header:
@@ -265,6 +266,7 @@ participant_show_valid:
 #    feedback:
 #        success:
 #        error:
+#	 error_atleast_one_option:
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -337,7 +339,10 @@ party_manage_valid:
                 <br>
                 Le nouveau participant sera immédiatement assigné à un copain Secret Santa et recevra une invitation par e-mail.
             </p>
-    remove_participant:
+
+#	started_warning:    
+
+remove_participant:
         title: Supprimez ce participant de ma liste
         body: <p>Etes-vous ABSOLUMENT certain ?</p>
         party_started: >

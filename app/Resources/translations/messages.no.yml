@@ -61,6 +61,7 @@ party-create:
             <p>Hele året rundt <strong>Christmas</strong> utveksler folk over hele verden gaver.<br/>
             For å gjøre ting mer spennende kan du <strong>fordele, helt tilfeldig,</strong> hvem som skal
             gi hverandre gaver.</p>
+
         title_2: Hvordan fungerer det?
         intro_2: >
             <p>Opprett et arrangement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b>
@@ -365,6 +366,7 @@ party_manage_valid:
                 <br>
                 Den nye deltageren legges til og får med en gang tildelt en å være julenisse for, og får tilsendt denne informasjonen på epost.<br>
             </p>
+#	started_warning:
 
     remove_participant:
         title: Slett denne deltageren fra listen

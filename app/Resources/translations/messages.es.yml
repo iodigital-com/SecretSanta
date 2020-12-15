@@ -8,8 +8,8 @@ base:
             site_name: Secret Santa
             description: ¡Secret Santa Organizer es un organizador de intercambio de regalos gratis en línea! Organiza una fiesta Secret Santa con amigos, familia o incluso compañeros y añade tu lista de deseos.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">¿Necesitas ayuda? ¿Tienes preguntas? ¡Lee las Preguntas Frecuentes!</a>
-#    privacy_policy:
-#    cookie_policy:
+    privacy_policy: Política de privacidad
+    cookie_policy: Política de cookies
 #    bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
@@ -59,6 +59,9 @@ party-create:
             <p>Cada año cerca de la época de <strong> Navidad</strong> la gente de todo el mundo intercambia regalos.<br/>
             Para hacer que las cosas sigan siendo interesantes, podéis <strong>asignar aleatoriamente personas</strong> para entregaros el regalo unos a otros.</p>
 
+#	title_2:
+#	intro_2:
+
     add_participants: Añade tus participantes
     list_adminstrator: Esta persona también es el administrador de tu lista.
     add_personal_message:
@@ -94,13 +97,13 @@ party-deleted:
     title: ¡Tu lista Secret Santa fue borrada!
     body: <p>Gracias por usar el Secret Santa Organizer. ¡Esperamos verte otra vez el próximo año!</p>
     create_new_list: ¡Crear una nueva lista Secret Santa!
-#    info_reuse:
 
 # Party/forgotLink.html.twig
 party-forgot_link:
 #    title:
 #    description:
 #    submit_btn: ?
+#    info_reuse:
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
@@ -164,7 +167,8 @@ participant_show_valid:
         watch_out: Atención
         wishlist_from: Lista de deseos de %name%
         wishlist_not_provided: '%name% aún no ha facilitado una lista de deseos'
-#        message_for_wishlist: ?
+#       message_for_wishlist: ?
+#	find_gift: ?
 
     wishlist:
         title: Tu lista de deseos
@@ -288,6 +292,8 @@ party_manage_valid:
                 <br>
                 El nuevo participante ser&aacute; adjudicado un amigote Secret Santa inmediato y recibirá una invitaci&oacute;n por correo electr&oacute;nico.<br>
             </p>
+
+#	started_warning:
 
     remove_participant:
         title: Expulsar este participante de mi lista
