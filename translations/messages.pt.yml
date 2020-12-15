@@ -58,6 +58,7 @@ party-create:
         intro: >
             <p>É um <strong>organizador de troca de presentes</strong> online <strong>gratuito</strong>! Organize uma festa com Amigo Oculto com seus amigos, sua família ou até com seus colegas. Após ter recebido um e-mail do Secret Santa Organizer, você pode adicionar sua própria <strong>lista de desejos</strong>, que será encaminhada para o seu Secret Santa.</p>
             <p>Todos os anos, pessoas no mundo inteiro trocam presentes durante o período de Natal.<br/> Para deixar esse momento ainda mais memorável, você pode fazer com que <strong>pessoas escolhidas arbitrariamente</strong> comprem presentes umas para as outras.</p>
+
         title_2: Como funciona?
         intro_2: >
             <p>Basta criar um evento <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">
@@ -75,6 +76,8 @@ party-create:
         title: Adicione uma mensagem pessoal
         description: Adicione uma mensagem pessoal para os participantes.
 
+#   import:?
+   	
     btn:
         add_person: Adicionar pessoa
         remove_person: Eliminar esta pessoa
@@ -234,6 +237,7 @@ participant_show_valid:
         wishlist_from: Lista de desejos de %name%
         wishlist_not_provided: '%name% ainda não montou uma lista de desejos'
         message_for_wishlist: Envie uma mensagem para seu amigo para lembrá-lo(a) que sua lista de desejos está vazia.
+#	find_gift: ?
 
     wishlist:
         title: Sua lista de desejos
@@ -352,6 +356,7 @@ party_manage_valid:
 #    add_participant:
 #        title: ?
 #        body: ?
+#	 started_warning: ?
 
 #    remove_participant:
 #        title: ?

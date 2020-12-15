@@ -8,9 +8,9 @@ base:
             site_name: Secret Santa
             description: Secret Santa Organizer ist ein kostenloses Online-Programm zum Organisieren des Secret Santa-Geschenketauschs. Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen und fügen Sie einen Wunschzettel zu.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
-#    privacy_policy:
-#    cookie_policy:
-#    bug_bounty:
+     privacy_policy: Datenschutzerverklärung
+     cookie_policy: Cookie-Richtlinie
+#    bug_bounty: 
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -61,6 +61,9 @@ party-create:
             Um dies spannender zu gestalten, <strong>können Sie beliebige Menschen beauftragen</strong> einander
             zu beschenken.</p>
 
+#       title_2: 
+#       intro_2: 
+
     add_participants: Fügen Sie Ihre Teilnehmer hinzu
     list_adminstrator: Diese Person ist auch Ihr administrator
     add_personal_message:
@@ -87,7 +90,7 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: Nur noch ein Schritt! - Bestätigen Sie Ihre Teilnahme
-#    body: ?
+#   body: ?
     warning: Vorsicht!
     check_spam: Vergessen Sie nicht, Ihren Spam-Ordner zu kontrollieren!
 
@@ -118,7 +121,7 @@ party-deleted:
 
 # Static/faq.html.twig
 static-faq:
-#    title: ?
+     title: Häufig gestellte Fragen
 #    body: ?
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
@@ -167,6 +170,7 @@ participant_show_valid:
         wishlist_from: Wunschzettel von %name%
         wishlist_not_provided: '%name% hat noch keinen Wunschzettel geschrieben'
 #        message_for_wishlist: ?
+#	find_gift:
 
     wishlist:
         title: Ihr Wunschzettel
@@ -185,7 +189,7 @@ participant_show_valid:
 
     btn:
         add_wishlist: Dem Wunschzettel einen Gegenstand hinzufügen
-#        update_item: ?
+#       update_item: ?
         remove_item: Diesen Gegenstand entfernen
 
 #    anonymous_message:
@@ -282,6 +286,7 @@ party_manage_valid:
 #    add_participant:
 #        title: ?
 #        body: ?
+#	 started_warning: ?
 
 #    remove_participant:
 #        title: ?

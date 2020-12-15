@@ -70,6 +70,7 @@ party-create:
     add_personal_message:
         title: Ввести личное сообщение
         description: ввести личное сообщение для участников.
+#      import: ?
 
     btn:
         add_person: Добавить
@@ -285,6 +286,7 @@ party_manage_valid:
 #    add_participant:
 #        title: ?
 #        body: ?
+#	 started_warning:
 
 #    remove_participant:
 #        title: ?
@@ -315,6 +317,17 @@ party_manage_valid:
 #        wishlist_filled: ?
         actions: Действия
 
+#    excludes:
+#        title:
+#        btn:
+#        description:
+#        information:
+#        placeholder_exclude:
+#        not_enough:
+#        label:
+#            name:
+#            exclude:
+
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Санта Клаус
@@ -331,16 +344,6 @@ emails-base_email_header:
     num_people: Количество людей
     person_created_list: Автор списка
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
