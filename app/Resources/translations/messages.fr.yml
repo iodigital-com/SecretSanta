@@ -212,8 +212,6 @@ participant_show_valid:
         body: >
             <p>Bonjour %name%,</p>
             <p>En tant que Père-Noël secret, vous devez distribuer un cadeau à:</p>
-        copy_clipboard: Copier le lien personnel dans le presse-papier
-        copied_clipboard: Le lien d'invitation a été copié dans votre presse-papiers!
         watch_out: Attention
         wishlist_from: Liste de souhaits de %name%
         wishlist_not_provided: '%name% n''a pas encore publié de liste de souhaits'
@@ -311,8 +309,8 @@ party_manage_valid:
         not_yet: Pas encore
         edit_email: Modifier l'e-mail
         resend_email: Renvoyer l'e-mail
-#       copy_clipboard: ?
-#       copied_clipboard: ?
+        copy_clipboard: Copier le lien personnel dans le presse-papier
+        copied_clipboard: Le lien d'invitation a été copié dans votre presse-papiers!
         view_participant: Voir l'entrée
         tip: 'Astuce:'
         come_back: Vous pouvez toujours revenir sur cette page afin de vous assurer que tout le monde ait vérifié sa boîte mail.

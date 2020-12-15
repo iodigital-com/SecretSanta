@@ -59,8 +59,8 @@ party-create:
             <p>Cada año cerca de la época de <strong> Navidad</strong> la gente de todo el mundo intercambia regalos.<br/>
             Para hacer que las cosas sigan siendo interesantes, podéis <strong>asignar aleatoriamente personas</strong> para entregaros el regalo unos a otros.</p>
 
-#   title_2:
-#   intro_2:
+#       title_2:
+#       intro_2:
 
     add_participants: Añade tus participantes
     list_adminstrator: Esta persona también es el administrador de tu lista.
@@ -294,7 +294,7 @@ party_manage_valid:
                 El nuevo participante ser&aacute; adjudicado un amigote Secret Santa inmediato y recibirá una invitaci&oacute;n por correo electr&oacute;nico.<br>
             </p>
 
-#   started_warning:
+#       started_warning:
 
     remove_participant:
         title: Expulsar este participante de mi lista

@@ -166,11 +166,11 @@ participant_show_valid:
         body: >
             <p>Hi %name%,</p>
             <p>Sie wurden als Secret Santa eingeteilt, dieser Person ein Geschenk zu machen:</p>
-#        watch_out: ?
+#       watch_out: ?
         wishlist_from: Wunschzettel von %name%
         wishlist_not_provided: '%name% hat noch keinen Wunschzettel geschrieben'
 #       message_for_wishlist: ?
-#       find_gift:
+#       find_gift: ?
 
     wishlist:
         title: Ihr Wunschzettel

@@ -56,8 +56,8 @@ party-create:
             <p>Organizator Tajnego Mikołaja jest <strong>darmowym</strong> narzędziem służącym do <strong>organizacji wymiany prezentów</strong>! Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami. Kiedy otrzymasz list od Tajnego Mikołaja możesz dodać swoją własną <strong>listę życzeń</strong>, która zostanie dostarczona Tajnemu Mikołajowi.</p>
             <p>Każdego roku w okolicach <strong>Świąt Bożego Narodzenia</strong> ludzie na całym świecie obdarowują się prezentami.<br/> Aby uczynić to jeszcze ciekawszym możesz <strong>losowo przypisać uczestników wymiany</strong> tak aby przygotowali prezenty dla siebie nawzajem.</p>
 
-#   title_2:
-#   intro_2:
+#       title_2:
+#       intro_2:
     
     add_participants: Dodaj uczestników
     list_adminstrator: Ta osoba jest także administratorem Twojej listy.
@@ -68,6 +68,7 @@ party-create:
 #       instructions: ?
 #       too_many_files: ?
 #       wrong_format: ?
+
     btn:
         add_person: Dodaj osobę
         remove_person: Usuń osobę

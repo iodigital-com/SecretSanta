@@ -70,7 +70,6 @@ party-create:
     add_personal_message:
         title: Ввести личное сообщение
         description: ввести личное сообщение для участников.
-
 #   import:
 #       instructions: ?
 #       too_many_files: ?

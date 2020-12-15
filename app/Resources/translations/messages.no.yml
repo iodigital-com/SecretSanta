@@ -368,7 +368,7 @@ party_manage_valid:
                 <br>
                 Den nye deltageren legges til og får med en gang tildelt en å være julenisse for, og får tilsendt denne informasjonen på epost.<br>
             </p>
-#   started_warning:
+#       started_warning:
 
     remove_participant:
         title: Slett denne deltageren fra listen
