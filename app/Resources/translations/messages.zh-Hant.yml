@@ -8,18 +8,18 @@ base:
             site_name:  秘密聖誕老人
             description:  秘密聖誕老人是一個免費網上交換秘密聖誕老人.禮物的組織者。
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">需要幫助？遇上問題？閱讀FAQ!</a>
-#    privacy_policy:
-#    cookie_policy:
-#    bug_bounty:
+#   privacy_policy:
+#   cookie_policy:
+#   bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: 秘密聖誕老人派對日期
-#        location: ?
+#       location: ?
         amount_to_spend: 費用
-#        message:
-#        confirmed:
+#       message:
+#       confirmed:
 
 # PartyController
 party_controller:
@@ -57,33 +57,36 @@ party-create:
             <p>這是<strong>個免</strong>費網上交換禮物組織者。與朋友、家人、甚至同事組織秘密聖誕老人派對。在收到電郵後，你可以加入你個人的願望單，而願望單會交付到你的秘密聖誕老人。</p>
             <p>每年世界各地的人都會在<strong>聖誕時份</strong>交換禮物。為令事情感到有趣，你可隨意指派兩邊的人互相交換禮物。</p>
 
-#	title_2: ?
-#	intro_2: ?
+#       title_2: ?
+#       intro_2: ?
 
     add_participants: 加入你的參加者
     list_adminstrator: 這人是你的名單管理者。
     add_personal_message:
         title: 加入個人信息
         description: 為參加者加入個人信息。
-#     import: ?
+#   import:
+#       instructions: ?
+#       too_many_files: ?
+#       wrong_format: ?
 
     btn:
         add_person: 加入人士
         remove_person: 去掉這人
-#        import_persons_open: ?
-#        import_persons_do: ?
+#       import_persons_open: ?
+#       import_persons_do: ?
         cancel: 取消
         create_event: 創造你的項目!
 
     label:
-#        host: ?
+#       host: ?
         email: 電郵
-#        participants: ?
+#       participants: ?
 
 # Party/created.html.twig
 party-created:
     title: 只需一步，確認你的參與
-#    body: ?
+#   body: ?
     warning: 警告！
     check_spam: 別忘記去檢查你的垃圾文件夾！
 
@@ -95,27 +98,27 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 #party-forgot_link:
-#    title: ?
-#    description: ?
-#    submit_btn: ?
-#    info_reuse:
+#   title: ?
+#   description: ?
+#   submit_btn: ?
+#   info_reuse:
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title:
-#    description:
-#    form:
-#        submit-btn:
+#   title:
+#   description:
+#   form:
+#       submit-btn:
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
-#    title: ?
-#    back:
+#   title: ?
+#   back:
 
 # Static/faq.html.twig
 static-faq:
-#    title: ?
-#    body: ?
+#   title: ?
+#   body: ?
     create_new_list: 創造新的秘密聖誕老人名單!
 
 # Helper/prototypeParticipant.html.twig
@@ -126,31 +129,31 @@ helper-prototype_participant:
 # Helper/prototypeWishlist.html.twig
 helper-prototype_wishlist:
     btn:
-#        save_item: ?
-#        update_item: ?
+#       save_item: ?
+#       update_item: ?
         remove_item: 刪除這項目
 
 # Participant/exposeAll.html.twig
 #participant-expose_all:
-#    title: ?
-#    giving: ?
-#    receiving: ?
-#    back:
+#   title: ?
+#   giving: ?
+#   receiving: ?
+#   back:
 
 # Participant/show/base.html.twig
 participant_show_base:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
         date: 日期
-#        location: ?
+#       location: ?
         amount: 數量
         num_people: 人數
         person_created_list: 名單創作人
 
 # Participant/show/expired.html.twig
 #participant_show_expired:
-#    message:
-#        expired:
+#   message:
+#       expired:
 
 # Participant/show/valid.html.twig
 participant_show_valid:
@@ -159,68 +162,66 @@ participant_show_valid:
         body: >
             <p>你好%name%,</p>
             <p>你已被選派成為秘密聖誕老人去送禮物給:</p>
-#        watch_out: ?
-        copy_clipboard: 將個人鏈接複製到剪貼板
-        copied_clipboard: 邀請鏈接已復製到剪貼板！
+#       watch_out: ?
         wishlist_from: '%name%從願望名單'
         wishlist_not_provided: 願望名單還未有提供%name%
-#        message_for_wishlist: ?
-#	 find_gift: ?
+#       message_for_wishlist: ?
+#       find_gift: ?
 
     wishlist:
         title: 你的願望名單
         description: 你可留下願望名單在這裡去協助你的秘密聖誕老人。我們的精靈會小心傳遞願望名單到秘密聖誕老人。拉著項目，你可重新整理名單。
         empty: 你的願望名單是空的，請加入東西!
 
-#    flashes:
-#        wishlist:
-#            empty_row: ?
-#            added: ?
-#            updated: ?
-#            removed: ?
+#   flashes:
+#       wishlist:
+#           empty_row: ?
+#           added: ?
+#           updated: ?
+#           removed: ?
 
     label:
         description: 形容
 
     btn:
         add_wishlist: 在願望單加入項目
-#        update_item: ?
+#       update_item: ?
         remove_item: 刪除這項目
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button: ?
+#   anonymous_message:
+#       title: ?
+#       message_label: ?
+#       message_placeholder: ?
+#       warning_anonymous: ?
+#       send_button: ?
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
-#    feedback:
-#        success: ?
-#        error: ?
-#        error_in_form: ?
+#   feedback:
+#       success: ?
+#       error: ?
+#       error_in_form: ?
 
 # Participant/unsubscribe.html.twih
 #participant_unsubscribe:
-#    title:
-#    unsubscribe_all_label:
-#    unsubscribe_blacklist:
-#    unsubscribe_confirm_btn:
-#    unsubscribe_for:
-#    info_confirmation:
-#    blacklist_warning:
-#    feedback:
-#        success:
-#        error:
-#	 error_atleast_one_option: ?
+#   title:
+#   unsubscribe_all_label:
+#   unsubscribe_blacklist:
+#   unsubscribe_confirm_btn:
+#   unsubscribe_for:
+#   info_confirmation:
+#   blacklist_warning:
+#   feedback:
+#       success:
+#       error:
+#       error_atleast_one_option: ?
 
 # Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: 你的<span class="accent">秘密聖誕老人派對</span>細節
         date: 日期
-#        location: ?
+#       location: ?
         amount: 數量
 
 # Party/manage/expired.html.twig
@@ -249,7 +250,7 @@ party_manage_expired:
         delete_list: 刪除我的秘密聖誕老人名單
 
     message:
-#        expired:
+#       expired:
 
 # Party/manage/valid.html.twig
 party_manage_valid:
@@ -259,10 +260,12 @@ party_manage_valid:
         not_yet: 還未
         edit_email: 編輯電郵
         resend_email: 重發電郵
+        copy_clipboard: 將個人鏈接複製到剪貼板
+        copied_clipboard: 邀請鏈接已復製到剪貼板！
         view_participant: 查看登入
         tip: 提示
         come_back: 你可經常回到這頁去確定每一個人已查看他們的郵箱。
-#        watch_out: ?
+#       watch_out: ?
         save: 儲存
 
     delete:
@@ -280,49 +283,50 @@ party_manage_valid:
             </p>
         phrase_to_type: 刪除所有東西
 
-#    add_participant:
-#        title: ?
-#        body: ?
-#	 started_warning: ?
+#   add_participant:
+#       title: ?
+#       body: ?
+#       started_warning: ?
 
-#    remove_participant:
-#        title: ?
-#        body: ?
-#        party_started: ?
+#   remove_participant:
+#       title: ?
+#       body: ?
+#       party_started: ?
 
-#    updated_party:
-#        title: ?
-#        body: ?
+#   updated_party:
+#       title: ?
+#       body: ?
 
     btn:
-#        add_participant: ?
-#        add_participant_confirm: ?
+#       add_participant: ?
+#       add_participant_confirm: ?
         cancel: 取消
         delete_confirm: 我明白後果，現在就刪除我的秘密聖誕老人名單
         delete_list: 刪除我的秘密聖誕老人名單
-#        expose: ?
-#        expose_wishlists: ?
-#        party_update: ?
-#        remove_participant_confirm: ?
-#        updated_party: ?
-#        start_party:
+#       expose: ?
+#       expose_wishlists: ?
+#       party_update: ?
+#       remove_participant_confirm: ?
+#       updated_party: ?
+#       start_party:
+
     label:
         name: 名字
         email: 電郵
         confirmed: 確認
-#        wishlist_filled: ?
+#       wishlist_filled: ?
         actions: 行動
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+#   excludes:
+#       title:
+#       btn:
+#       description:
+#       information:
+#       placeholder_exclude:
+#       not_enough:
+#       label:
+#           name:
+#           exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -333,17 +337,17 @@ emails-base_email:
 
 # This header block is re-used in multiple emails
 emails-base_email_header:
-#    title: ?
+#   title: ?
     date: 日期
-#    location: ?
+#   location: ?
     amount: 數量
     num_people: 人數
     person_created_list: 名單創作人
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
+#   unsubscribe:
+#   unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -355,30 +359,30 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#    subject:
-#    participating_in:
-#    created_these:
-#    table_labels:
-#        date:
-#        location:
-#        link:
-#        txt:
-#    btn:
-#        party_link:
-#        manage_link:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   participating_in:
+#   created_these:
+#   table_labels:
+#       date:
+#       location:
+#       link:
+#       txt:
+#   btn:
+#       party_link:
+#       manage_link:
+#   message:
+#       html: ?
+#       txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
-#    title:
-#    subject:
-#    party_title:
-#    at:
-#    message:
-#        html:
-#        txt:
+#   title:
+#   subject:
+#   party_title:
+#   at:
+#   message:
+#       html:
+#       txt:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -392,15 +396,15 @@ emails-pendingConfirmation:
     click_button: 請點擊下方的按鈕去確認/批准你的電郵名單。這會觸發我們的精靈傳送你早前創作的個人訊息給你所有參與者。
     overview_page: 在新創作的概要你將能了解/記錄所有你的用戶尋找他們的秘密聖誕老人 禮物夥伴。這樣可知道名單何時完成。
     lastly: 最後，別忘記你的個人參與。當你點擊下方的確認/批准按鈕後，我們將會傳送一封新電郵給你。
-#    come_back:
-#    btn_goto_manage:
+#   come_back:
+#   btn_goto_manage:
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     yes: 是
     not_yet: 還未
@@ -409,45 +413,45 @@ emails-party_status:
         name: 名字
         email: 電郵
         confirmed: 確認
-#        wishlist_filled: ?
+#       wishlist_filled: ?
 
-#    btn:
-#        partystatus: ?
+#   btn:
+#       partystatus: ?
 
 # Emails/partyUpdate.{html,txt}.twig
 #emails-party_update:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
-#    btn:
-#        party_update:
+#   btn:
+#       party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     btn:
         find_out: 找出你的人
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
     label:
         date_party: 秘密聖誕老人派對日期
-#        location: ?
+#       location: ?
         amount_to_spend: 費用
 
-#    btn:
-#        updated_party: ?
+#   btn:
+#       updated_party: ?
 
 # Emails/viewParticipantReminder.{html,txt}.twig
 emails-viewParticipantReminder:
@@ -469,29 +473,29 @@ emails-wishlistChanged:
 
 # Emails/anonymousMessage.{html,txt}.twig
 #emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
-#    update_wishlist: ?
+#   subject: ?
+#   message:
+#     html: ?
+#     txt: ?
+#   update_wishlist: ?
 
 # MailStatusExtension
 #mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+#   unknown:
+#   opened:
+#   viewed:
+#   not_started:
+#   bounced:
 
 flashes:
     # SendPartyUpdateController
-#    send_party_update:
-#        success: ?
+#   send_party_update:
+#       success: ?
 
     # ForgotURLController
-#    forgot_url:
-#        success: ?
-#        error: ?
+#   forgot_url:
+#       success: ?
+#       error: ?
 
     # ManagementController
     management:
@@ -500,17 +504,17 @@ flashes:
             當我們說話時精靈們正在互聯網飛馳，傳遞所有你的(即將成為) 秘密聖誕老人禮物朋友。<br/>
             <br />
             別忘記去確認你的參與。我們已傳送給你另一封電郵。查看一下吧!
-#        add_participant:
-#            success: ?
-#            danger: ?
-#        updated_party:
-#            success: ?
-#            danger: ?
-#        start_party:
-#            success: ?
-#            danger: ?
-#        excludes:
-#             success:
+#       add_participant:
+#           success: ?
+#           danger: ?
+#       updated_party:
+#           success: ?
+#           danger: ?
+#       start_party:
+#           success: ?
+#           danger: ?
+#       excludes:
+#           success:
 
     # PartyController
     party:
@@ -519,48 +523,48 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: <strong>重新傳送！</strong><br/>電郵到%email%已被重新傳送。<br/>
-#        blacklisted:
+#       blacklisted:
 
     # ParticipantController
     participant:
         wishlist_updated: <h4>願望單已更新</h4>我們已送出我們的精靈去通知你的秘密聖誕老人關於你的願望!
         edit_email: <h4>並沒儲存</h4>這裡有電郵地址錯誤。
-#        updated_participant:
-#        updated_participant_resent:
-#        remove_participant:
-#            success: ?
-#            danger: ?
-#            warning: ?
-#            excluded_participants: ?
-#            self_assigned: ?
-#            not_enough_for_exclude:
-#            wrong: ?
+#       updated_participant:
+#       updated_participant_resent:
+#       remove_participant:
+#           success: ?
+#           danger: ?
+#           warning: ?
+#           excluded_participants: ?
+#           not_enough_for_exclude:
+#           self_assigned: ?
+#           wrong: ?
 
     # ReuseController
-#    reuse:
-#        success:
-#        error:
+#   reuse:
+#       success:
+#       error:
 
-    #ContactController
-#    contact:
-#        success:
+    # ContactController
+#   contact:
+#       success:
 #
 # Emails/contact.{html,txt}.twig
 #emails-contact:
-#    subject:
-#    message:
-#        html:
-#        txt:
+#   subject:
+#   message:
+#       html:
+#       txt:
 #
 # Form/{ContactType}
 #form-contact:
-#    label:
-#        email:
-#        name:
-#        message:
-#        submit:
+#   label:
+#       email:
+#       name:
+#       message:
+#       submit:
 #
 # Static/faq.html.twig
 #static-contact:
-#    title:
-#    body:
+#   title:
+#   body:

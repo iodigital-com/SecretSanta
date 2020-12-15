@@ -8,9 +8,9 @@ base:
             site_name: Secret Santa
             description: Organize gratuitamente sua troca de presentes online usando o Secret Santa Organizer! Acabou a confusão! Organize Amigos Secretos com seus amigos, família e colegas e mande sua lista de desejos para todo mundo!
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Precisa de ajuda? Tem alguma dúvida? Leia as Perguntas Frequentes (FAQ)!</a>
-#    privacy_policy:
-#    cookie_policy:
-#    bug_bounty:
+#   privacy_policy:
+#   cookie_policy:
+#   bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -49,10 +49,6 @@ party-create:
                 three: Enviar!
             get_started: Começar agora!
 
-    import:
-        instructions: Adicione várias pessoas para o seu evento de uma vez. Tudo que precisa é um arquivo csv com duas colunas (nome e e-mail). Arraste e largue o arquivo csv no campo aqui em baixo para os seus amigos e colegas serem adicionados rapidamente e facilmente ao seu evento.
-        too_many_files: Pode carregar somente um arquivo ao mesmo tempo.
-        wrong_format: O arquivo que você está tentando carregar não tem o formato correto (csv ou txt).
     what_is:
         title: O que é Secret Santa?
         intro: >
@@ -76,8 +72,11 @@ party-create:
         title: Adicione uma mensagem pessoal
         description: Adicione uma mensagem pessoal para os participantes.
 
-#   import:?
-   	
+    import:
+        instructions: Adicione várias pessoas para o seu evento de uma vez. Tudo que precisa é um arquivo csv com duas colunas (nome e e-mail). Arraste e largue o arquivo csv no campo aqui em baixo para os seus amigos e colegas serem adicionados rapidamente e facilmente ao seu evento.
+        too_many_files: Pode carregar somente um arquivo ao mesmo tempo.
+        wrong_format: O arquivo que você está tentando carregar não tem o formato correto (csv ou txt).
+
     btn:
         add_person: Adicionar pessoa
         remove_person: Eliminar esta pessoa
@@ -94,7 +93,7 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: Só mais 1 etapa! - Validar a sua participação
-#    body: ?
+#   body: ?
     warning: Cuidado!
     check_spam: Não esqueça de verificar sua pasta de Lixo ou Spam!
 
@@ -106,17 +105,17 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 #party-forgot_link:
-#    title: ?
-#    description: ?
-#    submit_btn: ?
-#    info_reuse:
+#   title: ?
+#   description: ?
+#   submit_btn: ?
+#   info_reuse:
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title:
-#    description:
-#    form:
-#        submit-btn:
+#   title:
+#   description:
+#   form:
+#       submit-btn:
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
@@ -198,8 +197,8 @@ helper-prototype_participant:
 # Helper/prototypeWishlist.html.twig
 helper-prototype_wishlist:
     btn:
-#        save_item: ?
-#        update_item: ?
+#       save_item: ?
+#       update_item: ?
         remove_item: Eliminar este item
 
 # Participant/exposeAll.html.twig
@@ -221,8 +220,8 @@ participant_show_base:
 
 # Participant/show/expired.html.twig
 #participant_show_expired:
-#    message:
-#        expired:
+#   message:
+#       expired:
 
 # Participant/show/valid.html.twig
 participant_show_valid:
@@ -232,12 +231,10 @@ participant_show_valid:
             <p>Olá %name%,</p>
             <p>Seu Amigo Secreto é:</p>
         watch_out: Cuidado
-        copy_clipboard: Copiar link pessoal para a área de transferência
-        copied_clipboard: O link do convite foi copiado para a sua área de transferência!
         wishlist_from: Lista de desejos de %name%
         wishlist_not_provided: '%name% ainda não montou uma lista de desejos'
         message_for_wishlist: Envie uma mensagem para seu amigo para lembrá-lo(a) que sua lista de desejos está vazia.
-#	find_gift: ?
+#       find_gift: ?
 
     wishlist:
         title: Sua lista de desejos
@@ -272,6 +269,7 @@ participant_communication-send_message:
         success: Seu email foi enviado! Enviamos nossos gnomos para entregá-lo!
         error: Infelizmente nós não conseguimos enviar sua mensagem. Por favor tente novamente mais tarde!
         error_in_form: Existe algum erro na sua entrada. Por favor verifique sua entrada e tente novamente!
+
 # Participant/unsubscribe.html.twih
 participant_unsubscribe:
     title: Cancelar a subscrição de emails
@@ -287,6 +285,7 @@ participant_unsubscribe:
     feedback:
         success: Você cancelou a subscrição com sucesso!
         error: Houbve um erro no cancelamento, por favor tente novamente!
+#       error_atleast_one_option
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -322,7 +321,7 @@ party_manage_expired:
         delete_list: Eliminar minha lista do Secret Santa
 
     message:
-#        expired:
+#       expired:
 
 # Party/manage/valid.html.twig
 party_manage_valid:
@@ -332,10 +331,12 @@ party_manage_valid:
         not_yet: Ainda não
         edit_email: Modificar e-mail
         resend_email: Reenviar o e-mail
+        copy_clipboard: Copiar link pessoal para a área de transferência
+        copied_clipboard: O link do convite foi copiado para a sua área de transferência!
         view_participant: Ver perfil do participante
         tip: Dica
         come_back: Você sempre pode voltar para esta página para verificar se todo mundo verificou a sua caixa de entrada.
-#        watch_out: ?
+#       watch_out: ?
         save: Salvar
 
     delete:
@@ -353,19 +354,19 @@ party_manage_valid:
             </p>
         phrase_to_type: eliminar tudo
 
-#    add_participant:
-#        title: ?
-#        body: ?
-#	 started_warning: ?
+#   add_participant:
+#       title: ?
+#       body: ?
+#       started_warning: ?
 
-#    remove_participant:
-#        title: ?
-#        body: ?
-#        party_started: ?
+#   remove_participant:
+#       title: ?
+#       body: ?
+#       party_started: ?
 
-#    updated_party:
-#        title: ?
-#        body: ?
+#   updated_party:
+#       title: ?
+#       body: ?
 
     btn:
         add_participant: Adicionar Participante
@@ -387,16 +388,16 @@ party_manage_valid:
         wishlist_filled: Lista de desejos criada
         actions: Ações
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+#   excludes:
+#       title:
+#       btn:
+#       description:
+#       information:
+#       placeholder_exclude:
+#       not_enough:
+#       label:
+#           name:
+#           exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -407,7 +408,7 @@ emails-base_email:
 
 # This header block is re-used in multiple emails
 emails-base_email_header:
-#    title: ?
+#   title: ?
     date: Data
     location: Licalização da festa
     amount: Valor
@@ -416,8 +417,8 @@ emails-base_email_header:
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
+#   unsubscribe:
+#   unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -429,30 +430,30 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#    subject:
-#    participating_in:
-#    created_these:
-#    table_labels:
-#        date:
-#        location:
-#        link:
-#        txt:
-#    btn:
-#        party_link:
-#        manage_link:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   participating_in:
+#   created_these:
+#   table_labels:
+#       date:
+#       location:
+#       link:
+#       txt:
+#   btn:
+#       party_link:
+#       manage_link:
+#   message:
+#       html: ?
+#       txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
-#    title:
-#    subject:
-#    party_title:
-#    at:
-#    message:
-#        html:
-#        txt:
+#   title:
+#   subject:
+#   party_title:
+#   at:
+#   message:
+#       html:
+#       txt:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -471,10 +472,10 @@ emails-pendingConfirmation:
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     yes: Sim
     not_yet: Ainda não
@@ -483,10 +484,10 @@ emails-party_status:
         name: Nome
         email: E-mail
         confirmed: Confirmado
-#        wishlist_filled: ?
+#       wishlist_filled: ?
 
-#    btn:
-#        partystatus: ?
+#   btn:
+#       partystatus: ?
 
 # Emails/partyUpdate.{html,txt}.twig
 emails-party_update:
@@ -515,28 +516,28 @@ emails-party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     btn:
         find_out: Descubra quem é seu Amigo Secreto
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
     label:
         date_party: Data da sua festa de Amigo Secreto
-#        location: ?
+#       location: ?
         amount_to_spend: Valor máximo a gastar
 
-#    btn:
-#        updated_party: ?
+#   btn:
+#       updated_party: ?
 
 # Emails/viewParticipantReminder.{html,txt}.twig
 emails-viewParticipantReminder:
@@ -588,13 +589,13 @@ mail_status_extension:
 
 flashes:
     # SendPartyUpdateController
-#    send_party_update:
-#        success: ?
+#   send_party_update:
+#       success: ?
 
     # ForgotURLController
-#    forgot_url:
-#        success: ?
-#        error: ?
+#   forgot_url:
+#       success: ?
+#       error: ?
 
     # ManagementController
     management:
@@ -603,17 +604,17 @@ flashes:
             Neste exato momento, os nossos elfos mágicos estão a caminho para entregar um Amigo Secreto a cada um dos seus participantes!<br/>
             <br />
             Não se esqueça de confirmar sua própria participação. Te mandamos mais um e-mail. Leia-o agora!
-#        add_participant:
-#            success: ?
-#            danger: ?
-#        updated_party:
-#            success: ?
-#            danger: ?
-#        start_party:
-#            success: ?
-#            danger: ?
-#        excludes:
-#            success:
+#       add_participant:
+#           success: ?
+#           danger: ?
+#       updated_party:
+#           success: ?
+#           danger: ?
+#       start_party:
+#           success: ?
+#           danger: ?
+#       excludes:
+#           success:
 
     # PartyController
     party:
@@ -622,48 +623,48 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: <strong>Enviado novamente!</strong><br/>O e-mail destinado a %email% foi enviado novamente.<br/>
-#        blacklisted:
+#       blacklisted:
 
     # ParticipantController
     participant:
         wishlist_updated: <h4>Lista de desejos atualizada</h4> Mandamos os nossos elfos mágicos ir avisar quem te tirou de Amigo Secreto quais são os presentes super bacanas que você está esperando receber!
         edit_email: <h4>Não salvo</h4> Tem algo errado com o endereço e-mail.
-#        updated_participant:
-#        updated_participant_resent:
-#        remove_participant:
-#            success: ?
-#            danger: ?
-#            warning: ?
-#            excluded_participants: ?
-#            self_assigned: ?
-#            not_enough_for_exclude:
-#            wrong: ?
+#       updated_participant:
+#       updated_participant_resent:
+#       remove_participant:
+#           success: ?
+#           danger: ?
+#           warning: ?
+#           excluded_participants: ?
+#           not_enough_for_exclude:
+#           self_assigned: ?
+#           wrong: ?
 
     # ReuseController
-#    reuse:
-#        success:
-#        error:
+#   reuse:
+#       success:
+#       error:
 
-    #ContactController
-#    contact:
-#        success:
+    # ContactController
+#   contact:
+#       success:
 #
 # Emails/contact.{html,txt}.twig
 #emails-contact:
-#    subject:
-#    message:
-#        html:
-#        txt:
+#   subject:
+#   message:
+#       html:
+#       txt:
 #
 # Form/{ContactType}
 #form-contact:
-#    label:
-#        email:
-#        name:
-#        message:
-#        submit:
+#   label:
+#       email:
+#       name:
+#       message:
+#       submit:
 #
 # Static/faq.html.twig
 #static-contact:
-#    title:
-#    body:
+#   title:
+#   body:

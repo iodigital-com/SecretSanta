@@ -8,9 +8,9 @@ base:
             site_name: Secret Santa
             description: Secret Santa Organizer ist ein kostenloses Online-Programm zum Organisieren des Secret Santa-Geschenketauschs. Organisieren Sie eine Secret Santa-Party mit Freunden, Familie oder sogar Kollegen und fügen Sie einen Wunschzettel zu.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
-     privacy_policy: Datenschutzerverklärung
-     cookie_policy: Cookie-Richtlinie
-#    bug_bounty: 
+    privacy_policy: Datenschutzerverklärung
+    cookie_policy: Cookie-Richtlinie
+#   bug_bounty: 
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -18,8 +18,8 @@ form-party:
         date_party: Datum Ihrer Secret Santa-Party
         location: Platz von Ihrer Secret Santa-Party
         amount_to_spend: Auszugebender Betrag
-#        message:
-#        confirmed:
+#       message:
+#       confirmed:
 
 # PartyController
 party_controller:
@@ -102,27 +102,27 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 #party-forgot_link:
-#    title: ?
-#    description: ?
-#    submit_btn: ?
-#    info_reuse: ?
+#   title: ?
+#   description: ?
+#   submit_btn: ?
+#   info_reuse: ?
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title: ?
-#    description: ?
-#    form:
-#        submit-btn: ?
+#   title: ?
+#   description: ?
+#   form:
+#       submit-btn: ?
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
-#    title: ?
-#    back:
+#   title: ?
+#   back:
 
 # Static/faq.html.twig
 static-faq:
-     title: Häufig gestellte Fragen
-#    body: ?
+    title: Häufig gestellte Fragen
+#   body: ?
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
 # Helper/prototypeParticipant.html.twig
@@ -133,8 +133,8 @@ helper-prototype_participant:
 # Helper/prototypeWishlist.html.twig
 helper-prototype_wishlist:
     btn:
-#        save_item: ?
-#        update_item: ?
+#       save_item: ?
+#       update_item: ?
         remove_item: Diesen Gegenstand entfernen
 
 # Participant/exposeAll.html.twig
@@ -142,7 +142,7 @@ participant-expose_all:
     title: Treffer des Secret Santa-Mail-Verteilers
     giving: Dieses Mitglied gibt....
     receiving: ... diesem Mitglied ein Geschenk
-#    back:
+#   back:
 
 # Participant/show/base.html.twig
 participant_show_base:
@@ -156,8 +156,8 @@ participant_show_base:
 
 # Participant/show/expired.html.twig
 #participant_show_expired:
-#    message:
-#        expired:
+#   message:
+#       expired:
 
 # Participant/show/valid.html.twig
 participant_show_valid:
@@ -169,20 +169,20 @@ participant_show_valid:
 #        watch_out: ?
         wishlist_from: Wunschzettel von %name%
         wishlist_not_provided: '%name% hat noch keinen Wunschzettel geschrieben'
-#        message_for_wishlist: ?
-#	find_gift:
+#       message_for_wishlist: ?
+#       find_gift:
 
     wishlist:
         title: Ihr Wunschzettel
         description: Um Ihrem Secret Santa zu helfen, können Sie hier einen Wunschzettel hinterlegen. Unsere Wichtel kümmern sich darum, diese Ihrem Secret Santa mitzuteilen. Sie können die Liste neu sortieren, indem Sie die Bestandteile an deren Platz ziehen.
         empty: Ihr Wunschzettel ist leer. Fügen Sie etwas hinzu!
 
-#    flashes:
-#        wishlist:
-#            empty_row: ?
-#            added: ?
-#            updated: ?
-#            removed: ?
+#   flashes:
+#       wishlist:
+#           empty_row: ?
+#           added: ?
+#           updated: ?
+#           removed: ?
 
     label:
         description: Beschreibung
@@ -192,32 +192,33 @@ participant_show_valid:
 #       update_item: ?
         remove_item: Diesen Gegenstand entfernen
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button:  ?
+#   anonymous_message:
+#       title: ?
+#       message_label: ?
+#       message_placeholder: ?
+#       warning_anonymous: ?
+#       send_button:  ?
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
-#    feedback:
-#        success: ?
-#        error: ?
-#        error_in_form: ?
+#   feedback:
+#       success: ?
+#       error: ?
+#       error_in_form: ?
 
 # Participant/unsubscribe.html.twih
 #participant_unsubscribe:
-#    title:
-#    unsubscribe_all_label:
-#    unsubscribe_blacklist:
-#    unsubscribe_confirm_btn:
-#    unsubscribe_for:
-#    info_confirmation:
-#    blacklist_warning:
-#    feedback:
-#        success:
-#        error:
+#   title:
+#   unsubscribe_all_label:
+#   unsubscribe_blacklist:
+#   unsubscribe_confirm_btn:
+#   unsubscribe_for:
+#   info_confirmation:
+#   blacklist_warning:
+#   feedback:
+#       success:
+#       error:
+#       error_atleast_one_option:
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -252,6 +253,9 @@ party_manage_expired:
         delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
         delete_list: Meine Secret Santa-Liste löschen
 
+#   message:
+#       expired: ?
+
 # Party/manage/valid.html.twig
 party_manage_valid:
     manage:
@@ -259,13 +263,13 @@ party_manage_valid:
         yes: Ja
         not_yet: Noch nicht
         edit_email: E-Mail bearbeiten
+        resend_email: E-Mail neu senden
         copy_clipboard: Kopiere den persönlichen Link in die Zwischenablage
         copied_clipboard: Der Einladungslink wurde <br> in Ihre Zwischenablage kopiert!
-        resend_email: E-Mail neu senden
         view_participant: Eintrag anzeigen
         tip: Hinweis
         come_back: Sie können jederzeit auf diese Seite zurückkehren, um zu überprüfen, ob alle Teilnehmer ihr Postfach kontrolliert haben.
-#        watch_out: ?
+#       watch_out: ?
         save: Speichern
 
     delete:
@@ -283,50 +287,50 @@ party_manage_valid:
             </p>
         phrase_to_type: alles löschen
 
-#    add_participant:
-#        title: ?
-#        body: ?
-#	 started_warning: ?
+#   add_participant:
+#       title: ?
+#       body: ?
+#       started_warning: ?
 
-#    remove_participant:
-#        title: ?
-#        body: ?
-#        party_started: ?
+#   remove_participant:
+#       title: ?
+#       body: ?
+#       party_started: ?
 
-#    updated_party:
-#        title: ?
-#        body: ?
+#   updated_party:
+#       title: ?
+#       body: ?
 
     btn:
         add_participant: Person hinzufügen
-#        add_participant_confirm: ?
+#       add_participant_confirm: ?
         cancel: Löschen
         delete_confirm: Ich habe die Konsequenzen verstanden, meine Secret Santa-Liste jetzt löschen
         delete_list: Meine Secret Santa-Liste löschen
-#        expose: ?
-#        expose_wishlists: ?
-#        party_update: ?
-#        remove_participant_confirm: ?
-#        updated_party: ?
-#        start_party:
+#       expose: ?
+#       expose_wishlists: ?
+#       party_update: ?
+#       remove_participant_confirm: ?
+#       updated_party: ?
+#       start_party:
 
     label:
         name: Name
         email: 'E-Mail:'
         confirmed: Bestätigt
-#        wishlist_filled: ?
+#       wishlist_filled: ?
         actions: Aktionen
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+#   excludes:
+#       title:
+#       btn:
+#       description:
+#       information:
+#       placeholder_exclude:
+#       not_enough:
+#       label:
+#           name:
+#           exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -346,8 +350,8 @@ emails-base_email_header:
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
+#   unsubscribe:
+#   unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -359,30 +363,30 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#    subject:
-#    participating_in:
-#    created_these:
-#    table_labels:
-#        date:
-#        location:
-#        link:
-#        txt:
-#    btn:
-#        party_link:
-#        manage_link:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   participating_in:
+#   created_these:
+#   table_labels:
+#       date:
+#       location:
+#       link:
+#       txt:
+#   btn:
+#       party_link:
+#       manage_link:
+#   message:
+#       html: ?
+#       txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
-#    title:
-#    subject:
-#    party_title:
-#    at:
-#    message:
-#        html:
-#        txt:
+#   title:
+#   subject:
+#   party_title:
+#   at:
+#   message:
+#       html:
+#       txt:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -396,15 +400,15 @@ emails-pendingConfirmation:
     click_button: Bitte klicken Sie auf den untenstehenden Button, um Ihren Secret Santa-Mail-Verteiler zu bestätigen.  Dies veranlasst unsere Wichtel dazu, Ihre vorher geschriebene persönliche Nachricht an alle Ihre Teilnehmer zu versenden.
     overview_page: Auf der neu-entworfenen Übersichtsseite können Sie dann nachvollziehen, wie Ihre Teilnehmer deren Secret Santa-Partner entdecken. So wissen Sie, wann die Liste komplett ist.
     lastly: Vergessen Sie am Ende nicht, Ihre eigene Teilnahme auch zu bestätigen. Auch Sie bekommen eine neue E-Mail, nachdem Sie den untenstehenden Button angeklickt haben.
-#    come_back:
-#    btn_goto_manage:
+#   come_back:
+#   btn_goto_manage:
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     yes: Ja
     not_yet: Noch nicht
@@ -413,45 +417,45 @@ emails-party_status:
         name: Name
         email: E-Mail
         confirmed: Bestätigt
-#        wishlist_filled: ?
+#       wishlist_filled: ?
 
-#    btn:
-#        partystatus: ?
+#   btn:
+#       partystatus: ?
 
 # Emails/partyUpdate.{html,txt}.twig
 #emails-party_update:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
-#    btn:
-#        party_update:
+#   btn:
+#       party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     btn:
         find_out: Finden Sie Ihren Partner
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
     label:
         date_party: Datum Ihrer Secret Santa-Party
         location: Platz von Ihrer Secret Santa-Party
         amount_to_spend: Auszugebender Betrag
 
-#    btn:
-#        updated_party: ?
+#   btn:
+#       updated_party: ?
 
 # Emails/viewParticipantReminder.{html,txt}.twig
 emails-viewParticipantReminder:
@@ -473,29 +477,29 @@ emails-wishlistChanged:
 
 # Emails/anonymousMessage.{html,txt}.twig
 #emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
-#    update_wishlist: ?
+#   subject: ?
+#   message:
+#     html: ?
+#     txt: ?
+#   update_wishlist: ?
 
 # MailStatusExtension
 #mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+#   unknown:
+#   opened:
+#   viewed:
+#   not_started:
+#   bounced:
 
 flashes:
     # SendPartyUpdateController
-#    send_party_update:
-#            success: ?
+#   send_party_update:
+#       success: ?
 
     # ForgotURLController
-#    forgot_url:
-#        success: ?
-#        error: ?
+#   forgot_url:
+#       success: ?
+#       error: ?
 
     # ManagementController
     management:
@@ -504,17 +508,17 @@ flashes:
             Während wir hier reden, reisen unsere Wichtel durch das Internet und bringen all Ihren zukünftigen Secret-Santas deren Geschenkepartner.<br/>
             <br />
             Vergessen Sie nicht, Ihre eigene Teilnahme zu bestätigen. Wir haben Ihnen eine weitere Mail zugesandt. Überprüfen Sie dies!
-#        add_participant:
-#            success: ?
-#            danger: ?
-#        updated_party:
-#            success: ?
-#            danger: ?
-#        start_party:
-#            success: ?
-#            danger: ?
-#        excludes:
-#            success:
+#       add_participant:
+#           success: ?
+#           danger: ?
+#       updated_party:
+#           success: ?
+#           danger: ?
+#       start_party:
+#           success: ?
+#           danger: ?
+#       excludes:
+#           success:
 
     # PartyController
     party:
@@ -523,48 +527,48 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: <strong>Neu versendet!</strong><br/>Die E-Mail an %email% wurde neu versendet.<br/>
-#        blacklisted:
+#       blacklisted:
 
     # ParticipantController
     participant:
         wishlist_updated: <h4>Wunschzettel aktualisiert</h4>Wir haben unsere Wichtel losgeschickt, um Ihren Secret Santa über Ihre Wünsche zu informieren!
         edit_email: <h4>Nicht gespeichert</h4> Die E-Mail-Adresse ist fehlerhaft.
-#        updated_participant:
-#        updated_participant_resent:
-#        remove_participant:
-#            success: ?
-#            danger: ?
-#            warning: ?
-#            excluded_participants: ?
-#            self_assigned: ?
-#            not_enough_for_exclude:
-#            wrong: ?
+#       updated_participant:
+#       updated_participant_resent:
+#       remove_participant:
+#           success: ?
+#           danger: ?
+#           warning: ?
+#           excluded_participants: ?
+#           not_enough_for_exclude:
+#           self_assigned: ?
+#           wrong: ?
 
     # ReuseController
-#    reuse:
-#        success:
-#        error:
+#   reuse:
+#       success:
+#       error:
 
-    #ContactController
-#    contact:
-#        success:
+    # ContactController
+#   contact:
+#       success:
 #
 # Emails/contact.{html,txt}.twig
 #emails-contact:
-#    subject:
-#    message:
-#        html:
-#        txt:
+#   subject:
+#   message:
+#       html:
+#       txt:
 #
 # Form/{ContactType}
 #form-contact:
-#    label:
-#        email:
-#        name:
-#        message:
-#        submit:
+#   label:
+#       email:
+#       name:
+#       message:
+#       submit:
 #
 # Static/faq.html.twig
 #static-contact:
-#    title:
-#    body:
+#   title:
+#   body:
