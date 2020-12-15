@@ -117,7 +117,7 @@ party-forgot_link:
     title: Overzicht van feestjes aanvragen
     description: Vul hier jouw emailadres in en we sturen je een overzicht van alle feestjes die je hebt gemaakt of waar je aan meedoet. We lijsten wel enkel de feestjes in de toekomst op.
     submit_btn: Stuur me een overzicht
-   info_reuse: 'Wil je een feestje starten op basis van een vorig feestje, vraag dan <a href="%reusepath%">hier</a> een lijst op van je vorige feestjes'
+    info_reuse: 'Wil je een feestje starten op basis van een vorig feestje, vraag dan <a href="%reusepath%">hier</a> een lijst op van je vorige feestjes'
 
 # Party/getReuseUrl.html.twig
 party-get_reuse_url:
