@@ -10,7 +10,7 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
     privacy_policy: Privacy Policy
     cookie_policy: Cookie Policy
-#    bug_bounty:
+#   bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -88,8 +88,6 @@ party-create:
         host: Beheerder
         email: E-mail
         participants: Deelnemers
-    party_was_hashed: Er zijn enkele deelnemers niet meer beschikbaar vanwege privacy overwegingen
-    party_was_completely_hashed: Er zijn geen deelnemers meer beschikbaar vanwege privacy overwegingen
 
 # Party/created.html.twig
 party-created:
@@ -119,6 +117,7 @@ party-forgot_link:
     title: Overzicht van feestjes aanvragen
     description: Vul hier jouw emailadres in en we sturen je een overzicht van alle feestjes die je hebt gemaakt of waar je aan meedoet. We lijsten wel enkel de feestjes in de toekomst op.
     submit_btn: Stuur me een overzicht
+#    info_reuse:
 
 # Party/getReuseUrl.html.twig
 party-get_reuse_url:
@@ -317,9 +316,9 @@ participant_unsubscribe:
     blacklist_warning: >
                        <strong>Waarschuwing!</strong> Wanneer je je emailadres op de blacklist plaatst zal je in de toekomst niet meer kunnen worden uitgenodigd voor een feestje! Gebruik deze functie enkel als je vermoed dat iemand je mail verkeerd gebruikt!
     feedback:
-       success: Je bent succesvol uitgeschreven!
-       error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!
-       error_atleast_one_option: Kies minstens 1 uitschrijf mogelijkheid.
+        success: Je bent succesvol uitgeschreven!
+        error: Er is een probleem opgetreden tijdens het uitschrijven, probeer opnieuw!
+        error_atleast_one_option: Kies minstens 1 uitschrijf mogelijkheid.
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -373,8 +372,6 @@ party_manage_valid:
         come_back: Je kan altijd terugkeren naar deze pagina om te kijken of iedereen zijn of haar mailbox heeft gecheckt.
         watch_out: Opgelet
         save: Bewaar
-        name_anonymized: Geanonimiseerd
-        email_anonymized: Geanonimiseerd
 
     delete:
         title: Verwijder mijn Secret Santa lijst
@@ -407,6 +404,7 @@ party_manage_valid:
                 Als er nog deelnemers zijn die hun match niet hebben bekeken, dan zullen we die gebruiken om de nieuwe deelnemer aan toe te kennen.
                 Als iedereen zijn match al heeft bekeken, dan zal de nieuwe deelnemer aan jou worden toegekend en zal die jouw match toegekend krijgen.
             </p>
+
     remove_participant:
         title: Verwijder deze deelnemer uit je lijst
         body: <p>Weet je het ECHT zeker?</p>
@@ -478,11 +476,6 @@ emails-base_email_unsubscribe:
     unsubscribe: Als je in de toekomst geen emails meer wilt ontvangen, dan kan je
     unsubscribe_link: hier uitschrijven
 
-# Emails/baseEmailUnsubscribe.html.twig
-#emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
-
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Je verlanglijst is nog leeg
@@ -490,19 +483,6 @@ emails-emptyWishlistReminder:
 
     btn:
         update_wishlist: Pas je wishlist aan!
-
-# Emails/reuseLink.{html,txt}.twig
-emails-reuse_link:
-    title: Link om je feestje te hergebruiken
-    subject: Hergebruik je Secret Santa feestje
-    party_title: Feestje
-    at: te/in
-    message:
-        html: 'Hey, <br /><br />Je hebt ons gevraagd een email te sturen met een overzicht van je feestjes. Hier vind je de feestjes die je hebt gemaakt de voorbije 2 jaar, met een link om ze te hergebruiken.<br />'
-        txt: >
-            Hey,
-
-            Je hebt ons gevraagd een email te sturen met een overzicht van je feestjes. Hier vind je de feestjes die je hebt gemaakt de voorbije 2 jaar, met een link om ze te hergebruiken.
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
@@ -519,12 +499,23 @@ emails-forgot_link:
         manage_link: Feestje beheren
     message:
         html: 'Hey, <br /><br />Je hebt ons gevraagd een overzicht te sturen van jouw feestjes. Deze feestjes zijn alle feestjes die jij beheert en/of de feestjes waar jij aan meedoet, die plaatsvinden in de toekomst.<br />'
-
         txt: >
             Hey,
 
             Je hebt ons gevraagd een overzicht te sturen van jouw feestjes. Deze feestjes zijn alle feestjes die jij beheert en/of de feestjes waar jij aan meedoet, die plaatsvinden in de toekomst.
 
+# Emails/reuseLink.{html,txt}.twig
+emails-reuse_link:
+    title: Link om je feestje te hergebruiken
+    subject: Hergebruik je Secret Santa feestje
+    party_title: Feestje
+    at: te/in
+    message:
+        html: 'Hey, <br /><br />Je hebt ons gevraagd een email te sturen met een overzicht van je feestjes. Hier vind je de feestjes die je hebt gemaakt de voorbije 2 jaar, met een link om ze te hergebruiken.<br />'
+        txt: >
+            Hey,
+
+            Je hebt ons gevraagd een email te sturen met een overzicht van je feestjes. Hier vind je de feestjes die je hebt gemaakt de voorbije 2 jaar, met een link om ze te hergebruiken.
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -732,8 +723,8 @@ flashes:
             danger: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, jouw feestje heeft minstens 3 deelnemers nodig.
             warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
             excluded_participants: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
-#            self_assigned: ?
             not_enough_for_exclude: <h4>Oeps</h4> Je hebt excludes geconfigureerd, maar omdat je minimaal 4 deelnemers moet hebben om dit te kunnen gebruiken zal je eerst je excludes moeten verwijderen of er voor zorgen dat je steeds minimaal 4 deelnemers hebt.
+#           self_assigned: ?
             wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
 
     # ReuseController
@@ -741,7 +732,7 @@ flashes:
         success: 'We hebben je mail verzonden!'
         error: 'We konden geen feestjes vinden, het kan zijn dat je feestjes ouder zijn dan 2 jaar, of dat er geen feestjes zijn gelinkt aan dit emailadres.'
 
-    #ContactController
+    # ContactController
     contact:
         success: 'We hebben je vraag succesvol verstuurd! We nemen zo snel mogelijk contact met  je op!'
 

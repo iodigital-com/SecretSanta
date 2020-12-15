@@ -10,7 +10,7 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">¿Necesitas ayuda? ¿Tienes preguntas? ¡Lee las Preguntas Frecuentes!</a>
     privacy_policy: Política de privacidad
     cookie_policy: Política de cookies
-#    bug_bounty:
+#   bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -18,8 +18,8 @@ form-party:
         date_party: Fecha de tu fiesta Secret Santa
         location: Sitio de tu fiesta Secret Santa
         amount_to_spend: Cantidad a gastar
-#        message:
-#        confirmed:
+#       message:
+#       confirmed:
 
 # PartyController
 party_controller:
@@ -59,8 +59,8 @@ party-create:
             <p>Cada año cerca de la época de <strong> Navidad</strong> la gente de todo el mundo intercambia regalos.<br/>
             Para hacer que las cosas sigan siendo interesantes, podéis <strong>asignar aleatoriamente personas</strong> para entregaros el regalo unos a otros.</p>
 
-#	title_2:
-#	intro_2:
+#   title_2:
+#   intro_2:
 
     add_participants: Añade tus participantes
     list_adminstrator: Esta persona también es el administrador de tu lista.
@@ -88,7 +88,7 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: ¡Sólo 1 paso para terminar! – Valida tu participación
-#    body: ?
+#   body: ?
     warning: ¡Advertencia!
     check_spam: ¡No olvides comprobar tu carpeta de correo no deseado!
 
@@ -100,27 +100,27 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 party-forgot_link:
-#    title:
-#    description:
-#    submit_btn: ?
-#    info_reuse:
+#   title:
+#   description:
+#   submit_btn: ?
+#   info_reuse:
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title:
-#    description:
-#    form:
-#        submit-btn:
+#   title:
+#   description:
+#   form:
+#       submit-btn:
 
 # Wishlist/showAll.html.twig
 wishlist-show_all:
     title: Secret Santa Listas de deseos
-#    back:
+#   back:
 
 # Static/faq.html.twig
 static-faq:
-#    title: ?
-#    body: ?
+#   title: ?
+#   body: ?
     create_new_list: ¡Crear una nueva lista Secret Santa!
 
 # Helper/prototypeParticipant.html.twig
@@ -140,7 +140,7 @@ participant-expose_all:
     title: Secret Santa Mailing List Matches
     giving: This member is giving ...
     receiving: ... a gift to this member
-#    back:
+#   back:
 
 # Participant/show/base.html.twig
 participant_show_base:
@@ -154,8 +154,8 @@ participant_show_base:
 
 # Participant/show/expired.html.twig
 #participant_show_expired:
-#    message:
-#        expired:
+#   message:
+#       expired:
 
 # Participant/show/valid.html.twig
 participant_show_valid:
@@ -168,7 +168,7 @@ participant_show_valid:
         wishlist_from: Lista de deseos de %name%
         wishlist_not_provided: '%name% aún no ha facilitado una lista de deseos'
 #       message_for_wishlist: ?
-#	find_gift: ?
+#       find_gift: ?
 
     wishlist:
         title: Tu lista de deseos
@@ -190,32 +190,33 @@ participant_show_valid:
         update_item: Actualizar este elemento
         remove_item: Quitar
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button:  ?
+#   anonymous_message:
+#       title: ?
+#       message_label: ?
+#       message_placeholder: ?
+#       warning_anonymous: ?
+#       send_button:  ?
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
-#    feedback:
-#        success: ?
-#        error: ?
-#        error_in_form: ?
+#   feedback:
+#       success: ?
+#       error: ?
+#       error_in_form: ?
 
 # Participant/unsubscribe.html.twih
 #participant_unsubscribe:
-#    title:
-#    unsubscribe_all_label:
-#    unsubscribe_blacklist:
-#    unsubscribe_confirm_btn:
-#    unsubscribe_for:
-#    info_confirmation:
-#    blacklist_warning:
-#    feedback:
-#        success:
-#        error:
+#   title:
+#   unsubscribe_all_label:
+#   unsubscribe_blacklist:
+#   unsubscribe_confirm_btn:
+#   unsubscribe_for:
+#   info_confirmation:
+#   blacklist_warning:
+#   feedback:
+#       success:
+#       error:
+#       error_atleast_one_option:
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -251,7 +252,7 @@ party_manage_expired:
         delete_list: Borrar mi lista Secret Santa
 
     message:
-#        expired:
+#       expired:
 
 # Party/manage/valid.html.twig
 party_manage_valid:
@@ -293,7 +294,7 @@ party_manage_valid:
                 El nuevo participante ser&aacute; adjudicado un amigote Secret Santa inmediato y recibirá una invitaci&oacute;n por correo electr&oacute;nico.<br>
             </p>
 
-#	started_warning:
+#   started_warning:
 
     remove_participant:
         title: Expulsar este participante de mi lista
@@ -320,12 +321,12 @@ party_manage_valid:
         cancel: Cancelar
         delete_confirm: Comprendo las consecuencias, borrar mi lista Secret Santa ahora
         delete_list: Borrar mi lista Secret Santa
-#        expose: ?
-#        expose_wishlists: ?
+#       expose: ?
+#       expose_wishlists: ?
         party_update: Envia una actualizaci&oacute;n a los participantes
         remove_participant_confirm: Expulsar este participante
         updated_party: Adaptar los detalles de la fiesta
-#        start_party:
+#       start_party:
 
     label:
         name: Nombre
@@ -334,16 +335,16 @@ party_manage_valid:
         wishlist_filled: Lista de deseos insertado
         actions: Acciones
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+#   excludes:
+#       title:
+#       btn:
+#       description:
+#       information:
+#       placeholder_exclude:
+#       not_enough:
+#       label:
+#           name:
+#           exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -363,8 +364,8 @@ emails-base_email_header:
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
+#   unsubscribe:
+#   unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -376,30 +377,30 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#    subject:
-#    participating_in:
-#    created_these:
-#    table_labels:
-#        date:
-#        location:
-#        link:
-#        txt:
-#    btn:
-#        party_link:
-#        manage_link:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   participating_in:
+#   created_these:
+#   table_labels:
+#       date:
+#       location:
+#       link:
+#       txt:
+#   btn:
+#       party_link:
+#       manage_link:
+#   message:
+#       html: ?
+#       txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
-#    title:
-#    subject:
-#    party_title:
-#    at:
-#    message:
-#        html:
-#        txt:
+#   title:
+#   subject:
+#   party_title:
+#   at:
+#   message:
+#       html:
+#       txt:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -413,8 +414,8 @@ emails-pendingConfirmation:
     click_button: Por favor, haz clic en el botón de debajo para validar tu lista de correos Secret Santa. Esto hará que nuestros gnomos envíen a todos tus participantes el mensaje personal que has creado anteriormente.
     overview_page: En la página de resumen recién creada podrás seguir a todos tus usuarios que han descubierto sus amigos del regalo Secret Santa. Por lo tanto, sabrás cuándo está completa la lista.
     lastly: Finalmente, ¡no olvides confirmar también tu propia participación! También te enviaremos un nuevo correo electrónico después de que hagas clic en el botón de validación de abajo.
-#    come_back:
-#    btn_goto_manage:
+#   come_back:
+#   btn_goto_manage:
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
@@ -530,19 +531,19 @@ emails-wishlistChanged:
 
 # Emails/anonymousMessage.{html,txt}.twig
 #emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
-#    update_wishlist: ?
+#   subject: ?
+#   message:
+#     html: ?
+#     txt: ?
+#   update_wishlist: ?
 
 # MailStatusExtension
 #mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+#   unknown:
+#   opened:
+#   viewed:
+#   not_started:
+#   bounced:
 
 flashes:
     # SendPartyUpdateController
@@ -551,8 +552,8 @@ flashes:
 
     # ForgotURLController
     forgot_url:
-#        success:
-#        error:
+#       success:
+#       error:
 
     # ManagementController
     management:
@@ -567,11 +568,11 @@ flashes:
         updated_party:
             success: <h4>¡Actualizado!</h4> Tu fiesta ha sido actualizado de éxito.
             danger: <h4>Oops</h4> Ha occurido un error al actualizar tu fiesta. Por favor, inténtalo otra vez.
-#        start_party:
-#            success: ?
-#            danger: ?
-#        excludes:
-#            success:
+#       start_party:
+#           success: ?
+#           danger: ?
+#       excludes:
+#           success:
 
     # PartyController
     party:
@@ -580,48 +581,48 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: <strong>¡Reenviado!</strong><br/>El correo electrónico %email% ha sido reenviado.<br/>
-#        blacklisted:
+#       blacklisted:
 
     # ParticipantController
     participant:
         wishlist_updated: <h4>Lista de deseos actualizada</h4>¡Hemos enviado a nuestros gnomos para que notifiquen a tu Secret Santa tus deseos!
         edit_email: <h4>No guardado</h4> Hay un error en la dirección de correo electrónico.
-#        updated_participant:
-#        updated_participant_resent:
+#       updated_participant:
+#       updated_participant_resent:
         remove_participant:
             success: <h4>¡Expulsado!</h4> Participante expulsado de éxito.
             danger: <h4>Oops</h4> No puedes expulsar este participante, tu fiesta necesita al menos 3 participantes.
             warning: <h4>Oops</h4> Organizas la fiesta, no puedes expulsarte. Si quieres dejar la fiesta, haz clic en el enlace abajo para borrar la lista Secret Santa.
             excluded_participants: <h4>Oops</h4> No puedes expulsar este participante, has utilzado exclusi&oacute;nes cuando creabas la fiesta, explusar un participante puede causar problemas y por eso este funcionalidad no es disponible por esta fiesta.
-#            self_assigned: ?
-#            not_enough_for_exclude:
+#           not_enough_for_exclude:
+#           self_assigned: ?
             wrong: <h4>Oops</h4> Parece que tu frase de confirmación no corresponde con la que tuviéramos delante.
 
     # ReuseController
-#    reuse:
-#        success:
-#        error:
+#   reuse:
+#       success:
+#       error:
 
-    #ContactController
-#    contact:
-#        success:
-#
+    # ContactController
+#   contact:
+#       success:
+
 # Emails/contact.{html,txt}.twig
 #emails-contact:
-#    subject:
-#    message:
-#        html:
-#        txt:
-#
+#   subject:
+#   message:
+#       html:
+#       txt:
+
 # Form/{ContactType}
 #form-contact:
-#    label:
-#        email:
-#        name:
-#        message:
-#        submit:
-#
+#   label:
+#       email:
+#       name:
+#       message:
+#       submit:
+
 # Static/faq.html.twig
 #static-contact:
-#    title:
-#    body:
+#   title:
+#   body:

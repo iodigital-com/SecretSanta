@@ -8,9 +8,9 @@ base:
             site_name: Secret Santa
             description: Secret Santa Organizer er et gratis program som lar deg organisere gavebytter! Arranger en hemmelig nisse fest med venner, familie eller kolleger og legg til din egen ønskeliste.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Trenger du hjelp? Har du spørsmål? Les ofte stilte spørsmål her!</a>
-#    privacy_policy:
-#    cookie_policy:
-#    bug_bounty:
+#   privacy_policy:
+#   cookie_policy:
+#   bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -18,8 +18,8 @@ form-party:
         date_party: Dato
         location: Sted
         amount_to_spend: Beløp å bruke på gaven
-#        message:
-#        confirmed:
+#       message:
+#       confirmed:
 
 # PartyController
 party_controller:
@@ -74,7 +74,7 @@ party-create:
         title: Legg til en melding
         description: Skriv ned en personlig beskjed til alle deltagerne.
     import:
-        instruksjoner: Legg til flere personer på en gang til ditt selskap. Last ned<a href="%downloadPath%">denne CSV-malen</a> og legg til navn og epostadresser på alle deltagerne som skal inviteres. Når du er ferdig kan du dra og slippe filen i feltet nedenfor og dine venner eller kolleger blir raskt og enkelt lagt til listen.
+        instructions: Legg til flere personer på en gang til ditt selskap. Last ned<a href="%downloadPath%">denne CSV-malen</a> og legg til navn og epostadresser på alle deltagerne som skal inviteres. Når du er ferdig kan du dra og slippe filen i feltet nedenfor og dine venner eller kolleger blir raskt og enkelt lagt til listen.
         too_many_files: Det går kun an å laste opp én fil av gangen..
         wrong_format: Filen du prøver å bruke har ikke riktig format(csv eller txt).
 
@@ -94,7 +94,7 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: Bare 1 trinn igjen! - Bekreft din deltagelse
-#    body: ?
+#   body: ?
     warning: Warning!
     check_spam: Ikke glem å sjekke søppelposten!
 
@@ -106,22 +106,22 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 party-forgot_link:
-#    title: ?
-#    description: ?
-#    submit_btn: ?
-#    info_reuse: ?
+#   title: ?
+#   description: ?
+#   submit_btn: ?
+#   info_reuse: ?
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title:
-#    description:
-#    form:
-#        submit-btn:
+#   title:
+#   description:
+#   form:
+#       submit-btn:
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
-#    title: ?
-#    back:
+#   title: ?
+#   back:
 
 # Static/faq.html.twig
 static-faq:
@@ -212,10 +212,10 @@ helper-prototype_wishlist:
 
 # Participant/exposeAll.html.twig
 #participant-expose_all:
-#    title: ?
-#    giving: ?
-#    receiving: ?
-#    back:
+#   title: ?
+#   giving: ?
+#   receiving: ?
+#   back:
 
 # Participant/show/base.html.twig
 participant_show_base:
@@ -229,22 +229,21 @@ participant_show_base:
 
 # Participant/show/expired.html.twig
 #participant_show_expired:
-#    message:
-#        expired:
+#   message:
+#       expired:
 
 # Participant/show/valid.html.twig
 participant_show_valid:
     participant:
         title: Du har fått tildelt følgende nisse
-        copy_clipboard: Kopier personlig lenke til utklippstavlen
-        copied_clipboard: Invitasjonslenken ble kopiert til utklippstavlen din!
         body: >
             <p>Hi %name%,</p>
             <p>Du skal være hemmelig julenisse for:</p>
         watch_out: Watch out
         wishlist_from: Ønskeliste fra %name%
         wishlist_not_provided: '%name% har ikke lagt inn sin ønskeliste ennå'
-#        message_for_wishlist: ?
+#       message_for_wishlist: ?
+#       find_gift: ?
 
     wishlist:
         title: Din ønskeliste
@@ -266,32 +265,33 @@ participant_show_valid:
         update_item: Oppdater
         remove_item: Fjern
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button:  ?
+#   anonymous_message:
+#       title: ?
+#       message_label: ?
+#       message_placeholder: ?
+#       warning_anonymous: ?
+#       send_button:  ?
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
-#    feedback:
-#        success: ?
-#        error: ?
-#        error_in_form: ?
+#   feedback:
+#       success: ?
+#       error: ?
+#       error_in_form: ?
 
 # Participant/unsubscribe.html.twih
 #participant_unsubscribe:
-#    title:
-#    unsubscribe_all_label:
-#    unsubscribe_blacklist:
-#    unsubscribe_confirm_btn:
-#    unsubscribe_for:
-#    info_confirmation:
-#    blacklist_warning:
-#    feedback:
-#        success:
-#        error:
+#   title:
+#   unsubscribe_all_label:
+#   unsubscribe_blacklist:
+#   unsubscribe_confirm_btn:
+#   unsubscribe_for:
+#   info_confirmation:
+#   blacklist_warning:
+#   feedback:
+#       success:
+#       error:
+#       error_atleast_one_option:
 
 # Party/manage/base.html.twig
 party_manage_base:
@@ -327,7 +327,7 @@ party_manage_expired:
         delete_list: Slett min Secret Santa-liste
 
     message:
-#        expired:
+#       expired:
 
 # Party/manage/valid.html.twig
 party_manage_valid:
@@ -337,6 +337,8 @@ party_manage_valid:
         not_yet: Ikke ennå
         edit_email: Rediger e-posten
         resend_email: Sen e-post på nytt
+        copy_clipboard: Kopier personlig lenke til utklippstavlen
+        copied_clipboard: Invitasjonslenken ble kopiert til utklippstavlen din!
         view_participant: Se listen
         tip: Tip
         come_back: Du kan alltids komme tilbake til denne siden for å sjekke at alle har undersøkt innboksen sin.
@@ -366,17 +368,17 @@ party_manage_valid:
                 <br>
                 Den nye deltageren legges til og får med en gang tildelt en å være julenisse for, og får tilsendt denne informasjonen på epost.<br>
             </p>
-#	started_warning:
+#   started_warning:
 
     remove_participant:
         title: Slett denne deltageren fra listen
-        party_started: <p>Er du HELT sikker?</p>
         body: >
             <p>
                 Å slette denne deltageren blir på permanent basis. DU kan ikke angre deg og personen denne deltageren har fått tildelt blir fjernet som kombinasjon.<br>
                 <br>
                 Noen kan ha kjøpt gaven allerede.<br>
             </p>
+        party_started: <p>Er du HELT sikker?</p>
 
     updated_party:
         title: Oppdater detaljer for festen
@@ -398,7 +400,7 @@ party_manage_valid:
         party_update: Send party update to participants
         remove_participant_confirm: Fjern denne deltageren
         updated_party: Oppdater detaljer for ditt arrangement
-#        start_party:
+#       start_party:
 
     label:
         name: Navn
@@ -407,16 +409,16 @@ party_manage_valid:
         wishlist_filled: Ønskeliste lagt inn
         actions: Valg
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+#   excludes:
+#       title:
+#       btn:
+#       description:
+#       information:
+#       placeholder_exclude:
+#       not_enough:
+#       label:
+#           name:
+#           exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -427,7 +429,7 @@ emails-base_email:
 
 # This header block is re-used in multiple emails
 emails-base_email_header:
-#    title: ?
+#   title: ?
     date: Date
     location: Sted
     amount: Beløp
@@ -436,8 +438,8 @@ emails-base_email_header:
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
+#   unsubscribe:
+#   unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -449,30 +451,30 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#    subject:
-#    participating_in:
-#    created_these:
-#    table_labels:
-#        date:
-#        location:
-#        link:
-#        txt:
-#    btn:
-#        party_link:
-#        manage_link:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   participating_in:
+#   created_these:
+#   table_labels:
+#       date:
+#       location:
+#       link:
+#       txt:
+#   btn:
+#       party_link:
+#       manage_link:
+#   message:
+#       html: ?
+#       txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
-#    title:
-#    subject:
-#    party_title:
-#    at:
-#    message:
-#        html:
-#        txt:
+#   title:
+#   subject:
+#   party_title:
+#   at:
+#   message:
+#       html:
+#       txt:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -486,8 +488,8 @@ emails-pendingConfirmation:
     click_button: Vennligst trykk på knappen nedenfor for å bekrefte deltagerlisten for ditt "Secret Santa" arrangement. Dette får våre smånisser og troll til å sende ut den personlige meldingen du skrev til alle deltagerne på listen.
     overview_page: På administrasjonssiden kan du få oversikt over alle deltagerne, og se hvem som har åpnet e-posten. Dermed vet du når listen er fullført!
     lastly: Sist men ikke minst, ikke glem å bekrefte din egen deltagelse! Vi sender deg straks en ny e-post, så snart du har trykket på bekreftelsesknappen nedenfor.
-#    come_back:
-#    btn_goto_manage:
+#   come_back:
+#   btn_goto_manage:
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
@@ -603,19 +605,19 @@ emails-wishlistChanged:
 
 # Emails/anonymousMessage.{html,txt}.twig
 #emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
-#    update_wishlist: ?
+#   subject: ?
+#   message:
+#     html: ?
+#     txt: ?
+#   update_wishlist: ?
 
 # MailStatusExtension
 #mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+#   unknown:
+#   opened:
+#   viewed:
+#   not_started:
+#   bounced:
 
 flashes:
     # SendPartyUpdateController
@@ -624,8 +626,8 @@ flashes:
 
     # ForgotURLController
     forgot_url:
-#        success: ?
-#        error: ?
+#       success: ?
+#       error: ?
 
     # ManagementController
     management:
@@ -640,11 +642,11 @@ flashes:
         updated_party:
             success: <h4>Oppdatert!</h4> Detaljene for ditt arrangement har blitt oppdatert(e)!
             danger: <h4>Oops</h4> En feil inntraff mens smånissene våre skulle oppdatere detaljene for arrangementet ditt. Vennligst prøv igjen.
-#        start_party:
-#            success: ?
-#            danger: ?
-#        excludes:
-#            success:
+#       start_party:
+#           success: ?
+#           danger: ?
+#       excludes:
+#           success:
 
     # PartyController
     party:
@@ -653,48 +655,48 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: <strong>Sendt på nytt!</strong><br/>Eposten til %email% har blitt sendt på nytt.<br/>
-#        blacklisted:
+#       blacklisted:
 
     # ParticipantController
     participant:
         wishlist_updated: <h4>Ønskelisten er oppdatert</h4>Vi har sendt en smånisse med beskjed til julenissen din om at ønskene dine er endret!
         edit_email: <h4>Not saved</h4> There is an error in the email address.
-#        updated_participant:
-#        updated_participant_resent:
+#       updated_participant:
+#       updated_participant_resent:
         remove_participant:
             success: <h4>Fjernet!</h4> Deltager er fjernet fra arrangemenet.
             danger: <h4>Oops</h4> Kan ikke slette denne deltageren, du trenger minst 3 deltagere.
             warning: <h4>Oops</h4> Du er administrator for dette arrangementet, du kan ikke slette deg selv. Hvis du ikke vil delta, trykk på linken nedenfor eller slett listen din.
             excluded_participants: <h4>Oops</h4> Kan ikke slette deltageren(e) fra dette arrangementet, du har ekskludert noen kombinasjoner da du opprettet arrangementet, og det gjør det umulig å slette deltagere i etterkant.
+#           not_enough_for_exclude:
             self_assigned: <h4>Oops<h4> Kan ikke slette denne deltageren, for da vil en deltager få oppgitt seg selv som "hemmelig venn" å gi gave til.
-#            not_enough_for_exclude:
             wrong: <h4>Oops</h4> Det ser ut til at arrangementet ikke kunne godkjennes, vennligst prøv igjen.
 
     # ReuseController
-#    reuse:
-#        success:
-#        error:
+#   reuse:
+#       success:
+#       error:
 
-    #ContactController
-#    contact:
-#        success:
+    # ContactController
+#   contact:
+#       success:
 #
 # Emails/contact.{html,txt}.twig
 #emails-contact:
-#    subject:
-#    message:
-#        html:
-#        txt:
+#   subject:
+#   message:
+#       html:
+#       txt:
 #
 # Form/{ContactType}
 #form-contact:
-#    label:
-#        email:
-#        name:
-#        message:
-#        submit:
+#   label:
+#       email:
+#       name:
+#       message:
+#       submit:
 #
 # Static/faq.html.twig
 #static-contact:
-#    title:
-#    body:
+#   title:
+#   body:

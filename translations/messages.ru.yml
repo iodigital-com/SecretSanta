@@ -8,18 +8,18 @@ base:
             site_name: Тайный Санта
             description: Организатор вечеринки Тайного Санты - бесплатный сервис по организации обмена рождественскими подарками от Тайного Санты! Организуйте собственную тайную вечеринку Санты для ваших друзей, членов семьи или даже коллег по работе и создайте ваш список желаний.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Нужна помощь? Появились вопросы? Ознакомьтесь с ответами на часто задаваемые вопросы!</a>
-#    privacy_policy:
-#    cookie_policy:
-#    bug_bounty:
+#   privacy_policy:
+#   cookie_policy:
+#   bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: Дата проведения твоей вечеринки Тайного Санты
-#        location: ?
+#       location: ?
         amount_to_spend: Сумма
-#        message:
-#        confirmed:
+#       message:
+#       confirmed:
 
 # PartyController
 party_controller:
@@ -62,33 +62,37 @@ party-create:
             Чтобы сохранить интригу, вы можете <strong>в случайном порядке назначить</strong> отправителей
             получателей подарков.</p>
             
-#        title_2:
-#        intro_2:
+#       title_2:
+#       intro_2:
 
     add_participants: Добавьте участников
     list_adminstrator: Этот человек также будет администратором вашего списка участников.
     add_personal_message:
         title: Ввести личное сообщение
         description: ввести личное сообщение для участников.
-#      import: ?
+
+#   import:
+#       instructions: ?
+#       too_many_files: ?
+#       wrong_format: ?
 
     btn:
         add_person: Добавить
         remove_person: Удалить
-#        import_persons_open: ?
-#        import_persons_do: ?
+#       import_persons_open: ?
+#       import_persons_do: ?
         cancel: Отменить
         create_event: Создать событие!
 
     label:
-#        host: ?
+#       host: ?
         email: Электронная почта
         participants: участников
 
 # Party/created.html.twig
 party-created:
     title: Один шаг до начала! - Подтвердите ваше участие
-#    body: ?
+#   body: ?
     warning: Внимание!
     check_spam: Внимание! Не забудьте проверить папку для нежелательной почты!
 
@@ -100,27 +104,27 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 #party-forgot_link:
-#    title: ?
-#    description: ?
-#    submit_btn: ?
-#    info_reuse:
+#   title: ?
+#   description: ?
+#   submit_btn: ?
+#   info_reuse:
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title:
-#    description:
-#    form:
-#        submit-btn:
+#   title:
+#   description:
+#   form:
+#       submit-btn:
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
-#    title: ?
-#    back:
+#   title: ?
+#   back:
 
 # Static/faq.html.twig
 static-faq:
-#    title: ?
-#    body: ?
+#   title: ?
+#   body: ?
     create_new_list: Создать новый список Тайного Санты!
 
 # Helper/prototypeParticipant.html.twig
@@ -131,8 +135,8 @@ helper-prototype_participant:
 # Helper/prototypeWishlist.html.twig
 helper-prototype_wishlist:
     btn:
-#        save_item: ?
-#        update_item: ?
+#       save_item: ?
+#       update_item: ?
         remove_item: Удалить из списка
 
 # Participant/exposeAll.html.twig
@@ -140,7 +144,7 @@ participant-expose_all:
     title: Пары из списка Тайного Санты
     giving: Это участник готовит подарок...
     receiving: ... для этого участника
-#    back:
+#   back:
 
 # Participant/show/base.html.twig
 participant_show_base:
@@ -154,8 +158,8 @@ participant_show_base:
 
 # Participant/show/expired.html.twig
 #participant_show_expired:
-#    message:
-#        expired:
+#   message:
+#       expired:
 
 # Participant/show/valid.html.twig
 participant_show_valid:
@@ -164,66 +168,66 @@ participant_show_valid:
         body: >
             <p>Привет! %name%,</p>
             <p>Тайный Санта назначил тебе получателя подарка:</p>
-#        watch_out: ?
-        copy_clipboard: Скопировать персональную ссылку в буфер обмена
-        copied_clipboard: Ссылка на приглашение была скопирована в ваш буфер обмена!
+#       watch_out: ?
         wishlist_from: Список желаний от %name%
         wishlist_not_provided: '%name% еще не предоставил свой список желаний'
-#        message_for_wishlist: ?
+#       message_for_wishlist: ?
+#       find_gift: ?
 
     wishlist:
         title: Твой список желаний
         description: Чтобы помочь твоему Тайному Санте, ты можешь оставить список желаний здесь. Наши гномы позаботятся о том, чтобы он попал к твоему Тайному Санте. Ты можешь изменить список, перетащив предметы на нужные места.
         empty: Твой список желаний пуст. Добавь в него что-нибудь.
 
-#    flashes:
-#        wishlist:
-#            empty_row: ?
-#            added: ?
-#            updated: ?
-#            removed: ?
+#   flashes:
+#       wishlist:
+#           empty_row: ?
+#           added: ?
+#           updated: ?
+#           removed: ?
 
     label:
         description: Описание
 
     btn:
         add_wishlist: Добавить в список желаний
-#        update_item: ?
+#       update_item: ?
         remove_item: Удалить из списка
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button: ?
+#   anonymous_message:
+#       title: ?
+#       message_label: ?
+#       message_placeholder: ?
+#       warning_anonymous: ?
+#       send_button: ?
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
-#    feedback:
-#        success: ?
-#        error: ?
-#        error_in_form: ?
+#   feedback:
+#       success: ?
+#       error: ?
+#       error_in_form: ?
 
 # Participant/unsubscribe.html.twih
 #participant_unsubscribe:
-#    title:
-#    unsubscribe_all_label:
-#    unsubscribe_blacklist:
-#    unsubscribe_confirm_btn:
-#    unsubscribe_for:
-#    info_confirmation:
-#    blacklist_warning:
-#    feedback:
-#        success:
-#        error:
+#   title:
+#   unsubscribe_all_label:
+#   unsubscribe_blacklist:
+#   unsubscribe_confirm_btn:
+#   unsubscribe_for:
+#   info_confirmation:
+#   blacklist_warning:
+#   feedback:
+#       success:
+#       error:
+#       error_atleast_one_option:
 
 # Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: Подробные <span class="accent">данные о вашей вечеринке</span> Тайного Санты
         date: Дата
-#        location: ?
+#       location: ?
         amount: Количество
 
 # Party/manage/expired.html.twig
@@ -252,7 +256,7 @@ party_manage_expired:
         delete_list: Удалить мой список Тайного Санты
 
     message:
-#        expired:
+#       expired:
 
 # Party/manage/valid.html.twig
 party_manage_valid:
@@ -262,10 +266,12 @@ party_manage_valid:
         not_yet: Еще нет
         edit_email: Редактировать письмо
         resend_email: Отправить письмо повторно
+        copy_clipboard: Скопировать персональную ссылку в буфер обмена
+        copied_clipboard: Ссылка на приглашение была скопирована в ваш буфер обмена!
         view_participant: Просмотреть запись
         tip: Совет
         come_back: Вы всегда можете вернуться на эту страницу и убедиться, что каждый адресат проверил свой почтовый ящик.
-#        watch_out: ?
+#       watch_out: ?
         save: Сохранить
 
     delete:
@@ -283,50 +289,50 @@ party_manage_valid:
             </p>
         phrase_to_type: удалить все
 
-#    add_participant:
-#        title: ?
-#        body: ?
-#	 started_warning:
+#   add_participant:
+#       title: ?
+#       body: ?
+#       started_warning:
 
-#    remove_participant:
-#        title: ?
-#        body: ?
-#        party_started: ?
+#   remove_participant:
+#       title: ?
+#       body: ?
+#       party_started: ?
 
-#    updated_party:
-#        title: ?
-#        body: ?
+#   updated_party:
+#       title: ?
+#       body: ?
 
     btn:
-#        add_participant: ?
-#        add_participant_confirm: ?
+#       add_participant: ?
+#       add_participant_confirm: ?
         cancel: Отменить
         delete_confirm: Я понимаю последствия, удалите сейчас мой список Тайного Санты
         delete_list: Удалить мой список Тайного Санты
-#        expose: ?
-#        expose_wishlists: ?
-#        party_update: ?
-#        remove_participant_confirm: ?
-#        updated_party: ?
-#        start_party:
+#       expose: ?
+#       expose_wishlists: ?
+#       party_update: ?
+#       remove_participant_confirm: ?
+#       updated_party: ?
+#       start_party:
 
     label:
         name: Имя
         email: Электронная почта
         confirmed: Подтверждено
-#        wishlist_filled: ?
+#       wishlist_filled: ?
         actions: Действия
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+#   excludes:
+#       title:
+#       btn:
+#       description:
+#       information:
+#       placeholder_exclude:
+#       not_enough:
+#       label:
+#           name:
+#           exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -337,18 +343,17 @@ emails-base_email:
 
 # This header block is re-used in multiple emails
 emails-base_email_header:
-#    title: ?
+#   title: ?
     date: Дата
     location: Место проведения
     amount: Сколько денег тратить на подарок
     num_people: Количество людей
     person_created_list: Автор списка
 
-
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
+#   unsubscribe:
+#   unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
@@ -360,30 +365,30 @@ emails-emptyWishlistReminder:
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#    subject:
-#    participating_in:
-#    created_these:
-#    table_labels:
-#        date:
-#        location:
-#        link:
-#        txt:
-#    btn:
-#        party_link:
-#        manage_link:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   participating_in:
+#   created_these:
+#   table_labels:
+#       date:
+#       location:
+#       link:
+#       txt:
+#   btn:
+#       party_link:
+#       manage_link:
+#   message:
+#       html: ?
+#       txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
-#    title:
-#    subject:
-#    party_title:
-#    at:
-#    message:
-#        html:
-#        txt:
+#   title:
+#   subject:
+#   party_title:
+#   at:
+#   message:
+#       html:
+#       txt:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -397,15 +402,15 @@ emails-pendingConfirmation:
     click_button: Пожалуйста, кликните на кнопку ниже для подтверждения вашего списка Тайного Санты.  Наши гномы получат этот сигнал и направят составленное вами ранее личное сообщение всем участникам.
     overview_page: На новой обзорной странице вы сможете отследить все участников и узнать и получателей подарка от Тайного Санты. Таким образом, вы узнаете, когда составление списка будет завершено.
     lastly: И в завершение не забудьте подтвердить ваше собственное участие! Мы также направим вам письмо, как только вы кликните кнопку подтверждения ниже.
-#    come_back:
-#    btn_goto_manage:
+#   come_back:
+#   btn_goto_manage:
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     yes: Да
     not_yet: Еще нет
@@ -414,45 +419,45 @@ emails-party_status:
         name: Имя
         email: Электронная почта
         confirmed: Подтверждено
-#        wishlist_filled: ?
+#       wishlist_filled: ?
 
-#    btn:
-#        partystatus: ?
+#   btn:
+#       partystatus: ?
 
 # Emails/partyUpdate.{html,txt}.twig
 #emails-party_update:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
-#    btn:
-#        party_update:
+#   btn:
+#       party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     btn:
         find_out: Найдите вашего получателя подарка
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
     label:
         date_party: Дата проведения твоей вечеринки Тайного Санты
-#        location: ?
+#       location: ?
         amount_to_spend: Сумма
 
-#    btn:
-#        updated_party: ?
+#   btn:
+#       updated_party: ?
 
 # Emails/viewParticipantReminder.{html,txt}.twig
 emails-viewParticipantReminder:
@@ -474,29 +479,29 @@ emails-wishlistChanged:
 
 # Emails/anonymousMessage.{html,txt}.twig
 #emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
-#    update_wishlist: ?
+#   subject: ?
+#   message:
+#     html: ?
+#     txt: ?
+#   update_wishlist: ?
 
 # MailStatusExtension
 #mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+#   unknown:
+#   opened:
+#   viewed:
+#   not_started:
+#   bounced:
 
 flashes:
     # SendPartyUpdateController
-#    send_party_update:
-#        success: ?
+#   send_party_update:
+#       success: ?
 
     # ForgotURLController
-#    forgot_url:
-#        success: ?
-#        error: ?
+#   forgot_url:
+#       success: ?
+#       error: ?
 
     # ManagementController
     management:
@@ -505,17 +510,17 @@ flashes:
             Как мы и говорили, наши гномы отправились в путешествие по интернету, рассказывая всем новым Тайным Санта об их получателя подарков.<br/>
             <br />
             Не забудьте подтвердить ваше собственное участие! Мы отправили вам другое письмо. Проверьте его получение!
-#        add_participant:
-#            success: ?
-#            danger: ?
-#        updated_party:
-#            success: ?
-#            danger: ?
-#        start_party:
-#            success: ?
-#            danger: ?
-#        excludes:
-#            success:
+#       add_participant:
+#           success: ?
+#           danger: ?
+#       updated_party:
+#           success: ?
+#           danger: ?
+#       start_party:
+#           success: ?
+#           danger: ?
+#       excludes:
+#           success:
 
     # PartyController
     party:
@@ -524,48 +529,48 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: <strong>Отправлено повторно!</strong><br/>Письмо на адрес %email% отправлено повторно.<br/>
-#        blacklisted:
+#       blacklisted:
 
     # ParticipantController
     participant:
         wishlist_updated: <h4>Список желаний обновлен</h4>Мы отправили наших гномов сообщить вашему Тайному Санте, что вы изменили список желаний!
         edit_email: <h4>Не сохранено</h4> Ошибка в написании электронного адреса.
-#        updated_participant:
-#        updated_participant_resent:
-#        remove_participant:
-#            success: ?
-#            danger: ?
-#            warning: ?
-#            excluded_participants: ?
-#            self_assigned: ?
-#            not_enough_for_exclude:
-#            wrong: ?
+#       updated_participant:
+#       updated_participant_resent:
+#       remove_participant:
+#           success: ?
+#           danger: ?
+#           warning: ?
+#           excluded_participants: ?
+#           not_enough_for_exclude:
+#           self_assigned: ?
+#           wrong: ?
 
     # ReuseController
-#    reuse:
-#        success:
-#        error:
+#   reuse:
+#       success:
+#       error:
 
-    #ContactController
-#    contact:
-#        success:
+    # ContactController
+#   contact:
+#       success:
 #
 # Emails/contact.{html,txt}.twig
 #emails-contact:
-#    subject:
-#    message:
-#        html:
-#        txt:
+#   subject:
+#   message:
+#       html:
+#       txt:
 #
 # Form/{ContactType}
 #form-contact:
-#    label:
-#        email:
-#        name:
-#        message:
-#        submit:
+#   label:
+#       email:
+#       name:
+#       message:
+#       submit:
 #
 # Static/faq.html.twig
 #static-contact:
-#    title:
-#    body:
+#   title:
+#   body:

@@ -8,18 +8,18 @@ base:
             site_name: Tajny Mikołaj
             description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
-#    privacy_policy:
-#    cookie_policy:
-#    bug_bounty:
+#   privacy_policy:
+#   cookie_policy:
+#   bug_bounty:
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: Data Twojego Przyjęcia Tajnego Mikołaja
-#        location: ?
+#       location: ?
         amount_to_spend: Suma do wydania
-#        message:
-#        confirmed:
+#       message:
+#       confirmed:
 
 # PartyController
 party_controller:
@@ -56,35 +56,35 @@ party-create:
             <p>Organizator Tajnego Mikołaja jest <strong>darmowym</strong> narzędziem służącym do <strong>organizacji wymiany prezentów</strong>! Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami. Kiedy otrzymasz list od Tajnego Mikołaja możesz dodać swoją własną <strong>listę życzeń</strong>, która zostanie dostarczona Tajnemu Mikołajowi.</p>
             <p>Każdego roku w okolicach <strong>Świąt Bożego Narodzenia</strong> ludzie na całym świecie obdarowują się prezentami.<br/> Aby uczynić to jeszcze ciekawszym możesz <strong>losowo przypisać uczestników wymiany</strong> tak aby przygotowali prezenty dla siebie nawzajem.</p>
 
-#	title_2:
-#	intro_2:
-	
+#   title_2:
+#   intro_2:
+    
     add_participants: Dodaj uczestników
     list_adminstrator: Ta osoba jest także administratorem Twojej listy.
     add_personal_message:
         title: Dodaj wiadomość
         description: Dodaj wiadomość dla uczestników.
-#  import: ?
+#   import: ?
 #       instructions: ?
 #       too_many_files: ?
 #       wrong_format: ?
     btn:
         add_person: Dodaj osobę
         remove_person: Usuń osobę
-#        import_persons_open: ?
-#        import_persons_do: ?
+#       import_persons_open: ?
+#       import_persons_do: ?
         cancel: Anuluj
         create_event: Utwórz wydarzenie!
 
     label:
-#        host: ?
+#       host: ?
         email: E-mail
         participants: Uczestników
 
 # Party/created.html.twig
 party-created:
     title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
-#    body: ?
+#   body: ?
     warning: Uwaga!
     check_spam: Nie zapomnij sprawdzić folderu spam!
 
@@ -96,27 +96,27 @@ party-deleted:
 
 # Party/forgotLink.html.twig
 #party-forgot_link:
-#    title: ?
-#    description: ?
-#    submit_btn: ?
-#    info_reuse:
+#   title: ?
+#   description: ?
+#   submit_btn: ?
+#   info_reuse:
 
 # Party/getReuseUrl.html.twig
 #party-get_reuse_url:
-#    title:
-#    description:
-#    form:
-#        submit-btn:
+#   title:
+#   description:
+#   form:
+#       submit-btn:
 
 # Wishlist/showAll.html.twig
 #wishlist-show_all:
-#    title: ?
-#    back:
+#   title: ?
+#   back:
 
 # Static/faq.html.twig
 static-faq:
-#    title: ?
-#    body: ?
+#   title: ?
+#   body: ?
     create_new_list: Stwórz nową listę Tajnego Mikołaja!
 
 # Helper/prototypeParticipant.html.twig
@@ -127,8 +127,8 @@ helper-prototype_participant:
 # Helper/prototypeWishlist.html.twig
 helper-prototype_wishlist:
     btn:
-#        save_item: ?
-#        update_item: ?
+#       save_item: ?
+#       update_item: ?
         remove_item: Usuń pozycję
 
 # Participant/exposeAll.html.twig
@@ -136,90 +136,88 @@ participant-expose_all:
     title: Dopasowania na liście Tajnych Mikołajów
     giving: Ten uczestnik podaruje...
     receiving: ... prezent dla tego uczestnika
-#    back:
+#   back:
 
 # Participant/show/base.html.twig
 participant_show_base:
     headers:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
-#        location: ?
+#       location: ?
         amount: Ilość
         num_people: Liczba osób
         person_created_list: Osoba która utworzyła tę listę
 
 # Participant/show/expired.html.twig
 #participant_show_expired:
-#    message:
-#        expired:
+#   message:
+#       expired:
 
 # Participant/show/valid.html.twig
 participant_show_valid:
     participant:
         title: Osoba, którą masz obdarować
         body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
-#        watch_out: ?
-        copy_clipboard: Skopiuj osobisty link do schowka
-        copied_clipboard: Link do zaproszenia został skopiowany do schowka!
+#       watch_out: ?
         wishlist_from: 'Lista życzeń %name%'
         wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
-#        message_for_wishlist: ?
-#	find_gift: ?
+#       message_for_wishlist: ?
+#       find_gift: ?
 
     wishlist:
         title: Twoja lista życzeń
         description: Aby pomóc Tajnemu Mikołajowi możesz zostawić tu listę życzeń. Nasze skrzaty przekażą wszystko Tajnemu Mikołajowi. Możesz zmienić kolejność rzeczy na liście przenosząc je z miejsca na miejsce.
         empty: Twoja lista życzeń jest pusta. Dodaj coś!
 
-#    flashes:
-#        wishlist:
-#            empty_row: ?
-#            added: ?
-#            updated: ?
-#            removed: ?
+#   flashes:
+#       wishlist:
+#           empty_row: ?
+#           added: ?
+#           updated: ?
+#           removed: ?
 
     label:
         description: Opis
 
     btn:
         add_wishlist: Dodaj do listy życzeń
-#        update_item: ?
+#       update_item: ?
         remove_item: Usuń pozycję
 
-#    anonymous_message:
-#        title: ?
-#        message_label: ?
-#        message_placeholder: ?
-#        warning_anonymous: ?
-#        send_button:  ?
+#   anonymous_message:
+#       title: ?
+#       message_label: ?
+#       message_placeholder: ?
+#       warning_anonymous: ?
+#       send_button:  ?
 
 # ParticipantCommunicationController
 #participant_communication-send_message:
-#    feedback:
-#        success: ?
-#        error: ?
-#        error_in_form: ?
+#   feedback:
+#       success: ?
+#       error: ?
+#       error_in_form: ?
 
 # Participant/unsubscribe.html.twih
 #participant_unsubscribe:
-#    title:
-#    unsubscribe_all_label:
-#    unsubscribe_blacklist:
-#    unsubscribe_confirm_btn:
-#    unsubscribe_for:
-#    info_confirmation:
-#    blacklist_warning:
-#    feedback:
-#        success:
-#        error:
-#	 error_atleast_one_option: 
+#   title:
+#   unsubscribe_all_label:
+#   unsubscribe_blacklist:
+#   unsubscribe_confirm_btn:
+#   unsubscribe_for:
+#   info_confirmation:
+#   blacklist_warning:
+#   feedback:
+#       success:
+#       error:
+#       error_atleast_one_option: 
 
 # Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
-#        location: ?
+#       location: ?
         amount: Ilość
 
 # Party/manage/expired.html.twig
@@ -238,7 +236,7 @@ party_manage_expired:
         delete_list: Usuń moją listę Tajnego Mikołaja
 
     message:
-#        expired:
+#       expired:
 
 # Party/manage/valid.html.twig
 party_manage_valid:
@@ -248,10 +246,12 @@ party_manage_valid:
         not_yet: Jeszcze nie
         edit_email: Edytuj e-mail
         resend_email: Wyślij ponownie e-mail
+        copy_clipboard: Skopiuj osobisty link do schowka
+        copied_clipboard: Link do zaproszenia został skopiowany do schowka!
         view_participant: Zobacz wpis
         tip: Wskazówka
         come_back: Możesz zawsze wrócić na tę stronę aby upewnić się, że wszyscy przeczytali wiadomość.
-#        watch_out: ?
+#       watch_out: ?
         save: Zapisz
 
     delete:
@@ -259,50 +259,50 @@ party_manage_valid:
         body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br><b>Jeśli tego nie przeczytasz mogą wydarzyć się złe rzeczy!</b><br><br>Kiedy skasujesz listę Tajnego Mikołaja, nie ma już powrotu. NIE DA SIĘ już tego cofnąć.<br> Zostanie usunięta lista Tajnego Mikołaja, wszyscy jej uczestnicy i ich listy życzeń.<br><br> Wpisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
         phrase_to_type: usuń wszystko
 
-#    add_participant:
-#        title: ?
-#        body: ?
-#	 started_warning: ?
+#   add_participant:
+#       title: ?
+#       body: ?
+#       started_warning: ?
 
-#    remove_participant:
-#        title: ?
-#        body: ?
-#        party_started: ?
+#   remove_participant:
+#       title: ?
+#       body: ?
+#       party_started: ?
 
-#    updated_party:
-#        title: ?
-#        body: ?
+#   updated_party:
+#       title: ?
+#       body: ?
 
     btn:
-#        add_participant: ?
-#        add_participant_confirm: ?
+#       add_participant: ?
+#       add_participant_confirm: ?
         cancel: Anuluj
         delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja
         delete_list: Usuń moją listę Tajnego Mikołaja
-#        expose: ?
-#        expose_wishlists: ?
-#        party_update: ?
-#        remove_participant_confirm: ?
-#        updated_party: ?
-#        start_party:
+#       expose: ?
+#       expose_wishlists: ?
+#       party_update: ?
+#       remove_participant_confirm: ?
+#       updated_party: ?
+#       start_party:
 
     label:
         name: Imię
         email: E-mail
         confirmed: Potwierdzony
-#        wishlist_filled: ?
+#       wishlist_filled: ?
         actions: Akcje
 
-#    excludes:
-#        title:
-#        btn:
-#        description:
-#        information:
-#        placeholder_exclude:
-#        not_enough:
-#        label:
-#            name:
-#            exclude:
+#   excludes:
+#       title:
+#       btn:
+#       description:
+#       information:
+#       placeholder_exclude:
+#       not_enough:
+#       label:
+#           name:
+#           exclude:
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -313,52 +313,52 @@ emails-base_email:
 
 # This header block is re-used in multiple emails
 emails-base_email_header:
-#    title: ?
+#   title: ?
     date: Data
-#    location: ?
+#   location: ?
     amount: Ilość
     num_people: Liczba osób
     person_created_list: Osoba która utworzyła tę listę
 
 # Emails/baseEmailUnsubscribe.html.twig
 #emails-base_email_unsubscribe:
-#    unsubscribe:
-#    unsubscribe_link:
+#   unsubscribe:
+#   unsubscribe_link:
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Twoja lista życzeń jest nadal pusta
     update_your_list: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
 
-#    btn:
-#        update_wishlist: ?
+#   btn:
+#       update_wishlist: ?
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#    subject:
-#    participating_in:
-#    created_these:
-#    table_labels:
-#        date:
-#        location:
-#        link:
-#        txt:
-#    btn:
-#        party_link:
-#        manage_link:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   participating_in:
+#   created_these:
+#   table_labels:
+#       date:
+#       location:
+#       link:
+#       txt:
+#   btn:
+#       party_link:
+#       manage_link:
+#   message:
+#       html: ?
+#       txt: ?
 
 # Emails/reuseLink.{html,txt}.twig
 #emails-reuse_link:
-#    title:
-#    subject:
-#    party_title:
-#    at:
-#    message:
-#        html:
-#        txt:
+#   title:
+#   subject:
+#   party_title:
+#   at:
+#   message:
+#       html:
+#       txt:
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -372,15 +372,15 @@ emails-pendingConfirmation:
     click_button: Kliknij w przycisk poniżej aby zweryfikować Twoją listę mailingową Tajnego Mikołaja. To spowoduje, że nasze skrzaty roześlą wiadomość którą wcześniej napisałeś do wszystkich uczestników.
     overview_page: Wkrótce zobaczysz stronę, gdzie będziesz mógł śledzić wszystkich Twoich uczestników odkrywających osoby, które mają obdarować. Dowiesz się z niej kiedy lista będzie kompletna.
     lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
-#    come_back:
-#    btn_goto_manage:
+#   come_back:
+#   btn_goto_manage:
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     yes: true
     not_yet: Jeszcze nie
@@ -389,45 +389,45 @@ emails-party_status:
         name: Imię
         email: E-mail
         confirmed: Potwierdzony
-#        wishlist_filled: ?
+#       wishlist_filled: ?
 
-#    btn:
-#        partystatus: ?
+#   btn:
+#       partystatus: ?
 
 # Emails/partyUpdate.{html,txt}.twig
 #emails-party_update:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
-#    btn:
-#        party_update:
+#   btn:
+#       party_update:
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
-#    subject: ?
-#    message:
-#        html: ?
-#        txt: ?
+#   subject: ?
+#   message:
+#       html: ?
+#       txt: ?
 
     btn:
         find_out: Dowiedz się kim jest Twoja osoba
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
-#    subject:
-#    message:
-#        html: ?
-#        txt: ?
+#   subject:
+#   message:
+#       html: ?
+#       txt: ?
 
     label:
         date_party: Data Twojego Przyjęcia Tajnego Mikołaja
-#        location: ?
+#       location: ?
         amount_to_spend: Suma do wydania
 
-#    btn:
-#        updated_party: ?
+#   btn:
+#       updated_party: ?
 
 # Emails/viewParticipantReminder.{html,txt}.twig
 emails-viewParticipantReminder:
@@ -449,44 +449,44 @@ emails-wishlistChanged:
 
 # Emails/anonymousMessage.{html,txt}.twig
 #emails-anonymous_message:
-#    subject: ?
-#    message:
-#      html: ?
-#      txt: ?
-#    update_wishlist: ?
+#   subject: ?
+#   message:
+#     html: ?
+#     txt: ?
+#   update_wishlist: ?
 
 # MailStatusExtension
 #mail_status_extension:
-#    unknown:
-#    opened:
-#    viewed:
-#    not_started:
-#    bounced:
+#   unknown:
+#   opened:
+#   viewed:
+#   not_started:
+#   bounced:
 
 flashes:
     # SendPartyUpdateController
-#    send_party_update:
-#        success: ?
+#   send_party_update:
+#       success: ?
 
     # ForgotURLController
-#    forgot_url:
-#        success: ?
-#        error: ?
+#   forgot_url:
+#       success: ?
+#       error: ?
 
     # ManagementController
     management:
         email_validated: '<strong>Świetnie!</strong><br/>Twój email został zweryfikowany.<br/> Nasze skrzaty wyruszyły w internetową podróż, żeby dostarczyć wszystkie wiadomości dla przyszłych Tajnych Mikołajów.<br/><br/> Nie zapomnij potwierdzić swojego uczestnictwa. Wyślemy Ci kolejny email. Sprawdź swoją skrzynkę pocztową!'
-#        add_participant:
-#            success: ?
-#            danger: ?
-#        updated_party:
-#            success: ?
-#            danger: ?
-#        start_party:
-#            success: ?
-#            danger: ?
-#        excludes:
-#            success:
+#       add_participant:
+#           success: ?
+#           danger: ?
+#       updated_party:
+#           success: ?
+#           danger: ?
+#       start_party:
+#           success: ?
+#           danger: ?
+#       excludes:
+#           success:
 
     # PartyController
     party:
@@ -495,48 +495,48 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: '<strong>Wysłano ponownie!</strong><br/>E-mail do %email% został ponownie wysłany.<br/>'
-#        blacklisted:
+#       blacklisted:
 
     # ParticipantController
     participant:
         wishlist_updated: '<h4>Lista życzeń zaktualizowana</h4> Wysłaliśmy nasze skrzaty aby poinformowały Tajnego Mikołaja o twoich życzeniach!'
         edit_email: '<h4>Nie zapisano</h4> Występuje błąd w adresie email.'
-#        updated_participant:
-#        updated_participant_resent:
-#        remove_participant:
-#            success: ?
-#            danger: ?
-#            warning: ?
-#            excluded_participants: ?
-#            self_assigned: ?
-#            not_enough_for_exclude:
-#            wrong: ?
+#       updated_participant:
+#       updated_participant_resent:
+#       remove_participant:
+#           success: ?
+#           danger: ?
+#           warning: ?
+#           excluded_participants: ?
+#           not_enough_for_exclude:
+#           self_assigned: ?
+#           wrong: ?
 
     # ReuseController
-#    reuse:
-#        success:
-#        error:
+#   reuse:
+#       success:
+#       error:
 
-    #ContactController
-#    contact:
-#        success:
+    # ContactController
+#   contact:
+#       success:
 #
 # Emails/contact.{html,txt}.twig
 #emails-contact:
-#    subject:
-#    message:
-#        html:
-#        txt:
+#   subject:
+#   message:
+#       html:
+#       txt:
 #
 # Form/{ContactType}
 #form-contact:
-#    label:
-#        email:
-#        name:
-#        message:
-#        submit:
+#   label:
+#       email:
+#       name:
+#       message:
+#       submit:
 #
 # Static/faq.html.twig
 #static-contact:
-#    title:
-#    body:
+#   title:
+#   body:

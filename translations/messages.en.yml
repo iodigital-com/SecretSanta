@@ -524,7 +524,7 @@ emails-emptyWishlistReminder:
     btn:
         update_wishlist: Update your wishlist
 
-# Emails/ForgotLink.{html,txt}.twig
+# Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
     subject: Overview of my parties
     participating_in: 'You are participating in the following parties:'
@@ -775,7 +775,7 @@ flashes:
         success: 'We have successfully sent the email!'
         error: "We couldn't find any parties, it might be possible that your parties are older than 2 years, or no parties linked to this email."
 
-    #ContactController
+    # ContactController
     contact:
         success: 'We have received your request and will come back to you as soon as possible!'
 
@@ -795,7 +795,6 @@ emails-contact:
 
             %name% has used the Secret Santa contact form to send a message. Message:
             %message%
-
 
 # Form/{ContactType}
 form-contact:
