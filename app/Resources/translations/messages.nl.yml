@@ -10,7 +10,7 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
     privacy_policy: Privacy Policy
     cookie_policy: Cookie Policy
-#   bug_bounty:
+    bug_bounty: Bug Bounty
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -117,7 +117,7 @@ party-forgot_link:
     title: Overzicht van feestjes aanvragen
     description: Vul hier jouw emailadres in en we sturen je een overzicht van alle feestjes die je hebt gemaakt of waar je aan meedoet. We lijsten wel enkel de feestjes in de toekomst op.
     submit_btn: Stuur me een overzicht
-#   info_reuse:
+   info_reuse: 'Wil je een feestje starten op basis van een vorig feestje, vraag dan <a href="%reusepath%">hier</a> een lijst op van je vorige feestjes'
 
 # Party/getReuseUrl.html.twig
 party-get_reuse_url:
@@ -724,7 +724,7 @@ flashes:
             warning: <h4>Oops</h4> Je bent de organisator van dit feestje, je kan jezelf dus niet verwijderen. Indien je het feestje wil aflasten, klik dan op de link onderaan om jouw Secret Santa lijst te verwijderen.
             excluded_participants: <h4>Oops</h4> Deze deelnemer kan niet verwijderd worden, je hebt uitsluitingen gebruikt bij het aanmaken van dit feestje waardoor het verwijderen van een deelnemer problemen kan veroorzaken, daarom is deze functie niet van toepassing op dit feestje.
             not_enough_for_exclude: <h4>Oeps</h4> Je hebt excludes geconfigureerd, maar omdat je minimaal 4 deelnemers moet hebben om dit te kunnen gebruiken zal je eerst je excludes moeten verwijderen of er voor zorgen dat je steeds minimaal 4 deelnemers hebt.
-#           self_assigned: ?
+            self_assigned: <h4>Oeps<h4> Deze deelnemer kan niet verwijderd worden omdat er dan iemand anders aan zichzelf toegewezen zou worden.
             wrong: <h4>Oops</h4> Hij lijkt erop dat de validatie zin niet overeenkomt met de zin die we voor ogen hadden.
 
     # ReuseController
