@@ -71,7 +71,6 @@ party-create:
     add_personal_message:
         title: Adicione uma mensagem pessoal
         description: Adicione uma mensagem pessoal para os participantes.
-
     import:
         instructions: Adicione várias pessoas para o seu evento de uma vez. Tudo que precisa é um arquivo csv com duas colunas (nome e e-mail). Arraste e largue o arquivo csv no campo aqui em baixo para os seus amigos e colegas serem adicionados rapidamente e facilmente ao seu evento.
         too_many_files: Pode carregar somente um arquivo ao mesmo tempo.

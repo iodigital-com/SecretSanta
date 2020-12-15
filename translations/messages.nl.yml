@@ -117,7 +117,7 @@ party-forgot_link:
     title: Overzicht van feestjes aanvragen
     description: Vul hier jouw emailadres in en we sturen je een overzicht van alle feestjes die je hebt gemaakt of waar je aan meedoet. We lijsten wel enkel de feestjes in de toekomst op.
     submit_btn: Stuur me een overzicht
-#    info_reuse:
+#   info_reuse:
 
 # Party/getReuseUrl.html.twig
 party-get_reuse_url:

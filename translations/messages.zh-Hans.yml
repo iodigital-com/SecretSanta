@@ -162,7 +162,7 @@ participant_show_valid:
         body: >
             <p>你好%name%,</p>
             <p>你被秘密圣诞老人分配到你将要把礼物给:</p>
-#     watch_out: ?
+#       watch_out: ?
         wishlist_from: 愿望清单来自 %name%
         wishlist_not_provided: '%name%尚未提供愿望清单'
 #       message_for_wishlist: ?
