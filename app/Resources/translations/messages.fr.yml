@@ -106,7 +106,7 @@ party-forgot_link:
     title: Demander un aperçu de mes événements
     description: "Remplissez votre adresse e-mail et nous vous enverrons un e-mail avec tous les événements que vous avez créés et les événements auxquels vous participez. Nous ne listons que les événements qui auront lieu à l'avenir."
     submit_btn: Envoyez-moi un aperçu de mes évènements
-    info_reuse: "Si vous souhaitez créer un évènement, sur la base d'un éventent précédent, vous pouvez demander une liste de vos événements passés <a href="%reusepath%">ici</a>"
+    info_reuse: Si vous souhaitez créer un évènement, sur la base d'un éventent précédent, vous pouvez demander une liste de vos événements passés <a href="%reusepath%">ici</a>
 
 # Party/getReuseUrl.html.twig
 party-get_reuse_url:
@@ -237,7 +237,7 @@ participant_show_valid:
             <p>En tant que Secret Santa, vous devez offrir un cadeau à:</p>
         watch_out: Attention
         wishlist_from: Liste de souhaits de %name%
-        wishlist_not_provided: '%name% n'a pas encore publié sa liste de souhaits'
+        wishlist_not_provided: "%name% n'a pas encore publié sa liste de souhaits"
         message_for_wishlist: Envoie-lui un message pour l’informer que sa liste de souhaits est vide.
         find_gift: Vous cherchez un cadeau?
 
@@ -469,7 +469,7 @@ emails-forgot_link:
         party_link: Aller a cet événement
         manage_link: Gérer cet événement
     message:
-        html: 'Bonjour, <br /><br /> Vous nous avez demandé de vous envoyer un aperçu de tous les événements dont vous souhaitez recevoir plus d'informations. Ceux-ci sont tous les événements que vous avez crées, participez ou qui auront lieu à l'avenir:<br />'
+        html: "Bonjour, <br /><br /> Vous nous avez demandé de vous envoyer un aperçu de tous les événements dont vous souhaitez recevoir plus d'informations. Ceux-ci sont tous les événements que vous avez crées, participez ou qui auront lieu à l'avenir:<br />"
         txt: >
             Bonjour,
             Vous nous avez demandé de vous envoyer un aperçu de tous les événements dont vous souhaitez recevoir plus d'informations. Ceux-ci sont tous les événements que vous avez crées, participez ou qui auront lieu à l'avenir:
