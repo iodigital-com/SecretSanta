@@ -1,0 +1,364 @@
+{% extends "Party/manage/base.html.twig" %}
+{% block datalayer %}
+    <script>
+        dataLayer.push({
+            'pId': '{{ party.listurl }}',
+            'pLocation': '{{ party.location }}',
+            'pAmount': '{{ party.amount }}',
+            'pParticipants': '{{ party.participants|length }}',
+            'pDate': '{{ party.eventdate|date('Y-m-d') }}'
+        });
+    </script>
+{% endblock %}
+
+{% block main %}
+    <div class="box">
+        <div class="row title-row">
+            <div class="col-xs-12 col-sm-6">
+                <h1>{{ 'party_manage_valid.manage.title'|trans }}</h1>
+            </div>
+            <div class="col-sm-6 hidden-xs">
+                <div class="party-info pull-right">
+                    <h2>{{ 'party_manage_base.headers.title'|trans|raw }}</h2>
+                    <div id="partyDetails">
+                        <ul class="liststyle1">
+                            <li class="party-date"><strong>{{ 'party_manage_base.headers.date'|trans }}: </strong> {{ party.eventdate|format_datetime('medium', 'none') }}</li>
+                            <li class="party-location"><strong>{{ 'party_manage_base.headers.location'|trans }}: </strong> {{ party.location }}</li>
+                            <li class="party-amount"><strong>{{ 'party_manage_base.headers.amount'|trans }}: </strong> {{ party.amount }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span id="alertspan"></span>
+
+        <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;"
+               data-editurl="{{ path("participant_edit", { 'listurl': 'listUrl', 'participantUrl': 'participantUrl' }) }}"
+               data-save-btn-text="{{ 'party_manage_valid.manage.save'|trans }}"
+        >
+            <thead>
+            <tr>
+                <th class="col-xs-1 participant-number-header">#</th>
+                <th class="col-xs-2">{{ 'party_manage_valid.label.name'|trans }}</th>
+                <th class="col-xs-3">{{ 'party_manage_valid.label.email'|trans }}</th>
+                <th class="col-xs-2">{{ 'party_manage_valid.label.confirmed'|trans }}</th>
+                <th class="col-xs-2">{{ 'party_manage_valid.label.wishlist_filled'|trans }}</th>
+                <th class="col-xs-2">{{ 'party_manage_valid.label.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for participant in party.participants %}
+                <tr class="participant {% if loop.index == 1 %}owner{% else %}not-owner{% endif %}">
+                    <td class="participant-number">{{ loop.index }}</td>
+                    <td id="name_{{ participant.url }}" class="participant-name" data-hj-masked>{% apply spaceless %}
+                        {% if participant.ishashed %}
+                            {{ 'party_manage_valid.manage.name_anonymized'|trans }}
+                        {% else %}
+                            {{ participant.name }}
+                        {% endif %}
+                        {% endapply %}</td>
+                    <td id="email_{{ participant.url }}" class="participant-email" data-hj-masked>{% apply spaceless %}
+                        {% if participant.ishashed %}
+                            {{ 'party_manage_valid.manage.email_anonymized'|trans }}
+                        {% else %}
+                            {{ participant.email }}
+                        {% endif %}
+                        {% endapply %}</td>
+                    <td>{{ participant|mailstatus|raw }}</td>
+                    <td class="{% if participant.wishlistItems is not empty %}viewed">{{ 'party_manage_valid.manage.yes'|trans }}{% else %}not_viewed">{{ 'party_manage_valid.manage.not_yet'|trans }}{% endif %}</td>
+                    <td style="text-align: left;" class="party-actions">
+                        {% if party.created %}
+                            <div class="copy-link-participant">
+                                <div class="link clipboardcopy" onclick="copyToClipboard('{{ participant.url }}',this)">
+                                    <i class="fa fa-clipboard" alt="{{ 'party_manage_valid.manage.copy_clipboard'|trans }}" title="{{ 'party_manage_valid.manage.copy_clipboard'|trans }}"></i>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if participant.hashed == false %}
+                            <i class="fa fa-fw fa-pencil participant-edit-icon"
+                                 data-listurl="{{ party.listUrl }}" data-participant-url="{{ participant.url }}"
+                                 rel="tooltip" title="{{ 'party_manage_valid.manage.edit_email'|trans }}" alt="{{ 'party_manage_valid.manage.edit_email'|trans }}"
+                                 style="cursor: pointer;"
+                            ></i>
+                        {% endif %}
+                        {% if party.created and participant.hashed == false %}
+                            {% apply spaceless %}
+                                <a href="{{ path('resend_participant', { 'listurl': party.listUrl, 'participantUrl': participant.url }) }}"
+                                   class="btn-participant-resend"
+                                >
+                                    <i class="fa fa-fw fa-envelope" title="{{ 'party_manage_valid.manage.resend_email'|trans }}" alt="{{ 'party_manage_valid.manage.resend_email'|trans }}"></i>
+                                </a>
+                            {% endapply %}
+                        {% endif %}
+                        {% if app.environment == 'dev' and participant.assignedParticipant != null %}
+                            <a href="{{ path('participant_view', { 'url': participant.url }) }}" class="add-participant-link">
+                                <i class="fa fa-fw fa-eye" title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
+                                   alt="{{ 'party_manage_valid.manage.view_participant'|trans }}"></i>
+                            </a>
+                        {% endif %}
+                        <button class="btn btn-mini link_remove_participant" data-participant="{{ participant.url }}" data-listurl="{{ party.listurl }}">
+                            <i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <button id="btn_add" class="btn btn-success manage_btn" style="float: right; margin-bottom: 35px;"
+                {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}disabled{% endif %}>
+            <i class="fa fa-plus-circle fa-inverse"></i> {{ 'party_manage_valid.btn.add_participant'|trans|raw }}
+        </button>
+        <button id="btn_join" class="btn btn-info manage_btn" style="float: right; margin-bottom: 35px;" {% if party.created %}disabled{% endif %}>
+            <i class="fa fa-link fa-inverse"></i> {{ 'party_manage_valid.btn.join_mode'|trans|raw }}
+        </button>
+        <div class="clearfix"></div>
+        <div id="add-participant" class="alert alert-success manage-page-form"
+             {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}style="display: block;"
+             {% else %}style="display: none"{% endif %}>
+            <h3>{{ 'party_manage_valid.add_participant.title'|trans|raw }}</h3>
+
+            {{ 'party_manage_valid.add_participant.body'|trans|raw }}
+            {% if party.created %}{{ 'party_manage_valid.add_participant.started_warning'|trans|raw }}{% endif %}
+            <br>
+            {{ form_start(addParticipantForm) }}
+            {{ form_row(addParticipantForm._token) }}
+            <div class="form-group {% if form_errors(addParticipantForm.name) %}error{% endif %}">
+                <strong>{{ 'party_manage_valid.label.name'|trans }}</strong> {{ form_widget(addParticipantForm.name ,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(addParticipantForm.name) %}
+                    {% for error in addParticipantForm.name.vars.errors %}
+                        <strong>{{ error.message }}</strong><br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group {% if form_errors(addParticipantForm.email) %}error{% endif %}">
+                <strong>{{ 'party_manage_valid.label.email'|trans }}</strong> {{ form_widget(addParticipantForm.email ,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(addParticipantForm.email) %}
+                    {% for error in addParticipantForm.email.vars.errors %}
+                        <strong>{{ error.message }}</strong><br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-success"
+                    id="btn_add_confirmation">{{ 'party_manage_valid.btn.add_participant_confirm'|trans|raw }}</button>
+            <button type="reset" class="btn btn-success" id="btn_add_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+            {{ form_end(addParticipantForm) }}
+        </div>
+        <div id="delete-participant" class="alert alert-danger manage-page-form" style="display: none">
+            <h3>{{ 'party_manage_valid.remove_participant.title'|trans|raw }}</h3>
+
+            {{ 'party_manage_valid.remove_participant.body'|trans|raw }}
+            {% if party.created %}
+                {{ 'party_manage_valid.remove_participant.party_started'|trans|raw }}
+            {% endif %}
+            <br>
+            <form id="delete-participant-form" method="post" data-action="{{ path('participant_remove', {'listurl': 'listUrl', 'participantUrl': 'participantUrl'}) }}">
+                <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
+                <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
+                        id="btn_remove_participant_confirmation">
+                    {{ 'party_manage_valid.btn.remove_participant_confirm'|trans|raw }}
+                </button>
+                <button type="reset" id="btn_remove_participant_cancel" class="btn btn-danger btn_remove_participant_cancel">
+                    {{ 'party_manage_valid.btn.cancel'|trans }}
+                </button>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+        <div id="join-mode" class="alert alert-info manage-page-form" style="display: none">
+            <h3>{{ 'party_manage_valid.join_mode.title'|trans|raw }}</h3>
+
+            {{ 'party_manage_valid.join_mode.body'|trans|raw }}
+
+            <br>
+            {{ form_start(setJoinModeForm) }}
+            {{ form_row(setJoinModeForm._token) }}
+
+            <div class="form-group">
+                <strong>{{ 'party_manage_valid.label.join_mode'|trans }}</strong> {{ form_widget(setJoinModeForm.join_mode ,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(setJoinModeForm.join_mode) %}setJoinModeForm
+                    {% for error in setJoinModeForm.name.vars.errors %}
+                        <strong>{{ error.message }}</strong><br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <strong>{{ 'party_manage_valid.label.join_url'|trans }}</strong> <input type="text" disabled="disabled" value="{% if party.joinurl is null %}{{'party_manage_valid.join_mode.reset_unset'|trans }}{% else %}{{ absolute_url(path('join_party', {joinurl: party.joinurl})) }}{% endif %}" class="form-control">
+            </div>
+            <div class="form-group">
+                <strong>{{ 'party_manage_valid.label.reset'|trans }}</strong> <input type="checkbox" name="reset" value="1" class="form-check-inline"/>
+                <p>{{ 'party_manage_valid.join_mode.reset_body'|trans }}</p>
+            </div>
+            <button type="submit" class="btn btn-info"
+                    id="btn_joinmode_confirmation">{{ 'party_manage_valid.btn.join_mode_confirm'|trans|raw }}</button>
+            <button type="reset" class="btn btn-info" id="btn_joinmode_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+            {{ form_end(setJoinModeForm) }}
+        </div>
+
+        {% if party.created %}
+            <div class="alert alert-info">
+                <strong>{{ 'party_manage_valid.manage.tip'|trans }}</strong> {{ 'party_manage_valid.manage.come_back'|trans }}
+            </div>
+        {% endif %}
+
+        {% if not party.created and party.participants | length >3 %}
+            <div class="panel panel-default mb-3" id="messagePanel">
+                <button class="btn btn-light fullwidth" data-toggle="collapse" data-target="#collapsedMessage" data-parent="#messagePanel">
+                    {{ 'party_manage_valid.excludes.title' | trans }}
+                </button>
+                <div id="collapsedMessage" class="card collapse mt-3">
+                    <div class="card-body">
+                        <p>{{ 'party_manage_valid.excludes.description'|trans }}</p>
+
+                        <div class="alert alert-info" role="alert">
+                            <i class="fa fa-info-circle"></i> {{ 'party_manage_valid.excludes.information' | trans }}
+                        </div>
+                        {{ form_start(excludeForm) }}
+                        {# Only show general validation error if there are no subform errors #}
+                        {% if excludeForm.participants.vars.valid and  excludeForm.vars.errors | length %}
+                            <div class="alert alert-danger" role="alert">{{ form_errors(excludeForm) }}</div>
+                        {% endif %}
+                        <table class="table table-striped" style="table-layout: fixed">
+                            <thead>
+                            <tr>
+                                <th class="col-xs-1">#</th>
+                                <th class="col-xs-3">{{ 'party_manage_valid.excludes.label.name'|trans }}</th>
+                                <th class="col-xs-8">{{ 'party_manage_valid.excludes.label.exclude'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for participant in excludeForm.participants %}
+                                <tr class="participant {% if form_errors(participant) or form_errors(participant.excluded_participants) %} error{% endif %}">
+                                    <td class="participant-number">{{ loop.index }}</td>
+                                    <td>{{ participant.excluded_participants.vars.label }}</td>
+                                    <td>
+                                        <div>
+                                            {{ form_widget(participant.excluded_participants, {'attr': {'placeholder': 'party_manage_valid.excludes.placeholder_exclude'} } ) }}
+                                            {{ form_errors(participant.excluded_participants) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <p>
+                            <button type="submit" class="btn btn-large btn-success btn-create-event">
+                                <i class="fa fa-save"></i> {{ 'party_manage_valid.excludes.btn'|trans }}
+                            </button>
+                        </p>
+                        {{ form_end(excludeForm) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if not party.created %}
+            <a href="{{ path('party_manage_start', { 'listurl': party.listurl }) }}" class="btn btn-success manage_btn manage_btn_link btn-create-party">
+                <i class="fa fa-play"></i> {{ 'party_manage_valid.btn.start_party'|trans }}
+            </a>
+        {% endif %}
+
+        <div class="clearfix"></div>
+
+        {% if party.created %}
+            <a id="btn_send_party_update" class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listurl': party.listurl }) }}">
+                <i class="fa fa-envelope"></i> {{ 'party_manage_valid.btn.party_update'|trans|raw }}
+            </a>
+            <a id="btn_expose_matches" href="{{ path('expose_participants', { 'listurl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
+                <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose'|trans }}
+            </a>
+            <a id="btn_expose_wishlists" class="btn btn-warning manage_btn manage_btn_link" href="{{ path('wishlist_show_all', { 'wishlistsurl': party.wishlistsurl }) }}">
+                <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose_wishlists'|trans }}
+            </a>
+        {% endif %}
+
+        <button id="btn_update" class="btn btn-warning manage_btn">
+            <i class="fa fa-pencil"></i> {{ 'party_manage_valid.btn.updated_party'|trans|raw }}
+        </button>
+
+        <br/><br/>
+        <div id="delete-warning" class="alert alert-danger" style="display: none;">
+            <h3>{{ 'party_manage_valid.delete.title'|trans }}</h3>
+
+            {% set phraseToType = 'party_manage_valid.delete.phrase_to_type'|trans|lower %}
+            {{ 'party_manage_valid.delete.body'|trans({ '%phrase_to_type%': phraseToType})|raw }}
+            <br>
+            <form action="{{ path('party_delete', { 'listurl': party.listUrl }) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ delete_party_csrf_token }}">
+                <input type="text" name="confirmation" id="delete-confirmation" autocomplete="off"
+                       onkeyup="if ($(this).val().toLowerCase() == '{{ phraseToType }}') $('#btn_delete_confirmation').removeAttr('disabled');"
+                       class="form-control">
+                <br>
+                <button class="btn btn-primary btn_confirmation_pop_up" type="submit" id="btn_delete_confirmation"
+                        disabled>
+                    {{ 'party_manage_valid.btn.delete_confirm'|trans }}
+                </button>
+                <button type="reset" class="btn btn-primary" id="btn_delete_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+            </form>
+        </div>
+
+        <div id="update-party-details" class="alert alert-warning manage-page-form"
+             {% if (form_errors(updatePartyDetailsForm.eventdate)) or (form_errors(updatePartyDetailsForm.amount)) or (form_errors(updatePartyDetailsForm.location)) %}style="display: block;"
+             {% else %}style="display: none"{% endif %}>
+            <h3>{{ 'party_manage_valid.updated_party.title'|trans }}</h3>
+
+            {{ 'party_manage_valid.updated_party.body'|trans|raw }}
+            <br>
+            {{ form_start(updatePartyDetailsForm) }}
+            {{ form_row(updatePartyDetailsForm._token) }}
+            <div class="form-group {% if form_errors(updatePartyDetailsForm.eventdate) %}error{% endif %}">
+                <strong>{{ form_label(updatePartyDetailsForm.eventdate) }}</strong>
+                {{ form_widget(updatePartyDetailsForm.eventdate, {'attr': {'class': 'form-control'}}) }}
+                {% for error in updatePartyDetailsForm.eventdate.vars.errors %}
+                    <strong>{{ error.message }}</strong><br>
+                {% endfor %}
+            </div>
+            <div class="form-group {% if form_errors(updatePartyDetailsForm.location) %}error{% endif %}">
+                <strong>{{ form_label(updatePartyDetailsForm.location) }}</strong>
+                {{ form_widget(updatePartyDetailsForm.location, {'attr': {'class': 'form-control'}}) }}
+                {% for error in updatePartyDetailsForm.location.vars.errors %}
+                    <strong>{{ error.message }}</strong><br>
+                {% endfor %}
+            </div>
+            <div class="form-group {% if form_errors(updatePartyDetailsForm.amount) %}error{% endif %}">
+                <strong>{{ form_label(updatePartyDetailsForm.amount) }}</strong>
+                {{ form_widget(updatePartyDetailsForm.amount, {'attr': {'class': 'form-control'}}) }}
+                {% for error in updatePartyDetailsForm.amount.vars.errors %}
+                    <strong>{{ error.message }}</strong><br>
+                {% endfor %}
+            </div>
+            {% if updatePartyDetailsForm.message is defined %}
+                <div class="form-group {% if form_errors(updatePartyDetailsForm.message) %}error{% endif %}">
+                    <strong>{{ form_label(updatePartyDetailsForm.message) }}</strong>
+                    {{ form_widget(updatePartyDetailsForm.message, {'attr': {'class': 'form-control'}}) }}
+                    {% for error in updatePartyDetailsForm.message.vars.errors %}
+                        <strong>{{ error.message }}</strong><br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <button type="submit" class="btn btn-warning" id="btn_update_confirmation">Update party details</button>
+            <button type="reset" class="btn btn-warning" id="btn_update_cancel">{{ 'party_manage_valid.btn.cancel'|trans }}</button>
+            {{ form_end(updatePartyDetailsForm) }}
+        </div>
+        <div class="clearfix bottom-spacer"></div>
+        <div class="text-center"><a href="#delete-confirmation" id="btn_delete" style="color: #555555; font-size: 13px;"> <i class="fa fa-trash-o"></i> {{ 'party_manage_valid.btn.delete_list'|trans }}</a></div>
+    </div>
+    <div class="clipboard-notification">{{ 'party_manage_valid.manage.copied_clipboard'|trans|raw }}</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ form_javascript(updatePartyDetailsForm) }}
+    <script src="{{ asset('/select2/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/party.manage.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {% if excludeForm.vars.errors |length %}
+            showExcludeErrors();
+            {% endif %}
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('/select2/select2.css') }}" rel="stylesheet" media="screen">
+{% endblock %}

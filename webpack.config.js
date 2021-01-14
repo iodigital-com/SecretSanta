@@ -3,7 +3,7 @@ var Encore = require('@symfony/webpack-encore');
 var path = require('path');
 
 Encore
-    .setOutputPath('web/build/')
+    .setOutputPath('public/build/')
     .setPublicPath('/build')
 
     .cleanupOutputBeforeBuild()
@@ -15,37 +15,42 @@ Encore
     .autoProvidejQuery()
     .enableSingleRuntimeChunk()
 
-    .createSharedEntry('js/vendor', './src/Intracto/SecretSantaBundle/Resources/public/js/vendors.js')
-    .addEntry('js/modernizr.custom', './src/Intracto/SecretSantaBundle/Resources/public/js/modernizr.custom.min.js')
-    .addEntry('js/party.create', './src/Intracto/SecretSantaBundle/Resources/public/js/party.create.js')
-    .addEntry('js/party.import', './src/Intracto/SecretSantaBundle/Resources/public/js/party.import.js')
+    .createSharedEntry('js/vendor', './assets/js/vendors.js')
+    .addEntry('js/modernizr.custom', './assets/js/modernizr.custom.min.js')
+    .addEntry('js/party.create', './assets/js/party.create.js')
+    .addEntry('js/party.import', './assets/js/party.import.js')
 
-    .addEntry('js/party.manage', './src/Intracto/SecretSantaBundle/Resources/public/js/party.manage.js')
+    .addEntry('js/party.manage', './assets/js/party.manage.js')
 
-    .addEntry('js/secretsanta', './src/Intracto/SecretSantaBundle/Resources/public/js/secretsanta.js')
-    .addEntry('js/wishlist', './src/Intracto/SecretSantaBundle/Resources/public/js/wishlist.js')
+    .addEntry('js/secretsanta', './assets/js/secretsanta.js')
+    .addEntry('js/wishlist', './assets/js/wishlist.js')
 
-    .addEntry('js/recaptcha', './src/Intracto/SecretSantaBundle/Resources/public/js/recaptcha.js')
+    .addEntry('js/recaptcha', './assets/js/recaptcha.js')
 
     .addStyleEntry('css/main', [
-        './src/Intracto/SecretSantaBundle/Resources/public/scss/main.scss',
+        './assets/scss/main.scss',
         'jquery-ui/themes/base/core.css',
         'jquery-ui/themes/base/sortable.css',
     ])
 
-    .addStyleEntry('css/update', './src/Intracto/SecretSantaBundle/Resources/public/css/update.css')
-    .addStyleEntry('css/report', './src/Intracto/SecretSantaBundle/Resources/public/css/report.css')
-    .addStyleEntry('css/mediaqueries', './src/Intracto/SecretSantaBundle/Resources/public/css/mediaqueries.css')
+    .addStyleEntry('css/update', './assets/css/update.css')
+    .addStyleEntry('css/report', './assets/css/report.css')
+    .addStyleEntry('css/mediaqueries', './assets/css/mediaqueries.css')
 
     .enableSourceMaps(!Encore.isProduction())
+
+    .copyFiles({
+        from: './assets/img',
+        to: 'images/[path][name].[hash:8].[ext]',
+    })
 ;
 
 var config = Encore.getWebpackConfig();
 
 config.resolve = {
     alias: {
-        '@': path.resolve(__dirname, 'src/Intracto/SecretSantaBundle/Resources/public/'),
-        AppConfig: path.resolve(__dirname, 'app/config/'),
+        '@': path.resolve(__dirname, 'assets/'),
+        AppConfig: path.resolve(__dirname, 'config/'),
     }
 };
 

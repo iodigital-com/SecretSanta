@@ -27,13 +27,16 @@ find /etc/php/7.4 -name 25-apcu_bc.ini -delete
 # Configure xdebug
 cat << EOF >/etc/php/7.4/mods-available/xdebug.ini
 zend_extension=xdebug
-xdebug.remote_enable=1
-xdebug.remote_autostart=1
-xdebug.remote_host=192.168.33.1
+
+xdebug.mode=debug
+xdebug.start_with_request=1
+xdebug.client_host=192.168.33.1
 xdebug.max_nesting_level=256
 ; xdebug.profiler_enable=1
 ; xdebug.profiler_output_dir=/vagrant/dumps
 EOF
+# Disable xdebug on CLI by default
+echo "export XDEBUG_MODE=off" >> /home/vagrant/.bashrc
 
 # Reload FPM
 service php7.4-fpm restart

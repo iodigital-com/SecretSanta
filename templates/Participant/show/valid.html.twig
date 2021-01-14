@@ -1,0 +1,188 @@
+{% extends "Participant/show/base.html.twig" %}
+
+{% block main %}
+    <div class="box">
+        <div class="row participant-title-row">
+            <div class="col-xs-12 col-sm-5 col-md-5">
+                <h1>{{ 'participant_show_valid.participant.title'|trans }}</h1>
+
+                {{ 'participant_show_valid.participant.body'|trans({'%name%': participant.name|escape})|raw }}
+
+                <div class="yoursecretsant" data-hj-masked>
+                    <span class="yourgift">{{ participant.assignedParticipant.name }}</span>
+                </div>
+            </div>
+            <div class="col-sm-7 col-md-5 ml-auto hidden-xs">
+                <div class="party-info">
+                    <h2>{{ 'participant_show_base.headers.title'|trans|raw }}</h2>
+                    <div id="partyDetails">
+                        <ul class="liststyle1">
+                            <li><strong>{{ 'participant_show_base.headers.date'|trans }}: </strong> {{ participant.party.eventdate|format_datetime('medium', 'none') }}</li>
+                            <li><strong>{{ 'participant_show_base.headers.location'|trans }}: </strong> {{ participant.party.location }}</li>
+                            <li><strong>{{ 'participant_show_base.headers.amount'|trans }}: </strong> {{ participant.party.amount }}</li>
+                            <li><strong>{{ 'participant_show_base.headers.num_people'|trans }}: </strong> {{ participant.party.participants|length }}</li>
+                            <li><strong>{{ 'participant_show_base.headers.person_created_list'|trans }}: </strong> <span data-hj-masked>{{ participant.party.participants|first.name }} ({{ participant.party.participants|first.email }})</span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-secretsanta">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 data-hj-masked>{{ 'participant_show_valid.participant.wishlist_from'|trans({'%name%': participant.assignedParticipant.name}) }}</h4>
+                    {% if participant.assignedParticipant.wishlistitems|length == 0 %}
+                        {{ 'participant_show_valid.participant.wishlist_not_provided'|trans({'%name%': participant.assignedParticipant.name}) }}.
+                        {% if participant.assignedParticipant.isSubscribed == true %}
+                            {{ 'participant_show_valid.participant.message_for_wishlist'|trans|raw }}
+                        {% endif %}
+                    {% else %}
+                        <ul class="wishlist">
+                            {% for item in participant.assignedParticipant.wishlistitems %}
+                                <li class="wishlistitem">{{ item.description|escape|linkify|raw }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <br><br>
+                        <a href="https://partnerprogramma.bol.com/click/click?p=1&t=url&s=50354&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fm%2Fvoordeel%2Fcadeaus%2Findex.html%3Flanguage=en&name=Cadeautips"
+                           target="_blank" rel="noopener noreferrer">{{ 'participant_show_valid.participant.find_gift'|trans }}</a><br>
+                    </ul>
+                </div>
+            </div>
+            {% if participant.assignedParticipant.isSubscribed == true %}
+                <div class="panel panel-default bottom-spacer" id="messagePanel">
+                    <button class="js-secret-message-toggle btn btn-light mb-3" type="button" data-toggle="collapse" data-target="#collapsedMessage">
+                        {{ 'participant_show_valid.anonymous_message.title'|trans({'%name%': participant.assignedParticipant.name}) }} ↓
+                    </button>
+                    <div id="collapsedMessage" class="card collapse">
+                        <div class="card-body">
+                            <div class="alert alert-warning" role="alert" id="anonwarning">
+                                <i class="fa fa-exclamation-triangle"></i> {{ 'participant_show_valid.anonymous_message.warning_anonymous' | trans }}
+                            </div>
+                            {{ form_start(messageForm) }}
+                            <div class="form-group">
+
+                                {{ form_label(messageForm.message) }}
+                                {{ form_widget(messageForm.message, {'attr': {'class': 'form-control'}}) }}
+                                {% for error in messageForm.message.vars.errors %}
+                                    <strong>{{ error.message }}</strong><br>
+                                {% endfor %}
+                            </div>
+                            {{ form_widget(messageForm.participant, {'value': participant.url}) }}
+                            <button id="btn_send_anon_message"
+                                    type="submit"
+                                    class="btn btn-primary">{{ 'participant_show_valid.anonymous_message.send_button' |trans }}</button>
+                            {{ form_end(messageForm) }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if app.environment not in ['test', 'test_travis'] %}
+            <div class="row text-center">
+                <div class="col mb-2">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- ad 2019 -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-8492783089085834"
+                         data-ad-slot="3553876631"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        {% endif %}
+
+        <h1>{{ 'participant_show_valid.wishlist.title'|trans }}</h1>
+
+        <div class="description">{{ 'participant_show_valid.wishlist.description'|trans|raw }}</div>
+
+        <div class="box ajax-response mt-4">
+            <div class="alert alert-warning empty" style="display:none;">
+                <div>{{ 'participant_show_valid.flashes.wishlist.empty_row'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success added" style="display:none;">
+                <div>{{ 'participant_show_valid.flashes.wishlist.added'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success updated" style="display:none;">
+                <div>{{ 'participant_show_valid.flashes.wishlist.updated'|trans|raw }}</div>
+            </div>
+            <div class="alert alert-success removed" style="display:none;">
+                <div>{{ 'participant_show_valid.flashes.wishlist.removed'|trans|raw }}</div>
+            </div>
+        </div>
+
+        {{ form_start(wishlistForm, {'attr': {'id': 'add_item_to_wishlist_form'}}) }}
+
+        <table class="wishlist-items table table-striped">
+            <thead>
+            <tr>
+                <th class="participant-number-header">#</th>
+                <th>{{ 'participant_show_valid.label.description'|trans }}</th>
+                <th style="text-align: right;">
+                    <button type="button" class="btn btn-mini btn-success add-new-participant">
+                        <i class="fa fa-plus-circle"></i> <span
+                                class="text_remove_wishlist">{{ 'participant_show_valid.btn.add_wishlist'|trans }}</span>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tbody data-prototype="{% apply escape %}{% include 'Helpers/prototypeWishlist.html.twig' with {'item': wishlistForm.wishlistItems.vars['prototype']} %}{% endapply %}">
+            {% if wishlistForm.wishlistItems |length == 0 %}
+                <tr class="noitems">
+                    <td colspan="3">{{ 'participant_show_valid.wishlist.empty'|trans }}</td>
+                </tr>
+            {% else %}
+                {% for item in wishlistForm.wishlistItems %}
+                    <tr class="wishlistitem">
+                        <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank) }}<span
+                                    class="rank">{{ item.rank.vars.value }}</span></td>
+                        <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'form-control wishlistitem-description'} }) }}</td>
+                        <td style="text-align: right;">
+                            <button type="submit" class="btn btn-mini btn-success update-participant" style="display: none">
+                                <i class="fa fa-check-circle"></i> <span
+                                        class="text_remove_wishlist">{{ 'participant_show_valid.btn.update_item'|trans }}</span>
+                            </button>
+                            <button type="button" class="btn btn-mini btn-danger remove-participant">
+                                <i class="fa fa-times-circle"></i> <span
+                                        class="text_remove_wishlist">{{ 'participant_show_valid.btn.remove_item'|trans }}</span>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+
+        {{ form_end(wishlistForm, {'render_rest': false}) }}
+
+    </div>
+
+    {% if app.environment not in ['test', 'test_travis'] %}
+        <div class="row text-center">
+            <div class="col mb-2">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- ad 2019 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8492783089085834"
+                     data-ad-slot="3553876631"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('build/js/wishlist.js') }}"></script>
+    {{ form_javascript(wishlistForm) }}
+{% endblock %}

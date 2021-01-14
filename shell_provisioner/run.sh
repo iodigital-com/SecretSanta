@@ -24,6 +24,8 @@ DEPENDENCIES=(
     mailhog
     rsyslogd
     geoip
+    chrome
+    java
 )
 
 for MODULE in ${DEPENDENCIES[@]}; do

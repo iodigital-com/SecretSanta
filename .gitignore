@@ -1,25 +1,41 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
 .idea
 /.web-server-pid
-app/config/client_secrets.json
-app/config/recaptcha_secrets.json
-/app/config/parameters.yml
-/web/build/
-/phpunit.xml
-/var/
+/config/client_secrets.json
+/config/recaptcha_secrets.json
+/public/build/
 !var/cache/.gitkeep
 !var/logs/.gitkeep
 !/var/sessions
 /var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/web/bundles/
-web/compiled/*
-web/js/*
-web/css/*
-/vendor/
+public/compiled/*
+public/js/*
+public/css/*
 composer.phar
 dumps
 .vagrant
 .travis/build/behat-*
 .php_cs.cache
 /node_modules/
+
+###> friends-of-behat/symfony-extension ###
+/behat.yml
+###< friends-of-behat/symfony-extension ###

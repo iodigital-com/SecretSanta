@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block metadata %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+{% block datalayer %}
+    <script>
+        dataLayer.push({
+            'pId': '{{ party.listurl }}',
+            'pLocation': '{{ party.location }}',
+            'pAmount': '{{ party.amount }}',
+            'pParticipants': '{{ party.participants|length }}',
+            'pDate': '{{ party.eventdate|date('Y-m-d') }}',
+            'event': 'createParty'
+        });
+    </script>
+{% endblock %}
+{% block main %}
+<div class="box">
+    <h1>{{ 'party-created.title'|trans }}</h1>
+    {{ 'party-created.body'|trans({ '%ownername%': party.ownername|escape, '%owneremail%': party.owneremail|escape })|raw }}
+
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <div><strong>{{ 'party-created.warning'|trans }}</strong> {{ 'party-created.check_spam'|trans }}</div>
+    </div>
+
+    {% if app.environment == 'dev' %}<a href="{{ path('party_manage', { 'listurl': party.listUrl }) }}">{{ path('party_manage', { 'listurl': party.listUrl }) }}</a>{% endif %}
+</div>
+{% endblock %}

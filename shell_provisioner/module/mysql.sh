@@ -18,7 +18,7 @@ MYSQLCMD="mysql -uroot -pvagrant -e"
 $MYSQLCMD "CREATE DATABASE secretsanta DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
 
 $MYSQLCMD "CREATE USER secretsanta@localhost IDENTIFIED BY 'vagrant';"
-$MYSQLCMD "GRANT ALL PRIVILEGES ON secretsanta.* TO secretsanta@localhost;"
+$MYSQLCMD "GRANT ALL PRIVILEGES ON \`secretsanta%\`.* TO secretsanta@localhost;"
 
 $MYSQLCMD "CREATE USER root@'192.168.33.1' IDENTIFIED BY 'vagrant';"
 $MYSQLCMD "GRANT ALL PRIVILEGES ON *.* TO root@'192.168.33.1';"

@@ -1,0 +1,813 @@
+# base.html.twig
+base:
+    meta:
+        description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
+        title: Secret Santa Online gift exchange organizer & generator!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers and add your wishlist.
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
+    privacy_policy: Privacy Policy
+    cookie_policy: Cookie Policy
+    bug_bounty: Bug Bounty
+
+# Form/{PartyType,UpdatePartyDetailsType}
+form-party:
+    label:
+        date_party: Date of your Secret Santa party
+        location: Location of your Secret Santa party
+        amount_to_spend: Amount to spend
+        message: Additional message in email
+        confirmed: Yes, I have permission to use the participant's e-mail addresses for Secret Santa
+
+# PartyController
+party_controller:
+    created:
+        message: |
+            Hi there (NAME),
+
+            (ADMINISTRATOR) created a Secret Santa event and has listed you as a participant.
+
+            Join the Secret Santa fun and find out who your gift buddy is by clicking the button below.
+
+            You can spend up to %amount% for your gift.
+
+            The Secret Santa party is planned %eventdate% and will take place at/in %location%. Be sure to bring your gift!
+
+            %message%
+
+
+            Happy Holidays!
+
+# Party/create.html.twig
+party-create:
+    header:
+        steps:
+            title: Your party <br/><small>in <span class="accent">3 easy steps</span></small>
+            list:
+                one: List your participants
+                two: Add a message
+                three: Send!
+            get_started: Get Started!
+
+    what_is:
+        title: What is Secret Santa?
+        intro: >
+            <p>It’s a <strong>free</strong> online Secret Santa <strong>gift exchange organizer / Kris Kringle generator</strong>!
+            Organize a Secret Santa party with friends, family or even co-workers. After receiving the Secret Santa mail you can add your
+            own <strong>wishlist</strong>, which will be delivered to your Secret Santa.</p>
+
+            <p>Each year around <strong>Christmas</strong> time people all over the world exchange gifts.<br/>
+            To keep things interesting though, you can <strong>randomly assign persons to each other</strong> to give a
+            present to one another.</p>
+
+        title_2: How does it work?
+        intro_2: >
+            <p>Create a party <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
+            The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+            We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
+
+    add_participants: Add your participants
+    list_adminstrator: This person is a participant too.
+    add_personal_message:
+        title: Add a personal message
+        description: Add a personal message for the participants.
+    import:
+        instructions: Add multiple people at once to your event. Download <a href="%downloadPath%">this CSV template file</a> and add all names and mailaddresses of the people you want to invite to the file. When you're finished, you can drag and drop the CSV file into the field below and your friends or colleagues will be added fast and easy to your party.
+        too_many_files: Only one file can be uploaded at a time.
+        wrong_format: The file you're trying to upload does not have the required format (csv or txt).
+
+    btn:
+        add_person: Add person
+        remove_person: Remove
+        import_persons_open: Add multiple people by CSV
+        import_persons_do: Add to your event
+        cancel: Cancel
+        create_event: Create your event!
+
+    label:
+        host: Host
+        email: E-mail
+        participants: Participants
+
+# Party/created.html.twig
+party-created:
+    title: Only 1 step to go! - Validate your participation
+    body: >
+        <p>
+            To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
+        </p>
+        <p>
+            Once validated, you will be able to make changes to your party, add or remove participants and configure excludes (if your party has 4 participants or more). Once you are ready configuring your party, you can start your party.
+            At that point we will match everyone, and send them an email containing all info they need, together with a link to find out their buddy.
+        </p>
+        <p>
+            You can always use the link in the validation e-mail to go to the manage page. Once the party is started, you will be able to see if the participants have opened their mail, and clicked the link the find out who their buddy is.
+        </p>
+    warning: Warning!
+    check_spam: Don't forget to check your spam folder!
+
+# Party/deleted.html.twig
+party-deleted:
+    title: Your Secret Santa list was deleted!
+    body: <p>Thank you for using Secret Santa Organizer. And, we hope to see you again next year!</p>
+    create_new_list: Create a new Secret Santa list!
+
+# Party/forgotLink.html.twig
+party-forgot_link:
+    title: 'Request overview of my parties'
+    description: 'Fill in your email address and we will sent you an email with all the parties you have created and the parties where you are participating in. We only list the parties taking place in the future.'
+    submit_btn: Send me an overview
+    info_reuse: 'If you want to create a party, based on a previous party, you can request a list of your previous parties <a href="%reusepath%">here</a>'
+
+# Party/getReuseUrl.html.twig
+party-get_reuse_url:
+    title: 'Reuse party'
+    description: 'Fill in your email address and we will send an overview of the parties you have made the past 2 years, and a link to reuse them. This only works for the parties you have created.'
+    form:
+        submit-btn: 'Send email'
+
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: All Secret Santa Wishlists
+    back: Back to manage page
+
+# Static/faq.html.twig
+static-faq:
+    title: Frequently Asked Questions
+    body: >
+        <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
+
+        <a name="what"></a><h2>What is Secret Santa?</h2>
+        <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
+        To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
+
+        <a name="how"></a><h2>How does it work?</h2>
+        <p>Create a party <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
+        The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
+        We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
+
+        <a name="exclude"></a><h2>Can I exclude combinations?</h2>
+        <p>It is possible to excludee some combinations, for example to prevent members of the same family having to buy gifts for each other. Excludes can be configured if your party has 4 participants or more
+        and as long as your party is not started. If these conditions are met, you will see a box called 'Exclude certain combinations' on the manage page. Clicking on this box wil open it, and make it possible to edit your excludes.
+        These can be edited at any time, as long as your party isn't started.<br><br>
+        It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
+
+        <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
+        <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
+
+        <a name="reuse"></a><h2>Can I reuse a list?</h2>
+        <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.
+        You can also generate an email <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">here</a>, containing all the parties you made during the past 2 years together with a link to reuse them.</p>
+
+        <a name="manage"></a><h2>How do I manage my party / participants?</h2>
+        <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
+
+        <a name="odd"></a><h2>Does it work with an odd number of participants?</h2>
+        <p>Yes. It doesn't matter if your party consists of an even or an odd number of participants. It is no guarantee that if person A was assigned to person B that person B is also assigned to person A. Secret Santa uses a macro to make sure everybody on the list is assigned to someone else from the list. This works randomly. For example: if John, Caroline and Steve have been added to a party, John can be assigned to Steve, Steve can be assigned to Caroline and Caroline can be assigned to John.</p>
+
+        <a name="limit"></a><h2>Is there a limit on the amount of participants?</h2>
+        <p>No, there isn't. But, it's a good idea to add them using the CSV option.</p>
+
+        <a name="lost"></a><h2>I lost my activation mail / url to the party.</h2>
+        <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="%requestForgotLink%">this page</a> and we will send you
+        an overview of all the parties where you are participating in and/or the parties you have created.</p>
+
+        <a name="changes"></a><h2>Can I add or remove people?</h2>
+        <p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event.
+        Allowing this would mess up the system and people might still be assigned to their excluded buddy, this made us to decide to prevent adding people if excluded combinations are present.</p>
+
+        <a name="email"></a><h2>Can I resend an email?</h2>
+        <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
+        If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
+
+        <a name="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
+        <p>You can optionally see the combinations and wishlists on the management page. There are buttons for that, you won't see this by default. If you want to share this information with all the participants you will have to share the URL yourself.</p>
+
+        <a name="delete"></a><h2>Can I delete my list?</h2>
+        <p>Sure you can. Just go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
+
+        <a name="who"></a><h2>Who are you?</h2>
+        <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
+        designers, frontenders, SEO's and marketing people.
+        Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
+        Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
+
+        <a name="privacy"></a><h2>How do you handle my data?</h2>
+        <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
+        Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
+
+        <a name="features"></a><h2>Can you add feature X?</h2>
+        <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
+        Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change.
+        For those who can code, we prefer transpiration to inspiration. In other words, we accept your PRs.</p>
+
+        <a name="opensource"></a><h2>Open source</h2>
+        <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
+        You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PRs).
+        If you want a change or a whole new feature, just add it.</p>
+
+        <a name="ads"></a><h2>What about the ads?</h2>
+        <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project.
+        We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else.
+        By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
+
+        <a name="questions"></a><h2>Other questions</h2>
+        <p>Any other questions, concerns, or comments? Contact us via the <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contact form</a>.
+    create_new_list: Create a new Secret Santa list!
+
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
+    btn:
+        remove_person: Remove
+
+# Helper/prototypeWishlist.html.twig
+helper-prototype_wishlist:
+    btn:
+        save_item: Save this item
+        update_item: Update this item
+        remove_item: Remove
+
+# Participant/exposeAll.html.twig
+participant-expose_all:
+    title: Secret Santa Mailing List Matches
+    giving: This member is giving ...
+    receiving: ... a gift to this member
+    back: Back to manage page
+
+# Participant/show/base.html.twig
+participant_show_base:
+    headers:
+        title: Your <span class="accent">Secret Santa party</span> details
+        date: Date of your party
+        location: Location of your party
+        amount: Amount to spend
+        num_people: Number of people
+        person_created_list: Person who created this list
+
+# Participant/show/expired.html.twig
+participant_show_expired:
+    message:
+        expired: <strong>Oops</strong><br/>The event is older than 2 years and can't be edited anymore.<br/>
+
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
+        title: Your assigned buddy
+        body: >
+            <p>Hi %name%,</p>
+            <p>You are assigned as Secret Santa to give a present to:</p>
+        watch_out: Watch out
+        wishlist_from: Wishlist from %name%
+        wishlist_not_provided: '%name% has not yet provided a wishlist'
+        message_for_wishlist: Send a message to your buddy to let him/her know their wishlist is empty.
+        find_gift: Looking for a gift?
+
+    wishlist:
+        title: Your wishlist
+        description: To help your Secret Santa, you can leave a wishlist here. Our gnomes will take care of communicating this to your Secret Santa. You can re-order the list by dragging the items in place.
+        empty: Your wishlist is empty. Add something!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Please remove the empty row before proceeding.
+            added: <h4>Added!</h4> Item successfully added to your wishlist.
+            updated: <h4>Updated!</h4> Item successfully updated.
+            removed: <h4>Deleted!</h4> Item successfully removed from your wishlist.
+
+    label:
+        description: Description
+
+    btn:
+        add_wishlist: Add item to wishlist
+        update_item: Update this item
+        remove_item: Remove
+
+    anonymous_message:
+        title: Send an anonymous message to %name%
+        message_label: Your message
+        message_placeholder: Your message
+        warning_anonymous: Remember that this message is sent anonymously, and you don't want to spoil who you are! Your buddy won't be able to reply to your message, be specific so he/she is able to update his/her wishlist.
+        send_button: Send your mail!
+
+# ParticipantCommunicationController
+participant_communication-send_message:
+    feedback:
+        success: Your mail has been sent! We've sent out our gnomes to deliver it!
+        error: Unfortunately we couldn't send your message. Please try again later!
+        error_in_form: There was an error with your input. Please check your input and try again!
+
+# Participant/unsubscribe.html.twih
+participant_unsubscribe:
+    title: Unsubscribe from emails
+    unsubscribe_all_label: Mark this checkbox if you also want to unsubscribe from all other parties where you currently are participating
+    unsubscribe_blacklist: "Blacklist me: Prevent users from inviting me in the future"
+    unsubscribe_confirm_btn: Unsubscribe
+    unsubscribe_for: Your are unsubscribing from emails for the Secret Santa party on %date%, at/in %location%.
+    info_confirmation: >
+                        <strong>Are you sure?</strong> When you unsubscribe we won't send you mails anymore about this party, <strong>but you will still participate in the party</strong>.
+                        When you don't want to participate anymore, you should ask your party admin to remove you from the party.<br/>
+                        You might receive mails from other parties where you are participating, unless you mark the checkbox below.
+    blacklist_warning: >
+                       <strong>Caution!</strong> When you blacklist your email address you won't be able to join any Secret Santa party in the future! Only use this function if you think someone is misusing your email!
+    feedback:
+        success: You have successfully unsubscribed!
+        error: There was an error when unsubscribing, please try again!
+        error_atleast_one_option: Choose at least one unsubscribe option.
+
+# Party/manage/base.html.twig
+party_manage_base:
+    headers:
+        title: Your <span class="accent">Secret Santa party</span> details
+        date: Date of your party
+        location: Location of your party
+        amount: Amount to spend
+
+# Party/manage/expired.html.twig
+party_manage_expired:
+    manage:
+        title: Delete my Secret Santa list
+
+    delete:
+        title: Delete my Secret Santa list
+        body: >
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                <b>Unexpected bad things will happen if you don't read this!</b><br>
+                <br>
+                Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
+                This will delete this Secret Santa list, all it's participants and their wishlists permanently.<br>
+                <br>
+                Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            </p>
+        phrase_to_type: delete everything
+
+    btn:
+        cancel: Cancel
+        delete_confirm: I understand the consequences, delete my Secret Santa list now
+        delete_list: Delete my Secret Santa list
+
+    message:
+        expired: <strong>Oops</strong><br/>Your event is older than 2 years and can't be edited anymore.<br/>
+
+# Party/manage/valid.html.twig
+party_manage_valid:
+    manage:
+        title: Your Secret Santa list
+        yes: Yes
+        not_yet: Not yet
+        edit_email: Edit e-mail
+        resend_email: Resend e-mail
+        copy_clipboard: Copy personal link to clipboard
+        copied_clipboard: The invitation link was<br/>copied to your clipboard!
+        view_participant: View participant
+        tip: Tip
+        come_back: You can always come back to this page to make sure everybody has checked their mailbox.
+        watch_out: Watch out
+        save: Save
+
+    delete:
+        title: Delete my Secret Santa list
+        body: >
+            <p>
+                Are you ABSOLUTELY sure?<br>
+                <br>
+                <b>Unexpected bad things will happen if you don't read this!</b><br>
+                <br>
+                Once you delete your Secret Santa list, there is no going back. This action CANNOT be undone.<br>
+                This will delete this Secret Santa list, all its participants and their wishlists permanently.<br>
+                <br>
+                Please type "<b>%phrase_to_type%</b>" below to confirm.<br>
+            </p>
+        phrase_to_type: delete everything
+
+    add_participant:
+        title: Add a new participant to your party
+        body: >
+            <p>
+                By filling in the form below, a new participant will be added to your party.<br>
+                <br>
+                The new participant will immediately be assigned to a Secret Santa buddy and will receive an invitation by mail.<br>
+            </p>
+        started_warning: >
+            <p>
+                <strong>Warning: The participants have already been matched!</strong>
+                <br>
+                If there are still participants that have not yet seen their match, we will use one of them to match to the new participant.
+                If everyone has already seen their match, the new participant will be assigned to you and he/she will be assigned your match.
+            </p>
+
+    remove_participant:
+        title: Delete this participant from your list
+        body: <p>Are you ABSOLUTELY sure?</p>
+        party_started: >
+            <p>
+                Deleting this participant has permanent consequences. You can't restore the current matches and the participant will be gone immediately.<br>
+                <br>
+                Somebody might have bought them a present already.<br>
+            </p>
+
+    updated_party:
+        title: Update the details of your Secret Santa party
+        body: >
+            <p>
+                By filling in the form below, you can edit the details of the party you're organizing.<br>
+                <br>
+                Your participants will be notified of these changes immediately.
+            </p>
+
+    join_mode:
+        title: Join by link settings
+        body: >
+            <p>
+                Instead of manually adding people, you can allow people to join your party by sharing a link.
+                <br />When you start the party, people aren't able to join anymore (but you can still add them manually).
+            </p>
+        mode:
+            no: No, do not allow people to join by link
+            yes: Yes, allow anyone with the link to join my party
+        reset_body: >
+            By checking this checkbox, a new link will be generated. People will not be able to join with the old link anymore.
+            Use this when the current link has been shared with people that are not supposed to be able to join.
+        reset_unset: Enable join by link to generate a link.
+
+    btn:
+        add_participant: Add participant to party
+        add_participant_confirm: Add this participant
+        cancel: Cancel
+        delete_confirm: I understand the consequences, delete my Secret Santa list now
+        delete_list: Delete my Secret Santa list
+        expose: View all the matches in this list
+        expose_wishlists:  View all participants wishlists
+        party_update: Send party update to participants
+        remove_participant_confirm: Remove this participant
+        updated_party: Update your party details
+        start_party: Start your party
+        join_mode: Join by link
+        join_mode_confirm: Set join mode
+
+    label:
+        name: Name
+        email: E-mail
+        confirmed: Email status
+        wishlist_filled: Wish List Entered
+        actions: Actions
+        join_mode: Allow join by link
+        join_url: Share this URL with your friends
+        reset: Reset join URL
+
+    excludes:
+        title: Exclude certain combinations
+        btn: Save excludes
+        description: With this list you can optionally prevent some participants combinations. For example to prevent members of the same family have to buy gifts for each other.
+        information: When using excludes, it might be possible once you start the party that you can't remove participants anymore. You also won't be able to change the excludes once you start the party!
+        placeholder_exclude: Click and choose the participants you want to exclude
+        not_enough: Your party needs at least 4 participants to use excludes!
+        label:
+            name: Name
+            exclude: Exclude
+
+party_join:
+    title: Join the party!
+    description: >
+        <p>
+            With the link you were given, you can add yourself to this Secret Santa party!
+            Please review the party details below, and fill out the form if you want to participate.
+            If you have questions regarding the party, please contact the person who created this party.
+        </p>
+    joined: >
+        <p>
+            We have added you to the party!
+            <br />Note that you will not receive your match until the party is started.
+            If you have any questions regarding the party or want to change your info, you must contact the person who created this party!
+        </p>
+    invalid: >
+        <p>
+            The link you have used is not valid. There could be several reasons for this
+            <ul>
+                <li>The party does not exists, or has been deleted.</li>
+                <li>The creator of the party has disabled or reset the link.</li>
+                <li>The party has already been started.</li>
+            </ul>
+            Please contact the person that sent you the link. He or she might still be able to add you to the party manually!
+        <p/>
+
+    btn:
+        join_confirm: Join party
+
+# Emails/baseEmail.html.twig
+emails-base_email:
+    sender: Santa Claus
+    title: Secret Santa by Intracto
+    footer: Have fun organizing Secret Santa!
+    created_by: Created by
+
+# This header block is re-used in multiple emails
+emails-base_email_header:
+    title: Party details
+    date: Date of your party
+    location: Location of your party
+    amount: Amount to spend
+    num_people: Number of people
+    person_created_list: Person who created this list
+
+# Emails/baseEmailUnsubscribe.html.twig
+emails-base_email_unsubscribe:
+    unsubscribe: If you don't want to receive mails in the future, you can
+    unsubscribe_link: unsubscribe here
+
+# Emails/emptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    subject: Your wishlist is still empty
+    update_your_list: Your Secret Santa party is near and you haven't updated your wishlist yet! You might want to go add some stuff you'd like.
+
+    btn:
+        update_wishlist: Update your wishlist
+
+# Emails/forgotLink.{html,txt}.twig
+emails-forgot_link:
+    subject: Overview of my parties
+    participating_in: 'You are participating in the following parties:'
+    created_these: 'You''ve created these parties:'
+    table_labels:
+        date: Date
+        location: Location
+        link: Link
+        txt: The party on %date%, at/in %location%
+    btn:
+        party_link: Go to this party
+        manage_link: Manage this party
+    message:
+        html: 'Hi there, <br /><br />You have requested us to send an overview of all the parties you need to know about. These parties are all the parties you have created or where you are participating in, taking place in the future:<br />'
+        txt: >
+            Hi there,
+
+            You have requested us to send an overview of all the parties you need to know about. These parties are all the parties you have created or where you are participating in, taking place in the future:
+
+# Emails/reuseLink.{html,txt}.twig
+emails-reuse_link:
+    title: Link to reuse your Secret Santa party
+    subject: Reuse secret santa party
+    party_title: Party
+    at: at/in
+    message:
+        html: 'Hi there, <br /><br />You have requested us to send an email with links to reuse your previous parties. Here you can find the parties you created the past 2 years, with a link to reuse them.<br />'
+        txt: >
+            Hi there,
+
+            You have requested us to send an email with links to reuse your previous parties. Here you can find the parties you created the past 2 years, with a link to reuse them.
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Your Secret Santa
+    find_out: Find out your person
+
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa Validation
+    salutation: Hi %name%
+    click_button: Please click on the button below to validate your Secret Santa mailing list.  This will trigger our gnomes to send out the personal message you created earlier to all your participants.
+    overview_page: On the newly created overview page you will then be able to keep track of all your users discovering their Secret Santa gift buddies. Thus knowing when the list is complete.
+    lastly: And lastly, don't forget to confirm your own participation as well! We'll also send you a new e-mail after you click the validation button below.
+    come_back: You can always come back to this mail if you need the link to your manage page.
+    btn_goto_manage: Go to the manage page
+
+# Emails/partyStatus.{html,txt}.twig
+emails-party_status:
+    subject: Secret Santa party status
+    message:
+        html: >
+            Dear %owner%, <br/>
+            <br/>
+            Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statuses.<br/>
+            <br/>
+            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your party.
+        txt: >
+            Dear %owner%,
+
+            Your party will take place pretty soon. In order to ensure the perfect party, it would be nice if everyone gets a present. Here's an overview of all of your participants and their statuses.
+
+            Click the link below to resend mails, edit emailaddresses or to perform more actions related to your party.
+
+    yes: Yes
+    not_yet: Not yet
+
+    label:
+        name: Name
+        email: E-mail
+        confirmed: Confirmed
+        wishlist_filled: Wish List Entered
+
+    btn:
+        partystatus: Manage your party
+
+# Emails/partyUpdate.{html,txt}.twig
+emails-party_update:
+    subject: Our Secret Santa party is coming soon!
+    message:
+        html: >
+            Dear %name%, <br/>
+            <br/>
+            We hope you're getting excited about %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.<br/>
+            <br/>
+            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.<br/>
+            <br/>
+            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+        txt: >
+            Dear %name%,
+
+            We hope you're getting excited about %owner%'s party that's coming up soon. %owner% is expecting %participantCount% people at this party on %date% at/in %place% to enjoy the joy of giving gifts.
+
+            To achieve maximum pleasure, it would be great if every invitee were to attend this party and brought along a present. So far %viewedCount% people opened their invitation and %wishlistCount% of them made a wishlist.
+
+            Be sure to check on your buddy by clicking the link below and make them swing into action if needed. The more the merrier!
+
+    btn:
+        party_update: Check your buddy and wishlist
+
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Find out who your new Secret Santa is
+    message:
+        html: >
+            Dear %name%,<br/>
+            <br/>
+            You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.<br/>
+            <br/>
+            Click the link below to find out who your new Secret Santa is.
+        txt: >
+            Dear %name%,
+
+            You have been assigned a new Secret Santa after %owner% removed your previous Secret Santa from his party.
+
+            Click the link below to find out who your new Secret Santa is.
+
+    btn:
+        find_out: Find out your new person
+
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: The plans have changed!
+    message:
+        html: >
+            Dear %name%,<br/>
+            <br/>
+            %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
+        txt: >
+            Dear %name%,
+
+            %owner% has changed some details of the party you're invited to. Below you can find the new details your friend has provided for you.
+
+    label:
+        date_party: Date of your Secret Santa party
+        location: Location of your Secret Santa party
+        amount_to_spend: Amount to spend
+
+    btn:
+        updated_party: Check your buddy and wishlist for this party
+
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
+    subject: Find out who your gift buddy is
+    didYouForget: Did you forget about our Secret Santa party? You haven't checked who your gift buddy is yet!
+
+    btn:
+        find_out: Find out your new person
+
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Wishlist updated
+    salutation: Hi %name%
+    buddy_updated_wishlist: Your buddy has updated his or her wishlist.
+    click_button: Click on the button below to check out his or her suggestions.
+
+    btn:
+        check_wishlist: Check wishlist
+
+# Emails/anonymousMessage.{html,txt}.twig
+emails-anonymous_message:
+    subject: Your secret santa sent you a message
+    message:
+      html: >
+          Dear %name%, <br/>
+          <br/>
+          Your Secret Santa buddy has sent a message to you, you can read it here:<br/>
+          <br />
+          <strong>%message%</strong>
+          <br/>
+          Click the link below and add some stuff to your wishlist you'd like.
+      txt: >
+          Dear %name%,
+
+          Your Secret Santa buddy has sent a message to you, you can read it here:
+
+          %message%
+
+          Click the link below and add some stuff to your wishlist you'd like.
+    update_wishlist: Update your wishlist
+
+# MailStatusExtension
+mail_status_extension:
+    unknown: Unknown
+    opened: Opened email
+    viewed: Viewed party
+    not_started: Party not started
+    bounced: Email not delivered!
+
+flashes:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Success</h4> An update has been sent to all participants.
+
+    # ForgotURLController
+    forgot_url:
+        success: 'We have successfully sent you an overview!'
+        error: 'An error occurred while sending the email. Check your email address and please try again.'
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Perfect!</strong><br/>Your email is now validated.<br/>
+            Our gnomes are travelling on the internet as we speak, delivering all your soon-to-be-Secret-Santas their gift buddies.<br/>
+            <br />
+            Don't forget to confirm your own participation. We've sent you another email. Go check it out!
+        add_participant:
+            success: <h4>Added!</h4> Participant successfully added to your party.
+            danger: <h4>Oops</h4> An error occurred while adding the participant. Please try again.
+        join_mode:
+            success: <h4>Updated!</h4> The join by link settings have been successfully updated.
+            danger: <h4>Oops</h4> An error has occurred while updating the join by link settings. Please try again.
+        updated_party:
+            success: <h4>Updated!</h4> Your party details have been successfully updated.
+            danger: <h4>Oops</h4> An error has occurred while updating your party. Please try again.
+        start_party:
+            success: We started your party, and we've sent out the mails!
+            danger: There was an error starting your party, please try again!
+        excludes:
+            success: The excludes have been saved!
+
+    # PartyController
+    party:
+        not_deleted: <h4>Not deleted</h4> The confirmation was incorrect.
+
+    # ResendParticipantController
+    resend_participant:
+        resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
+        blacklisted: <strong>Oops.. We couldn't send the email!</strong> This person has blacklisted his/her email, and doesn't want to receive mails anymore.
+
+    # ParticipantController
+    participant:
+        wishlist_updated: <h4>Wishlist updated</h4>We've sent out our gnomes to notify your Secret Santa about your wishes!
+        edit_email: <h4>Not saved</h4> There is an error in the email address.
+        updated_participant: <h4>Saved</h4> We have updated the details of the participant!
+        updated_participant_resent: <h4>Saved</h4> We have updated the details of the participant! Since you changed the email and the party has already started, we also resent the email to this participant.
+        remove_participant:
+            success: <h4>Removed!</h4> Participant successfully removed.
+            danger: <h4>Oops</h4> Can't delete this participant, your party needs at least 3 participants.
+            warning: <h4>Oops</h4> You are hosting this party, you can't delete yourself. If you wish to leave this party, click the link below to remove your Secret Santa list.
+            excluded_participants: <h4>Oops</h4> Can't delete participants from this party, you used excludes upon creating this party which may cause problems upon deleting a participant, therefore this feature is prevented from being used on this party.
+            not_enough_for_exclude: <h4>Oops</h4> You have configured excludes, but since you need a minimum of 4 participants before you can use excludes, you should first remove the excludes, or make sure you keep a minimum of 4 participants!
+            self_assigned: <h4>Oops<h4> Can't delete this participant because it would cause someone to become self-assigned.
+            wrong: <h4>Oops</h4> It looks like the validation string didn't match the string we were looking for.
+
+    # ReuseController
+    reuse:
+        success: 'We have successfully sent the email!'
+        error: "We couldn't find any parties, it might be possible that your parties are older than 2 years, or no parties linked to this email."
+
+    # ContactController
+    contact:
+        success: 'We have received your request and will come back to you as soon as possible!'
+
+# Emails/contact.{html,txt}.twig
+emails-contact:
+    subject: New message the Secret Santa contact form
+    message:
+        html: >
+            Dear,<br>
+            <br>
+            %name% has used the Secret Santa contact form to send a message. Message:<br/>
+            <br/>
+            %message%<br/>
+            <br/>
+        txt: >
+            Dear,
+
+            %name% has used the Secret Santa contact form to send a message. Message:
+            %message%
+
+# Form/{ContactType}
+form-contact:
+    label:
+        email: Your email
+        name: Your name
+        message: Your message
+        submit: Submit
+
+# Static/faq.html.twig
+static-contact:
+    title: Contact us
+    body: Any other questions, concerns, or comments? Contact us via the contact form:

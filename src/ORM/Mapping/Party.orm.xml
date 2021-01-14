@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                   https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Party" table="party" repository-class="App\Repository\PartyRepository">
+
+        <indexes>
+            <index name="list_url" columns="list_url"/>
+            <index name="dates" columns="created,event_date,sent_date"/>
+        </indexes>
+
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="listurl" column="list_url" type="string" length="50" unique="true"/>
+        <field name="wishlistsurl" column="wishlists_url" type="string" length="50" unique="true"/>
+        <field name="message" column="message" type="text" nullable="true"/>
+        <field name="creationdate" column="creation_date" type="datetime"/>
+        <field name="sentdate" column="sent_date" type="datetime" nullable="true"/>
+        <field name="eventdate" column="event_date" type="datetime" nullable="true"/>
+        <field name="amount" column="amount" type="string" length="255" nullable="true"/>
+
+        <one-to-many field="participants" target-entity="Participant" mapped-by="party">
+            <cascade>
+                <cascade-remove/>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
+
+        <field name="created" column="created" type="boolean"/>
+        <field name="locale" column="locale" type="string" length="7"/>
+        <field name="location" column="location" type="string" length="255" nullable="true"/>
+
+        <field name="joinurl" column="join_url" type="string" length="50" nullable="true" unique="true"/>
+        <field name="joinmode" column="join_mode" type="integer"/>
+    </entity>
+
+</doctrine-mapping>
