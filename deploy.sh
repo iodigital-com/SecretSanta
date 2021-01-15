@@ -26,7 +26,6 @@ set -e # errexit: exit on error
 
 PROJECT_HOME=/var/www/secretsanta
 VERSION=`date +"%Y%m%d%H%M%S"`
-export SYMFONY_ENV=prod
 cd ${PROJECT_HOME}
 
 printAction "Get latest version from Git"
@@ -39,9 +38,9 @@ printAction "Install latest version"
 cp -R git releases/${VERSION}
 cd releases/${VERSION}
 
-cp ../../shared/parameters.yml app/config
-cp ../../shared/client_secrets.json app/config
-cp ../../shared/recaptcha_secrets.json app/config
+cp ../../shared/env.local .env
+cp ../../shared/client_secrets.json config
+cp ../../shared/recaptcha_secrets.json config
 printOk
 
 printAction "Composer install"
@@ -53,25 +52,23 @@ yarn && yarn build
 printOk
 
 printAction "Install assets"
-bin/console assets:install web ${Q}
-cp ../../shared/yandex_* web
-cp ../../shared/ads.txt web
-cp ../../shared/GeoLite2-City.mmdb web
+cp ../../shared/yandex_* public
+cp ../../shared/ads.txt public
+cp ../../shared/GeoLite2-City.mmdb public
 printOk
 
 printAction "Cleanup files and setting permissions"
 rm -rf .git .gitignore Vagrantfile shell_provisioner
-rm -rf web/app_{dev,test,test_travis}.php web/config.php
-
+rm -rf public/index_test.php
 sudo chmod -R ug=rwX,o=rX ../${VERSION}
-sudo chmod -R a+rwX var/logs var/cache
+sudo chmod -R a+rwX var/log var/cache
 printOk
 
 printAction "Stopping FPM"
 sudo systemctl stop php7.4-fpm
 printOk
 printAction "Running doctrine schema update"
-bin/console doctrine:schema:update --force --env=${SYMFONY_ENV} ${Q}
+bin/console doctrine:schema:update --force ${Q}
 cd ../..
 printOk
 printAction "Activate new version"
