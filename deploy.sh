@@ -45,6 +45,8 @@ printOk
 
 printAction "Composer install"
 ../../shared/composer.phar install --no-dev --classmap-authoritative ${Q}
+../../shared/composer.phar dump-env prod ${Q}
+rm .env
 printOk
 
 printAction "Building frontend"
