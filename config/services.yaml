@@ -29,6 +29,7 @@ parameters:
         es: Español
         de: Deutsch
         no: Norsk
+    router.request_context.host: '%env(HOST)%'
 
 services:
     # default configuration for services in *this* file
