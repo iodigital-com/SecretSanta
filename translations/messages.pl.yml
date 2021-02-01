@@ -8,18 +8,18 @@ base:
             site_name: Tajny Mikołaj
             description: Organizator Tajnego Mikołaja jest darmowym narzędziem służącym do organizacji wymiany prezentów. Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami i stwórz swoje listy życzeń.
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Potrzebujesz pomocy? Masz pytania? Przeczytaj FAQ!</a>
-#   privacy_policy:
-#   cookie_policy:
-#   bug_bounty:
+    privacy_policy: Polityka prywatności
+    cookie_policy: Polityka cookie
+    bug_bounty: Nagroda za błędy
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
     label:
         date_party: Data Twojego Przyjęcia Tajnego Mikołaja
-#       location: ?
+        location: Miejsce imprezy Tajnego Mikołaja
         amount_to_spend: Suma do wydania
-#       message:
-#       confirmed:
+        message: Dodatkowa wiadomość w e-mailu
+        confirmed: Tak, mam zezwolenie na udostępnienie adresów e-mailowych uczestników na potrzeby Tajnego Mikołaja
 
 # PartyController
 party_controller:
@@ -56,36 +56,47 @@ party-create:
             <p>Organizator Tajnego Mikołaja jest <strong>darmowym</strong> narzędziem służącym do <strong>organizacji wymiany prezentów</strong>! Zorganizuj Przyjęcie Tajnego Mikołaja z przyjaciółmi, rodziną lub współpracownikami. Kiedy otrzymasz list od Tajnego Mikołaja możesz dodać swoją własną <strong>listę życzeń</strong>, która zostanie dostarczona Tajnemu Mikołajowi.</p>
             <p>Każdego roku w okolicach <strong>Świąt Bożego Narodzenia</strong> ludzie na całym świecie obdarowują się prezentami.<br/> Aby uczynić to jeszcze ciekawszym możesz <strong>losowo przypisać uczestników wymiany</strong> tak aby przygotowali prezenty dla siebie nawzajem.</p>
 
-#       title_2:
-#       intro_2:
+        title_2: Jak to działa?
+        intro_2: Utwórz imprezę na stronie głównej. Potrzebujesz co najmniej 3 uczestników, pierwszy uczestnik jest jednocześnie administratorem listy.
+                 Administrator otrzyma na adres e-mailowy link, który należy potwierdzić. Po zweryfikowaniu zostaną wylosowane imiona uczestników listy Tajnego Mikołaja i każdy z uczestników otrzyma e-mail z twoją wiadomością i imieniem osoby, dla której ma zrobić prezent. Zweryfikowanie jest konieczne, aby zapobiec by niepożądani goście nie popsuli tej zabawy. W potwierdzającym e-mailu będzie także wysłany link do strony, na której administrator może zarządzać imprezą Tajnego Mikołaja.
+
     
     add_participants: Dodaj uczestników
     list_adminstrator: Ta osoba jest także administratorem Twojej listy.
     add_personal_message:
         title: Dodaj wiadomość
         description: Dodaj wiadomość dla uczestników.
-#   import: ?
-#       instructions: ?
-#       too_many_files: ?
-#       wrong_format: ?
+    import:
+        instructions: Dodaj jednocześnie wszystkich uczestników imprezy. 
+                      Pobierz plik szablonu CSV i wpisz imiona i adresy e-mailowe wszystkich osób, które chcesz zaprosić na to wydarzenie.
+                      Kiedy będziesz gotowy możesz przenieść plik CSV na pole poniżej i wszyscy uczestnicy wydarzenia  zostaną szybko I łatwo dodani do twojej imprezy.
+
+        too_many_files: Jednocześnie można przesłać tylko jeden plik.
+        wrong_format: Plik, który próbujesz przesłać, nie ma wymaganego formatu (csv lub txt).
 
     btn:
         add_person: Dodaj osobę
         remove_person: Usuń osobę
-#       import_persons_open: ?
-#       import_persons_do: ?
+        import_persons_open: Dodaj wiele osób za pomocą pliku CSV
+        import_persons_do: Dodaj do twojej imprezy
         cancel: Anuluj
         create_event: Utwórz wydarzenie!
 
     label:
-#       host: ?
+        host: Gospodarz
         email: E-mail
         participants: Uczestników
 
 # Party/created.html.twig
 party-created:
     title: 'Jeszcze tylko jeden krok! - Potwierdź swoje uczestnictwo'
-#   body: ?
+    body: Aby uniemożliwić botom lub trollom zrujnowanie imprezy Tajnego Mikołaja,
+          potrzebujemy <b>%ownername%</b> listy, aby potwierdzić jego/jej udział. Wysłaliśmy wiadomość e-mail do <b>%owneremail%</b> z dalszymi instrukcjami. Po zweryfikowaniu, będziesz mógł wprowadzić zmiany do twojej imprezy, dodać lub usunąć uczestników oraz
+          skonfigurować wykluczenia (jeśli Twoja impreza ma 4 lub więcej uczestników).
+          Kiedy konfiguracja będzie gotowa możesz zacząć imprezę.
+          W tym momencie dopasujemy wszystkich w pary i wyślemy im wiadomość e-mail zawierającą wszystkie potrzebne informacje wraz z linkiem umożliwiającym znalezienie ich pary .
+          Ty zawsze możesz użyć link z e-maila z potwierdzeniem, aby przejść do strony zarządzania imprezą. Po rozpoczęciu imprezy będziesz mógł zobaczyć, czy uczestnicy otworzyli swoją pocztę i kliknęli na link, aby dowiedzieć się, kto jest ich parą do zrobienia prezentu.
+
     warning: Uwaga!
     check_spam: Nie zapomnij sprawdzić folderu spam!
 
@@ -96,23 +107,23 @@ party-deleted:
     create_new_list: Stwórz nową listę Tajnego Mikołaja!
 
 # Party/forgotLink.html.twig
-#party-forgot_link:
-#   title: ?
-#   description: ?
-#   submit_btn: ?
-#   info_reuse:
+party-forgot_link:
+    title: Prośba o przegląd moich imprez
+    description: Wpisz swój adres e-mail i wyślemy ci wiadomość e-mail ze wszystkimi imprezami, które utworzyłeś i imprezami, w których bierzesz udział. Przesyłamy tylko te imprezy, które odbędą się w przyszłości.
+    submit_btn: Prześlij mi przegląd imprez
+    info_reuse: Jeśli chcesz utworzyć nową imprezę na podstawie poprzedniej imprezy, możesz tutaj poprosić o listę swoich poprzednich imprez
 
 # Party/getReuseUrl.html.twig
-#party-get_reuse_url:
-#   title:
-#   description:
-#   form:
-#       submit-btn:
+party-get_reuse_url:
+    title: Użyj ponownie poprzednią imprezę
+    description: Wpisz swój adres e-mail, a prześlemy Ci przegląd imprez, które zorganizowałeś w ciągu ostatnich 2 lat, oraz link umożliwiający ich ponowne wykorzystanie. Jest to możliwe tylko dla imprez, których ty byłeś organizatorem.
+    form:
+        submit-btn: Wyślij e-mail
 
 # Wishlist/showAll.html.twig
-#wishlist-show_all:
-#   title: ?
-#   back:
+wishlist-show_all:
+    title: Wszystkie listy życzeń Tajnego Mikołaja
+    back: Powrót do strony zarządzania
 
 # Static/faq.html.twig
 static-faq:
@@ -128,8 +139,8 @@ helper-prototype_participant:
 # Helper/prototypeWishlist.html.twig
 helper-prototype_wishlist:
     btn:
-#       save_item: ?
-#       update_item: ?
+        save_item: Zapisz to
+        update_item: Zaktualizuj to
         remove_item: Usuń pozycję
 
 # Participant/exposeAll.html.twig
@@ -137,88 +148,90 @@ participant-expose_all:
     title: Dopasowania na liście Tajnych Mikołajów
     giving: Ten uczestnik podaruje...
     receiving: ... prezent dla tego uczestnika
-#   back:
+    back: Powrót do strony zarządzania
 
 # Participant/show/base.html.twig
 participant_show_base:
     headers:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
-#       location: ?
+        location: Miejsce twojej imprezy
         amount: Ilość
         num_people: Liczba osób
         person_created_list: Osoba która utworzyła tę listę
 
 # Participant/show/expired.html.twig
-#participant_show_expired:
-#   message:
-#       expired:
+participant_show_expired:
+    message:
+        expired: Ups! Impreza jest starsza niż 2 lata i dlatego nie może być wykorzystana ponownie
 
 # Participant/show/valid.html.twig
 participant_show_valid:
     participant:
         title: Osoba, którą masz obdarować
         body: '<p>Cześć %name%,</p><p>Zostałeś przypisany jako Tajny Mikołaj, aby dać prezent dla:</p>'
-#       watch_out: ?
+        watch_out: Uważaj
         wishlist_from: 'Lista życzeń %name%'
         wishlist_not_provided: '%name% nie utworzył jeszcze listy życzeń'
-#       message_for_wishlist: ?
-#       find_gift: ?
+        message_for_wishlist: Wyślij wiadomość do uczestnika, że jego/jej lista życzeń jest pusta
+        find_gift: Szukasz prezentu?
 
     wishlist:
         title: Twoja lista życzeń
         description: Aby pomóc Tajnemu Mikołajowi możesz zostawić tu listę życzeń. Nasze skrzaty przekażą wszystko Tajnemu Mikołajowi. Możesz zmienić kolejność rzeczy na liście przenosząc je z miejsca na miejsce.
         empty: Twoja lista życzeń jest pusta. Dodaj coś!
 
-#   flashes:
-#       wishlist:
-#           empty_row: ?
-#           added: ?
-#           updated: ?
-#           removed: ?
+    flashes:
+        wishlist:
+            empty_row: Ups! Usuń pustą linię przed kontynuowaniem
+            added: Dodane! Przedmiot został pomyślnie dodany do listy życzeń
+            updated: Zaktualizowane! Przedmiot pomyślnie zaktualizowany.
+            removed: Usunięte! Przedmiot pomyślnie usunięty z twojej listy życzeń
 
     label:
         description: Opis
 
     btn:
         add_wishlist: Dodaj do listy życzeń
-#       update_item: ?
+        update_item: Uaktualnij ten przedmiot
         remove_item: Usuń pozycję
 
-#   anonymous_message:
-#       title: ?
-#       message_label: ?
-#       message_placeholder: ?
-#       warning_anonymous: ?
-#       send_button:  ?
+    anonymous_message:
+        title: Wyślij anonimową wiadomość do %name%
+        message_label: Twoja wiadomość
+        message_placeholder: Twoja wiadomość
+        warning_anonymous: Pamiętaj, że ta wiadomość jest wysłana anonimowo i nie chcesz popsuć zabawy ujawniając kim jesteś. Uczestnik nie będzie mógł opdpowiedzieć na twoją wiadomość, bądź specyficzny, by on/ona mogli uaktualnić ich listę życzeń
+        send_button: Wyślij wiadomość!
 
 # ParticipantCommunicationController
-#participant_communication-send_message:
-#   feedback:
-#       success: ?
-#       error: ?
-#       error_in_form: ?
+participant_communication-send_message:
+    feedback:
+        success: Twoja wiadomość została wysłana. Wysłaliśmy nasze krasnoludki, żeby ją dostarczyć!
+        error: Niestety nie mogliśmy wysłać Twojej wiadomości. Spróbuj ponownie później!
+        error_in_form: Wystąpił błąd podczas wprowadzania danych. Sprawdź wprowadzone dane i spróbuj ponownie!
 
 # Participant/unsubscribe.html.twih
-#participant_unsubscribe:
-#   title:
-#   unsubscribe_all_label:
-#   unsubscribe_blacklist:
-#   unsubscribe_confirm_btn:
-#   unsubscribe_for:
-#   info_confirmation:
-#   blacklist_warning:
-#   feedback:
-#       success:
-#       error:
-#       error_atleast_one_option: 
+participant_unsubscribe:
+    title: Anuluj subskrypcję e-maili
+    unsubscribe_all_label: Zaznacz to pole, jeśli chcesz również anulować subskrypcję wszystkich innych stron, w których obecnie uczestniczysz
+    unsubscribe_blacklist: "Czarna lista: Uniemożliw użytkownikom zapraszanie mnie w przyszłości"
+    unsubscribe_confirm_btn: Wypisz się
+    unsubscribe_for: Rezygnujesz z otrzymywania wiadomości e-mail na temat imprezy Tajnego Mikołaja w %date%, w %location%.
+    info_confirmation: Jesteś pewny? Kiedy zrezygnujesz z subskrypcji, nie będziemy już wysyłać Ci e-maili na temat tej imprezy, ale nadal będziesz w niej uczestniczyć.
+                       Jeśli nie chcesz już w niej uczestniczyć, poproś administratora imprezy o usunięcie Cię z imprezy.
+                       Możesz otrzymywać wiadomości o innych imprezach, w których bierzesz udział, chyba że zaznaczysz poniższe pole.
+    blacklist_warning: Uwaga! Gdy umieścisz swój adres e-mail na czarnej liście, nie będziesz mógł w przyszłości dołączyć do żadnej imprezy Tajnego Mikołaja! Użyj tej funkcji tylko wtedy, gdy podejrzewasz, że ktoś niewłaściwie wykorzystuje Twój e-mail!
+    feedback:
+        success: Subskrypcja została anulowana pomyślnie!
+        error: Wystąpił błąd podczas anulowania subskrypcji, spróbuj ponownie!
+        error_atleast_one_option: Wybierz co najmniej jedną opcję anulowania subskrypcji.
 
 # Party/manage/base.html.twig
 party_manage_base:
     headers:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
-#       location: ?
+        location: Miejsce twojej imprezy
         amount: Ilość
 
 # Party/manage/expired.html.twig
@@ -237,7 +250,7 @@ party_manage_expired:
         delete_list: Usuń moją listę Tajnego Mikołaja
 
     message:
-#       expired:
+        expired: Ups. Impreza jest starsza niż 2 lata i dlatego nie może być wykorzystana ponownie
 
 # Party/manage/valid.html.twig
 party_manage_valid:
@@ -252,7 +265,7 @@ party_manage_valid:
         view_participant: Zobacz wpis
         tip: Wskazówka
         come_back: Możesz zawsze wrócić na tę stronę aby upewnić się, że wszyscy przeczytali wiadomość.
-#       watch_out: ?
+        watch_out: Uwaga
         save: Zapisz
 
     delete:
@@ -260,50 +273,54 @@ party_manage_valid:
         body: '<p>Czy jesteś ABSOLUTNIE pewien(na)?<br><br><b>Jeśli tego nie przeczytasz mogą wydarzyć się złe rzeczy!</b><br><br>Kiedy skasujesz listę Tajnego Mikołaja, nie ma już powrotu. NIE DA SIĘ już tego cofnąć.<br> Zostanie usunięta lista Tajnego Mikołaja, wszyscy jej uczestnicy i ich listy życzeń.<br><br> Wpisz "<b>%phrase_to_type%</b>" poniżej aby potwierdzić.<br></p>'
         phrase_to_type: usuń wszystko
 
-#   add_participant:
-#       title: ?
-#       body: ?
-#       started_warning: ?
+    add_participant:
+        title: Dodaj nowego uczestnika imprezy
+        body: Wypełniając poniższy formularz, dodajesz nowego uczestnika do Twojej imprezy.
+              Nowy uczestnik zostanie natychmiast przypisany do osoby, dla której ma być Tajnym Mikołajem i otrzyma zaproszenie e-mailem.
+        started_warning: "Uwaga: uczestnicy zostali już dobrani!
+                         Jeśli nadal są uczestnicy, którzy jeszcze nie mają swojej pary, to jeden z nich utworzy parę z nowym uczestnikiem.
+                         Jeśli wszyscy już mają swoją parę, nowy uczestnik zostanie przypisany do Ciebie jako twoja para."
 
-#   remove_participant:
-#       title: ?
-#       body: ?
-#       party_started: ?
+    remove_participant:
+        title: Usuń tego uczestnika z listy
+        body: Czy jesteś ABSOLUTNIE pewny?
+        party_started: Usunięcie tego uczestnika ma nieodwracalne konsekwencje. Nie będziesz mógł przywrócić aktualnych par, a uczestnik natychmiast zniknie.
+                       Może ktoś już kupił mu prezent.
 
-#   updated_party:
-#       title: ?
-#       body: ?
+    updated_party:
+        title: Zaktualizuj szczegóły twojej imprezy Tajnego Mikołaja
+        body: Wypełniając poniższy formularz, możesz zmienić szczegóły imprezy, którą organizujesz. Jej uczestnicy zostaną natychmiast powiadomieni o tych zmianach
 
     btn:
-#       add_participant: ?
-#       add_participant_confirm: ?
+        add_participant: Dodaj uczestnika imprezy
+        add_participant_confirm: Dodaj tego uczestnika
         cancel: Anuluj
         delete_confirm: Rozumiem konsekwencje, usuwam moją listę Tajnego Mikołaja
         delete_list: Usuń moją listę Tajnego Mikołaja
-#       expose: ?
-#       expose_wishlists: ?
-#       party_update: ?
-#       remove_participant_confirm: ?
-#       updated_party: ?
-#       start_party:
+        expose: Wyświetl wszystkie pary na tej liście
+        expose_wishlists: Wyświetl listy życzeń wszystkich uczestników
+        party_update: Wyślij aktualizację imprezy do uczestników
+        remove_participant_confirm: Usuń tego uczestnika
+        updated_party: Zaktualizuj dane swojej imprezy
+        start_party: Rozpocznij imprezę
 
     label:
         name: Imię
         email: E-mail
         confirmed: Potwierdzony
-#       wishlist_filled: ?
+        wishlist_filled: Wpisano listę życzeń
         actions: Akcje
 
-#   excludes:
-#       title:
-#       btn:
-#       description:
-#       information:
-#       placeholder_exclude:
-#       not_enough:
-#       label:
-#           name:
-#           exclude:
+    excludes:
+        title: Wyklucz określone kombinacje
+        btn: Zapisz wykluczenia
+        description: Dzięki tej liście masz opcję, by zapobiec niektórym kombinacjom uczestników. Na przykład, aby uniemożliwić członkom tej samej rodziny kupowanie sobie prezentów.
+        information: Kiedy korzystasz z wykluczeń może się okazać, że po rozpoczęciu imprezy nie będzie już można usunąć uczestników. 
+        placeholder_exclude: Kliknij i wybierz uczestników, których chcesz wykluczyć
+        not_enough: Twoja impreza potrzebuje co najmniej 4 uczestników, aby korzystać z wykluczeń!
+        label:
+            name: Imię
+            exclude: Eliminacja
 
 # Emails/baseEmail.html.twig
 emails-base_email:
@@ -314,52 +331,58 @@ emails-base_email:
 
 # This header block is re-used in multiple emails
 emails-base_email_header:
-#   title: ?
+    title: Szczegóły imprezy
     date: Data
-#   location: ?
+    location: Miejsce twojej imprezy
     amount: Ilość
     num_people: Liczba osób
     person_created_list: Osoba która utworzyła tę listę
 
 # Emails/baseEmailUnsubscribe.html.twig
-#emails-base_email_unsubscribe:
-#   unsubscribe:
-#   unsubscribe_link:
+emails-base_email_unsubscribe:
+    unsubscribe: Jeśli nie chcesz w przyszłości otrzymywać wiadomości, możesz
+    unsubscribe_link: wypisz się tutaj
 
 # Emails/emptyWishlistReminder.{html,txt}.twig
 emails-emptyWishlistReminder:
     subject: Twoja lista życzeń jest nadal pusta
     update_your_list: Zbliża się Twoje Przyjęcie Tajnego Mikołaja, a Ty nie przygotowałeś(aś) jeszcze listy życzeń! Dobrze byłoby dodać tam kilka rzeczy, które Ci się spodobają.
 
-#   btn:
-#       update_wishlist: ?
+    btn:
+        update_wishlist: Zaktualizuj swoją listę życzeń
 
 # Emails/forgotLink.{html,txt}.twig
 emails-forgot_link:
-#   subject:
-#   participating_in:
-#   created_these:
-#   table_labels:
-#       date:
-#       location:
-#       link:
-#       txt:
-#   btn:
-#       party_link:
-#       manage_link:
-#   message:
-#       html: ?
-#       txt: ?
+    subject: Przegląd moich imprez
+    participating_in: Bierzesz udział w następujących imprezach:
+    created_these: Utworzyłeś następujące imprezy:
+    table_labels:
+        date: Data
+        location: Miejsce
+        link: Link
+        txt: Impreza data w %date%,  w %location%.
+    btn:
+        party_link: Przejdź do tej imprezy
+        manage_link: Zarządzaj tą imprezą
+    message:
+        html: Cześć, <br /><br />
+              poprosiłeś nas o przesłanie zestawienia wszystkich imprez, o których powinieneś wiedzieć. Te imprezy, to wszystkie imprezy, które ty utworzyłeś lub w których bierzesz udział, mające miejsce w przyszłości<br />
+
+        txt: Cześć, 
+             poprosiłeś nas o przesłanie zestawienia wszystkich imprez, o których powinieneś wiedzieć. Te imprezy, to wszystkie imprezy, które ty utworzyłeś lub w których bierzesz udział, mające miejsce w przyszłości
 
 # Emails/reuseLink.{html,txt}.twig
-#emails-reuse_link:
-#   title:
-#   subject:
-#   party_title:
-#   at:
-#   message:
-#       html:
-#       txt:
+emails-reuse_link:
+    title: Link do ponownego wykorzystania Imprezy Tajnego Mikołaja
+    subject: Ponownie wykorzystaj imprezę Tajnego Mikołaja
+    party_title: Impreza
+    at: w
+    message:
+        html: Cześć, <br /><br />
+              poprosiłeś nas o wysłanie wiadomości e-mail z linkami do ponownego wykorzystania Twoich poprzednich imprez. Tutaj możesz znaleźć imprezy, które utworzyłeś w ciągu ostatnich 2 lat, wraz z linkiem do ich ponownego wykorzystania.<br />
+
+        txt: Cześć, 
+             poprosiłeś nas o wysłanie wiadomości e-mail z linkami do ponownego wykorzystania Twoich poprzednich imprez. Tutaj możesz znaleźć imprezy, które utworzyłeś w ciągu ostatnich 2 lat, wraz z linkiem do ich ponownego wykorzystania.
 
 # Emails/participant.{html,txt}.twig
 emails-participant:
@@ -373,15 +396,22 @@ emails-pendingConfirmation:
     click_button: Kliknij w przycisk poniżej aby zweryfikować Twoją listę mailingową Tajnego Mikołaja. To spowoduje, że nasze skrzaty roześlą wiadomość którą wcześniej napisałeś do wszystkich uczestników.
     overview_page: Wkrótce zobaczysz stronę, gdzie będziesz mógł śledzić wszystkich Twoich uczestników odkrywających osoby, które mają obdarować. Dowiesz się z niej kiedy lista będzie kompletna.
     lastly: Pamiętaj także aby potwierdzić swój udział! Wyślemy Ci nowy e-mail, kiedy klikniesz na przycisk weryfikacji znajdujący się poniżej.
-#   come_back:
-#   btn_goto_manage:
+    come_back: Jeśli potrzebujesz linku do zarządzania swojej strony, zawsze możesz wrócić do tego maila.
+    btn_goto_manage: Przejdź do strony zarządzania
 
 # Emails/partyStatus.{html,txt}.twig
 emails-party_status:
-#   subject: ?
-#   message:
-#       html: ?
-#       txt: ?
+    subject: Status imprezy Tajnego Mikołaja
+    message:
+        html: Szanowny %owner%,<br/>
+              <br/>
+              Twoja impreza odbędzie się wkrótce. By zapewnić miłą imprezę byłoby idealnie  gdyby każdy dostał prezent. Oto przegląd wszystkich uczestników i ich status. <br/>
+              <br/>
+              Kliknij poniższy link, aby ponownie wysłać e-maile, edytować adresy e-mail lub wykonać więcej czynności związanych z twoją imprezą.
+
+        txt: Szanowny %owner%,
+             Twoja impreza odbędzie się wkrótce. By zapewnić miłą imprezę byłoby idealnie  gdyby każdy dostał prezent. Oto przegląd wszystkich uczestników i ich status. 
+             Kliknij poniższy link, aby ponownie wysłać e-maile, edytować adresy e-mail lub wykonać więcej czynności związanych z twoją imprezą.
 
     yes: true
     not_yet: Jeszcze nie
@@ -390,45 +420,65 @@ emails-party_status:
         name: Imię
         email: E-mail
         confirmed: Potwierdzony
-#       wishlist_filled: ?
+        wishlist_filled: Wprowadzono listę życzeń
 
-#   btn:
-#       partystatus: ?
+    btn:
+        partystatus: Zarządzaj swoją imprezą
 
 # Emails/partyUpdate.{html,txt}.twig
-#emails-party_update:
-#   subject:
-#   message:
-#       html: ?
-#       txt: ?
+emails-party_update:
+    subject: Nasza impreza Tajnego Mikołaja już wkrótce!
+    message:
+        html: Drogi %name%, <br/>
+              <br/>
+              Mamy nadzieję, że cieszysz się na imprezę %owner%'s, która wkrótce się odbędzie. %owner% spodziewa się %participantCount% uczestników w %date% w %place% imprezy na tej imprezie gdzie cieszyć się będziemy przyjemnością dawania prezentów. <br/>
+              <br/>
+              By zapewnić wszystkim przyjemność byłoby idealnie gdyby każdy zaproszony był obeny na imprezie i przyniósł ze sobą prezent. Jak dotąd %viewedCount% osoby otworzyły zaproszenia i %wishlistCount% utworzyło listę źyczeń. <br/>
+              <br/>
+              Koniecznie sprawdź listę życzeń swojego partnera, klikając poniższy link i w razie potrzeby zachęć go do działania. Im wiecej tym lepiej!
 
-#   btn:
-#       party_update:
+        txt: Drogi %name%, 
+             Mamy nadzieję, że cieszysz się na imprezę %owner%'s, która wkrótce się odbędzie. %owner% spodziewa się %participantCount% uczestników w %date% w %place% imprezy na tej imprezie gdzie cieszyć się będziemy przyjemnością dawania prezentów. 
+             By zapewnić wszystkim przyjemność byłoby idealnie gdyby każdy zaproszony był obeny na imprezie i przyniósł ze sobą prezent. Jak dotąd %viewedCount% osoby otworzyły zaproszenia i %wishlistCount% utworzyło listę źyczeń. Koniecznie sprawdź listę życzeń swojego partnera, klikając poniższy link i w razie potrzeby zachęć go do działania. Im wiecej tym lepiej!
+
+    btn:
+        party_update: Sprawdź listę listę życzeń swojego partnera
 
 # Emails/removedSecretSanta.{html,txt}.twig
 emails-removed_secret_santa:
-#   subject: ?
-#   message:
-#       html: ?
-#       txt: ?
+    subject: Dowiedz się, kim jest twój nowy Tajny Mikołaj
+    message:
+        html: Drogi %name%,<br/>
+              <br/>
+              Przypisano Ci nowego Tajnego Mikołaja po tym, jak właściciel usunął poprzedniego z tej imprezy. <br/>
+              <br/>
+              Kliknij poniższy link, aby dowiedzieć się, kto jest Twoim nowym Tajnym Mikołajem. 
+
+        txt: Drogi %name%, 
+             Przypisano Ci nowego Tajnego Mikołaja po tym, jak właściciel usunął poprzedniego z tej imprezy. 
+             Kliknij poniższy link, aby dowiedzieć się, kto jest Twoim nowym Tajnym Mikołajem. 
 
     btn:
         find_out: Dowiedz się kim jest Twoja osoba
 
 # Emails/updatedParty.{html,txt}.twig
 emails-updated_party:
-#   subject:
-#   message:
-#       html: ?
-#       txt: ?
+    subject: Plany się zmieniły!
+    message:
+        html: Drogi %name%,<br/>
+              <br/> 
+              %owner% zmienił niektóre szczegóły imprezy na którą jesteś zaproszony. Poniżej możesz znaleźć nowe szczegóły, dostarczone przez organizatora.
+
+        txt: Drogi %name%, 
+             %owner% zmienił niektóre szczegóły imprezy na którą jesteś zaproszony. Poniżej możesz znaleźć nowe szczegóły, dostarczone przez organizatora.
 
     label:
         date_party: Data Twojego Przyjęcia Tajnego Mikołaja
-#       location: ?
+        location: Miejsce imprezy Tajnego Mikołaja
         amount_to_spend: Suma do wydania
 
-#   btn:
-#       updated_party: ?
+    btn:
+        updated_party: Sprawdź swojego partnera i listę życzeń na tę imprezę
 
 # Emails/viewParticipantReminder.{html,txt}.twig
 emails-viewParticipantReminder:
@@ -449,45 +499,55 @@ emails-wishlistChanged:
         check_wishlist: Sprawdź listę życzeń
 
 # Emails/anonymousMessage.{html,txt}.twig
-#emails-anonymous_message:
-#   subject: ?
-#   message:
-#     html: ?
-#     txt: ?
-#   update_wishlist: ?
+emails-anonymous_message:
+    subject: Twój Tajny Mikołaj wysłał ci wiadomość
+    message:
+        html: "Drogi %name%, <br/>
+              <br/>
+              Twój Tajny Mikołaj wysłał ci wiadomość 
+              możesz ją przeczytać tutaj: <br/>
+              <br />
+              <strong>%message%</strong>
+              <br/> Kliknij poniższy link i jeśli chcesz dodaj coś do Twojej listy życzeń."
+
+        txt: "Drogi %name%, 
+             Twój Tajny Mikołaj wysłał ci wiadomość 
+             możesz ją przeczytać tutaj: %message% Kliknij poniższy link i jeśli chcesz dodaj coś do Twojej listy życzeń."
+
+    update_wishlist: Uaktualnij Twoją listę życzeń
 
 # MailStatusExtension
-#mail_status_extension:
-#   unknown:
-#   opened:
-#   viewed:
-#   not_started:
-#   bounced:
+mail_status_extension:
+    unknown: Nieznane
+    opened: Otwarty e-mail
+    viewed: Przeglądane imprezy
+    not_started: Impreza nie rozpoczęta
+    bounced: E-mail nie dostarczony
 
 flashes:
     # SendPartyUpdateController
-#   send_party_update:
-#       success: ?
+    send_party_update:
+        success: <h4>Sukces!</h4> Aktualizacja została wysłana do wszystkich uczestników.
 
     # ForgotURLController
-#   forgot_url:
-#       success: ?
-#       error: ?
+    forgot_url:
+        success: Pomyślnie przesłaliśmy Ci przegląd!
+        error: Wystąpił błąd podczas wysyłania wiadomości e-mail. Sprawdź swój adres e-mail i spróbuj jeszcze raz.
 
     # ManagementController
     management:
         email_validated: '<strong>Świetnie!</strong><br/>Twój email został zweryfikowany.<br/> Nasze skrzaty wyruszyły w internetową podróż, żeby dostarczyć wszystkie wiadomości dla przyszłych Tajnych Mikołajów.<br/><br/> Nie zapomnij potwierdzić swojego uczestnictwa. Wyślemy Ci kolejny email. Sprawdź swoją skrzynkę pocztową!'
-#       add_participant:
-#           success: ?
-#           danger: ?
-#       updated_party:
-#           success: ?
-#           danger: ?
-#       start_party:
-#           success: ?
-#           danger: ?
-#       excludes:
-#           success:
+        add_participant:
+            success: <h4>Dodane!</h4> Pomyślnie dodano uczestnika Twojej imprezy.
+            danger: <h4>Ups!</h4> Wystąpił błąd podczas dodawania uczestnika. Proszę spróbuj ponownie.
+        updated_party:
+            success: <h4>Zaktualizowano!</h4> Szczegóły Twojej imprezy zostały pomyślnie zaktualizowane.
+            danger: <h4>Ups!</h4> Wystąpił błąd podczas aktualizacji Twojej imprezy. Proszę spróbuj ponownie.
+        start_party:
+            success: Rozpoczęliśmy twoją imprezę i wysłaliśmy maile!
+            danger: Wystąpił błąd w trakcie rozpoczęcia imprezy, proszę spróbuj ponownie!
+        excludes:
+            success: Wykluczenia zostały zapisane!
 
     # PartyController
     party:
@@ -496,48 +556,56 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: '<strong>Wysłano ponownie!</strong><br/>E-mail do %email% został ponownie wysłany.<br/>'
-#       blacklisted:
+        blacklisted: <strong>Ups ... Nie mogliśmy wysłać e-maila!</strong> Ta osoba umieściła swój adres e-mail na czarnej liście i nie chce już otrzymywać wiadomości e-mail.
 
     # ParticipantController
     participant:
         wishlist_updated: '<h4>Lista życzeń zaktualizowana</h4> Wysłaliśmy nasze skrzaty aby poinformowały Tajnego Mikołaja o twoich życzeniach!'
         edit_email: '<h4>Nie zapisano</h4> Występuje błąd w adresie email.'
-#       updated_participant:
-#       updated_participant_resent:
-#       remove_participant:
-#           success: ?
-#           danger: ?
-#           warning: ?
-#           excluded_participants: ?
-#           not_enough_for_exclude:
-#           self_assigned: ?
-#           wrong: ?
+        updated_participant: <h4>Zapisane.</h4> Zaktualizowaliśmy dane uczestnika!
+        updated_participant_resent: <h4>Zapisane.</h4> Zaktualizowaliśmy dane uczestnika! Ponieważ zmieniłeś adres e-mail a impreza już się zaczęła, ponownie wysłany został e-mail do tego uczestnika.
+        remove_participant:
+            success: <h4>Usunięto!</h4> Uczestnik został pomyślnie usunięty.
+            danger: <h4>Ups.</h4> Nie możesz usunąć tego uczestnika, wymagani są co najmniej 3 uczestnicy imprezy.
+            warning: <h4>Ups.</h4> Jesteś organizatorem tei imprezy, nie możesz usunąć siebie. Jeśli chcesz się wycofać z tej imprezy, kliknij poniższy link, aby usunąć swój listę Tajnego Mikołaja.
+            excluded_participants: <h4>Ups.</h4> Nie możesz usunąć uczestników tei imprezy, użyłeś wykluczeń podczas tworzenia tej imprezy, co może powodować problemy w usunięciu uczestnika, dlatego ta funkcja nie może być użyta na tej imprezie.
+            not_enough_for_exclude: <h4>Ups.</h4> Skonfigurowałeś wykluczenia, ale ponieważ potrzebujesz minimum 4 uczestników zanim będzie można użyć wykluczeń, należy najpierw usunąć wykluczenia lub zachować minimum 4 uczestników!
+            self_assigned: <h4>Ups.</h4> Nie można usunąć tego uczestnika, ponieważ to spowoduje, że ktoś zostanie przydzielony do siebie samego.
+            wrong: <h4>Ups.</h4> Wygląda na to, że ciąg weryfikacyjny nie został dopasowany do  ciągu, którego szukaliśmy.
 
     # ReuseController
-#   reuse:
-#       success:
-#       error:
+    reuse:
+        success: Wiadomość e-mail została pomyślnie wysłana!
+        error: Nie mogliśmy znaleźć żadnych imprez, prawdopodobnie twoje imprezy są starsze niż 2 lata lub nie ma żadnych imprez powiązanych z tym e-mailem.
 
     # ContactController
-#   contact:
-#       success:
-#
+    contact:
+        success: Otrzymaliśmy Twoją prośbę i jak najszybciej się z tobą skontaktujemy.
+
 # Emails/contact.{html,txt}.twig
-#emails-contact:
-#   subject:
-#   message:
-#       html:
-#       txt:
-#
+emails-contact:
+    subject: Nowa wiadomość formularz kontaktowy Tajnego Mikołaja
+    message:
+        html: "Drogi,<br>
+              <br>
+              %name% użył formularza kontaktowego Tajnego Mikołaja, by przesłać wiadomość. Wiadomość:<br/>
+              <br/>
+              %message%<br/>
+              <br/>"
+
+        txt: "Drogi,
+             %name% użył formularza kontaktowego Tajnego Mikołaja, by przesłać wiadomość. Wiadomość:
+             %message%"
+
 # Form/{ContactType}
-#form-contact:
-#   label:
-#       email:
-#       name:
-#       message:
-#       submit:
-#
+form-contact:
+    label:
+        email: Twój email
+        name: Twoje imię
+        message: Twoja wiadomość
+        submit: Prześlij
+
 # Static/faq.html.twig
-#static-contact:
-#   title:
-#   body:
+static-contact:
+    title: Skontaktuj się z nami
+    body: Masz jakieś pytania, wątpliwości lub komentarze? Skontaktuj się z nami poprzez formularz kontaktowy:
