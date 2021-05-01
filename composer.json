@@ -50,6 +50,8 @@
         "behat/mink-selenium2-driver": "^1.3",
         "doctrine/data-fixtures": "^1.4",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "friends-of-behat/symfony-extension": "^2.2",
+        "lakion/mink-debug-extension": "^2.0",
         "phpunit/phpunit": "^9",
         "roave/security-advisories": "dev-master",
         "se/selenium-server-standalone": "3.4.*",

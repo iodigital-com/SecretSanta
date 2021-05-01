@@ -125,6 +125,9 @@
             "tests/Behat/DemoContext.php"
         ]
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.3"
+    },
     "geoip2/geoip2": {
         "version": "v2.11.0"
     },
@@ -168,7 +171,7 @@
         "version": "3.0.4"
     },
     "lakion/mink-debug-extension": {
-        "version": "v1.2.3"
+        "version": "v2.0.0"
     },
     "laminas/laminas-code": {
         "version": "3.5.0"
