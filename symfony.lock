@@ -110,6 +110,9 @@
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },
+    "friends-of-behat/mink-debug-extension": {
+        "version": "v2.0.1"
+    },
     "friends-of-behat/symfony-extension": {
         "version": "2.0",
         "recipe": {
@@ -169,9 +172,6 @@
     },
     "jms/i18n-routing-bundle": {
         "version": "3.0.4"
-    },
-    "lakion/mink-debug-extension": {
-        "version": "v2.0.0"
     },
     "laminas/laminas-code": {
         "version": "3.5.0"
