@@ -5,7 +5,7 @@ default:
         Behat\MinkExtension:
             base_url: 'https://127.0.0.1:8000'
 
-        Lakion\Behat\MinkDebugExtension:
+        FriendsOfBehat\MinkDebugExtension:
             directory: .travis/build
             clean_start: false
             screenshot: true
