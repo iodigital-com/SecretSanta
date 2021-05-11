@@ -486,15 +486,6 @@
     "symfony/intl": {
         "version": "v4.4.16"
     },
-    "symfony/mailchimp-mailer": {
-        "version": "4.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.4",
-            "ref": "1be490e068472fc87e226cf54bc95fb6f2e49117"
-        }
-    },
     "symfony/mailer": {
         "version": "4.3",
         "recipe": {
