@@ -70,6 +70,6 @@ imports: ["behat.yml.dist"]
 
 default:
     extensions:
-        Lakion\Behat\MinkDebugExtension:
+        FriendsOfBehat\MinkDebugExtension:
             screenshot: true
 ```

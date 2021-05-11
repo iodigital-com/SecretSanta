@@ -60,7 +60,7 @@ default:
                 environment: test
                 debug: false
 
-        Lakion\Behat\MinkDebugExtension:
+        FriendsOfBehat\MinkDebugExtension:
             directory: .travis/build
             clean_start: false
             screenshot: false

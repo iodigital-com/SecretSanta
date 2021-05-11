@@ -18,7 +18,7 @@ make
 make install
 cat << EOF >~/xdebug.ini
 zend_extension = xdebug
-xdebug.coverage_enable=On
+xdebug.mode=coverage
 EOF
 
 mkdir -p \"${BUILD_CACHE_DIR}\" || exit $? # Create build cache directory

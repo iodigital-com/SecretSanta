@@ -53,6 +53,9 @@
     "doctrine/dbal": {
         "version": "2.12.1"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
         "recipe": {
@@ -107,6 +110,9 @@
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },
+    "friends-of-behat/mink-debug-extension": {
+        "version": "v2.0.1"
+    },
     "friends-of-behat/symfony-extension": {
         "version": "2.0",
         "recipe": {
@@ -122,14 +128,35 @@
             "tests/Behat/DemoContext.php"
         ]
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.3"
+    },
     "geoip2/geoip2": {
         "version": "v2.11.0"
+    },
+    "google/apiclient": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "49c5d7a66d863d28513979bf0666dc77599100c0"
+        }
     },
     "google/apiclient-services": {
         "version": "v0.154"
     },
     "google/auth": {
         "version": "v1.14.3"
+    },
+    "google/recaptcha": {
+        "version": "1.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.1",
+            "ref": "d087df3e087f50da3955f2def05079380da5894b"
+        }
     },
     "guzzlehttp/guzzle": {
         "version": "7.2.0"
@@ -143,8 +170,8 @@
     "instaclick/php-webdriver": {
         "version": "1.4.7"
     },
-    "lakion/mink-debug-extension": {
-        "version": "v1.2.3"
+    "jms/i18n-routing-bundle": {
+        "version": "3.0.4"
     },
     "laminas/laminas-code": {
         "version": "3.5.0"
@@ -172,6 +199,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.10.0"
+    },
+    "paragonie/constant_time_encoding": {
+        "version": "v2.4.0"
     },
     "phar-io/manifest": {
         "version": "1.0.3"
@@ -202,6 +232,9 @@
     },
     "phpunit/php-file-iterator": {
         "version": "2.0.2"
+    },
+    "phpunit/php-invoker": {
+        "version": "3.1.1"
     },
     "phpunit/php-text-template": {
         "version": "1.2.1"
@@ -253,11 +286,20 @@
     "se/selenium-server-standalone": {
         "version": "3.4.0"
     },
+    "sebastian/cli-parser": {
+        "version": "1.0.1"
+    },
+    "sebastian/code-unit": {
+        "version": "1.0.8"
+    },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
     },
     "sebastian/comparator": {
         "version": "3.0.2"
+    },
+    "sebastian/complexity": {
+        "version": "2.0.2"
     },
     "sebastian/diff": {
         "version": "3.0.2"
@@ -271,6 +313,9 @@
     "sebastian/global-state": {
         "version": "2.0.0"
     },
+    "sebastian/lines-of-code": {
+        "version": "1.0.3"
+    },
     "sebastian/object-enumerator": {
         "version": "3.0.3"
     },
@@ -282,6 +327,9 @@
     },
     "sebastian/resource-operations": {
         "version": "2.0.1"
+    },
+    "sebastian/type": {
+        "version": "2.3.1"
     },
     "sebastian/version": {
         "version": "2.0.1"
@@ -352,6 +400,9 @@
     },
     "symfony/dependency-injection": {
         "version": "v4.4.16"
+    },
+    "symfony/deprecation-contracts": {
+        "version": "v2.2.0"
     },
     "symfony/doctrine-bridge": {
         "version": "v4.4.16"
