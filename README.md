@@ -27,7 +27,7 @@ Prepare site:
 ```
 vagrant ssh
 cd /vagrant
-composer.phar install
+composer install
 yarn
 yarn build
 
