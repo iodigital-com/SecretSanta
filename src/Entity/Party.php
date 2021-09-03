@@ -418,4 +418,9 @@ class Party
     {
         $this->createdFromIp = $createdFromIp;
     }
+
+    public function canJoinByLink(): bool
+    {
+        return $this->joinmode === 1 && !$this->created && !empty($this->joinurl);
+    }
 }

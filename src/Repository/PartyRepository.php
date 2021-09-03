@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Model\Exception\InvalidJoinLink;
+use App\Model\JoinLinkDetails;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\Entity\Party;
 use Doctrine\Persistence\ManagerRegistry;
@@ -52,5 +54,19 @@ class PartyRepository extends ServiceEntityRepository
             ]);
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function getDetailsForJoinUrl(string $joinUrl): JoinLinkDetails
+    {
+        /** @var ?Party $party */
+        $party = $this->findOneBy(
+            ['joinurl' => $joinUrl]
+        );
+
+        if ($party?->canJoinByLink()) {
+            return JoinLinkDetails::fromParty($party);
+        }
+
+        throw InvalidJoinLink::forUrl($joinUrl);
     }
 }
