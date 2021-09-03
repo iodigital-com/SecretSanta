@@ -5,7 +5,7 @@
 cp /etc/ssl/openssl.cnf /tmp
 echo '[ subject_alt_name ]' >> /tmp/openssl.cnf
 echo 'subjectAltName = DNS:dev.secretsantaorganizer.com, DNS:phpmyadmin.dev.secretsantaorganizer.com, DNS:mails.dev.secretsantaorganizer.com' >> /tmp/openssl.cnf
-openssl req -x509 -days 7300 -nodes -newkey rsa:2048 \
+openssl req -x509 -days 365 -nodes -newkey rsa:2048 \
   -config /tmp/openssl.cnf \
   -extensions subject_alt_name \
   -keyout dev.secretsantaorganizer.com.key \
