@@ -16,6 +16,8 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <field name="ownerName" column="owner_name" type="string" length="255"/>
+        <field name="ownerEmail" column="owner_email" type="string" length="255"/>
         <field name="listurl" column="list_url" type="string" length="50" unique="true"/>
         <field name="wishlistsurl" column="wishlists_url" type="string" length="50" unique="true"/>
         <field name="message" column="message" type="text" nullable="true"/>
