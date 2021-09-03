@@ -95,8 +95,8 @@ class Participant
     /** @var bool */
     private $emailDidBounce = false;
 
-    /** @var \DateTime */
-    private $invitationSentDate;
+    /** @var ?\DateTime */
+    private $invitationSentDate = null;
 
     /** @var bool */
     private $isHashed = false;
@@ -573,7 +573,7 @@ class Participant
         $this->emailDidBounce = $emailDidBounce;
     }
 
-    public function getInvitationSentDate(): \DateTime
+    public function getInvitationSentDate(): ?\DateTime
     {
         return $this->invitationSentDate;
     }
