@@ -39,7 +39,6 @@ class ContactType extends AbstractType
             ])
             ->add('recaptchaToken', HiddenType::class,
                 ['attr' => ['class' => 'js-recaptchaToken'],
-                    'required' => false
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'form-contact.label.submit',
