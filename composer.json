@@ -102,9 +102,6 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "deploy": "ssh secretsanta@secretsantaorganizer.com 'bash -s' < deploy.sh",
-        "deploy-debug": "ssh secretsanta@secretsantaorganizer.com 'export DBG=1; bash -s' < deploy.sh",
-        "db-backup": "vagrant ssh -c 'mysqldump -uroot -pvagrant secretsanta | gzip > /vagrant/dumps/database.sql.gz'",
         "phpunit": "phpunit",
         "behat": [
             "bin/console doctrine:database:create --if-not-exists --env=test",
