@@ -3,7 +3,7 @@
 # PhpMyAdmin
 
 # Download and extract
-PMA_VERSION=4.9.0.1
+PMA_VERSION=5.1.1
 cd /var/www
 wget -q https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSION}/phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz
 tar xzf phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz
