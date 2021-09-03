@@ -127,8 +127,6 @@ wishlist-show_all:
 
 # Static/faq.html.twig
 static-faq:
-#   title: ?
-#   body: ?
     create_new_list: Stwórz nową listę Tajnego Mikołaja!
 
 # Helper/prototypeParticipant.html.twig

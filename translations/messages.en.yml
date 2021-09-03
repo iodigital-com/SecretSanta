@@ -91,6 +91,35 @@ party-create:
         email: E-mail
         participants: Participants
 
+    copy:
+        fun_title: What makes a Secret Santa generator so much fun?
+        fun_text: <p>Seriously, is this a rhetorical question? Organizing a <b>Secret Santa party</b> guarantees you a fun night filled with surprises - I think we can agree on that.</p> <p>Thanks to a special <b>Secret Santa generator</b> you won’t have to deal with all the pre-organizing yourself. You just fill in the blanks and the Secret Santa generator does all the work!</p> <p>The only thing you have to do is sit back and relax (oh, and buy some snacks and drinks for your Secret Santa party).</p>
+        why_title: Why go for Secret Santa online?
+        why_text: '<p>The best thing about <b>Secret Santa online</b> is that you don’t have to physically plan everything with all the participants. Assigning names, making and receiving wish lists, and so on: you can arrange everything with just an internet connection and a connected device.</p> <p>This way, Secret Santa online makes all the organizing stuff way more easy. That means more time for you and your friends to enjoy the holiday season and look forward to the actual party!</p>'
+        world_title: Secret Santa all over the world
+        world_text: >
+            <p>
+            Secret Santa, Kris Kringle, Kris Kindle, Kris Kringel, White Elephant, Yankee Swap, Yankee Doodle,
+            Wichteln, or even lootjes trekken, namen trekken or Monito Monita: all over the world people use
+            different names for the same thing. So let us take you on a quick trip around the world! No worries,
+            you’ll be home in time for your <b>Secret Santa party</b>.
+            </p>
+            <ul>
+            <li><b>Secret Santa</b> is commonly used all over the United States and the United Kingdom.
+            <li>In Ireland however, the ritual is called <b>Kris Kindle</b> or <b>Kris Kringel</b>, derived
+            from "<b>Christkindl</b>" - the original name of the Austrian gift bringer.
+            <li>When visiting continental Europe we find that Germans prefer the verb <b>Wichteln</b>,
+            whilst Belgium and Holland speak of <b>lootjes trekken</b> or <b>namen trekken</b>.
+            <li>We continue our trip to Canada and Australia. This is where <b>Secret Santa</b> and
+            <b>Kris Kringle</b> (again, derived from "<b>Christkindl</b>") live.
+            <li>Finally, our holiday ends in the Philippines. In this country we find <b>Monito Monita</b>;
+            a unique gift-exchanging tradition.
+            </ul>
+            <p>
+            Conclusion? Randomly giving gifts to people is fun! So wait no longer and start off with your
+            own <b>Secret Santa generator online</b>.
+            </p>
+
 # Party/created.html.twig
 party-created:
     title: Only 1 step to go! - Validate your participation
@@ -136,86 +165,72 @@ wishlist-show_all:
 # Static/faq.html.twig
 static-faq:
     title: Frequently Asked Questions
-    body: >
-        <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
+    intro: <p>This is a list of Frequently Asked Questions (FAQ) that should help you understand how this Secret Santa works.</p>
 
-        <a name="what"></a><h2>What is Secret Santa?</h2>
-        <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts.
-        To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
+    question1: What is Secret Santa?
+    anchor1: what
+    answer1: <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts. To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
+    question2: How does it work?
+    anchor2: how
+    answer2: <p>Create a party <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b> The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
+    question3: Can I exclude combinations?
+    anchor3: exclude
+    answer3: <p>It is possible to excludee some combinations, for example to prevent members of the same family having to buy gifts for each other. Excludes can be configured if your party has 4 participants or more and as long as your party is not started. If these conditions are met, you will see a box called 'Exclude certain combinations' on the manage page. Clicking on this box wil open it, and make it possible to edit your excludes. These can be edited at any time, as long as your party isn't started. <br><br>It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
+    question4: Can I provide a wishlist?
+    anchor4: wishlist
+    answer4: <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
+    question5:
+    anchor5: anonymous_message
+    answer5:
+    question6:
+    anchor6: no_message
+    answer6:
+    question7: Can I reuse a list?
+    anchor7: reuse
+    answer7: <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again. You can also generate an email <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">here</a>, containing all the parties you made during the past 2 years together with a link to reuse them.</p>
+    question8: How do I manage my party / participants?
+    anchor8: manage
+    answer8: <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
+    question9: Does it work with an odd number of participants?
+    anchor9: odd
+    answer9: "<p>Yes. It doesn't matter if your party consists of an even or an odd number of participants. It is no guarantee that if person A was assigned to person B that person B is also assigned to person A. Secret Santa uses a macro to make sure everybody on the list is assigned to someone else from the list. This works randomly. For example: if John, Caroline and Steve have been added to a party, John can be assigned to Steve, Steve can be assigned to Caroline and Caroline can be assigned to John.</p>"
+    question10: Is there a limit on the amount of participants?
+    anchor10: limit
+    answer10: <p>No, there isn't. But, it's a good idea to add them using the CSV option.</p>
+    question11: I lost my activation mail / url to the party.
+    anchor11: lost
+    answer11: <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="%requestForgotLink%">this page</a> and we will send you an overview of all the parties where you are participating in and/or the parties you have created.</p>
+    question12: Can I add or remove people?
+    anchor12: changes
+    answer12: "<p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event. Allowing this would mess up the system and people might still be assigned to their excluded buddy, this made us to decide to prevent adding people if excluded combinations are present.</p>"
+    question13: Can I resend an email?
+    anchor13: email
+    answer13: <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail. <br><br>If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
+    question14: Can I look into all combinations / wishlists?
+    anchor14: combinations
+    answer14: <p>You can optionally see the combinations and wishlists on the management page. There are buttons for that, you won't see this by default. If you want to share this information with all the participants you will have to share the URL yourself.</p>
+    question15: Can I delete my list?
+    anchor15: delete
+    answer15: <p>Sure you can. Just go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
+    question16: Who are you?
+    anchor16: who
+    answer16: <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designers, frontenders, SEO's and marketing people. Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
+    question17: How do you handle my data?
+    anchor17: privacy
+    answer17: <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer. Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
+    question18: Can you add feature X?
+    anchor18: features
+    answer18: <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature. Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change. For those who can code, we prefer transpiration to inspiration. In other words, we accept your PRs.</p>
+    question19: Open source
+    anchor19: opensource
+    answer19: <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>. You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PRs). If you want a change or a whole new feature, just add it.</p>
+    question20: What about the ads?
+    anchor20: ads
+    answer20: <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project. We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else. By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
+    question21: Other questions
+    anchor21: questions
+    answer21: <p>Any other questions, concerns, or comments? Contact us via the <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contact form</a>.</p>
 
-        <a name="how"></a><h2>How does it work?</h2>
-        <p>Create a party <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
-        The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
-        We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
-
-        <a name="exclude"></a><h2>Can I exclude combinations?</h2>
-        <p>It is possible to excludee some combinations, for example to prevent members of the same family having to buy gifts for each other. Excludes can be configured if your party has 4 participants or more
-        and as long as your party is not started. If these conditions are met, you will see a box called 'Exclude certain combinations' on the manage page. Clicking on this box wil open it, and make it possible to edit your excludes.
-        These can be edited at any time, as long as your party isn't started.<br><br>
-        It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
-
-        <a name="wishlist"></a><h2>Can I provide a wishlist?</h2>
-        <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
-
-        <a name="reuse"></a><h2>Can I reuse a list?</h2>
-        <p>You can reuse last year's list to create a new list this year. Each year we will send out emails containing a link to do this. You can still edit your list before submitting it again.
-        You can also generate an email <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">here</a>, containing all the parties you made during the past 2 years together with a link to reuse them.</p>
-
-        <a name="manage"></a><h2>How do I manage my party / participants?</h2>
-        <p>The confirmation e-mail sent to the list administrator contains a link to the list's management page.</p>
-
-        <a name="odd"></a><h2>Does it work with an odd number of participants?</h2>
-        <p>Yes. It doesn't matter if your party consists of an even or an odd number of participants. It is no guarantee that if person A was assigned to person B that person B is also assigned to person A. Secret Santa uses a macro to make sure everybody on the list is assigned to someone else from the list. This works randomly. For example: if John, Caroline and Steve have been added to a party, John can be assigned to Steve, Steve can be assigned to Caroline and Caroline can be assigned to John.</p>
-
-        <a name="limit"></a><h2>Is there a limit on the amount of participants?</h2>
-        <p>No, there isn't. But, it's a good idea to add them using the CSV option.</p>
-
-        <a name="lost"></a><h2>I lost my activation mail / url to the party.</h2>
-        <p>If you lost your e-mail (which contains the link to the admin page or to the party where you are participating in), fill in your e-mail address on <a href="%requestForgotLink%">this page</a> and we will send you
-        an overview of all the parties where you are participating in and/or the parties you have created.</p>
-
-        <a name="changes"></a><h2>Can I add or remove people?</h2>
-        <p>You can add or remove people after creating an event. On the admin page you will find a delete button and a form to add new people. There is only one catch: you can't do this if the admin excluded combinations before submitting the event.
-        Allowing this would mess up the system and people might still be assigned to their excluded buddy, this made us to decide to prevent adding people if excluded combinations are present.</p>
-
-        <a name="email"></a><h2>Can I resend an email?</h2>
-        <p>If a participant didn't receive the e-mail for their buddy, the list owner can resend the e-mail for that participant from the management page. You can also change someone's e-mail address from the same page and resend the e-mail.<br><br>
-        If you didn't receive the activation e-mail, check your spam folder. You should receive this email within a few minutes. If you still didn't receive the activation e-mail, you will have to start all over again by creating a new list.</p>
-
-        <a name="combinations"></a><h2>Can I look into all combinations / wishlists?</h2>
-        <p>You can optionally see the combinations and wishlists on the management page. There are buttons for that, you won't see this by default. If you want to share this information with all the participants you will have to share the URL yourself.</p>
-
-        <a name="delete"></a><h2>Can I delete my list?</h2>
-        <p>Sure you can. Just go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
-
-        <a name="who"></a><h2>Who are you?</h2>
-        <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
-        designers, frontenders, SEO's and marketing people.
-        Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
-        Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
-
-        <a name="privacy"></a><h2>How do you handle my data?</h2>
-        <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer.
-        Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
-
-        <a name="features"></a><h2>Can you add feature X?</h2>
-        <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature.
-        Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change.
-        For those who can code, we prefer transpiration to inspiration. In other words, we accept your PRs.</p>
-
-        <a name="opensource"></a><h2>Open source</h2>
-        <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
-        The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
-        You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PRs).
-        If you want a change or a whole new feature, just add it.</p>
-
-        <a name="ads"></a><h2>What about the ads?</h2>
-        <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project.
-        We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else.
-        By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
-
-        <a name="questions"></a><h2>Other questions</h2>
-        <p>Any other questions, concerns, or comments? Contact us via the <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contact form</a>.
     create_new_list: Create a new Secret Santa list!
 
 # Helper/prototypeParticipant.html.twig

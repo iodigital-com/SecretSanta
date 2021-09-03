@@ -117,8 +117,6 @@ party-deleted:
 
 # Static/faq.html.twig
 static-faq:
-#   title: ?
-#   body: ?
     create_new_list: 創造新的秘密聖誕老人名單!
 
 # Helper/prototypeParticipant.html.twig
