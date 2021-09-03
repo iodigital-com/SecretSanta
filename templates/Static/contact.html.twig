@@ -11,6 +11,11 @@
         <div class="santa-content">
             {{ form_start(form) }}
             {{ form_row(form._token) }}
+            <div class="form-group {% if form_errors(form.subject) %}error{% endif %}">
+                {{ form_label(form.subject) }}
+                {{ form_widget(form.subject, { 'attr': { 'class': 'form-control' }}) }}
+                {{ form_errors(form.subject) }}
+            </div>
             <div class="form-group {% if form_errors(form.name) %}error{% endif %}">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name, { 'attr': { 'class': 'form-control' }}) }}

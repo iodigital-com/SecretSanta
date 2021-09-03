@@ -4,6 +4,7 @@ namespace App\Form\Type;
 
 use App\Model\ContactSubmission;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,6 +18,16 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('subject', ChoiceType::class, [
+                'choices' => [
+                    'form-contact.label.subjects.mail' => 'Mail problem',
+                    'form-contact.label.subjects.party' => 'Party problem',
+                    'form-contact.label.subjects.bug' => 'Bug reported',
+                    'form-contact.label.subjects.gdpr' => 'GDPR issue',
+                    'form-contact.label.subjects.other' => 'Other'
+                ],
+                'label' => 'form-contact.label.subject',
+            ])
             ->add('name', TextType::class, [
                 'label' => 'form-contact.label.name',
             ])
@@ -28,6 +39,7 @@ class ContactType extends AbstractType
             ])
             ->add('recaptchaToken', HiddenType::class,
                 ['attr' => ['class' => 'js-recaptchaToken'],
+                    'required' => false
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'form-contact.label.submit',

@@ -760,6 +760,14 @@ form-contact:
         name: Uw naam
         message: Uw Bericht
         submit: Verzenden
+#        subject: ?
+#        subjects:
+#            mail: ?
+#            gdpr: ?
+#            bug: ?
+#            party: ?
+#            suggestions: ?
+#            other: ?
 
 # Static/faq.html.twig
 static-contact:

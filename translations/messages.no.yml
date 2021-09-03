@@ -695,6 +695,14 @@ flashes:
 #       name:
 #       message:
 #       submit:
+#       subject: ?
+#       subjects:
+#           mail: ?
+#           gdpr: ?
+#           bug: ?
+#           party: ?
+#           suggestions: ?
+#           other: ?
 #
 # Static/faq.html.twig
 #static-contact:

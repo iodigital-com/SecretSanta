@@ -725,6 +725,14 @@ form-contact:
         name: Votre prénom
         message: Votre message 
         submit: Envoyer
+#        subject: ?
+#        subjects:
+#            mail: ?
+#            gdpr: ?
+#            bug: ?
+#            party: ?
+#            suggestions: ?
+#            other: ?
 
 # Static/faq.html.twig
 static-contact:

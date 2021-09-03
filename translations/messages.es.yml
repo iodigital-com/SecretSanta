@@ -749,6 +749,14 @@ form-contact:
         name: Tu nombre 
         message: Tu mensaje 
         submit: Enviar
+#        subject: ?
+#        subjects:
+#            mail: ?
+#            gdpr: ?
+#            bug: ?
+#            party: ?
+#            suggestions: ?
+#            other: ?
 
 # Static/faq.html.twig
 static-contact:

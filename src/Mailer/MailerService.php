@@ -318,7 +318,7 @@ class MailerService
     {
         $this->translator->setLocale('nl');
         $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-contact.subject'))
+            ->setSubject($this->translator->trans('emails-contact.subject').': '.$contactSubmission->getSubject())
             ->setFrom($contactSubmission->getEmail(), $contactSubmission->getName())
             ->setTo($this->contactEmail)
             ->setBody(
