@@ -12,6 +12,11 @@ class ContactSubmission
     private string $name;
 
     /**
+     * @Assert\NotBlank()
+     */
+    private string $subject;
+
+    /**
      * @Assert\Email(
      *     mode="strict",
      *     message = "The email '{{ value }}' is not a valid email."
@@ -37,6 +42,22 @@ class ContactSubmission
     public function setName(string $name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject(): string
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject(string $subject): void
+    {
+        $this->subject = $subject;
     }
 
     public function getEmail(): string

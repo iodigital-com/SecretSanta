@@ -806,6 +806,14 @@ form-contact:
         name: Your name
         message: Your message
         submit: Submit
+        subject: Subject
+        subjects:
+            mail: Mail problem
+            gdpr: GDPR / Security
+            bug: Rapport a bug
+            party: Problems by editing the party
+            suggestions: Suggestions
+            other: Other
 
 # Static/faq.html.twig
 static-contact:

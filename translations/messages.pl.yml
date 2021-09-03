@@ -604,6 +604,14 @@ form-contact:
         name: Twoje imię
         message: Twoja wiadomość
         submit: Prześlij
+#        subject: ?
+#        subjects:
+#            mail: ?
+#            gdpr: ?
+#            bug: ?
+#            party: ?
+#            suggestions: ?
+#            other: ?
 
 # Static/faq.html.twig
 static-contact:
