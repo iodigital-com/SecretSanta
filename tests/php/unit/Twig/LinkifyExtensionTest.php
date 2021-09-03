@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Twig;
+namespace App\Tests\Unit\Twig;
 
 use App\Twig\LinkifyExtension;
 use PHPUnit\Framework\TestCase;

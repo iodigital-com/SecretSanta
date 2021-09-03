@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Unit\Service;
 
 use App\Entity\Participant;
 use App\Entity\Party;
 use App\Service\ParticipantShuffler;
 use PHPUnit\Framework\TestCase;
+
+// FIXME: These unit tests are not easily reproducible.
+// We could solve this by using a service for the randomness, so that we can mock that for testing.
 
 class ParticipantShufflerTest extends TestCase
 {
