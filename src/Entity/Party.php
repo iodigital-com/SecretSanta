@@ -74,6 +74,8 @@ class Party
     /** @var int */
     private $joinmode = 0;
 
+    private ?string $createdFromIp = null;
+
     public function __construct($createDefaults = true)
     {
         $this->participants = new ArrayCollection();
@@ -382,5 +384,15 @@ class Party
             }
             $party->addParticipant($participant);
         }
+    }
+
+    public function getCreatedFromIp(): ?string
+    {
+        return $this->createdFromIp;
+    }
+
+    public function setCreatedFromIp(string $createdFromIp): void
+    {
+        $this->createdFromIp = $createdFromIp;
     }
 }

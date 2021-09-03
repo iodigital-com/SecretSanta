@@ -23,6 +23,7 @@
         <field name="sentdate" column="sent_date" type="datetime" nullable="true"/>
         <field name="eventdate" column="event_date" type="datetime" nullable="true"/>
         <field name="amount" column="amount" type="string" length="255" nullable="true"/>
+        <field name="createdFromIp" column="created_from_ip" type="string" length="45" nullable="true"/>
 
         <one-to-many field="participants" target-entity="Participant" mapped-by="party">
             <cascade>
