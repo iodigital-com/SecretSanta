@@ -1,12 +1,5 @@
 parameters:
-    ignoreErrors:
-        - '#Call to an undefined method Doctrine\\DBAL\\Driver\\Connection::#'
-        - '#Call to an undefined method Doctrine\\Common\\Persistence\\ObjectRepository::#'  
-        - '#Access to an undefined property Symfony\\Component\\Validator\\Constraint::#'
-        - '#Call to an undefined method object::#'
-        - '#Doctrine\\ORM\\EntityManager\) does not accept Doctrine\\ORM\\EntityManagerInterface#'
-        - '#Symfony\\Component\\HttpFoundation\\Session\\Session\) does not accept Symfony\\Component\\HttpFoundation\\Session\\SessionInterface#'
-        - '#Routing\\Router\) does not accept Symfony\\Component\\Routing\\RouterInterface#'
-    excludes_analyse:
-        - %currentWorkingDirectory%/src/Features/Context/*
-
+    level: 0
+    paths:
+        - src
+        # TODO: Add directory of unit tests as soon as they're moved outside of src.
