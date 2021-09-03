@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Bump node version
+rm -rf ~/.nvm
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
 #sudo apt install -y libmemcached-dev
 git clone https://github.com/php-memcached-dev/php-memcached.git
 cd php-memcached
