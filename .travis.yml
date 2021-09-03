@@ -2,6 +2,9 @@ sudo: false
 dist: bionic
 
 language: php
+php:
+  - '8.0'
+# node version is set in before_install
 
 env:
     global:
@@ -14,9 +17,6 @@ services:
 
 addons:
     chrome: stable
-
-php:
-  - '8.0'
 
 before_install:
   - .travis/before_install.sh
