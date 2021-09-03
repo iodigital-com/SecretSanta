@@ -4,4 +4,4 @@ parameters:
     level: 5
     paths:
         - src
-        # TODO: Add directory of unit tests as soon as they're moved outside of src.
+        - tests/php
