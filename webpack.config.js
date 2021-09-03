@@ -15,7 +15,7 @@ Encore
     .autoProvidejQuery()
     .enableSingleRuntimeChunk()
 
-    .createSharedEntry('js/vendor', './assets/js/vendors.js')
+    .addEntry('js/vendor', './assets/js/vendors.js')
     .addEntry('js/modernizr.custom', './assets/js/modernizr.custom.min.js')
     .addEntry('js/party.create', './assets/js/party.create.js')
     .addEntry('js/party.import', './assets/js/party.import.js')

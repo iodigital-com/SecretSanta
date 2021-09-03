@@ -2,15 +2,16 @@
   "name": "SecretSanta",
   "private": true,
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.28.0",
+    "@symfony/webpack-encore": "^1.6.0",
     "bootstrap": "^4.6.0",
+    "file-loader": "^6.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "jquery-csv": "^1.0.15",
     "jquery-smooth-scroll": "^2.2.0",
     "jquery-ui": "^1.12.1",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.0.1"
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.1.0"
   },
   "scripts": {
     "dev-server": "encore dev-server",
