@@ -126,76 +126,72 @@ party-forgot_link:
 # Static/faq.html.twig
 static-faq:
     title: Ofte stilte spørsmål
-    body: >
-        <p>Nedenfor følger en liste med ofte stilte spørsmål (FAQ) om hvordan Secret Santa fungerer.</p>
+    intro: <p>Nedenfor følger en liste med ofte stilte spørsmål (FAQ) om hvordan Secret Santa fungerer.</p>
 
-        <a name="what"></a><h2>Hva er Secret Santa?</h2>
-        <p>Et gratis online "hemmelig venn" program for å organisere gaveutveksling! Arranger et juleselskap med "hemmelig venn"/Secret Santa med venner, familie eller kolleger. HVert år rundt juletider, over hele verden, gir man hverandre gaver.
-        For å gjøre ting mer interessant kan du tildele andre en tilfeldig "venn" eller "nisse" å gi presanger til.</p>
+    question1: Hva er Secret Santa?
+    anchor1: what
+    answer1: <p>Et gratis online "hemmelig venn" program for å organisere gaveutveksling! Arranger et juleselskap med "hemmelig venn"/Secret Santa med venner, familie eller kolleger. HVert år rundt juletider, over hele verden, gir man hverandre gaver. For å gjøre ting mer interessant kan du tildele andre en tilfeldig "venn" eller "nisse" å gi presanger til.</p>
+    question2: Hvordan fungerer det?
+    anchor2: how
+    answer2: <p>Opprett et arrangement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b> Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til. Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
+    question3:
+    anchor3: exclude
+    answer3:
+    question4: Kan jeg legge inn en ønskeliste?
+    anchor4: wishlist
+    answer4: <p>Deltagerne mottar en link til en nettside hvor de finner navnet på sin "hemmelige nisse". De kan legge til sin egen ønskeliste og se ønskelisten til sin hemmelige venn, eller nisse, på den samme siden.</p>
+    question5:
+    anchor5: anonymous_message
+    answer5:
+    question6:
+    anchor6: no_message
+    answer6:
+    question7: Kan jeg gjenbruke en liste?
+    anchor7: reuse
+    answer7: <p>Du kan bruke fjorårets liste for å lage en ny liste i år. Hvert år sender vi ut en e-post med link til hvordan dette gjøres. Du kan fortsatt redigere listen din før du legger den inn i secretsantaorganizer igjen.</p>
+    question8: Hvordan holder jeg oversikt over festen/deltagerne?
+    anchor8: manage
+    answer8: <p>Bekreftelsen sendes til administratoren, og den inneholder også link til en administrasjonsside hvor du kan gjøre endringer.</p>
+    question9:
+    anchor9: odd
+    answer9:
+    question10:
+    anchor10: limit
+    answer10:
+    question11: Jeg mistet bekreftelseseposten.
+    anchor11: lost
+    answer11: <p>Hvis du har mistet e-posten med bekreftelseslinken i (som også inneholder linken til administrasjonssiden), skriv inn administratorens e-post <a href="%requestForgotLink%">her</a> og vi sender deg linken på nytt.</p>
+    question12: Kan jeg legge til eller fjerne personer fra listen?
+    anchor12: changes
+    answer12: "<p>Du kan legge til eller fjerne personer etter arrangementet er opprettet. På admin-siden finner du en slett-knapp og et skjema for å legge til nye personer. Det er bare én hake ved det: Du kan ikke gjøre dette dersom administrator har forhindret enkelte kombinasjoner av personer før arrangementet ble opprettet. Dette fordi det skaper unødvendig mye krøll i systemet, og det gjør det i tillegg vanskelig å legge til nye personer.</p>"
+    question13: Kan jeg sende eposter på nytt?
+    anchor13: email
+    answer13: <p>Hvis en deltager ikke mottok e-posten første gangen, kan administrator sende en ny e-post til denne personen. Du kan også endre deltagernes epostadresser på den samme siden og sende e-posten på nytt til denne adressen. <br><br>Hvis du ikke mottok e-posten med link til å bekrefte arrangementet, sjekk søppelpost i innboksen din. Du skal ha mottat e-posten innen et par minutter. Har du fortsatt ikke mottat denne eposten, må du dessverre opprette en ny liste.</p>
+    question14: Kan jeg få oversikt over kombinasjoner/ønskelister?
+    anchor14: combinations
+    answer14: <p>Du kan hente kombinasjonen av nisser/ønskelister fra admin-siden. Men det ødelegger på en måte poenget med "hemmelig nisse". Derfor har vi lagt til en indikator til alle deltagerne som viser når kombinasjonen av nisser/ønskelister har blitt hentet av administrator :-)</p>
+    question15: Kan jeg slette listen min?
+    anchor15: delete
+    answer15: <p>Selvfølgelig, bare gå til admin-siden og velg slett-knappen. All informasjon fra din liste vil bli slettet fra våre systemer.</p>
+    question16: Hvem er dere?
+    anchor16: who
+    answer16: <p>Vi er en gruppe med <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designere, markedsførere og bedriftsledere. Secret Santa er et av våre sideprosjekter, og på en måte en hobby. Vi sponses av våre arbeidsgivere i <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Vårt mål er å skape et enkelt, men effektivt verktøy for å kunne arrangere "Secret Santa". Vi bruker også siden i noen av våre egne eksperimenter. Men hovedmålet vårt er at du der ute bruker nettsiden vår, jo flere jo bedre ;-)</p>
+    question17: Hvordan behandler dere mine data?
+    anchor17: privacy
+    answer17: <p>Kort og godt, vi er ikke interessert i dine personlige data. Vi bruker det til niks og nada. Les vår <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">personvernerklaering</a> for mer informasjon. Du er også helt fri til når som helst å slette din egen liste.</p>
+    question18: Kan dere legge til funksjon X?
+    anchor18: features
+    answer18: "<p>Har du en fantastisk idé til en funksjon listen vår må ha? Vi består av frivillige, så hvis du ikke kan skrive kode selv må du vente med å se ideen din bli til virkelighet til som kan skrive kode vil ha den samme funksjonen satt i live. Vennligst <a href=\"https://github.com/Intracto/SecretSanta/issues\" target=\"_blank\" rel=\"noopener noreferrer\">legg til ideen din på GitHub</a> med en beskrivelse, eller forslag til en endring. De av dere som kan skrive kode: vi foretrekker transpirasjon framfor inspirasjon. Med andre ord, vi aksepterer PR ;)</p>"
+    question19: Open source
+    anchor19: opensource
+    answer19: <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>. You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's). If you want a change or a whole new feature, just add it.</p>
+    question20: Hvorfor er det reklame på nettsiden deres?
+    anchor20: ads
+    answer20: <p>Vi bruker Goodle ads for å dekke over enkelte utgifter. Ting som domenenavn osv. koster penger. I utgangspunktet gjør vi alt gratis selv, og alle penger vi samler inn går til prosjektet. Innimellom hender det selvfølgelig at vi spanderer pizza og drinker på koderne våre. Eller vi får profesjonelle oversettere til å oversette nettsiden til andre språk. Eller vi bruker pengene på noe annet. Forresten, vi ser fortsatt etter noen til å oversette nettsiden til russisk, japansk, indisk.... Hvis du vil hjelpe oss med dette (gratis), vennligst kontakt oss!</p>
+    question21: Andre spørsmål?
+    anchor21: questions
+    answer21: <p>Har du andre spørsmål, bekymringer, eller kommentarer? <a href="%contactLink%" target="_blank" rel="noopener noreferrer">Kontakt oss</a>.</p>
 
-        <a name="how"></a><h2>Hvordan fungerer det?</h2>
-        <p>Opprett et arrangement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b>
-        Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til.
-        Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
-
-        <!--a name="exclude"></a><h2>Kan jeg forhindre enkelte kombinasjoner?</h2>
-        <p>Når alle deltagerne er lagt til listen, kan du forhindre enkelte kombinasjoner av nisser. For eksempel kan du forhindre at familiemedlemmer gir gaver til hverandre.<br><br>
-        Det er ikke mulig å automatisk gjenbruke fjorårets liste og forhindre de samme kombinasjonene fra å brukes, ettersom vi på dette tidspunktet ikke kan legge til denne funksjonen uten at det skaper forvirring - beklager det!</p-->
-
-        <a name="wishlist"></a><h2>Kan jeg legge inn en ønskeliste?</h2>
-        <p>Deltagerne mottar en link til en nettside hvor de finner navnet på sin "hemmelige nisse". De kan legge til sin egen ønskeliste og se ønskelisten til sin hemmelige venn, eller nisse, på den samme siden.</p>
-
-        <a name="reuse"></a><h2>Kan jeg gjenbruke en liste?</h2>
-        <p>Du kan bruke fjorårets liste for å lage en ny liste i år. Hvert år sender vi ut en e-post med link til hvordan dette gjøres. Du kan fortsatt redigere listen din før du legger den inn i secretsantaorganizer igjen.</p>
-
-        <a name="manage"></a><h2>Hvordan holder jeg oversikt over festen/deltagerne?</h2>
-        <p>Bekreftelsen sendes til administratoren, og den inneholder også link til en administrasjonsside hvor du kan gjøre endringer.</p>
-
-        <a name="lost"></a><h2>Jeg mistet bekreftelseseposten.</h2>
-        <p>Hvis du har mistet e-posten med bekreftelseslinken i (som også inneholder linken til administrasjonssiden), skriv inn administratorens e-post <a href="%requestForgotLink%">her</a> og vi sender deg linken på nytt.</p>
-
-        <a name="changes"></a><h2>Kan jeg legge til eller fjerne personer fra listen?</h2>
-        <p>Du kan legge til eller fjerne personer etter arrangementet er opprettet. På admin-siden finner du en slett-knapp og et skjema for å legge til nye personer. Det er bare én hake ved det: Du kan ikke gjøre dette dersom administrator har forhindret enkelte kombinasjoner av personer før arrangementet ble opprettet.
-        Dette fordi det skaper unødvendig mye krøll i systemet, og det gjør det i tillegg vanskelig å legge til nye personer.</p>
-
-        <a name="email"></a><h2>Kan jeg sende eposter på nytt?</h2>
-        <p>Hvis en deltager ikke mottok e-posten første gangen, kan administrator sende en ny e-post til denne personen. Du kan også endre deltagernes epostadresser på den samme siden og sende e-posten på nytt til denne adressen.<br><br>
-        Hvis du ikke mottok e-posten med link til å bekrefte arrangementet, sjekk søppelpost i innboksen din. Du skal ha mottat e-posten innen et par minutter. Har du fortsatt ikke mottat denne eposten, må du dessverre opprette en ny liste.</p>
-
-        <a name="combinations"></a><h2>Kan jeg få oversikt over kombinasjoner/ønskelister?</h2>
-        <p>Du kan hente kombinasjonen av nisser/ønskelister fra admin-siden. Men det ødelegger på en måte poenget med "hemmelig nisse". Derfor har vi lagt til en indikator til alle deltagerne som viser når kombinasjonen av nisser/ønskelister har blitt hentet av administrator :-)</p>
-
-        <a name="delete"></a><h2>Kan jeg slette listen min?</h2>
-        <p>Selvfølgelig, bare gå til admin-siden og velg slett-knappen. All informasjon fra din liste vil bli slettet fra våre systemer.</p>
-
-        <a name="who"></a><h2>Hvem er dere?</h2>
-        <p>Vi er en gruppe med <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
-        designere, markedsførere og bedriftsledere.
-        Secret Santa er et av våre sideprosjekter, og på en måte en hobby. Vi sponses av våre arbeidsgivere i <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
-        Vårt mål er å skape et enkelt, men effektivt verktøy for å kunne arrangere "Secret Santa". Vi bruker også siden i noen av våre egne eksperimenter. Men hovedmålet vårt er at du der ute bruker nettsiden vår, jo flere jo bedre ;-)</p>
-
-        <a name="privacy"></a><h2>Hvordan behandler dere mine data?</h2>
-        <p>Kort og godt, vi er ikke interessert i dine personlige data. Vi bruker det til niks og nada. Les vår <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">personvernerklaering</a> for mer informasjon.
-        Du er også helt fri til når som helst å slette din egen liste.</p>
-
-        <a name="features"></a><h2>Kan dere legge til funksjon X?</h2>
-        <p>Har du en fantastisk idé til en funksjon listen vår må ha? Vi består av frivillige, så hvis du ikke kan skrive kode selv må du vente med å se ideen din bli til virkelighet til som kan skrive kode vil ha den samme funksjonen satt i live.
-        Vennligst<a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">legg til ideen din på GitHub</a> med en beskrivelse, eller forslag til en endring.
-        De av dere som kan skrive kode: vi foretrekker transpirasjon framfor inspirasjon. Med andre ord, vi aksepterer PR ;)</p>
-
-        <a name="opensource"></a><h2>Open source</h2>
-        <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
-        The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>.
-        You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PR's).
-        If you want a change or a whole new feature, just add it.</p>
-
-        <a name="ads"></a><h2>Hvorfor er det reklame på nettsiden deres?</h2>
-        <p>Vi bruker Goodle ads for å dekke over enkelte utgifter. Ting som domenenavn osv. koster penger. I utgangspunktet gjør vi alt gratis selv, og alle penger vi samler inn går til prosjektet.
-        Innimellom hender det selvfølgelig at vi spanderer pizza og drinker på koderne våre. Eller vi får profesjonelle oversettere til å oversette nettsiden til andre språk. Eller vi bruker pengene på noe annet.
-        Forresten, vi ser fortsatt etter noen til å oversette nettsiden til russisk, japansk, indisk.... Hvis du vil hjelpe oss med dette (gratis), vennligst kontakt oss!</p>
-
-        <a name="questions"></a><h2>Andre spørsmål?</h2>
-        <p>Har du andre spørsmål, bekymringer, eller kommentarer? <a href="%contactLink%" target="_blank" rel="noopener noreferrer">Kontakt oss</a>.
     create_new_list: Opprett en ny Secret Santa-liste!
 
 # Helper/prototypeParticipant.html.twig
