@@ -19,6 +19,8 @@ fi
 bin/console lint:yaml config || exit $?
 # this checks that the Twig template files contain no syntax errors
 bin/console lint:twig templates || exit $?
+# check with phpstan static analyzer
+./vendor/bin/phpstan analyse || exit $?
 # this checks that the application doesn't use dependencies with known security vulnerabilities
 $BUILD_CACHE_DIR/symfony security:check || exit $?
 # this checks that the composer.json and composer.lock files are valid
