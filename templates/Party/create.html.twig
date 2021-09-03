@@ -8,20 +8,36 @@
             "mainEntity": [
                 {
                     "@type": "Question",
-                    "name": "What is Secret Santa?",
+                    "name": "{{ 'party-create.what_is.title'|trans }}",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts. To keep things interesting though, you can randomly assign persons to each other to give a present to one another."
+                        "text": "{{ 'party-create.what_is.intro'|trans|raw|striptags|trim }}"
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "How does it work?",
+                    "name": "{{ 'party-create.what_is.title_2'|trans }}",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Create a party on the homepage. You need at least 3 participants, the first participant being the list administrator. The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. The validation e-mail will provide a link to the Secret Santa event manager."
+                        "text": "{{ 'party-create.what_is.intro_2'|trans|raw|striptags|trim }}"
                     }
-                }
+                }{% if (app.request.locale == 'en') %},
+                {
+                    "@type": "Question",
+                    "name": "{{ 'party-create.copy.fun_title'|trans }}",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "{{ 'party-create.copy.fun_text'|trans|raw|striptags|trim }}"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "{{ 'party-create.copy.why_title'|trans }}",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "{{ 'party-create.copy.why_text'|trans|raw|striptags|trim }}"
+                    }
+                }{% endif %}
             ]
         }
     </script>

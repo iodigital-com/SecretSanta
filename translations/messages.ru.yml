@@ -122,8 +122,6 @@ party-deleted:
 
 # Static/faq.html.twig
 static-faq:
-#   title: ?
-#   body: ?
     create_new_list: Создать новый список Тайного Санты!
 
 # Helper/prototypeParticipant.html.twig

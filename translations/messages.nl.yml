@@ -62,7 +62,7 @@ party-create:
 
         title_2: Hoe werkt het?
         intro_2: >
-            <p>Maak een evenement aan op de <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
+            <p>Maak een evenement aan " op de <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
             De lijstbeheerder zal een bevestigingsmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
             We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
@@ -134,91 +134,72 @@ wishlist-show_all:
 # Static/faq.html.twig
 static-faq:
     title: Veelgestelde vragen
-    body: >
-        <p>Dit is een lijst met vaak gestelde vragen (Frequently Asked Questions / FAQ) die je kunnen helpen om deze Secret Santa beter te begrijpen.</p>
+    intro: <p>Dit is een lijst met vaak gestelde vragen (Frequently Asked Questions / FAQ) die je kunnen helpen om deze Secret Santa beter te begrijpen.</p>
 
-        <a name="what"></a><h2>Wat is Secret Santa?</h2>
-        <p>Het is een gratis online Secret Santa geschenkuitwisselings-organizer! Ieder jaar wisselen wereldwijd mensen tijdens de kerstperiode wereldwijd geschenken uit.
-        Om het voor iedereen wat spannender te maken, kan je mensen willekeurig toewijzen om voor elkaar geschenkjes te kopen.</p>
+    question1: Wat is Secret Santa?
+    anchor1: what
+    answer1: <p>Het is een gratis online Secret Santa geschenkuitwisselings-organizer! Ieder jaar wisselen wereldwijd mensen tijdens de kerstperiode wereldwijd geschenken uit. Om het voor iedereen wat spannender te maken, kan je mensen willekeurig toewijzen om voor elkaar geschenkjes te kopen.</p>
+    question2: Hoe werkt het?
+    anchor2: how
+    answer2: <p>Maak een evenement aan op de <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b> De lijstbeheerder zal een bevestigingsmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon. We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
+    question3: Kan ik combinaties uitsluiten?
+    anchor3: exclude
+    answer3: <p>Het is mogelijk bepaalde combinaties uit te sluiten, bijvoorbeeld als je niet wil dat deelnemers van hetzelfde gezin voor elkaar geschenken moeten kopen. Deze kunnen worden ingesteld als je feestje 4 of meer deelnemers heeft en je feestje nog niet gestart is. Als dat zo is vind je op de beheer pagina een balk met titel 'Bepaalde combinaties uitsluiten', als je daarop klikt krijg je een formulier om deze instellingen aan te passen. Dit kan steeds worden gewijzigd, zolang je feestje niet gestart is. <br><br>Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p>
+    question4: Kan ik een verlanglijst maken?
+    anchor4: wishlist
+    answer4: <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst opstellen en ook de verlanglijst van hun geheime persoon bekijken.</p>
+    question5: Wat als mijn maatje geen verlanglijst heeft ingegeven?
+    anchor5: anonymous_message
+    answer5: <p>Als je maatje geen verlanglijst heeft opgegeven of niet helemaal duidelijk was over bepaalde items op zijn verlanglijst, dan kan je een berichtje naar hem/haar sturen. Op de pagina waar je kan zien wie je maatje is, heb je ook een formulier om een berichtje te versturen. Klik op "Verstuur anoniem bericht naar X" en het formulier komt tevoorschijn! Vergeet niet dat je niet mag vertellen wie je bent!</p>
+    question6: Ik krijg niet de mogelijkheid om een bericht te sturen?
+    anchor6: no_message
+    answer6: <p>Als je maatje zich heeft uitgeschreven voor emails kunnen we helaas geen mails meer sturen naar hem/haar.</p>
+    question7: Kan ik een lijst hergebruiken?
+    anchor7: reuse
+    answer7: <p>Het is mogelijk om de lijst van het voorgaande jaar te hergebruiken voor de lijst van dit jaar. Elk jaar zullen we e-mails versturen die in een link bevatten waarmee jouw lijst hergebruikt kan worden. Deze lijst kan je zelf nog naar jouw wensen aanpassen vooraleer je het nieuwe evenement aanmaakt. Je kan <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">hier</a> ook een email genereren met al je feestjes die je de voorbije 2 jaar hebt aangemaakt, samen met een link om ze te hergebruiken.</p>
+    question8: Hoe beheer ik mijn evenement / deelnemers?
+    anchor8: manage
+    answer8: <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
+    question9: Werkt Secret Santa ook met een oneven aantal deelnemers?
+    anchor9: odd
+    answer9: '<p>Ja. Het maakt niet uit of je feestje bestaat uit een even of oneven aantal deelnemers. Het is namelijk niet zo dat als persoon A is toegekend aan persoon B dat persoon B ook is toegekend aan persoon A. Secret Santa gebruikt een macro om zeker te zijn dat iedereen op de lijst is toegekend aan iemand anders van de lijst. Dit werkt willekeurig. Voorbeeld: als John, Caroline en Steve zijn toegevoegd aan een feestje, dan kan John toegekend zijn aan Steve. Steve kan toegekend zijn aan Caroline. Caroline kan toegekend zijn aan John.</p>'
+    question10: Is er een limiet op het aantal deelnemers?
+    anchor10: limit
+    answer10: <p>Nee, die is er niet. Maar het is een goed idee om ze via de CSV optie toe te voegen.</p>
+    question11: Ik ben mijn bevestigingsmail / link naar het feestje kwijt.
+    anchor11: lost
+    answer11: <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="%requestForgotLink%">deze pagina</a> jouw mailadres in en we sturen je een mail met een overzicht van alle feestjes waaraan je meedoet en/of die je hebt aangemaakt.</p>
+    question12: Kan ik deelnemers toevoegen of verwijderen?
+    anchor12: changes
+    answer12: '<p>Je kan deelnemers toevoegen of verwijderen na het aanmaken van je evenement. Op de beheerpagina kan je een knop vinden om deelnemers te verwijderen en is er een formulier waarmee een deelnemer toegevoegd kan worden. Er is slecht één uitzondering: je kan geen deelnemers toevoegen of verwijderen wanneer de beheerder combinaties heeft uitgesloten bij het aanmaken van het evenement. Indien we dit zouden toelaten, bestaat de kans dat uitgesloten combinaties toch zouden voorvallen, daarom hebben we besloten om dit niet toe te laten.</p>'
+    question13: Kan ik een e-mail opnieuw versturen?
+    anchor13: email
+    answer13: <p>Als een deelnemer geen e-mail heeft ontvangen kan de lijstbeheerder de e-mail opnieuw versturen vanaf de beheerpagina. Je kan ook het e-mailadres van een deelnemer wijzigen vanaf dezelfde pagina en de mail opnieuw versturen.<br><br>Als je geen bevestigingsmail hebt ontvangen, controleer dan je spam folder. Je zou de e-mail binnen enkele minuten moeten ontvangen. Nog altijd geen bevestigingsmail ontvangen? Maak dan een nieuwe lijst aan.</p>
+    question14: Kan ik alle combinaties / verlanglijsten opvragen?
+    anchor14: combinations
+    answer14: <p>Je kan de combinaties / verlanglijsten opvragen vanaf de beheerpagina. Omdat er dan niet veel "secret" meer aan is, zullen alle deelnemers zien dat de beheerder al dan niet de combinaties / verlanglijsten heeft bekeken :-)</p>
+    question15: Kan ik mijn lijst verwijderen?
+    anchor15: delete
+    answer15: <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijderoptie. Al de gegevens met betrekking tot deze lijst zullen permanent uit ons systeem verwijderd worden.</p>
+    question16: Wie zijn jullie?
+    anchor16: who
+    answer16: <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designers, frontenders, SEO's en marketingmensen. Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
+    question17: Wat doen jullie met mijn gegevens?
+    anchor17: privacy
+    answer17: <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord. Vergeet niet dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheerpagina.</p>
+    question18: Kan je feature X toevoegen?
+    anchor18: features
+    answer18: <p>Je hebt een geweldig idee voor en toepassing voor Secret Santa? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die dit wel kan dezelfde functionaliteit wil hebben. Maak een <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">issue aan op GitHub</a> die je feature of wijziging beschrijft. Voor de mensen die wel kunnen coden, we verkiezen transpiratie boven inspiratie. Met andere woorden, we aanvaarden PR's.</p>
+    question19: Open source
+    anchor19: opensource
+    answer19: <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Het project is beschikbaar onder een heel vrije <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licentie</a>. Je bent vrij om het project te forken en bijvoorbeeld je eigen "Secret Panda gift exchange" te maken. Of je kan bijdragen aan dit project door pull requests (PR's) te openen. Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
+    question20: Hoe zit het met die advertenties?
+    anchor20: ads
+    answer20: <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domeinnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project. Zo hebben we eurolingers voor pizza en drank op onze hackdays maar ook voor professionele vertalers waarmee we dan weer verder de wereld veroveren met Secret Santa Organizer. We zoeken trouwens nog Russische, Indische, Japanse, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
+    question21: Andere vragen
+    anchor21: questions
+    answer21: <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via ons <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contact formulier</a>.</p>
 
-        <a name="how"></a><h2>Hoe werkt het?</h2>
-        <p>Maak een evenement aan op de <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">startpagina</a>. Je hebt minstens 3 deelnemers nodig, <b>de eerste deelnemer is de lijstbeheerder.</b>
-        De lijstbeheerder zal een bevestigingsmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
-        We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
-
-        <a name="exclude"></a><h2>Kan ik combinaties uitsluiten?</h2>
-        <p>Het is mogelijk bepaalde combinaties uit te sluiten, bijvoorbeeld als je niet wil dat deelnemers van hetzelfde gezin voor elkaar geschenken moeten kopen. Deze kunnen worden ingesteld als je feestje 4 of meer
-        deelnemers heeft en je feestje nog niet gestart is. Als dat zo is vind je op de beheer pagina een balk met titel 'Bepaalde combinaties uitsluiten', als je daarop klikt krijg je een formulier om deze instellingen aan te passen.
-        Dit kan steeds worden gewijzigd, zolang je feestje niet gestart is. <br><br>
-        Het is niet mogelijk om de lijst van vorig jaar te hergebruiken voor dit jaar en de combinaties van vorig jaar automatisch uit te sluiten, we zien momenteel geen manier om dit toe te voegen zonder dat het verwarrend kan overkomen, excuses hiervoor.</p>
-
-        <a name="wishlist"></a><h2>Kan ik een verlanglijst maken?</h2>
-        <p>Deelnemers ontvangen een link naar een webpagina waar ze hun geheime persoon kunnen zien. Op die pagina kunnen ze een verlanglijst opstellen en ook de verlanglijst van hun geheime persoon bekijken.</p>
-
-        <a name="anonymous_message"></a><h2>Wat als mijn maatje geen verlanglijst heeft ingegeven?</h2>
-        <p>Als je maatje geen verlanglijst heeft opgegeven of niet helemaal duidelijk was over bepaalde items op zijn verlanglijst, dan kan je een berichtje naar hem/haar sturen.
-        Op de pagina waar je kan zien wie je maatje is, heb je ook een formulier om een berichtje te versturen. Klik op "Verstuur anoniem bericht naar X" en het formulier komt tevoorschijn!
-        Vergeet niet dat je niet mag vertellen wie je bent!</p>
-
-        <a name="anonymous_message"></a><h3>Ik krijg niet de mogelijkheid om een bericht te sturen?</h3>
-        <p>Als je maatje zich heeft uitgeschreven voor emails kunnen we helaas geen mails meer sturen naar hem/haar.</p>
-
-        <a name="reuse"></a><h2>Kan ik een lijst hergebruiken?</h2>
-        <p>Het is mogelijk om de lijst van het voorgaande jaar te hergebruiken voor de lijst van dit jaar. Elk jaar zullen we e-mails versturen die in een link bevatten waarmee jouw lijst hergebruikt kan worden. Deze lijst kan je zelf nog naar jouw wensen aanpassen vooraleer je het nieuwe evenement aanmaakt.
-        Je kan <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">hier</a> ook een email genereren met al je feestjes die je de voorbije 2 jaar hebt aangemaakt, samen met een link om ze te hergebruiken.</p>
-
-        <a name="manage"></a><h2>Hoe beheer ik mijn evenement / deelnemers?</h2>
-        <p>De bevestigingsmail die naar de lijstbeheerder werd gestuurd bevat een link naar de beheerpagina van de lijst.</p>
-
-        <a name="odd"></a><h2>Werkt Secret Santa ook met een oneven aantal deelnemers?</h2>
-        <p>Ja. Het maakt niet uit of je feestje bestaat uit een even of oneven aantal deelnemers. Het is namelijk niet zo dat als persoon A is toegekend aan persoon B dat persoon B ook is toegekend aan persoon A. Secret Santa gebruikt een macro om zeker te zijn dat iedereen op de lijst is toegekend aan iemand anders van de lijst. Dit werkt willekeurig. Voorbeeld: als John, Caroline en Steve zijn toegevoegd aan een feestje, dan kan John toegekend zijn aan Steve. Steve kan toegekend zijn aan Caroline. Caroline kan toegekend zijn aan John.</p>
-
-        <a name="lost"></a><h2>Ik ben mijn bevestigingsmail / link naar het feestje kwijt.</h2>
-        <p>Als je de bevestigingsmail kwijt bent (deze bevat de link naar de beheerpagina van de lijst of naar het feestje waaraan je meedoet) is de wereld nog niet ontploft. Geef op <a href="%requestForgotLink%">deze pagina</a> jouw mailadres in en we sturen je een mail met een
-        overzicht van alle feestjes waaraan je meedoet en/of die je hebt aangemaakt.</p>
-
-        <a name="changes"></a><h2>Kan ik deelnemers toevoegen of verwijderen?</h2>
-        <p>Je kan deelnemers toevoegen of verwijderen na het aanmaken van je evenement. Op de beheerpagina kan je een knop vinden om deelnemers te verwijderen en is er een formulier waarmee een deelnemer toegevoegd kan worden.
-        Er is slecht één uitzondering: je kan geen deelnemers toevoegen of verwijderen wanneer de beheerder combinaties heeft uitgesloten bij het aanmaken van het evenement. Indien we dit zouden toelaten, bestaat de kans dat uitgesloten combinaties toch zouden voorvallen, daarom hebben we besloten om dit niet toe te laten.</p>
-
-        <a name="email"></a><h2>Kan ik een e-mail opnieuw versturen?</h2>
-        <p>Als een deelnemer geen e-mail heeft ontvangen kan de lijstbeheerder de e-mail opnieuw versturen vanaf de beheerpagina. Je kan ook het e-mailadres van een deelnemer wijzigen vanaf dezelfde pagina en de mail opnieuw versturen.<br><br>
-        Als je geen bevestigingsmail hebt ontvangen, controleer dan je spam folder. Je zou de e-mail binnen enkele minuten moeten ontvangen. Nog altijd geen bevestigingsmail ontvangen? Maak dan een nieuwe lijst aan.</p>
-
-        <a name="combinations"></a><h2>Kan ik alle combinaties / verlanglijsten opvragen?</h2>
-        <p>Je kan de combinaties / verlanglijsten opvragen vanaf de beheerpagina. Omdat er dan niet veel "secret" meer aan is, zullen alle deelnemers zien dat de beheerder al dan niet de combinaties / verlanglijsten heeft bekeken :-)</p>
-
-        <a name="delete"></a><h2>Kan ik mijn lijst verwijderen?</h2>
-        <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijderoptie. Al de gegevens met betrekking tot deze lijst zullen permanent uit ons systeem verwijderd worden.</p>
-
-        <a name="who"></a><h2>Wie zijn jullie?</h2>
-        <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>,
-        designers, frontenders, SEO's en marketingmensen.
-        Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>.
-        Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
-
-        <a name="privacy"></a><h2>Wat doen jullie met mijn gegevens?</h2>
-        <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord.
-        Vergeet niet dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheerpagina.</p>
-
-        <a name="features"></a><h2>Kan je feature X toevoegen?</h2>
-        <p>Je hebt een geweldig idee voor en toepassing voor Secret Santa? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die dit wel kan dezelfde functionaliteit wil hebben.
-        Maak een <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">issue aan op GitHub</a> die je feature of wijziging beschrijft.
-        Voor de mensen die wel kunnen coden, we verkiezen transpiratie boven inspiratie. Met andere woorden, we aanvaarden PR's.</p>
-
-        <a name="opensource"></a><h2>Open source</h2>
-        <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>.
-        Het project is beschikbaar onder een heel vrije <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licentie</a>.
-        Je bent vrij om het project te forken en bijvoorbeeld je eigen "Secret Panda gift exchange" te maken. Of je kan bijdragen aan dit project door pull requests (PR's) te openen.
-        Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
-
-        <a name="ads"></a><h2>Hoe zit het met die advertenties?</h2>
-        <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domeinnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project.
-        Zo hebben we eurolingers voor pizza en drank op onze hackdays maar ook voor professionele vertalers waarmee we dan weer verder de wereld veroveren met Secret Santa Organizer.
-        We zoeken trouwens nog Russische, Indische, Japanse, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
-
-        <a name="questions"></a><h2>Andere vragen</h2>
-        <p>Heb je andere vragen, bedenkingen of opmerkingen? Contacteer ons dan via ons <a href="%contactLink%" target="_blank" rel="noopener noreferrer">contact formulier</a>.
     create_new_list: Stel een nieuwe Secret Santa lijst op!
 
 # Helper/prototypeParticipant.html.twig

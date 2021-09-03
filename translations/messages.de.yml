@@ -122,7 +122,6 @@ party-deleted:
 # Static/faq.html.twig
 static-faq:
     title: Häufig gestellte Fragen
-#   body: ?
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
 # Helper/prototypeParticipant.html.twig
