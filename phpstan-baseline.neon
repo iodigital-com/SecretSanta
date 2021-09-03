@@ -1,0 +1,217 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$year of class App\\\\Query\\\\Season constructor expects int\\|null, string given\\.$#"
+			count: 1
+			path: src/Command/ExportMailsCommand.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Participant\\>\\:\\:findOneByUrl\\(\\)\\.$#"
+			count: 1
+			path: src/Controller/TrackingController.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\EventDispatcher\\\\EventDispatcherInterface\\:\\:addListener\\(\\)\\.$#"
+			count: 1
+			path: src/Controller/TrackingController.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: src/Entity/BlacklistEmail.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Participant\\:\\:getWishlistItems\\(\\) should return Doctrine\\\\Common\\\\Collections\\\\ArrayCollection&iterable\\<App\\\\Entity\\\\WishlistItem\\> but returns array\\<App\\\\Entity\\\\WishlistItem\\>\\.$#"
+			count: 1
+			path: src/Entity/Participant.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: src/Entity/Participant.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Participant\\>\\:\\:findAdminByPartyId\\(\\)\\.$#"
+			count: 1
+			path: src/Form/Handler/AddParticipantFormHandler.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Participant\\>\\:\\:findOneUnseenByPartyId\\(\\)\\.$#"
+			count: 1
+			path: src/Form/Handler/AddParticipantFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\AddParticipantFormHandler\\:\\:\\$em \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept Doctrine\\\\ORM\\\\EntityManagerInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/AddParticipantFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\AddParticipantFormHandler\\:\\:\\$session \\(Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\Session\\) does not accept Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/AddParticipantFormHandler.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\:\\:setLocale\\(\\)\\.$#"
+			count: 1
+			path: src/Form/Handler/ContactFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\ContactFormHandler\\:\\:\\$session \\(Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\Session\\) does not accept Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/ContactFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\ForgotUrlFormHandler\\:\\:\\$session \\(Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\Session\\) does not accept Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/ForgotUrlFormHandler.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\:\\:getFlashBag\\(\\)\\.$#"
+			count: 2
+			path: src/Form/Handler/JoinParticipantFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\ReuseFormHandler\\:\\:\\$session \\(Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\Session\\) does not accept Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/ReuseFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\SendMessageFormHandler\\:\\:\\$em \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept Doctrine\\\\ORM\\\\EntityManagerInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/SendMessageFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\SendMessageFormHandler\\:\\:\\$session \\(Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\Session\\) does not accept Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/SendMessageFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\UnsubscribeFormHandler\\:\\:\\$session \\(Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\Session\\) does not accept Symfony\\\\Component\\\\HttpFoundation\\\\Session\\\\SessionInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/UnsubscribeFormHandler.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Handler\\\\WishlistFormHandler\\:\\:\\$em \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept Doctrine\\\\ORM\\\\EntityManagerInterface\\.$#"
+			count: 1
+			path: src/Form/Handler/WishlistFormHandler.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Participant\\>\\:\\:findAllParticipantsForForgotEmail\\(\\)\\.$#"
+			count: 1
+			path: src/Mailer/MailerService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Party\\>\\:\\:findAllAdminParties\\(\\)\\.$#"
+			count: 1
+			path: src/Mailer/MailerService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Party\\>\\:\\:findPartiesToReuse\\(\\)\\.$#"
+			count: 1
+			path: src/Mailer/MailerService.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\:\\:setLocale\\(\\)\\.$#"
+			count: 14
+			path: src/Mailer/MailerService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:createQueryBuilder\\(\\)\\.$#"
+			count: 2
+			path: src/Query/BounceQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:delete\\(\\)\\.$#"
+			count: 1
+			path: src/Query/BounceQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:fetchAll\\(\\)\\.$#"
+			count: 1
+			path: src/Query/BounceQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:createQueryBuilder\\(\\)\\.$#"
+			count: 1
+			path: src/Query/FeaturedYearsQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:createQueryBuilder\\(\\)\\.$#"
+			count: 2
+			path: src/Query/IpReportQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:createQueryBuilder\\(\\)\\.$#"
+			count: 16
+			path: src/Query/ParticipantReportQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:createQueryBuilder\\(\\)\\.$#"
+			count: 5
+			path: src/Query/PartyReportQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:createQueryBuilder\\(\\)\\.$#"
+			count: 1
+			path: src/Query/WishlistMailQuery.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Driver\\\\Connection\\:\\:createQueryBuilder\\(\\)\\.$#"
+			count: 2
+			path: src/Query/WishlistReportQuery.php
+
+		-
+			message: "#^Parameter \\#3 \\$referenceType of method Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface\\:\\:generate\\(\\) expects int, true given\\.$#"
+			count: 1
+			path: src/Service/ExportService.php
+
+		-
+			message: "#^Property App\\\\Service\\\\ParticipantService\\:\\:\\$em \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept Doctrine\\\\ORM\\\\EntityManagerInterface\\.$#"
+			count: 1
+			path: src/Service/ParticipantService.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between DateTime and null will always evaluate to false\\.$#"
+			count: 1
+			path: src/Service/ParticipantService.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between string and null will always evaluate to false\\.$#"
+			count: 1
+			path: src/Service/ParticipantService.php
+
+		-
+			message: "#^Property App\\\\Service\\\\PartyService\\:\\:\\$em \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept Doctrine\\\\ORM\\\\EntityManagerInterface\\.$#"
+			count: 1
+			path: src/Service/PartyService.php
+
+		-
+			message: "#^Parameter \\#1 \\$year of method App\\\\Query\\\\ReportQuery\\:\\:getPartyReport\\(\\) expects int\\|null, string given\\.$#"
+			count: 1
+			path: src/Service/ReportQueriesService.php
+
+		-
+			message: "#^Parameter \\#1 \\$year of method App\\\\Query\\\\SeasonComparisonReportQuery\\:\\:getComparison\\(\\) expects int, string given\\.$#"
+			count: 1
+			path: src/Service/ReportQueriesService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Participant\\>\\:\\:findAllByEmail\\(\\)\\.$#"
+			count: 1
+			path: src/Service/UnsubscribeService.php
+
+		-
+			message: "#^Property App\\\\Service\\\\UnsubscribeService\\:\\:\\$em \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept Doctrine\\\\ORM\\\\EntityManagerInterface\\.$#"
+			count: 1
+			path: src/Service/UnsubscribeService.php
+
+		-
+			message: "#^Access to an undefined property Symfony\\\\Component\\\\Validator\\\\Constraint\\:\\:\\$messageNoUniqueMatch\\.$#"
+			count: 1
+			path: src/Validator/ParticipantHasValidExcludesValidator.php
+
+		-
+			message: "#^Access to an undefined property Symfony\\\\Component\\\\Validator\\\\Constraint\\:\\:\\$message\\.$#"
+			count: 1
+			path: src/Validator/PartyHasValidExcludesValidator.php
+
