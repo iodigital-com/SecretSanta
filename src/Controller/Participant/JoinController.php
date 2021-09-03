@@ -21,7 +21,8 @@ class JoinController extends AbstractController
      */
     public function joinAction(Request $request, string $joinurl, PartyRepository $partyRepository)
     {
-        /** @var Party $party */
+        $addParticipantForm = null;
+        /** @var ?Party $party */
         $party = $partyRepository->findOneBy(['joinurl' => $joinurl, 'joinmode' => 1, 'created' => 0]);
 
         if (null !== $party) {
