@@ -29,6 +29,19 @@ class Party
     /** @var \DateTime */
     private $creationdate;
 
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    private $ownerName;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    private $ownerEmail;
+
+    /** @var \DateTime */
     private ?\DateTime $sentdate;
 
     /**
@@ -141,12 +154,26 @@ class Party
 
     public function getOwnerName(): string
     {
-        return $this->participants->first()->getName();
+        return $this->ownerName;
+    }
+
+    public function setOwnerName(string $ownerName): Party
+    {
+        $this->ownerName = $ownerName;
+
+        return $this;
     }
 
     public function getOwnerEmail(): string
     {
-        return $this->participants->first()->getEmail();
+        return $this->ownerEmail;
+    }
+
+    public function setOwnerEmail(string $ownerEmail): Party
+    {
+        $this->ownerEmail = $ownerEmail;
+
+        return $this;
     }
 
     public function setCreationDate(\DateTime $creationdate): Party

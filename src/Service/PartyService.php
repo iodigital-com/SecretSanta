@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Party;
 use App\Mailer\MailerService;
+use Symfony\Component\HttpFoundation\Request;
 
 class PartyService
 {
@@ -31,6 +32,23 @@ class PartyService
         $this->mailerService = $mailerService;
         $this->em = $em;
         $this->participantService = $participantService;
+    }
+
+    public function saveParty(Party $party)
+    {
+        $this->em->persist($party);
+        $this->em->flush();
+    }
+
+    public function createPartyFromObject(object $object, string $locale): Party
+    {
+        $party = new Party(false);
+        $party->setLocale($locale);
+        $party->setOwnerName($object->name);
+        $party->setOwnerEmail($object->email);
+        $this->saveParty($party);
+        $this->mailerService->sendPendingConfirmationMail($party);
+        return $party;
     }
 
     public function startParty(Party $party): bool
