@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\Entity\Participant;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\Persistence\ManagerRegistry;
 
 class ParticipantRepository extends ServiceEntityRepository
@@ -26,7 +27,7 @@ class ParticipantRepository extends ServiceEntityRepository
             WHERE party.sentdate >= :startDate
               AND assignedParticipant.wishlist IS NOT NULL
         ');
-        $query->setParameter('startDate', $startDate, \Doctrine\DBAL\Types\Type::DATETIME_MUTABLE);
+        $query->setParameter('startDate', $startDate, Types::DATETIME_MUTABLE);
 
         return $query->getResult();
     }

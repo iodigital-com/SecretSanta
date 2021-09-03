@@ -2,6 +2,7 @@
 
 namespace App\Query;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Participant;
@@ -47,11 +48,11 @@ class ParticipantMailQuery
               AND participant.subscribedForUpdates = 1
         ', Participant::class));
 
-        $query->setParameter('today', $today, \Doctrine\DBAL\Types\Type::DATETIME_MUTABLE);
-        $query->setParameter('oneHourAgo', $oneHourAgo, \Doctrine\DBAL\Types\Type::DATETIME_MUTABLE);
-        $query->setParameter('oneWeekAgo', $oneWeekAgo, \Doctrine\DBAL\Types\Type::DATETIME_MUTABLE);
-        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, \Doctrine\DBAL\Types\Type::DATETIME_MUTABLE);
-        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, \Doctrine\DBAL\Types\Type::DATETIME_MUTABLE);
+        $query->setParameter('today', $today, Types::DATETIME_MUTABLE);
+        $query->setParameter('oneHourAgo', $oneHourAgo, Types::DATETIME_MUTABLE);
+        $query->setParameter('oneWeekAgo', $oneWeekAgo, Types::DATETIME_MUTABLE);
+        $query->setParameter('twoWeeksAgo', $twoWeeksAgo, Types::DATETIME_MUTABLE);
+        $query->setParameter('sixWeeksFromNow', $sixWeeksFromNow, Types::DATETIME_MUTABLE);
 
         return $query->getResult();
     }
