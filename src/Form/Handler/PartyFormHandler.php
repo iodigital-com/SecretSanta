@@ -25,6 +25,7 @@ class PartyFormHandler
     {
         /** @var Party $party */
         $party = $form->getData();
+        $party->setCreatedFromIp((string) $request->getClientIp());
 
         if (!$request->isMethod('POST')) {
             return false;
