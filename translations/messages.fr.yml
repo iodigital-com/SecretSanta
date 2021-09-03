@@ -123,75 +123,72 @@ wishlist-show_all:
 # Static/faq.html.twig
 static-faq:
     title: Questions fréquemment posées (FAQ)
-    body: >
-        <p>Ceci est une liste de questions fréquemment posées (FAQ) qui devrait vous aider à comprendre le fonctionnement de Secret Santa.</p>
+    intro: <p>Ceci est une liste de questions fréquemment posées (FAQ) qui devrait vous aider à comprendre le fonctionnement de Secret Santa.</p>
 
-        <a name="what"></a><h2>Qu'est-ce que Secret Santa?</h2>
+    question1: Qu'est-ce que Secret Santa?
+    anchor1: what
+    answer1: <p>Secret Santa est un organisateur d'échange des cadeaux gratuit en ligne! Organisez une Secret Santa party avec des amis, de la famille ou même entre collègues. Chaque année, autour de la période de des fêtes, les personnes du monde entier s'échangent des cadeaux. Pour garder les choses intéressantes, vous pouvez aassocier une personne à une autre au hasard, afin de s'offrir des cadeaux.</p>
+    question2: Comment ça fonctionne?
+    anchor2: how
+    answer2: <p>Créez un évènement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">sur la page d'accueil</a>. Vous avez besoin d'au moins 3 participants, <b>dont le premier deviendra l'administrateur de l'évènement</b>. L'administrateur recevra un lien de confirmation par e-mail. Une fois son inscription validée, votre liste Secret Santa sera créée et, tous les participants recevront un message contenant le nom de la personne à qu'ils doivent offrir un cadeau. Nous demandons une confirmation afin d'empêcher les robots et les trolls de gâcher votre évènement Secret Santa. <b> L'e-mail de validation vous fournira avec un lien vers la page de gestion de l'évènement Secret Santa.</b></p>
+    question3: Puis-je exclure des combinaisons?
+    anchor3: exclude
+    answer3: <p> Il est possible d'exclure certaines combinaisons, par exemple pour éviter que les membres d'une même famille n'aient à s'acheter des cadeaux. Les exclusions peuvent être configurées seulement si votre liste compte d'au moins 4 participants et, tant que votre évènement ne soit pas commencé. Si ces conditions sont remplies, vous verrez un bouton intitulé «Exclure certaines combinaisons» sur la page de gestion. Si vous cliquez sur ce bouton, il vous sera possible de faire des modifications, ajouter ou supprimer des exclusions. Celles-ci peuvent être modifiées à tout moment, à condition que votre évènement ne soit pas commencé. <br><br>Il n'est pas possible de réutiliser automatiquement la liste Secret Santa de l'année dernière et d'empêcher ces combinaisons, car nous ne voyons pas un moyen d'ajouter cette fonction sans que cela ne soit confus pour les gens. Désolé.</p>
+    question4: Puis-je fournir une liste de souhaits?
+    anchor4: wishlist
+    answer4: <p>Les participants recevront un lien vers une page où ils peuvent découvrir la personne qui leur a été attribuée et a qu'ils doivent offrir un cadeau. Ils peuvent également ajouter leur propre liste de souhaits et voir celle de la personne qui leur a été attribuée.</p>
+    question5:
+    anchor5: anonymous_message
+    answer5:
+    question6:
+    anchor6: no_message
+    answer6:
+    question7: Puis-je réutiliser une liste?
+    anchor7: reuse
+    answer7: <p>Il est possible de réutiliser la liste de l'année passée pour en recréer une nouvelle. Chaque année, nous enverrons un e-mail contenant un lien qui vous permettra de recréer une nouvelle liste. Vous pourrez adapter cette liste selon vos envies avant d'en créer une nouvelle liste. Vous pouvez également générer un e-mail <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">ici</a>, contenant tous les événements que vous avez créés au cours des 2 dernières années avec un lien pour les réutiliser.</p>
+    question8: Comment puis-je gérer mon événement Secret Santa et les participants?
+    anchor8: manage
+    answer8: <p>L'e-mail de confirmation qui a été envoyé à l'administrateur contient un lien vers une page permettant de gérer l'événement et la liste associe à cet événement.</p>
+    question9: Est-ce que ça fonctionne avec un chiffre des participants impair?
+    anchor9: odd
+    answer9: "<p>Oui. Peu importe si l'événement est composé d'un nombre pair ou impair de participants. Cependant, il n'est pas garanti que si la personne A à été attribuée à la personne B que, cette personne B soit attribuée également à la personne A. Secret Santa utilise un logiciel macro pour s'assurer que tout le monde sur la liste soit associé à quelqu'un d'autre de la liste. Cela fonctionne au hasard. Par exemple: si John, Caroline et Steve ont été ajoutés à une liste, John peut être attribué à Steve, Steve peut être attribué à Caroline et Caroline à son tour peut être attribuée à John.</p>"
+    question10: Existe-t-il une limite des participants?
+    anchor10: limit
+    answer10: <p>No, il n'existe pas. Mais, c'est une bonne idée d'ajouter les participants en utilisant le fichier CSV.</p>
+    question11: J'ai perdu mon e-mail d'activation.
+    anchor11: lost
+    answer11: <p> Si vous avez perdu votre e-mail d'activation (contenant le lien vers la page de gestion de l'événement), contactez-nous à travers <a href="%requestForgotLink%">ce formulaire</a> en utilisant l'adresse e-mail employée lors de votre inscription. Nous vous enverrons à nouveau le lien vers la page de gestion de votre événement, ainsi que les informations de tous les événements que vous avez crées et auxquels vous participez.</p>
+    question12: Puis-je ajouter ou supprimer quelqu'un?
+    anchor12: changes
+    answer12: "<p>Il est possible d'ajouter ou supprimer une personne après avoir créé votre événement. Sur la page de gestion de l'événement vous trouverez un bouton avec lequel vous pourrez enlever quelqu'un, ainsi qu'un formulaire qui vous permettra de rajouter quelqu'un à votre évènement. Mais, il existe une exception: si lors de la création de l'événement, l'administrateur a exclu certaines combinaisons, il ne sera pas possible d'ajouter ou de supprimer des participants. Car si nous le permettons, on court le risque que les participants soient toujours associés à la personne exclue. Pour cette raison, et dans le cas où il existe des combinaisons exclues, nous avons décidé désactiver cette fonctionnalité.</p>"
+    question13: Puis-je renvoyer un e-mail?
+    anchor13: email
+    answer13: <p>Si un participant n'a pas reçu l'e-mail contenant le nom de la personne à qui il doit offrir un cadeau, l'administrateur peut renvoyer un e-mail pour ce participant depuis la page de gestion de l'événement. Vous pouvez également changer l'adresse e-mail d'un participant à partir de cette même page et lui renvoyer un e-mail. <br><br>Si vous ne recevez pas l'e-mail d'activation, veuillez vérifier vos e-mails, particulièrement le dossier spam. Vous devriez recevoir cet e-mail après peu de temps. Si vous n'avez toujours pas reçu l'e-mail d'activation, vous devrez alors créer à nouveau votre liste.</p>
+    question14: Puis-je voir toutes les associations / listes des souhaits?
+    anchor14: combinations
+    answer14: <p>Vous pouvez voir toutes les associations des participants ainsi que leur liste des souhaits depuis la page de gestion de votre événement. Ils existent des boutons spécifiques pour cela mais, ne sont pas affichés par défaut. Si vous voulez partager cette information avec tous les participants, vous devez donc, partager cette URL vous même.</p>
+    question15: Puis-je supprimer ma liste?
+    anchor15: delete
+    answer15: <p>Bien sûr que vous pouvez. Rendez-vous sur la page de gestion de votre événement, en utilisant le bouton supprimer. Toutes les données liées à votre liste seront supprimées de notre système.</p>
+    question16: Qui sommes nous?
+    anchor16: who
+    answer16: <p>Nous sommes une poignée de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">développeurs</a>, designers, frontenders, SEO's et marketers. Secret Santa est l'un de nos projets. Nous sommes sponsorisés par notre employeur <a href="http://www.intracto.com/" target="_blank">Intracto digital agency</a>. Notre but est de mettre en place un organisateur d'échange des cadeaux à la fois simple et pratique. Nous profitons également de ce projet pour faire des expériences. Notre objectif principal est qu'il soit utilisé par tous. Au plus il y a de monde, mieux c'est! ;-)</p>
+    question17: Comment gérez-vous mes données?
+    anchor17: privacy
+    answer17: "<p>Réponse courte, nous ne sommes absolument pas intéressés par vos données. Nous ne les utilisons pas pour une autre chose. Pour une réponse plus détaillée, lisez notre <a href=\"https://www.secretsantaorganizer.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\">politique de confidentialité</a>. Vous pouvez à tout moment supprimer votre compte Secret Santa depuis la page d'administration.</p>"
+    question18: Pouvez-vous ajouter des autres fonctionnalités?
+    anchor18: features
+    answer18: <p>Avez-vous une super idée pour rajouter une nouvelle fonctionnalité? Nous sommes tous des volontaires, donc si vous ne savez pas coder, vous devez attendre à que quelqu'un que sait le faire le fasse. Veuillez créer une <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">demande sur GitHub</a> décrivant votre idée de fonctionnalité ou changement. Pour ceux qui savent coder, nous préférons l'action à l'inspiration. En d'autres termes, nous acceptons vos PR's (pull request).</p>
+    question19: Open source
+    anchor19: opensource
+    answer19: <p>Chaque partie de ce site Internet est possible grâce à l'Open Source sur <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Le projet est disponible sous une <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">licence ISC</a>, très permissive. Vous pouvez donc copier ce projet et, par exemple, créer votre propre Secret Santa. Ou participer à ce projet en soumettant votre contribution (pull request). Si vous souhaitez un changement ou rajouter une nouvelle fonction, ajoutez-la simplement.</p>
+    question20: A propos des publicités
+    anchor20: ads
+    answer20: <p>Nous avons des publicités Google ici et là afin de couvrir certaines de nos dépenses. Par exemple, l'hébergement de ce site, le nom de domaine, etc. Nous faisons tout nous-mêmes gratuitement et, l'argent que nous collectons est réinjecté dans le projet. C'est vraie qu'il pourrait être utilisé pour acheter des pizzas et boissons pour nous et nos collègues. Ou il pourrait aussi servir à payer un traducteur afin d'ajouter de nouvelles langues à notre projet Secret Santa. Ou d'autres choses encore. Au fait, nous recherchons toujours des traductions en russe, japonais... Si vous pouvez nous aider (gratuitement), merci de bien vouloir nous contacter.</p>
+    question21: D'autres questions?
+    anchor21: questions
+    answer21: "<p>Besoin d'aide? Avez-vous d'autres questions ou commentaires? Contactez-nous via le formulaire suivant: <a href=\"%contactLink%\" target=\"_blank\" rel=\"noopener noreferrer\">Contactez-nous</a></p>"
 
-        <p>Secret Santa est un organisateur d'échange des cadeaux gratuit en ligne! Organisez une Secret Santa party avec des amis, de la famille ou même entre collègues. Chaque année, autour de la période de des fêtes, les personnes du monde entier s'échangent des cadeaux.
-        Pour garder les choses intéressantes, vous pouvez aassocier une personne à une autre au hasard, afin de s'offrir des cadeaux.</p>
-
-        <a name="how"></a><h2>Comment ça fonctionne?</h2>
-        <p>Créez un évènement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer"> sur la page d'accueil</a>. Vous avez besoin d'au moins 3 participants, <b>dont le premier deviendra l'administrateur de l'évènement.  </b>
-
-        L'administrateur recevra un lien de confirmation par e-mail. Une fois son inscription validée, votre liste Secret Santa sera créée et, tous les participants recevront un message contenant le nom de la personne à qu'ils doivent offrir un cadeau. Nous demandons une confirmation afin d'empêcher les robots et les trolls de gâcher votre évènement Secret Santa. <b> L'e-mail de validation vous fournira avec un lien vers la page de gestion de l'évènement Secret Santa.</b></p>    
-
-        <!--a name="exclude"></a><h2>Puis-je exclure des combinaisons?</h2>
-        <p> Il est possible d'exclure certaines combinaisons, par exemple pour éviter que les membres d'une même famille n'aient à s'acheter des cadeaux. Les exclusions peuvent être configurées seulement si votre liste compte d'au moins 4 participants et, tant que votre évènement ne soit pas commencé. Si ces conditions sont remplies, vous verrez un bouton intitulé «Exclure certaines combinaisons» sur la page de gestion. Si vous cliquez sur ce bouton, il vous sera possible de faire des modifications, ajouter ou supprimer des exclusions.
-        Celles-ci peuvent être modifiées à tout moment, à condition que votre évènement ne soit pas commencé. <br> <br>
-        Il n'est pas possible de réutiliser automatiquement la liste Secret Santa de l'année dernière et d'empêcher ces combinaisons, car nous ne voyons pas un moyen d'ajouter cette fonction sans que cela ne soit confus pour les gens. Désolé. </p>
-
-        <a name="wishlist"></a><h2>Puis-je fournir une liste de souhaits?</h2>
-        <p>Les participants recevront un lien vers une page où ils peuvent découvrir la personne qui leur a été attribuée et a qu'ils doivent offrir un cadeau. Ils peuvent également ajouter leur propre liste de souhaits et voir celle de la personne qui leur a été attribuée.</p>
-
-        <a name="reuse"></a><h2>Puis-je réutiliser une liste?</h2>
-        <p>Il est possible de réutiliser la liste de l'année passée pour en recréer une nouvelle. Chaque année, nous enverrons un e-mail contenant un lien qui vous permettra de recréer une nouvelle liste. Vous pourrez adapter cette liste selon vos envies avant d'en créer une nouvelle liste. 
-        Vous pouvez également générer un e-mail <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">ici</a>, contenant tous les événements que vous avez créés au cours des 2 dernières années avec un lien pour les réutiliser. </p>
-
-        <a name="manage"></a><h2>Comment puis-je gérer mon événement Secret Santa et les participants?</h2>
-        <p>L'e-mail de confirmation  qui a été envoyé à l'administrateur contient un lien vers une page permettant de gérer l'événement et la liste associe à cet événement.</p>
-
-        <a name="odd"></a><h2>Est-ce que ça fonctionne avec un chiffre des participants impair?</h2> 
-
-        <p>Oui. Peu importe si l'événement est composé d'un nombre pair ou impair de participants. Cependant, il n'est pas garanti que si la personne A à été attribuée à la personne B que, cette personne B soit attribuée également à la personne A. Secret Santa utilise un logiciel macro pour s'assurer que tout le monde sur la liste soit associé à quelqu'un d'autre de la liste. Cela fonctionne au hasard. Par exemple: si John, Caroline et Steve ont été ajoutés à une liste, John peut être attribué à Steve, Steve peut être attribué à Caroline et Caroline à son tour peut être attribuée à John.
-
-        <a name="limit"></a><h2>Existe-t-il une limite des participants? </h2>
-        <p>No, il n'existe pas. Mais, c'est une bonne idée d'ajouter les participants en utilisant le fichier CSV. </p>
-
-        <a name="lost"></a><h2>J'ai perdu mon e-mail d'activation</h2>
-        <p> Si vous avez perdu votre e-mail d'activation (contenant le lien vers la page de gestion de l'événement), contactez-nous à travers ce formulaire <a href="%requestForgotLink%"> en utilisant l'adresse e-mail employée lors de votre inscription. Nous vous enverrons à nouveau le lien vers la page de gestion de votre événement, ainsi que les informations de tous les événements que vous avez crées et auxquels vous participez. 
-
-        <a name="changes"></a><h2>Puis-je ajouter ou supprimer quelqu'un?</h2>
-        <p>Il est possible d'ajouter ou supprimer une personne après avoir créé votre événement. Sur la page de gestion de l'événement vous trouverez un bouton avec lequel vous pourrez enlever quelqu'un, ainsi qu'un formulaire qui vous permettra de rajouter quelqu'un à votre évènement. Mais, il existe une exception: si lors de la création de l'événement, l'administrateur a exclu certaines combinaisons, il ne sera pas possible d'ajouter ou de supprimer des participants. Car si nous le permettons, on court le risque que les participants soient toujours associés à la personne exclue. Pour cette raison, et dans le cas où il existe des combinaisons exclues, nous avons décidé désactiver cette fonctionnalité. 
-
-        <a name="email"></a><h2>Puis-je renvoyer un e-mail?</h2>
-        <p>Si un participant n'a pas reçu l'e-mail contenant le nom de la personne à qui il doit offrir un cadeau, l'administrateur peut renvoyer un e-mail pour ce participant depuis la page de gestion de l'événement. Vous pouvez également changer l'adresse e-mail d'un participant à partir de cette même page et lui renvoyer un e-mail.<br><br>
-
-        Si vous ne recevez pas l'e-mail d'activation, veuillez vérifier vos e-mails, particulièrement le dossier spam. Vous devriez recevoir cet e-mail après peu de temps. Si vous n'avez toujours pas reçu l'e-mail d'activation, vous devrez alors créer à nouveau votre liste.</p>
-
-        <a name="combinations"></a><h2>Puis-je voir toutes les associations/listes des souhaits?</h2>
-        <p>Vous pouvez voir toutes les associations des participants ainsi que leur liste des souhaits depuis la page de gestion de votre événement. Ils existent des boutons spécifiques pour cela mais, ne sont pas affichés par défaut. Si vous voulez partager cette information avec tous les participants, vous devez donc, partager cette URL vous même. 
-
-        <a name="delete"></a><h2>Puis-je supprimer ma liste?</h2>
-        <p>Bien sûr que vous pouvez. Rendez-vous sur la page de gestion de votre événement, en utilisant le bouton supprimer. Toutes les données liées à votre liste seront supprimées de notre système.</p>
-
-        <a name="who"></a><h2>Qui sommes nous?</h2>
-        <p>Nous sommes une poignée de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">développeurs</a>, designers, frontenders, SEO's et marketers. Secret Santa est l'un de nos projets. Nous sommes sponsorisés par notre employeur <a href="http://www.intracto.com/" target="_blank">Intracto digital agency</a>. Notre but est de mettre en place un organisateur d'échange des cadeaux à la fois simple et pratique. Nous profitons également de ce projet pour faire des expériences. Notre objectif principal est qu'il soit utilisé par tous. Au plus il y a de monde, mieux c'est! ;-)</p>
-
-        <a name="privacy"></a><h2>Comment gérez-vous mes données?</h2>
-        <p>Réponse courte, nous ne sommes absolument pas intéressés par vos données. Nous ne les utilisons pas pour une autre chose. Pour une réponse plus détaillée, lisez notre <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité</a>. Vous pouvez à tout moment supprimer votre compte Secret Santa depuis la page d'administration.</p>
-
-        <a name="features"></a><h2>Pouvez-vous ajouter des autres fonctionnalités?</h2>
-        <p>Avez-vous une super idée pour rajouter une nouvelle fonctionnalité? Nous sommes tous des volontaires, donc si vous ne savez pas coder, vous devez attendre à que quelqu'un que sait le faire le fasse. Veuillez créer une <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">demande sur GitHub</a> décrivant votre idée de fonctionnalité ou changement. Pour ceux qui savent coder, nous préférons l'action à l'inspiration. En d'autres termes, nous acceptons vos PR's (pull request).</p>
-      
-        <a name="opensource"></a><h2>Open source</h2>
-        <p>Chaque partie de ce site Internet est possible grâce à l'Open Source sur <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Le projet est disponible sous une <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">licence ISC</a>, très permissive. Vous pouvez donc copier ce projet et, par exemple, créer votre propre Secret Santa. Ou participer à ce projet en soumettant votre contribution (pull request). Si vous souhaitez un changement ou rajouter une nouvelle fonction, ajoutez-la simplement.</p>
-
-        <a name="ads"></a><h2>A propos des publicités</h2>
-        <p>Nous avons des publicités Google ici et là afin de couvrir certaines de nos dépenses. Par exemple, l'hébergement de ce site, le nom de domaine, etc. Nous faisons tout nous-mêmes gratuitement et, l'argent que nous collectons est réinjecté dans le projet. C'est vraie qu'il pourrait être utilisé pour acheter des pizzas et boissons pour nous et nos collègues. Ou il pourrait aussi servir à payer un traducteur afin d'ajouter de nouvelles langues à notre projet Secret Santa. Ou d'autres choses encore. Au fait, nous recherchons toujours des traductions en russe, japonais... Si vous pouvez nous aider (gratuitement), merci de bien vouloir nous contacter.</p>
-
-        <a name="questions"></a><h2>D'autres questions?</h2>
-        <p>Besoin d'aide? Avez-vous d'autres questions ou commentaires? Contactez-nous via le formulaire suivant <a href="%contactLink%" target="_blank" rel="noopener noreferrer">Contactez-nous</a>.
     create_new_list: Créez une nouvelle liste Secret Santa!
 
 # Helper/prototypeParticipant.html.twig
