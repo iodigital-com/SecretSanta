@@ -6,7 +6,7 @@
 wget -qO - https://packages.sury.org/php/apt.gpg | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1 apt-key add -
 
 cat << EOF >/etc/apt/sources.list.d/sury.list
-deb https://packages.sury.org/php/ buster main
+deb https://packages.sury.org/php/ bullseye main
 EOF
 
 # Sync package index files
@@ -41,4 +41,6 @@ echo "export XDEBUG_MODE=off" >> /home/vagrant/.bashrc
 service php8.0-fpm restart
 
 # composer
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin
+curl -sS -o /usr/bin/composer https://getcomposer.org/composer.phar
+chmod +x /usr/bin/composer
+composer self-update
