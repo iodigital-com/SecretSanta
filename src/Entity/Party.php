@@ -29,8 +29,7 @@ class Party
     /** @var \DateTime */
     private $creationdate;
 
-    /** @var \DateTime */
-    private $sentdate;
+    private ?\DateTime $sentdate;
 
     /**
      * @var \DateTime
@@ -172,10 +171,7 @@ class Party
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getSentdate()
+    public function getSentdate(): ?\DateTime
     {
         return $this->sentdate;
     }
