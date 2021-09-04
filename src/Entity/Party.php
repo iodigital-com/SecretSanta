@@ -33,13 +33,13 @@ class Party
      * @var string
      * @Assert\NotBlank()
      */
-    private $ownerName;
+    private $ownerName = '';
 
     /**
      * @var string
      * @Assert\NotBlank()
      */
-    private $ownerEmail;
+    private $ownerEmail = '';
 
     /** @var \DateTime */
     private ?\DateTime $sentdate;

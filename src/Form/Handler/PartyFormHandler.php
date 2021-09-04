@@ -40,6 +40,9 @@ class PartyFormHandler
             $participant->setParty($party);
         }
 
+        $party->setOwnerName($party->getParticipants()[0]->getName());
+        $party->setOwnerEmail($party->getParticipants()[0]->getEmail());
+
         $party->setCreationDate(new \DateTime());
         $party->setLocale($request->getLocale());
 

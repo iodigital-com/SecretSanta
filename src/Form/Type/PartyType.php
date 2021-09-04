@@ -6,6 +6,7 @@ use App\Entity\Party;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -35,6 +36,12 @@ class PartyType extends AbstractType
             ])
             ->add('confirmed', CheckboxType::class, [
                 'label' => 'form-party.label.confirmed',
+            ])
+            ->add('ownerName', HiddenType::class, [
+                'empty_data' => '-'
+            ])
+            ->add('ownerEmail', HiddenType::class, [
+                'empty_data' => '-'
             ])
         ;
     }
