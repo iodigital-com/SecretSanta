@@ -35,7 +35,7 @@ class PartyController extends AbstractController
     /**
      * @Route("/api/party", name="api_party_create", methods={"POST"})
      */
-    public function createAction(Request $request, PartyService $partyService): Response
+    public function createParty(Request $request, PartyService $partyService): Response
     {
         // get Json object. If JsonResponse is returned
         $object = ApiHelper::getRequestBody($request);
