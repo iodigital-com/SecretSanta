@@ -10,6 +10,7 @@
         <indexes>
             <index name="list_url" columns="list_url"/>
             <index name="dates" columns="created,event_date,sent_date"/>
+            <index name="created_from_ip" columns="created_from_ip"/>
         </indexes>
 
         <id name="id" type="integer">
