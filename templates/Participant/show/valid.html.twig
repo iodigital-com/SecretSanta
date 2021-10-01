@@ -45,7 +45,9 @@
                     {% endif %}
                     <br><br>
                         <a href="https://partnerprogramma.bol.com/click/click?p=1&t=url&s=50354&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fm%2Fvoordeel%2Fcadeaus%2Findex.html%3Flanguage=en&name=Cadeautips"
-                           target="_blank" rel="noopener noreferrer">{{ 'participant_show_valid.participant.find_gift'|trans }}</a><br>
+                           target="_blank" rel="noopener noreferrer">
+                            {{ 'participant_show_valid.participant.find_gift'|trans }}
+                        </a><br>
                     </ul>
                 </div>
             </div>
@@ -80,6 +82,15 @@
         </div>
 
         {% if app.environment not in ['test', 'test_travis'] %}
+            {% if participant.geoCountry in ["BE", "NL"] %}
+            <div class="row text-center">
+                <div class="col mb-2">
+                    <a href="https://lnk.to/Kerst_SecretSanta/spotify" rel="noopener noreferrer" target="_blank">
+                        <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
+                    </a>
+                </div>
+            </div>
+            {% endif %}
             <div class="row text-center">
                 <div class="col mb-2">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
