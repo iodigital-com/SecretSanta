@@ -174,7 +174,7 @@
                     </button>
                 </p>
             {{ form_end(form) }}
-            {% if geoCountry in ["BE", "NL"] %}
+            {% if geoCountry() in ["BE", "NL"] %}
             <a href="https://lnk.to/Kerst_SecretSanta/spotify" rel="noopener noreferrer" target="_blank">
                 <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
             </a><br>

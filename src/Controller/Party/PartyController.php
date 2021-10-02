@@ -12,15 +12,9 @@ use App\Entity\Party;
 use App\Form\Type\PartyType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use GeoIp2\Database\Reader;
 
 class PartyController extends AbstractController
 {
-    public function __construct(
-        private string $geoIpDbPath,
-    ) {
-    }
-
     /**
      * @Route("/party/create", name="create_party")
      * @Template("Party/create.html.twig")
@@ -96,16 +90,8 @@ class PartyController extends AbstractController
             return $this->redirectToRoute('party_created', ['listurl' => $party->getListurl()]);
         }
 
-        $geoCountry = '';
-        $reader = new Reader($this->geoIpDbPath);
-        try {
-            $geoInformation = $reader->country($request->getClientIp());
-            $geoCountry = $geoInformation->country->isoCode;
-        } catch (\Exception) {}
-
         return [
             'form' => $form->createView(),
-            'geoCountry' => $geoCountry,
         ];
     }
 }
