@@ -64,7 +64,7 @@ party-create:
 
         title_2: Hvordan fungerer det?
         intro_2: >
-            <p>Opprett et arrangement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b>
+            <p>Opprett et arrangement <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b>
                     Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til.
                     Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
 
@@ -133,7 +133,7 @@ static-faq:
     answer1: <p>Et gratis online "hemmelig venn" program for å organisere gaveutveksling! Arranger et juleselskap med "hemmelig venn"/Secret Santa med venner, familie eller kolleger. HVert år rundt juletider, over hele verden, gir man hverandre gaver. For å gjøre ting mer interessant kan du tildele andre en tilfeldig "venn" eller "nisse" å gi presanger til.</p>
     question2: Hvordan fungerer det?
     anchor2: how
-    answer2: <p>Opprett et arrangement <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b> Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til. Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
+    answer2: <p>Opprett et arrangement <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">på hjemmesiden</a>. Det trengs minst 3 deltagere, <b>den første deltageren blir arrangementets administrator.</b> Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til. Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
     question3:
     anchor3: exclude
     answer3:
@@ -178,7 +178,7 @@ static-faq:
     answer16: <p>Vi er en gruppe med <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designere, markedsførere og bedriftsledere. Secret Santa er et av våre sideprosjekter, og på en måte en hobby. Vi sponses av våre arbeidsgivere i <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Vårt mål er å skape et enkelt, men effektivt verktøy for å kunne arrangere "Secret Santa". Vi bruker også siden i noen av våre egne eksperimenter. Men hovedmålet vårt er at du der ute bruker nettsiden vår, jo flere jo bedre ;-)</p>
     question17: Hvordan behandler dere mine data?
     anchor17: privacy
-    answer17: <p>Kort og godt, vi er ikke interessert i dine personlige data. Vi bruker det til niks og nada. Les vår <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">personvernerklaering</a> for mer informasjon. Du er også helt fri til når som helst å slette din egen liste.</p>
+    answer17: <p>Kort og godt, vi er ikke interessert i dine personlige data. Vi bruker det til niks og nada. Les vår <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">personvernerklaering</a> for mer informasjon. Du er også helt fri til når som helst å slette din egen liste.</p>
     question18: Kan dere legge til funksjon X?
     anchor18: features
     answer18: "<p>Har du en fantastisk idé til en funksjon listen vår må ha? Vi består av frivillige, så hvis du ikke kan skrive kode selv må du vente med å se ideen din bli til virkelighet til som kan skrive kode vil ha den samme funksjonen satt i live. Vennligst <a href=\"https://github.com/Intracto/SecretSanta/issues\" target=\"_blank\" rel=\"noopener noreferrer\">legg til ideen din på GitHub</a> med en beskrivelse, eller forslag til en endring. De av dere som kan skrive kode: vi foretrekker transpirasjon framfor inspirasjon. Med andre ord, vi aksepterer PR ;)</p>"

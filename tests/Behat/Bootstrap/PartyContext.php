@@ -3,7 +3,7 @@
 namespace App\Tests\Behat\Bootstrap;
 
 use Behat\MinkExtension\Context\RawMinkContext;
-use App\Services\JQueryHelper;
+use App\Tests\Behat\Service\JQueryHelper;
 use Webmozart\Assert\Assert;
 
 class PartyContext extends RawMinkContext

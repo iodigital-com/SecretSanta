@@ -6,7 +6,7 @@ use App\Tests\Behat\ContainerAwareContextTrait;
 use Behat\Mink\Element\NodeElement;
 use Behat\MinkExtension\Context\RawMinkContext;
 use App\Tests\Behat\FeatureContext;
-use App\Services\JQueryHelper;
+use App\Tests\Behat\Service\JQueryHelper;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Webmozart\Assert\Assert;
 

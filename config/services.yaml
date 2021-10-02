@@ -37,6 +37,7 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
+            $siteDomain: '%env(HOST)%'
             $geoIpDbPath: '%env(GEO_IP_DB_PATH)%'
             $reportCachePath: '%kernel.project_dir%/var/report_cache'
             $recaptchaSecret: '%kernel.project_dir%/config/recaptcha_secrets.json'
@@ -76,6 +77,10 @@ services:
     App\Form\Extension\DateTypeExtension:
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
+
+    App\Service\SiteDomainDecoratingTranslator:
+        decorates: 'translator.default'
+        arguments: ['@App\Service\SiteDomainDecoratingTranslator.inner']
 
     Symfony\Component\Form\FormRendererInterface:
         alias: 'twig.form.renderer'

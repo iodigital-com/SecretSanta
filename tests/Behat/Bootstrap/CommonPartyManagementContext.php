@@ -4,7 +4,7 @@ namespace App\Tests\Behat\Bootstrap;
 
 use App\Tests\Behat\ContainerAwareContextTrait;
 use Behat\MinkExtension\Context\RawMinkContext;
-use App\Services\JQueryHelper;
+use App\Tests\Behat\Service\JQueryHelper;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Webmozart\Assert\Assert;
 

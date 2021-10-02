@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Tests\Behat\Service;
 
 use Behat\Mink\Session;
 
