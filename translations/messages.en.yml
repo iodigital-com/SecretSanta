@@ -64,7 +64,7 @@ party-create:
 
         title_2: How does it work?
         intro_2: >
-            <p>Create a party <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
+            <p>Create a party <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b>
             The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
             We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
 
@@ -172,7 +172,7 @@ static-faq:
     answer1: <p>It’s a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends, family or even co-workers. Each year around Christmas time people all over the world exchange gifts. To keep things interesting though, you can randomly assign persons to each other to give a present to one another.</p>
     question2: How does it work?
     anchor2: how
-    answer2: <p>Create a party <a href="https://www.secretsantaorganizer.com" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b> The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
+    answer2: <p>Create a party <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b> The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
     question3: Can I exclude combinations?
     anchor3: exclude
     answer3: <p>It is possible to excludee some combinations, for example to prevent members of the same family having to buy gifts for each other. Excludes can be configured if your party has 4 participants or more and as long as your party is not started. If these conditions are met, you will see a box called 'Exclude certain combinations' on the manage page. Clicking on this box wil open it, and make it possible to edit your excludes. These can be edited at any time, as long as your party isn't started. <br><br>It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
@@ -217,7 +217,7 @@ static-faq:
     answer16: <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designers, frontenders, SEO's and marketing people. Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
     question17: How do you handle my data?
     anchor17: privacy
-    answer17: <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://www.secretsantaorganizer.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer. Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
+    answer17: <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer. Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
     question18: Can you add feature X?
     anchor18: features
     answer18: <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature. Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change. For those who can code, we prefer transpiration to inspiration. In other words, we accept your PRs.</p>
