@@ -178,7 +178,7 @@
             <a href="https://lnk.to/Kerst_SecretSanta/spotify" rel="noopener noreferrer" target="_blank">
                 <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
             </a><br>
-            {% endif %}
+            {% else %}
             {% if app.environment not in ['test', 'test_travis'] %}
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <ins class="adsbygoogle"
@@ -187,6 +187,7 @@
                      data-ad-slot="2437486509"
                      data-ad-format="auto"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            {% endif %}
             {% endif %}
         </div>
 

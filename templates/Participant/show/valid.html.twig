@@ -90,9 +90,10 @@
                     </a>
                 </div>
             </div>
-            {% endif %}
+            {% else %}
             <div class="row text-center">
                 <div class="col mb-2">
+                    {% if app.environment not in ['test', 'test_travis'] %}
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- ad 2019 -->
                     <ins class="adsbygoogle"
@@ -104,8 +105,10 @@
                     <script>
                       (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
+                    {% endif %}
                 </div>
             </div>
+            {% endif %}
         {% endif %}
 
         <h1>{{ 'participant_show_valid.wishlist.title'|trans }}</h1>
