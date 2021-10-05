@@ -34,7 +34,7 @@ class SendPartyStatusCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:sendPartyStatusMails')
+            ->setName('app:sendPartyStatusMails')
             ->setDescription('Send party status mail to admins');
     }
 

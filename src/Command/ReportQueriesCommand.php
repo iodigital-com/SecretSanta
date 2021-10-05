@@ -27,7 +27,7 @@ class ReportQueriesCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:report-queries')
+            ->setName('app:report-queries')
             ->setDescription('Export report queries')
             ->addArgument(
                 'year',

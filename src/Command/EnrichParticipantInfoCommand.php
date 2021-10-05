@@ -34,7 +34,7 @@ class EnrichParticipantInfoCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:enrich:participants')
+            ->setName('app:enrich:participants')
             ->setDescription('Enrich the participant information');
     }
 

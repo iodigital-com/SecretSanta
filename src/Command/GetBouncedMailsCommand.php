@@ -24,7 +24,7 @@ class GetBouncedMailsCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:getBounced')
+            ->setName('app:getBounced')
             ->setDescription('Get bounced emails');
     }
 

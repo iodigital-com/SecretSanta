@@ -37,7 +37,7 @@ class SendEmptyWishlistReminderCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:sendWishlistReminderMails')
+            ->setName('app:sendWishlistReminderMails')
             ->setDescription('Send reminder to add items to wishlist');
     }
 

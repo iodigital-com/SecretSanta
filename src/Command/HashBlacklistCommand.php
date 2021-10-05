@@ -30,7 +30,7 @@ class HashBlacklistCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:hash-black-list')
+            ->setName('app:hash-black-list')
             ->setDescription('Hash black listed mail addresses.');
     }
 

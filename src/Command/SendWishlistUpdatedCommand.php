@@ -34,7 +34,7 @@ class SendWishlistUpdatedCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:sendWishlistUpdatedMails')
+            ->setName('app:sendWishlistUpdatedMails')
             ->setDescription('Send notification to buddy to alert them the wishlist has been updated');
     }
 

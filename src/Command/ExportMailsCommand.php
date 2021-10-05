@@ -25,7 +25,7 @@ class ExportMailsCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:export-for-mailing')
+            ->setName('app:export-for-mailing')
             ->setDescription('Export email addresses from database to use in mailing')
             ->addArgument(
                 'userType',

@@ -41,7 +41,7 @@ class HashOldDataCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:hash-participants')
+            ->setName('app:hash-participants')
             ->setDescription('Hash (old) participants.');
     }
 

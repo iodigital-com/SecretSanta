@@ -33,7 +33,7 @@ class SendParticipantViewReminderCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('intracto:sendParticipantViewReminderMails')
+            ->setName('app:sendParticipantViewReminderMails')
             ->setDescription('Send reminder to participants to confirm their presence at the party');
     }
 
