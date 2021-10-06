@@ -1,0 +1,940 @@
+{
+    "current_year": "2018",
+    "party_data": {
+        "parties": 216932,
+        "participants": 2161559,
+        "confirmed_participants": [
+            {
+                "confirmedParticipantCount": "2058491"
+            }
+        ],
+        "distinct_participants": [
+            {
+                "distinctParticipantCount": "1881742"
+            }
+        ],
+        "participant_average": 9.964223812070141,
+        "wishlist_average": 29.287796446916325,
+        "ip_usage": {
+            "ipv4": {
+                "ipv4Count": "2058491"
+            },
+            "ipv6": {
+                "ipv6Count": "0"
+            }
+        },
+        "party_chart_data": [
+            {
+                "accumulatedPartyCountByMonth": "156",
+                "month": "2018-04-02 04:09:46"
+            },
+            {
+                "accumulatedPartyCountByMonth": "222",
+                "month": "2018-05-01 04:21:53"
+            },
+            {
+                "accumulatedPartyCountByMonth": "290",
+                "month": "2018-06-02 00:14:41"
+            },
+            {
+                "accumulatedPartyCountByMonth": "464",
+                "month": "2018-07-02 01:18:10"
+            },
+            {
+                "accumulatedPartyCountByMonth": "543",
+                "month": "2018-08-01 06:41:29"
+            },
+            {
+                "accumulatedPartyCountByMonth": "2079",
+                "month": "2018-09-01 00:41:25"
+            },
+            {
+                "accumulatedPartyCountByMonth": "13031",
+                "month": "2018-10-21 02:18:57"
+            },
+            {
+                "accumulatedPartyCountByMonth": "91986",
+                "month": "2018-11-05 08:56:40"
+            },
+            {
+                "accumulatedPartyCountByMonth": "104705",
+                "month": "2018-12-11 04:46:15"
+            },
+            {
+                "accumulatedPartyCountByMonth": "2131",
+                "month": "2019-01-01 14:27:29"
+            },
+            {
+                "accumulatedPartyCountByMonth": "1011",
+                "month": "2019-02-01 00:27:39"
+            },
+            {
+                "accumulatedPartyCountByMonth": "314",
+                "month": "2019-03-01 00:45:32"
+            }
+        ],
+        "participant_chart_data": [
+            {
+                "accumulatedParticipantCountByMonth": "1820",
+                "month": "2018-04-02 04:09:46"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "2079",
+                "month": "2018-05-01 04:21:53"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "2967",
+                "month": "2018-06-02 00:14:41"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "4010",
+                "month": "2018-07-02 01:18:10"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "4533",
+                "month": "2018-08-01 06:41:29"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "17816",
+                "month": "2018-09-01 00:41:25"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "114055",
+                "month": "2018-10-21 02:18:57"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "929320",
+                "month": "2018-11-05 08:56:40"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "1052538",
+                "month": "2018-12-11 04:46:15"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "20027",
+                "month": "2019-01-01 14:27:29"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "9600",
+                "month": "2019-02-01 00:27:39"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "2794",
+                "month": "2019-03-01 00:45:32"
+            }
+        ],
+        "yearly_party_chart_data": [
+            {
+                "year": "2012",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "120"
+                    }
+                ]
+            },
+            {
+                "year": "2013",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "3688"
+                    }
+                ]
+            },
+            {
+                "year": "2014",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "11569"
+                    }
+                ]
+            },
+            {
+                "year": "2015",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "33545"
+                    }
+                ]
+            },
+            {
+                "year": "2016",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "75219"
+                    }
+                ]
+            },
+            {
+                "year": "2017",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "128495"
+                    }
+                ]
+            },
+            {
+                "year": "2018",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "216932"
+                    }
+                ]
+            },
+            {
+                "year": "2019",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "276986"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "313799"
+                    }
+                ]
+            },
+            {
+                "year": "2021",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "1852"
+                    }
+                ]
+            }
+        ],
+        "yearly_participant_chart_data": [
+            {
+                "year": "2012",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "807"
+                    }
+                ]
+            },
+            {
+                "year": "2013",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "33473"
+                    }
+                ]
+            },
+            {
+                "year": "2014",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "103973"
+                    }
+                ]
+            },
+            {
+                "year": "2015",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "318622"
+                    }
+                ]
+            },
+            {
+                "year": "2016",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "732498"
+                    }
+                ]
+            },
+            {
+                "year": "2017",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "1286919"
+                    }
+                ]
+            },
+            {
+                "year": "2018",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "2161559"
+                    }
+                ]
+            },
+            {
+                "year": "2019",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "2831374"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "2762166"
+                    }
+                ]
+            },
+            {
+                "year": "2021",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "16609"
+                    }
+                ]
+            }
+        ],
+        "total_parties": [
+            {
+                "partyCount": "469568"
+            }
+        ],
+        "total_participants": [
+            {
+                "totalParticipantCount": "4637851"
+            }
+        ],
+        "total_confirmed_participants": [
+            {
+                "confirmedParticipantCount": "4402279"
+            }
+        ],
+        "total_participant_average": 9.87684637794739,
+        "total_wishlist_average": 25.841645192999945,
+        "total_distinct_participants": [
+            {
+                "distinctParticipantCount": "3620835"
+            }
+        ],
+        "total_party_chart_data": [
+            {
+                "totalPartyCount": 101,
+                "month": "2012-12-05 14:40:30"
+            },
+            {
+                "totalPartyCount": 106,
+                "month": "2013-01-03 17:19:22"
+            },
+            {
+                "totalPartyCount": 110,
+                "month": "2013-02-01 01:21:55"
+            },
+            {
+                "totalPartyCount": 120,
+                "month": "2013-03-04 05:18:26"
+            },
+            {
+                "totalPartyCount": 121,
+                "month": "2013-06-11 10:37:04"
+            },
+            {
+                "totalPartyCount": 126,
+                "month": "2013-07-02 04:21:46"
+            },
+            {
+                "totalPartyCount": 129,
+                "month": "2013-08-15 02:31:30"
+            },
+            {
+                "totalPartyCount": 134,
+                "month": "2013-09-13 21:40:50"
+            },
+            {
+                "totalPartyCount": 201,
+                "month": "2013-10-02 00:17:46"
+            },
+            {
+                "totalPartyCount": 1646,
+                "month": "2013-11-01 07:52:28"
+            },
+            {
+                "totalPartyCount": 3761,
+                "month": "2013-12-12 16:53:03"
+            },
+            {
+                "totalPartyCount": 3795,
+                "month": "2014-01-02 15:06:15"
+            },
+            {
+                "totalPartyCount": 3803,
+                "month": "2014-02-07 20:00:52"
+            },
+            {
+                "totalPartyCount": 3808,
+                "month": "2014-03-11 12:25:21"
+            },
+            {
+                "totalPartyCount": 3821,
+                "month": "2014-04-02 08:10:12"
+            },
+            {
+                "totalPartyCount": 3826,
+                "month": "2014-05-04 23:00:02"
+            },
+            {
+                "totalPartyCount": 3843,
+                "month": "2014-06-05 04:59:15"
+            },
+            {
+                "totalPartyCount": 3880,
+                "month": "2014-07-07 07:30:58"
+            },
+            {
+                "totalPartyCount": 3928,
+                "month": "2014-08-04 13:34:31"
+            },
+            {
+                "totalPartyCount": 4057,
+                "month": "2014-09-20 10:40:45"
+            },
+            {
+                "totalPartyCount": 4553,
+                "month": "2014-10-07 13:25:00"
+            },
+            {
+                "totalPartyCount": 8897,
+                "month": "2014-11-20 06:20:30"
+            },
+            {
+                "totalPartyCount": 15221,
+                "month": "2014-12-03 22:45:57"
+            },
+            {
+                "totalPartyCount": 15301,
+                "month": "2015-01-01 12:56:02"
+            },
+            {
+                "totalPartyCount": 15353,
+                "month": "2015-02-02 10:31:53"
+            },
+            {
+                "totalPartyCount": 15376,
+                "month": "2015-03-03 20:46:35"
+            },
+            {
+                "totalPartyCount": 15386,
+                "month": "2015-04-01 02:47:33"
+            },
+            {
+                "totalPartyCount": 15408,
+                "month": "2015-05-21 16:42:46"
+            },
+            {
+                "totalPartyCount": 15452,
+                "month": "2015-06-02 06:23:05"
+            },
+            {
+                "totalPartyCount": 15505,
+                "month": "2015-07-01 01:17:44"
+            },
+            {
+                "totalPartyCount": 15581,
+                "month": "2015-08-03 03:39:28"
+            },
+            {
+                "totalPartyCount": 15780,
+                "month": "2015-09-14 02:40:32"
+            },
+            {
+                "totalPartyCount": 17036,
+                "month": "2015-10-15 17:50:32"
+            },
+            {
+                "totalPartyCount": 31120,
+                "month": "2015-11-12 08:03:35"
+            },
+            {
+                "totalPartyCount": 48450,
+                "month": "2015-12-03 17:46:05"
+            },
+            {
+                "totalPartyCount": 48682,
+                "month": "2016-01-12 08:04:15"
+            },
+            {
+                "totalPartyCount": 48838,
+                "month": "2016-02-08 13:43:36"
+            },
+            {
+                "totalPartyCount": 48922,
+                "month": "2016-03-01 00:32:49"
+            },
+            {
+                "totalPartyCount": 48953,
+                "month": "2016-04-10 17:44:37"
+            },
+            {
+                "totalPartyCount": 49015,
+                "month": "2016-05-04 00:25:23"
+            },
+            {
+                "totalPartyCount": 49103,
+                "month": "2016-06-25 15:54:34"
+            },
+            {
+                "totalPartyCount": 49273,
+                "month": "2016-07-01 17:14:33"
+            },
+            {
+                "totalPartyCount": 49439,
+                "month": "2016-08-03 19:09:41"
+            },
+            {
+                "totalPartyCount": 50062,
+                "month": "2016-09-18 11:09:28"
+            },
+            {
+                "totalPartyCount": 53599,
+                "month": "2016-10-10 10:36:18"
+            },
+            {
+                "totalPartyCount": 85166,
+                "month": "2016-11-08 09:59:51"
+            },
+            {
+                "totalPartyCount": 122868,
+                "month": "2016-12-22 21:46:29"
+            },
+            {
+                "totalPartyCount": 123612,
+                "month": "2017-01-06 14:06:53"
+            },
+            {
+                "totalPartyCount": 124005,
+                "month": "2017-02-20 16:00:00"
+            },
+            {
+                "totalPartyCount": 124136,
+                "month": "2017-03-08 10:23:15"
+            },
+            {
+                "totalPartyCount": 124249,
+                "month": "2017-04-02 19:20:28"
+            },
+            {
+                "totalPartyCount": 124347,
+                "month": "2017-05-02 03:39:37"
+            },
+            {
+                "totalPartyCount": 124492,
+                "month": "2017-06-01 13:34:45"
+            },
+            {
+                "totalPartyCount": 124773,
+                "month": "2017-07-02 16:25:03"
+            },
+            {
+                "totalPartyCount": 125098,
+                "month": "2017-08-02 05:01:13"
+            },
+            {
+                "totalPartyCount": 126333,
+                "month": "2017-09-02 14:42:47"
+            },
+            {
+                "totalPartyCount": 133342,
+                "month": "2017-10-01 06:55:02"
+            },
+            {
+                "totalPartyCount": 189429,
+                "month": "2017-11-21 23:44:09"
+            },
+            {
+                "totalPartyCount": 250550,
+                "month": "2017-12-11 15:52:16"
+            },
+            {
+                "totalPartyCount": 251815,
+                "month": "2018-01-01 15:41:54"
+            },
+            {
+                "totalPartyCount": 252419,
+                "month": "2018-02-01 03:19:58"
+            },
+            {
+                "totalPartyCount": 252635,
+                "month": "2018-03-01 17:04:04"
+            },
+            {
+                "totalPartyCount": 252775,
+                "month": "2018-04-02 04:09:46"
+            },
+            {
+                "totalPartyCount": 252997,
+                "month": "2018-05-01 04:21:53"
+            },
+            {
+                "totalPartyCount": 253287,
+                "month": "2018-06-02 00:14:41"
+            },
+            {
+                "totalPartyCount": 253751,
+                "month": "2018-07-02 01:18:10"
+            },
+            {
+                "totalPartyCount": 254294,
+                "month": "2018-08-01 06:41:29"
+            },
+            {
+                "totalPartyCount": 256373,
+                "month": "2018-09-01 00:41:25"
+            },
+            {
+                "totalPartyCount": 269404,
+                "month": "2018-10-21 02:18:57"
+            },
+            {
+                "totalPartyCount": 361390,
+                "month": "2018-11-05 08:56:40"
+            },
+            {
+                "totalPartyCount": 466095,
+                "month": "2018-12-11 04:46:15"
+            },
+            {
+                "totalPartyCount": 468226,
+                "month": "2019-01-01 14:27:29"
+            },
+            {
+                "totalPartyCount": 469237,
+                "month": "2019-02-01 00:27:39"
+            },
+            {
+                "totalPartyCount": 469551,
+                "month": "2019-03-01 00:45:32"
+            },
+            {
+                "totalPartyCount": 469568,
+                "month": "2019-04-01 10:04:55"
+            }
+        ],
+        "total_participant_chart_data": [
+            {
+                "totalParticipantCount": 668,
+                "month": "2012-12-06 09:56:00"
+            },
+            {
+                "totalParticipantCount": 691,
+                "month": "2013-01-03 17:19:22"
+            },
+            {
+                "totalParticipantCount": 710,
+                "month": "2013-02-01 01:21:55"
+            },
+            {
+                "totalParticipantCount": 807,
+                "month": "2013-03-04 05:18:26"
+            },
+            {
+                "totalParticipantCount": 810,
+                "month": "2013-06-11 10:37:04"
+            },
+            {
+                "totalParticipantCount": 859,
+                "month": "2013-07-02 04:21:46"
+            },
+            {
+                "totalParticipantCount": 873,
+                "month": "2013-08-15 02:31:30"
+            },
+            {
+                "totalParticipantCount": 938,
+                "month": "2013-09-13 21:40:50"
+            },
+            {
+                "totalParticipantCount": 1487,
+                "month": "2013-10-02 00:17:46"
+            },
+            {
+                "totalParticipantCount": 14207,
+                "month": "2013-11-01 07:52:28"
+            },
+            {
+                "totalParticipantCount": 33873,
+                "month": "2013-12-12 16:53:03"
+            },
+            {
+                "totalParticipantCount": 34153,
+                "month": "2014-01-02 15:06:15"
+            },
+            {
+                "totalParticipantCount": 34243,
+                "month": "2014-02-07 20:00:52"
+            },
+            {
+                "totalParticipantCount": 34280,
+                "month": "2014-03-11 12:25:21"
+            },
+            {
+                "totalParticipantCount": 34394,
+                "month": "2014-04-02 08:10:12"
+            },
+            {
+                "totalParticipantCount": 34437,
+                "month": "2014-05-04 23:00:02"
+            },
+            {
+                "totalParticipantCount": 34682,
+                "month": "2014-06-05 04:59:15"
+            },
+            {
+                "totalParticipantCount": 34995,
+                "month": "2014-07-07 07:30:58"
+            },
+            {
+                "totalParticipantCount": 35373,
+                "month": "2014-08-04 13:34:31"
+            },
+            {
+                "totalParticipantCount": 36407,
+                "month": "2014-09-20 10:40:45"
+            },
+            {
+                "totalParticipantCount": 40413,
+                "month": "2014-10-07 13:25:00"
+            },
+            {
+                "totalParticipantCount": 79356,
+                "month": "2014-11-20 06:20:30"
+            },
+            {
+                "totalParticipantCount": 136937,
+                "month": "2014-12-03 22:45:57"
+            },
+            {
+                "totalParticipantCount": 137556,
+                "month": "2015-01-01 12:56:02"
+            },
+            {
+                "totalParticipantCount": 138034,
+                "month": "2015-02-02 10:31:53"
+            },
+            {
+                "totalParticipantCount": 138237,
+                "month": "2015-03-03 20:46:35"
+            },
+            {
+                "totalParticipantCount": 138380,
+                "month": "2015-04-01 02:47:33"
+            },
+            {
+                "totalParticipantCount": 138548,
+                "month": "2015-05-21 16:42:46"
+            },
+            {
+                "totalParticipantCount": 138853,
+                "month": "2015-06-02 06:23:05"
+            },
+            {
+                "totalParticipantCount": 139316,
+                "month": "2015-07-01 01:17:44"
+            },
+            {
+                "totalParticipantCount": 139932,
+                "month": "2015-08-03 03:39:28"
+            },
+            {
+                "totalParticipantCount": 141403,
+                "month": "2015-09-14 02:40:32"
+            },
+            {
+                "totalParticipantCount": 151887,
+                "month": "2015-10-15 17:50:32"
+            },
+            {
+                "totalParticipantCount": 285320,
+                "month": "2015-11-12 08:03:35"
+            },
+            {
+                "totalParticipantCount": 452252,
+                "month": "2015-12-03 17:46:05"
+            },
+            {
+                "totalParticipantCount": 454694,
+                "month": "2016-01-12 08:04:15"
+            },
+            {
+                "totalParticipantCount": 456068,
+                "month": "2016-02-08 13:43:36"
+            },
+            {
+                "totalParticipantCount": 456875,
+                "month": "2016-03-01 00:32:49"
+            },
+            {
+                "totalParticipantCount": 457119,
+                "month": "2016-04-10 17:44:37"
+            },
+            {
+                "totalParticipantCount": 457640,
+                "month": "2016-05-04 00:25:23"
+            },
+            {
+                "totalParticipantCount": 458547,
+                "month": "2016-06-25 15:54:34"
+            },
+            {
+                "totalParticipantCount": 460023,
+                "month": "2016-07-01 17:14:33"
+            },
+            {
+                "totalParticipantCount": 461376,
+                "month": "2016-08-03 19:09:41"
+            },
+            {
+                "totalParticipantCount": 466655,
+                "month": "2016-09-18 11:09:28"
+            },
+            {
+                "totalParticipantCount": 496805,
+                "month": "2016-10-10 10:36:18"
+            },
+            {
+                "totalParticipantCount": 805930,
+                "month": "2016-11-08 09:59:51"
+            },
+            {
+                "totalParticipantCount": 1177443,
+                "month": "2016-12-22 21:46:29"
+            },
+            {
+                "totalParticipantCount": 1184492,
+                "month": "2017-01-06 14:06:53"
+            },
+            {
+                "totalParticipantCount": 1188069,
+                "month": "2017-02-20 16:00:00"
+            },
+            {
+                "totalParticipantCount": 1189322,
+                "month": "2017-03-08 10:23:15"
+            },
+            {
+                "totalParticipantCount": 1190526,
+                "month": "2017-04-02 19:20:28"
+            },
+            {
+                "totalParticipantCount": 1191582,
+                "month": "2017-05-02 03:39:37"
+            },
+            {
+                "totalParticipantCount": 1192831,
+                "month": "2017-06-01 13:34:45"
+            },
+            {
+                "totalParticipantCount": 1195474,
+                "month": "2017-07-02 16:25:03"
+            },
+            {
+                "totalParticipantCount": 1198376,
+                "month": "2017-08-02 05:01:13"
+            },
+            {
+                "totalParticipantCount": 1209220,
+                "month": "2017-09-02 14:42:47"
+            },
+            {
+                "totalParticipantCount": 1270524,
+                "month": "2017-10-01 06:55:02"
+            },
+            {
+                "totalParticipantCount": 1836895,
+                "month": "2017-11-21 23:44:09"
+            },
+            {
+                "totalParticipantCount": 2455395,
+                "month": "2017-12-11 15:52:16"
+            },
+            {
+                "totalParticipantCount": 2467811,
+                "month": "2018-01-01 15:41:54"
+            },
+            {
+                "totalParticipantCount": 2474022,
+                "month": "2018-02-01 03:19:58"
+            },
+            {
+                "totalParticipantCount": 2476285,
+                "month": "2018-03-01 17:04:04"
+            },
+            {
+                "totalParticipantCount": 2477982,
+                "month": "2018-04-02 04:09:46"
+            },
+            {
+                "totalParticipantCount": 2480061,
+                "month": "2018-05-01 04:21:53"
+            },
+            {
+                "totalParticipantCount": 2483028,
+                "month": "2018-06-02 00:14:41"
+            },
+            {
+                "totalParticipantCount": 2487038,
+                "month": "2018-07-02 01:18:10"
+            },
+            {
+                "totalParticipantCount": 2491571,
+                "month": "2018-08-01 06:41:29"
+            },
+            {
+                "totalParticipantCount": 2509387,
+                "month": "2018-09-01 00:41:25"
+            },
+            {
+                "totalParticipantCount": 2623442,
+                "month": "2018-10-21 02:18:57"
+            },
+            {
+                "totalParticipantCount": 3552762,
+                "month": "2018-11-05 08:56:40"
+            },
+            {
+                "totalParticipantCount": 4605300,
+                "month": "2018-12-11 04:46:15"
+            },
+            {
+                "totalParticipantCount": 4625327,
+                "month": "2019-01-01 14:27:29"
+            },
+            {
+                "totalParticipantCount": 4634927,
+                "month": "2019-02-01 00:27:39"
+            },
+            {
+                "totalParticipantCount": 4637721,
+                "month": "2019-03-01 00:45:32"
+            },
+            {
+                "totalParticipantCount": 4637851,
+                "month": "2019-04-01 10:04:55"
+            }
+        ]
+    },
+    "featured_years": {
+        "featured_years": [
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021"
+        ]
+    },
+    "google_data": [],
+    "difference_party_data": {
+        "party_count_difference": 88437,
+        "participant_count_difference": 874640,
+        "confirmed_participant_count_difference": 836131,
+        "distinct_participant_count_difference": 753233,
+        "average_participants_difference": -0.05109974137551809,
+        "average_wishlist_difference": 1.5926579028432286
+    }
+}

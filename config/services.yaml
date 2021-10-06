@@ -39,7 +39,7 @@ services:
         bind:
             $siteDomain: '%env(HOST)%'
             $geoIpDbPath: '%env(GEO_IP_DB_PATH)%'
-            $reportCachePath: '%kernel.project_dir%/var/report_cache'
+            $reportCachePath: '%kernel.project_dir%/report_cache'
             $recaptchaSecret: '%kernel.project_dir%/config/recaptcha_secrets.json'
             $salt: '%env(APP_SALT)%'
 

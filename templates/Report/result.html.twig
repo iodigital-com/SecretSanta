@@ -17,7 +17,7 @@
             <col width="25%">
             <tr>
                 <td>Confirmed parties:</td>
-                <td>{{ party_data['parties'][0]['partyCount'] }}</td>
+                <td>{{ party_data['parties'] }}</td>
                 {% if difference_party_data is defined and difference_party_data is not empty %}
                     {% if difference_party_data['party_count_difference'] > 0 %}
                         <td class="positive">+ {{ difference_party_data['party_count_difference'] }}</td>

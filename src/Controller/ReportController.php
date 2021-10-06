@@ -11,7 +11,7 @@ class ReportController extends AbstractController
 {
     /**
      * @Route("/report/{year}", defaults={"year" = "all"}, name="report", methods={"GET"})
-     * @Template()
+     * @Template("Report/index.html.twig")
      */
     public function indexAction(ExportReportQueriesService $exportReportQueriesService, string $year)
     {

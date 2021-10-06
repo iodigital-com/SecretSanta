@@ -15,10 +15,7 @@ class PartyReportQuery
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
-    /**
-     * @return mixed
-     */
-    public function countParties(Season $season)
+    public function countParties(Season $season): int
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS partyCount')
@@ -28,7 +25,9 @@ class PartyReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        $partyCount = $query->execute()->fetchAll();
+
+        return (int) $partyCount[0]['partyCount'];
     }
 
     /**
@@ -127,10 +126,10 @@ class PartyReportQuery
 
         try {
             $partyCountSeason2 = $this->countParties($season2);
-        } catch (\Exception $e) {
-            return $partyCountSeason1[0]['partyCount'];
+        } catch (\Exception) {
+            return $partyCountSeason1;
         }
 
-        return $partyCountSeason1[0]['partyCount'] - $partyCountSeason2[0]['partyCount'];
+        return $partyCountSeason1 - $partyCountSeason2;
     }
 }

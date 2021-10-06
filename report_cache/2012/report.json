@@ -1,0 +1,301 @@
+{
+    "current_year": "2012",
+    "party_data": {
+        "parties": 120,
+        "participants": 807,
+        "confirmed_participants": [
+            {
+                "confirmedParticipantCount": "669"
+            }
+        ],
+        "distinct_participants": [
+            {
+                "distinctParticipantCount": "661"
+            }
+        ],
+        "participant_average": 6.725,
+        "wishlist_average": 0,
+        "ip_usage": [],
+        "party_chart_data": [
+            {
+                "accumulatedPartyCountByMonth": "101",
+                "month": "2012-12-05 14:40:30"
+            },
+            {
+                "accumulatedPartyCountByMonth": "5",
+                "month": "2013-01-03 17:19:22"
+            },
+            {
+                "accumulatedPartyCountByMonth": "4",
+                "month": "2013-02-01 01:21:55"
+            },
+            {
+                "accumulatedPartyCountByMonth": "10",
+                "month": "2013-03-04 05:18:26"
+            }
+        ],
+        "participant_chart_data": [
+            {
+                "accumulatedParticipantCountByMonth": "668",
+                "month": "2012-12-06 09:56:00"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "23",
+                "month": "2013-01-03 17:19:22"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "19",
+                "month": "2013-02-01 01:21:55"
+            },
+            {
+                "accumulatedParticipantCountByMonth": "97",
+                "month": "2013-03-04 05:18:26"
+            }
+        ],
+        "yearly_party_chart_data": [
+            {
+                "year": "2012",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "120"
+                    }
+                ]
+            },
+            {
+                "year": "2013",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "3688"
+                    }
+                ]
+            },
+            {
+                "year": "2014",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "11569"
+                    }
+                ]
+            },
+            {
+                "year": "2015",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "33545"
+                    }
+                ]
+            },
+            {
+                "year": "2016",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "75219"
+                    }
+                ]
+            },
+            {
+                "year": "2017",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "128495"
+                    }
+                ]
+            },
+            {
+                "year": "2018",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "216931"
+                    }
+                ]
+            },
+            {
+                "year": "2019",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "276987"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "313799"
+                    }
+                ]
+            },
+            {
+                "year": "2021",
+                "party": [
+                    {
+                        "accumulatedPartyCountByYear": "1852"
+                    }
+                ]
+            }
+        ],
+        "yearly_participant_chart_data": [
+            {
+                "year": "2012",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "807"
+                    }
+                ]
+            },
+            {
+                "year": "2013",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "33473"
+                    }
+                ]
+            },
+            {
+                "year": "2014",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "103973"
+                    }
+                ]
+            },
+            {
+                "year": "2015",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "318622"
+                    }
+                ]
+            },
+            {
+                "year": "2016",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "732498"
+                    }
+                ]
+            },
+            {
+                "year": "2017",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "1286919"
+                    }
+                ]
+            },
+            {
+                "year": "2018",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "2161546"
+                    }
+                ]
+            },
+            {
+                "year": "2019",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "2831387"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "2762166"
+                    }
+                ]
+            },
+            {
+                "year": "2021",
+                "participant": [
+                    {
+                        "accumulatedParticipantCountByYear": "16609"
+                    }
+                ]
+            }
+        ],
+        "total_parties": [
+            {
+                "partyCount": "120"
+            }
+        ],
+        "total_participants": [
+            {
+                "totalParticipantCount": "807"
+            }
+        ],
+        "total_confirmed_participants": [
+            {
+                "confirmedParticipantCount": "669"
+            }
+        ],
+        "total_participant_average": 6.725,
+        "total_wishlist_average": 0,
+        "total_distinct_participants": [
+            {
+                "distinctParticipantCount": "661"
+            }
+        ],
+        "total_party_chart_data": [
+            {
+                "totalPartyCount": 101,
+                "month": "2012-12-05 14:40:30"
+            },
+            {
+                "totalPartyCount": 106,
+                "month": "2013-01-03 17:19:22"
+            },
+            {
+                "totalPartyCount": 110,
+                "month": "2013-02-01 01:21:55"
+            },
+            {
+                "totalPartyCount": 120,
+                "month": "2013-03-04 05:18:26"
+            }
+        ],
+        "total_participant_chart_data": [
+            {
+                "totalParticipantCount": 668,
+                "month": "2012-12-06 09:56:00"
+            },
+            {
+                "totalParticipantCount": 691,
+                "month": "2013-01-03 17:19:22"
+            },
+            {
+                "totalParticipantCount": 710,
+                "month": "2013-02-01 01:21:55"
+            },
+            {
+                "totalParticipantCount": 807,
+                "month": "2013-03-04 05:18:26"
+            }
+        ]
+    },
+    "featured_years": {
+        "featured_years": [
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021"
+        ]
+    },
+    "google_data": [],
+    "difference_party_data": {
+        "party_count_difference": 120,
+        "participant_count_difference": 807,
+        "confirmed_participant_count_difference": 669,
+        "distinct_participant_count_difference": 661,
+        "average_participants_difference": 6.725,
+        "average_wishlist_difference": 0
+    }
+}

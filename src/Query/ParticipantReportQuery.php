@@ -173,10 +173,7 @@ class ParticipantReportQuery
         return $participantCountSeason1 - $participantCountSeason2;
     }
 
-    /**
-     * @return mixed
-     */
-    public function countParticipants(Season $season)
+    public function countParticipants(Season $season): int
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS participant_count')
@@ -189,7 +186,7 @@ class ParticipantReportQuery
 
         $participantCount = $query->execute()->fetchAll();
 
-        return $participantCount[0]['participant_count'];
+        return (int) $participantCount[0]['participant_count'];
     }
 
     /**
@@ -277,8 +274,8 @@ class ParticipantReportQuery
         $partyCount = $this->partyReportQuery->countParties($season);
         $participantCount = $this->countParticipants($season);
 
-        if ($partyCount[0]['partyCount'] !== 0 || $participantCount !== 0) {
-            return $participantCount / implode($partyCount[0]);
+        if ($partyCount !== 0 && $participantCount !== 0) {
+            return $participantCount / $partyCount;
         }
 
         throw new NoResultException();
