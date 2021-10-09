@@ -32,6 +32,11 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
      */
     public function setLocale($locale)
     {
+        // @todo: refactor to intersection type in php 8.1
+        if (!($this->translator instanceof LocaleAwareInterface)) {
+            throw new \LogicException('Translator should implement LocaleAwareInterface');
+        }
+
         $this->translator->setLocale($locale);
     }
 
@@ -40,6 +45,11 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
      */
     public function getLocale()
     {
+        // @todo: refactor to intersection type in php 8.1
+        if (!($this->translator instanceof LocaleAwareInterface)) {
+            throw new \LogicException('Translator should implement LocaleAwareInterface');
+        }
+
         return $this->translator->getLocale();
     }
 
@@ -48,6 +58,11 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
      */
     public function getCatalogue($locale = null)
     {
+        // @todo: refactor to intersection type in php 8.1
+        if (!($this->translator instanceof TranslatorBagInterface)) {
+            throw new \LogicException('Translator should implement TranslatorBagInterface');
+        }
+
         return $this->translator->getCatalogue($locale);
     }
 }
