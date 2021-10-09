@@ -5,6 +5,7 @@
     "license": "proprietary",
     "require": {
         "php": "^8.0",
+        "ext-apcu": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.*",
