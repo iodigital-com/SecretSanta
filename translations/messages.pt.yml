@@ -66,6 +66,8 @@ party-create:
             para evitar que hóspedes indesejáveis ou trols estraguem a brincadeira do Secret Santa. <b>O e-mail de validação
             irá gerar um link para o proprietário do evento</b>.</p>
 
+#    rate_limit_reached: ?
+
     add_participants: Adicione os participantes
     list_adminstrator: Esta pessoa também é um operador da lista.
     add_personal_message:

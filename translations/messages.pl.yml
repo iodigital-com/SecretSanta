@@ -60,6 +60,7 @@ party-create:
         intro_2: Utwórz imprezę na stronie głównej. Potrzebujesz co najmniej 3 uczestników, pierwszy uczestnik jest jednocześnie administratorem listy.
                  Administrator otrzyma na adres e-mailowy link, który należy potwierdzić. Po zweryfikowaniu zostaną wylosowane imiona uczestników listy Tajnego Mikołaja i każdy z uczestników otrzyma e-mail z twoją wiadomością i imieniem osoby, dla której ma zrobić prezent. Zweryfikowanie jest konieczne, aby zapobiec by niepożądani goście nie popsuli tej zabawy. W potwierdzającym e-mailu będzie także wysłany link do strony, na której administrator może zarządzać imprezą Tajnego Mikołaja.
 
+#    rate_limit_reached: ?
     
     add_participants: Dodaj uczestników
     list_adminstrator: Ta osoba jest także administratorem Twojej listy.

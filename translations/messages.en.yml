@@ -68,6 +68,8 @@ party-create:
             The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy.
             We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
 
+    rate_limit_reached: Ho, ho, hold your reindeers!<br>You need to wait a few minutes before creating a new party.
+
     add_participants: Add your participants
     list_adminstrator: This person is a participant too.
     add_personal_message:

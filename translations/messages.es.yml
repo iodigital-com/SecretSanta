@@ -64,6 +64,8 @@ party-create:
             El administrador de la lista recibirá un enlace de confirmación en su correo electrónico. Una vez validado dicho enlace, su lista Secret Santa será codificada y, todos los participantes recibirán su mensaje junto con el nombre de su amigo de regalo Secret Santa. 
             Exigimos una confirmación para evitar que los bots o troles arruinen tu fiesta Secret Santa. <b>El correo electrónico de validación proporcionará con un enlace al administrador del evento Secret Santa.</b>.</p>
 
+#    rate_limit_reached: ?
+
     add_participants: Añade tus participantes
     list_adminstrator: Esta persona también es el administrador de tu lista.
     add_personal_message:

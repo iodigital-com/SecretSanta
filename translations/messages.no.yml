@@ -68,6 +68,8 @@ party-create:
                     Administrator mottar så en e-post med en link som må trykkes på for at arrangementet skal godkjennes. Når denne er bekreftet, vil listen med deltagere bli blandet og alle mottar en personlig melding (som du opprettet) samt en "hemmelig venn" å gi gave til.
                     Vi krever bekreftelsen for at roboter og troll ikke skal kunne ødelegge din Secret Santa-fest. <b>Bekreftelses-eposten følger med en link til Secret Santa-arrangement administrasjon-siden</b>.</p>
 
+#    rate_limit_reached: ?
+
     add_participants: Legge til deltagere
     list_adminstrator: Denne personen er også en deltager.
     add_personal_message:

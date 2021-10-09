@@ -65,6 +65,8 @@ party-create:
 #       title_2:
 #       intro_2:
 
+#    rate_limit_reached: ?
+
     add_participants: Добавьте участников
     list_adminstrator: Этот человек также будет администратором вашего списка участников.
     add_personal_message:

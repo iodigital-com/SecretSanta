@@ -66,6 +66,8 @@ party-create:
             De lijstbeheerder zal een bevestigingsmail aankrijgen. Als de deelname is bevestigd, wordt de secretsantalijst door elkaar geschud en zullen alle deelnemers een e-mail ontvangen met de naam van hun geheime persoon.
             We vereisen een bevestiging zodat een bot of grapjas je feestje niet kan vergallen. <b>In de bevestigingsmail staat ook een link naar een pagina om je Secret Santa-evenement te beheren</b>.</p>
 
+    rate_limit_reached: Je moet een minuutje wachten alvorens een volgend feestje te kunnen aanmaken.
+
     add_participants: Voeg je deelnemers toe
     list_adminstrator: Deze persoon is zelf ook deelnemer
     add_personal_message:

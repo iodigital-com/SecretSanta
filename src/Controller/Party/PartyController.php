@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Party;
 
+use App\Form\Handler\Exception\RateLimitExceededException;
 use App\Form\Handler\PartyFormHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -86,12 +87,18 @@ class PartyController extends AbstractController
             'action' => $this->generateUrl('create_party'),
         ]);
 
-        if ($handler->handle($form, $request)) {
-            return $this->redirectToRoute('party_created', ['listurl' => $party->getListurl()]);
+        $rateLimitReached = false;
+        try {
+            if ($handler->handle($form, $request)) {
+                return $this->redirectToRoute('party_created', ['listurl' => $party->getListurl()]);
+            }
+        } catch (RateLimitExceededException) {
+            $rateLimitReached = true;
         }
 
         return [
             'form' => $form->createView(),
+            'rateLimitReached' => $rateLimitReached,
         ];
     }
 }

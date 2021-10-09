@@ -60,6 +60,8 @@ party-create:
 #       title_2: ?
 #       intro_2: ?
 
+#    rate_limit_reached: ?
+
     add_participants: 加入你的參加者
     list_adminstrator: 這人是你的名單管理者。
     add_personal_message:

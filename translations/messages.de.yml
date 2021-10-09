@@ -64,6 +64,8 @@ party-create:
 #       title_2: 
 #       intro_2: 
 
+#    rate_limit_reached: ?
+
     add_participants: Fügen Sie Ihre Teilnehmer hinzu
     list_adminstrator: Diese Person ist auch Ihr administrator
     add_personal_message:

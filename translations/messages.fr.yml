@@ -54,7 +54,10 @@ party-create:
         intro_2: >
             <p>Créez un évènement <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer"> sur la page d'accueil</a>. Vous avez besoin d'au moins 3 participants, <b> dont le premier deviendra l'administrateur de l'évènement.</b> 
             L'administrateur recevra un lien de confirmation par e-mail. Une fois son inscription validée, votre liste Secret Santa sera créée et, tous les participants recevront un message contenant le nom de la personne à qu'ils doivent offrir un cadeau. 
-            Nous demandons une confirmation afin d'empêcher les robots et les trolls de gâcher votre évènement Secret Santa. <b> L'e-mail de validation vous fournira avec un lien vers la page de gestion de l'évènement Secret Santa.</b></p>    
+            Nous demandons une confirmation afin d'empêcher les robots et les trolls de gâcher votre évènement Secret Santa. <b> L'e-mail de validation vous fournira avec un lien vers la page de gestion de l'évènement Secret Santa.</b></p>
+
+#    rate_limit_reached: ?
+
     add_participants: Ajoutez des participants
     list_adminstrator: Cette personne est également l'administrateur.
     add_personal_message:
