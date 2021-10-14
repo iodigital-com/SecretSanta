@@ -10,7 +10,7 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Benötigen Sie Hilfe? Haben Sie Fragen? Lesen Sie die FAQ!</a>
     privacy_policy: Datenschutzerverklärung
     cookie_policy: Cookie-Richtlinie
-#   bug_bounty: 
+    bug_bounty: Kopfgeldjagd nach Sicherheitslücken
 
 # Form/{PartyType,UpdatePartyDetailsType}
 form-party:
@@ -18,8 +18,8 @@ form-party:
         date_party: Datum Ihrer Secret Santa-Party
         location: Platz von Ihrer Secret Santa-Party
         amount_to_spend: Auszugebender Betrag
-#       message:
-#       confirmed:
+        message: Zusätzliche Nachricht via Email
+        confirmed: Ja, ich habe die Erlaubnis die Emailadressen der Teilnehmer für Secret Santa zu verwenden.
 
 # PartyController
 party_controller:
@@ -61,8 +61,11 @@ party-create:
             Um dies spannender zu gestalten, <strong>können Sie beliebige Menschen beauftragen</strong> einander
             zu beschenken.</p>
 
-#       title_2: 
-#       intro_2: 
+        title_2: Wie funktioniert es?
+        intro_2: >
+            <p>
+                Erstellen Sie eine Party <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">auf der Homepage</a>. Sie brauchen zumindest 3 Teilnehmer, <b>Der erste Teilnehmer ist automatisch der Administrator der Liste.</b> Der Administrator erhählt einen Bestätigungslink via Email. Sobald dieser bestätigt ist, wird Ihre Secret Santa Liste verschlüsselt und erhalten alle Teilnehmer Ihre Nachricht und gleichzeitig auch den Namen Ihres Geschenkepartners. Wir fragen auch hier wieder um eine Bestätigung, um zu verhindern, dass Bots oder Trolle Ihre Secret Santa Party ruinieren. <b> Die Bestätigungsemail beinhaltet einen Link zum Secret Santa Veranstaltungs Manager. </b>.
+            </p>
 
 #    rate_limit_reached: ?
 
@@ -92,7 +95,16 @@ party-create:
 # Party/created.html.twig
 party-created:
     title: Nur noch ein Schritt! - Bestätigen Sie Ihre Teilnahme
-#   body: ?
+    body: >
+        <p>
+            Um zu verhindern, dass Bots oder Trolle Ihre Secret Santa Party ruinieren, müssen Sie als Administrator der Liste Ihre Teilnahme bestätigen. Wir haben bereits ein Email mit den weiteren Schritten geschickt. Sobald dieses Email bestätigt ist, werden Sie in der Lage sein Änderungen an Ihrer Party anzubringen, Teilnehmer zu entfernen oder hinzuzufügen und Ausnahmen einzustellen (bei mindestens 4 Teilnehmern). Sobald Sie mit Ihren Einstellungen fertig sind, kann es losgehen.
+        </p>
+        <p>
+            Wir mischen die Teilnehmer und senden allen die nötigen Informationen gemeinsam mit einem Link um herauszufinden wer Ihr geheimer Geschenkepartner ist.
+        </p>
+        <p>
+            Sie können stets den Link in der Bestätigungsemail verwenden um zur Administratorseite zu navigeren. Sobald die Party gestartet ist, können Sie sehen ob die Teilnehmer Ihre Email bereits geöffnet haben und bereits auf den Link zum geheimen Geschenkepartner geklickt haben.
+        </p>
     warning: Vorsicht!
     check_spam: Vergessen Sie nicht, Ihren Spam-Ordner zu kontrollieren!
 
@@ -103,23 +115,23 @@ party-deleted:
     create_new_list: Erstellen Sie eine neue Secret Santa-Liste!
 
 # Party/forgotLink.html.twig
-#party-forgot_link:
-#   title: ?
-#   description: ?
-#   submit_btn: ?
-#   info_reuse: ?
+party-forgot_link:
+    title: Übersicht über meine Secret Santa Partys anfordern.
+    description: Füllen Sie Ihre Emailadresse ein und wir schicken Ihnen ein Email mit einer Übersicht all Ihrer Secret Santa Partys. Sowohl die, die Sie selbst erstellt haben, als die an denen Sie teilnehmen. Nur Partys in der Zukunft erscheinen auf der Übersicht.
+    submit_btn: Übersicht anfragen.
+    info_reuse: Wenn Sie gerne eine Secret Santa Party erstellen wollen, die basiert ist auf einer vergangenen Secret Santa Party, können Sie hier eine Liste Ihrer bereits erstellten Partys anfragen.
 
 # Party/getReuseUrl.html.twig
-#party-get_reuse_url:
-#   title: ?
-#   description: ?
-#   form:
-#       submit-btn: ?
+party-get_reuse_url:
+    title: Party wiederherstellen.
+    description: Füllen Sie Ihre Emailadresse ein und wir schicken Ihnen ein Email mit einer Übersicht all Ihrer Secret Santa Partys aus den vergangenen 2 Jahren mit einem Link um diese wiederherzustellen. Diese Funktion besteht nur für Partys die Sie selbst erstellt haben.
+    form:
+        submit-btn: Wiederherstellen anfragen.
 
 # Wishlist/showAll.html.twig
-#wishlist-show_all:
-#   title: ?
-#   back:
+wishlist-show_all:
+    title: Alle Secret Santa Wunschzetteln
+    back: Zurück zur Administratorenseite
 
 # Static/faq.html.twig
 static-faq:
