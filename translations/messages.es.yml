@@ -35,7 +35,7 @@ party_controller:
 
             La fiesta Secret Santa está planeada para el %eventdate% y tiene lugar en %location%. ¡Asegúrate de traer tu regalo!
 
-            %message
+            %message%
 
             ¡Felices Fiestas!
 
