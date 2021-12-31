@@ -21,7 +21,7 @@ class PartyFormHandler
     ) {
     }
 
-    public function handle(FormInterface $form, Request $request): bool
+    public function handle(FormInterface $form, Request $request, bool $ignoreRateLimit = false): bool
     {
         /** @var Party $party */
         $party = $form->getData();
@@ -58,7 +58,9 @@ class PartyFormHandler
         $this->em->persist($party);
         $this->em->flush();
 
-        $this->cache->set($rateLimitCacheKey, date('U'), 60);
+        if(!$ignoreRateLimit) {
+            $this->cache->set($rateLimitCacheKey, date('U'), 60);
+        }
 
         $this->mailer->sendPendingConfirmationMail($party);
 

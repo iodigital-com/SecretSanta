@@ -42,6 +42,7 @@ services:
             $reportCachePath: '%kernel.project_dir%/report_cache'
             $recaptchaSecret: '%kernel.project_dir%/config/recaptcha_secrets.json'
             $salt: '%env(APP_SALT)%'
+            $appEnv: '%env(APP_ENV)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
