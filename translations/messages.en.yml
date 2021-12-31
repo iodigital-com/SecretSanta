@@ -302,8 +302,9 @@ participant_communication-send_message:
 # Participant/unsubscribe.html.twih
 participant_unsubscribe:
     title: Unsubscribe from emails
-    unsubscribe_all_label: Mark this checkbox if you also want to unsubscribe from all other parties where you currently are participating
-    unsubscribe_blacklist: "Blacklist me: Prevent users from inviting me in the future"
+    unsubscribe_current_label: I don't want to resceive any more emails from the current party
+    unsubscribe_all_label: I don't want to resceive any more emails from all ongoing parties I am participating in
+    unsubscribe_blacklist: Unsubscribe from all future emails
     unsubscribe_confirm_btn: Unsubscribe
     unsubscribe_for: Your are unsubscribing from emails for the Secret Santa party on %date%, at/in %location%.
     info_confirmation: >

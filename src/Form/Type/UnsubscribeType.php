@@ -3,7 +3,8 @@
 namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class UnsubscribeType extends AbstractType
@@ -11,13 +12,15 @@ class UnsubscribeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('allParties', CheckboxType::class, [
+            ->add('unsubscribeOption', ChoiceType::class, [
                 'label' => 'participant_unsubscribe.unsubscribe_all_label',
-                'required' => false,
-            ])
-            ->add('blacklist', CheckboxType::class, [
-                'label' => 'participant_unsubscribe.unsubscribe_blacklist',
-                'required' => false,
+                'expanded' => true,
+                'multiple' => false,
+                'choices' => [
+                    'participant_unsubscribe.unsubscribe_current_label' => 'current',
+                    'participant_unsubscribe.unsubscribe_all_label' => 'all',
+                    'participant_unsubscribe.unsubscribe_blacklist' => 'blacklist',
+                ],
             ]);
     }
 }

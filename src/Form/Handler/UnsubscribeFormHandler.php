@@ -37,18 +37,22 @@ class UnsubscribeFormHandler
             return false;
         }
 
-        $unsubscribeData = $form->getData();
+        $unsubscribeOption = $form->getData()['unsubscribeOption'];
 
-        if (false === $unsubscribeData['blacklist'] && false === $unsubscribeData['allParties']) {
-            $this->session->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error_atleast_one_option'));
+        switch ($unsubscribeOption) {
+            case 'current':
+                $this->unsubscribeService->unsubscribe($participant, false);
+                break;
 
-            return false;
-        }
+            case 'all':
+                $this->unsubscribeService->unsubscribe($participant, true);
+                break;
 
-        if ($unsubscribeData['blacklist']) {
-            $this->unsubscribeService->blacklist($participant, $request->getClientIp());
-        } else {
-            $this->unsubscribeService->unsubscribe($participant, $unsubscribeData['allParties']);
+            case 'blacklist':
+                $this->unsubscribeService->blacklist($participant, $request->getClientIp());
+
+            default:
+                return false;
         }
 
         $this->session->getFlashBag()->add('success', $this->translator->trans('participant_unsubscribe.feedback.success'));
