@@ -8,6 +8,7 @@ use App\Entity\Party;
 use App\Form\Handler\AddParticipantFormHandler;
 use App\Form\Type\SetJoinModeType;
 use App\Mailer\MailerService;
+use App\Query\ParticipantReportQuery;
 use App\Service\PartyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +37,7 @@ class ManagementController extends AbstractController
      * @Route("/manage/{listurl}", name="party_manage", methods={"GET"})
      * @Template("Party/manage/valid.html.twig")
      */
-    public function validAction(Party $party, Form $excludeForm = null)
+    public function validAction(Party $party, ParticipantReportQuery $reportQueriesService, Form $excludeForm = null)
     {
         if ($party->getEventdate() < new \DateTime('-2 years')) {
             return $this->render('Party/manage:expired.html.twig', [
@@ -61,6 +62,8 @@ class ManagementController extends AbstractController
             ]);
         }
 
+        $partyEmailInfo = $reportQueriesService->fetchDataForPartyUpdateMail($party->getListurl());
+
         return [
             'addParticipantForm' => $addParticipantForm->createView(),
             'updatePartyDetailsForm' => $updatePartyDetailsForm->createView(),
@@ -69,6 +72,7 @@ class ManagementController extends AbstractController
             'delete_participant_csrf_token' => $this->get('security.csrf.token_manager')->getToken('delete_participant'),
             'excludeForm' => $excludeForm->createView(),
             'setJoinModeForm' => $setJoinModeForm->createView(),
+            'partyEmailInfo' => $partyEmailInfo,
         ];
     }
 

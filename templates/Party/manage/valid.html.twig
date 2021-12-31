@@ -109,7 +109,7 @@
                 {% if (form_errors(addParticipantForm.name)) or (form_errors(addParticipantForm.email)) %}disabled{% endif %}>
             <i class="fa fa-plus-circle fa-inverse"></i> {{ 'party_manage_valid.btn.add_participant'|trans|raw }}
         </button>
-        <button id="btn_join" class="btn btn-info manage_btn" style="float: right; margin-bottom: 35px;" {% if party.created %}disabled{% endif %}>
+        <button id="btn_join" class="btn btn-info manage_btn" style="margin-bottom: 35px;" {% if party.created %}disabled{% endif %}>
             <i class="fa fa-link fa-inverse"></i> {{ 'party_manage_valid.btn.join_mode'|trans|raw }}
         </button>
         <div class="clearfix"></div>
@@ -260,9 +260,9 @@
         <div class="clearfix"></div>
 
         {% if party.created %}
-            <a id="btn_send_party_update" class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listurl': party.listurl }) }}">
+            <button id="btn_send_party_update" class="btn btn-info manage_btn manage_btn_link">
                 <i class="fa fa-envelope"></i> {{ 'party_manage_valid.btn.party_update'|trans|raw }}
-            </a>
+            </button>
             <a id="btn_expose_matches" href="{{ path('expose_participants', { 'listurl': party.listurl }) }}" class="btn btn-warning manage_btn manage_btn_middle manage_btn_link">
                 <i class="fa fa-eye"></i> {{ 'party_manage_valid.btn.expose'|trans }}
             </a>
@@ -274,6 +274,18 @@
         <button id="btn_update" class="btn btn-warning manage_btn">
             <i class="fa fa-pencil"></i> {{ 'party_manage_valid.btn.updated_party'|trans|raw }}
         </button>
+
+        {% if party.created %}
+            <div id="btn_send_party_update_info" class="alert alert-info" style="display: none">
+                <h3>{{ 'party_manage_valid.btn.party_update_info'|trans }}</h3>
+                <p>
+                    {% include 'Emails/partyUpdate.txt.twig' with {'results': partyEmailInfo } %}
+                </p>
+                <a id="btn_send_party_update_send" class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listurl': party.listurl }) }}">
+                    {{ 'party_manage_valid.btn.party_update_confirm'|trans }}
+                </a>
+            </div>
+        {% endif %}
 
         <br/><br/>
         <div id="delete-warning" class="alert alert-danger" style="display: none;">
