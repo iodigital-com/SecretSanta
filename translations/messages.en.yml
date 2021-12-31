@@ -460,6 +460,8 @@ party_manage_valid:
         expose: View all the matches in this list
         expose_wishlists:  View all participants wishlists
         party_update: Send party update to participants
+        party_update_info: You are about to send the following email to all participants
+        party_update_confirm: Send emails
         remove_participant_confirm: Remove this participant
         updated_party: Update your party details
         start_party: Start your party

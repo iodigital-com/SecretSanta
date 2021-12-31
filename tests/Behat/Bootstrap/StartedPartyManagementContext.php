@@ -37,6 +37,8 @@ class StartedPartyManagementContext extends RawMinkContext implements ContainerA
     public function iSendAPartyUpdate()
     {
         $this->getSession()->getPage()->find('css', '#btn_send_party_update')->click();
+        $this->getSession()->wait(500);
+        $this->getSession()->getPage()->find('css', '#btn_send_party_update_send')->click();
     }
 
     /**
