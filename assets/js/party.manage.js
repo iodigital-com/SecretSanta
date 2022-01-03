@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    console.log('123');
     $('#btn_send_party_update').click(function (e) {
-        console.log('456');
         $('#btn_send_party_update_info').show();
     });
     $('#btn_delete').click(function (e) {
