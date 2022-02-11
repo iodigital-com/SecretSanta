@@ -63,7 +63,7 @@ party-create:
 #    rate_limit_reached: ?
 
     add_participants: 加入你的參加者
-    list_adminstrator: 這人是你的名單管理者。
+    list_adminstrator: 這人也是參加者。
     add_personal_message:
         title: 加入個人信息
         description: 為參加者加入個人信息。
