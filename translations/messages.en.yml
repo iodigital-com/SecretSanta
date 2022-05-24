@@ -177,7 +177,7 @@ static-faq:
     answer2: <p>Create a party <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">on the homepage</a>. You need at least 3 participants, <b>the first participant being the list administrator.</b> The list administrator will receive a confirmation link by e-mail. Once validated, your Secret Santa list will be scrambled and all users will receive your message along with the name of their Secret Santa gift buddy. We demand a confirmation to prevent bots or trolls from ruining your Secret Santa party. <b>The validation e-mail will provide a link to the Secret Santa event manager</b>.</p>
     question3: Can I exclude combinations?
     anchor3: exclude
-    answer3: <p>It is possible to excludee some combinations, for example to prevent members of the same family having to buy gifts for each other. Excludes can be configured if your party has 4 participants or more and as long as your party is not started. If these conditions are met, you will see a box called 'Exclude certain combinations' on the manage page. Clicking on this box wil open it, and make it possible to edit your excludes. These can be edited at any time, as long as your party isn't started. <br><br>It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
+    answer3: <p>It is possible to exclude some combinations, for example to prevent members of the same family having to buy gifts for each other. Excludes can be configured if your party has 4 participants or more and as long as your party is not started. If these conditions are met, you will see a box called 'Exclude certain combinations' on the manage page. Clicking on this box wil open it, and make it possible to edit your excludes. These can be edited at any time, as long as your party isn't started. <br><br>It is not possible to automatically reuse last-year's Secret Santa list and prevent these combinations, as we currently don't see a way to add this without confusing people, sorry.</p>
     question4: Can I provide a wishlist?
     anchor4: wishlist
     answer4: <p>Participants receive a link to a webpage where they will discover their secret buddy. They can add their own wishlist and see their buddy's wishlist on that page.</p>
@@ -829,7 +829,7 @@ form-contact:
         subjects:
             mail: Mail problem
             gdpr: GDPR / Security
-            bug: Rapport a bug
+            bug: Report a bug
             party: Problems by editing the party
             suggestions: Suggestions
             other: Other
