@@ -169,12 +169,12 @@ static-faq:
     question1: Mi az a Secret Santa?
     anchor1: mi_is_ez
     answer1: <p>Minden évben Karácsony környékén, az emberek a világ minden pontján ajándékokat cserélnek.<br/>
-    Annak érdekében, hogy a dolgok érdekesek maradjanak, véletlenszerűen hozzárendelhet személyeket egymáshoz, hogy megjándékozzák egymást.</p>
+             Annak érdekében, hogy a dolgok érdekesek maradjanak, véletlenszerűen hozzárendelhet személyeket egymáshoz, hogy megjándékozzák egymást.</p>
     question2: Hogyan működik?
     anchor2: hogyan_mukodik
     answer2: <p>Készítsen egy partit <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">a kezdőlapon</a>. Legalább 3 résztvevőre lesz szüksége, <b>az első résztvevő a lista adminisztrátora.</b>
-    A lista adminisztrátora e-mailben kap egy megerősítő linket. Az érvényesítés után a Secret Santa listája össze lesz keverve, és minden felhasználó megkapja üzenetét Secret Santa ajándéktársa nevével együtt.
-    Megerősítést kérünk, hogy ne tegyenek kárt botok vagy trollok a bulijában. <b>Az érvényesítő e-mail tartalmaz egy linket a Secret Santa eseménykezelőjéhez</b>.</p>
+             A lista adminisztrátora e-mailben kap egy megerősítő linket. Az érvényesítés után a Secret Santa listája össze lesz keverve, és minden felhasználó megkapja üzenetét Secret Santa ajándéktársa nevével együtt.
+             Megerősítést kérünk, hogy ne tegyenek kárt botok vagy trollok a bulijában. <b>Az érvényesítő e-mail tartalmaz egy linket a Secret Santa eseménykezelőjéhez</b>.</p>
     question3: Ki tudok zárni kombinációkat?
     anchor3: kizarasok
     answer3: <p>Lehetőség van bizonyos kombinációk kizárására, például annak elkerülésére, hogy ugyanazon család tagjainak ajándékot kelljen vásárolniuk egymásnak. A kizárások beállíthatók, ha a partinak 4 vagy több résztvevője van, és mindaddig, amíg a parti el nem indul. Ha ezek a feltételek teljesülnek, a kezelési oldalon látható egy "Bizonyos kombinációk kizárása" nevű mező. A mezőre kattintva megnyílik egy menü, és lehetővé válik a kizárások szerkesztése. Ezeket bármikor szerkesztheti, amíg a parti el nem indul. <br><br>Nem lehetséges automatikusan újrahasználni a tavalyi Secret Santa-listát, és megakadályozni ezeket a kombinációkat, mivel jelenleg nem látjuk a módját, hogy ezt az emberek összezavarása nélkül adjuk hozzá.</p>
