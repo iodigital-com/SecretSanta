@@ -1,23 +1,27 @@
+/* Open Sans regular (variable). */
 @font-face {
-    font-family: 'OpenSansRegular';
-    src: url('../fonts/OpenSans-Regular-webfont.eot');
-    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
-    url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
-    url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
-    font-weight: normal;
+    font-family: "Open Sans";
+    font-weight: 300 800;
     font-style: normal;
+    font-stretch: normal;
+    font-variant: normal;
+    font-display: swap;
+    src:
+      url("../fonts/opensans.woff2") format("woff2") tech("variations"), /* Futureproof. */
+      url("../fonts/opensans.woff2") format("woff2-variations"); /* fallback. */
 }
 
+/* Open Sans italic (variable). */
 @font-face {
-    font-family: 'OpenSansBold';
-    src: url('../fonts/OpenSans-Bold-webfont.eot');
-    src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
-    url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
-    url('../fonts/OpenSans-Bold-webfont.svg#OpenSansBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
+    font-family: "Open Sans";
+    font-weight: 300 800;
+    font-style: italic;
+    font-stretch: normal;
+    font-variant: normal;
+    font-display: swap;
+    src:
+      url("../fonts/opensans-italic.woff2") format("woff2") tech("variations"), /* Futureproof. */
+      url("../fonts/opensans-italic.woff2") format("woff2-variations"); /* fallback. */
 }
 
 @font-face {
@@ -64,7 +68,7 @@ html {
 }
 
 body {
-    font-family: 'OpenSansRegular',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family: "Open Sans" ,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     color: #333333;
 }
 
@@ -119,7 +123,7 @@ a.btn {
 .add-btn-create {
     font-size: 0.9em;
     padding: 5px 13px;
-    font-family: 'OpenSansBold',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-weight: 700;
     float: left;
     margin-left: 10px;
 }
@@ -301,7 +305,7 @@ input.span12, textarea.span12, .uneditable-input.span12 {
     background: url("../img/yourgift.png") no-repeat scroll left top transparent;
     color: #C51426;
     display: inline-block;
-    font-family: 'OpenSansBold';
+    font-weight: 700;
     font-size: 1.1em;
     line-height: 41px;
     margin: 0 15px 0 0;
