@@ -6,9 +6,7 @@
     font-stretch: normal;
     font-variant: normal;
     font-display: swap;
-    src:
-      url("../fonts/opensans.woff2") format("woff2") tech("variations"), /* Futureproof. */
-      url("../fonts/opensans.woff2") format("woff2-variations"); /* fallback. */
+    src: url("../fonts/opensans.woff2") format("woff2-variations");
 }
 
 /* Open Sans italic (variable). */
@@ -19,9 +17,7 @@
     font-stretch: normal;
     font-variant: normal;
     font-display: swap;
-    src:
-      url("../fonts/opensans-italic.woff2") format("woff2") tech("variations"), /* Futureproof. */
-      url("../fonts/opensans-italic.woff2") format("woff2-variations"); /* fallback. */
+    src: url("../fonts/opensans-italic.woff2") format("woff2-variations");
 }
 
 @font-face {
