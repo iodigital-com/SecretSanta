@@ -3,7 +3,7 @@
 namespace App\Query;
 
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Symfony\Component\Routing\RouterInterface;
 

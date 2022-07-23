@@ -2,7 +2,7 @@
 
 namespace App\Query;
 
-use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Connection;
 
 class PartyReportQuery
 {
