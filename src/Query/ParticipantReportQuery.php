@@ -333,27 +333,27 @@ class ParticipantReportQuery
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
             ->andWhere('e.party_admin = 1')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
         $participantCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS participantCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
         $wishlistCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS wishlistCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
             ->andWhere('wishlist_updated_time IS NOT NULL')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
         $viewedCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS viewedCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
             ->andWhere('view_date is not null')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
 
         return [
             'party' => $party->execute()->fetchAll(),
