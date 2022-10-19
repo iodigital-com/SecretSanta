@@ -82,6 +82,15 @@
         </div>
 
         {% if app.environment not in ['test', 'test_travis'] %}
+            {% if participant.geoCountry in ["BE", "NL"] %}
+            <div class="row text-center">
+                <div class="col mb-2">
+                    <a href="https://kersthits.lnk.to/playlistSS" rel="noopener noreferrer" target="_blank">
+                        <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
+                    </a>
+                </div>
+            </div>
+            {% else %}
             <div class="row text-center">
                 <div class="col mb-2">
                     {% if app.environment not in ['test', 'test_travis'] %}
@@ -99,6 +108,7 @@
                     {% endif %}
                 </div>
             </div>
+            {% endif %}
         {% endif %}
 
         <h1>{{ 'participant_show_valid.wishlist.title'|trans }}</h1>
