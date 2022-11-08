@@ -5,14 +5,14 @@
 Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends,
 family or even co-workers and add your wishlist.
 
-See [LICENSE](https://github.com/Intracto/SecretSanta/blob/master/LICENSE) for usage terms.
+See [LICENSE](https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE) for usage terms.
 
 ## Getting started
 
 First get the code on your machine.
 
 ```
-git clone git@github.com:Intracto/SecretSanta.git
+git clone https://github.com/iodigital-com/SecretSanta.git
 cd SecretSanta
 ```
 
@@ -69,7 +69,7 @@ Run the tests with:
 composer phpunit
 ```
 
-[Writing and running Behat tests is documented here.](https://github.com/Intracto/SecretSanta/blob/master/docs/behat.md)
+[Writing and running Behat tests is documented here.](https://github.com/iodigital-com/SecretSanta/blob/master/docs/behat.md)
 
 ## Documentation
 

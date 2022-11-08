@@ -348,7 +348,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Santa Claus
-    title: Secret Santa von Intracto
+    title: Secret Santa von iO
     footer: Genießen Sie es, Ihren Secret Santa zu organisieren.
     created_by: Entworfen durch
 

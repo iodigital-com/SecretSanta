@@ -148,7 +148,7 @@ static-faq:
     answer6:
     question7: Posso reutilizar uma lista?
     anchor7: reuse
-    answer7: <p>Não é possível reutilizar automaticamente uma lista feita nos anos anteriores. <a href="https://github.com/Intracto/SecretSanta/issues/20" target="_blank" rel="noopener noreferrer">Esta é uma solicitação de recurso</a>, deixe um comentário se você quer que esta opção esteja disponível nas próximas atualizações (de preferência um PR).</p>
+    answer7: <p>Não é possível reutilizar automaticamente uma lista feita nos anos anteriores. <a href="https://github.com/iodigital-com/SecretSanta/issues/20" target="_blank" rel="noopener noreferrer">Esta é uma solicitação de recurso</a>, deixe um comentário se você quer que esta opção esteja disponível nas próximas atualizações (de preferência um PR).</p>
     question8: Como posso gerenciar meu evento ou participantes?
     anchor8: manage
     answer8: <p>O e-mail de confirmação mandado ao operador da lista contém um link para a página de Gerenciamento da Lista.</p>
@@ -160,7 +160,7 @@ static-faq:
     answer10:
     question11: Eu perdi meu e-mail de ativação.
     anchor11: lost
-    answer11: <p>Se você perdeu seu e-mail de ativação (que contém o link para gerenciar sua lista), entre em contato conosco pelo e-mail do proprietário da lista e nós lhe reenviaremos o link. <a href="https://github.com/Intracto/SecretSanta/issues/93" target="_blank" rel="noopener noreferrer">Lá você encontra uma solicitação de recurso</a> para automatizar este recurso.</p>
+    answer11: <p>Se você perdeu seu e-mail de ativação (que contém o link para gerenciar sua lista), entre em contato conosco pelo e-mail do proprietário da lista e nós lhe reenviaremos o link. <a href="https://github.com/iodigital-com/SecretSanta/issues/93" target="_blank" rel="noopener noreferrer">Lá você encontra uma solicitação de recurso</a> para automatizar este recurso.</p>
     question12: Posso adicionar ou remover pessoas?
     anchor12: changes
     answer12: <p>Ao criar um evento, todos os participantes são automaticamente sorteados e atribuídos uns aos outros. Dessa forma, é difícil reverter o processo adicionando ou removendo pessoas depois de tê-las sorteado. Isso envolveria mudar todos os pares, causando transtornos e confusões indesejáveis. Sugerimos que use a página de gerenciamento da sua lista para que você resolva seus problemas manualmente.</p>
@@ -175,16 +175,16 @@ static-faq:
     answer15: <p>É claro que pode! Na sua página de gerenciamento de listas você encontra a opção "deletar minha lista do Secret Santa". Toda a sua lista será removida permanentemente do nosso sistema.</p>
     question16: Quem são vocês?
     anchor16: who
-    answer16: <p>Nós somos um bando de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">desenvolvedores</a>, designers, frontenders, SEO's e pessoal de marketing. Secret Santa é um dos nossos projetos extras. Somos patrocinados pelo nosso empregador <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Nossa meta é montar um organizador de Amigo Secreto que seja simples, mas funcional. Nós também nos utilizamos desse programa para nos aperfeiçoar. Mas o objetivo principal do Secret Santa Organizer é fazer com que mais e mais pessoas o utilizem e se divirtam! ;-)</p>
+    answer16: <p>Nós somos um bando de <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">desenvolvedores</a>, designers, frontenders, SEO's e pessoal de marketing. Secret Santa é um dos nossos projetos extras. Somos patrocinados pelo nosso empregador <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO</a>. Nossa meta é montar um organizador de Amigo Secreto que seja simples, mas funcional. Nós também nos utilizamos desse programa para nos aperfeiçoar. Mas o objetivo principal do Secret Santa Organizer é fazer com que mais e mais pessoas o utilizem e se divirtam! ;-)</p>
     question17: Como vocês utilizam meus dados?
     anchor17: privacy
     answer17: "<p>Deixemos claro: nós não temos qualquer interesse nos vossos dados pessoais. Nós não os utilizamos para absolutamente nada. Leia nossa <a href=\"https://SITE_DOMAIN/pt/privacy\" target=\"_blank\" rel=\"noopener noreferrer\">Política de Privacidade</a> para ter uma resposta mais completa sobre essa questão. Além disso, você pode deletar este programa na sua página de Gerenciamento sempre e a qualquer momento que quiser.</p>"
     question18: Vocês podem adicionar X para melhorar o programa?
     anchor18: features
-    answer18: <p>Você tem alguma ideia genial para melhorar o Secret Santa Organizer? Por sermos todos voluntários neste projeto, pedimos para que você mesmo adicione suas melhorias de forma técnica ou terá de esperar alguém com mais conhecimento técnico e que queira as mesmas melhorias para fazer isso. Por favor, <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">crie um assunto aqui GitHub</a> que descreva suas ideias ou melhorias. Para aqueles que sabem codificar, nós gostamos mais de transpiração do que inspiração. Em outras palavras, aceitamos de coração aberto seus PR's.</p>
+    answer18: <p>Você tem alguma ideia genial para melhorar o Secret Santa Organizer? Por sermos todos voluntários neste projeto, pedimos para que você mesmo adicione suas melhorias de forma técnica ou terá de esperar alguém com mais conhecimento técnico e que queira as mesmas melhorias para fazer isso. Por favor, <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">crie um assunto aqui GitHub</a> que descreva suas ideias ou melhorias. Para aqueles que sabem codificar, nós gostamos mais de transpiração do que inspiração. Em outras palavras, aceitamos de coração aberto seus PR's.</p>
     question19: Código aberto
     anchor19: opensource
-    answer19: <p>Cada milésimo codificado deste website está descrito aqui <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. O projeto está disponível sob uma <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank">ISC licença bastante tolerante</a>. Você é bem-vindo para fuçar neste projeto e, por exemplo, criar o seu próprio  "Secret Panda - troca de presentes" . Ou pode também contribuir com o projeto enviando suas melhorias (PR's). Se quiser alterar este ou criar um programa totalmente novo a partir deste, vá em frente.</p>
+    answer19: <p>Cada milésimo codificado deste website está descrito aqui <a href="https://github.com/iodigital-com/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. O projeto está disponível sob uma <a href="https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE" target="_blank">ISC licença bastante tolerante</a>. Você é bem-vindo para fuçar neste projeto e, por exemplo, criar o seu próprio  "Secret Panda - troca de presentes" . Ou pode também contribuir com o projeto enviando suas melhorias (PR's). Se quiser alterar este ou criar um programa totalmente novo a partir deste, vá em frente.</p>
     question20: E quanto as propagandas?
     anchor20: ads
     answer20: <p>Nós nos utilizamos de propagandas do Google aqui e ali para cobrir nossas despesas. Coisas como hospedagem, nomes de domínio, etc. custa dinheiro. Nós mesmos trabalhamos basicamente de forma voluntária e todo o dinheiro arrecadado com este projeto para para ele. Talvez tenhamos comprado umas pizzas e bebidas quando precisávamos fazer hora extra tentando arrumar algo no projeto. É possível que tenhamos desembolsado uma pequena quantia pagando tradutores para adicionar Secret Santa Organizer em outras línguas. Aliás, ainda estamos buscando tradutores voluntários para termos Secret Santas em Russo, Indiano, Japonês... Se você quiser nos ajudar (de graça) ou conhece alguém que pode, por favor, entre em contato.</p>
@@ -407,7 +407,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Papai Noel
-    title: Secret Santa por Intracto
+    title: Secret Santa por iO
     footer: Divirta-se organizando seu Amigo Secreto!
     created_by: Criado por
 

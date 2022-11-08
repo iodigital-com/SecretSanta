@@ -216,16 +216,16 @@ static-faq:
     answer15: <p>Sure you can. Just go to your list management page and use the delete option. All your list data will be permanently removed from our system.</p>
     question16: Who are you?
     anchor16: who
-    answer16: <p>We are a bunch of <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designers, frontenders, SEO's and marketing people. Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
+    answer16: <p>We are a bunch of <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designers, frontenders, SEO's and marketing people. Secret Santa is one of our side projects. We are sponsored by our employer <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO</a>. Our goal is to build a simple, yet very useful Secret Santa organiser. We might also use this for experiments. But the main goal is that we want people to use it, more is better ;-)</p>
     question17: How do you handle my data?
     anchor17: privacy
     answer17: <p>Short answer, we are absolutely not interested in your personal data. We use it for nothing whatsoever. Read our <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for an extended answer. Also, at any point in time, you can just delete your Secret Santa account from the admin page.</p>
     question18: Can you add feature X?
     anchor18: features
-    answer18: <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature. Please <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change. For those who can code, we prefer transpiration to inspiration. In other words, we accept your PRs.</p>
+    answer18: <p>You have an awesome idea for a feature? We are all volunteers, so if you can't code it yourself you will have to wait until someone that can code wants the same feature. Please <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">create an issue on GitHub</a> that describes your feature or change. For those who can code, we prefer transpiration to inspiration. In other words, we accept your PRs.</p>
     question19: Open source
     anchor19: opensource
-    answer19: <p>Every bit of this website is open sourced on <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. The project is available under a very permissive <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>. You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PRs). If you want a change or a whole new feature, just add it.</p>
+    answer19: <p>Every bit of this website is open sourced on <a href="https://github.com/iodigital-com/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. The project is available under a very permissive <a href="https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>. You are welcome to fork the project and, for example, create your own "Secret Panda gift exchange". Or, contribute to this project by opening pull requests (PRs). If you want a change or a whole new feature, just add it.</p>
     question20: What about the ads?
     anchor20: ads
     answer20: <p>We have Google ads here and there to cover some of our expenses. Things like hosting, domain names etc. cost money. We basically do everything for free ourselves and all money we collect goes back to the project. We might use it to buy pizza and drinks for one of our hackdays. Or we might pay professional translators to add more languages to our Secret Santa Organizer. Or it could be something else. By the way, we are still looking for Russian, Indian, Japanese, ... translations. If you can help us with this (for free), please contact us.</p>
@@ -520,7 +520,7 @@ party_join:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Santa Claus
-    title: Secret Santa by Intracto
+    title: Secret Santa by iO
     footer: Have fun organizing Secret Santa!
     created_by: Created by
 

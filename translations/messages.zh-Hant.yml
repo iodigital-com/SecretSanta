@@ -331,7 +331,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: 聖誕老人
-    title:  秘密聖誕老人由Intracto所有
+    title:  秘密聖誕老人由iO所有
     footer: 組織秘密聖誕老人時感到有趣！
     created_by: 由
 

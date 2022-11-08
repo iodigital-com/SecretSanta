@@ -185,16 +185,16 @@ static-faq:
     answer15: <p>Uiteraard kan dat, ga naar de beheerpagina van de lijst en gebruik de verwijderoptie. Al de gegevens met betrekking tot deze lijst zullen permanent uit ons systeem verwijderd worden.</p>
     question16: Wie zijn jullie?
     anchor16: who
-    answer16: <p>Wij zijn een aantal <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designers, frontenders, SEO's en marketingmensen. Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digital agency</a>. Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
+    answer16: <p>Wij zijn een aantal <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">developers</a>, designers, frontenders, SEO's en marketingmensen. Secret Santa is een hobbyproject. We worden gesponsord door onze werkgever <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO</a>. Ons doel is een eenvoudige maar nuttige Secret Santa organiser te bouwen. We kunnen dit ook gebruiken voor experimenten. Maar het hoofddoel is dat mensen ons product gebruiken. Meer is beter ;-)</p>
     question17: Wat doen jullie met mijn gegevens?
     anchor17: privacy
     answer17: <p>Kort antwoord, wij zijn brave kindjes. We hebben absoluut geen interesse in je persoonlijke gegevens en gebruiken deze nergens voor. Lees ons <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">privacybeleid</a> voor een uitgebreid antwoord. Vergeet niet dat je ook op elk moment je Secret Santa kan verwijderen vanaf de beheerpagina.</p>
     question18: Kan je feature X toevoegen?
     anchor18: features
-    answer18: <p>Je hebt een geweldig idee voor en toepassing voor Secret Santa? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die dit wel kan dezelfde functionaliteit wil hebben. Maak een <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">issue aan op GitHub</a> die je feature of wijziging beschrijft. Voor de mensen die wel kunnen coden, we verkiezen transpiratie boven inspiratie. Met andere woorden, we aanvaarden PR's.</p>
+    answer18: <p>Je hebt een geweldig idee voor en toepassing voor Secret Santa? Wij zijn allemaal vrijwilligers, als je dit zelf niet kan coderen zal je dus moeten wachten tot iemand die dit wel kan dezelfde functionaliteit wil hebben. Maak een <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">issue aan op GitHub</a> die je feature of wijziging beschrijft. Voor de mensen die wel kunnen coden, we verkiezen transpiratie boven inspiratie. Met andere woorden, we aanvaarden PR's.</p>
     question19: Open source
     anchor19: opensource
-    answer19: <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Het project is beschikbaar onder een heel vrije <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licentie</a>. Je bent vrij om het project te forken en bijvoorbeeld je eigen "Secret Panda gift exchange" te maken. Of je kan bijdragen aan dit project door pull requests (PR's) te openen. Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
+    answer19: <p>Elk deel van deze website is open source gemaakt via <a href="https://github.com/iodigital-com/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Het project is beschikbaar onder een heel vrije <a href="https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licentie</a>. Je bent vrij om het project te forken en bijvoorbeeld je eigen "Secret Panda gift exchange" te maken. Of je kan bijdragen aan dit project door pull requests (PR's) te openen. Als je een feature of aanpassing wil, voeg deze dan gewoon zelf toe.</p>
     question20: Hoe zit het met die advertenties?
     anchor20: ads
     answer20: <p>We hebben hier en daar Google ads geplaatst, deze dekken een deel van onze kosten. Zaken als hosting, domeinnamen etc. kosten geld. Wij doen zelf alles gratis en al het geld dat we verzamelen gaat terug naar het project. Zo hebben we eurolingers voor pizza en drank op onze hackdays maar ook voor professionele vertalers waarmee we dan weer verder de wereld veroveren met Secret Santa Organizer. We zoeken trouwens nog Russische, Indische, Japanse, ... vertalingen. Als je ons hier (gratis) bij kan helpen, neem dan contact met ons op.</p>
@@ -443,7 +443,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Kerstman
-    title: Secret Santa door Intracto
+    title: Secret Santa door iO
     footer: Veel plezier met het organiseren van Secret Santa!
     created_by: Aangemaakt door
 

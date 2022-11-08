@@ -336,7 +336,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Санта Клаус
-    title: Тайный Санта от Intracto
+    title: Тайный Санта от iO
     footer: Желаем вам получить массу удовольствия от организации вечеринки Тайного Санты!
     created_by: Создано
 

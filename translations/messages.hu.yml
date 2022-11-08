@@ -216,16 +216,16 @@ static-faq:
     answer15: <p>Persze. Csak lépjen a listakezelő oldalra, és használja a törlési lehetőséget. Az összes listaadatot véglegesen eltávolítjuk rendszerünkből.</p>
     question16: Kik vagytok ti?
     anchor16: kicsoda
-    answer16: <p>Mi egy halom <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">fejlesztő</a>, tervező, frontendes, SEO és marketinges vagyunk. A Secret Santa az egyik mellékprojektünk. Munkaadónk, <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer">Intracto digitális ügynökség</a> szponzorál bennünket. Célunk egy egyszerű, de nagyon hasznos Secret Santa szervező felépítése. Ezt kísérletekhez is használhatjuk. De, a fő cél az, hogy az emberek használhassák, minél többen, annál jobb ;-)</p>
+    answer16: <p>Mi egy halom <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">fejlesztő</a>, tervező, frontendes, SEO és marketinges vagyunk. A Secret Santa az egyik mellékprojektünk. Munkaadónk, <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO digitális ügynökség</a> szponzorál bennünket. Célunk egy egyszerű, de nagyon hasznos Secret Santa szervező felépítése. Ezt kísérletekhez is használhatjuk. De, a fő cél az, hogy az emberek használhassák, minél többen, annál jobb ;-)</p>
     question17: Hogyan kezelik az adataimat?
     anchor17: adatkezeles
     answer17: '<p>Rövid válasz: minket egyáltalán nem érdekelnek az Ön személyes adatai. Semmire sem használjuk. Bővített válaszért olvassa el <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">adatvédelmi irányelveinket</a>. Ezenkívül bármikor törölheti Secret Santa fiókját az adminisztrációs oldalon.</p>'
     question18: Hozzá lehetne adni X funkciót?
     anchor18: funkcio
-    answer18: <p>Van egy nagyszerű ötlete egy funkcióhoz? Mindannyian önkéntesek vagyunk, így ha nem tudja maga kódolni, akkor meg kell várnia, amíg valakinek, aki tud kódolni, szüksége lesz ugyanarra a funkcióra. Kérjük, <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">hozzon létre egy issue-t a GitHubon</a>, amely leírja az Ön funkcióját vagy változtatási ötletét. Azok számára, akik tudnak kódolni, jobban szeretjük a segítséget, mint az ihletet. Más szóval, elfogadjuk PR-jeit.</p>
+    answer18: <p>Van egy nagyszerű ötlete egy funkcióhoz? Mindannyian önkéntesek vagyunk, így ha nem tudja maga kódolni, akkor meg kell várnia, amíg valakinek, aki tud kódolni, szüksége lesz ugyanarra a funkcióra. Kérjük, <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">hozzon létre egy issue-t a GitHubon</a>, amely leírja az Ön funkcióját vagy változtatási ötletét. Azok számára, akik tudnak kódolni, jobban szeretjük a segítséget, mint az ihletet. Más szóval, elfogadjuk PR-jeit.</p>
     question19: Nyílt forráskód
     anchor19: nyilt_forraskod
-    answer19: <p>A webhely minden része nyílt forráskódú a <a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHubon</a>. A projekt a nagyon megengedő <a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licenc</a> alatt érhető el. Nyugodtan fork-olja a projektet, és például létrehozhatja saját „Secret Panda ajándékcseréjét”. Vagy, járuljon hozzá ehhez a projekthez PR-ek megnyitásával. Ha változást vagy teljesen új funkciót szeretne, egyszerűen adja hozzá.</p>
+    answer19: <p>A webhely minden része nyílt forráskódú a <a href="https://github.com/iodigital-com/SecretSanta" target="_blank" rel="noopener noreferrer">GitHubon</a>. A projekt a nagyon megengedő <a href="https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licenc</a> alatt érhető el. Nyugodtan fork-olja a projektet, és például létrehozhatja saját „Secret Panda ajándékcseréjét”. Vagy, járuljon hozzá ehhez a projekthez PR-ek megnyitásával. Ha változást vagy teljesen új funkciót szeretne, egyszerűen adja hozzá.</p>
     question20: Mi van a hirdetésekkel?
     anchor20: hirdetesek
     answer20: <p>Itt-ott vannak Google hirdetéseink, amelyek fedezik a kiadásaink egy részét. Az olyan dolgok, mint a hosting, a domain nevek stb. pénzbe kerülnek. Alapvetően mindent magunk csinálunk ingyen, és minden begyűjtött pénz visszakerül a projekthez. Talán arra használjuk néha, hogy pizzát és italokat vásároljunk valamelyik hack napunkra. Vagy fizethetünk professzionális fordítókat, hogy további nyelveket adhassanak a Secret Santa Organizer-hez. Vagy lehet valami más. Egyébként továbbra is várjuk az orosz, indiai, japán, ... fordításokat. Ha ebben tud nekünk segíteni (ingyen), forduljon hozzánk.</p>
@@ -521,7 +521,7 @@ party_join:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Santa Claus
-    title: Secret Santa by Intracto
+    title: Secret Santa by iO
     footer: Szórakozzon jól Secret Santa szervezésével!
     created_by: Készítette
 

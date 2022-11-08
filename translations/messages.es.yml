@@ -184,16 +184,16 @@ static-faq:
     answer15: <p>¡Claro que puedes!Simplemente dirígete a la página de administración de tu lista y usa la opción eliminar. Todos los datos e información de tu lista se eliminarán permanentemente de nuestro sistema.</p>
     question16: ¿Quiénes somos?
     anchor16: who
-    answer16: <p>Somos un grupo de <a href="https://github.com/Intracto/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer"> programadores</a>, diseñadores, desarrolladores SEO y gente de marketing. Secret Santa es uno de nuestros proyectos paralelos. Estamos patrocinados por nuestro empleador <a href="http://www.intracto.com" target="_blank" rel="noopener noreferrer"> Agencia Digital Intracto</a>. Nuestro objetivo es construir un organizador Secret Santa simple pero muy útil. También podríamos usar este organizador para experimentos. Pero el objetivo principal es que la gente lo use, mientras más personas mejor ;-)</p>
+    answer16: <p>Somos un grupo de <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer"> programadores</a>, diseñadores, desarrolladores SEO y gente de marketing. Secret Santa es uno de nuestros proyectos paralelos. Estamos patrocinados por nuestro empleador <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO</a>. Nuestro objetivo es construir un organizador Secret Santa simple pero muy útil. También podríamos usar este organizador para experimentos. Pero el objetivo principal es que la gente lo use, mientras más personas mejor ;-)</p>
     question17: ¿Cómo manejan mis datos e información personal?
     anchor17: privacy
     answer17: '<p> Respuesta breve: no estamos interesados en absoluto en sus datos personales. No los usamos de ningún modo. Para una respuesta más detallada lea nuestra <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">política de privacidad</a>. Además, en cualquier momento, puede eliminar su cuenta de Secret Santa desde la página de administración.</p>'
     question18: ¿Puedo agregar una funcionalidad X?
     anchor18: features
-    answer18: <p>¿Tienes alguna una idea genial para una nueva funcionalidad? Todos somos voluntarios, por tanto, si no puedes codificar tú mismo, tendrás que esperar hasta que alguien más, que sepa codificar, quiera la misma función que tu. Por favor <a href="https://github.com/Intracto/SecretSanta/issues" target="_blank" rel="noopener noreferrer">crea un ticket o en GitHub</a> que describa tu idea de funcionalidad o idea de cambio. Para aquellos que sepan codificar, nos gustaría decirles que preferimos la acción que la sugerencia. En otras palabras, aceptamos tus solicitudes de extracción.</p>
+    answer18: <p>¿Tienes alguna una idea genial para una nueva funcionalidad? Todos somos voluntarios, por tanto, si no puedes codificar tú mismo, tendrás que esperar hasta que alguien más, que sepa codificar, quiera la misma función que tu. Por favor <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">crea un ticket o en GitHub</a> que describa tu idea de funcionalidad o idea de cambio. Para aquellos que sepan codificar, nos gustaría decirles que preferimos la acción que la sugerencia. En otras palabras, aceptamos tus solicitudes de extracción.</p>
     question19: Código abierto
     anchor19: opensource
-    answer19: <p>Cada parte de este sitio web es de código abierto en<a href="https://github.com/Intracto/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. El proyecto está disponible bajo una licencia ISC<a href="https://github.com/Intracto/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">muy permisiva</a>. Te invitamos a bifurcar el proyecto y, por ejemplo, crear tu propio proprio "intercambio de regalos Secret Santa". O, contribuir a éste proyecto abriendo solicitudes de extracción (PR). Si deseas un cambio o una funcionalidad completamente nueva, simplemente agrégala.</p>
+    answer19: <p>Cada parte de este sitio web es de código abierto en<a href="https://github.com/iodigital-com/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. El proyecto está disponible bajo una licencia ISC<a href="https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">muy permisiva</a>. Te invitamos a bifurcar el proyecto y, por ejemplo, crear tu propio proprio "intercambio de regalos Secret Santa". O, contribuir a éste proyecto abriendo solicitudes de extracción (PR). Si deseas un cambio o una funcionalidad completamente nueva, simplemente agrégala.</p>
     question20: ¿Y los anuncios?
     anchor20: ads
     answer20: <p>Tenemos anuncios de Google aquí y allá para cubrir algunos de nuestros gastos. Cosas como el alojamiento del sitio, el nombre del dominio, etc., que cuestan dinero. Básicamente, hacemos todo gratis nosotros mismos y todo el dinero que recaudamos se remonta al proyecto. Podríamos usarlo para comprar pizza y bebidas o, podríamos pagar a traductores profesionales para agregar más idiomas a nuestro organizador Secret Santa, o podría ser algo más. Por cierto, todavía estamos buscando traducciones al ruso, indio, japonés, ... Si puedes ayudarnos con esto (gratis), contáctanos.</p>
@@ -438,7 +438,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Santa Claus
-    title: Secret Santa by Intracto
+    title: Secret Santa by iO
     footer: ¡Diviértete organizando Secret Santa!
     created_by: Creado por
 
