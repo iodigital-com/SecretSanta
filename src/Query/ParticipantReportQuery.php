@@ -316,9 +316,9 @@ class ParticipantReportQuery
             ->andWhere("p.sent_date = ({$subQuery->getSQL()})")
             ->groupBy('e.email') /*filter duplicates in same party */
             ->orderBy('p.id', Criteria::DESC)
-            ->setParameter(':firstDay', $season->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter(':lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
-            ->setParameter(':admin', ($isAdmin ? 1 : 0));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
+            ->setParameter('admin', ($isAdmin ? 1 : 0));
 
         $result = $qb->execute()->fetchAll();
 
