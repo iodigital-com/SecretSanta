@@ -32,7 +32,7 @@ class BounceQuery
             ->andWhere('datediff(invitation_sent_date, :bouncedate) < 2')
             ->orderBy('ABS( TIMESTAMPDIFF(SECOND,:bouncedate, invitation_sent_date ) )', 'asc')
             ->setMaxResults(1)
-            ->setParameter('bouncedate', $date, \Doctrine\DBAL\Types\Type::DATETIME)
+            ->setParameter('bouncedate', $date, \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE)
             ->setParameter('email', $email);
 
         return $query->execute()->fetchColumn();
