@@ -19,7 +19,7 @@ form-party:
         location: Miejsce imprezy Tajnego Mikołaja
         amount_to_spend: Suma do wydania
         message: Dodatkowa wiadomość w e-mailu
-        confirmed: Tak, mam zezwolenie na udostępnienie adresów e-mailowych uczestników na potrzeby Tajnego Mikołaja. Przeczytaj nasze <a href="https://SITE_DOMAIN/privacy">polityka prywatności</a>.
+        confirmed: Tak, mam zezwolenie na udostępnienie adresów e-mailowych uczestników na potrzeby Tajnego Mikołaja. Przeczytaj nasze polityka prywatności.
 
 # PartyController
 party_controller:

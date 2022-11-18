@@ -19,7 +19,7 @@ form-party:
         location: Local da sua festa
         amount_to_spend: Valor máximo a gastar
         message: Mensagem adicional no e-mail
-        confirmed: Sim, tenho permissão para utilizar os e-mails dos participantes. Leia nossa <a href="https://SITE_DOMAIN/privacy">declaração de privacidade</a>.
+        confirmed: Sim, tenho permissão para utilizar os e-mails dos participantes. Leia nossa declaração de privacidade.
 
 # PartyController
 party_controller:

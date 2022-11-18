@@ -19,7 +19,7 @@ form-party:
         location: Location of your Secret Santa party
         amount_to_spend: Amount to spend
         message: Additional message in email
-        confirmed: Yes, I have permission to use the participant's e-mail addresses for Secret Santa. Read our <a href="https://SITE_DOMAIN/privacy">privacy policy</a>.
+        confirmed: Yes, I have permission to use the participant's e-mail addresses for Secret Santa. Read our privacy policy.
 
 # PartyController
 party_controller:
