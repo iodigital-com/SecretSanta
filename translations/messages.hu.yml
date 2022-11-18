@@ -19,7 +19,7 @@ form-party:
         location: A Secret Santa parti helyszíne
         amount_to_spend: Elköltendő összeg
         message: További üzenet e-mailben
-        confirmed: Igen, engedélyem van arra, hogy a résztvevő e-mail címeit a Secret Santa számára használjam
+        confirmed: Igen, engedélyem van arra, hogy a résztvevő e-mail címeit a Secret Santa számára használjam. Olvassa el <a href="https://SITE_DOMAIN/privacy">adatvédelmi irányelvek</a>.
 
 # PartyController
 party_controller:
