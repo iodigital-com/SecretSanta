@@ -77,7 +77,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\Behat\\": "tests/Behat",
             "App\\Tests\\Unit\\": "tests/php/unit",
             "App\\Tests\\Api\\": "tests/php/api"
         }

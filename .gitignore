@@ -32,7 +32,6 @@ public/css/*
 composer.phar
 dumps
 .vagrant
-.travis/build/behat-*
 .php_cs.cache
 /node_modules/
 

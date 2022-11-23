@@ -1,25 +1,4 @@
 {
-    "behat/behat": {
-        "version": "v3.8.1"
-    },
-    "behat/gherkin": {
-        "version": "v4.6.2"
-    },
-    "behat/mink": {
-        "version": "v1.8.1"
-    },
-    "behat/mink-browserkit-driver": {
-        "version": "v1.3.4"
-    },
-    "behat/mink-extension": {
-        "version": "2.3.1"
-    },
-    "behat/mink-selenium2-driver": {
-        "version": "v1.4.0"
-    },
-    "behat/transliterator": {
-        "version": "v1.3.0"
-    },
     "composer/ca-bundle": {
         "version": "1.2.8"
     },
@@ -109,27 +88,6 @@
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },
-    "friends-of-behat/mink-debug-extension": {
-        "version": "v2.0.1"
-    },
-    "friends-of-behat/symfony-extension": {
-        "version": "2.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "2.0",
-            "ref": "3d21344765fd3440a85bdd27d4cada186ec628bd"
-        },
-        "files": [
-            "behat.yml.dist",
-            "config/services_test.yaml",
-            "features/demo.feature",
-            "tests/Behat/DemoContext.php"
-        ]
-    },
-    "friendsofphp/proxy-manager-lts": {
-        "version": "v1.0.3"
-    },
     "geoip2/geoip2": {
         "version": "v2.11.0"
     },
@@ -166,14 +124,8 @@
     "guzzlehttp/psr7": {
         "version": "1.7.0"
     },
-    "instaclick/php-webdriver": {
-        "version": "1.4.7"
-    },
     "jms/i18n-routing-bundle": {
         "version": "3.0.4"
-    },
-    "laminas/laminas-code": {
-        "version": "3.5.0"
     },
     "maxmind-db/reader": {
         "version": "v1.8.0"
@@ -563,9 +515,6 @@
         "version": "v4.4.16"
     },
     "symfony/property-info": {
-        "version": "v4.4.16"
-    },
-    "symfony/proxy-manager-bridge": {
         "version": "v4.4.16"
     },
     "symfony/routing": {
