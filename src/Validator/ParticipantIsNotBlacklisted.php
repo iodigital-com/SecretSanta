@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class ParticipantIsNotBlacklisted extends Constraint
 {
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return ParticipantIsNotBlacklistedValidator::class;
     }

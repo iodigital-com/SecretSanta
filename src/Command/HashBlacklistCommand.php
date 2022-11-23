@@ -37,7 +37,7 @@ class HashBlacklistCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $blacklistedMails = $this->em->getRepository(BlacklistEmail::class)->findAll();
 
