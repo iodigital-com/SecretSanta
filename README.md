@@ -69,8 +69,6 @@ Run the tests with:
 composer phpunit
 ```
 
-[Writing and running Behat tests is documented here.](https://github.com/iodigital-com/SecretSanta/blob/master/docs/behat.md)
-
 ## Documentation
 
-See our [docs section](docs/README.md) for information about behat, assets, ...
+See our [docs section](docs/README.md) for information about assets, ...
