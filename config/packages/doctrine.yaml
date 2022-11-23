@@ -12,15 +12,10 @@ doctrine:
         mappings:
             App:
                 is_bundle: false
-<<<<<<< ours
                 type: xml
                 dir: '%kernel.project_dir%/src/ORM/Mapping'
                 prefix: 'App\Entity'
                 alias: SecretSantaBundle
-=======
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
 
 when@test:
     doctrine:
@@ -46,4 +41,3 @@ when@prod:
                     adapter: cache.app
                 doctrine.system_cache_pool:
                     adapter: cache.system
->>>>>>> theirs
