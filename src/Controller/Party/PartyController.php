@@ -89,7 +89,9 @@ class PartyController extends AbstractController
 
         $rateLimitReached = false;
         try {
-            if ($handler->handle($form, $request, $this->getParameter('kernel.environment') === 'test')) {
+            $ignoreRateLimit = in_array($this->getParameter('kernel.environment'), ['dev', 'test'], true);
+
+            if ($handler->handle($form, $request, $ignoreRateLimit)) {
                 return $this->redirectToRoute('party_created', ['listurl' => $party->getListurl()]);
             }
         } catch (RateLimitExceededException) {
