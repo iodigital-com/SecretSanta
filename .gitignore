@@ -10,7 +10,7 @@
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
-.phpunit
+bin/.phpunit/
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
@@ -34,8 +34,3 @@ dumps
 .vagrant
 .php_cs.cache
 /node_modules/
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
