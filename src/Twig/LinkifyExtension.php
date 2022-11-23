@@ -7,7 +7,7 @@ use Twig\TwigFilter;
 
 class LinkifyExtension extends AbstractExtension
 {
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('linkify', [$this, 'linkifyFilter']),

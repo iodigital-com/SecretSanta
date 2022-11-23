@@ -37,7 +37,7 @@ class ExportMailsCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $lastSeason = date('Y', strtotime('-1 year'));
         $season = new Season($lastSeason);

@@ -41,7 +41,7 @@ class SendPartyStatusCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var Participant[] $partyAdmins */
         $partyAdmins = $this->participantMailQuery->findAllAdminsForPartyStatusMail();

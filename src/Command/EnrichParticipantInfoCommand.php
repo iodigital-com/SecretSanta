@@ -41,7 +41,7 @@ class EnrichParticipantInfoCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $batchSize = 1000;
         $reader = new Reader($this->geoIpDbPath);

@@ -16,7 +16,7 @@ class MailStatusExtension extends AbstractExtension
         $this->translator = $translator;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('mailstatus', [$this, 'mailstatusFilter']),

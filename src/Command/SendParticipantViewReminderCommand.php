@@ -40,7 +40,7 @@ class SendParticipantViewReminderCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $needsViewReminder = $this->participantMailQuery->findAllToRemindToViewParticipant();
         $timeNow = new \DateTime();
