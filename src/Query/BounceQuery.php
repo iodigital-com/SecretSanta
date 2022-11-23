@@ -15,7 +15,7 @@ class BounceQuery
 
     public function getBounces(): array
     {
-        return $this->dbal->fetchAll('SELECT * FROM bounce');
+        return $this->dbal->fetchAllAssociative('SELECT * FROM bounce');
     }
 
     /**
