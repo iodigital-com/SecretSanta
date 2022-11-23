@@ -19,7 +19,7 @@ form-party:
         location: Miejsce imprezy Tajnego Mikołaja
         amount_to_spend: Suma do wydania
         message: Dodatkowa wiadomość w e-mailu
-        confirmed: Tak, mam zezwolenie na udostępnienie adresów e-mailowych uczestników na potrzeby Tajnego Mikołaja
+        confirmed: Tak, mam zezwolenie na udostępnienie adresów e-mailowych uczestników na potrzeby Tajnego Mikołaja. Przeczytaj nasze polityka prywatności.
 
 # PartyController
 party_controller:
@@ -324,7 +324,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: Tajny Mikołaj
-    title: Tajny Mikołaj stworzony przez Intracto
+    title: Tajny Mikołaj stworzony przez iO
     footer: Życzymy udanego Przyjęcia Tajnego Mikołaja!
     created_by: Utworzona przez
 

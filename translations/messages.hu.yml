@@ -1,0 +1,842 @@
+# base.html.twig
+base:
+    meta:
+        description: Secret Santa Organizer egy ingyenes online ajándékcsere szervező! Szervezzen Secret Santa partit barátaival, családjával vagy akár munkatársaival és adja hozzá kívánságlistáját.
+        title: Secret Santa Online ajándékcsere szervező!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: Secret Santa Organizer egy ingyenes online ajándékcsere szervező! Szervezzen Secret Santa partit barátaival, családjával vagy akár munkatársaival és adja hozzá kívánságlistáját.
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Segítségre van szüksége? Olvassa el a Gyakran Ismételt Kérdéseket (GYIK)!</a>
+    privacy_policy: Adatvédelmi irányelvek
+    cookie_policy: Cookie-szabályzat
+    bug_bounty: Hibavadászat
+
+# Form/{PartyType,UpdatePartyDetailsType}
+form-party:
+    label:
+        date_party: A Secret Santa parti dátuma
+        location: A Secret Santa parti helyszíne
+        amount_to_spend: Elköltendő összeg
+        message: További üzenet e-mailben
+        confirmed: Igen, engedélyem van arra, hogy a résztvevő e-mail címeit a Secret Santa számára használjam. Olvassa el adatvédelmi irányelvek.
+
+# PartyController
+party_controller:
+    created:
+        message: |
+            Helló (NAME),
+
+            (ADMINISTRATOR) létrehozott egy Secret Santa eseményt, és felvette a résztvevők közé.
+
+            Csatlakozzon a Secret Santa mókához, és tudja meg az alábbi gombra kattintva, ki az ajándéktársa.
+
+            Az ajándékra ne költsön többet mint %amount%.
+
+            A Secret Santa parti tervezett dátuma %eventdate%, és a következő helyen lesz: %location%. Az ajándékot mindenképpen hozza magával!
+
+            %message%
+
+
+            Kellemes Ünnepeket!
+
+# Party/create.html.twig
+party-create:
+    header:
+        steps:
+            title: Parti <br/><small> <span class="accent">3 egyszerű lépésben</span></small>
+            list:
+                one: Sorolja fel résztvevőket
+                two: Csatoljon egy üzenetet
+                three: Küldés!
+            get_started: Fogjon neki!
+
+    what_is:
+        title: Mi az a Secret Santa?
+        intro: >
+            <p>Ez egy <strong>ingyenes</strong> online Secret Santa <strong>ajándékcsere szervező / Kris Kringle generátor</strong>!
+            Szervezzen Secret Santa partit barátaival, családjával vagy akár munkatársaival. Miután megkapta a Secret Santa levelet, hozzáadhatja a saját <strong>kívánságlistáját</strong>, amelyet a Secret Santának juttatunk el.</p>
+
+            <p>Minden évben <strong>Karácsony</strong> környékén az emberek a világ minden pontján ajándékokat cserélnek.<br/>
+            Annak érdekében, hogy a dolgok érdekesek maradjanak, <strong>véletlenszerűen hozzárendelhet személyeket egymáshoz</strong>, hogy azok megjándékozzák egymást.</p>
+
+        title_2: Hogyan működik?
+        intro_2: >
+            <p>Készítsen egy partit <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">a kezdőlapon</a>. Legalább 3 résztvevőre lesz szüksége, <b>az első résztvevő a lista adminisztrátora.</b>
+            A lista adminisztrátora e-mailben kap egy megerősítő linket. Az érvényesítés után a Secret Santa listája össze lesz keverve, és minden felhasználó megkapja üzenetét Secret Santa ajándéktársa nevével együtt.
+            Megerősítést kérünk azért, hogy ne tegyenek kárt botok vagy trollok a partijábn. <b>Az érvényesítő e-mail tartalmaz egy linket a Secret Santa eseménykezelőjéhez</b>.</p>
+
+    rate_limit_reached: Ho, ho, lassan az agancsokkal!<br>Várnia kell egy pár percig mielőtt új partit hoz létre.
+
+    add_participants: Adjon hozzá résztvevőket
+    list_adminstrator: Ez a személy is résztvevő.
+    add_personal_message:
+        title: Személyes üzenet hozzáadása
+        description: Adjon hozzá egy személyes üzenetet a résztvevők számára.
+    import:
+        instructions: Adjon hozzá egyszerre több embert az eseményhez. Töltse le <a href="%downloadPath%">ezt a CSV-sablonfájlt</a>, és adja hozzá a meghívni kívánt személyek összes nevét és e-mail címét a fájlhoz. Amikor végzett, behúzhatja a CSV-fájlt az alábbi mezőbe, és barátai vagy kollégái gyorsan és egyszerűen hozzáadódnak a partihoz.
+        too_many_files: Egyszerre csak egy fájlt lehet feltölteni
+        wrong_format: A feltölteni kívánt fájl formátuma nem megfelelő (csv vagy txt).
+
+    btn:
+        add_person: Személy hozzáadása
+        remove_person: Eltávolítás
+        import_persons_open: Több személy hozzáadása CSV-vel
+        import_persons_do: Adja hozzá az eseményhez
+        cancel: Mégsem
+        create_event: Létrehozom az eseményt!
+
+    label:
+        host: Házigazda
+        email: E-mail
+        participants: Résztvevők
+
+    copy:
+        fun_title: Mi teszi a Secret Santa Generator-t ennyire érdekessé?
+        fun_text: <p>Most komolyan, ez költői kérdés? Egy <b>Secret Santa-parti</b> megszervezése garantálja a meglepetésekkel teli mulatságos estét - ebben szerintem meg tudunk egyezni.</p> <p>Egy speciális <b>Secret Santa generátornak</b> köszönhetően nem kell magának foglalkoznia minden előszervezéssel. Csak töltse ki az üres helyeket, és a Secret Santa generátor elvégzi az összes munkát!</p> <p>Az egyetlen dolog, amit tennie kell, az az, hogy dőljön hátra és lazítson (ja, és vegyen néhány harapnivalót és italt a Secret Santa partijára) .</p>
+        why_title: Miért válassza a Secret Santa Online-t?
+        why_text: '<p>A <b>Secret Santa online</b> szolgáltatásban az a legjobb, hogy nem kell mindent fizikailag megtervezni az összes résztvevővel együtt. Nevek kiosztása, kívánságlisták készítése és fogadása stb.: mindent elintézhet internetkapcsolattal és csatlakoztatott eszközzel.</p> <p>Így a Secret Santa online sokkal egyszerűbbé teszi a rendszerezést. Ez azt jelenti, hogy több ideje marad Önnek és barátainak arra, hogy élvezzék az ünnepi szezont, és várják a tényleges bulizást!</p>'
+        world_title: Secret Santa mindenfelé a világon
+        world_text: >
+            <p>
+            Secret Santa, Kris Kringle, Kris Kindle, Kris Kringel, White Elephant, Yankee Swap, Yankee Doodle,
+            Wichteln, vagy akár lootjes trekken, namen trekken vagy Monito Monita: a világ minden táján különböző neveket használnak ugyanarra a dologra. Jöjjön hát velünk egy világ körüli útra! Ne aggódjon,
+            időben hazaér a <b>Secret Santa partira</b>.
+            </p>
+            <ul>
+            A <li><b>Secret Santa</b> elnevezést általánosan használják az Egyesült Államokban és az Egyesült Királyságban.
+            <li>Írországban azonban a rituálét <b>Kris Kindle</b> vagy <b>Kris Kringel</b> néven hívják, ami
+            a „<b>Christkindl</b>”-ből származik - az osztrák ajándékhozó eredeti neve.
+            <li>A kontinentális Európát meglátogatva azt tapasztaljuk, hogy a németek jobban szeretik a <b>Wichteln</b> nevet,
+            míg Belgiumban és Hollandiában <b>lootjes trekken</b> vagy <b>namen trekken</b>.
+            <li>Folytatjuk utazásunkat Kanadába és Ausztráliába. Itt ugyanúgy a <b>Secret Santa</b> és
+            <b>Kris Kringle</b> formában (ismét a "<b>Christkindl</b>" szóból származik) használatos.
+            <li>Végül a Fülöp-szigeteken véget ér a kirándulásunk. Ebben az országban találjuk <b>Monito Monitát</b>;
+            az egyedülálló ajándékcsere hagyomány.
+            </ul>
+            <p>
+            Következtetés? Véletlenszerű embereket megajándékozni jó móka! Ne is várjon tovább, kezdje a saját
+            <b>Secret Santa online generátorával</b>.
+            </p>
+
+# Party/created.html.twig
+party-created:
+    title: Már csak 1 lépés van hátra - Érvényesítse a részvételét
+    body: >
+        <p>
+            Hogy elkerüljük a botok vagy trollok rombolását a Secret Santa partiban, szükségünk van arra, hogy a listaszervező (<b>%ownername%</b>), igazolja részvételét. E-mailt küldtünk a <b>%owneremail%</b> címre további utasításokkal.
+         </p>
+         <p>
+             Az érvényesítés után módosíthatja a partit, hozzáadhat vagy eltávolíthat résztvevőket, és konfigurálhatja a kizárásokat (ha 4 vagy több résztvevője van). Ha készen áll a parti konfigurálására, elindíthatja a partit.
+             Ekkor mindenkit párosítunk, és küldünk nekik egy e-mailt, amely tartalmazza az összes szükséges információt, valamint egy linket, amellyel megtalálhatják a párukat.
+         </p>
+         <p>
+             Az érvényesítő e-mailben található link bármikor használható a kezelési oldal eléréséhez. A parti megkezdése után láthatja, hogy a résztvevők megnyitották-e a leveleiket, és a linkre kattintva megtudhatja, ki a résztvevő párja.
+         </p>
+    warning: Vigyázat!
+    check_spam: Ne felejtse el ellenőrizni a Spam mappát!
+
+# Party/deleted.html.twig
+party-deleted:
+    title: A Secret Santa listája törölve lett!
+    body: <p>Köszönjük hogy a Secret Santa Organizer-t használta. Reméljük, találkozunk jövőre is!</p>
+    create_new_list: Új Secret Santa lista létrehozása!
+
+# Party/forgotLink.html.twig
+party-forgot_link:
+    title: 'Kérek információt a saját partijaimról'
+    description: 'Adja meg e-mail címét, és küldünk Önnek egy e-mail áttekintést az Ön által létrehozott összes partiról, és azokról a partikról is, amelyeken részt vesz. Csak a jövőben zajló partikat soroljuk fel.'
+    submit_btn: Kérem az áttekintést
+    info_reuse: 'Ha egy új partit szeretne létrehozni egy régebbi parti alapján, <a href="%reusepath%">itt</a> kérheti a korábbi partik listáját.'
+
+# Party/getReuseUrl.html.twig
+party-get_reuse_url:
+    title: 'Parti újrahasználata'
+    description: 'Adja meg e-mail címét, és küldünk egy áttekintést az elmúlt 2 évben rendezett partikról, valamint egy linket az újrafelhasználáshoz. Ez csak az Ön által létrehozott partiknál működik.'
+    form:
+        submit-btn: 'E-mail küldése'
+
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: Összes Secret Santa kívánságlista
+    back: Vissza a kezelőoldalra
+
+# Static/faq.html.twig
+static-faq:
+    title: Gyakran Ismételt Kérdések
+    intro: <p>Ez egy lista a Gyakran Ismételt Kérdésekről (GYIK), amik segítenek megérteni, hogyan működik a Secret Santa.</p>
+
+    question1: Mi az a Secret Santa?
+    anchor1: mi_is_ez
+    answer1: <p>Minden évben Karácsony környékén, az emberek a világ minden pontján ajándékokat cserélnek.<br/>
+             Annak érdekében, hogy a dolgok érdekesek maradjanak, véletlenszerűen hozzárendelhet személyeket egymáshoz, hogy megjándékozzák egymást.</p>
+    question2: Hogyan működik?
+    anchor2: hogyan_mukodik
+    answer2: <p>Készítsen egy partit <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">a kezdőlapon</a>. Legalább 3 résztvevőre lesz szüksége, <b>az első résztvevő a lista adminisztrátora.</b>
+             A lista adminisztrátora e-mailben kap egy megerősítő linket. Az érvényesítés után a Secret Santa listája össze lesz keverve, és minden felhasználó megkapja üzenetét Secret Santa ajándéktársa nevével együtt.
+             Megerősítést kérünk, hogy ne tegyenek kárt botok vagy trollok a bulijában. <b>Az érvényesítő e-mail tartalmaz egy linket a Secret Santa eseménykezelőjéhez</b>.</p>
+    question3: Ki tudok zárni kombinációkat?
+    anchor3: kizarasok
+    answer3: <p>Lehetőség van bizonyos kombinációk kizárására, például annak elkerülésére, hogy ugyanazon család tagjainak ajándékot kelljen vásárolniuk egymásnak. A kizárások beállíthatók, ha a partinak 4 vagy több résztvevője van, és mindaddig, amíg a parti el nem indul. Ha ezek a feltételek teljesülnek, a kezelési oldalon látható egy "Bizonyos kombinációk kizárása" nevű mező. A mezőre kattintva megnyílik egy menü, és lehetővé válik a kizárások szerkesztése. Ezeket bármikor szerkesztheti, amíg a parti el nem indul. <br><br>Nem lehetséges automatikusan újrahasználni a tavalyi Secret Santa-listát, és megakadályozni ezeket a kombinációkat, mivel jelenleg nem látjuk a módját, hogy ezt az emberek összezavarása nélkül adjuk hozzá.</p>
+    question4: Tudok meghatározni saját kívánságlistát?
+    anchor4: kivansaglista
+    answer4: <p>A résztvevők kapnak egy linket egy weboldalra, ahol meglátják titkos barátjukat. Hozzá tudják adni a saját kívánságlistájukat, és megtekinthetik a kívánságlistáját ezen az oldalon.</p>
+    question5:
+    anchor5: anonim_uzenet
+    answer5:
+    question6:
+    anchor6: nincs_uzenet
+    answer6:
+    question7: Tudok újrahasználni résztvevői listát?
+    anchor7: ujrahasznalat
+    answer7: <p>A tavalyi listát újra felhasználhatja lista létrehozásához. Minden évben küldünk e-maileket, amelyek tartalmazzák az ehhez szükséges linket. A listát továbbra is szerkesztheti, mielőtt újra elküldené. Létrehozhat egy e-mailt is <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">itt</a>, amely tartalmazza az elmúlt 2 év során létrehozott összes partiját, valamint egy linket azok újrahasználatukhoz.</p>
+    question8: Hogyan kezelem a partimat / résztvevőket?
+    anchor8: kezeles
+    answer8: <p>A visszaigazoló e-mail, amely a listaadminisztrátornak van küldve, tartalmaz egy linket a listakezelés oldalra.</p>
+    question9: Ez működik, ha a résztvevők száma páratlan?
+    anchor9: paratlan
+    answer9: "<p>Igen. Nem számít, hogy a parti páros vagy páratlan számú résztvevőből áll. Nem garantált, hogy ha A személyt B személyhez rendelték, akkor B személyt is A személyhez rendelik. Secret Santa egy makrót használ annak biztosítására, hogy a listán mindenki máshoz legyen hozzárendelve. Ez véletlenszerűen működik. Például: ha Jancsit, Karolinát és Istvánt hozzáadták egy partihoz, Jancsit Istvánhoz, Istvánt hozzá lehet rendelni Karolinához, Karolina pedig Jancsihoz rendelhető.</p>"
+    question10: Van a résztvevők számának felső határa?
+    anchor10: felso_hatar
+    answer10: <p>Nem, nincs. De egy jó ötlet lehet hozzáadni őket a CSV lehetőséggel</p>
+    question11: Elvesztettem az érvényesítő e-mailem / a linkem a partihoz.
+    anchor11: elvesztettem
+    answer11: <p>Ha elvesztette az e-mail címét (amely tartalmazza az adminisztrációs oldalra, vagy arra a partira mutató linket, amelyben részt vesz), adja meg e-mail címét <a href="%requestForgotLink%">ezen az oldalon </a> és áttekintést küldünk az összes partiról, amelyben részt vesz, és/vagy azokról a partikról, amelyeket Ön hozott létre.</p>
+    question12: Tudok hozzáadni és törölni résztvevőket?
+    anchor12: modositasok
+    answer12: "<p>Az esemény létrehozása után felvehet vagy eltávolíthat személyeket. Az adminisztrációs oldalon található egy törlés gomb és egy űrlap, amellyel új személyeket vehet fel. Csak egy feltétel van: ezt nem teheti meg, ha az adminisztrátor kizárta a kombinációkat az esemény elküldése előtt. Ennek engedélyezése összezavarná a rendszert, és előfordulhat, hogy az emberek továbbra is a kizárt társukhoz lesznek rendelve, ezért úgy döntöttünk, hogy megakadályozzuk az emberek hozzáadását, ha kizárt kombinációk jelennek meg.</p>"
+    question13: Tudok újraküldeni egy e-mailt?
+    anchor13: email
+    answer13: <p>Ha egy résztvevő nem kapta meg a hozzárendelt párjáról szóló e-mailt, a lista tulajdonosa újra elküldheti az e-mailt az adott résztvevőnek a kezelőoldalról. Ugyanazon az oldalon megváltoztathatja valaki e-mail címét, és újra elküldheti az e-mailt. <br><br>Ha nem kapta meg az aktiváló e-mailt, ellenőrizze a spam mappát. Ezt az e-mailt néhány percen belül meg kell kapnia. Ha még mindig nem kapta meg az aktiváló e-mailt, akkor mindent elölről kell kezdenie egy új lista létrehozásával.</p>
+    question14: Bele tudok lesni az összes párosításba / kívánságlistába?
+    anchor14: parositasok
+    answer14: <p>A párosításokat és kívánságlistákat opcionálisan megtekintheti a kezelési oldalon. Vannak erre gombok, de ezt alapértelmezés szerint nem fogja látni. Ha meg szeretné osztani ezt az információt az összes résztvevővel, Önnek kell megosztania az URL-t.</p>
+    question15: Tudom törölni a listámat?
+    anchor15: torles
+    answer15: <p>Persze. Csak lépjen a listakezelő oldalra, és használja a törlési lehetőséget. Az összes listaadatot véglegesen eltávolítjuk rendszerünkből.</p>
+    question16: Kik vagytok ti?
+    anchor16: kicsoda
+    answer16: <p>Mi egy halom <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">fejlesztő</a>, tervező, frontendes, SEO és marketinges vagyunk. A Secret Santa az egyik mellékprojektünk. Munkaadónk, <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO digitális ügynökség</a> szponzorál bennünket. Célunk egy egyszerű, de nagyon hasznos Secret Santa szervező felépítése. Ezt kísérletekhez is használhatjuk. De, a fő cél az, hogy az emberek használhassák, minél többen, annál jobb ;-)</p>
+    question17: Hogyan kezelik az adataimat?
+    anchor17: adatkezeles
+    answer17: '<p>Rövid válasz: minket egyáltalán nem érdekelnek az Ön személyes adatai. Semmire sem használjuk. Bővített válaszért olvassa el <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">adatvédelmi irányelveinket</a>. Ezenkívül bármikor törölheti Secret Santa fiókját az adminisztrációs oldalon.</p>'
+    question18: Hozzá lehetne adni X funkciót?
+    anchor18: funkcio
+    answer18: <p>Van egy nagyszerű ötlete egy funkcióhoz? Mindannyian önkéntesek vagyunk, így ha nem tudja maga kódolni, akkor meg kell várnia, amíg valakinek, aki tud kódolni, szüksége lesz ugyanarra a funkcióra. Kérjük, <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">hozzon létre egy issue-t a GitHubon</a>, amely leírja az Ön funkcióját vagy változtatási ötletét. Azok számára, akik tudnak kódolni, jobban szeretjük a segítséget, mint az ihletet. Más szóval, elfogadjuk PR-jeit.</p>
+    question19: Nyílt forráskód
+    anchor19: nyilt_forraskod
+    answer19: <p>A webhely minden része nyílt forráskódú a <a href="https://github.com/iodigital-com/SecretSanta" target="_blank" rel="noopener noreferrer">GitHubon</a>. A projekt a nagyon megengedő <a href="https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC-licenc</a> alatt érhető el. Nyugodtan fork-olja a projektet, és például létrehozhatja saját „Secret Panda ajándékcseréjét”. Vagy, járuljon hozzá ehhez a projekthez PR-ek megnyitásával. Ha változást vagy teljesen új funkciót szeretne, egyszerűen adja hozzá.</p>
+    question20: Mi van a hirdetésekkel?
+    anchor20: hirdetesek
+    answer20: <p>Itt-ott vannak Google hirdetéseink, amelyek fedezik a kiadásaink egy részét. Az olyan dolgok, mint a hosting, a domain nevek stb. pénzbe kerülnek. Alapvetően mindent magunk csinálunk ingyen, és minden begyűjtött pénz visszakerül a projekthez. Talán arra használjuk néha, hogy pizzát és italokat vásároljunk valamelyik hack napunkra. Vagy fizethetünk professzionális fordítókat, hogy további nyelveket adhassanak a Secret Santa Organizer-hez. Vagy lehet valami más. Egyébként továbbra is várjuk az orosz, indiai, japán, ... fordításokat. Ha ebben tud nekünk segíteni (ingyen), forduljon hozzánk.</p>
+    question21: Egyéb kérdések
+    anchor21: kerdesek
+    answer21: <p>Más kérdés, aggály vagy megjegyzés merült fel? Vegye fel velünk a kapcsolatot a <a href="%contactLink%" target="_blank" rel="noopener noreferrer">kapcsolatfelvételi űrlapon</a>.</p>
+
+    create_new_list: Hozzon létre új Secret Santa listát!
+
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
+    btn:
+        remove_person: Eltávolítás
+
+# Helper/prototypeWishlist.html.twig
+helper-prototype_wishlist:
+    btn:
+        save_item: Tétel mentése
+        update_item: Tétel frissítése
+        remove_item: Eltávolítás
+
+# Participant/exposeAll.html.twig
+participant-expose_all:
+    title: Secret Santa Levelezőlista Párosítások
+    giving: Ez a résztvevő ajándékozza ...
+    receiving: ... ajándékozza ezt a résztvevőt.
+    back: Vissza a kezelőoldalra
+
+# Participant/show/base.html.twig
+participant_show_base:
+    headers:
+        title: A <span class="accent">Secret Santa partija</span> részletei
+        date: Parti dátuma
+        location: Parti helyszíne
+        amount: Elköltendő összeg
+        num_people: Résztvevők száma
+        person_created_list: A lista létrehozója
+
+# Participant/show/expired.html.twig
+participant_show_expired:
+    message:
+        expired: <strong>Hupsz</strong><br/>Ez az esemény 2 évnél régebbi, így nem lehet többé módosítani.<br/>
+
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
+        title: Ki lett jelölve a barátja
+        body: >
+            <p>Üdv %name%,</p>
+            <p>Secret Santaként lett jelölve, hogy ajándékot adjon neki:</p>
+        watch_out: Figyelem
+        wishlist_from: '%name% kívánságlistája'
+        wishlist_not_provided: '%name% még nem adott hozzá kívánságlistát'
+        message_for_wishlist: Küldjön egy üzenetet neki emlékeztetőként, hogy a kívánságlistája még üres.
+        find_gift: Ajándékot keres?
+
+    wishlist:
+        title: Saját kívánságlista
+        description: Hogy segítse a saját Secret Santáját, ide tudja írni a kívánságlistáját. A gnómjaink elintézik, hogy Secret Santa tudjon róla.
+        empty: A kívánságlista üres. Adjon hozzá valamit!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Hupsz</h4> Először távolítsa el az üres sort.
+            added: <h4>Hozzáadva!</h4> A tételt sikeresen hozzáadtaa kívánságlistához.
+            updated: <h4>Frissítve!</h4> A tétel sikeresen frissítve.
+            removed: <h4>Törölve!</h4> A tételt sikeresen eltávolította.
+
+    label:
+        description: Leírás
+
+    btn:
+        add_wishlist: Tétel hozzáadása
+        update_item: Tétel frissítése
+        remove_item: Eltávolítás
+
+    anonymous_message:
+        title: 'Anonim üzenet küldése neki: %name%'
+        message_label: Üzenet
+        message_placeholder: Üzenet
+        warning_anonymous: Figyelem! Ez az üzenet anonim küldődik, szóval nem szeretné megmutatni, ki Ön valójában! A barátja nem fog tudni válaszolni az üzenetre, szóval gondolja meg, hogyan fogalmaz. 
+        send_button: E-mail küldése!
+
+# ParticipantCommunicationController
+participant_communication-send_message:
+    feedback:
+        success: E-mail elküldve! Kiküldtük a gnómjainkat, hogy célba vigyék!
+        error: Sajnos nem tudtuk továbbítani az üzenetet. Próbálja újra később!
+        error_in_form: Hiba volt a kitöltött mezők közt. Ellenőrizze a bevitt adatokat és próbálja újra!
+
+# Participant/unsubscribe.html.twih
+participant_unsubscribe:
+    title: Leiratkozás az e-mailekről
+    unsubscribe_all_label: Jelölje ki ezt a mezőt ha úgyszintén le szeretne iratkozni minden más partiról is, ahol részt vesz jelenleg
+    unsubscribe_blacklist: "Kizárom magam: A jövőben ne lehessen meghívni engem partira"
+    unsubscribe_confirm_btn: Leiratkozás
+    unsubscribe_for: Ön leiratkozik a további e-mailekről a %date% napi Secret Santa partinál, aminek helyszíne %location%.
+    info_confirmation: >
+                        <strong>Biztos ebben?</strong> Miután leiratkozott, nem fogunk több e-mailt küldeni erről a partiról, <stron>de tobábbra is részt fog venni a partiban</strong>.
+                        Ha nem szeretne többé részt venni, kérje meg a parti adminisztrátort, hogy távolítsa el a partiból.<br/>
+                        Más partikról továbbra is kaphat e-maileket, kivéve ha kipipázza az alábbi mezőt.
+    blacklist_warning: >
+                       <strong>Vigyázat!</strong> Ha kizárja az e-mail címét, akkor többé nem fog tudni csatlakozni egy Secret Santa partira sem!
+                       Csak akkor használja ezt az opciót, ha úgy gondolja, valaki visszaél az e-mail címével.
+    feedback:
+        success: Sikeresen leiratkozott!
+        error: Hiba történt leiratkozás közben, próbálja újra!
+        error_atleast_one_option: Válasszon legalább egy leiratkozási opciót.
+
+# Party/manage/base.html.twig
+party_manage_base:
+    headers:
+        title: Az Ön <span class="accent">Secret Santa partijának</span> részletei
+        date: Parti dátuma
+        location: Parti helyszíne
+        amount: Elköltendő összeg
+
+# Party/manage/expired.html.twig
+party_manage_expired:
+    manage:
+        title: Secret Santa lista törlése
+
+    delete:
+        title: Secret Santa lista törlése
+        body: >
+            <p>
+                TELJESEN biztos ebben?<br>
+                <br>
+                <b>Váratlan rossz dolgok történhetnek, ha ezt nem olvassa el!</b><br>
+                <br>
+                Ha kitörli a Secret Santa listáját, nincs visszelépés. Ezt NEM lehet visszafordítani.<br>
+                Ezzel véglegesen törli a Secret Santa listát, minden résztvevőjét és azok kívánságlistáját.<br>
+                <br>
+                Kérjük írja be a "<b>%phrase_to_type%</b>" kifejezést megerősítésképp.<br>
+            </p>
+        phrase_to_type: torolj mindent
+
+    btn:
+        cancel: Mégsem
+        delete_confirm: Tisztában vagyok a következményekkel, törlődjön a Secret Santa listám
+        delete_list: Secret Santa listám törlése
+
+    message:
+        expired: <strong>Hupsz</strong><br/>Ez az esemény 2 évnél régebbi, így nem lehet többé módosítani.<br/>
+
+# Party/manage/valid.html.twig
+party_manage_valid:
+    manage:
+        title: Az Ön Secret Santa listája
+        yes: Igen
+        not_yet: Még nem
+        edit_email: E-mail módosítása
+        resend_email: E-mail újraküldése
+        copy_clipboard: Személyes link vágólapra helyezése
+        copied_clipboard: A meghívó link vágólapra<br/>lett helyezve!
+        view_participant: Résztvevő megtekintése
+        tip: Tipp
+        come_back: Bármikor visszatérhet erre az oldalra megbizonyosodni arról, hogy mindenki megnézte-e a postafiókját.
+        watch_out: Figyelem
+        save: Mentés
+
+    delete:
+        title: Secret Santa listám törlése
+        body: >
+            <p>
+                TELJESEN biztos ebben?<br>
+                <br>
+                <b>Váratlan rossz dolgok történhetnek, ha ezt nem olvassa el!</b><br>
+                <br>
+                Ha kitörli a Secret Santa listáját, nincs visszelépés. Ezt NEM lehet visszafordítani.<br>
+                Ezzel véglegesen törli a Secret Santa listát, minden résztvevőjét és azok kívánságlistáját.<br>
+                <br>
+                Kérjük írja be a "<b>%phrase_to_type%</b>" kifejezést megerősítésképp.<br>
+            </p>
+        phrase_to_type: torolj mindent
+
+    add_participant:
+        title: Új résztvevő hozzáadása a partihoz
+        body: >
+            <p>
+                Az alábbi űrlap kitöltésével az új résztvevő hozzá lesz adva a partihoz<br>
+                <br>
+                Az új résztvevő azonnal hozzá lesz rendelve egy Secret Santa társhoz, és kapni fog egy e-mail meghívót. <br>
+            </p>
+        started_warning: >
+            <p>
+                <strong>Vigyázat! A résztvevők már párosítva lettek!</strong>
+                <br>
+                Ha vannak olyan résztvevők, akik nem látták még a hozzárendelt társukat, az új résztvevőt közülük fogjuk valakihez hozzákötni.
+                Ha már mindenki látta a párját, az új résztvevő Önhöz lesz hozzárendelve és Ön pedig hozzá.
+            </p>
+
+    remove_participant:
+        title: Résztvevő törlése a listából
+        body: <p>Ebben TELJESEN biztos?</p>
+        party_started: >
+            <p>
+                A résztvevő törlése visszavonhatatlan következményekkel jár. Nem fogja tudni visszaállítani a jelenlegi párosításokat, és a résztvevő azonnal el lesz távolítva.<br>
+                <br>
+                Lehet, hogy valaki már megvette neki az ajándékot.<br>
+            </p>
+
+    updated_party:
+        title: Secret Santa lista részleteinek frissítése
+        body: >
+            <p>
+               Az alábbi űrlap kitöltésével módosíthatja a Secret Santa parti részleteit.<br>
+                <br>
+                A résztvevők azonnal értesítést fognak erről kapni.
+            </p>
+    
+    join_mode:
+        title: Csatlakozás link beállítás alapján
+        body: >
+            <p>
+                Ahelyett, hogy Ön adná hozzá az embereket, megengedheti, hogy bárki csatlakozzon a partihoz egy link segítségével.
+                <br />A parti megkezdése után már nem lesz lehetőség csatlakozni (de Ön továbbra is hozzáadhat új résztvevőt, manuálisan).
+            </p>
+        mode:
+            no: Nem, ne lehessen link segítségével csatlakozni
+            yes: Igen, lehessen link segítségével csatlakozni
+        reset_body: >
+            Ez a mező kipipálásával új link lesz generálva. A régi linkkel már nem lesz lehetséges a csatlakozás.
+            Használja ezt az opciót, ha a link meg lett osztva olyan emberekkel is, akik nem kellene hogy csatlakozzanak.
+        reset_unset: Engedélyezze a linkes csatlakozást az új link generálásához.
+
+    btn:
+        add_participant: Résztvevő hozzáadása
+        add_participant_confirm: Adja hozzá ezt a résztvevőt
+        cancel: Mégsem
+        delete_confirm: Tisztában vagyok a következményekkel, törölje a Secret Santa listámat
+        delete_list: Secret Santa listám törlése
+        expose: Listában található párosítások megtekintése
+        expose_wishlists:  Résztvevők kívánságlistáinak megtekintése
+        party_update: Parti frissítés küldése a résztvevőknek
+        party_update_info: Az alábbi e-mail lesz kiküldve a résztvevőknek
+        party_update_confirm: Küldés
+        remove_participant_confirm: Résztvevő eltávolítása
+        updated_party: Parti adatainak frissítése
+        start_party: Parti megkezdése
+        join_mode: Csatlakozás link alapján
+        join_mode_confirm: Csatlakozás módjának beállítása
+
+    label:
+        name: Név
+        email: E-mail
+        confirmed: E-mail státusza
+        wishlist_filled: Kívánságlista kitöltve
+        actions: Műveletek
+        join_mode: Linkkel való csatlakozás engedélyezése
+        join_url: Ezt az URL-t ossza meg a barátaival
+        reset: Csatlakozási link visszaállítása
+
+    excludes:
+        title: Bizonyos kombinációk kizárása
+        btn: Kizárások mentése
+        description: Ezzel a listával ki tud zárni bizonyos kombinációkat. Például, hogy egy családból kettő részt vevő személy ne kelljen egymásnak ajándékot vegyen.
+        information: Ha kizárásokat használ, lehetséges hogy a parti megkezdése után már nem fog tudni résztvevőket eltávolítani. Úgyszintén, nem fogja tudni módosítani ezeket a kizárásokat sem!
+        placeholder_exclude: Kattintással válassza ki a részt vevőket a kizáráshoz
+        not_enough: A partinak legalább 4 résztvevője kell hogy legyen ahhoz, hogy kizárásokat használjon!
+        label:
+            name: Név
+            exclude: Kizárás
+
+party_join:
+    title: Csatlakozzon a partihoz!
+    description: >
+        <p>
+            A linkkel, amit kapott, csatlakozhat ehhez a Secret Santa partihoz!
+            Kérünk nézze meg a parti részleteit, és töltse ki az űrlapot, ha csatlakozni szeretne.
+            Ha kérdése van a partival kapcsolatban, lépjen kapcsolatba a parti szervezőjével.
+        </p>
+    joined: >
+        <p>
+            Hozzáadtuk a partihoz!
+            <br />A parti kezdetekor fogja csak megtudni, kit osztottunk be Önhöz.
+            Ha van bármilyen kérdése a partival kapcsolatban, vagy változtatni szeretné adatait, kapcsolatba kell lépnie a parti szervezőjével!
+        </p>
+    invalid: >
+        <p>
+            Az Ön használt link nem érvényes. Ennek több oka is lehet
+            <ul>
+                <li>A parti nem létezik, vagy törölve lett</li>
+                <li>A parti szervezője érvénytelenítette vagy visszaállította a linket.</li>
+                <li>A parti már elkezdődött.</li>
+            </ul>
+            Lépjen kapcsolatba a személlyel, akitől kapta a linket. Lehet, hogy kézileg még mindig hozzá tudja adni a partihoz!
+        <p/>
+
+    btn:
+        join_confirm: Csatlakozás a partihoz
+
+# Emails/baseEmail.html.twig
+emails-base_email:
+    sender: Santa Claus
+    title: Secret Santa by iO
+    footer: Szórakozzon jól Secret Santa szervezésével!
+    created_by: Készítette
+
+# This header block is re-used in multiple emails
+emails-base_email_header:
+    title: Parti részletek
+    date: Parti dátuma
+    location: Parti helyszíne
+    amount: Elköltendő összeg
+    num_people: Résztvevők száma
+    person_created_list: A lista létrehozója
+
+# Emails/baseEmailUnsubscribe.html.twig
+emails-base_email_unsubscribe:
+    unsubscribe: Ha a jövőben nem szeretne e-maileket kapni, akkor
+    unsubscribe_link: itt tud leiratkozni
+
+# Emails/emptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    subject: A kívánságlistája még üres
+    update_your_list: A Secret Santa parti már közeleg, és Ön még nem frissítette a kívánságlistáját! Talán hozzá szeretni adni néhány dolgot, amit szívesen kapna.
+
+    btn:
+        update_wishlist: Kívánságlista frissítése
+
+# Emails/forgotLink.{html,txt}.twig
+emails-forgot_link:
+    subject: Saját partik áttekintése
+    participating_in: 'A következő partikban vesz részt:'
+    created_these: 'A következő partikat hozta létre:'
+    table_labels:
+        date: Dátum
+        location: Helyszín
+        link: Link
+        txt: A parti %date% napon, %location% helyszínen
+    btn:
+        party_link: Parti megtekintése
+        manage_link: Parti kezelése
+    message:
+        html: 'Üdv, <br /><br />Megkért minket, hogy küldjünk áttekintést az összes partiról, melyhez kapcsolata van. Ez az összes parti, melyet Ön hozott létre vagy ahol részt vesz, és a jövőben történik meg:<br />'
+        txt: >
+            Üdv,
+
+            Megkért minket, hogy küldjünk áttekintést az összes partiról, melyhez kapcsolata van. Ez az összes parti, melyet Ön hozott létre vagy ahol részt vesz, és a jövőben történik meg
+
+# Emails/reuseLink.{html,txt}.twig
+emails-reuse_link:
+    title: Link a Secret Santa parti újrahasználásához
+    subject: Secret Santa parti újrahasználása
+    party_title: Parti
+    at: 'itt:'
+    message:
+        html: 'Üdv, <br /><br />Megkért minket, hogy küldjünk egy e-mailt a partijainak újrahasználatához. Ez az összes parti, melyet Ön hozott létre az elmúlt 2 év során, és linkek az újrahasználatukhoz.<br />'
+        txt: >
+            Hi there,
+
+            Megkért minket, hogy küldjünk egy e-mailt a partijainak újrahasználatához. Ez az összes parti, melyet Ön hozott létre az elmúlt 2 év során, és linkek az újrahasználatukhoz.
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Az Ön Secret Santája
+    find_out: Tudja meg, kit húzott
+
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Secret Santa érvényesítés
+    salutation: Helló %name%
+    click_button: Kérjük az alábbi gombra kattintva érvényesítse a Secret Santa levelezőlistáját. Ez el fogja indítani a gnómjainkat, akik mindenkinek továbbítják a személyes üzenetet, melyet már elkészített a résztvevők számára.
+    overview_page: Az újonnan létrehozott áttekintés oldalon lehetősége lesz végigkövetni, ahogy az összes résztvevő megtudja, ki lett hozzárendelve. Így bizonyosodhat meg majd róla, hogy a lista teljes.
+    lastly: És végül, ne felejtse megerősíteni a saját részvételét sem! Ön is kapni fog egy új e-mailt, miután rákattintott az alábbi érvényesítés gombra.
+    come_back: Bármikor vissza tud jönni ehhez az e-mailhez, ha szüksége lesz a parti kezelőoldalára mutató linkre.
+    btn_goto_manage: Ugrás a kezelőoldalra
+
+# Emails/partyStatus.{html,txt}.twig
+emails-party_status:
+    subject: Secret Santa parti státusz
+    message:
+        html: >
+            Kedves %owner%, <br/>
+            <br/>
+            A partija nemsokára le fog zajlani. Hogy a lehető legjobban sikerüljön, jó lenne, ha mindenki megkapná az ajándékát. Itt egy áttekintés az összes résztvevőről és a státuszukról.<br/>
+            <br/>
+            Kattintson az alábbi linkre e-mailek újraküldéséhez, az e-mail címek szerkesztéséhez, vagy további műveletek elvégzéséhez.
+        txt: >
+            Kedves %owner%,
+
+            A partija nemsokára le fog zajlani. Hogy a lehető legjobban sikerüljön, jó lenne, ha mindenki megkapná az ajándékát. Itt egy áttekintés az összes résztvevőről és a státuszukról.
+
+            Kattintson az alábbi linkre e-mailek újraküldéséhez, az e-mail címek szerkesztéséhez, vagy további műveletek elvégzéséhez.
+
+    yes: Igen
+    not_yet: Még nem
+
+    label:
+        name: Név
+        email: E-mail
+        confirmed: Megerősítve
+        wishlist_filled: Kívánságlista kitöltve
+
+    btn:
+        partystatus: Parti kezelése
+
+# Emails/partyUpdate.{html,txt}.twig
+emails-party_update:
+    subject: A Secret Santa parti már nagyon közel van!
+    message:
+        html: >
+            Kedves %name%, <br/>
+            <br/>
+            Reméljük, már Ön is alig várja %owner% partiját, amely nemsokára le fog zajlani. %owner% %participantCount% résztvevővel számol a partira, amely %date% napon lesz megtartva a következő helyszínen: %place%. Reméljük, örömmel tölti majd el az ajándékozás!<br/>
+            <br/>
+            Hogy a lehető legjobban sikerüljön a parti, jó lenne ha minden meghívott részt venne és hozna ajándékot is. Eddig %viewedCount% személy nyitotta meg a meghívóját és %wishlistCount% kívánságlista lett kitöltve.<br/>
+            <br/>
+            Ügyeljen arra, hogy ellenőrizze a párját az alábbi linkre kattintva, és szükség esetén cselekvésre késztesse. Minél több, annál jobb!
+
+        txt: >
+            Kedves %name%,
+
+            Reméljük, már Ön is alig várja %owner% partiját, amely nemsokára le fog zajlani. %owner% %participantCount% résztvevővel számol a partira, amely %date% napon lesz megtartva a következő helyszínen: %place%. Reméljük, örömmel tölti majd el az ajándékozás!
+
+            Hogy a lehető legjobban sikerüljön a parti, jó lenne ha minden meghívott részt venne és hozna ajándékot is. Eddig %viewedCount% személy nyitotta meg a meghívóját és %wishlistCount% kívánságlista lett kitöltve.
+
+            Ügyeljen arra, hogy ellenőrizze a társát az alábbi linkre kattintva, és szükség esetén cselekvésre késztesse. Minél több, annál jobb!
+
+    btn:
+        party_update: Megnézem a társam és a kívánságlistát
+
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Tudja meg az új Secret Santa társát
+    message:
+        html: >
+            Kedves %name%,<br/>
+            <br/>
+            Új Secret Santa lett Önhöz rendelve, miután %owner% eltávolítatta az ezelőttit a partiból.<br/>
+            <br/>
+            Az alábbi gombra kattintva megtudja, ki az új Secret Santája.
+        txt: >
+            Kedves %name%,
+
+            Új Secret Santa lett Önhöz rendelve, miután %owner% eltávolítatta az ezelőttit a partiból.
+
+            Az alábbi gombra kattintva megtudja, ki az új Secret Santája.
+
+    btn:
+        find_out: Új személy megtekintése
+
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: Változtak a tervek!
+    message:
+        html: >
+            Kedves %name%,<br/>
+            <br/>
+            %owner% módosította a parti részleteit, melyen Ön részt vesz. Alább láthatja a parti legújabb részleteit.
+        txt: >
+            Kedves %name%,
+
+            %owner% módosította a parti részleteit, melyen Ön részt vesz. Alább láthatja a parti legújabb részleteit.
+
+    label:
+        date_party: Secret Santa parti dátuma
+        location: Secret Santa parti helyszíne
+        amount_to_spend: Elköltendő összeg
+
+    btn:
+        updated_party: Megnézem a társam és a kívánságlistát
+
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
+    subject: Tudja meg, ki az ajándéktársa
+    didYouForget: Megfeledkezett a Secret Santa partiról? Még nem nézte meg, ki az ajándéktársa!
+
+    btn:
+        find_out: Megnézem most
+
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Frissült a kívánságlista
+    salutation: Üdv %name%
+    buddy_updated_wishlist: Az ajándéktársa frissítette a kívánságlistáját.
+    click_button: Az alábbi gombra kattintva tekintheti meg, mit szeretne kapni.
+
+    btn:
+        check_wishlist: Kívánságlista megtekintése
+
+# Emails/anonymousMessage.{html,txt}.twig
+emails-anonymous_message:
+    subject: A Secret Santa társad üzenetet küldött
+    message:
+      html: >
+          Kedves %name%, <br/>
+          <br/>
+          A Secret Santa társad üzenetett küldött, itt tudod elolvasni:<br/>
+          <br />
+          <strong>%message%</strong>
+          <br/>
+          Az alábbi gombra kattintva tud hozzáadni pár dolgot a kívánságlistához, amit szívesen kapna.
+      txt: >
+          Kedves %name%,
+
+          A Secret Santa társad üzenetett küldött, itt tudod elolvasni:
+
+          %message%
+
+          Az alábbi gombra kattintva tud hozzáadni pár dolgot a kívánságlistához, amit szívesen kapna.
+    update_wishlist: Kívánságlista szerkesztése
+
+# MailStatusExtension
+mail_status_extension:
+    unknown: Ismeretlen
+    opened: Megnyitott e-mail
+    viewed: Partit megtekintette
+    not_started: Nem megkezdett parti
+    bounced: Az e-mail nem lett kézbesítve!
+
+flashes:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Sikeres frissítés</h4> A frissítés ki lett küldve minden résztvevőnek.
+
+    # ForgotURLController
+    forgot_url:
+        success: 'Sikeresen elküldtük az áttekintést!'
+        error: 'Hiba lépett fel az e-mail küldése közben. Ellenőrizze az e-mail címét és próbálja újra.'
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Tökéletes!</strong><br/>Az e-mail címed sikeresen érvényesítetted.<br/>
+            Beszélgetésünk közben szorgalmas gnómjaink már járják is az internetet, kézbesítve minden jövőbeli Secret Santának a társukat.<br/>
+            <br />
+            Ne felejtse el Ön is megerősíteni a részvételét. Küldtünk egy másik e-mailt is. Vessen rá egy pillantást!
+        add_participant:
+            success: <h4>Hozzáadva!</h4> Sikeresen hozzáadta a résztvevőt a partihoz.
+            danger: <h4>Hupsz</h4> Hiba lépett fel a résztvevő hozzáadása közben. Kérjük, próbálja újra.
+        join_mode:
+            success: <h4>Frissítve!</h4> A csatlakozási link beállításait sikeresen elmentette.
+            danger: <h4>Hupsz</h4> Hiba lépett fel a csatlakozási link beállításainak mentésekor. Kérjük, próbálja újra.
+        updated_party:
+            success: <h4>Frissítve!</h4> A parti beállításait sikeresen módosította.
+            danger: <h4>Hupsz</h4> Hiba lépett fel a parti frissítése közben. Kérjük, próbálja újra.
+        start_party:
+            success: Megkezdtük a partit, és elküldtük az emaileket!
+            danger: Hiba történt a parti megkezdése közben, próbálja újra!
+        excludes:
+            success: A kizárásokat sikeresen elmentette!
+
+    # PartyController
+    party:
+        not_deleted: <h4>Nem lett törölve</h4> A megerősítés hibás volt.
+
+    # ResendParticipantController
+    resend_participant:
+        resent: <strong>Újraküldve!</strong><br/>Az e-mail %email% részére újra el lett küldve.<br/>
+        blacklisted: <strong>Hupsz.. Nem tudtuk elküldeni!</strong> Ez a személy kizárta a saját e-mail címét, és nem szeretne több levelet kapni.
+
+    # ParticipantController
+    participant:
+        wishlist_updated: <h4>Kívánságlista frissítve</h4>Gnómjaink útra keltek hogy értesítsék Secret Santát a kívánságlistájáról!
+        edit_email: <h4>Sikertelen mentés</h4> Hiba van az e-mail címben.
+        updated_participant: <h4>Mentve</h4> Elmentettük a résztvevő adatait!
+        updated_participant_resent: <h4>Mentve</h4>Elmentettük a résztvevő adatait. Mivel módosította az e-mailt, és a parti már kezdetét vette, ezért újra elküldtük az e-mailt ennek a résztvevőnek.
+        remove_participant:
+            success: <h4>Eltávolítva!</h4> Résztvevő sikeresen eltávolítva.
+            danger: <h4>Hupsz</h4> Nem törölheti ezt a résztvevőt, a partinak legalább 3 résztvevővel kell rendelkeznie.
+            warning: <h4>Hupsz</h4> Ön szervezi a partit, nem törölheti saját magát. Ha ki szeretne lépni a partiból, az alábbi gombra kattintva törölheti ezt a Secret Santa listát.
+            excluded_participants: <h4>Hupsz</h4> Nem törölhet résztvevőket ebből a partiból, mivel kizárásokat használt a parti létrehozásakor, amely nem működne megfelelően, ha kitörölne valakit, így ez a lehetőség nem elérhető ennél a partinál.
+            not_enough_for_exclude: <h4>Hupsz</h4> Ön meghatározott bizonyos kizárásokat, de mivel legalább 4 résztvevő szükséges, mielőtt használhatna kizárásokat, ezért először el kellene távolítania a kizárásokat, vagy megbizonyosodnia, hogy maradni fog legalább 4 résztvevő!
+            self_assigned: <h4>Hupsz<h4> Nem törölheti ezt a résztvevőt, mert akkor egy személyhez saját maga lenne beosztva.
+            wrong: <h4>Hupsz</h4> Úgy tűnik, a megerősítési szöveg nem egyezik azzal, amire szükségünk van.
+
+    # ReuseController
+    reuse:
+        success: 'Sikeresen kiküldtük az e-mailt!'
+        error: "Nem találtunk egy partit sem, lehetséges hogy az Ön partijai mind régebbiek 2 évnél, vagy egy parti sem kapcsolódik ehhez az e-mailhez"
+
+    # ContactController
+    contact:
+        success: 'Megkaptuk az üzenetét, amint csak tudunk, kapcsolatba fogunk lépni Önnel!'
+
+# Emails/contact.{html,txt}.twig
+emails-contact:
+    subject: Új üzenet a Secret Santa kapcsolati űrlapból
+    message:
+        html: >
+            Tisztelt,<br>
+            <br>
+            %name% A Secret Santa kapcsolati form segítségével küldött egy üzenetet. Üzenet:<br/>
+            <br/>
+            %message%<br/>
+            <br/>
+        txt: >
+            Tisztelt,
+
+            %name% A Secret Santa kapcsolati form segítségével küldött egy üzenetet. Üzenet:
+            %message%
+
+# Form/{ContactType}
+form-contact:
+    label:
+        email: E-mail cím
+        name: Név
+        message: Üzenet
+        submit: Küldés
+        subject: Tárgy
+        subjects:
+            mail: E-mail probléma
+            gdpr: GDPR / Biztonság
+            bug: Hibaészrevétel
+            party: Parti szerkesztési nehézségek
+            suggestions: Javaslatok
+            other: Egyéb
+
+# Static/faq.html.twig
+static-contact:
+    title: Lépjen velünk kapcsolatba
+    body: 'Bármilyen kérdése, aggálya vagy megjegyzése lenne? Lépjen velünk kapcsolatba az alábbi űrlap segítségével:'

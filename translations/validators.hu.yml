@@ -1,0 +1,6 @@
+# Form/ExcludeParticipantType
+party:
+    non_unique: Nincs minden résztvevőnek egyedi párja. Próbálja újra, vagy távolítson el néhány párosítást a kizárási listából.
+participant:
+    non_unique: 'Nem található egyedi pár neki: "%name%"'
+    blacklisted: Az e-mail cím birtokosa kizárta magát a Secret Santa oldalról, és nem szeretne többé meghívva lenni a jövőben!

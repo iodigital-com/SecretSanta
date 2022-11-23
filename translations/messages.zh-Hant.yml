@@ -63,7 +63,7 @@ party-create:
 #    rate_limit_reached: ?
 
     add_participants: 加入你的參加者
-    list_adminstrator: 這人是你的名單管理者。
+    list_adminstrator: 這人也是參加者。
     add_personal_message:
         title: 加入個人信息
         description: 為參加者加入個人信息。
@@ -331,7 +331,7 @@ party_manage_valid:
 # Emails/baseEmail.html.twig
 emails-base_email:
     sender: 聖誕老人
-    title:  秘密聖誕老人由Intracto所有
+    title:  秘密聖誕老人由iO所有
     footer: 組織秘密聖誕老人時感到有趣！
     created_by: 由
 

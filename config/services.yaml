@@ -6,29 +6,31 @@
 parameters:
     locale: en
     supported_locales:
+        - de
         - en
         - es
         - fr
-        - de
+        - hu
         - nl
+        - no
         - pl
         - pt
         - ru
         - zh-Hans
         - zh-Hant
-        - no
     locale_names:
+        de: Deutsch
         en: English
-        nl: Nederlands
+        es: Español
         fr: Français
+        hu: Magyar
+        nl: Nederlands
+        no: Norsk
+        pl: Polskie
         pt: Português
+        ru: Русский
         zh-Hans: 简体中文
         zh-Hant: 繁體中文
-        pl: Polskie
-        ru: Русский
-        es: Español
-        de: Deutsch
-        no: Norsk
     router.request_context.host: '%env(HOST)%'
 
 services:

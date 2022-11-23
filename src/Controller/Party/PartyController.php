@@ -20,13 +20,13 @@ class PartyController extends AbstractController
      * @Route("/party/create", name="create_party")
      * @Template("Party/create.html.twig")
      */
-    public function createAction(Request $request, PartyFormHandler $handler, string $appEnv)
+    public function createAction(Request $request, PartyFormHandler $handler)
     {
         if ($request->getMethod() != 'POST') {
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->handlePartyCreation($request, new Party(), $handler, $appEnv);
+        return $this->handlePartyCreation($request, new Party(), $handler);
     }
 
     /**
@@ -81,7 +81,7 @@ class PartyController extends AbstractController
     /**
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    private function handlePartyCreation(Request $request, Party $party, PartyFormHandler $handler, string $appEnv)
+    private function handlePartyCreation(Request $request, Party $party, PartyFormHandler $handler)
     {
         $form = $this->createForm(PartyType::class, $party, [
             'action' => $this->generateUrl('create_party'),
@@ -89,7 +89,7 @@ class PartyController extends AbstractController
 
         $rateLimitReached = false;
         try {
-            if ($handler->handle($form, $request, $appEnv === 'test')) {
+            if ($handler->handle($form, $request, $this->getParameter('kernel.environment') === 'test')) {
                 return $this->redirectToRoute('party_created', ['listurl' => $party->getListurl()]);
             }
         } catch (RateLimitExceededException) {

@@ -3,7 +3,7 @@
 namespace App\Query;
 
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -316,9 +316,9 @@ class ParticipantReportQuery
             ->andWhere("p.sent_date = ({$subQuery->getSQL()})")
             ->groupBy('e.email') /*filter duplicates in same party */
             ->orderBy('p.id', Criteria::DESC)
-            ->setParameter(':firstDay', $season->getStart()->format('Y-m-d H:i:s'))
-            ->setParameter(':lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
-            ->setParameter(':admin', ($isAdmin ? 1 : 0));
+            ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
+            ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
+            ->setParameter('admin', ($isAdmin ? 1 : 0));
 
         $result = $qb->execute()->fetchAll();
 
@@ -333,27 +333,27 @@ class ParticipantReportQuery
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
             ->andWhere('e.party_admin = 1')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
         $participantCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS participantCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
         $wishlistCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS wishlistCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
             ->andWhere('wishlist_updated_time IS NOT NULL')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
         $viewedCount = $this->dbal->createQueryBuilder()
             ->select('count(e.id) AS viewedCount')
             ->from('party', 'p')
             ->innerJoin('p', 'participant', 'e', 'p.id = e.party_id')
             ->where('p.list_url = :listurl')
             ->andWhere('view_date is not null')
-            ->setParameter(':listurl', $listUrl);
+            ->setParameter('listurl', $listUrl);
 
         return [
             'party' => $party->execute()->fetchAll(),
