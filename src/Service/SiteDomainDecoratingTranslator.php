@@ -69,6 +69,10 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
 
     public function getCatalogues(): array
     {
+        if (!($this->translator instanceof TranslatorBagInterface)) {
+            throw new \LogicException('Translator should implement TranslatorBagInterface');
+        }
+
         return $this->translator->getCatalogues();
     }
 }

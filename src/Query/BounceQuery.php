@@ -35,7 +35,7 @@ class BounceQuery
             ->setParameter('bouncedate', $date, \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE)
             ->setParameter('email', $email);
 
-        return $query->execute()->fetchColumn();
+        return $query->fetchFirstColumn();
     }
 
     public function markParticipantEmailAsBounced(int $id): void

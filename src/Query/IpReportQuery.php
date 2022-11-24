@@ -40,7 +40,7 @@ class IpReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetch();
+        return $query->fetchAllAssociative();
     }
 
     /**
@@ -58,6 +58,6 @@ class IpReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetch();
+        return $query->fetchAllAssociative();
     }
 }
