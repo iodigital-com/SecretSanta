@@ -19,17 +19,7 @@ jobs:
             - uses: php-actions/composer@v6
               with:
                   php_version: ${{ matrix.php }}
-                  php_extensions:
-                      - php8.0-cli
-                      - php8.0-fpm
-                      - php8.0-dev
-                      - php8.0-xml
-                      - php8.0-intl
-                      - php8.0-mysql
-                      - php8.0-mbstring
-                      - php8.0-curl
-                      - php8.0-apcu
-                      - php8.0-xdebug
+                  php_extensions: cli fpm dev xml intl mysql mbstring curl apcu xdebug
             - name: Display PHP version
               run: php -v
             - name: Run tests
