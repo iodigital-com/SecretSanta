@@ -19,7 +19,7 @@ jobs:
             - uses: php-actions/composer@v6
               with:
                   php_version: ${{ matrix.php }}
-                  extensions: ext-apcu
+                  php_extensions: ext-apcu
             - name: Display PHP version
               run: php -v
             - name: Run tests
