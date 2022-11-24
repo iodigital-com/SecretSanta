@@ -22,5 +22,7 @@ jobs:
                   php_extensions: apcu
             - name: Display PHP version
               run: php -v
+            - name: Configure recaptcha secrets
+              run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Run tests
               run: make test
