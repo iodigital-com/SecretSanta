@@ -1,8 +1,0 @@
-{
-  "baseUrl": "http://apache",
-  "video": false,
-  "reporter": "cypress-junit",
-  "reporterOptions": {
-    "mochaFile": "./junit-output/cypress-[hash].xml"
-  }
-}
