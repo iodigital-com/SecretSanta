@@ -3,7 +3,7 @@ name: Run tests
 on: [push, pull_request]
 
 env:
-    GEO_IP_DB_PATH: /home/runner/work/SecretSanta/SecretSanta
+    GEO_IP_DB_PATH: /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
 
 jobs:
     test:
@@ -25,8 +25,6 @@ jobs:
                   php_extensions: apcu
             - name: Display PHP version
               run: php -v
-            - name: Print working directory
-              run: pwd
             - name: Configure recaptcha secrets
               run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Install GeoLite IP DB
