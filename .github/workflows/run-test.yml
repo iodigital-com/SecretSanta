@@ -33,6 +33,8 @@ jobs:
               run: curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
             - name: Run tests
               run: make test
+            - name: Prepare Symfony local server TLS
+              run: symfony server:ca:install
             - name: Run Cypress E2E tests
               uses: cypress-io/github-action@v4
               with:
