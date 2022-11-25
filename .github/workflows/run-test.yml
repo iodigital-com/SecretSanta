@@ -24,6 +24,8 @@ jobs:
               run: php -v
             - name: Configure recaptcha secrets
               run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
+            - name: Install Symfony binary
+              run: curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
             - name: Run tests
               run: make test
             - name: Run Cypress E2E tests
@@ -31,4 +33,4 @@ jobs:
               with:
                   config-file: cypress.config.github.js
                   build: npm run build
-                  start: php bin/console server:start
+                  start: symfony server:start
