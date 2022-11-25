@@ -26,15 +26,8 @@ jobs:
               run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Run tests
               run: make test
-    cypress-run:
-        runs-on: ubuntu-latest
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v2
-            # Install NPM dependencies, cache them correctly
-            # and run all Cypress tests
-            -   name: Cypress run
-                uses: cypress-io/github-action@v4
-                with:
-                    build: npm run build
-                    start: npm start
+            - name: Run Cypress E2E tests
+              uses: cypress-io/github-action@v4
+              with:
+                  build: npm run build
+                  start: npm start
