@@ -34,3 +34,7 @@ dumps
 .vagrant
 .php_cs.cache
 /node_modules/
+
+junit-output
+cypress/videos
+cypress/screenshots
