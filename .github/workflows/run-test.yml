@@ -33,6 +33,16 @@ jobs:
               run: curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
             - name: Run tests
               run: make test
+            - uses: actions/upload-artifact@v2
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+            - uses: actions/upload-artifact@v2
+              if: always()
+              with:
+                  name: cypress-videos
+                  path: cypress/videos
             - name: Run Cypress E2E tests
               uses: cypress-io/github-action@v4
               with:
