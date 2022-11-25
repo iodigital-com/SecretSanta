@@ -24,6 +24,8 @@ jobs:
               run: php -v
             - name: Configure recaptcha secrets
               run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
+            - name: Create GeoLite IP DB directory
+              run: mkdir -p /usr/local/share/GeoIP
             - name: Install GeoLite IP DB
               run: curl https://www.secretsantaorganizer.com/GeoLite2-City.mmdb > /usr/local/share/GeoIP/GeoLite2-City.mmdb
             - name: Install Symfony binary
