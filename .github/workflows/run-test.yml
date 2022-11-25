@@ -31,3 +31,4 @@ jobs:
               with:
                   config-file: cypress.config.github.js
                   build: npm run build
+                  start: php bin/console server:start
