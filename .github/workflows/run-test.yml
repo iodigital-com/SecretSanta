@@ -29,6 +29,5 @@ jobs:
             - name: Run Cypress E2E tests
               uses: cypress-io/github-action@v4
               with:
-                  config-file: cypress.config.github.json
+                  config-file: cypress.config.github.js
                   build: npm run build
-                  start: npm start
