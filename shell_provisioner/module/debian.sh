@@ -34,5 +34,5 @@ cat /dev/null > /etc/motd
 
 # Sync package index files
 apt-get update
-apt-get install -y apt-transport-https lsb-release ca-certificates
+apt-get install -y apt-transport-https lsb-release ca-certificates xvfb
 apt-get dist-upgrade
