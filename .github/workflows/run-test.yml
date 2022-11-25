@@ -18,7 +18,7 @@ jobs:
                   key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
             - uses: php-actions/composer@v6
               with:
-                  php_version: 8.0
+                  php_version: 8.1
                   php_extensions: apcu
             - name: Display PHP version
               run: php -v
