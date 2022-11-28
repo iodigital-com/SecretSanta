@@ -1,0 +1,1 @@
+Cypress.Cookies.preserveOnce()
