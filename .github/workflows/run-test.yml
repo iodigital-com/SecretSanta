@@ -8,6 +8,7 @@ env:
     DB_USER: root
     DB_PASSWORD: root
     DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta?serverVersion=5.7&charset=utf8mb4
+    MAILER_DSN: sendmail://localhost
 
 jobs:
     test:
