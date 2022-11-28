@@ -4,6 +4,9 @@ on: [push, pull_request]
 
 env:
     GEO_IP_DB_PATH: /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
+    DB_DATABASE: secretsanta
+    DB_USER: secretsanta
+    DB_PASSWORD: vagrant
 
 jobs:
     test:
@@ -29,6 +32,10 @@ jobs:
             - name: Install Symfony binary
               run: curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
             - name: Prepare empty database
+              run: |
+                  sudo /etc/init.d/mysql start
+                  mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+            - name: Initialize application DB schema
               run: bin/console doctrine:schema:update --force
             - name: Run tests
               run: make test
