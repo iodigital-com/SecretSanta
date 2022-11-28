@@ -5,8 +5,9 @@ on: [push, pull_request]
 env:
     GEO_IP_DB_PATH: /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
     DB_DATABASE: secretsanta
-    DB_USER: secretsanta
-    DB_PASSWORD: vagrant
+    DB_USER: root
+    DB_PASSWORD: root
+    DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta?serverVersion=5.7&charset=utf8mb4
 
 jobs:
     test:
