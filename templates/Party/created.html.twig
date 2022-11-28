@@ -28,7 +28,7 @@
         <div class="alert alert-info">
             <h4>dev env info</h4>
             <p>party link:
-                <a href="{{ path('party_manage', { 'listurl': party.listUrl }) }}">{{ path('party_manage', { 'listurl': party.listUrl }) }}</a>
+                <a id="party-admin-link" href="{{ path('party_manage', { 'listurl': party.listUrl }) }}">{{ path('party_manage', { 'listurl': party.listUrl }) }}</a>
             </p>
         </div>
     {% endif %}

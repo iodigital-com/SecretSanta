@@ -2,7 +2,7 @@
     <td {% if form_errors(item.rank) %}class="error"{% endif %}>{{ form_widget(item.rank, {'attr': {'class': 'wishlistitem-rank'} }) }}<span class="rank">{{ item.rank.vars.value }}</span></td>
     <td {% if form_errors(item.description) %}class="error"{% endif %}>{{ form_widget(item.description, {'attr': {'class': 'form-control wishlistitem-description'} }) }}</td>
     <td style="text-align: right;">
-        <button type="submit" class="btn btn-mini btn-success save-new-participant">
+        <button type="submit" class="btn btn-mini btn-success save-new-participant" id="wishlist-add-confirm">
             <i class="fa fa-check-circle"></i> <span class="text_remove_wishlist">{{ 'helper-prototype_wishlist.btn.save_item'|trans }}</span>
         </button>
         <button type="submit" class="btn btn-mini btn-success update-participant" style="display: none">
