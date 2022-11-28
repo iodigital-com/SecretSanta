@@ -28,6 +28,8 @@ jobs:
               run: curl https://www.secretsantaorganizer.com/GeoLite2-City.mmdb > /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
             - name: Install Symfony binary
               run: curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
+            - name: Prepare empty database
+              run: bin/console doctrine:schema:update --force
             - name: Run tests
               run: make test
             - name: Prepare Symfony local server TLS
