@@ -9,6 +9,7 @@ env:
     DB_PASSWORD: root
     DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta?serverVersion=5.7&charset=utf8mb4
     MAILER_DSN: sendmail://localhost
+    APP_DOMAIN: test.secretsantaorganizer.com
 
 jobs:
     test:
@@ -27,6 +28,8 @@ jobs:
                   php_extensions: apcu
             - name: Display PHP version
               run: php -v
+            - name: Configure postfix & mailhog
+              run: bash .github/scripts/mailhog.sh
             - name: Configure recaptcha secrets
               run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Install GeoLite IP DB
