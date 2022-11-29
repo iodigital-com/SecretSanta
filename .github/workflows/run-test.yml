@@ -51,6 +51,7 @@ jobs:
               uses: cypress-io/github-action@v4
               with:
                   config-file: cypress.config.github.js
+                  browser: chrome
                   build: npm run build
                   start: symfony server:start
             - uses: actions/upload-artifact@v2
