@@ -91,7 +91,7 @@
                                 </a>
                             {% endapply %}
                         {% endif %}
-                        {% if app.environment == 'dev' and participant.assignedParticipant != null %}
+                        {% if app.environment in ['dev', 'test'] and participant.assignedParticipant != null %}
                             <a href="{{ path('participant_view', { 'url': participant.url }) }}" class="add-participant-link view-participant-link">
                                 <i class="fa fa-fw fa-eye" title="{{ participant.assignedParticipant.name }} <{{ participant.assignedParticipant.email }}>"
                                    alt="{{ 'party_manage_valid.manage.view_participant'|trans }}"></i>
