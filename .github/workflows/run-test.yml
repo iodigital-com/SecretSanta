@@ -3,6 +3,7 @@ name: Run tests
 on: [push, pull_request]
 
 env:
+    APP_ENV: test  # This is needed to show the party admin link after party creation so cypress can use it for e2e testing
     GEO_IP_DB_PATH: /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
     DB_DATABASE: secretsanta
     DB_USER: root

@@ -24,7 +24,7 @@
         <div><strong>{{ 'party-created.warning'|trans }}</strong> {{ 'party-created.check_spam'|trans }}</div>
     </div>
 
-    {% if app.environment == 'dev' %}
+    {% if app.environment in ['dev', 'test'] %}
         <div class="alert alert-info">
             <h4>dev env info</h4>
             <p>party link:
