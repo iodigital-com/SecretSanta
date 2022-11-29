@@ -3,7 +3,7 @@ name: Run tests
 on: [push, pull_request]
 
 env:
-    APP_ENV: dev  # This is needed to show the party admin link after party creation so cypress can use it for e2e testing
+    APP_ENV: test  # This is needed to show the party admin link after party creation so cypress can use it for e2e testing
     CREATE_DB_DATABASE: secretsanta_test
     CREATE_DB_USER: root
     CREATE_DB_PASSWORD: root
