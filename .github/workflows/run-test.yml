@@ -29,7 +29,7 @@ jobs:
             - name: Display PHP version
               run: php -v
             - name: Configure postfix & mailhog
-              run: bash .github/scripts/mailhog.sh
+              run: sudo bash .github/scripts/mailhog.sh
             - name: Configure recaptcha secrets
               run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Install GeoLite IP DB
