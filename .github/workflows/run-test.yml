@@ -4,11 +4,10 @@ on: [push, pull_request]
 
 env:
     APP_ENV: dev  # This is needed to show the party admin link after party creation so cypress can use it for e2e testing
-    GEO_IP_DB_PATH: /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
-    DB_DATABASE: secretsanta
-    DB_USER: root
-    DB_PASSWORD: root
-    DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta?serverVersion=5.7&charset=utf8mb4
+    CREATE_DB_DATABASE: secretsanta_test
+    CREATE_DB_USER: root
+    CREATE_DB_PASSWORD: root
+    DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta_test?serverVersion=5.7&charset=utf8mb4
     MAILER_DSN: sendmail://localhost
     APP_DOMAIN: test.secretsantaorganizer.com
 
@@ -40,7 +39,7 @@ jobs:
             - name: Prepare empty database
               run: |
                   sudo /etc/init.d/mysql start
-                  mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+                  mysql -e 'CREATE DATABASE ${{ env.CREATE_DB_DATABASE }};' -u${{ env.CREATE_DB_USER }} -p${{ env.CREATE_DB_PASSWORD }}
             - name: Initialize application DB schema
               run: bin/console doctrine:schema:update -vvv --force
             - name: Run tests
