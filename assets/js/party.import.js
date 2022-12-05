@@ -1,6 +1,12 @@
 require('jquery-csv');
 var createModule = require('./party.create');
 
+$.extend($.expr[':'],{
+    inputEmpty: function(el){
+        return $(el).val() === "";
+    }
+});
+
 /* Variables */
 var collectionHolder = $('table.participants tbody');
 var dropImportCSV = document.getElementById('importCSV');
@@ -65,11 +71,11 @@ jQuery(document).ready(function () {
                 // check to see if list contains empty participants
                 if (lookForEmpty) {
                     // if so, use them, otherwise add new
-                    elem = $(collectionHolder).find('.participant-name[value=""],.participant-name:not([value])');
+                    elem = $(collectionHolder).find('.participant-name:inputEmpty');
                     if (elem.length > 0) {
                         row = $(elem[0]).parent().parent();
-                        $(row).find('.participant-name').attr('value', name);
-                        $(row).find('.participant-mail').attr('value', email);
+                        $(row).find('.participant-name').val(name);
+                        $(row).find('.participant-mail').val(email);
                     } else {
                         // prevent lookup on next iteration
                         lookForEmpty = false;
