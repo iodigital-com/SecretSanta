@@ -28,8 +28,6 @@ Prepare site:
 vagrant ssh
 cd /vagrant
 composer install
-yarn
-yarn build
 
 cat << EOF >config/recaptcha_secrets.json
 {
@@ -39,6 +37,11 @@ cat << EOF >config/recaptcha_secrets.json
     "threshold": 0.5
 }
 EOF
+
+yarn
+yarn build
+
+php bin/console doctrine:schema:create
 ```
 
 Add these records to your own ```/etc/hosts``` file:
