@@ -31,7 +31,7 @@ class GetBouncedMailsCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $bounces = $this->bounceQuery->getBounces();
         foreach ($bounces as $bounce) {

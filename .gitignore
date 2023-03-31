@@ -10,7 +10,7 @@
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
-.phpunit
+bin/.phpunit/
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
@@ -32,15 +32,9 @@ public/css/*
 composer.phar
 dumps
 .vagrant
-.travis/build/behat-*
 .php_cs.cache
 /node_modules/
 
-###> friends-of-behat/symfony-extension ###
-/behat.yml
-###< friends-of-behat/symfony-extension ###
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
+junit-output
+cypress/videos
+cypress/screenshots

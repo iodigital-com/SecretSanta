@@ -4,6 +4,7 @@
   "devDependencies": {
     "@symfony/webpack-encore": "^1.6.0",
     "bootstrap": "^4.6.0",
+    "cypress": "^11.2.0",
     "file-loader": "^6.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",

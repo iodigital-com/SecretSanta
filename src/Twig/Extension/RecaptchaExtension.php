@@ -15,7 +15,7 @@ class RecaptchaExtension extends AbstractExtension
         $this->captchaSecrets = json_decode(file_get_contents($recaptchaSecret), true);
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('getRecaptchaSecrets', [$this, 'getRecaptchaSecrets']),

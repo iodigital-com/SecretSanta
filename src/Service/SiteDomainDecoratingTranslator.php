@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Symfony\Component\Translation\MessageCatalogueInterface;
 use Symfony\Contracts\Translation\LocaleAwareInterface;
 use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -20,7 +21,7 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
     /**
      * {@inheritdoc}
      */
-    public function trans($id, array $parameters = [], $domain = null, $locale = null)
+    public function trans($id, array $parameters = [], $domain = null, $locale = null): string
     {
         $trans = $this->translator->trans($id, $parameters, $domain, $locale);
 
@@ -30,7 +31,7 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
     /**
      * {@inheritdoc}
      */
-    public function setLocale($locale)
+    public function setLocale($locale): void
     {
         // @todo: refactor to intersection type in php 8.1
         if (!($this->translator instanceof LocaleAwareInterface)) {
@@ -43,7 +44,7 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
     /**
      * {@inheritdoc}
      */
-    public function getLocale()
+    public function getLocale(): string
     {
         // @todo: refactor to intersection type in php 8.1
         if (!($this->translator instanceof LocaleAwareInterface)) {
@@ -56,7 +57,7 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
     /**
      * {@inheritdoc}
      */
-    public function getCatalogue($locale = null)
+    public function getCatalogue($locale = null): MessageCatalogueInterface
     {
         // @todo: refactor to intersection type in php 8.1
         if (!($this->translator instanceof TranslatorBagInterface)) {
@@ -64,5 +65,14 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
         }
 
         return $this->translator->getCatalogue($locale);
+    }
+
+    public function getCatalogues(): array
+    {
+        if (!($this->translator instanceof TranslatorBagInterface)) {
+            throw new \LogicException('Translator should implement TranslatorBagInterface');
+        }
+
+        return $this->translator->getCatalogues();
     }
 }

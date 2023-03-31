@@ -8,9 +8,10 @@ use App\Entity\Party;
 use App\Form\Handler\Exception\RateLimitExceededException;
 use App\Mailer\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\SimpleCache\CacheInterface;
+use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\Cache\ItemInterface;
 
 class PartyFormHandler
 {
@@ -33,13 +34,13 @@ class PartyFormHandler
             return false;
         }
 
-        $rateLimitCacheItem = 0;
-        try {
-            $rateLimitCacheItem = $this->cache->get($rateLimitCacheKey);
-        } catch (\Exception) {
-            // No previous party found in rate limit cache
-        }
-        if ($rateLimitCacheItem > date('U') - 60) {
+        $now = date('U');
+        $rateLimitCacheItem = $this->cache->get($rateLimitCacheKey, function (ItemInterface $item) use ($now) {
+            $item->expiresAfter(180);
+            return $now;
+        });
+
+        if (!$ignoreRateLimit && $rateLimitCacheItem !== $now) {
             throw new RateLimitExceededException();
         }
 
@@ -57,10 +58,6 @@ class PartyFormHandler
 
         $this->em->persist($party);
         $this->em->flush();
-
-        if(!$ignoreRateLimit) {
-            $this->cache->set($rateLimitCacheKey, date('U'), 60);
-        }
 
         $this->mailer->sendPendingConfirmationMail($party);
 

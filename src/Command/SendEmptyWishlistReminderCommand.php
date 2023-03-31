@@ -44,7 +44,7 @@ class SendEmptyWishlistReminderCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $emptyWishlistsParticipant = $this->participantMailQuery->findAllToRemindOfEmptyWishlist();
         $timeNow = new \DateTime();

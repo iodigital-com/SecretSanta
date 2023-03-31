@@ -15,7 +15,7 @@ class GeoCountryExtension extends AbstractExtension
     ) {
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('geoCountry', [$this, 'geoCountryFunction']),

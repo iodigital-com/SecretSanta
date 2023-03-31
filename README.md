@@ -72,8 +72,28 @@ Run the tests with:
 composer phpunit
 ```
 
-[Writing and running Behat tests is documented here.](https://github.com/iodigital-com/SecretSanta/blob/master/docs/behat.md)
+## Cypress
+
+### Interactive
+
+```
+./node_modules/cypress/bin/cypress open
+```
+
+You can select a browser, run, check output, step through each step ...
+
+### Headless
+
+```
+./node_modules/cypress/bin/cypress run
+```
+
+Uses electron by default, if you want a different browser:
+
+```
+./node_modules/cypress/bin/cypress run -b firefox
+```
 
 ## Documentation
 
-See our [docs section](docs/README.md) for information about behat, assets, ...
+See our [docs section](docs/README.md) for information about assets, ...

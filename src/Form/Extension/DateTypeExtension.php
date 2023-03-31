@@ -17,6 +17,7 @@ class DateTypeExtension extends AbstractTypeExtension
     {
         $resolver->setDefaults([
             'widget' => 'single_text',
+            'html5' => false,
             'format' => 'dd-MM-yyyy',
             'js_date_format' => 'dd-mm-yyyy',
             'append' => '<i class="icon-calendar"></i>',
@@ -66,7 +67,7 @@ class DateTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public static function getExtendedTypes()
+    public static function getExtendedTypes(): iterable
     {
         return [DateType::class];
     }

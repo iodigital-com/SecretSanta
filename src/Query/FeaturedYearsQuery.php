@@ -21,7 +21,7 @@ class FeaturedYearsQuery
             ->where('year(p.sent_date) IS NOT NULL')
             ->orderBy('year(p.sent_date)', 'DESC');
 
-        $yearsQuery = $query->execute()->fetchAll();
+        $yearsQuery = $query->fetchAllAssociative();
 
         $featuredYears = [];
 

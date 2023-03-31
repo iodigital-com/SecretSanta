@@ -6,3 +6,7 @@ twig:
     globals:
         supported_locales:  "%supported_locales%"
         locale_names:  "%locale_names%"
+
+when@test:
+    twig:
+        strict_variables: true

@@ -48,7 +48,7 @@ class HashOldDataCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $blackListRepository = $this->em->getRepository(BlacklistEmail::class);
 

@@ -41,7 +41,7 @@ class SendWishlistUpdatedCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var Participant[] $secretSantas */
         $secretSantas = $this->participantMailQuery->findAllToRemindOfUpdatedWishlist();

@@ -1,0 +1,65 @@
+name: Run tests
+
+on: [push, pull_request]
+
+env:
+    APP_ENV: test  # This is needed to show the party admin link after party creation so cypress can use it for e2e testing
+    CREATE_DB_DATABASE: secretsanta_test
+    CREATE_DB_USER: root
+    CREATE_DB_PASSWORD: root
+    DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta_test?serverVersion=5.7&charset=utf8mb4
+    MAILER_DSN: sendmail://localhost
+    APP_DOMAIN: test.secretsantaorganizer.com
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Cache Composer dependencies
+              uses: actions/cache@v2
+              with:
+                  path: /tmp/composer-cache
+                  key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+            - uses: php-actions/composer@v6
+              with:
+                  php_version: 8.0
+                  php_extensions: apcu
+            - name: Display PHP version
+              run: php -v
+            - name: Configure postfix & mailhog
+              run: sudo bash .github/scripts/mailhog.sh
+            - name: Configure recaptcha secrets
+              run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
+            - name: Install GeoLite IP DB
+              run: curl https://www.secretsantaorganizer.com/GeoLite2-City.mmdb > /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
+            - name: Install Symfony binary
+              run: curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
+            - name: Prepare empty database
+              run: |
+                  sudo /etc/init.d/mysql start
+                  mysql -e 'CREATE DATABASE ${{ env.CREATE_DB_DATABASE }};' -u${{ env.CREATE_DB_USER }} -p${{ env.CREATE_DB_PASSWORD }}
+            - name: Initialize application DB schema
+              run: bin/console doctrine:schema:update -vvv --force
+            - name: Run tests
+              run: make test
+            - name: Prepare Symfony local server TLS
+              run: symfony server:ca:install
+            - name: Run Cypress E2E tests
+              uses: cypress-io/github-action@v4
+              with:
+                  config-file: cypress.config.github.js
+                  browser: chrome
+                  build: npm run build
+                  start: symfony server:start
+            - uses: actions/upload-artifact@v2
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+            - uses: actions/upload-artifact@v2
+              if: always()
+              with:
+                  name: cypress-videos
+                  path: cypress/videos

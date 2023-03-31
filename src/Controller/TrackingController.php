@@ -37,7 +37,7 @@ class TrackingController extends AbstractController
         $response->headers->set('Content-Type', 'image/gif');
         $response->headers->addCacheControlDirective('no-cache', true);
         $response->headers->addCacheControlDirective('must-revalidate', true);
-        $response->setPrivate();
+     //   $response->setPrivate();
 
         return $response;
     }
