@@ -47,7 +47,9 @@ jobs:
             - name: Prepare Symfony local server TLS
               run: symfony server:ca:install
             - name: Run Cypress E2E tests
-              uses: cypress-io/github-action@v5
+              uses: cypress-io/github-action@v3
+              env:
+                  NODE_OPTIONS: --openssl-legacy-provider
               with:
                   config-file: cypress.config.github.js
                   browser: chrome
