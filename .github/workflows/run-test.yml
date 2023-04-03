@@ -53,6 +53,8 @@ jobs:
                   browser: chrome
                   build: npm run build
                   start: symfony server:start
+                  env:
+                      NODE_OPTIONS: --openssl-legacy-provider
             - uses: actions/upload-artifact@v2
               if: failure()
               with:
