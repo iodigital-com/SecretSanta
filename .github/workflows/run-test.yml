@@ -22,10 +22,10 @@ jobs:
               with:
                   path: /tmp/composer-cache
                   key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-            - uses: php-actions/composer@v6
+            - uses: shivammathur/setup-php@v2
               with:
-                  php_version: 8.2
-                  php_extensions: apcu
+                  php-version: '8.2'
+                  extensions: apcu
             - name: Display PHP version
               run: php -v
             - name: Configure postfix & mailhog
