@@ -28,6 +28,8 @@ jobs:
                   extensions: apcu
             - name: Display PHP version
               run: php -v
+            - name: Composer install
+              run: composer install
             - name: Configure postfix & mailhog
               run: sudo bash .github/scripts/mailhog.sh
             - name: Configure recaptcha secrets
