@@ -1,6 +1,6 @@
 # Welcome to Secret Santa Online gift exchange organizer!
 
-[![Build Status](https://app.travis-ci.com/tvlooy/SecretSanta.svg?branch=master)](https://app.travis-ci.com/github/tvlooy/SecretSanta)
+[![Run tests](https://github.com/iodigital-com/SecretSanta/actions/workflows/run-test.yml/badge.svg)](https://github.com/iodigital-com/SecretSanta/actions/workflows/run-test.yml)
 
 Secret Santa Organizer is a free online Secret Santa gift exchange organizer! Organize a Secret Santa party with friends,
 family or even co-workers and add your wishlist.
