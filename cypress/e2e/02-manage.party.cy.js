@@ -7,6 +7,10 @@ before(() => {
     })
 })
 
+beforeEach(() => {
+    cy.visit(adminLink)
+})
+
 describe('Managing a party before it started', () => {
     it('can be managed through admin link', () => {
         cy.visit(adminLink)

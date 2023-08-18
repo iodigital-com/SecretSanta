@@ -2,7 +2,7 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://dev.secretsantaorganizer.com',
+    baseUrl: 'https://secretsanta.lndo.site',
     setupNodeEvents(on, config) {
       const items = {}
 

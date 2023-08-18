@@ -7,6 +7,10 @@ before(() => {
     })
 })
 
+beforeEach(() => {
+    cy.visit(adminLink)
+})
+
 describe('Managing a party when it has started', () => {
 
     it('can add another participant', () => {

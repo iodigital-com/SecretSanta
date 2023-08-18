@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # rsyslogd
-
 echo "rsyslog-mysql rsyslog-mysql/dbconfig-install boolean false" | debconf-set-selections
 apt-get -y install rsyslog-mysql
 

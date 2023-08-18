@@ -7,6 +7,10 @@ before(() => {
     })
 })
 
+beforeEach(() => {
+    cy.visit(adminLink)
+})
+
 describe('Creating a wish list', () => {
 
     it('can add wish list items', () => {

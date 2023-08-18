@@ -1,18 +1,22 @@
 {
-  "name": "SecretSanta",
+  "name": "secret_santa",
   "private": true,
   "devDependencies": {
-    "@symfony/webpack-encore": "^1.6.0",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.4",
+    "@symfony/webpack-encore": "^4.3.0",
     "bootstrap": "^4.6.0",
-    "cypress": "^11.2.0",
+    "cypress": "^12.14.0",
     "file-loader": "^6.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "jquery-csv": "^1.0.15",
     "jquery-smooth-scroll": "^2.2.0",
     "jquery-ui": "^1.12.1",
-    "node-sass": "^6.0.1",
-    "sass-loader": "^12.1.0"
+    "node-sass": "^9.0.0",
+    "sass-loader": "^13.3.1",
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "dev-server": "encore dev-server",

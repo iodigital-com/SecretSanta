@@ -1,0 +1,83 @@
+name: secretsanta
+recipe: symfony
+excludes:
+    - vendor
+    - var/cache
+    - node_modules
+config:
+    php: '8.0'
+    config:
+        php: lando/php/php.ini
+        vhosts: lando/apache/000-default.conf
+    webroot: public
+    xdebug: true
+    composer_version: 2-latest
+env_file:
+    - lando/variables.env
+services:
+    appserver:
+        build_as_root:
+            - 'a2enmod headers'
+            - 'apt-get update'
+            - '/bin/bash /app/shell_provisioner/run.sh'
+        overrides:
+            image: 'devwithlando/php:8.0-apache-4'
+            build:
+                context: ./lando
+                dockerfile: Dockerfile
+        build:
+            - 'composer install -n'
+        run_as_root:
+            - 'ln -snf /usr/share/zoneinfo/Europe/Brussels /etc/localtime'
+            - 'echo "Europe/Brussels" > /etc/timezone'
+    database:
+        meUser: root
+        type: compose
+        creds:
+            user: secretsanta
+            password: secretsanta
+            database: secretsanta
+        ports:
+            - '33121:3306'
+        services:
+            image: 'percona/percona-server:8.0'
+            environment:
+                MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+                MYSQL_DATABASE: secretsanta
+                MYSQL_PASSWORD: secretsanta
+                MYSQL_USER: secretsanta
+                MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+            command: '/docker-entrypoint.sh --defaults-file=/etc/my.cnf'
+            volumes:
+                - 'lando/mysql/my.cnf:/etc/my.cnf.d/my.cnf'
+                - 'data_database:/var/lib/mysql'
+        volumes:
+            data_database: {  }
+    phpmyadmin:
+        type: phpmyadmin
+    node:
+        type: 'node:18'
+    mailhog:
+        type: mailhog
+        hogfrom:
+            - appserver
+tooling:
+    xdebug-on:
+        service: appserver
+        description: 'Enable xdebug for apache.'
+        cmd: 'docker-php-ext-enable xdebug && /etc/init.d/apache2 reload'
+        user: root
+    xdebug-off:
+        service: appserver
+        description: 'Disable xdebug for apache.'
+        cmd: 'rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload'
+        user: root
+    yarn:
+        service: node
+    symfony:
+        service: appserver
+        dir: /app
+        cmd: php bin/console
+    composer:
+        service: appserver
+        dir: /app
