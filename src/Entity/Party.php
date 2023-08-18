@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Validator\PartyHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -45,7 +46,7 @@ class Party
     private $amount;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<int, Participant>
      * @Assert\Valid()
      */
     private $participants;
@@ -182,7 +183,7 @@ class Party
 
     public function addParticipant(Participant $participant): Party
     {
-        $this->participants[] = $participant;
+        $this->participants->add($participant);
 
         return $this;
     }
@@ -193,7 +194,7 @@ class Party
     }
 
     /**
-     * @return Participant[]|ArrayCollection
+     * @return Collection<int, Participant>
      */
     public function getParticipants()
     {
