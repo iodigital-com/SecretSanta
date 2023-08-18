@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use App\Validator\ParticipantHasValidExcludes;
 use App\Validator\ParticipantIsNotBlacklisted;
 
@@ -38,7 +39,7 @@ class Participant
     /** @var Participant */
     private $participant;
 
-    /** @var ArrayCollection */
+    /** @var Collection<int, Participant> */
     private $excludedParticipants;
 
     /** @var \DateTime */
@@ -320,7 +321,7 @@ class Participant
      */
     public function addExcludedParticipant(self $excludedParticipant)
     {
-        $this->excludedParticipants[] = $excludedParticipant;
+        $this->excludedParticipants->add($excludedParticipant);
 
         return $this;
     }
