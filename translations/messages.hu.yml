@@ -62,7 +62,7 @@ party-create:
 
         title_2: Hogyan működik?
         intro_2: >
-            <p>Készítsen egy partit <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">a kezdőlapon</a>. Legalább 3 résztvevőre lesz szüksége, <b>az első résztvevő a lista adminisztrátora.</b>
+            <p>Készítsen egy partit <a href="https://SITE_DOMAIN/hu" target="_blank" rel="noopener noreferrer">a kezdőlapon</a>. Legalább 3 résztvevőre lesz szüksége, <b>az első résztvevő a lista adminisztrátora.</b>
             A lista adminisztrátora e-mailben kap egy megerősítő linket. Az érvényesítés után a Secret Santa listája össze lesz keverve, és minden felhasználó megkapja üzenetét Secret Santa ajándéktársa nevével együtt.
             Megerősítést kérünk azért, hogy ne tegyenek kárt botok vagy trollok a partijábn. <b>Az érvényesítő e-mail tartalmaz egy linket a Secret Santa eseménykezelőjéhez</b>.</p>
 
@@ -172,7 +172,7 @@ static-faq:
              Annak érdekében, hogy a dolgok érdekesek maradjanak, véletlenszerűen hozzárendelhet személyeket egymáshoz, hogy megjándékozzák egymást.</p>
     question2: Hogyan működik?
     anchor2: hogyan_mukodik
-    answer2: <p>Készítsen egy partit <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">a kezdőlapon</a>. Legalább 3 résztvevőre lesz szüksége, <b>az első résztvevő a lista adminisztrátora.</b>
+    answer2: <p>Készítsen egy partit <a href="https://SITE_DOMAIN/hu" target="_blank" rel="noopener noreferrer">a kezdőlapon</a>. Legalább 3 résztvevőre lesz szüksége, <b>az első résztvevő a lista adminisztrátora.</b>
              A lista adminisztrátora e-mailben kap egy megerősítő linket. Az érvényesítés után a Secret Santa listája össze lesz keverve, és minden felhasználó megkapja üzenetét Secret Santa ajándéktársa nevével együtt.
              Megerősítést kérünk, hogy ne tegyenek kárt botok vagy trollok a bulijában. <b>Az érvényesítő e-mail tartalmaz egy linket a Secret Santa eseménykezelőjéhez</b>.</p>
     question3: Ki tudok zárni kombinációkat?
@@ -219,7 +219,7 @@ static-faq:
     answer16: <p>Mi egy halom <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">fejlesztő</a>, tervező, frontendes, SEO és marketinges vagyunk. A Secret Santa az egyik mellékprojektünk. Munkaadónk, <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO digitális ügynökség</a> szponzorál bennünket. Célunk egy egyszerű, de nagyon hasznos Secret Santa szervező felépítése. Ezt kísérletekhez is használhatjuk. De, a fő cél az, hogy az emberek használhassák, minél többen, annál jobb ;-)</p>
     question17: Hogyan kezelik az adataimat?
     anchor17: adatkezeles
-    answer17: '<p>Rövid válasz: minket egyáltalán nem érdekelnek az Ön személyes adatai. Semmire sem használjuk. Bővített válaszért olvassa el <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">adatvédelmi irányelveinket</a>. Ezenkívül bármikor törölheti Secret Santa fiókját az adminisztrációs oldalon.</p>'
+    answer17: '<p>Rövid válasz: minket egyáltalán nem érdekelnek az Ön személyes adatai. Semmire sem használjuk. Bővített válaszért olvassa el <a href="https://SITE_DOMAIN/hu/privacy" target="_blank" rel="noopener noreferrer">adatvédelmi irányelveinket</a>. Ezenkívül bármikor törölheti Secret Santa fiókját az adminisztrációs oldalon.</p>'
     question18: Hozzá lehetne adni X funkciót?
     anchor18: funkcio
     answer18: <p>Van egy nagyszerű ötlete egy funkcióhoz? Mindannyian önkéntesek vagyunk, így ha nem tudja maga kódolni, akkor meg kell várnia, amíg valakinek, aki tud kódolni, szüksége lesz ugyanarra a funkcióra. Kérjük, <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">hozzon létre egy issue-t a GitHubon</a>, amely leírja az Ön funkcióját vagy változtatási ötletét. Azok számára, akik tudnak kódolni, jobban szeretjük a segítséget, mint az ihletet. Más szóval, elfogadjuk PR-jeit.</p>

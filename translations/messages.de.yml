@@ -64,7 +64,7 @@ party-create:
         title_2: Wie funktioniert es?
         intro_2: >
             <p>
-                Erstellen Sie eine Party <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">auf der Homepage</a>. Sie brauchen zumindest 3 Teilnehmer, <b>Der erste Teilnehmer ist automatisch der Administrator der Liste.</b> Der Administrator erhählt einen Bestätigungslink via Email. Sobald dieser bestätigt ist, wird Ihre Secret Santa Liste verschlüsselt und erhalten alle Teilnehmer Ihre Nachricht und gleichzeitig auch den Namen Ihres Geschenkepartners. Wir fragen auch hier wieder um eine Bestätigung, um zu verhindern, dass Bots oder Trolle Ihre Secret Santa Party ruinieren. <b> Die Bestätigungsemail beinhaltet einen Link zum Secret Santa Veranstaltungs Manager. </b>.
+                Erstellen Sie eine Party <a href="https://SITE_DOMAIN/de" target="_blank" rel="noopener noreferrer">auf der Homepage</a>. Sie brauchen zumindest 3 Teilnehmer, <b>Der erste Teilnehmer ist automatisch der Administrator der Liste.</b> Der Administrator erhählt einen Bestätigungslink via Email. Sobald dieser bestätigt ist, wird Ihre Secret Santa Liste verschlüsselt und erhalten alle Teilnehmer Ihre Nachricht und gleichzeitig auch den Namen Ihres Geschenkepartners. Wir fragen auch hier wieder um eine Bestätigung, um zu verhindern, dass Bots oder Trolle Ihre Secret Santa Party ruinieren. <b> Die Bestätigungsemail beinhaltet einen Link zum Secret Santa Veranstaltungs Manager. </b>.
             </p>
 
 #    rate_limit_reached: ?
