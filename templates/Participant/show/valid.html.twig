@@ -44,10 +44,17 @@
                         </ul>
                     {% endif %}
                     <br><br>
+                    {% if participant.geoCountry == 'NL' or app.request.locale == 'nl' %}
                         <a href="https://partnerprogramma.bol.com/click/click?p=1&t=url&s=50354&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fm%2Fvoordeel%2Fcadeaus%2Findex.html%3Flanguage=en&name=Cadeautips"
                            target="_blank" rel="noopener noreferrer">
                             {{ 'participant_show_valid.participant.find_gift'|trans }}
                         </a><br>
+                    {% else %}
+                        <a href="https://www.amazon.com/s?k=gift+ideas&crid=260YBXU60MQ3E&sprefix=gift+ideas%2Caps%2C225&linkCode=ll2&tag=secretsant087-20&linkId=1ce6503c32cc8ab095d274a9dd2ba2af&language=en_US&ref_=as_li_ss_tl"
+                           target="_blank" rel="noopener noreferrer">
+                            {{ 'participant_show_valid.participant.find_gift'|trans }}
+                        </a><br>
+                    {% endif %}
                     </ul>
                 </div>
             </div>
