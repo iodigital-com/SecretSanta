@@ -1,6 +1,0 @@
-# Form/ExcludeParticipantType
-party:
-    non_unique: 並非所有入口都有唯一的配對。
-participant:
-    non_unique: 沒有找到%name%的唯一配對
-#    blacklisted:

@@ -15,9 +15,6 @@ parameters:
         - no
         - pl
         - pt
-        - ru
-        - zh-Hans
-        - zh-Hant
     locale_names:
         de: Deutsch
         en: English
@@ -28,9 +25,6 @@ parameters:
         no: Norsk
         pl: Polskie
         pt: Português
-        ru: Русский
-        zh-Hans: 简体中文
-        zh-Hant: 繁體中文
     router.request_context.host: '%env(HOST)%'
 
 services:
