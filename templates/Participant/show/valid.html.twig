@@ -90,14 +90,14 @@
 
         {% if app.environment not in ['test'] %}
             {% if participant.geoCountry in ["BE", "NL"] %}
-            <div class="row text-center">
-                <div class="col mb-2">
-                    <a href="https://kersthits.lnk.to/playlist" rel="noopener noreferrer" target="_blank">
-                        <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
-                    </a>
+                <div class="row text-center">
+                    <div class="col mb-2">
+                        <a href="https://kersthits.lnk.to/playlist" rel="noopener noreferrer" target="_blank">
+                            <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            {% else %}
+            {% endif %}
             <div class="row text-center">
                 <div class="col mb-2">
                     {% if app.environment not in ['test'] %}
@@ -123,7 +123,7 @@
                         };
                         document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/1cb00a92525fd6d7336ec732f4b8ad5c/invoke.js"></scr' + 'ipt>');
                     </script>
-
+<!--
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -134,10 +134,10 @@
                     <script>
                       (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
+-->
                     {% endif %}
                 </div>
             </div>
-            {% endif %}
         {% endif %}
 
         <h1>{{ 'participant_show_valid.wishlist.title'|trans }}</h1>
@@ -206,6 +206,7 @@
     </div>
 
     {% if app.environment not in ['test'] %}
+<!--
         <div class="row text-center">
             <div class="col mb-2">
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -220,6 +221,7 @@
                 </script>
             </div>
         </div>
+-->
     {% endif %}
 {% endblock %}
 

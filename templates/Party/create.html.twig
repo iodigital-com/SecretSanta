@@ -181,12 +181,12 @@
                         </button>
                     </p>
                 {{ form_end(form) }}
-                {% if geoCountry() in ["BE", "NL"] %}
-                <a href="https://kersthits.lnk.to/playlist" rel="noopener noreferrer" target="_blank">
-                    <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
-                </a><br>
-                {% else %}
                 {% if app.environment not in ['test'] %}
+                    {% if participant.geoCountry in ["BE", "NL"] %} 
+                        <a href="https://kersthits.lnk.to/playlist" rel="noopener noreferrer" target="_blank">
+                            <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
+                        </a><br>
+                    {% endif %}
                     <script async="async" data-cfasync="false" src="//pl21094652.toprevenuegate.com/bd105dbed45a2859f84f604f32d7ff3a/invoke.js"></script>
                     <div id="container-bd105dbed45a2859f84f604f32d7ff3a"></div>
                     <script type="text/javascript">
@@ -209,7 +209,7 @@
                         };
                         document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/1cb00a92525fd6d7336ec732f4b8ad5c/invoke.js"></scr' + 'ipt>');
                     </script>
-
+<--
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -217,7 +217,7 @@
                          data-ad-slot="7244544166"
                          data-ad-format="auto"></ins>
                     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                {% endif %}
+-->
                 {% endif %}
             </div>
 

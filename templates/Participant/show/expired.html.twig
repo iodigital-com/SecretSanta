@@ -5,59 +5,63 @@
         {{ 'participant_show_expired.message.expired' | trans | raw }}
     </div>
     <div class="box">
-        <div class="row text-center">
-            <script async="async" data-cfasync="false" src="//pl21094652.toprevenuegate.com/bd105dbed45a2859f84f604f32d7ff3a/invoke.js"></script>
-            <div id="container-bd105dbed45a2859f84f604f32d7ff3a"></div>
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '4e46a9746a54e456c0123bd2f828c7c5',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-                document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/4e46a9746a54e456c0123bd2f828c7c5/invoke.js"></scr' + 'ipt>');
-            </script>
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '1cb00a92525fd6d7336ec732f4b8ad5c',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-                document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/1cb00a92525fd6d7336ec732f4b8ad5c/invoke.js"></scr' + 'ipt>');
-            </script>
+        {% if app.environment not in ['test'] %}
+            <div class="row text-center">
+                <script async="async" data-cfasync="false" src="//pl21094652.toprevenuegate.com/bd105dbed45a2859f84f604f32d7ff3a/invoke.js"></script>
+                <div id="container-bd105dbed45a2859f84f604f32d7ff3a"></div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '4e46a9746a54e456c0123bd2f828c7c5',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                    document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/4e46a9746a54e456c0123bd2f828c7c5/invoke.js"></scr' + 'ipt>');
+                </script>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1cb00a92525fd6d7336ec732f4b8ad5c',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                    document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/1cb00a92525fd6d7336ec732f4b8ad5c/invoke.js"></scr' + 'ipt>');
+                </script>
 
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <div class="span4 visible-xs-inline-block">
-                <ins class="adsbygoogle"
-                     style="width:320px;height:100px"
-                     data-ad-client="ca-pub-9463520136816719"
-                     data-ad-slot="7244544166"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+<!--
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <div class="span4 visible-xs-inline-block">
+                    <ins class="adsbygoogle"
+                         style="width:320px;height:100px"
+                         data-ad-client="ca-pub-9463520136816719"
+                         data-ad-slot="7244544166"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="span4 visible-sm-inline-block">
+                    <ins class="adsbygoogle"
+                         style="width:468px;height:60px"
+                         data-ad-client="ca-pub-9463520136816719"
+                         data-ad-slot="7244544166"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="span4 visible-md-inline-block visible-lg-inline-block">
+                    <ins class="adsbygoogle"
+                         style="width:728px;height:90px"
+                         data-ad-client="ca-pub-9463520136816719"
+                         data-ad-slot="7244544166"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+-->
             </div>
-            <div class="span4 visible-sm-inline-block">
-                <ins class="adsbygoogle"
-                     style="width:468px;height:60px"
-                     data-ad-client="ca-pub-9463520136816719"
-                     data-ad-slot="7244544166"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-            <div class="span4 visible-md-inline-block visible-lg-inline-block">
-                <ins class="adsbygoogle"
-                     style="width:728px;height:90px"
-                     data-ad-client="ca-pub-9463520136816719"
-                     data-ad-slot="7244544166"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </div>
+        {% endif %}
     </div>
 {% endblock %}
 
