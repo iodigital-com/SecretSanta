@@ -181,7 +181,7 @@
                         </button>
                     </p>
                 {{ form_end(form) }}
-                {% if app.environment in ['test'] %}
+                {% if app.environment not in ['test'] %}
                     {% if geoCountry() in ["BE", "NL"] %} 
                         <a href="https://kersthits.lnk.to/playlist" rel="noopener noreferrer" target="_blank">
                             <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
