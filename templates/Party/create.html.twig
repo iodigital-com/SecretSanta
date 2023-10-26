@@ -182,7 +182,7 @@
                     </p>
                 {{ form_end(form) }}
                 {% if app.environment not in ['test'] %}
-                    {% if participant.geoCountry in ["BE", "NL"] %} 
+                    {% if geoCountry() in ["BE", "NL"] %} 
                         <a href="https://kersthits.lnk.to/playlist" rel="noopener noreferrer" target="_blank">
                             <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
                         </a><br>
@@ -209,7 +209,7 @@
                         };
                         document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/1cb00a92525fd6d7336ec732f4b8ad5c/invoke.js"></scr' + 'ipt>');
                     </script>
-<--
+<!--
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <ins class="adsbygoogle"
                          style="display:block"
