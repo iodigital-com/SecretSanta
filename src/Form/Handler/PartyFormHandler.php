@@ -34,6 +34,10 @@ class PartyFormHandler
             return false;
         }
 
+        if (!$form->handleRequest($request)->isValid()) {
+            return false;
+        }
+
         $now = date('U');
         $rateLimitCacheItem = $this->cache->get($rateLimitCacheKey, function (ItemInterface $item) use ($now) {
             $item->expiresAfter(180);
@@ -42,10 +46,6 @@ class PartyFormHandler
 
         if (!$ignoreRateLimit && $rateLimitCacheItem !== $now) {
             throw new RateLimitExceededException();
-        }
-
-        if (!$form->handleRequest($request)->isValid()) {
-            return false;
         }
 
         // Save party
