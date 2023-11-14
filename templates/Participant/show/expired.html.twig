@@ -9,25 +9,67 @@
     <div class="alert alert-danger" role="alert">
         {{ 'participant_show_expired.message.expired' | trans | raw }}
     </div>
-    <div class="box">
-        {% if app.environment not in ['test'] %}
-            <div class="row text-center">
-                <div class="span4 visible-xs-inline-block">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463520136816719"
-                         crossorigin="anonymous"></script>
-                    <!-- Horizontal banner -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-9463520136816719"
-                         data-ad-slot="7244544166"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </div>
+
+    {% if participant.geoCountry == 'DE' %}
+        <a href="https://www.ebay.de/?mkcid=1&mkrid=707-53477-19255-0&siteid=77&campid=5339020780&customid=&toolid=10001&mkevt=1"
+           target="_blank" rel="noopener noreferrer">
+            <img src="{{ absolute_url(asset('/ebay/all.png')) }}" width="100%">">
+        </a><br>
+    {% elseif participant.geoCountry == 'FR' %}
+        <a href="https://www.ebay.fr/?mkcid=1&mkrid=709-53476-19255-0&siteid=71&campid=5339020780&customid=&toolid=10001&mkevt=1"
+           target="_blank" rel="noopener noreferrer">
+            <img src="{{ absolute_url(asset('/ebay/all.png')) }}" width="100%">">
+        </a><br>
+    {% elseif participant.geoCountry == 'ES' %}
+        <a href="https://www.ebay.es/?mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339020780&customid=&toolid=10001&mkevt=1"
+           target="_blank" rel="noopener noreferrer">
+            <img src="{{ absolute_url(asset('/ebay/all.png')) }}" width="100%">">
+        </a><br>
+    {% else %}
+        {% set banner = random(2) %}
+        {% if banner == 0 %}
+            {% set banner_url = 'https://www.ebay.com/b/Home-Garden/11700/bn_1853126?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339020780&customid=&toolid=10001&mkevt=1' %}
+            {% set banner_img = '/ebay/home_garden.png' %}
+        {% elseif banner == 1 %}
+            {% set banner_url = 'https://www.ebay.com/b/Electronics/bn_7000259124?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339020780&customid=&toolid=10001&mkevt=1' %}
+            {% set banner_img = '/ebay/tech.png' %}
+        {% else %}
+            {% set banner_url = 'https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw=Sneakers&_sacat=0[…]55-0&siteid=0&campid=5339020780&customid=&toolid=10001&mkevt=1' %}
+            {% set banner_img = '/ebay/sneakers.png' %}
         {% endif %}
+        <a href="{{ banner_url }}"
+           target="_blank" rel="noopener noreferrer">
+            <img src="{{ absolute_url(asset(banner_img)) }}" width="100%">
+        </a><br>
+    {% endif %}
+    <br><br>
+
+    {% if participant.geoCountry in ["BE", "NL"] %}
+        <div class="row text-center">
+            <div class="col mb-2">
+                <a href="https://kersthits.lnk.to/playlist" rel="noopener noreferrer" target="_blank">
+                    <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="box">
+        <div class="row text-center">
+            <div class="span4 visible-xs-inline-block">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463520136816719"
+                        crossorigin="anonymous"></script>
+                <!-- Horizontal banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9463520136816719"
+                     data-ad-slot="7244544166"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
