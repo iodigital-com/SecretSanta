@@ -45,7 +45,7 @@ printOk
 
 printAction "Composer install"
 ../../shared/composer.phar install --no-dev --classmap-authoritative ${Q} 2>&1 | grep -v 'PHP Deprecated'
-../../shared/composer.phar dump-env prod ${Q}
+../../shared/composer.phar dump-env prod ${Q} 2>&1 | grep -v 'PHP Deprecated'
 rm .env
 printOk
 
