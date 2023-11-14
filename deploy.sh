@@ -50,7 +50,7 @@ rm .env
 printOk
 
 printAction "Building frontend"
-yarn && yarn build
+yarn 2>&1 && yarn build
 printOk
 
 printAction "Install assets"
