@@ -4,6 +4,8 @@
     <td>{{ form_widget(participant.email, {'attr': {'class': 'participant-mail form-control error'} }) }}</td>
     <td style="text-align: right;">
         <button type="button" class="btn btn-mini btn-danger remove-participant">
-            <i class="fa fa-times-circle fa-inverse"></i> <i class="text_remove">{{ 'helper-prototype_participant.btn.remove_person'|trans }}</i>
+            <i class="fa fa-times-circle fa-inverse"></i>
+            <span class="text_remove">{{ 'helper-prototype_participant.btn.remove_person'|trans }}</span>
+        </button>
     </td>
 </tr>
