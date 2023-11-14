@@ -5,34 +5,11 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463520136816719" crossorigin="anonymous"></script>
 {% endblock %}
 
-{% block metadata %}
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        {% for i in 1..21 %}
-            {% if ('static-faq.question' ~ i)|trans != 'static-faq.question' ~ i %}
-                {
-                    "@type": "Question",
-                    "name": "{{ ('static-faq.question' ~ i)|trans }}",
-                    "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "{{ ('static-faq.answer' ~ i)|trans({
-                        '%requestForgotLink%': path('forgot_url'),
-                        '%requestReuseLink%': path('request_reuse_url'),
-                        '%contactLink%': path('contact'),
-                    })|raw|striptags }}"
-                    }
-                }{{ not loop.last ? ',' }}
-            {% endif %}
-        {% endfor %}
-    ]
-}
-</script>
-{% endblock %}
-
 {% block main %}
+    <div class="box">
+        {{ 'static-ecofriendly.main'|trans|raw }}
+    </div>
+
     {% if geoCountry() == 'DE' %}
         <a href="https://www.ebay.de/?mkcid=1&mkrid=707-53477-19255-0&siteid=77&campid=5339020780&customid=&toolid=10001&mkevt=1"
            target="_blank" rel="noopener noreferrer">
@@ -79,7 +56,7 @@
     <div class="row text-center">
         <div class="col mb-2">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463520136816719"
-                 crossorigin="anonymous"></script>
+                    crossorigin="anonymous"></script>
             <!-- Horizontal banner -->
             <ins class="adsbygoogle"
                  style="display:block"
@@ -88,31 +65,8 @@
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
-    </div>
-
-    <div class="box">
-        <h2>{{ 'static-faq.title'|trans }}</h2>
-        {{ 'static-faq.intro'|trans|raw }}
-
-        {% for i in 1..21 %}
-            {% if ('static-faq.question' ~ i)|trans != 'static-faq.question' ~ i %}
-                <a name="{{ ('static-faq.anchor' ~ i)|trans }}"></a>
-                <h2>{{ ('static-faq.question' ~ i)|trans }}</h2>
-                {{ ('static-faq.answer' ~ i)|trans(
-                    {
-                        '%requestForgotLink%': path('forgot_url'),
-                        '%requestReuseLink%': path('request_reuse_url'),
-                        '%contactLink%': path('contact'),
-                    }
-                )|raw }}
-            {% endif %}
-        {% endfor %}
-
-        <p>
-            <a href="{{ url('homepage') }}" class="btn btn-large btn-primary">{{ 'static-faq.create_new_list'|trans }}</a>
-        </p>
     </div>
 {% endblock %}

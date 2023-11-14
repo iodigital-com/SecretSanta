@@ -10,6 +10,8 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
     privacy_policy: Privacy Policy
     cookie_policy: Cookie Policy
+    ecofriendly: ECO Friendly
+    top10gifts: Top 10 Gifts
     bug_bounty: Bug Bounty
 
 # Form/{PartyType,UpdatePartyDetailsType}
@@ -163,6 +165,22 @@ party-get_reuse_url:
 wishlist-show_all:
     title: All Secret Santa Wishlists
     back: Back to manage page
+
+# Static/ecofriendly.html.twig
+static-ecofriendly:
+    main: >
+        
+        <h1>ECO friendly</h1>
+        
+        <p>wip</p>
+
+# Static/top10gifts.html.twig
+static-top10gifts:
+    main: >
+
+        <h1>Top 10 gifts</h1>
+
+        <p>wip</p>
 
 # Static/faq.html.twig
 static-faq:

@@ -10,6 +10,8 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
     privacy_policy: Privacy Policy
     cookie_policy: Cookie Policy
+    ecofriendly: ECO Vriendelijk
+    top10gifts: Top 10 Geschenken
     bug_bounty: Bug Bounty
 
 # Form/{PartyType,UpdatePartyDetailsType}
@@ -753,6 +755,23 @@ form-contact:
 #            party: ?
 #            suggestions: ?
 #            other: ?
+
+# Static/ecofriendly.html.twig
+static-ecofriendly:
+    main: >
+        
+        <h1>ECO vriendelijk</h1>
+        
+        <p>wip</p>
+
+
+# Static/top10gifts.html.twig
+static-top10gifts:
+    main: >
+        
+        <h1>Top 10 geschenken</h1>
+        
+        <p>wip</p>
 
 # Static/faq.html.twig
 static-contact:

@@ -19,3 +19,15 @@ cookie:
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/cookiePolicy.html.twig'
+
+ecofriendly:
+  path: /eco-friendly
+  defaults:
+    _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    template:     'Static/ecofriendly.html.twig'
+
+top10gifts:
+  path: /top-10-gifts
+  defaults:
+    _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    template:     'Static/top10gifts.html.twig'
