@@ -1,4 +1,14 @@
-{{ 'emails-party_update.message.html'|trans({'%name%': participant.name|default(''), '%owner%': results['party'][0]['adminName'], '%date%': results['party'][0]['event_date']|date('Y-m-d'), '%place%': results['party'][0]['location'], '%participantCount%': results['participantCount'][0]['participantCount'], '%viewedCount%': results['viewedCount'][0]['viewedCount'], '%wishlistCount%': results['wishlistCount'][0]['wishlistCount'] })|raw }}
+{{ 'emails-party_update.message.html'|
+    trans({
+        '%name%': participant.name|default('')|escape,
+        '%owner%': results['party'][0]['adminName']|escape,
+        '%date%': results['party'][0]['event_date']|date('Y-m-d'),
+        '%place%': results['party'][0]['location']|escape,
+        '%participantCount%': results['participantCount'][0]['participantCount'],
+        '%viewedCount%': results['viewedCount'][0]['viewedCount'],
+        '%wishlistCount%': results['wishlistCount'][0]['wishlistCount']
+    })|raw
+}}
 
 {{ 'emails-party_update.btn.party_update'|trans|raw }}
 {% if participant|default(null) %}
