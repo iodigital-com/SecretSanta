@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="description" content="{{ 'base.meta.description'|trans }}"/>
     <meta property="og:title" content="{{ 'base.meta.og.title'|trans }}"/>
     <meta property="og:image" content="{{ asset('build/images/ico/social.jpg') }}"/>
     <meta property="og:site_name" content="{{ 'base.meta.og.site_name'|trans }}"/>
     <meta property="og:description" content="{{ 'base.meta.og.description'|trans }}"/>
     <meta name="google-site-verification" content="uA0fiW3NodD6hKNAf4teT1ItWavNiPwmL1uqLt6slF8"/>
     <meta name="google-adsense-account" content="ca-pub-9463520136816719"/>
-    {% block metadata %}{% endblock %}
+    {% block metadata %}
+        <meta name="description" content="{{ 'base.meta.description'|trans }}"/>
+    {% endblock %}
     <title>{% block title %}{{ 'base.meta.title'|trans }}{% endblock %}</title>
 
     {% for supported_locale in supported_locales %}
