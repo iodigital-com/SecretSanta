@@ -10,8 +10,10 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Need help? Got questions? Read the FAQ!</a>
     privacy_policy: Privacy Policy
     cookie_policy: Cookie Policy
-    ecofriendly: ECO Friendly
-    top10gifts: Top 10 Gifts
+    ecofriendly1: ECO Friendly Tips
+    ecofriendly2: ECO Friendly Party
+    top10gifts1: Top 10 Gifts Budget
+    top10gifts2: Top 10 Gift Ideas
     bug_bounty: Bug Bounty
 
 # Form/{PartyType,UpdatePartyDetailsType}
@@ -166,21 +168,163 @@ wishlist-show_all:
     title: All Secret Santa Wishlists
     back: Back to manage page
 
-# Static/ecofriendly.html.twig
-static-ecofriendly:
-    main: >
-        
-        <h1>ECO friendly</h1>
-        
-        <p>wip</p>
-
-# Static/top10gifts.html.twig
-static-top10gifts:
+# Static/ecofriendly1.html.twig
+static-ecofriendly1:
     main: >
 
-        <h1>Top 10 gifts</h1>
+        <h1>A Green Celebration: Tips for an Eco-Friendly Christmas</h1>
+        
+        <p>The Christmas season is a time of joy and togetherness, but it's also a period when we can pay attention to sustainability. Here are tips for organizing an eco-friendly Christmas, focusing on gifts, decorations, and food.</p>
+        
+        <h2>1. Sustainable Gifts:</h2>
+        
+        <p>Start by making conscious choices when selecting gifts. Consider gifts that encourage the recipient to make more sustainable choices. Think of reusable items like stainless steel water bottles, cotton shopping bags, or even a set of reusable beeswax wraps. Here are additional tips:</p>
+        
+        <p>Local Products: Buy gifts from local craftsmen and producers to reduce the ecological footprint.</p>
+        
+        <p>Experiences: Give experiences instead of material gifts, such as a cooking class, concert tickets, or a subscription to a local farm.</p>
+        
+        <h2>2. Green Decorations:</h2>
+        
+        <p>Make your home festive without burdening the planet. Opt for decorations that are reusable and made from sustainable materials. Here are additional tips:</p>
+        
+        <p>Natural Elements: Decorate with natural materials such as pine cones, branches, and dried flowers.</p>
+        
+        <p>DIY Decorations: Create your own decorations from recycled materials or upcycle old decor pieces.</p>
+        
+        <h2>3. Environmentally Friendly Food:</h2>
+        
+        <p>Enjoy a delicious meal without harming the planet. Choose sustainable options when planning your Christmas menu. Here are additional tips:</p>
+        
+        <p>Local and Seasonal: Use local and seasonal ingredients to reduce the impact of transportation.</p>
+        
+        <p>Vegan/Vegetarian: Consider serving a plant-based menu or reduce the amount of meat to decrease the environmental impact.</p>
+        
+        <p>Remember that small changes can make a big difference. By following these tips, you can host an environmentally responsible Christmas celebration without compromising the festive spirit. Enjoy the festivities and celebrate Christmas in a way that is not only good for you but also for the planet.</p>
+        
+        <img src="/seoimg/dinner1.png" alt="Set Christmas table adorned with pine branches, pinecones, and candles with a Christmas tree in the background.">
 
-        <p>wip</p>
+    meta-title: Discover Sustainable Tips for an Eco-Friendly Christmas Party on SecretSantaOrganizer.com
+    meta-description: Make your Christmas greener with sustainable gifts, eco-friendly decorations, and an environmentally friendly menu. Discover how small changes make a difference for the planet while preserving the festive magic!
+
+# Static/ecofriendly2.html.twig
+static-ecofriendly2:
+    main: >
+        
+        <h1>10 Tips for an Eco-Friendly Secret Santa Party</h1>
+        
+        <p>Are you hosting a Secret Santa party and want to make it an eco-friendly Christmas this year? Read our tips for an eco-friendly Christmas party:</p>
+        
+        <h2>1. Wrap Your Gifts in an Eco-Friendly Way:</h2>
+        
+        <ul>
+            <li>Use reusable gift wraps: Gift bags are a great alternative to single-use wrapping paper. They are reusable and more durable than traditional wrapping paper.
+            <li>Use newspaper as wrapping paper: Give your gifts a vintage touch by wrapping them in newspaper. Not only will your gifts be eco-friendly, but they'll also stand out as unique.
+            <li>Reuse Wrapping Paper Multiple Times: If you're a careful unwrapper, consider reusing wrapping paper. If you open a gift without tearing the paper, you can use it again next year.
+            <li>Go Gift Wrap Free: Consider having a wrap-free Christmas. While it's lovely to see all your gifts under the tree, going without wrapping paper is a more eco-friendly option.
+        </ul>
+        
+        <h2>2. Provide Eco-Friendly Decor:</h2>
+        
+        <ul>
+            <li>Buy your Christmas tree locally: If you opt for a real Christmas tree, purchase it from a local vendor to minimize transportation distances. Nowadays, you can also rent a Christmas tree or choose a wooden alternative.
+            <li>Use minimal or eco-friendly decorations: Avoid excessive plastic or glitter decorations, as they can be harmful to the environment. Opt for second-hand or homemade decorations for those who enjoy a creative touch.
+            <li>Use sustainable lighting: Choose LED lights as an eco-friendly alternative.
+        </ul>
+
+        <h2>3. Eco-Chic Dress Code:</h2>
+        
+        <ul>
+            <li>Recycle an outfit: Resist the temptation to buy a new outfit for Christmas. Instead, recycle and re-wear your outfit from the previous year.
+            <li>Borrow an outfit: Consider borrowing an outfit from your sister or friend.
+            <li>Rent an outfit: Explore online platforms where you can rent festive attire, allowing you to shine at your Christmas party without buying a new outfit every year.
+        </ul>
+        
+        <img src="/seoimg/dinner2.png" alt="7 people sitting around a table with food celebrating Christmas in a decorated room with a lot of lights.">
+        
+    meta-title: 10 Tips for an eco Christmas party | Secret Santa Organizer
+    meta-description: Turn your Christmas into a green celebration with our 10 eco-friendly tips! Discover how you can throw a fantastic party that has a positive impact on the planet!
+
+# Static/top10gifts1.html.twig
+static-top10gifts1:
+    main: >
+
+        <h1>Top 10 Secret Santa gifts on a budget</h1>
+
+        <p>Are you still unsure what gift to give your Secret Santa buddy? In this list, you'll find the top 10 Secret Santa gifts <b>under €15</b>.</p>
+        
+        <ul>
+            <li><b>1. DIY gifts:</b> inexpensive, special, and creative—what more could you want? Think of a twisted candle you can make at home with warm water, a homemade Christmas decoration for the table, or a cute Christmas mug with your own design. You can get as creative as you want. One thing is for sure, a homemade gift will always be appreciated by your loved ones.
+            <li><b>2. Candle:</b> Candles are a must during the Christmas season. You'll find many special scents in stores during this time. You can opt for a warm and wintery scent like speculaas or apple cinnamon. But you can also go for a safer choice with a vanilla scent. Candles as a Christmas gift are not only delightful because of their scent but also due to their special packaging.
+            <li><b>3. Warm socks:</b> always handy for cold winters. Socks are among the most enjoyable gifts you can give for Christmas. Whether you choose bright colors and Christmas drawings or a simple color, you can never go wrong with this gift.
+            <li><b>4. Christmas mug:</b> A hot chocolate or tea tastes even better in a cute Christmas mug. During the Christmas season, you'll find plenty of fun and original Christmas mugs on many websites. Can't find anything that suits your buddy? Then make one yourself using porcelain markers!
+            <li><b>5. Skincare products:</b> a hand cream for dry hands or a rich facial cream will surely be appreciated in dry winters. Opt for a winter scent if you choose a hand cream.
+            <li><b>6. Christmas ornaments:</b> What does your buddy like? Do they have a particular hobby or interest? It's nice to give them a Christmas ornament related to that. Is it too specific? Maybe you could even make it yourself!
+            <li><b>7. Planner:</b> After Christmas comes New Year, and what does everyone need when the new year begins? A planner to keep track of all your resolutions (and actually stick to them ;))!
+            <li><b>8. Water bottle:</b> Speaking of resolutions, a water bottle is always handy if your buddy plans to start the new year by getting a fitness subscription. Or if they simply like to stay hydrated in winter.
+            <li><b>9. Board game:</b> Nothing is cozier than playing a board game together on Christmas Eve. Or perhaps you can even create your own game?
+            <li><b>10. Warm blanket:</b> always nice for everyone because you can never have too many blankets!
+        </ul>
+        
+        <img src="/seoimg/gift1.png" alt="Gift wrapped in reindeer and Santa Claus wrapping paper, with a label 'Secret Santa' on it.">
+
+    meta-title: Top 10 Affordable Secret Santa Gifts | Secret Santa Organizer
+    meta-description: Don't have a gift for your Secret Santa buddy yet? Get inspiration from this blog post!
+
+# Static/top10gifts2.html.twig
+static-top10gifts2:
+    main: >
+
+        <h1>Top 10 Budget-Friendly Gift Ideas for Secret Santa</h1>
+
+        <p>It's that time of the year again - the holidays are approaching, which also means it's time for gift-giving! But what if you have a tight budget for your Secret Santa gift? Don't worry, we've got you covered! Here are the top 10 affordable yet great gift ideas for your Secret Santa:</p>
+        
+        <h2>1. Creative Mugs</h2>
+        
+        <p>A mug can be a fantastic gift! Choose one with a fun, humorous, or personalized design. It's practical and personal at the same time.</p>
+        
+        <h2>2. Handmade Soaps</h2>
+        
+        <p>Handmade soaps with delightful scents and unique shapes make a wonderful gift. They look beautiful and are useful for daily use.</p>
+        
+        <h2>3. Colorful Indoor Plants</h2>
+        
+        <p>A small indoor plant not only adds greenery to a space but also creates a cozy atmosphere. Choose an easy-to-maintain plant like a succulent or ivy.</p>
+        
+        <h2>4. Notebooks and Pens</h2>
+        
+        <p>For those who love writing, beautiful notebooks and pens are always a welcome gift. They're perfect for jotting down thoughts, goals, and notes.</p>
+        
+        <h2>5. Atmospheric Candles</h2>
+        
+        <p>A beautiful candle can transform any space and create a relaxing ambiance. Choose scented candles with delightful aromas for added coziness.</p>
+        
+        <h2>6. Funny Socks</h2>
+        
+        <p>A pair of colorful socks with funny prints is a fun and practical gift. There are so many cute designs to choose from!</p>
+        
+        <h2>7. Chocolate or Candy</h2>
+        
+        <p>Who doesn't love something sweet? A box of chocolates or a bag of favorite candies can always bring a smile to someone's face.</p>
+
+        <h2>8. DIY Gift Vouchers</h2>
+
+        <p>Give a homemade gift voucher for something personal, like a free homemade cake, a night of babysitting, or a walk in the park. It's thoughtful and unique.</p>
+
+        <h2>9. Books or E-books</h2>
+
+        <p>A good book is a great gift and doesn't have to be expensive. Choose a bestseller, a classic, or a book from the recipient's favorite genre.</p>
+
+        <h2>10. Photo Memories</h2>
+
+        <p>Print a beautiful photo and place it in an inexpensive yet stylish frame. It's a simple yet very personal way to share a memory.</p>
+
+        <p><b>With these budget-friendly gift ideas for your Secret Santa, you don't have to worry about exceeding your budget while bringing a smile to the recipient's face. Happy gifting!</b></p>
+        
+        <img src="/seoimg/gift2.png" alt="Assorted budget-friendly gift ideas for Secret Santa in a festively wrapped gift set.">
+
+    meta-title: Discover the Top 10 Budget-Friendly Secret Santa Gifts for the Holidays!
+    meta-description: Get inspired by our selection of affordable and creative gift ideas for Secret Santa! Explore mugs, handmade soaps, indoor plants, and more - perfect for a festive and budget-friendly gift exchange!
 
 # Static/faq.html.twig
 static-faq:

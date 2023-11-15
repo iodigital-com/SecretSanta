@@ -1,12 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block metadata %}
+    <meta name="title" content="{{ 'static-top10gifts1.meta-title'|trans|raw }}">
+    <meta name="description" content="{{ 'static-top10gifts1.meta-description'|trans|raw }}">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463520136816719" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block main %}
     <div class="box">
-        {{ 'static-top10gifts.main'|trans|raw }}
+        {{ 'static-top10gifts1.main'|trans|raw }}
     </div>
 
     {% if geoCountry() == 'DE' %}

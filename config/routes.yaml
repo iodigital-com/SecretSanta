@@ -20,14 +20,26 @@ cookie:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/cookiePolicy.html.twig'
 
-ecofriendly:
-  path: /eco-friendly
+ecofriendly1:
+  path: /eco-friendly-tips
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
-    template:     'Static/ecofriendly.html.twig'
+    template:     'Static/ecofriendly1.html.twig'
 
-top10gifts:
-  path: /top-10-gifts
+ecofriendly2:
+  path: /eco-friendly-party
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
-    template:     'Static/top10gifts.html.twig'
+    template:     'Static/ecofriendly2.html.twig'
+
+top10gifts1:
+  path: /top-10-gifts-budget
+  defaults:
+    _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    template:     'Static/top10gifts1.html.twig'
+
+top10gifts2:
+  path: /top-10-gifts-ideas
+  defaults:
+    _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    template:     'Static/top10gifts2.html.twig'

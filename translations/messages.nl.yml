@@ -10,8 +10,10 @@ base:
     need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hulp nodig? Vragen? Lees de FAQ!</a>
     privacy_policy: Privacy Policy
     cookie_policy: Cookie Policy
-    ecofriendly: ECO Vriendelijk
-    top10gifts: Top 10 Geschenken
+    ecofriendly1: ECO Vriendelijke Tips
+    ecofriendly2: ECO Vriendelijk Feestje
+    top10gifts1: Top 10 Geschenken Budget
+    top10gifts2: Top 10 Geschenk Idee
     bug_bounty: Bug Bounty
 
 # Form/{PartyType,UpdatePartyDetailsType}
@@ -756,22 +758,170 @@ form-contact:
 #            suggestions: ?
 #            other: ?
 
-# Static/ecofriendly.html.twig
-static-ecofriendly:
+# Static/ecofriendly1.html.twig
+static-ecofriendly1:
     main: >
         
-        <h1>ECO vriendelijk</h1>
+        <h1>Een Groen Feest: Tips voor een Milieuvriendelijk Kerstfeest</h1>
+
+        <p>Het kerstseizoen is een tijd van vreugde en samenzijn, maar het is ook een periode waarin we aandacht kunnen besteden aan duurzaamheid. Hier zijn tips voor het organiseren van een ecologisch kerstfeest, met de focus op cadeaus, decoraties en voedsel.</p>
+
+        <h2>1. Duurzame Geschenken:</h2>
         
-        <p>wip</p>
+        <p>Begin met het maken van bewuste keuzes bij het selecteren van cadeaus. Overweeg geschenken die de ontvanger aanmoedigen om duurzamere keuzes te maken. Denk aan herbruikbare items zoals roestvrijstalen waterflessen, katoenen boodschappentassen of zelfs een set herbruikbare bijenwasdoeken. Hier zijn extra tips:</p>
 
+        <p>Lokale Producten: Koop cadeaus van lokale ambachtslieden en producenten om de ecologische voetafdruk te verminderen.</p>
 
-# Static/top10gifts.html.twig
-static-top10gifts:
+        <p>Ervaringen: Geef ervaringen in plaats van materiële geschenken, zoals een kookles, concertkaartjes of een abonnement op een lokale boerderij.</p>
+
+        <h2>2. Groene Decoraties:</h2>
+        
+        <p>Maak je huis feestelijk zonder de planeet te belasten. Kies voor decoraties die herbruikbaar zijn en gemaakt zijn van duurzame materialen. Hier zijn extra tips:</p>
+
+        <p>Natuurlijke Elementen: Versier met natuurlijke materialen zoals dennenappels, takken en gedroogde bloemen.</p>
+
+        <p>DIY Decoraties: Maak je eigen decoraties van gerecyclede materialen of upcycle oude decorstukken.</p>
+
+        <h2>3. Milieuvriendelijk Voedsel:</h2>
+        
+        <p>Geniet van een heerlijke maaltijd zonder de planeet te schaden. Kies voor duurzame opties bij het plannen van je kerstmenu. Hier zijn extra tips:</p>
+
+        <p>Lokaal en Seizoensgebonden: Gebruik lokale en seizoensgebonden ingrediënten om de impact van transport te verminderen.</p>
+
+        <p>Vegan/Vegetarisch: Overweeg het serveren van een plantaardig menu of verminder de hoeveelheid vlees om de milieubelasting te verminderen.</p>
+
+        <p>Vergeet niet dat kleine veranderingen een groot verschil kunnen maken. Door deze tips te volgen, kun je een ecologisch verantwoord kerstfeest organiseren zonder concessies te doen aan de feestvreugde. Geniet van de festiviteiten en vier de kerst op een manier die niet alleen goed is voor jou, maar ook voor de planeet.</p>
+        
+        <img src="/seoimg/dinner1.png" alt="Gedekte kersttafel versiert met dennentakken, dennenappels en kaarsen met kerstboom op de achtergrond.">
+
+    meta-title: >
+        Een Groen Feest: Ontdek Duurzame Tips voor een Milieuvriendelijk Kerstfeest op SecretSantaOrganizer.com
+    meta-description: Maak je kerst groener met duurzame cadeaus, eco-decoraties en een milieuvriendelijk menu. Ontdek hoe kleine veranderingen het verschil maken voor de planeet terwijl je de feestmagie behoudt!
+
+# Static/ecofriendly2.html.twig
+static-ecofriendly2:
     main: >
         
-        <h1>Top 10 geschenken</h1>
+        <h1>10 tips voor een eco friendly Secret Santa party</h1>
         
-        <p>wip</p>
+        <p>Geef jij een Secret Santa party en wil je er dit jaar een duurzame Kerst van maken? Lees dan onze tips voor een eco-friendly kerstfeest:</p>
+        
+        <h2>Verpak je cadeautjes op een ecologische manier</h2>
+        
+        <p>Elk jaar wordt er enorm veel inpakpapier aangekocht dat maar 1 maal gebruikt wordt en daarna weggegooid wordt. Dit is niet goed voor het milieu. Hier zijn 3 tips om het inpakken van je cadeautjes dit jaar ecologischer aan te pakken:</p>
+        
+        <ul>
+            <li>Gebruik herbruikbare cadeauverpakkingen: Cadeauzakjes zijn een goede vervanging voor het inpakpapier dat je meteen na het uitpakken weggooit, aangezien ze herbruikbaar zijn en ze niet snel stuk gaan of scheuren zoals inpakpapier.
+            <li>Gebruik krantenpapier als inpakpapier: Geef je cadeautjes een leuke vintage touch door ze in te pakken in krantenpapier. Je cadeautjes zullen niet alleen ecologisch verpakt zijn, maar op deze manier zullen ze er ook unieker uitzien dan de andere cadeautjes die in inpakpapier verpakt zijn.
+            <li>Hergebruik inpakpapier meerdere keren: Als je een voorzichtige uitpakker bent, kan je inpakpapier best een extra keer gebruiken. Wanneer je een cadeau krijgt en open maakt zonder het papier te scheuren, kan het papier volgend jaar opnieuw gebruikt worden.
+            <li>Gebruik geen inpakpapier: Het is leuk om al je cadeautjes te zien liggen onder de kerstboom, maar als je je kerstfeest dit jaar wat ecologischer wil aanpakken kan je een inpak vrije kerst
+        </ul>
+        
+        <h2>Zorg voor ecologische decoratie</h2>
+        
+        <p>Wanneer je zelf een kerstfeestje geeft wil je natuurlijk dat je huis er feestelijk en gezellig uitziet. Hier zijn enkele tips voor ecologische versiering en decoratie:</p>
+        
+        <ul>
+            <li>Koop je kerstboom lokaal: Als je ervoor kiest om dit jaar een echte kerstboom te zetten, koop hem dan bij je lokale handelaar. Zo minimaliseer je de vervoersafstand. De dag van vandaag kan je ook een kerstboom huren of een houten kerstboom zetten.
+            <li>Gebruik niet overdreven veel decoratie of gebruik eco-vriendelijke decoratie: Gebruik zo min mogelijk plastic decoratie of glitter. Dit is heel schadelijk voor het milieu. In de plaats daarvan kan je kiezen voor tweedehand decoratie of zelfgemaakte decoratie voor de creatievelingen onder ons.
+            <li>Gebruik duurzame verlichting: Lampjes mogen natuurlijk niet ontbreken bij het versieren van je huis. Kies dit jaar voor led lampjes, een ecologisch alternatief.
+        </ul>
+        
+        <h2>Dresscode: eco-chic</h2>
+        
+        <p>De feestdagen zijn de uitgelezen periode om je van je beste kant te laten zien en alles uit de kast te halen. Hier heb je enkele tips om er dit jaar goed uit te zien op een milieuvriendelijke manier.</p>
+        
+        <ul>
+            <li>Recycle een outfit: De verleiding is groot om speciaal voor kerst een nieuwe outfit te scoren. Pak het dit jaar ecologisch aan en recycle je outfit van vorig jaar.
+            <li>Leen een outfit: Leen een outfit van je zus/vriendin.
+            <li>Huur een outfit: Er zijn verschillende sites waarop je feestkledij kan huren. Zo kan je schitteren op je kerstfeest zonder elk jaar een nieuwe outfit te kopen.
+        </ul>
+        
+        <img src="/seoimg/dinner2.png" alt="7 mensen zitten rond een tafel met eten en vieren Kerstmis in een versierde kamer met veel lichten.">
+
+    meta-title: 10 Tips voor een eco kerstfeest | Secret Santa Organizer
+    meta-description: Maak van je kerstfeest een groen feest met onze 10 milieuvriendelijke tips! Ontdek hoe je een spetterend feest kan geven dat een positieve impact heeft op de planeet!
+
+# Static/top10gifts1.html.twig
+static-top10gifts1:
+    main: >
+        
+        <h1>Top 10 Secret Santa gifts on a budget</h1>
+        
+        <p>Weet je nog altijd niet wat voor een cadeau je je secret santa buddy moet geven? In deze lijst vind je de top 10 Secret Santa gifts <b>onder de €15</b>.</p>
+        
+        <ul>
+            <li><b>1. DIY cadeaus:</b> goedkoop, speciaal en creatief, wat wil je nog meer? Denk maar aan een twisted kaars die je zelf thuis kan maken met warm water, een zelfgemaakte kerstdecoratie voor op de kersttafel of een leuke kerstmok met je eigen design erop. Je kan het zo gek maken als je zelf wilt. Één ding is wel zeker, een zelfgemaakte cadeau zal altijd gewaardeerd worden door je naasten.
+            <li><b>2. Kaars:</b> Kaarsen kunnen niet ontbreken tijdens de Kerstperiode. In deze periode vind je heel veel speciale geuren in de winkels. Je kan kiezen voor een warme en winterse geur zoals speculaas of appel kaneel. Maar je kan ook een veiligere keuze maken met een vanille geur. Kaarsen als kerstcadeau zijn niet alleen leuk door hun geur maar ook door de speciale verpakkingen. 
+            <li><b>3. Warme sokken:</b> altijd handig voor de koude winters. Sokken zijn een van de leukste cadeaus die je kan geven voor Kerst. Of je nu kiest voor felle kleuren en kerst tekeningen of voor een simpele kleur, je kan nooit fouten maken met dit cadeau. 
+            <li><b>4. Kerstmok:</b> Een warme chocomelk of thee is nog lekkerder in een leuke kerst mok. Op veel websites vind je in de kerstperiode heel veel leuke en originele kerst mokken. Vind je niks wat bij jouw buddy past? Maak er dan zelf een met porseleinstiften! 
+            <li><b>5. Verzorgingsproducten:</b> een handcrème voor de droge handjes of een rijke gezichtscrème zal zeker geapprecieerd worden in de droge winters. Kies je voor een handcrème? Dan kan je ook gaan voor een winterse geur. 
+            <li><b>6. Kersthangers:</b> Wat vind je buddy leuk? Heeft hij of zij een bepaalde hobby of interesse? Dan is het ook leuk om hier een kersthanger van te geven. Is het te specifiek? Dan kan je het misschien ook wel zelf maken!
+            <li><b>7. Agenda:</b> Na Kerst komt Nieuwjaar, en wat heeft iedereen nodig als het nieuwe jaar begint? Een agenda om al je goede voornemens netjes bij te kunnen houden (en deze ook volhouden ;))! 
+            <li><b>8. Drinkfles:</b> Over voornemens gesproken, een drinkfles is altijd handig als je buddy het nieuwe jaar wilt beginnen met het aanschaffen van een fitnessabonnement. Of als hij/zij graag gehydrateerd blijft in de winter. 
+            <li><b>9. Bordspel:</b> niks is gezelliger dan samen een bordspel spelen op kerstavond. Of misschien kan je zelfs je eigen spel maken?
+            <li><b>10. Warme deken:</b> altijd leuk voor iedereen, want je kan nooit te veel dekens hebben!
+        </ul>
+        
+        <img src="/seoimg/gift1.png" alt="Cadeau met rendieren en Kerstman inpakpapier, met een label \"Secret Santa\" erop.">
+
+    meta-title: Top 10 goedkope Secret Santa Gifts | Secret Santa Organizer
+    meta-description: Heb je nog geen cadeau voor je Secret Santa buddy? Haal inspiratie uit deze blogpost!
+
+# Static/top10gifts2.html.twig
+static-top10gifts2:
+    main: >
+        
+        <h1>Top 10 Budgetvriendelijke Cadeau-ideeën voor Secret Santa</h1>
+        
+        <p>Het is die tijd van het jaar weer - de feestdagen zijn in aantocht en dat betekent ook dat het tijd is voor het uitwisselen van cadeautjes! Maar wat als je een strak budget hebt voor je Secret Santa cadeau? Geen zorgen, wij hebben je gedekt! Hier zijn de top 10 betaalbare en toch geweldige cadeau-ideeën voor jouw Secret Santa:</p>
+        
+        <h2>1. Creatieve Mokken</h2>
+        
+        <p>Een mok kan een geweldig cadeau zijn! Kies er een met een leuke, grappige of gepersonaliseerde opdruk. Het is praktisch en persoonlijk tegelijk.</p>
+        
+        <h2>2. Handgemaakte Zeep</h2>
+        
+        <p>Handgemaakte zeepjes met heerlijke geuren en unieke vormen zijn een geweldig geschenk. Ze zien er prachtig uit en zijn nuttig voor dagelijks gebruik.</p>
+        
+        <h2>3. Kleurrijke Kamerplanten</h2>
+        
+        <p>Een kleine kamerplant voegt niet alleen groen toe aan een ruimte, maar zorgt ook voor een gezellige sfeer. Kies een makkelijk te onderhouden plant, zoals een vetplant of een klimop.</p>
+        
+        <h2>4. Notitieboekjes en Pennen</h2>
+        
+        <p>Voor degenen die van schrijven houden, zijn mooie notitieboekjes en pennen altijd een welkom cadeau. Ze zijn perfect voor het bijhouden van gedachten, doelen en notities.</p>
+        
+        <h2>5. Sfeervolle Kaarsen</h2>
+        
+        <p>Een mooie kaars kan elke ruimte transformeren en een ontspannen sfeer creëren. Kies geurkaarsen met heerlijke aroma's voor extra gezelligheid.</p>
+        
+        <h2>6. Grappige Sokken</h2>
+        
+        <p>Een paar kleurrijke sokken met grappige prints zijn een leuk en praktisch cadeau. Er zijn zoveel leuke ontwerpen om uit te kiezen!</p>
+        
+        <h2>7. Chocolade of Snoep</h2>
+        
+        <p>Wie houdt er niet van iets lekkers? Een doosje chocolaatjes of een zakje met favoriete snoepjes kan altijd een glimlach op iemands gezicht toveren.</p>
+        
+        <h2>8. DIY Cadeaubonnen</h2>
+        
+        <p>Geef een zelfgemaakte cadeaubon voor iets persoonlijks, zoals een gratis zelfgebakken taart, een avondje oppassen, of een wandeling in het park. Het is attent en uniek.</p>
+        
+        <h2>9. Boeken of E-books</h2>
+        
+        <p>Een goed boek is een geweldig cadeau, en het hoeft niet duur te zijn. Kies een bestseller, een klassieker of een boek uit een favoriet genre van de ontvanger.</p>
+        
+        <h2>10. Fotoherinneringen</h2>
+        
+        <p>Print een mooie foto uit en plaats deze in een goedkope, maar stijlvolle lijst. Het is een eenvoudige en toch zeer persoonlijke manier om een herinnering te delen.</p>
+
+        <p><b>Met deze budgetvriendelijke cadeau-ideeën voor jouw Secret Santa, hoef je je geen zorgen te maken over het overschrijden van je budget terwijl je een glimlach op het gezicht van de ontvanger tovert. Happy gifting!</b></p>
+        
+        <img src="/seoimg/gift2.png" alt="Diverse budgetvriendelijke cadeau-ideeën voor Secret Santa in een feestelijk ingepakte geschenkset">
+
+    meta-title: Ontdek De Top 10 Budgetvriendelijke Secret Santa Cadeaus voor de Feestdagen!
+    meta-description: Laat je inspireren door onze selectie van betaalbare en creatieve cadeau-ideeën voor Secret Santa! Ontdek mokken, handgemaakte zeep, kamerplanten en meer - perfect voor een feestelijk en budgetvriendelijk geschenkuitwisseling!
 
 # Static/faq.html.twig
 static-contact:
