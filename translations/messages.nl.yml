@@ -412,18 +412,18 @@ party_manage_valid:
             </p>
 
     btn:
-        add_participant: Voeg een deelnemer aan je feestje
+        add_participant: Voeg een deelnemer toe
         add_participant_confirm: Voeg deze deelnemer toe
         cancel: Annuleren
         delete_confirm: Ik begrijp de gevolgen, verwijder nu mijn Secret Santa lijst
         delete_list: Verwijder mijn Secret Santa lijst
-        expose: Bekijk alle koppelingen in deze lijst
+        expose: Bekijk alle koppelingen
         expose_wishlists: Bekijk alle verlanglijstjes
-        party_update: Verstuur update naar alle deelnemers
+        party_update: Verstuur een update
         party_update_info: Je staat op het punt alle deelnemers een email te sturen met daarin een update van het aantal deelnemers, datum, lokatie en aantal personen
         party_update_confirm: Emails uitsturen
         remove_participant_confirm: Verwijder deze deelnemer
-        updated_party: Bewerk de details van dit feestje
+        updated_party: Bewerk dit feestje
         start_party: Start je feestje
 
     label:
