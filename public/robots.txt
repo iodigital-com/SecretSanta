@@ -4,7 +4,10 @@
 User-agent: *
 Disallow: /manage/
 Disallow: /entry/
+Disallow: /wishlists/show/
+Disallow: /*/manage/
+Disallow: /*/entry/
+Disallow: /*/wishlists/show/
 Disallow: /unsubscribe/
 Disallow: /report/
 Disallow: /503.html
-
