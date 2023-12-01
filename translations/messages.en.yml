@@ -204,8 +204,8 @@ static-ecofriendly1:
         
         <img src="/seoimg/dinner1.png" alt="Set Christmas table adorned with pine branches, pinecones, and candles with a Christmas tree in the background.">
 
-    meta-title: Discover Sustainable Tips for an Eco-Friendly Christmas Party on SecretSantaOrganizer.com
-    meta-description: Make your Christmas greener with sustainable gifts, eco-friendly decorations, and an environmentally friendly menu. Discover how small changes make a difference for the planet while preserving the festive magic!
+    meta-title: Top 10 Budgetvriendelijke Secret Santa Cadeaus
+    meta-description: Ontdek betaalbare cadeau-ideeën voor Secret Santa! Mokken, zeep, planten & meer - perfect voor een feestelijk en budgetvriendelijk geschenk!
 
 # Static/ecofriendly2.html.twig
 static-ecofriendly2:
@@ -242,8 +242,8 @@ static-ecofriendly2:
         
         <img src="/seoimg/dinner2.png" alt="7 people sitting around a table with food celebrating Christmas in a decorated room with a lot of lights.">
         
-    meta-title: 10 Tips for an eco Christmas party | Secret Santa Organizer
-    meta-description: Turn your Christmas into a green celebration with our 10 eco-friendly tips! Discover how you can throw a fantastic party that has a positive impact on the planet!
+    meta-title: Top 10 goedkope cadeaus | Secret Santa Organizer
+    meta-description: Heb je nog geen cadeau voor je Secret Santa buddy? Haal inspiratie uit deze blogpost en vind een budgetvriendelijk cadeau!
 
 # Static/top10gifts1.html.twig
 static-top10gifts1:
@@ -253,23 +253,40 @@ static-top10gifts1:
 
         <p>Are you still unsure what gift to give your Secret Santa buddy? In this list, you'll find the top 10 Secret Santa gifts <b>under €15</b>.</p>
         
-        <ul>
-            <li><b>1. DIY gifts:</b> inexpensive, special, and creative—what more could you want? Think of a twisted candle you can make at home with warm water, a homemade Christmas decoration for the table, or a cute Christmas mug with your own design. You can get as creative as you want. One thing is for sure, a homemade gift will always be appreciated by your loved ones.
-            <li><b>2. Candle:</b> Candles are a must during the Christmas season. You'll find many special scents in stores during this time. You can opt for a warm and wintery scent like speculaas or apple cinnamon. But you can also go for a safer choice with a vanilla scent. Candles as a Christmas gift are not only delightful because of their scent but also due to their special packaging.
-            <li><b>3. Warm socks:</b> always handy for cold winters. Socks are among the most enjoyable gifts you can give for Christmas. Whether you choose bright colors and Christmas drawings or a simple color, you can never go wrong with this gift.
-            <li><b>4. Christmas mug:</b> A hot chocolate or tea tastes even better in a cute Christmas mug. During the Christmas season, you'll find plenty of fun and original Christmas mugs on many websites. Can't find anything that suits your buddy? Then make one yourself using porcelain markers!
-            <li><b>5. Skincare products:</b> a hand cream for dry hands or a rich facial cream will surely be appreciated in dry winters. Opt for a winter scent if you choose a hand cream.
-            <li><b>6. Christmas ornaments:</b> What does your buddy like? Do they have a particular hobby or interest? It's nice to give them a Christmas ornament related to that. Is it too specific? Maybe you could even make it yourself!
-            <li><b>7. Planner:</b> After Christmas comes New Year, and what does everyone need when the new year begins? A planner to keep track of all your resolutions (and actually stick to them ;))!
-            <li><b>8. Water bottle:</b> Speaking of resolutions, a water bottle is always handy if your buddy plans to start the new year by getting a fitness subscription. Or if they simply like to stay hydrated in winter.
-            <li><b>9. Board game:</b> Nothing is cozier than playing a board game together on Christmas Eve. Or perhaps you can even create your own game?
-            <li><b>10. Warm blanket:</b> always nice for everyone because you can never have too many blankets!
-        </ul>
+        <h2>1. DIY gifts</h2>
+        <p>Inexpensive, special, and creative—what more could you want? Think of a twisted candle you can make at home with warm water, a homemade Christmas decoration for the table, or a cute Christmas mug with your own design. You can get as creative as you want. One thing is for sure, a homemade gift will always be appreciated by your loved ones.</p>
+
+        <h2>2. Candle</h2>
+        <p>Candles are a must during the Christmas season. You'll find many special scents in stores during this time. You can opt for a warm and wintery scent like speculaas or apple cinnamon. But you can also go for a safer choice with a vanilla scent. Candles as a Christmas gift are not only delightful because of their scent but also due to their special packaging.</p>
+
+        <h2>3. Warm socks</h2>
+        <p>Always handy for cold winters. Socks are among the most enjoyable gifts you can give for Christmas. Whether you choose bright colors and Christmas drawings or a simple color, you can never go wrong with this gift.</p>
+
+        <h2>4. Christmas mug</h2>
+        <p>A hot chocolate or tea tastes even better in a cute Christmas mug. During the Christmas season, you'll find plenty of fun and original Christmas mugs on many websites. Can't find anything that suits your buddy? Then make one yourself using porcelain markers!</p>
+
+        <h2>5. Skincare products</h2>
+        <p>A hand cream for dry hands or a rich facial cream will surely be appreciated in dry winters. Opt for a winter scent if you choose a hand cream.</p>
+
+        <h2>6. Christmas ornaments</h2>
+        <p>What does your buddy like? Do they have a particular hobby or interest? It's nice to give them a Christmas ornament related to that. Is it too specific? Maybe you could even make it yourself!</p>
+
+        <h2>7. Planner</h2>
+        <p>After Christmas comes New Year, and what does everyone need when the new year begins? A planner to keep track of all your resolutions (and actually stick to them ;))!</p>
+
+        <h2>8. Water bottle</h2>
+        <p>Speaking of resolutions, a water bottle is always handy if your buddy plans to start the new year by getting a fitness subscription. Or if they simply like to stay hydrated in winter.</p>
+
+        <h2>9. Board game</h2>
+        <p>Nothing is cozier than playing a board game together on Christmas Eve. Or perhaps you can even create your own game?</p>
+
+        <h2>10. Warm blanket</h2>
+        <p>Always nice for everyone because you can never have too many blankets!</p>
         
         <img src="/seoimg/gift1.png" alt="Gift wrapped in reindeer and Santa Claus wrapping paper, with a label 'Secret Santa' on it.">
 
-    meta-title: Top 10 Affordable Secret Santa Gifts | Secret Santa Organizer
-    meta-description: Don't have a gift for your Secret Santa buddy yet? Get inspiration from this blog post!
+    meta-title: Top 10 Budget-Friendly Secret Santa Gifts
+    meta-description: Discover affordable gift ideas for Secret Santa! Mugs, soaps, plants & more - perfect for a festive and budget-friendly exchange!
 
 # Static/top10gifts2.html.twig
 static-top10gifts2:
@@ -323,7 +340,7 @@ static-top10gifts2:
         
         <img src="/seoimg/gift2.png" alt="Assorted budget-friendly gift ideas for Secret Santa in a festively wrapped gift set.">
 
-    meta-title: Discover the Top 10 Budget-Friendly Secret Santa Gifts for the Holidays!
+    meta-title: Top 10 Affordable Gifts | Secret Santa Organizer
     meta-description: Get inspired by our selection of affordable and creative gift ideas for Secret Santa! Explore mugs, handmade soaps, indoor plants, and more - perfect for a festive and budget-friendly gift exchange!
 
 # Static/faq.html.twig

@@ -795,8 +795,8 @@ static-ecofriendly1:
         <img src="/seoimg/dinner1.png" alt="Gedekte kersttafel versiert met dennentakken, dennenappels en kaarsen met kerstboom op de achtergrond.">
 
     meta-title: >
-        Een Groen Feest: Ontdek Duurzame Tips voor een Milieuvriendelijk Kerstfeest op SecretSantaOrganizer.com
-    meta-description: Maak je kerst groener met duurzame cadeaus, eco-decoraties en een milieuvriendelijk menu. Ontdek hoe kleine veranderingen het verschil maken voor de planeet terwijl je de feestmagie behoudt!
+        Eco-Friendly Christmas: tips voor een Duurzaam Feest
+    meta-description: Maak je kerst groener met duurzame cadeaus, eco-decoraties en milieuvriendelijk voedsel. Ontdek groene tips voor een feestelijk en duurzaam kerstfeest!
 
 # Static/ecofriendly2.html.twig
 static-ecofriendly2:
@@ -840,7 +840,7 @@ static-ecofriendly2:
         <img src="/seoimg/dinner2.png" alt="7 mensen zitten rond een tafel met eten en vieren Kerstmis in een versierde kamer met veel lichten.">
 
     meta-title: 10 Tips voor een eco kerstfeest | Secret Santa Organizer
-    meta-description: Maak van je kerstfeest een groen feest met onze 10 milieuvriendelijke tips! Ontdek hoe je een spetterend feest kan geven dat een positieve impact heeft op de planeet!
+    meta-description: Maak van je kerstfeest een groen feest met onze 10 milieuvriendelijke tips! Geef een spetterend feest dat een positieve impact heeft op de planeet!
 
 # Static/top10gifts1.html.twig
 static-top10gifts1:
@@ -850,23 +850,40 @@ static-top10gifts1:
         
         <p>Weet je nog altijd niet wat voor een cadeau je je secret santa buddy moet geven? In deze lijst vind je de top 10 Secret Santa gifts <b>onder de €15</b>.</p>
         
-        <ul>
-            <li><b>1. DIY cadeaus:</b> goedkoop, speciaal en creatief, wat wil je nog meer? Denk maar aan een twisted kaars die je zelf thuis kan maken met warm water, een zelfgemaakte kerstdecoratie voor op de kersttafel of een leuke kerstmok met je eigen design erop. Je kan het zo gek maken als je zelf wilt. Één ding is wel zeker, een zelfgemaakte cadeau zal altijd gewaardeerd worden door je naasten.
-            <li><b>2. Kaars:</b> Kaarsen kunnen niet ontbreken tijdens de Kerstperiode. In deze periode vind je heel veel speciale geuren in de winkels. Je kan kiezen voor een warme en winterse geur zoals speculaas of appel kaneel. Maar je kan ook een veiligere keuze maken met een vanille geur. Kaarsen als kerstcadeau zijn niet alleen leuk door hun geur maar ook door de speciale verpakkingen. 
-            <li><b>3. Warme sokken:</b> altijd handig voor de koude winters. Sokken zijn een van de leukste cadeaus die je kan geven voor Kerst. Of je nu kiest voor felle kleuren en kerst tekeningen of voor een simpele kleur, je kan nooit fouten maken met dit cadeau. 
-            <li><b>4. Kerstmok:</b> Een warme chocomelk of thee is nog lekkerder in een leuke kerst mok. Op veel websites vind je in de kerstperiode heel veel leuke en originele kerst mokken. Vind je niks wat bij jouw buddy past? Maak er dan zelf een met porseleinstiften! 
-            <li><b>5. Verzorgingsproducten:</b> een handcrème voor de droge handjes of een rijke gezichtscrème zal zeker geapprecieerd worden in de droge winters. Kies je voor een handcrème? Dan kan je ook gaan voor een winterse geur. 
-            <li><b>6. Kersthangers:</b> Wat vind je buddy leuk? Heeft hij of zij een bepaalde hobby of interesse? Dan is het ook leuk om hier een kersthanger van te geven. Is het te specifiek? Dan kan je het misschien ook wel zelf maken!
-            <li><b>7. Agenda:</b> Na Kerst komt Nieuwjaar, en wat heeft iedereen nodig als het nieuwe jaar begint? Een agenda om al je goede voornemens netjes bij te kunnen houden (en deze ook volhouden ;))! 
-            <li><b>8. Drinkfles:</b> Over voornemens gesproken, een drinkfles is altijd handig als je buddy het nieuwe jaar wilt beginnen met het aanschaffen van een fitnessabonnement. Of als hij/zij graag gehydrateerd blijft in de winter. 
-            <li><b>9. Bordspel:</b> niks is gezelliger dan samen een bordspel spelen op kerstavond. Of misschien kan je zelfs je eigen spel maken?
-            <li><b>10. Warme deken:</b> altijd leuk voor iedereen, want je kan nooit te veel dekens hebben!
-        </ul>
+        <h2>1. DIY cadeaus</h2>
+        <p>Goedkoop, speciaal en creatief, wat wil je nog meer? Denk maar aan een twisted kaars die je zelf thuis kan maken met warm water, een zelfgemaakte kerstdecoratie voor op de kersttafel of een leuke kerstmok met je eigen design erop. Je kan het zo gek maken als je zelf wilt. Één ding is wel zeker, een zelfgemaakte cadeau zal altijd gewaardeerd worden door je naasten.</p>
+
+        <h2>2. Kaars</h2>
+        <p>Kaarsen kunnen niet ontbreken tijdens de Kerstperiode. In deze periode vind je heel veel speciale geuren in de winkels. Je kan kiezen voor een warme en winterse geur zoals speculaas of appel kaneel. Maar je kan ook een veiligere keuze maken met een vanille geur. Kaarsen als kerstcadeau zijn niet alleen leuk door hun geur maar ook door de speciale verpakkingen.</p>
+
+        <h2>3. Warme sokken</h2>
+        <p>Altijd handig voor de koude winters. Sokken zijn een van de leukste cadeaus die je kan geven voor Kerst. Of je nu kiest voor felle kleuren en kerst tekeningen of voor een simpele kleur, je kan nooit fouten maken met dit cadeau.</p>
+
+        <h2>4. Kerstmok</h2>
+        <p>Een warme chocomelk of thee is nog lekkerder in een leuke kerst mok. Op veel websites vind je in de kerstperiode heel veel leuke en originele kerst mokken. Vind je niks wat bij jouw buddy past? Maak er dan zelf een met porseleinstiften!</p>
+
+        <h2>5. Verzorgingsproducten</h2>
+        <p>Een handcrème voor de droge handjes of een rijke gezichtscrème zal zeker geapprecieerd worden in de droge winters. Kies je voor een handcrème? Dan kan je ook gaan voor een winterse geur.</p>
+
+        <h2>6. Kersthangers</h2>
+        <p>Wat vind je buddy leuk? Heeft hij of zij een bepaalde hobby of interesse? Dan is het ook leuk om hier een kersthanger van te geven. Is het te specifiek? Dan kan je het misschien ook wel zelf maken!</p>
+
+        <h2>7. Agenda</h2>
+        <p>Na Kerst komt Nieuwjaar, en wat heeft iedereen nodig als het nieuwe jaar begint? Een agenda om al je goede voornemens netjes bij te kunnen houden (en deze ook volhouden ;))!</p>
+
+        <h2>8. Drinkfles</h2>
+        <p>Over voornemens gesproken, een drinkfles is altijd handig als je buddy het nieuwe jaar wilt beginnen met het aanschaffen van een fitnessabonnement. Of als hij/zij graag gehydrateerd blijft in de winter.</p>
+
+        <h2>9. Bordspel</h2>
+        <p>Niks is gezelliger dan samen een bordspel spelen op kerstavond. Of misschien kan je zelfs je eigen spel maken?</p>
+
+        <h2>10. Warme deken</h2>
+        <p>Altijd leuk voor iedereen, want je kan nooit te veel dekens hebben!</p>
         
         <img src="/seoimg/gift1.png" alt="Cadeau met rendieren en Kerstman inpakpapier, met een label \"Secret Santa\" erop.">
 
-    meta-title: Top 10 goedkope Secret Santa Gifts | Secret Santa Organizer
-    meta-description: Heb je nog geen cadeau voor je Secret Santa buddy? Haal inspiratie uit deze blogpost!
+    meta-title: Top 10 Budgetvriendelijke Secret Santa Cadeaus
+    meta-description: Ontdek betaalbare cadeau-ideeën voor Secret Santa! Mokken, zeep, planten & meer - perfect voor een feestelijk en budgetvriendelijk geschenk!
 
 # Static/top10gifts2.html.twig
 static-top10gifts2:
@@ -920,8 +937,8 @@ static-top10gifts2:
         
         <img src="/seoimg/gift2.png" alt="Diverse budgetvriendelijke cadeau-ideeën voor Secret Santa in een feestelijk ingepakte geschenkset">
 
-    meta-title: Ontdek De Top 10 Budgetvriendelijke Secret Santa Cadeaus voor de Feestdagen!
-    meta-description: Laat je inspireren door onze selectie van betaalbare en creatieve cadeau-ideeën voor Secret Santa! Ontdek mokken, handgemaakte zeep, kamerplanten en meer - perfect voor een feestelijk en budgetvriendelijk geschenkuitwisseling!
+    meta-title: Top 10 goedkope cadeaus | Secret Santa Organizer
+    meta-description: Heb je nog geen cadeau voor je Secret Santa buddy? Haal inspiratie uit deze blogpost en vind een budgetvriendelijk cadeau!
 
 # Static/faq.html.twig
 static-contact:
