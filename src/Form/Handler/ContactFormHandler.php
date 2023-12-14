@@ -45,6 +45,10 @@ class ContactFormHandler
         // Client succeed recaptcha validation.
         if ($captchaResult['success'] !== true) {
             $this->session->getFlashBag()->add('danger', 'You seem like a robot, sorry.');
+            foreach ($captchaResult['error-codes'] as $errorCode) {
+                $this->session->getFlashBag()->add('danger', '  - '.$errorCode);
+            }
+
             return false;
         }
 
