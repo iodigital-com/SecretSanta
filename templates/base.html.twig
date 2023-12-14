@@ -53,8 +53,6 @@
                 style="display:none;visibility:hidden"></iframe>
     </noscript>
 
-    {% block headScripts %} {% endblock headScripts %}
-
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -67,6 +65,7 @@
     </script>
     <!-- End Google Tag Manager -->
 {% endif %}
+{% block headScripts %} {% endblock headScripts %}
 <div id="header" class="header">
     <div class="container">
         <div class="header__left" onclick="window.location='{{ url('homepage') }}'">

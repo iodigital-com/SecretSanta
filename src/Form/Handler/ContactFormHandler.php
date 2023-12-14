@@ -40,14 +40,23 @@ class ContactFormHandler
 
         /** @var ContactSubmission $data */
         $data = $form->getData();
-
-        $result = $this->recaptcha->validateRecaptchaToken($data->getRecaptchaToken());
+        $captchaResult = $this->recaptcha->validateRecaptchaToken($data->getRecaptchaToken());
 
         // Client succeed recaptcha validation.
-        if ($result['success'] && $this->mailer->sendContactFormEmail($data)) {
-            $this->translator->setLocale($request->getLocale());
-            $this->session->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
+        if ($captchaResult['success'] !== true) {
+            $this->session->getFlashBag()->add('danger', 'You seem like a robot, sorry.');
+            return false;
         }
+
+        $mailResult = $this->mailer->sendContactFormEmail($data);
+
+        if (!$mailResult) {
+            $this->session->getFlashBag()->add('danger', 'Mail was not sent due to unknown error.');
+            return false;
+        }
+
+        $this->translator->setLocale($request->getLocale());
+        $this->session->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
 
         return true;
     }

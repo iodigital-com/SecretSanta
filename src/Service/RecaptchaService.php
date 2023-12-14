@@ -21,7 +21,7 @@ class RecaptchaService
         $resp = $recaptcha
             ->setExpectedHostname($_SERVER['SERVER_NAME'])
             ->setExpectedAction($this->recaptchaSecret->action)
-            ->setScoreThreshold($this->recaptchaSecret->treshold)
+            ->setScoreThreshold($this->recaptchaSecret->threshold)
             ->verify($token, $_SERVER['REMOTE_ADDR']);
 
         return $resp->toArray();
