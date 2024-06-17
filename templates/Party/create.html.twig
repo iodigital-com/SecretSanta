@@ -189,26 +189,6 @@
                         <img src="{{ absolute_url(asset('/sony2021.jpg')) }}" width="100%">
                     </a><br>
                 {% endif %}
-                {% if geoCountry() == "NL" %}
-                    <a href="https://sodastream.nl/?utm_source=secret+santa&utm_medium=banner" rel="noopener noreferrer" target="_blank">
-                        <img src="{{ absolute_url(asset('/banners/SodaStream-SODA_001-15--NL.png')) }}" width="100%">
-                    </a><br>
-                {% endif %}
-                {% if geoCountry() == "BE" %}
-                    {% if app.request.locale == "fr" %}
-                        <a href="https://sodastream.be/fr/?utm_source=secret+santa&utm_medium=banner" rel="noopener noreferrer" target="_blank">
-                            <img src="{{ absolute_url(asset('/banners/SodaStream-SODA_001-15--FR.png')) }}" width="100%">
-                        </a><br>
-                    {% elseif app.request.locale == "nl" %}
-                        <a href="https://sodastream.be/?utm_source=secret+santa&utm_medium=banner" rel="noopener noreferrer" target="_blank">
-                            <img src="{{ absolute_url(asset('/banners/SodaStream-SODA_001-15--NL.png')) }}" width="100%">
-                        </a><br>
-                    {% else %}
-                        <a href="https://sodastream.be/?utm_source=secret+santa&utm_medium=banner" rel="noopener noreferrer" target="_blank">
-                            <img src="{{ absolute_url(asset('/banners/SodaStream-SODA_001-15--EN.png')) }}" width="100%">
-                        </a><br>
-                    {% endif %}
-                {% endif %}
 
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463520136816719"
                      crossorigin="anonymous"></script>
