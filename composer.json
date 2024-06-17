@@ -4,7 +4,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^8.3",
+        "php": "^8.2",
         "ext-apcu": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
