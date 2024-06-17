@@ -147,7 +147,7 @@ class ManagementController extends AbstractController
 
                 $this->addFlash('success', $this->translator->trans('flashes.management.excludes.success'));
             } else {
-                return $this->forward(ManagementController::class.':valid', ['listurl' => $party->getListurl(), 'excludeForm' => $form]);
+                return $this->forward(ManagementController::class.':validAction', ['listurl' => $party->getListurl(), 'excludeForm' => $form]);
             }
         }
 
