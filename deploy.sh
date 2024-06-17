@@ -69,10 +69,10 @@ printOk
 printAction "Stopping FPM"
 sudo systemctl stop php8.2-fpm
 printOk
-printAction "Running doctrine schema update"
-bin/console doctrine:schema:update --force ${Q}
-cd ../..
-printOk
+#printAction "Running doctrine schema update"
+#bin/console doctrine:schema:update --force ${Q}
+#cd ../..
+#printOk
 printAction "Activate new version"
 ln -sfn releases/${VERSION} current
 printOk
