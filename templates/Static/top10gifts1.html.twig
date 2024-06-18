@@ -11,39 +11,11 @@
         {{ 'static-top10gifts1.main'|trans|raw }}
     </div>
 
-    Note that these banners are ads and are paid for by our affiliate partners.
-    {% if geoCountry() == 'DE' %}
-        <a href="https://www.ebay.de/?mkcid=1&mkrid=707-53477-19255-0&siteid=77&campid=5339020780&customid=&toolid=10001&mkevt=1"
-           target="_blank" rel="noopener noreferrer">
-            <img src="{{ absolute_url(asset('/ebay/all.png')) }}" width="100%">">
-        </a><br>
-    {% elseif geoCountry() == 'FR' %}
-        <a href="https://www.ebay.fr/?mkcid=1&mkrid=709-53476-19255-0&siteid=71&campid=5339020780&customid=&toolid=10001&mkevt=1"
-           target="_blank" rel="noopener noreferrer">
-            <img src="{{ absolute_url(asset('/ebay/all.png')) }}" width="100%">">
-        </a><br>
-    {% elseif geoCountry() == 'ES' %}
-        <a href="https://www.ebay.es/?mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339020780&customid=&toolid=10001&mkevt=1"
-           target="_blank" rel="noopener noreferrer">
-            <img src="{{ absolute_url(asset('/ebay/all.png')) }}" width="100%">">
-        </a><br>
-    {% else %}
-        {% set banner = random(2) %}
-        {% if banner == 0 %}
-            {% set banner_url = 'https://www.ebay.com/b/Home-Garden/11700/bn_1853126?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339020780&customid=&toolid=10001&mkevt=1' %}
-            {% set banner_img = '/ebay/home_garden.png' %}
-        {% elseif banner == 1 %}
-            {% set banner_url = 'https://www.ebay.com/b/Electronics/bn_7000259124?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339020780&customid=&toolid=10001&mkevt=1' %}
-            {% set banner_img = '/ebay/tech.png' %}
-        {% else %}
-            {% set banner_url = 'https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw=Sneakers&_sacat=0[…]55-0&siteid=0&campid=5339020780&customid=&toolid=10001&mkevt=1' %}
-            {% set banner_img = '/ebay/sneakers.png' %}
-        {% endif %}
-        <a href="{{ banner_url }}"
-           target="_blank" rel="noopener noreferrer">
-            <img src="{{ absolute_url(asset(banner_img)) }}" width="100%">
-        </a><br>
-    {% endif %}
+    <a href="{{ banner_url }}"
+       target="_blank" rel="noopener noreferrer">
+        <img src="{{ absolute_url(asset(banner_img)) }}" width="100%">
+    </a><br>
+
     <br><br>
 
 <!--
