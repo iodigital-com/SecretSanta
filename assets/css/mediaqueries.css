@@ -18,10 +18,6 @@
         padding: 97px 0px 0px 0px;
     }
 
-    input, textarea, .uneditable-input {
-        width: 100%;
-    }
-
     #footer-santa {
         font-size: 0.9em;
         background: url(../img/footer-bgipad.jpg) no-repeat right top;
@@ -68,10 +64,6 @@
 
     small {
         font-size: 75%;
-    }
-
-    input, textarea, .uneditable-input {
-        width: 100%;
     }
 
     .table th, .table td {
