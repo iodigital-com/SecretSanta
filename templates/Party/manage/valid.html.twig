@@ -170,11 +170,12 @@
             {{ 'party_manage_valid.join_mode.body'|trans|raw }}
 
             <br>
+            {% form_theme setJoinModeForm "Form/custom_form.html.twig" %}
             {{ form_start(setJoinModeForm) }}
             {{ form_row(setJoinModeForm._token) }}
 
             <div class="form-group">
-                <strong>{{ 'party_manage_valid.label.join_mode'|trans }}</strong> {{ form_widget(setJoinModeForm.join_mode ,{'attr':{'class':'form-control'}}) }}
+                <strong>{{ 'party_manage_valid.label.join_mode'|trans }}</strong> {{ form_widget(setJoinModeForm.join_mode) }}
                 {% if form_errors(setJoinModeForm.join_mode) %}setJoinModeForm
                     {% for error in setJoinModeForm.name.vars.errors %}
                         <strong>{{ error.message }}</strong><br/>
