@@ -5,6 +5,11 @@ namespace App\Mailer;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Model\ContactSubmission;
 use App\Service\UnsubscribeService;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use App\Entity\Participant;
@@ -14,8 +19,8 @@ use Twig\Environment;
 
 class MailerService
 {
-    public \Swift_Mailer $mailer;
-    public \Swift_Mailer $mandrill;
+    public MailerInterface $mailer;
+    public MailerInterface $mandrill;
     public EntityManagerInterface $em;
     public Environment $templating;
     public TranslatorInterface $translator;
@@ -26,8 +31,8 @@ class MailerService
     public string $contactEmail;
 
     public function __construct(
-        \Swift_Mailer $mailer,
-        \Swift_Mailer $mandrill,
+        MailerInterface $mailer,
+		MailerInterface $mandrill,
         EntityManagerInterface $em,
         Environment $templating,
         TranslatorInterface $translator,
@@ -49,33 +54,30 @@ class MailerService
         $this->contactEmail = $contactEmail;
     }
 
-    public function sendPendingConfirmationMail(Party $party): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendPendingConfirmationMail(Party $party): void
     {
-        $this->translator->setLocale($party->getLocale());
+		$locale = $party->getLocale();
 
-        $message = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-pendingConfirmation.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($party->getOwnerEmail())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/pendingConfirmation.txt.twig',
-                    ['party' => $party]
-                )
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/pendingConfirmation.html.twig',
-                    ['party' => $party]
-                ),
-                'text/html'
-            );
-        $this->sendMail($message);
+        $message = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-pendingConfirmation.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to($party->getOwnerEmail())
+            ->htmlTemplate('Emails/pendingConfirmation.html.twig')
+            ->textTemplate('Emails/pendingConfirmation.txt.twig')
+			->context([
+				'party' => $party,
+				'locale' => $locale
+			]);
+		$this->sendMail($message);
     }
 
-    /**
-     * Sends out all mails for a Party.
-     */
+	/**
+	 * Sends out all mails for a Party.
+	 * @throws TransportExceptionInterface
+	 */
     public function sendSecretSantaMailsForParty(Party $party): void
     {
         $party->setSentdate(new \DateTime('now'));
@@ -87,12 +89,13 @@ class MailerService
         }
     }
 
-    /**
-     * Sends out mail for a Participant.
-     */
+	/**
+	 * Sends out mail for a Participant.
+	 * @throws TransportExceptionInterface
+	 */
     public function sendSecretSantaMailForParticipant(Participant $participant): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
+        $locale = $participant->getParty()->getLocale();
 
         // We wrap the admin's message into our own message and from 19/apr/2017 we no longer save
         // our own message in the DB. Don't wrap older parties here to prevent the message from occuring twice.
@@ -110,7 +113,7 @@ class MailerService
                 '%eventdate%' => $dateFormatter->format($participant->getParty()->getEventdate()->getTimestamp()),
                 '%location%' => $participant->getParty()->getLocation(),
                 '%message%' => $participant->getParty()->getMessage(),
-            ]);
+            ], 'messages', $locale);
         }
 
         $participant->setInvitationSentDate(new \DateTime('now'));
@@ -123,36 +126,26 @@ class MailerService
             $message
         );
 
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-participant.subject'))
-            ->setFrom($this->noreplyEmail, $participant->getParty()->getOwnerName())
-            ->setReplyTo([$participant->getParty()->getOwnerEmail() => $participant->getParty()->getOwnerName()])
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/participant.html.twig',
-                    [
-                        'message' => $message,
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/participant.txt.twig',
-                    [
-                        'message' => $message,
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/plain'
-            );
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-participant.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $participant->getParty()->getOwnerName()))
+            ->replyTo(new Address($participant->getParty()->getOwnerEmail(), $participant->getParty()->getOwnerName()))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/participant.html.twig')
+            ->textTemplate('Emails/participant.txt.twig')
+			->context([
+				'message' => $message,
+				'participant' => $participant,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
-        $this->sendMail($mail);
+		$this->sendMail($mail);
     }
 
-    public function sendForgotLinkMail(string $email): bool
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendForgotLinkMail(string $email): bool
     {
         /** @var Participant[] $participatingIn */
         $participatingIn = $this->em->getRepository(Participant::class)->findAllParticipantsForForgotEmail($email);
@@ -190,41 +183,31 @@ class MailerService
         }
 
         if (count($adminOf)) {
-            $this->translator->setLocale($adminOf[0]['locale']);
+			$locale = $adminOf[0]['locale'];
         } else {
-            $this->translator->setLocale($participatingIn[0]->getParty()->getLocale());
+            $locale = $participatingIn[0]->getParty()->getLocale();
         }
 
-        $message = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-forgot_link.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($email)
-            ->setBody(
-                $this->templating->render(
-                    'Emails/forgotLink.html.twig',
-                    [
-                        'manageLinks' => $manageLinks,
-                        'participantLinks' => $participantLinks,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/forgotLink.txt.twig',
-                    [
-                        'manageLinks' => $manageLinks,
-                        'participantLinks' => $participantLinks,
-                    ]
-                ),
-                'text/plain'
-            );
-        $this->sendMail($message);
+        $message = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-forgot_link.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to($email)
+            ->htmlTemplate('Emails/forgotLink.html.twig')
+            ->textTemplate('Emails/forgotLink.txt.twig')
+			->context([
+				'manageLinks' => $manageLinks,
+				'participantLinks' => $participantLinks,
+				'locale' => $locale
+			]);
+		$this->sendMail($message);
 
         return true;
     }
 
-    public function sendReuseLinksMail(string $email): bool
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendReuseLinksMail(string $email): bool
     {
         $results = $this->em->getRepository(Party::class)->findPartiesToReuse($email);
 
@@ -245,36 +228,27 @@ class MailerService
             ];
         }
 
-        $this->translator->setLocale($results[0]['locale']);
+        $locale = $results[0]['locale'];
 
-        $message = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-reuse_link.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($email)
-            ->setBody(
-                $this->templating->render(
-                    'Emails/reuseLink.html.twig',
-                    [
-                        'partyLinks' => $partyLinks,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/reuseLink.txt.twig',
-                    [
-                        'partyLinks' => $partyLinks,
-                    ]
-                ),
-                'text/plain'
-            );
-        $this->sendMail($message);
+        $message = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-reuse_link.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to($email)
+            ->htmlTemplate('Emails/reuseLink.html.twig')
+            ->textTemplate('Emails/reuseLink.txt.twig')
+			->context([
+				'partyLinks' => $partyLinks,
+				'locale' => $locale
+			]);
+		$this->sendMail($message);
 
         return true;
     }
 
-    public function sendPartyUpdateMailForParty(Party $party, array $results): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendPartyUpdateMailForParty(Party $party, array $results): void
     {
         foreach ($party->getParticipants() as $participant) {
             if ($participant->isSubscribed()) {
@@ -283,185 +257,134 @@ class MailerService
         }
     }
 
-    public function sendPartyUpdateMailForParticipant(Participant $participant, array $results): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendPartyUpdateMailForParticipant(Participant $participant, array $results): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-party_update.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/partyUpdate.html.twig',
-                    [
-                        'participant' => $participant,
-                        'results' => $results,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/partyUpdate.txt.twig',
-                    [
-                        'participant' => $participant,
-                        'results' => $results,
-                    ]
-                ),
-                'text/plain'
-            );
+        $locale = $participant->getParty()->getLocale();
+
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-party_update.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/partyUpdate.html.twig')
+            ->textTemplate('Emails/partyUpdate.txt.twig')
+			->context([
+				'participant' => $participant,
+				'results' => $results,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->sendMail($mail);
     }
 
-    public function sendContactFormEmail(ContactSubmission $contactSubmission): bool
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendContactFormEmail(ContactSubmission $contactSubmission): bool
     {
-        $this->translator->setLocale('nl');
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-contact.subject').': '.$contactSubmission->getSubject())
-            ->setFrom($contactSubmission->getEmail(), $contactSubmission->getName())
-            ->setTo($this->contactEmail)
-            ->setBody(
-                $this->templating->render(
-                    'Emails/contact.html.twig',
-                    [
-                        'submission' => $contactSubmission,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/contact.txt.twig',
-                    [
-                        'submission' => $contactSubmission,
-                    ]
-                ),
-                'text/plain'
-            );
-        $this->sendMail($mail);
+        $locale = 'nl';
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-contact.subject', [], 'messages', $locale).': '.$contactSubmission->getSubject())
+            ->from(new Address($contactSubmission->getEmail(), $contactSubmission->getName()))
+            ->to($this->contactEmail)
+            ->htmlTemplate('Emails/contact.html.twig')
+            ->textTemplate('Emails/contact.txt.twig')
+			->context([
+				'submission' => $contactSubmission,
+				'locale' => $locale
+			]);
+		$this->sendMail($mail);
 
         return true;
     }
 
-    public function sendWishlistReminderMail(Participant $participant): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendWishlistReminderMail(Participant $participant): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-emptyWishlistReminder.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/emptyWishlistReminder.html.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/emptyWishlistReminder.txt.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/plain'
-            );
+        $locale = $participant->getParty()->getLocale();
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-emptyWishlistReminder.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/emptyWishlistReminder.html.twig')
+            ->textTemplate('Emails/emptyWishlistReminder.txt.twig')
+			->context([
+				'participant' => $participant,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-    public function sendParticipantViewReminderMail(Participant $participant): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendParticipantViewReminderMail(Participant $participant): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-viewParticipantReminder.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/viewParticipantReminder.html.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/viewParticipantReminder.txt.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/plain'
-            );
+        $locale = $participant->getParty()->getLocale();
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-viewParticipantReminder.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/viewParticipantReminder.html.twig')
+            ->textTemplate('Emails/viewParticipantReminder.txt.twig')
+			->context([
+				'participant' => $participant,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-    public function sendWishlistUpdatedMail(Participant $participant): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendWishlistUpdatedMail(Participant $participant): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-wishlistChanged.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/wishlistChanged.html.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/wishlistChanged.txt.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/plain'
-            );
+        $locale = $participant->getParty()->getLocale();
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-wishlistChanged.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/wishlistChanged.html.twig')
+            ->textTemplate('Emails/wishlistChanged.txt.twig')
+			->context([
+				'participant' => $participant,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-    public function sendPartyStatusMail(Participant $participant): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendPartyStatusMail(Participant $participant): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-party_status.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/partyStatus.html.twig',
-                    [
-                        'party' => $participant->getParty(),
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/partyStatus.txt.twig',
-                    [
-                        'party' => $participant->getParty(),
-                        'admin' => $participant,
-                    ]
-                ),
-                'text/plain'
-            );
+        $locale = $participant->getParty()->getLocale();
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-party_status.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/partyStatus.html.twig')
+            ->textTemplate('Emails/partyStatus.txt.twig')
+			->context([
+				'party' => $participant->getParty(),
+				'admin' => $participant,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-    public function sendPartyUpdatedMailsForParty(Party $party): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendPartyUpdatedMailsForParty(Party $party): void
     {
         foreach ($party->getParticipants() as $participant) {
             if ($participant->isSubscribed()) {
@@ -470,97 +393,72 @@ class MailerService
         }
     }
 
-    public function sendPartyUpdatedMailForParticipant(Participant $participant): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendPartyUpdatedMailForParticipant(Participant $participant): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-updated_party.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/updatedParty.html.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/updatedParty.txt.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/plain'
-            );
+        $locale = $participant->getParty()->getLocale();
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-updated_party.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/updatedParty.html.twig')
+            ->textTemplate('Emails/updatedParty.txt.twig')
+			->context([
+				'participant' => $participant,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->sendMail($mail);
     }
 
-    public function sendRemovedSecretSantaMail(Participant $participant): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendRemovedSecretSantaMail(Participant $participant): void
     {
-        $this->translator->setLocale($participant->getParty()->getLocale());
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-removed_secret_santa.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($participant->getEmail(), $participant->getName())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/removedSecretSanta.html.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/removedSecretSanta.txt.twig',
-                    [
-                        'participant' => $participant,
-                    ]
-                ),
-                'text/plain'
-            );
+        $locale = $participant->getParty()->getLocale();
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-removed_secret_santa.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to(new Address($participant->getEmail(), $participant->getName()))
+            ->htmlTemplate('Emails/removedSecretSanta.html.twig')
+            ->textTemplate('Emails/removedSecretSanta.txt.twig')
+			->context([
+				'participant' => $participant,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->sendMail($mail);
     }
 
-    public function sendAnonymousMessage(Participant $recipient, string $message): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	public function sendAnonymousMessage(Participant $recipient, string $message): void
     {
-        $this->translator->setLocale($recipient->getParty()->getLocale());
+        $locale = $recipient->getParty()->getLocale();
 
-        $mail = (new \Swift_Message())
-            ->setSubject($this->translator->trans('emails-anonymous_message.subject'))
-            ->setFrom($this->noreplyEmail, $this->translator->trans('emails-base_email.sender'))
-            ->setTo($recipient->getEmail())
-            ->setBody(
-                $this->templating->render(
-                    'Emails/anonymousMessage.html.twig',
-                    [
-                        'message' => $message,
-                        'participant' => $recipient,
-                    ]
-                ),
-                'text/html'
-            )
-            ->addPart(
-                $this->templating->render(
-                    'Emails/anonymousMessage.txt.twig',
-                    [
-                        'message' => $message,
-                        'participant' => $recipient,
-                    ]
-                ),
-                'text/plain'
-            );
+        $mail = (new TemplatedEmail())
+            ->subject($this->translator->trans('emails-anonymous_message.subject', [], 'messages', $locale))
+            ->from(new Address($this->noreplyEmail, $this->translator->trans('emails-base_email.sender', [], 'messages', $locale)))
+            ->to($recipient->getEmail())
+            ->htmlTemplate('Emails/anonymousMessage.html.twig')
+            ->textTemplate('Emails/anonymousMessage.txt.twig')
+			->context([
+				'message' => $message,
+				'participant' => $recipient,
+				'locale' => $locale
+			]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($recipient));
         $this->sendMail($mail);
     }
 
-    private function sendMail(\Swift_Message $mail): void
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	private function sendMail(Email $mail): void
     {
         // Requesting a delisting from Hotmail does not work. They just accept our email and filter it (not delivered to spam folder).
         // https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wfname=capsub&productkey=edfsmsbl3&ccsid=635688189955348624&wa=wsignin1.0

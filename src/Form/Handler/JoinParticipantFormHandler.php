@@ -9,19 +9,19 @@ use App\Entity\Participant;
 use App\Entity\Party;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class JoinParticipantFormHandler
 {
     private TranslatorInterface $translator;
-    private SessionInterface $session;
+	private RequestStack $requestStack;
     private EntityManagerInterface $em;
 
-    public function __construct(TranslatorInterface $translator, SessionInterface $session, EntityManagerInterface $em)
+    public function __construct(TranslatorInterface $translator, RequestStack $requestStack, EntityManagerInterface $em)
     {
         $this->translator = $translator;
-        $this->session = $session;
+		$this->requestStack = $requestStack;
         $this->em = $em;
     }
 
@@ -35,7 +35,7 @@ class JoinParticipantFormHandler
         }
 
         if (!$form->handleRequest($request)->isValid()) {
-            $this->session->getFlashBag()->add('danger', $this->translator->trans('flashes.management.add_participant.danger'));
+			$this->requestStack->getSession()->getFlashBag()->add('danger', $this->translator->trans('flashes.management.add_participant.danger'));
 
             return;
         }
@@ -45,6 +45,6 @@ class JoinParticipantFormHandler
         $this->em->persist($newParticipant);
         $this->em->flush();
 
-        $this->session->getFlashBag()->add('success', $this->translator->trans('flashes.management.add_participant.success'));
+		$this->requestStack->getSession()->getFlashBag()->add('success', $this->translator->trans('flashes.management.add_participant.success'));
     }
 }

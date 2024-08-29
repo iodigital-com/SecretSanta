@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -13,20 +14,16 @@ use App\Validator\ParticipantIsNotBlacklisted;
  */
 class Participant
 {
-    /** @var int */
-    private $id;
+    private int $id;
 
-    /** @var Party */
-    private $party;
+    private ?Party $party;
 
     /**
-     * @var string
      * @Assert\NotBlank()
      */
-    private $name;
+    private string $name;
 
     /**
-     * @var string
      * @Assert\NotBlank()
      * @Assert\Email(
      *     mode="strict",
@@ -34,73 +31,53 @@ class Participant
      * )
      * @ParticipantIsNotBlacklisted()
      */
-    private $email;
+    private string $email;
 
-    /** @var Participant */
-    private $participant;
+    private ?Participant $participant;
 
     /** @var Collection<int, Participant> */
-    private $excludedParticipants;
+    private Collection $excludedParticipants;
 
-    /** @var \DateTime */
-    private $viewdate;
+    private ?\DateTime $viewdate = null;
 
-    /** @var \DateTime */
-    private $openEmailDate;
+    private ?\DateTime $openEmailDate;
 
-    /** @var \DateTime */
-    private $viewReminderSentTime;
+    private ?\DateTime $viewReminderSentTime;
 
-    /** @var string */
-    private $url;
+    private string $url;
 
     /** @var WishlistItem[] */
     private $wishlistItems;
 
-    /** @var bool */
-    private $wishlistUpdated = false;
+    private ?bool $wishlistUpdated = false;
 
-    /** @var \DateTime */
-    private $updateWishlistReminderSentTime;
+    private \DateTime $updateWishlistReminderSentTime;
 
-    /** @var bool */
-    private $partyAdmin = false;
+    private bool $partyAdmin = false;
 
-    /** @var string */
-    private $ipv4;
+    private ?string $ipv4;
 
-    /** @var string */
-    private $ipv6;
+    private ?string $ipv6;
 
-    /** @var string */
-    private $geoCountry;
+    private ?string $geoCountry;
 
-    /** @var string */
-    private $geoProvince;
+    private ?string $geoProvince;
 
-    /** @var string */
-    private $geoCity;
+    private ?string $geoCity;
 
-    /** @var \DateTime */
-    private $partyStatusSentTime;
+    private ?\DateTime $partyStatusSentTime;
 
-    /** @var \DateTime */
-    private $emptyWishlistReminderSentTime;
+    private ?\DateTime $emptyWishlistReminderSentTime;
 
-    /** @var \DateTime */
-    private $wishlistUpdatedTime;
+    private ?\DateTime $wishlistUpdatedTime;
 
-    /** @var bool */
-    private $subscribedForUpdates = true;
+    private bool $subscribedForUpdates = true;
 
-    /** @var bool */
-    private $emailDidBounce = false;
+    private bool $emailDidBounce = false;
 
-    /** @var \DateTime */
-    private $invitationSentDate;
+    private ?\DateTime $invitationSentDate;
 
-    /** @var bool */
-    private $isHashed = false;
+    private bool $isHashed = false;
 
     public function __construct()
     {
@@ -108,68 +85,41 @@ class Participant
         $this->excludedParticipants = new ArrayCollection();
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
+    public function getId(): int
+	{
         return $this->id;
     }
 
-    /**
-     * @return Party
-     */
-    public function getParty()
-    {
+    public function getParty(): ?Party
+	{
         return $this->party;
     }
 
-    /**
-     * @param Party $party
-     *
-     * @return Participant
-     */
-    public function setParty($party)
+    public function setParty(?Party $party): Participant
     {
         $this->party = $party;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
+    public function getName(): string
+	{
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return Participant
-     */
-    public function setName($name)
+    public function setName(string $name): Participant
     {
         $this->name = preg_replace('/[^[:alnum:][:space:][\-_]]/u', '', $name);
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
+    public function getEmail(): string
+	{
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     *
-     * @return Participant
-     */
-    public function setEmail($email)
+    public function setEmail(string $email): Participant
     {
         $this->email = $email;
 
@@ -177,124 +127,78 @@ class Participant
     }
 
     /**
-     * @return Participant
-     *
      * @deprecated use getAssignedParticipant()
      */
-    public function getParticipant()
-    {
+    public function getParticipant(): Participant
+	{
         return $this->participant;
     }
 
-    /**
-     * @return Participant
-     */
-    public function getAssignedParticipant()
-    {
+    public function getAssignedParticipant(): ?Participant
+	{
         return $this->participant;
     }
 
-    /**
-     * @param Participant $participant
-     *
-     * @return Participant
-     */
-    public function setAssignedParticipant($participant)
+    public function setAssignedParticipant(?Participant $participant): Participant
     {
         $this->participant = $participant;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getViewdate()
-    {
+    public function getViewdate(): ?\DateTime
+	{
         return $this->viewdate;
     }
 
-    /**
-     * @param \DateTime $viewdate
-     *
-     * @return Participant
-     */
-    public function setViewdate($viewdate)
+    public function setViewdate(?\DateTime $viewdate): Participant
     {
         $this->viewdate = $viewdate;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
+    public function getUrl(): string
+	{
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     *
-     * @return Participant
-     */
-    public function setUrl($url)
+    public function setUrl(string $url): Participant
     {
         $this->url = $url;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function getWishlistUpdated()
-    {
+    public function getWishlistUpdated(): ?bool
+	{
         return $this->wishlistUpdated;
     }
 
-    /**
-     * @param bool $wishlistUpdated
-     *
-     * @return Participant
-     */
-    public function setWishlistUpdated($wishlistUpdated)
+    public function setWishlistUpdated(?bool $wishlistUpdated): Participant
     {
         $this->wishlistUpdated = $wishlistUpdated;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getUpdateWishlistReminderSentTime()
-    {
+    public function getUpdateWishlistReminderSentTime(): ?\DateTime
+	{
         return $this->updateWishlistReminderSentTime;
     }
 
-    /**
-     * @param \DateTime $updateWishlistReminderSentTime
-     */
-    public function setUpdateWishlistReminderSentTime($updateWishlistReminderSentTime)
-    {
+    public function setUpdateWishlistReminderSentTime(?\DateTime $updateWishlistReminderSentTime): void
+	{
         $this->updateWishlistReminderSentTime = $updateWishlistReminderSentTime;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getViewReminderSentTime()
-    {
+    public function getViewReminderSentTime(): ?\DateTime
+	{
         return $this->viewReminderSentTime;
     }
 
-    /**
-     * @param \DateTime $viewReminderSentTime
-     */
-    public function setViewReminderSentTime($viewReminderSentTime)
-    {
+    public function setViewReminderSentTime(?\DateTime $viewReminderSentTime): void
+	{
         $this->viewReminderSentTime = $viewReminderSentTime;
     }
 
@@ -302,67 +206,47 @@ class Participant
      * @return ArrayCollection|WishlistItem[]
      */
     public function getWishlistItems()
-    {
+	{
         return $this->wishlistItems;
     }
 
     /**
      * @param WishlistItem[] $wishlistItems
      */
-    public function setWishlistItems($wishlistItems)
-    {
+    public function setWishlistItems($wishlistItems): void
+	{
         $this->wishlistItems = $wishlistItems;
     }
 
-    /**
-     * @param Participant $excludedParticipant
-     *
-     * @return Participant
-     */
-    public function addExcludedParticipant(self $excludedParticipant)
+    public function addExcludedParticipant(Participant $excludedParticipant): Participant
     {
         $this->excludedParticipants->add($excludedParticipant);
 
         return $this;
     }
 
-    /**
-     * @param Participant $excludedParticipant
-     */
-    public function removeExcludedParticipant(self $excludedParticipant)
-    {
+    public function removeExcludedParticipant(Participant $excludedParticipant): void
+	{
         $this->excludedParticipants->removeElement($excludedParticipant);
     }
 
-    /**
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getExcludedParticipants()
-    {
+    public function getExcludedParticipants(): ArrayCollection|Collection
+	{
         return $this->excludedParticipants;
     }
 
-    /**
-     * @return bool
-     */
-    public function isPartyAdmin()
-    {
+    public function isPartyAdmin(): bool
+	{
         return $this->partyAdmin;
     }
 
-    /**
-     * @param bool $partyAdmin
-     */
-    public function setPartyAdmin($partyAdmin)
-    {
+    public function setPartyAdmin(bool $partyAdmin): void
+	{
         $this->partyAdmin = $partyAdmin;
     }
 
-    /**
-     * @return string
-     */
-    public function getIp()
-    {
+    public function getIp(): ?string
+	{
         if ($this->getIpv4() !== null) {
             return $this->getIpv4();
         }
@@ -370,11 +254,8 @@ class Participant
         return $this->getIpv6();
     }
 
-    /**
-     * @param string $ip
-     */
-    public function setIp($ip)
-    {
+    public function setIp(?string $ip): void
+	{
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $this->setIpv4($ip);
         } elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -382,205 +263,138 @@ class Participant
         }
     }
 
-    /**
-     * @return string
-     */
-    private function getIpv4()
-    {
+    private function getIpv4(): ?string
+	{
         return $this->ipv4;
     }
 
-    /**
-     * @param string $ipv4
-     *
-     * @return Participant
-     */
-    private function setIpv4($ipv4)
-    {
+    private function setIpv4(?string $ipv4): Participant
+	{
         $this->ipv4 = $ipv4;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    private function getIpv6()
-    {
+    private function getIpv6(): ?string
+	{
         return $this->ipv6;
     }
 
-    /**
-     * @param string $ipv6
-     *
-     * @return Participant
-     */
-    private function setIpv6($ipv6)
-    {
+    private function setIpv6(?string $ipv6): Participant
+	{
         $this->ipv6 = $ipv6;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getGeoCountry()
-    {
+    public function getGeoCountry(): ?string
+	{
         return $this->geoCountry;
     }
 
-    /**
-     * @param string $geoCountry
-     *
-     * @return Participant
-     */
-    public function setGeoCountry($geoCountry)
+    public function setGeoCountry(?string $geoCountry): Participant
     {
         $this->geoCountry = $geoCountry;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getGeoProvince()
-    {
+    public function getGeoProvince(): ?string
+	{
         return $this->geoProvince;
     }
 
-    /**
-     * @param string $geoProvince
-     *
-     * @return Participant
-     */
-    public function setGeoProvince($geoProvince)
+    public function setGeoProvince(?string $geoProvince): Participant
     {
         $this->geoProvince = $geoProvince;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getGeoCity()
-    {
+    public function getGeoCity(): ?string
+	{
         return $this->geoCity;
     }
 
-    /**
-     * @param string $geoCity
-     *
-     * @return Participant
-     */
-    public function setGeoCity($geoCity)
+    public function setGeoCity(?string $geoCity): Participant
     {
         $this->geoCity = $geoCity;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getPartyStatusSentTime()
-    {
+    public function getPartyStatusSentTime(): \DateTime
+	{
         return $this->partyStatusSentTime;
     }
 
-    /**
-     * @param \DateTime $partyStatusSentTime
-     */
-    public function setPartyStatusSentTime($partyStatusSentTime)
-    {
+    public function setPartyStatusSentTime(\DateTime $partyStatusSentTime): void
+	{
         $this->partyStatusSentTime = $partyStatusSentTime;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getEmptyWishlistReminderSentTime()
-    {
+    public function getEmptyWishlistReminderSentTime(): ?\DateTime
+	{
         return $this->emptyWishlistReminderSentTime;
     }
 
-    /**
-     * @param \DateTime $emptyWishlistReminderSentTime
-     */
-    public function setEmptyWishlistReminderSentTime($emptyWishlistReminderSentTime)
-    {
+    public function setEmptyWishlistReminderSentTime(?\DateTime $emptyWishlistReminderSentTime): void
+	{
         $this->emptyWishlistReminderSentTime = $emptyWishlistReminderSentTime;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getWishlistUpdatedTime()
-    {
+    public function getWishlistUpdatedTime(): ?\DateTime
+	{
         return $this->wishlistUpdatedTime;
     }
 
-    public function setWishlistUpdatedTime(\DateTime $wishlistUpdatedTime)
-    {
+    public function setWishlistUpdatedTime(?\DateTime $wishlistUpdatedTime): void
+	{
         $this->wishlistUpdatedTime = $wishlistUpdatedTime;
     }
 
-    public function unsubscribe()
-    {
+    public function unsubscribe(): void
+	{
         $this->subscribedForUpdates = false;
     }
 
-    public function subscribe()
-    {
+    public function subscribe(): void
+	{
         $this->subscribedForUpdates = true;
     }
 
-    public function isSubscribed()
-    {
+    public function isSubscribed(): bool
+	{
         return $this->subscribedForUpdates;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getOpenEmailDate()
-    {
+    public function getOpenEmailDate(): ?\DateTime
+	{
         return $this->openEmailDate;
     }
 
-    /**
-     * @param \DateTime $openEmailDate
-     */
-    public function setOpenEmailDate($openEmailDate)
-    {
+    public function setOpenEmailDate(?\DateTime $openEmailDate): void
+	{
         $this->openEmailDate = $openEmailDate;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEmailDidBounce()
-    {
+    public function getEmailDidBounce(): bool
+	{
         return $this->emailDidBounce;
     }
 
-    /**
-     * @param mixed $emailDidBounce
-     */
-    public function setEmailDidBounce($emailDidBounce)
-    {
+    public function setEmailDidBounce(mixed $emailDidBounce): void
+	{
         $this->emailDidBounce = $emailDidBounce;
     }
 
-    public function getInvitationSentDate(): \DateTime
+    public function getInvitationSentDate(): ?\DateTime
     {
         return $this->invitationSentDate;
     }
 
-    public function setInvitationSentDate(\DateTime $invitationSentDate)
-    {
+    public function setInvitationSentDate(?\DateTime $invitationSentDate): void
+	{
         $this->invitationSentDate = $invitationSentDate;
     }
 

@@ -10,14 +10,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Mailer\MailerService;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SendMessageFormHandler
 {
-    /** @var Session */
-    private $session;
+	private RequestStack $requestStack;
 
     /** @var TranslatorInterface */
     private $translator;
@@ -28,9 +26,9 @@ class SendMessageFormHandler
     /** @var MailerService */
     private $mailerService;
 
-    public function __construct(SessionInterface $session, TranslatorInterface $translator, EntityManagerInterface $em, MailerService $mailerService)
+    public function __construct(RequestStack $requestStack, TranslatorInterface $translator, EntityManagerInterface $em, MailerService $mailerService)
     {
-        $this->session = $session;
+		$this->requestStack = $requestStack;
         $this->translator = $translator;
         $this->em = $em;
         $this->mailerService = $mailerService;
@@ -39,7 +37,7 @@ class SendMessageFormHandler
     public function handle(FormInterface $form, Request $request): bool
     {
         if (!$form->handleRequest($request)->isValid()) {
-            $this->session->getFlashBag()->add('danger', $this->translator->trans('participant_communication-send_message.feedback.error_in_form'));
+			$this->requestStack->getSession()->getFlashBag()->add('danger', $this->translator->trans('participant_communication-send_message.feedback.error_in_form'));
 
             return false;
         }
@@ -49,14 +47,14 @@ class SendMessageFormHandler
 
         $sender = $this->em->getRepository(Participant::class)->findOneBy(['url' => $senderId]);
         if (null === $sender) {
-            $this->session->getFlashBag()->add('danger', $this->translator->trans('participant_communication-send_message.feedback.error'));
+			$this->requestStack->getSession()->getFlashBag()->add('danger', $this->translator->trans('participant_communication-send_message.feedback.error'));
 
             return false;
         }
 
         $this->mailerService->sendAnonymousMessage($sender->getAssignedParticipant(), $message);
 
-        $this->session->getFlashBag()->add('success', $this->translator->trans('participant_communication-send_message.feedback.success'));
+		$this->requestStack->getSession()->getFlashBag()->add('success', $this->translator->trans('participant_communication-send_message.feedback.success'));
 
         return true;
     }

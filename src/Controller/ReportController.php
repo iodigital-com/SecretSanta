@@ -2,25 +2,22 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\Service\ExportReportQueriesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class ReportController extends AbstractController
 {
-    /**
-     * @Route("/report/{year}", defaults={"year" = "all"}, name="report", methods={"GET"})
-     * @Template("Report/index.html.twig")
-     */
-    public function indexAction(ExportReportQueriesService $exportReportQueriesService, string $year)
-    {
+	#[Route("/{_locale}/report/{year}", name: "report", defaults: ["year" => "all"], methods: ["GET"])]
+    public function indexAction(ExportReportQueriesService $exportReportQueriesService, string $year): Response
+	{
         if ('all' !== $year) {
             if (false === strtotime($year)) {
                 $year = date('Y');
             }
         }
 
-        return $exportReportQueriesService->getReportQuery($year);
+        return $this->render('Report/index.html.twig', $exportReportQueriesService->getReportQuery($year));
     }
 }

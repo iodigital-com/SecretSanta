@@ -12,68 +12,54 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Party
 {
-    /** @var int */
-    private $id;
+    private int $id;
 
-    /** @var string */
-    private $listurl;
+    private string $listurl;
 
     /**
      * The URL that is used to expose the wishlists for all participants of the party.
-     *
-     * @var string
      */
-    private $wishlistsurl;
+    private string $wishlistsurl;
 
     private ?string $message = '';
 
-    /** @var \DateTime */
-    private $creationdate;
+    private \DateTime $creationdate;
 
-    /** @var \DateTime */
-    private $sentdate;
+    private \DateTime $sentdate;
 
     /**
-     * @var \DateTime
      * @Assert\NotBlank()
      */
-    private $eventdate;
+    private \DateTime $eventdate;
 
     /**
-     * @var string
      * @Assert\NotBlank()
      */
-    private $amount;
+    private string $amount;
 
     /**
      * @var Collection<int, Participant>
      * @Assert\Valid()
      */
-    private $participants;
+    private Collection $participants;
 
-    /** @var bool */
-    private $created = false;
+    private bool $created = false;
 
-    /** @var string */
-    private $locale = 'en';
+    private string $locale = 'en';
 
     /**
-     * @var string
      * @Assert\NotBlank()
      */
-    private $location;
+    private string $location;
 
     /**
-     * @var string
      * @Assert\NotBlank()
      */
-    private $confirmed;
+    private string $confirmed;
 
-    /** @var ?string */
-    private $joinurl;
+    private ?string $joinurl;
 
-    /** @var int */
-    private $joinmode = 0;
+    private int $joinmode = 0;
 
     private ?string $createdFromIp = null;
 
@@ -93,11 +79,8 @@ class Party
         $this->joinurl = base_convert(sha1(uniqid((string) mt_rand(), true)), 16, 36);
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
+    public function getId(): int
+	{
         return $this->id;
     }
 
@@ -136,7 +119,7 @@ class Party
         return $this;
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return (string) $this->message;
     }
@@ -158,11 +141,8 @@ class Party
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getCreationDate()
-    {
+    public function getCreationDate(): \DateTime
+	{
         return $this->creationdate;
     }
 
@@ -173,11 +153,8 @@ class Party
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getSentdate()
-    {
+    public function getSentdate(): \DateTime
+	{
         return $this->sentdate;
     }
 
@@ -188,16 +165,16 @@ class Party
         return $this;
     }
 
-    public function removeParticipant(Participant $participant)
-    {
+    public function removeParticipant(Participant $participant): void
+	{
         $this->participants->removeElement($participant);
     }
 
     /**
      * @return Collection<int, Participant>
      */
-    public function getParticipants()
-    {
+    public function getParticipants(): Collection
+	{
         return $this->participants;
     }
 
@@ -206,63 +183,39 @@ class Party
         return 'Id: '.$this->id.' - Participants: '.$this->participants->count().' - Owner: '.$this->getOwnerName();
     }
 
-    /**
-     * @param \DateTime $eventdate
-     *
-     * @return Party
-     */
-    public function setEventdate($eventdate)
+    public function setEventdate(\DateTime $eventdate): Party
     {
         $this->eventdate = $eventdate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getEventdate()
-    {
+    public function getEventdate(): \DateTime
+	{
         return $this->eventdate;
     }
 
-    /**
-     * @param string $amount
-     *
-     * @return Party
-     */
-    public function setAmount($amount)
+    public function setAmount(string $amount): Party
     {
         $this->amount = $amount;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getAmount()
-    {
+    public function getAmount(): string
+	{
         return $this->amount;
     }
 
-    /**
-     * @param bool $created
-     *
-     * @return Party
-     */
-    public function setCreated($created)
+    public function setCreated(bool $created): Party
     {
         $this->created = $created;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function getCreated()
-    {
+    public function getCreated(): bool
+	{
         return $this->created;
     }
 
@@ -283,8 +236,8 @@ class Party
         return $this->location;
     }
 
-    public function setLocation(?string $location)
-    {
+    public function setLocation(?string $location): void
+	{
         if (null === $location) {
             $location = '';
         }
@@ -297,8 +250,8 @@ class Party
         return (bool) $this->confirmed;
     }
 
-    public function setConfirmed(bool $confirmed)
-    {
+    public function setConfirmed(bool $confirmed): void
+	{
         $this->confirmed = (string) $confirmed;
     }
 
@@ -325,8 +278,8 @@ class Party
     /**
      * @return array
      */
-    public function createNewPartyForReuse()
-    {
+    public function createNewPartyForReuse(): array
+	{
         $originalParty = $this;
         $countHashed = 0;
         $adminIsHashed = false;
@@ -371,11 +324,7 @@ class Party
         return [$party, $countHashed];
     }
 
-    /**
-     * @param Party $party
-     * @param int   $startParticipantsAmount
-     */
-    protected function addEmptyParticipants(self $party, $startParticipantsAmount = 0): void
+    protected function addEmptyParticipants(Party $party, int $startParticipantsAmount = 0): void
     {
         // Create default minimum participants
         for ($i = $startParticipantsAmount; $i < 3; ++$i) {
