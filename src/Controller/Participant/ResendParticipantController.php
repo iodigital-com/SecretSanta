@@ -6,11 +6,12 @@ namespace App\Controller\Participant;
 
 use App\Mailer\MailerService;
 use App\Service\UnsubscribeService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Participant;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ResendParticipantController extends AbstractController
 {
@@ -30,12 +31,12 @@ class ResendParticipantController extends AbstractController
         $this->mailerService = $mailerService;
     }
 
-    /**
-     * @Route("/resend/{listurl}/{participantUrl}", name="resend_participant", methods={"GET"})
-     * @ParamConverter("participant", class="App\Entity\Participant", options={"mapping": {"participantUrl": "url"}})
-     */
-    public function resendAction($listurl, Participant $participant)
-    {
+	/**
+	 * @throws TransportExceptionInterface
+	 */
+	#[Route("/{_locale}/resend/{listurl}/{url}", name: "resend_participant", methods: ["GET"])]
+    public function resendAction($listurl, Participant $participant): RedirectResponse
+	{
         if ($participant->getParty()->getListurl() !== $listurl) {
             throw $this->createNotFoundException();
         }

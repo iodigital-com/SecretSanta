@@ -34,7 +34,7 @@
         <span id="alertspan"></span>
 
         <table class="table table-striped mysanta" id="mysanta" style="margin-bottom: 15px;"
-               data-editurl="{{ path("participant_edit", { 'listurl': 'listUrl', 'participantUrl': 'participantUrl' }) }}"
+               data-editurl="{{ path("participant_edit", { 'listurl': 'listUrl', 'url': 'participantUrl' }) }}"
                data-save-btn-text="{{ 'party_manage_valid.manage.save'|trans }}"
         >
             <thead>
@@ -84,7 +84,7 @@
                         {% endif %}
                         {% if party.created and participant.hashed == false %}
                             {% apply spaceless %}
-                                <a href="{{ path('resend_participant', { 'listurl': party.listUrl, 'participantUrl': participant.url }) }}"
+                                <a href="{{ path('resend_participant', { 'listurl': party.listUrl, 'url': participant.url }) }}"
                                    class="btn-participant-resend"
                                 >
                                     <i class="fa fa-fw fa-envelope" title="{{ 'party_manage_valid.manage.resend_email'|trans }}" alt="{{ 'party_manage_valid.manage.resend_email'|trans }}"></i>
@@ -152,7 +152,7 @@
                 {{ 'party_manage_valid.remove_participant.party_started'|trans|raw }}
             {% endif %}
             <br>
-            <form id="delete-participant-form" method="post" data-action="{{ path('participant_remove', {'listurl': 'listUrl', 'participantUrl': 'participantUrl'}) }}">
+            <form id="delete-participant-form" method="post" data-action="{{ path('participant_remove', {'listurl': 'listUrl', 'url': 'participantUrl'}) }}">
                 <input type="hidden" name="csrf_token" value="{{ delete_participant_csrf_token }}">
                 <button class="btn btn-danger btn_confirmation_pop_up" type="submit"
                         id="btn_remove_participant_confirmation">
@@ -280,7 +280,7 @@
             <div id="btn_send_party_update_info" class="alert alert-info" style="display: none">
                 <h3>{{ 'party_manage_valid.btn.party_update_info'|trans }}</h3>
                 <p>
-                    {% include 'Emails/partyUpdate.txt.twig' with {'results': partyEmailInfo } %}
+                    {% include 'Emails/partyUpdate.txt.twig' with {'results': partyEmailInfo, 'locale': app.request.locale } %}
                 </p>
                 <a id="btn_send_party_update_send" class="btn btn-info manage_btn manage_btn_link" href="{{ path('send_party_update', { 'listurl': party.listurl }) }}">
                     {{ 'party_manage_valid.btn.party_update_confirm'|trans }}

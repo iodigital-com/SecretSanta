@@ -8,20 +8,19 @@ use App\Entity\Participant;
 use App\Service\UnsubscribeService;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UnsubscribeFormHandler
 {
     private TranslatorInterface $translator;
-    private Session $session;
+	private RequestStack $requestStack;
     private UnsubscribeService $unsubscribeService;
 
-    public function __construct(TranslatorInterface $translator, SessionInterface $session, UnsubscribeService $unsubscribeService)
+    public function __construct(TranslatorInterface $translator, RequestStack $requestStack, UnsubscribeService $unsubscribeService)
     {
         $this->translator = $translator;
-        $this->session = $session;
+		$this->requestStack = $requestStack;
         $this->unsubscribeService = $unsubscribeService;
     }
 
@@ -32,7 +31,7 @@ class UnsubscribeFormHandler
         }
 
         if (!$form->handleRequest($request)->isValid()) {
-            $this->session->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error'));
+			$this->requestStack->getSession()->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error'));
 
             return false;
         }
@@ -40,7 +39,7 @@ class UnsubscribeFormHandler
         $unsubscribeData = $form->getData();
 
         if (false === $unsubscribeData['blacklist'] && false === $unsubscribeData['allParties']) {
-            $this->session->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error_atleast_one_option'));
+			$this->requestStack->getSession()->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error_atleast_one_option'));
 
             return false;
         }
@@ -51,7 +50,7 @@ class UnsubscribeFormHandler
             $this->unsubscribeService->unsubscribe($participant, $unsubscribeData['allParties']);
         }
 
-        $this->session->getFlashBag()->add('success', $this->translator->trans('participant_unsubscribe.feedback.success'));
+		$this->requestStack->getSession()->getFlashBag()->add('success', $this->translator->trans('participant_unsubscribe.feedback.success'));
 
         return true;
     }

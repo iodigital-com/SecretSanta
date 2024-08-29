@@ -46,7 +46,7 @@ class UnsubscribeService
      */
     public function getUnsubscribeLink(Participant $participant): string
     {
-        return '<'.$this->router->generate('unsubscribe_confirm', ['url' => $participant->getUrl()], UrlGeneratorInterface::ABSOLUTE_URL).'>';
+        return '<'.$this->router->generate('unsubscribe_confirm', ['url' => $participant->getUrl(), '_locale' => $participant->getParty()->getLocale()], UrlGeneratorInterface::ABSOLUTE_URL).'>';
     }
 
     public function blacklist(Participant $participant, string $ip)

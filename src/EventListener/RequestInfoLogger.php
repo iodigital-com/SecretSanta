@@ -14,7 +14,7 @@ class RequestInfoLogger implements EventSubscriberInterface
     /** @var LoggerInterface */
     private $logger;
 
-    /** @var \Symfony\Component\HttpFoundation\RequestStack */
+    /** @var RequestStack */
     private $requestStack;
 
     public function __construct(LoggerInterface $logger, RequestStack $requestStack)
@@ -26,8 +26,8 @@ class RequestInfoLogger implements EventSubscriberInterface
     public function onKernelException()
     {
         if (PHP_SAPI !== 'cli') {
-            $this->logger->debug('GET values '.serialize($this->requestStack->getMasterRequest()->query->all()));
-            $this->logger->debug('POST values '.serialize($this->requestStack->getMasterRequest()->request->all()));
+            $this->logger->debug('GET values '.serialize($this->requestStack->getMainRequest()->query->all()));
+            $this->logger->debug('POST values '.serialize($this->requestStack->getMainRequest()->request->all()));
         }
     }
 

@@ -9,21 +9,20 @@ use App\Model\ContactSubmission;
 use App\Service\RecaptchaService;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ContactFormHandler
 {
     private TranslatorInterface $translator;
-    private Session $session;
+	private RequestStack $requestStack;
     private MailerService $mailer;
     private RecaptchaService $recaptcha;
 
-    public function __construct(TranslatorInterface $translator, SessionInterface $session, MailerService $mailer, RecaptchaService $recaptchaService)
+    public function __construct(TranslatorInterface $translator, RequestStack $requestStack, MailerService $mailer, RecaptchaService $recaptchaService)
     {
         $this->translator = $translator;
-        $this->session = $session;
+		$this->requestStack = $requestStack;
         $this->mailer = $mailer;
         $this->recaptcha = $recaptchaService;
     }
@@ -44,7 +43,7 @@ class ContactFormHandler
 
         // Client succeed recaptcha validation.
         if ($captchaResult['success'] !== true) {
-            $this->session->getFlashBag()->add('danger', 'You seem like a robot ('.current($captchaResult['error-codes']).'), sorry.');
+			$this->requestStack->getSession()->getFlashBag()->add('danger', 'You seem like a robot ('.current($captchaResult['error-codes']).'), sorry.');
 
             return false;
         }
@@ -52,12 +51,12 @@ class ContactFormHandler
         $mailResult = $this->mailer->sendContactFormEmail($data);
 
         if (!$mailResult) {
-            $this->session->getFlashBag()->add('danger', 'Mail was not sent due to unknown error.');
+			$this->requestStack->getSession()->getFlashBag()->add('danger', 'Mail was not sent due to unknown error.');
             return false;
         }
 
         $this->translator->setLocale($request->getLocale());
-        $this->session->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
+		$this->requestStack->getSession()->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
 
         return true;
     }

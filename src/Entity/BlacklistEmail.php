@@ -27,8 +27,8 @@ class BlacklistEmail
         return $this->email;
     }
 
-    public function setEmail(string $email)
-    {
+    public function setEmail(string $email): void
+	{
         $this->email = $email;
     }
 
@@ -41,8 +41,8 @@ class BlacklistEmail
         return $this->getIpv6();
     }
 
-    private function setIp(string $ip)
-    {
+    private function setIp(string $ip): void
+	{
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $this->setIpv4($ip);
         } elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -55,8 +55,8 @@ class BlacklistEmail
         return $this->date;
     }
 
-    private function setDate(\DateTime $date)
-    {
+    private function setDate(\DateTime $date): void
+	{
         $this->date = $date;
     }
 
@@ -65,8 +65,8 @@ class BlacklistEmail
         return $this->ipv4;
     }
 
-    private function setIpv4(string $ipv4)
-    {
+    private function setIpv4(string $ipv4): void
+	{
         $this->ipv4 = $ipv4;
     }
 
@@ -75,8 +75,8 @@ class BlacklistEmail
         return $this->ipv6;
     }
 
-    private function setIpv6(string $ipv6)
-    {
+    private function setIpv6(string $ipv6): void
+	{
         $this->ipv6 = $ipv6;
     }
 }

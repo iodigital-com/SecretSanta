@@ -1,15 +1,15 @@
-{{ 'emails-forgot_link.message.txt'|trans|raw }}
+{{ 'emails-forgot_link.message.txt'|trans({}, 'messages', locale)|raw }}
 
 {% if participantLinks|length > 0 %}
-    {{ 'emails-forgot_link.participating_in'|trans }}
+    {{ 'emails-forgot_link.participating_in'|trans({}, 'messages', locale) }}
     {% for link in participantLinks %}
-        {{ 'emails-forgot_link.table_labels.txt'|trans({'%location%': link.location, '%date%': link.date}) }}: {{ link.url }}
+        {{ 'emails-forgot_link.table_labels.txt'|trans({'%location%': link.location, '%date%': link.date}, 'messages', locale) }}: {{ link.url }}
     {% endfor %}
 {% endif %}
 
 {% if manageLinks|length > 0 %}
-    {{ 'emails-forgot_link.created_these'|trans }}
+    {{ 'emails-forgot_link.created_these'|trans({}, 'messages', locale) }}
     {% for link in manageLinks %}
-        {{ 'emails-forgot_link.table_labels.txt'|trans({'%location%': link.location, '%date%': link.date}) }}: {{ link.url }}
+        {{ 'emails-forgot_link.table_labels.txt'|trans({'%location%': link.location, '%date%': link.date}, 'messages', locale) }}: {{ link.url }}
     {% endfor %}
 {% endif %}

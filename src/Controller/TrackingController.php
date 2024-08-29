@@ -10,14 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class TrackingController extends AbstractController
 {
-    /**
-     * @Route("email/{participantUrl}.gif", name="mailopen_tracker", methods={"GET"})
-     */
+	#[Route("/{_locale}/email/{participantUrl}.gif", name: "mailopen_tracker", methods: ["GET"])]
     public function trackEmailAction(EntityManagerInterface $em, EventDispatcherInterface $dispatcher, $participantUrl)
     {
         $dispatcher->addListener(KernelEvents::TERMINATE,

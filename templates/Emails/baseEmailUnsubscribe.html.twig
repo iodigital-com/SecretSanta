@@ -1,7 +1,7 @@
 {% extends "Emails/baseEmail.html.twig" %}
 {% block unsubscribe %}
     <p style="text-align: center; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
-        {{ 'emails-base_email_unsubscribe.unsubscribe' | trans }}
-        <a href="{{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=unsubscribe">{{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }}</a>
+        {{ 'emails-base_email_unsubscribe.unsubscribe' | trans({}, 'messages', locale) }}
+        <a href="{{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=unsubscribe">{{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans({}, 'messages', locale)  }}</a>
     </p>
 {% endblock %}
