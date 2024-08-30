@@ -1,4 +1,4 @@
-FROM devwithlando/php:8.2-apache-4
+FROM devwithlando/php:8.3-apache-4
 
 RUN apt-get update -y
 
