@@ -2,6 +2,8 @@
 
 namespace App\Mailer;
 
+use App\Repository\ParticipantRepository;
+use App\Repository\PartyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Model\ContactSubmission;
 use App\Service\UnsubscribeService;
@@ -147,9 +149,13 @@ class MailerService
 	 */
 	public function sendForgotLinkMail(string $email): bool
     {
+		/** @var ParticipantRepository $participantRepository */
+		$participantRepository = $this->em->getRepository(Participant::class);
+		/** @var PartyRepository $partyRepository */
+		$partyRepository = $this->em->getRepository(Party::class);
         /** @var Participant[] $participatingIn */
-        $participatingIn = $this->em->getRepository(Participant::class)->findAllParticipantsForForgotEmail($email);
-        $adminOf = $this->em->getRepository(Party::class)->findAllAdminParties($email);
+        $participatingIn = $participantRepository->findAllParticipantsForForgotEmail($email);
+        $adminOf = $partyRepository->findAllAdminParties($email);
 
         if (count($adminOf) === 0 && count($participatingIn) === 0) {
             return false;
@@ -209,7 +215,9 @@ class MailerService
 	 */
 	public function sendReuseLinksMail(string $email): bool
     {
-        $results = $this->em->getRepository(Party::class)->findPartiesToReuse($email);
+		/** @var PartyRepository $partyRepository */
+		$partyRepository = $this->em->getRepository(Party::class);
+        $results = $partyRepository->findPartiesToReuse($email);
 
         if (count($results) === 0) {
             return false;

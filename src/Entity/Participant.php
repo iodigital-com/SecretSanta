@@ -14,6 +14,7 @@ use App\Validator\ParticipantIsNotBlacklisted;
  */
 class Participant
 {
+	// @phpstan-ignore-next-line
     private int $id;
 
     private ?Party $party;
@@ -202,10 +203,7 @@ class Participant
         $this->viewReminderSentTime = $viewReminderSentTime;
     }
 
-    /**
-     * @return ArrayCollection|WishlistItem[]
-     */
-    public function getWishlistItems()
+    public function getWishlistItems(): ArrayCollection|PersistentCollection|array
 	{
         return $this->wishlistItems;
     }

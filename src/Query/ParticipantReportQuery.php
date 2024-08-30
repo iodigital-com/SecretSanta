@@ -5,32 +5,17 @@ namespace App\Query;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Symfony\Component\Routing\RouterInterface;
 
 class ParticipantReportQuery
 {
-    private Connection $dbal;
-    private RouterInterface $router;
-    private PartyReportQuery $partyReportQuery;
-    private FeaturedYearsQuery $featuredYearsQuery;
-
     public function __construct(
-        Connection $dbal,
-        RouterInterface $router,
-        PartyReportQuery $partyReportQuery,
-        FeaturedYearsQuery $featuredYearsQuery
-    ) {
-        $this->dbal = $dbal;
-        $this->router = $router;
-        $this->partyReportQuery = $partyReportQuery;
-        $this->featuredYearsQuery = $featuredYearsQuery;
-    }
+        private Connection $dbal,
+        private PartyReportQuery $partyReportQuery,
+        private FeaturedYearsQuery $featuredYearsQuery
+    ) {}
 
-    /**
-     * @return mixed
-     */
-    public function countConfirmedParticipantsUntilDate(\DateTime $date)
-    {
+    public function countConfirmedParticipantsUntilDate(\DateTime $date): array
+	{
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS confirmedParticipantCount')
             ->from('party', 'p')
@@ -42,11 +27,8 @@ class ParticipantReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @return mixed
-     */
-    public function countDistinctParticipantsUntilDate(\DateTime $date)
-    {
+    public function countDistinctParticipantsUntilDate(\DateTime $date): array
+	{
         $query = $this->dbal->createQueryBuilder()
             ->select('count(distinct e.email) AS distinctParticipantCount')
             ->from('party', 'p')
@@ -57,11 +39,8 @@ class ParticipantReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @return mixed
-     */
-    public function queryDataForMonthlyParticipantChart(Season $season)
-    {
+    public function queryDataForMonthlyParticipantChart(Season $season): array
+	{
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS accumulatedParticipantCountByMonth, p.sent_date AS month')
             ->from('party', 'p')
@@ -136,17 +115,14 @@ class ParticipantReportQuery
         $totalParticipants = $this->countAllParticipantsUntilDate($date);
 
         if ($totalParties[0]['partyCount'] != 0) {
-            return implode($totalParticipants[0]) / implode($totalParties[0]);
+			return $totalParticipants[0]['totalParticipantCount'] / $totalParties[0]['partyCount'];
         }
 
         throw new NoResultException();
     }
 
-    /**
-     * @return mixed
-     */
-    public function countAllParticipantsUntilDate(\DateTime $date)
-    {
+    public function countAllParticipantsUntilDate(\DateTime $date): array
+	{
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS totalParticipantCount')
             ->from('party', 'p')
@@ -157,11 +133,8 @@ class ParticipantReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @return mixed
-     */
-    public function calculateParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
-    {
+    public function calculateParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2): int
+	{
         $participantCountSeason1 = $this->countParticipants($season1);
 
         try {
@@ -189,11 +162,8 @@ class ParticipantReportQuery
         return (int) $participantCount[0]['participant_count'];
     }
 
-    /**
-     * @return mixed
-     */
-    public function calculateConfirmedParticipantsCountDifferenceBetweenSeasons(Season $season1, Season $season2)
-    {
+    public function calculateConfirmedParticipantsCountDifferenceBetweenSeasons(Season $season1, Season $season2): mixed
+	{
         $confirmedParticipantCountSeason1 = $this->countConfirmedParticipants($season1);
 
         try {
@@ -205,11 +175,8 @@ class ParticipantReportQuery
         return $confirmedParticipantCountSeason1[0]['confirmedParticipantCount'] - $confirmedParticipantCountSeason2[0]['confirmedParticipantCount'];
     }
 
-    /**
-     * @return mixed
-     */
-    public function countConfirmedParticipants(Season $season)
-    {
+    public function countConfirmedParticipants(Season $season): array
+	{
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS confirmedParticipantCount')
             ->from('party', 'p')
@@ -223,11 +190,8 @@ class ParticipantReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @return mixed
-     */
-    public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2)
-    {
+    public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2): mixed
+	{
         $distinctParticipantCountSeason1 = $this->countDistinctParticipants($season1);
 
         try {
@@ -239,11 +203,8 @@ class ParticipantReportQuery
         return $distinctParticipantCountSeason1[0]['distinctParticipantCount'] - $distinctParticipantCountSeason2[0]['distinctParticipantCount'];
     }
 
-    /**
-     * @return mixed
-     */
-    public function countDistinctParticipants(Season $season)
-    {
+    public function countDistinctParticipants(Season $season): array
+	{
         $query = $this->dbal->createQueryBuilder()
             ->select('count(distinct e.email) AS distinctParticipantCount')
             ->from('party', 'p')
@@ -281,11 +242,8 @@ class ParticipantReportQuery
         throw new NoResultException();
     }
 
-    /**
-     * @return iterable
-     */
-    public function fetchMailsForExport(Season $season, bool $isAdmin)
-    {
+    public function fetchMailsForExport(Season $season, bool $isAdmin): iterable
+	{
         /** @var QueryBuilder $subQuery */
         $subQuery = $this->dbal->createQueryBuilder();
 
@@ -363,11 +321,8 @@ class ParticipantReportQuery
         ];
     }
 
-    /**
-     * @return mixed
-     */
-    public function findBuddyByParticipantId(int $participantId)
-    {
+    public function findBuddyByParticipantId(int $participantId): array
+	{
         $query = $this->dbal->createQueryBuilder()
             ->select('p.id')
             ->from('participant', 'p')
