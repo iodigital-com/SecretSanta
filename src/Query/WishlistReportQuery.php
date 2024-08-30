@@ -24,7 +24,7 @@ class WishlistReportQuery
             throw new NoResultException();
         }
 
-        return (implode($wishlistCount[0]) / $participantCount) * 100;
+        return ($wishlistCount[0]['wishlistCount'] / $participantCount) * 100;
     }
 
     /**
@@ -51,7 +51,7 @@ class WishlistReportQuery
         $totalParticipants = $this->participantReportQuery->countAllParticipantsUntilDate($date);
 
         if ($totalParticipants[0]['totalParticipantCount'] != 0) {
-            return (implode($totalWishlists[0]) / implode($totalParticipants[0])) * 100;
+			return ($totalWishlists[0]['totalWishlistCount'] / $totalParticipants[0]['totalParticipantCount']) * 100;
         }
 
         throw new NoResultException();

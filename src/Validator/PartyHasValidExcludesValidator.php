@@ -9,23 +9,23 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class PartyHasValidExcludesValidator extends ConstraintValidator
 {
-    private $participantShuffler;
-
     // Todo: find a way to activate this validator only if ParticipantHasValidExcludes passes validation.
-    public function __construct(ParticipantShuffler $participantShuffler)
-    {
-        $this->participantShuffler = $participantShuffler;
-    }
+    public function __construct(private ParticipantShuffler $participantShuffler)
+    {}
 
-    public function validate($party, Constraint $constraint)
-    {
+	/**
+	 * @param Party $party
+	 * @param PartyHasValidExcludes $constraint
+	 */
+    public function validate($party, Constraint $constraint): void
+	{
         //TODO: workaround for validator being applied to form and field (field == participant entity)
         if (!$party instanceof Party) {
             return;
         }
 
         if (!$this->participantShuffler->shuffleParticipants($party)) {
-            $this->context->buildViolation($constraint->message)
+            $this->context->buildViolation($constraint->messageNoUniqueMatch)
                 ->atPath('participants')
                 ->addViolation();
         }

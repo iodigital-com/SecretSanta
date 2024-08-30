@@ -22,8 +22,8 @@ class ExportMailsCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function configure()
-    {
+    protected function configure(): void
+	{
         $this
             ->setName('app:export-for-mailing')
             ->setDescription('Export email addresses from database to use in mailing')
@@ -39,7 +39,7 @@ class ExportMailsCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $lastSeason = date('Y', strtotime('-1 year'));
+        $lastSeason = (int) date('Y', strtotime('-1 year'));
         $season = new Season($lastSeason);
         $userType = $input->getArgument('userType');
 
