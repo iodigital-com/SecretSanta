@@ -18,7 +18,7 @@ final class FirstApiTest extends KernelTestCase
     protected function setUp(): void
     {
         self::bootKernel();
-        $this->httpClient = self::$container->get(HttpClientInterface::class);
+        $this->httpClient = self::getContainer()->get(HttpClientInterface::class);
         $this->host = $_ENV['HOST'];
     }
 
