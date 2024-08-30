@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Party
 {
+	// @phpstan-ignore-next-line
     private int $id;
 
     private string $listurl;
