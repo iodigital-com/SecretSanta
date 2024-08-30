@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class TrackingController extends AbstractController
 {
@@ -21,7 +21,7 @@ class TrackingController extends AbstractController
         $dispatcher->addListener(KernelEvents::TERMINATE,
             function (KernelEvent $event) use ($em, $participantUrl) {
                 /** @var Participant $participant */
-                $participant = $em->getRepository(Participant::class)->findOneByUrl($participantUrl);
+                $participant = $em->getRepository(Participant::class)->findOneBy(['url' => $participantUrl]);
                 if ($participant != null) {
                     $participant->setOpenEmailDate(new \DateTime());
                     $em->persist($participant);
@@ -30,7 +30,7 @@ class TrackingController extends AbstractController
             }
         );
 
-        $response = Response::create();
+        $response = new Response();
         $response->setContent(base64_decode('R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw=='));
         $response->headers->set('Content-Type', 'image/gif');
         $response->headers->addCacheControlDirective('no-cache', true);
