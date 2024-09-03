@@ -11,17 +11,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ReportQueriesCommand extends Command
 {
-    private ReportQueriesService $reportQueriesService;
-    private ExportReportQueriesService $exportReportQueriesService;
-
-    public function __construct(ReportQueriesService $reportQueriesService, ExportReportQueriesService $exportReportQueriesService)
+    public function __construct(private readonly ReportQueriesService $reportQueriesService, private readonly ExportReportQueriesService $exportReportQueriesService)
     {
         parent::__construct();
-        $this->reportQueriesService = $reportQueriesService;
-        $this->exportReportQueriesService = $exportReportQueriesService;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('app:report-queries')
@@ -37,10 +32,8 @@ class ReportQueriesCommand extends Command
     {
         $year = $input->getArgument('year');
 
-        if ('all' !== $year) {
-            if (false === strtotime($year)) {
-                $year = date('Y');
-            }
+        if (('all' !== $year) && false === strtotime($year)) {
+            $year = date('Y');
         }
 
         $this->exportReportQueriesService->export($this->reportQueriesService->getReportResults($year), $year);

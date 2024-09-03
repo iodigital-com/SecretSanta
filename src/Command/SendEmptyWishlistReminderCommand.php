@@ -9,29 +9,20 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class SendEmptyWishlistReminderCommand extends Command
 {
-    private EntityManagerInterface $em;
-    private ParticipantMailQuery $participantMailQuery;
-    private WishlistMailQuery $wishlistMailQuery;
-    private MailerService $mailerService;
-
     public function __construct(
-        EntityManagerInterface $em,
-        ParticipantMailQuery $participantMailQuery,
-        WishlistMailQuery $wishlistMailQuery,
-        MailerService $mailerService,
+        private readonly EntityManagerInterface $em,
+        private readonly ParticipantMailQuery $participantMailQuery,
+        private readonly WishlistMailQuery $wishlistMailQuery,
+        private readonly MailerService $mailerService,
     ) {
-        $this->em = $em;
-        $this->participantMailQuery = $participantMailQuery;
-        $this->wishlistMailQuery = $wishlistMailQuery;
-        $this->mailerService = $mailerService;
-
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('app:sendWishlistReminderMails')

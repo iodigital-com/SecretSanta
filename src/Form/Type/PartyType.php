@@ -14,8 +14,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PartyType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+	{
         $builder
             ->add('message', TextareaType::class)
             ->add('participants', CollectionType::class, [
@@ -39,8 +39,8 @@ class PartyType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver): void
+	{
         $resolver->setDefaults([
             'data_class' => Party::class,
             'action' => '#mysanta',

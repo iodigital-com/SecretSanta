@@ -10,8 +10,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AnonymousMessageFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+	{
         $builder
              ->add('message', TextareaType::class, [
                  'label' => 'participant_show_valid.anonymous_message.message_label',
