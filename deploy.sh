@@ -24,7 +24,7 @@ else
 fi
 set -e # errexit: exit on error
 
-PROJECT_HOME=/var/www/secretsanta
+PROJECT_HOME=/var/www/secretsantaorganizer.com
 VERSION=`date +"%Y%m%d%H%M%S"`
 cd ${PROJECT_HOME}
 
@@ -62,8 +62,8 @@ printOk
 printAction "Cleanup files and setting permissions"
 rm -rf .git .gitignore Vagrantfile shell_provisioner
 rm -rf public/index_test.php
-sudo chmod -R ug=rwX,o=rX ../${VERSION}
-sudo chmod -R a+rwX var/log var/cache
+chmod -R ug=rwX,o=rX ../${VERSION}
+chmod -R a+rwX var/log var/cache
 printOk
 
 printAction "Stopping FPM"
@@ -82,7 +82,7 @@ printOk
 
 printAction "Cleanup old versions, keep last 2"
 cd releases
-ls -1 | sort -r | tail -n +3 | xargs sudo rm -rf
+ls -1 | sort -r | tail -n +3 | xargs rm -rf
 cd ..
 printOk
 
