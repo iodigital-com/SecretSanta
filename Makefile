@@ -5,11 +5,11 @@ all:
 | @echo "usage: make"
 | @echo "  [deploy]        deploy to production"
 | @echo "  [deploy-debug]  deploy to production, with debug output"
-| @echo "  [test]          run all tests and checks
-| @echo "  [lint-php]      run php lint check
-| @echo "  [lint-twig]     run twig lint check
-| @echo "  [lint-yaml]     run yaml lint check
-| @echo "  [phpstan]       run phpstan static analysis
+| @echo "  [test]          run all tests and checks"
+| @echo "  [lint-php]      run php lint check"
+| @echo "  [lint-twig]     run twig lint check"
+| @echo "  [lint-yaml]     run yaml lint check"
+| @echo "  [phpstan]       run phpstan static analysis"
 | @echo "  [sec-check]     run sensiolabs security checker"
 
 deploy:
