@@ -44,8 +44,8 @@ cp ../../shared/recaptcha_secrets.json config
 printOk
 
 printAction "Composer install"
-../../shared/composer.phar install --no-dev --classmap-authoritative ${Q} 2>&1 | grep -v 'PHP Deprecated'
-../../shared/composer.phar dump-env prod ${Q} 2>&1 | grep -v 'PHP Deprecated'
+../../shared/composer.phar install --no-dev --classmap-authoritative ${Q} 2>&1
+../../shared/composer.phar dump-env prod ${Q} 2>&1
 rm .env
 printOk
 
