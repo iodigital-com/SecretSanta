@@ -13,8 +13,9 @@ class ReportQueriesService
         private GoogleAnalyticsQuery $googleAnalyticsQuery,
         private ReportQuery $reportQuery,
         private SeasonComparisonReportQuery $seasonComparisonReportQuery,
-        private FeaturedYearsQuery $featuredYearsQuery
-    ) {}
+        private FeaturedYearsQuery $featuredYearsQuery,
+    ) {
+    }
 
     public function getReportResults(string $year): array
     {

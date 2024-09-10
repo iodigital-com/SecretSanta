@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
-use App\Repository\ParticipantRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\BlacklistEmail;
 use App\Entity\Participant;
+use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -14,14 +14,15 @@ class UnsubscribeService
     public function __construct(
         public EntityManagerInterface $em,
         public RouterInterface $router,
-        private readonly HashService $hashService
-    ) {}
+        private readonly HashService $hashService,
+    ) {
+    }
 
     public function unsubscribe(Participant $participant, bool $fromAllParties): void
-	{
+    {
         if ($fromAllParties) {
-			/** @var ParticipantRepository $participantRepository */
-			$participantRepository = $this->em->getRepository(Participant::class);
+            /** @var ParticipantRepository $participantRepository */
+            $participantRepository = $this->em->getRepository(Participant::class);
             /** @var Participant[] $participants */
             $participants = $participantRepository->findAllByEmail($participant->getEmail());
             foreach ($participants as $p) {
@@ -44,7 +45,7 @@ class UnsubscribeService
     }
 
     public function blacklist(Participant $participant, string $ip): void
-	{
+    {
         // Unsubscribe participant from emails, with flag true for all parties.
         $this->unsubscribe($participant, true);
         $hashedMail = $this->hashService->hashEmail($participant->getEmail());

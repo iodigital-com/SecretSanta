@@ -2,17 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Validator\Constraints as Assert;
 use App\Validator\PartyHasValidExcludes;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @PartyHasValidExcludes(groups={"exclude_participants"})
  */
 class Party
 {
-	// @phpstan-ignore-next-line
     private int $id;
 
     private string $listurl;
@@ -26,20 +25,21 @@ class Party
 
     private \DateTime $creationdate;
 
-    private \DateTime $sentdate;
+    private ?\DateTime $sentdate;
 
     /**
      * @Assert\NotBlank()
      */
-    private \DateTime $eventdate;
+    private ?\DateTime $eventdate;
 
     /**
      * @Assert\NotBlank()
      */
-    private string $amount;
+    private ?string $amount;
 
     /**
      * @var Collection<int, Participant>
+     *
      * @Assert\Valid()
      */
     private Collection $participants;
@@ -51,7 +51,7 @@ class Party
     /**
      * @Assert\NotBlank()
      */
-    private string $location;
+    private ?string $location;
 
     /**
      * @Assert\NotBlank()
@@ -81,7 +81,7 @@ class Party
     }
 
     public function getId(): int
-	{
+    {
         return $this->id;
     }
 
@@ -135,27 +135,27 @@ class Party
         return $this->participants->first()->getEmail();
     }
 
-    public function setCreationDate(\DateTime $creationdate): Party
+    public function setCreationDate(?\DateTime $creationdate): Party
     {
         $this->creationdate = $creationdate;
 
         return $this;
     }
 
-    public function getCreationDate(): \DateTime
-	{
+    public function getCreationDate(): ?\DateTime
+    {
         return $this->creationdate;
     }
 
-    public function setSentdate(\DateTime $sentdate): Party
+    public function setSentdate(?\DateTime $sentdate): Party
     {
         $this->sentdate = $sentdate;
 
         return $this;
     }
 
-    public function getSentdate(): \DateTime
-	{
+    public function getSentdate(): ?\DateTime
+    {
         return $this->sentdate;
     }
 
@@ -167,7 +167,7 @@ class Party
     }
 
     public function removeParticipant(Participant $participant): void
-	{
+    {
         $this->participants->removeElement($participant);
     }
 
@@ -175,7 +175,7 @@ class Party
      * @return Collection<int, Participant>
      */
     public function getParticipants(): Collection
-	{
+    {
         return $this->participants;
     }
 
@@ -184,27 +184,27 @@ class Party
         return 'Id: '.$this->id.' - Participants: '.$this->participants->count().' - Owner: '.$this->getOwnerName();
     }
 
-    public function setEventdate(\DateTime $eventdate): Party
+    public function setEventdate(?\DateTime $eventdate): Party
     {
         $this->eventdate = $eventdate;
 
         return $this;
     }
 
-    public function getEventdate(): \DateTime
-	{
+    public function getEventdate(): ?\DateTime
+    {
         return $this->eventdate;
     }
 
-    public function setAmount(string $amount): Party
+    public function setAmount(?string $amount): Party
     {
         $this->amount = $amount;
 
         return $this;
     }
 
-    public function getAmount(): string
-	{
+    public function getAmount(): ?string
+    {
         return $this->amount;
     }
 
@@ -216,7 +216,7 @@ class Party
     }
 
     public function getCreated(): bool
-	{
+    {
         return $this->created;
     }
 
@@ -232,13 +232,13 @@ class Party
         return $this->locale;
     }
 
-    public function getLocation(): string
+    public function getLocation(): ?string
     {
         return $this->location;
     }
 
     public function setLocation(?string $location): void
-	{
+    {
         if (null === $location) {
             $location = '';
         }
@@ -252,7 +252,7 @@ class Party
     }
 
     public function setConfirmed(bool $confirmed): void
-	{
+    {
         $this->confirmed = (string) $confirmed;
     }
 
@@ -276,11 +276,8 @@ class Party
         $this->joinmode = $joinmode;
     }
 
-    /**
-     * @return array
-     */
     public function createNewPartyForReuse(): array
-	{
+    {
         $originalParty = $this;
         $countHashed = 0;
         $adminIsHashed = false;
@@ -330,7 +327,7 @@ class Party
         // Create default minimum participants
         for ($i = $startParticipantsAmount; $i < 3; ++$i) {
             $participant = new Participant();
-            if ($i === 0) {
+            if (0 === $i) {
                 $participant->setPartyAdmin(true);
             }
             $party->addParticipant($participant);

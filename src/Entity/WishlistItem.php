@@ -5,9 +5,9 @@ namespace App\Entity;
 class WishlistItem
 {
     private ?int $id = null;
-    private Participant $participant;
+    private ?Participant $participant;
     private ?string $description = '';
-    private int $rank = 0;
+    private ?int $rank = 0;
 
     public function getId(): ?int
     {
@@ -29,24 +29,24 @@ class WishlistItem
         return (string) $this->description;
     }
 
-    public function setRank(int $rank): self
+    public function setRank(?int $rank): self
     {
         $this->rank = $rank;
 
         return $this;
     }
 
-    public function getRank(): int
+    public function getRank(): ?int
     {
         return $this->rank;
     }
 
-    public function getParticipant(): Participant
+    public function getParticipant(): ?Participant
     {
         return $this->participant;
     }
 
-    public function setParticipant(Participant $participant): void
+    public function setParticipant(?Participant $participant): void
     {
         $this->participant = $participant;
     }

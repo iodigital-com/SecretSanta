@@ -2,11 +2,6 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-app:
-  resource: 'routes/'
-  prefix: /{_locale}
-  type: attribute
-
 privacy:
   path: /{_locale}/privacy
   defaults:

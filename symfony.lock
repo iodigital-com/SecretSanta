@@ -88,6 +88,18 @@
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "3.64",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "be2103eb4a20942e28a6dd87736669b757132435"
+        },
+        "files": [
+            ".php-cs-fixer.dist.php"
+        ]
+    },
     "geoip2/geoip2": {
         "version": "v2.11.0"
     },
@@ -408,6 +420,15 @@
     },
     "symfony/intl": {
         "version": "v4.4.16"
+    },
+    "symfony/mailchimp-mailer": {
+        "version": "6.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "4.4",
+            "ref": "1be490e068472fc87e226cf54bc95fb6f2e49117"
+        }
     },
     "symfony/mailer": {
         "version": "5.4",

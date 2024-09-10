@@ -2,10 +2,10 @@
 
 namespace App\Command;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Mailer\MailerService;
 use App\Query\ParticipantMailQuery;
 use App\Query\WishlistMailQuery;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,7 +21,7 @@ class SendEmptyWishlistReminderCommand extends Command
         EntityManagerInterface $em,
         ParticipantMailQuery $participantMailQuery,
         WishlistMailQuery $wishlistMailQuery,
-        MailerService $mailerService
+        MailerService $mailerService,
     ) {
         $this->em = $em;
         $this->participantMailQuery = $participantMailQuery;
@@ -31,9 +31,6 @@ class SendEmptyWishlistReminderCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -41,9 +38,6 @@ class SendEmptyWishlistReminderCommand extends Command
             ->setDescription('Send reminder to add items to wishlist');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $emptyWishlistsParticipant = $this->participantMailQuery->findAllToRemindOfEmptyWishlist();
@@ -53,7 +47,7 @@ class SendEmptyWishlistReminderCommand extends Command
             foreach ($emptyWishlistsParticipant as $participant) {
                 $itemCount = $this->wishlistMailQuery->countWishlistItemsOfParticipant($participant);
 
-                if ($itemCount[0]['wishlistItemCount'] == 0) {
+                if (0 == $itemCount[0]['wishlistItemCount']) {
                     $this->mailerService->sendWishlistReminderMail($participant);
 
                     $participant->setEmptyWishlistReminderSentTime($timeNow);

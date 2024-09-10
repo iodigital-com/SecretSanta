@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controller\Participant;
 
+use App\Entity\Participant;
+use App\Form\Type\AnonymousMessageFormType;
+use App\Form\Type\WishlistType;
 use App\Service\ParticipantService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use App\Form\Type\WishlistType;
-use App\Form\Type\AnonymousMessageFormType;
-use App\Entity\Participant;
 use Symfony\Component\Routing\Attribute\Route;
 
 class ShowController extends AbstractController
 {
-	#[Route("/{_locale}/participant/{url}", name: "participant_view", methods: ["GET"])]
+    #[Route('/{_locale}/participant/{url}', name: 'participant_view', methods: ['GET'])]
     public function showAction(Request $request, Participant $participant, ParticipantService $participantService)
     {
         if ($participant->getParty()->getEventdate() < new \DateTime('-2 years')) {
@@ -33,9 +33,9 @@ class ShowController extends AbstractController
         $participantService->logFirstAccess($participant, $request->getClientIp());
 
         return $this->render('Participant/show/valid.html.twig', [
-			'participant' => $participant,
-			'wishlistForm' => $wishlistForm->createView(),
-			'messageForm' => $messageForm->createView(),
-		]);
+            'participant' => $participant,
+            'wishlistForm' => $wishlistForm->createView(),
+            'messageForm' => $messageForm->createView(),
+        ]);
     }
 }

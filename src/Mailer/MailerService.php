@@ -2,66 +2,41 @@
 
 namespace App\Mailer;
 
+use App\Entity\Participant;
+use App\Entity\Party;
+use App\Model\ContactSubmission;
 use App\Repository\ParticipantRepository;
 use App\Repository\PartyRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Model\ContactSubmission;
 use App\Service\UnsubscribeService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use App\Entity\Participant;
-use App\Entity\Party;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Twig\Environment;
 
 class MailerService
 {
-    public MailerInterface $mailer;
-    public MailerInterface $mandrill;
-    public EntityManagerInterface $em;
-    public Environment $templating;
-    public TranslatorInterface $translator;
-    public RouterInterface $routing;
-    public UnsubscribeService $unsubscribeService;
-    public string $noreplyEmail;
-    private CheckMailDomainService $checkMailDomainService;
-    public string $contactEmail;
-
     public function __construct(
-        MailerInterface $mailer,
-		MailerInterface $mandrill,
-        EntityManagerInterface $em,
-        Environment $templating,
-        TranslatorInterface $translator,
-        RouterInterface $routing,
-        UnsubscribeService $unsubscribeService,
-        string $noreplyEmail,
-        CheckMailDomainService $checkMailDomainService,
-        string $contactEmail
+        private MailerInterface $mailer,
+        private EntityManagerInterface $em,
+        private TranslatorInterface $translator,
+        private RouterInterface $routing,
+        private UnsubscribeService $unsubscribeService,
+        private string $noreplyEmail,
+        private CheckMailDomainService $checkMailDomainService,
+        private string $contactEmail,
     ) {
-        $this->mailer = $mailer;
-        $this->mandrill = $mandrill;
-        $this->em = $em;
-        $this->templating = $templating;
-        $this->translator = $translator;
-        $this->routing = $routing;
-        $this->unsubscribeService = $unsubscribeService;
-        $this->noreplyEmail = $noreplyEmail;
-        $this->checkMailDomainService = $checkMailDomainService;
-        $this->contactEmail = $contactEmail;
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendPendingConfirmationMail(Party $party): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendPendingConfirmationMail(Party $party): void
     {
-		$locale = $party->getLocale();
+        $locale = $party->getLocale();
 
         $message = (new TemplatedEmail())
             ->subject($this->translator->trans('emails-pendingConfirmation.subject', [], 'messages', $locale))
@@ -69,17 +44,18 @@ class MailerService
             ->to($party->getOwnerEmail())
             ->htmlTemplate('Emails/pendingConfirmation.html.twig')
             ->textTemplate('Emails/pendingConfirmation.txt.twig')
-			->context([
-				'party' => $party,
-				'locale' => $locale
-			]);
-		$this->sendMail($message);
+            ->context([
+                'party' => $party,
+                'locale' => $locale,
+            ]);
+        $this->sendMail($message);
     }
 
-	/**
-	 * Sends out all mails for a Party.
-	 * @throws TransportExceptionInterface
-	 */
+    /**
+     * Sends out all mails for a Party.
+     *
+     * @throws TransportExceptionInterface
+     */
     public function sendSecretSantaMailsForParty(Party $party): void
     {
         $party->setSentdate(new \DateTime('now'));
@@ -91,10 +67,11 @@ class MailerService
         }
     }
 
-	/**
-	 * Sends out mail for a Participant.
-	 * @throws TransportExceptionInterface
-	 */
+    /**
+     * Sends out mail for a Participant.
+     *
+     * @throws TransportExceptionInterface
+     */
     public function sendSecretSantaMailForParticipant(Participant $participant): void
     {
         $locale = $participant->getParty()->getLocale();
@@ -135,29 +112,29 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/participant.html.twig')
             ->textTemplate('Emails/participant.txt.twig')
-			->context([
-				'message' => $message,
-				'participant' => $participant,
-				'locale' => $locale
-			]);
+            ->context([
+                'message' => $message,
+                'participant' => $participant,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
-		$this->sendMail($mail);
+        $this->sendMail($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendForgotLinkMail(string $email): bool
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendForgotLinkMail(string $email): bool
     {
-		/** @var ParticipantRepository $participantRepository */
-		$participantRepository = $this->em->getRepository(Participant::class);
-		/** @var PartyRepository $partyRepository */
-		$partyRepository = $this->em->getRepository(Party::class);
+        /** @var ParticipantRepository $participantRepository */
+        $participantRepository = $this->em->getRepository(Participant::class);
+        /** @var PartyRepository $partyRepository */
+        $partyRepository = $this->em->getRepository(Party::class);
         /** @var Participant[] $participatingIn */
         $participatingIn = $participantRepository->findAllParticipantsForForgotEmail($email);
         $adminOf = $partyRepository->findAllAdminParties($email);
 
-        if (count($adminOf) === 0 && count($participatingIn) === 0) {
+        if (0 === count($adminOf) && 0 === count($participatingIn)) {
             return false;
         }
 
@@ -189,7 +166,7 @@ class MailerService
         }
 
         if (count($adminOf)) {
-			$locale = $adminOf[0]['locale'];
+            $locale = $adminOf[0]['locale'];
         } else {
             $locale = $participatingIn[0]->getParty()->getLocale();
         }
@@ -200,26 +177,26 @@ class MailerService
             ->to($email)
             ->htmlTemplate('Emails/forgotLink.html.twig')
             ->textTemplate('Emails/forgotLink.txt.twig')
-			->context([
-				'manageLinks' => $manageLinks,
-				'participantLinks' => $participantLinks,
-				'locale' => $locale
-			]);
-		$this->sendMail($message);
+            ->context([
+                'manageLinks' => $manageLinks,
+                'participantLinks' => $participantLinks,
+                'locale' => $locale,
+            ]);
+        $this->sendMail($message);
 
         return true;
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendReuseLinksMail(string $email): bool
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendReuseLinksMail(string $email): bool
     {
-		/** @var PartyRepository $partyRepository */
-		$partyRepository = $this->em->getRepository(Party::class);
+        /** @var PartyRepository $partyRepository */
+        $partyRepository = $this->em->getRepository(Party::class);
         $results = $partyRepository->findPartiesToReuse($email);
 
-        if (count($results) === 0) {
+        if (0 === count($results)) {
             return false;
         }
 
@@ -244,19 +221,19 @@ class MailerService
             ->to($email)
             ->htmlTemplate('Emails/reuseLink.html.twig')
             ->textTemplate('Emails/reuseLink.txt.twig')
-			->context([
-				'partyLinks' => $partyLinks,
-				'locale' => $locale
-			]);
-		$this->sendMail($message);
+            ->context([
+                'partyLinks' => $partyLinks,
+                'locale' => $locale,
+            ]);
+        $this->sendMail($message);
 
         return true;
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendPartyUpdateMailForParty(Party $party, array $results): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendPartyUpdateMailForParty(Party $party, array $results): void
     {
         foreach ($party->getParticipants() as $participant) {
             if ($participant->isSubscribed()) {
@@ -265,10 +242,10 @@ class MailerService
         }
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendPartyUpdateMailForParticipant(Participant $participant, array $results): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendPartyUpdateMailForParticipant(Participant $participant, array $results): void
     {
         $locale = $participant->getParty()->getLocale();
 
@@ -278,19 +255,19 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/partyUpdate.html.twig')
             ->textTemplate('Emails/partyUpdate.txt.twig')
-			->context([
-				'participant' => $participant,
-				'results' => $results,
-				'locale' => $locale
-			]);
+            ->context([
+                'participant' => $participant,
+                'results' => $results,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->sendMail($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendContactFormEmail(ContactSubmission $contactSubmission): bool
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendContactFormEmail(ContactSubmission $contactSubmission): bool
     {
         $locale = 'nl';
         $mail = (new TemplatedEmail())
@@ -299,19 +276,19 @@ class MailerService
             ->to($this->contactEmail)
             ->htmlTemplate('Emails/contact.html.twig')
             ->textTemplate('Emails/contact.txt.twig')
-			->context([
-				'submission' => $contactSubmission,
-				'locale' => $locale
-			]);
-		$this->sendMail($mail);
+            ->context([
+                'submission' => $contactSubmission,
+                'locale' => $locale,
+            ]);
+        $this->sendMail($mail);
 
         return true;
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendWishlistReminderMail(Participant $participant): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendWishlistReminderMail(Participant $participant): void
     {
         $locale = $participant->getParty()->getLocale();
         $mail = (new TemplatedEmail())
@@ -320,18 +297,18 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/emptyWishlistReminder.html.twig')
             ->textTemplate('Emails/emptyWishlistReminder.txt.twig')
-			->context([
-				'participant' => $participant,
-				'locale' => $locale
-			]);
+            ->context([
+                'participant' => $participant,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendParticipantViewReminderMail(Participant $participant): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendParticipantViewReminderMail(Participant $participant): void
     {
         $locale = $participant->getParty()->getLocale();
         $mail = (new TemplatedEmail())
@@ -340,18 +317,18 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/viewParticipantReminder.html.twig')
             ->textTemplate('Emails/viewParticipantReminder.txt.twig')
-			->context([
-				'participant' => $participant,
-				'locale' => $locale
-			]);
+            ->context([
+                'participant' => $participant,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendWishlistUpdatedMail(Participant $participant): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendWishlistUpdatedMail(Participant $participant): void
     {
         $locale = $participant->getParty()->getLocale();
         $mail = (new TemplatedEmail())
@@ -360,18 +337,18 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/wishlistChanged.html.twig')
             ->textTemplate('Emails/wishlistChanged.txt.twig')
-			->context([
-				'participant' => $participant,
-				'locale' => $locale
-			]);
+            ->context([
+                'participant' => $participant,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendPartyStatusMail(Participant $participant): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendPartyStatusMail(Participant $participant): void
     {
         $locale = $participant->getParty()->getLocale();
         $mail = (new TemplatedEmail())
@@ -380,19 +357,19 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/partyStatus.html.twig')
             ->textTemplate('Emails/partyStatus.txt.twig')
-			->context([
-				'party' => $participant->getParty(),
-				'admin' => $participant,
-				'locale' => $locale
-			]);
+            ->context([
+                'party' => $participant->getParty(),
+                'admin' => $participant,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->mailer->send($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendPartyUpdatedMailsForParty(Party $party): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendPartyUpdatedMailsForParty(Party $party): void
     {
         foreach ($party->getParticipants() as $participant) {
             if ($participant->isSubscribed()) {
@@ -401,10 +378,10 @@ class MailerService
         }
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendPartyUpdatedMailForParticipant(Participant $participant): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendPartyUpdatedMailForParticipant(Participant $participant): void
     {
         $locale = $participant->getParty()->getLocale();
         $mail = (new TemplatedEmail())
@@ -413,18 +390,18 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/updatedParty.html.twig')
             ->textTemplate('Emails/updatedParty.txt.twig')
-			->context([
-				'participant' => $participant,
-				'locale' => $locale
-			]);
+            ->context([
+                'participant' => $participant,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->sendMail($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendRemovedSecretSantaMail(Participant $participant): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendRemovedSecretSantaMail(Participant $participant): void
     {
         $locale = $participant->getParty()->getLocale();
         $mail = (new TemplatedEmail())
@@ -433,18 +410,18 @@ class MailerService
             ->to(new Address($participant->getEmail(), $participant->getName()))
             ->htmlTemplate('Emails/removedSecretSanta.html.twig')
             ->textTemplate('Emails/removedSecretSanta.txt.twig')
-			->context([
-				'participant' => $participant,
-				'locale' => $locale
-			]);
+            ->context([
+                'participant' => $participant,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($participant));
         $this->sendMail($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function sendAnonymousMessage(Participant $recipient, string $message): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendAnonymousMessage(Participant $recipient, string $message): void
     {
         $locale = $recipient->getParty()->getLocale();
 
@@ -454,30 +431,32 @@ class MailerService
             ->to($recipient->getEmail())
             ->htmlTemplate('Emails/anonymousMessage.html.twig')
             ->textTemplate('Emails/anonymousMessage.txt.twig')
-			->context([
-				'message' => $message,
-				'participant' => $recipient,
-				'locale' => $locale
-			]);
+            ->context([
+                'message' => $message,
+                'participant' => $recipient,
+                'locale' => $locale,
+            ]);
         $mail->getHeaders()->addTextHeader('List-Unsubscribe', $this->unsubscribeService->getUnsubscribeLink($recipient));
         $this->sendMail($mail);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	private function sendMail(Email $mail): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    private function sendMail(TemplatedEmail $mail): void
     {
         // Requesting a delisting from Hotmail does not work. They just accept our email and filter it (not delivered to spam folder).
         // https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wfname=capsub&productkey=edfsmsbl3&ccsid=635688189955348624&wa=wsignin1.0
         // Other people have the same issue https://www.maikel.pro/blog/en-your-own-mailserver-postfixdovecot-but/
         // A solution that works is using Mandrill as a relay for these domains. Hotmail is our 2nd largest recipient (after Gmail) so we can't ignore it
-        $mailTo = key($mail->getTo());
+        $mailTo = $mail->getTo();
 
-        if ($this->checkMailDomainService->isBlacklistedAddress($mailTo)) {
-            $this->mandrill->send($mail);
-        } else {
-            $this->mailer->send($mail);
+        $firstAddress = $mailTo[0];
+
+        if ($this->checkMailDomainService->isBlacklistedAddress($firstAddress->getAddress())) {
+            $mail->getHeaders()->addTextHeader('X-Transport', 'mandrill');
         }
+
+        $this->mailer->send($mail);
     }
 }

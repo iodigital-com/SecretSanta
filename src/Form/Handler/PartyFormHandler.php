@@ -8,9 +8,9 @@ use App\Entity\Party;
 use App\Form\Handler\Exception\RateLimitExceededException;
 use App\Mailer\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
 class PartyFormHandler
@@ -41,6 +41,7 @@ class PartyFormHandler
         $now = date('U');
         $rateLimitCacheItem = $this->cache->get($rateLimitCacheKey, function (ItemInterface $item) use ($now) {
             $item->expiresAfter(180);
+
             return $now;
         });
 

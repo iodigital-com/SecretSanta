@@ -23,7 +23,7 @@ class SendPartyUpdateController extends AbstractController
         $this->translator = $translator;
     }
 
-	#[Route("/{_locale}/send-party-update/{listurl}", name: "send_party_update", methods: ["GET"])]
+    #[Route('/{_locale}/send-party-update/{listurl}', name: 'send_party_update', methods: ['GET'])]
     public function sendPartyUpdateAction(Party $party, ParticipantReportQuery $reportQueriesService, MailerService $mailerService)
     {
         $results = $reportQueriesService->fetchDataForPartyUpdateMail($party->getListurl());

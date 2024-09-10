@@ -15,12 +15,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ForgotUrlFormHandler
 {
     public function __construct(private TranslatorInterface $translator, private RequestStack $requestStack, private MailerService $mailer)
-    {}
+    {
+    }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function handle(FormInterface $form, Request $request): bool
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function handle(FormInterface $form, Request $request): bool
     {
         if (!$request->isMethod('POST')) {
             return false;
@@ -32,13 +33,13 @@ class ForgotUrlFormHandler
 
         $data = $form->getData();
 
-		/** @var Session $session */
-		$session = $this->requestStack->getSession();
+        /** @var Session $session */
+        $session = $this->requestStack->getSession();
 
         if ($this->mailer->sendForgotLinkMail($data['email'])) {
-			$session->getFlashBag()->add('success', $this->translator->trans('flashes.forgot_url.success'));
+            $session->getFlashBag()->add('success', $this->translator->trans('flashes.forgot_url.success'));
         } else {
-			$session->getFlashBag()->add('danger', $this->translator->trans('flashes.forgot_url.error'));
+            $session->getFlashBag()->add('danger', $this->translator->trans('flashes.forgot_url.error'));
         }
 
         return true;

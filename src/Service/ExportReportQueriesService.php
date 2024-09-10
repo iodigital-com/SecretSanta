@@ -25,16 +25,13 @@ class ExportReportQueriesService
         fclose($handle);
     }
 
-    /**
-     * @return mixed
-     */
     public function getReportQuery(string $year)
     {
         $filename = $this->getExportLocation($year).'/report.json';
 
         $handle = fopen($filename, 'r');
         $read = json_decode(fread($handle, filesize($filename)), true);
-        fclose($handle); //Close up
+        fclose($handle); // Close up
 
         return $read;
     }

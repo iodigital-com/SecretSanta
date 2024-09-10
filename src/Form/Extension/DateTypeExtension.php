@@ -2,17 +2,14 @@
 
 namespace App\Form\Extension;
 
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractTypeExtension;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DateTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -27,9 +24,6 @@ class DateTypeExtension extends AbstractTypeExtension
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         // Adds a custom block prefix
@@ -41,9 +35,6 @@ class DateTypeExtension extends AbstractTypeExtension
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars['type'] = 'text';
@@ -56,17 +47,11 @@ class DateTypeExtension extends AbstractTypeExtension
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExtendedType()
     {
         return DateType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
         return [DateType::class];

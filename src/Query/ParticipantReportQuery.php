@@ -11,11 +11,12 @@ class ParticipantReportQuery
     public function __construct(
         private Connection $dbal,
         private PartyReportQuery $partyReportQuery,
-        private FeaturedYearsQuery $featuredYearsQuery
-    ) {}
+        private FeaturedYearsQuery $featuredYearsQuery,
+    ) {
+    }
 
     public function countConfirmedParticipantsUntilDate(\DateTime $date): array
-	{
+    {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS confirmedParticipantCount')
             ->from('party', 'p')
@@ -28,7 +29,7 @@ class ParticipantReportQuery
     }
 
     public function countDistinctParticipantsUntilDate(\DateTime $date): array
-	{
+    {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(distinct e.email) AS distinctParticipantCount')
             ->from('party', 'p')
@@ -40,7 +41,7 @@ class ParticipantReportQuery
     }
 
     public function queryDataForMonthlyParticipantChart(Season $season): array
-	{
+    {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS accumulatedParticipantCountByMonth, p.sent_date AS month')
             ->from('party', 'p')
@@ -114,15 +115,15 @@ class ParticipantReportQuery
         $totalParties = $this->partyReportQuery->countAllPartiesUntilDate($date);
         $totalParticipants = $this->countAllParticipantsUntilDate($date);
 
-        if ($totalParties[0]['partyCount'] != 0) {
-			return $totalParticipants[0]['totalParticipantCount'] / $totalParties[0]['partyCount'];
+        if (0 != $totalParties[0]['partyCount']) {
+            return $totalParticipants[0]['totalParticipantCount'] / $totalParties[0]['partyCount'];
         }
 
         throw new NoResultException();
     }
 
     public function countAllParticipantsUntilDate(\DateTime $date): array
-	{
+    {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS totalParticipantCount')
             ->from('party', 'p')
@@ -134,7 +135,7 @@ class ParticipantReportQuery
     }
 
     public function calculateParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2): int
-	{
+    {
         $participantCountSeason1 = $this->countParticipants($season1);
 
         try {
@@ -163,7 +164,7 @@ class ParticipantReportQuery
     }
 
     public function calculateConfirmedParticipantsCountDifferenceBetweenSeasons(Season $season1, Season $season2): mixed
-	{
+    {
         $confirmedParticipantCountSeason1 = $this->countConfirmedParticipants($season1);
 
         try {
@@ -176,7 +177,7 @@ class ParticipantReportQuery
     }
 
     public function countConfirmedParticipants(Season $season): array
-	{
+    {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS confirmedParticipantCount')
             ->from('party', 'p')
@@ -191,7 +192,7 @@ class ParticipantReportQuery
     }
 
     public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2): mixed
-	{
+    {
         $distinctParticipantCountSeason1 = $this->countDistinctParticipants($season1);
 
         try {
@@ -204,7 +205,7 @@ class ParticipantReportQuery
     }
 
     public function countDistinctParticipants(Season $season): array
-	{
+    {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(distinct e.email) AS distinctParticipantCount')
             ->from('party', 'p')
@@ -235,7 +236,7 @@ class ParticipantReportQuery
         $partyCount = $this->partyReportQuery->countParties($season);
         $participantCount = $this->countParticipants($season);
 
-        if ($partyCount !== 0 && $participantCount !== 0) {
+        if (0 !== $partyCount && 0 !== $participantCount) {
             return $participantCount / $partyCount;
         }
 
@@ -243,7 +244,7 @@ class ParticipantReportQuery
     }
 
     public function fetchMailsForExport(Season $season, bool $isAdmin): iterable
-	{
+    {
         /** @var QueryBuilder $subQuery */
         $subQuery = $this->dbal->createQueryBuilder();
 
@@ -272,11 +273,11 @@ class ParticipantReportQuery
             ->andWhere('e.subscribed_for_updates = 1')
             ->andWhere('b.id is null')
             ->andWhere("p.sent_date = ({$subQuery->getSQL()})")
-            ->groupBy('e.email') /*filter duplicates in same party */
+            ->groupBy('e.email') /* filter duplicates in same party */
             ->orderBy('p.id', Criteria::DESC)
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
-            ->setParameter('admin', ($isAdmin ? 1 : 0));
+            ->setParameter('admin', $isAdmin ? 1 : 0);
 
         $result = $qb->execute()->fetchAll();
 
@@ -322,7 +323,7 @@ class ParticipantReportQuery
     }
 
     public function findBuddyByParticipantId(int $participantId): array
-	{
+    {
         $query = $this->dbal->createQueryBuilder()
             ->select('p.id')
             ->from('participant', 'p')

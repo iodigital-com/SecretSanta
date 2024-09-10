@@ -17,12 +17,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ContactFormHandler
 {
     public function __construct(private TranslatorInterface $translator, private RequestStack $requestStack, private MailerService $mailer, private RecaptchaService $recaptchaService)
-    {}
+    {
+    }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function handle(FormInterface $form, Request $request): bool
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function handle(FormInterface $form, Request $request): bool
     {
         if (!$request->isMethod('POST')) {
             return false;
@@ -36,12 +37,12 @@ class ContactFormHandler
         $data = $form->getData();
         $captchaResult = $this->recaptchaService->validateRecaptchaToken($data->getRecaptchaToken());
 
-		/** @var Session $session */
-		$session = $this->requestStack->getSession();
+        /** @var Session $session */
+        $session = $this->requestStack->getSession();
 
         // Client succeed recaptcha validation.
-        if ($captchaResult['success'] !== true) {
-			$session->getFlashBag()->add('danger', 'You seem like a robot ('.current($captchaResult['error-codes']).'), sorry.');
+        if (true !== $captchaResult['success']) {
+            $session->getFlashBag()->add('danger', 'You seem like a robot ('.current($captchaResult['error-codes']).'), sorry.');
 
             return false;
         }
@@ -49,11 +50,12 @@ class ContactFormHandler
         $mailResult = $this->mailer->sendContactFormEmail($data);
 
         if (!$mailResult) {
-			$session->getFlashBag()->add('danger', 'Mail was not sent due to unknown error.');
+            $session->getFlashBag()->add('danger', 'Mail was not sent due to unknown error.');
+
             return false;
         }
 
-		$session->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
+        $session->getFlashBag()->add('success', $this->translator->trans('flashes.contact.success'));
 
         return true;
     }

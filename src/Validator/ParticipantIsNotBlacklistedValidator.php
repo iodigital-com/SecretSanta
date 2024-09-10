@@ -3,8 +3,8 @@
 namespace App\Validator;
 
 use App\Entity\BlacklistEmail;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Service\HashService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
@@ -15,7 +15,7 @@ class ParticipantIsNotBlacklistedValidator extends ConstraintValidator
 
     public function __construct(
         EntityManagerInterface $em,
-        HashService $hashService
+        HashService $hashService,
     ) {
         $this->em = $em;
         $this->hashService = $hashService;

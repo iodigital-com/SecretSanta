@@ -2,13 +2,13 @@
 
 namespace App\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class EnrichParticipantInfoCommand extends Command
 {
@@ -19,7 +19,7 @@ class EnrichParticipantInfoCommand extends Command
     public function __construct(
         ParticipantRepository $participantRepository,
         EntityManagerInterface $em,
-        string $geoIpDbPath
+        string $geoIpDbPath,
     ) {
         $this->participantRepository = $participantRepository;
         $this->em = $em;
@@ -28,9 +28,6 @@ class EnrichParticipantInfoCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -38,9 +35,6 @@ class EnrichParticipantInfoCommand extends Command
             ->setDescription('Enrich the participant information');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $batchSize = 1000;

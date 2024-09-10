@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Participant;
 
+use App\Entity\Participant;
 use App\Mailer\MailerService;
 use App\Query\ParticipantReportQuery;
 use App\Repository\ParticipantRepository;
 use App\Service\ParticipantService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Participant;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ParticipantController extends AbstractController
 {
@@ -30,17 +29,14 @@ class ParticipantController extends AbstractController
         $this->translator = $translator;
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	#[Route("/{_locale}/participant/edit/{listurl}/{url}", name: "participant_edit", methods: ["POST"])]
+    #[Route('/{_locale}/participant/edit/{listurl}/{url}', name: 'participant_edit', methods: ['POST'])]
     public function editParticipantAction(
-		Request $request,
-		string $listurl,
-		Participant $participant,
-		ParticipantService $participantService,
-		MailerService $mailerService): JsonResponse
-	{
+        Request $request,
+        string $listurl,
+        Participant $participant,
+        ParticipantService $participantService,
+        MailerService $mailerService): JsonResponse
+    {
         $name = htmlspecialchars($request->request->get('name'), ENT_QUOTES);
         $email = htmlspecialchars($request->request->get('email'), ENT_QUOTES);
 
@@ -68,20 +64,16 @@ class ParticipantController extends AbstractController
         return new JsonResponse(['success' => true, 'message' => html_entity_decode($message), 'name' => $name, 'email' => $email]);
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	#[Route("/{_locale}/participant/remove/{listurl}/{url}", name: "participant_remove", methods: ["POST"])]
+    #[Route('/{_locale}/participant/remove/{listurl}/{url}', name: 'participant_remove', methods: ['POST'])]
     public function removeParticipantFromPartyAction(
-		Request $request,
-		string $listurl,
-		Participant $participant,
-		ParticipantRepository $participantRepository,
-		ParticipantReportQuery $participantReportQuery,
-		MailerService $mailerService,
-		EntityManagerInterface $em
-	): RedirectResponse
-	{
+        Request $request,
+        string $listurl,
+        Participant $participant,
+        ParticipantRepository $participantRepository,
+        ParticipantReportQuery $participantReportQuery,
+        MailerService $mailerService,
+        EntityManagerInterface $em,
+    ): RedirectResponse {
         if (false === $this->isCsrfTokenValid('delete_participant', $request->get('csrf_token'))) {
             $this->addFlash('danger', $this->translator->trans('flashes.participant.remove_participant.wrong'));
 
@@ -120,7 +112,7 @@ class ParticipantController extends AbstractController
             return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
         }
 
-        if ($excludeCount > 0 && count($participants) == 4) {
+        if ($excludeCount > 0 && 4 == count($participants)) {
             $this->addFlash('danger', $this->translator->trans('flashes.participant.remove_participant.not_enough_for_exclude'));
 
             return $this->redirectToRoute('party_manage', ['listurl' => $listurl]);
@@ -142,14 +134,14 @@ class ParticipantController extends AbstractController
             $em->flush();
 
             if ($assignedParticipant) {
-				$assignedParticipant->setAssignedParticipant($secretSanta);
-				$em->persist($assignedParticipant);
-				$em->flush();
+                $assignedParticipant->setAssignedParticipant($secretSanta);
+                $em->persist($assignedParticipant);
+                $em->flush();
 
-				if ($assignedParticipant->isSubscribed()) {
-					$mailerService->sendRemovedSecretSantaMail($assignedParticipant);
-				}
-			}
+                if ($assignedParticipant->isSubscribed()) {
+                    $mailerService->sendRemovedSecretSantaMail($assignedParticipant);
+                }
+            }
         } else {
             $em->remove($participant);
             $em->flush();

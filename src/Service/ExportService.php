@@ -11,11 +11,12 @@ class ExportService
 {
     public function __construct(
         private ParticipantReportQuery $participantReportQuery,
-        private RouterInterface $router
-    ) {}
+        private RouterInterface $router,
+    ) {
+    }
 
     public function export(Season $season, bool $isAdmin = false): void
-	{
+    {
         $result = $this->participantReportQuery->fetchMailsForExport($season, $isAdmin);
 
         $reusePartyBaseUrl = $this->getPartyReuseBaseUrl();
@@ -58,7 +59,7 @@ class ExportService
         $url = $this->router->generate(
             'party_reuse',
             ['listurl' => '1'],
-			UrlGeneratorInterface::ABSOLUTE_URL
+            UrlGeneratorInterface::ABSOLUTE_URL
         );
 
         // URL was generated for party 1, strip the 1 to get the base URL

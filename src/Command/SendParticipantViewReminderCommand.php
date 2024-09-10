@@ -2,9 +2,9 @@
 
 namespace App\Command;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Mailer\MailerService;
 use App\Query\ParticipantMailQuery;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -18,7 +18,7 @@ class SendParticipantViewReminderCommand extends Command
     public function __construct(
         EntityManagerInterface $em,
         ParticipantMailQuery $participantMailQuery,
-        MailerService $mailerService
+        MailerService $mailerService,
     ) {
         $this->em = $em;
         $this->participantMailQuery = $participantMailQuery;
@@ -27,9 +27,6 @@ class SendParticipantViewReminderCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -37,9 +34,6 @@ class SendParticipantViewReminderCommand extends Command
             ->setDescription('Send reminder to participants to confirm their presence at the party');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $needsViewReminder = $this->participantMailQuery->findAllToRemindToViewParticipant();

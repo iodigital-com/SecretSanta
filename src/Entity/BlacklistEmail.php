@@ -4,7 +4,6 @@ namespace App\Entity;
 
 class BlacklistEmail
 {
-	// @phpstan-ignore-next-line
     private int $id;
     private string $email;
     private ?string $ipv4;
@@ -29,17 +28,17 @@ class BlacklistEmail
     }
 
     public function setEmail(string $email): void
-	{
+    {
         $this->email = $email;
     }
 
     public function getIp(): string
     {
-		return $this->getIpv4() ?? $this->getIpv6();
-	}
+        return $this->getIpv4() ?? $this->getIpv6();
+    }
 
     private function setIp(string $ip): void
-	{
+    {
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $this->setIpv4($ip);
         } elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -53,7 +52,7 @@ class BlacklistEmail
     }
 
     private function setDate(?\DateTime $date): void
-	{
+    {
         $this->date = $date;
     }
 
@@ -63,7 +62,7 @@ class BlacklistEmail
     }
 
     private function setIpv4(?string $ipv4): void
-	{
+    {
         $this->ipv4 = $ipv4;
     }
 
@@ -73,7 +72,7 @@ class BlacklistEmail
     }
 
     private function setIpv6(?string $ipv6): void
-	{
+    {
         $this->ipv6 = $ipv6;
     }
 }

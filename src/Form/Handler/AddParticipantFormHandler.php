@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Form\Handler;
 
-use App\Repository\ParticipantRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Participant;
 use App\Entity\Party;
 use App\Mailer\MailerService;
+use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -19,12 +19,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class AddParticipantFormHandler
 {
     public function __construct(private TranslatorInterface $translator, private RequestStack $requestStack, private EntityManagerInterface $em, private MailerService $mailerService)
-    {}
+    {
+    }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function handle(FormInterface $form, Request $request, Party $party): void
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function handle(FormInterface $form, Request $request, Party $party): void
     {
         /** @var Participant $newParticipant */
         $newParticipant = $form->getData();
@@ -33,11 +34,11 @@ class AddParticipantFormHandler
             return;
         }
 
-		/** @var Session $session */
-		$session = $this->requestStack->getSession();
+        /** @var Session $session */
+        $session = $this->requestStack->getSession();
 
         if (!$form->handleRequest($request)->isValid()) {
-			$session->getFlashBag()->add('danger', $this->translator->trans('flashes.management.add_participant.danger'));
+            $session->getFlashBag()->add('danger', $this->translator->trans('flashes.management.add_participant.danger'));
 
             return;
         }
@@ -47,8 +48,8 @@ class AddParticipantFormHandler
         if ($party->getCreated()) {
             $this->em->persist($newParticipant);
 
-			/** @var ParticipantRepository $participantRepository */
-			$participantRepository = $this->em->getRepository(Participant::class);
+            /** @var ParticipantRepository $participantRepository */
+            $participantRepository = $this->em->getRepository(Participant::class);
 
             /**
              * Find participant that hasn't retrieved match yet. If none found, use admin.
@@ -56,7 +57,7 @@ class AddParticipantFormHandler
              * @var Participant|null $linkParticipant
              */
             $linkParticipant = $participantRepository->findOneUnseenByPartyId($party->getId());
-            if ($linkParticipant === null) {
+            if (null === $linkParticipant) {
                 // use party admin instead
                 $linkParticipant = $participantRepository->findAdminByPartyId($party->getId());
             }
@@ -79,6 +80,6 @@ class AddParticipantFormHandler
             $this->em->flush();
         }
 
-		$session->getFlashBag()->add('success', $this->translator->trans('flashes.management.add_participant.success'));
+        $session->getFlashBag()->add('success', $this->translator->trans('flashes.management.add_participant.success'));
     }
 }

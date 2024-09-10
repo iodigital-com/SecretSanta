@@ -20,16 +20,13 @@ class WishlistReportQuery
         $wishlistCount = $this->countWishlists($season);
         $participantCount = $this->participantReportQuery->countParticipants($season);
 
-        if ($participantCount === 0) {
+        if (0 === $participantCount) {
             throw new NoResultException();
         }
 
         return ($wishlistCount[0]['wishlistCount'] / $participantCount) * 100;
     }
 
-    /**
-     * @return mixed
-     */
     private function countWishlists(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
@@ -50,16 +47,13 @@ class WishlistReportQuery
         $totalWishlists = $this->countAllWishlistsUntilDate($date);
         $totalParticipants = $this->participantReportQuery->countAllParticipantsUntilDate($date);
 
-        if ($totalParticipants[0]['totalParticipantCount'] != 0) {
-			return ($totalWishlists[0]['totalWishlistCount'] / $totalParticipants[0]['totalParticipantCount']) * 100;
+        if (0 != $totalParticipants[0]['totalParticipantCount']) {
+            return ($totalWishlists[0]['totalWishlistCount'] / $totalParticipants[0]['totalParticipantCount']) * 100;
         }
 
         throw new NoResultException();
     }
 
-    /**
-     * @return mixed
-     */
     private function countAllWishlistsUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
