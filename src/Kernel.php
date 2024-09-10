@@ -48,11 +48,11 @@ class Kernel extends BaseKernel
     {
         $confDir = $this->getProjectDir().'/config';
 
-		if (is_dir($confDir.'/routes/'.$this->environment)) {
-			$routes->import($confDir.'/routes/'.$this->environment.'/*'.self::CONFIG_EXTS);
-		}
-		$routes->import($confDir.'/routes/*'.self::CONFIG_EXTS);
-		$routes->import($confDir.'/routes'.self::CONFIG_EXTS);
+        if (is_dir($confDir.'/routes/'.$this->environment)) {
+            $routes->import($confDir.'/routes/'.$this->environment.'/*'.self::CONFIG_EXTS);
+        }
+        $routes->import($confDir.'/routes/*'.self::CONFIG_EXTS);
+        $routes->import($confDir.'/routes'.self::CONFIG_EXTS);
     }
 
     protected function build(ContainerBuilder $container): void

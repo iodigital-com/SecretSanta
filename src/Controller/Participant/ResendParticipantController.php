@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Participant;
 
+use App\Entity\Participant;
 use App\Mailer\MailerService;
 use App\Service\UnsubscribeService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\Participant;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ResendParticipantController extends AbstractController
 {
@@ -24,19 +23,16 @@ class ResendParticipantController extends AbstractController
     public function __construct(
         UnsubscribeService $unsubscribeService,
         TranslatorInterface $translator,
-        MailerService $mailerService
+        MailerService $mailerService,
     ) {
         $this->unsubscribeService = $unsubscribeService;
         $this->translator = $translator;
         $this->mailerService = $mailerService;
     }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	#[Route("/{_locale}/resend/{listurl}/{url}", name: "resend_participant", methods: ["GET"])]
+    #[Route('/{_locale}/resend/{listurl}/{url}', name: 'resend_participant', methods: ['GET'])]
     public function resendAction($listurl, Participant $participant): RedirectResponse
-	{
+    {
         if ($participant->getParty()->getListurl() !== $listurl) {
             throw $this->createNotFoundException();
         }

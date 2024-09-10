@@ -56,7 +56,6 @@ services:
     App\Mailer\MailerService:
         arguments:
             $mailer: '@mailer'
-            $mandrill: '@mailer'
             $noreplyEmail: '%env(NOREPLY_EMAIL)%'
             $contactEmail: '%env(CONTACT_EMAIL)%'
 
@@ -72,6 +71,12 @@ services:
     App\Service\SiteDomainDecoratingTranslator:
         decorates: 'translator.default'
         arguments: ['@App\Service\SiteDomainDecoratingTranslator.inner']
+
+    App\EventListener\LocaleListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        arguments:
+            $supportedLocales: '%app.supported_locales%'
 
     Symfony\Component\Form\FormRendererInterface:
         alias: 'twig.form.renderer'

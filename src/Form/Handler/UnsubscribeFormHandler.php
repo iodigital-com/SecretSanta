@@ -15,7 +15,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class UnsubscribeFormHandler
 {
     public function __construct(private TranslatorInterface $translator, private RequestStack $requestStack, private UnsubscribeService $unsubscribeService)
-    {}
+    {
+    }
 
     public function handle(FormInterface $form, Request $request, Participant $participant): bool
     {
@@ -23,11 +24,11 @@ class UnsubscribeFormHandler
             return false;
         }
 
-		/** @var Session $session */
-		$session = $this->requestStack->getSession();
+        /** @var Session $session */
+        $session = $this->requestStack->getSession();
 
         if (!$form->handleRequest($request)->isValid()) {
-			$session->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error'));
+            $session->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error'));
 
             return false;
         }
@@ -35,7 +36,7 @@ class UnsubscribeFormHandler
         $unsubscribeData = $form->getData();
 
         if (false === $unsubscribeData['blacklist'] && false === $unsubscribeData['allParties']) {
-			$session->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error_atleast_one_option'));
+            $session->getFlashBag()->add('danger', $this->translator->trans('participant_unsubscribe.feedback.error_atleast_one_option'));
 
             return false;
         }
@@ -46,7 +47,7 @@ class UnsubscribeFormHandler
             $this->unsubscribeService->unsubscribe($participant, $unsubscribeData['allParties']);
         }
 
-		$session->getFlashBag()->add('success', $this->translator->trans('participant_unsubscribe.feedback.success'));
+        $session->getFlashBag()->add('success', $this->translator->trans('participant_unsubscribe.feedback.success'));
 
         return true;
     }

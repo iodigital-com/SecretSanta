@@ -11,11 +11,11 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ExposeParticipantsController extends AbstractController
 {
-	#[Route("/{_locale}/participants/expose/{listurl}", name: "expose_participants", methods: ["GET"])]
+    #[Route('/{_locale}/participants/expose/{listurl}', name: 'expose_participants', methods: ['GET'])]
     public function indexAction(Party $party): Response
-	{
+    {
         return $this->render('Participant/exposeAll.html.twig', [
-			'party' => $party,
-		]);
+            'party' => $party,
+        ]);
     }
 }

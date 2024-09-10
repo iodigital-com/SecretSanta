@@ -11,16 +11,16 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class DumpParticipantsController extends AbstractController
 {
-	#[Route("/{_locale}/dump-participants", name: "dump_participants", methods: ["GET"])]
+    #[Route('/{_locale}/dump-participants', name: 'dump_participants', methods: ['GET'])]
     public function dumpAction(ParticipantRepository $repository): Response
-	{
+    {
         $this->denyAccessUnlessGranted('ROLE_ADWORDS');
 
         $startCrawling = new \DateTime();
         $startCrawling->sub(new \DateInterval('P4M'));
 
         return $this->render('Participant/dumpParticipants.html.twig', [
-			'participants' => $repository->findAfter($startCrawling),
-		]);
+            'participants' => $repository->findAfter($startCrawling),
+        ]);
     }
 }

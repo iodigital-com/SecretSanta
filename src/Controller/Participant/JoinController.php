@@ -10,16 +10,16 @@ use App\Form\Type\AddParticipantType;
 use App\Repository\PartyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 class JoinController extends AbstractController
 {
-	#[Route("/{_locale}/join/{joinurl}", name: "join_party")]
+    #[Route('/{_locale}/join/{joinurl}', name: 'join_party')]
     public function joinAction(Request $request, string $joinurl, PartyRepository $partyRepository, EntityManagerInterface $em): RedirectResponse|Response
-	{
+    {
         $addParticipantForm = null;
         /** @var ?Party $party */
         $party = $partyRepository->findOneBy(['joinurl' => $joinurl, 'joinmode' => 1, 'created' => 0]);
@@ -42,20 +42,20 @@ class JoinController extends AbstractController
         }
 
         return $this->render('Participant/show/join.html.twig', [
-			'party' => $party,
-			'form' => isset($addParticipantForm) ? $addParticipantForm->createView() : null,
-		]);
+            'party' => $party,
+            'form' => isset($addParticipantForm) ? $addParticipantForm->createView() : null,
+        ]);
     }
 
-	#[Route("/{_locale}/joined/{joinurl}", name: "join_party_joined")]
+    #[Route('/{_locale}/joined/{joinurl}', name: 'join_party_joined')]
     public function joinedAction(string $joinurl, PartyRepository $partyRepository): Response
-	{
+    {
         /** @var Party $party */
         $party = $partyRepository->findOneBy(['joinurl' => $joinurl, 'joinmode' => 1, 'created' => 0]);
 
         return $this->render('Participant/show/join.html.twig', [
-			'party' => $party,
-			'form' => null,
-		]);
+            'party' => $party,
+            'form' => null,
+        ]);
     }
 }

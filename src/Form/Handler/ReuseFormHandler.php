@@ -15,12 +15,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ReuseFormHandler
 {
     public function __construct(private TranslatorInterface $translator, private RequestStack $requestStack, private MailerService $mailer)
-    {}
+    {
+    }
 
-	/**
-	 * @throws TransportExceptionInterface
-	 */
-	public function handle(FormInterface $form, Request $request): bool
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function handle(FormInterface $form, Request $request): bool
     {
         if (!$request->isMethod('POST')) {
             return false;
@@ -32,13 +33,13 @@ class ReuseFormHandler
 
         $data = $form->getData();
 
-		/** @var Session $session */
-		$session = $this->requestStack->getSession();
+        /** @var Session $session */
+        $session = $this->requestStack->getSession();
 
         if ($this->mailer->sendReuseLinksMail($data['email'])) {
-			$session->getFlashBag()->add('success', $this->translator->trans('flashes.reuse.success'));
+            $session->getFlashBag()->add('success', $this->translator->trans('flashes.reuse.success'));
         } else {
-			$session->getFlashBag()->add('danger', $this->translator->trans('flashes.reuse.error'));
+            $session->getFlashBag()->add('danger', $this->translator->trans('flashes.reuse.error'));
         }
 
         return true;

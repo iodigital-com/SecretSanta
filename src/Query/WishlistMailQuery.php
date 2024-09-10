@@ -2,8 +2,8 @@
 
 namespace App\Query;
 
-use Doctrine\DBAL\Connection;
 use App\Entity\Participant;
+use Doctrine\DBAL\Connection;
 
 class WishlistMailQuery
 {

@@ -2,14 +2,14 @@
 
 namespace App\Service;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\EmailAddress;
 use App\Entity\Participant;
 use App\Entity\Party;
 use App\Validator\ParticipantIsNotBlacklisted;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ParticipantService
 {
@@ -17,8 +17,9 @@ class ParticipantService
         private EntityManagerInterface $em,
         public ParticipantShuffler $participantShuffler,
         private ValidatorInterface $validator,
-        private string $geoIpDbPath
-    ) {}
+        private string $geoIpDbPath,
+    ) {
+    }
 
     /**
      * Shuffles all participants for party and save result to each participant.
@@ -56,7 +57,7 @@ class ParticipantService
     }
 
     public function editParticipant(Participant $participant, string $name, string $email): void
-	{
+    {
         $participant->setEmail($email);
         $participant->setName($name);
 
@@ -65,14 +66,14 @@ class ParticipantService
     }
 
     public function logFirstAccess(Participant $participant, string $ip): void
-	{
-        if ($participant->getViewdate() === null) {
+    {
+        if (null === $participant->getViewdate()) {
             $participant->setViewdate(new \DateTime());
 
             $this->em->flush();
         }
 
-        if ($participant->getIp() === null) {
+        if (null === $participant->getIp()) {
             $participant->setIp($ip);
 
             $reader = new Reader($this->geoIpDbPath);

@@ -7,7 +7,7 @@ class HashService
     private string $salt;
 
     public function __construct(
-        string $salt
+        string $salt,
     ) {
         $this->salt = $salt;
     }

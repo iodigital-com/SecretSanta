@@ -7,7 +7,7 @@ use App\Entity\Party;
 
 class ParticipantShuffler
 {
-    const SHUFFLE_TIME_LIMIT = 10; // seconds
+    public const SHUFFLE_TIME_LIMIT = 10; // seconds
 
     private $matchedExcludes;
 
@@ -62,8 +62,6 @@ class ParticipantShuffler
 
     /**
      * @param Participant[] $list
-     *
-     * @return mixed
      */
     private function shuffleArray(array $list)
     {
