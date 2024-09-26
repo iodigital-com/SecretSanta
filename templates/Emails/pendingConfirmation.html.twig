@@ -6,20 +6,20 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-pendingConfirmation.salutation'|trans({'%name%': party.getOwnerName}) }}, <br/><br/>
-                    {{ 'emails-pendingConfirmation.click_button'|trans }}
+                    {{ 'emails-pendingConfirmation.salutation'|trans({'%name%': party.getOwnerName}, 'messages', locale) }}, <br/><br/>
+                    {{ 'emails-pendingConfirmation.click_button'|trans({}, 'messages', locale) }}
                 </span>
                 <br /> <br />
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
-                    {{ 'emails-pendingConfirmation.overview_page'|trans }}
+                    {{ 'emails-pendingConfirmation.overview_page'|trans({}, 'messages', locale) }}
                 </span>
                 <br /> <br />
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
-                    {{ 'emails-pendingConfirmation.lastly'|trans }}
+                    {{ 'emails-pendingConfirmation.lastly'|trans({}, 'messages', locale) }}
                 </span>
                 <br /> <br />
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333;line-height: 25px;">
-                    {{ 'emails-pendingConfirmation.come_back' | trans }}
+                    {{ 'emails-pendingConfirmation.come_back' | trans({}, 'messages', locale) }}
                 </span>
                 <br /> <br />
                 <br />
@@ -30,10 +30,10 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('party_manage', { 'listurl': party.listurl }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=participant_pending_confirmation"
+                            <a href="{{ url('party_manage', { 'listurl': party.listurl, '_locale': party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=participant_pending_confirmation"
                                style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,sans-serif; vertical-align: baseline;"
                             >
-                                {{ 'emails-pendingConfirmation.btn_goto_manage'|trans }}
+                                {{ 'emails-pendingConfirmation.btn_goto_manage'|trans({}, 'messages', locale) }}
                             </a>
 
                         </td>

@@ -3,12 +3,12 @@
 namespace App\Service;
 
 use Symfony\Component\Translation\MessageCatalogueInterface;
-use Symfony\Contracts\Translation\LocaleAwareInterface;
 use Symfony\Component\Translation\TranslatorBagInterface;
+use Symfony\Contracts\Translation\LocaleAwareInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Responsible for replacing the SITE_DOMAIN placeholder in the translation files
+ * Responsible for replacing the SITE_DOMAIN placeholder in the translation files.
  */
 class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorBagInterface, LocaleAwareInterface
 {
@@ -18,9 +18,6 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function trans($id, array $parameters = [], $domain = null, $locale = null): string
     {
         $trans = $this->translator->trans($id, $parameters, $domain, $locale);
@@ -28,9 +25,6 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
         return str_replace('SITE_DOMAIN', $this->siteDomain, $trans);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLocale($locale): void
     {
         // @todo: refactor to intersection type in php 8.1
@@ -41,9 +35,6 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
         $this->translator->setLocale($locale);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLocale(): string
     {
         // @todo: refactor to intersection type in php 8.1
@@ -54,9 +45,6 @@ class SiteDomainDecoratingTranslator implements TranslatorInterface, TranslatorB
         return $this->translator->getLocale();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCatalogue($locale = null): MessageCatalogueInterface
     {
         // @todo: refactor to intersection type in php 8.1

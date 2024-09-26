@@ -2,10 +2,10 @@
 
 namespace App\Query;
 
+use App\Entity\Participant;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Participant;
 
 class ParticipantMailQuery
 {

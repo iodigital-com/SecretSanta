@@ -2,9 +2,6 @@
 
 namespace App\Query;
 
-use Google_Client;
-use Google_Service_Analytics;
-
 class GoogleAnalyticsQuery
 {
     private $viewId;
@@ -23,12 +20,12 @@ class GoogleAnalyticsQuery
     {
         $season = new Season($year);
 
-        $client = new Google_Client();
+        $client = new \Google_Client();
         putenv(sprintf('GOOGLE_APPLICATION_CREDENTIALS=%s', $this->clientSecret));
         $client->setAuthConfig($this->clientSecret);
-        $client->setScopes([Google_Service_Analytics::ANALYTICS]);
+        $client->setScopes([\Google_Service_Analytics::ANALYTICS]);
 
-        $analytics = new Google_Service_Analytics($client);
+        $analytics = new \Google_Service_Analytics($client);
         $analyticsViewId = $this->viewId;
 
         $startDate = $season->getStart()->format('Y-m-d');
@@ -44,9 +41,6 @@ class GoogleAnalyticsQuery
         ];
     }
 
-    /**
-     * @return mixed
-     */
     public function getTopCountries(GaParameters $gaParameters)
     {
         return $gaParameters->getAnalytics()->data_ga->get(
@@ -61,9 +55,6 @@ class GoogleAnalyticsQuery
         );
     }
 
-    /**
-     * @return mixed
-     */
     public function getTopLanguages(GaParameters $gaParameters)
     {
         $query = $gaParameters->getAnalytics()->data_ga->get(
@@ -108,9 +99,6 @@ class GoogleAnalyticsQuery
         return array_values($topLanguages);
     }
 
-    /**
-     * @return mixed
-     */
     public function getDeviceCategory(GaParameters $gaParameters)
     {
         return $gaParameters->getAnalytics()->data_ga->get(
@@ -124,9 +112,6 @@ class GoogleAnalyticsQuery
         );
     }
 
-    /**
-     * @return mixed
-     */
     public function getBrowsers(GaParameters $gaParameters)
     {
         return $gaParameters->getAnalytics()->data_ga->get(

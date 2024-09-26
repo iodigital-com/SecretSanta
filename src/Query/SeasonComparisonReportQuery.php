@@ -11,7 +11,7 @@ class SeasonComparisonReportQuery
     public function __construct(
         PartyReportQuery $partyReportQuery,
         ParticipantReportQuery $participantReportQuery,
-        WishlistReportQuery $wishlistReportQuery
+        WishlistReportQuery $wishlistReportQuery,
     ) {
         $this->partyReportQuery = $partyReportQuery;
         $this->participantReportQuery = $participantReportQuery;

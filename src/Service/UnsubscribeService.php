@@ -2,34 +2,29 @@
 
 namespace App\Service;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\BlacklistEmail;
 use App\Entity\Participant;
+use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Routing\RouterInterface;
 
 class UnsubscribeService
 {
-    public EntityManager $em;
-    public RouterInterface $router;
-    private HashService $hashService;
-
     public function __construct(
-        EntityManagerInterface $em,
-        RouterInterface $router,
-        HashService $hashService
+        public EntityManagerInterface $em,
+        public RouterInterface $router,
+        private readonly HashService $hashService,
     ) {
-        $this->em = $em;
-        $this->router = $router;
-        $this->hashService = $hashService;
     }
 
-    public function unsubscribe(Participant $participant, bool $fromAllParties)
+    public function unsubscribe(Participant $participant, bool $fromAllParties): void
     {
         if ($fromAllParties) {
+            /** @var ParticipantRepository $participantRepository */
+            $participantRepository = $this->em->getRepository(Participant::class);
             /** @var Participant[] $participants */
-            $participants = $this->em->getRepository(Participant::class)->findAllByEmail($participant->getEmail());
+            $participants = $participantRepository->findAllByEmail($participant->getEmail());
             foreach ($participants as $p) {
                 $p->unsubscribe();
                 $this->em->persist($participant);
@@ -46,10 +41,10 @@ class UnsubscribeService
      */
     public function getUnsubscribeLink(Participant $participant): string
     {
-        return '<'.$this->router->generate('unsubscribe_confirm', ['url' => $participant->getUrl()], UrlGeneratorInterface::ABSOLUTE_URL).'>';
+        return '<'.$this->router->generate('unsubscribe_confirm', ['url' => $participant->getUrl(), '_locale' => $participant->getParty()->getLocale()], UrlGeneratorInterface::ABSOLUTE_URL).'>';
     }
 
-    public function blacklist(Participant $participant, string $ip)
+    public function blacklist(Participant $participant, string $ip): void
     {
         // Unsubscribe participant from emails, with flag true for all parties.
         $this->unsubscribe($participant, true);

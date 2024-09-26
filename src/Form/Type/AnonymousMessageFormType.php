@@ -14,13 +14,13 @@ class AnonymousMessageFormType extends AbstractType
     {
         $builder
              ->add('message', TextareaType::class, [
-                'label' => 'participant_show_valid.anonymous_message.message_label',
-                'constraints' => [
-                    new NotBlank(),
-                ],
-                'attr' => [
-                    'placeholder' => 'participant_show_valid.anonymous_message.message_placeholder',
-                ],
+                 'label' => 'participant_show_valid.anonymous_message.message_label',
+                 'constraints' => [
+                     new NotBlank(),
+                 ],
+                 'attr' => [
+                     'placeholder' => 'participant_show_valid.anonymous_message.message_placeholder',
+                 ],
              ])
              ->add('participant', HiddenType::class);
     }

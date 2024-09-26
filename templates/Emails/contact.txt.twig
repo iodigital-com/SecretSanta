@@ -1,1 +1,1 @@
-{{ 'emails-contact.message.txt'|trans({'%name%': submission.name, '%message%': submission.message})|raw }}
+{{ 'emails-contact.message.txt'|trans({'%name%': submission.name, '%message%': submission.message}, 'messages', locale)|raw }}

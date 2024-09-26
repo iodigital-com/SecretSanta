@@ -5,7 +5,7 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-party_update.message.html'|trans({'%name%': participant.name|escape, '%owner%': results['party'][0]['adminName']|escape, '%date%': results['party'][0]['event_date']|date('Y-m-d'), '%place%': results['party'][0]['location']|escape, '%participantCount%': results['participantCount'][0]['participantCount'], '%viewedCount%': results['viewedCount'][0]['viewedCount'], '%wishlistCount%': results['wishlistCount'][0]['wishlistCount'] })|raw }}</p>
+                <p>{{ 'emails-party_update.message.html'|trans({'%name%': participant.name|escape, '%owner%': results['party'][0]['adminName']|escape, '%date%': results['party'][0]['event_date']|date('Y-m-d'), '%place%': results['party'][0]['location']|escape, '%participantCount%': results['participantCount'][0]['participantCount'], '%viewedCount%': results['viewedCount'][0]['viewedCount'], '%wishlistCount%': results['wishlistCount'][0]['wishlistCount'] }, 'messages', locale)|raw }}</p>
                 <table class="button">
                     <tr>
                         <td align="center" width="auto" bgcolor="#bd1019" style="padding-top: 14px; padding-right: 80px; padding-bottom: 14px; padding-left: 80px;
@@ -13,10 +13,10 @@
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; color: #fff; border: solid 1px #5b1b1c;
                         font-size: 14px; font-weight: normal; text-decoration: none; display: block;" class="buttonTop">
 
-                            <a href="{{ url('participant_view', { 'url': participant.url }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=party_update"
+                            <a href="{{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=party_update"
                                style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,sans-serif; vertical-align: baseline;"
                             >
-                                {{ 'emails-party_update.btn.party_update'|trans|raw }}
+                                {{ 'emails-party_update.btn.party_update'|trans({}, 'messages', locale)|raw }}
                             </a>
 
                         </td>

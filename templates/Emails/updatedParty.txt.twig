@@ -1,12 +1,12 @@
-{{ 'emails-updated_party.message.txt'|trans({'%name%': participant.name, '%owner%': participant.party.getOwnerName}) }}
+{{ 'emails-updated_party.message.txt'|trans({'%name%': participant.name, '%owner%': participant.party.getOwnerName}, 'messages', locale) }}
 
-{{ 'emails-updated_party.label.date_party'|trans }} >>
-{{ 'emails-updated_party.label.location'|trans }} >>
-{{ 'emails-updated_party.label.amount_to_spend'|trans }}
+{{ 'emails-updated_party.label.date_party'|trans({}, 'messages', locale) }} >>
+{{ 'emails-updated_party.label.location'|trans({}, 'messages', locale) }} >>
+{{ 'emails-updated_party.label.amount_to_spend'|trans({}, 'messages', locale) }}
 
 {{ participant.party.eventdate|date('d M y') }} >> {{ participant.party.location }} >> {{ participant.party.amount }}
 
-{{ 'emails-updated_party.btn.updated_party'|trans|raw }}:
+{{ 'emails-updated_party.btn.updated_party'|trans({}, 'messages', locale)|raw }}:
 {{ url("participant_view", { "url": participant.url, "_locale": participant.party.locale }) }}
 
-{{ 'emails-base_email_unsubscribe.unsubscribe' | trans }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }} {{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}
+{{ 'emails-base_email_unsubscribe.unsubscribe' | trans({}, 'messages', locale) }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans({}, 'messages', locale) }} {{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}

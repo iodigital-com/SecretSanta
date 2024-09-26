@@ -17,9 +17,6 @@ class FormCompilerPass implements CompilerPassInterface
      */
     private $templates = ['jquery'];
 
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         $resources = $container->getParameter('twig.form.resources');

@@ -5,20 +5,17 @@ declare(strict_types=1);
 namespace App\Controller\Participant;
 
 use App\Entity\Party;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 class ExposeParticipantsController extends AbstractController
 {
-    /**
-     * @Route("/participants/expose/{listurl}", name="expose_participants", methods={"GET"})
-     * @Template("Participant/exposeAll.html.twig")
-     */
-    public function indexAction(Party $party)
+    #[Route('/{_locale}/participants/expose/{listurl}', name: 'expose_participants', methods: ['GET'])]
+    public function indexAction(Party $party): Response
     {
-        return [
+        return $this->render('Participant/exposeAll.html.twig', [
             'party' => $party,
-        ];
+        ]);
     }
 }

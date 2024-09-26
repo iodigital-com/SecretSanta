@@ -30,9 +30,6 @@ class PartyReportQuery
         return (int) $partyCount[0]['partyCount'];
     }
 
-    /**
-     * @return mixed
-     */
     public function countAllPartiesUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
@@ -44,9 +41,6 @@ class PartyReportQuery
         return $query->execute()->fetchAll();
     }
 
-    /**
-     * @return mixed
-     */
     public function queryDataForMonthlyPartyChart(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()
@@ -93,9 +87,6 @@ class PartyReportQuery
         return $partyChartData;
     }
 
-    /**
-     * @return mixed
-     */
     public function queryDataForPartyChartUntilDate(\DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()
@@ -117,9 +108,6 @@ class PartyReportQuery
         return $totalPartyChartData;
     }
 
-    /**
-     * @return mixed
-     */
     public function calculatePartyCountDifferenceBetweenSeasons(Season $season1, Season $season2)
     {
         $partyCountSeason1 = $this->countParties($season1);
