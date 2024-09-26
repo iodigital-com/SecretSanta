@@ -9,9 +9,10 @@ class LinkifyExtensionTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider htmlProvider
      */
-    public function it_should_wrap_an_html_link_in_an_anchor_tag($rawHtml, $anchorHtml)
+    public function itShouldWrapAnHtmlLinkInAnAnchorTag($rawHtml, $anchorHtml)
     {
         $filter = new LinkifyExtension();
 
