@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
- * This is just a demo test
+ * This is just a demo test.
  */
 final class FirstApiTest extends KernelTestCase
 {

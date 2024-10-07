@@ -26,14 +26,14 @@ jobs:
               with:
                   php-version: '8.2'
                   extensions: apcu
+            - name: Configure recaptcha secrets
+              run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Display PHP version
               run: php -v
             - name: Composer install
               run: composer install
             - name: Configure postfix & mailhog
               run: sudo bash .github/scripts/mailhog.sh
-            - name: Configure recaptcha secrets
-              run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Install GeoLite IP DB
               run: curl https://www.secretsantaorganizer.com/GeoLite2-City.mmdb > /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
             - name: Install Symfony binary

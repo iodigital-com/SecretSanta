@@ -47,9 +47,9 @@ class ParticipantShufflerTest extends TestCase
 
             $key = 0;
             foreach ($party->getParticipants() as $participant) {
-                //check if we did not match excluded participant
+                // check if we did not match excluded participant
                 $this->assertNotContains($shuffeledParticipants[$key], $participant->getExcludedParticipants());
-                //check if we have an Participant matched
+                // check if we have an Participant matched
                 $this->assertNotNull($shuffeledParticipants[$key]);
                 ++$key;
             }
@@ -480,9 +480,9 @@ class ParticipantShufflerTest extends TestCase
 
             $key = 0;
             foreach ($party->getParticipants() as $participant) {
-                //check if we did not match excluded participant
+                // check if we did not match excluded participant
                 $this->assertNotContains($shuffeledParticipants[$key], $participant->getExcludedParticipants());
-                //check if we have an Participant matched
+                // check if we have an Participant matched
                 $this->assertNotNull($shuffeledParticipants[$key]);
                 ++$key;
             }
@@ -1727,9 +1727,9 @@ class ParticipantShufflerTest extends TestCase
 
             $key = 0;
             foreach ($party->getParticipants() as $participant) {
-                //check if we did not match excluded participant
+                // check if we did not match excluded participant
                 $this->assertNotContains($shuffeledParticipants[$key], $participant->getExcludedParticipants());
-                //check if we have an Participant matched
+                // check if we have an Participant matched
                 $this->assertNotNull($shuffeledParticipants[$key]);
                 ++$key;
             }
