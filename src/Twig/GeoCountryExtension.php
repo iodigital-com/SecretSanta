@@ -36,7 +36,8 @@ class GeoCountryExtension extends AbstractExtension
         try {
             $geoInformation = $reader->city($request->getClientIp());
             $geoCountry = $geoInformation->country->isoCode;
-        } catch (\Exception) {}
+        } catch (\Exception) {
+        }
 
         return $geoCountry;
     }

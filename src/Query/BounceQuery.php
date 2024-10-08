@@ -18,9 +18,6 @@ class BounceQuery
         return $this->dbal->fetchAllAssociative('SELECT * FROM bounce');
     }
 
-    /**
-     * @return mixed
-     */
     public function findBouncedParticipantId(string $email, \DateTime $date)
     {
         $query = $this->dbal->createQueryBuilder()

@@ -1,4 +1,4 @@
-{{ 'emails-reuse_link.message.txt'|trans|raw }}<br>
+{{ 'emails-reuse_link.message.txt'|trans({}, 'messages', locale)|raw }}<br>
 {% for link in partyLinks %}
     {{ link.url }} - link.text
 {% endfor %}

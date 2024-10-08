@@ -2,12 +2,12 @@
 
 namespace App\Command;
 
+use App\Service\ExportReportQueriesService;
+use App\Service\ReportQueriesService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use App\Service\ExportReportQueriesService;
-use App\Service\ReportQueriesService;
 
 class ReportQueriesCommand extends Command
 {
@@ -21,9 +21,6 @@ class ReportQueriesCommand extends Command
         $this->exportReportQueriesService = $exportReportQueriesService;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -36,9 +33,6 @@ class ReportQueriesCommand extends Command
             );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $year = $input->getArgument('year');

@@ -18,9 +18,6 @@ class GetBouncedMailsCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -28,9 +25,6 @@ class GetBouncedMailsCommand extends Command
             ->setDescription('Get bounced emails');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $bounces = $this->bounceQuery->getBounces();

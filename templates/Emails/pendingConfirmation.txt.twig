@@ -1,10 +1,10 @@
-{{ 'emails-pendingConfirmation.salutation'|trans({'%name%': party.getOwnerName}) }},
+{{ 'emails-pendingConfirmation.salutation'|trans({'%name%': party.getOwnerName}, 'messages', locale) }},
 
-{{ 'emails-pendingConfirmation.click_button'|trans }}
-{{ 'emails-pendingConfirmation.overview_page'|trans }}
+{{ 'emails-pendingConfirmation.click_button'|trans({}, 'messages', locale) }}
+{{ 'emails-pendingConfirmation.overview_page'|trans({}, 'messages', locale) }}
 
-{{ 'emails-pendingConfirmation.lastly'|trans }}
+{{ 'emails-pendingConfirmation.lastly'|trans({}, 'messages', locale) }}
 
-{{ 'emails-pendingConfirmation.come_back' | trans }}
+{{ 'emails-pendingConfirmation.come_back' | trans({}, 'messages', locale) }}
 
-{{ url('party_manage', { 'listurl': party.listurl }) }}
+{{ url('party_manage', { 'listurl': party.listurl, '_locale': party.locale }) }}

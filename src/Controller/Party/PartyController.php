@@ -4,68 +4,57 @@ declare(strict_types=1);
 
 namespace App\Controller\Party;
 
+use App\Entity\Party;
 use App\Form\Handler\Exception\RateLimitExceededException;
 use App\Form\Handler\PartyFormHandler;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Party;
 use App\Form\Type\PartyType;
-use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PartyController extends AbstractController
 {
-    /**
-     * @Route("/party/create", name="create_party")
-     * @Template("Party/create.html.twig")
-     */
-    public function createAction(Request $request, PartyFormHandler $handler)
+    #[Route('/{_locale}/party/create', name: 'create_party')]
+    public function createAction(Request $request, PartyFormHandler $handler): RedirectResponse|Response
     {
-        if ($request->getMethod() != 'POST') {
+        if ('POST' != $request->getMethod()) {
             return $this->redirectToRoute('homepage');
         }
 
         return $this->handlePartyCreation($request, new Party(), $handler);
     }
 
-    /**
-     * @Route("/created/{listurl}", name="party_created", methods={"GET"})
-     * @Template("Party/created.html.twig")
-     */
-    public function createdAction(Party $party)
+    #[Route('/{_locale}/created/{listurl}', name: 'party_created', methods: ['GET'])]
+    public function createdAction(Party $party): Response
     {
-        return [
+        return $this->render('Party/created.html.twig', [
             'party' => $party,
-        ];
+        ]);
     }
 
-    /**
-     * @Route("/reuse/{listurl}", name="party_reuse", methods={"GET"})
-     * @Template("Party/create.html.twig")
-     */
-    public function reuseAction(Request $request, Party $party, PartyFormHandler $handler)
+    #[Route('/{_locale}/reuse/{listurl}', name: 'party_reuse', methods: ['GET'])]
+    public function reuseAction(Request $request, Party $party, PartyFormHandler $handler): Response
     {
         $originalAmountOfParticipants = $party->getParticipants()->count();
         list($party, $countHashed) = $party->createNewPartyForReuse();
 
-        $data = $this->handlePartyCreation($request, $party, $handler);
         $data['countHashed'] = $countHashed;
         $data['originalAmountOfParticipants'] = $originalAmountOfParticipants;
 
-        return $data;
+        return $this->handlePartyCreation($request, $party, $handler, $data);
     }
 
-    /**
-     * @Route("/delete/{listurl}", name="party_delete", methods={"POST"})
-     * @Template("Party/deleted.html.twig")
-     */
-    public function deleteAction(Request $request, Party $party, TranslatorInterface $translator)
+    #[Route('/{_locale}/delete/{listurl}', name: 'party_delete', methods: ['POST'])]
+    public function deleteAction(Request $request, Party $party, TranslatorInterface $translator, EntityManagerInterface $em): RedirectResponse|Response
     {
         $correctCsrfToken = $this->isCsrfTokenValid('delete_party', $request->get('csrf_token'));
         $correctConfirmation = (strtolower($request->get('confirmation')) === strtolower($translator->trans('party_manage_valid.delete.phrase_to_type')));
 
-        if ($correctConfirmation === false || $correctCsrfToken === false) {
+        if (false === $correctConfirmation || false === $correctCsrfToken) {
             $this->addFlash(
                 'error',
                 $translator->trans('flashes.party.not_deleted')
@@ -74,14 +63,13 @@ class PartyController extends AbstractController
             return $this->redirectToRoute('party_manage', ['listurl' => $party->getListurl()]);
         }
 
-        $this->getDoctrine()->getManager()->remove($party);
-        $this->getDoctrine()->getManager()->flush();
+        $em->remove($party);
+        $em->flush();
+
+        return $this->render('Party/deleted.html.twig');
     }
 
-    /**
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    private function handlePartyCreation(Request $request, Party $party, PartyFormHandler $handler)
+    private function handlePartyCreation(Request $request, Party $party, PartyFormHandler $handler, ?array $data = null): Response
     {
         $form = $this->createForm(PartyType::class, $party, [
             'action' => $this->generateUrl('create_party'),
@@ -98,9 +86,15 @@ class PartyController extends AbstractController
             $rateLimitReached = true;
         }
 
-        return [
+        $returnData = [
             'form' => $form->createView(),
             'rateLimitReached' => $rateLimitReached,
         ];
+
+        if (null !== $data) {
+            $returnData = array_merge($returnData, $data);
+        }
+
+        return $this->render('Party/create.html.twig', $returnData);
     }
 }

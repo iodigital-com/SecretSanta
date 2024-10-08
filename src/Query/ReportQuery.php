@@ -13,7 +13,7 @@ class ReportQuery
         PartyReportQuery $partyReportQuery,
         ParticipantReportQuery $participantReportQuery,
         IpReportQuery $ipReportQuery,
-        WishlistReportQuery $wishlistReportQuery
+        WishlistReportQuery $wishlistReportQuery,
     ) {
         $this->partyReportQuery = $partyReportQuery;
         $this->participantReportQuery = $participantReportQuery;

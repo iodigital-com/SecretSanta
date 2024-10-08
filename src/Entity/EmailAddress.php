@@ -8,6 +8,7 @@ class EmailAddress
 {
     /**
      * @Assert\NotBlank()
+     *
      * @Assert\Email(
      *     mode="strict",
      *     message = "The email '{{ value }}' is not a valid email."

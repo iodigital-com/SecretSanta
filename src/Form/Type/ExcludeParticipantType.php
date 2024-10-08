@@ -2,8 +2,8 @@
 
 namespace App\Form\Type;
 
-use Doctrine\ORM\EntityRepository;
 use App\Entity\Participant;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

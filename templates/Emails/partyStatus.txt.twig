@@ -1,24 +1,24 @@
-{{ 'emails-party_status.message.txt'|trans({'%owner%': party.getOwnerName}) }}
+{{ 'emails-party_status.message.txt'|trans({'%owner%': party.getOwnerName}, 'messages', locale) }}
 
-{{ 'emails-base_email_header.title'|trans }}:
+{{ 'emails-base_email_header.title'|trans({}, 'messages', locale) }}:
 
-* {{ 'emails-base_email_header.date'|trans }}: {{ party.eventdate|format_datetime('medium', 'none') }}
-* {{ 'emails-base_email_header.location'|trans }}: {{ party.location }}
-* {{ 'emails-base_email_header.amount'|trans }}: {{ party.amount }}
+* {{ 'emails-base_email_header.date'|trans({}, 'messages', locale) }}: {{ party.eventdate|format_datetime('medium', 'none') }}
+* {{ 'emails-base_email_header.location'|trans({}, 'messages', locale) }}: {{ party.location }}
+* {{ 'emails-base_email_header.amount'|trans({}, 'messages', locale) }}: {{ party.amount }}
 
-{{ 'emails-party_status.label.name'|trans }} >>
-{{ 'emails-party_status.label.email'|trans }} >>
-{{ 'emails-party_status.label.confirmed'|trans }} >>
-{{ 'emails-party_status.label.wishlist_filled'|trans }}
+{{ 'emails-party_status.label.name'|trans({}, 'messages', locale) }} >>
+{{ 'emails-party_status.label.email'|trans({}, 'messages', locale) }} >>
+{{ 'emails-party_status.label.confirmed'|trans({}, 'messages', locale) }} >>
+{{ 'emails-party_status.label.wishlist_filled'|trans({}, 'messages', locale) }}
 
 {% for participant in party.participants %}
     {{ participant.name }} >>
     {{ participant.email }} >>
-    {% if participant.viewdate %}{{ 'emails-party_status.yes'|trans }}{% else %}{{ 'emails-party_status.not_yet'|trans }}{% endif %} >>
-    {% if participant.wishlistItems is not empty %}{{ 'emails-party_status.yes'|trans }}{% else %}{{ 'emails-party_status.not_yet'|trans }}{% endif %}
+{#    {% if participant.viewdate %}{{ 'emails-party_status.yes'|trans({}, 'messages', locale) }}{% else %}{{ 'emails-party_status.not_yet'|trans({}, 'messages', locale) }}{% endif %} >>#}
+    {% if participant.wishlistItems is not empty %}{{ 'emails-party_status.yes'|trans({}, 'messages', locale) }}{% else %}{{ 'emails-party_status.not_yet'|trans({}, 'messages', locale) }}{% endif %}
 {% endfor %}
 
-{{ 'emails-party_status.btn.partystatus'|trans }}:
-{{ url('party_manage', { 'listurl': party.listurl }) }}
+{{ 'emails-party_status.btn.partystatus'|trans({}, 'messages', locale) }}:
+{{ url('party_manage', { 'listurl': party.listurl, '_locale': party.locale }) }}
 
-{{ 'emails-base_email_unsubscribe.unsubscribe' | trans }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }} {{ url('unsubscribe_confirm', { 'url': admin.url, '_locale': admin.party.locale }) }}
+{{ 'emails-base_email_unsubscribe.unsubscribe' | trans({}, 'messages', locale) }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans({}, 'messages', locale) }} {{ url('unsubscribe_confirm', { 'url': admin.url, '_locale': admin.party.locale }) }}

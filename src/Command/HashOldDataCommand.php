@@ -5,22 +5,16 @@ namespace App\Command;
 use App\Entity\BlacklistEmail;
 use App\Entity\Participant;
 use App\Service\HashService;
-use Symfony\Component\Console\Command\Command;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use App\Repository\ParticipantRepository;
 
 class HashOldDataCommand extends Command
 {
-    private ParticipantRepository $participantRepository;
-    private EntityManagerInterface $em;
-    private HashService $hashService;
-
     public function __construct(
-        ParticipantRepository $participantRepository,
-        EntityManagerInterface $em,
-        HashService $hashService
+        private EntityManagerInterface $em,
+        private HashService $hashService,
     ) {
         $em
             ->getConnection()
@@ -28,26 +22,16 @@ class HashOldDataCommand extends Command
             ->setSQLLogger(null)
         ;
 
-        $this->participantRepository = $participantRepository;
-        $this->em = $em;
-        $this->hashService = $hashService;
-
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('app:hash-participants')
             ->setDescription('Hash (old) participants.');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $blackListRepository = $this->em->getRepository(BlacklistEmail::class);

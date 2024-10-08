@@ -8,18 +8,17 @@ use App\Entity\Participant;
 use App\Entity\Party;
 use App\Form\Type\AddParticipantType;
 use App\Repository\PartyRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 class JoinController extends AbstractController
 {
-    /**
-     * @Route("/join/{joinurl}", name="join_party")
-     * @Template("Participant/show/join.html.twig")
-     */
-    public function joinAction(Request $request, string $joinurl, PartyRepository $partyRepository)
+    #[Route('/{_locale}/join/{joinurl}', name: 'join_party')]
+    public function joinAction(Request $request, string $joinurl, PartyRepository $partyRepository, EntityManagerInterface $em): RedirectResponse|Response
     {
         $addParticipantForm = null;
         /** @var ?Party $party */
@@ -35,31 +34,28 @@ class JoinController extends AbstractController
                 /** @var Participant $newParticipant */
                 $newParticipant = $addParticipantForm->getData();
                 $newParticipant->setParty($party);
-                $this->getDoctrine()->getManager()->persist($newParticipant);
-                $this->getDoctrine()->getManager()->flush();
+                $em->persist($newParticipant);
+                $em->flush();
 
                 return $this->redirectToRoute('join_party_joined', ['joinurl' => $party->getJoinurl()]);
             }
         }
 
-        return [
+        return $this->render('Participant/show/join.html.twig', [
             'party' => $party,
             'form' => isset($addParticipantForm) ? $addParticipantForm->createView() : null,
-        ];
+        ]);
     }
 
-    /**
-     * @Route("/joined/{joinurl}", name="join_party_joined")
-     * @Template("Participant/show/join.html.twig")
-     */
-    public function joinedAction(string $joinurl, PartyRepository $partyRepository)
+    #[Route('/{_locale}/joined/{joinurl}', name: 'join_party_joined')]
+    public function joinedAction(string $joinurl, PartyRepository $partyRepository): Response
     {
         /** @var Party $party */
         $party = $partyRepository->findOneBy(['joinurl' => $joinurl, 'joinmode' => 1, 'created' => 0]);
 
-        return [
+        return $this->render('Participant/show/join.html.twig', [
             'party' => $party,
             'form' => null,
-        ];
+        ]);
     }
 }

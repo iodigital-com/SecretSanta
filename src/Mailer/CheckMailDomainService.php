@@ -36,8 +36,8 @@ class CheckMailDomainService
         if ($mxRecords) {
             foreach ($mxhosts as $mxHost) {
                 foreach ($this->blacklistedMxRecords as $blacklistedMxRecord) {
-                    //check if mx ends with one of the blacklisted ones
-                    if (substr_compare($mxHost, $blacklistedMxRecord, strlen($mxHost) - strlen($blacklistedMxRecord), strlen($blacklistedMxRecord)) === 0) {
+                    // check if mx ends with one of the blacklisted ones
+                    if (0 === substr_compare($mxHost, $blacklistedMxRecord, strlen($mxHost) - strlen($blacklistedMxRecord), strlen($blacklistedMxRecord))) {
                         $blacklisted = true;
                     }
                 }
@@ -50,7 +50,7 @@ class CheckMailDomainService
     private function isBlacklistedDomain(string $emailAddress): bool
     {
         foreach ($this->blackListedDomains as $blackListedDomain) {
-            if (strpos($emailAddress, $blackListedDomain) !== false) {
+            if (false !== strpos($emailAddress, $blackListedDomain)) {
                 return true;
             }
         }

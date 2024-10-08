@@ -2,10 +2,10 @@
 
 namespace App\Twig;
 
+use App\Entity\Participant;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
-use App\Entity\Participant;
 
 class MailStatusExtension extends AbstractExtension
 {
@@ -27,13 +27,13 @@ class MailStatusExtension extends AbstractExtension
     {
         if ($participant->getParty()->getCreated()) {
             switch (true) {
-                case $participant->getViewdate() != null:
+                case null != $participant->getViewdate():
                     $status = $this->translator->trans('mail_status_extension.viewed');
                     $icon = 'fa-check';
                     $type = 'success';
 
                     break;
-                case $participant->getOpenEmailDate() != null:
+                case null != $participant->getOpenEmailDate():
                     $status = $this->translator->trans('mail_status_extension.opened');
                     $icon = 'fa-eye';
                     $type = 'warning';

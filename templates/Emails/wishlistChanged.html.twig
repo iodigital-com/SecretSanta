@@ -6,16 +6,16 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-wishlistChanged.salutation'|trans({'%name%': participant.name}) }},<br/><br/>
-                    {{ 'emails-wishlistChanged.buddy_updated_wishlist'|trans }}<br/>
-                    {{ 'emails-wishlistChanged.click_button'|trans }}<br/>
-                    <p>{{ 'emails-base_email_header.title'|trans }}:</p>
+                    {{ 'emails-wishlistChanged.salutation'|trans({'%name%': participant.name}, 'messages', locale) }},<br/><br/>
+                    {{ 'emails-wishlistChanged.buddy_updated_wishlist'|trans({}, 'messages', locale) }}<br/>
+                    {{ 'emails-wishlistChanged.click_button'|trans({}, 'messages', locale) }}<br/>
+                    <p>{{ 'emails-base_email_header.title'|trans({}, 'messages', locale) }}:</p>
                     <ul>
-                        <li><strong>{{ 'emails-base_email_header.date'|trans }}: </strong> {{ participant.party.eventdate|format_datetime('medium', 'none') }}
-                        <li><strong>{{ 'emails-base_email_header.location'|trans }}: </strong> {{ participant.party.location }}
-                        <li><strong>{{ 'emails-base_email_header.amount'|trans }}: </strong> {{ participant.party.amount }}
-                        <li><strong>{{ 'emails-base_email_header.num_people'|trans }}: </strong> {{ participant.party.participants|length }}
-                        <li><strong>{{ 'emails-base_email_header.person_created_list'|trans }}: </strong> {{ participant.party.participants|first.name }} ({{ participant.party.participants|first.email }})
+                        <li><strong>{{ 'emails-base_email_header.date'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.eventdate|format_datetime('medium', 'none') }}
+                        <li><strong>{{ 'emails-base_email_header.location'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.location }}
+                        <li><strong>{{ 'emails-base_email_header.amount'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.amount }}
+                        <li><strong>{{ 'emails-base_email_header.num_people'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.participants|length }}
+                        <li><strong>{{ 'emails-base_email_header.person_created_list'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.participants|first.name }} ({{ participant.party.participants|first.email }})
                     </ul>
                 </span>
                 <br /> <br /><br />
@@ -29,7 +29,7 @@
                             <a href="{{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}?utm_source=notification_mail&utm_medium=email&utm_campaign=wishlist_updated"
                                style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial,sans-serif; vertical-align: baseline;"
                             >
-                                {{ 'emails-wishlistChanged.btn.check_wishlist'|trans }}
+                                {{ 'emails-wishlistChanged.btn.check_wishlist'|trans({}, 'messages', locale) }}
                             </a>
 
                         </td>

@@ -5,7 +5,7 @@
             <td width="37" align="left">
             </td>
             <td width="566">
-                <p>{{ 'emails-contact.message.html'|trans({'%name%': submission.name|escape, '%message%': submission.message|escape})|raw }}</p>
+                <p>{{ 'emails-contact.message.html'|trans({'%name%': submission.name|escape, '%message%': submission.message|escape}, 'messages', locale)|raw }}</p>
             </td>
             <td width="37" align="right">
             </td>

@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     locale: en
+    app.supported_locales: ['en', 'fr', 'de', 'es', 'hu', 'nl', 'no', 'pl', 'pt']
     supported_locales:
         - de
         - en
@@ -54,8 +55,7 @@ services:
 
     App\Mailer\MailerService:
         arguments:
-            $mailer: '@swiftmailer.mailer.standard_mailer'
-            $mandrill: '@swiftmailer.mailer.mandrill_mailer'
+            $mailer: '@mailer'
             $noreplyEmail: '%env(NOREPLY_EMAIL)%'
             $contactEmail: '%env(CONTACT_EMAIL)%'
 
@@ -72,9 +72,18 @@ services:
         decorates: 'translator.default'
         arguments: ['@App\Service\SiteDomainDecoratingTranslator.inner']
 
+    App\EventListener\LocaleListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        arguments:
+            $supportedLocales: '%app.supported_locales%'
+
     Symfony\Component\Form\FormRendererInterface:
         alias: 'twig.form.renderer'
         public: true
+
+    Psr\Container\ContainerInterface:
+        alias: service_container
 
     Twig\Extensions\TextExtension: ~
     Twig\Extensions\IntlExtension: ~
