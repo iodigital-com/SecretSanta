@@ -25,13 +25,7 @@ class PartyController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        $data = $this->handlePartyCreation($request, new Party(), $handler);
-
-        if (is_array($data)) {
-            return $this->render('Party/create.html.twig', $data);
-        }
-
-        return $data;
+        return $this->handlePartyCreation($request, new Party(), $handler);
     }
 
     #[Route('/{_locale}/created/{listurl}', name: 'party_created', methods: ['GET'])]
@@ -48,11 +42,10 @@ class PartyController extends AbstractController
         $originalAmountOfParticipants = $party->getParticipants()->count();
         list($party, $countHashed) = $party->createNewPartyForReuse();
 
-        $data = $this->handlePartyCreation($request, $party, $handler);
         $data['countHashed'] = $countHashed;
         $data['originalAmountOfParticipants'] = $originalAmountOfParticipants;
 
-        return $this->render('Party/create.html.twig', $data);
+        return $this->handlePartyCreation($request, $party, $handler, $data);
     }
 
     #[Route('/{_locale}/delete/{listurl}', name: 'party_delete', methods: ['POST'])]
@@ -76,7 +69,7 @@ class PartyController extends AbstractController
         return $this->render('Party/deleted.html.twig');
     }
 
-    private function handlePartyCreation(Request $request, Party $party, PartyFormHandler $handler): RedirectResponse|array
+    private function handlePartyCreation(Request $request, Party $party, PartyFormHandler $handler, ?array $data = null): Response
     {
         $form = $this->createForm(PartyType::class, $party, [
             'action' => $this->generateUrl('create_party'),
@@ -93,9 +86,15 @@ class PartyController extends AbstractController
             $rateLimitReached = true;
         }
 
-        return [
+        $returnData = [
             'form' => $form->createView(),
             'rateLimitReached' => $rateLimitReached,
         ];
+
+        if (null !== $data) {
+            $returnData = array_merge($returnData, $data);
+        }
+
+        return $this->render('Party/create.html.twig', $returnData);
     }
 }
