@@ -9,6 +9,7 @@ env:
     CREATE_DB_PASSWORD: root
     DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta_test?serverVersion=5.7&charset=utf8mb4
     MAILER_DSN: sendmail://localhost
+    MANDRILL_DSN: sendmail://localhost
     APP_DOMAIN: test.secretsantaorganizer.com
 
 jobs:
