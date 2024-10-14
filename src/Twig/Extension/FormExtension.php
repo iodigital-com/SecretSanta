@@ -2,11 +2,11 @@
 
 namespace App\Twig\Extension;
 
+use Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode;
 use Symfony\Component\Form\FormRendererInterface;
+use Symfony\Component\Form\FormView;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Symfony\Component\Form\FormView;
-use Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode;
 
 class FormExtension extends AbstractExtension
 {
@@ -21,9 +21,6 @@ class FormExtension extends AbstractExtension
         $this->renderer = $renderer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions(): array
     {
         return [

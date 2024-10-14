@@ -2,8 +2,8 @@
 
 namespace App\Repository;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\Entity\Participant;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,9 +23,10 @@ class ParticipantRepository extends ServiceEntityRepository
             SELECT participant
             FROM App\Entity\Participant participant
             JOIN participant.party party
-            JOIN participant.assignedParticipant assignedParticipant
+            LEFT JOIN participant.participant assignedParticipant
+            LEFT JOIN assignedParticipant.wishlistItems wishlistItem
             WHERE party.sentdate >= :startDate
-              AND assignedParticipant.wishlist IS NOT NULL
+              AND wishlistItem IS NOT NULL
         ');
         $query->setParameter('startDate', $startDate, Types::DATETIME_MUTABLE);
 

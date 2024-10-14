@@ -23,41 +23,26 @@ class GaParameters
         $this->metrics = $metrics;
     }
 
-    /**
-     * @return mixed
-     */
     public function getAnalytics()
     {
         return $this->analytics;
     }
 
-    /**
-     * @return mixed
-     */
     public function getViewId()
     {
         return $this->viewId;
     }
 
-    /**
-     * @return mixed
-     */
     public function getStart()
     {
         return $this->start;
     }
 
-    /**
-     * @return mixed
-     */
     public function getEnd()
     {
         return $this->end;
     }
 
-    /**
-     * @return mixed
-     */
     public function getMetrics()
     {
         return $this->metrics;

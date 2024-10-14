@@ -6,10 +6,10 @@
         "version": "1.11.99.1"
     },
     "doctrine/annotations": {
-        "version": "1.0",
+        "version": "2.0",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "branch": "main",
             "version": "1.0",
             "ref": "a2759dd6123694c8d901d0ec80006e044c2e6457"
         },
@@ -88,6 +88,18 @@
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "3.64",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "be2103eb4a20942e28a6dd87736669b757132435"
+        },
+        "files": [
+            ".php-cs-fixer.dist.php"
+        ]
+    },
     "geoip2/geoip2": {
         "version": "v2.11.0"
     },
@@ -126,9 +138,6 @@
     },
     "guzzlehttp/psr7": {
         "version": "1.7.0"
-    },
-    "jms/i18n-routing-bundle": {
-        "version": "3.0.4"
     },
     "maxmind-db/reader": {
         "version": "v1.8.0"
@@ -279,18 +288,6 @@
     "sebastian/version": {
         "version": "2.0.1"
     },
-    "sensio/framework-extra-bundle": {
-        "version": "5.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "5.2",
-            "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
-        },
-        "files": [
-            "config/packages/sensio_framework_extra.yaml"
-        ]
-    },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.3"
     },
@@ -423,6 +420,15 @@
     },
     "symfony/intl": {
         "version": "v4.4.16"
+    },
+    "symfony/mailchimp-mailer": {
+        "version": "6.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "4.4",
+            "ref": "1be490e068472fc87e226cf54bc95fb6f2e49117"
+        }
     },
     "symfony/mailer": {
         "version": "5.4",

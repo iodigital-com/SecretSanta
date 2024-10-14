@@ -7,12 +7,12 @@
         '%participantCount%': results['participantCount'][0]['participantCount'],
         '%viewedCount%': results['viewedCount'][0]['viewedCount'],
         '%wishlistCount%': results['wishlistCount'][0]['wishlistCount']
-    })|raw
+    }, 'messages', locale)|raw
 }}
 
-{{ 'emails-party_update.btn.party_update'|trans|raw }}
+{{ 'emails-party_update.btn.party_update'|trans({}, 'messages', locale)|raw }}
 {% if participant|default(null) %}
     {{ url('participant_view', { 'url': participant.url, '_locale': participant.party.locale }) }}
 
-    {{ 'emails-base_email_unsubscribe.unsubscribe' | trans }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans }} {{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}
+    {{ 'emails-base_email_unsubscribe.unsubscribe' | trans({}, 'messages', locale) }} {{ 'emails-base_email_unsubscribe.unsubscribe_link' | trans({}, 'messages', locale) }} {{ url('unsubscribe_confirm', { 'url': participant.url, '_locale': participant.party.locale }) }}
 {% endif %}

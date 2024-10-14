@@ -4,35 +4,23 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Party;
 use App\Mailer\MailerService;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class PartyService
 {
-    /**
-     * @var MailerService
-     */
-    private $mailerService;
-
-    /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
-     * @var ParticipantService
-     */
-    private $participantService;
-
-    public function __construct(MailerService $mailerService, EntityManagerInterface $em, ParticipantService $participantService)
+    public function __construct(
+        private MailerService $mailerService,
+        private EntityManagerInterface $em,
+        private ParticipantService $participantService)
     {
-        $this->mailerService = $mailerService;
-        $this->em = $em;
-        $this->participantService = $participantService;
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     public function startParty(Party $party): bool
     {
         if ($party->getCreated() || $party->getParticipants()->count() < 3) {

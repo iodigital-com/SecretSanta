@@ -6,17 +6,17 @@
             </td>
             <td width="566">
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    <p>{{ 'emails-base_email_header.title'|trans }}:</p>
+                    <p>{{ 'emails-base_email_header.title'|trans({}, 'messages', locale) }}:</p>
                     <ul>
-                        <li><strong>{{ 'emails-base_email_header.date'|trans }}: </strong> {{ participant.party.eventdate|format_datetime('medium', 'none') }}
-                        <li><strong>{{ 'emails-base_email_header.location'|trans }}: </strong> {{ participant.party.location }}
-                        <li><strong>{{ 'emails-base_email_header.amount'|trans }}: </strong> {{ participant.party.amount }}
-                        <li><strong>{{ 'emails-base_email_header.num_people'|trans }}: </strong> {{ participant.party.participants|length }}
-                        <li><strong>{{ 'emails-base_email_header.person_created_list'|trans }}: </strong> {{ participant.party.participants|first.name }} ({{ participant.party.participants|first.email }})
+                        <li><strong>{{ 'emails-base_email_header.date'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.eventdate|format_datetime('medium', 'none') }}
+                        <li><strong>{{ 'emails-base_email_header.location'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.location }}
+                        <li><strong>{{ 'emails-base_email_header.amount'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.amount }}
+                        <li><strong>{{ 'emails-base_email_header.num_people'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.participants|length }}
+                        <li><strong>{{ 'emails-base_email_header.person_created_list'|trans({}, 'messages', locale) }}: </strong> {{ participant.party.participants|first.name }} ({{ participant.party.participants|first.email }})
                     </ul>
                 </span>
                 <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-anonymous_message.message.html'|trans({"%name%": participant.name|escape , "%message%" : message | escape})|raw }}
+                    {{ 'emails-anonymous_message.message.html'|trans({"%name%": participant.name|escape , "%message%" : message | escape}, 'messages', locale)|raw }}
                 </span>
                 <br/> <br/>
                 <br/> <br/>
@@ -28,7 +28,7 @@
                                style="color: #FFF; text-decoration: none; font-family: Helvetica, Arial, sans-serif; vertical-align: baseline; display: block; padding-top: 14px; padding-right: 40px; padding-bottom: 14px; 
                                padding-left: 40px; font-size: initial; background: #bd1019; -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);"
                             >
-                                {{ 'emails-anonymous_message.update_wishlist'|trans }}
+                                {{ 'emails-anonymous_message.update_wishlist'|trans({}, 'messages', locale) }}
                             </a>
                         </td>
                     </tr>

@@ -4,22 +4,18 @@ namespace App\Service;
 
 use App\Query\ParticipantReportQuery;
 use App\Query\Season;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 class ExportService
 {
-    private ParticipantReportQuery $participantReportQuery;
-    private RouterInterface $router;
-
     public function __construct(
-        ParticipantReportQuery $participantReportQuery,
-        RouterInterface $router
+        private ParticipantReportQuery $participantReportQuery,
+        private RouterInterface $router,
     ) {
-        $this->participantReportQuery = $participantReportQuery;
-        $this->router = $router;
     }
 
-    public function export(Season $season, bool $isAdmin = false)
+    public function export(Season $season, bool $isAdmin = false): void
     {
         $result = $this->participantReportQuery->fetchMailsForExport($season, $isAdmin);
 
@@ -63,7 +59,7 @@ class ExportService
         $url = $this->router->generate(
             'party_reuse',
             ['listurl' => '1'],
-            true
+            UrlGeneratorInterface::ABSOLUTE_URL
         );
 
         // URL was generated for party 1, strip the 1 to get the base URL

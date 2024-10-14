@@ -2,10 +2,10 @@
 
 namespace App\Command;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Participant;
 use App\Mailer\MailerService;
 use App\Query\ParticipantMailQuery;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -19,7 +19,7 @@ class SendPartyStatusCommand extends Command
     public function __construct(
         EntityManagerInterface $em,
         ParticipantMailQuery $participantMailQuery,
-        MailerService $mailerService
+        MailerService $mailerService,
     ) {
         $this->em = $em;
         $this->participantMailQuery = $participantMailQuery;
@@ -28,9 +28,6 @@ class SendPartyStatusCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -38,9 +35,6 @@ class SendPartyStatusCommand extends Command
             ->setDescription('Send party status mail to admins');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var Participant[] $partyAdmins */

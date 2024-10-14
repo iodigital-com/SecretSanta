@@ -7,20 +7,17 @@ namespace App\Controller;
 use App\Entity\Participant;
 use App\Entity\Party;
 use App\Form\Handler\WishlistFormHandler;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use App\Form\Type\WishlistType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 class WishlistController extends AbstractController
 {
-    /**
-     * @Route("/wishlists/show/{wishlistsurl}", name="wishlist_show_all", methods={"GET"})
-     * @Template("Wishlist/showAll.html.twig")
-     */
-    public function showAllAction(Request $request, Party $party): array
+    #[Route('/{_locale}/wishlists/show/{wishlistsurl}', name: 'wishlist_show_all', methods: ['GET'])]
+    public function showAllAction(Request $request, Party $party): Response
     {
         $admin = false;
 
@@ -29,15 +26,13 @@ class WishlistController extends AbstractController
             $admin = true;
         }
 
-        return [
+        return $this->render('Wishlist/showAll.html.twig', [
             'party' => $party,
             'admin' => $admin,
-        ];
+        ]);
     }
 
-    /**
-     * @Route("/wishlist/update/{url}", name="wishlist_update", methods={"POST"})
-     */
+    #[Route('/{_locale}/wishlist/update/{url}', name: 'wishlist_update', methods: ['POST'])]
     public function updateAction(Request $request, Participant $participant, WishlistFormHandler $handler): JsonResponse
     {
         $wishlistForm = $this->createForm(WishlistType::class, $participant, ['validation_groups' => 'WishlistItem']);

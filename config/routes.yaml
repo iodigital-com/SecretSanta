@@ -3,43 +3,43 @@
 #    controller: App\Controller\DefaultController::index
 
 privacy:
-  path: /privacy
+  path: /{_locale}/privacy
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/privacyPolicy.html.twig'
 
 faq:
-  path: /faq
+  path: /{_locale}/faq
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/faq.html.twig'
 
 cookie:
-  path: /cookie
+  path: /{_locale}/cookie
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/cookiePolicy.html.twig'
 
 ecofriendly1:
-  path: /eco-friendly-tips
+  path: /{_locale}/eco-friendly-tips
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/ecofriendly1.html.twig'
 
 ecofriendly2:
-  path: /eco-friendly-party
+  path: /{_locale}/eco-friendly-party
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/ecofriendly2.html.twig'
 
 top10gifts1:
-  path: /top-10-gifts-budget
+  path: /{_locale}/top-10-gifts-budget
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/top10gifts1.html.twig'
 
 top10gifts2:
-  path: /top-10-gifts-ideas
+  path: /{_locale}/top-10-gifts-ideas
   defaults:
     _controller:  Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     template:     'Static/top10gifts2.html.twig'

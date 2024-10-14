@@ -4,24 +4,17 @@ declare(strict_types=1);
 
 namespace App\Form\Handler;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Participant;
 use App\Entity\WishlistItem;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class WishlistFormHandler
 {
-    /**
-     * @var EntityManager
-     */
-    private $em;
-
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(private EntityManagerInterface $em)
     {
-        $this->em = $em;
     }
 
     public function handle(FormInterface $form, Request $request): bool
@@ -65,7 +58,7 @@ class WishlistFormHandler
         return $currentWishlistItems;
     }
 
-    private function saveNewItems(Participant $participant)
+    private function saveNewItems(Participant $participant): void
     {
         $newWishlistItems = $participant->getWishlistItems();
 
@@ -75,7 +68,7 @@ class WishlistFormHandler
         }
     }
 
-    private function deleteMissingItems(Participant $participant, ArrayCollection $currentWishlistItems)
+    private function deleteMissingItems(Participant $participant, ArrayCollection $currentWishlistItems): void
     {
         $newWishlistItems = $participant->getWishlistItems();
 

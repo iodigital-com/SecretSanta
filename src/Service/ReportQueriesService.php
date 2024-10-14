@@ -9,28 +9,19 @@ use App\Query\SeasonComparisonReportQuery;
 
 class ReportQueriesService
 {
-    private GoogleAnalyticsQuery $googleAnalyticsQuery;
-    private ReportQuery $reportQuery;
-    private SeasonComparisonReportQuery $seasonComparisonReportQuery;
-    private FeaturedYearsQuery $featuredYearsQuery;
-
     public function __construct(
-        GoogleAnalyticsQuery $googleAnalyticsQuery,
-        ReportQuery $reportQuery,
-        SeasonComparisonReportQuery $seasonComparisonReportQuery,
-        FeaturedYearsQuery $featuredYearsQuery
+        private GoogleAnalyticsQuery $googleAnalyticsQuery,
+        private ReportQuery $reportQuery,
+        private SeasonComparisonReportQuery $seasonComparisonReportQuery,
+        private FeaturedYearsQuery $featuredYearsQuery,
     ) {
-        $this->googleAnalyticsQuery = $googleAnalyticsQuery;
-        $this->reportQuery = $reportQuery;
-        $this->seasonComparisonReportQuery = $seasonComparisonReportQuery;
-        $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
     public function getReportResults(string $year): array
     {
         try {
             if ('all' !== $year) {
-                $partyData = $this->reportQuery->getPartyReport($year);
+                $partyData = $this->reportQuery->getPartyReport((int) $year);
             } else {
                 $partyData = $this->reportQuery->getPartyReport();
             }
@@ -52,7 +43,7 @@ class ReportQueriesService
 
         try {
             if ('all' !== $year) {
-                $differencePartyData = $this->seasonComparisonReportQuery->getComparison($year);
+                $differencePartyData = $this->seasonComparisonReportQuery->getComparison((int) $year);
             }
         } catch (\Exception $e) {
             $differencePartyData = [];

@@ -1,7 +1,0 @@
-swiftmailer:
-    default_mailer: standard_mailer
-    mailers:
-        standard_mailer:
-            url: '%env(MAILER_DSN)%'
-        mandrill_mailer:
-            url: '%env(MANDRILL_DSN)%'

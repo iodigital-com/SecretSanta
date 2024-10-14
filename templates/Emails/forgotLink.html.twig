@@ -6,17 +6,17 @@
             </td>
             <td width="566">
                 <span style="font-size: 15px; color:#333333; line-height: 25px;">
-                    {{ 'emails-forgot_link.message.html'|trans|raw }}
+                    {{ 'emails-forgot_link.message.html'|trans({}, 'messages', locale)|raw }}
 
                 </span>
                 <br/>
                 {% if manageLinks|length > 0 %}
-                    <h3>{{ 'emails-forgot_link.created_these'|trans }}</h3>
+                    <h3>{{ 'emails-forgot_link.created_these'|trans({}, 'messages', locale) }}</h3>
                     <table style="width: 540px; font-family: Arial, Helvetica, sans-serif;">
                         <tr>
-                            <th>{{ 'emails-forgot_link.table_labels.date'|trans }}</th>
-                            <th>{{ 'emails-forgot_link.table_labels.location'|trans }}</th>
-                            <th>{{ 'emails-forgot_link.table_labels.link'|trans }}</th>
+                            <th>{{ 'emails-forgot_link.table_labels.date'|trans({}, 'messages', locale) }}</th>
+                            <th>{{ 'emails-forgot_link.table_labels.location'|trans({}, 'messages', locale) }}</th>
+                            <th>{{ 'emails-forgot_link.table_labels.link'|trans({}, 'messages', locale) }}</th>
                         </tr>
 
                     {% for link in manageLinks %}
@@ -27,7 +27,7 @@
                                 <table border="0" cellpadding="0" cellspacing="0" style="background-color:#bd1019; border:1px solid #353535; border-radius:3px; margin-left: auto;margin-right: auto;  margin-top: 5px; margin-bottom: 5px;">
                                     <tr>
                                         <td align="center" valign="middle" style="color:#FFFFFF; font-family:Helvetica, Arial, sans-serif; font-size:14px; letter-spacing:-.5px; line-height:150%; padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:10px;">
-                                            <a href="{{ link.url }}?utm_source=notification_mail&utm_medium=email&utm_campaign=forgot_party_link" style="color:#FFFFFF; text-decoration:none;">{{ 'emails-forgot_link.btn.manage_link'|trans }}</a>
+                                            <a href="{{ link.url }}?utm_source=notification_mail&utm_medium=email&utm_campaign=forgot_party_link" style="color:#FFFFFF; text-decoration:none;">{{ 'emails-forgot_link.btn.manage_link'|trans({}, 'messages', locale) }}</a>
                                         </td>
                                     </tr>
                                 </table>
@@ -38,12 +38,12 @@
                     <br/> <br/>
                 {% endif %}
                 {% if participantLinks|length > 0 %}
-                    <h3>{{ 'emails-forgot_link.participating_in'|trans }}</h3>
+                    <h3>{{ 'emails-forgot_link.participating_in'|trans({}, 'messages', locale) }}</h3>
                     <table style="width: 540px; font-family: Arial, Helvetica, sans-serif;">
                         <tr>
-                            <th>{{ 'emails-forgot_link.table_labels.date'|trans }}</th>
-                            <th>{{ 'emails-forgot_link.table_labels.location'|trans }}</th>
-                            <th>{{ 'emails-forgot_link.table_labels.link'|trans }}</th>
+                            <th>{{ 'emails-forgot_link.table_labels.date'|trans({}, 'messages', locale) }}</th>
+                            <th>{{ 'emails-forgot_link.table_labels.location'|trans({}, 'messages', locale) }}</th>
+                            <th>{{ 'emails-forgot_link.table_labels.link'|trans({}, 'messages', locale) }}</th>
                         </tr>
 
                         {% for link in participantLinks %}
@@ -54,7 +54,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" style="background-color:#bd1019; border:1px solid #353535; border-radius:3px; margin-left: auto;margin-right: auto;  margin-top: 5px; margin-bottom: 5px;">
                                         <tr>
                                             <td align="center" valign="middle" style="color:#FFFFFF; font-family:Helvetica, Arial, sans-serif; font-size:14px; letter-spacing:-.5px; line-height:150%; padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:10px;">
-                                                <a href="{{ link.url }}?utm_source=notification_mail&utm_medium=email&utm_campaign=forgot_party_link" style="color:#FFFFFF; text-decoration:none;">{{ 'emails-forgot_link.btn.party_link'|trans }}</a>
+                                                <a href="{{ link.url }}?utm_source=notification_mail&utm_medium=email&utm_campaign=forgot_party_link" style="color:#FFFFFF; text-decoration:none;">{{ 'emails-forgot_link.btn.party_link'|trans({}, 'messages', locale) }}</a>
                                             </td>
                                         </tr>
                                     </table>

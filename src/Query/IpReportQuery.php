@@ -18,7 +18,7 @@ class IpReportQuery
         $ipv4 = $this->queryIpv4Records($season);
         $ipv6 = $this->queryIpv6Records($season);
 
-        if ($ipv4['ipv4Count'] == 0 && $ipv6['ipv6Count'] == 0) {
+        if (0 == $ipv4['ipv4Count'] && 0 == $ipv6['ipv6Count']) {
             return [];
         }
 
@@ -43,9 +43,6 @@ class IpReportQuery
         return $query->fetchAllAssociative();
     }
 
-    /**
-     * @return mixed
-     */
     private function queryIpv6Records(Season $season)
     {
         $query = $this->dbal->createQueryBuilder()

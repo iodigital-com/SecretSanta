@@ -2,33 +2,23 @@
 
 namespace App\Service;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\EmailAddress;
 use App\Entity\Participant;
 use App\Entity\Party;
 use App\Validator\ParticipantIsNotBlacklisted;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ParticipantService
 {
-    public EntityManager $em;
-    public ParticipantShuffler $participantShuffler;
-    private ValidatorInterface $validator;
-    private string $geoIpDbPath;
-
     public function __construct(
-        EntityManagerInterface $em,
-        ParticipantShuffler $participantShuffler,
-        ValidatorInterface $validator,
-        $geoIpDbPath
+        private EntityManagerInterface $em,
+        public ParticipantShuffler $participantShuffler,
+        private ValidatorInterface $validator,
+        private string $geoIpDbPath,
     ) {
-        $this->em = $em;
-        $this->participantShuffler = $participantShuffler;
-        $this->validator = $validator;
-        $this->geoIpDbPath = $geoIpDbPath;
     }
 
     /**
@@ -66,7 +56,7 @@ class ParticipantService
         return true;
     }
 
-    public function editParticipant(Participant $participant, string $name, string $email)
+    public function editParticipant(Participant $participant, string $name, string $email): void
     {
         $participant->setEmail($email);
         $participant->setName($name);
@@ -75,15 +65,15 @@ class ParticipantService
         $this->em->flush();
     }
 
-    public function logFirstAccess(Participant $participant, string $ip)
+    public function logFirstAccess(Participant $participant, string $ip): void
     {
-        if ($participant->getViewdate() === null) {
+        if (null === $participant->getViewdate()) {
             $participant->setViewdate(new \DateTime());
 
-            $this->em->flush($participant);
+            $this->em->flush();
         }
 
-        if ($participant->getIp() === null) {
+        if (null === $participant->getIp()) {
             $participant->setIp($ip);
 
             $reader = new Reader($this->geoIpDbPath);
@@ -104,7 +94,7 @@ class ParticipantService
                 $participant->setGeoCity('');
             }
 
-            $this->em->flush($participant);
+            $this->em->flush();
         }
     }
 }

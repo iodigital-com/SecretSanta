@@ -5,25 +5,22 @@ declare(strict_types=1);
 namespace App\Controller\Participant;
 
 use App\Repository\ParticipantRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 class DumpParticipantsController extends AbstractController
 {
-    /**
-     * @Route("/dump-participants", name="dump_participants", methods={"GET"})
-     * @Template("Participant/dumpParticipants.html.twig")
-     */
-    public function dumpAction(ParticipantRepository $repository)
+    #[Route('/{_locale}/dump-participants', name: 'dump_participants', methods: ['GET'])]
+    public function dumpAction(ParticipantRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADWORDS');
 
         $startCrawling = new \DateTime();
         $startCrawling->sub(new \DateInterval('P4M'));
 
-        return [
+        return $this->render('Participant/dumpParticipants.html.twig', [
             'participants' => $repository->findAfter($startCrawling),
-        ];
+        ]);
     }
 }

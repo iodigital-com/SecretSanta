@@ -4,8 +4,8 @@ namespace App\Command;
 
 use App\Entity\BlacklistEmail;
 use App\Service\HashService;
-use Symfony\Component\Console\Command\Command;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -16,7 +16,7 @@ class HashBlacklistCommand extends Command
 
     public function __construct(
         EntityManagerInterface $em,
-        HashService $hashService
+        HashService $hashService,
     ) {
         $this->em = $em;
         $this->hashService = $hashService;
@@ -24,9 +24,6 @@ class HashBlacklistCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -34,9 +31,6 @@ class HashBlacklistCommand extends Command
             ->setDescription('Hash black listed mail addresses.');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $blacklistedMails = $this->em->getRepository(BlacklistEmail::class)->findAll();

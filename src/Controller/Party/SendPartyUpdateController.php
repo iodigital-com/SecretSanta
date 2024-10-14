@@ -8,7 +8,7 @@ use App\Entity\Party;
 use App\Mailer\MailerService;
 use App\Query\ParticipantReportQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SendPartyUpdateController extends AbstractController
@@ -23,9 +23,7 @@ class SendPartyUpdateController extends AbstractController
         $this->translator = $translator;
     }
 
-    /**
-     * @Route("/send-party-update/{listurl}", name="send_party_update", methods={"GET"})
-     */
+    #[Route('/{_locale}/send-party-update/{listurl}', name: 'send_party_update', methods: ['GET'])]
     public function sendPartyUpdateAction(Party $party, ParticipantReportQuery $reportQueriesService, MailerService $mailerService)
     {
         $results = $reportQueriesService->fetchDataForPartyUpdateMail($party->getListurl());

@@ -7,18 +7,16 @@ namespace App\Controller;
 use App\Entity\Participant;
 use App\Form\Handler\UnsubscribeFormHandler;
 use App\Form\Type\UnsubscribeType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 class UnsubscribeController extends AbstractController
 {
-    /**
-     * @Route("/unsubscribe/{url}", name="unsubscribe_confirm", methods={"GET", "POST"})
-     * @Template("Participant/unsubscribe.html.twig")
-     */
-    public function confirmAction(Request $request, Participant $participant, UnsubscribeFormHandler $handler)
+    #[Route('/{_locale}/unsubscribe/{url}', name: 'unsubscribe_confirm', methods: ['GET', 'POST'])]
+    public function confirmAction(Request $request, Participant $participant, UnsubscribeFormHandler $handler): RedirectResponse|Response
     {
         $form = $this->createForm(UnsubscribeType::class);
 
@@ -26,10 +24,10 @@ class UnsubscribeController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return [
+        return $this->render('Participant/unsubscribe.html.twig', [
             'unsubscribeForm' => $form->createView(),
             'participant' => $participant,
             'party' => $participant->getParty(),
-        ];
+        ]);
     }
 }

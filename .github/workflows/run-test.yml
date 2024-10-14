@@ -9,6 +9,7 @@ env:
     CREATE_DB_PASSWORD: root
     DATABASE_URL: mysql://root:root@127.0.0.1/secretsanta_test?serverVersion=5.7&charset=utf8mb4
     MAILER_DSN: sendmail://localhost
+    MANDRILL_DSN: sendmail://localhost
     APP_DOMAIN: test.secretsantaorganizer.com
 
 jobs:
@@ -26,14 +27,14 @@ jobs:
               with:
                   php-version: '8.2'
                   extensions: apcu
+            - name: Configure recaptcha secrets
+              run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Display PHP version
               run: php -v
             - name: Composer install
               run: composer install
             - name: Configure postfix & mailhog
               run: sudo bash .github/scripts/mailhog.sh
-            - name: Configure recaptcha secrets
-              run: cp config/recaptcha_secrets.json.dist config/recaptcha_secrets.json
             - name: Install GeoLite IP DB
               run: curl https://www.secretsantaorganizer.com/GeoLite2-City.mmdb > /home/runner/work/SecretSanta/SecretSanta/GeoLite2-City.mmdb
             - name: Install Symfony binary
@@ -46,6 +47,8 @@ jobs:
               run: bin/console doctrine:schema:update -vvv --force
             - name: Run tests
               run: make test
+            - name: Run PHP CS Fixer
+              run: PHP_CS_FIXER_FUTURE_MODE=1 php ./vendor/bin/php-cs-fixer fix -v --dry-run --diff
             - name: Prepare Symfony local server TLS
               run: symfony server:ca:install
             - name: Run Cypress E2E tests
