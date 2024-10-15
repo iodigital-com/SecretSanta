@@ -4,17 +4,21 @@ namespace App\Query;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 class ParticipantReportQuery
 {
     public function __construct(
-        private Connection $dbal,
-        private PartyReportQuery $partyReportQuery,
-        private FeaturedYearsQuery $featuredYearsQuery,
+        private readonly Connection $dbal,
+        private readonly PartyReportQuery $partyReportQuery,
+        private readonly FeaturedYearsQuery $featuredYearsQuery,
     ) {
     }
 
+    /**
+     * @throws Exception
+     */
     public function countConfirmedParticipantsUntilDate(\DateTime $date): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -25,9 +29,12 @@ class ParticipantReportQuery
             ->andWhere('e.view_date IS NOT NULL')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
+    /**
+     * @throws Exception
+     */
     public function countDistinctParticipantsUntilDate(\DateTime $date): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -37,9 +44,12 @@ class ParticipantReportQuery
             ->where('p.sent_date < :lastDay')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
+    /**
+     * @throws Exception
+     */
     public function queryDataForMonthlyParticipantChart(Season $season): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -53,9 +63,12 @@ class ParticipantReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
+    /**
+     * @throws Exception
+     */
     public function queryDataForYearlyParticipantChart(): array
     {
         $featuredYears = $this->featuredYearsQuery->getFeaturedYears();
@@ -75,7 +88,7 @@ class ParticipantReportQuery
                 ->setParameter('firstDay', $firstDay)
                 ->setParameter('lastDay', $lastDay);
 
-            $chartData = $query->execute()->fetchAll();
+            $chartData = $query->fetchAllAssociative();
 
             $participant = [
                 'year' => $year,
@@ -88,6 +101,9 @@ class ParticipantReportQuery
         return $participantChartData;
     }
 
+    /**
+     * @throws Exception
+     */
     public function queryDataForParticipantChartUntilDate(\DateTime $date): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -98,7 +114,7 @@ class ParticipantReportQuery
             ->groupBy('year(p.sent_date), month(p.sent_date)')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        $totalParticipantChartData = $query->execute()->fetchAll();
+        $totalParticipantChartData = $query->fetchAllAssociative();
 
         $accumulatedParticipantCounter = 0;
 
@@ -110,6 +126,9 @@ class ParticipantReportQuery
         return $totalParticipantChartData;
     }
 
+    /**
+     * @throws Exception
+     */
     public function calculateAverageParticipantsPerPartyUntilDate(\DateTime $date): float
     {
         $totalParties = $this->partyReportQuery->countAllPartiesUntilDate($date);
@@ -122,6 +141,9 @@ class ParticipantReportQuery
         throw new NoResultException();
     }
 
+    /**
+     * @throws Exception
+     */
     public function countAllParticipantsUntilDate(\DateTime $date): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -131,9 +153,12 @@ class ParticipantReportQuery
             ->where('p.sent_date < :lastDay')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
+    /**
+     * @throws Exception
+     */
     public function calculateParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2): int
     {
         $participantCountSeason1 = $this->countParticipants($season1);
@@ -147,6 +172,9 @@ class ParticipantReportQuery
         return $participantCountSeason1 - $participantCountSeason2;
     }
 
+    /**
+     * @throws Exception
+     */
     public function countParticipants(Season $season): int
     {
         $query = $this->dbal->createQueryBuilder()
@@ -158,11 +186,14 @@ class ParticipantReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        $participantCount = $query->execute()->fetchAll();
+        $participantCount = $query->fetchAllAssociative();
 
         return (int) $participantCount[0]['participant_count'];
     }
 
+    /**
+     * @throws Exception
+     */
     public function calculateConfirmedParticipantsCountDifferenceBetweenSeasons(Season $season1, Season $season2): mixed
     {
         $confirmedParticipantCountSeason1 = $this->countConfirmedParticipants($season1);
@@ -176,6 +207,9 @@ class ParticipantReportQuery
         return $confirmedParticipantCountSeason1[0]['confirmedParticipantCount'] - $confirmedParticipantCountSeason2[0]['confirmedParticipantCount'];
     }
 
+    /**
+     * @throws Exception
+     */
     public function countConfirmedParticipants(Season $season): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -188,9 +222,12 @@ class ParticipantReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
+    /**
+     * @throws Exception
+     */
     public function calculateDistinctParticipantCountDifferenceBetweenSeasons(Season $season1, Season $season2): mixed
     {
         $distinctParticipantCountSeason1 = $this->countDistinctParticipants($season1);
@@ -204,6 +241,9 @@ class ParticipantReportQuery
         return $distinctParticipantCountSeason1[0]['distinctParticipantCount'] - $distinctParticipantCountSeason2[0]['distinctParticipantCount'];
     }
 
+    /**
+     * @throws Exception
+     */
     public function countDistinctParticipants(Season $season): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -215,7 +255,7 @@ class ParticipantReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
     public function calculateAverageParticipantsPerPartyBetweenSeasons(Season $season1, Season $season2): float
@@ -243,6 +283,9 @@ class ParticipantReportQuery
         throw new NoResultException();
     }
 
+    /**
+     * @throws Exception
+     */
     public function fetchMailsForExport(Season $season, bool $isAdmin): iterable
     {
         /** @var QueryBuilder $subQuery */
@@ -279,11 +322,12 @@ class ParticipantReportQuery
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'))
             ->setParameter('admin', $isAdmin ? 1 : 0);
 
-        $result = $qb->execute()->fetchAll();
-
-        return $result;
+        return $qb->fetchAllAssociative();
     }
 
+    /**
+     * @throws Exception
+     */
     public function fetchDataForPartyUpdateMail(string $listUrl): array
     {
         $party = $this->dbal->createQueryBuilder()
@@ -315,13 +359,16 @@ class ParticipantReportQuery
             ->setParameter('listurl', $listUrl);
 
         return [
-            'party' => $party->execute()->fetchAll(),
-            'participantCount' => $participantCount->execute()->fetchAll(),
-            'wishlistCount' => $wishlistCount->execute()->fetchAll(),
-            'viewedCount' => $viewedCount->execute()->fetchAll(),
+            'party' => $party->fetchAllAssociative(),
+            'participantCount' => $participantCount->fetchAllAssociative(),
+            'wishlistCount' => $wishlistCount->fetchAllAssociative(),
+            'viewedCount' => $viewedCount->fetchAllAssociative(),
         ];
     }
 
+    /**
+     * @throws Exception
+     */
     public function findBuddyByParticipantId(int $participantId): array
     {
         $query = $this->dbal->createQueryBuilder()
@@ -330,6 +377,6 @@ class ParticipantReportQuery
             ->where('p.assigned_participant_id = :id')
             ->setParameter('id', $participantId);
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 }

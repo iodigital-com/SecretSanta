@@ -13,7 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UpdatePartyDetailsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
-	{
+    {
         $builder
             ->add('eventdate', DateType::class, [
                 'label' => 'form-party.label.date_party',
@@ -31,7 +31,7 @@ class UpdatePartyDetailsType extends AbstractType
     }
 
     public function configureOptions(OptionsResolver $resolver): void
-	{
+    {
         $resolver->setDefaults([
             'data_class' => Party::class,
         ]);

@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class WishlistType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
-	{
+    {
         $builder->add('wishlistItems', CollectionType::class,
             [
                 'entry_type' => WishlistItemType::class,
@@ -21,7 +21,7 @@ class WishlistType extends AbstractType
     }
 
     public function configureOptions(OptionsResolver $resolver): void
-	{
+    {
         $resolver->setDefaults(
             [
                 'data_class' => Participant::class,

@@ -12,9 +12,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class FormCompilerPass implements CompilerPassInterface
 {
-    /**
-     * @var array
-     */
     private array $templates = ['jquery'];
 
     public function process(ContainerBuilder $container): void

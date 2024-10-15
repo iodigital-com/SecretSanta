@@ -13,7 +13,7 @@ class ParticipantHasValidExcludesValidator extends ConstraintValidator
      * @param ParticipantHasValidExcludes $constraint
      */
     public function validate($participant, Constraint $constraint): void
-	{
+    {
         $party = $participant->getParty();
         // should be at least 2 possible participants remaining to choose from, -1 for itself
         if ($party->getParticipants()->count() < $participant->getExcludedParticipants()->count() + 3) {

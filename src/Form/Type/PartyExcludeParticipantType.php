@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints\Valid;
 class PartyExcludeParticipantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
-	{
+    {
         $builder
             ->add(
                 'participants',
@@ -25,7 +25,7 @@ class PartyExcludeParticipantType extends AbstractType
     }
 
     public function configureOptions(OptionsResolver $resolver): void
-	{
+    {
         $resolver->setDefaults(
             [
                 'data_class' => Party::class,

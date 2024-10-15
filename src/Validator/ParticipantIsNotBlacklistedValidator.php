@@ -25,7 +25,7 @@ class ParticipantIsNotBlacklistedValidator extends ConstraintValidator
      * @param string $email
      */
     public function validate($email, Constraint $constraint): void
-	{
+    {
         $email = $this->hashService->hashEmail($email);
         $repository = $this->em->getRepository(BlacklistEmail::class);
         $results = $repository->createQueryBuilder('b')

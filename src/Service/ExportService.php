@@ -58,7 +58,7 @@ class ExportService
     {
         $url = $this->router->generate(
             'party_reuse',
-            ['listurl' => '1'],
+            ['listurl' => '1', '_locale' => 'en'],
             UrlGeneratorInterface::ABSOLUTE_URL
         );
 

@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints\Email;
 class RequestReuseUrlType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
-	{
+    {
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [

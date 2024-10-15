@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ExcludeParticipantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
-	{
+    {
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $me = $event->getData();
             $form = $event->getForm();
@@ -41,7 +41,7 @@ class ExcludeParticipantType extends AbstractType
     }
 
     public function configureOptions(OptionsResolver $resolver): void
-	{
+    {
         $resolver->setDefaults([
             'data_class' => Participant::class,
         ]);
