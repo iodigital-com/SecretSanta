@@ -12,12 +12,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class FormCompilerPass implements CompilerPassInterface
 {
-    /**
-     * @var array
-     */
-    private $templates = ['jquery'];
+    private array $templates = ['jquery'];
 
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         $resources = $container->getParameter('twig.form.resources');
 

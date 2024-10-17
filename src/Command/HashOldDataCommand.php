@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Entity\BlacklistEmail;
 use App\Entity\Participant;
 use App\Service\HashService;
+use Doctrine\DBAL\Logging\Middleware as LoggingMiddleware;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,14 +14,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 class HashOldDataCommand extends Command
 {
     public function __construct(
-        private EntityManagerInterface $em,
-        private HashService $hashService,
+        private readonly EntityManagerInterface $em,
+        private readonly HashService $hashService,
     ) {
-        $em
-            ->getConnection()
-            ->getConfiguration()
-            ->setSQLLogger(null)
-        ;
+        $configuration = $em->getConnection()->getConfiguration();
+        $middlewares = $configuration->getMiddlewares();
+
+        $filteredMiddlewares = array_filter($middlewares, static function ($middleware) {
+            return !($middleware instanceof LoggingMiddleware);
+        });
+
+        $configuration->setMiddlewares($filteredMiddlewares);
 
         parent::__construct();
     }

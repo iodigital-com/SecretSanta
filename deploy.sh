@@ -67,7 +67,7 @@ chmod -R a+rwX var/log var/cache
 printOk
 
 printAction "Stopping FPM"
-sudo systemctl stop php8.2-fpm
+sudo systemctl stop php8.3-fpm
 printOk
 #printAction "Running doctrine schema update"
 #bin/console doctrine:schema:update --force ${Q}
@@ -77,7 +77,7 @@ printAction "Activate new version"
 ln -sfn releases/${VERSION} current
 printOk
 printAction "Starting FPM"
-sudo systemctl start php8.2-fpm
+sudo systemctl start php8.3-fpm
 printOk
 
 printAction "Cleanup old versions, keep last 2"

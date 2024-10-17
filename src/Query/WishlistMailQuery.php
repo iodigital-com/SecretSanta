@@ -4,6 +4,7 @@ namespace App\Query;
 
 use App\Entity\Participant;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception;
 
 class WishlistMailQuery
 {
@@ -14,7 +15,10 @@ class WishlistMailQuery
         $this->dbal = $dbal;
     }
 
-    public function countWishlistItemsOfParticipant(Participant $participant)
+    /**
+     * @throws Exception
+     */
+    public function countWishlistItemsOfParticipant(Participant $participant): array
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(w.id) AS wishlistItemCount')
@@ -22,6 +26,6 @@ class WishlistMailQuery
             ->where('w.participant_id = :participantId')
             ->setParameter('participantId', $participant->getId());
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 }

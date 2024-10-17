@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DateTypeExtension extends AbstractTypeExtension
 {
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'widget' => 'single_text',
@@ -24,7 +24,7 @@ class DateTypeExtension extends AbstractTypeExtension
         ]);
     }
 
-    public function buildView(FormView $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         // Adds a custom block prefix
         array_splice(
@@ -35,7 +35,7 @@ class DateTypeExtension extends AbstractTypeExtension
         );
     }
 
-    public function finishView(FormView $view, FormInterface $form, array $options)
+    public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars['type'] = 'text';
 
@@ -47,7 +47,7 @@ class DateTypeExtension extends AbstractTypeExtension
         ]);
     }
 
-    public function getExtendedType()
+    public function getExtendedType(): string
     {
         return DateType::class;
     }

@@ -5,7 +5,7 @@ excludes:
     - var/cache
     - node_modules
 config:
-    php: '8.2'
+    php: '8.3'
     config:
         php: lando/php/php.ini
         vhosts: lando/apache/000-default.conf
@@ -21,7 +21,7 @@ services:
             - 'apt-get update'
             - '/bin/bash /app/shell_provisioner/run.sh'
         overrides:
-            image: 'devwithlando/php:8.2-apache-4'
+            image: 'devwithlando/php:8.3-apache-4'
             build:
                 context: ./lando
                 dockerfile: Dockerfile

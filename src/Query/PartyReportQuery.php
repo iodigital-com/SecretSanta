@@ -3,6 +3,7 @@
 namespace App\Query;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception;
 
 class PartyReportQuery
 {
@@ -15,6 +16,9 @@ class PartyReportQuery
         $this->featuredYearsQuery = $featuredYearsQuery;
     }
 
+    /**
+     * @throws Exception
+     */
     public function countParties(Season $season): int
     {
         $query = $this->dbal->createQueryBuilder()
@@ -25,12 +29,15 @@ class PartyReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        $partyCount = $query->execute()->fetchAll();
+        $partyCount = $query->fetchAllAssociative();
 
         return (int) $partyCount[0]['partyCount'];
     }
 
-    public function countAllPartiesUntilDate(\DateTime $date)
+    /**
+     * @throws Exception
+     */
+    public function countAllPartiesUntilDate(\DateTime $date): array
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS partyCount')
@@ -38,10 +45,13 @@ class PartyReportQuery
             ->where('p.sent_date < :lastDay')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
-    public function queryDataForMonthlyPartyChart(Season $season)
+    /**
+     * @throws Exception
+     */
+    public function queryDataForMonthlyPartyChart(Season $season): array
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS accumulatedPartyCountByMonth, p.sent_date AS month')
@@ -53,9 +63,12 @@ class PartyReportQuery
             ->setParameter('firstDay', $season->getStart()->format('Y-m-d H:i:s'))
             ->setParameter('lastDay', $season->getEnd()->format('Y-m-d H:i:s'));
 
-        return $query->execute()->fetchAll();
+        return $query->fetchAllAssociative();
     }
 
+    /**
+     * @throws Exception
+     */
     public function queryDataForYearlyPartyChart(): array
     {
         $featuredYears = $this->featuredYearsQuery->getFeaturedYears();
@@ -74,7 +87,7 @@ class PartyReportQuery
                 ->setParameter('firstDay', $firstDay)
                 ->setParameter('lastDay', $lastDay);
 
-            $chartData = $query->execute()->fetchAll();
+            $chartData = $query->fetchAllAssociative();
 
             $party = [
                 'year' => $year,
@@ -87,7 +100,10 @@ class PartyReportQuery
         return $partyChartData;
     }
 
-    public function queryDataForPartyChartUntilDate(\DateTime $date)
+    /**
+     * @throws Exception
+     */
+    public function queryDataForPartyChartUntilDate(\DateTime $date): array
     {
         $query = $this->dbal->createQueryBuilder()
             ->select('count(p.id) AS totalPartyCount, p.sent_date AS month')
@@ -96,7 +112,7 @@ class PartyReportQuery
             ->groupBy('year(p.sent_date), month(p.sent_date)')
             ->setParameter('lastDay', $date->format('Y-m-d H:i:s'));
 
-        $totalPartyChartData = $query->execute()->fetchAll();
+        $totalPartyChartData = $query->fetchAllAssociative();
 
         $accumulatedPartyCounter = 0;
 
@@ -108,7 +124,7 @@ class PartyReportQuery
         return $totalPartyChartData;
     }
 
-    public function calculatePartyCountDifferenceBetweenSeasons(Season $season1, Season $season2)
+    public function calculatePartyCountDifferenceBetweenSeasons(Season $season1, Season $season2): int
     {
         $partyCountSeason1 = $this->countParties($season1);
 
