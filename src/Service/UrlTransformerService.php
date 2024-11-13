@@ -11,7 +11,8 @@ class UrlTransformerService
      */
     private array $hostFormats = [
         '/^(www\.)?amazon\.(com|co\.(jp|uk|za)|com\.(au|be|br|mx|tr)|ae|ca|cn|de|eg|es|fr|ie|in|it|nl|pl|sa|se|sg)$/' => 'amazon',
-        '/^(www\.)?bol\.com/' => 'bol',
+        '/^(www\.)?bol\.com$/' => 'bol',
+        '/^(www\.)?coolblue\.be$/' => 'awin,85165',
     ];
 
     private $partnerIds = [];
@@ -134,6 +135,11 @@ class UrlTransformerService
                         if (isset($urlParts['query'])) {
                             $url .= urlencode('?'.$urlParts['query']);
                         }
+                        break;
+
+                    case 'awin':
+                        // params[0] should contain merchantid, append original URL encoded
+                        $url = 'https://www.awin1.com/cread.php?awinmid='.$params[0].'&awinaffid='.$this->partnerIds[$key].'&ued='.urlencode($url);
                         break;
 
                     default:
