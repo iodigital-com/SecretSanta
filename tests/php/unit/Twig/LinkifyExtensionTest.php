@@ -37,7 +37,7 @@ class LinkifyExtensionTest extends TestCase
             ],
             [
                 'www.test.com',
-                '<a href="http://www.test.com" target="_blank" rel="noopener noreferrer">www.test.com</a>',
+                'www.test.com',
             ],
             [
                 'http://test',
