@@ -2,6 +2,7 @@
 
 namespace App\Tests\Unit\Twig;
 
+use App\Service\UrlTransformerService;
 use App\Twig\LinkifyExtension;
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +15,7 @@ class LinkifyExtensionTest extends TestCase
      */
     public function itShouldWrapAnHtmlLinkInAnAnchorTag($rawHtml, $anchorHtml)
     {
-        $filter = new LinkifyExtension();
+        $filter = new LinkifyExtension(new UrlTransformerService());
 
         $this->assertEquals($anchorHtml, $filter->linkifyFilter($rawHtml));
     }
