@@ -131,7 +131,7 @@ party-created:
     title: Only 1 step to go! - Validate your participation
     body: >
         <p>
-            To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate his or her participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
+            To prevent bots or trolls to ruin the Secret Santa party, we need the list organizer <b>%ownername%</b> to validate their participation. We've sent a mail to <b>%owneremail%</b> with further instructions.
         </p>
         <p>
             Once validated, you will be able to make changes to your party, add or remove participants and configure excludes (if your party has 4 participants or more). Once you are ready configuring your party, you can start your party.
@@ -458,7 +458,7 @@ participant_show_valid:
         watch_out: Watch out
         wishlist_from: Wishlist from %name%
         wishlist_not_provided: '%name% has not yet provided a wishlist'
-        message_for_wishlist: Send a message to your buddy to let him/her know their wishlist is empty.
+        message_for_wishlist: Send a message to your buddy to let them know their wishlist is empty.
         find_gift: Looking for a gift?
 
     wishlist:
@@ -485,7 +485,7 @@ participant_show_valid:
         title: Send an anonymous message to %name%
         message_label: Your message
         message_placeholder: Your message
-        warning_anonymous: Remember that this message is sent anonymously, and you don't want to spoil who you are! Your buddy won't be able to reply to your message, be specific so he/she is able to update his/her wishlist.
+        warning_anonymous: Remember that this message is sent anonymously, and you don't want to spoil who you are! Your buddy won't be able to reply to your message, be specific so they are able to update their wishlist.
         send_button: Send your mail!
 
 # ParticipantCommunicationController
@@ -879,8 +879,8 @@ emails-viewParticipantReminder:
 emails-wishlistChanged:
     subject: Wishlist updated
     salutation: Hi %name%
-    buddy_updated_wishlist: Your buddy has updated his or her wishlist.
-    click_button: Click on the button below to check out his or her suggestions.
+    buddy_updated_wishlist: Your buddy has updated their wishlist.
+    click_button: Click on the button below to check out their suggestions.
 
     btn:
         check_wishlist: Check wishlist
@@ -954,7 +954,7 @@ flashes:
     # ResendParticipantController
     resend_participant:
         resent: <strong>Resent!</strong><br/>The e-mail to %email% has been resent.<br/>
-        blacklisted: <strong>Oops.. We couldn't send the email!</strong> This person has blacklisted his/her email, and doesn't want to receive mails anymore.
+        blacklisted: <strong>Oops.. We couldn't send the email!</strong> This person has blacklisted their email, and doesn't want to receive mails anymore.
 
     # ParticipantController
     participant:
