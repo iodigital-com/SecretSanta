@@ -2,11 +2,16 @@
 
 namespace App\Twig;
 
+use App\Service\UrlTransformerService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 class LinkifyExtension extends AbstractExtension
 {
+    public function __construct(private UrlTransformerService $urlTransformerService)
+    {
+    }
+
     public function getFilters(): array
     {
         return [
@@ -21,19 +26,14 @@ class LinkifyExtension extends AbstractExtension
             return $html;
         }
 
-        // Selects all urls starting with ://
-        $html = preg_replace(
-            '~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/=!\?,]~',
-            '<a href="\\0" target="_blank" rel="noopener noreferrer">\\0</a>',
-            $html
-        );
-
-        // Selects all urls starting with www. but do not start with ://
-        $html = preg_replace(
-            '~(?<!://)www.[^<>[:space:]]+[[:alnum:]/=!\?,]~',
-            '<a href="http://\\0" target="_blank" rel="noopener noreferrer">\\0</a>',
-            $html
-        );
+        // extract, transform, create links and replace
+        $urls = $this->urlTransformerService->extractUrls($html);
+        $replacements = [];
+        foreach ($urls as $url) {
+            $replacement = $this->urlTransformerService->transformUrl($url);
+            $replacements[$url] = '<a href="'.$replacement.'" target="_blank" rel="noopener noreferrer">'.$url.'</a>';
+        }
+        $html = $this->urlTransformerService->replaceUrls($html, $replacements);
 
         return $html;
     }
