@@ -8,11 +8,14 @@ class UrlTransformerService
      * Known hostformats.
      *  key is regex to match host portion of url (parse_url)
      *  value are <type>[,parameters...] where type denotes the affiliate program later used for the transformation logic
+     *  value can contain backreferences \1, \2, ... to the matches in the regular expression
      */
     private array $hostFormats = [
-        '/^(www\.)?amazon\.(com|co\.(jp|uk|za)|com\.(au|be|br|mx|tr)|ae|ca|cn|de|eg|es|fr|ie|in|it|nl|pl|sa|se|sg)$/' => 'amazon',
-        '/^(www\.)?bol\.com$/' => 'bol',
-        '/^(www\.)?coolblue\.be$/' => 'awin,85165',
+        '/^(?:www\.)?amazon\.(com|ae|ca|cn|de|eg|es|fr|ie|in|it|nl|pl|sa|se|sg)$/' => 'amazon_\1',
+        '/^(?:www\.)?amazon\.co\.(jp|uk|za)$/' => 'amazon_co_\1',
+        '/^(?:www\.)?amazon\.com\.(au|be|br|mx|tr)$/' => 'amazon_com_\1',
+        '/^(?:www\.)?bol\.com$/' => 'bol',
+        '/^(?:www\.)?coolblue\.be$/' => 'awin,85165',
     ];
 
     private $partnerIds = [];
@@ -96,7 +99,7 @@ class UrlTransformerService
         $matchedFormat = '';
         foreach ($this->hostFormats as $hostFormat => $key) {
             if (preg_match($hostFormat, $urlParts['host'])) {
-                $matchedFormat = $key;
+                $matchedFormat = preg_replace($hostFormat, $key, $urlParts['host']);
                 break;
             }
         }
@@ -114,8 +117,8 @@ class UrlTransformerService
                     $partnerId = $this->partnerIds[$key][0];
                 }
 
-                switch ($key) {
-                    case 'amazon':
+                switch (true) {
+                    case 'amazon_' == substr($key, 0, 7):
                         // append id as tag parameter
                         if (isset($urlParts['query'])) {
                             $url .= '&tag='.$partnerId;
@@ -124,12 +127,12 @@ class UrlTransformerService
                         }
                         break;
 
-                    case 'bol':
+                    case 'bol' == $key:
                         // generate text link to partner program and append original URL encoded
                         $url = 'https://partner.bol.com/click/click?p=1&t=url&s='.$partnerId.'&f=TXL&url='.urlencode($url);
                         break;
 
-                    case 'tradetracker':
+                    case 'tradetracker' == $key:
                         // params[0] should contain campaignid, append original URL encoded
                         $url = 'https://tc.tradetracker.net/?c='.$params[0].'&m=12&a='.$partnerId.'&r=&u='.urlencode($urlParts['path']);
                         if (isset($urlParts['query'])) {
@@ -137,7 +140,7 @@ class UrlTransformerService
                         }
                         break;
 
-                    case 'awin':
+                    case 'awin' == $key:
                         // params[0] should contain merchantid, append original URL encoded
                         $url = 'https://www.awin1.com/cread.php?awinmid='.$params[0].'&awinaffid='.$this->partnerIds[$key].'&ued='.urlencode($url);
                         break;

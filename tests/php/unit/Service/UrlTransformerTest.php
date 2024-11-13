@@ -19,14 +19,15 @@ class UrlTransformerTest extends TestCase
 
     public function testAmazonUrlExtraction()
     {
-        $_ENV['PARTNER_AMAZON'] = 'abc-123';
+        $_ENV['PARTNER_AMAZON_COM'] = 'abc-123-com';
+        $_ENV['PARTNER_AMAZON_COM_BE'] = 'abc-123-be';
         $urlTransformer = new UrlTransformerService();
 
         $url = $urlTransformer->transformUrl('https://www.amazon.com/Zmart-Funny-Christmas-Coworkers-Secret/dp/B0CC1S12S3');
-        $this->assertEquals('https://www.amazon.com/Zmart-Funny-Christmas-Coworkers-Secret/dp/B0CC1S12S3?tag=abc-123', $url);
+        $this->assertEquals('https://www.amazon.com/Zmart-Funny-Christmas-Coworkers-Secret/dp/B0CC1S12S3?tag=abc-123-com', $url);
 
-        $url = $urlTransformer->transformUrl('https://www.amazon.com/Zmart-Funny-Christmas-Coworkers-Secret/dp/B0CC1S12S3?crid=123456789');
-        $this->assertEquals('https://www.amazon.com/Zmart-Funny-Christmas-Coworkers-Secret/dp/B0CC1S12S3?crid=123456789&tag=abc-123', $url);
+        $url = $urlTransformer->transformUrl('https://www.amazon.com.be/Zmart-Funny-Christmas-Coworkers-Secret/dp/B0CC1S12S3');
+        $this->assertEquals('https://www.amazon.com.be/Zmart-Funny-Christmas-Coworkers-Secret/dp/B0CC1S12S3?tag=abc-123-be', $url);
     }
 
     public function testurlReplacement()
