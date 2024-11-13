@@ -46,5 +46,4 @@ class UrlTransformerTest extends TestCase
         $actual = $urlTransformer->replaceUrls($html, $replacements);
         $this->assertEquals($expectedHtml, $actual);
     }
-
 }
