@@ -21,7 +21,7 @@ class UrlTransformerService
         // Get all partner ids from ENV.
         // Multiple ids are supported by space seperating them.
         foreach ($_ENV as $key => $value) {
-            if (strpos($key, 'PARTNER_') === 0) {
+            if (0 === strpos($key, 'PARTNER_')) {
                 $this->partnerIds[strtolower(substr($key, 8))] = array_filter(explode(' ', $value));
             }
         }
@@ -41,7 +41,7 @@ class UrlTransformerService
     }
 
     /**
-     * Replace all urls in input array (as key) with its replacements (values)
+     * Replace all urls in input array (as key) with its replacements (values).
      *
      * Custom function because str_replace could replace occurrences from previous replacements
      *   or urls that are child/parent urls of other urls that need to be replaced
@@ -52,7 +52,7 @@ class UrlTransformerService
         $urlsOnly = array_keys($urls);
 
         // sort by length longest to shortest
-        usort($urlsOnly, function($a, $b) {
+        usort($urlsOnly, function ($a, $b) {
             return strlen($b) - strlen($a);
         });
 
@@ -63,7 +63,7 @@ class UrlTransformerService
             $byUrl[$url] = [];
             // get first match
             $position = strpos($text, $url, 0);
-            while ($position !== false) {
+            while (false !== $position) {
                 if (!isset($byPosition[$position])) {
                     // position not already matched with longer url
                     $byUrl[$url][] = $position;
@@ -117,22 +117,22 @@ class UrlTransformerService
                     case 'amazon':
                         // append id as tag parameter
                         if (isset($urlParts['query'])) {
-                            $url .= '&tag=' . $partnerId;
+                            $url .= '&tag='.$partnerId;
                         } else {
-                            $url .= '?tag=' . $partnerId;
+                            $url .= '?tag='.$partnerId;
                         }
                         break;
 
                     case 'bol':
                         // generate text link to partner program and append original URL encoded
-                        $url = 'https://partner.bol.com/click/click?p=1&t=url&s=' . $partnerId . '&f=TXL&url=' . urlencode($url);
+                        $url = 'https://partner.bol.com/click/click?p=1&t=url&s='.$partnerId.'&f=TXL&url='.urlencode($url);
                         break;
 
                     case 'tradetracker':
                         // params[0] should contain campaignid, append original URL encoded
-                        $url = 'https://tc.tradetracker.net/?c=' . $params[0] . '&m=12&a=' . $partnerId . '&r=&u=' . urlencode($urlParts['path']);
+                        $url = 'https://tc.tradetracker.net/?c='.$params[0].'&m=12&a='.$partnerId.'&r=&u='.urlencode($urlParts['path']);
                         if (isset($urlParts['query'])) {
-                            $url .= urlencode('?' . $urlParts['query']);
+                            $url .= urlencode('?'.$urlParts['query']);
                         }
                         break;
 
