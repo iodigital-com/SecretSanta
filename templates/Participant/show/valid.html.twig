@@ -48,11 +48,25 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <br><br>
-                    <a href="https://www.amazon.com/s?k=gift+ideas&crid=260YBXU60MQ3E&sprefix=gift+ideas%2Caps%2C225&linkCode=ll2&tag=secretsant087-20&linkId=1ce6503c32cc8ab095d274a9dd2ba2af&language=en_US&ref_=as_li_ss_tl"
-                       target="_blank" rel="noopener noreferrer">
-                        {{ 'participant_show_valid.participant.find_gift'|trans }}
-                    </a><br>
+
+                    {% if participant.geoCountry in ['BE', 'NL'] %}
+                        {# Show local links #}
+                        <br><br>
+                        <a href="https://partner.bol.com/click/click?p=1&t=url&s=50354&f=TXL&url=https%3A%2F%2Fwww.bol.com%2F{{ participant.geoCountry|lower }}%2Fnl%2Fsf%2Fcadeauwinkel-volwassenen%2F"
+                           target="_blank" rel="noopener noreferrer">
+                            {{ 'participant_show_valid.participant.find_gift'|trans }}
+                        </a><br>
+                    {% else %}
+                        {# Show global Amazon link #}
+                        {#
+                        Currently disabled due to no valid partner account
+                        <br><br>
+                        <a href="https://amzn.to/48YJb0v"
+                           target="_blank" rel="noopener noreferrer">
+                           {{ 'participant_show_valid.participant.find_gift'|trans }}
+                        </a><br>
+                        #}
+                    {% endif %}
                 </div>
             </div>
             {% if participant.assignedParticipant.isSubscribed == true %}
