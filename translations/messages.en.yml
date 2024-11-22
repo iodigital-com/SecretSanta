@@ -14,6 +14,7 @@ base:
     ecofriendly2: ECO Friendly Party
     top10gifts1: Top 10 Gifts Budget
     top10gifts2: Top 10 Gift Ideas
+    top10gifts3: More Gift Ideas
     bug_bounty: Bug Bounty
 
 # Form/{PartyType,UpdatePartyDetailsType}
