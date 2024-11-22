@@ -121,7 +121,10 @@ class UrlTransformerService
                     case 'amazon_' == substr($key, 0, 7):
                         // append id as tag parameter
                         if (isset($urlParts['query'])) {
-                            $url .= '&tag='.$partnerId;
+                            // don't touch if there's already a tag present
+                            if (false === strpos($urlParts['query'], '&tag=') && 'tag=' !== substr($urlParts['query'], 0, 4)) {
+                                $url .= '&tag='.$partnerId;
+                            }
                         } else {
                             $url .= '?tag='.$partnerId;
                         }
