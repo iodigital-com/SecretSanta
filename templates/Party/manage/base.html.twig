@@ -16,7 +16,7 @@
     <script type="text/javascript">
         function copyToClipboard(url, obj) {
             var fullurl = 'https://' + window.location.hostname;
-            fullurl += '/participant/' + url + '?utm_source=notification_clipboard&utm_medium=organiser&utm_campaign=participant_invite';
+            fullurl += '/{{ app.request.locale }}/participant/' + url + '?utm_source=notification_clipboard&utm_medium=organiser&utm_campaign=participant_invite';
             var $temp = $("<input>");
             $("body").append($temp);
             $temp.val(fullurl).select();

@@ -28,9 +28,6 @@ class ManagementController extends AbstractController
 {
     private TranslatorInterface $translator;
 
-    /**
-     * ManagementController constructor.
-     */
     public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
