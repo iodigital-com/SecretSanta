@@ -155,7 +155,7 @@ participant_show_base:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
         location: Miejsce twojej imprezy
-        amount: Ilość
+        amount: Kwota
         num_people: Liczba osób
         person_created_list: Osoba która utworzyła tę listę
 
@@ -231,7 +231,7 @@ party_manage_base:
         title: 'Szczegóły Twojego <span class="accent">Przyjęcia Tajnego Mikołaja</span>'
         date: Data
         location: Miejsce twojej imprezy
-        amount: Ilość
+        amount: Kwota
 
 # Party/manage/expired.html.twig
 party_manage_expired:
@@ -333,7 +333,7 @@ emails-base_email_header:
     title: Szczegóły imprezy
     date: Data
     location: Miejsce twojej imprezy
-    amount: Ilość
+    amount: Kwota
     num_people: Liczba osób
     person_created_list: Osoba która utworzyła tę listę
 
