@@ -69,6 +69,7 @@ $(document).ready(function () {
     });
 });
 function showExcludeErrors() {
+    alert('bar');
     $('#collapsedMessage').collapse('show');
     $('html, body').animate({
         scrollTop: $("#collapsedMessage").offset().top

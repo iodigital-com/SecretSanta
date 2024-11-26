@@ -215,7 +215,7 @@
                         </div>
                         {{ form_start(excludeForm) }}
                         {# Only show general validation error if there are no subform errors #}
-                        {% if excludeForm.participants.vars.valid and  excludeForm.vars.errors | length %}
+                        {% if excludeForm.participants.vars.valid and excludeForm.vars.errors | length %}
                             <div class="alert alert-danger" role="alert">{{ form_errors(excludeForm) }}</div>
                         {% endif %}
                         <table class="table table-striped" style="table-layout: fixed">
@@ -365,7 +365,7 @@
     <script type="text/javascript" src="{{ asset('build/js/party.manage.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            {% if excludeForm.vars.errors |length %}
+            {% if excludeForm.participants.vars.valid and excludeForm.vars.errors | length %}
             showExcludeErrors();
             {% endif %}
         });
