@@ -36,6 +36,7 @@ $(document).ready(function () {
     $('.link_remove_participant').click(function (e) {
         $('#delete-participant').show();
         $('.link_remove_participant').attr('disabled', true);
+        $('.link_remove_participant').attr('disabled', true);
         $('#delete-participant-confirmation').focus();
         var listUrl = $(this).data('listurl');
         var participantUrl = $(this).data('participant');
@@ -68,13 +69,6 @@ $(document).ready(function () {
         submitEditForm($(this).data('listurl'), $(this).data('participant-url'));
     });
 });
-function showExcludeErrors() {
-    alert('bar');
-    $('#collapsedMessage').collapse('show');
-    $('html, body').animate({
-        scrollTop: $("#collapsedMessage").offset().top
-    }, 2000);
-}
 
 function editParticipant(listUrl, participantUrl) {
     var email = $('#email_' + participantUrl).html();
