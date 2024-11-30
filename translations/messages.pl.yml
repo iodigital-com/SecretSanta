@@ -255,7 +255,7 @@ party_manage_expired:
 party_manage_valid:
     manage:
         title: Twoja lista Tajnego Mikołaja
-        yes: true
+        yes: Tak
         not_yet: Jeszcze nie
         edit_email: Edytuj e-mail
         resend_email: Wyślij ponownie e-mail
@@ -412,7 +412,7 @@ emails-party_status:
              Twoja impreza odbędzie się wkrótce. By zapewnić miłą imprezę byłoby idealnie  gdyby każdy dostał prezent. Oto przegląd wszystkich uczestników i ich status. 
              Kliknij poniższy link, aby ponownie wysłać e-maile, edytować adresy e-mail lub wykonać więcej czynności związanych z twoją imprezą.
 
-    yes: true
+    yes: Tak
     not_yet: Jeszcze nie
 
     label:
