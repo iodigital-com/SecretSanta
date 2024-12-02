@@ -5,13 +5,14 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     locale: en
-    app.supported_locales: ['en', 'fr', 'de', 'es', 'hu', 'nl', 'no', 'pl', 'pt']
+    app.supported_locales: ['en', 'de', 'es', 'fr', 'hu', 'it', 'nl', 'no', 'pl', 'pt']
     supported_locales:
         - de
         - en
         - es
         - fr
         - hu
+        - it
         - nl
         - no
         - pl
@@ -22,6 +23,7 @@ parameters:
         es: Español
         fr: Français
         hu: Magyar
+        it: Italiano
         nl: Nederlands
         no: Norsk
         pl: Polskie

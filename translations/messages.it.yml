@@ -1,0 +1,1020 @@
+# base.html.twig
+base:
+    meta:
+        description: Secret Santa è un'organizzatore online gratuito di scambi di regali Secret Santa ! Organizza una festa Secret Santa con amici, familiari o colleghi e aggiungi la tua lista dei desideri.
+        title: Organizzatore e generatore di regali Secret Santa Online!
+        og:
+            title: Secret Santa
+            site_name: Secret Santa
+            description: Secret Santa è un'organizzatore online gratuito di scambi di regali Secret Santa ! Organizza una festa Secret Santa con amici, familiari o colleghi e aggiungi la tua lista dei desideri.
+    need_help: <a href="%FAQ%" target="_blank" rel="noopener noreferrer">Hai bisogno di aiuto? Hai domande? Leggi le FAQ!</a>
+    privacy_policy: Privacy Policy
+    cookie_policy: Cookie Policy
+    ecofriendly1: Consigli ECO Friendly
+    ecofriendly2: Feste ECO Friendly
+    top10gifts1: Top 10 regali economici
+    top10gifts2: Top 10 idee regali
+    bug_bounty: Bug Bounty
+
+# Form/{PartyType,UpdatePartyDetailsType}
+form-party:
+    label:
+        date_party: Data della Festa Secret Santa
+        location: Location della tua Festa Secret Santa
+        amount_to_spend: Cifra da spedere
+        message: Messaggio aggiuntivo nella e-mail
+        confirmed: Si,ho il premesso di usare gli indirizzi e-mail dei partecipanti per Secret Santa. Leggi la nostra politica sulla privacy.
+
+# PartyController
+party_controller:
+    created:
+        message: |
+            Ciao (NAME),
+
+            (ADMINISTRATOR) ha creato un evento Secret Santa e ti ha aggiunto come partecipante.
+
+            Unisciti al divertimento di Secret Santa e scopri chi è il tuo compagno a cui fare il regalo cliccando il bottone sottostante.
+
+            Puoi spendere la cifra di %amount% per il tuo regalo.
+
+            La Festa Secret Santa è fissata per il %eventdate% e si svolgerà presso / a %location%. Ricorda di portare il tuo regalo!
+
+            %message%
+
+
+            Buone Vacanze!
+
+# Party/create.html.twig
+party-create:
+    header:
+        steps:
+            title: La tua festa <br/><small>in <span class="accent">3 semplici passaggi</span></small>
+            list:
+                one: Aggiungi i partecipanti
+                two: Aggiungi un messaggio
+                three: Invia!
+            get_started: Si comincia!
+
+    what_is:
+        title: Cos'è Secret Santa?
+        intro: >
+            <p>E' un generatore ed organizzatore online <strong>gratuito</strong> per party Secret Santa!
+            Organizza una festa Secret Santa party con amici,famiglia o colleghi. Dopo aver ricevuto la mail di Secret Santa puoi aggiungere la tua <strong>lista desideri</strong>,
+            che verrà recapitata al tuo Secret Santa.</p>
+
+            <p>Ogni anno, a <strong>NATALE</strong>, le persone di tutto il mondo si scambiano regali.<br/>
+            Per mantenere le cose interessanti, però, puoi assegnare <strong>casualmente le persone l'una all'altra</strong> 
+            per scambiarsi un regalo.</p>
+
+        title_2: Come funziona?
+        intro_2: >
+            <p>Crea un party <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">sulla homepage</a>. Il mimino dei partecipanti è 3, <b>il primo nella lista è l'amministratore.</b>
+            L'amministratore della lista riceverà una conferma via e-mail. Una volta validata, la tua lista Secret Santa verrà criptata e tutti i partecipanti riceveranno il tuo messaggio col nome del loro compagno di regalo Secret Santa.
+            Utilizziamo una conferma per evitare che bot o troll rovinino la tua festa Secret Santa. <b>L'e-mail di convalida fornirà un link al responsabile dell'evento di Secret Santa.</b>.</p>
+
+    rate_limit_reached: Ho, ho, ho, trattieni le redini!<br>Devi attendere qualche minuto prima di creare un nuovo gruppo.
+
+    add_participants: Aggiungi partecipanti
+    list_adminstrator: Questa persona è anche un partecipante.
+    add_personal_message:
+        title: Aggiungi messaggio personale
+        description: Aggiungi un messaggio personalizzato per i partecipanti.
+    import:
+        instructions: Aggiungi più persone contemporaneamente al tuo evento. Scarica <a href="%downloadPath%">questo file modello CSV</a> e aggiungi tutti i nomi e gli indirizzi e-mail delle persone che vuoi invitare al file. Quando hai finito, puoi trascinare e rilasciare il file CSV nel campo sottostante e i tuoi amici o colleghi verranno aggiunti in modo facile e veloce alla tua festa.
+        too_many_files: Solo un file alla volta può essere caricato.
+        wrong_format: Il file che stai tentando di caricare non ha il formato richiesto (csv o txt).
+
+    btn:
+        add_person: Aggiungi persona
+        remove_person: Rimuovi
+        import_persons_open: Aggiungi più pesone usando un CSV
+        import_persons_do: Aggiungi al tuo evento
+        cancel: Cancella
+        create_event: Crea il tuo evento!
+
+    label:
+        host: Host
+        email: E-mail
+        participants: Participanti
+
+    copy:
+        fun_title: Cosa rende una festa Secret Santa così divertente?
+        fun_text: "<p>Seriamente, è una domanda retorica? Organizzare una <b>Festa Secret Santa</b> ti garantisce una notte divertente e piena di sorprese: penso che possiamo essere d'accordo su questo.</p> <p> Grazie a uno speciale <b>generatore di Secret Santa</b> non dovrai occuparti di tutta la pre-organizzazione da solo. Basta riempire gli spazi vuoti e il generatore di Secret Santa fa tutto il lavoro!</p> <p> L'unica cosa che devi fare è sederti e rilassarti (oh, e comprare degli snack e delle bevande per la tua festa Secret Santa).</p>"
+        why_title: Perché scegliere Secret Santa online?
+        why_text: "<p> La cosa migliore di <b>Secret Santa online</b> è che non devi pianificare fisicamente tutto con tutti i partecipanti. Assegnare nomi, creare e ricevere liste dei desideri e così via: puoi organizzare tutto con una semplice connessione Internet e un dispositivo connesso.</p> <p>In questo modo, Secret Santa online rende tutte le cose organizzative molto più facili. Ciò significa più tempo per te e i tuoi amici per godervi le festività natalizie e non vedere l'ora che arrivi la festa vera e propria!</p>"
+        world_title: Secret Santa in tutto il mondo
+        world_text: >
+            <p>
+            Secret Santa, Kris Kringle, Kris Kindle, Kris Kringel, White Elephant, Yankee Swap, Yankee Doodle,
+            Wichteln, o anche lootjes trekken, namen trekken or Monito Monita: tutto intorno al mondo le persone usano
+            nomi differenti per la stessa cosa. Lasciati trasportare in questo viaggio veloce attorno al mondo! Non preoccuparti,
+            sarai a casa in tempo per la tua  <b>Festa di Secret Santa</b>.
+            </p>
+            <ul>
+            <li><b>Secret Santa</b> è molto diffuso negli Stati Uniti e nel Regno Unito.
+            <li>In Irlanda comunque, è chiamato <b>Kris Kindle</b> o <b>Kris Kringel</b>, derivato
+            da "<b>Christkindl</b>" - il nome originale del dispensatore di doni Austriaco.
+            <li>Se visitate l'Europa continentale ci saranno i tedeschi che preferiscono il verbo <b>Wichteln</b>,
+            mentre nel Belgio e nell' Olanda parlano di <b>lootjes trekken</b> o <b>namen trekken</b>.
+            <li>Il viaggio continua in  Canada and Australia. E' qui che troviamo ancora<b>Secret Santa</b> e
+            <b>Kris Kringle</b> (dinuovo, derivato da "<b>Christkindl</b>").
+            <li>Alla fine, il nostro viaggio termina nelle Filippine. In questo paese troviamo <b>Monito Monita</b>;
+            una tradizione unica di scambio di doni.
+            </ul>
+            <p>
+            Quindi? Fare regali a caso alle persone è divertente!! Non perdere ancora tempo ed inizia col tuo
+            personale <b>Secret Santa generator online</b>.
+            </p>
+
+# Party/created.html.twig
+party-created:
+    title: Solo un passo e ci siamo! - Valida la tua participazione
+    body: >
+        <p>
+            Per evitare che bot o troll rovinino la festa Secret Santa, abbiamo bisogno dell'organizzatore della lista <b>%ownername%</b> per convalidare la loro partecipazione. Abbiamo inviato una mail a <b>%ownername%</b> con ulteriori istruzioni.
+        </p>
+        <p>
+            Una volta convalidato, sarai in grado di apportare modifiche al tuo gruppo, aggiungere o rimuovere partecipanti e configurare le esclusioni (se il tuo gruppo ha 4 o più partecipanti). Una volta pronto, puoi iniziare.
+            A quel punto partiranno gli abbinamenti, e invieremo a tutti un'email contenente le informazioni, insieme ad un link per trovare il loro soggetto.
+        </p>
+        <p>
+            Puoi sempre utilizzare il link nell'e-mail di convalida per andare alla pagina di gestione. Una volta iniziata la festa, sarai in grado di vedere se i partecipanti hanno aperto la loro posta e cliccato sul link per scoprire chi è il loro soggetto.
+        </p>
+    warning: Attenzione!
+    check_spam: Non dimenticarti di controllare la cartella spam!
+
+# Party/deleted.html.twig
+party-deleted:
+    title: La tua lista Secret Santa è stata eliminata!
+    body: <p> Grazie per aver utilizzato l'organizzatore Secret Santa. E speriamo di rivederti l'anno prossimo!</p>
+    create_new_list: Crea una nuova lista Secret Santa!
+
+# Party/forgotLink.html.twig
+party-forgot_link:
+    title: Richiedi una panoramica delle mie feste
+    description: Inserisci il tuo indirizzo e-mail e ti invieremo un'e-mail con tutte le feste che hai creato e le feste a cui stai partecipando. Elenchiamo solo le feste che si svolgeranno in futuro.
+    submit_btn: Inviami una panoramica
+    info_reuse: Se si desidera creare una festa, basata su una festa precedente, è possibile richiedere un elenco delle feste precedenti <a href="%reusepath%">qui</a>
+
+# Party/getReuseUrl.html.twig
+party-get_reuse_url:
+    title: 'Riutilizza festa'
+    description: Inserisci il tuo indirizzo email e ti invieremo una panoramica delle feste che hai fatto negli ultimi 2 anni e un link per riutilizzarle. Questo funziona solo per le feste che hai creato.
+    form:
+        submit-btn: 'Invia email'
+
+# Wishlist/showAll.html.twig
+wishlist-show_all:
+    title: Tutte le liste desideri Secret Santa
+    back: Torna alla pagina di gestione
+
+# Static/ecofriendly1.html.twig
+static-ecofriendly1:
+    main: >
+
+        <h1>Una Celebrazione GREEN: Suggerimenti per un Natale Eco-Sostenibile</h1>
+        
+        <p>Il periodo natalizio è un momento di gioia e di unione, ma è anche un periodo in cui possiamo prestare attenzione alla sostenibilità. Ecco alcuni consigli per organizzare un Natale eco-friendly, puntando su regali, decorazioni e cibo.</p>
+        
+        <h2>1. Regali Eco-Sostenibili:</h2>
+        
+        <p>Inizia facendo scelte consapevoli quando scegli i regali. Prendi in considerazione i regali che incoraggiano il destinatario a fare scelte più sostenibili. Pensa a oggetti riutilizzabili come bottiglie d'acqua in acciaio inossidabile, borse della spesa in cotone o persino un set di involucri di cera d'api riutilizzabili. Ecco altri suggerimenti:</p>
+        
+        <p>Prodotti Locali: Acquista regali da artigiani e produttori locali per ridurre l'impronta ecologica.</p>
+        
+        <p>Esperienza: Regalate esperienze invece di doni materiali, come un corso di cucina, biglietti per un concerto.</p>
+        
+        <h2>2. Decorazioni Green:</h2>
+        
+        <p>Rendete festosa la vostra casa senza gravare sul pianeta. Optate per decorazioni riutilizzabili e realizzate con materiali sostenibili. Ecco altri suggerimenti:.</p>
+        
+        <p>Elementi Naturali: Decorate con materiali naturali come pigne, rami e fiori secchi.</p>
+        
+        <p>Decorazioni FAIdaTE: Create le vostre decorazioni con materiali riciclati o riutilizzate vecchi pezzi di arredamento.</p>
+        
+        <h2>3. Alimenti ecocompatibili:</h2>
+        
+        <p>Godetevi un pasto delizioso senza danneggiare il pianeta. Scegliete opzioni sostenibili quando pianificate il vostro menu di Natale. Ecco altri suggerimenti:</p>
+        
+        <p>Locali e Stagionali: Utilizzare ingredienti locali e di stagione per ridurre l'impatto dei trasporti.</p>
+        
+        <p>Vegani/Vegetariani: Considerate di servire un menu a base vegetale o di ridurre la quantità di carne per diminuire l'impatto ambientale.</p>
+        
+        <p>Ricordate che i piccoli cambiamenti possono fare una grande differenza. Seguendo questi consigli, potrete organizzare una festa di Natale responsabile dal punto di vista ambientale senza compromettere lo spirito delle feste. Godetevi i festeggiamenti e celebrate il Natale in un modo che non sia solo positivo per voi, ma anche per il pianeta.</p>
+        
+        <img src="/seoimg/dinner1.png" alt="Tavola di Natale addobbata con rami di pino, pigne e candele con un albero di Natale sullo sfondo.">
+
+    meta-title: Top 10 regali Secret Santa economici
+    meta-description: "Scoprite le idee regalo convenienti il Secret Santa! Tazze, saponi, piante e molto altro: perfetti per un regalo festoso ed economico!"
+
+# Static/ecofriendly2.html.twig
+static-ecofriendly2:
+    main: >
+        
+        <h1>10 consigli per una festa Secret Santa Eco-compatibile</h1>
+        
+        <p> State organizzando una festa di Secret Santa e volete che quest'anno sia un Natale eco-sostenibile? Leggete i nostri consigli:</p>
+        
+        <h2>1. Incartate i vostri regali in modo eco-sostenibile:</h2>
+        
+        <ul>
+            <li>Utilizzate confezioni regalo riutilizzabili: I sacchetti regalo sono un'ottima alternativa alla carta da regalo monouso. Sono riutilizzabili e più resistenti della carta da regalo tradizionale.
+            <li>Usate la carta di giornale come carta da regalo: Date un tocco vintage ai vostri regali avvolgendoli in carta di giornale. Non solo i vostri regali saranno ecologici, ma si distingueranno anche per la loro unicità.
+            <li>Riutilizzare la carta da regalo più volte: Se siete attenti a scartare, considerate la possibilità di riutilizzare la carta da regalo. Se aprite un regalo senza strappare la carta, potete riutilizzarla l'anno prossimo.
+            <li>Senza pacchetti regalo: Prendete in considerazione l'idea di un Natale senza involucri. Anche se è bello vedere tutti i regali sotto l'albero, rinunciare alla carta da regalo è un'opzione più ecologica.
+        </ul>
+        
+        <h2>2.Usate Decori Eco-compatibili:</h2>
+        
+        <ul>
+            <li>Comprate l'albero di Natale in zona: Se optate per un albero di Natale vero, acquistatelo da un venditore locale per ridurre al minimo le distanze di trasporto. Oggi è possibile anche noleggiare un albero di Natale o scegliere un'alternativa in legno.
+            <li>Utilizzate decorazioni minime o ecologiche: Evitate decorazioni di plastica o di glitter eccessivi, perché possono essere dannosi per l'ambiente. Optate per decorazioni di seconda mano o fatte in casa per chi ama il tocco creativo.
+            <li>Utilizzate un'illuminazione sostenibile: Scegliete le luci a LED come alternativa ecologica.
+        </ul>
+
+        <h2>3. Eco-Chic Dress Code:</h2>
+        
+        <ul>
+            <li>Riusare un abito: Resistete alla tentazione di comprare un vestito nuovo per Natale. Piuttosto, riciclate e indossate nuovamente l'abito dell'anno precedente.
+            <li>Prendete in prestito un abito: Prendete in considerazione l'idea di prendere in prestito un abito da vostra sorella o da un'amica.
+            <li>Noleggiate un abito: Esplorate le piattaforme online dove è possibile noleggiare l'abbigliamento festivo, consentendovi di brillare alla vostra festa di Natale senza dover acquistare un nuovo abito ogni anno.
+        </ul>
+        
+        <img src="/seoimg/dinner2.png" alt="7 persone sedute intorno a un tavolo con del cibo che festeggiano il Natale in una stanza decorata con molte luci.">
+        
+    meta-title: Top 10 dei regali economici | Secret Santa Organizer
+    meta-description: Non avete ancora un regalo per il vostro soggeto di Secret Santa? Ispiratevi a questo post e trovate un regalo economico!
+
+# Static/top10gifts1.html.twig
+static-top10gifts1:
+    main: >
+
+        <h1>Top 10 regali Secret Santa economici</h1>
+
+        <p>Non sapete ancora quale regalo fare al vostro amico di Secret Santa? In questo elenco, troverete i 10 migliori regali <b>sotto i €15</b>.</p>
+        
+        <h2>1. Regali FAIdaTE</h2>
+        <p>Economico, speciale e creativo: cosa si può desiderare di più? Pensate a una candela attorcigliata che potete fare in casa con acqua calda, a una decorazione natalizia fatta in casa per la tavola o a una simpatica tazza di Natale con il vostro design. Potete essere creativi quanto volete. Una cosa è certa: un regalo fatto in casa sarà sempre apprezzato dai vostri cari.</p>
+
+        <h2>2. Candele</h2>
+        <p>Le candele sono un must durante il periodo natalizio. In questo periodo si trovano nei negozi molte profumazioni speciali. Potete optare per un profumo caldo e invernale come la specula o la cannella di mele. Ma potete anche optare per una scelta più sicura, con un profumo di vaniglia. Le candele come regalo di Natale sono deliziose non solo per il loro profumo, ma anche per la loro speciale confezione.</p>
+
+        <h2>3. Calzini caldi</h2>
+        <p>Sempre utili per i freddi inverni. I calzini sono tra i regali più simpatici che si possano fare a Natale. Che si scelgano colori vivaci e disegni natalizi o un colore semplice, non si può mai sbagliare con questo regalo.</p>
+
+        <h2>4. Tazzoni di Natale</h2>
+        <p>Una cioccolata calda o un tè sono ancora più buoni in una simpatica tazza di Natale. Durante il periodo natalizio, su molti siti web troverete tazze di Natale divertenti e originali. Non riuscite a trovare nulla che si adatti al vostro amico? Allora realizzatene una voi stessi con i pennarelli per porcellana!</p>
+
+        <h2>5. Prodotti per Skincare</h2>
+        <p>Una crema per le mani secche o una ricca crema per il viso saranno sicuramente apprezzate negli inverni secchi. Se scegliete una crema per le mani, optate per un profumo invernale.</p>
+
+        <h2>6. Decori Natalizi</h2>
+        <p>Cosa piace al vostro amico? Ha un hobby o un interesse particolare? È bello regalargli un addobbo natalizio mirato. È troppo specifico? Magari potreste anche realizzarlo voi stessi!</p>
+
+        <h2>7. Calendari</h2>
+        <p>Dopo il Natale arriva Capodanno, e di cosa hanno bisogno tutti quando inizia il nuovo anno? Un planner per tenere traccia di tutti i vostri propositi (e rispettarli davvero ;))!</p>
+
+        <h2>8. Bottiglia per la palestra</h2>
+        <p>A proposito di propositi, una borraccia è sempre utile se il vostro amico intende iniziare il nuovo anno con un abbonamento al fitness. O se semplicemente vuole mantenersi idratato in inverno.</p>
+
+        <h2>9. Giochi da Tavolo</h2>
+        <p>Non c'è niente di più intimo che giocare insieme a un gioco da tavolo la vigilia di Natale. O forse potete anche creare voi stessi il gioco?</p>
+
+        <h2>10. Coperte Calde</h2>
+        <p>Sempre gradite a tutti, perché le coperte non sono mai troppe!</p>
+        
+        <img src="/seoimg/gift1.png" alt="Regalo avvolto in carta da regalo con renne e Babbo Natale, con l'etichetta "Secret Santa".">
+
+    meta-title: "Top 10 regali Secret Santa più economici"
+    meta-description: "Scoprite idee regalo convenienti per il Secret Santa! Tazze, saponi, piante e molto altro ancora: perfetti per uno scambio festoso ed economico!"
+
+# Static/top10gifts2.html.twig
+static-top10gifts2:
+    main: >
+
+        <h1>Top 10 migliori idee regalo economiche per Secret Santa</h1>
+
+        <p>È di nuovo il momento dell'anno: le vacanze si avvicinano, il che significa anche che è tempo di regali! Ma se avete un budget limitato per il vostro regalo di Babbo Natale segreto? Non preoccupatevi, ci pensiamo noi! Ecco le 10 migliori idee regalo per il vostro Secret Santa, a prezzi accessibili ma di grande effetto:</p>
+        
+        <h2>1. Tazzoni Fantasiosi</h2>
+        
+        <p>Una tazza può essere un regalo fantastico! Sceglietene una con un design divertente, spiritoso o personalizzato. È pratica e personale allo stesso tempo.</p>
+        
+        <h2>2. Saponi Artigianali</h2>
+        
+        <p>I saponi fatti a mano con profumi deliziosi e forme uniche sono un regalo meraviglioso. Sono belli e utili per l'uso quotidiano.</p>
+        
+        <h2>3. Piante Colorate per interno</h2>
+        
+        <p>Una piccola pianta da interno non solo aggiunge verde a uno spazio, ma crea anche un'atmosfera accogliente. Scegliete una pianta facile da mantenere, come una pianta grassa o un'edera.</p>
+        
+        <h2>4. Quaderni e Penne</h2>
+        
+        <p>Per chi ama scrivere, i quaderni e le penne sono sempre un regalo gradito. Sono perfetti per annotare pensieri, obiettivi e note.</p>
+        
+        <h2>5. Candele per Ambiente </h2>
+        
+        <p>Una bella candela può trasformare qualsiasi spazio e creare un'atmosfera rilassante. Scegliete candele profumate con aromi deliziosi per un maggiore benessere.</p>
+        
+        <h2>6. Calzini Divertenti</h2>
+        
+        <p>Un paio di calzini colorati con stampe divertenti è un regalo divertente e pratico. Ci sono così tanti disegni carini tra cui scegliere!</p>
+        
+        <h2>7. Cioccolato o Caramelle</h2>
+        
+        <p>Chi non ama i dolci? Una scatola di cioccolatini o un sacchetto di caramelle preferite possono sempre strappare un sorriso a qualcuno.</p>
+
+        <h2>8. Buoni regalo FAIdaTE</h2>
+
+        <p>Regalate un buono per qualcosa di personale, come una torta fatta in casa, una serata da babysitter o una passeggiata nel parco. È un gesto unico e premuroso.</p>
+
+        <h2>9. Libri o E-books</h2>
+
+        <p>Un buon libro è un ottimo regalo e non deve essere necessariamente costoso. Scegliete un bestseller, un classico o un libro del genere preferito dal destinatario.</p>
+
+        <h2>10. Foto Ricordo</h2>
+
+        <p>Stampa una bella foto e mettila in una cornice economica e stilosa. E' un modo semplice e personalizzato per condividere un ricordo.</p>
+
+        <p><b>Con queste idee regalo economiche per il vostro Secret Santa, non dovrete preoccuparvi di sforare il vostro budget e di far sorridere il destinatario. Buon regalo!</b></p>
+        
+        <img src="/seoimg/gift2.png" alt="Idee regalo assortite ed economiche per il Secret Santa in un set regalo confezionato a festa.">
+
+    meta-title: Top 10 dei regali più convenienti | Secret Santa Organizer
+    meta-description: Lasciatevi ispirare dalla nostra selezione di idee regalo economiche e creative per il Secret Santa! Scopri tazze, saponi fatti a mano, piante da interno e molto altro ancora, perfetti per uno scambio di regali festoso ed economico!
+
+# Static/faq.html.twig
+static-faq:
+    title: Domande frequenti
+    intro: <p>Questo è un elenco di domande frequenti (FAQ) che dovrebbero aiutarvi a capire come funziona questo Secret Santa.</p>
+
+    question1: Cos'è Secret Santa?
+    anchor1: cosa
+    answer1: <p>È un organizzatore online gratuito di scambi di regali per Secret Santa! Organizzate una festa di Secret Santa con gli amici, la famiglia o anche i colleghi di lavoro. Ogni anno, nel periodo natalizio, le persone di tutto il mondo si scambiano regali. Per mantenere le cose interessanti, però, è possibile assegnare in modo casuale le persone che si scambiano un regalo l'una con l'altra.</p>
+    question2: Come funziona?
+    anchor2: come
+    answer2: <p>Crea una festa <a href="https://SITE_DOMAIN" target="_blank" rel="noopener noreferrer">sulla homepage</a>. Sono necessari almeno 3 partecipanti, <b>di cui il primo è l'amministratore della lista.</b> L'amministratore della lista riceverà un link di conferma via e-mail. Una volta convalidato, l'elenco di Babbo Natale segreto verrà strapazzato e tutti gli utenti riceveranno il tuo messaggio insieme al nome del loro compagno di regali di Babbo Natale segreto. Chiediamo una conferma per evitare che bot o troll rovinino la vostra festa di Babbo Natale segreto. <b>L'e-mail di conferma contiene un link al gestore dell'evento Secret Santa.</b>.</p>
+    question3: Posso escludere combinazioni?
+    anchor3: esclusioni
+    answer3: <p>È possibile escludere alcune combinazioni, ad esempio per evitare che i membri della stessa famiglia debbano acquistare regali l'uno per l'altro. Le esclusioni possono essere configurate se la festa ha almeno 4 partecipanti e se la festa non è ancora iniziata. Se queste condizioni sono soddisfatte, nella pagina di gestione verrà visualizzata una casella denominata "Escludi determinate combinazioni". Facendo clic su questa casella, la si aprirà e sarà possibile modificare le esclusioni. Queste possono essere modificate in qualsiasi momento, finché la festa non è ancora iniziata. <br><br>Non è possibile riutilizzare automaticamente la lista di Babbo Natale Segreto dell'anno scorso e impedire queste combinazioni, perché al momento non vediamo un modo per aggiungerlo senza confondere le persone, mi dispiace.</p>
+    question4: Posso fornire una wishlist?
+    anchor4: wishlist
+    answer4: <p>I partecipanti ricevono un link a una pagina web dove scopriranno il loro amico segreto. Possono aggiungere la propria lista dei desideri e vedere quella dell'amico su quella pagina.</p>
+    question5:
+    anchor5: messaggio_anonimo
+    answer5:
+    question6:
+    anchor6: nessun_messaggio
+    answer6:
+    question7: Posso riutilizzare un elenco?
+    anchor7: riuso
+    answer7: <p>Potete riutilizzare l'elenco dell'anno scorso per creare un nuovo elenco quest'anno. Ogni anno invieremo un'e-mail contenente un link per farlo. È comunque possibile modificare l'elenco prima di inviarlo nuovamente. Potete anche generare un'e-mail <a href="%requestReuseLink%" target="_blank" rel="noopener noreferrer">qui</a>, contenente tutte le feste fatte negli ultimi 2 anni insieme a un link per riutilizzarle.</p>
+    question8: Come posso gestire la mia festa / i miei partecipanti?
+    anchor8: gestione
+    answer8: <p>L'e-mail di conferma inviata all'amministratore della lista contiene un link alla pagina di gestione della lista.</p>
+    question9: Può funzionare con un numero dispari di partecipanti?
+    anchor9: dispari
+    answer9: "<p>Sì. Non importa se la festa è composta da un numero pari o dispari di partecipanti. Non è garantito che se la persona A è stata assegnata alla persona B, anche la persona B sia assegnata alla persona A. Secret Santa utilizza una macro per assicurarsi che tutti i partecipanti alla lista siano assegnati a qualcun altro della lista. Questo funziona in modo casuale. Ad esempio: se John, Caroline e Steve sono stati aggiunti a una festa, John può essere assegnato a Steve, Steve può essere assegnato a Caroline e Caroline può essere assegnata a John.</p>"
+    question10: C'è un limite al numero di partecipanti?
+    anchor10: limite
+    answer10: <p>No, non c'è. Tuttavia, è una buona idea aggiungerli utilizzando l'opzione CSV.</p>
+    question11: Ho perso la mia mail di attivazione / url per la festa.
+    anchor11: perso
+    answer11: <p>Se avete perso la vostra e-mail (che contiene il link alla pagina di amministrazione o alla festa a cui state partecipando), inserite il vostro indirizzo e-mail in <a href="%requestForgotLink%">questa pagina</a> e vi invieremo una panoramica di tutte le feste a cui state partecipando e/o delle feste che avete creato.</p>
+    question12: Posso aggiungere o rimuovere persone?
+    anchor12: cambiamenti
+    answer12: "<p>È possibile aggiungere o rimuovere persone dopo aver creato un evento. Nella pagina di amministrazione troverete un pulsante di cancellazione e un modulo per aggiungere nuove persone. C'è solo un problema: non è possibile farlo se l'amministratore ha escluso delle combinazioni prima di inviare l'evento. Consentendo questa operazione, il sistema si incasinerebbe e le persone potrebbero essere ancora assegnate al compagno escluso; per questo motivo abbiamo deciso di impedire l'aggiunta di persone se sono presenti combinazioni escluse.</p>"
+    question13: Posso inviare nuovamente un'e-mail?
+    anchor13: email
+    answer13: <p>Se un partecipante non ha ricevuto l'e-mail per il suo amico, il proprietario della lista può inviare nuovamente l'e-mail per quel partecipante dalla pagina di gestione. È anche possibile modificare l'indirizzo e-mail di qualcuno dalla stessa pagina e inviare nuovamente l'e-mail. <br><br>Se non avete ricevuto l'e-mail di attivazione, controllate la cartella spam. Dovreste ricevere questa e-mail entro pochi minuti. Se non avete ancora ricevuto l'e-mail di attivazione, dovrete ricominciare da capo creando una nuova lista.</p>
+    question14: Posso consultare tutte le combinazioni/le liste dei desideri?
+    anchor14: combinazioni
+    answer14: <p>È possibile visualizzare facoltativamente le combinazioni e le wishlist nella pagina di gestione. Ci sono dei pulsanti per questo, ma non vengono visualizzati per impostazione predefinita. Se volete condividere queste informazioni con tutti i partecipanti, dovrete condividere voi stessi l'URL.</p>
+    question15: Posso cancellare la mia lista?
+    anchor15: cancellare
+    answer15: <p>Certo che è possibile. Basta andare alla pagina di gestione dell'elenco e utilizzare l'opzione di cancellazione. Tutti i dati del vostro elenco saranno definitivamente rimossi dal nostro sistema.</p>
+    question16: Chi sei?
+    anchor16: chi
+    answer16: <p>Siamo un gruppo di <a href="https://github.com/iodigital-com/SecretSanta/graphs/contributors" target="_blank" rel="noopener noreferrer">sviluppatori</a>, designer, frontender, SEO e addetti al marketing. Secret Santa is one of our side projects. Siamo sponsorizzati dal nostro datore di lavoro <a href="http://www.iodigital.com" target="_blank" rel="noopener noreferrer">iO</a>. Il nostro obiettivo è semplice, costruire un utile organizzatore di Secret Santa. Usiamo tutto questo anche come esperimento. Ma l'obiettivo principale è che le persone lo usino, more is better ;-)</p>
+    question17: Come gestite i miei dati?
+    anchor17: privacy
+    answer17: '<p>Risposta breve: non siamo assolutamente interessati ai vostri dati personali. E non li utilizziamo per nessun motivo. Consultate <a href="https://SITE_DOMAIN/privacy" target="_blank" rel="noopener noreferrer">informativa privacy</a> per una risposta più estesa. Inoltre, in qualsiasi momento, è possibile cancellare il proprio account Secret Santa dalla pagina di amministrazione.</p>'
+    question18: È possibile aggiungere la funzione X?
+    anchor18: funzioni
+    answer18: <p>Hai un'idea fantastica per una funzione? Tutti noi siamo volontari, quindi se non sei in grado di codificarla da solo dovrai aspettare che qualcuno in grado di codificarla realizzi la stessa funzionalitá. Per favore <a href="https://github.com/iodigital-com/SecretSanta/issues" target="_blank" rel="noopener noreferrer">crea un topic su GitHub</a> che descriva la tua funzionalità o modifica. Per coloro che sanno scrivere il codice, preferiamo la traspirazione all'ispirazione. In altre parole, accettiamo le vostre PR.</p>
+    question19: Open source
+    anchor19: opensource
+    answer19: <p>Ogni parte di questo sito web è open source su <a href="https://github.com/iodigital-com/SecretSanta" target="_blank" rel="noopener noreferrer">GitHub</a>. Il progetto è disponibile sotto una licenza molto permissiva. <a href="https://github.com/iodigital-com/SecretSanta/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">ISC license</a>. Potete creare un fork del progetto e, ad esempio, creare il vostro "scambio di regali Secret Panda". Oppure, contribuire a questo progetto aprendo richieste di pull (PR). Se volete una modifica o un'intera nuova feature, basta aggiungerla.</p>
+    question20: E le pubblicità?
+    anchor20: ads
+    answer20: <p>Abbiamo annunci pubblicitari di Google qua e là per coprire alcune delle nostre spese. Cose come l'hosting, i nomi di dominio ecc. costano. In pratica facciamo tutto gratuitamente e tutti i soldi che raccogliamo tornano al progetto. Potremmo usarli per comprare pizza e bevande per uno dei nostri hackday. Oppure potremmo pagare traduttori professionisti per aggiungere altre lingue al nostro Secret Santa Organizer. O potrebbe essere qualcos'altro. A proposito, siamo ancora alla ricerca di traduzioni in russo, indiano, giapponese.... Se potete aiutarci (gratuitamente), contattateci.</p>
+    question21: Altre domande
+    anchor21: domande
+    answer21: <p>Qualsiasi altra domanda, dubbio o commento? Contattateci tramite il <a href="%contactLink%" target="_blank" rel="noopener noreferrer">modulo di contatto</a>.</p>
+
+    create_new_list: Creare un nuovo elenco Secret Santa!
+
+# Helper/prototypeParticipant.html.twig
+helper-prototype_participant:
+    btn:
+        remove_person: Rimuovi
+
+# Helper/prototypeWishlist.html.twig
+helper-prototype_wishlist:
+    btn:
+        save_item: Salva oggetto
+        update_item: Aggiorna oggetto
+        remove_item: Rimuovi
+
+# Participant/exposeAll.html.twig
+participant-expose_all:
+    title: Lista Matches email Secret Santa
+    giving: Questo membro regala a ...
+    receiving: ... un regalo a questo utente
+    back: Torna alla pagina di gestione
+
+# Participant/show/base.html.twig
+participant_show_base:
+    headers:
+        title: I tuoi dettagli della <span class="accent">festa di Secret Santa</span>
+        date: Data della tua festa
+        location: Location della festa
+        amount: Cifra da spendere
+        num_people: Numero di persone
+        person_created_list: Persona che ha creato questo elenco
+
+# Participant/show/expired.html.twig
+participant_show_expired:
+    message:
+        expired: <strong>Oops</strong><br/>L'evento è più vecchio di 2 anni e non può più essere modificato.<br/>
+
+# Participant/show/valid.html.twig
+participant_show_valid:
+    participant:
+        title: Il tuo soggetto assegnato
+        body: >
+            <p>Ciao %name%,</p>
+            <p>Hai ricevuto l'incarico di provvedere al Secret Santa di:</p>
+        watch_out: attenzione
+        wishlist_from: Wishlist di %name%
+        wishlist_not_provided: '%name% non ha creato una wishlist'
+        message_for_wishlist: Inviate un messaggio al vostro amico per informarlo che la sua wishlist è vuota.
+        find_gift: State cercando un regalo?
+
+    wishlist:
+        title: La tua wishlist
+        description: Per aiutare il vostro Secret Santa, potete lasciare qui una wishlist. I nostri gnomi si occuperanno di comunicarla al vostro Secret Santa. È possibile riordinare la lista trascinando gli articoli al loro posto.
+        empty: La tua wishlist è vuota. Aggiungici qualcosa!
+
+    flashes:
+        wishlist:
+            empty_row: <h4>Oops</h4> Rimuovere la riga vuota prima di procedere.
+            added: <h4>Aggiunto!</h4> L'oggetto è stato aggiunto con successo alla tua lista dei desideri.
+            updated: <h4>Aggiornato!</h4> Oggetto aggiornato con successo.
+            removed: <h4>Rimosso!</h4> L' oggetto è stato rimosso con successo dalla tua lista dei desideri.
+
+    label:
+        description: Descrizione
+
+    btn:
+        add_wishlist: Aggiungi alla wishlist
+        update_item: Aggiorna questo oggetto
+        remove_item: Rimuovi
+
+    anonymous_message:
+        title: Inviare un messaggio anonimo a %name%
+        message_label: Il tuo messaggio
+        message_placeholder: Il tuo messaggio
+        warning_anonymous: Ricorda che questo messaggio viene inviato in forma anonima e non vuoi svelare chi sei! Il tuo amico non potrà rispondere al tuo messaggio, sii specifico in modo che possa aggiornare la sua lista dei desideri.
+        send_button: Invia il messaggio!
+
+# ParticipantCommunicationController
+participant_communication-send_message:
+    feedback:
+        success: La vostra mail è stata spedita! Abbiamo mandato i nostri gnomi a consegnarla!
+        error: Purtroppo non è stato possibile inviare il messaggio. Riprovi più tardi!
+        error_in_form: Si è verificato un errore nell'inserimento. Controlla il tuo inserimento e riprova!
+
+# Participant/unsubscribe.html.twih
+participant_unsubscribe:
+    title: Cancellazione dalle e-mail
+    unsubscribe_all_label: Contrassegnare questa casella di controllo se si desidera annullare l'iscrizione anche a tutte le altre parti a cui si sta partecipando.
+    unsubscribe_blacklist: "Inseritemi nella lista nera: Impedisce agli utenti di invitarmi in futuro"
+    unsubscribe_confirm_btn: Cancellazione dell'iscrizione
+    unsubscribe_for: Si sta annullando l'iscrizione alle e-mail per la festa Secret Santa del %date%, a/in %location%.
+    info_confirmation: >
+                        <strong>Sei sicuro?</strong> Quando cancelli l'iscrizione non ti invieremo più mail su questa festa, <strong>ma continuerai a partecipare alla festa</strong>.
+                        Quando non vuoi più partecipare, devi chiedere all'amministratore della tua festa di rimuoverti dalla festa stessa.<br/>
+                        Potresti ricevere messaggi di posta elettronica da altre feste a cui stai partecipando, a meno che tu non selezioni la casella di controllo qui sotto.
+    blacklist_warning: >
+                       <strong>Attenzione!</strong> Se inserisci il tuo indirizzo e-mail nella lista nera, non potrai più partecipare a nessun Secret Santa Party in futuro! Utilizzate questa funzione solo se pensate che qualcuno stia abusando del vostro indirizzo e-mail!
+    feedback:
+        success: La disiscrizione è avvenuta con successo!
+        error: Si è verificato un errore durante la disiscrizione, riprova!
+        error_atleast_one_option: Scegliete almeno un'opzione di cancellazione.
+
+# Party/manage/base.html.twig
+party_manage_base:
+    headers:
+        title: I tuoi <span class="accent">Secret Santa party</span> dettagli
+        date: Data della festa
+        location: Location della festa
+        amount: Cifra da spendere
+
+# Party/manage/expired.html.twig
+party_manage_expired:
+    manage:
+        title: Cancellare la mia lista Secret Santa
+
+    delete:
+        title: Cancellare la mia lista Secret Santa
+        body: >
+            <p>
+                Sei ASSOLUTAMENTE sicuro?<br>
+                <br>
+                <b>Se non lo leggete, potrebbe accadere qualcosa di inaspettato!</b><br>
+                <br>
+                Una volta cancellato l'elenco Secret Santa, non si può più tornare indietro. Questa azione NON PUO' essere annullata.<br>
+                Questa operazione cancellerà definitivamente la lista Secret Santa, tutti i suoi partecipanti e le loro liste dei desideri.<br>
+                <br>
+                Si prega di inserire "<b>%phrase_to_type%</b>" qui sotto per confermare.<br>
+            </p>
+        phrase_to_type: eliminare tutto
+
+    btn:
+        cancel: Annulla
+        delete_confirm: Capisco le conseguenze, cancella subito la mia lista Secret Santa
+        delete_list: Cancellare la mia lista Secret Santa
+
+    message:
+        expired: <strong>Oops</strong><br/>Il vostro evento è vecchio più di 2 anni e non può più essere modificato.<br/>
+
+# Party/manage/valid.html.twig
+party_manage_valid:
+    manage:
+        title: La tua lista Secret Santa
+        yes: Si
+        not_yet: Non ancora
+        edit_email: Modifica e-mail
+        resend_email: Rinvia e-mail
+        copy_clipboard: Copia il link personale negli appunti
+        copied_clipboard: Il link dell'invito è stato<br>copiato<br/> negli appunti!
+        view_participant: Visualizza partecipante
+        tip: Suggerimenti
+        come_back: Potete sempre tornare su questa pagina per assicurarvi che tutti abbiano controllato la propria casella di posta elettronica.
+        watch_out: Attenzione
+        save: Salva
+
+    delete:
+        title: Cancellare la mia lista Secret Santa
+        body: >
+            <p>
+                Sei ASSOLUTAMENTE sicuro?<br>
+                <br>
+                <b>Se non lo leggete, potrebbe accadere qualcosa di inaspettato!</b><br>
+                <br>
+                Una volta cancellato l'elenco Secret Santa, non si può più tornare indietro. Questa azione NON PUO' essere annullata.<br>
+                Questa operazione cancellerà definitivamente la lista Secret Santa, tutti i suoi partecipanti e le loro liste dei desideri.<br>
+                <br>
+                Si prega di inserire "<b>%phrase_to_type%</b>" qui sotto per confermare.<br>
+            </p>
+        phrase_to_type: cancellare tutto
+
+    add_participant:
+        title: Aggiungere un nuovo partecipante alla festa
+        body: >
+            <p>
+               Compilando il modulo sottostante, un nuovo partecipante sarà aggiunto alla vostra festa.
+                <br>
+                Il nuovo partecipante sarà immediatamente assegnato a un amico Secret Santa e riceverà un invito per posta.<br/>
+            </p>
+        started_warning: >
+            <p>
+                <strong>Attenzione: I partecipanti sono già stati abbinati!</strong>
+                <br>
+                Se ci sono ancora partecipanti che non hanno ancora visto il loro abbinamento, useremo uno di loro per abbinare il nuovo partecipante.
+                Se tutti hanno già visto il proprio abbinamento, il nuovo partecipante sarà assegnato a voi e a lui/lei sarà assegnato il vostro abbinamento.
+            </p>
+
+    remove_participant:
+        title: Eliminare questo partecipante dall'elenco
+        body: <p>Sei ASSOLUTAMENTE sicuro?</p>
+        party_started: >
+            <p>
+                Cancellare questo partecipante ha conseguenze permanenti. Non potrai ripristinare le combinazioni in corso e il partecipante sparirà immediatamente.<br>
+                <br>
+                Probabilmente qualcuno ha già comprato un regalo.<br>
+            </p>
+
+    updated_party:
+        title: Aggiornate i dettagli della vostra festa Secret Santa
+        body: >
+            <p>
+                Compilando il modulo sottostante, è possibile modificare i dettagli della festa che si sta organizzando.<br>
+                <br>
+                La modifica verrà immediatamente notificata ai partecipanti.
+            </p>
+
+    join_mode:
+        title: Impostazioni di adesione tramite link
+        body: >
+            <p>
+                Invece di aggiungere manualmente le persone, è possibile consentire a queste ultime di unirsi alla festa condividendo un link.
+                <br />Quando si avvia la festa, le persone non possono più iscriversi (ma è ancora possibile aggiungerle manualmente).
+            </p>
+        mode:
+            no: No, non consentire l'iscrizione tramite link
+            yes: Sì, permetti a chiunque abbia il link di unirsi al mio party
+        reset_body: >
+            Selezionando questa casella di controllo, verrà generato un nuovo link. Le persone non potranno più iscriversi con il vecchio link.
+            Utilizzare questa opzione quando il link corrente è stato condiviso con persone che non avrebbero dovuto iscriversi.
+        reset_unset: Abilitare l' iscrizione tramite link per generare un link.
+
+    btn:
+        add_participant: Aggiungere un partecipante alla festa
+        add_participant_confirm: Aggiungi questo partecipante
+        cancel: Annulla
+        delete_confirm: Capisco le conseguenze, cancella subito la mia lista Secret Santa
+        delete_list: Elimina la mia lista Secret Santa
+        expose: Visualizza tutte le combinazioni in questa lista
+        expose_wishlists:  Visualizza la wishlist di tutti i partecipanti
+        party_update: Inviare l'aggiornamento della festa ai partecipanti
+        party_update_info: Si sta per inviare la seguente e-mail a tutti i partecipanti
+        party_update_confirm: Inviare e-mail
+        remove_participant_confirm: Rimuovi questo partecipante
+        updated_party: Aggiornare i dettagli della festa
+        start_party: Iniziare la festa
+        join_mode: Partecipa tramite link
+        join_mode_confirm: Impostare la modalità di partecipazione
+
+    label:
+        name: Nome
+        email: Email
+        confirmed: Stato Email
+        wishlist_filled: Lista Desideri Aggiunta
+        actions: Azioni
+        join_mode: Consenti di partecipare attraverso il link
+        join_url: Condividi questo URL con gli amici
+        reset: Cancella link di partecipazione
+
+    excludes:
+        title: Escludi certe combinazioni
+        btn: Salva esclusioni
+        description: Con questa lista è possibile impedire opzionalmente alcune combinazioni di partecipanti. Ad esempio, per evitare che i membri della stessa famiglia debbano acquistare regali fra di loro.
+        information: Quando si utilizzano le esclusioni, è possibile che una volta avviata la festa non sia più possibile rimuovere i partecipanti. Inoltre, non sarà possibile modificare le esclusioni una volta avviata la festa!
+        placeholder_exclude: Fare clic e scegliere i partecipanti che si desidera escludere.
+        not_enough: Per utilizzare le esclusioni, la tua festa deve avere almeno 4 partecipanti!
+        label:
+            name: Nome
+            exclude: Escludi
+
+party_join:
+    title: Inizia la festa!
+    description: >
+        <p>
+            Con il link che ti è stato fornito, puoi aggiungerti a questa festa Secret Santa!
+            Leggete i dettagli della festa qui sotto e compilate il modulo se volete partecipare.
+            Se avete domande sulla festa, contattate la persona che l'ha creata.
+        </p>
+    joined: >
+        <p>
+            Sei stato aggiunto alla festa!
+            <br />Ti ricordiamo che non riceverai la tua combinazione fino a quando la festa non sarà iniziata.
+            Se hai domande sul party o vuoi cambiare le tue informazioni, devi contattare la persona che ha creato questo party!
+        </p>
+    invalid: >
+        <p>
+            Il link utilizzato non è valido. Potrebbero esserci diverse cause
+            <ul>
+                <li>La festa non esiste o è stata cancellata.</li>
+                <li>Il creatore della festa ha disabilitato o resettato il link.</li>
+                <li>La festa è già iniziata.</li>
+            </ul>
+            Contattate la persona che vi ha inviato il link. Potrebbe ancora essere in grado di aggiungervi manualmente alla festa!
+        <p/>
+
+    btn:
+        join_confirm: Aggregati alla festa
+
+# Emails/baseEmail.html.twig
+emails-base_email:
+    sender: Santa Claus
+    title: Secret Santa by iO
+    footer: Divertiti organizzando Secret Santa!
+    created_by: Creata da
+
+# This header block is re-used in multiple emails
+emails-base_email_header:
+    title: Dettagli Festa
+    date: Data della tua festa
+    location: Location della tua festa
+    amount: Cifra da spendere
+    num_people: Numero di persone
+    person_created_list: Persona che ha creato questa lista
+
+# Emails/baseEmailUnsubscribe.html.twig
+emails-base_email_unsubscribe:
+    unsubscribe: Se non si desidera ricevere e-mail in futuro, puoi
+    unsubscribe_link: annulla l'iscrizione qui
+
+# Emails/emptyWishlistReminder.{html,txt}.twig
+emails-emptyWishlistReminder:
+    subject: La tua wishlist è ancora vuota
+    update_your_list: La tua festa Secret Santa è alle porte e non hai ancora aggiornato la tua wishlist! Potresti andare ad aggiungere qualcosa che ti piacerebbe.
+
+    btn:
+        update_wishlist: Aggiorna la tua wishlist
+
+# Emails/forgotLink.{html,txt}.twig
+emails-forgot_link:
+    subject: Panoramica delle mie feste
+    participating_in: 'Partecipate alle seguenti feste:'
+    created_these: 'Avete creato queste feste:'
+    table_labels:
+        date: Data
+        location: Location
+        link: Link
+        txt: La festa il %date%, a/in %location%
+    btn:
+        party_link: Vai a questa festa
+        manage_link: Gestisci questa festa
+    message:
+        html: "Ciao, <br /><br />Avete richiesto l'invio di una panoramica di tutte le feste che dovreste conoscere. Queste feste sono tutte quelle che avete creato o a cui state partecipando e che si svolgeranno in futuro:<br />"
+        txt: >
+            Salve,
+
+            Avete richiesto l'invio di una panoramica di tutte le feste che dovreste conoscere. Queste feste sono tutte quelle che avete creato o a cui state partecipando e che si svolgeranno in futuro:
+
+# Emails/reuseLink.{html,txt}.twig
+emails-reuse_link:
+    title: Link per riutilizzare la vostra festa Secret Santa
+    subject: Riutilizza la vostra festa Secret Santa
+    party_title: Festa
+    at: a/in
+    message:
+        html: "Salve, <br /><br />Avete richiesto l'invio di un'e-mail con i link per riutilizzare le vostre feste precedenti. Qui potete trovare le feste che avete creato negli ultimi 2 anni, con un link per riutilizzarle.<br />"
+        txt: >
+            Salve,
+
+            Avete richiesto l'invio di un'e-mail con i link per riutilizzare le vostre feste precedenti. Qui potete trovare le feste che avete creato negli ultimi 2 anni, con un link per riutilizzarle.
+
+# Emails/participant.{html,txt}.twig
+emails-participant:
+    subject: Il tuo Secret Santa
+    find_out: Trova la tua persona
+
+# Emails/pendingConfirmation.{html,txt}.twig
+emails-pendingConfirmation:
+    subject: Convalida Secret Santa
+    salutation: Ciao %name%
+    click_button: Clicca sul pulsante qui sotto per convalidare la tua lista email di Secret Santa.  In questo modo i nostri gnomi invieranno il messaggio personale creato in precedenza a tutti i partecipanti.
+    overview_page: Nella nuova pagina di riepilogo sarà possibile tenere traccia di tutti gli utenti che hanno scoperto i loro amici Secret Santa. In questo modo saprete quando la lista è completa.
+    lastly: Infine, non dimenticate di confermare anche la vostra partecipazione! Vi invieremo una nuova e-mail dopo che avrete cliccato sul pulsante di convalida qui sotto.
+    come_back: Potete sempre tornare a questa mail se avete bisogno del link alla vostra pagina di gestione.
+    btn_goto_manage: Vai alla pagina di gestione
+
+# Emails/partyStatus.{html,txt}.twig
+emails-party_status:
+    subject: Secret Santa party status
+    message:
+        html: >
+            Carissimo/a %owner%, <br/>
+            <br/>
+            La festa avrà luogo a breve. Al fine di garantire una festa perfetta, sarebbe opportuno che tutti ricevessero un regalo. Troverai qui una panoramica di tutti i partecipanti e dei loro status.<br/>
+            <br/>
+            Cliccare sul link sottostante per inviare nuovamente i messaggi di posta elettronica, modificare gli indirizzi e-mail o eseguire altre azioni relative alla propria festa.
+        txt: >
+            Carissimo/a %owner%,
+
+            La festa avrà luogo a breve. Al fine di garantire una festa perfetta, sarebbe opportuno che tutti ricevessero un regalo. Troverai qui una panoramica di tutti i partecipanti e dei loro status.
+
+            Cliccare sul link sottostante per inviare nuovamente i messaggi di posta elettronica, modificare gli indirizzi e-mail o eseguire altre azioni relative alla propria festa.
+
+    yes: Si
+    not_yet: Non ancora
+
+    label:
+        name: Nome
+        email: E-mail
+        confirmed: Confermato
+        wishlist_filled: WishList Inserita
+
+    btn:
+        partystatus: Gestire la festa
+
+# Emails/partyUpdate.{html,txt}.twig
+emails-party_update:
+    subject: La nostra festa Secret Santa sta per iniziare!
+    message:
+        html: >
+            Carissimo/a %name%, <br/>
+            <br/>
+            Speriamo che siate eccitati per la festa di %owner% che si terrà a breve. %owner% si aspetta %partecipanteCount% partecipanti il %date% a/in %place% per divertirsi con la distribuzione dei regali.<br/>
+            <br/>
+            Per ottenere il massimo divertimento, sarebbe bello se ogni invitato partecipasse a questa festa e portasse con sé un regalo. Finora %viewedCount% persone hanno aperto il loro invito e %wishlistCount% di loro ha fatto una wishlist.<br/>
+            <br/>
+            Assicuratevi di controllare il vostro partner cliccando sul link qui sotto e spingetelo a entrare in azione, se necessario. Più siamo, meglio è!
+        txt: >
+            Carissimo/a %name%,
+
+            Speriamo che siate eccitati per la festa di %owner% che si terrà a breve. %owner% si aspetta %partecipanteCount% partecipanti il %date% a/in %place% per divertirsi con la distribuzione dei regali.
+
+            Per ottenere il massimo divertimento, sarebbe bello se ogni invitato partecipasse a questa festa e portasse con sé un regalo. Finora %viewedCount% persone hanno aperto il loro invito e %wishlistCount% di loro ha fatto una wishlist.
+
+            Assicuratevi di controllare il vostro partner cliccando sul link qui sotto e spingetelo a entrare in azione, se necessario. Più siamo, meglio è!
+
+    btn:
+        party_update: Controlla il tuo compagno e la tua wishlist
+
+# Emails/removedSecretSanta.{html,txt}.twig
+emails-removed_secret_santa:
+    subject: Scoprite chi è il vostro nuovo Secret Santa
+    message:
+        html: >
+            Carissimo/a %name%,<br/>
+            <br/>
+            Ti è stato assegnato un nuovo Secret Santa dopo che %owner% ha rimosso il tuo precedente Secret Santa dalla festa.<br/>
+            <br/>
+            Fate clic sul link sottostante per scoprire chi è il vostro nuovo Secret Santa.
+        txt: >
+            Carissimo/a %name%,
+
+            Ti è stato assegnato un nuovo Secret Santa dopo che %owner% ha rimosso il tuo precedente Secret Santa dalla festa.
+
+            Fate clic sul link sottostante per scoprire chi è il vostro nuovo Secret Santa.
+
+    btn:
+        find_out: Scopri la tua nuova persona
+
+# Emails/updatedParty.{html,txt}.twig
+emails-updated_party:
+    subject: I progetti sono cambiati!
+    message:
+        html: >
+            Carissimo/a %name%,<br/>
+            <br/>
+            %owner% ha cambiato alcuni dettagli della festa a cui siete invitati. Qui di seguito trovate i nuovi dettagli che il vostro amico vi ha fornito.
+        txt: >
+            Carissimo/a %name%,
+
+            %owner% ha cambiato alcuni dettagli della festa a cui siete invitati. Qui di seguito trovate i nuovi dettagli che il vostro amico vi ha fornito.
+
+    label:
+        date_party: Data del tuo Secret Santa
+        location: Location del tuo Secret Santa
+        amount_to_spend: Cifra da spendere
+
+    btn:
+        updated_party: Controlla il tuo compagno e la tua wishlist per questa festa.
+
+# Emails/viewParticipantReminder.{html,txt}.twig
+emails-viewParticipantReminder:
+    subject: Scopri chi è il tuo compagno di regali
+    didYouForget: Vi siete dimenticati dela festa Secret Santa? Non hai ancora controllato chi è il tuo compagno di regali!
+
+    btn:
+        find_out: Scoprite la vostra nuova persona
+
+# Emails/wishlistChanged.{html,txt}.twig
+emails-wishlistChanged:
+    subject: Wishlist aggiornata
+    salutation: Ciao %name%
+    buddy_updated_wishlist: Il tuo compagno ha aggiornato la sua wishlist.
+    click_button: Cliccate sul pulsante qui sotto per verificare i loro suggerimenti.
+
+    btn:
+        check_wishlist: Check wishlist
+
+# Emails/anonymousMessage.{html,txt}.twig
+emails-anonymous_message:
+    subject: Your secret santa sent you a message
+    message:
+      html: >
+          Carissimo/a %name%, <br/>
+          <br/>
+          Il vostro compagno Secret Santa vi ha inviato un messaggio, potete leggerlo qui:<br/>
+          <br />
+          <strong>%message%</strong>
+          <br/>
+          Clicca sul link qui sotto e aggiungi alla tua wishlist i prodotti che ti piacciono.
+      txt: >
+          Carissimo/a %name%,
+
+          Il vostro compagno Secret Santa vi ha inviato un messaggio, potete leggerlo qui:
+
+          %message%
+
+          Clicca sul link qui sotto e aggiungi alla tua wishlist i prodotti che ti piacciono.
+    update_wishlist: Aggiorna la tua wishlist
+
+# MailStatusExtension
+mail_status_extension:
+    unknown: Sconosciuto
+    opened: Email aperte
+    viewed: Festa visualizzata
+    not_started: Festa non iniziata
+    bounced: Email non consegnata!
+
+flashes:
+    # SendPartyUpdateController
+    send_party_update:
+        success: <h4>Riuscito</h4> Un aggiornamento è stato inviato a tutti i partecipanti.
+
+    # ForgotURLController
+    forgot_url:
+        success: 'Le abbiamo inviato una panoramica con successo!'
+        error: "Si è verificato un errore durante l'invio dell'e-mail. Controllare l'indirizzo e-mail e riprovare."
+
+    # ManagementController
+    management:
+        email_validated: >
+            <strong>Perfetto!</strong><br/>L'e-mail è stata convalidata.<br/>
+            I nostri gnomi stanno viaggiando in rete proprio adesso, consegnando a tutti i vostri SecretSanta i loro compagni di regalo.<br/>
+            <br />
+            Non dimenticate di confermare la vostra partecipazione. Vi abbiamo inviato un'altra e-mail. Andate a controllare!
+        add_participant:
+            success: <h4>Aggiunto!</h4> Participante aggiunto al gruppo con successo.
+            danger: <h4>Oops</h4> Si è verificato un errore nell'aggiunta del participante. Riprova.
+        join_mode:
+            success: <h4>Aggiornato!</h4> Il link di partecipazione è stato aggiornato con successo.
+            danger: <h4>Oops</h4> Si è verificato un errore durante l'aggiornamento delle impostazioni del link di partecipazione. Riprova.
+        updated_party:
+            success: <h4>Aggiornato!</h4> I dettagli del tuo gruppo sono stati aggiornati con successo.
+            danger: <h4>Oops</h4> Si è verificato un errore durante l'aggiornamento del gruppo. Riprova.
+        start_party:
+            success: E' stato creato il gruppo, e le email sono state inviate!
+            danger: C'è un errore iniziale nel gruppo, riprova!
+        excludes:
+            success: Le esclusioni sono state salvate!
+
+    # PartyController
+    party:
+        not_deleted: <h4>Non cancellato</h4> La conferma è errata.
+
+    # ResendParticipantController
+    resend_participant:
+        resent: <strong>Rinvia!</strong><br/>L'email a %email% è stata reinviata.<br/>
+        blacklisted: <strong>Oops.. Impossibile mandare l' email!</strong> La persona ha bloccato le nostre email, e non vuole riceverne più.
+
+    # ParticipantController
+    participant:
+        wishlist_updated: <h4>Lista desideri aggiornata</h4>Abbiamo mandato i nostri gnomi per comunicare al tuo Secret Santa i tuoi desideri!
+        edit_email: <h4>Non salvata</h4> C'è un errore nell'indirizzo email.
+        updated_participant: <h4>Salvata</h4> Abbiamo aggiornato i dettagli del partecipante!
+        updated_participant_resent: <h4>Salvato</h4> Abbiamo aggiornato i dettagli del partecipante! Poiché hai cambiato l'e-mail e la festa è già iniziata, inviamo nuovamente l'e-mail anche a questo partecipante.
+        remove_participant:
+            success: <h4>Rimosso!</h4> Participante rimosso con successo.
+            danger: <h4>Oops</h4> Impossibile rimuovere il participante, il gruppo necessita almeno 3 participanti.
+            warning: <h4>Oops</h4> Stai ospitando questo gruppo, non puoi rimuoverti. Se vuoi lasciare il gruppo, clicca il link qui sotto per rimuovere la lista Secret Santa.
+            excluded_participants: <h4>Oops</h4> Impossibile rimuovere i partecipanti dalla lista, hai usato le esclusioni nella creazione di questo gruppo che potrebbero causare problemi, quindi questa funzione non può essere utilizzata su questo gruppo.
+            not_enough_for_exclude: <h4>Oops</h4> Esclusioni impostate, ma visto la necessità di aver minimo 4 partecipanti, dovresti rimuoverle, o rassicurarti di avere 4 utenti!
+            self_assigned: <h4>Oops<h4> Non puoi rimuovere questo partecipante poichè causerebbe un auto-assegnamento del regalo ad un membro.
+            wrong: <h4>Oops</h4> Sembrerebbe che il codice di verifica non sia corretto.
+
+    # ReuseController
+    reuse:
+        success: 'Le email sono state mandate con successo!'
+        error: "Non siamo riusciti a trovare nessuna festa, potrebbe essere possibile che le tue feste siano più vecchie di 2 anni o che nessuna festa sia collegata a questa e-mail."
+
+    # ContactController
+    contact:
+        success: 'Abbiamo ricevuto la tua richiesta e ti risponderemo il prima possibile!'
+
+# Emails/contact.{html,txt}.twig
+emails-contact:
+    subject: Nuovo modulo di contatto Secret Santa
+    message:
+        html: >
+            Carissimo/a,<br>
+            <br>
+            %name% ha usato il modulo di contatto Secret Santa per mandare un messaggio. Messaggio:<br/>
+            <br/>
+            %message%<br/>
+            <br/>
+        txt: >
+            Carissimo/a,
+
+            %name% ha usato il modulo di contatto Secret Santa per mandare un messaggio. Messaggio:
+            %message%
+
+# Form/{ContactType}
+form-contact:
+    label:
+        email: La tua email
+        name: Il tuo nome
+        message: Il tuo messaggio
+        submit: Invia
+        subject: Soggetto
+        subjects:
+            mail: Problema Mail
+            gdpr: GDPR / Security
+            bug: Riporta un bug
+            party: Problemi a modificare un party
+            suggestions: Suggerimenti
+            other: Altro
+
+# Static/faq.html.twig
+static-contact:
+    title: Contattaci
+    body: Altre domande, dubbi o commenti? Contattaci tramite il modulo di contatto:
+

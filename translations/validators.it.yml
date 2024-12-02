@@ -1,0 +1,6 @@
+# Form/ExcludeParticipantType
+party:
+    non_unique: Not all participants have an unique match. Try again or remove some combination from the exclude list.
+participant:
+    non_unique: No unique match found for "%name%"
+    blacklisted: The owner of this email has placed his/her email on the blacklist, and doesn't want to be invited in the future!

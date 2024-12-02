@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomepageController extends AbstractController
 {
-    #[Route('/{_locale<en|fr|de|es|hu|nl|no|pl|pt>}', name: 'homepage', defaults: ['_locale' => 'en'], methods: ['GET'])]
+    #[Route('/{_locale<en|de|es|fr|hu|it|nl|no|pl|pt>}', name: 'homepage', defaults: ['_locale' => 'en'], methods: ['GET'])]
     public function indexAction(): Response
     {
         $partyForm = $this->createForm(PartyType::class, new Party(), [
