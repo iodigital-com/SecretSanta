@@ -1,7 +1,7 @@
 ---
 name: New issue
-about: Describe this issue template's purpose here.
-title: 'New issue'
+about: Open a new code issue.
+title: 'Code issue'
 labels: ''
 assignees: ''
 
